@@ -1,0 +1,51 @@
+/*******************************************************************************
+ * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.sequence.business.internal.query;
+
+import com.google.common.base.Preconditions;
+
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.RGBValues;
+import org.eclipse.sirius.business.api.diagramtype.HeaderData;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
+
+/**
+ * General queries on {@link InstanceRole}s.
+ * 
+ * @author lredor
+ */
+public class InstanceRoleQuery {
+    /**
+     * The Instance role to query.
+     */
+    protected final InstanceRole instanceRole;
+
+    /**
+     * Constructor.
+     * 
+     * @param instanceRole
+     *            the instance role to query.
+     */
+    public InstanceRoleQuery(InstanceRole instanceRole) {
+        this.instanceRole = Preconditions.checkNotNull(instanceRole);
+    }
+
+    /**
+     * Get the header data corresponding to this instance role.
+     * 
+     * @return the header data corresponding to this instance role.
+     */
+    public HeaderData getHeaderData() {
+        Option<RGBValues> optionalBackgroundColor = instanceRole.getBackgroundColor();
+        Option<RGBValues> optionalLabelColor = instanceRole.getLabelColor();
+        return new HeaderData(instanceRole.getName(), instanceRole.getBounds().x, instanceRole.getBounds().width, optionalBackgroundColor.get(), optionalLabelColor.get());
+    }
+}

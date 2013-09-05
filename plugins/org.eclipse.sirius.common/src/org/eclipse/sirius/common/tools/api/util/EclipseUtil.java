@@ -1,0 +1,311 @@
+/*******************************************************************************
+ * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.common.tools.api.util;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtension;
+import org.eclipse.core.runtime.IExtensionPoint;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
+
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+
+/**
+ * This class is should contains useful static functions related to Eclipse
+ * platform.
+ * 
+ * @author mchauvin
+ */
+public final class EclipseUtil {
+
+    /**
+     * avoid instantiation
+     */
+    private EclipseUtil() {
+    }
+
+    /**
+     * Get the list of extensions which contribute to an extension ID.
+     * 
+     * @param extensionId
+     *            the extension point id
+     * @return a List of extensions instance
+     */
+    private static IExtension[] getExtensions(final String extensionId) {
+        final IExtensionRegistry reg = Platform.getExtensionRegistry();
+        final IExtensionPoint ep = reg.getExtensionPoint(extensionId);
+        return ep.getExtensions();
+    }
+
+    /**
+     * Get the list of plug-ins which contribute to an extension ID.
+     * 
+     * @param clazz
+     *            the class that plug-ins need to extend or implement
+     * @param extensionId
+     *            the extension point id
+     * @param attribute
+     *            the attribute . Most often "class" is used
+     * @param <T>
+     *            the class to implements for contributors
+     * @return a List of clazz instance
+     */
+    public static <T> List<T> getExtensionPlugins(final Class<T> clazz, final String extensionId, final String attribute) {
+        return EclipseUtil.getExtensionPlugins(clazz, extensionId, attribute, null, Predicates.<String> alwaysTrue());
+    }
+
+    /**
+     * Get the list of plug-ins which contribute to an extension ID, and with a
+     * specific attribute value.
+     * 
+     * @param clazz
+     *            the class that plug-ins need to extend or implement
+     * @param extensionId
+     *            the extension point id
+     * @param executableAttribute
+     *            the executable attribute . Most often "class" is used
+     * @param attributeName
+     *            a
+     * @param exceptedAttributeValue
+     *            .
+     * @param <T>
+     *            the class to implements for contributors
+     * @return a List of clazz instance
+     * @since 2.1
+     */
+    public static <T> List<T> getExtensionPlugins(final Class<T> clazz, final String extensionId, final String executableAttribute, final String attributeName, final String exceptedAttributeValue) {
+        return EclipseUtil.getExtensionPlugins(clazz, extensionId, executableAttribute, attributeName, Predicates.equalTo(exceptedAttributeValue));
+    }
+
+    /**
+     * Get the list of plug-ins which contribute to an extension ID, and with an
+     * attribute value which corresponds to the given predicate.
+     * 
+     * @param clazz
+     *            the class that plug-ins need to extend or implement
+     * @param extensionId
+     *            the extension point id
+     * @param executableAttribute
+     *            the executable attribute . Most often "class" is used
+     * @param attributeName
+     *            a
+     * @param attributeValuePredicate
+     *            a predicate to filter the extensions to load.
+     * @param <T>
+     *            the class to implements for contributors
+     * @return a List of clazz instance
+     * @since 3.3
+     */
+    public static <T> List<T> getExtensionPlugins(final Class<T> clazz, final String extensionId, final String executableAttribute, final String attributeName,
+            final Predicate<String> attributeValuePredicate) {
+
+        final IExtension[] extensions = EclipseUtil.getExtensions(extensionId);
+        final List<T> contributors = new ArrayList<T>(extensions.length);
+
+        for (final IExtension ext : extensions) {
+            final IConfigurationElement[] ce = ext.getConfigurationElements();
+            for (IConfigurationElement element : ce) {
+
+                if (EclipseUtil.checkAttribute(element, attributeName, attributeValuePredicate)) {
+                    Object obj;
+                    try {
+                        obj = element.createExecutableExtension(executableAttribute);
+                        if (clazz.isInstance(obj)) {
+                            contributors.add(clazz.cast(obj));
+                        }
+                    } catch (final CoreException e) {
+                        DslCommonPlugin.getDefault().error("Impossible to load the extension " + ext.getLabel(), e);
+                        DslCommonPlugin.getDefault().getLog().log(e.getStatus());
+                    }
+                }
+
+            }
+        }
+        return contributors;
+    }
+
+    /**
+     * Check if an attribute is correct.
+     * 
+     * @param element
+     *            the configuration element
+     * @param attributeName
+     *            the name of the attribute
+     * @param exceptedAttributeValue
+     *            the attribute value excepted
+     * @return <code>true</code> if attribute is <code>null</code> or if
+     *         attribute value of configuration element is equal to the excepted
+     *         one
+     */
+    private static boolean checkAttribute(final IConfigurationElement element, final String attributeName, final Predicate<String> exceptedAttributeValue) {
+        if (attributeName != null) {
+            final String namedAttribute = element.getAttribute(attributeName);
+            return namedAttribute != null && (exceptedAttributeValue == null || exceptedAttributeValue.apply(namedAttribute));
+        }
+        return true;
+    }
+
+    /**
+     * Get the list of plug-ins which contribute to an extension ID.
+     * 
+     * @param extensionId
+     *            the extension point id
+     * @param attribute
+     *            the attribute of the configuration element
+     * @param pattern
+     *            pattern to match.
+     * 
+     * @return a Set of {@link IExtension} instances
+     */
+    @Deprecated
+    public static Set<?> getExtensionPlugins(final String extensionId, final String attribute, final String pattern) {
+        return EclipseUtil.retrieveInPlugins(extensionId, attribute, pattern, null);
+    }
+
+    /**
+     * return a set of table object containing for each an IExtension instance
+     * and the attribute value of elementAttribute.
+     * 
+     * @param extensionId
+     *            the extension point id
+     * @param attribute
+     *            the attribute of the configuration element
+     * @param pattern
+     *            pattern to match
+     * 
+     * @param elementAttributes
+     *            the attributes to get the value for (must be {@link String}
+     * @return a set of table object containing for each an IExtension instance
+     *         and the attribute value of elementAttribute
+     */
+    @Deprecated
+    public static Set<?> getElementsProvidedByPlugin(final String extensionId, final String attribute, final String pattern, final List<String> elementAttributes) {
+        return EclipseUtil.retrieveInPlugins(extensionId, attribute, pattern, elementAttributes);
+    }
+
+    @Deprecated
+    private static Set<?> retrieveInPlugins(final String extensionId, final String attribute, final String pattern, final List<String> elementAttributes) {
+        final IExtension[] extensions = EclipseUtil.getExtensions(extensionId);
+        final Set<Object> contributors = new HashSet<Object>(extensions.length);
+
+        for (final IExtension ext : extensions) {
+            final IConfigurationElement[] ce = ext.getConfigurationElements();
+            for (IConfigurationElement element : ce) {
+                if (element.getAttribute(attribute).matches(pattern)) {
+                    if (elementAttributes == null) {
+                        contributors.add(ext);
+                    } else {
+                        final List<String> values = new ArrayList<String>(elementAttributes.size());
+                        final Iterator<String> it = elementAttributes.iterator();
+                        while (it.hasNext()) {
+                            final String elementAttribute = it.next();
+                            values.add(element.getAttribute(elementAttribute));
+                        }
+                        contributors.add(new Object[] { ext.getContributor().getName(), values });
+                    }
+                }
+            }
+        }
+        return contributors;
+    }
+
+    /**
+     * Get the files in the workspace. You may filter the returned files with
+     * start and end prefixes.
+     * 
+     * @param startPrefix
+     *            the start prefix if needed, <code>null</code> otherwise
+     * @param endPrefix
+     *            the start prefix if needed, <code>null</code> otherwise
+     * @return the files in the workspace which start and end with the given
+     *         prefixes
+     * 
+     *         examples :
+     * 
+     *         getFilesFromWorkspace (null, null) : return all files from the
+     *         workspace getFilesFromWorkspaces (null, ".java" : return all java
+     *         sources files from the workspace
+     */
+    public static List<IFile> getFilesFromWorkspace(final String startPrefix, final String endPrefix) {
+        final IWorkspace workspace = ResourcesPlugin.getWorkspace();
+        final IWorkspaceRoot root = workspace.getRoot();
+        final IProject[] projects = root.getProjects();
+
+        final List<IFile> allFiles = new ArrayList<IFile>();
+        try {
+            EclipseUtil.getWorkspaceFiles(projects, allFiles);
+        } catch (final CoreException e1) {
+            // do nothing -- fail silently
+        }
+        if (startPrefix == null && endPrefix == null) {
+            return allFiles;
+        }
+
+        final Iterator<IFile> it = new ArrayList<IFile>(allFiles).iterator();
+
+        while (it.hasNext()) {
+            final IFile file = it.next();
+            if (startPrefix != null && !file.getName().startsWith(startPrefix)) {
+                allFiles.remove(file);
+            } else if (endPrefix != null && !file.getName().endsWith(endPrefix)) {
+                allFiles.remove(file);
+            }
+        }
+        return allFiles;
+    }
+
+    /**
+     * Get all files contained in a set of resources.
+     * 
+     * @param resources
+     *            the resources to scan
+     * @param files
+     *            the result files
+     * @throws CoreException
+     *             if {@link org.eclipse.core.resources.IContainer#members()} on
+     *             a resource fails. Reasons include:
+     *             <ul>
+     *             <li>This resource does not exist.</li>
+     *             <li>This resource is a project that is not open.</li>
+     *             </ul>
+     */
+    private static void getWorkspaceFiles(final IResource[] resources, final List<IFile> files) throws CoreException {
+        for (final IResource resource : resources) {
+            if (resource.isAccessible()) {
+                if (resource instanceof IFile) {
+                    files.add((IFile) resource);
+                } else if (resource instanceof IProject) {
+                    EclipseUtil.getWorkspaceFiles(((IProject) resource).members(), files);
+                } else if (resource instanceof IFolder) {
+                    EclipseUtil.getWorkspaceFiles(((IFolder) resource).members(), files);
+                }
+            }
+        }
+    }
+
+}

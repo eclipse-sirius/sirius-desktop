@@ -1,0 +1,67 @@
+/*******************************************************************************
+ * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.tools.internal.validation.description.constraints;
+
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.validation.IValidationContext;
+
+import org.eclipse.sirius.business.internal.query.EAttributeCustomizationQuery;
+import org.eclipse.sirius.business.internal.query.EReferenceCustomizationQuery;
+import org.eclipse.sirius.description.EAttributeCustomization;
+import org.eclipse.sirius.description.EReferenceCustomization;
+import org.eclipse.sirius.description.EStructuralFeatureCustomization;
+import org.eclipse.sirius.description.VSMElementCustomizationReuse;
+
+/**
+ * A
+ * {@link AbstractEStructuralFeatureCustomizationFeatureNameCommonToAppliedOnConstraint}
+ * to check validity of {@link VSMElementCustomizationReuse}.
+ * 
+ * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
+ */
+public class VSMElementCustomizationReuseValidConstraint extends AbstractEStructuralFeatureCustomizationFeatureNameCommonToAppliedOnConstraint {
+
+    @Override
+    public IStatus validate(IValidationContext ctx) {
+        IStatus status = null;
+        EObject target = ctx.getTarget();
+        if (target instanceof VSMElementCustomizationReuse) {
+            VSMElementCustomizationReuse vsmElementCustomizationReuse = (VSMElementCustomizationReuse) target;
+            for (EObject eObject : vsmElementCustomizationReuse.getAppliedOn()) {
+                if (!isStyleDescriptionElt(eObject)) {
+                    status = ctx.createFailureStatus(getPath(eObject) + " doesn't concerns a style description or a style description element");
+                } else {
+                    for (EStructuralFeatureCustomization featureCustomization : vsmElementCustomizationReuse.getReuse()) {
+                        if (featureCustomization instanceof EAttributeCustomization) {
+                            EAttributeCustomization eAttributeCustomization = (EAttributeCustomization) featureCustomization;
+                            EAttributeCustomizationQuery eAttributeCustomizationQuery = new EAttributeCustomizationQuery(eAttributeCustomization);
+                            if (!eAttributeCustomizationQuery.isStyleDescriptionEltConformToEAttributeCustomization(eObject)) {
+                                status = ctx.createFailureStatus(getPath(eObject) + " doesn't have EAttribute named " + eAttributeCustomization.getAttributeName());
+                            }
+                        } else if (featureCustomization instanceof EReferenceCustomization) {
+                            EReferenceCustomization eReferenceCustomization = (EReferenceCustomization) featureCustomization;
+                            EReferenceCustomizationQuery eReferenceCustomizationQuery = new EReferenceCustomizationQuery(eReferenceCustomization);
+                            if (!eReferenceCustomizationQuery.isStyleDescriptionEltConformToEReferenceCustomization(eObject)) {
+                                status = ctx.createFailureStatus(getPath(eObject) + " doesn't have EReference named " + eReferenceCustomization.getReferenceName());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (status == null) {
+            status = ctx.createSuccessStatus();
+        }
+        return status;
+    }
+
+}

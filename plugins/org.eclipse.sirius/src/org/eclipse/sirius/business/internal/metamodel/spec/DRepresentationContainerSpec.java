@@ -1,0 +1,112 @@
+/*******************************************************************************
+ * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.business.internal.metamodel.spec;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreEList;
+
+import org.eclipse.sirius.DRepresentation;
+import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.DSemanticDiagram;
+import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.impl.DRepresentationContainerImpl;
+
+/**
+ * Implementation of {@link DRepresentationContainerSpec}.
+ * 
+ * @author cbrun
+ */
+public class DRepresentationContainerSpec extends DRepresentationContainerImpl {
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.impl.DViewImpl#getAllRepresentations()
+     */
+    @Override
+    public EList<DRepresentation> getAllRepresentations() {
+        final Collection<DRepresentation> result = new ArrayList<DRepresentation>(getOwnedRepresentations());
+        result.addAll(getReferencedRepresentations());
+        return new EcoreEList.UnmodifiableEList<DRepresentation>(eInternalContainer(), SiriusPackage.eINSTANCE.getDView_AllRepresentations(), result.size(), result.toArray());
+    }
+
+    /**
+     * Refresh the functionnal analysis.
+     * 
+     * @see org.eclipse.sirius.impl.DRefreshableImpl#refresh()
+     */
+    @Override
+    public void refresh() {
+        final Set<DRepresentation> representationsToDelete = new HashSet<DRepresentation>();
+        Iterator<DRepresentation> it = getAllRepresentations().iterator();
+        while (it.hasNext()) {
+            final DRepresentation representation = it.next();
+            /*
+             * detect dangling diagram.
+             */
+            if (representation instanceof DSemanticDiagram) {
+                if (((DSemanticDiagram) representation).getTarget() == null || ((DSemanticDiagram) representation).getRootContent() == null) {
+                    representationsToDelete.add(representation);
+                }
+            }
+            if (!representationsToDelete.contains(representation)) {
+                representation.refresh();
+            }
+        }
+        /*
+         * delete dangling viewpoints
+         */
+        it = representationsToDelete.iterator();
+        while (it.hasNext()) {
+            final EObject next = it.next();
+            final Session session;
+            if (next instanceof DSemanticDecorator) {
+                session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) next).getTarget());
+            } else {
+                session = SessionManager.INSTANCE.getSession(next);
+            }
+            SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(next).eDelete(next, session != null ? session.getSemanticCrossReferencer() : null);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.impl.DRepresentationContainerImpl#getModels()
+     */
+    @Override
+    public EList<EObject> getModels() {
+        final Collection<EObject> models = new HashSet<EObject>(3);
+        for (final DRepresentation representation : this.getAllRepresentations()) {
+            if (representation instanceof DSemanticDecorator) {
+                models.add(getModel(((DSemanticDecorator) representation).getTarget()));
+            }
+        }
+        return new EcoreEList.UnmodifiableEList<EObject>(eInternalContainer(), SiriusPackage.eINSTANCE.getDRepresentationContainer_Models(), models.size(), models.toArray());
+    }
+
+    private EObject getModel(final EObject target) {
+        if (target != null && target.eResource() != null) {
+            return target.eResource().getContents().iterator().next();
+        }
+        return target;
+    }
+}

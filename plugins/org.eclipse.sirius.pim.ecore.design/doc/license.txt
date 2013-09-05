@@ -1,0 +1,19 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+doc/images/archetypes.png - org.eclipse.sirius.pim.ecore.design - org.eclipse.sirius.pim.ecore.design/doc/images/archetypes.png
+doc/images/dependencies.png - org.eclipse.sirius.pim.ecore.design - org.eclipse.sirius.pim.ecore.design/doc/images/dependencies.png
+doc/images/documentation_layer.png - org.eclipse.sirius.pim.ecore.design - org.eclipse.sirius.pim.ecore.design/doc/images/documentation_layer.png
+doc/images/documentation_table.png - org.eclipse.sirius.pim.ecore.design - org.eclipse.sirius.pim.ecore.design/doc/images/documentation_table.png
+doc/images/example_design_classes.png - org.eclipse.sirius.pim.ecore.design - org.eclipse.sirius.pim.ecore.design/doc/images/example_design_classes.png
+doc/images/example_design_entities.png - org.eclipse.sirius.pim.ecore.design - org.eclipse.sirius.pim.ecore.design/doc/images/example_design_entities.png
+doc/images/genpackage_table.png - org.eclipse.sirius.pim.ecore.design - org.eclipse.sirius.pim.ecore.design/doc/images/genpackage_table.png
+doc/images/hierarchy.png - org.eclipse.sirius.pim.ecore.design - org.eclipse.sirius.pim.ecore.design/doc/images/hierarchy.png
+doc/images/modeling_assistant.png - org.eclipse.sirius.pim.ecore.design - org.eclipse.sirius.pim.ecore.design/doc/images/modeling_assistant.png
+doc/images/relations.png - org.eclipse.sirius.pim.ecore.design - org.eclipse.sirius.pim.ecore.design/doc/images/relations.png
+doc/images/size.png - org.eclipse.sirius.pim.ecore.design - org.eclipse.sirius.pim.ecore.design/doc/images/size.png
+doc/screenshots/classes.png - org.eclipse.sirius.pim.ecore.design - org.eclipse.sirius.pim.ecore.design/doc/screenshots/classes.png
+doc/screenshots/entities.png - org.eclipse.sirius.pim.ecore.design - org.eclipse.sirius.pim.ecore.design/doc/screenshots/entities.png

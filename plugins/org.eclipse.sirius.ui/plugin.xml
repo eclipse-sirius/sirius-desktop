@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+  Copyright (c) 2007, 2011 THALES GLOBAL SERVICES
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+
+<plugin>
+   <extension-point id="dialectui" name="org.eclipse.sirius.dialect.ui" schema="schema/dialect.ui.exsd"/>
+   <extension-point id="featureExtensionsui" name="org.eclipse.sirius.ui.featureExtensions.ui" schema="schema/featureExtensions.ui.exsd"/>
+   <extension-point id="exportRepresentationsAsImagesExtension" name="org.eclipse.sirius.ui.exportRepresentationsAsImages" schema="schema/exportRepresentationsAsImagesExtension.exsd"/>
+   <extension-point id="assistContentProvider" name="org.eclipse.sirius.ui.assistContentProvider" schema="schema/IAssistContentProvider.exsd"/>
+   <extension-point id="resourcelocator" name="org.eclipse.sirius.ui.resourcelocator" schema="schema/resourcelocator.exsd"/>
+   <extension-point id="representationTemplateEdit" name="org.eclipse.sirius.ui.representationTemplateEdit" schema="schema/representationTemplateEdit.exsd"/>
+   <extension-point id="modelExplorerTabExtension" name="org.eclipse.sirius.ui.modelExplorerTabExtension" schema="schema/modelExplorerTabExtension.exsd"/>
+   <extension-point id="uiSessionFactory" name="UI Session Factory" schema="schema/uiSessionFactory.exsd"/>
+   <extension-point id="newmodeldependencywizard" name="newmodeldependencywizard" schema="schema/newmodeldependencywizard.exsd"/>
+   <extension-point id="modelingprojectresourcelistener" name="org.eclipse.sirius.ui.resourcelistener" schema="schema/modelingprojectresourcelistener.exsd"/>
+
+    <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.eclipse.sirius.category"
+            name="Sirius"/>
+      <view
+            category="org.eclipse.sirius.category"
+            class="org.eclipse.sirius.ui.tools.internal.views.interpreterview.DesignerInterpreterView"
+            icon="icons/full/others/information.gif"
+            id="org.eclipse.sirius.ui.tools.views.interpreterview"
+            name="Model requests interpreter"/>
+      <view
+            category="org.eclipse.sirius.category"
+            class="org.eclipse.sirius.ui.tools.internal.views.modelexplorer.ModelExplorerView"
+            icon="icons/full/others/ModelExplorer.gif"
+            id="org.eclipse.sirius.ui.tools.views.model.explorer"
+            name="Model Explorer">
+      </view>
+   </extension>
+   
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="org.eclipse.sirius.ui.tools.views.model.explorer"
+            labelProvider="org.eclipse.sirius.ui.tools.internal.views.modelexplorer.property.SiriusPropertiesLabelProvider">
+         <propertyCategory
+               category="default">
+         </propertyCategory>
+      </propertyContributor>
+   </extension>
+   
+    <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.sirius.ui.tools.views.model.explorer">
+         <propertyTab
+               category="default"
+               id="org.eclipse.sirius.ui.tools.views.model.explorer.tab"
+               label="Default">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="org.eclipse.sirius.ui.tools.views.model.explorer">
+         <propertySection
+               class="org.eclipse.sirius.ui.tools.internal.views.modelexplorer.property.SemanticPropertySection"
+               id="org.eclipse.sirius.ui.tools.views.model.explorer.section"
+               tab="org.eclipse.sirius.ui.tools.views.model.explorer.tab">
+            <input
+                  type="org.eclipse.emf.ecore.EObject">
+            </input>
+            <input
+                  type="org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper">
+            </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+   
+    <extension
+          point="org.eclipse.ui.perspectives">
+       <perspective
+             class="org.eclipse.sirius.ui.tools.internal.perspectives.DesignerDesignPerspective"
+             icon="icons/full/obj16/Sirius.gif"
+             id="org.eclipse.sirius.ui.tools.perspective.design"
+             name="Sirius">
+       </perspective>
+       <perspective
+             class="org.eclipse.sirius.ui.tools.internal.perspectives.DesignerModelingPerspective"
+             icon="icons/full/others/ModelingPerspective.gif"
+             id="org.eclipse.sirius.ui.tools.perspective.modeling"
+             name="Modeling">
+       </perspective>
+    </extension>
+
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory
+       uri = "http://www.eclipse.org/sirius/1.1.0"
+       class = "org.eclipse.sirius.provider.SiriusItemProviderAdapterFactory"
+       supportedTypes =
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory
+       uri = "http://www.eclipse.org/sirius/description/1.1.0"
+       class = "org.eclipse.sirius.description.provider.DescriptionItemProviderAdapterFactory"
+       supportedTypes =
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+              <factory
+       uri = "http://www.eclipse.org/sirius/description/tool/1.1.0"
+       class = "org.eclipse.sirius.description.tool.provider.ToolItemProviderAdapterFactory"
+       supportedTypes =
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+              <factory
+       uri = "http://www.eclipse.org/sirius/description/style/1.1.0"
+       class = "org.eclipse.sirius.description.style.provider.StyleItemProviderAdapterFactory"
+       supportedTypes =
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+              <factory
+       uri = "http://www.eclipse.org/sirius/description/filter/1.1.0"
+       class = "org.eclipse.sirius.description.filter.provider.FilterItemProviderAdapterFactory"
+       supportedTypes =
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+              <factory
+       uri = "http://www.eclipse.org/sirius/description/validation/1.1.0"
+       class = "org.eclipse.sirius.description.validation.provider.ValidationItemProviderAdapterFactory"
+       supportedTypes =
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+              <factory
+       uri = "http://www.eclipse.org/sirius/description/audit/1.1.0"
+       class = "org.eclipse.sirius.description.audit.provider.AuditItemProviderAdapterFactory"
+       supportedTypes =
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+  
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory
+       uri = "http://www.eclipse.org/sirius/description/contribution/1.0.0"
+       class = "org.eclipse.sirius.description.contribution.provider.ContributionItemProviderAdapterFactory"
+       supportedTypes =
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+    <extension
+        point="org.eclipse.core.runtime.preferences">
+     <initializer
+           class="org.eclipse.sirius.ui.business.internal.preference.GenericPreferencesInitializer">
+     </initializer>
+  </extension>
+  <extension
+        point="org.eclipse.ui.preferencePages">
+     <page
+           class="org.eclipse.sirius.ui.tools.internal.preference.DesignerPreferencePage"
+           id="org.eclipse.sirius.ui.page"
+           name="Sirius">
+     </page>
+  </extension>
+
+  <extension
+        point="org.eclipse.ui.popupMenus">
+     <objectContribution
+           id="org.eclipse.sirius.ui.action.exportRepresentationsAsImages"
+           nameFilter="*.aird"
+           objectClass="org.eclipse.core.resources.IFile">
+        <action
+              class="org.eclipse.sirius.ui.tools.internal.actions.export.ExportRepresentationsFromFileAction"
+              enablesFor="1"
+              icon="icons/full/others/image.gif"
+              id="org.eclipse.sirius.ui.action.exportRepresentationsAsImages"
+              label="%exportDiagramsAsImagesActionLabel"
+              menubarPath="group.port">
+        </action>
+     </objectContribution>
+             <objectContribution
+            id="org.eclipse.sirius.ui.action.migration.representationFiles"
+            objectClass="org.eclipse.core.resources.IFile"
+            nameFilter="*.aird">
+         <action
+               class="org.eclipse.sirius.ui.tools.internal.actions.repair.RepresentationFilesRepairAction"
+               enablesFor="1"
+               icon="icons/full/others/repair.gif"
+               id="org.eclipse.sirius.ui.action.migration.representationFiles"
+               label="%repairActionLabel"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+  </extension>
+
+   <extension point="org.eclipse.ui.newWizards">
+	   <category id="org.eclipse.sirius.category" name="Sirius"/>
+		<wizard
+        category="org.eclipse.sirius.category"
+        class="org.eclipse.sirius.ui.tools.internal.wizards.ModelingProjectWizard"
+        finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
+        icon="icons/obj16/ModelingProject.gif"
+        id="org.eclipse.sirius.ui.modelingproject.wizard"
+        name="Modeling Project"
+        preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.design"
+        project="true">
+     <description>
+        %_UI_ModelingProjectWizard_label
+     </description>
+		</wizard>
+  		   <!-- Session creation keeped for legacy mode -->
+  		<wizard
+          category="org.eclipse.sirius.category"
+          class="org.eclipse.sirius.ui.tools.internal.wizards.NewSessionWizard"
+          finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
+          icon="icons/obj16/SiriusFile.gif"
+          id="org.eclipse.sirius.ui.session.creation"
+          name="Representations File"
+          preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.design"
+          project="false">
+        <description>
+        %_UI_RepresentationsFileWizard_description
+     	</description>
+		</wizard>
+  </extension>
+
+
+  <!-- Project creation -->
+
+    
+  <extension
+        point="org.eclipse.sirius.deleteHook">
+     <deleteHook
+           class="org.eclipse.sirius.ui.business.api.delete.ConfirmationDialogDeleteHook"
+           id="org.eclipse.sirius.ui.confirmationDialog">
+     </deleteHook>
+  </extension>
+  <extension
+        point="org.eclipse.ui.commands">
+     <category
+           id="org.eclipse.sirius.ui.tools.commands"
+           name="Sirius Commands">
+     </category>
+     <command
+           categoryId="org.eclipse.sirius.ui.tools.commands"
+           defaultHandler="org.eclipse.sirius.ui.tools.api.control.SiriusControlHandler"
+           id="org.eclipse.sirius.ui.tools.controlCommand"
+           name="Control">
+     </command>
+     <command
+           categoryId="org.eclipse.sirius.ui.tools.commands"
+           defaultHandler="org.eclipse.sirius.ui.tools.api.control.SiriusUncontrolHandler"
+           id="org.eclipse.sirius.ui.tools.uncontrolCommand"
+           name="Uncontrol">
+     </command>
+  </extension>
+    <!-- Standard External Java Actions usable from VSMs. --> 
+  <extension point="org.eclipse.sirius.externalJavaAction">
+     <javaActions id="org.eclipse.sirius.ui.business.api.action.openHelpSection"
+                  actionClass="org.eclipse.sirius.ui.business.api.action.OpenHelpSectionAction" />
+  </extension>
+  <extension
+        point="org.eclipse.sirius.analysisSelectorProvider">
+     <provider id = "org.eclipse.sirius.analysisSelectorProvider.default"
+           providerClass="org.eclipse.sirius.ui.business.internal.session.analysis.SmartDialogAnalysisSelectorProvider">
+     </provider>
+  </extension>
+  <extension
+        point="org.eclipse.ui.decorators">
+     <decorator
+           adaptable="false"
+           class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.SessionLabelDecorator"
+           id="org.eclipse.sirius.ui.session.decorator"
+           label="Sirius Content Management"
+           lightweight="true"
+           location="TOP_RIGHT"
+           state="true">
+        <enablement>
+           <or>
+              <objectClass
+                 name="org.eclipse.core.resources.IFile">
+           </objectClass>
+              <objectClass
+                 name="org.eclipse.core.resources.IProject">
+           </objectClass>
+           </or>
+        </enablement>
+     </decorator>
+  </extension>
+  <extension
+        point="org.eclipse.ui.navigator.viewer">
+     <viewer
+           viewerId="org.eclipse.sirius.ui.tools.views.model.explorer">
+           <popupMenu
+                allowsPlatformContributions="true"
+                id="org.eclipse.sirius.ui.tools.views.model.explorer#PopupMenu">
+             <insertionPoint name="group.viewpoint.session" separator="true"/>
+             <insertionPoint name="group.viewpoint.representation" separator="true"/>
+             <insertionPoint name="group.viewpoint.semantic" separator="true"/>
+             <insertionPoint name="group.viewpoint" separator="true"/>
+             <insertionPoint name="group.new"/>
+             <insertionPoint name="group.open" separator="true"/>
+             <insertionPoint name="group.openWith"/>   
+             <insertionPoint name="group.edit" separator="true"/>   
+             <insertionPoint name="group.reorganize" />         
+             <insertionPoint name="group.port" separator="true"/>     
+             <insertionPoint name="group.build" separator="true"/> 
+             <insertionPoint name="group.generate" separator="true"/> 
+             <insertionPoint name="group.search" separator="true"/>              
+             <insertionPoint name="additions" separator="true"/>              
+             <insertionPoint name="group.properties" separator="true"/>
+          </popupMenu>
+     </viewer>
+     <viewerContentBinding
+           viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+        <includes>
+           <contentExtension
+                 pattern="org.eclipse.sirius.ui.resource.content.session">
+           </contentExtension>
+           <contentExtension
+                 pattern="org.eclipse.sirius.ui.linkHelper.modeling.explorer.*">
+           </contentExtension>
+           <contentExtension
+                 pattern="org.eclipse.sirius.ui.commonFilter.*">
+           </contentExtension>
+        </includes>
+     </viewerContentBinding>
+     <viewerContentBinding
+           viewerId="org.eclipse.sirius.ui.tools.views.model.explorer">
+        <includes>
+           <contentExtension pattern="org.eclipse.sirius.ui.resource.content.session"/>
+           <contentExtension pattern="org.eclipse.sirius.ui.linkHelper.modeling.explorer.*"/>
+           <contentExtension pattern="org.eclipse.sirius.ui.commonFilter.*"/>
+           <contentExtension pattern="org.eclipse.jdt.java.ui.javaContent" />
+		   <contentExtension pattern="org.eclipse.jdt.java.ui.filters.*" />	
+		   <contentExtension pattern="org.eclipse.jdt.java.ui.javaLinkHelper" />	
+		   <contentExtension pattern="org.eclipse.ui.navigator.resourceContent" />		       	      
+	       <contentExtension pattern="org.eclipse.ui.navigator.resources.filters.*"/>
+           <contentExtension pattern="org.eclipse.ui.navigator.resources.linkHelper"/>
+           <contentExtension pattern="org.eclipse.ui.navigator.resources.workingSets"/>
+        </includes>
+     </viewerContentBinding>
+      <viewerActionBinding
+            viewerId="org.eclipse.sirius.ui.tools.views.model.explorer">
+         <includes>
+             <actionExtension pattern="org.eclipse.ui.navigator.resources.*" />
+         </includes>
+       </viewerActionBinding>
+  </extension>
+   <extension point="org.eclipse.core.expressions.propertyTesters">
+       <propertyTester
+           id="org.eclipse.sirius.ui.fileForSessionTester"
+           type="org.eclipse.core.resources.IFile"
+           namespace="org.eclipse.sirius.ui"
+           properties="isFileForSessionTester"
+           class="org.eclipse.sirius.ui.tools.internal.views.common.FileHandledBySessionTester">
+       </propertyTester>
+       <propertyTester
+      		namespace="org.eclipse.debug.ui"
+            properties="matchesContentType, matchesPattern"
+            type="org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem"
+            class="org.eclipse.sirius.ui.tools.internal.views.common.ResourceExtender"
+            id="org.eclipse.sirius.ui.commonItemIResourceExtender">
+      </propertyTester>
+      <propertyTester
+      		namespace="org.eclipse.debug.ui"
+            properties="matchesContentType, matchesPattern"
+            type="org.eclipse.emf.ecore.EObject"
+            class="org.eclipse.sirius.ui.tools.internal.views.common.ResourceExtender"
+            id="org.eclipse.sirius.ui.eobjectIResourceExtender">
+      </propertyTester>
+   </extension>
+  <extension
+        point="org.eclipse.ui.navigator.navigatorContent">
+     <navigatorContent
+           activeByDefault="true"
+           appearsBefore="org.eclipse.jdt.java.ui.javaContent"
+           contentProvider="org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonContentProvider"
+           icon="icons/obj16/SessionResourceFile.gif"
+           id="org.eclipse.sirius.ui.resource.content.session"
+           labelProvider="org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider"
+           name="Sirius Content Management"
+           priority="high"
+           providesSaveables="false">
+        <commonSorter
+              class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.RepresentationInSemanticSorter"
+              id="org.eclipse.sirius.ui.navigatorSorter.representation">
+           <parentExpression>
+              <instanceof
+                    value="org.eclipse.emf.ecore.EObject">
+              </instanceof>
+           </parentExpression>
+        </commonSorter>
+        <commonSorter
+              class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.CommonItemSorter"
+              id="org.eclipse.sirius.ui.navigatorSorter.item.wrapper">
+           <parentExpression>
+              <or>
+                 <instanceof
+                       value="org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem">
+                 </instanceof>
+                 <instanceof
+                       value="org.eclipse.sirius.description.RepresentationDescription">
+                 </instanceof>
+                 <instanceof
+                       value="org.eclipse.core.resources.IFile">
+                 </instanceof>
+                 <and>
+                    <instanceof
+                          value="org.eclipse.core.resources.IProject">
+                    </instanceof>
+                    <test
+                          property="org.eclipse.core.resources.projectNature"
+                          value="org.eclipse.sirius.nature.modelingproject">
+                    </test>
+                 </and>
+              </or>
+           </parentExpression>
+        </commonSorter>
+        <actionProvider
+              class="org.eclipse.sirius.ui.tools.internal.actions.session.OpenCloseSessionActionProvider"
+              id="org.eclipse.sirius.ui.openAnalysisActionProvider"
+              overrides="org.eclipse.jdt.ui.navigator.actions.OpenActions"
+              priority="normal">
+           <enablement>
+              <and>
+                 <instanceof
+                       value="org.eclipse.core.resources.IFile">
+                 </instanceof>
+                 <test
+                       forcePluginActivation="true"
+                       property="org.eclipse.core.resources.extension"
+                       value="aird">
+                 </test>
+              </and>
+           </enablement>
+        </actionProvider>
+        <actionProvider
+              class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.ManageSessionActionProvider"
+              id="org.eclipse.sirius.ui.sessionManagementActionProvider"
+              priority="normal">
+           <enablement>
+              <or>
+                 <instanceof
+                       value="org.eclipse.emf.ecore.EObject">
+                 </instanceof>
+                 <instanceof
+                       value="org.eclipse.emf.ecore.resource.Resource">
+                 </instanceof>
+                 <instanceof
+                       value="org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem">
+                 </instanceof>
+                 <instanceof
+                       value="org.eclipse.core.resources.IFile">
+                 </instanceof>
+                 <instanceof
+                       value="org.eclipse.core.resources.IProject">
+                 </instanceof>
+              </or>
+           </enablement>
+        </actionProvider>
+        <possibleChildren>
+           <or>
+              <instanceof
+                    value="org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem">
+              </instanceof>
+              <instanceof
+                    value="org.eclipse.emf.ecore.EObject">
+              </instanceof>
+              <instanceof
+                    value="org.eclipse.emf.ecore.resource.Resource">
+              </instanceof>
+              <adapt
+                    type="org.eclipse.core.resources.IProject">
+                 <test
+                       property="org.eclipse.core.resources.projectNature"
+                       value="org.eclipse.sirius.nature.modelingproject">
+                 </test>
+              </adapt>
+              <and>
+                 <instanceof
+                       value="org.eclipse.core.resources.IFile">
+                 </instanceof>
+                 <test
+                       forcePluginActivation="true"
+                       property="org.eclipse.sirius.ui.isFileForSessionTester">
+                 </test>
+              </and>
+           </or>
+        </possibleChildren>
+        <triggerPoints>
+           <or>
+              <and>
+                 <instanceof
+                       value="org.eclipse.core.resources.IFile">
+                 </instanceof>
+                 <test
+                       forcePluginActivation="true"
+                       property="org.eclipse.sirius.ui.isFileForSessionTester">
+                 </test>
+              </and>
+              <adapt type="org.eclipse.core.resources.IProject" >
+				<test property="org.eclipse.core.resources.projectNature" value="org.eclipse.sirius.nature.modelingproject"/>
+			  </adapt>
+           </or>
+        </triggerPoints>
+     </navigatorContent>
+     <commonWizard
+           menuGroupId="org.eclipse.sirius.category"
+           type="new"
+           wizardId="org.eclipse.sirius.ui.modelingproject.wizard">
+        <enablement></enablement>
+     </commonWizard>
+     <commonWizard
+           type="new"
+           wizardId="org.eclipse.sirius.ui.session.creation">
+        <enablement>
+           <and>
+              <instanceof
+                    value="org.eclipse.core.resources.IResource">
+              </instanceof>
+              <not>
+                 <test
+                       forcePluginActivation="true"
+                       property="org.eclipse.core.resources.projectNature"
+                       value="org.eclipse.sirius.nature.modelingproject">
+                 </test>
+              </not>
+           </and>
+        </enablement>
+     </commonWizard> 
+    <commonFilter
+           description="Hides &quot;Representations per resource&quot; item in viewpoint legacy mode. This item displays linked aird files with their activated viewpoints and their available representations."
+           id="org.eclipse.sirius.ui.commonFilter.resourceFolderItem"
+           name="Representations per resource">
+        <filterExpression>
+           <instanceof
+                 value="org.eclipse.sirius.ui.tools.api.views.common.item.ResourcesFolderItem">
+           </instanceof>
+        </filterExpression>
+     </commonFilter>
+     <commonFilter
+           description="Hides &quot;Representations per category&quot; item in viewpoint legacy mode. This item displays activated viewpoints and their available representations."
+           id="org.eclipse.sirius.ui.commonFilter.viewpointFolderItem"
+           name="Representations per category">
+        <filterExpression>
+           <instanceof
+                 value="org.eclipse.sirius.ui.tools.api.views.common.item.SiriussFolderItem">
+           </instanceof>
+        </filterExpression>
+     </commonFilter>
+     <commonFilter
+           class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.RepresentationInSemanticNodeCommonFilter"
+           description="Hides the representations in the model tree"
+           id="org.eclipse.sirius.ui.commonFilter.representation"
+           name="Representations as child of the represented element">
+     </commonFilter>
+     <commonFilter
+           activeByDefault="true"
+           class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.RepresentationDescriptionWithoutRepresentationCommonFilter"
+           description="Hides Representation descriptions without instances"
+           id="org.eclipse.sirius.ui.commonFilter.representation.description"
+           name="Representation descriptions without instance">
+     </commonFilter>
+     <commonFilter
+           activeByDefault="true"
+           class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.PatternFilter"
+           description="Filter used in in the filter text area of Model Explorer view"
+           id="org.eclipse.sirius.ui.commonFilter.pattern"
+           name="Pattern filter"
+           visibleInUI="false">
+     </commonFilter>
+  </extension>
+  <extension
+        point="org.eclipse.ui.navigator.linkHelper">
+     <linkHelper
+           class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.SessionLinkHelper"
+           id="org.eclipse.sirius.ui.linkHelper.modeling.explorer.default">
+        <editorInputEnablement>
+           <instanceof
+                 value="org.eclipse.emf.common.ui.URIEditorInput">
+           </instanceof>
+        </editorInputEnablement>
+        <selectionEnablement>
+           <or>
+              <instanceof
+                    value="org.eclipse.emf.ecore.EObject">
+              </instanceof>
+              <instanceof
+                    value="org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItemImpl">
+              </instanceof>
+           </or>
+        </selectionEnablement>
+     </linkHelper>
+  </extension>
+  <extension
+        point="org.eclipse.ui.ide.projectNatureImages">
+     <image
+           icon="icons/full/ovr16/viewpoint_prj_ovr.gif"
+           id="org.eclipse.sirius.ui.nature.image.modelingProject"
+           natureId="org.eclipse.sirius.nature.modelingproject">
+     </image>
+  </extension>
+  
+       <extension point="org.eclipse.ui.editors">
+      <editor
+            class="org.eclipse.ui.editors.text.TextEditor"
+            default="true"
+            extensions="aird"
+            icon="icons/obj16/SiriusFile.gif"
+            id="org.eclipse.sirius.ui.fakeeditoronlyforicon"
+            name="Text editor">
+      </editor>
+   </extension>
+  
+    <!-- Model content tab wrapper
+  <extension
+        point="org.eclipse.sirius.ui.modelExplorerTabExtension">
+     <modelExplorerTabExtension
+           class="org.eclipse.sirius.ui.tools.internal.views.sessionview.OpenedSessionsTab"
+           icon="icons/obj16/SessionResourceFile.gif"
+           id="org.eclipse.sirius.ui.extension.tab.modelcontent">
+     </modelExplorerTabExtension>
+  </extension> 
+     -->   
+   <!--
+      <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.eclipse.sirius.ui.business.internal.migration.logicalUriMigration"
+            nameFilter="*.odesign"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               id="org.eclipse.sirius.ui.movida.menu"
+               label="Movida"
+               path="additions">
+            <separator
+                  name="group">
+            </separator>
+         </menu>
+         <action
+               class="org.eclipse.sirius.ui.business.internal.migration.MigrateToLogicalURIsAction"
+               enablesFor="+"
+               label="Migrate to Logical URIs"
+               menubarPath="org.eclipse.sirius.ui.movida.menu/group">
+         </action>
+      </objectContribution>
+   </extension>
+  -->
+  <extension point="org.eclipse.ui.startup">
+    <startup
+      class="org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.manager.ModelingProjectManagerStartup">
+    </startup>
+  </extension>  
+
+  <extension
+         point="org.eclipse.ui.commands">
+	<command
+	        categoryId="org.eclipse.ui.category.file"
+	        defaultHandler="org.eclipse.sirius.ui.tools.internal.actions.nature.ModelingToggleNatureAction"
+	        id="org.eclipse.sirius.ui.tools.internal.actions.nature.addRemoveNatureCommand"
+	        name="%_UI_ModelingProjectWizard_label">
+	</command>		
+	</extension>
+	
+  <extension point="org.eclipse.ui.menus">
+	<menuContribution
+           locationURI="popup:org.eclipse.ui.projectConfigure?after=additions">
+		<command
+	    	commandId="org.eclipse.sirius.ui.tools.internal.actions.nature.addRemoveNatureCommand"
+	        icon="icons/obj16/ModelingProject.gif"
+	        label="Convert to Modeling Project"
+	        style="push">
+	        <visibleWhen
+            	checkEnabled="false">
+				<iterate
+                	ifEmpty="false"
+                    operator="and">
+					<adapt
+                    	type="org.eclipse.core.resources.IProject">
+						<and>
+						<not>
+							<test
+	                            property="org.eclipse.core.resources.projectNature"
+	                                value="org.eclipse.sirius.nature.modelingproject">
+							</test>
+						</not>
+							<test
+                              property="org.eclipse.core.resources.open"
+                              value="true">
+							</test>
+						</and>
+					</adapt>
+				</iterate>
+			</visibleWhen> 
+		</command>
+		<command
+	    	commandId="org.eclipse.sirius.ui.tools.internal.actions.nature.addRemoveNatureCommand"
+	    	icon="icons/obj16/ModelingProject.gif"
+	        label="Remove Modeling Project Nature"
+	        style="push">
+	        <visibleWhen
+            	checkEnabled="false">
+				<iterate
+                	ifEmpty="false"
+                    operator="and">
+					<adapt
+                    	type="org.eclipse.core.resources.IProject">
+						<and>						
+							<test
+	                            property="org.eclipse.core.resources.projectNature"
+	                                value="org.eclipse.sirius.nature.modelingproject">
+							</test>						
+							<test
+                              property="org.eclipse.core.resources.open"
+                              value="true">
+							</test>
+						</and>
+					</adapt>
+				</iterate>
+			</visibleWhen> 
+		</command>
+	</menuContribution>
+  </extension> 
+		
+   <extension
+         id="modelProvider"
+         name="%ModelingModelProvider.name"
+         point="org.eclipse.core.resources.modelProviders">
+      <modelProvider
+            class="org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.model.ModelingModelProvider"/>
+      <extends-model id="org.eclipse.core.resources.modelProvider"/>
+      <enablement>
+          <test property="org.eclipse.core.resources.projectNature" value="org.eclipse.sirius.nature.modelingproject" />
+      </enablement>
+   </extension>
+   
+</plugin>

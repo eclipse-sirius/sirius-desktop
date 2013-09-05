@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.sirius" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.sirius" id="externalJavaAction" name="External Java Actions"/>
+      </appInfo>
+      <documentation>
+         This extension point allows you to provide java actions classes for contextual menus or for specific operations on a tool in Sirius.
+&lt;p&gt;
+The action class is required to implement &lt;samp&gt;org.eclipse.sirius.tools.api.ui.IExternalJavaAction&lt;/samp&gt;.
+&lt;/p&gt;
+&lt;p&gt;
+If the &lt;samp&gt;org.eclipse.sirius.tools.api.ui.IExternalJavaAction&lt;/samp&gt; will not delete any element you can use &lt;samp&gt;org.eclipse.sirius.tools.api.ui.IExternalJavaAction2&lt;/samp&gt; that improves performances.
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="javaActions"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  a fully qualified identifier of the target extension point
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  an optional identifier of the extension instance
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  an optional name of the extension instance
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="javaActions">
+      <annotation>
+         <documentation>
+            This element defines an action that the user can invoke for contextual menu or for tools.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="actionClass" type="string" use="required">
+            <annotation>
+               <documentation>
+                  the name of the fully qualified class that implements &lt;samp&gt;org.eclipse.sirius.tools.api.ui.IExternalJavaAction&lt;/samp&gt;
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.tools.api.ui.IExternalJavaAction"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  a unique identifier used as a reference for this action.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         4.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         The following is an example of an external action action extension: 
+&lt;p&gt;
+&lt;pre&gt;
+   &lt;extension
+         point=&quot;org.eclipse.sirius.externalJavaAction&quot;&gt;
+      &lt;javaActions
+            actionClass=&quot;com.example.xyz.RunXYZ&quot;
+            id=&quot;com.example.xyz.runXYZ&quot;&gt;
+      &lt;/javaActions&gt;
+   &lt;/extension&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2008 THALES GLOBAL SERVICES&lt;br&gt;
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at 
+&lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
+      </documentation>
+   </annotation>
+
+</schema>

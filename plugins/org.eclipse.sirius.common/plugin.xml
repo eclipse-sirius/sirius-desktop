@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2007-2013 THALES GLOBAL SERVICES
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+
+<plugin>
+
+  <extension-point id="editingDomainFactory" name="org.eclipse.sirius.common.editingDomainFactory" schema="schema/editingDomainFactory.exsd"/>
+  <extension-point id="expressionInterpreter" name="org.eclipse.sirius.common.expressionInterpreter" schema="schema/expressionInterpreter.exsd"/>
+  <extension-point id="proposalProvider" name="org.eclipse.sirius.common.proposalProvider" schema="schema/proposalProvider.exsd"/>
+  <extension-point id="dynamic_package" name="Forked Ecore Package Registry for Dynamic Packages" schema="schema/dynamic_package.exsd"/>
+  <extension-point id="fileModificationValidator" name="File Modification Validator" schema="schema/fileModificationValidator.exsd"/>
+  <extension-point id="resourceSetFactory" name="org.eclipse.sirius.common.resourceSetFactory" schema="schema/resourceSetFactory.exsd"/>
+  
+  <extension id="org.eclipse.sirius.common.variableInterpreter" point="org.eclipse.sirius.common.expressionInterpreter">
+    <expressionInterpreterProvider interpreterProviderClass="org.eclipse.sirius.common.tools.internal.interpreter.VariableInterpreter" />
+  </extension>
+  <extension id="org.eclipse.sirius.common.featureInterpreter" point="org.eclipse.sirius.common.expressionInterpreter">
+    <expressionInterpreterProvider interpreterProviderClass="org.eclipse.sirius.common.tools.internal.interpreter.FeatureInterpreter" />
+  </extension>
+  <extension id="org.eclipse.sirius.common.serviceInterpreter" point="org.eclipse.sirius.common.expressionInterpreter">
+    <expressionInterpreterProvider interpreterProviderClass="org.eclipse.sirius.common.tools.internal.interpreter.ServiceInterpreter" />
+  </extension>
+</plugin>

@@ -1,0 +1,630 @@
+/*******************************************************************************
+ * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.tree.tools.internal.command;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.command.AbstractCommand;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+
+import com.google.common.collect.Sets;
+
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.DEdge;
+import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.business.api.helper.task.ICommandTask;
+import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
+import org.eclipse.sirius.business.api.helper.task.RemoveDanglingReferencesTask;
+import org.eclipse.sirius.business.api.helper.task.RemoveSemanticDanglingReferenceTask;
+import org.eclipse.sirius.business.api.helper.task.TaskHelper;
+import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
+import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromParsedVariableTask2;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
+import org.eclipse.sirius.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.description.tool.AbstractVariable;
+import org.eclipse.sirius.description.tool.ExternalJavaAction;
+import org.eclipse.sirius.description.tool.OperationAction;
+import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.description.tool.ToolPackage;
+import org.eclipse.sirius.tools.api.command.AbstractCommandFactory;
+import org.eclipse.sirius.tools.api.command.DCommand;
+import org.eclipse.sirius.tools.api.command.InvalidPermissionCommand;
+import org.eclipse.sirius.tools.api.command.NoNullResourceCommand;
+import org.eclipse.sirius.tools.api.command.SiriusCommand;
+import org.eclipse.sirius.tools.api.command.ui.UICallBack;
+import org.eclipse.sirius.tools.api.command.view.JavaActionFromToolCommand;
+import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.eclipse.sirius.tree.DTree;
+import org.eclipse.sirius.tree.DTreeElement;
+import org.eclipse.sirius.tree.DTreeItem;
+import org.eclipse.sirius.tree.DTreeItemContainer;
+import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
+import org.eclipse.sirius.tree.business.internal.helper.DeleteTreeElementTask;
+import org.eclipse.sirius.tree.business.internal.helper.DeleteTreeElementsTask;
+import org.eclipse.sirius.tree.business.internal.helper.RefreshTreeElementTask;
+import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
+import org.eclipse.sirius.tree.business.internal.refresh.CreateTreeTask;
+import org.eclipse.sirius.tree.description.TreeDescription;
+import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;
+import org.eclipse.sirius.tree.description.TreeItemCreationTool;
+import org.eclipse.sirius.tree.description.TreeItemDeletionTool;
+import org.eclipse.sirius.tree.description.TreeItemEditionTool;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+
+/**
+ * A command factory that creates commands that can be undone.
+ * 
+ * @author nlepine
+ */
+public class TreeCommandFactory extends AbstractCommandFactory implements ITreeCommandFactory {
+    private TaskHelper commandTaskHelper;
+
+    /**
+     * Create a new Factory. the autoRefresh is by default deactivated
+     * 
+     * @param domain
+     *            : current editing domain.
+     */
+    public TreeCommandFactory(final TransactionalEditingDomain domain) {
+        super(domain);
+    }
+
+    private IPermissionAuthority getPermissionAuthority() {
+        return modelAccessor.getPermissionAuthority();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.tree.tools.api.command.ITreeCommandFactory#getUserInterfaceCallBack()
+     */
+    public UICallBack getUserInterfaceCallBack() {
+        return this.uiCallBack;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void setAutoRefreshDTree(boolean autoRefreshDTree) {
+        // TODO Feature not implemented.
+    }
+
+    /**
+     * Return the commandTaskHelper.
+     * 
+     * @return the commandTaskHelper
+     */
+    public TaskHelper getCommandTaskHelper() {
+        return commandTaskHelper;
+    }
+
+    /**
+     * Set the model accessor.
+     * 
+     * @param modelAccessor
+     *            the modelAccessor to set
+     */
+    public void setModelAccessor(final ModelAccessor modelAccessor) {
+        this.modelAccessor = modelAccessor;
+        commandTaskHelper = new TaskHelper(modelAccessor, uiCallBack);
+    }
+
+    /**
+     * Returns a command that can delete the specified element.
+     * 
+     * @param element
+     *            the element to delete (a {@link DLine} or a
+     *            {@link DTargetColumn}).
+     * @return a command that can delete the specified element.
+     */
+    public Command buildDeleteTreeElement(final DTreeElement element) {
+        Command cmd = UnexecutableCommand.INSTANCE;
+        if (element instanceof DTreeItem) {
+            if (!getPermissionAuthority().canEditInstance(element)) {
+                cmd = new InvalidPermissionCommand(domain, element);
+            } else {
+                if (!getPermissionAuthority().canEditInstance(element.eContainer())) {
+                    cmd = new InvalidPermissionCommand(domain, element.eContainer());
+                } else {
+                    final SiriusCommand result = new SiriusCommand(domain);
+                    final boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, DesignerPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
+                    if (getDeleteTool(element) != null) {
+                        addDeleteTreeElementFromTool(result, element, getDeleteTool(element));
+                        if (automaticRefresh) {
+                            result.getTasks().add(new RemoveDanglingReferencesTask(EcoreUtil.getRootContainer(((DSemanticDecorator) element).getTarget())));
+                            result.getTasks().add(new RemoveDanglingReferencesTask(EcoreUtil.getRootContainer(element)));
+                            addRefreshTask(TreeHelper.getTree(element), result, getDeleteTool(element));
+                        } else {
+                            result.getTasks().add(new RemoveSemanticDanglingReferenceTask(getPermissionAuthority(), Collections.singleton(element.getTarget()), uiCallBack));
+                        }
+                        cmd = new NoNullResourceCommand(result, element);
+                    } else {
+                        final Set<EObject> allSemanticElements = new HashSet<EObject>();
+                        // Get the corresponding semanticElement (and its
+                        // children)
+                        addSemanticElementsToDestroy(element, allSemanticElements);
+                        /*
+                         * Now delete all the semantic elements
+                         */
+                        final Iterator<EObject> it = allSemanticElements.iterator();
+                        while (it.hasNext()) {
+                            final EObject eObj = it.next();
+                            result.getTasks().add(new DeleteTreeElementTask(eObj, modelAccessor));
+                        }
+                        /*
+                         * and remove possible dangling references
+                         */
+                        if (automaticRefresh) {
+                            result.getTasks().add(new RemoveDanglingReferencesTask(EcoreUtil.getRootContainer(((DSemanticDecorator) element).getTarget())));
+                            result.getTasks().add(new RemoveDanglingReferencesTask(EcoreUtil.getRootContainer(element)));
+                        } else {
+                            result.getTasks().add(new RemoveSemanticDanglingReferenceTask(getPermissionAuthority(), Collections.singleton(element.getTarget()), uiCallBack));
+                        }
+                        addRefreshTask(TreeHelper.getTree(element), result, getDeleteTool(element));
+                        cmd = new NoNullResourceCommand(result, element);
+                    }
+                }
+            }
+        }
+        return cmd;
+    }
+
+    private Set<EObject> addSemanticElementsToDestroy(final DSemanticDecorator element, final Set<EObject> elementsToDestroy) {
+        EObject semantic = null;
+        if (element instanceof DTreeItem) {
+            semantic = ((DTreeItem) element).getTarget();
+        }
+        if (semantic != null) {
+            elementsToDestroy.add(semantic);
+            final Iterator<EObject> iterContent = semantic.eAllContents();
+            while (iterContent.hasNext()) {
+                final EObject current = iterContent.next();
+                elementsToDestroy.add(current);
+            }
+        }
+        return elementsToDestroy;
+    }
+
+    private void addDeleteTreeElementFromTool(final SiriusCommand cmd, final DTreeElement element, final TreeItemDeletionTool deleteTool) {
+        final EObject semanticElement = ((DSemanticDecorator) element).getTarget();
+        final EObject rootContainer = TreeHelper.getTree(element).getTarget();
+        // check precondition
+        boolean delete = true;
+        if (deleteTool.getPrecondition() != null && !StringUtil.isEmpty(deleteTool.getPrecondition().trim())) {
+            delete = false;
+            final IInterpreter acceleoInterpreter = InterpreterUtil.getInterpreter(semanticElement);
+            acceleoInterpreter.setVariable(IInterpreterSiriusVariables.ROOT, rootContainer);
+            acceleoInterpreter.setVariable(IInterpreterSiriusVariables.ELEMENT, semanticElement);
+            try {
+                delete = acceleoInterpreter.evaluateBoolean(semanticElement, deleteTool.getPrecondition());
+            } catch (final EvaluationException e) {
+                RuntimeLoggerManager.INSTANCE.error(deleteTool, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition(), e);
+            }
+            acceleoInterpreter.unSetVariable(IInterpreterSiriusVariables.ROOT);
+            acceleoInterpreter.unSetVariable(IInterpreterSiriusVariables.ELEMENT);
+        }
+        if (delete) {
+            cmd.getTasks().addAll(buildCommandFromModelOfTool(semanticElement, deleteTool, element.eContainer()).getTasks());
+            cmd.getTasks().add(new DeleteTreeElementsTask(domain, modelAccessor, cmd, this, element));
+            if (element instanceof DEdge) {
+                cmd.getTasks().add(new DeleteTreeElementTask(element, modelAccessor));
+            }
+        } else {
+            cmd.getTasks().add(UnexecutableTask.INSTANCE);
+        }
+    }
+
+    /**
+     * Appends a command that delete the specified tree to the specified
+     * command.
+     * 
+     * @param cmd
+     *            the command.
+     * @param tree
+     *            the tree to delete.
+     */
+    public void addDeleteTableTasks(final SiriusCommand cmd, final DTree tree) {
+        if (!getPermissionAuthority().canEditInstance(tree)) {
+            cmd.chain(new InvalidPermissionCommand(domain, tree));
+        } else {
+            if (!getPermissionAuthority().canEditInstance(tree.eContainer())) {
+                cmd.chain(new InvalidPermissionCommand(domain, tree.eContainer()));
+            } else {
+                /*
+                 * If the viewpoint is a root viewpoint then we should not
+                 * delete it !
+                 */
+                // if (tree.getView() != null &&
+                // tree.getView().getOwnedRepresentations().contains(tree)) {
+                cmd.getTasks().add(UnexecutableTask.INSTANCE);
+                // } else {
+                // // delete the viewpoint
+                // addDeleteSiriusTask(cmd, tree);
+                //
+                // // delete the subviewpoints
+                // final Iterator<EObject> it = tree.eAllContents();
+                // while (it.hasNext()) {
+                // final EObject eObj = it.next();
+                // if (eObj instanceof DDiagram) {
+                // addDeleteSiriusTask(cmd, (DDiagram) eObj);
+                // }
+                // }
+                //
+                // // remove the dangling references of the viewpoint
+                // cmd.getTasks().add(new AbstractCommandTask() {
+                //
+                // public void execute() {
+                // RemoveDanglingReferences.removeDanglingReferences(EcoreUtil.
+                // getRootContainer(tree));
+                // }
+                //
+                // public String getLabel() {
+                // return null;
+                // }
+                // });
+                // }
+            }
+        }
+    }
+
+    /**
+     * Build a command that covers all the model operations corresponding to a
+     * the semantic container and a
+     * {@link org.eclipse.sirius.description.tool.ToolDescription}.
+     * 
+     * @param semanticCurrentElement
+     *            the semantic current Element.
+     * @param tool
+     *            the
+     *            {@link org.eclipse.sirius.description.tool.ToolDescription}
+     *            .
+     * @param containerView
+     *            the container View
+     * @return a command able to execute the tool.
+     */
+    protected SiriusCommand buildCommandFromModelOfTool(final EObject semanticCurrentElement, final AbstractToolDescription tool, final EObject containerView) {
+        SiriusCommand result = new SiriusCommand(domain);
+        if (!getPermissionAuthority().canEditInstance(containerView)) {
+            result = new InvalidPermissionCommand(domain, containerView);
+        } else {
+            final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
+            if (tool instanceof TreeItemDeletionTool) {
+                final TreeItemDeletionTool deleteTool = (TreeItemDeletionTool) tool;
+                if (containerView instanceof DTreeElement) {
+                    variables.put(TreeHelper.getVariable(deleteTool, IInterpreterSiriusVariables.ROOT), TreeHelper.getTree(containerView).getTarget());
+                } else if (containerView instanceof DTree) {
+                    variables.put(TreeHelper.getVariable(deleteTool, IInterpreterSiriusVariables.ROOT), ((DTree) containerView).getTarget());
+                }
+                variables.put(TreeHelper.getVariable(deleteTool, IInterpreterSiriusVariables.ELEMENT), semanticCurrentElement);
+                // Initialization of the variables
+                result.getTasks().add(new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(semanticCurrentElement), uiCallBack));
+                // Creation of the tasks to execute the tool
+                result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(TreeHelper.getTree(containerView), semanticCurrentElement, deleteTool.getFirstModelOperation()));
+            } else if (tool instanceof TreeItemCreationTool) {
+                final TreeItemCreationTool creationTool = (TreeItemCreationTool) tool;
+                if (containerView instanceof DTreeElement) {
+                    variables.put(TreeHelper.getVariable(creationTool, IInterpreterSiriusVariables.ROOT), TreeHelper.getTree(containerView).getTarget());
+                    if (containerView instanceof DTreeItem) {
+                        variables.put(TreeHelper.getVariable(creationTool, IInterpreterSiriusVariables.CONTAINER), ((DTreeItem) containerView).getTarget());
+                    }
+                } else if (containerView instanceof DTree) {
+                    variables.put(TreeHelper.getVariable(creationTool, IInterpreterSiriusVariables.ROOT), ((DTree) containerView).getTarget());
+                    variables.put(TreeHelper.getVariable(creationTool, IInterpreterSiriusVariables.CONTAINER), ((DTree) containerView).getTarget());
+                }
+                variables.put(TreeHelper.getVariable(creationTool, IInterpreterSiriusVariables.ELEMENT), semanticCurrentElement);
+                // Initialization of the variables
+                result.getTasks().add(new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(semanticCurrentElement), uiCallBack));
+                // Creation of the tasks to execute the tool
+                result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(TreeHelper.getTree(containerView), semanticCurrentElement, creationTool.getFirstModelOperation()));
+            }
+        }
+        return result;
+    }
+
+    private TreeItemDeletionTool getDeleteTool(final DTreeElement element) {
+        TreeItemDeletionTool result = null;
+        if (element instanceof DTreeItem) {
+            result = ((DTreeItem) element).getActualMapping().getDelete();
+        }
+        return result;
+    }
+
+    /**
+     * Create a command that creates a line.
+     * 
+     * @param lineContainer
+     *            container element in which the command should put the created
+     *            line.
+     * @param semanticCurrentElement
+     *            the semantic current element
+     * @param tool
+     *            {@link CreateTool} used to build the command.
+     * @return a command able to create the line and putting it in the
+     *         container, corresponding to the {@link CreateTool}.
+     */
+    public Command buildCreateLineCommandFromTool(final DTreeItemContainer lineContainer, final EObject semanticCurrentElement, final TreeItemCreationTool tool) {
+        Command result = UnexecutableCommand.INSTANCE;
+        if (!getPermissionAuthority().canEditInstance(lineContainer)) {
+            result = new InvalidPermissionCommand(domain, lineContainer);
+        } else {
+            if (commandTaskHelper.checkPrecondition(semanticCurrentElement, tool)) {
+                SiriusCommand createLineCommand = buildCommandFromModelOfTool(semanticCurrentElement, tool, lineContainer);
+                addRefreshTask(lineContainer, createLineCommand, tool);
+                addRemoveDanglingReferencesTask(createLineCommand, tool, lineContainer);
+                result = createLineCommand;
+            }
+        }
+        return result;
+
+    }
+
+    /**
+     * Create a command that is able to create a table.
+     * 
+     * @param description
+     *            the tool that describes how to create the table.
+     * @param semanticElement
+     *            the element from which the table will be created.
+     * @return a command that is able to create a table.
+     * @deprecated use
+     *             {@link TreeCommandFactory#buildCreateTreeFromDescription(TreeDescription, EObject, IProgressMonitor)}
+     *             instead
+     */
+    public DCommand buildCreateTreeFromDescription(final TreeDescription description, final EObject semanticElement) {
+        return buildCreateTreeFromDescription(description, semanticElement, new NullProgressMonitor());
+    }
+
+    /**
+     * Create a command that is able to create a table.
+     * 
+     * @param description
+     *            the tool that describes how to create the table.
+     * @param semanticElement
+     *            the element from which the table will be created.
+     * @param monitor
+     *            a {@link IProgressMonitor} to show progression of
+     *            {@link DTree} creation
+     * @return a command that is able to create a table.
+     */
+    public DCommand buildCreateTreeFromDescription(final TreeDescription description, final EObject semanticElement, IProgressMonitor monitor) {
+        final DCommand command = new SiriusCommand(domain) {
+            /**
+             * Creation of a table must not be undoable ! <BR>
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.emf.transaction.RecordingCommand#canUndo()
+             */
+            @Override
+            public boolean canUndo() {
+                return false;
+            }
+        };
+        command.getTasks().add(new CreateTreeTask(description, semanticElement, monitor));
+        return command;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#buildDoExecuteDetailsOperation(org.eclipse.sirius.DSemanticDecorator,
+     *      org.eclipse.sirius.description.tool.RepresentationCreationDescription,
+     *      java.lang.String)
+     */
+    public AbstractCommand buildDoExecuteDetailsOperation(final DSemanticDecorator target, final RepresentationCreationDescription desc, final String newRepresentationName) {
+        final SiriusCommand cmd = new SiriusCommand(domain);
+        final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
+        variables.put(desc.getContainerViewVariable(), target);
+        final Map<AbstractVariable, String> stringVariables = new HashMap<AbstractVariable, String>();
+        stringVariables.put(desc.getRepresentationNameVariable(), newRepresentationName);
+        final ICommandTask initInterpreterVariables = new InitInterpreterVariablesTask(variables, stringVariables, InterpreterUtil.getInterpreter(target), uiCallBack);
+        cmd.getTasks().add(initInterpreterVariables);
+        cmd.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(TreeHelper.getTree(target), target.getTarget(), desc.getInitialOperation().getFirstModelOperations()));
+        addRemoveDanglingReferencesTask(cmd, desc, target);
+        return cmd;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory#buildDirectEditLabelFromTool(org.eclipse.sirius.tree.DTreeItem,
+     *      org.eclipse.sirius.tree.description.TreeItemEditionTool,
+     *      java.lang.String)
+     */
+    public Command buildDirectEditLabelFromTool(final DTreeItem editedTreeItem, TreeItemEditionTool directEditTool, String newValue) {
+        SiriusCommand result = new SiriusCommand(domain, "Direct Edit on " + editedTreeItem.getName());
+        if (!getPermissionAuthority().canEditInstance(editedTreeItem)) {
+            result = new InvalidPermissionCommand(domain, editedTreeItem);
+        } else {
+            if (editedTreeItem.getUpdater() != null) {
+                if (editedTreeItem.getUpdater().getDirectEdit() != null) {
+
+                    // Step 1 : variables initialization
+                    EObject interpreterContext = editedTreeItem.getTarget();
+
+                    final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
+                    variables.put(directEditTool.getRoot(), TreeHelper.getTree(editedTreeItem).getTarget());
+                    variables.put(directEditTool.getElement(), editedTreeItem.getTarget());
+
+                    result.getTasks().add(new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(interpreterContext), uiCallBack));
+
+                    if (directEditTool.getMask() != null) {
+                        /*
+                         * First we need to init the mask variables.
+                         */
+                        final String messageFormat = directEditTool.getMask().getMask();
+                        result.getTasks().add(new InitInterpreterFromParsedVariableTask2(InterpreterUtil.getInterpreter(interpreterContext), messageFormat, newValue));
+                    }
+
+                    // Step 2 : build the task from the model operations
+                    // specified in this tool
+                    result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(TreeHelper.getTree(editedTreeItem), interpreterContext, directEditTool.getFirstModelOperation()));
+
+                    // Step 3 : adding task to refresh and remove dangling
+                    // references
+                    DTree tree = TreeHelper.getTree(editedTreeItem);
+                    addRemoveDanglingReferencesTask(result, editedTreeItem.getUpdater().getDirectEdit(), tree);
+
+                    // Add a RefreshTreeElementTask to have DTreeItem refreshed
+                    // on direct edit even in REFRESH_AUTO mode at false
+                    ICommandTask refreshTreeElementTask = new RefreshTreeElementTask(editedTreeItem, domain);
+                    result.getTasks().add(refreshTreeElementTask);
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory#buildDragAndDropItemFromTool(org.eclipse.sirius.tree.DTreeItem,
+     *      org.eclipse.sirius.tree.DTreeItem,
+     *      org.eclipse.sirius.tree.description.TreeItemDragTool)
+     */
+    public Command buildDropItemFromTool(EObject dropped, DTreeItemContainer dropTarget, Collection<DTreeItem> precedingSiblings, TreeItemContainerDropTool dropTool) {
+        final SiriusCommand result = new SiriusCommand(domain, "Drop the item " + dropped);
+
+        EObject dropSem = dropped;
+        DSemanticDecorator dropDec = null;
+        DSemanticDecorator oldContainer = null;
+        if (dropped instanceof DSemanticDecorator) {
+            dropDec = (DSemanticDecorator) dropped;
+            dropSem = dropDec.getTarget();
+            oldContainer = getOldContainer(dropDec);
+        }
+
+        // Step 1 : variables initialization
+        EObject interpreterContext = dropTarget.getTarget();
+
+        final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
+        if (dropDec != null) {
+            variables.put(dropTool.getOldContainer(), oldContainer);
+        }
+        variables.put(dropTool.getNewContainer(), dropTarget.getTarget());
+        variables.put(dropTool.getElement(), dropSem);
+        variables.put(dropTool.getNewViewContainer(), dropTarget);
+        variables.put(dropTool.getPrecedingSiblings(), precedingSiblings);
+
+        result.getTasks().add(new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(interpreterContext), uiCallBack));
+
+        // Step 2 : build the task from the model operations
+        // specified in this tool
+        DTree droppedTree = TreeHelper.getTree(dropTarget);
+        if (dropTool.getFirstModelOperation() != null) {
+            result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(droppedTree, interpreterContext, dropTool.getFirstModelOperation()));
+        }
+        // Step 3 : adding task to refresh and remove dangling
+        // references
+
+        if (droppedTree != null) {
+            addRemoveDanglingReferencesTask(result, dropTool, droppedTree);
+            addRefreshTask(droppedTree, result, dropTool);
+        }
+        if (dropDec != null) {
+            addRemoveDanglingReferencesTask(result, dropTool, dropDec);
+            addRefreshTask(dropDec, result, dropTool);
+        }
+
+        return result;
+    }
+
+    private DSemanticDecorator getOldContainer(DSemanticDecorator dropDec) {
+        EObject semanticOldContainer = null;
+        DSemanticDecorator oldContainer = null;
+
+        EObject currentOldContainer = dropDec.eContainer();
+        while (currentOldContainer != null && semanticOldContainer == null) {
+            if (currentOldContainer instanceof DSemanticDecorator) {
+                oldContainer = (DSemanticDecorator) currentOldContainer;
+                semanticOldContainer = oldContainer.getTarget();
+            }
+            currentOldContainer = currentOldContainer.eContainer();
+        }
+        return oldContainer;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory#buildOperationActionFromTool(org.eclipse.sirius.description.tool.OperationAction,
+     *      org.eclipse.sirius.tree.DTreeItem)
+     */
+    public Command buildOperationActionFromTool(OperationAction operationAction, final DTreeItem selectedItem) {
+        final SiriusCommand result = new SiriusCommand(domain, operationAction.getName() + " on " + selectedItem.getName());
+        // Step 1 : variables initialization
+        final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
+        EObject interpreterContext = selectedItem.getTarget();
+        variables.put(operationAction.getView(), selectedItem);
+        result.getTasks().add(new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(interpreterContext), uiCallBack));
+
+        // Step 2 : adding task from model operations
+        DTree targetTree = TreeHelper.getTree(selectedItem);
+        result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(targetTree, interpreterContext, operationAction.getInitialOperation().getFirstModelOperations()));
+
+        // Step 3 : adding task to refresh and remove dangling
+        // references
+        addRemoveDanglingReferencesTask(result, operationAction, targetTree);
+        addRefreshTask(targetTree, result, null);
+
+        return result.chain(new RecordingCommand(domain) {
+
+            @Override
+            protected void doExecute() {
+                selectedItem.setExpanded(true);
+            }
+        });
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory#buildJavaActionFromTool(org.eclipse.sirius.description.tool.ExternalJavaAction,
+     *      org.eclipse.sirius.tree.DTreeItem,
+     *      org.eclipse.sirius.tools.api.ui.IExternalJavaAction)
+     */
+    public Command buildJavaActionFromTool(ExternalJavaAction javaActionItem, DTreeItem selectedItem, IExternalJavaAction javaAction) {
+        final CompoundCommand compoundCommand = new CompoundCommand();
+        // Step 1 : creating the command from the java action tool
+        Set<DSemanticDecorator> views = Sets.newLinkedHashSet();
+        views.add(selectedItem);
+        final JavaActionFromToolCommand javaActionFromToolCommand = new JavaActionFromToolCommand(this.domain, javaAction, javaActionItem, views);
+        compoundCommand.append(javaActionFromToolCommand);
+
+        // Step 2 : creating a command for refreshing the representation
+        final SiriusCommand dCommand = new SiriusCommand(this.domain, selectedItem.getName());
+        addRefreshTask(selectedItem, dCommand, javaActionItem);
+        compoundCommand.append(dCommand);
+
+        return compoundCommand;
+    }
+}

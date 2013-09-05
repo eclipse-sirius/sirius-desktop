@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+  Copyright (c) 2007, 2008 THALES GLOBAL SERVICES
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+
+<plugin>
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+        uri = "http://www.eclipse.org/sirius/diagram/sequence/2.0.0"
+        class = "org.eclipse.sirius.diagram.sequence.SequencePackage"
+        genModel = "model/sequence.genmodel" />
+  </extension>
+  
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+        uri = "http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0"
+        class = "org.eclipse.sirius.diagram.sequence.description.DescriptionPackage"
+        genModel = "model/sequence.genmodel" />
+  </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+        uri = "http://www.eclipse.org/sirius/diagram/sequence/ordering/2.0.0"
+        class = "org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage"
+        genModel = "model/sequence.genmodel" />
+  </extension>
+  
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package
+        uri = "http://www.eclipse.org/sirius/diagram/sequence/template/2.0.0"
+        class = "org.eclipse.sirius.diagram.sequence.template.TemplatePackage"
+        genModel = "model/sequence.genmodel" />
+  </extension>
+  
+  <extension
+        point="org.eclipse.sirius.refreshExtensionProvider">
+     <refreshExtensionProvider
+           priority="normal"
+           providerClass="org.eclipse.sirius.diagram.sequence.business.internal.refresh.SequenceRefreshExtensionProvider">
+     </refreshExtensionProvider>
+  </extension>
+  <extension
+        point="org.eclipse.sirius.repairParticipant">
+     <repairParticipant
+           class="org.eclipse.sirius.diagram.sequence.tool.internal.action.repair.SequenceDiagramRepairParticipant">
+     </repairParticipant>
+  </extension>
+</plugin>

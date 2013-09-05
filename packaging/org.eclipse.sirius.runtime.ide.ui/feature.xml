@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.sirius.runtime.ide.ui"
+      label="%featureName"
+      version="6.8.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://www.eclipse.org/sirius">
+      IDE integration for Sirius.
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <includes
+         id="org.eclipse.sirius.runtime"
+         version="0.0.0"/>
+
+   <requires>
+      <import feature="org.eclipse.gmf" version="1.4.2"/>
+   </requires>
+
+   <plugin
+         id="net.sf.paperclips.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.common.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.diagram"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.diagram.layoutdata"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.diagram.sequence"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.diagram.sequence.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.diagram.sequence.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.table.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.tree.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

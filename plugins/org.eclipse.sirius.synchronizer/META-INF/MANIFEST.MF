@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.sirius.synchronizer
+Bundle-Version: 2.0.0.qualifier
+Bundle-Vendor: %providerName
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Localization: plugin
+Export-Package: org.eclipse.sirius.synchronizer,
+ org.eclipse.sirius.synchronizer.internal;x-internal:=true
+Require-Bundle: org.eclipse.emf.ecore,
+ com.google.guava;bundle-version="[11.0.0,12.0.0)"

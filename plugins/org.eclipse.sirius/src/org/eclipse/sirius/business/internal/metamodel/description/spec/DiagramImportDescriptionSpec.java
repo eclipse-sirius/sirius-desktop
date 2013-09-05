@@ -1,0 +1,185 @@
+/*******************************************************************************
+ * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.business.internal.metamodel.description.spec;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+
+import org.eclipse.sirius.description.DescriptionPackage;
+import org.eclipse.sirius.description.DiagramDescription;
+import org.eclipse.sirius.description.DiagramImportDescription;
+import org.eclipse.sirius.description.Layer;
+import org.eclipse.sirius.description.OptionalLayer;
+
+/**
+ * Implementation of the DiagramImportDescription interface.
+ * 
+ * @author amartin
+ */
+public class DiagramImportDescriptionSpec extends DiagramDescriptionSpec implements DiagramImportDescription {
+
+    /**
+     * the wrapped diagram description.
+     */
+    protected DiagramDescription importedDiagramDescription;
+
+    /**
+     * Return the EClass corresponding to this object.
+     * 
+     * @overrides
+     * @return the EClass corresponding to this object.
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return DescriptionPackage.Literals.DIAGRAM_IMPORT_DESCRIPTION;
+    }
+
+    /**
+     * Return the imported Diagram.
+     * 
+     * @return importedDiagramDescription
+     */
+    public DiagramDescription basicGetImportedDiagram() {
+        return importedDiagramDescription;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.DiagramDescription#getImportedDiagram()
+     */
+    public DiagramDescription getImportedDiagram() {
+        if (importedDiagramDescription != null && importedDiagramDescription.eIsProxy()) {
+            final InternalEObject oldDiagramDescription = (InternalEObject) importedDiagramDescription;
+            importedDiagramDescription = (DiagramDescription) eResolveProxy(oldDiagramDescription);
+            if (importedDiagramDescription != oldDiagramDescription) {
+                if (eNotificationRequired()) {
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__IMPORTED_DIAGRAM, oldDiagramDescription, importedDiagramDescription));
+                }
+            }
+        }
+        return importedDiagramDescription;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.DiagramImportDescription#setImportedDiagram(org.eclipse.sirius.description.DiagramDescription)
+     */
+    public void setImportedDiagram(final DiagramDescription value) {
+        final DiagramDescription oldImportedDescription = importedDiagramDescription;
+        importedDiagramDescription = value;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__IMPORTED_DIAGRAM, oldImportedDescription, importedDiagramDescription));
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.impl.DiagramImportDescriptionImpl#eGet(int,
+     *      boolean, boolean)
+     */
+    @Override
+    public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
+        Object result = null;
+        switch (featureID) {
+        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__IMPORTED_DIAGRAM:
+            Object mapping;
+            if (resolve) {
+                mapping = getImportedDiagram();
+            } else {
+                mapping = basicGetImportedDiagram();
+            }
+            result = mapping;
+            break;
+        default:
+            result = super.eGet(featureID, resolve, coreType);
+            break;
+        }
+        return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.impl.DiagramImportDescriptionImpl#eSet(int,
+     *      java.lang.Object)
+     */
+    @Override
+    public void eSet(final int featureID, final Object newValue) {
+        switch (featureID) {
+        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__IMPORTED_DIAGRAM:
+            setImportedDiagram((DiagramDescription) newValue);
+            return;
+        default:
+            break;
+        }
+        super.eSet(featureID, newValue);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getDefaultLayer()
+     */
+    @Override
+    public Layer getDefaultLayer() {
+        final DiagramDescription desc = getImportedDiagram();
+        return desc != null ? desc.getDefaultLayer() : null;
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getOptionalLayers()
+     */
+    @Override
+    public EList<OptionalLayer> getOptionalLayers() {
+
+        if (optionalLayers == null) {
+            optionalLayers = new EObjectContainmentEList.Resolving<OptionalLayer>(OptionalLayer.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS);
+            if (importedDiagramDescription != null) {
+                optionalLayers.addAll(importedDiagramDescription.getOptionalLayers());
+                // optionalLayers.addAll(ComponentizationHelper.getContributedLayers(importedDiagramDescription,
+                // viewpoints));getOptionalLayers(importedDiagramDescription));
+            }
+        }
+        return optionalLayers;
+    }
+
+    /**
+     * Add the case importedDiagram to the default eIsSet method.
+     * 
+     * @see package
+     *      org.eclipse.sirius.description.impl.DiagramDescriptionImpl
+     *      #eIsSet()
+     * 
+     * @param featureID
+     *            the id of the feature to check.
+     * @return true if the feature is set
+     */
+    @Override
+    public boolean eIsSet(final int featureID) {
+        switch (featureID) {
+        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__IMPORTED_DIAGRAM:
+            return importedDiagramDescription != null;
+        default:
+            return super.eIsSet(featureID);
+        }
+    }
+
+}

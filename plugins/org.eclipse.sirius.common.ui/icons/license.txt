@@ -1,0 +1,18 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+icons/MinusWFocus.png - org.eclipse.sirius.common.ui - org.eclipse.sirius.common.ui/icons/MinusWFocus.png
+icons/MinusWOFocus.png - org.eclipse.sirius.common.ui - org.eclipse.sirius.common.ui/icons/MinusWOFocus.png
+icons/PlusWFocus.png - org.eclipse.sirius.common.ui - org.eclipse.sirius.common.ui/icons/PlusWFocus.png
+icons/PlusWOFocus.png - org.eclipse.sirius.common.ui - org.eclipse.sirius.common.ui/icons/PlusWOFocus.png
+icons/CopyView.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
+icons/CreateView.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
+icons/find.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/elcl16/find_obj.gif
+icons/LinkToDiagram.gif - org.eclipse.birt.report.designer.ui - org.eclipse.birt.report.designer.ui/icons/eview16/data_explorer_view.gif
+icons/LinkTofile.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/file_obj.gif
+icons/LinkTomodel.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/javaassist_co.gif
+icons/LinkTosource.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/file_obj.gif
+icons/LinkToSirius.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif

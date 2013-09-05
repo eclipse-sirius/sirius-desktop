@@ -1,0 +1,3 @@
+h1. Sirius Tree Representations UI (@org.eclipse.sirius.tree.ui@)
+
+This bundle contains the actual implementation of the editor for Sirius dynamic trees.

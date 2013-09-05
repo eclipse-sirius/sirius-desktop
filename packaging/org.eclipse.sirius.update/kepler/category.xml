@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description url="http://www.eclipse.org/sirius">
+      Sirius
+   </description>
+   <feature id="org.eclipse.sirius.runtime" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.acceleo" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.acceleo2" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.ocl" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.ide.ui" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.specifier.ide.ui" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+	<feature id="org.eclipse.sirius.runtime.ide.ui.tests" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.ide.ui.tests.support" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.ide.xtext" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.ide.eef" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.specifier.ide.ui.acceleo" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <category-def name="Sirius" label="Sirius">
+      <description>
+         The Sirius-based Modeling Platform
+      </description>
+   </category-def>
+</site>

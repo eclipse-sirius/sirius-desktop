@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.sirius" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.sirius" id="refreshExtensionProvider" name="viewpoint.semantic.refresh.refreshExtensionProvider"/>
+      </appInfo>
+      <documentation>
+         This extension point allows you to add behaviors to the refresh operations of a viewpoint. It must be used with caution.
+&lt;p&gt;
+The provider class is required to implement &lt;samp&gt;org.eclipse.sirius.business.api.refresh.IRefreshExtensionProvider&lt;/samp&gt;.
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="refreshExtensionProvider"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  a fully qualified identifier of the target extension point
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  an optional identifier of the extension instance
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  an optional name of the extension instance
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="refreshExtensionProvider">
+      <annotation>
+         <documentation>
+            This element defines additional behaviors to the refresh operations of a viewpoint.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="providerClass" type="string" use="required">
+            <annotation>
+               <documentation>
+                  the name of the fully qualified class implementing &lt;samp&gt;org.eclipse.sirius.business.api.refresh.IRefreshExtensionProvider&lt;/samp&gt;
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.business.api.refresh.IRefreshExtensionProvider"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="priority">
+            <annotation>
+               <documentation>
+                  the name of the provider priority, i.e. lowest, low, normal or high.
+               </documentation>
+            </annotation>
+            <simpleType>
+               <restriction base="string">
+                  <enumeration value="lowest">
+                  </enumeration>
+                  <enumeration value="low">
+                  </enumeration>
+                  <enumeration value="normal">
+                  </enumeration>
+                  <enumeration value="high">
+                  </enumeration>
+                  <enumeration value="highest">
+                  </enumeration>
+               </restriction>
+            </simpleType>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         2.3
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         The following is an example of a refresh extension :
+&lt;p&gt;
+&lt;pre&gt;
+ &lt;extension point=&quot;org.eclipse.sirius.refreshExtensionProvider&quot;&gt;
+     &lt;refreshExtensionProvider
+         priority=&quot;high&quot;    
+         providerClass=&quot;com.example.xyz.XyzRefreshExtensionProvider&quot;&gt;
+     &lt;/refreshExtensionProvider&gt;
+ &lt;/extension&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright (c) 2008 THALES GLOBAL SERVICES&lt;br&gt;
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at 
+&lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
+      </documentation>
+   </annotation>
+
+</schema>

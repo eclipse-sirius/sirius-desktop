@@ -1,0 +1,103 @@
+/*******************************************************************************
+ * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.ui.tools.internal.layout;
+
+import java.util.ArrayList;
+
+import org.eclipse.gef.ConnectionEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
+
+/**
+ * A predicate to identify pinned/fixed edit-parts.
+ * 
+ * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
+ */
+public class IsPinnedPredicate implements Predicate<IGraphicalEditPart> {
+
+    ArrayList<IDiagramElementEditPart> elementsToKeepFixed;
+
+    /**
+     * Default constructor.
+     * 
+     * @param elementsToKeepFixed
+     *            IDiagramElementEditPart which are not actually pinned but have
+     *            to stay fixed.
+     */
+    protected IsPinnedPredicate(ArrayList<IDiagramElementEditPart> elementsToKeepFixed) {
+        this.elementsToKeepFixed = elementsToKeepFixed;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see com.google.common.base.Predicate#apply(java.lang.Object)
+     */
+    public boolean apply(final IGraphicalEditPart part) {
+        boolean result = false;
+        if (part instanceof NoteEditPart) {
+            result = applyNote((NoteEditPart) part);
+        } else {
+            result = isPinnedOrKeepFixed(part);
+        }
+        return result;
+    }
+
+    /**
+     * Applies this predicate to the given note.
+     * 
+     * @param part
+     *            the NoteEditPart that the predicate should act on
+     * @return the value of this predicate when applied to the input
+     *         {@code part}
+     */
+    private boolean applyNote(final NoteEditPart part) {
+        boolean result = false;
+        boolean connectedToPinnedElement = false;
+        for (ConnectionEditPart sourceConn : Iterables.filter(part.getSourceConnections(), ConnectionEditPart.class)) {
+            if (sourceConn.getTarget() instanceof IGraphicalEditPart) {
+                connectedToPinnedElement = connectedToPinnedElement || isPinnedOrKeepFixed((IGraphicalEditPart) sourceConn.getTarget());
+            }
+        }
+        for (ConnectionEditPart targetConn : Iterables.filter(part.getTargetConnections(), ConnectionEditPart.class)) {
+            if (targetConn.getSource() instanceof IGraphicalEditPart) {
+                connectedToPinnedElement = connectedToPinnedElement || isPinnedOrKeepFixed((IGraphicalEditPart) targetConn.getSource());
+            }
+        }
+        if (connectedToPinnedElement) {
+            result = true;
+        } else {
+            if (!SiriusDiagramEditorPlugin.getInstance().getPluginPreferences().getBoolean(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name())) {
+                result = true;
+            }
+        }
+        return result;
+    }
+
+    private boolean isPinnedOrKeepFixed(IGraphicalEditPart part) {
+        boolean isPinnedOrKeepFixed = false;
+        if (part.resolveSemanticElement() instanceof DDiagramElement) {
+            DDiagramElement dDiagramElement = (DDiagramElement) part.resolveSemanticElement();
+            isPinnedOrKeepFixed = new PinHelper().isPinned(dDiagramElement) || (elementsToKeepFixed != null && elementsToKeepFixed.contains(part));
+        }
+        return isPinnedOrKeepFixed;
+    }
+
+}

@@ -1,0 +1,54 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+icons/full/obj16/BackgroundStyleDescription.gif - org.eclipse.sirius.table.ui - org.eclipse.sirius.table.ui/icons/full/obj16/BackgroundStyleDescription.gif
+icons/full/obj16/ForegroundStyleDescription.gif - org.eclipse.sirius.table.ui - org.eclipse.sirius.table.ui/icons/full/obj16/ForegroundStyleDescription.gif
+icons/full/obj16/BackgroundConditionalStyle.gif	-	org.eclipse.uml2.uml.edit	-	org.eclipse.uml2.uml.edit/icons/full/obj16/InteractionConstraint.gif
+icons/full/obj16/CreateCellTool.gif	- org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif
+icons/full/obj16/CreateColumnTool.gif - org.eclipse.ve.jfc - org.eclipse.ve.jfc/icons/elcl16/column_obj.gif
+icons/full/obj16/CreateCrossColumnTool.gif - org.eclipse.ve.jfc - org.eclipse.ve.jfc/icons/elcl16/column_obj.gif
+icons/full/obj16/CreateLineTool.gif	-	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif
+icons/full/obj16/CrossTableDescription.gif	-	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif
+icons/full/obj16/DCell.gif	-	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif
+icons/full/obj16/DColumn.gif - org.eclipse.ve.jfc - org.eclipse.ve.jfc/icons/elcl16/column_obj.gif
+icons/full/obj16/DeleteColumnTool.gif - org.eclipse.ve.jfc - org.eclipse.ve.jfc/icons/elcl16/column_obj.gif
+								and - org.eclipse.cdt.ui - org.eclipse.cdt.ui/icons/etool16/action-deleteconfig.gif
+icons/full/obj16/DeleteLineTool.gif	-	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif
+								and - org.eclipse.cdt.ui - org.eclipse.cdt.ui/icons/etool16/action-deleteconfig.gif
+icons/full/obj16/DFeatureColumn.gif	- org.eclipse.ve.jfc - org.eclipse.ve.jfc/icons/elcl16/column_obj.gif
+icons/full/obj16/DLine.gif	-	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif
+icons/full/obj16/DTable.gif	-	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif
+icons/full/obj16/DTargetColumn.gif - org.eclipse.ve.jfc - org.eclipse.ve.jfc/icons/elcl16/column_obj.gif
+icons/full/obj16/EditionTableDescription.gif	-	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif
+icons/full/obj16/EditionTableExtensionDescription -	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif
+											  and - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/obj16/extension_obj.gif	
+icons/full/obj16/ElementColumnMapping.gif - org.eclipse.ve.jfc - org.eclipse.ve.jfc/icons/elcl16/column_obj.gif
+										and - org.eclipse.emf.mapping - org.eclipse.emf.mapping/icons/obj16/OneToOneMapping.gif
+icons/full/obj16/FeatureColumnMapping.gif - org.eclipse.ve.jfc - org.eclipse.ve.jfc/icons/elcl16/column_obj.gif
+										and - org.eclipse.emf.mapping - org.eclipse.emf.mapping/icons/obj16/OneToOneMapping.gif
+icons/full/obj16/ForegroundConditionalStyle.gif	-	org.eclipse.uml2.uml.edit	-	org.eclipse.uml2.uml.edit/icons/full/obj16/InteractionConstraint.gif
+icons/full/obj16/IntersectionMapping.gif	-	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif
+										and - org.eclipse.emf.mapping - org.eclipse.emf.mapping/icons/obj16/OneToOneMapping.gif
+icons/full/obj16/LabelEditTool.gif	-	org.eclipse.debug.ui	-	org.eclipse.debug.ui/icons/full/obj16/write_obj.gif
+icons/full/obj16/LineMapping.gif	-	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif
+								and - org.eclipse.emf.mapping - org.eclipse.emf.mapping/icons/obj16/OneToOneMapping.gif
+icons/full/obj16/TableCreationDescription.gif	-	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif
+icons/full/obj16/TableNavigationDescription.gif	-	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif
+icons/full/obj16/TableVariable.gif	-	org.eclipse.uml2.uml.edit	-	org.eclipse.uml2.uml.edit/icons/full/obj16/RemoveVariableValueAction.gif
+
+icons/table/checked.gif	-	org.eclipse.ui	-	org.eclipse.ui/icons/full/elcl16/step_done.gif
+icons/table/delete.gif	-	org.eclipse.ui	-	org.eclipse.ui/icons/full/obj16/delete_obj.gif
+icons/table/export.gif	-	org.eclipse.ui	-	org.eclipse.ui/icons/full/elcl16/export.gifFound: ./full/obj16/CellUpdater.gif - ./b3/org.eclipse.b3.aggregator.edit/icons/full/obj16/Status.gif [bf4401eac32c4f5518e36c9b0100bc4a]
+icons/table/hide.gif	-	org.eclipse.ant.ui	-	org.eclipse.ant.ui/icons/full/dlcl16/filter_internal_targets.gif
+icons/table/hideReveal.gif	-	org.eclipse.ant.ui	-	org.eclipse.ant.ui/icons/full/dlcl16/filter_internal_targets.gif & org.eclipse.ant.ui/icons/full/obj16/targetinternal_obj.gif
+icons/table/newColumn.gif - org.eclipse.ve.jfc - org.eclipse.ve.jfc/icons/elcl16/column_obj.gif
+icons/table/newLine.gif	-	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif	
+icons/table/prop_ps.gif	-	org.eclipse.ui.views	-	org.eclipse.ui.views/icons/full/eview16/prop_ps.gif
+icons/table/refresh.gif	-	org.eclipse.pde.ui	-	org.eclipse.pde.ui/icons/elcl16/refresh.gif
+icons/table/reveal.gif	-	org.eclipse.ant.ui	-	org.eclipse.ant.ui/icons/full/obj16/targetinternal_obj.gif
+icons/table/sortByColumn.gif	-	org.eclipse.jdt.ui	-	org.eclipse.jdt.ui/icons/full/elcl16/alphab_sort_co.gif
+icons/table/sortByLine.gif	-	org.eclipse.jdt.ui	-	org.eclipse.jdt.ui/icons/full/elcl16/alphab_sort_co.gif
+icons/table/unchecked.gif	-	org.eclipse.ui	-	org.eclipse.ui/icons/full/elcl16/step_done.gif

@@ -1,0 +1,100 @@
+/*******************************************************************************
+ * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.sequence.description;
+
+import org.eclipse.sirius.description.DiagramDescription;
+
+/**
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Sequence Diagram Description</b></em>'. <!-- end-user-doc -->
+ * 
+ * <p>
+ * The following features are supported:
+ * <ul>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getEndsOrdering
+ * <em>Ends Ordering</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getInstanceRolesOrdering
+ * <em>Instance Roles Ordering</em>}</li>
+ * </ul>
+ * </p>
+ * 
+ * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getSequenceDiagramDescription()
+ * @model
+ * @generated
+ */
+public interface SequenceDiagramDescription extends DiagramDescription {
+    /**
+     * Returns the value of the '<em><b>Ends Ordering</b></em>' attribute. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Ends Ordering</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Ends Ordering</em>' attribute.
+     * @see #setEndsOrdering(String)
+     * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getSequenceDiagramDescription_EndsOrdering()
+     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     *        required="true"
+     * @generated
+     */
+    String getEndsOrdering();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getEndsOrdering
+     * <em>Ends Ordering</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Ends Ordering</em>' attribute.
+     * @see #getEndsOrdering()
+     * @generated
+     */
+    void setEndsOrdering(String value);
+
+    /**
+     * Returns the value of the '<em><b>Instance Roles Ordering</b></em>'
+     * attribute. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Instance Roles Ordering</em>' attribute isn't
+     * clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Instance Roles Ordering</em>' attribute.
+     * @see #setInstanceRolesOrdering(String)
+     * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getSequenceDiagramDescription_InstanceRolesOrdering()
+     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     *        required="true" annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
+     * @generated
+     */
+    String getInstanceRolesOrdering();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription#getInstanceRolesOrdering
+     * <em>Instance Roles Ordering</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Instance Roles Ordering</em>'
+     *            attribute.
+     * @see #getInstanceRolesOrdering()
+     * @generated
+     */
+    void setInstanceRolesOrdering(String value);
+
+} // SequenceDiagramDescription

@@ -1,0 +1,95 @@
+/*******************************************************************************
+ * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.tools.api.command.view;
+
+import java.util.Iterator;
+
+import org.eclipse.emf.common.util.AbstractTreeIterator;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+
+import com.google.common.collect.Lists;
+
+import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.business.api.helper.graphicalfilters.HideFilterHelper;
+
+/**
+ * Command that is able to reveal all elements of a viewpoint.
+ * 
+ * @author cbrun
+ */
+public class RevealAllElementsCommand extends RecordingCommand {
+
+    /**
+     * Label for hide element.
+     * 
+     * @since 2.3
+     */
+    public static final String REVEAL_ALL_ELEMENTS_LABEL = "Reveal all elements";
+
+    /** The viewpoint. */
+    private final DDiagram viewpoint;
+
+    /**
+     * Create a new {@link RevealAllElementsCommand}.
+     * 
+     * @param domain
+     *            the editing domain.
+     * @param vp
+     *            the viewpoint.
+     */
+    public RevealAllElementsCommand(final TransactionalEditingDomain domain, final DDiagram vp) {
+        super(domain, REVEAL_ALL_ELEMENTS_LABEL);
+        this.viewpoint = vp;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.transaction.RecordingCommand#doExecute()
+     */
+    @Override
+    protected void doExecute() {
+        // Required to avoid ConcurrentModificationException in CDONative mode
+        final Iterator<EObject> it = new NonConcurrentEAllContentIterator(viewpoint);
+        while (it.hasNext()) {
+            final EObject eObj = it.next();
+            if (eObj instanceof DDiagramElement) {
+                HideFilterHelper.INSTANCE.reveal((DDiagramElement) eObj);
+            }
+        }
+    }
+
+    /**
+     * An iterator similar the one returned by a call to eAllContents(), but
+     * using a copy of the list to avoid
+     * {@link java.util.ConcurrentModificationException}s.
+     * 
+     * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
+     * 
+     */
+    private static final class NonConcurrentEAllContentIterator extends AbstractTreeIterator<EObject> {
+
+        private static final long serialVersionUID = 1L;
+
+        public NonConcurrentEAllContentIterator(EObject object) {
+            super(object, false);
+        }
+
+        @Override
+        protected Iterator<EObject> getChildren(Object object) {
+            return Lists.newArrayList(((EObject) object).eContents()).iterator();
+        }
+    }
+
+}

@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.sirius" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.sirius" id="repairParticipant" name="viewpoint.repair.repairParticipant"/>
+      </appInfo>
+      <documentation>
+         This extension point let you contribute to repair process by providing repair participants. Each repair participant has to implement &lt;code&gt;org.eclipse.sirius.business.api.repair.IRepairParticipant&lt;/code&gt; interface.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="repairParticipant"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="repairParticipant">
+      <annotation>
+         <documentation>
+            This is the only one element to contribute to  repair process.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="class" type="string">
+            <annotation>
+               <documentation>
+                  Provides a new participant to representationsFile repair process.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.business.api.repair.IRepairParticipant"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         org.eclipse.sirius 4.1.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         &lt;extension
+         point=&quot;org.eclipse.sirius.repairParticipant&quot;&gt;
+      &lt;repairParticipant
+            class=&quot;org.eclipse.sirius.diagram.tools.internal.actions.repair.DiagramRepairParticipant&quot;&gt;
+      &lt;/repairParticipant&gt;
+   &lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+            <documentation>
+         Copyright (c) 2012 THALES GLOBAL SERVICES&lt;br&gt;
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at 
+&lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
+      </documentation>
+
+   </annotation>
+
+</schema>

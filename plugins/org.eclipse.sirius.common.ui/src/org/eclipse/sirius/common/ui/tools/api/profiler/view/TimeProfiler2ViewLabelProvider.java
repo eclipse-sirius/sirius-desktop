@@ -1,0 +1,177 @@
+/*******************************************************************************
+ * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.common.ui.tools.api.profiler.view;
+
+import java.util.Map;
+
+import org.eclipse.jface.viewers.IFontProvider;
+import org.eclipse.jface.viewers.ITableLabelProvider;
+import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
+
+import com.google.common.collect.Maps;
+
+import org.eclipse.sirius.common.tools.api.profiler.TimeProfiler2.CompositeTask;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+
+/**
+ * Label provider for the
+ * {@link org.eclipse.sirius.common.tools.api.profiler.TimeProfiler2}.
+ * 
+ * @author ymortier
+ */
+public class TimeProfiler2ViewLabelProvider extends LabelProvider implements ITableLabelProvider, IFontProvider {
+
+    /** The index of the category column. */
+    public static final int CATEGORY_COL = 0;
+
+    /** The index of the task name column. */
+    public static final int TASK_NAME_COL = 1;
+
+    /** The index of the time column. */
+    public static final int TIME_COL_MS = 2;
+
+    /** The index of the time column in minutes. */
+    public static final int TIME_COL_MIN = 3;
+
+    /** The index of the occurences column. */
+    public static final int OCCURENCES_COL = 4;
+
+    /** The index of the minimum time. */
+    private static final int MINIMUM = 5;
+
+    /** The index of the maximum time. */
+    private static final int MAXIMUM = 6;
+
+    /** The index of the average time. */
+    private static final int AVERAGE = 7;
+
+    private Map<Boolean, Font> fontCache = Maps.newHashMap();
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnImage(java.lang.Object,
+     *      int)
+     */
+    public Image getColumnImage(final Object element, final int columnIndex) {
+
+        Image image = null;
+
+        if (element instanceof CompositeTask) {
+            final CompositeTask item = (CompositeTask) element;
+            switch (columnIndex) {
+            case CATEGORY_COL:
+                image = (Image) item.getProfilerTask().getCategoryImage();
+                break;
+            case TASK_NAME_COL:
+                image = (Image) item.getProfilerTask().getTaskImage();
+                break;
+            case TIME_COL_MS:
+                break;
+            case TIME_COL_MIN:
+                break;
+            case OCCURENCES_COL:
+                break;
+            default:
+                break;
+            }
+        }
+        return image;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnText(java.lang.Object,
+     *      int)
+     */
+    public String getColumnText(final Object element, final int columnIndex) {
+
+        String text = StringUtil.EMPTY_STRING;
+
+        if (element instanceof CompositeTask) {
+            final CompositeTask item = (CompositeTask) element;
+            switch (columnIndex) {
+            case CATEGORY_COL:
+                text = item.getProfilerTask().getCategory();
+                break;
+            case TASK_NAME_COL:
+                text = item.getProfilerTask().getName();
+                break;
+            case TIME_COL_MS:
+                text = Long.valueOf(item.getEllapsedTime()).toString();
+                break;
+            case TIME_COL_MIN:
+                final long hours = item.getEllapsedTime() / 1000 / 60 / 60;
+                final long minutes = item.getEllapsedTime() / 1000 / 60 - (hours * 60);
+                final long seconds = item.getEllapsedTime() / 1000 - (hours * 60 * 60) - (minutes * 60);
+                final long milliseconds = item.getEllapsedTime() - (hours * 60 * 60 * 1000) - (minutes * 60 * 1000) - (seconds * 1000);
+                final StringBuffer hhMmSsMs = new StringBuffer(Long.toString(hours));
+                hhMmSsMs.append(":");
+                hhMmSsMs.append(Long.toString(minutes));
+                hhMmSsMs.append(":");
+                hhMmSsMs.append(Long.toString(seconds));
+                hhMmSsMs.append(",");
+                hhMmSsMs.append(Long.toString(milliseconds));
+                text = hhMmSsMs.toString();
+                break;
+            case OCCURENCES_COL:
+                text = Integer.valueOf(item.getOccurences()).toString();
+                break;
+            case MINIMUM:
+                text = Long.valueOf(item.getMin()).toString();
+                break;
+            case MAXIMUM:
+                text = Long.valueOf(item.getMax()).toString();
+                break;
+            case AVERAGE:
+                text = Long.valueOf((long) ((double) item.getEllapsedTime() / (double) item.getOccurences())).toString();
+                break;
+            default:
+                break;
+            }
+        }
+        return text;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.jface.viewers.IFontProvider#getFont(java.lang.Object)
+     */
+    public Font getFont(final Object element) {
+        if (element instanceof CompositeTask) {
+            final CompositeTask task = (CompositeTask) element;
+            return getFontFromValue(task.getParent() == null);
+        }
+        return null;
+    }
+
+    /**
+     * This method helps avoiding memory leaks by keeping track of the already
+     * built fonts.
+     * 
+     * @param bold
+     *            : bold of the font
+     * @return the default font with the given bold value.
+     */
+    public Font getFontFromValue(final boolean bold) {
+        if (!fontCache.containsKey(Boolean.valueOf(bold))) {
+            fontCache.put(Boolean.valueOf(bold), new Font(Display.getDefault(), "ARIAL", 8, !bold ? SWT.NORMAL : SWT.BOLD));
+        }
+        return (Font) fontCache.get(Boolean.valueOf(bold));
+
+    }
+}

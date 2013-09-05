@@ -1,0 +1,75 @@
+/*******************************************************************************
+ * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.business.internal.helper.delete;
+
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
+
+import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.business.api.delete.IDeleteHook;
+
+/**
+ * Describes a extension as contributed to the
+ * "org.eclipse.sirius.deleteHook" extension point.
+ * 
+ * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
+ */
+public class EclipseDeleteHookDescriptor implements IDeleteHookDescriptor {
+
+    /** id of this descriptor. */
+    private final String id;
+
+    /** Configuration element of this descriptor. */
+    private final IConfigurationElement element;
+
+    /**
+     * We only need to create the instance once, this will keep reference to it.
+     */
+    private IDeleteHook extension;
+
+    /**
+     * Instantiates a descriptor with all information.
+     * 
+     * @param configuration
+     *            Configuration element from which to create this descriptor.
+     */
+    public EclipseDeleteHookDescriptor(IConfigurationElement configuration) {
+        this.id = configuration.getAttribute(DELETE_HOOK_ID_ATTRIBUTE);
+        this.element = configuration;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public IDeleteHook getIDeleteHook() {
+        if (extension == null) {
+            if (Platform.isRunning()) {
+                try {
+                    extension = (IDeleteHook) element.createExecutableExtension(DELETE_HOOK_CLASS_ATTRIBUTE);
+                } catch (CoreException e) {
+                    SiriusPlugin.getDefault().getLog()
+                            .log(new Status(IStatus.ERROR, SiriusPlugin.ID, "Error while loading the extension " + element.getDeclaringExtension().getUniqueIdentifier(), e));
+                }
+            }
+        }
+        return extension;
+    }
+}

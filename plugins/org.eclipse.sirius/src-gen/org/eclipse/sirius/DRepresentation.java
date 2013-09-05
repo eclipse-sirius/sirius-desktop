@@ -1,0 +1,168 @@
+/*******************************************************************************
+ * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius;
+
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.sirius.description.AnnotationEntry;
+import org.eclipse.sirius.description.DModelElement;
+import org.eclipse.sirius.description.DocumentedElement;
+
+/**
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>DRepresentation</b></em>'. <!-- end-user-doc -->
+ * 
+ * <p>
+ * The following features are supported:
+ * <ul>
+ * <li>
+ * {@link org.eclipse.sirius.DRepresentation#getOwnedRepresentationElements
+ * <em>Owned Representation Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.DRepresentation#getRepresentationElements
+ * <em>Representation Elements</em>}</li>
+ * <li>{@link org.eclipse.sirius.DRepresentation#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.sirius.DRepresentation#getOwnedAnnotationEntries
+ * <em>Owned Annotation Entries</em>}</li>
+ * </ul>
+ * </p>
+ * 
+ * @see org.eclipse.sirius.SiriusPackage#getDRepresentation()
+ * @model abstract="true"
+ * @generated
+ */
+public interface DRepresentation extends DocumentedElement, DRefreshable, DModelElement {
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation";
+
+    /**
+     * Returns the value of the '<em><b>Owned Representation Elements</b></em>'
+     * reference list. The list contents are of type
+     * {@link org.eclipse.sirius.DRepresentationElement}. <!-- begin-user-doc
+     * -->
+     * <p>
+     * If the meaning of the '<em>Owned Representation Elements</em>' reference
+     * list isn't clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc --> <!-- begin-model-doc --> The directly contained
+     * representation elements <!-- end-model-doc -->
+     * 
+     * @return the value of the '<em>Owned Representation Elements</em>'
+     *         reference list.
+     * @see org.eclipse.sirius.SiriusPackage#getDRepresentation_OwnedRepresentationElements()
+     * @model transient="true" changeable="false" volatile="true" derived="true"
+     * @generated
+     */
+    EList<DRepresentationElement> getOwnedRepresentationElements();
+
+    /**
+     * Returns the value of the '<em><b>Representation Elements</b></em>'
+     * reference list. The list contents are of type
+     * {@link org.eclipse.sirius.DRepresentationElement}. <!-- begin-user-doc
+     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The directly and
+     * indirectly contained representation elements <!-- end-model-doc -->
+     * 
+     * @return the value of the '<em>Representation Elements</em>' reference
+     *         list.
+     * @see org.eclipse.sirius.SiriusPackage#getDRepresentation_RepresentationElements()
+     * @model transient="true" changeable="false" volatile="true" derived="true"
+     * @generated
+     */
+    EList<DRepresentationElement> getRepresentationElements();
+
+    /**
+     * Returns the value of the '<em><b>Name</b></em>' attribute. The default
+     * value is <code>""</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-model-doc --> The name of the representation. <!--
+     * end-model-doc -->
+     * 
+     * @return the value of the '<em>Name</em>' attribute.
+     * @see #setName(String)
+     * @see org.eclipse.sirius.SiriusPackage#getDRepresentation_Name()
+     * @model default=""
+     * @generated
+     */
+    String getName();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.DRepresentation#getName <em>Name</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Name</em>' attribute.
+     * @see #getName()
+     * @generated
+     */
+    void setName(String value);
+
+    /**
+     * Returns the value of the '<em><b>Owned Annotation Entries</b></em>'
+     * containment reference list. The list contents are of type
+     * {@link org.eclipse.sirius.description.AnnotationEntry}. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Owned Annotation Entries</em>' containment
+     * reference list isn't clear, there really should be more of a description
+     * here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Owned Annotation Entries</em>' containment
+     *         reference list.
+     * @see org.eclipse.sirius.SiriusPackage#getDRepresentation_OwnedAnnotationEntries()
+     * @model containment="true" resolveProxies="true"
+     * @generated
+     */
+    EList<AnnotationEntry> getOwnedAnnotationEntries();
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Initialize the contents (ViewNode, ViewNodeContainer, etc.) of the
+     * viewpoint. <!-- end-model-doc -->
+     * 
+     * @model
+     * @generated
+     */
+    @Deprecated
+    void createContents();
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Initialize the content (ViewNode, ViewNodeContainer, etc.) of the
+     * viewpoint.
+     * 
+     * @param rootElement
+     *            The root EObject of the semantic model. The content of the
+     *            viewpoint is computed from this object. <!-- end-model-doc -->
+     * @model
+     * @generated
+     */
+    @Deprecated
+    void createContents(EObject rootElement);
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Update the content of the viewpoint according to the semantic model
+     * changes. It deletes useless elements and adds new elements. <!--
+     * end-model-doc -->
+     * 
+     * @model
+     * @generated
+     */
+    @Deprecated
+    void updateContent();
+
+} // DRepresentation

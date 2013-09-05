@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+  Copyright (c) 2013 THALES GLOBAL SERVICES
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://www.eclipse.org/sirius/tree/1.0.0"
+            class="org.eclipse.sirius.tree.provider.TreeItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+     <factory
+            uri="http://www.eclipse.org/sirius/tree/description/1.0.0"
+            class="org.eclipse.sirius.tree.description.provider.DescriptionItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+
+ <extension point="org.eclipse.ui.editors">
+      <editor
+            class="org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor"
+            contributorClass="org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeActionBarContributor"
+            default="true"
+            extensions="dtree"
+            icon="icons/full/obj16/TreeDescription.gif"
+            id="org.eclipse.sirius.tree.ui.EditorID"
+            name="DTree editor">
+      </editor>
+   </extension>
+ <extension
+       point="org.eclipse.ui.contexts">
+    <context
+          description="%DTreeContext.description"
+          id="org.eclipse.sirius.tree.ui.EditorID.treeContext"
+          name="%DTreeContext.name"
+          parentId="org.eclipse.ui.contexts.window">
+    </context>
+ </extension>
+ <extension
+       point="org.eclipse.sirius.ui.dialectui">
+    <dialectUI
+          class="org.eclipse.sirius.tree.ui.business.internal.dialect.TreeDialectUI">
+    </dialectUI>
+ </extension>
+
+ <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="org.eclipse.sirius.tree.ui.EditorID"
+            labelProvider="org.eclipse.sirius.ui.tools.api.provider.DTableLabelProvider">
+         <propertyCategory
+               category="default">
+         </propertyCategory>
+      </propertyContributor>
+   </extension>
+<extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.sirius.tree.ui.EditorID">
+         <propertyTab
+               category="default"
+               id="org.eclipse.sirius.tree.ui.tab.default"
+               label="default">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.sirius.tree.ui.EditorID">
+         <propertyTab
+               afterTab="org.eclipse.sirius.tree.ui.tab.default"
+               category="default"
+               id="org.eclipse.sirius.tree.ui.tab.semantic"
+               label="Semantic">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <!--extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.sirius.tree.ui.EditorID">
+         <propertyTab
+               afterTab="org.eclipse.sirius.tree.ui.tab.semantic"
+               category="default"
+               id="org.eclipse.sirius.tree.ui.tab.style"
+               label="Style">
+         </propertyTab>
+      </propertyTabs>
+   </extension-->
+   <!--extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.sirius.tree.ui.EditorID">
+         <propertyTab
+               afterTab="org.eclipse.sirius.tree.ui.tab.style"
+               category="default"
+               id="org.eclipse.sirius.tree.ui.tab.core"
+               label="Core">
+         </propertyTab>
+      </propertyTabs>
+   </extension-->
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="org.eclipse.sirius.tree.ui.EditorID">
+         <!--propertySection
+               class="org.eclipse.sirius.tree.ui.tools.internal.properties.section.style.StylePropertySection"
+               id="org.eclipse.sirius.tree.ui.section.style"
+               tab="org.eclipse.sirius.tree.ui.tab.style">
+            <input
+                  type="org.eclipse.sirius.tree.DTreeItem">
+            </input>
+         </propertySection-->
+         <propertySection
+               class="org.eclipse.sirius.tree.ui.properties.section.semantic.SemanticPropertySection"
+               id="org.eclipse.sirius.tree.ui.section.semantic"
+               tab="org.eclipse.sirius.tree.ui.tab.semantic">
+            <input
+                  type="org.eclipse.sirius.tree.DTreeItem">
+            </input>
+         </propertySection>
+         <!--propertySection
+               class="org.eclipse.sirius.tree.ui.properties.section.core.CorePropertySection"
+               id="org.eclipse.sirius.tree.ui.section.core"
+               tab="org.eclipse.sirius.tree.ui.tab.core">
+            <input
+                  type="org.eclipse.sirius.tree.DTreeItem">
+            </input>
+         </propertySection-->
+      </propertySections>
+   </extension>
+
+      <extension
+         point="org.eclipse.ui.editorActions">
+      <editorContribution
+            id="org.eclipse.sirius.tree.ui.EditorID.actions"
+            targetID="org.eclipse.sirius.tree.ui.EditorID">
+         <menu
+               id="org.eclipse.sirius.tree.ui.EditorID.actions.DTree"
+               label="DTree"
+               path="additions">
+            <separator
+                  name="line">
+            </separator>
+            <separator
+                  name="separator2">
+            </separator>
+            <separator
+                  name="refresh">
+            </separator>
+         </menu>
+         <action
+               class="org.eclipse.sirius.tree.ui.tools.internal.editor.actions.EditorRefreshAction"
+               icon="icons/tree/refresh.gif"
+               id="org.eclipse.sirius.tree.ui.refresh"
+               label="Refresh"
+               menubarPath="org.eclipse.sirius.tree.ui.EditorID.actions.DTree/refresh"
+               toolbarPath="Normal/additions"
+               tooltip="Force a refresh of the tree">
+         </action>
+      </editorContribution>
+     </extension>
+</plugin>

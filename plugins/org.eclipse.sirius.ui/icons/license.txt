@@ -1,0 +1,269 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+icons/full/decorator/DEdge.gif - org.eclipse.emf.ecore.edit- org.eclipse.emf.ecore.edit/icons/full/obj16/EReference.gif
+icons/full/decorator/MappingDecorator.png - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/decorator/MappingDecorator.png
+icons/full/decorator/SiriusNature.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/decorator/SiriusNature.gif
+icons/full/decorator/fold.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/ovr16/final_co.gif
+icons/full/decorator/fold.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/ovr16/final_co.gif
+icons/full/decorator/hidden.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/ovr16/owned_ovr.gif
+icons/full/decorator/permission_denied.gif - org.eclipse.jdt.ui - icons/full/elcl16/deadlock_view.gif
+icons/full/decorator/permission_denied_overlay.gif - org.eclipse.jdt.ui - icons/full/elcl16/deadlock_view.gif
+icons/full/decorator/permission_granted_to_current_user_exclusively.gif - org.eclipse.jdt.ui - icons/full/elcl16/deadlock_view.gif
+icons/full/obj16/AcceleoVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/RemoveVariableValueAction.gif
+icons/full/obj16/AddFeatureContribution.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/BeginLabelStyleDescription.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ControlFlow.gif
+icons/full/obj16/BehaviorTool.gif - org.eclipse.birt.report.viewer - org.eclipse.birt.report.viewer/birt/webcontent/birt/images/Go.gif
+icons/full/obj16/BorderCustomColorScale.gif - org.eclipse.mylyn.context.ui - org.eclipse.mylyn.context.ui/icons/elcl16/color-palette.gif
+icons/full/obj16/BorderNamedColor.gif - org.eclipse.gef - org.eclipse.gef/icons/palette_view.gif
+icons/full/obj16/BorderRGBColor.gif - org.eclipse.mylyn.context.ui - org.eclipse.mylyn.context.ui/icons/elcl16/color-palette.gif
+icons/full/obj16/BorderScaleValue.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/QualifierValue.gif
+icons/full/obj16/BorderedNodeMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/obj16/node_obj.gif and - org.eclipse.emf.mapping - org.eclipse.emf.mapping/icons/obj16/OneToOneMapping.gif
+icons/full/obj16/BorderedNodeMappingImport.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/obj16/node_obj.gif and - org.eclipse.emf.mapping - org.eclipse.emf.mapping/icons/obj16/OneToOneMapping.gif and - org.eclipse.team.cvs.ui - org.eclipse.team.cvs.ui/icons/obj16/import_obj.gif
+icons/full/obj16/BracketEdgeStyle.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/BracketEdgeStyle.gif
+icons/full/obj16/BracketEdgeStyleDescription.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/BracketEdgeStyleDescription.gif
+icons/full/obj16/BundledImage.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/icons/full/obj16/image_obj.gif
+icons/full/obj16/BundledImageDescription.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/icons/full/obj16/image_obj.gif
+icons/full/obj16/Case.gif - org.eclipse.rse.ui - org.eclipse.rse.ui/icons/full/ctool16/newfilter_wiz.gif
+icons/full/obj16/CenterLabelStyleDescription.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ControlFlow.gif
+icons/full/obj16/CenterStyleDescription.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ControlFlow.gif
+icons/full/obj16/ChangeContext.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/redo_edit.gif
+icons/full/obj16/ClearFeatureContribution.gif - org.eclipse.buckminster.jnlp.p2 - org.eclipse.buckminster.jnlp.p2/src/resources/icons/distro.incompatible.gif
+icons/full/obj16/ColorScaleElement.gif - org.eclipse.mylyn.context.ui - org.eclipse.mylyn.context.ui/icons/elcl16/color-palette.gif
+icons/full/obj16/ColorStep.gif - org.eclipse.gef - org.eclipse.gef/icons/palette_view.gif
+icons/full/obj16/CompositeFilterDescription.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/icons/full/elcl16/configure.gif
+icons/full/obj16/CompositeLayout.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/CompositeLayout.gif
+icons/full/obj16/ComputedColor.gif - org.eclipse.ajdt.mylyn.ui - org.eclipse.ajdt.mylyn.ui/icons/elcl16/proposals-other.gif
+icons/full/obj16/ComputedEObjectReference.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/redo_edit.gif
+icons/full/obj16/ConcernDescription.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/obj16/insp_sbook.gif
+icons/full/obj16/ConcernSet.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/obj16/insp_sbook.gif
+icons/full/obj16/ConditionFilterDescription.gif - org.eclipse.birt.report.designer.ui - org.eclipse.birt.report.designer.ui/icons/progress/params_ecl_hide.gif
+icons/full/obj16/ConditionalContainerStyleDescription.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/InteractionConstraint.gif
+icons/full/obj16/ConditionalEdgeStyleDescription.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/InteractionConstraint.gif
+icons/full/obj16/ConditionalNodeStyleDescription.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/InteractionConstraint.gif
+icons/full/obj16/ContainerCreationDescription.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/obj16/node_obj.gif
+icons/full/obj16/ContainerDropDescription.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/stepover_co.gif
+icons/full/obj16/ContainerElements.gif - org.eclipse.emf.ecore.edit - org.eclipse.emf.ecore.edit/icons/full/obj16/EAttribute.gif
+icons/full/obj16/ContainerMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/obj16/node_obj.gif and - org.eclipse.emf.mapping - org.eclipse.emf.mapping/icons/obj16/OneToOneMapping.gif
+icons/full/obj16/ContainerMappingImport.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/obj16/node_obj.gif and - org.eclipse.emf.mapping - org.eclipse.emf.mapping/icons/obj16/OneToOneMapping.gif and - org.eclipse.team.cvs.ui - org.eclipse.team.cvs.ui/icons/obj16/import_obj.gif
+icons/full/obj16/ContainerViewVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/Contribution.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/Contribution.gif
+icons/full/obj16/CreateEdgeView.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/ovr16/skip_breakpoint_ov.gif
+icons/full/obj16/CreateInstance.gif - org.eclipse.emf.ecore.edit - org.eclipse.emf.ecore.edit/icons/full/ctool16/CreateEPackage_eClassifiers_EClass.gif
+icons/full/obj16/CreateView.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/obj16/node_obj.gif
+icons/full/obj16/CustomColorScale.gif - org.eclipse.mylyn.context.ui - org.eclipse.mylyn.context.ui/icons/elcl16/color-palette.gif
+icons/full/obj16/CustomStyle.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/java_model_obj.gif
+icons/full/obj16/CustomStyleDescription.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/java_model_obj.gif
+icons/full/obj16/Customization.gif - icon getted from http://www.eclipse.org/articles/Article-UI-Guidelines/Contents.html
+icons/full/obj16/DAnalysis.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/DAnalysis.gif
+icons/full/obj16/DAnalysisSessionEObject.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
+icons/full/obj16/DDiagram.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
+icons/full/obj16/DDiagramSet.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ActivityPartition.gif
+icons/full/obj16/DEdge.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/ovr16/skip_breakpoint_ov.gif
+icons/full/obj16/DNode.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/obj16/node_obj.gif
+icons/full/obj16/DNodeContainer.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/obj16/node_obj.gif
+icons/full/obj16/DNodeList.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/history_list.gif
+icons/full/obj16/DNodeListElement.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/methpub_obj.gif
+icons/full/obj16/DSemanticDiagram.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
+icons/full/obj16/Decoration.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/ovr16/owned_ovr.gif
+icons/full/obj16/DecorationDescriptionsSet.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/ovr16/owned_ovr.gif
+icons/full/obj16/Default.gif - org.eclipse.rse.ui - org.eclipse.rse.ui/icons/full/ctool16/newfilterpool_wiz.gif
+icons/full/obj16/DeleteElementDescription.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/delete_obj.gif
+icons/full/obj16/DeleteHook.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/etool16/java_app.png
+icons/full/obj16/DeleteHookParameter.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/etool16/java_app.png
+icons/full/obj16/DeleteView.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/delete_obj.gif
+icons/full/obj16/DiagramCreationDescription.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
+icons/full/obj16/DiagramDescription.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
+icons/full/obj16/DiagramExtensionDescription.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif and - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/obj16/extension_obj.gif
+icons/full/obj16/DiagramImportDescription.gif - org.eclipse.team.cvs.ui - org.eclipse.team.cvs.ui/icons/obj16/import_obj.gif and - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
+icons/full/obj16/DiagramInitialization.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
+icons/full/obj16/DiagramNavigationDescription.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
+icons/full/obj16/DirectEObjectReference.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/redo_edit.gif
+icons/full/obj16/DirectEditLabel.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/obj16/write_obj.gif
+icons/full/obj16/Dot.gif - org.eclipse.ui - org.eclipse.ui/icons/full/progress/progress_task.gif
+icons/full/obj16/DotDescription.gif - org.eclipse.ui - org.eclipse.ui/icons/full/progress/progress_task.gif
+icons/full/obj16/DoubleClickDescription.gif - org.eclipse.gef - org.eclipse.gef/src/org/eclipse/gef/internal/icons/arrow16.gif and - org.eclipse.cdt.make.ui - org.eclipse.cdt.make.ui/icons/obj16/target_obj.gif
+icons/full/obj16/DropContainerVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/EAttributeCustomization.gif org.eclipse.emf.ecore.edit - org.eclipse.emf.ecore.edit/icons/full/obj16/EAttribute.gif
+icons/full/obj16/EReferenceCustomization.gif org.eclipse.emf.ecore.edit - org.eclipse.emf.ecore.edit/icons/full/obj16/EReference.gif
+icons/full/obj16/EdgeCreationDescription.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/ovr16/skip_breakpoint_ov.gif
+icons/full/obj16/EdgeMapping.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/ovr16/skip_breakpoint_ov.gif
+icons/full/obj16/EdgeMappingImport.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/ovr16/skip_breakpoint_ov.gif
+icons/full/obj16/EdgeStyle.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ControlFlow.gif
+icons/full/obj16/EdgeStyleDescription.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ControlFlow.gif
+icons/full/obj16/EditMaskVariables.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/ElementDeleteVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/ElementDoubleClickVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/ElementDropVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/ElementSelectVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/ElementVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/ElementViewVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/ElementViewVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/Ellipse.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/Ellipse.gif
+icons/full/obj16/EllipseNodeDescription.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/EllipseNodeDescription.gif
+icons/full/obj16/EndLabelStyleDescription.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ControlFlow.gif
+icons/full/obj16/Error.gif - org.eclipse.ui - org.eclipse.ui/icons/full/progress/progress_task.gif
+icons/full/obj16/ExtensionGroup.gif - org.eclipse.emf.ecore.edit - org.eclipse.emf.ecore.edit/icons/full/obj16/EPackage.gif
+icons/full/obj16/ExternalJavaAction.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/etool16/java_app.gif
+icons/full/obj16/ExternalJavaActionCall.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/etool16/java_app.gif
+icons/full/obj16/ExternalJavaActionParameter.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/etool16/java_app.gif
+icons/full/obj16/FilterVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/FilterVariableHistory.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/FilterVariableValue.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/FlatContainerStyle.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/etool16/exportapp_wiz.gif
+icons/full/obj16/FlatContainerStyleDescription.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/etool16/exportapp_wiz.gif
+icons/full/obj16/For.gif - fr.obeo.acceleo.template.edit - fr.obeo.acceleo.template.edit/icons/full/obj16/For.gif
+icons/full/obj16/Gauge.gif - org.eclipse.ui.ide - org.eclipse.ui.ide/icons/elcl16/graph_mode.gif
+icons/full/obj16/GaugeCompositeStyle.gif - org.eclipse.ui.ide - org.eclipse.ui.ide/icons/elcl16/graph_mode.gif
+icons/full/obj16/GaugeCompositeStyleDescription.gif - org.eclipse.ui.ide - org.eclipse.ui.ide/icons/elcl16/graph_mode.gif
+icons/full/obj16/GaugeSection.gif - org.eclipse.ui.ide - org.eclipse.ui.ide/icons/elcl16/graph_mode.gif
+icons/full/obj16/GaugeSectionDescription - org.eclipse.ui.ide - org.eclipse.ui.ide/icons/elcl16/graph_mode.gif
+icons/full/obj16/Group.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
+icons/full/obj16/HideFilter.gif - org.eclipse.ant.ui - org.eclipse.ant.ui/icons/full/dlcl16/filter_internal_targets.gif
+icons/full/obj16/If.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/stepbystep_co.gif
+icons/full/obj16/IgnoreFeatureContribution.gif - .org.eclipse.ant.ui - org.eclipse.ant.ui/icons/full/dlcl16/filter_internal_targets.gif
+icons/full/obj16/InitEdgeCreationOperation.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/elcl16/start_task.gif
+icons/full/obj16/InitialContainerDropOperation.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/elcl16/start_task.gif
+icons/full/obj16/InitialNodeCreationOperation.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/elcl16/start_task.gif
+icons/full/obj16/InitialOperation.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/elcl16/start_task.gif
+icons/full/obj16/InterpolatedColor.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/QualifierValue.gif
+icons/full/obj16/JavaExtension.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/obj16/jline_obj.gif
+icons/full/obj16/Layer.gif - org.eclipse.ui - org.eclipse.ui.cheatsheets/icons/elcl16/collapseall.gif
+icons/full/obj16/LocalSessionFile.gif - org.eclipse.emf.ecore.editor - org.eclipse.emf.ecore.editor/icons/full/obj16/EcoreModelFile.gif
+icons/full/obj16/Lozenge.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/Lozenge.gif
+icons/full/obj16/LozengeNodeDescription.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/LozengeNodeDescription.gif
+icons/full/obj16/MappingBasedDecoration.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/ovr16/owned_ovr.gif
+icons/full/obj16/MappingFilter.gif - org.eclipse.birt.report.designer.ui - org.eclipse.birt.report.designer.ui/icons/progress/params_ecl_hide.gif
+icons/full/obj16/MenuItemDescriptionReference.gif - org.eclipse.jdt.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/runlast_co.gif
+icons/full/obj16/MetaModelExtension.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/impl_co.gif
+icons/full/obj16/MetamodelExtensionSetting.gif - org.eclipse.emf.ecore.edit - org.eclipse.emf.ecore.edit/icons/full/ctool16/CreateEPackage_eSubpackages_EPackage.gif
+icons/full/obj16/MoveElement.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ActionInputPin.gif
+icons/full/obj16/NameVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/NamedColor.gif - org.eclipse.gef - org.eclipse.gef/icons/palette_view.gif
+icons/full/obj16/Navigation.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
+icons/full/obj16/NodeCreationDescription.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/obj16/node_obj.gif
+icons/full/obj16/NodeCreationVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/NodeMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/obj16/node_obj.gif and - org.eclipse.emf.mapping - org.eclipse.emf.mapping/icons/obj16/OneToOneMapping.gif
+icons/full/obj16/NodeMappingFilterDescription.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/icons/full/elcl16/configure.gif
+icons/full/obj16/NodeMappingImport.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/obj16/node_obj.gif and - org.eclipse.emf.mapping - org.eclipse.emf.mapping/icons/obj16/OneToOneMapping.gif and - org.eclipse.team.cvs.ui - org.eclipse.team.cvs.ui/icons/obj16/import_obj.gif
+icons/full/obj16/Note.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/obj16/information.gif
+icons/full/obj16/NoteDescription.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/obj16/information.gif
+icons/full/obj16/OperationAction.gif - org.eclipse.jdt.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/runlast_co.gif
+icons/full/obj16/OptionalLayer.gif - org.eclipse.ui - org.eclipse.ui.cheatsheets/icons/elcl16/collapseall.gif
+icons/full/obj16/OrderedTreeLayout.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
+icons/full/obj16/PaneBasedSelectionWizardDescription.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/layout_co.gif
+icons/full/obj16/PasteDescription.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/layout_co.gif
+icons/full/obj16/PopupMenu.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/submenu.gif
+icons/full/obj16/RGBColor.gif - org.eclipse.mylyn.context.ui - org.eclipse.mylyn.context.ui/icons/elcl16/color-palette.gif
+icons/full/obj16/RGBValues.gif - org.eclipse.mylyn.context.ui - org.eclipse.mylyn.context.ui/icons/elcl16/color-palette.gif
+icons/full/obj16/ReconnectEdgeDescription.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ControlFlow.gif
+icons/full/obj16/RemoveElement.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/RemoveStructuralFeatureValueAction.gif and - org.eclipse.cdt.ui - org.eclipse.cdt.ui/icons/etool16/action-deleteconfig.gif
+icons/full/obj16/RemoveFeatureContribution.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/RemoveStructuralFeatureValueAction.gif and - org.eclipse.cdt.ui - org.eclipse.cdt.ui/icons/etool16/action-deleteconfig.gif
+icons/full/obj16/RequestDescription.gif - org.eclipse.ui.ide - org.eclipse.ui.ide/icons/full/obj16/header_priority.gif
+icons/full/obj16/ResetFeatureContribution.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/stepover_co.gif
+icons/full/obj16/RuleAudit.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/ovr16/conditional_ovr_disabled.gif
+icons/full/obj16/ScaleValue.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/QualifierValue.gif
+icons/full/obj16/SelectContainerVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/SelectModelElementVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/SelectionWizardDescription.gif - org.eclipse.ui - org.eclipse.ui/icons/full/eview16/defaultview_misc.gif
+icons/full/obj16/SemanticBasedDecoration.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/ovr16/owned_ovr.gif
+icons/full/obj16/SemanticValidationRule.gif - org.eclipse.ui - org.eclipse.ui/icons/full/elcl16/step_done.gif
+icons/full/obj16/SetFeatureContribution.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/view16/variable_tab.gif
+icons/full/obj16/SetObject.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/elcl16/sethitcount_co.gif
+icons/full/obj16/SetValue.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/view16/variable_tab.gif
+icons/full/obj16/ShapeContainerStyle.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/obj16/write_obj.gif
+icons/full/obj16/ShapeContainerStyleDescription.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/obj16/write_obj.gif
+icons/full/obj16/SourceEdgeCreationVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/SourceEdgeViewCreationVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/Square.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/remove_correction.gif
+icons/full/obj16/SquareDescription.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/remove_correction.gif
+icons/full/obj16/Switch.gif - org.eclipse.tcf.te.ui - org.eclipse.tcf.te.ui/icons/elcl16/newtarget_wiz.gif
+icons/full/obj16/TargetEdgeCreationVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/TargetEdgeViewCreationVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/TargetViewCreationVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/AddVariableValueAction.gif
+icons/full/obj16/TemplateInformationSection.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/template_obj.gif
+icons/full/obj16/ToolDescription.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/ToolDescription.gif
+icons/full/obj16/ToolFilterDescription.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/ToolFilterDescription.gif
+icons/full/obj16/ToolGroup.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/ToolGroup.gif
+icons/full/obj16/ToolGroupExtension.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/obj16/extension_obj.gif
+icons/full/obj16/ToolSection.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/ToolSection.gif
+icons/full/obj16/ToolSection.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
+icons/full/obj16/TooltipStyleDescription.gif - org.eclipse.gmf.runtime.diagram.ui/icons/note.gif
+icons/full/obj16/Unset.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/RemoveStructuralFeatureValueAction.gif
+icons/full/obj16/UserColorsPalette.gif - org.eclipse.gef - org.eclipse.gef/icons/palette_view.gif
+icons/full/obj16/UserFixedColor.gif - org.eclipse.gef - org.eclipse.gef/icons/palette_view.gif
+icons/full/obj16/VSMElementCustomization.gif - icon from http://www.eclipse.org/articles/Article-UI-Guidelines/Contents.html 
+icons/full/obj16/VSMElementCustomizationReuse.gif - org.eclipse.ui - org.eclipse.ui/icons/dlcl16/refresg_nav.gif 
+icons/full/obj16/ValidationFix.gif - org.eclipse.jdt.ui/icons/full/obj16/quickfix_warning_obj.gif
+icons/full/obj16/ValidationRule.gif - org.eclipse.ui - org.eclipse.ui/icons/full/elcl16/step_done.gif
+icons/full/obj16/ValidationSet.gif - org.eclipse.vcm.ui - org.eclipse.vcm.ui/icons/basic/obj16/actmark_act.gif
+icons/full/obj16/VariableFilter.gif - org.eclipse.birt.report.designer.ui - org.eclipse.birt.report.designer.ui/icons/progress/params_ecl_hide.gif
+icons/full/obj16/ViewValidationRule.gif - org.eclipse.ui - org.eclipse.ui/icons/full/elcl16/step_done.gif
+icons/full/obj16/Sirius.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/Sirius.gif
+icons/full/obj16/WorkspaceImage.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/icons/full/obj16/image_obj.gif
+icons/full/obj16/WorkspaceImageDescription.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/icons/full/obj16/image_obj.gif
+icons/full/obj16/label_obj.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/label_obj.gif
+icons/full/obj16/oldSimpleMapping.gif - org.eclipse.cdt.ui - org.eclipse.cdt.ui/icons/elcl16/ch_callees.gif
+icons/full/obj16/oldSimpleMapping.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/ch_callees.gif
+icons/full/others/ModelExplorer.gif - org.eclipse.papyrus.modelexplorer - org.eclipse.papyrus.modelexplorer/icons/ModelExplorer.gif
+icons/full/others/ModelingPerspective.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/obj16/jmeth_obj.gif
+icons/full/others/add.gif -  org.eclipse.ui - org.eclipse.ui/icons/full/obj16/add_obj.gif
+icons/full/others/addRepresentation.gif - org.eclipse.xsd.edit - org.eclipse.xsd.edit/icons/full/obj16/XSDTypeDefinition.gif
+icons/full/others/backward.gif - org.eclipse.ui.browser - org.eclipse.ui.browser/icons/ecl16/nav_backward.gif
+icons/full/others/checkbox_active.gif -  org.eclipse.ui - org.eclipse.ui/icons/full/elcl16/step_done.gif
+icons/full/others/checkbox_inactive.gif -  org.eclipse.ui - org.eclipse.ui/icons/full/elcl16/step_done.gif
+icons/full/others/clear.gif -  org.eclipse.ui - org.eclipse.ui/icons/full/etool16/clear_co.gif
+icons/full/others/close.gif -  org.eclipse.ui -org.eclipse.ui/icons/full/elcl16/progress_rem.gif
+icons/full/others/delete.gif - org.eclipse.buckminster.jnlp.p2 - org.eclipse.buckminster.jnlp.p2/src/resources/icons/distro.incompatible.gif
+icons/full/others/delete.gif - org.eclipse.ui	org.eclipse.ui/icons/full/obj16/delete_obj.gif
+icons/full/others/design.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/others/design.gif
+icons/full/others/design.png - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/others/design.png
+icons/full/others/design_32.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/others/design_32.gif
+icons/full/others/diagram.gif - org.eclipse.team.ui - org.eclipse.team.ui/icons/full/elcl16/site_element.gif
+icons/full/others/emfEditor.gif - org.eclipse.emf.cdo.ui.efs - org.eclipse.emf.cdo.ui.efs/icons/full/elcl16/EcoreModelFile.gif
+icons/full/others/error.gif - org.eclipse.birt.report.designer.ui - org.eclipse.birt.report.designer.ui/icons/obj16/error_obj16.gif
+icons/full/others/export.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/export_wiz.gif
+icons/full/others/forward.gif - org.eclipse.ui.browser - org.eclipse.ui.browser/icons/ecl16/nav_forward.gif
+icons/full/others/grayed/backward.gif - org.eclipse.ui.browser - org.eclipse.ui.browser/icons/dlcl16/nav_backward.gif
+icons/full/others/grayed/forward.gif - org.eclipse.ui.browser - org.eclipse.ui.browser/icons/dlcl16/nav_forward.gif
+icons/full/others/image.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/icons/full/obj16/image_obj.gif
+icons/full/others/information.gif- org.eclipse.ui.cheatsheets- org.eclipse.ui.cheatsheets/icons/obj16/information.gif
+icons/full/others/plugin.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/obj16/plugin_obj.gif
+icons/full/others/prefshelp.gif - org.eclipse.m2m.atl.adt.editor - org.eclipse.m2m.atl.adt.editor/icons/condition.gif
+icons/full/others/project.gif - org.eclipse.emf.cdo.releng.tasks - org.eclipse.emf.cdo.releng.tasks/icons/fixed.gif
+icons/full/others/remove.gif -  org.eclipse.ui -org.eclipse.ui/icons/full/elcl16/progress_rem.gif
+icons/full/others/repair.gif - org.eclipse.team.cvs.ui -  org.eclipse.team.cvs.ui/icons/full/obj16/versions_rep.gif
+icons/full/others/save.gif -  org.eclipse.ui - org.eclipse.ui/icons/full/etool16/save_edit.gif
+icons/full/others/structure.gif - org.eclipse.emf.codegen.ecore.ui - org.eclipse.emf.codegen.ecore.ui/icons/full/obj16/GenModel.gif
+icons/full/others/strucutre.gif - org.eclipse.emf.codegen.ecore.ui - org.eclipse.emf.codegen.ecore.ui/icons/full/obj16/GenModel.gif
+icons/full/others/succes.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/obj16/complete_status.gif
+icons/full/others/success.gif - org.eclipse.b3.aggregator.edit - org.eclipse.b3.aggregator.edit/icons/full/obj16/VersionOK.gif
+icons/full/others/up.gif - org.eclipse.team.ui - org.eclipse.team.ui/icons/full/elcl16/prev_nav.gif
+icons/full/ovr16/SessionDecorator.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/obj16/jmeth_obj.gif
+icons/full/ovr16/plugin_ovr.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/obj16/plugin_obj.gif
+icons/full/ovr16/viewpoint_prj_ovr.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/obj16/jmeth_obj.gif
+icons/full/validation/error_co.gif - org.eclipse.jdt.ui - icons/full/ovr16/error_co.gif
+icons/full/validation/error_co.png - org.eclipse.jdt.ui - icons/full/ovr16/error_co.gif
+icons/full/validation/error_co_children_only.gif - org.eclipse.jdt.ui - icons/full/ovr16/error_co.gif
+icons/full/validation/error_co_children_only.png - org.eclipse.jdt.ui - icons/full/ovr16/error_co.gif
+icons/full/validation/warning_co.gif - org.eclipse.jdt.ui - icons/full/ovr16/warning_co.gif
+icons/full/validation/warning_co.png - org.eclipse.jdt.ui - icons/full/ovr16/warning_co.gif
+icons/full/validation/warning_co_children_only.gif - org.eclipse.jdt.ui - icons/full/ovr16/warning_co.gif
+icons/full/validation/warning_co_children_only.png - org.eclipse.jdt.ui - icons/full/ovr16/warning_co.gif
+icons/obj16/HasLink.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
+icons/obj16/ModelingProject.gif - org.eclipse.acceleo.ide.ui - org.eclipse.acceleo.ide.ui/icons/AcceleoNewProject.gif and  - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/full/obj16/Sirius.gif
+icons/obj16/ProjectDependencies.gif - org.eclipse.jdt.ui - icons/full/obj16/library_obj.gif
+icons/obj16/SessionResourceFile.gif  org.eclipse.osgi - org.eclipse.osgi/bundles/385/1/.cp/icons/full/obj16/fileType_filter.gif
+icons/obj16/SiriusFile.gif - org.eclipse.osgi - org.eclipse.osgi/bundles/385/1/.cp/icons/full/obj16/fileType_filter.gif
+icons/obj16/SiriusSpecificationFile.gif - org.eclipse.osgi - org.eclipse.osgi/bundles/385/1/.cp/icons/full/obj16/fileType_filter.gif
+icons/obj16/SiriusSpecificationProject.gif - org.eclipse.ui - org.eclipse.ui/icons/obj16/prj_obj.gif
+icons/obj16/copyLayout - org.eclipse.ui - org.eclipse.ui/icons/etool16/copy_edit.gif
+icons/obj16/copyLayoutDisabled - org.eclipse.ui - org.eclipse.ui/icons/etool16/copy_edit.gif
+icons/obj16/layoutingMode_activate.png - icons/full/obj16/CompositeLayout.gif - org.eclipse.sirius.ui/icons/full/obj16/CompositeLayout.gif
+icons/obj16/pasteLayout - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
+icons/obj16/pasteLayoutDisabled - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
+icons/wizban/banner_aird.gif - org.eclipse.jst.j2ee - org.eclipse.jst.j2ee/icons/wizban/resource_ref_wiz
+icons/wizban/banner_modeling_project - org.eclipse.cdt.debug.ui - org.eclipse.cdt.debug.ui/icons/wizban/add_prj_source_location_wiz

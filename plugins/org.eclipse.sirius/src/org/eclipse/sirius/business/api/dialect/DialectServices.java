@@ -1,0 +1,279 @@
+/*******************************************************************************
+ * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.business.api.dialect;
+
+import java.util.Collection;
+import java.util.Map;
+
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+
+import org.eclipse.sirius.DRepresentation;
+import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
+import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.description.RepresentationDescription;
+import org.eclipse.sirius.description.Sirius;
+
+/**
+ * Stateless services.
+ * 
+ * @author cbrun
+ */
+public interface DialectServices {
+    /**
+     * Return all the available {@link RepresentationDescription} the user might
+     * use to create a new {@link DRepresentation}.
+     * 
+     * @param vps
+     *            the currently enabled viewpoints.
+     * @param semantic
+     *            the selected semantic element.
+     * @return a collection of all the applicable descriptions.
+     */
+    Collection<RepresentationDescription> getAvailableRepresentationDescriptions(Collection<Sirius> vps, EObject semantic);
+
+    /**
+     * Create a new representation using the representation description and keep
+     * it in the given session. The new representation is refreshed.
+     * 
+     * @param name
+     *            name of the representation to create.
+     * 
+     * @param semantic
+     *            semantic root used to create the representation.
+     * @param description
+     *            representation description to use.
+     * @param session
+     *            session used to keep the data.
+     * @param monitor
+     *            to track progress.
+     * @return the new representation .
+     */
+    DRepresentation createRepresentation(String name, EObject semantic, RepresentationDescription description, Session session, IProgressMonitor monitor);
+
+    /**
+     * Create a new representation from a given one (copy) and keep it in the
+     * given session.
+     * 
+     * @param representation
+     *            the representation to copy.
+     * @param name
+     *            name of the newly representation.
+     * @param session
+     *            session used to keep the data.
+     * @param monitor
+     *            to track progress.
+     * @return the new representation .
+     * @since 2.0
+     */
+    DRepresentation copyRepresentation(DRepresentation representation, String name, Session session, IProgressMonitor monitor);
+
+    /**
+     * Return the representations provided by the dialect.
+     * 
+     * @param semantic
+     *            targeted semantic element.
+     * @param session
+     *            the current session.
+     * @return the list of representations contributed by this dialect.
+     */
+    Collection<DRepresentation> getRepresentations(EObject semantic, Session session);
+
+    /**
+     * Return all the representations provided by the dialect.
+     * 
+     * @param session
+     *            the current session.
+     * @return the list of representations contributed by this dialect.
+     */
+    Collection<DRepresentation> getAllRepresentations(Session session);
+
+    /**
+     * Return the representations provided by the dialect from a description.
+     * 
+     * @param representationDescription
+     *            the representation description instance
+     * @param session
+     *            the current session.
+     * @return the list of representations contributed by this dialect.
+     */
+    Collection<DRepresentation> getRepresentations(RepresentationDescription representationDescription, Session session);
+
+    /**
+     * Refresh the actual representation description used for the specified
+     * representation when the context changes.
+     * 
+     * @param representation
+     *            the representation whose description to update.
+     * @param monitor
+     *            to monitor the refresh operation.
+     */
+    void refreshEffectiveRepresentationDescription(DRepresentation representation, IProgressMonitor monitor);
+
+    /**
+     * Refresh a representation.
+     * 
+     * @param representation
+     *            representation to refresh.
+     * @param monitor
+     *            to monitor the refresh operation.
+     */
+    void refresh(DRepresentation representation, IProgressMonitor monitor);
+
+    /**
+     * Tell whether the dialect is able to refresh the given representation.
+     * 
+     * @param representation
+     *            representation to refresh.
+     * @return true if the dialect can refresh the representation, false
+     *         otherwise.
+     */
+    boolean canRefresh(DRepresentation representation);
+
+    /**
+     * Tell whether the dialect is able to create a representation from the
+     * given representation description and the semantic object.
+     * 
+     * @param semantic
+     *            semantic object used to create the representation.
+     * @param desc
+     *            {@link RepresentationDescription}.
+     * @return true if the dialect manages such
+     *         {@link RepresentationDescription}, false otherwise.
+     */
+    boolean canCreate(EObject semantic, RepresentationDescription desc);
+
+    /**
+     * Called when a new representation has been created,deleted or any other
+     * handled notifications. The service might want to update the model state
+     * and create links for instance.
+     * 
+     * @param notification
+     *            what's new.
+     */
+    void notify(RepresentationNotification notification);
+
+    /**
+     * Delete the given representation. The implementation should only handle
+     * representations it is aware of.
+     * 
+     * @param representation
+     *            representation to delete.
+     * @param session
+     *            the current session.
+     * @return true if the dialect did the delete, false otherwise.
+     */
+    boolean deleteRepresentation(DRepresentation representation, Session session);
+
+    /**
+     * Returns the description of the given representation.
+     * 
+     * @param representation
+     *            the representation.
+     * @return the description of the given representation.
+     */
+    RepresentationDescription getDescription(DRepresentation representation);
+
+    /**
+     * Init all the representations of a the viewpoint.
+     * 
+     * @param vp
+     *            the viewpoint
+     * @param semantic
+     *            the semantic element
+     * @deprecated use
+     *             {@link DialectServices#initRepresentations(Sirius, EObject, IProgressMonitor)}
+     *             instead
+     */
+    void initRepresentations(Sirius vp, EObject semantic);
+
+    /**
+     * Init all the representations of a the viewpoint.
+     * 
+     * @param vp
+     *            the viewpoint
+     * @param semantic
+     *            the semantic element
+     * @param monitor
+     *            a {@link IProgressMonitor} to show progression of
+     *            representations initialization
+     */
+    void initRepresentations(Sirius vp, EObject semantic, IProgressMonitor monitor);
+
+    /**
+     * Tell whether the dialect is able to create an identifier.
+     * 
+     * @param representationElement
+     *            the representation element for which to create an identifier
+     * @return <code>true</code> if it cans, <code>false</code> otherwise.
+     */
+    boolean canCreateIdentifier(EObject representationElement);
+
+    /**
+     * Create an identifier.
+     * 
+     * @param representationElement
+     *            the representation element for which to create an identifier
+     * @param elementToIdentifier
+     *            a map which contains element as key and identifier as value
+     * @return the created identifier, or <code>null</code> if it can not be
+     *         created.
+     */
+    RepresentationElementIdentifier createIdentifier(EObject representationElement, Map<EObject, RepresentationElementIdentifier> elementToIdentifier);
+
+    /**
+     * Update all the existing representations in a session which are extended
+     * by a viewpoint activated or deactivated.
+     * 
+     * @param session
+     *            the session
+     * @param viewpoint
+     *            the viewpoint activated or deactivated.
+     * @param activated
+     *            <code>true</code> if this viewpoint has to be activated,
+     *            <code>false</code> if it has to be deactivated.
+     * @since 2.5
+     */
+    void updateRepresentationsExtendedBy(Session session, Sirius viewpoint, boolean activated);
+
+    /**
+     * Creates an {@link IInterpretedExpressionQuery} that will query
+     * representation descriptions to determine useful informations (like the
+     * type to consider for Interpreted expressions).
+     * 
+     * @param target
+     *            the target of this query (must part of a representation
+     *            description)
+     * @param feature
+     *            the feature to consider (for example
+     *            {@link org.eclipse.sirius.description.DescriptionPackage#eINSTANCE
+     *            #getDiagramElementMapping_SemanticCandidatesExpression()}.
+     * @return an {@link IInterpretedExpressionQuery} that will query
+     *         representation descriptions to determine useful informations
+     *         (like the type to consider for Interpreted expressions)
+     * @since 4.0
+     */
+    IInterpretedExpressionQuery createInterpretedExpressionQuery(EObject target, EStructuralFeature feature);
+
+    /**
+     * Indicates if the current dialect handles the given
+     * {@link RepresentationDescription}.
+     * 
+     * @param representationDescription
+     *            the representationDescription to test
+     * @return true if the current dialect handles the given
+     *         {@link RepresentationDescription}
+     * @since 4.0
+     */
+    boolean handles(RepresentationDescription representationDescription);
+}

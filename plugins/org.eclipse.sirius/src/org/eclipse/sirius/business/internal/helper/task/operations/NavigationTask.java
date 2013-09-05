@@ -1,0 +1,162 @@
+/*******************************************************************************
+ * Copyright (c) 2007, 2008, 2009, 2010 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.business.internal.helper.task.operations;
+
+import java.util.Collection;
+
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.DRepresentation;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.description.DiagramDescription;
+import org.eclipse.sirius.description.tool.Navigation;
+import org.eclipse.sirius.tools.api.command.CommandContext;
+import org.eclipse.sirius.tools.api.command.ui.UICallBack;
+import org.eclipse.sirius.tools.api.command.view.CreateDiagramWithInitialOperation;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+
+/**
+ * A task which navigate to diagrams.
+ * 
+ * @author smonnier
+ * 
+ */
+public class NavigationTask extends AbstractOperationTask {
+
+    private Navigation operation;
+
+    private UICallBack uiCallback;
+
+    /**
+     * Default constructor.
+     * 
+     * @param context
+     *            the current context.
+     * @param extPackage
+     *            the extended package.
+     * @param operation
+     *            the {@link DoubleClickNavigation} operation
+     * @param session
+     *            the {@link Session} to be used by this task
+     * @param uiCallback
+     *            the {@link UICallBack}
+     */
+    public NavigationTask(final CommandContext context, final ModelAccessor extPackage, final Navigation operation, final Session session, final UICallBack uiCallback) {
+        super(context, extPackage, session.getInterpreter());
+        this.operation = operation;
+        this.uiCallback = uiCallback;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
+     */
+    public void execute() {
+        if (operation != null) {
+            EObject element = getElement();
+            if (element instanceof DDiagramElement) {
+                DDiagramElement ddiagramElement = (DDiagramElement) element;
+                for (EObject semanticEObject : ddiagramElement.getSemanticElements()) {
+                    if (openRepresentation(semanticEObject)) {
+                        return;
+                    }
+                }
+            } else {
+                openRepresentation(element);
+            }
+        }
+    }
+
+    /**
+     * Try to open the representation associated with the diagram element.
+     * 
+     * @param semanticEObject
+     * @return <code>true</code> if the representation was opened,
+     *         <code>false</code> otherwise
+     */
+    private boolean openRepresentation(final EObject semanticEObject) {
+        DiagramDescription diagramDescriptionToOpen = operation.getDiagramDescription();
+        final Session session = SessionManager.INSTANCE.getSession(semanticEObject);
+
+        // Open the new diagram
+        Collection<DRepresentation> otherRepresentations = DialectManager.INSTANCE.getRepresentations(semanticEObject, session);
+        DRepresentation findOpenableRepresentation = findOpenableRepresentation(otherRepresentations, diagramDescriptionToOpen, session);
+
+        boolean representationOpened = false;
+
+        if (findOpenableRepresentation != null) {
+            uiCallback.openRepresentation(session, findOpenableRepresentation);
+            representationOpened = true;
+        } else if (operation.isCreateIfNotExistent()) {
+            // Create a new diagram
+            CreateDiagramWithInitialOperation createDiagramWithInitialOperation = new CreateDiagramWithInitialOperation(diagramDescriptionToOpen, semanticEObject, uiCallback,
+                    new NullProgressMonitor());
+            createDiagramWithInitialOperation.execute();
+            // Open the new diagram
+            otherRepresentations = DialectManager.INSTANCE.getRepresentations(semanticEObject, session);
+            findOpenableRepresentation = findOpenableRepresentation(otherRepresentations, diagramDescriptionToOpen, session);
+            if (findOpenableRepresentation != null) {
+                uiCallback.openRepresentation(session, findOpenableRepresentation);
+                representationOpened = true;
+            }
+        }
+        return representationOpened;
+    }
+
+    /**
+     * Find a {@link DRepresentation} among otherRepresentations that has the
+     * {@link DiagramDescription} diagramDescriptionToOpen
+     * 
+     * @param otherRepresentations
+     *            the Collection of {@link DRepresentation} to investigate
+     * @param diagramDescriptionToOpen
+     *            the type of {@link DiagramDescription} we want to open
+     * @param session
+     *            the current session
+     * @return the matching {@link DRepresentation} if found
+     */
+    private DRepresentation findOpenableRepresentation(final Collection<DRepresentation> otherRepresentations, final DiagramDescription diagramDescriptionToOpen, final Session session) {
+        for (final DRepresentation representation : otherRepresentations) {
+            if (representation instanceof DDiagram) {
+                DDiagram ddiagram = (DDiagram) representation;
+                if (ddiagram.getDescription() != null && ddiagram.getDescription().equals(diagramDescriptionToOpen)) {
+                    return representation;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
+     */
+    public String getLabel() {
+        return null;
+    }
+
+    /**
+     * Return the element to move.
+     * 
+     * @return the element to move.
+     */
+    private EObject getElement() {
+        return context.getCurrentTarget();
+    }
+
+}

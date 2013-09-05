@@ -1,0 +1,331 @@
+/*******************************************************************************
+ * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.sequence.ui.tool.internal.util;
+
+import java.util.Collection;
+import java.util.Set;
+
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.ecore.EObject;
+
+import com.google.common.base.Preconditions;
+
+import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.DDiagramElementContainer;
+import org.eclipse.sirius.DEdge;
+import org.eclipse.sirius.DLabelled;
+import org.eclipse.sirius.DNode;
+import org.eclipse.sirius.DRefreshable;
+import org.eclipse.sirius.DRepresentationElement;
+import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.DragAndDropTarget;
+import org.eclipse.sirius.EdgeTarget;
+import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
+import org.eclipse.sirius.description.DiagramDescription;
+import org.eclipse.sirius.description.tool.BehaviorTool;
+import org.eclipse.sirius.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.description.tool.ContainerDropDescription;
+import org.eclipse.sirius.description.tool.DirectEditLabel;
+import org.eclipse.sirius.description.tool.DoubleClickDescription;
+import org.eclipse.sirius.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.description.tool.ExternalJavaAction;
+import org.eclipse.sirius.description.tool.NodeCreationDescription;
+import org.eclipse.sirius.description.tool.OperationAction;
+import org.eclipse.sirius.description.tool.PaneBasedSelectionWizardDescription;
+import org.eclipse.sirius.description.tool.PasteDescription;
+import org.eclipse.sirius.description.tool.ReconnectEdgeDescription;
+import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.description.tool.SelectionWizardDescription;
+import org.eclipse.sirius.description.tool.ToolDescription;
+import org.eclipse.sirius.description.validation.ValidationFix;
+import org.eclipse.sirius.tools.api.command.DCommand;
+import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
+import org.eclipse.sirius.tools.api.command.ui.UICallBack;
+import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+
+/**
+ * An implementation of <code>IDiagramCommandFactory</code> which delegates to
+ * another one. Useful to customize only some of the methods when one does not
+ * control the instantiation of the factory to customize.
+ * 
+ * @author pcdavid
+ */
+@SuppressWarnings("deprecation")
+public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
+    private final IDiagramCommandFactory baseFactory;
+
+    /**
+     * Constructor.
+     * 
+     * @param baseFactory
+     *            the factory to delegate to.
+     */
+    public DelegatingDiagramCommandFactory(IDiagramCommandFactory baseFactory) {
+        this.baseFactory = Preconditions.checkNotNull(baseFactory);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildCreateNodeCommandFromTool(DNode node, NodeCreationDescription tool) {
+        return baseFactory.buildCreateNodeCommandFromTool(node, tool);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildCreateContainerCommandFromTool(DDiagram diagram, ContainerCreationDescription tool) {
+        return baseFactory.buildCreateContainerCommandFromTool(diagram, tool);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildCreateContainerCommandFromTool(DDiagramElementContainer nodeContainer, ContainerCreationDescription tool) {
+        return baseFactory.buildCreateContainerCommandFromTool(nodeContainer, tool);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public DCommand buildCreateDiagramFromDescription(DiagramDescription description, EObject semanticElement) {
+        return baseFactory.buildCreateDiagramFromDescription(description, semanticElement);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public DCommand buildCreateDiagramFromDescription(DiagramDescription description, EObject semanticElement, IProgressMonitor monitor) {
+        return baseFactory.buildCreateDiagramFromDescription(description, semanticElement, monitor);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildCreateEdgeCommandFromTool(EdgeTarget source, EdgeTarget target, EdgeCreationDescription tool) {
+        return baseFactory.buildCreateEdgeCommandFromTool(source, target, tool);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildCreateNodeCommandFromTool(DDiagram diagram, NodeCreationDescription tool) {
+        return baseFactory.buildCreateNodeCommandFromTool(diagram, tool);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildCreateNodeCommandFromTool(DDiagramElementContainer container, NodeCreationDescription tool) {
+        return baseFactory.buildCreateNodeCommandFromTool(container, tool);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public CreateRepresentationCommand buildCreateRepresentationFromDescription(RepresentationCreationDescription desc, DRepresentationElement element, String newRepresentationName) {
+        return baseFactory.buildCreateRepresentationFromDescription(desc, element, newRepresentationName);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildDeleteDiagram(DDiagram vp) {
+        return baseFactory.buildDeleteDiagram(vp);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildDeleteDiagramElement(DDiagramElement element) {
+        return baseFactory.buildDeleteDiagramElement(element);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildDeleteFromDiagramCommand(DDiagramElement element) {
+        return baseFactory.buildDeleteFromDiagramCommand(element);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildDirectEditLabelFromTool(DLabelled labelled, DirectEditLabel directEditTool, String newValue) {
+        return baseFactory.buildDirectEditLabelFromTool(labelled, directEditTool, newValue);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildDoExecuteDetailsOperation(DSemanticDecorator target, RepresentationCreationDescription desc, String newRepresentationName) {
+        return baseFactory.buildDoExecuteDetailsOperation(target, desc, newRepresentationName);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildDoubleClickOnElementCommandFromTool(DDiagramElement dDiagramElement, DoubleClickDescription tool) {
+        return baseFactory.buildDoubleClickOnElementCommandFromTool(dDiagramElement, tool);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildDropInContainerCommandFromTool(DragAndDropTarget dContainer, DDiagramElement element, ContainerDropDescription tool) {
+        return baseFactory.buildDropInContainerCommandFromTool(dContainer, element, tool);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildDropInContainerCommandFromTool(DragAndDropTarget dContainer, EObject droppedElement, ContainerDropDescription tool) {
+        return baseFactory.buildDropInContainerCommandFromTool(dContainer, droppedElement, tool);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildGenericToolCommandFromTool(EObject containerView, ToolDescription toolDesc) {
+        return baseFactory.buildGenericToolCommandFromTool(containerView, toolDesc);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildHideCommand(Set<EObject> elementsToHide) {
+        return baseFactory.buildHideCommand(elementsToHide);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     */
+    public Command buildHideLabelCommand(Set<EObject> elementsToHide) {
+        return baseFactory.buildHideLabelCommand(elementsToHide);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildJavaActionFromTool(ExternalJavaAction tool, Collection<DSemanticDecorator> selectedViews, IExternalJavaAction javaAction) {
+        return baseFactory.buildJavaActionFromTool(tool, selectedViews, javaAction);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildLaunchRuleCommandFromTool(DSemanticDecorator rootObject, BehaviorTool tool, boolean executeFromRootContainer, boolean deepProcess) {
+        return baseFactory.buildLaunchRuleCommandFromTool(rootObject, tool, executeFromRootContainer, deepProcess);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildOperationActionFromTool(OperationAction tool, Collection<DSemanticDecorator> selectedViews) {
+        return baseFactory.buildOperationActionFromTool(tool, selectedViews);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildPaneBasedSelectionWizardCommandFromTool(PaneBasedSelectionWizardDescription tool, DSemanticDecorator dContainer,
+            Collection<EObject> selectedElement) {
+        return baseFactory.buildPaneBasedSelectionWizardCommandFromTool(tool, dContainer, selectedElement);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildQuickFixOperation(ValidationFix fix, EObject fixTarget, DDiagram diagram) {
+        return baseFactory.buildQuickFixOperation(fix, fixTarget, diagram);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildReconnectEdgeCommandFromTool(ReconnectEdgeDescription tool, DEdge edge, EdgeTarget source, EdgeTarget target) {
+        return baseFactory.buildReconnectEdgeCommandFromTool(tool, edge, source, target);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildRefreshCommand(DRefreshable refreshableElement) {
+        return baseFactory.buildRefreshCommand(refreshableElement);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildRevealCommand(DDiagramElement diagramElement) {
+        return baseFactory.buildRevealCommand(diagramElement);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildRevealElementsCommand(DDiagram diagram) {
+        return baseFactory.buildRevealElementsCommand(diagram);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public Command buildRevealLabelCommand(DDiagramElement diagramElement) {
+        return baseFactory.buildRevealLabelCommand(diagramElement);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildRevealElementsCommand(Set<DDiagramElement> elementsToReveal) {
+        return baseFactory.buildRevealElementsCommand(elementsToReveal);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public org.eclipse.emf.common.command.Command buildSelectionWizardCommandFromTool(SelectionWizardDescription tool, DSemanticDecorator dContainer, Collection<EObject> selectedElement) {
+        return baseFactory.buildSelectionWizardCommandFromTool(tool, dContainer, selectedElement);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void setAutoRefreshDView(boolean autoRefreshDView) {
+        baseFactory.setAutoRefreshDView(autoRefreshDView);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void setUserInterfaceCallBack(UICallBack newCB) {
+        baseFactory.setUserInterfaceCallBack(newCB);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public Command buildPasteCommandFromTool(DSemanticDecorator dContainer, DSemanticDecorator element, PasteDescription tool) {
+        return baseFactory.buildPasteCommandFromTool(dContainer, element, tool);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public Command buildPasteCommandFromTool(DSemanticDecorator dContainer, EObject droppedElement, PasteDescription tool) {
+        return baseFactory.buildPasteCommandFromTool(dContainer, droppedElement, tool);
+    }
+
+}

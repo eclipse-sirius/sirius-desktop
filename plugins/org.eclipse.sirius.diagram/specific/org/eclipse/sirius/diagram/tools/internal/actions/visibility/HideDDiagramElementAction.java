@@ -1,0 +1,315 @@
+/*******************************************************************************
+ * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.tools.internal.actions.visibility;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.gef.EditPart;
+import org.eclipse.gef.RootEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.ui.IObjectActionDelegate;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
+
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
+
+import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.DDiagramElementContainer;
+import org.eclipse.sirius.business.api.diagramtype.DiagramTypeDescriptorRegistry;
+import org.eclipse.sirius.business.api.diagramtype.IDiagramTypeDescriptor;
+import org.eclipse.sirius.business.internal.query.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.ImagesPath;
+import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.tools.internal.editor.DiagramOutlinePage;
+import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
+import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+
+/**
+ * Hide a {@link DDiagramElement} on a {@link org.eclipse.sirius.DDiagram}.
+ * 
+ * @author cbrun
+ * 
+ */
+public class HideDDiagramElementAction extends Action implements IObjectActionDelegate {
+
+    /** The selection. */
+    private ISelection selection;
+
+    private IWorkbenchPart representationPart;
+
+    /**
+     * Constructor.
+     */
+    public HideDDiagramElementAction() {
+        super();
+    }
+
+    /**
+     * Constructor.
+     * 
+     * @param text
+     *            String
+     */
+    public HideDDiagramElementAction(final String text) {
+        this(text, SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.HIDE_ELEMENT_IMG));
+    }
+
+    /**
+     * Constructor.
+     * 
+     * @param text
+     *            String
+     * @param image
+     *            ImageDescriptor
+     */
+    public HideDDiagramElementAction(final String text, final ImageDescriptor image) {
+        super(text, image);
+        setId(text);
+    }
+
+    /**
+     * Empty. {@inheritDoc}
+     * 
+     * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.action.IAction,
+     *      org.eclipse.ui.IWorkbenchPart)
+     */
+    public void setActivePart(final IAction action, final IWorkbenchPart targetPart) {
+        // empty.
+    }
+
+    /**
+     * Set representationPart from action part.
+     * 
+     * @param actionPart
+     *            the action part attached to this action.
+     */
+    public void setActionPart(IWorkbenchPart actionPart) {
+        this.representationPart = actionPart;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public final boolean isEnabled() {
+        boolean result = false;
+
+        ISelection currentSelection = selection;
+        if (selection == null) {
+            currentSelection = getCurrentSelection();
+        }
+
+        if (currentSelection instanceof IStructuredSelection && !currentSelection.isEmpty()) {
+            Collection<DDiagramElement> ddes = Sets.newHashSet();
+            for (Object selected : ((IStructuredSelection) currentSelection).toList()) {
+                if (selected instanceof IDiagramElementEditPart) {
+                    DDiagramElement dDiagramElement = ((IDiagramElementEditPart) selected).resolveDiagramElement();
+                    if (dDiagramElement != null) {
+                        ddes.add(dDiagramElement);
+                    }
+                } else if (selected instanceof DDiagramElement) {
+                    ddes.add((DDiagramElement) selected);
+                }
+            }
+
+            if (!ddes.isEmpty()) {
+                Predicate<DDiagramElement> allowsHideReveal = allowsHideReveal(ddes.iterator().next().getParentDiagram());
+                return Iterables.all(ddes, allowsHideReveal);
+            }
+
+        }
+
+        return result;
+    }
+
+    /**
+     * Get the current selection.
+     * 
+     * @return The current selection.
+     */
+    private ISelection getCurrentSelection() {
+        return PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getSelection();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
+     */
+    public void run(final IAction action) {
+        if (this.selection instanceof IStructuredSelection) {
+            final IStructuredSelection structuredSelection = (IStructuredSelection) this.selection;
+            final Set<Object> minimizedSelection = new HashSet<Object>(Arrays.asList(structuredSelection.toArray()));
+            if (minimizedSelection.size() > 0) {
+                final Object nextSelected = minimizedSelection.iterator().next();
+
+                if (nextSelected instanceof EditPart) {
+
+                    final RootEditPart root = ((EditPart) nextSelected).getRoot();
+                    final DDiagramEditor diagramEditor = (DDiagramEditor) ((EditPart) nextSelected).getViewer().getProperty(DDiagramEditor.EDITOR_ID);
+
+                    runHideCommand(root, diagramEditor, partsToSemantic(Arrays.asList(structuredSelection.toArray())));
+                } else if (nextSelected instanceof DDiagramElement) {
+                    final Set<EObject> eObjectSelection = new HashSet<EObject>();
+                    final Iterator<Object> it = minimizedSelection.iterator();
+                    while (it.hasNext()) {
+                        final Object obj = it.next();
+                        if (obj instanceof EObject) {
+                            eObjectSelection.add((EObject) obj);
+                        }
+                    }
+                    run(eObjectSelection);
+                }
+
+            }
+        }
+    }
+
+    /**
+     * Empty. {@inheritDoc} Used from button.
+     * 
+     * @see org.eclipse.jface.action#run(org.eclipse.jface.action)
+     */
+    @Override
+    public void run() {
+        this.selection = getCurrentSelection();
+        run(this);
+        this.selection = null;
+    }
+
+    private void run(final Set<EObject> minimizedSelection) {
+        if (this.selection instanceof DiagramOutlinePage.TreeSelectionWrapper) {
+
+            final DiagramOutlinePage.TreeSelectionWrapper wrapper = (DiagramOutlinePage.TreeSelectionWrapper) this.selection;
+
+            final RootEditPart root = wrapper.getRoot();
+            final DDiagramEditor diagramEditor = (DDiagramEditor) wrapper.getViewer().getProperty(DDiagramEditor.EDITOR_ID);
+
+            runHideCommand(root, diagramEditor, minimizedSelection);
+        }
+    }
+
+    private void runHideCommand(final RootEditPart root, final DDiagramEditor editor, final Set<EObject> elements) {
+
+        final Object adapter = editor.getAdapter(IDiagramCommandFactoryProvider.class);
+        final IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;
+        final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(editor.getEditingDomain().getResourceSet());
+        final IDiagramCommandFactory emfCommandFactory = cmdFactoryProvider.getCommandFactory(transactionalEditingDomain);
+        final Command cmd = emfCommandFactory.buildHideCommand(elements);
+
+        ((TransactionalEditingDomain) editor.getAdapter(EditingDomain.class)).getCommandStack().execute(cmd);
+    }
+
+    private Set<EObject> partsToSemantic(final List<Object> asList) {
+        final Set<EObject> result = new HashSet<EObject>();
+        final Iterator<Object> it = asList.iterator();
+        while (it.hasNext()) {
+            final Object obj = it.next();
+            if (obj instanceof IGraphicalEditPart) {
+                final IGraphicalEditPart part = (IGraphicalEditPart) obj;
+                final EObject element = part.resolveSemanticElement();
+                if (element != null) {
+                    result.add(element);
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
+     *      org.eclipse.jface.viewers.ISelection)
+     */
+    public void selectionChanged(final IAction action, final ISelection s) {
+        IWorkbenchPart selectedPart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart();
+        if (representationPart != null && !representationPart.equals(selectedPart)) {
+            return;
+        }
+        this.selection = s;
+        setEnabled(isEnabled());
+    }
+
+    /**
+     * Indicates if the given ddiagram is allowing pin/unpin.
+     * 
+     * @param diagram
+     *            the diagram to inspect
+     * @return true if the given ddiagram is allowing layouting mode, false
+     *         otherwise
+     */
+    public static Predicate<DDiagramElement> allowsHideReveal(DDiagram diagram) {
+        // default return value is true for non-Region element (for basic
+        // DDiagram that are not handled
+        // by any DiagramDescriptionProvider).
+        Predicate<DDiagramElement> result = new Predicate<DDiagramElement>() {
+            public boolean apply(DDiagramElement dde) {
+                if (dde instanceof DDiagramElementContainer) {
+                    DDiagramElementContainerExperimentalQuery query = new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) dde);
+                    return !query.isRegion();
+                }
+                return true;
+            }
+        };
+
+        // If an aird has been opened from the Package Explorer View, then
+        // we return false as no diagram is associated to this editor
+        if (diagram == null || diagram.getDescription() == null || !isEditable(diagram)) {
+            return Predicates.alwaysFalse();
+        }
+
+        // If diagram is not null, we search for a possible
+        // DiagramDescriptionProvider handling this type of diagram
+        for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
+            if (diagramTypeDescriptor.getDiagramDescriptionProvider().handles(diagram.getDescription().eClass().getEPackage())) {
+                // This DiagramDescriptionProvider may forbid hide/reveal
+                // actions.
+                Predicate<DDiagramElement> allowsHideReveal = diagramTypeDescriptor.getDiagramDescriptionProvider().allowsHideReveal();
+                if (allowsHideReveal != null) {
+                    result = allowsHideReveal;
+                    break;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    private static boolean isEditable(DDiagram diagram) {
+        IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(diagram.eResource().getResourceSet());
+        return permissionAuthority.canEditInstance(diagram);
+    }
+
+}

@@ -1,0 +1,69 @@
+/*******************************************************************************
+ * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.table.ui.tools.internal.editor.provider;
+
+import org.eclipse.jface.viewers.ILabelDecorator;
+import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.swt.graphics.Image;
+
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.table.business.api.helper.TableHelper;
+import org.eclipse.sirius.table.metamodel.table.DCell;
+import org.eclipse.sirius.table.metamodel.table.DColumn;
+import org.eclipse.sirius.table.metamodel.table.DLine;
+
+/**
+ * Inherits {@link DTableColumnLabelProvider} to decorate DTableElement.
+ * 
+ * @author edugueperoux
+ */
+public class DTableDecoratingLabelProvider extends DTableColumnLabelProvider implements ILabelProvider {
+
+    private ILabelDecorator decorator;
+
+    /**
+     * @param newColumn
+     * @param decorator
+     */
+    public DTableDecoratingLabelProvider(DColumn newColumn, ILabelDecorator decorator) {
+        super(newColumn);
+        this.decorator = decorator;
+    }
+
+    /**
+     * Overridden to decorate the returned Image.
+     * 
+     * {@inheritDoc}
+     */
+    public Image getImage(Object element) {
+        Image image = super.getImage(element);
+        if (decorator != null) {
+            DCell cell = null;
+            if (element instanceof DLine) {
+                final DLine line = (DLine) element;
+                Option<DCell> optionalCell = TableHelper.getCell(line, column);
+                if (optionalCell.some()) {
+                    cell = optionalCell.get();
+                }
+            } else if (element instanceof DCell) {
+                cell = (DCell) element;
+            }
+            if (cell != null && cell.getColumn().equals(column)) {
+                Image decorated = decorator.decorateImage(image, cell);
+                if (decorated != null) {
+                    return decorated;
+                }
+            }
+        }
+        return image;
+    }
+
+}

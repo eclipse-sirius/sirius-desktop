@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="org.eclipse.sirius" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="org.eclipse.sirius" id="componentization" name="org.eclipse.sirius.componentization"/>
+      </appInfo>
+      <documentation>
+         This extension point allows you to provide viewpoint component.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appInfo>
+            <meta.element />
+         </appInfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="component"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  a fully qualified identifier of the target extension point
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  an optional identifier of the extension instance
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  an optional name of the extension instance
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="component">
+      <annotation>
+         <documentation>
+            This elements allows to define odesign files available as a plug-in.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  the name of this component.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  a unique identifier used as a reference for this element
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  the activator class of the plug-in. The option &quot;Activate this plug-in when one of its classes is loaded&quot; of your plugin.xml must be true.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="org.eclipse.core.runtime.Plugin:"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         You must register your viewponts at the start of your plug-in : 
+&lt;UL&gt;
+ &lt;LI&gt;Add your viewpoints in the function start of the activator of your plug-in:&lt;/LI&gt;
+&lt;p&gt;
+&lt;pre&gt;
+viewpoints = new HashSet&lt;Sirius&gt;();
+viewpoints.addAll(SiriusRegistry.getInstance().registerFromPlugin(PLUGIN_ID+&quot;/data/unit/componentization/componentization.odesign&quot;));
+&lt;/pre&gt;
+&lt;/p&gt;
+    &lt;LI&gt;Suppress your viewpoints in the function stop of the activator of your plug-in&lt;/LI&gt;
+&lt;p&gt;
+&lt;pre&gt;
+if (viewpoints != null) {
+ for (Sirius viewpoint : viewpoints) {
+     SiriusRegistry.getInstance().disposeFromPlugin(viewpoint);
+    }
+    viewpoints.clear();
+}
+&lt;/pre&gt;
+&lt;/p&gt;
+&lt;/UL&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="since"/>
+      </appInfo>
+      <documentation>
+         4.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         The following is an example of a refresh extension :
+&lt;p&gt;
+&lt;pre&gt;
+ &lt;extension
+         point=&quot;org.eclipse.sirius.componentization&quot;&gt;
+      &lt;component
+            class=&quot;com.mycompany.yourproject.mymodeler.modeler.MyActivator&quot;
+            id=&quot;com.mycompany.yourproject.mymodeler.modeler&quot;
+            name=&quot;com.mycompany.yourproject.mymodeler.modeler&quot;&gt;
+      &lt;/component&gt;
+ &lt;/extension&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+            <documentation>
+         Copyright (c) 2008 THALES GLOBAL SERVICES&lt;br&gt;
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at 
+&lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
+      </documentation>
+
+   </annotation>
+
+</schema>

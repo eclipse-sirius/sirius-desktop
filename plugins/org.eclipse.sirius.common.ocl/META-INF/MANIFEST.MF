@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.sirius.common.ocl;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipse.sirius.common.ocl.DslOclPlugin
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.sirius.common,
+ org.eclipse.ocl.ecore,
+ org.eclipse.sirius.ecore.extender
+Eclipse-LazyStart: true
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Vendor: %providerName
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
+Export-Package: org.eclipse.sirius.common.ocl,
+ org.eclipse.sirius.common.ocl.business.internal.interpreter;x-internal:=true

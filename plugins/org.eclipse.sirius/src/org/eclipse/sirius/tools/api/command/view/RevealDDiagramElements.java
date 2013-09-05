@@ -1,0 +1,83 @@
+/*******************************************************************************
+ * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.tools.api.command.view;
+
+import java.util.Set;
+
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.business.api.helper.graphicalfilters.HideFilterHelper;
+
+/**
+ * A simple command to reveal diagram elements.
+ * 
+ * @author Damien Lecan (damien.lecan@obeo.fr)
+ * @since 2.3
+ */
+public class RevealDDiagramElements extends RecordingCommand {
+
+    /**
+     * Label for hide element.
+     */
+    public static final String REVEAL_ELEMENTS_LABEL = "Reveal elements";
+
+    /**
+     * Label for hide element.
+     */
+    public static final String REVEAL_ELEMENT_LABEL = "Reveal element";
+
+    /** The viewpoint elements to reveal. */
+    private final Set<DDiagramElement> diagramElements;
+
+    /**
+     * Create a new {@link RevealDDiagramElements}.
+     * 
+     * @param domain
+     *            the editing domain.
+     * @param diagramElements
+     *            the diagram element.
+     */
+    public RevealDDiagramElements(final TransactionalEditingDomain domain, final Set<DDiagramElement> diagramElements) {
+        super(domain, RevealDDiagramElements.getLabel(diagramElements));
+        this.diagramElements = diagramElements;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.transaction.RecordingCommand#doExecute()
+     */
+    @Override
+    protected void doExecute() {
+        for (final DDiagramElement diagramElement : diagramElements) {
+            HideFilterHelper.INSTANCE.reveal(diagramElement);
+        }
+    }
+
+    /**
+     * Compute label.
+     * 
+     * @param diagramElements
+     *            Elements.
+     * @return Label.
+     */
+    public static String getLabel(final Set<DDiagramElement> diagramElements) {
+        String result;
+        if (diagramElements != null && diagramElements.size() > 1) {
+            result = RevealDDiagramElements.REVEAL_ELEMENTS_LABEL;
+        } else {
+            result = RevealDDiagramElements.REVEAL_ELEMENT_LABEL;
+        }
+        return result;
+    }
+}

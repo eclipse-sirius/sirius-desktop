@@ -1,0 +1,121 @@
+/*******************************************************************************
+ * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.business.internal.migration.resource.session.diagram.data;
+
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.DSemanticDiagram;
+import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.description.RepresentationElementMapping;
+
+/**
+ * Class to handle lost element data.
+ * 
+ * @author dlecan
+ */
+public class LostElementDataWithMapping extends AbstractLostElementDataWithTarget implements ISimilarLostElementData, ILostElementDataWithMapping {
+
+    private RepresentationElementMapping mapping;
+
+    /**
+     * {@inheritDoc}
+     */
+    public void setMapping(final RepresentationElementMapping mapping) {
+        this.mapping = mapping;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public RepresentationElementMapping getMapping() {
+        return mapping;
+    }
+
+    /**
+     * Re create lost element in specified diagram.
+     * 
+     * @param designerDiagram
+     *            Diagram where to re create element.
+     * @return {@link LostElementDataState#EXISTING} if it exists or delegates
+     *         creation to
+     *         {@link #doRecreateNonExistingLostElement(DSemanticDiagram)}
+     *         method.
+     */
+    public final LostElementDataState reCreateLostElement(final DSemanticDiagram designerDiagram) {
+        LostElementDataState result;
+
+        final DDiagramElement foundDesignerDiagramElement = LostElementDataUtil.findDesignerDiagramElement(designerDiagram, this);
+
+        if (foundDesignerDiagramElement == null) {
+            // Element not found, create it
+            result = doRecreateNonExistingLostElement(designerDiagram);
+        } else {
+            result = LostElementDataState.EXISTING;
+        }
+
+        return result;
+    }
+
+    /**
+     * Recreate lost element in specified diagram. Needs to be overridden.
+     * 
+     * @param designerDiagram
+     *            Diagram where to re create element.
+     * @return {@link LostElementDataState#NOT_CREATED} by default.
+     */
+    protected LostElementDataState doRecreateNonExistingLostElement(final DSemanticDiagram designerDiagram) {
+        // Nothing, needs to be overridden
+        return LostElementDataState.NOT_CREATED;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return super.toString() + SEPARATOR + "Mapping name: " + mapping.getName();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public final boolean isSimilarTo(final DSemanticDecorator semanticDecorator) {
+        boolean result;
+        if (semanticDecorator instanceof DDiagramElement) {
+            final DDiagramElement diagramElement = (DDiagramElement) semanticDecorator;
+            final Option<? extends RepresentationElementMapping> extractedMapping = new DDiagramElementQuery(diagramElement).getMapping();
+            result = extractedMapping != null && extractedMapping.some();
+            result = result && doIsSimilarTo(diagramElement, extractedMapping.get());
+        } else {
+            // this object doesn't manage DDiagram. See LostDiagramData class
+            result = false;
+        }
+        return result;
+    }
+
+    /**
+     * Same method as {@link #isSimilarTo(DDiagramElement)}, but adds mapping
+     * extracted from diagramElement in order to avoid to extract it again
+     * later.
+     * 
+     * @param diagramElement
+     *            Diagram element where to extrat data to check.
+     * @param extractedMapping
+     *            Mapping extracted from diagram element. Must not be
+     *            <code>null</code>.
+     * @return <code>true</code> if current data is similar to specified
+     *         diagram.
+     */
+    protected boolean doIsSimilarTo(final DDiagramElement diagramElement, final RepresentationElementMapping extractedMapping) {
+        return getTarget() == diagramElement.getTarget() && mapping.getName().equals(extractedMapping.getName());
+    }
+}

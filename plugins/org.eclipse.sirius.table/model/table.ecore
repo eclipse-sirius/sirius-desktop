@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="table"
+    nsURI="http://www.eclipse.org/sirius/table/1.1.0" nsPrefix="table">
+  <eClassifiers xsi:type="ecore:EClass" name="DTable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DRepresentation #//LineContainer #//DTableElementUpdater ../../org.eclipse.sirius/model/viewpoint.ecore#//ExtensibleRepresentation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="columns" upperBound="-1"
+        eType="#//DColumn" containment="true" eOpposite="#//DColumn/table"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="headerColumnWidth" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//description/TableDescription"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DTableElementUpdater" abstract="true"
+      interface="true">
+    <eOperations name="activate">
+      <eParameters name="sync" lowerBound="1" eType="#//DTableElementSynchronizer"/>
+    </eOperations>
+    <eOperations name="deactivate"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DTableElement" abstract="true" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DRepresentationElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tableElementMapping" eType="#//description/TableMapping"
+        changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The mapping of the element."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LineContainer" abstract="true" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DSemanticDecorator">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lines" upperBound="-1"
+        eType="#//DLine" containment="true" eOpposite="#//DLine/container"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DLine" eSuperTypes="#//LineContainer #//DTableElement #//DTableElementUpdater">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="originMapping" lowerBound="1"
+        eType="#//description/LineMapping"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visible" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="collapsed" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
+        eType="#//DCell" containment="true" eOpposite="#//DCell/line">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="List of cells of this line. This list does not necessarily have as many cells as there are columns. Indeed, the «blank cells» are not created."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="#//LineContainer"
+        eOpposite="#//LineContainer/lines"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderedCells" upperBound="-1"
+        eType="#//DCell" changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Same list as &quot;cells&quot; but sorted according to the order of columns."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="currentStyle" eType="#//DTableElementStyle"
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Stores the best style of the LineMapping style updater : &#xA;* The first conditional foreground style (with predicate expression that returns true), otherwise the default foreground style.&#xA;* The first conditional background style (with predicate expression that returns true), otherwise the default background style."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DCell" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DSemanticDecorator #//DTableElement #//DTableElementUpdater">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="line" eType="#//DLine"
+        eOpposite="#//DLine/cells"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="column" eType="#//DColumn"
+        eOpposite="#//DColumn/cells"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="currentStyle" eType="#//DCellStyle"
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Stores the best style of the IntersectionMapping style updater and ColumnMapping style updater :&#xA;* Foreground&#xA;** The first conditional foreground style of the cell (with predicate expression that returns true). In this case the foregroundStyleOrigin references the intersection mapping and the defaultForegroundStyle is equal false.&#xA;** Otherwise the first conditional foreground style of the column (with predicate expression that returns true). In this case the foregroundStyleOrigin references the column mapping and the defaultForegroundStyle is equal false.&#xA;** Otherwise, if it exists, the default foreground style of the cell. In this case the foregroundStyleOrigin references the intersection mapping and the defaultForegroundStyle is equal true.&#xA;** Otherwise, if the default foreground style of the column uses variable color, the default foreground style of the column. In this case the foregroundStyleOrigin references the column mapping and the defaultForegroundStyle is equal true.&#xA;* Background&#xA;** The first conditional background style of the cell (with predicate expression that returns true). In this case the backgroundStyleOrigin references the intersection mapping and the defaultBackgroundStyle is equal false.&#xA;** Otherwise the first conditional background style of the column (with predicate expression that returns true). In this case the backgroundStyleOrigin references the column mapping and the defaultBackgroundStyle is equal false.&#xA;** Otherwise, if it exists, the default background style of the cell. In this case the backgroundStyleOrigin references the intersection mapping and the defaultBackgroundStyle is equal true.&#xA;** Otherwise, if the default background style of the column uses variable color, the default background style of the column. In this case the backgroundStyleOrigin references the column mapping and the defaultBackgroundStyle is equal true."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="updater" eType="#//description/CellUpdater"
+        volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="intersectionMapping" eType="#//description/IntersectionMapping"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DCellStyle" eSuperTypes="#//DTableElementStyle">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundStyleOrigin"
+        eType="#//description/TableMapping">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Needed to know the origin of the foreground part of this DCellStyle to respect the style priority rules between Cell, Line and Column.&#xA;This TableMapping can be only an IntersectionMapping or a  ColumnMapping."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundStyleOrigin"
+        eType="#//description/TableMapping">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Needed to know the origin of the background part of this DCellStyle to respect the style priority rules between Cell, Line and Column.&#xA;This TableMapping can be only an IntersectionMapping or a  ColumnMapping."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DColumn" abstract="true" eSuperTypes="#//DTableElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cells" upperBound="-1"
+        eType="#//DCell" eOpposite="#//DCell/column">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="List of cells of this column. This list does not necessarily have as many cells as there are lines. Indeed, the «blank cells» are not created."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="originMapping" lowerBound="1"
+        eType="#//description/ColumnMapping"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="table" eType="#//DTable"
+        eOpposite="#//DTable/columns"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="orderedCells" upperBound="-1"
+        eType="#//DCell" changeable="false" volatile="true" transient="true" derived="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Same list as a&quot;cells&quot; but sorted according to the order of lines."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visible" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="currentStyle" eType="#//DTableElementStyle"
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Stores the best style of the ColumnMapping style updater :&#xA;* The best style is only the default foreground style and the default background style (and only if the color use for it is not with variable parts: ComputedColor or InterpolatedColor). &#xA;* We can not store the result of the conditional styles (foreground and background) because the predicateExpression depend on the semantic element of each line."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DTargetColumn" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DSemanticDecorator #//DColumn #//DTableElementUpdater"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DFeatureColumn" eSuperTypes="#//DColumn">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureName" lowerBound="1"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DTableElementSynchronizer" abstract="true">
+    <eOperations name="refresh">
+      <eParameters name="cell" lowerBound="1" eType="#//DCell"/>
+    </eOperations>
+    <eOperations name="refresh">
+      <eParameters name="column" lowerBound="1" eType="#//DColumn"/>
+    </eOperations>
+    <eOperations name="refresh">
+      <eParameters name="line" lowerBound="1" eType="#//DLine"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DTableElementStyle">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelSize" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"
+        defaultValueLiteral="8">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The font size."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFormat" eType="ecore:EEnum ../../org.eclipse.sirius/model/viewpoint.ecore#//FontFormat"
+        defaultValueLiteral="normal">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The font format."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultForegroundStyle"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determine if the foreground part of the style is computed from a conditional style or not (default style)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultBackgroundStyle"
+        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+        defaultValueLiteral="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Determine if the background part of the style is computed from a conditional style or not (default style)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eSubpackages name="description" nsURI="http://www.eclipse.org/sirius/table/description/1.1.0"
+      nsPrefix="description">
+    <eClassifiers xsi:type="ecore:EClass" name="TableDescription" abstract="true"
+        eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/RepresentationDescription ../../org.eclipse.sirius/model/viewpoint.ecore#//description/DocumentedElement ../../org.eclipse.sirius/model/viewpoint.ecore#//description/EndUserDocumentedElement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="preconditionExpression"
+          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"
+          defaultValueLiteral="">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The precondition (Acceleo Expression)."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="boolean"/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" lowerBound="1"
+          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRepresentationCreationDescriptions"
+          upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/RepresentationCreationDescription"
+          containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="All tools of the section."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reusedRepresentationCreationDescriptions"
+          upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/RepresentationCreationDescription"
+          eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="All tools of the section."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="allRepresentationCreationDescriptions"
+          upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/RepresentationCreationDescription"
+          changeable="false" volatile="true" transient="true" derived="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="All tools of the section."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRepresentationNavigationDescriptions"
+          upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/RepresentationNavigationDescription"
+          containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="All navigation tools."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reusedRepresentationNavigationDescriptions"
+          upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/RepresentationNavigationDescription"
+          eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="All navigation tools."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="allRepresentationNavigationDescriptions"
+          upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/RepresentationNavigationDescription"
+          changeable="false" volatile="true" transient="true" derived="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="All navigation tools."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedLineMappings" lowerBound="1"
+          upperBound="-1" eType="#//description/LineMapping" containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reusedLineMappings" upperBound="-1"
+          eType="#//description/LineMapping" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="allLineMappings" lowerBound="1"
+          upperBound="-1" eType="#//description/LineMapping" changeable="false" volatile="true"
+          transient="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedCreateLine" upperBound="-1"
+          eType="#//description/CreateLineTool" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reusedCreateLine" upperBound="-1"
+          eType="#//description/CreateLineTool"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="allCreateLine" upperBound="-1"
+          eType="#//description/CreateLineTool" changeable="false" volatile="true"
+          transient="true" derived="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialHeaderColumnWidth"
+          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The initial width of the column header (calculated if not available)."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="importedElements" upperBound="-1"
+          eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EditionTableDescription" eSuperTypes="#//description/TableDescription ../../org.eclipse.sirius/model/contribution.ecore#//ContributionProvider">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedColumnMappings"
+          lowerBound="1" upperBound="-1" eType="#//description/FeatureColumnMapping"
+          containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reusedColumnMappings"
+          upperBound="-1" eType="#//description/FeatureColumnMapping" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="allColumnMappings" lowerBound="1"
+          upperBound="-1" eType="#//description/FeatureColumnMapping" changeable="false"
+          volatile="true" transient="true" derived="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EditionTableExtensionDescription"
+        eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/RepresentationExtensionDescription ../../org.eclipse.sirius/model/contribution.ecore#//ContributionProvider">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedLineMappings" lowerBound="1"
+          upperBound="-1" eType="#//description/LineMapping" containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedColumnMappings"
+          lowerBound="1" upperBound="-1" eType="#//description/FeatureColumnMapping"
+          containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTools" upperBound="-1"
+          eType="#//description/TableTool" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="preconditionExpression"
+          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"
+          defaultValueLiteral="">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The precondition (Acceleo Expression)."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="boolean"/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" lowerBound="1"
+          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CrossTableDescription" eSuperTypes="#//description/TableDescription">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedColumnMappings"
+          lowerBound="1" upperBound="-1" eType="#//description/ElementColumnMapping"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="intersection" upperBound="-1"
+          eType="#//description/IntersectionMapping" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="createColumn" upperBound="-1"
+          eType="#//description/CreateCrossColumnTool" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TableMapping" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/RepresentationElementMapping">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticElements" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The elements that are represented by this mapping."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="contentassist" value=""/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
+          <details key="view" value="table.DTableElement | current DTableElement (DCell, DColumn, DLine, ...)."/>
+          <details key="containerView" value="ecore.EObject | container of the current DTableElement (variable is available if container is not null)."/>
+          <details key="container" value="ecore.EObject | semantic target of containerView (if it is a DSemanticDecorator)."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="LineMapping" eSuperTypes="#//description/TableMapping #//description/StyleUpdater">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSubLines" upperBound="-1"
+          eType="#//description/LineMapping" containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reusedSubLines" upperBound="-1"
+          eType="#//description/LineMapping" eOpposite="#//description/LineMapping/reusedInMappings"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="allSubLines" upperBound="-1"
+          eType="#//description/LineMapping" changeable="false" volatile="true" transient="true"
+          derived="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reusedInMappings" upperBound="-1"
+          eType="#//description/LineMapping" eOpposite="#//description/LineMapping/reusedSubLines"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" lowerBound="1"
+          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="create" upperBound="-1"
+          eType="#//description/CreateLineTool" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="delete" eType="#//description/DeleteLineTool"
+          containment="true" eOpposite="#//description/DeleteLineTool/mapping"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticCandidatesExpression"
+          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
+          <details key="viewpoint" value="table.DTable | (deprecated) current DTable."/>
+          <details key="table" value="table.DTable | current DTable."/>
+          <details key="root" value="ecore.EObject | semantic target of $table."/>
+          <details key="containerView" value="table.LineContainer | current LineContainer (DLine or DTable)."/>
+          <details key="container" value="ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator)."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="headerLabelExpression"
+          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a string."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ColumnMapping" eSuperTypes="#//description/TableMapping">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="headerLabelExpression"
+          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a string."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialWidth" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The initial width of the column (calculated if not available)."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ElementColumnMapping" eSuperTypes="#//description/ColumnMapping #//description/StyleUpdater">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" lowerBound="1"
+          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticCandidatesExpression"
+          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
+          <details key="viewpoint" value="table.DTable | (deprecated) current DTable."/>
+          <details key="table" value="table.DTable | current DTable."/>
+          <details key="containerView" value="table.DTable | current DTable."/>
+          <details key="container" value="ecore.EObject | semantic element targeted by the current DTable."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="create" upperBound="-1"
+          eType="#//description/CreateColumnTool" containment="true" eOpposite="#//description/CreateColumnTool/mapping"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="delete" eType="#//description/DeleteColumnTool"
+          containment="true" eOpposite="#//description/DeleteColumnTool/mapping"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FeatureColumnMapping" eSuperTypes="#//description/ColumnMapping #//description/CellUpdater #//description/StyleUpdater">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureName" lowerBound="1"
+          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a string."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
+          <details key="root" value="ecore.EObject | semantic target of the current DTable."/>
+          <details key="line" value="table.DLine | DLine of the current DCell."/>
+          <details key="lineSemantic" value="ecore.EObject | semantic target of $line"/>
+          <details key="container" value="ecore.EObject | semantic target of $line."/>
+          <details key="column" value="table.DColumn | DColumn of the current DCell."/>
+          <details key="columnSemantic" value="ecore.EObject | semantic target of $column"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureParentExpression"
+          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="An expression to get the parent of the feature. By default, the parent of the feature is the semantic element of the line."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
+          <details key="root" value="ecore.EObject | semantic target of the current DTable."/>
+          <details key="container" value="ecore.EObject | semantic target of the current DLine."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CellUpdater">
+      <eOperations name="getLabelComputationExpression" lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+      <eOperations name="getCreateCell" eType="#//description/CreateCellTool"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="directEdit" eType="#//description/LabelEditTool"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="canEdit" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a boolean."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StyleUpdater" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="defaultForeground" eType="#//description/ForegroundStyleDescription"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundConditionalStyle"
+          upperBound="-1" eType="#//description/ForegroundConditionalStyle" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="defaultBackground" eType="#//description/BackgroundStyleDescription"
+          containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundConditionalStyle"
+          upperBound="-1" eType="#//description/BackgroundConditionalStyle" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IntersectionMapping" eSuperTypes="#//description/TableMapping #//description/CellUpdater #//description/StyleUpdater">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="lineMapping" lowerBound="1"
+          upperBound="-1" eType="#//description/LineMapping" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="columnMapping" lowerBound="1"
+          eType="#//description/ColumnMapping"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a string."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
+          <details key="root" value="ecore.EObject | semantic target of the current DTable."/>
+          <details key="line" value="table.DLine | DLine of the current DCell."/>
+          <details key="lineSemantic" value="ecore.EObject | semantic target of $line"/>
+          <details key="container" value="ecore.EObject | semantic target of $line."/>
+          <details key="column" value="table.DColumn | DColumn of the current DCell."/>
+          <details key="columnSemantic" value="ecore.EObject | semantic target of $column"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="useDomainClass" lowerBound="1"
+          eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
+          defaultValueLiteral="false"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="columnFinderExpression"
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="lineFinderExpression"
+          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticCandidatesExpression"
+          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="preconditionExpression"
+          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="An expression guarding the effect if evaluated to false."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="contentassist" value=""/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a boolean."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
+          <details key="line" value="table.DLine | the source view of the current potential line."/>
+          <details key="lineSemantic" value="ecore.EObject | the semantic element of $line."/>
+          <details key="column" value="table.DColumn | the source view of the current potential column."/>
+          <details key="columnSemantic" value="ecore.EObject | the semantic element of $column."/>
+          <details key="table" value="table.DTable | the current DTable."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="create" eType="#//description/CreateCellTool"
+          containment="true" eOpposite="#//description/CreateCellTool/mapping"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TableTool">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+          eType="#//description/TableVariable" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="firstModelOperation"
+          lowerBound="1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ModelOperation"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="LabelEditTool" eSuperTypes="#//description/TableTool">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mask" lowerBound="1"
+          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/EditMaskVariables"
+          containment="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The edit mask."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CreateTool" abstract="true" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractToolDescription #//description/TableTool"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CreateColumnTool" eSuperTypes="#//description/CreateTool">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mapping" lowerBound="1"
+          eType="#//description/ElementColumnMapping" eOpposite="#//description/ElementColumnMapping/create"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CreateCrossColumnTool" eSuperTypes="#//description/CreateTool">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mapping" lowerBound="1"
+          eType="#//description/ElementColumnMapping"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CreateLineTool" eSuperTypes="#//description/CreateTool">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mapping" eType="#//description/LineMapping"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CreateCellTool" eSuperTypes="#//description/TableTool ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractToolDescription">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mask" lowerBound="1"
+          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/EditMaskVariables"
+          containment="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The edit mask."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mapping" lowerBound="1"
+          eType="#//description/IntersectionMapping" eOpposite="#//description/IntersectionMapping/create"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DeleteTool" abstract="true" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractToolDescription #//description/TableTool"/>
+    <eClassifiers xsi:type="ecore:EClass" name="DeleteColumnTool" eSuperTypes="#//description/DeleteTool">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mapping" lowerBound="1"
+          eType="#//description/ElementColumnMapping" eOpposite="#//description/ElementColumnMapping/delete"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DeleteLineTool" eSuperTypes="#//description/DeleteTool">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="mapping" lowerBound="1"
+          eType="#//description/LineMapping" eOpposite="#//description/LineMapping/delete"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ForegroundStyleDescription">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelSize" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"
+          defaultValueLiteral="12">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The font size."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFormat" eType="ecore:EEnum ../../org.eclipse.sirius/model/viewpoint.ecore#//FontFormat"
+          defaultValueLiteral="normal">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The font format."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="foreGroundColor" lowerBound="1"
+          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BackgroundStyleDescription">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" lowerBound="1"
+          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ForegroundConditionalStyle">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="predicateExpression"
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a boolean."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//description/ForegroundStyleDescription"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BackgroundConditionalStyle">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="predicateExpression"
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+          <details key="returnType" value="a boolean."/>
+        </eAnnotations>
+        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//description/BackgroundStyleDescription"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TableVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="documentation" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TableCreationDescription" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/RepresentationCreationDescription">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="tableDescription" lowerBound="1"
+          eType="#//description/TableDescription"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TableNavigationDescription" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/RepresentationNavigationDescription">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="tableDescription" lowerBound="1"
+          eType="#//description/TableDescription"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

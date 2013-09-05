@@ -1,0 +1,564 @@
+/*******************************************************************************
+ * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.business.api.session;
+
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.DView;
+import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+
+/**
+ * A session is initiated by a user, provides the model data and means to store
+ * the representation data.
+ * 
+ * @author cbrun
+ */
+public interface Session {
+    /**
+     * ID for dangling, broken or invalid sessions.
+     */
+    String INVALID_SESSION = "INVALID SESSION";
+
+    /**
+     * Open the session and add it to the {@link SessionManager}.
+     * 
+     * @deprecated use {@link Session#open(IProgressMonitor)} instead
+     */
+    void open();
+
+    /**
+     * Open the session and add it to the {@link SessionManager}. Initialize a
+     * Session from a Session Resource URI with its own EditingDomain. This
+     * operation must be called after get a Session from
+     * SessionManager.getSession(URI) or SessionFactory.createSession(URI).
+     * 
+     * 
+     * @param monitor
+     *            {@link IProgressMonitor} used to indicate progress of the
+     *            Session opening
+     * @since 4.0
+     */
+    void open(IProgressMonitor monitor);
+
+    /**
+     * Returns <code>true</code> if the session is opened.
+     * 
+     * @return <code>true</code> if the session is opened.
+     */
+    boolean isOpen();
+
+    /**
+     * Get the {@link TransactionalEditingDomain} associated to this session.
+     * 
+     * @return the {@link TransactionalEditingDomain} associated to this session
+     * 
+     * @since 4.0
+     */
+    TransactionalEditingDomain getTransactionalEditingDomain();
+
+    /**
+     * Get the {@link ModelAccessor} associated to this session.
+     * 
+     * @return the {@link ModelAccessor} associated to this session
+     */
+    ModelAccessor getModelAccessor();
+
+    /**
+     * Should return an identifier for the session.
+     * 
+     * @return the session ID.
+     */
+    String getID();
+
+    /**
+     * Get the main {@link Resource} associated to this {@link Session}.
+     * 
+     * @return the main {@link Resource} associated to this {@link Session}
+     * 
+     * @since 4.0
+     */
+    Resource getSessionResource();
+
+    /**
+     * Get the referenced session {@link Resource} referenced directly or
+     * indirectly by the main {@link Resource} session.
+     * 
+     * @return the referenced session {@link Resource} referenced directly or
+     *         indirectly by the main {@link Resource} session
+     * 
+     * @since 4.0
+     */
+    Set<Resource> getReferencedSessionResources();
+
+    /**
+     * Return all the session resources in this session, including the main and
+     * referenced (directly and indirectly) resources.
+     * 
+     * @return all the session resources in this session.
+     * 
+     * @since 4.1
+     */
+    Set<Resource> getAllSessionResources();
+
+    /**
+     * Add a new semantic resource in the session.
+     * 
+     * @param newResource
+     *            new resource.
+     * @param addCrossReferencedResources
+     *            true if any cross referenced resource should be added to,
+     *            false otherwise.
+     * @deprecated since 4.0.0 use
+     *             {@link Session#addSemanticResource(URI, IProgressMonitor)}
+     *             instead
+     */
+    void addSemanticResource(final Resource newResource, final boolean addCrossReferencedResources);
+
+    /**
+     * Add a new semantic resource in the session. Must be called in a
+     * {@link org.eclipse.emf.transaction.Transaction}, use
+     * {@link org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand}
+     * to do it.
+     * 
+     * @param semanticModelURI
+     *            {@link URI} of a existing {@link Resource} representing a
+     *            semantic model to attach to this {@link Session}
+     * 
+     * @since 4.0
+     */
+    void createSemanticResource(final URI semanticModelURI);
+
+    /**
+     * Add a new semantic resource in the session. Must be called in a
+     * {@link org.eclipse.emf.transaction.Transaction}, use
+     * {@link org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand}
+     * to do it.
+     * 
+     * @param semanticModelURI
+     *            {@link URI} of a existing {@link Resource} representing a
+     *            semantic model to attach to this {@link Session}
+     * @param addCrossReferencedResources
+     *            indicates whether cross referenced resources should also be
+     *            added
+     * @deprecated as the addCrossReferencedResources parameter is useless use
+     *             {@link Session#addSemanticResource(URI, IProgressMonitor)},
+     *             indeed calling this operation with
+     *             addCrossReferencedResources at false will always load all
+     *             transitive resource dependencies. The only difference is that
+     *             calling with addCrossReferencedResources at false the
+     *             dependencies resources will not be visible in the Model
+     *             Explorer as semantic resources the first time.
+     * @since 4.0
+     */
+    void addSemanticResource(final URI semanticModelURI, final boolean addCrossReferencedResources);
+
+    /**
+     * Add a new semantic resource in the session. Must be called in a
+     * {@link org.eclipse.emf.transaction.Transaction}, use
+     * {@link org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand}
+     * to do it.
+     * 
+     * @param semanticModelURI
+     *            {@link URI} of a existing {@link Resource} representing a
+     *            semantic model to attach to this {@link Session}
+     * @param addCrossReferencedResources
+     *            indicates whether cross referenced resources should also be
+     *            added
+     * @param monitor
+     *            the Progress monitor to associate to this operation
+     * @deprecated as the addCrossReferencedResources parameter is useless use
+     *             {@link Session#addSemanticResource(URI, IProgressMonitor)},
+     *             indeed calling this operation with
+     *             addCrossReferencedResources at false will always load all
+     *             transitive resource dependencies. The only difference is that
+     *             calling with addCrossReferencedResources at false the
+     *             dependencies resources will not be visible in the Model
+     *             Explorer as semantic resources the first time.
+     * @since 4.0
+     */
+    void addSemanticResource(final URI semanticModelURI, final boolean addCrossReferencedResources, IProgressMonitor monitor);
+
+    /**
+     * Add a new semantic resource in the session. Must be called in a
+     * {@link org.eclipse.emf.transaction.Transaction}, use
+     * {@link org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand}
+     * to do it.
+     * 
+     * @param semanticResourceURI
+     *            {@link URI} of a existing {@link Resource} representing a
+     *            semantic model to attach to this {@link Session}
+     * @param monitor
+     *            the {@link IProgressMonitor} to associate to this operation
+     */
+    void addSemanticResource(final URI semanticResourceURI, IProgressMonitor monitor);
+
+    /**
+     * return the semantic resources associated with the session. NOTE : this
+     * method doesn't return controlled resources.
+     * 
+     * @return the semantic resources associated with the session.
+     */
+    Collection<Resource> getSemanticResources();
+
+    /**
+     * Removed an existing semantic resource from the session.
+     * 
+     * @param resource
+     *            new resource.
+     * @param removeCrossReferencedResources
+     *            true if any cross referenced resource should be removed to,
+     *            false otherwise.
+     * 
+     * @deprecated as the removeCrossReferencedResources parameter is useless
+     *             use
+     *             {@link Session#removeSemanticResource(Resource, IProgressMonitor)}
+     *             instead.
+     */
+    void removeSemanticResource(final Resource resource, final boolean removeCrossReferencedResources);
+
+    /**
+     * Remove the specified semantic resource.
+     * 
+     * @param semanticResource
+     *            the specified semantic resource to remove
+     * @deprecated use
+     *             {@link Session#removeSemanticResource(Resource, IProgressMonitor)}
+     *             instead.
+     */
+    void removeSemanticResource(final Resource semanticResource);
+
+    /**
+     * Remove the specified semantic resource.
+     * 
+     * @param semanticResource
+     *            the specified semantic resource to remove
+     * @param monitor
+     *            a {@link IProgressMonitor} to show progression of semantic
+     *            resource removal
+     */
+    void removeSemanticResource(final Resource semanticResource, IProgressMonitor monitor);
+
+    /**
+     * Save the session data.
+     * 
+     * @deprecated use {@link Session#save(IProgressMonitor)} instead
+     */
+    void save();
+
+    /**
+     * Save the session data.
+     * 
+     * @param monitor
+     *            the Progress monitor to associate to this operation
+     * @since 4.0
+     */
+    void save(IProgressMonitor monitor);
+
+    /**
+     * Saves the session data using the specified options.
+     * 
+     * <p>
+     * Options are handled generically as feature-to-setting entries; the
+     * resource will ignore options it doesn't recognize. The options could even
+     * include things like an Eclipse progress monitor...
+     * </p>
+     * <p>
+     * An implementation typically uses the
+     * {@link org.eclipse.emf.ecore.resource.ResourceSet#getURIConverter URI
+     * converter} of the {@link #getResourceSet containing} resource set to
+     * {@link org.eclipse.emf.ecore.resource.URIConverter#createOutputStream
+     * create} an output stream, and then delegates to
+     * {@link #save(java.io.OutputStream, Map) save(OutputStream, Map)}.
+     * </p>
+     * 
+     * @param options
+     *            the save options.
+     * @param monitor
+     *            the Progress monitor to associate to this operation
+     * @since 2.6
+     */
+    void save(Map<?, ?> options, IProgressMonitor monitor);
+
+    /**
+     * Close the session, remove it from the {@link SessionManager}, dispose all
+     * Session's resources and dispose the EditingDomain.
+     * 
+     * @deprecated use {@link Session#close(IProgressMonitor)} instead
+     */
+    void close();
+
+    /**
+     * Close the session, remove it from the {@link SessionManager}, dispose all
+     * Session's resources and dispose the EditingDomain.
+     * 
+     * @param monitor
+     *            {@link IProgressMonitor} to indicate the progress of the
+     *            Session closing
+     * 
+     * @since 4.0
+     */
+    void close(IProgressMonitor monitor);
+
+    /**
+     * Get a collection of selected viewpoints for this session on all Session
+     * resources.
+     * 
+     * @return a collection of selected viewpoints for this session on all
+     *         Session resources.
+     * 
+     * @deprecated as now the viewpoint selection is stored in the main session
+     *             resource (i.e. {@link Session#getSessionResource()}), use
+     *             {@link Session#getSelectedSiriuss(false)} instead or
+     *             {@link Session#getSelectedSiriuss(true)} to keep the same
+     *             viewpoint selection as before this deprecation
+     */
+    Collection<Sirius> getSelectedSiriuss();
+
+    /**
+     * Get current viewpoint selection.
+     * 
+     * @param includeReferencedAnalysis
+     *            if true, we walk through all DAnalysis to get selected
+     *            {@link DView}, otherwise we consider only the main DAnalysis
+     *            that of {@link Session#getSessionResource()}, specify false if
+     *            we are not sure because now the Siriuss selection is stored
+     *            on the main DAnalysis
+     * @return current viewpoint selection
+     */
+    Collection<Sirius> getSelectedSiriuss(boolean includeReferencedAnalysis);
+
+    /**
+     * Creates a view with the given viewpoint.
+     * 
+     * @param viewpoint
+     *            the viewpoint.
+     * @param semantics
+     *            collection of semantic model root element
+     * @since 2.6
+     * @deprecated use
+     *             {@link Session#createView(Sirius, Collection, IProgressMonitor)}
+     */
+    void createView(Sirius viewpoint, Collection<EObject> semantics);
+
+    /**
+     * Creates a view with the given viewpoint.
+     * 
+     * @param viewpoint
+     *            the viewpoint.
+     * @param semantics
+     *            collection of semantic model root element
+     * @param monitor
+     *            a {@link IProgressMonitor} to show progression of view
+     *            creation
+     * @since 2.6
+     */
+    void createView(Sirius viewpoint, Collection<EObject> semantics, IProgressMonitor monitor);
+
+    /**
+     * Creates a view with the given viewpoint specifying if we want create new
+     * DRepresentations.
+     * 
+     * @param viewpoint
+     *            the viewpoint.
+     * @param semantics
+     *            collection of semantic model root element
+     * @param createNewRepresentations
+     *            true to create new DRepresentation for
+     *            RepresentationDescription having their initialization
+     *            attribute at true for selected {@link Sirius}s.
+     * @deprecated use
+     *             {@link Session#createView(Sirius, Collection, boolean, IProgressMonitor)}
+     */
+    void createView(Sirius viewpoint, Collection<EObject> semantics, boolean createNewRepresentations);
+
+    /**
+     * Creates a view with the given viewpoint specifying if we want create new
+     * DRepresentations.
+     * 
+     * @param viewpoint
+     *            the viewpoint.
+     * @param semantics
+     *            collection of semantic model root element
+     * @param createNewRepresentations
+     *            true to create new DRepresentation for
+     *            RepresentationDescription having their initialization
+     *            attribute at true for selected {@link Sirius}s.
+     * @param monitor
+     *            a {@link IProgressMonitor} to show progression of view
+     *            creation
+     */
+    void createView(Sirius viewpoint, Collection<EObject> semantics, boolean createNewRepresentations, IProgressMonitor monitor);
+
+    /**
+     * Adds a selected view to this session.
+     * 
+     * @param view
+     *            the view to select.
+     * @throws IllegalArgumentException
+     *             if the view cannot be added to the selected views.
+     * @deprecated use {@link Session#addSelectedView(DView, IProgressMonitor)}
+     */
+    void addSelectedView(final DView view) throws IllegalArgumentException;
+
+    /**
+     * Adds a selected view to this session.
+     * 
+     * @param view
+     *            the view to select.
+     * @param monitor
+     *            a {@link IProgressMonitor} to show progression of view
+     *            selection
+     * @throws IllegalArgumentException
+     *             if the view cannot be added to the selected views.
+     */
+    void addSelectedView(final DView view, IProgressMonitor monitor) throws IllegalArgumentException;
+
+    /**
+     * Removes the given view from the selected views. if the given view is not
+     * selected the invocation has no effect.
+     * 
+     * @param view
+     *            the view to deselect.
+     * @deprecated use
+     *             {@link Session#removeSelectedView(DView, IProgressMonitor)}
+     *             instead
+     */
+    void removeSelectedView(final DView view);
+
+    /**
+     * Removes the given view from the selected views. if the given view is not
+     * selected the invocation has no effect.
+     * 
+     * @param view
+     *            the view to unselect.
+     * @param monitor
+     *            a {@link IProgressMonitor} to show progression of
+     *            {@link DView} unselection
+     */
+    void removeSelectedView(final DView view, IProgressMonitor monitor);
+
+    /**
+     * Returns all selected views. The returned collection is unmodifiable.
+     * 
+     * @return all selected views.
+     */
+    Collection<DView> getSelectedViews();
+
+    /**
+     * Returns all owned views. The returned collection is unmodifiable.
+     * 
+     * @return all selected views.
+     */
+    Collection<DView> getOwnedViews();
+
+    /**
+     * Add a new listener for the session manager.
+     * 
+     * @param listener
+     *            new listener to add.
+     */
+    void addListener(SessionListener listener);
+
+    /**
+     * Remove the given listener.
+     * 
+     * @param listener
+     *            listener to remove.
+     */
+    void removeListener(SessionListener listener);
+
+    /**
+     * Returns the interpreter to use with this session.
+     * 
+     * @return the interpreter to use with this session.
+     */
+    IInterpreter getInterpreter();
+
+    /**
+     * This methods create the cross referencer on demand.
+     * 
+     * @return a cross referencer adapter for the session semantic models.
+     */
+    ECrossReferenceAdapter getSemanticCrossReferencer();
+
+    /**
+     * return the services associated with the session.
+     * 
+     * @return the services associated with the session.
+     */
+    SessionService getServices();
+
+    /**
+     * Return the current session status.
+     * 
+     * @return the value of the current status.
+     * @since 2.0
+     */
+    SessionStatus getStatus();
+
+    /**
+     * Set the reloading policy to use for the session.
+     * 
+     * @param reloadingPolicy
+     *            the custom reloading policy the session should use.
+     * @since 2.6
+     */
+    void setReloadingPolicy(ReloadingPolicy reloadingPolicy);
+
+    /**
+     * Get the reloading policy used by the session.
+     * 
+     * @return the reloading policy used by the session.
+     * @since 2.9
+     */
+    ReloadingPolicy getReloadingPolicy();
+
+    /**
+     * Set the saving policy to use for the session.
+     * 
+     * @param savingPolicy
+     *            the custom saving policy the session should use.
+     * @since 2.7
+     */
+    void setSavingPolicy(SavingPolicy savingPolicy);
+
+    /**
+     * Return the session event broker suitable for identifying local or remote
+     * atomic changes.
+     * 
+     * @return the session event broker suitable for identifying local or remote
+     *         atomic changes.
+     * @since 3.0
+     */
+    SessionEventBroker getEventBroker();
+
+    /**
+     * Return the PrecommitListener suitable for refresh all opened Sirius
+     * editors.
+     * 
+     * @return the PrecommitListener suitable for refresh all opened Sirius
+     *         editors.
+     * @since 3.1
+     */
+    RefreshEditorsPrecommitListener getRefreshEditorsListener();
+}

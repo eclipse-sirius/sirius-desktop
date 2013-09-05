@@ -1,0 +1,27 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+icons/full/complete_task.gif - org.eclipse.emf.generic.editor - org.eclipse.emf.generic.editor/icons/complete_task.gif
+icons/full/decorator/diamond.gif - org.eclipse.sirius.editor - org.eclipse.sirius.editor/icons/full/decorator/diamond.gif
+icons/full/decorator/fillDiamond.gif - org.eclipse.sirius.editor - org.eclipse.sirius.editor/icons/full/decorator/fillDiamond.gif
+icons/full/decorator/inputArrow.gif - org.eclipse.sirius.editor - org.eclipse.sirius.editor/icons/full/decorator/inputArrow.gif
+icons/full/decorator/inputArrowWithDiamond.gif - org.eclipse.sirius.editor - org.eclipse.sirius.editor/icons/full/decorator/inputArrowWithDiamond.gif
+icons/full/decorator/inputArrowWithFillDiamond.gif - org.eclipse.sirius.editor - org.eclipse.sirius.editor/icons/full/decorator/inputArrowWithFillDiamond.gif
+icons/full/decorator/inputClosedArrow.gif - org.eclipse.sirius.editor - org.eclipse.sirius.editor/icons/full/decorator/inputClosedArrow.gif
+icons/full/decorator/inputFillClosedArrow.gif - org.eclipse.sirius.editor - org.eclipse.sirius.editor/icons/full/decorator/inputFillClosedArrow.gif
+icons/full/decorator/noDecoration.gif - org.eclipse.sirius.editor - org.eclipse.sirius.editor/icons/full/decorator/noDecoration.gif
+icons/full/decorator/outputArrow.gif - org.eclipse.sirius.editor - org.eclipse.sirius.editor/icons/full/decorator/outputArrow.gif
+icons/full/decorator/outputClosedArrow.gif - org.eclipse.sirius.editor - org.eclipse.sirius.editor/icons/full/decorator/outputClosedArrow.gif
+icons/full/decorator/outputFillClosedArrow.gif - org.eclipse.sirius.editor - org.eclipse.sirius.editor/icons/full/decorator/outputFillClosedArrow.gif
+icons/full/hcomplete_task.gif - org.eclipse.emf.generic.editor - org.eclipse.emf.generic.editor/icons/complete_task.gif
+icons/full/help.gif - org.eclipse.m2m.atl.adt.editor - org.eclipse.m2m.atl.adt.editor/icons/condition.gif
+icons/full/obj16/ModelFile.gif - org.eclipse.emf.cdo.security.edit - org.eclipse.emf.cdo.security.edit/icons/full/obj16/ResourcePermission.gif
+icons/full/obj16/SiriusSpecificationProject.gif - org.eclipse.ui - org.eclipse.ui/icons/obj16/prj_obj.gif
+icons/full/obj16/file_odesign.gif - org.eclipse.sirius.editor - org.eclipse.sirius.editor/icons/full/obj16/file_odesign.gif
+icons/full/obj16/folder.gif - org.eclipse.e4.ui.workbench.swt - org.eclipse.e4.ui.workbench.swt/icons/full/obj16/fldr_obj.gif
+icons/full/wizban/NewModel.gif - org.eclipse.emf.eef.codegen.ecore - org.eclipse.emf.eef.codegen.ecore/templates/editor/NewModel.gif
+icons/full/wizban/banner_odesign.png - org.eclipse.sirius.editor - org.eclipse.sirius.editor/icons/full/wizban/banner_odesign.png
+icons/full/wizban/banner_viewpoint_specification_project - org.eclipse.cdt.debug.ui - org.eclipse.cdt.debug.ui/icons/wizban/add_prj_source_location_wiz

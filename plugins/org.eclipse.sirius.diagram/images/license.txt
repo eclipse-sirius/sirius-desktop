@@ -1,0 +1,23 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+images/Go.gif - org.eclipse.birt.report.viewer - org.eclipse.birt.report.viewer/birt/webcontent/birt/images/Go.gif
+images/NotFound.png - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/images/NotFound.png
+images/NotFound.svg - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/images/NotFound.svg
+images/background/screen.png - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/images/screen.png
+images/carto.svg - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/images/carto.svg
+images/decorator_lock.png - org.eclipse.jdt.doc.user - org.eclipse.jdt.doc.user/images/org.eclipse.jdt.debug.ui/elcl16/deadlock_view.png
+images/decorator_lockWithoutTarget.png - org.eclipse.jdt.doc.user - org.eclipse.jdt.doc.user/images/org.eclipse.jdt.debug.ui/elcl16/deadlock_view.png
+images/dot.svg - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/images/dot.svg
+images/hide.gif - org.eclipse.ant.ui - org.eclipse.ant.ui/icons/full/dlcl16/filter_internal_targets.gif
+images/losange.svg - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/images/losange.svg
+images/png/* - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/images/*
+images/refresh.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/elcl16/refresh.gif
+images/reveal.gif - org.eclipse.ant.ui - org.eclipse.ant.ui/icons/full/obj16/targetinternal_obj.gif
+images/ring.svg - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/images/ring.svg
+images/square.svg - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/images/square.svg
+images/stroke.svg - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/images/stroke.svg
+images/triangle.svg - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/images/triangle.svg

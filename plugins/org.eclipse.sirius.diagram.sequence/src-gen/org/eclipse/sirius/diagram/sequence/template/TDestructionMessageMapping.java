@@ -1,0 +1,51 @@
+/*******************************************************************************
+ * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.sequence.template;
+
+import org.eclipse.emf.common.util.EList;
+
+/**
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>TDestruction Message Mapping</b></em>'. <!-- end-user-doc -->
+ * 
+ * <p>
+ * The following features are supported:
+ * <ul>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.sequence.template.TDestructionMessageMapping#getTarget
+ * <em>Target</em>}</li>
+ * </ul>
+ * </p>
+ * 
+ * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTDestructionMessageMapping()
+ * @model
+ * @generated
+ */
+public interface TDestructionMessageMapping extends TSourceTargetMessageMapping {
+
+    /**
+     * Returns the value of the '<em><b>Target</b></em>' reference list. The
+     * list contents are of type
+     * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineMapping}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Target</em>' reference list isn't clear, there
+     * really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Target</em>' reference list.
+     * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTDestructionMessageMapping_Target()
+     * @model required="true"
+     * @generated
+     */
+    EList<TLifelineMapping> getTarget();
+} // TDestructionMessageMapping

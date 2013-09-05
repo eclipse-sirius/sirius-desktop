@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+  Copyright (c) 2007, 2008 THALES GLOBAL SERVICES
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://www.eclipse.org/sirius/table/1.1.0"
+            class="org.eclipse.sirius.table.metamodel.table.provider.TableItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://www.eclipse.org/sirius/table/description/1.1.0"
+            class="org.eclipse.sirius.table.metamodel.table.description.provider.DescriptionItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension
+         point="org.eclipse.sirius.ui.dialectui">
+      <dialectUI
+            class="org.eclipse.sirius.table.ui.business.internal.dialect.TableDialectUI">
+      </dialectUI>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            class="org.eclipse.sirius.table.ui.tools.internal.editor.DTableEditionEditor"
+            contributorClass="org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableActionBarContributor"
+            default="true"
+            extensions="dtable"
+            icon="icons/full/obj16/EditionTableDescription.gif"
+            id="org.eclipse.sirius.table.ui.EditionTableEditorID"
+            name="EditionTable editor">
+      </editor>
+      <editor
+            class="org.eclipse.sirius.table.ui.tools.internal.editor.DTableCrossEditor"
+            contributorClass="org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableActionBarContributor"
+            default="false"
+            extensions="dtable"
+            icon="icons/full/obj16/CrossTableDescription.gif"
+            id="org.eclipse.sirius.table.ui.CrossTableEditorID"
+            name="CrossTable editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editorActions">
+      <editorContribution
+            id="org.eclipse.sirius.table.ui.editionTableEditorID.actions"
+            targetID="org.eclipse.sirius.table.ui.EditionTableEditorID">
+         <menu
+               id="org.eclipse.sirius.table.ui.EditorID.actions.DTable"
+               label="DTable"
+               path="additions">
+            <separator
+                  name="column">
+            </separator>
+            <separator
+                  name="separator1">
+            </separator>
+            <separator
+                  name="line">
+            </separator>
+            <separator
+                  name="separator2">
+            </separator>
+            <separator
+                  name="refresh">
+            </separator>
+         </menu>
+         <action
+               class="org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorRefreshAction"
+               icon="icons/table/refresh.gif"
+               id="org.eclipse.sirius.table.ui.refresh"
+               label="Refresh"
+               menubarPath="org.eclipse.sirius.table.ui.EditorID.actions.DTable/refresh"
+               toolbarPath="Normal/additions"
+               tooltip="Force a refresh of the table">
+         </action>
+      </editorContribution>
+      <editorContribution
+            id="org.eclipse.sirius.table.ui.crossTableEditorID.actions"
+            targetID="org.eclipse.sirius.table.ui.CrossTableEditorID">
+         <menu
+               id="org.eclipse.sirius.table.ui.EditorID.actions.DTable"
+               label="DTable"
+               path="additions">
+            <separator
+                  name="column">
+            </separator>
+            <separator
+                  name="separator1">
+            </separator>
+            <separator
+                  name="line">
+            </separator>
+            <separator
+                  name="separator2">
+            </separator>
+            <separator
+                  name="refresh">
+            </separator>
+         </menu>
+         <action
+               class="org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorRefreshAction"
+               icon="icons/table/refresh.gif"
+               id="org.eclipse.sirius.table.ui.refresh"
+               label="Refresh"
+               menubarPath="org.eclipse.sirius.table.ui.EditorID.actions.DTable/refresh"
+               toolbarPath="Normal/additions"
+               tooltip="Force a refresh of the table">
+         </action>
+      </editorContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="org.eclipse.sirius.table.ui.EditorID"
+            labelProvider="org.eclipse.sirius.ui.tools.api.provider.DTableLabelProvider">
+         <propertyCategory
+               category="default">
+         </propertyCategory>
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.sirius.table.ui.EditorID">
+         <propertyTab
+               category="default"
+               id="org.eclipse.sirius.table.ui.tab.default"
+               label="default">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.sirius.table.ui.EditorID">
+         <propertyTab
+               afterTab="org.eclipse.sirius.table.ui.tab.default"
+               category="default"
+               id="org.eclipse.sirius.table.ui.tab.semantic"
+               label="Semantic">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.sirius.table.ui.EditorID">
+         <propertyTab
+               afterTab="org.eclipse.sirius.table.ui.tab.semantic"
+               category="default"
+               id="org.eclipse.sirius.table.ui.tab.style"
+               label="Style">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="org.eclipse.sirius.table.ui.EditorID">
+         <propertySection
+               class="org.eclipse.sirius.table.ui.tools.internal.properties.section.style.StylePropertySection"
+               id="org.eclipse.sirius.table.ui.section.style"
+               tab="org.eclipse.sirius.table.ui.tab.style">
+            <input
+                  type="org.eclipse.sirius.table.metamodel.table.DCell">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.sirius.table.ui.tools.internal.properties.section.semantic.SemanticPropertySection"
+               id="org.eclipse.sirius.table.ui.section.semantic"
+               tab="org.eclipse.sirius.table.ui.tab.semantic">
+            <input
+                  type="org.eclipse.sirius.table.metamodel.table.DLine">
+            </input>
+            <input
+                  type="org.eclipse.sirius.table.metamodel.table.DCell">
+            </input>
+            <input
+                  type="org.eclipse.sirius.table.metamodel.table.DTargetColumn">
+            </input>
+         </propertySection>
+      </propertySections>
+   </extension>
+   <extension
+         point="org.eclipse.ui.contexts">
+      <context
+            description="%DTableContext.description"
+            id="org.eclipse.sirius.table.ui.EditorID.tableContext"
+            name="%DTableContext.name"
+            parentId="org.eclipse.ui.contexts.window">
+      </context>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            defaultHandler="org.eclipse.sirius.table.ui.tools.internal.export.ExportToCsvHandler"
+            id="org.eclipse.sirius.table.ui.exportToCsv"
+            name="Export to CSV">
+      </command>
+   </extension>
+</plugin>

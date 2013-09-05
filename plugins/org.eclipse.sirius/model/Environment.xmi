@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Environment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 viewpoint.ecore#//description http://www.eclipse.org/sirius/description/tool/1.1.0 viewpoint.ecore#//description/tool">
+  <systemColors>
+    <entries red="255" green="255" blue="255" name="white"/>
+    <entries red="0" green="0" blue="0" name="black"/>
+    <entries red="114" green="159" blue="207" name="blue"/>
+    <entries red="233" green="185" blue="110" name="chocolate"/>
+    <entries red="136" green="136" blue="136" name="gray"/>
+    <entries red="138" green="226" blue="52" name="green"/>
+    <entries red="252" green="175" blue="62" name="orange"/>
+    <entries red="173" green="127" blue="168" name="purple"/>
+    <entries red="239" green="41" blue="41" name="red"/>
+    <entries red="252" green="233" blue="79" name="yellow"/>
+    <entries red="194" green="239" blue="255" name="light_blue"/>
+    <entries red="238" green="201" blue="142" name="light_chocolate"/>
+    <entries red="209" green="209" blue="209" name="light_gray"/>
+    <entries red="204" green="242" blue="166" name="light_green"/>
+    <entries red="253" green="206" blue="137" name="light_orange"/>
+    <entries red="217" green="196" blue="215" name="light_purple"/>
+    <entries red="246" green="139" blue="139" name="light_red"/>
+    <entries red="255" green="245" blue="181" name="light_yellow"/>
+    <entries red="39" green="76" blue="114" name="dark_blue"/>
+    <entries red="154" green="103" blue="23" name="dark_chocolate"/>
+    <entries red="69" green="69" blue="69" name="dark_gray"/>
+    <entries red="77" green="137" blue="20" name="dark_green"/>
+    <entries red="224" green="133" blue="3" name="dark_orange"/>
+    <entries red="114" green="73" blue="110" name="dark_purple"/>
+    <entries red="156" green="12" blue="12" name="dark_red"/>
+    <entries red="214" green="197" blue="66" name="dark_yellow"/>
+  </systemColors>
+  <defaultTools xsi:type="tool:ToolGroup" name="Pinning">
+    <tools xsi:type="tool:ToolDescription" documentation="Mark element as pinned" name="Pin" iconPath="/org.eclipse.sirius.diagram/icons/pin.gif">
+      <element name="element"/>
+      <elementView name="elementView"/>
+      <initialOperation>
+        <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Pin" id="org.eclipse.sirius.diagram.tools.internal.actions.pinning.pinElementsActionId">
+          <parameters name="view" value="&lt;%$elementView%>"/>
+        </firstModelOperations>
+      </initialOperation>
+    </tools>
+    <tools xsi:type="tool:ToolDescription" documentation="Mark element as un-pinned" name="Unpin" iconPath="/org.eclipse.sirius.diagram/icons/unpin.gif">
+      <element name="element"/>
+      <elementView name="elementView"/>
+      <initialOperation>
+        <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Unpin" id="org.eclipse.sirius.diagram.tools.internal.actions.pinning.unpinElementsActionId">
+          <parameters name="view" value="&lt;%$elementView%>"/>
+        </firstModelOperations>
+      </initialOperation>
+    </tools>
+  </defaultTools>
+  <labelBorderStyles>
+    <labelBorderStyleDescriptions id="labelBorderStyleWithBeveledCorner" name="Label Border Style With Beveled Corner" cornerHeight="5" cornerWidth="5"/>
+  </labelBorderStyles>
+</description:Environment>

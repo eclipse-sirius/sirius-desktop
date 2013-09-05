@@ -1,0 +1,955 @@
+/*******************************************************************************
+ * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.tree;
+
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+
+import org.eclipse.sirius.SiriusPackage;
+
+/**
+ * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
+ * accessors for the meta objects to represent
+ * <ul>
+ * <li>each class,</li>
+ * <li>each feature of each class,</li>
+ * <li>each enum,</li>
+ * <li>and each data type</li>
+ * </ul>
+ * <!-- end-user-doc -->
+ * 
+ * @see org.eclipse.sirius.tree.TreeFactory
+ * @model kind="package"
+ * @generated
+ */
+public interface TreePackage extends EPackage {
+    /**
+     * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    String eNAME = "tree";
+
+    /**
+     * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    String eNS_URI = "http://www.eclipse.org/sirius/tree/1.0.0";
+
+    /**
+     * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    String eNS_PREFIX = "tree";
+
+    /**
+     * The singleton instance of the package. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     */
+    TreePackage eINSTANCE = org.eclipse.sirius.tree.impl.TreePackageImpl.init();
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.tree.impl.DTreeItemContainerImpl
+     * <em>DTree Item Container</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.tree.impl.DTreeItemContainerImpl
+     * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeItemContainer()
+     * @generated
+     */
+    int DTREE_ITEM_CONTAINER = 3;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.tree.impl.DTreeImpl <em>DTree</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.tree.impl.DTreeImpl
+     * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTree()
+     * @generated
+     */
+    int DTREE = 0;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE__DOCUMENTATION = SiriusPackage.DREPRESENTATION__DOCUMENTATION;
+
+    /**
+     * The feature id for the '<em><b>EAnnotations</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE__EANNOTATIONS = SiriusPackage.DREPRESENTATION__EANNOTATIONS;
+
+    /**
+     * The feature id for the '<em><b>Owned Representation Elements</b></em>'
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE__OWNED_REPRESENTATION_ELEMENTS = SiriusPackage.DREPRESENTATION__OWNED_REPRESENTATION_ELEMENTS;
+
+    /**
+     * The feature id for the '<em><b>Representation Elements</b></em>'
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE__REPRESENTATION_ELEMENTS = SiriusPackage.DREPRESENTATION__REPRESENTATION_ELEMENTS;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE__NAME = SiriusPackage.DREPRESENTATION__NAME;
+
+    /**
+     * The feature id for the '<em><b>Owned Annotation Entries</b></em>'
+     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE__OWNED_ANNOTATION_ENTRIES = SiriusPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES;
+
+    /**
+     * The feature id for the '<em><b>Target</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE__TARGET = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Owned Tree Items</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE__OWNED_TREE_ITEMS = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Semantic Elements</b></em>' reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE__SEMANTIC_ELEMENTS = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Description</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE__DESCRIPTION = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 3;
+
+    /**
+     * The number of structural features of the '<em>DTree</em>' class. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_FEATURE_COUNT = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 4;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.tree.impl.DTreeElementUpdaterImpl
+     * <em>DTree Element Updater</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.tree.impl.DTreeElementUpdaterImpl
+     * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeElementUpdater()
+     * @generated
+     */
+    int DTREE_ELEMENT_UPDATER = 1;
+
+    /**
+     * The number of structural features of the '<em>DTree Element Updater</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ELEMENT_UPDATER_FEATURE_COUNT = 0;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.tree.impl.DTreeElementImpl
+     * <em>DTree Element</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @see org.eclipse.sirius.tree.impl.DTreeElementImpl
+     * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeElement()
+     * @generated
+     */
+    int DTREE_ELEMENT = 2;
+
+    /**
+     * The feature id for the '<em><b>Target</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ELEMENT__TARGET = SiriusPackage.DREPRESENTATION_ELEMENT__TARGET;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ELEMENT__NAME = SiriusPackage.DREPRESENTATION_ELEMENT__NAME;
+
+    /**
+     * The feature id for the '<em><b>Semantic Elements</b></em>' reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ELEMENT__SEMANTIC_ELEMENTS = SiriusPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS;
+
+    /**
+     * The feature id for the '<em><b>Tree Element Mapping</b></em>' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ELEMENT__TREE_ELEMENT_MAPPING = SiriusPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '<em>DTree Element</em>' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ELEMENT_FEATURE_COUNT = SiriusPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Target</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM_CONTAINER__TARGET = SiriusPackage.DSEMANTIC_DECORATOR__TARGET;
+
+    /**
+     * The feature id for the '<em><b>Owned Tree Items</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM_CONTAINER__OWNED_TREE_ITEMS = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '<em>DTree Item Container</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM_CONTAINER_FEATURE_COUNT = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 1;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.tree.impl.DTreeItemImpl <em>DTree Item</em>}
+     * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.tree.impl.DTreeItemImpl
+     * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeItem()
+     * @generated
+     */
+    int DTREE_ITEM = 4;
+
+    /**
+     * The feature id for the '<em><b>Target</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM__TARGET = DTREE_ITEM_CONTAINER__TARGET;
+
+    /**
+     * The feature id for the '<em><b>Owned Tree Items</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM__OWNED_TREE_ITEMS = DTREE_ITEM_CONTAINER__OWNED_TREE_ITEMS;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM__NAME = DTREE_ITEM_CONTAINER_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Semantic Elements</b></em>' reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM__SEMANTIC_ELEMENTS = DTREE_ITEM_CONTAINER_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Tree Element Mapping</b></em>' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM__TREE_ELEMENT_MAPPING = DTREE_ITEM_CONTAINER_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Expanded</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM__EXPANDED = DTREE_ITEM_CONTAINER_FEATURE_COUNT + 3;
+
+    /**
+     * The feature id for the '<em><b>Owned Style</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM__OWNED_STYLE = DTREE_ITEM_CONTAINER_FEATURE_COUNT + 4;
+
+    /**
+     * The feature id for the '<em><b>Actual Mapping</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM__ACTUAL_MAPPING = DTREE_ITEM_CONTAINER_FEATURE_COUNT + 5;
+
+    /**
+     * The feature id for the '<em><b>Container</b></em>' container reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM__CONTAINER = DTREE_ITEM_CONTAINER_FEATURE_COUNT + 6;
+
+    /**
+     * The feature id for the '<em><b>Style Updater</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM__STYLE_UPDATER = DTREE_ITEM_CONTAINER_FEATURE_COUNT + 7;
+
+    /**
+     * The feature id for the '<em><b>Updater</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM__UPDATER = DTREE_ITEM_CONTAINER_FEATURE_COUNT + 8;
+
+    /**
+     * The number of structural features of the '<em>DTree Item</em>' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ITEM_FEATURE_COUNT = DTREE_ITEM_CONTAINER_FEATURE_COUNT + 9;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl
+     * <em>Item Style</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @see org.eclipse.sirius.tree.impl.TreeItemStyleImpl
+     * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getTreeItemStyle()
+     * @generated
+     */
+    int TREE_ITEM_STYLE = 5;
+
+    /**
+     * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_STYLE__CUSTOM_FEATURES = SiriusPackage.STYLE__CUSTOM_FEATURES;
+
+    /**
+     * The feature id for the '<em><b>Description</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_STYLE__DESCRIPTION = SiriusPackage.STYLE__DESCRIPTION;
+
+    /**
+     * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_STYLE__LABEL_SIZE = SiriusPackage.STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_STYLE__LABEL_FORMAT = SiriusPackage.STYLE_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_STYLE__SHOW_ICON = SiriusPackage.STYLE_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_STYLE__LABEL_COLOR = SiriusPackage.STYLE_FEATURE_COUNT + 3;
+
+    /**
+     * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_STYLE__ICON_PATH = SiriusPackage.STYLE_FEATURE_COUNT + 4;
+
+    /**
+     * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_STYLE__LABEL_ALIGNMENT = SiriusPackage.STYLE_FEATURE_COUNT + 5;
+
+    /**
+     * The feature id for the '<em><b>Background Color</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_STYLE__BACKGROUND_COLOR = SiriusPackage.STYLE_FEATURE_COUNT + 6;
+
+    /**
+     * The number of structural features of the '<em>Item Style</em>' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_STYLE_FEATURE_COUNT = SiriusPackage.STYLE_FEATURE_COUNT + 7;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.tree.impl.DTreeElementSynchronizerImpl
+     * <em>DTree Element Synchronizer</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.tree.impl.DTreeElementSynchronizerImpl
+     * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeElementSynchronizer()
+     * @generated
+     */
+    int DTREE_ELEMENT_SYNCHRONIZER = 6;
+
+    /**
+     * The number of structural features of the '
+     * <em>DTree Element Synchronizer</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTREE_ELEMENT_SYNCHRONIZER_FEATURE_COUNT = 0;
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.tree.DTreeItemContainer
+     * <em>DTree Item Container</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for class '<em>DTree Item Container</em>'.
+     * @see org.eclipse.sirius.tree.DTreeItemContainer
+     * @generated
+     */
+    EClass getDTreeItemContainer();
+
+    /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.tree.DTreeItemContainer#getOwnedTreeItems
+     * <em>Owned Tree Items</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @return the meta object for the containment reference list '
+     *         <em>Owned Tree Items</em>'.
+     * @see org.eclipse.sirius.tree.DTreeItemContainer#getOwnedTreeItems()
+     * @see #getDTreeItemContainer()
+     * @generated
+     */
+    EReference getDTreeItemContainer_OwnedTreeItems();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.tree.DTree <em>DTree</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '<em>DTree</em>'.
+     * @see org.eclipse.sirius.tree.DTree
+     * @generated
+     */
+    EClass getDTree();
+
+    /**
+     * Returns the meta object for the reference list '
+     * {@link org.eclipse.sirius.tree.DTree#getSemanticElements
+     * <em>Semantic Elements</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @return the meta object for the reference list '
+     *         <em>Semantic Elements</em>'.
+     * @see org.eclipse.sirius.tree.DTree#getSemanticElements()
+     * @see #getDTree()
+     * @generated
+     */
+    EReference getDTree_SemanticElements();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.tree.DTree#getDescription
+     * <em>Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the reference '<em>Description</em>'.
+     * @see org.eclipse.sirius.tree.DTree#getDescription()
+     * @see #getDTree()
+     * @generated
+     */
+    EReference getDTree_Description();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.tree.DTreeElementUpdater
+     * <em>DTree Element Updater</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for class '<em>DTree Element Updater</em>'.
+     * @see org.eclipse.sirius.tree.DTreeElementUpdater
+     * @generated
+     */
+    EClass getDTreeElementUpdater();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.tree.DTreeElement <em>DTree Element</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '<em>DTree Element</em>'.
+     * @see org.eclipse.sirius.tree.DTreeElement
+     * @generated
+     */
+    EClass getDTreeElement();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.tree.DTreeElement#getTreeElementMapping
+     * <em>Tree Element Mapping</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the reference '<em>Tree Element Mapping</em>
+     *         '.
+     * @see org.eclipse.sirius.tree.DTreeElement#getTreeElementMapping()
+     * @see #getDTreeElement()
+     * @generated
+     */
+    EReference getDTreeElement_TreeElementMapping();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.tree.DTreeItem <em>DTree Item</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '<em>DTree Item</em>'.
+     * @see org.eclipse.sirius.tree.DTreeItem
+     * @generated
+     */
+    EClass getDTreeItem();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.tree.DTreeItem#isExpanded <em>Expanded</em>}
+     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Expanded</em>'.
+     * @see org.eclipse.sirius.tree.DTreeItem#isExpanded()
+     * @see #getDTreeItem()
+     * @generated
+     */
+    EAttribute getDTreeItem_Expanded();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.tree.DTreeItem#getOwnedStyle
+     * <em>Owned Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '
+     *         <em>Owned Style</em>'.
+     * @see org.eclipse.sirius.tree.DTreeItem#getOwnedStyle()
+     * @see #getDTreeItem()
+     * @generated
+     */
+    EReference getDTreeItem_OwnedStyle();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.tree.DTreeItem#getActualMapping
+     * <em>Actual Mapping</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the reference '<em>Actual Mapping</em>'.
+     * @see org.eclipse.sirius.tree.DTreeItem#getActualMapping()
+     * @see #getDTreeItem()
+     * @generated
+     */
+    EReference getDTreeItem_ActualMapping();
+
+    /**
+     * Returns the meta object for the container reference '
+     * {@link org.eclipse.sirius.tree.DTreeItem#getContainer
+     * <em>Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the container reference '<em>Container</em>'.
+     * @see org.eclipse.sirius.tree.DTreeItem#getContainer()
+     * @see #getDTreeItem()
+     * @generated
+     */
+    EReference getDTreeItem_Container();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.tree.DTreeItem#getStyleUpdater
+     * <em>Style Updater</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the reference '<em>Style Updater</em>'.
+     * @see org.eclipse.sirius.tree.DTreeItem#getStyleUpdater()
+     * @see #getDTreeItem()
+     * @generated
+     */
+    EReference getDTreeItem_StyleUpdater();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.tree.DTreeItem#getUpdater <em>Updater</em>}
+     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the reference '<em>Updater</em>'.
+     * @see org.eclipse.sirius.tree.DTreeItem#getUpdater()
+     * @see #getDTreeItem()
+     * @generated
+     */
+    EReference getDTreeItem_Updater();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.tree.TreeItemStyle <em>Item Style</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Item Style</em>'.
+     * @see org.eclipse.sirius.tree.TreeItemStyle
+     * @generated
+     */
+    EClass getTreeItemStyle();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.tree.TreeItemStyle#getBackgroundColor
+     * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @return the meta object for the containment reference '
+     *         <em>Background Color</em>'.
+     * @see org.eclipse.sirius.tree.TreeItemStyle#getBackgroundColor()
+     * @see #getTreeItemStyle()
+     * @generated
+     */
+    EReference getTreeItemStyle_BackgroundColor();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.tree.DTreeElementSynchronizer
+     * <em>DTree Element Synchronizer</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for class '<em>DTree Element Synchronizer</em>'.
+     * @see org.eclipse.sirius.tree.DTreeElementSynchronizer
+     * @generated
+     */
+    EClass getDTreeElementSynchronizer();
+
+    /**
+     * Returns the factory that creates the instances of the model. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the factory that creates the instances of the model.
+     * @generated
+     */
+    TreeFactory getTreeFactory();
+
+    /**
+     * <!-- begin-user-doc --> Defines literals for the meta objects that
+     * represent
+     * <ul>
+     * <li>each class,</li>
+     * <li>each feature of each class,</li>
+     * <li>each enum,</li>
+     * <li>and each data type</li>
+     * </ul>
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    interface Literals {
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.tree.impl.DTreeItemContainerImpl
+         * <em>DTree Item Container</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.tree.impl.DTreeItemContainerImpl
+         * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeItemContainer()
+         * @generated
+         */
+        EClass DTREE_ITEM_CONTAINER = eINSTANCE.getDTreeItemContainer();
+
+        /**
+         * The meta object literal for the '<em><b>Owned Tree Items</b></em>'
+         * containment reference list feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference DTREE_ITEM_CONTAINER__OWNED_TREE_ITEMS = eINSTANCE.getDTreeItemContainer_OwnedTreeItems();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.tree.impl.DTreeImpl <em>DTree</em>}'
+         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.tree.impl.DTreeImpl
+         * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTree()
+         * @generated
+         */
+        EClass DTREE = eINSTANCE.getDTree();
+
+        /**
+         * The meta object literal for the '<em><b>Semantic Elements</b></em>'
+         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference DTREE__SEMANTIC_ELEMENTS = eINSTANCE.getDTree_SemanticElements();
+
+        /**
+         * The meta object literal for the '<em><b>Description</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference DTREE__DESCRIPTION = eINSTANCE.getDTree_Description();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.tree.impl.DTreeElementUpdaterImpl
+         * <em>DTree Element Updater</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.tree.impl.DTreeElementUpdaterImpl
+         * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeElementUpdater()
+         * @generated
+         */
+        EClass DTREE_ELEMENT_UPDATER = eINSTANCE.getDTreeElementUpdater();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.tree.impl.DTreeElementImpl
+         * <em>DTree Element</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.tree.impl.DTreeElementImpl
+         * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeElement()
+         * @generated
+         */
+        EClass DTREE_ELEMENT = eINSTANCE.getDTreeElement();
+
+        /**
+         * The meta object literal for the '<em><b>Tree Element Mapping</b></em>
+         * ' reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference DTREE_ELEMENT__TREE_ELEMENT_MAPPING = eINSTANCE.getDTreeElement_TreeElementMapping();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.tree.impl.DTreeItemImpl
+         * <em>DTree Item</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.tree.impl.DTreeItemImpl
+         * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeItem()
+         * @generated
+         */
+        EClass DTREE_ITEM = eINSTANCE.getDTreeItem();
+
+        /**
+         * The meta object literal for the '<em><b>Expanded</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute DTREE_ITEM__EXPANDED = eINSTANCE.getDTreeItem_Expanded();
+
+        /**
+         * The meta object literal for the '<em><b>Owned Style</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference DTREE_ITEM__OWNED_STYLE = eINSTANCE.getDTreeItem_OwnedStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Actual Mapping</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference DTREE_ITEM__ACTUAL_MAPPING = eINSTANCE.getDTreeItem_ActualMapping();
+
+        /**
+         * The meta object literal for the '<em><b>Container</b></em>' container
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference DTREE_ITEM__CONTAINER = eINSTANCE.getDTreeItem_Container();
+
+        /**
+         * The meta object literal for the '<em><b>Style Updater</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference DTREE_ITEM__STYLE_UPDATER = eINSTANCE.getDTreeItem_StyleUpdater();
+
+        /**
+         * The meta object literal for the '<em><b>Updater</b></em>' reference
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference DTREE_ITEM__UPDATER = eINSTANCE.getDTreeItem_Updater();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl
+         * <em>Item Style</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.tree.impl.TreeItemStyleImpl
+         * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getTreeItemStyle()
+         * @generated
+         */
+        EClass TREE_ITEM_STYLE = eINSTANCE.getTreeItemStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Background Color</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference TREE_ITEM_STYLE__BACKGROUND_COLOR = eINSTANCE.getTreeItemStyle_BackgroundColor();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.tree.impl.DTreeElementSynchronizerImpl
+         * <em>DTree Element Synchronizer</em>}' class. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.tree.impl.DTreeElementSynchronizerImpl
+         * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeElementSynchronizer()
+         * @generated
+         */
+        EClass DTREE_ELEMENT_SYNCHRONIZER = eINSTANCE.getDTreeElementSynchronizer();
+
+    }
+
+} // TreePackage

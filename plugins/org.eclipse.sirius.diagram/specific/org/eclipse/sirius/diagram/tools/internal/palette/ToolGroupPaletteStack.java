@@ -1,0 +1,67 @@
+/*******************************************************************************
+ * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.tools.internal.palette;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.eclipse.gef.palette.PaletteStack;
+
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.description.Layer;
+
+/**
+ * A palette drawer associated to a section.
+ * 
+ * @author mchauvin
+ */
+public class ToolGroupPaletteStack extends PaletteStack implements ILayerContributionRegister {
+    private Set<Layer> contributingLayers = new HashSet<Layer>();
+
+    /**
+     * Construct a new palette stack.
+     * 
+     * @param name
+     *            the name
+     */
+    public ToolGroupPaletteStack(final String name) {
+        super(name, null, null);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.diagram.tools.internal.palette.ILayerContributionRegister#addLayer(org.eclipse.sirius.description.Layer)
+     */
+    public void addLayer(final Layer layer) {
+        if (!EqualityHelper.contains(contributingLayers, layer)) {
+            contributingLayers.add(layer);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.diagram.tools.internal.palette.ILayerContributionRegister#removeLayer(org.eclipse.sirius.description.Layer)
+     */
+    public void removeLayer(final Layer layer) {
+        EqualityHelper.remove(contributingLayers, layer);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.diagram.tools.internal.palette.ILayerContributionRegister#isEmptyOfContributors()
+     */
+    public boolean isEmptyOfContributors() {
+        return contributingLayers.isEmpty();
+    }
+}

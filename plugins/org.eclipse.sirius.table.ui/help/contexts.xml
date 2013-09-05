@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   <context id="DTable">
+      <description>
+      
+   <!-- Start of user code DTable description -->
+   
+   <!-- End of user code DTable description -->
+      </description>
+   
+   </context>
+   <context id="DTableElementUpdater">
+      <description>
+      
+   <!-- Start of user code DTableElementUpdater description -->
+   
+   <!-- End of user code DTableElementUpdater description -->
+      </description>
+   
+   </context>
+   <context id="DTableElement">
+      <description>
+      
+   <!-- Start of user code DTableElement description -->
+   
+   <!-- End of user code DTableElement description -->
+      </description>
+   
+   </context>
+   <context id="LineContainer">
+      <description>
+      
+   <!-- Start of user code LineContainer description -->
+   
+   <!-- End of user code LineContainer description -->
+      </description>
+   
+   </context>
+   <context id="DLine">
+      <description>
+      
+   <!-- Start of user code DLine description -->
+   
+   <!-- End of user code DLine description -->
+      </description>
+   
+   </context>
+   <context id="DCell">
+      <description>
+      
+   <!-- Start of user code DCell description -->
+   
+   <!-- End of user code DCell description -->
+      </description>
+   
+   </context>
+   <context id="DCellStyle">
+      <description>
+      
+   <!-- Start of user code DCellStyle description -->
+   
+   <!-- End of user code DCellStyle description -->
+      </description>
+   
+   </context>
+   <context id="DColumn">
+      <description>
+      
+   <!-- Start of user code DColumn description -->
+   
+   <!-- End of user code DColumn description -->
+      </description>
+   
+   </context>
+   <context id="DTargetColumn">
+      <description>
+      
+   <!-- Start of user code DTargetColumn description -->
+   
+   <!-- End of user code DTargetColumn description -->
+      </description>
+   
+   </context>
+   <context id="DFeatureColumn">
+      <description>
+      
+   <!-- Start of user code DFeatureColumn description -->
+   
+   <!-- End of user code DFeatureColumn description -->
+      </description>
+   
+   </context>
+   <context id="DTableElementSynchronizer">
+      <description>
+      
+   <!-- Start of user code DTableElementSynchronizer description -->
+   
+   <!-- End of user code DTableElementSynchronizer description -->
+      </description>
+   
+   </context>
+   <context id="TableDescription">
+      <description>
+      
+   <!-- Start of user code TableDescription description -->
+   
+   <!-- End of user code TableDescription description -->
+      </description>
+   
+   </context>
+   <context id="EditionTableDescription">
+      <description>
+      
+   <!-- Start of user code EditionTableDescription description -->
+   
+   <!-- End of user code EditionTableDescription description -->
+      </description>
+   
+   </context>
+   <context id="CrossTableDescription">
+      <description>
+      
+   <!-- Start of user code CrossTableDescription description -->
+   
+   <!-- End of user code CrossTableDescription description -->
+      </description>
+   
+   </context>
+   <context id="TableMapping">
+      <description>
+      
+   <!-- Start of user code TableMapping description -->
+   
+   <!-- End of user code TableMapping description -->
+      </description>
+   
+   </context>
+   <context id="LineMapping">
+      <description>
+      
+   <!-- Start of user code LineMapping description -->
+   
+   <!-- End of user code LineMapping description -->
+      </description>
+   
+   </context>
+   <context id="ColumnMapping">
+      <description>
+      
+   <!-- Start of user code ColumnMapping description -->
+   
+   <!-- End of user code ColumnMapping description -->
+      </description>
+   
+   </context>
+   <context id="ElementColumnMapping">
+      <description>
+      
+   <!-- Start of user code ElementColumnMapping description -->
+   
+   <!-- End of user code ElementColumnMapping description -->
+      </description>
+   
+   </context>
+   <context id="FeatureColumnMapping">
+      <description>
+      
+   <!-- Start of user code FeatureColumnMapping description -->
+   
+   <!-- End of user code FeatureColumnMapping description -->
+      </description>
+   
+   </context>
+   <context id="CellUpdater">
+      <description>
+      
+   <!-- Start of user code CellUpdater description -->
+   
+   <!-- End of user code CellUpdater description -->
+      </description>
+   
+   </context>
+   <context id="StyleUpdater">
+      <description>
+      
+   <!-- Start of user code StyleUpdater description -->
+   
+   <!-- End of user code StyleUpdater description -->
+      </description>
+   
+   </context>
+   <context id="IntersectionMapping">
+      <description>
+      
+   <!-- Start of user code IntersectionMapping description -->
+   
+   <!-- End of user code IntersectionMapping description -->
+      </description>
+   
+   </context>
+   <context id="TableTool">
+      <description>
+      
+   <!-- Start of user code TableTool description -->
+   
+   <!-- End of user code TableTool description -->
+      </description>
+   
+   </context>
+   <context id="LabelEditTool">
+      <description>
+      
+   <!-- Start of user code LabelEditTool description -->
+   
+   <!-- End of user code LabelEditTool description -->
+      </description>
+   
+   </context>
+   <context id="CreateTool">
+      <description>
+      List of the variables available:
+           - variables : 
+
+   <!-- Start of user code CreateTool description -->
+   
+   <!-- End of user code CreateTool description -->
+      </description>
+   
+   </context>
+   <context id="CreateColumnTool">
+      <description>
+      
+   <!-- Start of user code CreateColumnTool description -->
+   
+   <!-- End of user code CreateColumnTool description -->
+      </description>
+   
+   </context>
+   <context id="CreateCrossColumnTool">
+      <description>
+      
+   <!-- Start of user code CreateCrossColumnTool description -->
+   
+   <!-- End of user code CreateCrossColumnTool description -->
+      </description>
+   
+   </context>
+   <context id="CreateLineTool">
+      <description>
+      
+   <!-- Start of user code CreateLineTool description -->
+   
+   <!-- End of user code CreateLineTool description -->
+      </description>
+   
+   </context>
+   <context id="CreateCellTool">
+      <description>
+      List of the variables available:
+           - variables : 
+
+   <!-- Start of user code CreateCellTool description -->
+   
+   <!-- End of user code CreateCellTool description -->
+      </description>
+   
+   </context>
+   <context id="DeleteTool">
+      <description>
+      List of the variables available:
+           - variables : 
+
+   <!-- Start of user code DeleteTool description -->
+   
+   <!-- End of user code DeleteTool description -->
+      </description>
+   
+   </context>
+   <context id="DeleteColumnTool">
+      <description>
+      
+   <!-- Start of user code DeleteColumnTool description -->
+   
+   <!-- End of user code DeleteColumnTool description -->
+      </description>
+   
+   </context>
+   <context id="DeleteLineTool">
+      <description>
+      
+   <!-- Start of user code DeleteLineTool description -->
+   
+   <!-- End of user code DeleteLineTool description -->
+      </description>
+   
+   </context>
+   <context id="ForegroundStyleDescription">
+      <description>
+      
+   <!-- Start of user code ForegroundStyleDescription description -->
+   
+   <!-- End of user code ForegroundStyleDescription description -->
+      </description>
+   
+   </context>
+   <context id="BackgroundStyleDescription">
+      <description>
+      
+   <!-- Start of user code BackgroundStyleDescription description -->
+   
+   <!-- End of user code BackgroundStyleDescription description -->
+      </description>
+   
+   </context>
+   <context id="ForegroundConditionalStyle">
+      <description>
+      
+   <!-- Start of user code ForegroundConditionalStyle description -->
+   
+   <!-- End of user code ForegroundConditionalStyle description -->
+      </description>
+   
+   </context>
+   <context id="BackgroundConditionalStyle">
+      <description>
+      
+   <!-- Start of user code BackgroundConditionalStyle description -->
+   
+   <!-- End of user code BackgroundConditionalStyle description -->
+      </description>
+   
+   </context>
+   <context id="TableVariable">
+      <description>
+      
+   <!-- Start of user code TableVariable description -->
+   
+   <!-- End of user code TableVariable description -->
+      </description>
+   
+   </context>
+   <context id="TableCreationDescription">
+      <description>
+      List of the variables available:
+           - containerView : The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+           - representationName : The variable representationName that represents the name of the created representation.
+
+   <!-- Start of user code TableCreationDescription description -->
+   
+   <!-- End of user code TableCreationDescription description -->
+      </description>
+   
+   </context>
+   <context id="TableNavigationDescription">
+      <description>
+      List of the variables available:
+           - containerView : The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+           - container : The variable container that represents the semantic element of the clicked view.
+           - representationName : The variable representationName that represents the name of the representation to open.
+
+   <!-- Start of user code TableNavigationDescription description -->
+   
+   <!-- End of user code TableNavigationDescription description -->
+      </description>
+   
+   </context>
+</contexts>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2007, 2013 THALES GLOBAL SERVICES
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+
+<plugin>
+   <extension point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.eclipse.emf.codegen.ecore.ui.wizardCategory"
+            class="org.eclipse.sirius.ecore.design.wizard.EcoreModelerWizard"
+            icon="icons/full/obj16/EcoreModelingProject.png"
+            id="org.eclipse.sirius.pim.ecore.design.wizard"
+            name="Ecore Modeling Project"
+            project="true">
+         <description>Create a new Modeling project to specify a domain model using the Ecore Language. 
+The created project is a Java plug-in project with EMF dependencies and EMF models.</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension
+         point="org.eclipse.sirius.componentization">
+      <component
+            class="org.eclipse.sirius.ecore.design.service.EcoreSamplePlugin"
+            id="org.eclipse.sirius.pim.ecore.design"
+            name="Domain Model">
+      </component>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.eclipse.sirius.pim.ecore.design.action.CreateDynamicInstanceAction"
+            id="org.eclipse.sirius.pim.ecore.design.action.createDynamicInstanceActionID">
+      </javaActions>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.eclipse.sirius.pim.ecore.design.editor.EcoreEntitiesReadOnlyEditor"
+            contributorClass="org.eclipse.sirius.diagram.part.SiriusDiagramActionBarContributor"
+            default="false"
+            extensions="ecore"
+            icon="icons/full/obj16/EcoreModelFile.gif"
+            id="org.eclipse.sirius.pim.ecore.design.editor.entities"
+            matchingStrategy="org.eclipse.sirius.pim.ecore.design.editor.EcoreEntitiesMatchingStrategy"
+            name="Sirius Ecore Editor">
+      </editor>
+   </extension>   
+   <extension point="org.eclipse.help.toc">
+      <toc file="doc/user-guide-toc.xml" primary="true" />
+   </extension>
+    <!-- Extensions for the "Sirius" perspective -->
+  <extension point="org.eclipse.ui.perspectiveExtensions">
+    <perspectiveExtension targetID="org.eclipse.sirius.ui.tools.perspective.design">
+      <newWizardShortcut id="org.eclipse.sirius.pim.ecore.design.wizard" />
+    </perspectiveExtension>
+  </extension>
+  
+  <extension
+        point="org.eclipse.ui.navigator.navigatorContent">
+     <commonWizard
+           menuGroupId="org.eclipse.sirius.category"
+           type="new"
+           wizardId="org.eclipse.sirius.pim.ecore.design.wizard">
+        <enablement>
+           <with variable="activeWorkbenchWindow.activePerspective">
+              <or>
+                 <equals value="org.eclipse.sirius.ui.tools.perspective.design"/>
+              </or>
+           </with>
+        </enablement>
+     </commonWizard>
+  </extension>
+</plugin>

@@ -1,0 +1,229 @@
+/*******************************************************************************
+ * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.sequence.ui.business.internal.migration;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.eclipse.gmf.runtime.notation.Bounds;
+import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.LayoutConstraint;
+import org.eclipse.gmf.runtime.notation.Node;
+import org.osgi.framework.Version;
+
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.AbstractDNode;
+import org.eclipse.sirius.CollapseFilter;
+import org.eclipse.sirius.DAnalysis;
+import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.DNode;
+import org.eclipse.sirius.DNodeContainer;
+import org.eclipse.sirius.DNodeList;
+import org.eclipse.sirius.DView;
+import org.eclipse.sirius.GraphicalFilter;
+import org.eclipse.sirius.IndirectlyCollapseFilter;
+import org.eclipse.sirius.SiriusFactory;
+import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramGraphicalQuery;
+import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
+import org.eclipse.sirius.diagram.internal.edit.parts.DNode2EditPart;
+import org.eclipse.sirius.diagram.internal.edit.parts.DNode3EditPart;
+import org.eclipse.sirius.diagram.internal.edit.parts.DNode4EditPart;
+import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainer2EditPart;
+import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerEditPart;
+import org.eclipse.sirius.diagram.internal.edit.parts.DNodeEditPart;
+import org.eclipse.sirius.diagram.internal.edit.parts.DNodeList2EditPart;
+import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListEditPart;
+import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
+import org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype.SequenceCollapseUpdater;
+
+/**
+ * Migration contribution for sequence diagram part of representations file.
+ * 
+ * @author mporhel
+ */
+public class SequenceDiagramRepresentationsFileMigrationParticipant extends AbstractRepresentationsFileMigrationParticipant {
+    /**
+     * The latest VP version for this participant.
+     */
+    private static final Version MIGRATION_VERSION = new Version("6.5.3.201301221200");
+
+    private Predicate<Node> isNode = new IsNode();
+
+    private Predicate<Node> isCollapsedNode = new IsCollapsedNode();
+
+    private Predicate<Node> isDirectlyCollapsedNode = new IsDirectlyCollapsedNode();
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.business.api.migration.IMigrationParticipant#getMigrationVersion()
+     */
+    public Version getMigrationVersion() {
+        return MIGRATION_VERSION;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void postLoad(DAnalysis dAnalysis, Version loadedVersion) {
+        super.postLoad(dAnalysis, loadedVersion);
+
+        List<Diagram> sequenceDiagrams = getGMFSequenceDiagrams(dAnalysis);
+        if (!sequenceDiagrams.isEmpty()) {
+            migrateGMFBoundsOfCollapsedBorderedNode(sequenceDiagrams);
+        }
+    }
+
+    /**
+     * Retrieve all GMF diagrams of the {@link DAnalysis}.
+     * 
+     * @param dAnalysis
+     *            The analysis of the resource to migrate
+     * @return Sequence GMF diagrams of this {@link DAnalysis}
+     */
+    protected List<Diagram> getGMFSequenceDiagrams(DAnalysis dAnalysis) {
+        List<Diagram> diagrams = new ArrayList<Diagram>();
+
+        for (DView view : dAnalysis.getOwnedViews()) {
+            for (SequenceDDiagram diagram : Iterables.filter(view.getOwnedRepresentations(), SequenceDDiagram.class)) {
+                DDiagramGraphicalQuery query = new DDiagramGraphicalQuery((DDiagram) diagram);
+                Option<Diagram> option = query.getAssociatedGMFDiagram();
+                if (option.some()) {
+                    diagrams.add(option.get());
+                }
+            }
+        }
+
+        return diagrams;
+    }
+
+    private void migrateGMFBoundsOfCollapsedBorderedNode(List<Diagram> sequenceDiagrams) {
+        for (Diagram diagram : sequenceDiagrams) {
+            // 1-Add new IndirectlyCollapseFilter
+            migrateChildrenOfCollapsedNode(diagram);
+            // 2-Set width and height of graphical filters of collapsed nodes
+            // (directly or not) with GMF size and set GMF bounds.
+            Iterator<Node> viewIterator = Iterators.filter(Iterators.filter(diagram.eAllContents(), Node.class), Predicates.and(isNode, isCollapsedNode));
+            while (viewIterator.hasNext()) {
+                Node node = viewIterator.next();
+                DNode dNode = (DNode) node.getElement();
+
+                LayoutConstraint layoutConstraint = node.getLayoutConstraint();
+                if (layoutConstraint instanceof Bounds) {
+                    Bounds bounds = (Bounds) layoutConstraint;
+                    // The GMF node size must be stored in collapse filter (to
+                    // can
+                    // set this size when this node is expanded).
+                    for (GraphicalFilter graphicalFilter : dNode.getGraphicalFilters()) {
+                        if (graphicalFilter instanceof CollapseFilter) {
+                            ((CollapseFilter) graphicalFilter).setWidth(bounds.getWidth());
+                            ((CollapseFilter) graphicalFilter).setHeight(bounds.getHeight());
+                        }
+                    }
+                    // Set new collapsed GMF bounds
+                    SequenceCollapseUpdater scbu = new SequenceCollapseUpdater();
+                    scbu.collapseBounds(node, dNode);
+                }
+            }
+        }
+    }
+
+    /**
+     * Add a {@link IndirectlyCollapsedFilter} to the children of CollapsedNode
+     * (to retrieve the same behavior as before). The migration of GMF bounds of
+     * this indirectly collapsed nodes, if they are bordered nodes, are deal
+     * later in method {{@link #migrateGMFBoundsOfBorderedNodes(List)}.
+     * 
+     * @param diagram
+     *            GMF Diagram to migrate.
+     */
+    private void migrateChildrenOfCollapsedNode(Diagram diagram) {
+        List<DDiagramElement> indirectlyCollaspedDDEs = Lists.newArrayList();
+        Iterator<Node> viewIterator = Iterators.filter(Iterators.filter(diagram.eAllContents(), Node.class), isDirectlyCollapsedNode);
+        while (viewIterator.hasNext()) {
+            final Node node = viewIterator.next();
+            if (node.getElement() instanceof AbstractDNode) {
+                AbstractDNode abstractDNode = (AbstractDNode) node.getElement();
+                indirectlyCollaspedDDEs.addAll(abstractDNode.getOwnedBorderedNodes());
+                if (abstractDNode instanceof DNodeContainer) {
+                    DNodeContainer dDiagramElementContainer = (DNodeContainer) abstractDNode;
+                    indirectlyCollaspedDDEs.addAll(dDiagramElementContainer.getOwnedDiagramElements());
+                } else if (abstractDNode instanceof DNodeList) {
+                    DNodeList dNodeList = (DNodeList) abstractDNode;
+                    indirectlyCollaspedDDEs.addAll(dNodeList.getOwnedElements());
+                }
+            }
+        }
+        for (DDiagramElement indirectlyCollaspedDDE : indirectlyCollaspedDDEs) {
+            IndirectlyCollapseFilter indirectlyCollapseFilter = SiriusFactory.eINSTANCE.createIndirectlyCollapseFilter();
+            indirectlyCollaspedDDE.getGraphicalFilters().add(indirectlyCollapseFilter);
+        }
+    }
+
+    /**
+     * Predicate that checks that :
+     * <UL>
+     * <LI>The input is a GMF Node,</LI>
+     * <LI>and this Node is a viewpoint node.</LI>
+     * </UL>
+     */
+    private static class IsNode implements Predicate<Node> {
+        public boolean apply(Node input) {
+            int type = SiriusVisualIDRegistry.getVisualID(input.getType());
+            return type == DNodeEditPart.VISUAL_ID || type == DNode2EditPart.VISUAL_ID || type == DNode3EditPart.VISUAL_ID || type == DNode4EditPart.VISUAL_ID;
+        }
+    }
+
+    /**
+     * Predicate that checks that this GMF Node is collapsed (directly or not).
+     * 
+     * No check is done on the border position of a node because we need to
+     * handle ObservationPoints.
+     */
+    private static class IsCollapsedNode implements Predicate<Node> {
+        public boolean apply(Node input) {
+            return new NodeQuery(input).isCollapsed();
+        }
+    }
+
+    /**
+     * Predicate that checks that this GMF Node is directly collapsed.
+     * 
+     * No check is done on the border position of a node because we need to
+     * handle ObservationPoints.
+     */
+    private static class IsDirectlyCollapsedNode implements Predicate<Node> {
+        public boolean apply(Node input) {
+            boolean apply = false;
+
+            int type = SiriusVisualIDRegistry.getVisualID(input.getType());
+            boolean result = type == DNode2EditPart.VISUAL_ID || type == DNode4EditPart.VISUAL_ID;
+            result = result || type == DNodeEditPart.VISUAL_ID || type == DNode3EditPart.VISUAL_ID;
+            result = result || type == DNodeContainerEditPart.VISUAL_ID || type == DNodeContainer2EditPart.VISUAL_ID;
+            result = result || type == DNodeListEditPart.VISUAL_ID || type == DNodeList2EditPart.VISUAL_ID;
+
+            if (result) {
+                return new NodeQuery(input).isDirectlyCollapsed();
+            }
+            return apply;
+        }
+    }
+}

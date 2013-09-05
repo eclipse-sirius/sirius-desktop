@@ -1,0 +1,129 @@
+/*******************************************************************************
+ * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.edit.internal.part;
+
+import java.util.Collections;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.DragTracker;
+import org.eclipse.gef.Request;
+import org.eclipse.gef.RequestConstants;
+import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.commands.CompoundCommand;
+import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
+
+import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.tools.api.command.GMFCommandWrapper;
+import org.eclipse.sirius.diagram.tools.internal.commands.emf.PinElementsCommand;
+import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
+
+/**
+ * Common operations for edit parts.
+ * 
+ * @author mchauvin
+ */
+public final class CommonEditPartOperation {
+
+    /**
+     * Avoid instantiation.
+     */
+    private CommonEditPartOperation() {
+    }
+
+    /**
+     * Append a selection command if necessary.
+     * 
+     * @param command
+     *            the selection command
+     * @param editPart
+     *            the current editPart
+     * @return the resulted command
+     */
+    public static Command appendSelectionCommand(final Command command, GraphicalEditPart editPart) {
+        if (command != null) {
+            return SelectionCommandAppender.addSelectionCommand(command, editPart);
+        }
+        return command;
+    }
+
+    /**
+     * Appends a "pin element" command to the normally returned command if
+     * appropriate.
+     * 
+     * @param self
+     *            the edit part
+     * @param request
+     *            the request which was sent to the edit part
+     * @param cmd
+     *            the normal command the edit-part returned for the request.
+     * @return a command which execute <code>cmd</code> and then optionally
+     *         marks the edit-part as pinned if this is an interactive move and
+     *         auto-pin-on-move is enabled.
+     */
+    public static Command handleAutoPinOnInteractiveMove(final IDiagramElementEditPart self, final Request request, final Command cmd) {
+        Command result = cmd;
+        EObject semanticElement = self.resolveSemanticElement();
+        if (semanticElement instanceof DDiagramElement) {
+            DDiagramElement dDiagramElement = (DDiagramElement) semanticElement;
+            if (RequestConstants.REQ_MOVE.equals(request.getType()) && !new PinHelper().isPinned(dDiagramElement) && CommonEditPartOperation.autoPinOnMoveEnabled()
+                    && CommonEditPartOperation.isInteractiveMove()) {
+
+                DDiagram parentDiagram = dDiagramElement.getParentDiagram();
+                if (PinHelper.allowsPinUnpin(parentDiagram).apply(dDiagramElement)) {
+
+                    CompoundCommand cc = new CompoundCommand();
+                    cc.add(cmd);
+
+                    PinElementsCommand emfCommand = new PinElementsCommand(Collections.singleton(dDiagramElement));
+                    Command pinCmd = new ICommandProxy(new GMFCommandWrapper(self.getEditingDomain(), emfCommand));
+                    cc.add(pinCmd);
+
+                    result = cc.unwrap();
+                }
+            }
+        }
+        return result;
+    }
+
+    private static boolean autoPinOnMoveEnabled() {
+        return SiriusDiagramEditorPlugin.getInstance().getPluginPreferences().getBoolean(SiriusDiagramPreferencesKeys.PREF_AUTO_PIN_ON_MOVE.name());
+    }
+
+    /*
+     * WARNING. This code tries to detect interactive moves, as opposed to move
+     * requests initiated from automatic layout. It is ugly, brittle, and
+     * inefficient, but it seems to work and I do not see any other way to do
+     * this. Another approach might be to use custom drag trackers to set a
+     * flag, but these things are complex and touching them seems like it could
+     * have bad side effects if it is not 100% right.
+     */
+    private static boolean isInteractiveMove() {
+        final RuntimeException re = new RuntimeException();
+        final StackTraceElement[] stack = re.getStackTrace();
+        // We look at several different stack elements in an attempt to make the
+        // code more resilient to changes.
+        for (int i = 3; i < 6 && i < stack.length; i++) {
+            try {
+                if (DragTracker.class.isAssignableFrom(Class.forName(stack[i].getClassName()))) {
+                    return true;
+                }
+            } catch (final ClassNotFoundException e) {
+                break;
+            }
+        }
+        return false;
+    }
+}

@@ -1,0 +1,69 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+icons/full/obj16/BasicMessageMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/Message.gif
+icons/full/obj16/CombinedFragmentCreationTool.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/CombinedFragment.gif
+icons/full/obj16/CombinedFragmentMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/CombinedFragment.gif
+icons/full/obj16/CompoundEventEnd.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ActionExecutionSpecification.gif
+icons/full/obj16/CoverageTool.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Continuation.gif
+icons/full/obj16/CoveredLifelinesVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/RemoveVariableValueAction.gif
+icons/full/obj16/CreationMessageMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Message_createMessage.gif
+icons/full/obj16/DestructionMessageMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Message_deleteMessage.gif
+icons/full/obj16/EndOfLifeMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Message_deleteMessage.gif
+icons/full/obj16/EventEnd.gif org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ChangeEvent.gif
+icons/full/obj16/EventEndsOrdering.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/GeneralOrdering.gif
+icons/full/obj16/ExecutionCreationTool.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ActionExecutionSpecification.gif
+icons/full/obj16/ExecutionMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ActionExecutionSpecification.gif
+icons/full/obj16/FrameMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/Interaction.gif
+icons/full/obj16/GraphicalOrdering.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/GeneralOrdering.gif
+icons/full/obj16/InstanceRoleCreationTool.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Lifeline.gif
+icons/full/obj16/InstanceRoleMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Lifeline.gif
+icons/full/obj16/InstanceRoleReorderTool.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/GeneralOrdering.gif
+icons/full/obj16/InstanceRolesOrdering.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/GeneralOrdering.gif
+icons/full/obj16/InteractionUseCreationTool.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/InteractionUse.gif
+icons/full/obj16/InteractionUseMapping.gif org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/InteractionUse.gif
+icons/full/obj16/LifelineCreationTool.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/Lifeline.gif
+icons/full/obj16/MessageCreationTool.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/Message.gif
+icons/full/obj16/MessageEndVariable.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/RemoveVariableValueAction.gif
+icons/full/obj16/ObservationPointCreationTool.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/obj16/node_obj.gif
+icons/full/obj16/ObservationPointMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/obj16/node_obj.gif
+icons/full/obj16/OperandCreationTool.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/InteractionOperand.gif
+icons/full/obj16/OperandMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/InteractionOperand.gif
+icons/full/obj16/ReorderTool.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/GeneralOrdering.gif
+icons/full/obj16/ReturnMessageMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Message_reply.gif
+icons/full/obj16/SemanticOrdering.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/GeneralOrdering.gif
+icons/full/obj16/SequenceDDiagram.gif - org.eclipse.papyrus.uml.diagram.sequence - org.eclipse.papyrus.uml.diagram.sequence/icons/obj16/Diagram_Sequence.gif
+icons/full/obj16/SequenceDiagram.gif - org.eclipse.papyrus.uml.diagram.sequence - org.eclipse.papyrus.uml.diagram.sequence/icons/obj16/Diagram_Sequence.gif
+icons/full/obj16/SequenceDiagramDescription.gif - org.eclipse.papyrus.diagram.sequence - org.eclipse.papyrus.diagram.sequence/icons/SequenceDiagram.gif
+icons/full/obj16/SequenceDiagramDescription.gif - org.eclipse.papyrus.uml.diagram.sequence - org.eclipse.papyrus.uml.diagram.sequence/icons/obj16/Diagram_Sequence.gif
+icons/full/obj16/SequenceDiagramToolDescription.gif - org.eclipse.papyrus.uml.diagram.sequence - org.eclipse.papyrus.uml.diagram.sequence/icons/obj16/Diagram_Sequence.gif
+icons/full/obj16/StateCreationTool.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/OpaqueAction.gif
+icons/full/obj16/StateMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/OpaqueAction.gif
+icons/full/obj16/TAbstractMapping.gif - org.eclipse.b3.aggregator.edit - org.eclipse.b3.aggregator.edit/icons/full/obj16/RepositoryReferences.gif
+icons/full/obj16/TBasicMessageMapping.gif  - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/Message.gif
+icons/full/obj16/TBasicMessageMapping.gif - org.eclipse.uml2.uml.edit - icons/full/obj16/Message.gif
+icons/full/obj16/TConditionalExecutionStyle.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/InteractionConstraint.gif
+icons/full/obj16/TConditionalLifelineStyle.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/InteractionConstraint.gif
+icons/full/obj16/TConditionalMessageStyle.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/InteractionConstraint.gif
+icons/full/obj16/TCreationMessageMapping.gif - org.eclipse.uml2.uml.edit - icons/full/obj16/Message_createMessage.gif
+icons/full/obj16/TCreationMessageMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Message_createMessage.gif
+icons/full/obj16/TDestructionMessageMapping.gif - org.eclipse.uml2.uml.edit - icons/full/obj16/Message_deleteMessage.gif
+icons/full/obj16/TDestructionMessageMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Message_deleteMessage.gif
+icons/full/obj16/TEndOfLifeMapping.gif - org.eclipse.uml2.uml.edit - icons/full/obj16/Pseudostate_terminal.gif
+icons/full/obj16/TEndOfLifeMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_terminate.gif
+icons/full/obj16/TExecutionMapping.gif - org.eclipse.uml2.uml.edit - icons/full/obj16/ExecutionOccurrenceSpecification.gif
+icons/full/obj16/TExecutionMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ActionExecutionSpecification.gif
+icons/full/obj16/TExecutionStyle.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit//icons/full/obj16/Port.gif
+icons/full/obj16/TInstanceRoleMapping.gif - org.eclipse.uml2.uml.edit - icons/full/obj16/InstanceSpecification.gif
+icons/full/obj16/TInstanceRoleMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Lifeline.gif
+icons/full/obj16/TLifelineMapping.gif - org.eclipse.uml2.uml.edit - icons/full/obj16/Lifeline.gif
+icons/full/obj16/TLifelineMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Lifeline.gif
+icons/full/obj16/TLifelineStyle.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Lifeline.gif
+icons/full/obj16/TMessageStyle.gif  - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ControlFlow.gif
+icons/full/obj16/TReturnMessageMapping.gif - org.eclipse.uml2.uml.edit - icons/full/obj16/Lifeline.gif
+icons/full/obj16/TReturnMessageMapping.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Message_reply.gif
+icons/full/obj16/TSequenceDiagram.gif - org.eclipse.papyrus.uml.diagram.sequence - org.eclipse.papyrus.uml.diagram.sequence/icons/obj16/Diagram_Sequence.gif
+icons/full/obj16/TTransformer.gif - org.eclipse.b3.aggregator.edit - org.eclipse.b3.aggregator.edit/icons/full/obj16/AvailableVersionsHeader.gif

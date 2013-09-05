@@ -1,0 +1,106 @@
+/*******************************************************************************
+ * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.table.metamodel.table.description;
+
+import org.eclipse.emf.ecore.EObject;
+
+/**
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Foreground Conditional Style</b></em>'. <!-- end-user-doc -->
+ * 
+ * <p>
+ * The following features are supported:
+ * <ul>
+ * <li>
+ * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getPredicateExpression
+ * <em>Predicate Expression</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getStyle
+ * <em>Style</em>}</li>
+ * </ul>
+ * </p>
+ * 
+ * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getForegroundConditionalStyle()
+ * @model
+ * @generated
+ */
+public interface ForegroundConditionalStyle extends EObject {
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+
+    /**
+     * Returns the value of the '<em><b>Predicate Expression</b></em>'
+     * attribute. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Predicate Expression</em>' attribute isn't
+     * clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Predicate Expression</em>' attribute.
+     * @see #setPredicateExpression(String)
+     * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getForegroundConditionalStyle_PredicateExpression()
+     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     *        required="true" annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
+     * @generated
+     */
+    String getPredicateExpression();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getPredicateExpression
+     * <em>Predicate Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Predicate Expression</em>'
+     *            attribute.
+     * @see #getPredicateExpression()
+     * @generated
+     */
+    void setPredicateExpression(String value);
+
+    /**
+     * Returns the value of the '<em><b>Style</b></em>' containment reference.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Style</em>' containment reference isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Style</em>' containment reference.
+     * @see #setStyle(ForegroundStyleDescription)
+     * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getForegroundConditionalStyle_Style()
+     * @model containment="true"
+     * @generated
+     */
+    ForegroundStyleDescription getStyle();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle#getStyle
+     * <em>Style</em>}' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Style</em>' containment reference.
+     * @see #getStyle()
+     * @generated
+     */
+    void setStyle(ForegroundStyleDescription value);
+
+} // ForegroundConditionalStyle

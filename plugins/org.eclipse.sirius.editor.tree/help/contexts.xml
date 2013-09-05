@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   <context id="DTree">
+     <description>
+       
+       
+         
+   <!-- Start of user code DTree description -->
+   
+   <!-- End of user code DTree description -->
+   
+      </description>
+   </context>
+   <context id="DTreeElementUpdater">
+     <description>
+       
+       
+         
+   <!-- Start of user code DTreeElementUpdater description -->
+   
+   <!-- End of user code DTreeElementUpdater description -->
+   
+      </description>
+   </context>
+   <context id="DTreeElement">
+     <description>
+       
+       
+         
+   <!-- Start of user code DTreeElement description -->
+   
+   <!-- End of user code DTreeElement description -->
+   
+      </description>
+   </context>
+   <context id="DTreeItemContainer">
+     <description>
+       
+       
+         
+   <!-- Start of user code DTreeItemContainer description -->
+   
+   <!-- End of user code DTreeItemContainer description -->
+   
+      </description>
+   </context>
+   <context id="DTreeItem">
+     <description>
+       
+       
+         
+   <!-- Start of user code DTreeItem description -->
+   
+   <!-- End of user code DTreeItem description -->
+   
+      </description>
+   </context>
+   <context id="TreeItemStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code TreeItemStyle description -->
+   
+   <!-- End of user code TreeItemStyle description -->
+   
+      </description>
+   </context>
+   <context id="DTreeElementSynchronizer">
+     <description>
+       
+       
+         
+   <!-- Start of user code DTreeElementSynchronizer description -->
+   
+   <!-- End of user code DTreeElementSynchronizer description -->
+   
+      </description>
+   </context>
+   <context id="TreeDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - titleExpression: a string.
+
+          - preconditionExpression: boolean
+
+
+         
+   <!-- Start of user code TreeDescription description -->
+   
+   <!-- End of user code TreeDescription description -->
+   
+      </description>
+   </context>
+   <context id="TreeItemMapping">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - semanticElements: a Collection&lt;EObject> or an EObject.
+                . view: current DTreeElement.
+                . containerView: container of the current DTreeElement (variable is available if container is not null).
+                . container: semantic target of $containerView (if it is a DSemanticDecorator).
+
+          - preconditionExpression: a Collection&lt;EObject> or an EObject.
+                . view: current DTreeElement.
+                . containerView: container of the current DTreeElement (variable is available if container is not null).
+                . container: semantic target of $containerView (if it is a DSemanticDecorator).
+
+          - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
+                . view: current DTreeElement.
+                . containerView: container of the current DTreeElement (variable is available if container is not null).
+                . container: semantic target of $containerView (if it is a DSemanticDecorator).
+
+
+         
+   <!-- Start of user code TreeItemMapping description -->
+   
+   <!-- End of user code TreeItemMapping description -->
+   
+      </description>
+   </context>
+   <context id="TreeItemStyleDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+
+         
+   <!-- Start of user code TreeItemStyleDescription description -->
+   
+   <!-- End of user code TreeItemStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="ConditionalTreeItemStyleDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - predicateExpression: a boolean.
+                . view: the current view.
+                . container: the semantic container.
+
+
+         
+   <!-- Start of user code ConditionalTreeItemStyleDescription description -->
+   
+   <!-- End of user code ConditionalTreeItemStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="TreeItemTool">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+       List of the available variables for tool operations:
+            - variables: 
+  
+   <!-- Start of user code TreeItemTool description -->
+   
+   <!-- End of user code TreeItemTool description -->
+   
+      </description>
+   </context>
+   <context id="TreeItemDragTool">
+     <description>
+       (deprecated) Tool that describes a Drag -and- Drop operation. The Source of this Drag -and- Drop will be the Tree item Mapping on which the tool has been defined.
+
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+       List of the available variables for tool operations:
+            - oldContainer: 
+            - newContainer: 
+            - element: 
+            - newViewContainer: 
+            - variables: 
+  
+   <!-- Start of user code TreeItemDragTool description -->
+   
+   <!-- End of user code TreeItemDragTool description -->
+   
+      </description>
+   </context>
+   <context id="TreeItemContainerDropTool">
+     <description>
+       Tool that describes a Drag -and- Drop operation.
+
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+       List of the available variables for tool operations:
+            - oldContainer: 
+            - newContainer: 
+            - element: 
+            - newViewContainer: 
+            - variables: 
+  
+   <!-- Start of user code TreeItemContainerDropTool description -->
+   
+   <!-- End of user code TreeItemContainerDropTool description -->
+   
+      </description>
+   </context>
+   <context id="TreeItemCreationTool">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+       List of the available variables for tool operations:
+            - variables: 
+  
+   <!-- Start of user code TreeItemCreationTool description -->
+   
+   <!-- End of user code TreeItemCreationTool description -->
+   
+      </description>
+   </context>
+   <context id="TreeItemEditionTool">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+       List of the available variables for tool operations:
+            - element: 
+            - root: 
+            - variables: 
+  
+   <!-- Start of user code TreeItemEditionTool description -->
+   
+   <!-- End of user code TreeItemEditionTool description -->
+   
+      </description>
+   </context>
+   <context id="TreeItemDeletionTool">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+       List of the available variables for tool operations:
+            - variables: 
+  
+   <!-- Start of user code TreeItemDeletionTool description -->
+   
+   <!-- End of user code TreeItemDeletionTool description -->
+   
+      </description>
+   </context>
+   <context id="TreeCreationDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+          - titleExpression: a string.
+
+          - browseExpression: an EObject.
+
+
+       List of the available variables for tool operations:
+            - containerView: The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+            - representationName: The variable representationName that represents the name of the created representation.
+  
+   <!-- Start of user code TreeCreationDescription description -->
+   
+   <!-- End of user code TreeCreationDescription description -->
+   
+      </description>
+   </context>
+   <context id="TreeNavigationDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+          - browseExpression: an EObject.
+
+          - navigationNameExpression: a string.
+                . name: name of the targeted Representation.
+
+
+       List of the available variables for tool operations:
+            - containerView: The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+            - container: The variable container that represents the semantic element of the clicked view.
+            - representationName: The variable representationName that represents the name of the representation to open.
+  
+   <!-- Start of user code TreeNavigationDescription description -->
+   
+   <!-- End of user code TreeNavigationDescription description -->
+   
+      </description>
+   </context>
+   <context id="TreeMapping">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - semanticElements: a Collection&lt;EObject> or an EObject.
+                . view: current DTreeElement.
+                . containerView: container of the current DTreeElement (variable is available if container is not null).
+                . container: semantic target of $containerView (if it is a DSemanticDecorator).
+
+
+         
+   <!-- Start of user code TreeMapping description -->
+   
+   <!-- End of user code TreeMapping description -->
+   
+      </description>
+   </context>
+   <context id="StyleUpdater">
+     <description>
+       
+       
+         
+   <!-- Start of user code StyleUpdater description -->
+   
+   <!-- End of user code StyleUpdater description -->
+   
+      </description>
+   </context>
+   <context id="TreeVariable">
+     <description>
+       
+       
+         
+   <!-- Start of user code TreeVariable description -->
+   
+   <!-- End of user code TreeVariable description -->
+   
+      </description>
+   </context>
+   <context id="TreeItemUpdater">
+     <description>
+       
+       
+         
+   <!-- Start of user code TreeItemUpdater description -->
+   
+   <!-- End of user code TreeItemUpdater description -->
+   
+      </description>
+   </context>
+   <context id="PrecedingSiblingsVariables">
+     <description>
+       
+       
+         
+   <!-- Start of user code PrecedingSiblingsVariables description -->
+   
+   <!-- End of user code PrecedingSiblingsVariables description -->
+   
+      </description>
+   </context>
+   <context id="TreeItemMappingContainer">
+     <description>
+       
+       
+         
+   <!-- Start of user code TreeItemMappingContainer description -->
+   
+   <!-- End of user code TreeItemMappingContainer description -->
+   
+      </description>
+   </context>
+   <context id="TreePopupMenu">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+         
+   <!-- Start of user code TreePopupMenu description -->
+   
+   <!-- End of user code TreePopupMenu description -->
+   
+      </description>
+   </context>
+</contexts>

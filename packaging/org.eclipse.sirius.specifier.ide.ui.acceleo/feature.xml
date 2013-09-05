@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.sirius.specifier.ide.ui.acceleo"
+      label="%featureName"
+      version="6.8.0.qualifier"
+      provider-name="%providerName">
+
+   <description url="http://www.eclipse.org/sirius">
+      Support for writing Acceleo 3 expressions in the Sirius specification editor.
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.sirius.common.acceleo.mtl.ide"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

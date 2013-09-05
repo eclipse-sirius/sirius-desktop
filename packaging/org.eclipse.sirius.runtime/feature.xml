@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.sirius.runtime"
+      label="%featureName"
+      version="6.8.0.qualifier"
+      provider-name="%providerName"
+      plugin="org.eclipse.sirius">
+
+   <description url="http://www.eclipse.org/sirius">
+      The core runtime of Sirius, UI-independant and dialect-agnostic.
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.emf.ecore" version="2.6.1"/>
+      <import feature="org.eclipse.emf.sdk" version="2.6.1"/>
+      <import feature="org.eclipse.platform" version="3.6.2"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.sirius.common"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="net.sf.paperclips"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.synchronizer"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.table"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.tree"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.ecore.extender"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

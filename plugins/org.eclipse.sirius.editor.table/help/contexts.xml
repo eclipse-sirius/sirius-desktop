@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   <context id="DTable">
+     <description>
+       
+       
+         
+   <!-- Start of user code DTable description -->
+   
+   <!-- End of user code DTable description -->
+   
+      </description>
+   </context>
+   <context id="DTableElementUpdater">
+     <description>
+       
+       
+         
+   <!-- Start of user code DTableElementUpdater description -->
+   
+   <!-- End of user code DTableElementUpdater description -->
+   
+      </description>
+   </context>
+   <context id="DTableElement">
+     <description>
+       
+       
+         
+   <!-- Start of user code DTableElement description -->
+   
+   <!-- End of user code DTableElement description -->
+   
+      </description>
+   </context>
+   <context id="LineContainer">
+     <description>
+       
+       
+         
+   <!-- Start of user code LineContainer description -->
+   
+   <!-- End of user code LineContainer description -->
+   
+      </description>
+   </context>
+   <context id="DLine">
+     <description>
+       
+       
+         
+   <!-- Start of user code DLine description -->
+   
+   <!-- End of user code DLine description -->
+   
+      </description>
+   </context>
+   <context id="DCell">
+     <description>
+       
+       
+         
+   <!-- Start of user code DCell description -->
+   
+   <!-- End of user code DCell description -->
+   
+      </description>
+   </context>
+   <context id="DCellStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code DCellStyle description -->
+   
+   <!-- End of user code DCellStyle description -->
+   
+      </description>
+   </context>
+   <context id="DColumn">
+     <description>
+       
+       
+         
+   <!-- Start of user code DColumn description -->
+   
+   <!-- End of user code DColumn description -->
+   
+      </description>
+   </context>
+   <context id="DTargetColumn">
+     <description>
+       
+       
+         
+   <!-- Start of user code DTargetColumn description -->
+   
+   <!-- End of user code DTargetColumn description -->
+   
+      </description>
+   </context>
+   <context id="DFeatureColumn">
+     <description>
+       
+       
+         
+   <!-- Start of user code DFeatureColumn description -->
+   
+   <!-- End of user code DFeatureColumn description -->
+   
+      </description>
+   </context>
+   <context id="DTableElementSynchronizer">
+     <description>
+       
+       
+         
+   <!-- Start of user code DTableElementSynchronizer description -->
+   
+   <!-- End of user code DTableElementSynchronizer description -->
+   
+      </description>
+   </context>
+   <context id="DTableElementStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code DTableElementStyle description -->
+   
+   <!-- End of user code DTableElementStyle description -->
+   
+      </description>
+   </context>
+   <context id="TableDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - titleExpression: a string.
+
+          - preconditionExpression: boolean
+
+
+         
+   <!-- Start of user code TableDescription description -->
+   
+   <!-- End of user code TableDescription description -->
+   
+      </description>
+   </context>
+   <context id="EditionTableDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - titleExpression: a string.
+
+          - preconditionExpression: boolean
+
+
+         
+   <!-- Start of user code EditionTableDescription description -->
+   
+   <!-- End of user code EditionTableDescription description -->
+   
+      </description>
+   </context>
+   <context id="EditionTableExtensionDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - preconditionExpression: boolean
+
+
+         
+   <!-- Start of user code EditionTableExtensionDescription description -->
+   
+   <!-- End of user code EditionTableExtensionDescription description -->
+   
+      </description>
+   </context>
+   <context id="CrossTableDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - titleExpression: a string.
+
+          - preconditionExpression: boolean
+
+
+         
+   <!-- Start of user code CrossTableDescription description -->
+   
+   <!-- End of user code CrossTableDescription description -->
+   
+      </description>
+   </context>
+   <context id="TableMapping">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - semanticElements: a Collection&lt;EObject> or an EObject.
+                . view: current DTableElement (DCell, DColumn, DLine, ...).
+                . containerView: container of the current DTableElement (variable is available if container is not null).
+                . container: semantic target of containerView (if it is a DSemanticDecorator).
+
+
+         
+   <!-- Start of user code TableMapping description -->
+   
+   <!-- End of user code TableMapping description -->
+   
+      </description>
+   </context>
+   <context id="LineMapping">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - semanticElements: a Collection&lt;EObject> or an EObject.
+                . view: current DTableElement (DCell, DColumn, DLine, ...).
+                . containerView: container of the current DTableElement (variable is available if container is not null).
+                . container: semantic target of containerView (if it is a DSemanticDecorator).
+
+          - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
+                . viewpoint: (deprecated) current DTable.
+                . table: current DTable.
+                . root: semantic target of $table.
+                . containerView: current LineContainer (DLine or DTable).
+                . container: semantic target of $containerView (if it is a DSemanticDecorator).
+
+          - headerLabelExpression: a string.
+
+
+         
+   <!-- Start of user code LineMapping description -->
+   
+   <!-- End of user code LineMapping description -->
+   
+      </description>
+   </context>
+   <context id="ColumnMapping">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - semanticElements: a Collection&lt;EObject> or an EObject.
+                . view: current DTableElement (DCell, DColumn, DLine, ...).
+                . containerView: container of the current DTableElement (variable is available if container is not null).
+                . container: semantic target of containerView (if it is a DSemanticDecorator).
+
+          - headerLabelExpression: a string.
+
+
+         
+   <!-- Start of user code ColumnMapping description -->
+   
+   <!-- End of user code ColumnMapping description -->
+   
+      </description>
+   </context>
+   <context id="ElementColumnMapping">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - semanticElements: a Collection&lt;EObject> or an EObject.
+                . view: current DTableElement (DCell, DColumn, DLine, ...).
+                . containerView: container of the current DTableElement (variable is available if container is not null).
+                . container: semantic target of containerView (if it is a DSemanticDecorator).
+
+          - headerLabelExpression: a string.
+
+          - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
+                . viewpoint: (deprecated) current DTable.
+                . table: current DTable.
+                . containerView: current DTable.
+                . container: semantic element targeted by the current DTable.
+
+
+         
+   <!-- Start of user code ElementColumnMapping description -->
+   
+   <!-- End of user code ElementColumnMapping description -->
+   
+      </description>
+   </context>
+   <context id="FeatureColumnMapping">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - semanticElements: a Collection&lt;EObject> or an EObject.
+                . view: current DTableElement (DCell, DColumn, DLine, ...).
+                . containerView: container of the current DTableElement (variable is available if container is not null).
+                . container: semantic target of containerView (if it is a DSemanticDecorator).
+
+          - headerLabelExpression: a string.
+
+          - canEdit: a boolean.
+
+          - labelExpression: a string.
+                . root: semantic target of the current DTable.
+                . line: DLine of the current DCell.
+                . lineSemantic: semantic target of $line
+                . container: semantic target of $line.
+                . column: DColumn of the current DCell.
+                . columnSemantic: semantic target of $column
+
+          - featureParentExpression: a Collection&lt;EObject> or an EObject.
+                . root: semantic target of the current DTable.
+                . container: semantic target of the current DLine.
+
+
+         
+   <!-- Start of user code FeatureColumnMapping description -->
+   
+   <!-- End of user code FeatureColumnMapping description -->
+   
+      </description>
+   </context>
+   <context id="CellUpdater">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - canEdit: a boolean.
+
+
+         
+   <!-- Start of user code CellUpdater description -->
+   
+   <!-- End of user code CellUpdater description -->
+   
+      </description>
+   </context>
+   <context id="StyleUpdater">
+     <description>
+       
+       
+         
+   <!-- Start of user code StyleUpdater description -->
+   
+   <!-- End of user code StyleUpdater description -->
+   
+      </description>
+   </context>
+   <context id="IntersectionMapping">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - semanticElements: a Collection&lt;EObject> or an EObject.
+                . view: current DTableElement (DCell, DColumn, DLine, ...).
+                . containerView: container of the current DTableElement (variable is available if container is not null).
+                . container: semantic target of containerView (if it is a DSemanticDecorator).
+
+          - canEdit: a boolean.
+
+          - labelExpression: a string.
+                . root: semantic target of the current DTable.
+                . line: DLine of the current DCell.
+                . lineSemantic: semantic target of $line
+                . container: semantic target of $line.
+                . column: DColumn of the current DCell.
+                . columnSemantic: semantic target of $column
+
+          - columnFinderExpression: a Collection&lt;EObject> or an EObject.
+
+          - lineFinderExpression: a Collection&lt;EObject> or an EObject.
+
+          - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
+
+          - preconditionExpression: a boolean.
+                . line: the source view of the current potential line.
+                . lineSemantic: the semantic element of $line.
+                . column: the source view of the current potential column.
+                . columnSemantic: the semantic element of $column.
+                . table: the current DTable.
+
+
+         
+   <!-- Start of user code IntersectionMapping description -->
+   
+   <!-- End of user code IntersectionMapping description -->
+   
+      </description>
+   </context>
+   <context id="TableTool">
+     <description>
+       
+       
+         
+   <!-- Start of user code TableTool description -->
+   
+   <!-- End of user code TableTool description -->
+   
+      </description>
+   </context>
+   <context id="LabelEditTool">
+     <description>
+       
+       
+         
+   <!-- Start of user code LabelEditTool description -->
+   
+   <!-- End of user code LabelEditTool description -->
+   
+      </description>
+   </context>
+   <context id="CreateTool">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+       List of the available variables for tool operations:
+            - variables: 
+  
+   <!-- Start of user code CreateTool description -->
+   
+   <!-- End of user code CreateTool description -->
+   
+      </description>
+   </context>
+   <context id="CreateColumnTool">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+         
+   <!-- Start of user code CreateColumnTool description -->
+   
+   <!-- End of user code CreateColumnTool description -->
+   
+      </description>
+   </context>
+   <context id="CreateCrossColumnTool">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+         
+   <!-- Start of user code CreateCrossColumnTool description -->
+   
+   <!-- End of user code CreateCrossColumnTool description -->
+   
+      </description>
+   </context>
+   <context id="CreateLineTool">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+         
+   <!-- Start of user code CreateLineTool description -->
+   
+   <!-- End of user code CreateLineTool description -->
+   
+      </description>
+   </context>
+   <context id="CreateCellTool">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+       List of the available variables for tool operations:
+            - variables: 
+  
+   <!-- Start of user code CreateCellTool description -->
+   
+   <!-- End of user code CreateCellTool description -->
+   
+      </description>
+   </context>
+   <context id="DeleteTool">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+       List of the available variables for tool operations:
+            - variables: 
+  
+   <!-- Start of user code DeleteTool description -->
+   
+   <!-- End of user code DeleteTool description -->
+   
+      </description>
+   </context>
+   <context id="DeleteColumnTool">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+         
+   <!-- Start of user code DeleteColumnTool description -->
+   
+   <!-- End of user code DeleteColumnTool description -->
+   
+      </description>
+   </context>
+   <context id="DeleteLineTool">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+         
+   <!-- Start of user code DeleteLineTool description -->
+   
+   <!-- End of user code DeleteLineTool description -->
+   
+      </description>
+   </context>
+   <context id="ForegroundStyleDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code ForegroundStyleDescription description -->
+   
+   <!-- End of user code ForegroundStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="BackgroundStyleDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code BackgroundStyleDescription description -->
+   
+   <!-- End of user code BackgroundStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="ForegroundConditionalStyle">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - predicateExpression: a boolean.
+
+
+         
+   <!-- Start of user code ForegroundConditionalStyle description -->
+   
+   <!-- End of user code ForegroundConditionalStyle description -->
+   
+      </description>
+   </context>
+   <context id="BackgroundConditionalStyle">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - predicateExpression: a boolean.
+
+
+         
+   <!-- Start of user code BackgroundConditionalStyle description -->
+   
+   <!-- End of user code BackgroundConditionalStyle description -->
+   
+      </description>
+   </context>
+   <context id="TableVariable">
+     <description>
+       
+       
+         
+   <!-- Start of user code TableVariable description -->
+   
+   <!-- End of user code TableVariable description -->
+   
+      </description>
+   </context>
+   <context id="TableCreationDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+          - titleExpression: a string.
+
+          - browseExpression: an EObject.
+
+
+       List of the available variables for tool operations:
+            - containerView: The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+            - representationName: The variable representationName that represents the name of the created representation.
+  
+   <!-- Start of user code TableCreationDescription description -->
+   
+   <!-- End of user code TableCreationDescription description -->
+   
+      </description>
+   </context>
+   <context id="TableNavigationDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+          - browseExpression: an EObject.
+
+          - navigationNameExpression: a string.
+                . name: name of the targeted Representation.
+
+
+       List of the available variables for tool operations:
+            - containerView: The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+            - container: The variable container that represents the semantic element of the clicked view.
+            - representationName: The variable representationName that represents the name of the representation to open.
+  
+   <!-- Start of user code TableNavigationDescription description -->
+   
+   <!-- End of user code TableNavigationDescription description -->
+   
+      </description>
+   </context>
+</contexts>

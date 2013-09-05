@@ -1,0 +1,1745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation&#xA;"
+    modelDirectory="/org.eclipse.sirius/src-gen" creationIcons="false" editDirectory="/org.eclipse.sirius.ui/src-gen"
+    editorDirectory="" modelPluginID="org.eclipse.sirius" templateDirectory=""
+    redirection="" modelName="Sirius" codeFormatting="true" testsDirectory="" importerID="org.eclipse.emf.importer.ecore"
+    containmentProxies="true" complianceLevel="5.0" runtimeVersion="2.3" language=""
+    usedGenPackages="contribution.genmodel#//contribution platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <genAnnotations source="http://www.eclipse.org/sirius/cdo/CDOGenModel">
+    <details key="cdoNativeGenModels" value="org.eclipse.sirius.cdonative/model/viewpoint.genmodel"/>
+  </genAnnotations>
+  <foreignModel>viewpoint.ecore</foreignModel>
+  <genPackages prefix="Sirius" basePackage="org.eclipse.sirius" disposableProviderFactory="true"
+      ecorePackage="viewpoint.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="viewpoint.ecore#//ContainerLayout">
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//ContainerLayout/FreeForm"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//ContainerLayout/List"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//ContainerLayout/HorizontalStack"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//ContainerLayout/VerticalStack"/>
+    </genEnums>
+    <genEnums ecoreEnum="viewpoint.ecore#//LabelPosition">
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//LabelPosition/border"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//LabelPosition/node"/>
+    </genEnums>
+    <genEnums ecoreEnum="viewpoint.ecore#//ContainerShape">
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//ContainerShape/parallelogram"/>
+    </genEnums>
+    <genEnums ecoreEnum="viewpoint.ecore#//BackgroundStyle">
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//BackgroundStyle/GradientLeftToRight"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//BackgroundStyle/Liquid"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//BackgroundStyle/GradientTopToBottom"/>
+    </genEnums>
+    <genEnums ecoreEnum="viewpoint.ecore#//BundledImageShape">
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//BundledImageShape/square"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//BundledImageShape/stroke"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//BundledImageShape/triangle"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//BundledImageShape/dot"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//BundledImageShape/ring"/>
+    </genEnums>
+    <genEnums ecoreEnum="viewpoint.ecore#//LineStyle">
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//LineStyle/solid"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//LineStyle/dash"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//LineStyle/dot"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//LineStyle/dash_dot"/>
+    </genEnums>
+    <genEnums ecoreEnum="viewpoint.ecore#//EdgeArrows">
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//EdgeArrows/NoDecoration"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//EdgeArrows/OutputArrow"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//EdgeArrows/InputArrow"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//EdgeArrows/OutputClosedArrow"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//EdgeArrows/InputClosedArrow"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//EdgeArrows/OutputFillClosedArrow"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//EdgeArrows/InputFillClosedArrow"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//EdgeArrows/Diamond"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//EdgeArrows/FillDiamond"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//EdgeArrows/InputArrowWithDiamond"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//EdgeArrows/InputArrowWithFillDiamond"/>
+    </genEnums>
+    <genEnums ecoreEnum="viewpoint.ecore#//EdgeRouting">
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//EdgeRouting/straight"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//EdgeRouting/manhattan"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//EdgeRouting/tree"/>
+    </genEnums>
+    <genEnums ecoreEnum="viewpoint.ecore#//AlignmentKind">
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//AlignmentKind/VERTICAL"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//AlignmentKind/HORIZONTAL"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//AlignmentKind/SQUARE"/>
+    </genEnums>
+    <genEnums ecoreEnum="viewpoint.ecore#//FontFormat">
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//FontFormat/normal"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//FontFormat/italic"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//FontFormat/bold"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//FontFormat/bold_italic"/>
+    </genEnums>
+    <genEnums ecoreEnum="viewpoint.ecore#//ResizeKind">
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//ResizeKind/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//ResizeKind/NSEW"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//ResizeKind/NORTH_SOUTH"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//ResizeKind/EAST_WEST"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="viewpoint.ecore#//LabelAlignment">
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//LabelAlignment/CENTER"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//LabelAlignment/LEFT"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//LabelAlignment/RIGHT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="viewpoint.ecore#//ArrangeConstraint">
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//ArrangeConstraint/KEEP_LOCATION"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//ArrangeConstraint/KEEP_SIZE"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//ArrangeConstraint/KEEP_RATIO"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="viewpoint.ecore#//SyncStatus">
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//SyncStatus/dirty"/>
+      <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//SyncStatus/sync"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="viewpoint.ecore#//ExtendedPackage"/>
+    <genClasses ecoreClass="viewpoint.ecore#//DAnalysis">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DAnalysis/referencedAnalysis"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DAnalysis/models"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DAnalysis/eAnnotations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DAnalysis/ownedViews"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DAnalysis/selectedViews"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DAnalysis/ownedFeatureExtensions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DAnalysis/version"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//DFeatureExtension">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DFeatureExtension/description"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//DValidable">
+      <genOperations ecoreOperation="viewpoint.ecore#//DValidable/validate"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//DNavigable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DNavigable/ownedNavigationLinks"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//DStylizable">
+      <genOperations ecoreOperation="viewpoint.ecore#//DStylizable/getStyle"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//DRefreshable">
+      <genOperations ecoreOperation="viewpoint.ecore#//DRefreshable/refresh"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//DLabelled"/>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//DMappingBased">
+      <genOperations ecoreOperation="viewpoint.ecore#//DMappingBased/getMapping"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//DContainer"/>
+    <genClasses ecoreClass="viewpoint.ecore#//DRepresentationContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentationContainer/diagramSet"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentationContainer/models"/>
+      <genOperations ecoreOperation="viewpoint.ecore#//DRepresentationContainer/addSemanticDiagram">
+        <genParameters ecoreParameter="viewpoint.ecore#//DRepresentationContainer/addSemanticDiagram/diagram"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//DSemanticDecorator">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DSemanticDecorator/target"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//DRepresentation">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentation/ownedRepresentationElements"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentation/representationElements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DRepresentation/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentation/ownedAnnotationEntries"/>
+      <genOperations ecoreOperation="viewpoint.ecore#//DRepresentation/createContents"/>
+      <genOperations ecoreOperation="viewpoint.ecore#//DRepresentation/createContents.1">
+        <genParameters ecoreParameter="viewpoint.ecore#//DRepresentation/createContents.1/rootElement"/>
+      </genOperations>
+      <genOperations ecoreOperation="viewpoint.ecore#//DRepresentation/updateContent"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//ExtensibleRepresentation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ExtensibleRepresentation/effectiveDescription"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ExtensibleRepresentation/contributionPoints"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//DRepresentationElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DRepresentationElement/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentationElement/semanticElements"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DView">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DView/ownedRepresentations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DView/ownedExtensions"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DView/allRepresentations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DView/hiddenRepresentations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DView/referencedRepresentations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DView/initialized"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DView/viewpoint"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//MetaModelExtension">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//MetaModelExtension/extensionGroup"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DDiagram">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagram/ownedDiagramElements"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagram/diagramElements"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagram/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DDiagram/info"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagram/subDiagrams"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagram/edges"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagram/nodes"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagram/nodeListElements"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagram/containers"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagram/currentConcern"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagram/activatedFilters"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagram/allFilters"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagram/activatedRules"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagram/activateBehaviors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagram/filterVariableHistory"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagram/activatedLayers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DDiagram/synchronized"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagram/hiddenElements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DDiagram/isInLayoutingMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DDiagram/headerHeight"/>
+      <genOperations ecoreOperation="viewpoint.ecore#//DDiagram/clean"/>
+      <genOperations ecoreOperation="viewpoint.ecore#//DDiagram/getNodesFromMapping">
+        <genParameters ecoreParameter="viewpoint.ecore#//DDiagram/getNodesFromMapping/mapping"/>
+      </genOperations>
+      <genOperations ecoreOperation="viewpoint.ecore#//DDiagram/getEdgesFromMapping">
+        <genParameters ecoreParameter="viewpoint.ecore#//DDiagram/getEdgesFromMapping/mapping"/>
+      </genOperations>
+      <genOperations ecoreOperation="viewpoint.ecore#//DDiagram/getContainersFromMapping">
+        <genParameters ecoreParameter="viewpoint.ecore#//DDiagram/getContainersFromMapping/mapping"/>
+      </genOperations>
+      <genOperations ecoreOperation="viewpoint.ecore#//DDiagram/findDiagramElements">
+        <genParameters ecoreParameter="viewpoint.ecore#//DDiagram/findDiagramElements/semanticElement"/>
+        <genParameters ecoreParameter="viewpoint.ecore#//DDiagram/findDiagramElements/type"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DSemanticDiagram">
+      <genOperations ecoreOperation="viewpoint.ecore#//DSemanticDiagram/getRootContent"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//DDiagramElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DDiagramElement/visible"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DDiagramElement/tooltipText"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramElement/parentLayers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramElement/decorations"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramElement/diagramElementMapping"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramElement/graphicalFilters"/>
+      <genOperations ecoreOperation="viewpoint.ecore#//DDiagramElement/getParentDiagram"/>
+      <genOperations ecoreOperation="viewpoint.ecore#//DDiagramElement/isFold">
+        <genParameters ecoreParameter="viewpoint.ecore#//DDiagramElement/isFold/alreadyManagedElements"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//GraphicalFilter"/>
+    <genClasses ecoreClass="viewpoint.ecore#//HideFilter"/>
+    <genClasses ecoreClass="viewpoint.ecore#//HideLabelFilter"/>
+    <genClasses ecoreClass="viewpoint.ecore#//FoldingPointFilter"/>
+    <genClasses ecoreClass="viewpoint.ecore#//FoldingFilter"/>
+    <genClasses ecoreClass="viewpoint.ecore#//AppliedCompositeFilters">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//AppliedCompositeFilters/compositeFilterDescriptions"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//AbsoluteBoundsFilter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//AbsoluteBoundsFilter/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//AbsoluteBoundsFilter/y"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//AbsoluteBoundsFilter/height"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//AbsoluteBoundsFilter/width"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//Decoration">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//Decoration/description"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//DNavigationLink">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DNavigationLink/targetType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DNavigationLink/label"/>
+      <genOperations ecoreOperation="viewpoint.ecore#//DNavigationLink/isAvailable"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DEObjectLink">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DEObjectLink/target"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DDiagramLink">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramLink/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramLink/node"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DSourceFileLink">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DSourceFileLink/filePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DSourceFileLink/startPosition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DSourceFileLink/endPosition"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//AbstractDNode">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//AbstractDNode/ownedBorderedNodes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//AbstractDNode/arrangeConstraints"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DNode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DNode/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DNode/height"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DNode/ownedStyle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DNode/labelPosition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DNode/ownedDetails"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DNode/resizeKind"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DNode/originalStyle"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DNode/actualMapping"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DNode/candidatesMapping"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//DDiagramElementContainer">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramElementContainer/nodes"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramElementContainer/containers"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramElementContainer/elements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramElementContainer/ownedStyle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramElementContainer/ownedDetails"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramElementContainer/originalStyle"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramElementContainer/actualMapping"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramElementContainer/candidatesMapping"/>
+      <genOperations ecoreOperation="viewpoint.ecore#//DDiagramElementContainer/getNodesFromMapping">
+        <genParameters ecoreParameter="viewpoint.ecore#//DDiagramElementContainer/getNodesFromMapping/mapping"/>
+      </genOperations>
+      <genOperations ecoreOperation="viewpoint.ecore#//DDiagramElementContainer/getContainersFromMapping">
+        <genParameters ecoreParameter="viewpoint.ecore#//DDiagramElementContainer/getContainersFromMapping/mapping"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DNodeContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DNodeContainer/ownedDiagramElements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DNodeContainer/childrenPresentation"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DNodeList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DNodeList/ownedElements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DNodeList/lineWidth"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DNodeListElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DNodeListElement/ownedStyle"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DNodeListElement/originalStyle"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DNodeListElement/actualMapping"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DNodeListElement/candidatesMapping"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DEdge">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DEdge/ownedStyle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DEdge/size"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DEdge/sourceNode"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DEdge/targetNode"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DEdge/actualMapping"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DEdge/routingStyle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DEdge/isFold"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DEdge/isMockEdge"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DEdge/originalStyle"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DEdge/path"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DEdge/arrangeConstraints"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DEdge/beginLabel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DEdge/endLabel"/>
+      <genOperations ecoreOperation="viewpoint.ecore#//DEdge/isRootFolding"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DDiagramSet">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramSet/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramSet/diagrams"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramSet/view"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//NodeStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//NodeStyle/labelPosition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//NodeStyle/hideLabelByDefault"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//Dot">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//Dot/backgroundColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//Dot/strokeSizeComputationExpression"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//GaugeSection">
+      <genFeatures property="None" createChild="false" propertyCategory="General"
+          ecoreFeature="ecore:EAttribute viewpoint.ecore#//GaugeSection/min"/>
+      <genFeatures property="None" createChild="false" propertyCategory="General"
+          ecoreFeature="ecore:EAttribute viewpoint.ecore#//GaugeSection/max"/>
+      <genFeatures property="None" createChild="false" propertyCategory="General"
+          ecoreFeature="ecore:EAttribute viewpoint.ecore#//GaugeSection/value"/>
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//GaugeSection/label"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//GaugeSection/backgroundColor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//GaugeSection/foregroundColor"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//ContainerStyle"/>
+    <genClasses ecoreClass="viewpoint.ecore#//FlatContainerStyle">
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//FlatContainerStyle/backgroundStyle"/>
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EReference viewpoint.ecore#//FlatContainerStyle/backgroundColor"/>
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EReference viewpoint.ecore#//FlatContainerStyle/foregroundColor"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//ShapeContainerStyle">
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//ShapeContainerStyle/shape"/>
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EReference viewpoint.ecore#//ShapeContainerStyle/backgroundColor"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//Square">
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//Square/width"/>
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//Square/height"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//Square/color"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//Ellipse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//Ellipse/horizontalDiameter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//Ellipse/verticalDiameter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//Ellipse/color"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//Lozenge">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//Lozenge/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//Lozenge/height"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//Lozenge/color"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//BundledImage">
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//BundledImage/shape"/>
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EReference viewpoint.ecore#//BundledImage/color"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//WorkspaceImage">
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//WorkspaceImage/workspacePath"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//CustomStyle">
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//CustomStyle/id"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//EdgeTarget">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//EdgeTarget/outgoingEdges"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//EdgeTarget/incomingEdges"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//EdgeStyle">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//EdgeStyle/strokeColor"/>
+      <genFeatures createChild="false" propertyCategory="General" propertyDescription="Style of the line of the arrow."
+          ecoreFeature="ecore:EAttribute viewpoint.ecore#//EdgeStyle/lineStyle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//EdgeStyle/sourceArrow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//EdgeStyle/targetArrow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//EdgeStyle/foldingStyle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//EdgeStyle/size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//EdgeStyle/routingStyle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//EdgeStyle/beginLabelStyle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//EdgeStyle/centerLabelStyle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//EdgeStyle/endLabelStyle"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DAnalysisCustomData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DAnalysisCustomData/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DAnalysisCustomData/data"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//GaugeCompositeStyle">
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//GaugeCompositeStyle/alignment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//GaugeCompositeStyle/sections"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//LabelStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//LabelStyle/labelAlignment"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//Style">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//Style/description"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//BorderedStyle">
+      <genFeatures property="None" createChild="false" propertyCategory="Border" propertyDescription=""
+          ecoreFeature="ecore:EAttribute viewpoint.ecore#//BorderedStyle/borderSize"/>
+      <genFeatures createChild="false" propertyCategory="Border" ecoreFeature="ecore:EAttribute viewpoint.ecore#//BorderedStyle/borderSizeComputationExpression"/>
+      <genFeatures property="None" children="true" createChild="true" propertyCategory="Border"
+          propertyDescription="" ecoreFeature="ecore:EReference viewpoint.ecore#//BorderedStyle/borderColor"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//Note">
+      <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EReference viewpoint.ecore#//Note/color"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DragAndDropTarget">
+      <genOperations ecoreOperation="viewpoint.ecore#//DragAndDropTarget/getDragAndDropDescription"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//FilterVariableHistory">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//FilterVariableHistory/ownedValues"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//FilterVariableValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//FilterVariableValue/variableDefinition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//FilterVariableValue/modelElement"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//RGBValues">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//RGBValues/red"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//RGBValues/green"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//RGBValues/blue"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DAnalysisSessionEObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DAnalysisSessionEObject/open"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DAnalysisSessionEObject/blocked"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DAnalysisSessionEObject/resources"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DAnalysisSessionEObject/controlledResources"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DAnalysisSessionEObject/activatedSiriuss"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DAnalysisSessionEObject/analyses"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DAnalysisSessionEObject/synchronizationStatus"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//CollapseFilter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//CollapseFilter/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//CollapseFilter/height"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//IndirectlyCollapseFilter"/>
+    <genClasses ecoreClass="viewpoint.ecore#//SessionManagerEObject">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//SessionManagerEObject/ownedSessions"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//DResource">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DResource/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DResource/path"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DFile"/>
+    <genClasses ecoreClass="viewpoint.ecore#//DResourceContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DResourceContainer/members"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DProject"/>
+    <genClasses ecoreClass="viewpoint.ecore#//DFolder"/>
+    <genClasses ecoreClass="viewpoint.ecore#//DModel"/>
+    <genClasses ecoreClass="viewpoint.ecore#//BasicLabelStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//BasicLabelStyle/labelSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//BasicLabelStyle/labelFormat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//BasicLabelStyle/showIcon"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//BasicLabelStyle/labelColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//BasicLabelStyle/iconPath"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//BeginLabelStyle">
+      <genOperations ecoreOperation="viewpoint.ecore#//BeginLabelStyle/getDescription"/>
+      <genOperations ecoreOperation="viewpoint.ecore#//BeginLabelStyle/setDescription">
+        <genParameters ecoreParameter="viewpoint.ecore#//BeginLabelStyle/setDescription/description"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//CenterLabelStyle">
+      <genOperations ecoreOperation="viewpoint.ecore#//CenterLabelStyle/getDescription"/>
+      <genOperations ecoreOperation="viewpoint.ecore#//CenterLabelStyle/setDescription">
+        <genParameters ecoreParameter="viewpoint.ecore#//CenterLabelStyle/setDescription/description"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//EndLabelStyle">
+      <genOperations ecoreOperation="viewpoint.ecore#//EndLabelStyle/getDescription"/>
+      <genOperations ecoreOperation="viewpoint.ecore#//EndLabelStyle/setDescription">
+        <genParameters ecoreParameter="viewpoint.ecore#//EndLabelStyle/setDescription/description"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//BracketEdgeStyle"/>
+    <genClasses image="false" ecoreClass="viewpoint.ecore#//Customizable">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EAttribute viewpoint.ecore#//Customizable/customFeatures"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//ComputedStyleDescriptionRegistry">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ComputedStyleDescriptionRegistry/computedStyleDescriptions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ComputedStyleDescriptionRegistry/cache"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//DiagramElementMapping2ModelElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DiagramElementMapping2ModelElement/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DiagramElementMapping2ModelElement/value"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//ModelElement2ViewVariable">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ModelElement2ViewVariable/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ModelElement2ViewVariable/value"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//ViewVariable2ContainerVariable">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ViewVariable2ContainerVariable/key"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ViewVariable2ContainerVariable/value"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpoint.ecore#//ContainerVariable2StyleDescription">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ContainerVariable2StyleDescription/key"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ContainerVariable2StyleDescription/value"/>
+    </genClasses>
+    <nestedGenPackages prefix="Description" basePackage="org.eclipse.sirius" resource="XMI"
+        disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description">
+      <genEnums ecoreEnum="viewpoint.ecore#//description/NavigationTargetType">
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/NavigationTargetType/model"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/NavigationTargetType/file"/>
+      </genEnums>
+      <genEnums ecoreEnum="viewpoint.ecore#//description/FoldingStyle">
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/FoldingStyle/NONE"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/FoldingStyle/SOURCE"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/FoldingStyle/TARGET"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="viewpoint.ecore#//description/LayoutDirection">
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/LayoutDirection/TopToBottom"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/LayoutDirection/LeftToRight"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/LayoutDirection/BottomToTop"/>
+      </genEnums>
+      <genEnums ecoreEnum="viewpoint.ecore#//description/Position">
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/Position/NORTH"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/Position/WEST"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/Position/SOUTH"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/Position/EAST"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/Position/NORTH_WEST"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/Position/NORTH_EAST"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/Position/SOUTH_WEST"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/Position/SOUTH_EAST"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/Position/CENTER"/>
+      </genEnums>
+      <genEnums ecoreEnum="viewpoint.ecore#//description/SystemColors">
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/black"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/blue"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/red"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/green"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/yellow"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/purple"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/orange"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/chocolate"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/gray"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/white"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/dark_blue"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/dark_red"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/dark_green"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/dark_yellow"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/dark_purple"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/dark_orange"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/dark_chocolate"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/dark_gray"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/light_blue"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/light_red"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/light_green"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/light_yellow"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/light_purple"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/light_orange"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/light_chocolate"/>
+        <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/SystemColors/light_gray"/>
+      </genEnums>
+      <genDataTypes ecoreDataType="viewpoint.ecore#//description/TypeName"/>
+      <genDataTypes ecoreDataType="viewpoint.ecore#//description/InterpretedExpression"/>
+      <genDataTypes ecoreDataType="viewpoint.ecore#//description/FeatureName"/>
+      <genDataTypes ecoreDataType="viewpoint.ecore#//description/URI"/>
+      <genClasses ecoreClass="viewpoint.ecore#//description/Group">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription=""
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Group/name"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Group/ownedSiriuss"/>
+        <genFeatures property="None" createChild="false" propertyCategory="" propertySortChoices="true"
+            ecoreFeature="ecore:EReference viewpoint.ecore#//description/Group/systemColorsPalette"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Group/userColorsPalettes"/>
+        <genFeatures property="None" createChild="false" propertyCategory="" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Group/version"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/Component"/>
+      <genClasses ecoreClass="viewpoint.ecore#//description/Sirius">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="This field allows to associate this viewpoint to one or more semantic resource file extension(s), for several file extensions, they must be space separeted. For example to associate this viewpoint to uml and ecore metamodels, put \&quot;uml ecore\&quot;."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Sirius/modelFileExtension"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Sirius/validationSet"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Sirius/ownedRepresentations"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Sirius/ownedRepresentationExtensions"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Sirius/ownedJavaExtensions"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Sirius/ownedMMExtensions"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Sirius/ownedFeatureExtensions"/>
+        <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Sirius/icon"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Sirius/ownedTemplates"/>
+        <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription=""
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Sirius/conflicts"/>
+        <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Sirius/reuses"/>
+        <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Sirius/customizes"/>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/Sirius/initView">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/Sirius/initView/model"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/FeatureExtensionDescription"/>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/RepresentationDescription">
+        <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Expression to compute the default title of the representation. (new + name of this description if empty)"
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/RepresentationDescription/titleExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="If set to true, the representation will be automatically created when creating a new session."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/RepresentationDescription/initialisation"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Metamodels"
+            propertyDescription="You might want to associate your description with an ecore model, this is not mandatory, but if you do so the editor will provides you a richer validation."
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/RepresentationDescription/metamodel"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="If true, existing representations of this type will be automatically opened when a session is opened."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/RepresentationDescription/showOnStartup"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/RepresentationTemplate">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/RepresentationTemplate/name"/>
+        <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//description/RepresentationTemplate/ownedRepresentations"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/RepresentationImportDescription"/>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/RepresentationExtensionDescription">
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/RepresentationExtensionDescription/name"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="URI of the viewpoint which contains the representation to extend. Example : viewpoint:/pluginID/SiriusName."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/RepresentationExtensionDescription/viewpointURI"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Name of the extended representation."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/RepresentationExtensionDescription/representationName"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Advanced"
+            propertyDescription="You might want to associate your description with an ecore model, this is not mandatory, but if you do so the editor will provides you a richer validation."
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/RepresentationExtensionDescription/metamodel"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/DiagramDescription">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/filters"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/allEdgeMappings"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/allActivatedEdgeMappings"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/allNodeMappings"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/allContainerMappings"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/validationSet"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/concerns"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/informationSections"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory=""
+            ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/allTools"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="The type of the root diagram element. For instance you may want to create an UML2 Class diagram,\n then the root domain class will probably be 'Package'. On the other side if you want a Class Diagram\n displaying the whole model, then the root domain class is 'Model' in UML2."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DiagramDescription/domainClass"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="The precondition is an expression preventing the creation of a diagram.\n If the precondition is set and the expression returns false on the root diagram\n element, then the diagram won't be created."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DiagramDescription/preconditionExpression"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertyDescription="If you display many concerns for a given diagram, then you may want to pick one as the default. This feature does just that."
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/defaultConcern"/>
+        <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="You can put here an expression to dynamically change the considered root for the diagram."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DiagramDescription/rootExpression"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/init"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/layout"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/diagramInitialisation"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/defaultLayer"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/optionalLayers"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/allLayers"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/allActivatedTools"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/nodeMappings"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/edgeMappings"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/edgeMappingImports"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/containerMappings"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Import"
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/reusedMappings"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/toolSection"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Import"
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramDescription/reusedTools"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="If true, creation tools which are visible in the palette will also be available as pop-up toolbars in the diagram itself."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DiagramDescription/enablePopupBars"/>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/DiagramDescription/createDiagram"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/DiagramImportDescription">
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertyDescription="Imported diagram description." propertySortChoices="true"
+            ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramImportDescription/importedDiagram"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/DiagramExtensionDescription">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramExtensionDescription/layers"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramExtensionDescription/validationSet"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramExtensionDescription/concerns"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/MetamodelExtensionSetting">
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertyDescription="" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/MetamodelExtensionSetting/extensionGroup"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/JavaExtension">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Qualified class name of a java class or of an Acceleo template. Once imported you may reuse\nany method of the Java class or any script of the Acceleo template on every Acceleo expression."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/JavaExtension/qualifiedClassName"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/RepresentationElementMapping">
+        <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Behavior"
+            propertyDescription="Tool used to create new sub-representations from a graphical element."
+            ecoreFeature="ecore:EReference viewpoint.ecore#//description/RepresentationElementMapping/detailDescriptions"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Behavior"
+            propertyDescription="Tool used to navigate to other representations from a graphical element."
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/RepresentationElementMapping/navigationDescriptions"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/DiagramElementMapping">
+        <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Precondition to prevent the creation of a diagram element. The expression will get evaluated on\nan element of the domain type, if it returns false, then the diagram element won't get created."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DiagramElementMapping/preconditionExpression"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Behavior"
+            propertyDescription="Tool to call when the user ask for deletion. If you don't set this reference then\nthe default behavior is to remove all the associated semantic elements."
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramElementMapping/deletionDescription"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Behavior"
+            propertyDescription="Tool called when the user perform a direct edit on the diagram element."
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramElementMapping/labelDirectEdit"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Restrict the list of elements to consider before creating the graphical elements. If it is not set,\nthen all semantic models in session will be browsed and any element of the given type validating\nthe precondition expression will cause the creation of a graphical element. If you set this\nattribute then only the elements returned by the expression evaluation will be considered."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DiagramElementMapping/semanticCandidatesExpression"/>
+        <genFeatures property="None" createChild="false" propertyCategory="Advanced"
+            propertyDescription="Tell whether the element should be created during the diagram initialization or not. If not the diagram will be created empty and then the user will have to fill it."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DiagramElementMapping/createElements"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression used to associate more than one semantic element to the viewpoint element. If you associate more than one element, any change "
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DiagramElementMapping/semanticElements"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Behavior"
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DiagramElementMapping/doubleClickDescription"/>
+        <genFeatures property="None" createChild="false" propertyCategory="Advanced"
+            propertyDescription="Set to true to force the synchronization of the elements of this mapping when the current diagram is in an unsynchronized mode.\nThis option is used only if createElements is true and the diagram which contain the elements of this mapping is unsynchronized."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DiagramElementMapping/synchronizationLock"/>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/DiagramElementMapping/checkPrecondition">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/DiagramElementMapping/checkPrecondition/modelElement"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/DiagramElementMapping/checkPrecondition/container"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/DiagramElementMapping/checkPrecondition/containerView"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/DiagramElementMapping/getAllMappings"/>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/DiagramElementMapping/isFrom">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/DiagramElementMapping/isFrom/element"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/AbstractNodeMapping">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Type of the element represented by the Node."
+            propertySortChoices="true" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/AbstractNodeMapping/domainClass"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/AbstractNodeMapping/borderedNodeMappings"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Import"
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/AbstractNodeMapping/reusedBorderedNodeMappings"/>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/AbstractNodeMapping/getDNodesDone"/>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/AbstractNodeMapping/findDNodeFromEObject">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/AbstractNodeMapping/findDNodeFromEObject/eObject"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/AbstractNodeMapping/clearDNodesDone"/>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/AbstractNodeMapping/addDoneNode">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/AbstractNodeMapping/addDoneNode/node"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/AbstractNodeMapping/getAllBorderedNodeMappings"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/NodeMapping">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/NodeMapping/style"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/NodeMapping/conditionnalStyles"/>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/NodeMapping/createNode">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/NodeMapping/createNode/modelElement"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/NodeMapping/createNode/container"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/NodeMapping/createNode/viewPoint"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/NodeMapping/updateNode">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/NodeMapping/updateNode/node"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/NodeMapping/getBestStyle">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/NodeMapping/getBestStyle/modelElement"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/NodeMapping/getBestStyle/viewVariable"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/NodeMapping/getBestStyle/containerVariable"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/NodeMapping/createListElement">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/NodeMapping/createListElement/modelElement"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/NodeMapping/createListElement/diagram"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/NodeMapping/updateListElement">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/NodeMapping/updateListElement/listElement"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/NodeMapping/getNodesCandidates">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/NodeMapping/getNodesCandidates/semanticOrigin"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/NodeMapping/getNodesCandidates/container"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/NodeMapping/getNodesCandidates.1">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/NodeMapping/getNodesCandidates.1/semanticOrigin"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/NodeMapping/getNodesCandidates.1/container"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/NodeMapping/getNodesCandidates.1/containerView"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/ContainerMapping">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/ContainerMapping/subNodeMappings"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Import"
+            ecoreFeature="ecore:EReference viewpoint.ecore#//description/ContainerMapping/allNodeMappings"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Import"
+            propertyDescription="Node mappings reused as child of this container."
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/ContainerMapping/reusedNodeMappings"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/ContainerMapping/subContainerMappings"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Import"
+            propertyDescription="Container mappings reused as childs of this container."
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/ContainerMapping/reusedContainerMappings"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Import"
+            propertyDescription="" ecoreFeature="ecore:EReference viewpoint.ecore#//description/ContainerMapping/allContainerMappings"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/ContainerMapping/style"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/ContainerMapping/conditionnalStyles"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Tell whether the container will display it's children as list elements, as shapes or as regions."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/ContainerMapping/childrenPresentation"/>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/ContainerMapping/createContainer">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/ContainerMapping/createContainer/modelElement"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/ContainerMapping/createContainer/container"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/ContainerMapping/createContainer/viewPoint"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/ContainerMapping/updateContainer">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/ContainerMapping/updateContainer/node"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/ContainerMapping/getBestStyle">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/ContainerMapping/getBestStyle/modelElement"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/ContainerMapping/getBestStyle/viewVariable"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/ContainerMapping/getBestStyle/containerVariable"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/ContainerMapping/getNodesCandidates">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/ContainerMapping/getNodesCandidates/semanticOrigin"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/ContainerMapping/getNodesCandidates/container"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/ContainerMapping/getNodesCandidates.1">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/ContainerMapping/getNodesCandidates.1/semanticOrigin"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/ContainerMapping/getNodesCandidates.1/container"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/ContainerMapping/getNodesCandidates.1/containerView"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/AbstractMappingImport">
+        <genFeatures createChild="false" propertyCategory="Import" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/AbstractMappingImport/hideSubMappings"/>
+        <genFeatures createChild="false" propertyCategory="Import" propertyDescription="Set to true if you want the filters applying on the imported mappings apply on this one."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/AbstractMappingImport/inheritsAncestorFilters"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/NodeMappingImport">
+        <genFeatures createChild="false" propertyCategory="Import" propertyDescription="Imported node mapping"
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/NodeMappingImport/importedMapping"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/ContainerMappingImport">
+        <genFeatures notify="false" createChild="false" propertyCategory="Import"
+            propertyDescription="Imported container mapping" propertySortChoices="true"
+            ecoreFeature="ecore:EReference viewpoint.ecore#//description/ContainerMappingImport/importedMapping"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/EdgeMapping">
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertyDescription="Mapping from which the edge should start." propertySortChoices="true"
+            ecoreFeature="ecore:EReference viewpoint.ecore#//description/EdgeMapping/sourceMapping"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertyDescription="Mapping from which the edge should end." propertySortChoices="true"
+            ecoreFeature="ecore:EReference viewpoint.ecore#//description/EdgeMapping/targetMapping"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression which should return, starting from the target element (which may be the domain class\n if the edge is domain based, otherwhise it's the target of the source node) the target semantic element."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/EdgeMapping/targetFinderExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Only needed in domain based edges, it should return the source semantic element. For instance for an UML2 Association \nthe expression will look like &lt;%eAllContents(\&quot;Property\&quot;).nFirst.type%> and will return the source class."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/EdgeMapping/sourceFinderExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/EdgeMapping/style"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/EdgeMapping/conditionnalStyles"/>
+        <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Expression used to retrieve the main semantic element of the Edge. Using domain based Edges the expression is generally &lt;%self%>."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/EdgeMapping/targetExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Type name of the domain class triggering the creation of a new Edge.\nFor instance in UML2 you can have 'Association' here.\nOnly needed if 'use domain element' is set to true."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/EdgeMapping/domainClass"/>
+        <genFeatures createChild="false" propertyCategory="" propertyDescription="Trigger usage of a domain class representing an Edge or just a reference. If you set it to true, the Edge research will start from the domain instances of the given type and look for target/source nodes accordingly, if you set to false, the research will start from the source nodes and look for corresponding target nodes."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/EdgeMapping/useDomainElement"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Behavior"
+            propertyDescription="" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/EdgeMapping/reconnections"/>
+        <genFeatures createChild="false" propertyCategory="Path" propertyDescription="You can use this feature to declare a path of element the edge should follow. The Edge will use this expression returning the list of semantic element it has to go through."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/EdgeMapping/pathExpression"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Path" propertyDescription="List of node mappings considered by the path expression."
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/EdgeMapping/pathNodeMapping"/>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/EdgeMapping/createEdge">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/createEdge/source"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/createEdge/target"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/createEdge/semanticTarget"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/EdgeMapping/createEdge.1">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/createEdge.1/source"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/createEdge.1/target"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/createEdge.1/container"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/createEdge.1/semanticTarget"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/EdgeMapping/getBestStyle">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/getBestStyle/modelElement"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/getBestStyle/viewVariable"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/getBestStyle/containerVariable"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/EdgeMapping/updateEdge">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/updateEdge/viewEdge"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/EdgeMapping/getEdgeTargetCandidates">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/getEdgeTargetCandidates/semanticOrigin"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/getEdgeTargetCandidates/viewPoint"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/EdgeMapping/getEdgeSourceCandidates">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/getEdgeSourceCandidates/semanticOrigin"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/getEdgeSourceCandidates/viewPoint"/>
+        </genOperations>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/EdgeMapping/getEdgeTargetCandidates.1">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/getEdgeTargetCandidates.1/semanticOrigin"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/getEdgeTargetCandidates.1/container"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/EdgeMapping/getEdgeTargetCandidates.1/containerView"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/IEdgeMapping">
+        <genOperations ecoreOperation="viewpoint.ecore#//description/IEdgeMapping/getBestStyle">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/IEdgeMapping/getBestStyle/modelElement"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/IEdgeMapping/getBestStyle/viewVariable"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/IEdgeMapping/getBestStyle/containerVariable"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/EdgeMappingImport">
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/EdgeMappingImport/importedMapping"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/EdgeMappingImport/conditionnalStyles"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Set to true if you want the filters applying on the imported mappings apply on this one."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/EdgeMappingImport/inheritsAncestorFilters"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/DocumentedElement">
+        <genFeatures createChild="false" propertyCategory="Documentation" propertyDescription="This field is only here for comments and documentation purpose on the model, use it for any need of annotation."
+            propertyMultiLine="true" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DocumentedElement/documentation"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/DModelElement">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DModelElement/eAnnotations"/>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/DModelElement/getDAnnotation">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/DModelElement/getDAnnotation/source"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/DAnnotation">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DAnnotation/source"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DAnnotation/details"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/ConditionalStyleDescription">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Checked predicate to determine wether the conditional style is valid or not. If the predicate returns true, the style is taken."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/ConditionalStyleDescription/predicateExpression"/>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/ConditionalStyleDescription/checkPredicate">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/ConditionalStyleDescription/checkPredicate/modelElement"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/ConditionalStyleDescription/checkPredicate/viewVariable"/>
+          <genParameters ecoreParameter="viewpoint.ecore#//description/ConditionalStyleDescription/checkPredicate/containerVariable"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/ConditionalNodeStyleDescription">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/ConditionalNodeStyleDescription/style"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/ConditionalEdgeStyleDescription">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/ConditionalEdgeStyleDescription/style"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/ConditionalContainerStyleDescription">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/ConditionalContainerStyleDescription/style"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/DragAndDropTargetDescription">
+        <genFeatures notify="false" createChild="false" propertyCategory="Behavior"
+            propertyDescription="Tool describing what actions should be taken when dropping something onto the element."
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DragAndDropTargetDescription/dropDescriptions"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/PasteTargetDescription">
+        <genFeatures notify="false" createChild="false" propertyCategory="Behavior"
+            propertyDescription="Tool describing what actions should be taken when pasting something onto the element."
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/PasteTargetDescription/pasteDescriptions"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/Layout"/>
+      <genClasses ecoreClass="viewpoint.ecore#//description/OrderedTreeLayout">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="You should write here an expression returning, from a semantic element of the selected mappings, its semantic child so that the layout is able to build the hierarchy."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/OrderedTreeLayout/childrenExpression"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertyDescription="An existing mapping on which the tree order algorithm will operate"
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/OrderedTreeLayout/nodeMapping"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/CompositeLayout">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/CompositeLayout/padding"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/CompositeLayout/direction"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/DecorationDescriptionsSet">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/DecorationDescriptionsSet/decorationDescriptions"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/DecorationDescription">
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DecorationDescription/name"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Position of the decoration relatively to the figure."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DecorationDescription/position"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Path of the icon of the decoration. In the form of /myProjectID/path/to/image.png"
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DecorationDescription/decoratorPath"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression that filters the elements on which we want to display the decoration."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DecorationDescription/preconditionExpression"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/MappingBasedDecoration">
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertyDescription="Mappings to decorate." propertySortChoices="true"
+            ecoreFeature="ecore:EReference viewpoint.ecore#//description/MappingBasedDecoration/mappings"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/SemanticBasedDecoration">
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SemanticBasedDecoration/domainClass"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/Layer">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Layer/nodeMappings"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Layer/edgeMappings"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Layer/edgeMappingImports"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Layer/containerMappings"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Advanced"
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Layer/reusedMappings"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Layer/allTools"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Layer/toolSections"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Advanced"
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Layer/reusedTools"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Layer/decorationDescriptionsSet"/>
+        <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Optional icon for the layer."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Layer/icon"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Layer/allEdgeMappings"/>
+        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Layer/allActivatedEdgeMappings"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Layer/customization"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/OptionalLayer">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="If true, this optional layer will be automatically enabled when a new diagram of this type is created."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/OptionalLayer/activeByDefault"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/Customization">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Customization/vsmElementCustomizations"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/IVSMElementCustomization"/>
+      <genClasses ecoreClass="viewpoint.ecore#//description/VSMElementCustomization">
+        <genFeatures createChild="false" propertyCategory="" propertyDescription="A boolean expression to disable this customization, return false to disable it, true otherwise, true by default."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/VSMElementCustomization/predicateExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/VSMElementCustomization/featureCustomizations"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/VSMElementCustomizationReuse">
+        <genFeatures notify="false" createChild="false" propertyDescription="The style customizations to reuse."
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/VSMElementCustomizationReuse/reuse"/>
+        <genFeatures notify="false" createChild="false" propertyDescription="The style to customize."
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/VSMElementCustomizationReuse/appliedOn"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/EStructuralFeatureCustomization">
+        <genFeatures notify="false" createChild="false" propertyDescription="The style to customize."
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/EStructuralFeatureCustomization/appliedOn"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/EAttributeCustomization">
+        <genFeatures createChild="false" propertyDescription="The name of the property to customize."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/EAttributeCustomization/attributeName"/>
+        <genFeatures createChild="false" propertyDescription="The expression to compute the property's new value."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/EAttributeCustomization/value"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/EReferenceCustomization">
+        <genFeatures createChild="false" propertyDescription="The name of the property to customize."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/EReferenceCustomization/referenceName"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="" propertyDescription="The new value to set for the property."
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/EReferenceCustomization/value"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/SelectionDescription">
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SelectionDescription/candidatesExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SelectionDescription/multiple"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SelectionDescription/tree"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SelectionDescription/rootExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SelectionDescription/childrenExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SelectionDescription/message"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/ColorDescription"/>
+      <genClasses ecoreClass="viewpoint.ecore#//description/SystemColor">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/SystemColor/name"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/InterpolatedColor">
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/InterpolatedColor/colorValueComputationExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/InterpolatedColor/minValueComputationExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/InterpolatedColor/maxValueComputationExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/InterpolatedColor/colorSteps"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/ColorStep">
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/ColorStep/associatedValue"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/ColorStep/associatedColor"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/FixedColor">
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/FixedColor/red"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/FixedColor/green"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/FixedColor/blue"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/UserFixedColor"/>
+      <genClasses ecoreClass="viewpoint.ecore#//description/UserColor">
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/UserColor/name"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/Environment">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Environment/systemColors"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Environment/defaultTools"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Environment/labelBorderStyles"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/SytemColorsPalette">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/SytemColorsPalette/entries"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/UserColorsPalette">
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/UserColorsPalette/name"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/UserColorsPalette/entries"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/AnnotationEntry">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/AnnotationEntry/source"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/AnnotationEntry/data"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="viewpoint.ecore#//description/EndUserDocumentedElement">
+        <genFeatures createChild="false" propertyCategory="Documentation" propertyDescription="This field describes this element for the end-user."
+            propertyMultiLine="true" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/EndUserDocumentedElement/endUserDocumentation"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/IdentifiedElement">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="The identifier of this element. Must be unique. Changing this identifier will break existing user models which reference the old identifier."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/IdentifiedElement/name"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="The label used to display this to the end-user."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/IdentifiedElement/label"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/ComputedColor">
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/ComputedColor/red"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/ComputedColor/green"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/ComputedColor/blue"/>
+      </genClasses>
+      <genClasses ecoreClass="viewpoint.ecore#//description/DAnnotationEntry">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DAnnotationEntry/source"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DAnnotationEntry/details"/>
+      </genClasses>
+      <nestedGenPackages prefix="Style" basePackage="org.eclipse.sirius.description"
+          disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/style">
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/style/StyleDescription"/>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/style/RoundedCornerStyleDescription">
+          <genFeatures createChild="false" propertyCategory="Corner" propertyDescription=""
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/RoundedCornerStyleDescription/arcWidth"/>
+          <genFeatures createChild="false" propertyCategory="Corner" propertyDescription=""
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/RoundedCornerStyleDescription/arcHeight"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/BorderedStyleDescription">
+          <genFeatures createChild="false" propertyCategory="Border" propertyDescription="Expression returning the size of the border."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/BorderedStyleDescription/borderSizeComputationExpression"/>
+          <genFeatures createChild="false" propertyCategory="Color" propertyDescription=""
+              ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/BorderedStyleDescription/borderColor"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/BasicLabelStyleDescription">
+          <genFeatures createChild="false" propertyCategory="Label" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/BasicLabelStyleDescription/labelSize"/>
+          <genFeatures createChild="false" propertyCategory="Label" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/BasicLabelStyleDescription/labelFormat"/>
+          <genFeatures createChild="false" propertyCategory="Label" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/BasicLabelStyleDescription/showIcon"/>
+          <genFeatures createChild="false" propertyCategory="Label" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/BasicLabelStyleDescription/labelExpression"/>
+          <genFeatures notify="false" createChild="false" propertyCategory="Color"
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/BasicLabelStyleDescription/labelColor"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Path to a specific icon, if unset the icon associated to the semantic element will be used. Otherwise use path\nlike /myProject/myDirectory/myImage.gif, the style will look for it first in the workspace, then in the plugins."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/BasicLabelStyleDescription/iconPath"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/LabelStyleDescription">
+          <genFeatures createChild="false" propertyCategory="Label" propertyDescription="The alignement of the label."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/LabelStyleDescription/labelAlignment"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/LabelBorderStyles">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/LabelBorderStyles/labelBorderStyleDescriptions"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/LabelBorderStyleDescription">
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/LabelBorderStyleDescription/id"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/LabelBorderStyleDescription/name"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/LabelBorderStyleDescription/cornerHeight"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/LabelBorderStyleDescription/cornerWidth"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/style/NodeStyleDescription">
+          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/NodeStyleDescription/sizeComputationExpression"/>
+          <genFeatures createChild="false" propertyCategory="Label" propertyDescription="Pick either 'node' position which mean 'inside the node' or 'border' to put the label around the node."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/NodeStyleDescription/labelPosition"/>
+          <genFeatures createChild="false" propertyCategory="Label" propertyDescription="Define the default visibility status of this label (available only if label position is \&quot;border\&quot;). A change of this option does not affect already existing elements."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/NodeStyleDescription/hideLabelByDefault"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Authorized resize directions for the node."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/NodeStyleDescription/resizeKind"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/CustomStyleDescription">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="ID for the custom style, you should put here an ID you'll leverage using the API to provide your own custom style."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/CustomStyleDescription/id"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/SquareDescription">
+          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/SquareDescription/width"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/SquareDescription/height"/>
+          <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/SquareDescription/color"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/LozengeNodeDescription">
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/LozengeNodeDescription/widthComputationExpression"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/LozengeNodeDescription/heightComputationExpression"/>
+          <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/LozengeNodeDescription/color"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/EllipseNodeDescription">
+          <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/EllipseNodeDescription/color"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/EllipseNodeDescription/horizontalDiameterComputationExpression"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/EllipseNodeDescription/verticalDiameterComputationExpression"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/BundledImageDescription">
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/BundledImageDescription/shape"/>
+          <genFeatures createChild="false" propertyCategory="Color" propertyDescription="Color for the shape."
+              ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/BundledImageDescription/color"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/NoteDescription">
+          <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/NoteDescription/color"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/DotDescription">
+          <genFeatures createChild="false" propertyCategory="Color" propertySortChoices="true"
+              ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/DotDescription/backgroundColor"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/DotDescription/strokeSizeComputationExpression"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/GaugeCompositeStyleDescription">
+          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Alignment of the gauges."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/GaugeCompositeStyleDescription/alignment"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/GaugeCompositeStyleDescription/sections"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/style/ContainerStyleDescription">
+          <genFeatures createChild="false" propertyCategory="Corner" propertyDescription=""
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/ContainerStyleDescription/roundedCorner"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/FlatContainerStyleDescription">
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/FlatContainerStyleDescription/backgroundStyle"/>
+          <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/FlatContainerStyleDescription/backgroundColor"/>
+          <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/FlatContainerStyleDescription/foregroundColor"/>
+          <genFeatures notify="false" createChild="false" propertyCategory="Label"
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/FlatContainerStyleDescription/labelBorderStyle"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/ShapeContainerStyleDescription">
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/ShapeContainerStyleDescription/shape"/>
+          <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/ShapeContainerStyleDescription/backgroundColor"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/WorkspaceImageDescription"
+            labelFeature="#//viewpoint/description/style/WorkspaceImageDescription/workspacePath">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Path for the image in the form of /myProjectID/path/to/image.png . If the image is not found in the workspace the tooling will look for it in the plugins."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/WorkspaceImageDescription/workspacePath"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/EdgeStyleDescription">
+          <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/EdgeStyleDescription/strokeColor"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/EdgeStyleDescription/lineStyle"/>
+          <genFeatures createChild="false" propertyCategory="Decorators" propertyDescription=""
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/EdgeStyleDescription/sourceArrow"/>
+          <genFeatures createChild="false" propertyCategory="Decorators" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/EdgeStyleDescription/targetArrow"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/EdgeStyleDescription/sizeComputationExpression"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/EdgeStyleDescription/routingStyle"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/EdgeStyleDescription/foldingStyle"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/EdgeStyleDescription/beginLabelStyleDescription"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/EdgeStyleDescription/centerLabelStyleDescription"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/EdgeStyleDescription/endLabelStyleDescription"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/TooltipStyleDescription">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="An optional expression which should return the text of the element's tool-tip."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/TooltipStyleDescription/tooltipExpression"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/GaugeSectionDescription">
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/GaugeSectionDescription/minValueExpression"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/GaugeSectionDescription/maxValueExpression"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/GaugeSectionDescription/valueExpression"/>
+          <genFeatures createChild="false" propertyCategory="Color" propertySortChoices="true"
+              ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/GaugeSectionDescription/backgroundColor"/>
+          <genFeatures createChild="false" propertyCategory="Color" propertySortChoices="true"
+              ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/GaugeSectionDescription/foregroundColor"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/GaugeSectionDescription/label"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/BeginLabelStyleDescription"
+            labelFeature="#//viewpoint/description/style/BasicLabelStyleDescription/labelExpression"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/CenterLabelStyleDescription"
+            labelFeature="#//viewpoint/description/style/BasicLabelStyleDescription/labelExpression"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/EndLabelStyleDescription"
+            labelFeature="#//viewpoint/description/style/BasicLabelStyleDescription/labelExpression"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/style/BracketEdgeStyleDescription"/>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="Tool" basePackage="org.eclipse.sirius.description"
+          disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/tool">
+        <genEnums ecoreEnum="viewpoint.ecore#//description/tool/ReconnectionKind">
+          <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/tool/ReconnectionKind/RECONNECT_TARGET"/>
+          <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/tool/ReconnectionKind/RECONNECT_SOURCE"/>
+          <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/tool/ReconnectionKind/RECONNECT_BOTH"/>
+        </genEnums>
+        <genEnums ecoreEnum="viewpoint.ecore#//description/tool/DragSource">
+          <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/tool/DragSource/DIAGRAM"/>
+          <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/tool/DragSource/PROJECT_EXPLORER"/>
+          <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/tool/DragSource/BOTH"/>
+        </genEnums>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ToolSection">
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/ToolSection/icon"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolSection/ownedTools"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolSection/subSections"/>
+          <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolSection/popupMenus"/>
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolSection/reusedTools"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolSection/groupExtensions"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/ToolEntry"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ToolGroup">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolGroup/tools"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ToolGroupExtension">
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolGroupExtension/group"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolGroupExtension/tools"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/AbstractToolDescription">
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/AbstractToolDescription/precondition"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/AbstractToolDescription/forceRefresh"/>
+          <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+              propertyDescription="" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/AbstractToolDescription/filters"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/MappingBasedToolDescription"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ToolDescription">
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/ToolDescription/iconPath"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolDescription/element"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolDescription/elementView"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolDescription/initialOperation"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/NodeCreationDescription">
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertyDescription="Node mappings you may need to create once the tool has been executed."
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/NodeCreationDescription/nodeMappings"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/NodeCreationDescription/variable"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/NodeCreationDescription/viewVariable"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/NodeCreationDescription/initialOperation"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Path to a specific icon, if unset the icon associated to the Node mapping will be used. Otherwise use path\nlike /myProject/myDirectory/myImage.gif, the tool will look for it first in the workspace, then in the plugins."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/NodeCreationDescription/iconPath"/>
+          <genFeatures notify="false" createChild="false" propertyCategory="Advanced"
+              propertyDescription="Usefull if you want to enable the tool on other mappings and then provide a specific behavior."
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/NodeCreationDescription/extraMappings"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/EdgeCreationDescription">
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertyDescription="Edge mappings you may need to automatically create once the tool has been executed."
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/EdgeCreationDescription/edgeMappings"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/EdgeCreationDescription/sourceVariable"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/EdgeCreationDescription/targetVariable"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/EdgeCreationDescription/sourceViewVariable"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/EdgeCreationDescription/targetViewVariable"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/EdgeCreationDescription/initialOperation"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Path to a specific icon, if unset the icon associated to the Node mapping will be used. Otherwise use path\nlike /myProject/myDirectory/myImage.gif, the tool will look for it first in the workspace, then in the plugins."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/EdgeCreationDescription/iconPath"/>
+          <genFeatures notify="false" createChild="false" propertyCategory="Advanced"
+              propertyDescription="Usefull if you want to enable the tool on other mappings and then provide a specific behavior."
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/EdgeCreationDescription/extraSourceMappings"/>
+          <genFeatures notify="false" createChild="false" propertyCategory="Advanced"
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/EdgeCreationDescription/extraTargetMappings"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/EdgeCreationDescription/connectionStartPrecondition"/>
+          <genOperations ecoreOperation="viewpoint.ecore#//description/tool/EdgeCreationDescription/getBestMapping">
+            <genParameters ecoreParameter="viewpoint.ecore#//description/tool/EdgeCreationDescription/getBestMapping/source"/>
+            <genParameters ecoreParameter="viewpoint.ecore#//description/tool/EdgeCreationDescription/getBestMapping/target"/>
+            <genParameters ecoreParameter="viewpoint.ecore#//description/tool/EdgeCreationDescription/getBestMapping/createdElements"/>
+          </genOperations>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ContainerCreationDescription">
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertyDescription="Container mappings you may need to create once the tool has been executed."
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ContainerCreationDescription/containerMappings"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ContainerCreationDescription/variable"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ContainerCreationDescription/viewVariable"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ContainerCreationDescription/initialOperation"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Path to a specific icon, if unset the icon associated to the Node mapping will be used. Otherwise use path\nlike /myProject/myDirectory/myImage.gif, the tool will look for it first in the workspace, then in the plugins."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/ContainerCreationDescription/iconPath"/>
+          <genFeatures notify="false" createChild="false" propertyCategory="Advanced"
+              propertyDescription="Usefull if you want to enable the tool on other mappings and then provide a specific behavior."
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ContainerCreationDescription/extraMappings"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ContainerDropDescription">
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertyDescription="Mapping of the element to drop on the container"
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ContainerDropDescription/mappings"/>
+          <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+              propertyDescription="" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ContainerDropDescription/oldContainer"/>
+          <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+              propertyDescription="" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ContainerDropDescription/newContainer"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ContainerDropDescription/element"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ContainerDropDescription/newViewContainer"/>
+          <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+              ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ContainerDropDescription/initialOperation"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Tell whether the source of this Drag and Drop is an item of a Diagram, of the Model Explorer View or both."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/ContainerDropDescription/dragSource"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="If set to true, drop to the container will not invalidate the linked edges."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/ContainerDropDescription/moveEdges"/>
+          <genOperations ecoreOperation="viewpoint.ecore#//description/tool/ContainerDropDescription/getBestMapping">
+            <genParameters ecoreParameter="viewpoint.ecore#//description/tool/ContainerDropDescription/getBestMapping/targetContainer"/>
+            <genParameters ecoreParameter="viewpoint.ecore#//description/tool/ContainerDropDescription/getBestMapping/droppedElement"/>
+          </genOperations>
+          <genOperations ecoreOperation="viewpoint.ecore#//description/tool/ContainerDropDescription/getContainers"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/PasteDescription">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PasteDescription/container"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PasteDescription/containerView"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PasteDescription/copiedView"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PasteDescription/copiedElement"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PasteDescription/initialOperation"/>
+          <genOperations ecoreOperation="viewpoint.ecore#//description/tool/PasteDescription/getContainers"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/DeleteElementDescription">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/DeleteElementDescription/element"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/DeleteElementDescription/elementView"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/DeleteElementDescription/containerView"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/DeleteElementDescription/initialOperation"/>
+          <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+              ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/DeleteElementDescription/hook"/>
+          <genOperations ecoreOperation="viewpoint.ecore#//description/tool/DeleteElementDescription/getMappings"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/DoubleClickDescription">
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/DoubleClickDescription/mappings"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/DoubleClickDescription/element"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/DoubleClickDescription/elementView"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/DoubleClickDescription/initialOperation"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/DeleteHook">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="An id of an extension to org.eclipse.sirius.deleteHook extension point. It may be used to add a confirmation dialog before deletion"
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/DeleteHook/id"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/DeleteHook/parameters"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/DeleteHookParameter">
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/DeleteHookParameter/name"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/DeleteHookParameter/value"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ReconnectEdgeDescription">
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/ReconnectEdgeDescription/reconnectionKind"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ReconnectEdgeDescription/source"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ReconnectEdgeDescription/target"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ReconnectEdgeDescription/sourceView"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ReconnectEdgeDescription/targetView"/>
+          <genFeatures property="None" children="true" createChild="true" propertyCategory="General"
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ReconnectEdgeDescription/element"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ReconnectEdgeDescription/initialOperation"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ReconnectEdgeDescription/edgeView"/>
+          <genOperations ecoreOperation="viewpoint.ecore#//description/tool/ReconnectEdgeDescription/getMappings"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/RequestDescription">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Arbitrary identifier of a request sent on the current EditPart. You should use the provided API to install an EditPolicy reacting to the request."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/RequestDescription/type"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/SelectionWizardDescription">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/SelectionWizardDescription/element"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/SelectionWizardDescription/containerView"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/SelectionWizardDescription/container"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/SelectionWizardDescription/initialOperation"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Path to a specific icon. Use path\nlike /myProject/myDirectory/myImage.gif, the tool will look for it first in the workspace, then in the plugins."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/SelectionWizardDescription/iconPath"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="The title of the window"
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/SelectionWizardDescription/windowTitle"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Path to a specific image to display in the window. Use path\nlike /myProject/myDirectory/myImage.gif, the tool will look for it first in the workspace, then in the plugins."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/SelectionWizardDescription/windowImagePath"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/element"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/containerView"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/container"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/initialOperation"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/iconPath"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/windowTitle"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/windowImagePath"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/message"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/choiceOfValuesMessage"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/candidatesExpression"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/tree"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/rootExpression"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/childrenExpression"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/selectedValuesMessage"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/preSelectedCandidatesExpression"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/RepresentationCreationDescription">
+          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Expression to compute the default title of the representation to create. (new + name of this description if empty)"
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/RepresentationCreationDescription/titleExpression"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Expression used to browse the model and find a new root element before the creation of the new representation."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/RepresentationCreationDescription/browseExpression"/>
+          <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationCreationDescription/representationDescription"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationCreationDescription/initialOperation"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationCreationDescription/containerViewVariable"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationCreationDescription/representationNameVariable"/>
+          <genOperations ecoreOperation="viewpoint.ecore#//description/tool/RepresentationCreationDescription/getMappings"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/RepresentationNavigationDescription">
+          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Expression used to browse the model and find candidates for navigation. They must be the root of described representations to be navigable."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/RepresentationNavigationDescription/browseExpression"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Expression used to build the name of the action contributed to the contextual menu. It's used only if the \&quot;Browse expression\&quot; field is filled."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/RepresentationNavigationDescription/navigationNameExpression"/>
+          <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationNavigationDescription/representationDescription"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationNavigationDescription/containerViewVariable"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationNavigationDescription/containerVariable"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationNavigationDescription/representationNameVariable"/>
+          <genOperations ecoreOperation="viewpoint.ecore#//description/tool/RepresentationNavigationDescription/getMappings"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/MenuItemOrRef"/>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/MenuItemDescription">
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/MenuItemDescription/icon"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/MenuItemDescriptionReference">
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/MenuItemDescriptionReference/item"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/OperationAction">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/OperationAction/view"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/OperationAction/initialOperation"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ExternalJavaAction">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="The id of the extension using \&quot;org.eclipse.sirius.externalJavaAction\&quot; extension point to define this action."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/ExternalJavaAction/id"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ExternalJavaAction/parameters"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ExternalJavaActionCall">
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ExternalJavaActionCall/action"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/PopupMenu">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PopupMenu/menuItemDescription"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/DirectEditLabel">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/DirectEditLabel/mask"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/DirectEditLabel/initialOperation"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/DirectEditLabel/inputLabelExpression"/>
+          <genOperations ecoreOperation="viewpoint.ecore#//description/tool/DirectEditLabel/getMapping"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/BehaviorTool">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Domain class on which the behavior tool will be applied when the 'launch behaviors' will be called."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/BehaviorTool/domainClass"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/BehaviorTool/initialOperation"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/AbstractVariable">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Name of the variable, you may access it in expressions using theNameOfTheVariable."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/AbstractVariable/name"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/VariableContainer">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/VariableContainer/subVariables"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/AcceleoVariable">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression retrieving the variable value starting from the current element."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/AcceleoVariable/computationExpression"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/SubVariable"/>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/DialogVariable">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Dialog message showed to the user."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/DialogVariable/dialogPrompt"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/SourceEdgeCreationVariable"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/SourceEdgeViewCreationVariable"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/TargetEdgeCreationVariable"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/TargetEdgeViewCreationVariable"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ElementDropVariable"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ElementSelectVariable"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ElementVariable"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ElementViewVariable"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ElementDeleteVariable"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ElementDoubleClickVariable"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/NodeCreationVariable"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/DropContainerVariable"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/SelectContainerVariable"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ContainerViewVariable"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/SelectModelElementVariable"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/EditMaskVariables">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Typing mask, something like {0}: {1} for instance, then when the user type MyName : MyType the 'MyName' value will be kept in $0 variable and 'MyType' in $1."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/EditMaskVariables/mask"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/ContainerModelOperation">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ContainerModelOperation/subModelOperations"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/ModelOperation"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/InitialNodeCreationOperation">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/InitialNodeCreationOperation/firstModelOperations"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/InitialOperation">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/InitialOperation/firstModelOperations"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/InitEdgeCreationOperation">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/InitEdgeCreationOperation/firstModelOperations"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/InitialContainerDropOperation">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/InitialContainerDropOperation/firstModelOperations"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/CreateInstance">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Type name of the instance to create."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/CreateInstance/typeName"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Reference name in which the new instance will be stored. This reference should be part of the container element."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/CreateInstance/referenceName"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Once the instance is created, a new variable with the given name will exist bound to the newly created object."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/CreateInstance/variableName"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ChangeContext">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression to navigate in the model to a new element."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/ChangeContext/browseExpression"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/SetValue">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Name of the feature to set."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/SetValue/featureName"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression returning the value to set on the current element."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/SetValue/valueExpression"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/SetObject">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Name of the feature to set."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/SetObject/featureName"/>
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertyDescription="Instance to set. To retrieve the instance list you may use the 'load resource' action of the editor."
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/SetObject/object"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/Unset">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Name of the feature to unset."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/Unset/featureName"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression returning the value to unset."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/Unset/elementExpression"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/MoveElement">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression returning the new container instance."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/MoveElement/newContainerExpression"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Name of the feature on the new container used to store the element."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/MoveElement/featureName"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/RemoveElement"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/For">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression returning a list of elements to iterate over."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/For/expression"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Variable name used to access the current iterator."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/For/iteratorName"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/CreateView">
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertyDescription="Mapping of the view to create." propertySortChoices="true"
+              ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/CreateView/mapping"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression returning the container view which will store the newly created view."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/CreateView/containerViewExpression"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Once the view is created, a new variable with the given name will exist bound to the newly created view."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/CreateView/variableName"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/CreateEdgeView">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression returning the semantic source of the newly created Edge"
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/CreateEdgeView/sourceExpression"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression returning the semantic target of the newly created Edge"
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/CreateEdgeView/targetExpression"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/If">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression for the if condition."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/If/conditionExpression"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/DeleteView"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/Navigation">
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/Navigation/createIfNotExistent"/>
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/Navigation/diagramDescription"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/NameVariable"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ExternalJavaActionParameter">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Name of the parameter."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/ExternalJavaActionParameter/name"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression returning the value of the parameter."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/ExternalJavaActionParameter/value"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/DiagramCreationDescription">
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertyDescription="" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/DiagramCreationDescription/diagramDescription"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/DiagramNavigationDescription">
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/DiagramNavigationDescription/diagramDescription"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/ToolFilterDescription">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Precondition to filter from the UI the tool. The expression will get evaluated when\nan element of elements to listen change if its modified feature is listened. Returns true if the tool should not be visible in the UI, false otherwise"
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/ToolFilterDescription/precondition"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="elements to listen"
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/ToolFilterDescription/elementsToListen"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolFilterDescription/listeners"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/FeatureChangeListener">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Type of the element to listen"
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/FeatureChangeListener/domainClass"/>
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Feature name of the element to listen "
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/FeatureChangeListener/featureName"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/Case">
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/Case/conditionExpression"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/SwitchChild">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/SwitchChild/subModelOperations"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/Default"/>
+        <genClasses ecoreClass="viewpoint.ecore#//description/tool/Switch">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/Switch/cases"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/Switch/default"/>
+        </genClasses>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="Filter" basePackage="org.eclipse.sirius.description"
+          disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/filter">
+        <genEnums ecoreEnum="viewpoint.ecore#//description/filter/FilterKind">
+          <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/filter/FilterKind/HIDE"/>
+          <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/filter/FilterKind/COLLAPSE"/>
+        </genEnums>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/filter/FilterDescription">
+          <genOperations ecoreOperation="viewpoint.ecore#//description/filter/FilterDescription/isVisible">
+            <genParameters ecoreParameter="viewpoint.ecore#//description/filter/FilterDescription/isVisible/element"/>
+          </genOperations>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/filter/Filter">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="A filter may hide an element or just collapse it. If an element is collapsed, any edge going from or to this element will still be visible."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/filter/Filter/filterKind"/>
+          <genOperations ecoreOperation="viewpoint.ecore#//description/filter/Filter/isVisible">
+            <genParameters ecoreParameter="viewpoint.ecore#//description/filter/Filter/isVisible/element"/>
+          </genOperations>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/filter/MappingFilter">
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/filter/MappingFilter/mappings"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/filter/MappingFilter/semanticConditionExpression"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/filter/MappingFilter/viewConditionExpression"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/filter/CompositeFilterDescription">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/filter/CompositeFilterDescription/filters"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/filter/VariableFilter">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/filter/VariableFilter/ownedVariables"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/filter/VariableFilter/semanticConditionExpression"/>
+          <genOperations ecoreOperation="viewpoint.ecore#//description/filter/VariableFilter/setFilterContext">
+            <genParameters ecoreParameter="viewpoint.ecore#//description/filter/VariableFilter/setFilterContext/variables"/>
+          </genOperations>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/filter/FilterVariable">
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/filter/FilterVariable/name"/>
+        </genClasses>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="Validation" basePackage="org.eclipse.sirius.description"
+          disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/validation">
+        <genEnums ecoreEnum="viewpoint.ecore#//description/validation/ERROR_LEVEL">
+          <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/validation/ERROR_LEVEL/INFO"/>
+          <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/validation/ERROR_LEVEL/WARNING"/>
+          <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/validation/ERROR_LEVEL/ERROR"/>
+        </genEnums>
+        <genClasses ecoreClass="viewpoint.ecore#//description/validation/ValidationSet">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/validation/ValidationSet/ownedRules"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/validation/ValidationSet/name"/>
+          <genFeatures notify="false" createChild="false" propertyCategory="Import"
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/validation/ValidationSet/reusedRules"/>
+          <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory="Import"
+              ecoreFeature="ecore:EReference viewpoint.ecore#//description/validation/ValidationSet/allRules"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/validation/ValidationRule">
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/validation/ValidationRule/level"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/validation/ValidationRule/message"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/validation/ValidationRule/audits"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/validation/ValidationRule/fixes"/>
+          <genOperations ecoreOperation="viewpoint.ecore#//description/validation/ValidationRule/checkRule">
+            <genParameters ecoreParameter="viewpoint.ecore#//description/validation/ValidationRule/checkRule/eObj"/>
+          </genOperations>
+          <genOperations ecoreOperation="viewpoint.ecore#//description/validation/ValidationRule/getMessage">
+            <genParameters ecoreParameter="viewpoint.ecore#//description/validation/ValidationRule/getMessage/eObj"/>
+          </genOperations>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/validation/SemanticValidationRule">
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/validation/SemanticValidationRule/targetClass"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/validation/ViewValidationRule">
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/validation/ViewValidationRule/targets"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/validation/RuleAudit">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression to check, if it returns true, then everything is ok, if it returns false, a new validation error will appear."
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/validation/RuleAudit/auditExpression"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/validation/ValidationFix">
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/validation/ValidationFix/name"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/validation/ValidationFix/initialOperation"/>
+        </genClasses>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="Audit" basePackage="org.eclipse.sirius.description"
+          disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/audit">
+        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/audit/InformationSection">
+          <genOperations ecoreOperation="viewpoint.ecore#//description/audit/InformationSection/getContent">
+            <genParameters ecoreParameter="viewpoint.ecore#//description/audit/InformationSection/getContent/eObj"/>
+          </genOperations>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/audit/TemplateInformationSection">
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Path to a template generating HTML to display in the information view. The path is either workspace-relative or absolute. For instance :\n \&quot;project/folder/file.mt\&quot; \n \&quot;C:/folder1/folder2/file/mt\&quot; \n"
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/audit/TemplateInformationSection/templatePath"/>
+        </genClasses>
+      </nestedGenPackages>
+      <nestedGenPackages prefix="Concern" basePackage="org.eclipse.sirius.description"
+          disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/concern">
+        <genClasses ecoreClass="viewpoint.ecore#//description/concern/ConcernSet">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/concern/ConcernSet/ownedConcernDescriptions"/>
+        </genClasses>
+        <genClasses ecoreClass="viewpoint.ecore#//description/concern/ConcernDescription">
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/concern/ConcernDescription/filters"/>
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/concern/ConcernDescription/rules"/>
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/concern/ConcernDescription/behaviors"/>
+        </genClasses>
+      </nestedGenPackages>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

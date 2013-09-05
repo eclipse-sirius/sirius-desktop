@@ -1,0 +1,11 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+images/acceleo.gif - org.eclipse.acceleo.doc - org.eclipse.acceleo.doc/acceleo32.png
+images/analysis.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/images/analysis.gif
+images/gmf.gif - org.eclipse.gmf.doc - org.eclipse.gmf.doc/logo.gif
+images/mmext.gif - org.eclipse.emf.ecore.edit - org.eclipse.emf.ecore.edit/icons/full/obj16/EPackage.gif
+images/viewpoint.gif  - org.eclipse.sirius.ui - org.eclipse.sirius.ui/images/viewpoint.gif

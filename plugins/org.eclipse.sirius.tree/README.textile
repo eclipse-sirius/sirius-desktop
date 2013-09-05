@@ -1,0 +1,12 @@
+h1. Sirius Tree Representations Meta-model (@org.eclipse.sirius.tree@)
+
+This bundle contains the core meta-model for Tree Representations in Sirius, its Java implementation (including some custom code) and associated utilities which do not depend on the UI.
+
+Trees are a top-level dialect in Sirius, at the same level as diagrams and tables. They can be used to view and manipulate a model using a hierarchical editor similar to the default editors produced by EMF, but with much more flexibility, and in a way which integrates with the rest of Sirius.
+
+The complete specification for this dialect is available in @doc/specification.textile@ in this bundle.
+
+The complete list of bundles which constitute the Tree representation are:
+* @org.eclipse.sirius.tree@: contains the specification, the meta-model, and all the manual code which does not depend on the UI.
+* @org.eclipse.sirius.editor.tree@: extension of the VSM editor to support tree description specification.
+* @org.eclipse.sirius.tree.ui@: the runtime tree editor.

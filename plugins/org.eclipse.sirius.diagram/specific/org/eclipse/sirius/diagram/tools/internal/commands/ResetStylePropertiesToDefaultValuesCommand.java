@@ -1,0 +1,164 @@
+/*******************************************************************************
+ * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.tools.internal.commands;
+
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gmf.runtime.notation.Connector;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.gmf.runtime.notation.Shape;
+import org.eclipse.gmf.runtime.notation.View;
+
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.ContainerStyle;
+import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.DDiagramElementContainer;
+import org.eclipse.sirius.DEdge;
+import org.eclipse.sirius.DNode;
+import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.EdgeStyle;
+import org.eclipse.sirius.NodeStyle;
+import org.eclipse.sirius.Style;
+import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.internal.refresh.diagram.ViewPropertiesSynchronizer;
+import org.eclipse.sirius.diagram.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
+
+/**
+ * Specific command to reset style properties to their default values.
+ * 
+ * @author mporhel
+ */
+public class ResetStylePropertiesToDefaultValuesCommand extends RecordingCommand {
+
+    private DDiagram dDiagram;
+
+    private Map<View, DDiagramElement> customizedViews;
+
+    /**
+     * Constructor.
+     * 
+     * @param domain
+     *            the editing domain
+     * @param dDiagram
+     *            the {@link DDiagram} on which to reset style customization
+     * @param customizedViews
+     *            the customized {@link View}s to reset
+     */
+    public ResetStylePropertiesToDefaultValuesCommand(final TransactionalEditingDomain domain, DDiagram dDiagram, Map<View, DDiagramElement> customizedViews) {
+        super(domain, ResetStylePropertiesToDefaultValuesAction.ACTION_NAME);
+        this.dDiagram = dDiagram;
+        this.customizedViews = customizedViews;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void doExecute() {
+        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(dDiagram);
+        MappingHelper mappingHelper = new MappingHelper(interpreter);
+        for (Entry<View, DDiagramElement> entry : customizedViews.entrySet()) {
+            View view = entry.getKey();
+            DDiagramElement dDiagramElement = entry.getValue();
+            if (dDiagramElement != null) {
+                resetDDiagramElementCustomizations(dDiagramElement, mappingHelper);
+            }
+            resetViewStylePropertiesToDefaultValues(view);
+        }
+    }
+
+    private void resetDDiagramElementCustomizations(DDiagramElement dDiagramElement, MappingHelper mappingHelper) {
+        DSemanticDecorator parentDDiagramElt = (DSemanticDecorator) dDiagramElement.eContainer();
+        DiagramElementMapping diagramElementMapping = dDiagramElement.getDiagramElementMapping();
+        if (dDiagramElement instanceof DEdge) {
+            DEdge dEdge = (DEdge) dDiagramElement;
+            if (dEdge.getOwnedStyle() != null) {
+                dEdge.getOwnedStyle().getCustomFeatures().clear();
+                if (dEdge.getOwnedStyle().getBeginLabelStyle() != null) {
+                    dEdge.getOwnedStyle().getBeginLabelStyle().getCustomFeatures().clear();
+                }
+                if (dEdge.getOwnedStyle().getCenterLabelStyle() != null) {
+                    dEdge.getOwnedStyle().getCenterLabelStyle().getCustomFeatures().clear();
+                }
+                if (dEdge.getOwnedStyle().getEndLabelStyle() != null) {
+                    dEdge.getOwnedStyle().getEndLabelStyle().getCustomFeatures().clear();
+                }
+                Style bestStyle = mappingHelper.getBestStyle(diagramElementMapping, dEdge.getTarget(), dEdge, parentDDiagramElt.getTarget(), dDiagram);
+                if (bestStyle instanceof EdgeStyle) {
+                    EdgeStyle edgeStyle = (EdgeStyle) bestStyle;
+                    dEdge.setOwnedStyle(edgeStyle);
+                }
+            }
+        } else if (dDiagramElement instanceof DNode) {
+            DNode dNode = (DNode) dDiagramElement;
+            if (dNode.getOwnedStyle() != null) {
+                dNode.getOwnedStyle().getCustomFeatures().clear();
+                Style bestStyle = mappingHelper.getBestStyle(diagramElementMapping, dNode.getTarget(), dNode, parentDDiagramElt.getTarget(), dDiagram);
+                if (bestStyle instanceof NodeStyle) {
+                    NodeStyle nodeStyle = (NodeStyle) bestStyle;
+                    dNode.setOwnedStyle(nodeStyle);
+                }
+            }
+        } else if (dDiagramElement instanceof DDiagramElementContainer) {
+            DDiagramElementContainer dDiagramElementContainer = (DDiagramElementContainer) dDiagramElement;
+            if (dDiagramElementContainer.getOwnedStyle() != null) {
+                dDiagramElementContainer.getOwnedStyle().getCustomFeatures().clear();
+                Style bestStyle = mappingHelper.getBestStyle(diagramElementMapping, dDiagramElementContainer.getTarget(), dDiagramElementContainer, parentDDiagramElt.getTarget(), dDiagram);
+                if (bestStyle instanceof ContainerStyle) {
+                    ContainerStyle containerStyle = (ContainerStyle) bestStyle;
+                    dDiagramElementContainer.setOwnedStyle(containerStyle);
+                }
+            }
+        }
+    }
+
+    private void resetViewStylePropertiesToDefaultValues(View view) {
+        ViewQuery viewQuery = new ViewQuery(view);
+        for (Object obj : view.getStyles()) {
+            if (obj instanceof org.eclipse.gmf.runtime.notation.Style) {
+                org.eclipse.gmf.runtime.notation.Style style = (org.eclipse.gmf.runtime.notation.Style) obj;
+                for (EAttribute eAttribute : style.eClass().getEAllAttributes()) {
+                    if (ViewQuery.CUSTOMIZABLE_GMF_EXCLUSIVE_STYLE_ATTRIBUTES.contains(eAttribute)) {
+                        Object currentValue = style.eGet(eAttribute);
+                        Object defaultValue = viewQuery.getDefaultValue(eAttribute);
+                        if (currentValue != null && !currentValue.equals(defaultValue) || currentValue == null && defaultValue != null) {
+                            style.eSet(eAttribute, defaultValue);
+                        }
+                    }
+                }
+            }
+        }
+        if (view instanceof Shape || view instanceof Connector) {
+            // manage Note and Text especially because style properties are
+            // directly stored on Shape
+            // manage NoteAttachment especially because style properties are
+            // directly stored on Connector
+            for (EAttribute eAttribute : view.eClass().getEAllAttributes()) {
+                if (NotationPackage.Literals.STYLE.isSuperTypeOf(eAttribute.getEContainingClass()) && ViewQuery.CUSTOMIZABLE_GMF_STYLE_ATTRIBUTES.contains(eAttribute)) {
+                    Object currentValue = view.eGet(eAttribute);
+                    Object defaultValue = viewQuery.getDefaultValue(eAttribute);
+                    if (currentValue != null && !currentValue.equals(defaultValue) || currentValue == null && defaultValue != null) {
+                        view.eSet(eAttribute, defaultValue);
+                    }
+                }
+            }
+        }
+        new ViewPropertiesSynchronizer().synchronizeViewProperties(view);
+    }
+}

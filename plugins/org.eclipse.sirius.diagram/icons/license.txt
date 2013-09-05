@@ -1,0 +1,44 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+<icon file path> - <original eclipse plug-in> - <original file path>
+
+icons/arrangeBorderedNodes.gif - org.eclipse.gmf.runtime.diagram.ui.actions - org.eclipse.gmf.runtime.diagram.ui.actions/icons/elcl16/arrangeall.gif
+icons/categoryHidden.gif - org.eclipse.debug.ui	- org.eclipse.debug.ui/icons/full/elcl16/skip_brkp.gif
+icons/categoryLabelHidden.gif - org.eclipse.debug.ui	- org.eclipse.debug.ui/icons/full/elcl16/skip_brkp.gif
+icons/categoryLabelVisible.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/methpub_obj.gif
+icons/categoryVisible.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/methpub_obj.gif
+icons/collapse.gif - org.eclipse.gmf.runtime.diagram.ui - org.eclipse.gmf.runtime.diagram.ui/icons/collapse.gif
+icons/collapseall.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/collapseall.gif
+icons/delete.gif - org.eclipse.ui	org.eclipse.ui/icons/full/obj16/delete_obj.gif
+icons/deleteModel.gif - org.eclipse.search - org.eclipse.search/icons/full/elcl16/search_remall.gif
+icons/disabled_co.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/disabled_co.gif
+icons/enabled_co.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/enabled_co.gif
+icons/expand.gif - org.eclipse.gmf.runtime.diagram.ui - org.eclipse.gmf.runtime.diagram.ui/icons/expand.gif
+icons/expandall.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/expandall.gif
+icons/filters.gif - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/icons/filters.gif
+icons/fontWizard.gif - org.eclipse.gmf.runtime.diagram.ui.actions - org.eclipse.ui.gmf.runtime.diagram.ui.actions/icons/elcl16/font_color.gif
+icons/help.gif - org.eclipse.m2m.atl.adt.editor - org.eclipse.m2m.atl.adt.editor/icons/condition.gif
+icons/image_obj.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/icons/full/obj16/image_obj.gif
+icons/incomingLinksNavigatorGroup.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/packagefolder_obj.gif
+icons/layer_activation.gif - org.eclipse.ui.ide - org.eclipse.ui.ide/icons/full/obj16/header_complete.gif
+icons/layer_active.gif - org.eclipse.ui - org.eclipse.ui/icons/full/elcl16/step_done.gif
+icons/layer_inactive.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/disabled_co.gif
+icons/layers.gif - org.eclipse.ui - org.eclipse.ui.cheatsheets/icons/elcl16/collapseall.gif
+icons/linkSourceNavigatorGroup.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/packagefolder_obj.gif
+icons/linkTargetNavigatorGroup.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/packagefolder_obj.gif
+icons/linksNavigatorGroup.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/packagefolder_obj.gif
+icons/obj16/DDiagram.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
+icons/obj16/Layer.gif - org.eclipse.ui - org.eclipse.ui.cheatsheets/icons/elcl16/collapseall.gif
+icons/outgoingLinksNavigatorGroup.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/packagefolder_obj.gif
+icons/outline.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/elcl16/tree_explorer.gif
+icons/overview.gif - org.eclipse.gmf.runtime.diagram.ui - org.eclipse.gmf.runtime.diagram.ui/icons/overview.gif
+icons/pin.gif - org.eclipse.ui.console - org.eclipse.ui.console/icons/full/dlcl16/pin.gif
+icons/pinWizard.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/pin_view.gif
+icons/screenshot.gif - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/icons/screenshot.gif
+icons/strikethrough.gif - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/icons/strikethrough.gif
+icons/underline.gif - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/icons/underline.gif
+icons/undo_edit.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/undo_edit.gif
+icons/unpin.gif - Custom-made from icons/pin.gif and the red cross from org.eclipse.jdt.junit/icons/full/obj16/testerr.gif
+icons/wizban/NewSiriusWizard.gif - org.eclipse.uml2.diagram.deploy - org.eclipse.uml2.diagram.deploy/icons/wizban/NewUMLWizard.gif

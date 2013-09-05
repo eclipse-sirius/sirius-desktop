@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2013 THALES GLOBAL SERVICES
+  All rights reserved.
+  
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+<project name="org.eclipse.sirius.doc" default="generate-html">
+	<property name="wikitext.standalone" value="lib" />
+	<!-- path to wikitext standalone package -->
+
+	<path id="wikitext.classpath">
+		<fileset dir="${wikitext.standalone}">
+			<include name="org.eclipse.mylyn.wikitext.*core*.jar" />
+		</fileset>
+	</path>
+
+	<taskdef classpathref="wikitext.classpath" resource="org/eclipse/mylyn/wikitext/core/util/anttask/tasks.properties" />
+
+	<target name="generate-html" description="Generate Eclipse help from textile source">
+		<wikitext-to-html markupLanguage="Textile" formatoutput="true">
+			<fileset dir="${basedir}">
+				<include name="doc/**/*.textile" />
+			</fileset>
+			<stylesheet url="/help/topic/org.eclipse.sirius.eef.adapters/doc/resources/html_bootstrap/css/bootstrap.css" />
+			<stylesheet url="/help/topic/org.eclipse.sirius.eef.adapters/doc/resources/style_customization.css" />
+		</wikitext-to-html>
+	</target>
+</project>

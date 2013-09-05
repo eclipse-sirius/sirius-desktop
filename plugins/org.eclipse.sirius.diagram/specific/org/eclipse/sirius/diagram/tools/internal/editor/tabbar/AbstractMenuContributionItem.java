@@ -1,0 +1,261 @@
+/*******************************************************************************
+ * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.tools.internal.editor.tabbar;
+
+import java.util.Iterator;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.jface.action.ContributionItem;
+import org.eclipse.jface.action.IMenuListener2;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Listener;
+import org.eclipse.swt.widgets.Menu;
+import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swt.widgets.ToolBar;
+import org.eclipse.swt.widgets.ToolItem;
+
+import com.google.common.collect.Lists;
+
+import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+
+/**
+ * .
+ * 
+ * @author mchauvin
+ */
+public abstract class AbstractMenuContributionItem extends AbstractTabbarContribution {
+
+    /**
+     * The key to use to store tooltip data in menu item.
+     */
+    public static final String TOOLTIP = "Tooltip"; //$NON-NLS-1$
+
+    /**
+     * the menu manager.
+     */
+    protected MenuManager menuManager;
+
+    private MenuContributionItemArmListener listener;
+
+    private List<String> tooltips = Lists.newArrayList();
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.TabbarContribution#create(org.eclipse.swt.widgets.ToolBar)
+     */
+    public void create(final ToolBarManager tb, String groupId) {
+
+        tb.insertAfter(groupId, createContributionItem(tb));
+
+    }
+
+    /**
+     * creates a new contribution item.
+     * 
+     * @param tb
+     *            the ToolBarManager where to create contribution item.
+     * @return the contribution item.
+     */
+    public ContributionItem createContributionItem(final ToolBarManager tb) {
+        return new TabbarContributionItem(tb);
+    }
+
+    /**
+     * Get the menu image.
+     * 
+     * @return the image
+     */
+    protected abstract Image getMenuImage();
+
+    /**
+     * Get the menu label.
+     * 
+     * @return the label
+     */
+    protected abstract String getLabel();
+
+    /**
+     * add item to show in the menu in this method.
+     * 
+     * @param manager
+     *            the menu manager in which to add menu item
+     */
+    protected abstract void menuShow(IMenuManager manager);
+
+    private void showMenu(final Control control, int offset) {
+
+        final Diagram gmfDiagram = this.part.getDiagram();
+        if (gmfDiagram != null) {
+            EObject diagram = gmfDiagram.getElement();
+            if (diagram instanceof DDiagram) {
+                setDiagram((DDiagram) diagram);
+                final Menu menu = getMenuManager().createContextMenu(control);
+
+                final MenuContributionItemArmListener oldListener = listener;
+                listener = new MenuContributionItemArmListener(control);
+
+                menu.addListener(SWT.Show, new Listener() {
+                    public void handleEvent(Event event) {
+                        final Iterator<String> it = tooltips.iterator();
+                        for (final MenuItem item : menu.getItems()) {
+                            if (oldListener != null) {
+                                item.removeArmListener(oldListener);
+                            }
+                            item.addArmListener(listener);
+                            if (it.hasNext()) {
+                                item.setData(TOOLTIP, it.next());
+                            }
+                        }
+                    }
+                });
+
+                menu.setLocation(control.toDisplay(0 + offset, control.getSize().y));
+                menu.setVisible(true);
+            }
+        }
+    }
+
+    private MenuManager getMenuManager() {
+        if (menuManager != null) {
+            return menuManager;
+        }
+
+        menuManager = new MenuManager();
+
+        menuManager.setRemoveAllWhenShown(true);
+
+        menuManager.addMenuListener(new IMenuListener2() {
+            public void menuAboutToHide(IMenuManager manager) {
+                /* do nothing */
+            }
+
+            public void menuAboutToShow(IMenuManager manager) {
+                menuShow(manager);
+            }
+        });
+        return menuManager;
+    }
+
+    /**
+     * Add a tooltip, should be called after adding an item to the menu.
+     * 
+     * @param tooltip
+     *            the tooltip to add
+     */
+    protected void addTooltip(String tooltip) {
+        tooltips.add(tooltip);
+    }
+
+    /**
+     * Execute the dispose.
+     */
+    protected void doDispose() {
+        dispose();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.AbstractTabbarContribution#dispose()
+     */
+    @Override
+    public void dispose() {
+        super.dispose();
+        if (menuManager != null) {
+            menuManager.dispose();
+            menuManager = null;
+        }
+        listener = null;
+    }
+
+    /**
+     * Common contribution item for filter and layer.
+     * 
+     * @author fbarbin
+     * 
+     */
+    private class TabbarContributionItem extends ContributionItem {
+
+        private ToolItem layersItem;
+
+        private ToolBarManager toolBarManager;
+
+        public TabbarContributionItem(ToolBarManager tb) {
+            this.toolBarManager = tb;
+        }
+
+        @Override
+        public void fill(final ToolBar parent, final int index) {
+            layersItem = new ToolItem(parent, SWT.DROP_DOWN, index);
+            layersItem.setToolTipText(getLabel());
+
+            computeEnable();
+
+            layersItem.setImage(getMenuImage());
+            layersItem.addSelectionListener(new SelectionAdapter() {
+                @Override
+                public void widgetSelected(SelectionEvent e) {
+                    final int offset = computeOffset(parent);
+                    showMenu(toolBarManager.getControl(), offset);
+                }
+
+                private int computeOffset(final ToolBar tb) {
+                    int offset = 0;
+                    for (int i = 0; i < index; i++) {
+                        offset += tb.getItem(i).getWidth();
+                    }
+                    return offset;
+                }
+            });
+        }
+
+        private void computeEnable() {
+            if (part instanceof DDiagramEditor && ((DDiagramEditor) part).getRepresentation() instanceof DDiagram) {
+                boolean canEditInstance = true;
+                final DDiagramEditor editor = (DDiagramEditor) part;
+                final DDiagram editorDiagram = (DDiagram) editor.getRepresentation();
+                IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(editor.getSession().getSessionResource().getResourceSet());
+                canEditInstance = permissionAuthority.canEditInstance(editorDiagram);
+                layersItem.setEnabled(canEditInstance);
+            }
+        }
+
+        @Override
+        public void dispose() {
+            doDispose();
+            super.dispose();
+        }
+
+        @Override
+        public void update() {
+            super.update();
+            if (layersItem != null && !layersItem.isDisposed()) {
+                layersItem.setImage(getMenuImage());
+                computeEnable();
+            }
+        }
+    };
+
+}

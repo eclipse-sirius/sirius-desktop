@@ -1,0 +1,44 @@
+h1. Sirius Tree Dialect Specification
+
+
+h2. Metamodele
+
+
+h3. Mapping
+
+Line mapping style :
+
+h3. Style
+
+TreeItemStyle : labelStyle + BG color
+ConditionalTreeItemStyle
+
+h3. Tool
+
+- tree item creation tool
+- tree item edition tool : context menu + F2
+- tree item deletion tool
+- tree creation tool
+- tree navigation tool
+
+Other tool :
+- drag n drop
+- double click
+
+
+h3. Context Menu
+
+Right-clicking on an item in the tree opens a contextual menu with the following items, in order:
+
+# __Navigate__ : a sub-menu (may be empty) which proposes to create new representations or open existing ones which are accessible from this element. The content of this menu is derived from the @NavigationDescription@ elements which are associated to the current item's effective mapping.
+# __Separator__
+# __"New child"__: zero or more menu items which can be used to create new sub-elements directly inside the current item. Each menu items can be either a sub-menu (used to organize creation tools in categories) or a creation tool. All these menu items are derived from the @CreationTool@ and @ToolSection@ elements associated with the current item's effective mapping.
+# __Separator__
+# __Edit__: a menu item which triggers the in place label editing on the current item, as defined by the @DirectEditTool@  associated with the current item's effective mapping. The menu item should always be visible (for consistency), but must appear as disabled if no @DirectEditTool@ is available for the item. __Note__ : this action should also be available with a simple "double-click".
+# __Delete__: a menu item which triggers the deletion the current item, as defined by the @DeleteTool@  associated with the current item's effective mapping. The menu item should always be visible (for consistency), but must appear as disabled if no @DeleteTool@ is available for the item. __Note__ : this action should also be available by pressing the "Delete" key when the element is selected.
+# __Expand/Collapse__: a menu item which toggles the folded/expanded state of the item. If the current item is collapsed, the menu item is labeled "Expand", otherwise it is labeled "Collapse".
+# __Separator__
+# __Contributions__: any context menu actions available on the current item, as defined by the @PopupMenu@ elements associated to the current item's effective mapping or contributed through the appropriate extension point.
+
+
+

@@ -1,0 +1,103 @@
+/*******************************************************************************
+ * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.sequence.description;
+
+/**
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Delimited Event Mapping</b></em>'. <!-- end-user-doc -->
+ * 
+ * <p>
+ * The following features are supported:
+ * <ul>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getStartingEndFinderExpression
+ * <em>Starting End Finder Expression</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getFinishingEndFinderExpression
+ * <em>Finishing End Finder Expression</em>}</li>
+ * </ul>
+ * </p>
+ * 
+ * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getDelimitedEventMapping()
+ * @model abstract="true"
+ * @generated
+ */
+public interface DelimitedEventMapping extends EventMapping {
+    /**
+     * Returns the value of the '<em><b>Starting End Finder Expression</b></em>'
+     * attribute. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Starting End Finder Expression</em>' attribute
+     * isn't clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Starting End Finder Expression</em>'
+     *         attribute.
+     * @see #setStartingEndFinderExpression(String)
+     * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getDelimitedEventMapping_StartingEndFinderExpression()
+     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     *        required="true" annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
+     * @generated
+     */
+    String getStartingEndFinderExpression();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getStartingEndFinderExpression
+     * <em>Starting End Finder Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Starting End Finder Expression</em>'
+     *            attribute.
+     * @see #getStartingEndFinderExpression()
+     * @generated
+     */
+    void setStartingEndFinderExpression(String value);
+
+    /**
+     * Returns the value of the '<em><b>Finishing End Finder Expression</b></em>
+     * ' attribute. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Finishing End Finder Expression</em>'
+     * attribute isn't clear, there really should be more of a description
+     * here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Finishing End Finder Expression</em>'
+     *         attribute.
+     * @see #setFinishingEndFinderExpression(String)
+     * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getDelimitedEventMapping_FinishingEndFinderExpression()
+     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     *        required="true" annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
+     * @generated
+     */
+    String getFinishingEndFinderExpression();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping#getFinishingEndFinderExpression
+     * <em>Finishing End Finder Expression</em>}' attribute. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Finishing End Finder Expression</em>
+     *            ' attribute.
+     * @see #getFinishingEndFinderExpression()
+     * @generated
+     */
+    void setFinishingEndFinderExpression(String value);
+
+} // DelimitedEventMapping

@@ -1,0 +1,37 @@
+/*******************************************************************************
+ * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.business.internal.helper.task;
+
+import java.util.Collection;
+
+import org.eclipse.emf.ecore.EObject;
+
+/**
+ * An interface to implement for task which modify semantic elements.
+ * 
+ * @author mchauvin
+ */
+public interface IModificationTask {
+
+    /**
+     * Return the modified objects.
+     * 
+     * @return the modified objects.
+     */
+    Collection<EObject> getAffectedElements();
+
+    /**
+     * Return the history.
+     * 
+     * @return the history.
+     */
+    Collection<EObject> getCreatedReferences();
+}

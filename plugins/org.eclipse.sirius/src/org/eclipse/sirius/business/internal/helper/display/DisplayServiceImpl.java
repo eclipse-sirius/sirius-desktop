@@ -1,0 +1,229 @@
+/*******************************************************************************
+ * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.business.internal.helper.display;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.eclipse.emf.ecore.EObject;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.listener.Notification;
+import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
+import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.DEdge;
+import org.eclipse.sirius.DSemanticDiagram;
+import org.eclipse.sirius.GraphicalFilter;
+import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
+import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
+import org.eclipse.sirius.business.api.helper.display.DisplayService;
+import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+
+/**
+ * Default implementation of {@link DisplayService}.
+ * 
+ * @author mchauvin
+ */
+public final class DisplayServiceImpl implements DisplayService {
+
+    private Map<DDiagramElement, Boolean> cache;
+
+    /**
+     * Avoid instantiation.
+     */
+    private DisplayServiceImpl() {
+    }
+
+    /**
+     * Initialize a new {@link DisplayService}.
+     * 
+     * @return a new created instance
+     */
+    public static DisplayService init() {
+        return new DisplayServiceImpl();
+    }
+
+    /**
+     * Refresh visibility of all elements for the given diagram.
+     * 
+     * @param diagram
+     *            the given diagram..
+     */
+    public void refreshAllElementsVisibility(final DDiagram diagram) {
+        deactivateCache();
+        activateCache();
+
+        Session session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) diagram).getTarget());
+        DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, diagram);
+
+        NotificationUtil.sendNotification(diagram, Notification.Kind.START, Notification.REFRESH_VISIBILITY_ON_DIAGRAM);
+        DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.IS_VISIBLE_KEY);
+        for (final DDiagramElement diagramElement : diagram.getDiagramElements()) {
+            diagramElement.setVisible(computeVisibility(mappingManager, diagram, diagramElement));
+        }
+        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.IS_VISIBLE_KEY);
+        NotificationUtil.sendNotification(diagram, Notification.Kind.STOP, Notification.REFRESH_VISIBILITY_ON_DIAGRAM);
+        deactivateCache();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#isDisplayed(org.eclipse.sirius.DDiagram,
+     *      org.eclipse.sirius.DDiagramElement)
+     */
+    public boolean isDisplayed(final DDiagram diagram, final DDiagramElement element) {
+        DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.IS_VISIBLE_KEY);
+        final boolean result = element.isVisible();
+        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.IS_VISIBLE_KEY);
+        return result;
+    }
+
+    private void addToCache(final DDiagramElement element, final boolean b) {
+        if (cache != null) {
+            cache.put(element, Boolean.valueOf(b));
+        }
+    }
+
+    private Boolean getFromCache(final DDiagramElement element) {
+        Boolean visible = null;
+        if (cache != null) {
+            visible = cache.get(element);
+        }
+        return visible;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#activateCache()
+     */
+    public void activateCache() {
+        if (cache == null) {
+            cache = new HashMap<DDiagramElement, Boolean>();
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#deactivateCache()
+     */
+    public void deactivateCache() {
+        if (cache != null) {
+            cache.clear();
+            cache = null;
+        }
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public boolean computeVisibility(Session session, final DDiagram diagram, final DDiagramElement element) {
+        DiagramMappingsManager manager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, diagram);
+        final boolean result = doIsVisible(manager, diagram, element);
+        return result;
+    }
+
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeVisibility(org.eclipse.sirius.DDiagram,
+     *      org.eclipse.sirius.DDiagramElement)
+     */
+    public boolean computeVisibility(DiagramMappingsManager session, final DDiagram diagram, final DDiagramElement element) {
+        DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_VISIBILITY_KEY);
+        final boolean result = doIsVisible(session, diagram, element);
+        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REFRESH_VISIBILITY_KEY);
+        return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeLabelVisibility(org.eclipse.sirius.DDiagram,
+     *      org.eclipse.sirius.DDiagramElement)
+     */
+    public boolean computeLabelVisibility(DDiagram diagram, DDiagramElement element) {
+        return !(new DDiagramElementQuery(element).isLabelHidden());
+    }
+
+    /**
+     * Tell whether an element is displayed or not in a {@link DDiagram}.
+     * 
+     * @param diagram
+     *            the diagram.
+     * @param element
+     *            an element.
+     * @return true if the element is in the viewpoint, false otherwise.
+     */
+    private boolean doIsVisible(DiagramMappingsManager session, final DDiagram diagram, final DDiagramElement element) {
+
+        boolean isVisible = true;
+        final Boolean cachedValue = getFromCache(element);
+        if (cachedValue != null) {
+            isVisible = cachedValue.booleanValue();
+        } else {
+            DDiagramElementQuery ddeQuery = new DDiagramElementQuery(element);
+            if (ddeQuery.isHidden() || ddeQuery.isFiltered()) {
+                isVisible = false;
+            }
+
+            if (isVisible) {
+                final EObject eContainer = element.eContainer();
+                if (eContainer instanceof DDiagramElement) {
+                    isVisible = computeVisibility(session, diagram, (DDiagramElement) eContainer);
+                } else if (element instanceof DEdge) {
+                    isVisible = isDEdgeVisible(session, diagram, (DEdge) element);
+                }
+            }
+
+            /* if element seems to be visible, check its parent layer */
+            if (isVisible) {
+                isVisible = LayerHelper.isInActivatedLayer(session, element);
+            }
+            if (isVisible) {
+                isVisible = !isFold(element);
+            }
+            addToCache(element, isVisible);
+        }
+        return isVisible;
+    }
+
+    private boolean isDEdgeVisible(DiagramMappingsManager session, final DDiagram vp, final DEdge edge) {
+        boolean isVisible = true;
+        if (edge.getSourceNode() instanceof DDiagramElement) {
+            isVisible = computeVisibility(session, vp, (DDiagramElement) edge.getSourceNode());
+        }
+        if (isVisible && edge.getTargetNode() instanceof DDiagramElement) {
+            isVisible = computeVisibility(session, vp, (DDiagramElement) edge.getTargetNode());
+        }
+        return isVisible;
+    }
+
+    private boolean isFold(final DDiagramElement element) {
+        return Iterables.any(element.getGraphicalFilters(), new Predicate<GraphicalFilter>() {
+            public boolean apply(GraphicalFilter input) {
+                return SiriusPackage.eINSTANCE.getFoldingFilter().isInstance(input) || SiriusPackage.eINSTANCE.getFoldingPointFilter().isInstance(input);
+            }
+        });
+    }
+}

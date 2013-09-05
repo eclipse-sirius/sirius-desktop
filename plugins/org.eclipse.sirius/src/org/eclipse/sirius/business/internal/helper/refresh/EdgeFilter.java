@@ -1,0 +1,170 @@
+/*******************************************************************************
+ * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.business.internal.helper.refresh;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.sirius.DEdge;
+import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.EdgeTarget;
+import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
+import org.eclipse.sirius.description.EdgeMapping;
+
+/**
+ * This class is a filter criteria for edges.
+ * 
+ * @author ymortier
+ */
+public class EdgeFilter {
+
+    // FIXED the criteria of this filter is incomplete.
+    // To add : - the edgeMapping : In fact, the criteria is used in a
+    // mapping context.
+    //
+    // FIXME : a mapping can produce more than one edge between two semantic
+    // elements (we must add a criteria).
+
+    /** The semantic source. */
+    private EObject source;
+
+    /** The semantic target. */
+    private EObject target;
+
+    /** another criteria. */
+    private EObject semTarget;
+
+    /** The source EdgeTarget. */
+    private EdgeTarget edgeSource;
+
+    /** The target EdgeTarget. */
+    private EdgeTarget edgeTarget;
+
+    /** The mapping (optional). */
+    private EdgeMapping mapping;
+
+    /**
+     * Create a new EdgeFilter.
+     * 
+     * @param source
+     *            the semantic source.
+     * @param target
+     *            the semantic target.
+     * @param semTarget
+     *            : the semantic target.
+     * @param edgeTarget
+     *            : the target of the edge.
+     * @param edgeSource
+     *            : the source of the edge.
+     * @param edgeMapping
+     *            the mapping.
+     */
+    public EdgeFilter(final EObject source, final EObject target, final EObject semTarget, final EdgeTarget edgeSource, final EdgeTarget edgeTarget, final EdgeMapping edgeMapping) {
+        if (source == null || target == null || edgeSource == null || edgeTarget == null) {
+            throw new IllegalArgumentException("source, target, edgeSource or edgeTarget is null");
+        }
+        this.source = source;
+        this.target = target;
+        this.semTarget = semTarget;
+        this.edgeSource = edgeSource;
+        this.edgeTarget = edgeTarget;
+        this.mapping = edgeMapping;
+    }
+
+    /**
+     * Create a new {@link EdgeFilter} with the specified edge.
+     * 
+     * @param edge
+     *            the edge.
+     */
+    public EdgeFilter(final DEdge edge) {
+        this.source = ((DSemanticDecorator) edge.getSourceNode()).getTarget();
+        this.target = ((DSemanticDecorator) edge.getTargetNode()).getTarget();
+        this.semTarget = edge.getTarget();
+        this.edgeSource = edge.getSourceNode();
+        this.edgeTarget = edge.getTargetNode();
+        this.mapping = new IEdgeMappingQuery(edge.getActualMapping()).getEdgeMapping().get();
+    }
+
+    /**
+     * Return the source.
+     * 
+     * @return the source.
+     */
+    public EObject getSource() {
+        return source;
+    }
+
+    /**
+     * Return the target.
+     * 
+     * @return the target.
+     */
+    public EObject getTarget() {
+        return target;
+    }
+
+    /**
+     * Return the semantic target.
+     * 
+     * @return the semantic target.
+     */
+    public EObject getSemTarget() {
+        return semTarget;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean equals(final Object obj) {
+        boolean result = false;
+        if (obj == this) {
+            result = true;
+        }
+        if (!result && obj instanceof EdgeFilter) {
+            final EdgeFilter edgeFilter = (EdgeFilter) obj;
+            if ((semTarget == null && edgeFilter.semTarget != null) || (semTarget != null && edgeFilter.semTarget == null)) {
+                SiriusPlugin.getDefault().error("One of the semTargets is null", null);
+            }
+            result = getHashString(this).equals(getHashString(edgeFilter));
+        }
+        return result;
+    }
+
+    private String getHashString(final EdgeFilter obj) {
+        String hashString = EcoreUtil.getURI(obj.semTarget).toString();
+        hashString += EcoreUtil.getURI(obj.target).toString();
+        hashString += EcoreUtil.getURI(obj.source).toString();
+        hashString += EcoreUtil.getURI(obj.edgeSource).toString();
+        hashString += EcoreUtil.getURI(obj.edgeTarget).toString();
+        hashString += EcoreUtil.getURI(obj.mapping).toString();
+        return hashString;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return Integer.valueOf(hashCode()).toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public int hashCode() {
+        return getHashString(this).hashCode();
+    }
+
+}

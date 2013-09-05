@@ -1,0 +1,62 @@
+/*******************************************************************************
+ * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.business.internal.metamodel.description.tool.spec;
+
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
+
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+
+import org.eclipse.sirius.description.DescriptionPackage;
+import org.eclipse.sirius.description.EdgeMapping;
+import org.eclipse.sirius.description.tool.impl.ReconnectEdgeDescriptionImpl;
+
+/**
+ * Implementation of ReconnectEdgeDescription.
+ * 
+ * @author nlepine
+ * 
+ */
+public class ReconnectEdgeDescriptionSpec extends ReconnectEdgeDescriptionImpl {
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.tool.impl.ReconnectEdgeDescriptionImpl#getMappings()
+     */
+    @Override
+    public EList<EdgeMapping> getMappings() {
+        if (this.eResource() == null) {
+            throw new UnsupportedOperationException();
+        }
+        ECrossReferenceAdapter crossReferencer = ECrossReferenceAdapter.getCrossReferenceAdapter(this.eResource());
+        if (crossReferencer == null) {
+            throw new UnsupportedOperationException();
+        }
+        final List<EdgeMapping> edgeMappings = new LinkedList<EdgeMapping>();
+        final Collection<Setting> settings = crossReferencer.getInverseReferences(this, true);
+        for (final Setting setting : settings) {
+            final EObject eReferencer = setting.getEObject();
+            final EStructuralFeature eFeature = setting.getEStructuralFeature();
+            if (eReferencer instanceof EdgeMapping && eFeature.equals(DescriptionPackage.eINSTANCE.getEdgeMapping_Reconnections())) {
+                edgeMappings.add((EdgeMapping) eReferencer);
+            }
+        }
+        return new BasicEList<EdgeMapping>(edgeMappings);
+    }
+
+}

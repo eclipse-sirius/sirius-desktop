@@ -1,0 +1,10 @@
+.~lock*#
+bin
+target/
+.repositoryMaven/
+!*.target
+target
+class
+_database
+collab
+build.acceleo

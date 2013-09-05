@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   width="16"
+   height="16"
+   version="1.0"
+   sodipodi:docbase="/home/mchauvin/Dev/workspaces/3.3.1.1/workspace_projet_advance/fr.obeo.dsl.viewpoint.ui/icons/full/others"
+   sodipodi:docname="design.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs5" />
+  <sodipodi:namedview
+     inkscape:window-height="619"
+     inkscape:window-width="872"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     inkscape:zoom="25.4375"
+     inkscape:cx="8"
+     inkscape:cy="8"
+     inkscape:window-x="0"
+     inkscape:window-y="375"
+     inkscape:current-layer="svg2" />
+  <image
+     xlink:href="/home/mchauvin/Downloads/eclipse tools/eclipse-icons/others/birt/org.eclipse.birt.report.designer.ui_2.2.2.r222_v20071226/icons/eview16/report_perspective.gif"
+     sodipodi:absref="/home/mchauvin/Downloads/eclipse tools/eclipse-icons/others/birt/org.eclipse.birt.report.designer.ui_2.2.2.r222_v20071226/icons/eview16/report_perspective.gif"
+     width="16"
+     height="16"
+     id="image9"
+     x="0"
+     y="0" />
+</svg>

@@ -1,0 +1,83 @@
+/*******************************************************************************
+ * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.business.internal.metamodel.description.operations;
+
+import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.description.ConditionalStyleDescription;
+import org.eclipse.sirius.description.DescriptionPackage;
+
+/**
+ * Implementation of ConditionalStyleDescriptionImpl.java.
+ * 
+ * @author cbrun
+ */
+public final class ConditionalStyleSpecOperations {
+
+    /**
+     * Avoid instantiation.
+     */
+    private ConditionalStyleSpecOperations() {
+
+    }
+
+    /**
+     * Implementation of.
+     * {@link ConditionalStyleDescription#checkPredicate(EObject, EObject, EObject)}
+     * 
+     * @param style
+     *            the current conditional style
+     * @param modelElement
+     *            the semantic element.
+     * @param viewVariable
+     *            the view.
+     * @param containerVariable
+     *            the semantic element of the container.
+     * @return <code>true</code> if the predicate of style if checked.
+     */
+    public static boolean checkPredicate(final ConditionalStyleDescription style, final EObject modelElement, final EObject viewVariable, final EObject containerVariable) {
+        final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
+        return checkPredicate(style, modelElement, viewVariable, containerVariable, interpreter);
+    }
+
+    /**
+     * Implementation of.
+     * {@link ConditionalStyleDescription#checkPredicate(EObject, EObject, EObject)}
+     * 
+     * @param style
+     *            the current conditional style
+     * @param modelElement
+     *            the semantic element.
+     * @param viewVariable
+     *            the view.
+     * @param containerVariable
+     *            the semantic element of the container.
+     * @param interpreter
+     *            the interpreter to use to evaluate expressions.
+     * @return <code>true</code> if the predicate of style if checked.
+     */
+    public static boolean checkPredicate(final ConditionalStyleDescription style, final EObject modelElement, final EObject viewVariable, final EObject containerVariable,
+            final IInterpreter interpreter) {
+        interpreter.setVariable(IInterpreterSiriusVariables.VIEW, viewVariable);
+        interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, containerVariable);
+
+        final boolean result = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateBoolean(modelElement, style,
+                DescriptionPackage.eINSTANCE.getConditionalStyleDescription_PredicateExpression());
+
+        interpreter.unSetVariable(IInterpreterSiriusVariables.VIEW);
+        interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER);
+        return result;
+    }
+}

@@ -1,0 +1,129 @@
+/*******************************************************************************
+ * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
+
+import org.eclipse.draw2d.ConnectionAnchor;
+import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.Request;
+import org.eclipse.gef.editpolicies.ResizableEditPolicy;
+import org.eclipse.gmf.runtime.notation.View;
+
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.DNode;
+import org.eclipse.sirius.diagram.edit.internal.part.DiagramNodeEditPartOperation;
+import org.eclipse.sirius.diagram.internal.edit.parts.DNodeEditPart;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.LostMessageEnd;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ConnectionAnchorOperation;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.LostMessageEndSelectionPolicy;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
+
+/**
+ * The edit part for lost message end.
+ * 
+ * @author mporhel
+ */
+public class LostMessageEndEditPart extends DNodeEditPart {
+    /**
+     * Constructor.
+     * 
+     * @param view
+     *            the view.
+     */
+    public LostMessageEndEditPart(View view) {
+        super(view);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void addNotify() {
+        SequenceEditPartsOperations.registerDiagramElement(this, resolveDiagramElement());
+        super.addNotify();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void removeNotify() {
+        super.removeNotify();
+        SequenceEditPartsOperations.unregisterDiagramElement(this, resolveDiagramElement());
+    }
+
+    /**
+     * Use the same y location as the corresponding source connection anchor,
+     * stored in ViewLocationHint, to improve user feedback.
+     * <p>
+     * {@inheritDoc}
+     */
+    @Override
+    public ConnectionAnchor getSourceConnectionAnchor(Request request) {
+        return ConnectionAnchorOperation.safeCenterAnchor(super.getSourceConnectionAnchor(request));
+    }
+
+    /**
+     * Use the same y location as the corresponding source connection anchor,
+     * stored in ViewLocationHint, to improve user feedback.
+     * <p>
+     * {@inheritDoc}
+     */
+    @Override
+    public ConnectionAnchor getTargetConnectionAnchor(Request request) {
+        return ConnectionAnchorOperation.safeCenterAnchor(super.getTargetConnectionAnchor(request));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public EditPolicy getPrimaryDragEditPolicy() {
+        ResizableEditPolicy result = new LostMessageEndSelectionPolicy();
+        DDiagramElement dde = resolveDiagramElement();
+        if (dde instanceof DNode) {
+            DNode node = (DNode) dde;
+            DiagramNodeEditPartOperation.updateResizeKind(result, node);
+        }
+        return result;
+    }
+
+    /**
+     * Overridden to install a specific edit policy managing the moving and
+     * resizing requests on lost message ends.
+     * <p>
+     * {@inheritDoc}
+     */
+    @Override
+    public void installEditPolicy(Object key, EditPolicy editPolicy) {
+        if (EditPolicy.PRIMARY_DRAG_ROLE.equals(key)) {
+            super.installEditPolicy(key, getPrimaryDragEditPolicy());
+        } else {
+            super.installEditPolicy(key, editPolicy);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void createDefaultEditPolicies() {
+        super.createDefaultEditPolicies();
+
+        // Handle $endBefore for launch tools.
+        installEditPolicy(org.eclipse.sirius.diagram.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
+    }
+
+    public LostMessageEnd getLostMessageEnd() {
+        return ISequenceElementAccessor.getLostMessageEnd(getNotationView()).get();
+    }
+}

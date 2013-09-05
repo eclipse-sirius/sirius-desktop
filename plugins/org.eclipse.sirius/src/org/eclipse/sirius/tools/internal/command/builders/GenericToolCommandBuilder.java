@@ -1,0 +1,167 @@
+/*******************************************************************************
+ * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.tools.internal.command.builders;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.DRepresentation;
+import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
+import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.description.tool.AbstractVariable;
+import org.eclipse.sirius.description.tool.ToolDescription;
+import org.eclipse.sirius.tools.api.command.DCommand;
+import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+
+/**
+ * Command builder for generic tool.
+ * 
+ * @author mporhel
+ */
+public class GenericToolCommandBuilder extends AbstractCommandBuilder {
+
+    /**
+     * Current tool description from which this CommandBuilder build a Command.
+     */
+    protected final ToolDescription tool;
+
+    /**
+     * View on which the current ToolDescription's operations are executed.
+     */
+    protected EObject containerView;
+
+    /**
+     * Create a new node creation command builder instance.
+     * 
+     * @param tool
+     *            a node creation tool
+     * @param containerView
+     *            the diagram or diagram element on which the operations should
+     *            be applied.
+     */
+    public GenericToolCommandBuilder(final ToolDescription tool, final EObject containerView) {
+        this.tool = tool;
+        this.containerView = containerView;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.tools.internal.command.builders.CommandBuilder#buildCommand()
+     */
+    public final Command buildCommand() {
+        final DCommand result = createEnclosingCommand();
+        final IInterpreter interpreter = InterpreterUtil.getInterpreter(containerView);
+        if (checkGenericToolPrecondition(interpreter)) {
+            Option<DRepresentation> representation = new EObjectQuery(containerView).getRepresentation();
+            if (representation.some() && tool.getInitialOperation() != null && tool.getInitialOperation().getFirstModelOperations() != null) {
+                addPreOperationTasks(result, interpreter);
+
+                EObject container = containerView;
+                if (containerView instanceof DSemanticDecorator) {
+                    container = ((DSemanticDecorator) containerView).getTarget();
+                }
+                result.getTasks().add(taskHelper.buildTaskFromModelOperation(representation.get(), container, tool.getInitialOperation().getFirstModelOperations()));
+
+                addPostOperationTasks(result, interpreter);
+            }
+        } else {
+            result.getTasks().add(UnexecutableTask.INSTANCE);
+        }
+        return result;
+    }
+
+    /**
+     * Add tasks to execute before model operations.
+     * 
+     * @param command
+     *            the command to complete
+     * @param interpreter
+     *            the current interpreter
+     */
+    protected void addPreOperationTasks(DCommand command, IInterpreter interpreter) {
+        final InitInterpreterVariablesTask initInterpreterVariablesTask = buildInitVariablesTasks(interpreter);
+        command.getTasks().add(initInterpreterVariablesTask);
+        addDiagramVariable(command, containerView, interpreter);
+    }
+
+    /**
+     * Add tasks to execute after model operations.
+     * 
+     * @param command
+     *            the command to complete
+     * @param interpreter
+     *            the current interpreter.
+     */
+    protected void addPostOperationTasks(final DCommand command, IInterpreter interpreter) {
+        if (containerView instanceof DDiagramElement) {
+            addRefreshTask((DDiagramElement) containerView, command, tool);
+        } else if (containerView instanceof DDiagram) {
+            addRefreshTask((DDiagram) containerView, command, tool);
+        }
+        if (containerView instanceof DSemanticDecorator) {
+            addRemoveDanglingReferencesTask(command, tool, (DSemanticDecorator) containerView);
+        }
+    }
+
+    private InitInterpreterVariablesTask buildInitVariablesTasks(final IInterpreter interpreter) {
+        final Map<AbstractVariable, Object> variables = getVariables();
+
+        final InitInterpreterVariablesTask initInterpreterVariablesTask = new InitInterpreterVariablesTask(variables, interpreter, uiCallback);
+        return initInterpreterVariablesTask;
+    }
+
+    /**
+     * Variables used by the tool.
+     * 
+     * @return variables.
+     */
+    protected Map<AbstractVariable, Object> getVariables() {
+        final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
+        if (containerView instanceof DSemanticDecorator) {
+            variables.put(tool.getElement(), ((DSemanticDecorator) containerView).getTarget());
+        }
+        variables.put(tool.getElementView(), containerView);
+        return variables;
+    }
+
+    private boolean checkGenericToolPrecondition(IInterpreter interpreter) {
+        boolean checked = false;
+
+        // init variables for precondition
+        final InitInterpreterVariablesTask initInterpreterVariablesTask = buildInitVariablesTasks(interpreter);
+        initInterpreterVariablesTask.execute();
+
+        if (containerView instanceof DDiagramElement) {
+            checked = checkPrecondition((DDiagramElement) containerView, tool);
+        } else if (containerView instanceof DDiagram) {
+            checked = checkPrecondition((DDiagram) containerView, tool);
+        }
+        return checked;
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    protected String getEnclosingCommandLabel() {
+        return new IdentifiedElementQuery(tool).getLabel();
+    }
+}

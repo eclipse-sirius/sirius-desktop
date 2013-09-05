@@ -1,0 +1,212 @@
+/*******************************************************************************
+ * Copyright (c) 2009, 2012 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.tools.internal.command.builders;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.UnexecutableCommand;
+import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.DDiagramElementContainer;
+import org.eclipse.sirius.DNode;
+import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.DSemanticDiagram;
+import org.eclipse.sirius.business.api.helper.task.ICommandTask;
+import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
+import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.business.internal.helper.task.CreateDNodeTask;
+import org.eclipse.sirius.description.tool.AbstractVariable;
+import org.eclipse.sirius.description.tool.NodeCreationDescription;
+import org.eclipse.sirius.tools.api.command.DCommand;
+import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+
+/**
+ * Command builder for node creation.
+ * 
+ * @author mchauvin
+ */
+public class NodeCreationCommandBuilder extends AbstractCommandBuilder {
+
+    /**
+     * Current tool description from which this CommandBuilder build a Command.
+     */
+    protected final NodeCreationDescription tool;
+
+    /**
+     * {@link DDiagramElement} on which the current NodeCreationDescription's
+     * operations are executed.
+     */
+    protected DDiagramElement diagramElement;
+
+    /**
+     * {@link DDiagram} on which (or parent of the diagramElement on which) the
+     * current NodeCreationDescription's operations are executed.
+     */
+    protected DDiagram diagram;
+
+    private final boolean createInDiagram;
+
+    /**
+     * Create a new node creation command builder instance.
+     * 
+     * @param tool
+     *            a node creation tool
+     * @param diagramElement
+     *            the diagram element in which the created element should be
+     *            displayed
+     */
+    public NodeCreationCommandBuilder(final NodeCreationDescription tool, final DDiagramElement diagramElement) {
+        this.tool = tool;
+        this.diagramElement = diagramElement;
+        this.diagram = diagramElement != null ? diagramElement.getParentDiagram() : null;
+        this.createInDiagram = false;
+    }
+
+    /**
+     * Create a new node creation command builder instance.
+     * 
+     * @param tool
+     *            a node creation tool
+     * @param diagram
+     *            the diagram in which the created element should be displayed
+     */
+    public NodeCreationCommandBuilder(final NodeCreationDescription tool, final DDiagram diagram) {
+        this.tool = tool;
+        this.diagram = diagram;
+        this.createInDiagram = true;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.tools.internal.command.builders.CommandBuilder#buildCommand()
+     */
+    public Command buildCommand() {
+        if (createInDiagram) {
+            return buildInDiagramCommand();
+        } else {
+            return buildInDiagramElementCommand();
+        }
+
+    }
+
+    private Command buildInDiagramElementCommand() {
+        if (canCreateNodeInTarget()) {
+            if (checkPrecondition(diagramElement, tool)) {
+                final DCommand result = buildCreateNodeCommandFromTool(diagramElement.getTarget(), diagramElement);
+                result.getTasks().add(buildCreateNodeTask(result));
+                addRefreshTask(diagramElement, result, tool);
+                addRemoveDanglingReferencesTask(result, tool, diagramElement);
+                return result;
+            }
+        }
+        return UnexecutableCommand.INSTANCE;
+    }
+
+    private Command buildInDiagramCommand() {
+        if (permissionAuthority.canEditInstance(diagram)) {
+            EObject model = null;
+            if (diagram instanceof DSemanticDiagram) {
+                model = ((DSemanticDiagram) diagram).getTarget();
+            }
+            if (model != null && checkPrecondition(diagram, tool)) {
+                final DCommand result = buildCreateNodeCommandFromTool(model, diagram);
+                result.getTasks().add(new CreateDNodeTask(tool, result, modelAccessor, diagram));
+                addRefreshTask(diagram, result, tool);
+                if (diagram instanceof DSemanticDecorator) {
+                    addRemoveDanglingReferencesTask(result, tool, (DSemanticDecorator) diagram);
+                }
+                return result;
+            }
+        }
+        return UnexecutableCommand.INSTANCE;
+    }
+
+    /**
+     * Build a command to create a {@link DNode} considering the semantic
+     * container and a {@link NodeCreationDescription}.
+     * 
+     * @param semanticContainer
+     *            the semantic container.
+     * @param container
+     *            the container
+     * @return a command able to create the {@link DNode}.
+     */
+    protected DCommand buildCreateNodeCommandFromTool(final EObject semanticContainer, final EObject container) {
+        final DCommand result = createEnclosingCommand();
+        // the CDOLockBasedPermissionAuthority can't deal with null
+        // objects
+        if (canCreateNodeInTarget()) {
+            final IInterpreter interpreter = InterpreterUtil.getInterpreter(semanticContainer);
+            final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
+            result.getTasks().add(new InitInterpreterVariablesTask(variables, interpreter, uiCallback));
+            variables.put(tool.getVariable(), semanticContainer);
+            variables.put(tool.getViewVariable(), container);
+            addDiagramVariable(result, container, interpreter);
+
+            Option<DDiagram> parentDiagram = new EObjectQuery(container).getParentDiagram();
+            if (tool.getInitialOperation().getFirstModelOperations() != null) {
+                result.getTasks().add(taskHelper.buildTaskFromModelOperation(parentDiagram.get(), semanticContainer, tool.getInitialOperation().getFirstModelOperations()));
+            }
+
+        } else {
+            result.getTasks().add(UnexecutableTask.INSTANCE);
+        }
+        return result;
+    }
+
+    /**
+     * Indicates if the target of the Node to create (DDiagramElement or
+     * directly the DDiagram) can be editable (by calling the
+     * PermissionAuthority).
+     * 
+     * @return true if the node can be created, false otherwise
+     */
+    private boolean canCreateNodeInTarget() {
+        boolean nodeCanBeCreateInTarget = false;
+        if (diagramElement != null) {
+            nodeCanBeCreateInTarget = permissionAuthority.canEditInstance(diagramElement) && diagramElement.getTarget() != null && !diagramElement.getTarget().eIsProxy();
+        } else {
+            if (diagram != null) {
+                nodeCanBeCreateInTarget = permissionAuthority.canEditInstance(diagram);
+                if (nodeCanBeCreateInTarget && diagram instanceof DSemanticDecorator) {
+                    nodeCanBeCreateInTarget = ((DSemanticDecorator) diagram).getTarget() != null && !((DSemanticDecorator) diagram).getTarget().eIsProxy();
+                }
+            }
+        }
+        return nodeCanBeCreateInTarget;
+    }
+
+    private ICommandTask buildCreateNodeTask(final DCommand createdObjects) {
+        ICommandTask task = null;
+        if (diagramElement instanceof DNode) {
+            task = new CreateDNodeTask(tool, createdObjects, modelAccessor, (DNode) diagramElement);
+        } else if (diagramElement instanceof DDiagramElementContainer) {
+            task = new CreateDNodeTask(tool, createdObjects, modelAccessor, (DDiagramElementContainer) diagramElement);
+        }
+        return task;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected String getEnclosingCommandLabel() {
+        return new IdentifiedElementQuery(tool).getLabel();
+    }
+}

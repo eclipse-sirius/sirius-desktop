@@ -1,0 +1,138 @@
+/*******************************************************************************
+ * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.sequence.business.internal.layout;
+
+import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.Size;
+
+import com.google.common.collect.Iterables;
+
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.CollapseFilter;
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
+import org.eclipse.sirius.diagram.sequence.business.internal.layout.flag.SequenceDiagramAbsoluteBoundsFlagger;
+import org.eclipse.sirius.diagram.sequence.business.internal.layout.horizontal.SequenceHorizontalLayout;
+import org.eclipse.sirius.diagram.sequence.business.internal.layout.observation.SequenceObservationLayout;
+import org.eclipse.sirius.diagram.sequence.business.internal.layout.vertical.SequenceVerticalLayout;
+
+/**
+ * Computes the appropriate graphical locations of sequence events and lifelines
+ * on a sequence diagram to reflect the semantic order.
+ * 
+ * @author pcdavid, mporhel
+ */
+public class SequenceLayout {
+
+    private final Option<SequenceDiagram> sequenceDiagram;
+
+    private SequenceHorizontalLayout sequenceHorizontalLayout;
+
+    private SequenceVerticalLayout sequenceVerticalLayout;
+
+    private SequenceObservationLayout sequenceObservationLayout;
+
+    /**
+     * Constructor.
+     * 
+     * @param diagram
+     *            the sequence diagram for which to compute the messages
+     *            locations.
+     */
+    public SequenceLayout(Diagram diagram) {
+        this.sequenceDiagram = ISequenceElementAccessor.getSequenceDiagram(diagram);
+        this.sequenceHorizontalLayout = new SequenceHorizontalLayout(sequenceDiagram.get());
+        this.sequenceVerticalLayout = new SequenceVerticalLayout(sequenceDiagram.get());
+        this.sequenceObservationLayout = new SequenceObservationLayout(sequenceDiagram.get());
+    }
+
+    public Option<SequenceDiagram> getSequenceDiagram() {
+        return sequenceDiagram;
+    }
+
+    /**
+     * Compute and apply horizontal layout. Should be use in a
+     * {@link org.eclipse.emf.transaction.RecordingCommand}.
+     * 
+     * @param pack
+     *            pack the space between instance roles.
+     * @return true if horizontal layout has been done
+     */
+    public boolean horizontalLayout(boolean pack) {
+        if (this.sequenceHorizontalLayout != null && this.sequenceDiagram.some()) {
+            return this.sequenceHorizontalLayout.layout(pack);
+        }
+        return false;
+    }
+
+    /**
+     * Compute and apply vertical layout. Should be use in a
+     * {@link org.eclipse.emf.transaction.RecordingCommand}.
+     * 
+     * @param pack
+     *            pack the space between sequence events
+     * @return true if vertical layout has been done
+     */
+    public boolean verticalLayout(boolean pack) {
+        if (this.sequenceVerticalLayout != null && this.sequenceDiagram.some()) {
+            return this.sequenceVerticalLayout.layout(pack);
+        }
+        return false;
+    }
+
+    /**
+     * Compute and apply observation layout. Should be use in a
+     * {@link org.eclipse.emf.transaction.RecordingCommand} and after vertical
+     * and horizontal layout.
+     * 
+     * It will place the ObservationPoint.
+     * 
+     * @param pack
+     *            pack the space between sequence events
+     * @return true if horizontal layout has been done
+     */
+    public boolean observationLayout(boolean pack) {
+        if (this.sequenceObservationLayout != null && this.sequenceDiagram.some()) {
+            return this.sequenceObservationLayout.layout(pack);
+        }
+        return false;
+    }
+
+    /**
+     * Flag DDiagramElement with their absolute bounds.
+     */
+    public void flagSequenceEvents() {
+        // Flag event with their new position
+        if (this.sequenceDiagram.some()) {
+            SequenceDiagramAbsoluteBoundsFlagger flagHelper = new SequenceDiagramAbsoluteBoundsFlagger(sequenceDiagram.get());
+            flagHelper.flag();
+
+            updateCollapseFilters();
+        }
+    }
+
+    private void updateCollapseFilters() {
+        for (ISequenceNode isn : Iterables.concat(sequenceDiagram.get().getAllAbstractNodeEvents(), sequenceDiagram.get().getAllObservationPoints(), sequenceDiagram.get().getAllLifelines())) {
+            Node node = isn.getNotationNode();
+            if (new NodeQuery(node).isCollapsed() && node.getElement() instanceof DDiagramElement && node.getLayoutConstraint() instanceof Size) {
+                Size size = (Size) node.getLayoutConstraint();
+                DDiagramElement dde = (DDiagramElement) node.getElement();
+                for (CollapseFilter collapseFilter : Iterables.filter(dde.getGraphicalFilters(), CollapseFilter.class)) {
+                    collapseFilter.setHeight(size.getHeight());
+                }
+            }
+        }
+    }
+}

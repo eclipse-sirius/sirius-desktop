@@ -1,0 +1,265 @@
+/*******************************************************************************
+ * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
+
+import java.util.List;
+
+import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.LineBorder;
+import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.DragTracker;
+import org.eclipse.gef.EditPart;
+import org.eclipse.gef.EditPartViewer;
+import org.eclipse.gef.Request;
+import org.eclipse.gef.requests.SelectionRequest;
+import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
+import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
+import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
+import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
+
+import org.eclipse.sirius.BorderedStyle;
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.DStylizable;
+import org.eclipse.sirius.Style;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
+import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
+import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
+import org.eclipse.sirius.diagram.sequence.description.StateMapping;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.ExecutionItemLocator;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.LifelineNodeFigure;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.SouthCenteredBorderItemLocator;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.LayoutEditPartConstants;
+import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
+import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
+import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+
+/**
+ * Special edit part for Executions. They are treated as bordered nodes.
+ * 
+ * @author pcdavid, smonnier
+ */
+public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
+    private static final boolean ENABLE_LIFELINE_SELECTION = false;
+
+    /**
+     * Constructor.
+     * 
+     * @param view
+     *            the view.
+     */
+    public LifelineEditPart(final View view) {
+        super(view);
+    }
+
+    /**
+     * This method is overridden to have the Lifeline (bordered node) starting
+     * from the border of the Instance Role.
+     * <p>
+     * {@inheritDoc}
+     */
+    @Override
+    public void refreshVisuals() {
+        updateLifelineWidthAndColor();
+
+        super.refreshVisuals();
+        SequenceEditPartsOperations.setBorderItemLocation(this, PositionConstants.SOUTH, LayoutEditPartConstants.ROOT_EXECUTION_BORDER_ITEM_OFFSET);
+    }
+
+    private void updateLifelineWidthAndColor() {
+        DDiagramElement dde = this.resolveDiagramElement();
+        Style style = dde.getStyle();
+        if (style instanceof BorderedStyle) {
+            BorderedStyle borderedStyle = (BorderedStyle) style;
+            int borderSize = borderedStyle.getBorderSize().intValue();
+            Color fg = VisualBindingManager.getDefault().getColorFromRGBValues(borderedStyle.getBorderColor());
+
+            // Update LifelineNodeFigure
+            nodePlate.setLineWidth(borderSize);
+            if (fg != null) {
+                nodePlate.setForegroundColor(fg);
+            }
+
+            // Update its border.
+            if (nodePlate.getBorder() instanceof LineBorder) {
+                LineBorder lineBorder = (LineBorder) nodePlate.getBorder();
+                lineBorder.setWidth(borderSize);
+                if (fg != null) {
+                    lineBorder.setColor(fg);
+                }
+            }
+        }
+    }
+
+    /**
+     * This method has been overridden to be able to select the parent
+     * InstanceRoleEditPart when selecting this LifelineEditPart.
+     * <p>
+     * {@inheritDoc}
+     */
+    @Override
+    public void setSelected(int value) {
+        if (ENABLE_LIFELINE_SELECTION) {
+            super.setSelected(value);
+        } else {
+            getParent().setSelected(value);
+        }
+    }
+
+    /**
+     * This method has been overridden to use a specific Tracker to be able to
+     * select the InstanceRole and group requests.
+     * <p>
+     * {@inheritDoc}
+     */
+    @Override
+    public DragTracker getDragTracker(Request request) {
+        if (!ENABLE_LIFELINE_SELECTION) {
+            if (request instanceof SelectionRequest) {
+                return new LifeLineSelectionDragEditPartsTrackerEx(this);
+            }
+        }
+        return super.getDragTracker(request);
+    }
+
+    /**
+     * This method has been overridden to use a specific BorderItemLocator to
+     * place the Destroy end item properly.
+     * <p>
+     * {@inheritDoc}
+     */
+    @Override
+    public IBorderItemLocator createBorderItemLocator(IFigure figure, DDiagramElement vpElementBorderItem) {
+        IBorderItemLocator result;
+        if (vpElementBorderItem.getMapping() instanceof EndOfLifeMapping) {
+            result = new SouthCenteredBorderItemLocator(figure, LayoutEditPartConstants.EOL_BORDER_ITEM_OFFSET);
+        } else if (vpElementBorderItem.getMapping() instanceof ExecutionMapping || vpElementBorderItem.getMapping() instanceof StateMapping) {
+            result = new ExecutionItemLocator(this, figure);
+        } else {
+            result = super.createBorderItemLocator(figure, vpElementBorderItem);
+        }
+        return result;
+    }
+
+    /**
+     * This method is overridden to use a specific figure for this border node.
+     * 
+     * {@inheritDoc}
+     */
+    @Override
+    protected NodeFigure createNodePlate() {
+        DefaultSizeNodeFigure result = null;
+        final EObject eObj = resolveSemanticElement();
+        if (eObj instanceof DStylizable && eObj instanceof DDiagramElement) {
+            final DStylizable viewNode = (DStylizable) eObj;
+            final StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(((DDiagramElement) eObj).getDiagramElementMapping(), viewNode.getStyle());
+            final AnchorProvider anchorProvider = styleConfiguration.getAnchorProvider();
+            result = new LifelineNodeFigure(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5), anchorProvider);
+            nodePlate = result;
+        }
+        return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public ISequenceEvent getISequenceEvent() {
+        return ISequenceElementAccessor.getLifeline(getNotationView()).get();
+    }
+
+    /**
+     * Specific tracker used to select the parent InstanceRole instead of the
+     * RootExecution and append request on RootExecution to InstanceRole.
+     * 
+     * @author smonnier
+     */
+    private final class LifeLineSelectionDragEditPartsTrackerEx extends DragEditPartsTrackerEx {
+    
+        /**
+         * Constructor.
+         * 
+         * @param sourceEditPart
+         *            the execution edit part
+         */
+        public LifeLineSelectionDragEditPartsTrackerEx(EditPart sourceEditPart) {
+            super(sourceEditPart);
+        }
+    
+        /**
+         * This method has been overridden to be able to manipulate the parent
+         * InstanceRoleEditPart as well as this LifelineEditPart. For instance,
+         * moving the LifelineEditPart will also move the parent
+         * InstanceRoleEditPart.
+         * <p>
+         * {@inheritDoc}
+         */
+        @Override
+        @SuppressWarnings({ "unchecked", "rawtypes" })
+        protected List createOperationSet() {
+            List createOperationSet = super.createOperationSet();
+            if (createOperationSet.contains(LifelineEditPart.this)) {
+                if (getParent() instanceof InstanceRoleEditPart) {
+                    createOperationSet.add(getParent());
+                }
+            }
+            return createOperationSet;
+        }
+    
+        /**
+         * This method has been overridden to be able to select the parent
+         * InstanceRoleEditPart when selecting this LifelineEditPart.
+         * <p>
+         * {@inheritDoc}
+         */
+        @Override
+        protected void performSelection() {
+            if (hasSelectionOccurred()) {
+                return;
+            }
+            setFlag(FLAG_SELECTION_PERFORMED, true);
+            EditPartViewer viewer = getCurrentViewer();
+            List<?> selectedObjects = viewer.getSelectedEditParts();
+    
+            if (getCurrentInput().isModKeyDown(SWT.MOD1)) {
+                if (selectedObjects.contains(getSourceEditPart().getParent())) {
+                    viewer.deselect(getSourceEditPart());
+                } else {
+                    viewer.appendSelection(getSourceEditPart().getParent());
+                }
+            } else if (getCurrentInput().isShiftKeyDown()) {
+                viewer.appendSelection(getSourceEditPart().getParent());
+            } else {
+                viewer.select(getSourceEditPart().getParent());
+            }
+        }
+    
+        /**
+         * Always disable the clone with Ctrl key in Sirius because it only
+         * clone the graphical element and not the semantic element.
+         * 
+         * @param cloneActive
+         *            true if cloning should be active (never considered here)
+         * 
+         * @see org.eclipse.gef.tools.DragEditPartsTracker#setCloneActive(boolean)
+         */
+        @Override
+        protected void setCloneActive(boolean cloneActive) {
+            super.setCloneActive(false);
+        }
+    
+    }
+}

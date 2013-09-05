@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation&#xA;"
+    modelDirectory="/org.eclipse.sirius.diagram.sequence/src-gen" creationIcons="false"
+    editDirectory="/org.eclipse.sirius.diagram.sequence.edit/src-gen" editorDirectory=""
+    modelPluginID="org.eclipse.sirius.diagram.sequence" modelName="Sequence" editPluginClass="org.eclipse.sirius.diagram.sequence.description.provider.SequenceEditPlugin"
+    editorPluginClass="org.eclipse.sirius.diagram.sequence.description.presentation.SequenceEditorPlugin"
+    codeFormatting="true" testsDirectory="" testSuiteClass="org.eclipse.sirius.diagram.sequence.description.tests.SequenceAllTests"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint ../../org.eclipse.sirius/model/contribution.genmodel#//contribution">
+  <genAnnotations source="http://www.eclipse.org/sirius/cdo/CDOGenModel">
+    <details key="cdoNativeGenModels" value="org.eclipse.sirius.diagram.sequence.cdonative/model/sequence.genmodel"/>
+  </genAnnotations>
+  <foreignModel>sequence.ecore</foreignModel>
+  <genPackages prefix="Sequence" basePackage="org.eclipse.sirius.diagram" disposableProviderFactory="true"
+      ecorePackage="sequence.ecore#/">
+    <genClasses ecoreClass="sequence.ecore#//SequenceDDiagram">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//SequenceDDiagram/semanticOrdering"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//SequenceDDiagram/graphicalOrdering"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//SequenceDDiagram/instanceRoleSemanticOrdering"/>
+    </genClasses>
+    <nestedGenPackages prefix="Description" basePackage="org.eclipse.sirius.diagram.sequence"
+        disposableProviderFactory="true" ecorePackage="sequence.ecore#//description">
+      <genClasses ecoreClass="sequence.ecore#//description/SequenceDiagramDescription">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="An interpreted expression used to compute the semantic (chronological) ordering of events on the diagram. See below for the details."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//description/SequenceDiagramDescription/endsOrdering"/>
+        <genFeatures createChild="false" propertyDescription="An interpreted expression used to compute the semantic ordering of elements used as InstanceRole on the diagram."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//description/SequenceDiagramDescription/instanceRolesOrdering"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//description/InstanceRoleMapping"/>
+      <genClasses image="false" ecoreClass="sequence.ecore#//description/EventMapping"/>
+      <genClasses image="false" ecoreClass="sequence.ecore#//description/DelimitedEventMapping">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="The starting and finishing ends must not be the same semantic object."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//description/DelimitedEventMapping/startingEndFinderExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="The starting and finishing ends must not be the same semantic object."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//description/DelimitedEventMapping/finishingEndFinderExpression"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//description/ExecutionMapping"/>
+      <genClasses ecoreClass="sequence.ecore#//description/StateMapping"/>
+      <genClasses ecoreClass="sequence.ecore#//description/EndOfLifeMapping"/>
+      <genClasses image="false" ecoreClass="sequence.ecore#//description/MessageMapping">
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute sequence.ecore#//description/MessageMapping/sendingEndFinderExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute sequence.ecore#//description/MessageMapping/receivingEndFinderExpression"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//description/BasicMessageMapping"/>
+      <genClasses ecoreClass="sequence.ecore#//description/ReturnMessageMapping">
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute sequence.ecore#//description/ReturnMessageMapping/invocationMessageFinderExpression"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//description/CreationMessageMapping"/>
+      <genClasses ecoreClass="sequence.ecore#//description/DestructionMessageMapping"/>
+      <genClasses ecoreClass="sequence.ecore#//description/MessageEndVariable"/>
+      <genClasses ecoreClass="sequence.ecore#//description/CoveredLifelinesVariable"/>
+      <genClasses ecoreClass="sequence.ecore#//description/FrameMapping">
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute sequence.ecore#//description/FrameMapping/coveredLifelinesExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute sequence.ecore#//description/FrameMapping/centerLabelExpression"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//description/InteractionUseMapping"/>
+      <genClasses ecoreClass="sequence.ecore#//description/CombinedFragmentMapping"/>
+      <genClasses ecoreClass="sequence.ecore#//description/OperandMapping"/>
+      <genClasses ecoreClass="sequence.ecore#//description/ObservationPointMapping"/>
+      <nestedGenPackages prefix="Tool" basePackage="org.eclipse.sirius.diagram.sequence.description"
+          disposableProviderFactory="true" ecorePackage="sequence.ecore#//description/tool">
+        <genClasses ecoreClass="sequence.ecore#//description/tool/SequenceDiagramToolDescription"/>
+        <genClasses image="false" ecoreClass="sequence.ecore#//description/tool/OrderedElementCreationTool">
+          <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+              ecoreFeature="ecore:EReference sequence.ecore#//description/tool/OrderedElementCreationTool/startingEndPredecessor"/>
+          <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+              ecoreFeature="ecore:EReference sequence.ecore#//description/tool/OrderedElementCreationTool/finishingEndPredecessor"/>
+        </genClasses>
+        <genClasses image="false" ecoreClass="sequence.ecore#//description/tool/CoveringElementCreationTool">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//description/tool/CoveringElementCreationTool/coveredLifelines"/>
+        </genClasses>
+        <genClasses ecoreClass="sequence.ecore#//description/tool/InstanceRoleCreationTool">
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//description/tool/InstanceRoleCreationTool/predecessor"/>
+        </genClasses>
+        <genClasses ecoreClass="sequence.ecore#//description/tool/LifelineCreationTool"/>
+        <genClasses ecoreClass="sequence.ecore#//description/tool/MessageCreationTool"/>
+        <genClasses ecoreClass="sequence.ecore#//description/tool/ExecutionCreationTool"/>
+        <genClasses ecoreClass="sequence.ecore#//description/tool/StateCreationTool"/>
+        <genClasses ecoreClass="sequence.ecore#//description/tool/InteractionUseCreationTool"/>
+        <genClasses ecoreClass="sequence.ecore#//description/tool/CombinedFragmentCreationTool"/>
+        <genClasses ecoreClass="sequence.ecore#//description/tool/OperandCreationTool"/>
+        <genClasses ecoreClass="sequence.ecore#//description/tool/ObservationPointCreationTool"/>
+        <genClasses ecoreClass="sequence.ecore#//description/tool/ReorderTool">
+          <genFeatures notify="false" createChild="false" propertyCategory="General"
+              propertySortChoices="true" ecoreFeature="ecore:EReference sequence.ecore#//description/tool/ReorderTool/mappings"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//description/tool/ReorderTool/startingEndPredecessorBefore"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//description/tool/ReorderTool/startingEndPredecessorAfter"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//description/tool/ReorderTool/finishingEndPredecessorBefore"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//description/tool/ReorderTool/finishingEndPredecessorAfter"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//description/tool/ReorderTool/onEventMovedOperation"/>
+        </genClasses>
+        <genClasses ecoreClass="sequence.ecore#//description/tool/InstanceRoleReorderTool">
+          <genFeatures notify="false" createChild="false" propertySortChoices="true"
+              ecoreFeature="ecore:EReference sequence.ecore#//description/tool/InstanceRoleReorderTool/mappings"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//description/tool/InstanceRoleReorderTool/predecessorBefore"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//description/tool/InstanceRoleReorderTool/predecessorAfter"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//description/tool/InstanceRoleReorderTool/instanceRoleMoved"/>
+        </genClasses>
+      </nestedGenPackages>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Ordering" basePackage="org.eclipse.sirius.diagram.sequence"
+        disposableProviderFactory="true" ecorePackage="sequence.ecore#//ordering">
+      <genClasses ecoreClass="sequence.ecore#//ordering/EventEndsOrdering">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference sequence.ecore#//ordering/EventEndsOrdering/sequenceDiagram"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference sequence.ecore#//ordering/EventEndsOrdering/eventEnds"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//ordering/EventEnd">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference sequence.ecore#//ordering/EventEnd/semanticEnd"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="sequence.ecore#//ordering/SingleEventEnd">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sequence.ecore#//ordering/SingleEventEnd/start"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference sequence.ecore#//ordering/SingleEventEnd/semanticEvent"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//ordering/CompoundEventEnd">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference sequence.ecore#//ordering/CompoundEventEnd/eventEnds"/>
+        <genOperations ecoreOperation="sequence.ecore#//ordering/CompoundEventEnd/getSemanticEvents"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//ordering/InstanceRolesOrdering">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference sequence.ecore#//ordering/InstanceRolesOrdering/semanticInstanceRoles"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Template" basePackage="org.eclipse.sirius.diagram.sequence"
+        disposableProviderFactory="true" ecorePackage="sequence.ecore#//template">
+      <genClasses ecoreClass="sequence.ecore#//template/TTransformer">
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EReference sequence.ecore#//template/TTransformer/outputs"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//template/TAbstractMapping">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sequence.ecore#//template/TAbstractMapping/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sequence.ecore#//template/TAbstractMapping/domainClass"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sequence.ecore#//template/TAbstractMapping/semanticCandidatesExpression"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//template/TSequenceDiagram">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="The type name of the semantic elements represented by the lifelines."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//template/TSequenceDiagram/domainClass"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="An interpreted expression used to compute the semantic (chronological) ordering of events on the diagram."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//template/TSequenceDiagram/endsOrdering"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TSequenceDiagram/lifelineMappings"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TSequenceDiagram/messageMappings"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="sequence.ecore#//template/TMessageExtremity"/>
+      <genClasses ecoreClass="sequence.ecore#//template/TLifelineMapping">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="An interpreted expression evaluated in the context of the semantic element of the lifeline and which should return a boolean indicating whether the lifeline is the target of a destruction message (which conditions the visibility of the End of Life marker)."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//template/TLifelineMapping/eolVisibleExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TLifelineMapping/executionMappings"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TLifelineMapping/instanceRoleStyle"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TLifelineMapping/lifelineStyle"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TLifelineMapping/endOfLifeStyle"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TLifelineMapping/conditionalLifeLineStyles"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//template/TLifelineStyle">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="An interpreted expression computing the size of the lifeline."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//template/TLifelineStyle/lifelineWidthComputationExpression"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Color" propertyDescription="The color of the lifeline."
+            propertySortChoices="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TLifelineStyle/lifelineColor"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//template/TConditionalLifelineStyle">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sequence.ecore#//template/TConditionalLifelineStyle/predicateExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TConditionalLifelineStyle/style"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//template/TExecutionMapping">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Interpreted expressions which are evaluated in the context of the semantic element of the execution and which should return the semantic element representing the start of the execution."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//template/TExecutionMapping/startingEndFinderExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="interpreted expressions which are evaluated in the context of the semantic element of the execution and which should return the semantic element representing the end of the execution."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//template/TExecutionMapping/finishingEndFinderExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="A boolean indicating whether executions of this kind can contain other sub-executions of the same kind."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//template/TExecutionMapping/recursive"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TExecutionMapping/executionMappings"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TExecutionMapping/style"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TExecutionMapping/conditionalStyles"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//template/TExecutionStyle">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="An interpreted expression to compute the border size of the execution."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//template/TExecutionStyle/borderSizeComputationExpression"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Color" propertyDescription="The color of the border."
+            propertySortChoices="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TExecutionStyle/borderColor"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Color" propertyDescription="The background color of the execution."
+            propertySortChoices="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TExecutionStyle/backgroundColor"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//template/TConditionalExecutionStyle">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sequence.ecore#//template/TConditionalExecutionStyle/predicateExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TConditionalExecutionStyle/style"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="sequence.ecore#//template/TMessageMapping">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Interpreted expressions which are evaluated in the context of the semantic element of the message and which should return the semantic element representing the sending of the execution."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//template/TMessageMapping/sendingEndFinderExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="interpreted expressions which are evaluated in the context of the semantic element of the message and which should return the semantic element representing the reception of the execution."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//template/TMessageMapping/receivingEndFinderExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TMessageMapping/style"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TMessageMapping/conditionalStyle"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//template/TMessageStyle">
+        <genFeatures notify="false" createChild="false" propertyCategory="Color" propertyDescription="Color of the message line."
+            propertySortChoices="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TMessageStyle/strokeColor"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Style of the message line."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//template/TMessageStyle/lineStyle"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute sequence.ecore#//template/TMessageStyle/sourceArrow"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute sequence.ecore#//template/TMessageStyle/targetArrow"/>
+        <genFeatures createChild="false" propertyCategory="Label" propertyDescription="An Interpreted expression computing the label of the message."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//template/TMessageStyle/labelExpression"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//template/TConditionalMessageStyle">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute sequence.ecore#//template/TConditionalMessageStyle/predicateExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TConditionalMessageStyle/style"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//template/TBasicMessageMapping">
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertySortChoices="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TBasicMessageMapping/target"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="sequence.ecore#//template/TSourceTargetMessageMapping">
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertySortChoices="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TSourceTargetMessageMapping/source"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="An interpreted expression returning the semantic source starting from the domain instance."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//template/TSourceTargetMessageMapping/sourceFinderExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="An interpreted expression returning the edge target starting from the domain element."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//template/TSourceTargetMessageMapping/targetFinderExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="If set to true the creation of the elements will depend on the existence of a domain element and not on the graphical one. You should then define the souce finder expression."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//template/TSourceTargetMessageMapping/useDomainElement"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//template/TReturnMessageMapping">
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertyDescription="The Basic Message mapping of the messages to which this return message kind replies."
+            propertySortChoices="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TReturnMessageMapping/invocationMapping"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="An interpreted expression which is evaluated on the context of the semantic element of the message, and should return the semantic element of the invocation message to which this message replies."
+            ecoreFeature="ecore:EAttribute sequence.ecore#//template/TReturnMessageMapping/invocationMessageFinderExpression"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//template/TCreationMessageMapping">
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertySortChoices="true" ecoreFeature="ecore:EReference sequence.ecore#//template/TCreationMessageMapping/target"/>
+      </genClasses>
+      <genClasses ecoreClass="sequence.ecore#//template/TDestructionMessageMapping">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference sequence.ecore#//template/TDestructionMessageMapping/target"/>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

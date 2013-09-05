@@ -1,0 +1,154 @@
+/*******************************************************************************
+ * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.business.internal.metamodel.description.spec;
+
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.DEdge;
+import org.eclipse.sirius.DMappingBased;
+import org.eclipse.sirius.EdgeStyle;
+import org.eclipse.sirius.EdgeTarget;
+import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
+import org.eclipse.sirius.business.internal.metamodel.helper.EdgeMappingHelper;
+import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.description.DiagramElementMapping;
+import org.eclipse.sirius.description.impl.EdgeMappingImpl;
+
+/**
+ * Implementation of EdgeMapping.
+ * 
+ * @author cbrun, mchauvin, ymortier
+ */
+public class EdgeMappingSpec extends EdgeMappingImpl {
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.impl.EdgeMappingImpl#createEdge(org.eclipse.sirius.EdgeTarget,
+     *      org.eclipse.sirius.EdgeTarget, org.eclipse.emf.ecore.EObject)
+     */
+    @Override
+    public DEdge createEdge(final EdgeTarget source, final EdgeTarget target, final EObject semanticTarget) {
+        return createEdge(source, target, null, semanticTarget);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.impl.EdgeMappingImpl#createEdge(org.eclipse.sirius.EdgeTarget,
+     *      org.eclipse.sirius.EdgeTarget, org.eclipse.emf.ecore.EObject,
+     *      org.eclipse.emf.ecore.EObject)
+     */
+    @Override
+    public DEdge createEdge(final EdgeTarget source, final EdgeTarget target, final EObject container, final EObject semanticTarget) {
+        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(container);
+        return new EdgeMappingHelper(interpreter).createEdge(this, source, target, container, semanticTarget);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.impl.EdgeMappingImpl#getBestStyle(org.eclipse.emf.ecore.EObject,
+     *      org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
+     */
+    @Override
+    public EdgeStyle getBestStyle(final EObject modelElement, final EObject viewVariable, final EObject containerVariable) {
+        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
+        return (EdgeStyle) new MappingHelper(interpreter).getBestStyle(this, modelElement, viewVariable, containerVariable, new EObjectQuery(containerVariable).getParentDiagram().get());
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.impl.EdgeMappingImpl#updateEdge(org.eclipse.sirius.DEdge)
+     */
+    @Override
+    public void updateEdge(final DEdge dEdge) {
+        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(dEdge);
+        new EdgeMappingHelper(interpreter).updateEdge(this, dEdge);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.impl.EdgeMappingImpl#getEdgeTargetCandidates(org.eclipse.emf.ecore.EObject,
+     *      org.eclipse.sirius.DDiagram)
+     */
+    @Override
+    public EList<EObject> getEdgeTargetCandidates(final EObject semanticOrigin, final DDiagram diagram) {
+        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticOrigin);
+        return new EdgeMappingHelper(interpreter).getEdgeTargetCandidates(this, semanticOrigin, diagram);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.impl.EdgeMappingImpl#getEdgeSourceCandidates(org.eclipse.emf.ecore.EObject,
+     *      org.eclipse.sirius.DDiagram)
+     */
+    @Override
+    public EList<EObject> getEdgeSourceCandidates(final EObject semanticOrigin, final DDiagram diagram) {
+        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(getStyle());
+        return new EdgeMappingHelper(interpreter).getEdgeSourceCandidates(this, semanticOrigin, diagram);
+    }
+
+    /*
+     * Behavior inherited from DiagramElementMapping
+     */
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.impl.DiagramElementMappingImpl#checkPrecondition(org.eclipse.emf.ecore.EObject,
+     *      org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
+     */
+    @Override
+    public boolean checkPrecondition(final EObject modelElement, final EObject container, final EObject containerView) {
+        return SiriusElementMappingSpecOperations.checkPrecondition(this, modelElement, container, containerView);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.impl.DiagramElementMappingImpl#getAllMappings()
+     */
+    @Override
+    public EList<DiagramElementMapping> getAllMappings() {
+        return new BasicEList.UnmodifiableEList<DiagramElementMapping>(0, new Object[0]);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.impl.DiagramElementMappingImpl#isFrom(org.eclipse.sirius.DMappingBased)
+     */
+    @Override
+    public boolean isFrom(final DMappingBased element) {
+        return SiriusElementMappingSpecOperations.isFrom(this, element);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.description.impl.EdgeMappingImpl#toString()
+     */
+    @Override
+    public String toString() {
+        return getClass().getName() + " " + getName();
+    }
+
+}

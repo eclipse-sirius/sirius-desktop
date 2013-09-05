@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="75"
+   height="50"
+   id="svgNotFound"
+   viewBox="0 0 75 50"
+   preserveAspectRatio="none"
+   inkscape:version="0.48.1 "
+   sodipodi:docname="NotFound.svg">
+  <metadata
+     id="metadataNotFound">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1368"
+     inkscape:window-height="666"
+     id="NotFoundNamedView"
+     showgrid="false"
+     inkscape:zoom="15.62163"
+     inkscape:cx="30.473418"
+     inkscape:cy="25.556145"
+     inkscape:window-x="85"
+     inkscape:window-y="129"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svgNotFound"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       orientation="0,1"
+       position="54.67963,120.22276"
+       id="guide3036" />
+    <sodipodi:guide
+       orientation="0,1"
+       position="-30.417808,-1.4484671"
+       id="guide4153" />
+  </sodipodi:namedview>
+  <defs
+     id="defsNotFound">
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient6246"
+       id="linearGradient3424"
+       x1="-150.79233"
+       y1="-40.552036"
+       x2="-134.66788"
+       y2="-11.477341"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="linearGradient6246">
+      <stop
+         style="stop-color:#ff9d9d;stop-opacity:1;"
+         offset="0"
+         id="stop6248" />
+      <stop
+         style="stop-color:#cc0000;stop-opacity:1;"
+         offset="1"
+         id="stop6250" />
+    </linearGradient>
+  </defs>
+  <g
+     id="layer1"
+     transform="matrix(0.98648516,0,0,0.93808135,0.00175417,0.2284848)">
+    <g
+       transform="translate(188.81459,37.911864)"
+       id="NotFound"
+       inkscape:export-filename="/home/cbrun/Spaces/Playground/fr.obeo.dsl.viewpoint.diagram/images/NotFound.png"
+       inkscape:export-xdpi="118.09"
+       inkscape:export-ydpi="118.09"
+       inkscape:label="#g3434">
+      <rect
+         ry="25.283634"
+         rx="27.860357"
+         y="-37.552063"
+         x="-188.4001"
+         height="52.149445"
+         width="75.215546"
+         id="rect2447"
+         style="fill:url(#linearGradient3424);fill-opacity:1;stroke:#d50000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         id="text3426"
+         y="-23.754913"
+         x="-167.36734"
+         style="font-size:12px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+         xml:space="preserve"><tspan
+           y="-23.754913"
+           x="-167.36734"
+           id="tspan3428"
+           sodipodi:role="line">Image </tspan><tspan
+           id="tspan3430"
+           y="-8.7549133"
+           x="-167.36734"
+           sodipodi:role="line">  not </tspan><tspan
+           id="tspan3432"
+           y="6.2450867"
+           x="-167.36734"
+           sodipodi:role="line">found</tspan></text>
+    </g>
+  </g>
+</svg>

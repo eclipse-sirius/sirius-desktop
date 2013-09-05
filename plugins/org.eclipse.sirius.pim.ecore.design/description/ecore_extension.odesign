@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Ecore documentation extension" version="6.7.0.201302071200">
+  <ownedSiriuss endUserDocumentation="Contributes a layer to manage documentation annotations in the Entities modeler." name="Documentation" modelFileExtension="ecore">
+    <ownedRepresentationExtensions xsi:type="description:DiagramExtensionDescription" name="Entities" viewpointURI="viewpoint:/org.eclipse.sirius.pim.ecore.design/Design" representationName="Entities">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <layers endUserDocumentation="Add support for documentation annotations." name="Documentation">
+        <nodeMappings name="EC Doc Annotation" labelDirectEdit="//@ownedSiriuss[name='Documentation']/@ownedRepresentationExtensions[name='Entities']/@layers[name='Documentation']/@toolSections.0/@ownedTools[name='Edit%20Detail']" semanticCandidatesExpression="[eContents(ecore::EModelElement).eAnnotations->union(eContents(ecore::EClass).eStructuralFeatures.eAnnotations)->union(self->filter(ecore::EModelElement).eAnnotations->asSequence()).details->select(key = 'documentation')/]" domainClass="EStringToStringMapEntry">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[value/]" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="EC Doc Assignment" semanticCandidatesExpression="[self.eAllContents()/]" sourceMapping="//@ownedSiriuss[name='Documentation']/@ownedRepresentationExtensions[name='Entities']/@layers[name='Documentation']/@nodeMappings[name='EC%20Doc%20Annotation']" targetFinderExpression="[eContainer().eContainer()/]">
+          <targetMapping xsi:type="description:EdgeMapping" href="ecore.odesign#//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+          <targetMapping xsi:type="description:EdgeMapping" href="ecore.odesign#//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='Bi-directional%20EC_EReference%20']"/>
+          <targetMapping xsi:type="description:EdgeMapping" href="ecore.odesign#//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
+          <targetMapping xsi:type="description:ContainerMapping" href="ecore.odesign#//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+          <targetMapping xsi:type="description:ContainerMapping" href="ecore.odesign#//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@optionalLayers[name='Package']/@containerMappings[name='Design%20Package']"/>
+          <targetMapping xsi:type="description:ContainerMapping" href="ecore.odesign#//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@optionalLayers[name='Package']/@containerMappings[name='Dropped%20Package']"/>
+          <targetMapping xsi:type="description:ContainerMapping" href="ecore.odesign#//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType']"/>
+          <targetMapping xsi:type="description:ContainerMapping" href="ecore.odesign#//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']"/>
+          <targetMapping xsi:type="description:NodeMapping" href="ecore.odesign#//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']"/>
+          <targetMapping xsi:type="description:NodeMapping" href="ecore.odesign#//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
+          <targetMapping xsi:type="description:NodeMapping" href="ecore.odesign#//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
+          <style lineStyle="dot" sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings xsi:type="description:ContainerMappingImport" name="Doc Class" childrenPresentation="List">
+          <reusedNodeMappings href="ecore.odesign#//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
+          <reusedNodeMappings href="ecore.odesign#//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
+          <conditionnalStyles predicateExpression="[eAnnotations.details->select(key = 'documentation')->size() = 0/]">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelFormat="italic" labelExpression="[name/]" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <importedMapping href="ecore.odesign#//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+        </containerMappings>
+        <toolSections name="Documentation Tools">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Doc Annotation" nodeMappings="//@ownedSiriuss[name='Documentation']/@ownedRepresentationExtensions[name='Entities']/@layers[name='Documentation']/@nodeMappings[name='EC%20Doc%20Annotation']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[eAnnotations->select(source = 'http://www.eclipse.org/emf/2002/GenModel')->size() = 0/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EAnnotation" referenceName="eAnnotations">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="['http://www.eclipse.org/emf/2002/GenModel'/]"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[eAnnotations->select(source = 'http://www.eclipse.org/emf/2002/GenModel')->asSequence()->first()/]">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[details->select(key = 'documentation')->size() = 0/]">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="EStringToStringMapEntry" referenceName="details">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="key" valueExpression="['documentation'/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[details->select(key = 'documentation')->asSequence()->first()/]">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="['New documentation note'/]"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Detail">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="[arg0/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Doc Assignment" forceRefresh="true" edgeMappings="//@ownedSiriuss[name='Documentation']/@ownedRepresentationExtensions[name='Entities']/@layers[name='Documentation']/@edgeMappings[name='EC%20Doc%20Assignment']" iconPath="/org.eclipse.sirius.ui/icons/full/obj16/EdgeMapping.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source.eContainer(ecore::EAnnotation)/]">
+                <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="[target/]" featureName="eAnnotations"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </layers>
+    </ownedRepresentationExtensions>
+  </ownedSiriuss>
+</description:Group>

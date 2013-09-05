@@ -1,0 +1,143 @@
+/*******************************************************************************
+ * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.business.api.helper.graphicalfilters;
+
+import java.util.Collection;
+import java.util.List;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.AppliedCompositeFilters;
+import org.eclipse.sirius.CollapseFilter;
+import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.SiriusFactory;
+import org.eclipse.sirius.business.api.diagramtype.ICollapseUpdater;
+import org.eclipse.sirius.business.api.helper.filter.FilterService;
+import org.eclipse.sirius.business.api.query.CompositeFilterDescriptionQuery;
+import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.description.filter.CompositeFilterDescription;
+
+/**
+ * Helper to handle CollapseFilter and AppliedCompositeFilters.
+ * 
+ * @author mporhel
+ * @since 2.8
+ */
+public class CompositeFilterApplicationBuilder {
+
+    private DDiagram diagram;
+
+    /**
+     * Create a new instance of {@link CompositeFilterApplicationBuilder}.
+     * 
+     * @param diagram
+     *            the current {@link DDiagram}
+     */
+    public CompositeFilterApplicationBuilder(DDiagram diagram) {
+        this.diagram = diagram;
+    }
+
+    /**
+     * Compute composite filters application (hide and collapse) for diagram
+     * elements of the current diagram.
+     */
+    public void computeCompositeFilterApplications() {
+        ICollapseUpdater collapseUpdater = CollapseUpdater.getICollapseUpdater(diagram);
+
+        for (DDiagramElement element : diagram.getDiagramElements()) {
+            List<CompositeFilterDescription> appliedHideFilters = Lists.newArrayList(Iterables.filter(FilterService.getAppliedFilters(diagram, element), CompositeFilterDescription.class));
+            handleHideCompositeFilters(element, appliedHideFilters);
+
+            boolean isDirectlycollapsed = FilterService.isCollapsed(diagram, element);
+            handleCollapseCompositeFilters(element, isDirectlycollapsed, collapseUpdater);
+        }
+    }
+
+    private void handleCollapseCompositeFilters(DDiagramElement element, boolean isDirectlycollapsed, ICollapseUpdater collapseUpdater) {
+        DDiagramElementQuery elementQuery = new DDiagramElementQuery(element);
+
+        if (elementQuery.isCollapsed()) {
+            updateCollapseApplication(element, isDirectlycollapsed, collapseUpdater);
+        } else if (isDirectlycollapsed) {
+            createCollapseApplication(element, collapseUpdater);
+        }
+
+    }
+
+    private void handleHideCompositeFilters(final DDiagramElement element, final List<CompositeFilterDescription> appliedFilters) {
+        DDiagramElementQuery elementQuery = new DDiagramElementQuery(element);
+
+        Iterable<CompositeFilterDescription> appliedHideFilters = Iterables.filter(appliedFilters, new IsHideFilter());
+
+        Option<AppliedCompositeFilters> appliedCompositeFilters = elementQuery.getAppliedCompositeFilters();
+        if (appliedCompositeFilters.some()) {
+            updateFilterApplication(element, appliedCompositeFilters.get(), Lists.newArrayList(appliedHideFilters));
+        } else if (!Iterables.isEmpty(appliedHideFilters)) {
+            createFilterApplication(element, Lists.newArrayList(appliedHideFilters));
+        }
+    }
+
+    private void createCollapseApplication(DDiagramElement element, ICollapseUpdater collapseUpdater) {
+        if (element != null) {
+            // if the element was not collapsed but a new filter is activated,
+            // we add a CollapseFilter on it.
+            collapseUpdater.synchronizeCollapseFiltersAndGMFBounds(element, true, CollapseFilter.class);
+        }
+    }
+
+    private void updateCollapseApplication(DDiagramElement element, boolean isDirectlycollapsed, ICollapseUpdater collapseUpdater) {
+        if (element != null && !isDirectlycollapsed) {
+            // if the element was directly collapsed but there is no more direct
+            // collapse filter active on it, we remove its collapseFilter.
+            collapseUpdater.synchronizeCollapseFiltersAndGMFBounds(element, false, CollapseFilter.class);
+        }
+    }
+
+    private void createFilterApplication(DDiagramElement element, List<CompositeFilterDescription> appliedFilters) {
+        if (element != null && appliedFilters != null && !appliedFilters.isEmpty()) {
+            AppliedCompositeFilters filterApplication = SiriusFactory.eINSTANCE.createAppliedCompositeFilters();
+            filterApplication.getCompositeFilterDescriptions().addAll(appliedFilters);
+            element.getGraphicalFilters().add(filterApplication);
+        }
+    }
+
+    private void updateFilterApplication(DDiagramElement element, AppliedCompositeFilters filterApplication, List<CompositeFilterDescription> appliedFilters) {
+        if (element != null && filterApplication != null && appliedFilters != null) {
+            if (appliedFilters.isEmpty()) {
+                element.getGraphicalFilters().remove(filterApplication);
+            } else {
+                Collection<CompositeFilterDescription> filterToAdd = Lists.newArrayList(appliedFilters);
+                Iterables.removeAll(filterToAdd, filterApplication.getCompositeFilterDescriptions());
+
+                Collection<CompositeFilterDescription> filterToRemove = Lists.newArrayList(filterApplication.getCompositeFilterDescriptions());
+                Iterables.removeAll(filterToRemove, appliedFilters);
+
+                filterApplication.getCompositeFilterDescriptions().removeAll(filterToRemove);
+                filterApplication.getCompositeFilterDescriptions().addAll(filterToAdd);
+            }
+        }
+    }
+
+    /**
+     * 
+     * Predicate that checks if the filter is a hide filter.
+     * 
+     */
+    private static class IsHideFilter implements Predicate<CompositeFilterDescription> {
+        public boolean apply(CompositeFilterDescription input) {
+            return new CompositeFilterDescriptionQuery(input).isHideCompositeFilter();
+        }
+    }
+}
