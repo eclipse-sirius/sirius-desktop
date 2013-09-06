@@ -13,10 +13,10 @@ Export-Package: org.eclipse.sirius.ecore.extender.business.api.accessor,
  org.eclipse.sirius.ecore.extender.business.api.permission,
  org.eclipse.sirius.ecore.extender.business.api.permission.exception,
  org.eclipse.sirius.ecore.extender.business.internal;x-internal:=true,
- org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore;x-friends:="org.eclipse.sirius.ecore.extension.tests",
+ org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore;x-internal:=true,
  org.eclipse.sirius.ecore.extender.business.internal.common;x-internal:=true,
- org.eclipse.sirius.ecore.extender.business.internal.permission;x-friends:="org.eclipse.sirius.ecore.extension.tests,fr.obeo.dsl.viewpoint.tests.swtbot",
- org.eclipse.sirius.ecore.extender.business.internal.permission.descriptors;x-friends:="fr.obeo.dsl.viewpoint.tests.swtbot",
+ org.eclipse.sirius.ecore.extender.business.internal.permission;x-internal:=true,
+ org.eclipse.sirius.ecore.extender.business.internal.permission.descriptors;x-internal:=true,
  org.eclipse.sirius.ecore.extender.tool.api,
  org.eclipse.sirius.ecore.extender.tool.internal;x-internal:=true
 Bundle-Activator: org.eclipse.sirius.ecore.extender.business.internal.ExtenderPlugin

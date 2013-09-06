@@ -20,5 +20,5 @@ Require-Bundle: org.eclipse.sirius.common.acceleo.mtl;bundle-version="0.1.0",
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: %providerName
-Export-Package: org.eclipse.sirius.common.acceleo.mtl.ide;x-friends:="fr.obeo.dsl.viewpoint.tests.staging"
+Export-Package: org.eclipse.sirius.common.acceleo.mtl.ide;x-internal:=true
 Bundle-Localization: plugin

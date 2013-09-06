@@ -16,7 +16,7 @@ Export-Package: org.eclipse.sirius.diagram.layoutdata;uses:="org.eclipse.emf.eco
    org.eclipse.emf.common.notify",
  org.eclipse.sirius.diagram.layoutdata.tools.api.util;uses:="org.eclipse.sirius.diagram.layoutdata.tools.api.util.configuration,org.eclipse.sirius.diagram.layoutdata",
  org.eclipse.sirius.diagram.layoutdata.tools.api.util.configuration,
- org.eclipse.sirius.diagram.layoutdata.tools.internal.util;x-friends:="fr.obeo.dsl.viewpoint.tests",
+ org.eclipse.sirius.diagram.layoutdata.tools.internal.util;x-internal:=true,
  org.eclipse.sirius.diagram.layoutdata.tools.internal.util.configuration;x-internal:=true,
  org.eclipse.sirius.diagram.layoutdata.util;
   uses:="org.eclipse.emf.ecore,
