@@ -440,7 +440,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT);
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION);
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER);
-            childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS);
+            childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS);
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__NODE_MAPPINGS);
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS);
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS);
@@ -519,7 +519,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__LAYOUT:
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__DIAGRAM_INITIALISATION:
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__DEFAULT_LAYER:
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__OPTIONAL_LAYERS:
+        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ADDITIONAL_LAYERS:
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__NODE_MAPPINGS:
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__EDGE_MAPPINGS:
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__EDGE_MAPPING_IMPORTS:
@@ -558,9 +558,9 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, DescriptionFactory.eINSTANCE.createLayer()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, DescriptionFactory.eINSTANCE.createOptionalLayer()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, DescriptionFactory.eINSTANCE.createAdditionalLayer()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS, DescriptionFactory.eINSTANCE.createOptionalLayer()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS, DescriptionFactory.eINSTANCE.createAdditionalLayer()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createNodeMapping()));
 
@@ -592,7 +592,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER || childFeature == DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS;
+        boolean qualify = childFeature == DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER || childFeature == DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS;
 
         if (qualify) {
             return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });

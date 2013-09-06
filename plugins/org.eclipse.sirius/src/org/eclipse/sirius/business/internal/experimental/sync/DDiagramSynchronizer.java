@@ -87,6 +87,7 @@ import org.eclipse.sirius.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.business.internal.sync.visitor.DiagramElementsHierarchyVisitor;
 import org.eclipse.sirius.description.AbstractNodeMapping;
+import org.eclipse.sirius.description.AdditionalLayer;
 import org.eclipse.sirius.description.ContainerMapping;
 import org.eclipse.sirius.description.ContainerMappingImport;
 import org.eclipse.sirius.description.DecorationDescription;
@@ -100,7 +101,6 @@ import org.eclipse.sirius.description.Layer;
 import org.eclipse.sirius.description.MappingBasedDecoration;
 import org.eclipse.sirius.description.NodeMapping;
 import org.eclipse.sirius.description.NodeMappingImport;
-import org.eclipse.sirius.description.OptionalLayer;
 import org.eclipse.sirius.description.RepresentationElementMapping;
 import org.eclipse.sirius.description.SemanticBasedDecoration;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
@@ -274,7 +274,7 @@ public class DDiagramSynchronizer {
     private Collection<Layer> getAllInitialyActiveLayers() {
         final Predicate<Layer> isActiveByDefault = new Predicate<Layer>() {
             public boolean apply(final Layer layer) {
-                return (layer instanceof OptionalLayer) && ((OptionalLayer) layer).isActiveByDefault();
+                return (layer instanceof AdditionalLayer) && (((AdditionalLayer) layer).isActiveByDefault() || !((AdditionalLayer) layer).isOptional());
             }
         };
 
@@ -283,8 +283,49 @@ public class DDiagramSynchronizer {
         if (mandatoryLayer != null) {
             result.add(mandatoryLayer);
         }
-        result.addAll(Collections2.filter(this.description.getOptionalLayers(), isActiveByDefault));
+        result.addAll(Collections2.filter(this.description.getAdditionalLayers(), isActiveByDefault));
         result.addAll(Collections2.filter(ComponentizationHelper.getContributedLayers(this.description, this.session.getSelectedSiriuss(false)), isActiveByDefault));
+        return result;
+    }
+
+    /**
+     * If new additional layers have been added into the VSM, we have to
+     * activate them.
+     */
+    private void activateNewMandatoryAdditionalLayers() {
+        Collection<Layer> allMandatoryAdditionalLayers = getAllMandatoriesAdditionalLayers();
+        Collection<Layer> allMandatoryAdditionalLayersToAdd = new ArrayList<Layer>();
+
+        EList<Layer> activatedLayers = diagram.getActivatedLayers();
+
+        for (Layer layer : allMandatoryAdditionalLayers) {
+            if (!activatedLayers.contains(layer)) {
+                allMandatoryAdditionalLayersToAdd.add(layer);
+            }
+        }
+
+        diagram.getActivatedLayers().addAll(allMandatoryAdditionalLayersToAdd);
+    }
+
+    /**
+     * Get from descriptions the list of mandatories layers.
+     * 
+     * @return all mandatories layers.
+     */
+    private Collection<Layer> getAllMandatoriesAdditionalLayers() {
+        final Predicate<Layer> isMandatory = new Predicate<Layer>() {
+            public boolean apply(final Layer layer) {
+                return (layer instanceof AdditionalLayer) && !((AdditionalLayer) layer).isOptional();
+            }
+        };
+
+        final Collection<Layer> result = new ArrayList<Layer>();
+        final Layer mandatoryLayer = this.description.getDefaultLayer();
+        if (mandatoryLayer != null) {
+            result.add(mandatoryLayer);
+        }
+        result.addAll(Collections2.filter(this.description.getAdditionalLayers(), isMandatory));
+        result.addAll(Collections2.filter(ComponentizationHelper.getContributedLayers(this.description, this.session.getSelectedSiriuss(false)), isMandatory));
         return result;
     }
 
@@ -303,7 +344,7 @@ public class DDiagramSynchronizer {
     private void refreshOperation(final IProgressMonitor monitor) {
         try {
             KeyCache.DEFAULT.clear();
-        // Semantic changes should be possible when a representation
+            // Semantic changes should be possible when a representation
             // representation
             // is locked (CDO)
             // We launch a refresh only if the diagram can be edited
@@ -312,6 +353,8 @@ public class DDiagramSynchronizer {
             // elements and hence cause a Rollback
             if (this.accessor.getPermissionAuthority().canEditInstance(diagram)) {
                 RuntimeLoggerManager.INSTANCE.clear(this.description);
+
+                activateNewMandatoryAdditionalLayers();
 
                 final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets = new HashMap<DiagramElementMapping, Collection<EdgeTarget>>();
                 final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration = new HashMap<EdgeMapping, Collection<MappingBasedDecoration>>();
@@ -1045,7 +1088,8 @@ public class DDiagramSynchronizer {
             return previousDiagramElements;
         } else {
             final EObjectCouple key = new EObjectCouple(container, mapping);
-            // when Unsynchronized mode is active, NPE occurs because previousCandidatesCache is null
+            // when Unsynchronized mode is active, NPE occurs because
+            // previousCandidatesCache is null
             if (previousCandidatesCache == null) {
                 // We simply compute the previous candidates cache
                 computePreviousCandidatesCache();

@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.sirius.DSemanticDiagram;
+import org.eclipse.sirius.description.AdditionalLayer;
 import org.eclipse.sirius.description.ContainerMapping;
 import org.eclipse.sirius.description.DescriptionPackage;
 import org.eclipse.sirius.description.DiagramDescription;
@@ -36,7 +37,6 @@ import org.eclipse.sirius.description.IdentifiedElement;
 import org.eclipse.sirius.description.Layer;
 import org.eclipse.sirius.description.Layout;
 import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.OptionalLayer;
 import org.eclipse.sirius.description.PasteTargetDescription;
 import org.eclipse.sirius.description.RepresentationDescription;
 import org.eclipse.sirius.description.audit.InformationSection;
@@ -135,8 +135,8 @@ import org.eclipse.sirius.description.validation.ValidationSet;
  * {@link org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getDefaultLayer
  * <em>Default Layer</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getOptionalLayers
- * <em>Optional Layers</em>}</li>
+ * {@link org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getAdditionalLayers
+ * <em>Additional Layers</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getAllLayers
  * <em>All Layers</em>}</li>
@@ -511,15 +511,15 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
     protected Layer defaultLayer;
 
     /**
-     * The cached value of the '{@link #getOptionalLayers()
-     * <em>Optional Layers</em>}' containment reference list. <!--
+     * The cached value of the '{@link #getAdditionalLayers()
+     * <em>Additional Layers</em>}' containment reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @see #getOptionalLayers()
+     * @see #getAdditionalLayers()
      * @generated
      * @ordered
      */
-    protected EList<OptionalLayer> optionalLayers;
+    protected EList<AdditionalLayer> additionalLayers;
 
     /**
      * The cached value of the '{@link #getNodeMappings()
@@ -1411,11 +1411,11 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
-    public EList<OptionalLayer> getOptionalLayers() {
-        if (optionalLayers == null) {
-            optionalLayers = new EObjectContainmentEList.Resolving<OptionalLayer>(OptionalLayer.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS);
+    public EList<AdditionalLayer> getAdditionalLayers() {
+        if (additionalLayers == null) {
+            additionalLayers = new EObjectContainmentEList.Resolving<AdditionalLayer>(AdditionalLayer.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS);
         }
-        return optionalLayers;
+        return additionalLayers;
     }
 
     /**
@@ -1647,8 +1647,8 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
             return basicSetDiagramInitialisation(null, msgs);
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER:
             return basicSetDefaultLayer(null, msgs);
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS:
-            return ((InternalEList<?>) getOptionalLayers()).basicRemove(otherEnd, msgs);
+        case DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS:
+            return ((InternalEList<?>) getAdditionalLayers()).basicRemove(otherEnd, msgs);
         case DescriptionPackage.DIAGRAM_DESCRIPTION__NODE_MAPPINGS:
             return ((InternalEList<?>) getNodeMappings()).basicRemove(otherEnd, msgs);
         case DescriptionPackage.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS:
@@ -1737,8 +1737,8 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
             if (resolve)
                 return getDefaultLayer();
             return basicGetDefaultLayer();
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS:
-            return getOptionalLayers();
+        case DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS:
+            return getAdditionalLayers();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_LAYERS:
             return getAllLayers();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS:
@@ -1841,9 +1841,9 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER:
             setDefaultLayer((Layer) newValue);
             return;
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS:
-            getOptionalLayers().clear();
-            getOptionalLayers().addAll((Collection<? extends OptionalLayer>) newValue);
+        case DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS:
+            getAdditionalLayers().clear();
+            getAdditionalLayers().addAll((Collection<? extends AdditionalLayer>) newValue);
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_LAYERS:
             getAllLayers().clear();
@@ -1958,8 +1958,8 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER:
             setDefaultLayer((Layer) null);
             return;
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS:
-            getOptionalLayers().clear();
+        case DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS:
+            getAdditionalLayers().clear();
             return;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_LAYERS:
             getAllLayers().clear();
@@ -2055,8 +2055,8 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
             return diagramInitialisation != null;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER:
             return defaultLayer != null;
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS:
-            return optionalLayers != null && !optionalLayers.isEmpty();
+        case DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS:
+            return additionalLayers != null && !additionalLayers.isEmpty();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_LAYERS:
             return !getAllLayers().isEmpty();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS:

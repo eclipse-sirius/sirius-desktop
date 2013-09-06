@@ -1,0 +1,12 @@
+h1. Sirius User Manual
+
+This document describes how to use modelers created using Sirius. This includes graphical, tabular and hierarchical (tree) modelers. The Sirius system includes everything necessary to easily _define_  these modelers (on any standard or Domain Specific Model/Language) and then _use_ them to create and manipulate actual models. This document is targeted to end users who will use already defined modelers. If you want to learn how to define your own, refer to the "*Sirius Specifier Manual*":../specifier/Sirius%20Specifier%20Manual.html.
+
+Note that each specific modeler will have its own set of features, and not all of the make use of all the possibilities of Sirius while others may contain custom extensions. However they all share the same common behaviors, which are described here.
+
+You will find the following sections:
+* "*Modeling Project*":general/Modeling%20Project.html explains how to use the simple UI to create and manage your models and their representations.
+* "*Diagrams*":diagrams/Diagrams.html shows all the common features of graphical modelers made with Sirius.
+* "*Sequence Diagrams*":sequences/Sequence%20Diagrams.html are a special case of diagram with some specific behaviors which are described here.
+* "*Tables*":tables/Tables.html covers how to use the two kinds of tabular representations supported by Sirius: edition tables and cross-tables.
+* "*Trees*":trees/Trees.html describes the behavior of tree (hierarchical) editors built with Sirius.

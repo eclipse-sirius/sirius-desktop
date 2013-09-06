@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Tables</title>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="TableEditors">Table Editors</h1>
+		<p>This document explains how to use the two kinds of tabular editors/modelers supported by Sirius: normal edition tables and cross-tables.</p>
+		<ol class="toc" style="list-style: disc;">
+			<li>
+				<a href="Tables.html#TableEditors">Table Editors</a>
+				<ol style="list-style: disc;">
+					<li>
+						<a href="Tables.html#introduction">Introduction</a>
+					</li>
+					<li>
+						<a href="Tables.html#managing">Creating, Renaming and Deleting Tables</a>
+					</li>
+					<li>
+						<a href="Tables.html#refresh">Refreshing Tables</a>
+					</li>
+					<li>
+						<a href="Tables.html#lines_columns">Adding and Removing Lines and Columns</a>
+					</li>
+					<li>
+						<a href="Tables.html#HidingLinesandColumns">Hiding Lines and Columns</a>
+					</li>
+					<li>
+						<a href="Tables.html#ChangingtheWidthofaColumn">Changing the Width of a Column</a>
+					</li>
+					<li>
+						<a href="Tables.html#sorting">Sorting by Column</a>
+					</li>
+					<li>
+						<a href="Tables.html#SortingbyLine">Sorting by Line</a>
+					</li>
+					<li>
+						<a href="Tables.html#editing">Editing Cell Values</a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<h2 id="introduction">Introduction</h2>
+		<p>Sirius provides support for tabular representations. Tables allow to present information in structured forms. There are two kinds of tables:</p>
+		<ul>
+			<li>
+				<em>Edition tables</em> show one element per line, and one property (potentially computed) per column. Each cell shows the value of the property for the corresponding element, and may be editable.
+			</li>
+			<li>
+				<em>Cross tables</em> are designed to show relationships between elements. Both lines and columns represent elements. The cell at an intersection represent the relationship between the elements on the line and column (it may be empty if there is no relationships). These cells may also be editable to change the relationships between the elements.
+			</li>
+		</ul> 
+		<img border="0" src="images/tables_representations1.png"/>
+		<p>Both kinds of tables can also support sub-lines (and sub-sub-lines, etc.), which can be expanded or folded to show/hide some details, and share the same kinds of interactions. Unless otherwise stated, the rest of this document applies to both kinds of tables.</p>
+		<p>Note that as always with Sirius, some of the features described below may or may not be available with all specific kinds of tables. Some tables are designed to only present information but do not allow edition for example. It all depends on which features the person who 
+			<em>specified</em> (configured) the table decided to support.
+		</p>
+		<h2 id="managing">Creating, Renaming and Deleting Tables</h2>
+		<p>Tables are managed in the same way as the other kinds or representations supported by Sirius (diagrams, trees...). They are created either through the 
+			<em>New Representation</em> context menu on a semantic element, or through the 
+			<em>Create Representation</em> action on the context menu of a 
+			<em>Modeling Project</em>. Newly created tables are automatically opened. To open an existing table, simply double-click on it in the 
+			<em>Model Explorer</em>: it will appear both inside the representation file (
+			<code>aird</code> file) and under the semantic element it represents inside the semantic model.
+		</p>
+		<p>You can rename, duplicate or delete a table by choosing the corresponding action (resp. 
+			<em>Rename</em>, 
+			<em>Copy</em> or 
+			<em>Delete</em>) in the context menu on the table element in the 
+			<em>Model Explorer</em>.
+		</p>
+		<h2 id="refresh">Refreshing Tables</h2>
+		<p>Depending on the value of the 
+			<i>Automatic refresh</i> Sirius preference (accessible through 
+			<i>Window</i> / 
+			<i>Preferences...</i> / 
+			<i>Sirius</i>), the contents of opened tables may or may not be automatically updated when the underlying semantic model changes. In 
+			<em>manual refresh</em> mode (when 
+			<i>Automatic refresh</i> is unchecked), you can explicitly request a refresh of the whole table by using the 
+			<em>Refresh</em> button in the main Eclipse toolbar, as shown below:
+		</p> 
+		<img border="0" src="images/table_refresh1.png"/>
+		<h2 id="lines_columns">Adding and Removing Lines and Columns</h2>
+		<p>If the table&#8217;s configuration has defined tools to create new lines and columns, they will appear in the context menu of table elements. The name of the creation tools depends entirely on the table&#8217;s configuration, so it will be different for each tabular modeler. Note that you must have a table element selected for the creation tools to appear in the context menu; the behavior of the tool may depend on the selected element. If the table is completely empty and you have no element to select, you can still create elements (if supported by the table&#8217;s configuration) by using the drop-down menus in the main Eclipse toolbar (see screenshot).</p>
+		<p>Note that both kinds of tables can support line creation, but only cross tables support the creation of new columns.</p> 
+		<img border="0" src="images/table_create_item1.png"/> 
+		<img border="0" src="images/table_create_item2.png"/> 
+		<h2 id="HidingLinesandColumns">Hiding Lines and Columns</h2>
+		<p>You can control the visibility on individual lines and columns using the 
+			<i>Show/Hide</i> context menu, available on every table cell.
+		</p>
+		<p>Selecting a cell and choosing 
+			<i>Show/Hide &gt; Hide line</i> will hide the corresponding line. To reveal a hidden line, you can use either 
+			<i>Show/Hide &gt; Hide/Show Lines</i>, and select individually which lines should be visible or hidden. You can also use the 
+			<i>Show/Hide &gt; Show Hidden Lines</i>, which makes all the hidden lines visible again in one operation.
+		</p> 
+		<img border="0" src="images/table_show_hide1.png"/> 
+		<img border="0" src="images/table_show_hide2.png"/>
+		<p>The same operations can be performed on column using the corresponding operations in the 
+			<i>Show/Hide</i> menu for columns.
+		</p>
+		<p>Note that the visibility status of lines and columns are persisted: if you save and close a table with lines and/or columns hidden, they will still be hidden when you re-open the table later.</p>
+		<h2 id="ChangingtheWidthofaColumn">Changing the Width of a Column</h2>
+		<p>It is possible to change the width of a column by placing the cursor between two column headers and moving the separator. The columns' width is persisted: if you save and close your table, re-opening it later will restore the widths you set.</p>
+		<h2 id="sorting">Sorting by Column</h2>
+		<p>To sort the lines of a table by the values in a specific column, select one of the cells of the desired column, and in the context menu (right click), select the 
+			<i>Sort by column</i> entry. You can also click directly on the column&#8217;s header.
+		</p>
+		<p>The sorting is performed in the lexicographical order of the labels in the sort column. If a table contains sub-lines, the lines are sorted level by level: top-level lines are sorted relative to each other, then direct sub-lines of each line are sorted among themselves, etc.</p>
+		<p>The initial order of lines (when no sorting is active) is the &#171;intrinsic&#187; order of the elements, as defined by the table&#8217;s configuration. When you first activate sorting, lines are sorted in ascending order. If you sort a second time, they are sorted in descending order. Any operation which refreshes the table&#8217;s content (a manual refresh or a model change when in automatic refresh mode) resets the lines' ordering to the intrinsic order and disabled any sorting.</p> 
+		<img border="0" src="images/table_sort_by1.png"/>
+		<table>
+			<tr>
+				<th>Sorted Ascending </th>
+				<th>Sorted Descending </th>
+				<th>Unsorted </th>
+			</tr>
+			<tr>
+				<td>
+					<img border="0" src="images/table_sort_ascending.png"/>
+				</td>
+				<td>
+					<img border="0" src="images/table_sort_descending.png"/>
+				</td>
+				<td>
+					<img border="0" src="images/table_sort_unsorted.png"/>
+				</td>
+			</tr>
+		</table>
+		<h2 id="SortingbyLine">Sorting by Line</h2>
+		<p>This kind of sorting is only available for cross table. It is symmetrical to the &#171;Sort by column&#187; feature, but sorts the columns of a cross table according to the values on a given line.</p>
+		<p>It is triggered in a similar way, by using the 
+			<i>Sort by line</i> item in the context menu on a cell in the cross table, and follows the same cycling rules (first ascending order, then descending if activated twice, and reset by a refresh).
+		</p>
+		<p>On a cross table, it is possible to combine sorting by line and columns.</p>
+		<h2 id="editing">Editing Cell Values</h2>
+		<p>When you select a cell in a table, the 
+			<i>Properties</i> will contain a tab named 
+			<i>Semantic</i> (normally the first one). This tab shows all the properties of all the semantic elements associated to the cell (there may be several elements), and you can edit each property individually. Note that because this tab shows all the raw properties of the semantic elements, it may be dangerous to edit them directly. Depending on how the table was configured, tabs with more user-oriented property sheets may also be available.
+		</p>
+		<p>Depending on the table&#8217;s configuration, it may also be possible to edit elements directly in the cells (this is called 
+			<em>direct edit</em>). To activate the edition of a cell, select it and then either:
+		</p>
+		<ul>
+			<li>hit the 
+				<em>Return</em> key;
+			</li>
+			<li>hit the 
+				<em>F2</em> key;
+			</li>
+			<li>double-click on it;</li>
+			<li>or type any alpha-numeric character (for text edition only).</li>
+		</ul>
+		<p>The editor offered depends on the contents of the cell. It may be:</p>
+		<ul>
+			<li>a combo-box if the content can only be a value in a pre-defined list (enumeration);</li>
+			<li>a check-box if the content is a boolean;</li>
+			<li>a text editor in all the other cases;</li>
+			<li>a dialog box for many-valued references.</li>
+		</ul>
+		<p>For combo-boxes, you can start typing the beginning of the value to filter the content of the combo-box.</p>
+		<p>For check-boxes, you can either click or use the space key to directly change the value of the check-box.</p>
+		<p>For plain text edition, to facilitate the mass data entry you can begin to directly enter the desired value without first start editing. If the first character typed is alpha-numeric, the text editor will be directly activated. If the property edited with the cell is declared as multi-line, a multi-line text editor is proposed for editing the content of the cell. There is a difference between Windows and Linux for this feature.</p>
+		<ul>
+			<li>On Linux, the height of the line fits its content. So if the text of one of the cells of a line is 4 lines high, the height is calculated accordingly. When editing, the editor appears on the location of the cell, several lines are visible at the same time.</li>
+			<li>On Windows, a restriction requires that all lines have the same height. So all the text will be shown on one line.When editing, a single line is visible and you must use the up/down arrow to display the other lines.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/table_multiline_edit_windows.png"/> 
+		</p>
+		<p>Under all systems, to finish the edition of a multi-line text, you need to use 
+			<em>Ctrl+Return</em>. Hitting 
+			<em>Return</em> will simply add a new line.
+		</p>
+	</body>
+</html>

@@ -55,9 +55,13 @@ import org.eclipse.sirius.description.style.StyleDescription;
  */
 public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKey, StyleDescription> {
 
-    private static final long serialVersionUID = 1L;
+    /**
+     * The key of the annotation containing the cache of computed
+     * {@link StyleDescription}.
+     */
+    public static final String DANNOTATION_CUSTOMIZATION_KEY = "DANNOTATION_CUSTOMIZATION_KEY";
 
-    private static final String DANNOTATION_CUSTOMIZATION_KEY = "DANNOTATION_CUSTOMIZATION_KEY";
+    private static final long serialVersionUID = 1L;
 
     private IInterpreter interpreter;
 
@@ -157,22 +161,7 @@ public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKe
 
     private StyleDescription storeInDDiagram(StyleDescription customizedStyleDescription, BestStyleDescriptionKey bestStyleDescriptionKey) {
         DDiagram dDiagram = bestStyleDescriptionKey.getDDiagram();
-        AnnotationEntry annotationEntry = null;
-        Collection<AnnotationEntry> annotationEntries = new DRepresentationQuery(dDiagram).getAnnotation(DANNOTATION_CUSTOMIZATION_KEY);
-        if (annotationEntries == null || annotationEntries.isEmpty()) {
-            annotationEntry = DescriptionFactory.eINSTANCE.createAnnotationEntry();
-            annotationEntry.setSource(DANNOTATION_CUSTOMIZATION_KEY);
-            dDiagram.getOwnedAnnotationEntries().add(annotationEntry);
-        } else {
-            annotationEntry = annotationEntries.iterator().next();
-        }
-        ComputedStyleDescriptionRegistry computedStyleDescriptionRegistry = null;
-        if (annotationEntry.getData() == null || !(annotationEntry.getData() instanceof ComputedStyleDescriptionRegistry)) {
-            computedStyleDescriptionRegistry = SiriusFactory.eINSTANCE.createComputedStyleDescriptionRegistry();
-            annotationEntry.setData(computedStyleDescriptionRegistry);
-        } else {
-            computedStyleDescriptionRegistry = (ComputedStyleDescriptionRegistry) annotationEntry.getData();
-        }
+        ComputedStyleDescriptionRegistry computedStyleDescriptionRegistry = getComputedStyleDescriptionRegistry(dDiagram, true);
         EMap<EObject, EMap<EObject, EMap<EObject, StyleDescription>>> modelElementsMap = computedStyleDescriptionRegistry.getCache().get(bestStyleDescriptionKey.getDiagramElementMapping());
         if (modelElementsMap == null) {
             // modelElementsMap = new EcoreEMap<EObject, EMap<EObject,
@@ -215,6 +204,7 @@ public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKe
         } else {
             if (!EcoreUtil.equals(computedStyleDescriptionFromCache, customizedStyleDescription)) {
                 computedStyleDescriptionRegistry.getComputedStyleDescriptions().remove(computedStyleDescriptionFromCache);
+                computedStyleDescriptionRegistry.getComputedStyleDescriptions().add(customizedStyleDescription);
                 containerVariablesMap.put(bestStyleDescriptionKey.getContainerVariable(), customizedStyleDescription);
             } else {
                 return computedStyleDescriptionFromCache;
@@ -223,7 +213,42 @@ public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKe
         return customizedStyleDescription;
     }
 
+    /**
+     * Get the {@link ComputedStyleDescriptionRegistry} of the specified
+     * {@link DDiagram}.
+     * 
+     * @param dDiagram
+     *            the {@link DDiagram} for which we want
+     *            {@link ComputedStyleDescriptionRegistry}
+     * @param createIfNotExists
+     *            true if we want to create a
+     *            {@link ComputedStyleDescriptionRegistry} for the specified
+     *            {@link DDiagram} if there is not one, false otherwise
+     * @return the {@link ComputedStyleDescriptionRegistry} of the
+     *         {@link DDiagram} or null if this last has not one
+     */
+    public static ComputedStyleDescriptionRegistry getComputedStyleDescriptionRegistry(DDiagram dDiagram, boolean createIfNotExists) {
+        ComputedStyleDescriptionRegistry computedStyleDescriptionRegistry = null;
+        AnnotationEntry annotationEntry = null;
+        Collection<AnnotationEntry> annotationEntries = new DRepresentationQuery(dDiagram).getAnnotation(DANNOTATION_CUSTOMIZATION_KEY);
+        if (annotationEntries == null || annotationEntries.isEmpty()) {
+            annotationEntry = DescriptionFactory.eINSTANCE.createAnnotationEntry();
+            annotationEntry.setSource(DANNOTATION_CUSTOMIZATION_KEY);
+            dDiagram.getOwnedAnnotationEntries().add(annotationEntry);
+        } else {
+            annotationEntry = annotationEntries.iterator().next();
+        }
+        if (annotationEntry.getData() == null || !(annotationEntry.getData() instanceof ComputedStyleDescriptionRegistry)) {
+            computedStyleDescriptionRegistry = SiriusFactory.eINSTANCE.createComputedStyleDescriptionRegistry();
+            annotationEntry.setData(computedStyleDescriptionRegistry);
+        } else {
+            computedStyleDescriptionRegistry = (ComputedStyleDescriptionRegistry) annotationEntry.getData();
+        }
+        return computedStyleDescriptionRegistry;
+    }
+
     private void removeComputedStyleDescriptionFromCache(BestStyleDescriptionKey bestStyleDescriptionKey) {
+        StyleDescription styleDescription = null;
         DDiagram dDiagram = bestStyleDescriptionKey.getDDiagram();
         Collection<AnnotationEntry> annotationEntries = new DRepresentationQuery(dDiagram).getAnnotation(DANNOTATION_CUSTOMIZATION_KEY);
         if (annotationEntries != null && !annotationEntries.isEmpty()) {
@@ -237,6 +262,7 @@ public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKe
                         EMap<EObject, StyleDescription> containerVariablesMap = viewVariablesMap.get(bestStyleDescriptionKey.getViewVariable());
                         // CHECKSTYLE:OFF
                         if (containerVariablesMap != null) {
+                            styleDescription = containerVariablesMap.get(bestStyleDescriptionKey.getContainerVariable());
                             containerVariablesMap.remove(bestStyleDescriptionKey.getContainerVariable());
                             if (containerVariablesMap.isEmpty()) {
                                 viewVariablesMap.remove(bestStyleDescriptionKey.getViewVariable());
@@ -250,6 +276,9 @@ public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKe
                     if (modelElementsMap.isEmpty()) {
                         computedStyleDescriptionRegistry.getCache().remove(bestStyleDescriptionKey.getDiagramElementMapping());
                     }
+                }
+                if (styleDescription != null) {
+                    computedStyleDescriptionRegistry.getComputedStyleDescriptions().remove(styleDescription);
                 }
             }
         }

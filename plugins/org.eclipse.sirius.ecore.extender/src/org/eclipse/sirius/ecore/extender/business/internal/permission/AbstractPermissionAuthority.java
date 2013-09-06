@@ -13,12 +13,13 @@ package org.eclipse.sirius.ecore.extender.business.internal.permission;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.WeakHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import com.google.common.collect.Lists;
+import com.google.common.collect.MapMaker;
 
 import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -37,7 +38,7 @@ public abstract class AbstractPermissionAuthority implements IPermissionAuthorit
     protected List<IAuthorityListener> listeners = new ArrayList<IAuthorityListener>();
 
     /** the locked objects. */
-    protected WeakHashMap<EObject, Object> lockedObjects = new WeakHashMap<EObject, Object>();
+    protected ConcurrentMap<Object, Object> lockedObjects = new MapMaker().concurrencyLevel(4).weakKeys().makeMap();
 
     /**
      * Check if an object is locked or not.
@@ -57,7 +58,7 @@ public abstract class AbstractPermissionAuthority implements IPermissionAuthorit
      *            the locked instance
      */
     protected void storeAsLockedAndNotify(final EObject eObject) {
-        lockedObjects.put(eObject, null);
+        lockedObjects.put(eObject, true);
         final Iterator<IAuthorityListener> iterator = Lists.newArrayList(listeners).iterator();
         while (iterator.hasNext()) {
             final IAuthorityListener listener = iterator.next();

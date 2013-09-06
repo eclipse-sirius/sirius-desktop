@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *      Stephane Fournier    (Thales) <stephane.fournier@thalesgroup.com>    - Initial API and implementation
+ *     Stephane Fournier (Thales) <stephane.fournier@thalesgroup.com> - Initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.common.ui.tools.api.plugin;
 

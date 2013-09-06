@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.internal.helper.display;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 
 import com.google.common.collect.Iterables;
@@ -24,6 +25,7 @@ import org.eclipse.sirius.DNode;
 import org.eclipse.sirius.DNodeContainer;
 import org.eclipse.sirius.DNodeList;
 import org.eclipse.sirius.DSemanticDiagram;
+import org.eclipse.sirius.DView;
 import org.eclipse.sirius.EdgeTarget;
 import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
@@ -150,6 +152,13 @@ public class VisibilityPropagatorAdapter extends EContentAdapter implements Noti
         }
     }
 
+    @Override
+    protected void addAdapter(Notifier notifier) {
+        if (notifier instanceof DView || notifier instanceof DSemanticDiagram || notifier instanceof DDiagramElement) {
+            super.addAdapter(notifier);
+        }
+    }
+
     private void propagateElementVisibility(final DDiagramElement element, final Notification n) {
         final DDiagram parentDiagram = element.getParentDiagram();
 
@@ -184,4 +193,5 @@ public class VisibilityPropagatorAdapter extends EContentAdapter implements Noti
         DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, parentDiagram);
         return DisplayServiceManager.INSTANCE.getDisplayService().computeVisibility(mappingManager, parentDiagram, element);
     }
+
 }

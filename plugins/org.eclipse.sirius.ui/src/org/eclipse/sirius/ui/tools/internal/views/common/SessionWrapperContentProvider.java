@@ -41,7 +41,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.description.RepresentationDescription;
 import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem;
+import org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ControlledRoot;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ResourcesFolderItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.SiriussFolderItemImpl;
@@ -118,8 +118,8 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
 
         if (parentElement instanceof Session) {
             result.addAll(getSessionChildren((Session) parentElement));
-        } else if (parentElement instanceof CommonItem) {
-            result.addAll(((CommonItem) parentElement).getChildren());
+        } else if (parentElement instanceof CommonSessionItem) {
+            result.addAll(((CommonSessionItem) parentElement).getChildren());
         } else if (parentElement instanceof Collection) {
             result.addAll((Collection<?>) parentElement);
         } else if (parentElement instanceof Resource) {
@@ -235,8 +235,8 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
                 parent = ((DSemanticDecorator) element).getTarget();
             } else if (element instanceof Resource) {
                 parent = SessionManager.INSTANCE.getSession((Resource) element);
-            } else if (element instanceof CommonItem) {
-                parent = ((CommonItem) element).getParent();
+            } else if (element instanceof CommonSessionItem) {
+                parent = ((CommonSessionItem) element).getParent();
             } else if (element instanceof EObject) {
                 parent = wrapped.getParent(element);
             }

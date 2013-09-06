@@ -43,7 +43,7 @@ public class ResourcesFolderItemImpl extends AbstractFolderItem implements org.e
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.ItemDecorator#getText()
+     * @see org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator#getText()
      */
     public String getText() {
         return FOLDER_LABEL;
@@ -52,7 +52,7 @@ public class ResourcesFolderItemImpl extends AbstractFolderItem implements org.e
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getChildren()
+     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getChildren()
      */
     public Collection<?> getChildren() {
         final Collection<AnalysisResourceItem> all = Lists.newArrayList();

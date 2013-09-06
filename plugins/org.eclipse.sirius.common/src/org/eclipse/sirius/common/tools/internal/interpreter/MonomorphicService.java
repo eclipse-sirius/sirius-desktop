@@ -44,11 +44,26 @@ class MonomorphicService implements IService {
         return serviceMethod.getName();
     }
 
-    public boolean appliesTo(Object target) {
-        return target != null && serviceMethod.getParameterTypes()[0].isAssignableFrom(target.getClass());
+    /**
+     * {@inheritDoc}
+     */
+    public boolean appliesTo(Object[] target) {
+        boolean apply = true;
+        Class<?>[] parameters = serviceMethod.getParameterTypes();
+        if (parameters.length != target.length) {
+            apply = false;
+        } else {
+            for (int i = 0; i < target.length; i++) {
+                if ((target[i] != null) && !serviceMethod.getParameterTypes()[i].isAssignableFrom(target[i].getClass())) {
+                    apply = false;
+                    break;
+                }
+            }
+        }
+        return apply;
     }
 
-    public Object call(Object target) throws EvaluationException {
+    public Object call(Object[] target) throws EvaluationException {
         Object result = null;
         try {
             result = serviceMethod.invoke(serviceInstance, target);

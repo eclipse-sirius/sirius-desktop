@@ -17,9 +17,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -32,6 +31,7 @@ import org.eclipse.core.runtime.Platform;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 
@@ -238,10 +238,10 @@ public final class EclipseUtil {
      * Get the files in the workspace. You may filter the returned files with
      * start and end prefixes.
      * 
-     * @param startPrefix
-     *            the start prefix if needed, <code>null</code> otherwise
-     * @param endPrefix
-     *            the start prefix if needed, <code>null</code> otherwise
+     * @param prefix
+     *            the prefix if needed, <code>null</code> otherwise
+     * @param suffix
+     *            the suffix if needed, <code>null</code> otherwise
      * @return the files in the workspace which start and end with the given
      *         prefixes
      * 
@@ -251,61 +251,29 @@ public final class EclipseUtil {
      *         workspace getFilesFromWorkspaces (null, ".java" : return all java
      *         sources files from the workspace
      */
-    public static List<IFile> getFilesFromWorkspace(final String startPrefix, final String endPrefix) {
+    public static List<IFile> getFilesFromWorkspace(final String prefix, final String suffix) {
+        final List<IFile> matches = Lists.newArrayList();
         final IWorkspace workspace = ResourcesPlugin.getWorkspace();
         final IWorkspaceRoot root = workspace.getRoot();
-        final IProject[] projects = root.getProjects();
 
-        final List<IFile> allFiles = new ArrayList<IFile>();
         try {
-            EclipseUtil.getWorkspaceFiles(projects, allFiles);
+            root.accept(new IResourceVisitor() {
+                public boolean visit(IResource resource) throws CoreException {
+                    if (resource.isAccessible() && resource instanceof IFile) {
+                        IFile file = (IFile) resource;
+                        boolean okForPrefix = StringUtil.isEmpty(prefix) || file.getName().startsWith(prefix);
+                        boolean okForSuffix = StringUtil.isEmpty(suffix) || file.getName().endsWith(suffix);
+                        if (okForPrefix && okForSuffix) {
+                            matches.add(file);
+                        }
+                    }
+                    return true;
+                }
+            });
         } catch (final CoreException e1) {
             // do nothing -- fail silently
         }
-        if (startPrefix == null && endPrefix == null) {
-            return allFiles;
-        }
 
-        final Iterator<IFile> it = new ArrayList<IFile>(allFiles).iterator();
-
-        while (it.hasNext()) {
-            final IFile file = it.next();
-            if (startPrefix != null && !file.getName().startsWith(startPrefix)) {
-                allFiles.remove(file);
-            } else if (endPrefix != null && !file.getName().endsWith(endPrefix)) {
-                allFiles.remove(file);
-            }
-        }
-        return allFiles;
+        return matches;
     }
-
-    /**
-     * Get all files contained in a set of resources.
-     * 
-     * @param resources
-     *            the resources to scan
-     * @param files
-     *            the result files
-     * @throws CoreException
-     *             if {@link org.eclipse.core.resources.IContainer#members()} on
-     *             a resource fails. Reasons include:
-     *             <ul>
-     *             <li>This resource does not exist.</li>
-     *             <li>This resource is a project that is not open.</li>
-     *             </ul>
-     */
-    private static void getWorkspaceFiles(final IResource[] resources, final List<IFile> files) throws CoreException {
-        for (final IResource resource : resources) {
-            if (resource.isAccessible()) {
-                if (resource instanceof IFile) {
-                    files.add((IFile) resource);
-                } else if (resource instanceof IProject) {
-                    EclipseUtil.getWorkspaceFiles(((IProject) resource).members(), files);
-                } else if (resource instanceof IFolder) {
-                    EclipseUtil.getWorkspaceFiles(((IFolder) resource).members(), files);
-                }
-            }
-        }
-    }
-
 }

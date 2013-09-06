@@ -66,14 +66,14 @@ public class TablePlugin extends Plugin {
      *            the exception (optional).
      */
     public void error(final String message, final Exception e) {
-        String message2 = "";
+        String msgToDisplay = message;
         if (message == null && e != null) {
-            message2 = e.getMessage();
+            msgToDisplay = e.getMessage();
         }
         if (e instanceof CoreException) {
             this.getLog().log(((CoreException) e).getStatus());
         } else {
-            final IStatus status = new Status(IStatus.ERROR, this.getBundle().getSymbolicName(), message2, e);
+            final IStatus status = new Status(IStatus.ERROR, this.getBundle().getSymbolicName(), msgToDisplay, e);
             this.getLog().log(status);
         }
     }

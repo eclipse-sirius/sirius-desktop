@@ -71,7 +71,7 @@ public final class LayerHelper {
         if (description.getDefaultLayer() != null) {
             layers.add(description.getDefaultLayer());
         }
-        layers.addAll(description.getOptionalLayers());
+        layers.addAll(description.getAdditionalLayers());
         return new EcoreEList.UnmodifiableEList<Layer>((InternalEObject) description, DescriptionPackage.eINSTANCE.getDiagramDescription_AllLayers(), layers.size(), layers.toArray());
     }
 

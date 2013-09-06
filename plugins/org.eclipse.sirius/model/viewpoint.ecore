@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="viewpoint"
-    nsURI="http://www.eclipse.org/sirius/1.1.0" nsPrefix="viewpoint">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="viewpoint" nsURI="http://www.eclipse.org/sirius/1.1.0" nsPrefix="viewpoint">
   <eAnnotations source="Tags">
     <details key="deprecated" value="Anything tagged as deprecated will disappear quite soon.&#xA;&#xA;"/>
     <details key="to be renamed" value="Anything tagged &quot;to be renamed&quot; will be renamed, at least in the UI&#xA;"/>
@@ -1711,8 +1709,8 @@
           eType="#//description/tool/InitialOperation" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="defaultLayer" eType="#//description/Layer"
           containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="optionalLayers" upperBound="-1"
-          eType="#//description/OptionalLayer" containment="true" eKeys="#//description/IdentifiedElement/name"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="additionalLayers" upperBound="-1"
+          eType="#//description/AdditionalLayer" containment="true" eKeys="#//description/IdentifiedElement/name"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="allLayers" upperBound="-1"
           eType="#//description/Layer" volatile="true" transient="true" derived="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="allActivatedTools" upperBound="-1"
@@ -1780,7 +1778,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="DiagramExtensionDescription" eSuperTypes="#//description/RepresentationExtensionDescription">
       <eStructuralFeatures xsi:type="ecore:EReference" name="layers" upperBound="-1"
-          eType="#//description/OptionalLayer" containment="true" eKeys="#//description/IdentifiedElement/name"/>
+          eType="#//description/AdditionalLayer" containment="true" eKeys="#//description/IdentifiedElement/name"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="validationSet" eType="#//description/validation/ValidationSet"
           containment="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -2608,8 +2606,10 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="customization" eType="#//description/Customization"
           containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="OptionalLayer" eSuperTypes="#//description/Layer">
+    <eClassifiers xsi:type="ecore:EClass" name="AdditionalLayer" eSuperTypes="#//description/Layer">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="activeByDefault" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+          defaultValueLiteral="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Customization">
       <eStructuralFeatures xsi:type="ecore:EReference" name="vsmElementCustomizations"
@@ -3212,7 +3212,7 @@
           </eAnnotations>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="FlatContainerStyleDescription" eSuperTypes="#//description/style/ContainerStyleDescription">
+      <eClassifiers xsi:type="ecore:EClass" name="FlatContainerStyleDescription" eSuperTypes="#//description/style/ContainerStyleDescription #//description/style/SizeComputationContainerStyleDescription">
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="backgroundStyle" lowerBound="1"
             eType="#//BackgroundStyle">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -3234,7 +3234,7 @@
         <eStructuralFeatures xsi:type="ecore:EReference" name="labelBorderStyle" eType="#//description/style/LabelBorderStyleDescription"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="ShapeContainerStyleDescription"
-          eSuperTypes="#//description/style/ContainerStyleDescription">
+          eSuperTypes="#//description/style/ContainerStyleDescription #//description/style/SizeComputationContainerStyleDescription">
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="shape" lowerBound="1"
             eType="#//ContainerShape"/>
         <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" lowerBound="1"
@@ -3383,6 +3383,29 @@
         </eAnnotations>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="BracketEdgeStyleDescription" eSuperTypes="#//description/style/EdgeStyleDescription"/>
+      <eClassifiers xsi:type="ecore:EClass" name="SizeComputationContainerStyleDescription"
+          abstract="true">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="widthComputationExpression"
+            eType="#//description/InterpretedExpression" defaultValueLiteral="0">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Expression that computes the size of the node."/>
+          </eAnnotations>
+          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+            <details key="returnType" value="an integer."/>
+          </eAnnotations>
+          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+        </eStructuralFeatures>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="heightComputationExpression"
+            eType="#//description/InterpretedExpression" defaultValueLiteral="0">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Expression that computes the size of the node."/>
+          </eAnnotations>
+          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+            <details key="returnType" value="an integer."/>
+          </eAnnotations>
+          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+        </eStructuralFeatures>
+      </eClassifiers>
     </eSubpackages>
     <eSubpackages name="tool" nsURI="http://www.eclipse.org/sirius/description/tool/1.1.0"
         nsPrefix="tool">

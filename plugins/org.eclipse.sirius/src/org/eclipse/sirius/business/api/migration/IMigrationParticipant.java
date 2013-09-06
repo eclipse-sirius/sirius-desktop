@@ -18,6 +18,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.osgi.framework.Version;
 
+import org.eclipse.sirius.common.tools.api.util.Option;
+
 /**
  * Interface to contribute to migration process.
  * 
@@ -97,7 +99,7 @@ public interface IMigrationParticipant {
      *            the initial serialized value.
      * @param loadedVersion
      *            the loaded version of model to migrate.
-     * @return a new value if has to be changed otherwise false.
+     * @return a new value if has to be changed otherwise null.
      */
     Object getValue(EObject object, EStructuralFeature feature, Object value, String loadedVersion);
 
@@ -127,4 +129,16 @@ public interface IMigrationParticipant {
      * @return the VP version for which this migration is added.
      */
     Version getMigrationVersion();
+
+    /**
+     * Returns the new fragment if the corresponding reference has changed.
+     * 
+     * @param uriFragment
+     *            the current fragment.
+     * @param loadedVersion
+     *            the loaded version.
+     * @return the optional new uri fragment (none if no changes).
+     */
+    Option<String> getNewFragment(String uriFragment, String loadedVersion);
+
 }

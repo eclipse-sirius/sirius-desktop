@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!--
+  Copyright (c) 2007, 2013 THALES GLOBAL SERVICES
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+<toc label="Sirius">
+  <topic href="doc/Release Notes.html" label="Release Notes">
+  </topic>
+  <topic href="doc/user/Sirius User Manual.html" label="Sirius User Manual">
+    <anchor id="userStart"/>
+    <topic href="doc/user/general/Modeling Project.html" label="Modeling Project">
+      <topic href="doc/user/general/Modeling Project.html#Introduction" label="Introduction" />
+      <topic href="doc/user/general/Modeling Project.html#FormerUsers" label="Note to Users of Previous Versions" />
+      <topic href="doc/user/general/Modeling Project.html#ModelingPerspective" label="The Modeling Perspective" />
+      <topic href="doc/user/general/Modeling Project.html#MP" label="Modeling Projects" />
+      <topic href="doc/user/general/Modeling Project.html#Representations" label="Representations" />
+      <topic href="doc/user/general/Modeling Project.html#LegacyMode" label="Legacy Mode" />
+    </topic>
+    <topic href="doc/user/diagrams/Diagrams.html" label="Diagrams">
+      <topic href="doc/user/diagrams/Diagrams.html#introduction" label="Introduction"/>
+      <topic href="doc/user/diagrams/Diagrams.html#features_overview" label="Features Overview"/>
+      <topic href="doc/user/diagrams/Diagrams.html#reference" label="Reference"/>
+      <topic href="doc/user/diagrams/Diagrams.html#preferences" label="Preferences"/>
+    </topic>
+    <topic href="doc/user/sequences/Sequence Diagrams.html" label="Sequence Diagrams">
+      <topic href="doc/user/sequences/Sequence Diagrams.html#introduction" label="Introduction" />
+      <topic href="doc/user/sequences/Sequence Diagrams.html#semantics" label="Sequence Diagrams Semantics" />
+      <topic href="doc/user/sequences/Sequence Diagrams.html#restrictions" label="Restrictions and Limitations" />
+      <topic href="doc/user/sequences/Sequence Diagrams.html#layout" label="Automatic Layout" />
+      <topic href="doc/user/sequences/Sequence Diagrams.html#elements" label="Sequence Diagram Elements" />
+    </topic>
+    <topic href="doc/user/tables/Tables.html" label="Tables">
+      <topic href="doc/user/tables/Tables.html#introduction" label="Introduction" />
+      <topic href="doc/user/tables/Tables.html#managing" label="Creating, Renaming and Deleting Tables" />
+      <topic href="doc/user/tables/Tables.html#lines_columns" label="Adding and Removing Lines and Columns" />
+      <topic href="doc/user/tables/Tables.html#sorting" label="Sorting" />
+      <topic href="doc/user/tables/Tables.html#editing" label="Editing Cells" />
+    </topic>
+    <topic href="doc/user/trees/Trees.html" label="Trees">
+      <topic href="doc/user/trees/Trees.html#introduction" label="Introduction" />
+      <topic href="doc/user/trees/Trees.html#managing" label="Creating, Renaming and Deleting Trees" />
+      <topic href="doc/user/trees/Trees.html#items" label="Adding and Removing Tree Items" />
+      <topic href="doc/user/trees/Trees.html#editing" label="Editing Tree Items" />
+    </topic>
+    <anchor id="moreUserRefs"/>
+  </topic>
+  <topic href="doc/specifier/Sirius Specifier Manual.html" label="Sirius Specifier Manual">
+    <anchor id="specifierStart"/>
+    <topic href="doc/specifier/general/Specifying_Siriuss.html" label="Siriuss">
+      <topic href="doc/specifier/general/Specifying_Siriuss.html#introduction" label="Introduction" />
+      <topic href="doc/specifier/general/Specifying_Siriuss.html#concepts" label="Philosophy and Concepts" />
+      <topic href="doc/specifier/general/Specifying_Siriuss.html#vsp" label="Sirius Specification Projects" />
+      <topic href="doc/specifier/general/Specifying_Siriuss.html#vsm" label="Sirius Specification Models">
+	<topic href="doc/specifier/general/Specifying_Siriuss.html#vsm_organization" label="Organization" />
+	<topic href="doc/specifier/general/Specifying_Siriuss.html#common_attributes" label="Common Attributes"/>
+	<topic href="doc/specifier/general/Specifying_Siriuss.html#type_names" label="Type Names"/>
+	<topic href="doc/specifier/general/Specifying_Siriuss.html#interpreted_expressions" label="Interpreted Expressions"/>
+	<topic href="doc/specifier/general/Specifying_Siriuss.html#model_operations" label="Model Operations"/>
+	<topic href="doc/specifier/general/Specifying_Siriuss.html#validation" label="VSM Validation"/>
+	<topic href="doc/specifier/general/Specifying_Siriuss.html#dynamic" label="Dynamic Development"/>
+      </topic>
+    </topic>
+    <topic href="doc/specifier/diagrams/Diagrams.html" label="Diagrams">
+      <topic href="doc/specifier/diagrams/Diagrams.html#introduction" label="Introduction" />
+      <topic href="doc/specifier/diagrams/Diagrams.html#diagram_description" label="Diagram Description" />
+      <topic href="doc/specifier/diagrams/Diagrams.html#layers_graphical_elements" label="Layers and Graphical Elements">
+	<topic href="doc/specifier/diagrams/Diagrams.html#layers" label="Layers" />
+	<topic href="doc/specifier/diagrams/Diagrams.html#graphical_elements" label="Graphical Elements and Mappings" />
+	<topic href="doc/specifier/diagrams/Diagrams.html#nodes" label="Nodes" />
+	<topic href="doc/specifier/diagrams/Diagrams.html#containers" label="Containers" />
+	<topic href="doc/specifier/diagrams/Diagrams.html#bordered_nodes" label="Bordered Nodes" />
+	<topic href="doc/specifier/diagrams/Diagrams.html#edges" label="Edges" />
+	<topic href="doc/specifier/diagrams/Diagrams.html#decorations" label="Decorations" />
+      </topic>
+      <topic href="doc/specifier/diagrams/Diagrams.html#styling" label="Styling" />
+      <topic href="doc/specifier/diagrams/Diagrams.html#tools" label="Tools" />
+      <topic href="doc/specifier/diagrams/Diagrams.html#filters" label="Filters" />
+      <topic href="doc/specifier/diagrams/Diagrams.html#validation" label="Validation Rules" />
+      <topic href="doc/specifier/diagrams/Diagrams.html#extensibility" label="Diagram Extensibility Features" />
+      <topic href="doc/specifier/diagrams/Diagrams.html#customization" label="Diagram Styles Customization Features">
+      </topic>
+    </topic>
+    <topic href="doc/specifier/sequences/Sequence Diagrams.html" label="Sequence Diagrams">
+      <topic href="doc/specifier/sequences/Sequence Diagrams.html#introduction" label="Introduction" />
+      <topic href="doc/specifier/sequences/Sequence Diagrams.html#semantics" label="Sequence Diagrams Semantics" />
+      <topic href="doc/specifier/sequences/Sequence Diagrams.html#restrictions" label="Restrictions and Limitations" />
+      <topic href="doc/specifier/sequences/Sequence Diagrams.html#prerequisites" label="Prerequisites" />
+      <topic href="doc/specifier/sequences/Sequence Diagrams.html#sd_description" label="Sequence Diagram Description" />
+      <topic href="doc/specifier/sequences/Sequence Diagrams.html#mappings" label="Mappings" />
+      <topic href="doc/specifier/sequences/Sequence Diagrams.html#tools" label="Tools" />
+    </topic>
+    <topic href="doc/specifier/tables/Tables.html" label="Tables">
+      <topic href="doc/specifier/tables/Tables.html#introduction" label="Introduction" />
+      <topic href="doc/specifier/tables/Tables.html#edition_tables" label="Edition Tables">
+	<topic href="doc/specifier/tables/Tables.html#table_tools" label="Table Tools" />
+	<topic href="doc/specifier/tables/Tables.html#line_mappings" label="Line Mappings" />
+	<topic href="doc/specifier/tables/Tables.html#feature_column_mapping" label="Feature Column Mappings" />
+      </topic>
+      <topic href="doc/specifier/tables/Tables.html#cross_tables" label="Cross Tables">
+	<topic href="doc/specifier/tables/Tables.html#cross_table_tools" label="Table Tools" />
+	<topic href="doc/specifier/tables/Tables.html#element_column_mapping" label="Element Column Mappings" />
+	<topic href="doc/specifier/tables/Tables.html#intersection_mapping" label="Intersection Mappings" />
+      </topic>
+    </topic>
+    <topic href="doc/specifier/trees/Trees.html" label="Trees">
+      <topic href="doc/specifier/trees/Trees.html#introduction" label="Introduction" />
+      <topic href="doc/specifier/trees/Trees.html#tree_description" label="Tree Descriptions" />
+      <topic href="doc/specifier/trees/Trees.html#mappings" label="Tree Item Mappings">
+	<topic href="doc/specifier/trees/Trees.html#item_style" label="Tree Item Styles" />
+	<topic href="doc/specifier/trees/Trees.html#item_tools" label="Tree Item Tools" />
+      </topic>
+    </topic>
+    <topic href="doc/specifier/general/Model_Operations.html" label="Model Operations">
+      <topic href="doc/specifier/general/Model_Operations.html" label="Model Operations" />
+    </topic>
+    <topic href="doc/specifier/general/Colors.html" label="Color Palettes" />
+    <topic href="doc/specifier/general/Writing_Queries.html" label="Queries and Interpreted Expressions">
+      <topic href="doc/specifier/general/Writing_Queries.html#introduction" label="Introduction" />
+      <topic href="doc/specifier/general/Writing_Queries.html#general" label="General Rules" />
+      <topic href="doc/specifier/general/Writing_Queries.html#specialized" label="Using the Specialized interpreters" />
+      <topic href="doc/specifier/general/Writing_Queries.html#acceleo" label="Using Acceleo" />
+      <topic href="doc/specifier/general/Writing_Queries.html#legacy" label="Using the Legacy Language" />
+      <topic href="doc/specifier/general/Writing_Queries.html#ocl" label="Using Raw OCL" />
+      <topic href="doc/specifier/general/Writing_Queries.html#custom" label="Providing a Custom Language" />
+      <topic href="doc/specifier/general/Writing_Queries.html#service_methods" label="Writing Java Services" />
+    </topic>
+    <topic href="doc/specifier/general/Feature_Matrix.html" label="Feature Matrix" />
+    <topic href="http://www.obeonetwork.com/group/obeo-designer/page/best-practices" label="Best Practices" />
+    <anchor id="moreSpecifierRefs"/>
+  </topic>
+  <topic href="doc/Glossary.html" label="Glossary"></topic>
+</toc>

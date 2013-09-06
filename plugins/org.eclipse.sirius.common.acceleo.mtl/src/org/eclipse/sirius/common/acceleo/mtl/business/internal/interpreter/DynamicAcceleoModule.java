@@ -11,6 +11,7 @@
 package org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter;
 
 import org.eclipse.sirius.common.acceleo.mtl.AcceleoMTLInterpreterPlugin;
+import org.eclipse.sirius.common.tools.api.util.LRUCache;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Maps;
@@ -97,6 +98,27 @@ public class DynamicAcceleoModule {
     private static final String DUMMY_QUERY = "[query public {0}(thisEObject : {1}{2}) : OclAny = {3}/]" + LINE_SEPARATOR; //$NON-NLS-1$
 
     /**
+     * The System property key to defined the max cache size used in the LRU
+     * caches of DynamicAcceleoModule. If this property is not set, the
+     * {@link #DEFAULT_MAX_CACHE_SIZE} is used. This property is not documented
+     * and exists only to unlock specific situation without building a new
+     * version.
+     */
+    private static final String MAX_CACHE_SIZE_PROPERTY_KEY = "org.eclipse.sirius.common.acceleo.mtl.maxCacheSize"; //$NON-NLS-1$
+
+    /**
+     * The initial size of the caches (compiledModules and queries).
+     */
+    private static final int INITIAL_CACHE_SIZE = 16;
+
+    /**
+     * The default maximum size of the caches (compiledModules and queries).
+     * This can be override by using the System property with key
+     * {@link #MAX_CACHE_SIZE_PROPERTY_KEY}.
+     */
+    private static final int DEFAULT_MAX_CACHE_SIZE = 2000;
+
+    /**
      * If the compilation and/or evaluation of this module requires the presence
      * of EPackages that cannot be retrieved through their NsURI only (for
      * example, EPackages located in the workspace, which code has not been
@@ -110,20 +132,71 @@ public class DynamicAcceleoModule {
      */
     private CompilationResult compilationResult;
 
-    /** Keeps track of the modules we have already built. */
-    private final Map<ModuleDescriptor, CompilationResult> compiledModules = Maps.newHashMap();
+    /**
+     * Keeps track of the modules we have already built.<BR>
+     * Use a LRU cache for this map to avoid having a too large memory
+     * footprint.
+     */
+    private final Map<ModuleDescriptor, CompilationResult> compiledModules;
 
     /**
      * This will map the identifier of our query (the couple 'target EObject'
-     * <-> 'body') to the actual built queries.
+     * <-> 'body') to the actual built queries.<BR>
+     * Use a LRU cache for this map to avoid having a too large memory
+     * footprint.
      */
-    private final Map<QueryIdentifier, String> queries = Maps.newLinkedHashMap();
+    private final Map<QueryIdentifier, String> queries;
 
     /** Use a single resource set for all of our dummies. */
     private ResourceSet resourceSet;
 
     {
         initializeResourceSet();
+    }
+
+    /**
+     * Default constructor.
+     */
+    public DynamicAcceleoModule() {
+        // Use the default max cache size except if one is defined in the
+        // environment with property MAX_CACHE_SIZE_PROPERTY_KEY.
+        int maxCacheSize = DEFAULT_MAX_CACHE_SIZE;
+        try {
+            String propertyCacheSize = System.getProperty(MAX_CACHE_SIZE_PROPERTY_KEY);
+            try {
+                maxCacheSize = Integer.valueOf(propertyCacheSize).intValue();
+            } catch (NumberFormatException e) {
+                // Do nothing just keep the default cache size.
+            }
+        } catch (SecurityException e) {
+            // Do nothing just keep the default cache size.
+        }
+        // Define a LRU Cache for queries
+        queries = new LRUCache<QueryIdentifier, String>(INITIAL_CACHE_SIZE, maxCacheSize);
+
+        // Define a LRU Cache for compiled modules that also removes the
+        // corresponding resource from the resource set.
+        compiledModules = new LRUCache<ModuleDescriptor, CompilationResult>(INITIAL_CACHE_SIZE, maxCacheSize) {
+            /**
+             * The serial version id.
+             */
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            protected boolean removeEldestEntry(final Map.Entry<ModuleDescriptor, CompilationResult> eldest) {
+                boolean shouldEvict = super.removeEldestEntry(eldest);
+
+                if (shouldEvict) {
+                    Object compiledExpression = eldest.getValue().getCompiledExpression();
+                    if (compiledExpression instanceof EObject && ((EObject) compiledExpression).eResource() != null) {
+                        resourceSet.getResources().remove(((EObject) compiledExpression).eResource());
+                    }
+                }
+
+                return shouldEvict;
+            }
+        };
+
     }
 
     /**
@@ -362,6 +435,7 @@ public class DynamicAcceleoModule {
                     compilationResult = new CompilationResult(new Status(IStatus.ERROR, AcceleoMTLInterpreterPlugin.PLUGIN_ID, e.getMessage(), e));
                 }
                 if (compilationResult != null) {
+                    new AcceleoParserTrimUtil().trimEnvironment(compilationResult);
                     compiledModules.put(descriptor, compilationResult);
                 }
             } else {
@@ -659,6 +733,7 @@ public class DynamicAcceleoModule {
                     // CHECKSTYLE:ON
                     // Ignore this, let the main compilation task fail
                 }
+                new AcceleoParserTrimUtil().trimEnvironment(result);
                 compiledModules.put(actualModule, result);
             }
 

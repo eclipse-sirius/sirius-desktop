@@ -25,6 +25,7 @@ import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 
+import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIManager;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
@@ -83,13 +84,15 @@ public final class ViewHelperImpl implements ViewHelper {
      */
     public ITreeContentProvider getContentProvider() {
         if (contentProvider == null) {
-            contentProvider = new SessionWrapperContentProvider(new AdapterFactoryContentProvider(createAdapterFactory()));
+            SessionWrapperContentProvider sessionWrapperContentProvider = new SessionWrapperContentProvider(new AdapterFactoryContentProvider(createAdapterFactory()));
+
+            contentProvider = new GroupingContentProvider(sessionWrapperContentProvider);
             Collection<ITreeContentProvider> liveProviders = Collections2.transform(extensions, new Function<ISessionViewExtension, ITreeContentProvider>() {
                 public ITreeContentProvider apply(ISessionViewExtension from) {
                     return from.getContentProvider();
                 }
             });
-            ((SessionWrapperContentProvider) contentProvider).setExtensions(liveProviders);
+            sessionWrapperContentProvider.setExtensions(liveProviders);
         }
         return contentProvider;
     }

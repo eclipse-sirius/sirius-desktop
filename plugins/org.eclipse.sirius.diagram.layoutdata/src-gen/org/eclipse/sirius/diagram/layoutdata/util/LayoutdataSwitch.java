@@ -10,9 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.layoutdata.util;
 
+import java.util.List;
+
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.util.Switch;
 
 import org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData;
@@ -31,7 +32,7 @@ import org.eclipse.sirius.diagram.layoutdata.Point;
  * @see org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage
  * @generated
  */
-public class LayoutdataSwitch<T> extends Switch<T> {
+public class LayoutdataSwitch<T> {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -59,16 +60,16 @@ public class LayoutdataSwitch<T> extends Switch<T> {
     }
 
     /**
-     * Checks whether this is a switch for the given package. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Calls <code>caseXXX</code> for each class of the model until one returns
+     * a non null result; it yields that result. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
-     * @parameter ePackage the package in question.
-     * @return whether this is a switch for the given package.
+     * @return the first non-null result returned by a <code>caseXXX</code>
+     *         call.
      * @generated
      */
-    @Override
-    protected boolean isSwitchFor(EPackage ePackage) {
-        return ePackage == modelPackage;
+    public T doSwitch(EObject theEObject) {
+        return doSwitch(theEObject.eClass(), theEObject);
     }
 
     /**
@@ -80,7 +81,24 @@ public class LayoutdataSwitch<T> extends Switch<T> {
      *         call.
      * @generated
      */
-    @Override
+    protected T doSwitch(EClass theEClass, EObject theEObject) {
+        if (theEClass.eContainer() == modelPackage) {
+            return doSwitch(theEClass.getClassifierID(), theEObject);
+        } else {
+            List<EClass> eSuperTypes = theEClass.getESuperTypes();
+            return eSuperTypes.isEmpty() ? defaultCase(theEObject) : doSwitch(eSuperTypes.get(0), theEObject);
+        }
+    }
+
+    /**
+     * Calls <code>caseXXX</code> for each class of the model until one returns
+     * a non null result; it yields that result. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the first non-null result returned by a <code>caseXXX</code>
+     *         call.
+     * @generated
+     */
     protected T doSwitch(int classifierID, EObject theEObject) {
         switch (classifierID) {
         case LayoutdataPackage.ABSTRACT_LAYOUT_DATA: {
@@ -201,7 +219,6 @@ public class LayoutdataSwitch<T> extends Switch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject)
      * @generated
      */
-    @Override
     public T defaultCase(EObject object) {
         return null;
     }

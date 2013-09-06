@@ -79,8 +79,8 @@ import org.eclipse.sirius.description.validation.ValidationSet;
  * {@link org.eclipse.sirius.description.DiagramDescription#getDefaultLayer
  * <em>Default Layer</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.description.DiagramDescription#getOptionalLayers
- * <em>Optional Layers</em>}</li>
+ * {@link org.eclipse.sirius.description.DiagramDescription#getAdditionalLayers
+ * <em>Additional Layers</em>}</li>
  * <li>{@link org.eclipse.sirius.description.DiagramDescription#getAllLayers
  * <em>All Layers</em>}</li>
  * <li>
@@ -524,23 +524,23 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
     void setDefaultLayer(Layer value);
 
     /**
-     * Returns the value of the '<em><b>Optional Layers</b></em>' containment
+     * Returns the value of the '<em><b>Additional Layers</b></em>' containment
      * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.description.OptionalLayer}. <!--
+     * {@link org.eclipse.sirius.description.AdditionalLayer}. <!--
      * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Optional Layers</em>' containment reference
+     * If the meaning of the '<em>Additional Layers</em>' containment reference
      * list isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * 
-     * @return the value of the '<em>Optional Layers</em>' containment reference
-     *         list.
-     * @see org.eclipse.sirius.description.DescriptionPackage#getDiagramDescription_OptionalLayers()
+     * @return the value of the '<em>Additional Layers</em>' containment
+     *         reference list.
+     * @see org.eclipse.sirius.description.DescriptionPackage#getDiagramDescription_AdditionalLayers()
      * @model containment="true" resolveProxies="true" keys="name"
      * @generated
      */
-    EList<OptionalLayer> getOptionalLayers();
+    EList<AdditionalLayer> getAdditionalLayers();
 
     /**
      * Returns the value of the '<em><b>All Layers</b></em>' reference list. The

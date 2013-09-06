@@ -62,7 +62,7 @@ public interface DiagramExtensionDescription extends RepresentationExtensionDesc
      * @model containment="true" resolveProxies="true" keys="name"
      * @generated
      */
-    EList<OptionalLayer> getLayers();
+    EList<AdditionalLayer> getLayers();
 
     /**
      * Returns the value of the '<em><b>Validation Set</b></em>' containment

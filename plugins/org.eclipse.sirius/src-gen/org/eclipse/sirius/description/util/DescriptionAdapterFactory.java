@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.sirius.description.AbstractMappingImport;
 import org.eclipse.sirius.description.AbstractNodeMapping;
+import org.eclipse.sirius.description.AdditionalLayer;
 import org.eclipse.sirius.description.AnnotationEntry;
 import org.eclipse.sirius.description.ColorDescription;
 import org.eclipse.sirius.description.ColorStep;
@@ -63,7 +64,6 @@ import org.eclipse.sirius.description.MappingBasedDecoration;
 import org.eclipse.sirius.description.MetamodelExtensionSetting;
 import org.eclipse.sirius.description.NodeMapping;
 import org.eclipse.sirius.description.NodeMappingImport;
-import org.eclipse.sirius.description.OptionalLayer;
 import org.eclipse.sirius.description.OrderedTreeLayout;
 import org.eclipse.sirius.description.PasteTargetDescription;
 import org.eclipse.sirius.description.RepresentationDescription;
@@ -351,8 +351,8 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseOptionalLayer(OptionalLayer object) {
-            return createOptionalLayerAdapter();
+        public Adapter caseAdditionalLayer(AdditionalLayer object) {
+            return createAdditionalLayerAdapter();
         }
 
         @Override
@@ -1144,6 +1144,22 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.description.AdditionalLayer
+     * <em>Additional Layer</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.description.AdditionalLayer
+     * @generated
+     */
+    public Adapter createAdditionalLayerAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.description.Customization
      * <em>Customization</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
@@ -1251,22 +1267,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createEReferenceCustomizationAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.OptionalLayer
-     * <em>Optional Layer</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @return the new adapter.
-     * @see org.eclipse.sirius.description.OptionalLayer
-     * @generated
-     */
-    public Adapter createOptionalLayerAdapter() {
         return null;
     }
 

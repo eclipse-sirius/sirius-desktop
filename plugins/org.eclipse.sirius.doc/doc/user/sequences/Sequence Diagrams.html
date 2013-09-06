@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Sequence Diagrams</title>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SequenceDiagramsEditors">Sequence Diagrams Editors</h1>
+		<p>This document explains how to Sirius sequence diagrams editors/modelers. Sequence diagrams share most  of the functionalities of normal diagrams, but they have some specificities and restrictions.</p>
+		<ol class="toc" style="list-style: disc;">
+			<li>
+				<a href="Sequence%20Diagrams.html#SequenceDiagramsEditors">Sequence Diagrams Editors</a>
+				<ol style="list-style: disc;">
+					<li>
+						<a href="Sequence%20Diagrams.html#introduction">Introduction</a>
+					</li>
+					<li>
+						<a href="Sequence%20Diagrams.html#semantics">Sequence Diagrams Semantics</a>
+					</li>
+					<li>
+						<a href="Sequence%20Diagrams.html#restrictions">Restrictions and Limitations</a>
+					</li>
+					<li>
+						<a href="Sequence%20Diagrams.html#layout">Automatic Layout</a>
+					</li>
+					<li>
+						<a href="Sequence%20Diagrams.html#elements">Sequence Diagram Elements</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Sequence%20Diagrams.html#Lifelines">Life-lines</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#lifelines_header">Life-lines header</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#Executions">Executions</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#BasicMessages">Basic Messages</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#ComplexMessages">Complex Messages</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#CreationandDestructionMessages">Creation and Destruction Messages</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#Lostandfoundmessages">Lost and found messages</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#InteractionUsesandStates">Interaction Uses and States</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#CombinedFragmentsandOperands">Combined Fragments and Operands</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#ConstraintsandObservationPoints">Constraints and Observation Points</a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<h2 id="introduction">Introduction</h2>
+		<p>Sirius supports a special kind of diagrams which reuse the notations and conventions of UML Sequence Diagrams, but can be applied to other domains than just UML. Here is an example which illustrates most  of the graphical constructions which can appear on these diagrams:</p> 
+		<img border="0" src="images/full_sequence_example.png"/>
+		<p>These diagrams behave mostly like normal Sirius diagrams, but in order to ensure the consistency of the models they represent, they have some restrictions. They also support some additional features or change the classical behavior of some features.</p>
+		<p>This document only describes the specificities of sequence diagrams. Unless otherwise stated here, all the features of normal Sirius diagrams apply also to sequence diagrams, so you can refer to 
+			<a href="../diagrams/Diagrams.html">the general diagrams user manual</a> for more information.
+		</p>
+		<p>
+			<em>Note</em>: If you have installed Sirius as part of 
+			<em>Obeo Designer</em>, you already have an example sequence diagrams modelers supplied.
+		</p>
+		<p>
+			<strong>IMPORTANT WARNING</strong>: To work correctly, Sirius sequence diagrams must have a tight control on where the graphical elements are placed on the diagram and on their synchronization with the underlying semantic model. This means that to use sequence diagrams you 
+			<em>must</em>:
+		</p>
+		<ol>
+			<li>Disable the 
+				<em>Snap to Grid</em> behavior. For an existing diagram, this is available in the 
+				<em>Rulers &amp; Grid</em> section of the 
+				<em>Properties</em> view when the diagram itself is selected. You can also disable it for all future diagrams in the preferences: 
+				<em>Sirius &gt; Sirius Diagram &gt; Rulers and Grid</em>, un-check the 
+				<em>Snap to grid for new diagrams</em> check box.
+			</li>
+			<li>Enable Sirius&#8217;s 
+				<em>Automatic Refresh</em> (in the main 
+				<em>Sirius</em> preferences page) to ensure the diagram is always kept in synch with the underlying semantic model.
+			</li>
+		</ol>
+		<h2 id="semantics">Sequence Diagrams Semantics</h2>
+		<p>As their name says, sequence diagrams are meant to represent ordered sequences of elements. Typically, they represent 
+			<em>events</em> sent and received between some entities over 
+			<em>time</em>. The canonical case is a UML Sequence Diagram (where the notation comes from), which represents the messages exchanged between objects in a software system.
+		</p>
+		<p>The most important consequence of this is that contrary to what happens on a classical diagram, 
+			<em>the relative graphical positions of elements on a sequence diagram have strong meaning</em>. This is true for the vertical placement and for the left-to-right order of lifelines. However placing a message above or below another one has a strong implication on the ordering of the events they represent, and thus on the structure of the underlying semantic model which is represented. Sirius works hard to ensure that what you see on you sequence diagram (in terms of vertical ordering of elements and horizontal ordering of lifelines) always correspond to the semantic ordering of the represented events.
+		</p>
+		<p>This works both ways:</p>
+		<ul>
+			<li>Assuming your diagram is synchronized (i.e. you are in 
+				<em>Automatic Refresh</em> mode or your manually refreshed it since the last semantic changes), Sirius will always organize the elements on the diagram in a way which is compatible with the semantic ordering of the events: if you see an execution 
+				<em>E1</em> placed above another execution 
+				<em>E2</em>, you can be sure the events corresponding to 
+				<em>E1</em> happen before the events of 
+				<em>E2</em> in the semantic model.
+			</li>
+			<li>Symmetrically, and perhaps more importantly, 
+				<em>moving</em> elements on a sequence diagram may trigger changes in the underlying semantic model to reflect the new event order implied by the positions you changed. This is very different from what happens in other diagrams, where most graphical repositioning of elements are only cosmetic. Keeping the example above, moving execution 
+				<em>E2</em> graphically above 
+				<em>E1</em> will trigger changes in the semantic model to move the corresponding event of 
+				<em>E2</em> before the events of 
+				<em>E1</em>.
+			</li>
+		</ul>
+		<p>Most of the specific features and restrictions of sequence diagrams compared to other diagrams derive from this strong guarantee that at all time, the graphical (vertical) order of the elements you see on the diagram match exactly the semantic order of the events which exist in the underlying model.</p>
+		<h2 id="restrictions">Restrictions and Limitations</h2>
+		<p>In order to guarantee the strong guarantee described above, some of the features present on normal diagrams are not supported, or even completely disabled on sequence diagrams. Basically, anything which would make it possible on a normal diagram to have meaningful semantic elements not visible on the diagram is forbidden. This would make it impossible for Sirius to keep consistent tracking of the &#171;position&#187; of these invisible elements relative to the ones which are visible.</p>
+		<ul>
+			<li>
+				<em>Layers</em>: sequence diagrams may define optional layers, as long as they do not make graphical elements appear or disappear on the diagram when they are selected or de-selected. Layers which contribute new tools in the palette for example are fine.
+			</li>
+			<li>
+				<em>Filters</em>: filters which may hide elements from a sequence diagram when enabled are not supported.
+			</li>
+			<li>
+				<em>Hide/Reveal</em>: hiding elements explicitly is not supported. The actions are disabled in the UI.
+			</li>
+			<li>
+				<em>Pin/Unpin</em>: pinning graphical elements has no effect on the automatic layout of sequence diagrams. Even if an element has been marked as pinned, Sirius must be able to move it graphically as needed in order to maintain the graphical order of element in sync with the semantic order. The actions are disabled in the UI.
+			</li>
+		</ul>
+		<h2 id="layout">Automatic Layout</h2>
+		<p>The 
+			<em>Arrange All</em> command which launches an automatic layout of all the elements on a diagram has been completely customized for sequence diagrams. Arranging a sequence diagram will keep the relative positions of all the elements, but reduce any un-needed vertical or horizontal spaces. All elements will be resized to the minimum size necessary, and &#171;packed&#187; towards the top-left corner of the diagram. This results in a diagram which uses the minimum space required to present all the elements, while keeping enough white-space between them to be easy to read.
+		</p>
+		<h2 id="elements">Sequence Diagram Elements</h2>
+		<p>This section presents each type of elements specific to sequence diagrams which are supported by Sirius, and their specificities (if any). Note that not all sequence diagrams will support all kinds of elements; this depends on the diagram&#8217;s configuration.</p>
+		<h3 id="Lifelines">Life-lines</h3>
+		<p>Life-lines represent the entities which interact (by exchanging events) on a sequence diagrams. They can be many different things depending on the domain being modeled: software objects, machines, people, etc. They are represented by a node (often a rectangle) at the top, and a thin vertical line attached to the bottom side of the node (always horizontally centered on it). There may be another node (generally small) at the bottom of the lifeline, representing the end of the life-line.</p>
+		<p>The example below shows three life-lines, named 
+			<code>a</code>, 
+			<code>b</code> and 
+			<code>c</code>. Then end of 
+			<code>a</code> and 
+			<code>c</code> is a small grey circle at the bottom of the life-lines, while the end of 
+			<code>b</code>, which is explicitly destroyed by the 
+			<code>m_destroy2</code> message, is a black cross.  
+		</p> 
+		<img border="0" src="images/lifelines.png"/>
+		<p>Life-lines can be moved horizontally, but their vertical placement can not be controlled directly. It is determined automatically by Sirius using the following rules:</p>
+		<ol>
+			<li>Life-lines which are not explicitly created by a 
+				<a href="Sequence%20Diagrams.html#CreationandDestructionMessages">
+					<em>creation messages</em>
+				</a> are assumed to exist from the beginning of the sequence, and are all aligned at the top of the diagram. In the example, 
+				<code>a</code> and 
+				<code>c</code> are aligned at the top of the diagram.
+			</li>
+			<li>Life-lines which are explicitly created by a 
+				<em>creation messages</em> have their top node vertically aligned with the creation message. In the example, 
+				<code>b</code> is aligned with the 
+				<code>m_create1</code> creation message. Moving that message vertically would also move the top of the 
+				<code>b</code> life-line to stay aligned.
+			</li>
+		</ol>
+		<p>The vertical size of life-lines can be controlled, following some rules:</p>
+		<ol>
+			<li>Life-lines which are not explicitly destroyed by a 
+				<a href="Sequence%20Diagrams.html#CreationandDestructionMessages">
+					<em>destruction message</em>
+				</a> are assumed to exist until (at least) the end of the sequence. They all finish at the same vertical position, which is always after the last event on the whole sequence. If life-lines have a node at their bottom (this depends on the configuration), these nodes can be dragged to resize all the life-lines which are not explicitly destroyed (as long as their new end position is after all events). In the example, dragging the grey circles at the bottom of 
+				<code>a</code> or 
+				<code>c</code> would resize both life-lines (but not 
+				<code>b</code>).  
+			</li>
+			<li>Life-lines which are explicitly destroyed by a 
+				<em>drestruction message</em> have the bottom node vertically aligned with the destruction message. In the example, 
+				<code>b</code> ends when it receives the 
+				<code>m_destroy2</code> message. Moving either the destruction message or the black cross which represents 
+				<code>b</code>'s destruction would resize the life-line (but only 
+				<code>b</code>).
+			</li>
+		</ol>
+		<p>Empty life-lines have a default size large enough that you can add several elements to them without the need for resizing. In the example, 
+			<code>a</code> and 
+			<code>c</code> have the default size.
+		</p>
+		<p>When you move life-lines horizontally, you can change their left-to-right order. If required, the system may move some other life-lines to ensure there is always some minimal horizontal blank space between two consecutive life-lines.</p>
+		<h3 id="lifelines_header">Life-lines header</h3>
+		<p>When a scenario diagram is higher than the displayed area, reading the last messages of the diagram makes the instance role of the life-lines not visible and does not help to locate the source and the target of a message. You can keep life-line header visible by activating &#171;Display header&#187; into 
+			<code>Preferences &gt; Sirius &gt; Sirius Diagram &gt; Appearance</code>. This preference is enabled by default.
+		</p>
+		<p>
+			<img border="0" src="images/header.png"/>
+		</p>
+		<p>The optimum height is automatically computed during the creation of a new sequence diagram. You can change the height manually by:</p>
+		<ul>
+			<li>Double-clicking on the separator between header and diagram. This computes again the optimum height according to current labels and width.</li>
+			<li>Moving the separator between header and diagram.</li>
+		</ul>
+		<p>The height is stored in the diagram. The next time you open the diagram, the header will be the same size.</p>
+		<h3 id="Executions">Executions</h3>
+		<p>Executions usually represent a time interval during which one of the participants in the sequence is active. They are represented by vertical rectangles superposed to the corresponding life-line, or to another execution (recursively).</p>
+		<p>The example below show a single life-line with five executions on it: two are top-level executions directly on the life-line itself, while the rest are sub-executions of others.</p> 
+		<img border="0" src="images/executions.png"/>
+		<p>Note that not all sequence diagram modelers will allow for the creation of &#171;raw&#187; executions like these, which are not connected to messages. This all depends on the semantics of the underlying models and of the diagram&#8217;s configuration.</p>
+		<h3 id="BasicMessages">Basic Messages</h3>
+		<p>Basic messages represent some form of communication between lifelines. They are represented by horizontal arrows between lifelines (or executions on lifelines).</p>
+		<p>The example below shows three lifelines and three messages. Note that the last one, 
+			<code>m3</code>, is a 
+			<em>reflective</em> message which is received by the same lifeline which sent it. 
+		</p> 
+		<img border="0" src="images/basic_messages.png"/>
+		<p>Note that not all sequence diagram modelers will allow for the creation of basic message like these, which are not connected the beginning or end of an execution. This all depends on the semantics of the underlying models and of the diagram&#8217;s configuration.</p>
+		<h3 id="ComplexMessages">Complex Messages</h3>
+		<p>Most sequence diagrams (including UML) will support some sort of 
+			<em>complex messages</em>, which include both executions and basic messages combined in special ways. This is used for example to represent 
+			<em>synchronous messages</em> in UML, where the first message sent triggers the execution of some behavior on the target lifeline, behavior which produces a return value sent back to the origin when the execution terminates.
+		</p>
+		<p>In the example below, the lifeline 
+			<code>a</code> sends a message 
+			<code>m1</code> to 
+			<code>b</code>, which triggers the execution of a complex behavior before 
+			<code>b</code> can send the result value back to 
+			<code>a</code>. During the execution of the behavior in 
+			<code>b</code>, it sends another message to 
+			<code>c</code>, waits for the answer, and then sends a message to itself which executes a sub-behavior (but does not return any useful value).
+		</p> 
+		<img border="0" src="images/complex_messages.png"/>
+		<h3 id="CreationandDestructionMessages">Creation and Destruction Messages</h3>
+		<p>Two special kinds of messages are used to represent the creation of a lifeline or its destruction by another participant. 
+			<em>Creation messages</em> are represented as normal messages, except that the top of the lifeline they target is always vertically aligned with the message (representing the fact that this lifeline did not exist before the message created it). Similarly, 
+			<em>destruction messages</em> are normal messages except that the bottom of the lifeline they target is aligned with the message. It is customary that the 
+			<em>End of Life</em> marker at the bottom of the lifeline (used to resize it) uses a different visual style (often a black cross) to represent the fact that the lifeline is destroyed by the message and does not exist afterwards.
+		</p>
+		<p>The figure below shows one example of each of these special kinds of messages: lifeline 
+			<code>a</code> first sends message 
+			<code>m_create1</code> which creates lifeline 
+			<code>b</code>, and then sends destruction message 
+			<code>m_destroy2</code> which provokes the destruction of 
+			<code>c</code>.
+		</p> 
+		<img border="0" src="images/creation_destruction_messages.png"/>
+		<h3 id="Lostandfoundmessages">Lost and found messages</h3>
+		<p>Lost and found messages are messages with an end which does not cover any lifeline. </p>
+		<ul>
+			<li>Lost messages are messages with known send, but the reception of the message does not happen.</li>
+			<li>Found messages are messages with knwon receiver, but the sending of the message is not described.</li>
+		</ul>
+		<p>The figure below shows one example of lost and found message for each of the different kinds of messages: lifeline 
+			<code>e</code> first receives found message 
+			<code>m_create7</code> which creates the lifeline, and then sends lost messages 
+			<code>m1</code> which should triggers the execution of a complex behavior, creation message 
+			<code>m_create2</code> which should create another lifeline, destruction message 
+			<code>m_destroy3</code> which could provoke its destruction, 
+			<code>m4</code> which could be linked to a lifeline not represented on the current diagram. Lifeline 
+			<code>e</code> finally receive three found messages: 
+			<code>m9</code> which triggers the execution of a complex behavior, 
+			<code>m8</code> which is a simple message and 
+			<code>m_destroy8</code> which provokes the destruction of 
+			<code>e</code>.
+		</p> 
+		<img border="0" src="images/found_lost_ends.png"/> 
+		<p>A lost/found message can be moved vertically like other messages. Align commands are available for lost and found message ends.</p>
+		<h3 id="InteractionUsesandStates">Interaction Uses and States</h3>
+		<p>
+			<em>Interaction Uses</em> are constructions which usually represent &#171;shortcuts&#187;, indicating that some complex interaction, which may be defined in another sequence diagrams, occurs at some point without cluttering the current diagram. They are represented by rectangles centered on the lifeline(s) which are concerned. They can contain a label in the top-left corner, indicating what kind of shortcut they represent, and another label (not editable directly) centered in the rectangle. Interaction uses may 
+			<em>cover</em> several lifelines.
+		</p>
+		<p>
+			<em>States</em> are more general annotations which are typically used to indicate that some condition regarding the state of a participant is true at this point in the sequence. They are represented by simple nodes centered on the single lifeline they concern.
+		</p>
+		<p>The figure below shows two interaction uses, one which covers only 
+			<code>a</code> and the other covering both 
+			<code>a</code> and 
+			<code>b</code>. It also shows a simple state 
+			<code>s1</code> on 
+			<code>b</code>, which is represented by a blue oval in this diagram.
+		</p> 
+		<img border="0" src="images/iu_states.png"/>
+		<h3 id="CombinedFragmentsandOperands">Combined Fragments and Operands</h3>
+		<p>
+			<em>Combined Fragments</em> and 
+			<em>Operands</em> are the most complex constructions on sequence diagrams. They are used to regroup other constructions (including other 
+			<em>Combined Fragments</em>) into blocks. A 
+			<em>combined fragment</em> is represented in a way similar to interaction uses (a rectangle which can cover several lifelines), except that it can contain one or more 
+			<em>operands</em>, separated by a dotted horizontal line. Operands can contain almost all the other constructions supported by sequence diagrams, with the restriction that they must be self-contained: a message which starts inside an operand must end inside the operand (i.e. on a lifeline which is covered by the parent combined fragment), and an execution which starts in an operand must end in the same (it can not end in another operand below).
+		</p>
+		<p>The figure below shows a top-level combined fragment named 
+			<code>alt</code>, which represent 
+			<em>alternatives</em> (the semantics is just an example, it is entirely dependent on the diagram&#8217;s configuration and underlying model). It contains three operands, labeled 
+			<code>x &lt; 0</code>, 
+			<code>x &gt; 0</code> and 
+			<code>x == 0</code>. Here, the content of each operand represent the alternative which would be executed if the corresponding condition was true. Note that the last operand, 
+			<code>x == 0</code>, contains a sub-fragment, named 
+			<code>par</code>, with two operands. Here the intended semantics is that for the 
+			<code>x == 0</code> case, we execute both 
+			<code>step1</code> and 
+			<code>step2</code> in 
+			<code>par</code>-allel.
+		</p> 
+		<img border="0" src="images/cfc_cfo.png"/> 
+		<h3 id="ConstraintsandObservationPoints">Constraints and Observation Points</h3>
+		<p>The elements displayed on a sequence diagram are delimited with some events which belong to the diagram semantic (chronological and global) ordering. An observation point is a node representing (gray dots on the following picture) those events, they are automatically placed and allow to create and display constraints between the events.</p>
+		<p>The figure below shows observation points as grayed dots on each sequence diagram element and several constraints with bracket style created between them. </p>
+		<p>
+			<img border="0" src="images/constraints.png"/>
+		</p>
+		<p>The main segment of the constraint can be moved and rotated. The other segments cannot be moved, the constraint is attached to observation points which are placed by the automatic layout. So move commands are disabled on observation points, but resize commands activation depends on the resize kind defined in the Viewpoint Specification Model.</p>
+	</body>
+</html>

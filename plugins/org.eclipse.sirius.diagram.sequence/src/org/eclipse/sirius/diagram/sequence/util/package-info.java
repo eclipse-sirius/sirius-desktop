@@ -8,9 +8,5 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-/**
- * This package contains general utility classes which do not depend on sequence diagram code.
- * They could be moved into other Sirius plug-ins, and some of them will probably at some point.
- */
 package org.eclipse.sirius.diagram.sequence.util;
 

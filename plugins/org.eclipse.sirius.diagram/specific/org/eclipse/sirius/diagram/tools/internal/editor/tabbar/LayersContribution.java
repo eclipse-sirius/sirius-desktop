@@ -21,11 +21,15 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.ImageProvider;
 import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.description.AdditionalLayer;
 import org.eclipse.sirius.description.DiagramDescription;
 import org.eclipse.sirius.description.Layer;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
@@ -104,7 +108,17 @@ public class LayersContribution extends AbstractMenuContributionItem {
     private Collection<Layer> getLayers() {
         DiagramDescription diagramDesc = diagram.getDescription();
         Collection<Layer> allLayers = new ArrayList<Layer>(new DiagramComponentizationManager().getAllLayers(session.getSelectedSiriuss(false), diagramDesc));
+
         allLayers.remove(diagramDesc.getDefaultLayer());
+        Iterables.removeIf(allLayers, new Predicate<Layer>() {
+
+            public boolean apply(Layer layer) {
+                if (layer instanceof AdditionalLayer) {
+                    return !((AdditionalLayer) layer).isOptional();
+                }
+                return false;
+            }
+        });
         return allLayers;
     }
 

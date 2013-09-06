@@ -46,11 +46,11 @@ class PolymorphicService implements IService {
         implementers.add(svc);
     }
 
-    public boolean appliesTo(Object target) {
+    public boolean appliesTo(Object[] target) {
         return Iterables.any(implementers, getCompatibilityChecker(target));
     }
 
-    public Object call(Object target) throws EvaluationException {
+    public Object call(Object[] target) throws EvaluationException {
         List<MonomorphicService> candidates = Lists.newArrayList(Iterables.filter(implementers, getCompatibilityChecker(target)));
         if (!candidates.isEmpty()) {
             return candidates.get(0).call(target);
@@ -59,7 +59,7 @@ class PolymorphicService implements IService {
         }
     }
 
-    private Predicate<MonomorphicService> getCompatibilityChecker(final Object target) {
+    private Predicate<MonomorphicService> getCompatibilityChecker(final Object[] target) {
         Predicate<MonomorphicService> isCompatible = new Predicate<MonomorphicService>() {
             public boolean apply(MonomorphicService svc) {
                 return svc.appliesTo(target);

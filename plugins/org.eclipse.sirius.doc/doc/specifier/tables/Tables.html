@@ -1,0 +1,368 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Tables</title>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SpecifyingTableEditors">Specifying Table Editors</h1>
+		<ol class="toc" style="list-style: disc;">
+			<li>
+				<a href="Tables.html#SpecifyingTableEditors">Specifying Table Editors</a>
+				<ol style="list-style: disc;">
+					<li>
+						<a href="Tables.html#introduction">Introduction</a>
+					</li>
+					<li>
+						<a href="Tables.html#edition_tables">Edition Tables</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Tables.html#table_tools">Table Tools</a>
+							</li>
+							<li>
+								<a href="Tables.html#line_mappings">Line Mappings</a>
+							</li>
+							<li>
+								<a href="Tables.html#feature_column_mapping">Feature Column Mappings</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="Tables.html#cross_tables">Cross Tables</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Tables.html#cross_table_tools">Table Tools</a>
+							</li>
+							<li>
+								<a href="Tables.html#element_column_mapping">Element Column Mappings</a>
+							</li>
+							<li>
+								<a href="Tables.html#intersection_mapping">Intersection Mappings</a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<h2 id="introduction">Introduction</h2>
+		<p>Sirius supports the definition of two kinds of tabular modelers:</p>
+		<ul>
+			<li>
+				<em>Edition Tables</em> are classical tables, where each line represents an element and each column (from a fixed set) represents some (potentially computed) property of the element. Lines can contain sub-lines (recursively) to represent sub-elements, and the end-user can expand/collapse these at will. Provided that you specify the corresponding tools, users can create new lines and delete existing ones.
+			</li>
+			<li>
+				<em>Cross Tables</em> are slightly different, optimized to represent relationship between elements in a matrix-like way. Both lines and columns represent elements, and each call at an intersection if a certain relationship exists between them. Cross tables also support sub-lines, but not sub-columns. However provided the right tools are specified, users can create and/or delete columns in addition to lines.
+			</li>
+		</ul>
+		<p>Both kinds of table share a lot of elements. This document will focus on 
+			<a href="Tables.html#edition_tables">edition tables</a>, which are the most commonly used. The 
+			<a href="Tables.html#cross_tables">section on cross-tables</a> describes them by their differences with edition tables.
+		</p> 
+		<img border="0" src="./images/table_description_editor.png"/>
+<em>
+<ul>
+
+		<img border="0" src="images/tricks.png"/> 
+		<em>use the 
+			<img border="0" src="images/questionMarque.png"/> icon to access the available fields tooltips:
+		</em>
+<ul>
+			<li> 
+		<b>Id</b> field: The identifier of this element. Must be unique. Changing this identifier will break existing user models which reference the old identifier.</li>
+			<li> 
+		<b>Label</b> field: The label used to display this to the end-user.</li>
+			<li> 
+		<b>Domain Class</b> field: Type of the element represented by the Node.</li>
+			<li> 
+		<b>Semantic Candidates Expression</b> field: Restrict the list of elements to consider before creating the graphical elements. If it is not set, then all semantic models in session will be browsed and any element of the given type validating the precondition expression will cause the creation of a graphical element. If you set this attribute then only the elements returned by the expression evaluation will be considered.</li>
+</ul>
+</ul>
+</em>
+		<p>
+			<strong>Note</strong>: Advanced features like layers, filters and mapping imports which exist for diagrams are not currently available for tables.
+		</p>
+		<h2 id="edition_tables">Edition Tables</h2>
+		<p>Edition tables are configured by creating an 
+			<em>Edition Table Description</em> element (inside a 
+			<em>Viewpoint</em>) and its sub-elements (which describe the lines, columns and tools). 
+			<em>Edition Table Descriptions</em> are similar to other representation description elements.
+		</p>
+		<p>The mandatory 
+			<em>Domain Class</em> attribute is the type of semantic element which are represented by the table. In the 
+			<em>Model Explorer</em>, end-users will be able to create new instances of this table on semantic elements of this type (assuming the corresponding viewpoint is enabled in the 
+			<em>Modeling Project</em>). The syntax for the domain class name can be the basic name, like 
+			<code>Class</code>, a qualified name using name of the EMF EPackage which defines the type, like 
+			<code>uml.Class</code>, or a fully qualified URI like 
+			<code>http://www.eclipse.org/uml2/3.0.0/UML#//Class</code>.
+		</p>
+		<p>By default, new tables can be created on 
+			<em>any</em> instance of the 
+			<em>Domain Class</em>. You can use the 
+			<em>Precondition Expression</em> (available in the 
+			<em>Advanced</em> category) to change this. If such an expression is specified, it will be evaluated in the context of the semantic element the user has selected, and only if the expression returns 
+			<code>true</code> will the user be able to create a new table on this element.
+		</p>
+		<p>The default title for newly created table can be specified using the 
+			<em>Title expression</em> (
+			<em>Advanced</em> category), which is evaluated in the context of the semantic element on which the table is created, and should return a string. If the expression is not specified, the default title is the label of the table description (of its 
+			<em>Id</em> if no 
+			<em>Label</em> is set) prefixed with the string 
+			<code>"new "</code> (e.g. 
+			<code>new Package Contents</code>).
+		</p>
+		<p>It is recommended that the 
+			<em>Edition Table Description</em> be explicitly associated with the meta-model(s) of the semantic elements it will represent. You can add referenced meta-models from different sources in the 
+			<em>Metamodels</em> property section of the 
+			<em>Edition Table Description</em>. Sirius will work even without this association, but setting it explicitly will give you better feedback when validating your 
+			<a href="../../Glossary.html#VSM">
+				<em>VSM</em>
+			</a>.
+		</p>
+		<p>The 
+			<em>Initialization</em> and 
+			<em>Show on startup</em> flags control whether table instances are created and/or opened automatically without user intervention. If 
+			<em>Initialization</em> is set, then when the viewpoint which contains this table description is enabled, instances of this table description will be automatically created on all compatible semantic elements. If 
+			<em>Show on startup</em> in set, then when a modeling project is opened which contains instances of this table description, they will be opened: if only one such representation exist, it will be opened automatically; is there are more than one, a dialog box will appear to allow the user to select which one(s) to open.
+		</p>
+		<p>Finally, the 
+			<em>Initial Header Column Width</em> (
+			<em>Advanced</em> category) is specific to table descriptions (both edition tables and cross tables). It can be used to specify the default size (in pixels) of the left-most column of the table, which contains the labels of the elements represented by each line. If the value if 0 (the default), the column width will be computed from the initial content when the table is created.
+		</p>
+		<h3 id="table_tools">Table Tools</h3>
+		<p>Some tools which apply to the whole table are specified directly inside the 
+			<em>Edition Table Description</em>:
+		</p>
+		<ul>
+			<li>
+				<em>Representation Creation Tools</em>: These tools (one for each kind of representation supported by Sirius) can be used to create (and open) a new representation from an existing table element. It will be available to end-users in the 
+				<em>Navigate</em> context menu on compatible table elements. To configure the tool, simply select in the 
+				<em>Mappings</em> property which kinds of lines the tool should appear on (you can be more precise using the 
+				<em>Precondition</em> expression if necessary), and select the kind of representation which should be created using the 
+				<em>Representation Description</em> property (in practice, one of 
+				<em>Diagram Description</em>, 
+				<em>Table Description</em> or 
+				<em>Tree Description</em> depending on the tool). Normally, the new representation will be created on the semantic element represented by the tree item on which the user invoked the tool. Sometimes you want the tool to appear on one element, but create a representation on another one. In this case, use the 
+				<em>Browse expression</em> (in the 
+				<em>Advanced</em> category) to navigate from the element selected to the one one which the new representation should actually be created. Finally, any operation you specify in the body of the tool will be executed when the tool is invoked; you can use it to initialize the content of the model represented.
+			</li>
+			<li>
+				<em>Representation Navigation Tools</em>: These tools (one for each kind of representation supported by Sirius) are very similar to the previous ones. The only differences is that they allow users to navigate to existing representation instead of creating new ones. If such a tool exists, the 
+				<em>Navigate</em> context menu on an element will contains an entry for each corresponding representation which already exists on the element selected (or reachable from the selected element using the 
+				<em>Browse expression</em>). You can specify a 
+				<em>Navigation name expression</em> (
+				<em>Advanced</em> category) to be used in the menu entry instead of using the title of the existing representation. This can be useful to make it more explicit what the relationship is between the current element and the target tree.
+			</li>
+			<li>
+				<em>Line Creation Tools</em> which are directly contained inside the 
+				<em>Table Description</em> are used to create root table lines. They are available to end-users through a combo button in the main Eclipse tool-bar. To configure it, simply select the kind of line the tool will create in the 
+				<em>Mapping</em> property, and specify the tool&#8217;s behavior using normal model operations.
+			</li>
+		</ul>
+		<h3 id="line_mappings">Line Mappings</h3>
+		<p>The lines which will appear in a table (and their organization in sub-lines) are defined by the 
+			<em>Line Mapping</em> elements inside the 
+			<em>Table Description</em> element. A 
+			<em>Table Description</em> contains 
+			<em>Line Mappings</em> which define which elements will appear as top-level lines of the table, while each 
+			<em>Line Mapping</em> can contain sub-mappings which define its own direct sub-lines. If an element (the table or a line mapping) contains several sub-mappings, the element&#8217;s content will appear in the order of the mappings: first all the instances of the first mapping, then the instances of the second one, etc.
+		</p>
+		<p>A 
+			<em>Line Mapping</em> is defined by a 
+			<em>Domain Class</em> and a 
+			<em>Semantic Candidates Expression</em>. The 
+			<em>Semantic Candidates Expression</em> indicates where to look in the semantic model for elements which should be represented by the mapping. The expression is evaluated in the context of the parent&#8217;s semantic element (the parent being either the table itself or a parent line). It should return a set of semantic elements. Only those which are instances of the specified 
+			<em>Domain Class</em> are retained and actually represented as instances of this mapping. The semantic element thus associated to each line is called the line&#8217;s 
+			<em>target</em> element.
+		</p>
+		<p>You can associate more semantic elements to a line by defining the 
+			<em>Associated Elements Expression</em> (in the 
+			<em>Advanced Category</em>), which is evaluated in the context of the target and may return more semantic elements. Any change in the target element or one of the associated elements will automatically trigger a refresh of the line.
+		</p>
+		<p>The 
+			<em>Header Label Expression</em> (in the 
+			<em>Label</em> category) is evaluated in the context of a line&#8217;s target and should return the text to be shown for the line in the header column (on the left of the table).
+		</p>
+		<p>A 
+			<em>Line Mapping</em> may 
+			<em>Reuse Sub Lines</em> (see the 
+			<em>Import</em> category), including itself, as sub-mappings. The effect is exactly the same as if the reused mapping(s) were created as children if the parent. However because a mapping can reuse itself or one of its parent mapping, this allows to create table of infinite depth (or at least not bounded a priori). The 
+			<em>Reused in Mappings</em> property is the symmetrical of 
+			<em>Reused Sub Lines</em>: it shows you which line mappings reuse this one as a sub-line.
+		</p>
+		<h4 id="line_style">Line Style</h4>
+		<p>You can create 
+			<em>Style</em> elements inside a line mapping to set the default style of all the cells on this line (note that the actual style can be overridden by the column mappings).
+		</p>
+		<p>A 
+			<em>Foreground Style</em> element can be used to set the font size, font style (e.g. italic) and text color. A 
+			<em>Background Style</em> can be used to set the background color. Both are optional.
+		</p>
+		<p>You can also specify 
+			<em>Conditional styles</em> for the foreground. Each one is a normal foreground style wrapped in a predicate expression (evaluated in the context of the line&#8217;s semantic element). If conditional styles are specified, their conditions are tested in order, and the first one which matches is used. If no conditional style is defined, the 
+			<em>Foreground Style</em> (or the default) is applied.
+		</p>
+		<h4 id="line_tools">Line Tools</h4>
+		<p>There are two kinds of tools which can be created inside line mappings (and apply to all instances of that mapping).</p>
+		<ul>
+			<li>
+				<em>Create Line Tool</em> are used to create a new lines. A mapping can contain several such tools. They appear in the context menu of the instances of the mapping, if the (optional) 
+				<em>Precondition</em> of the tool holds for the instance&#8217;s target. A creation tool must specify what kind of 
+				<em>Mapping</em> it will create. The actual behavior of the creation tool is defined in the tool&#8217;s body, using all the standard model operations.
+			</li>
+			<li>
+				<em>Delete Line Tool</em>, used to delete elements. If a line mapping does not define explicitly a deletion tool, the default behavior of the 
+				<em>Delete line</em> operation is to remove the line&#8217;s semantic 
+				<em>target</em> and all 
+				<em>associated elements</em> from the semantic model. If you want a specific behavior, you must create a 
+				<em>Delete Line Tool</em> explicitly and describe the behavior in the tool&#8217;s body. If you want to prevent the deletion of an element, you must create a 
+				<em>Delete Line Tool</em> and set a 
+				<em>Precondition</em> to return 
+				<code>false</code> for the elements which should not be deleted.
+			</li>
+		</ul>
+		<h3 id="feature_column_mapping">Feature Column Mappings</h3>
+		<p>The columns which will appear in an edition table are defined by the 
+			<em>Feature Column Mapping</em> elements inside the 
+			<em>Table Description</em> element. They are named 
+			<em>Feature Column Mappings</em> because they normally represent a property (maybe computed) of the elements which are represented by the table&#8217;s lines, and also to distinguish them from the kind of columns which appear in 
+			<a href="Tables.html#cross_tables">cross tables</a>. 
+		</p>
+		<p>A 
+			<em>Feature Column Mapping</em> is defined by its 
+			<em>Feature Name</em>, which should normally be the name of a valid feature (attribute or reference) of the element which appear in the tables' lines. If a line represents a semantic element 
+			<em>S1</em> but you want on some column to show a property of an element reachable from 
+			<em>S1</em> instead of 
+			<em>S1</em> itself, you can use the 
+			<em>Feature Parent Expression</em> (
+			<em>Advanced</em> category), which is evaluated in the context of 
+			<em>S1</em> and should return an element 
+			<em>S2</em>. 
+			<em>S2</em> will be considered the 
+			<em>target</em> element of the cell at this intersection instead of 
+			<em>S1</em>.
+		</p>
+		<p>You can associate more semantic elements to the mapping using the 
+			<em>Associated elements expression</em> in the 
+			<em>Advanced</em> category. The expression will be evaluated in the context of the target semantic element of the cell.
+		</p>
+		<p>The 
+			<em>Label Expression</em> is used to compute the text to show in each cell. It is evaluated for each cell in the context of its target semantic element.
+		</p>
+		<p>In tables, the contents of the cell is editable by default. Even with no direct edit tool specified, Sirius will try to interpret the text entered by the user according to the type of the feature the column represents (as defined by the 
+			<em>Feature Name</em>. For example if a column represents a boolean attribute, Sirius will correctly interpret the strings 
+			<code>"true"</code> and 
+			<code>"false"</code> and set the value accordingly when the user edits a cell. You can disable this behavior by giving a 
+			<em>Can Edit</em> expression, which is evaluated in the context of the semantic element of each individual cell. It should return 
+			<code>false</code> if that cell should not be editable.
+		</p>
+		<p>Finally, the 
+			<em>Header Label Expression</em> is used to compute the header of the column itself, and is evaluated in the context of the table&#8217;s target semantic element, and the 
+			<em>Initial width</em>, if set to a non-zero value, is used as the initial width of the column.
+		</p>
+		<h4 id="column_styles">Column Styles</h4>
+		<p>Columns can contain style definition which, if present, override the styles which may be present in the line mappings for the cells of this column. The style definition elements, including support for conditional styles, is the same as for style associated to line mappings. Refer to 
+			<a href="Tables.html#line_style">the corresponding section</a> for more details.
+		</p>
+		<h4 id="column_tools">Column Tools</h4>
+		<p>Column can currently only define a 
+			<em>Label edit</em> tool, which will apply to all the cells of the column. It works like all edit The 
+			<em>Edit Mask</em> element (contained inside the tool) is used to parse the new label&#8217;s value as entered by the user, and to select part of this label as input variables to the editing action&#8217;s body. The mask can contain substrings of the form 
+			<code>{N}</code> where 
+			<em>N</em> is a number. The parts of the new label&#8217;s value which correspond to these substring will be available as variables named <code>argN</code>. For example, with an edit mask of <code>{0}:{1}</code> and an input string entered by the user of <code>attr : EString</code>, the tool&#8217;s body would be executed with variables <code>arg0</code> set to <code>attr&#9251;</code> and <code>arg1</code> set to <code>&#9251;EString</code>.
+		</p>
+		<h2 id="cross_tables">Cross Tables</h2>
+		<p>
+			<em>Cross Tables</em> are slightly different from edition tables. They are optimized to represent relationship between elements in a matrix-like way. Both lines and columns represent elements, and each call at an intersection if a certain relationship exists between them. Cross tables also support sub-lines, but not sub-columns. However provided the right tools are specified, users can create and/or delete columns in addition to lines.
+		</p>
+		<p>Cross tables are specified using a 
+			<em>Cross Table Description</em> element, which works exactly like 
+			<a href="Tables.html#edition_tables">
+				<em>Edition Table Description</em>
+			</a> elements. The differences appear in the type of elements they can contain.
+		</p>
+		<h3 id="cross_table_tools">Table Tools</h3>
+		<p>Cross tables can contain the same kinds of tools as edition tables (see 
+			<a href="Tables.html#table_tools">the corresponding section</a> for details). In addition, they can contain 
+			<em>Create Column Tools</em>, which behave exactly like 
+			<em>Create Line</em> tools, except that they apply to 
+			<a href="Tables.html#element_column_mapping">
+				<em>Element Column Mappings</em>
+			</a> (see below) and are used to create new columns in the table.
+		</p>
+		<h3 id="element_column_mapping">Element Column Mappings</h3>
+		<p>In cross tables, columns represent elements instead of elements' properties (as is the case for edition tables). The set of columns is defined by one or more 
+			<em>Element Column Mappings</em>. They are almost identical to 
+			<a href="Tables.html#line_mappings">line mappings</a>, except that:
+		</p>
+		<ul>
+			<li>they can not be nested (there are no &#171;sub-columns&#187; like there are sub-lines), and thus can not &#171;reuse&#187; column mappings either;</li>
+			<li>they can have an 
+				<em>Initial width</em> (set in the 
+				<em>Advanced</em> category). 
+			</li>
+		</ul>
+		<p>
+			<em>Element Column Mappings</em> can contain a 
+			<em>Create Column Tool</em> and a 
+			<em>Delete Column Tool</em>, which are specified and behave in a similar way than the 
+			<em>Create Line</em> and 
+			<em>Delete Line</em> 
+			<a href="Tables.html#line_tools">tools for line mappings</a>.
+		</p>
+		<p>They can also contain style definitions (including conditional style), which apply to all the cells in the column (unless overridden by the intersection mapping). For a given cell, the styles defined on the column mapping overrides the styles which are defined on the line mapping (if any).</p>
+		<h3 id="intersection_mapping">Intersection Mappings</h3>
+		<p>The line and element column mappings in a cross table define which lines and columns will be present in the tables, but not the contents of the cells. This is defined by 
+			<em>Intersection Mappings</em>. The 
+			<em>Line Mapping</em> and 
+			<em>Column Mapping</em> properties indicate which cells the mapping describes. The 
+			<em>Label Expression</em>, evaluated in the context of the cell&#8217;s targets semantic element, should return the text to show in the cell, while the 
+			<em>Can Edit</em> expression indicates whether or not the cell&#8217;s value can be edited by end-users.
+		</p>
+		<p>There are two slightly different use cases for intersection mapping, which use different sub-sets of the remaining properties:</p>
+		<ol>
+			<li>Intersections which represent a relation between the element on a line and the element on a column. For example, if both lines and columns represented UML classes, this could be the &#171;super-class&#187; reference between a class and those it inherits from;</li>
+			<li>Intersections which represent a semantic element (instead of just a relation) which is itself related to both the element on the line and the element on a column. To continue with the UML example, this would be used to represent UML Associations, which are full-blown objects representing a relationship between classes.</li>
+		</ol>
+		<p>If you are familiar with it, this is similar to 
+			<em>Relation Based Edges</em> and 
+			<em>Element Based Edges</em> in Sirius diagrams.
+		</p>
+		<p>In the first case (&#171;relation-based intersection&#187;), the semantic element of a cell will the the semantic element of the cell&#8217;s line. To configure such an intersection, you must only set the 
+			<em>Column Finder Expression</em>: from a line&#8217;s semantic target element, it should return the semantic element of the column in which the cell should appear.
+		</p>
+		<p>The second use case (&#171;element-based intersection&#187;) is enabled by setting the 
+			<em>Use Domain Class</em> flag in the 
+			<em>Domain Based</em> category. You must then indicate the 
+			<em>Domain Class</em> of the elements which will be represented by the cells, and the 
+			<em>Semantic Candidates Expression</em>. The expression will be evaluated in the context of the whole table&#8217;s semantic element, and should return all elements (instances of the 
+			<em>Domain Class</em>) which should be represented by cells. These elements will be the semantic target element of the cell. You can use the 
+			<em>Precondition Expression</em> and 
+			<em>Associated elements expression</em> (
+			<em>Advanced</em> category) with the same semantics as for other mappings. Finally, you must set both the 
+			<em>Column Finder Expression</em> (
+			<em>General</em> category) and the 
+			<em>Line Finder Expression</em> (
+			<em>Domain Based</em> category): they will both be evaluated in the context of the cell&#8217;s semantic element, and should return the semantic elements of the column and line at which the intersection should appear. In our example, these would be expressions which, from the 
+			<em>Association</em> element, find the source and target classes of the association.
+		</p>
+		<h4 id="intersection_mapping_style">Intersection Style</h4>
+		<p>An 
+			<em>Intersection Mapping</em> can contain style elements, including conditional styles. If they are present, they override any style set on the corresponding column mapping or line mapping.
+		</p>
+		<h4 id="intersection_mapping_tools">Intersection Tools</h4>
+		<p>Intersection mappings can contain two kinds of tools:</p>
+		<ul>
+			<li>
+				<em>Label Edit</em> tools are standard &#171;direct edit&#187; tools, which allow end-users to edit a cell&#8217;s label. You can specify the actual changes in the model in the tool&#8217;s body.
+			</li>
+			<li>
+				<em>Create Cell Tools</em> are used when the user edits an initially empty cell, where there is no relation (or element relating) the line and column. It is defined like a 
+				<em>Label Edit</em> tool (with an 
+				<em>Edit Mask Variable</em> to obtain the text entered by the user), but instead of editing an existing relation, it should create a relation (e.g. add the class in the column as a super-class to the one on the line) or the element relating the line and column (e.g. create an 
+				<em>Association</em> which links the classes). 
+			</li>
+		</ul>
+	</body>
+</html>

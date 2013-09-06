@@ -19,6 +19,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import com.google.common.collect.Lists;
+
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
@@ -49,11 +51,11 @@ public class FeatureInterpreter extends AbstractInterpreter implements org.eclip
     /** The eClass feature name. */
     public static final String E_CLASS_FEATURE_NAME = "eClass";
 
-    /** The eReferences feature name. */
-    public static final String E_REFERENCES_FEATURE_NAME = "eReferences";
+    /** The eCrossReferences pseudo-feature name. */
+    public static final String E_CROSS_REFERENCES_FEATURE_NAME = "eCrossReferences";
 
     /** The default feature names. */
-    public static final String[] DEFAULT_FEATURE_NAMES = { E_CONTAINER_FEATURE_NAME, E_CONTENTS_FEATURE_NAME, E_ALL_CONTENTS_FEATURE_NAME, E_CLASS_FEATURE_NAME, E_REFERENCES_FEATURE_NAME };
+    public static final String[] DEFAULT_FEATURE_NAMES = { E_CONTAINER_FEATURE_NAME, E_CONTENTS_FEATURE_NAME, E_ALL_CONTENTS_FEATURE_NAME, E_CLASS_FEATURE_NAME, E_CROSS_REFERENCES_FEATURE_NAME };
 
     /**
      * {@inheritDoc}
@@ -76,23 +78,21 @@ public class FeatureInterpreter extends AbstractInterpreter implements org.eclip
         Object result = null;
         if (target != null && expression != null && expression.startsWith(PREFIX)) {
             String featureName = expression.trim().substring(PREFIX.length());
-            if (E_CONTAINER_FEATURE_NAME.equals(featureName)) {
+            EStructuralFeature feature = target.eClass().getEStructuralFeature(featureName);
+            if (feature != null) {
+                result = target.eGet(feature);
+            } else if (E_CONTAINER_FEATURE_NAME.equals(featureName)) {
                 result = target.eContainer();
             } else if (E_CONTENTS_FEATURE_NAME.equals(featureName)) {
                 result = target.eContents();
             } else if (E_ALL_CONTENTS_FEATURE_NAME.equals(featureName)) {
-                result = target.eAllContents();
+                result = Lists.newArrayList(target.eAllContents());
             } else if (E_CLASS_FEATURE_NAME.equals(featureName)) {
                 result = target.eClass();
-            } else if (E_REFERENCES_FEATURE_NAME.equals(featureName)) {
+            } else if (E_CROSS_REFERENCES_FEATURE_NAME.equals(featureName)) {
                 result = target.eCrossReferences();
             } else {
-                EStructuralFeature feature = target.eClass().getEStructuralFeature(featureName);
-                if (feature != null) {
-                    result = target.eGet(feature);
-                } else {
-                    throw new EvaluationException("Unknown feature name " + featureName + ".");
-                }
+                throw new EvaluationException("Unknown feature name " + featureName + ".");
             }
         }
         return result;
@@ -153,7 +153,7 @@ public class FeatureInterpreter extends AbstractInterpreter implements org.eclip
         if (!targetTypes.isEmpty()) {
             String targetType = targetTypes.iterator().next();
             Collection<EPackage> availableEPackages = interpreterContext.getAvailableEPackages();
-            if (targetType.contains(SEPARATOR)) {
+            if (targetType != null && targetType.contains(SEPARATOR)) {
                 // If the current targetType has a EPackage prefix then look for
                 // the corresponding EPackage
                 for (EPackage availableEPackage : availableEPackages) {

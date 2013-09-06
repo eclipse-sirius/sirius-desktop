@@ -2,15 +2,15 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.diagram.sequence;singleton:=true
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.eclipse.sirius.diagram.sequence,
- org.eclipse.sirius.diagram.sequence.business.internal;x-friends:="org.eclipse.sirius.diagram.sequence.ui,org.eclipse.sirius.tests,org.eclipse.sirius.tests.swtbot",
+ org.eclipse.sirius.diagram.sequence.business.internal;x-friends:="org.eclipse.sirius.diagram.sequence.ui,fr.obeo.dsl.viewpoint.tests,fr.obeo.dsl.viewpoint.tests.swtbot",
  org.eclipse.sirius.diagram.sequence.business.internal.color;x-internal:=true,
- org.eclipse.sirius.diagram.sequence.business.internal.elements;x-friends:="org.eclipse.sirius.diagram.sequence.ui,org.eclipse.sirius.tests,org.eclipse.sirius.tests.swtbot",
- org.eclipse.sirius.diagram.sequence.business.internal.layout;x-friends:="org.eclipse.sirius.diagram.sequence.ui,org.eclipse.sirius.tests,org.eclipse.sirius.tests.swtbot",
+ org.eclipse.sirius.diagram.sequence.business.internal.elements;x-friends:="org.eclipse.sirius.diagram.sequence.ui,fr.obeo.dsl.viewpoint.tests,fr.obeo.dsl.viewpoint.tests.swtbot",
+ org.eclipse.sirius.diagram.sequence.business.internal.layout;x-friends:="org.eclipse.sirius.diagram.sequence.ui,fr.obeo.dsl.viewpoint.tests,fr.obeo.dsl.viewpoint.tests.swtbot",
  org.eclipse.sirius.diagram.sequence.business.internal.layout.flag;x-internal:=true,
  org.eclipse.sirius.diagram.sequence.business.internal.layout.horizontal;x-internal:=true,
  org.eclipse.sirius.diagram.sequence.business.internal.layout.observation;x-internal:=true,
@@ -19,12 +19,12 @@ Export-Package: org.eclipse.sirius.diagram.sequence,
  org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description;x-internal:=true,
  org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.tool;x-internal:=true,
  org.eclipse.sirius.diagram.sequence.business.internal.metamodel.ordering;x-friends:="org.eclipse.sirius.diagram.sequence.ui",
- org.eclipse.sirius.diagram.sequence.business.internal.operation;x-friends:="org.eclipse.sirius.diagram.sequence.ui,org.eclipse.sirius.tests,org.eclipse.sirius.tests.swtbot",
- org.eclipse.sirius.diagram.sequence.business.internal.ordering;x-friends:="org.eclipse.sirius.diagram.sequence.ui,org.eclipse.sirius.tests,org.eclipse.sirius.tests.swtbot",
- org.eclipse.sirius.diagram.sequence.business.internal.query;x-friends:="org.eclipse.sirius.diagram.sequence.ui,org.eclipse.sirius.tests,org.eclipse.sirius.tests.swtbot",
+ org.eclipse.sirius.diagram.sequence.business.internal.operation;x-friends:="org.eclipse.sirius.diagram.sequence.ui,fr.obeo.dsl.viewpoint.tests,fr.obeo.dsl.viewpoint.tests.swtbot",
+ org.eclipse.sirius.diagram.sequence.business.internal.ordering;x-friends:="org.eclipse.sirius.diagram.sequence.ui,fr.obeo.dsl.viewpoint.tests,fr.obeo.dsl.viewpoint.tests.swtbot",
+ org.eclipse.sirius.diagram.sequence.business.internal.query;x-friends:="org.eclipse.sirius.diagram.sequence.ui,fr.obeo.dsl.viewpoint.tests,fr.obeo.dsl.viewpoint.tests.swtbot",
  org.eclipse.sirius.diagram.sequence.business.internal.refresh;x-friends:="org.eclipse.sirius.diagram.sequence.ui",
  org.eclipse.sirius.diagram.sequence.business.internal.tool;x-friends:="org.eclipse.sirius.diagram.sequence.ui",
- org.eclipse.sirius.diagram.sequence.business.internal.util;x-friends:="org.eclipse.sirius.diagram.sequence.ui,org.eclipse.sirius.tests,org.eclipse.sirius.tests.swtbot",
+ org.eclipse.sirius.diagram.sequence.business.internal.util;x-friends:="org.eclipse.sirius.diagram.sequence.ui,fr.obeo.dsl.viewpoint.tests,fr.obeo.dsl.viewpoint.tests.swtbot",
  org.eclipse.sirius.diagram.sequence.description,
  org.eclipse.sirius.diagram.sequence.description.impl,
  org.eclipse.sirius.diagram.sequence.description.tool,
@@ -47,6 +47,6 @@ Require-Bundle: org.eclipse.sirius.common,
  org.eclipse.gmf.runtime.notation,
  org.eclipse.gmf.runtime.draw2d.ui;bundle-version="1.0.101",
  org.eclipse.draw2d,
- org.eclipse.sirius.diagram;bundle-version="3.1.0";visibility:=reexport,
+ org.eclipse.sirius.diagram;bundle-version="0.1.0";visibility:=reexport,
  org.eclipse.emf.transaction;bundle-version="1.1.2"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

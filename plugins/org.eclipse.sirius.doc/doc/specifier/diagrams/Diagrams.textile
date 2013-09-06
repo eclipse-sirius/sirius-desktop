@@ -1,0 +1,649 @@
+h1. Specifying Diagram Editors
+
+{toc:style=disc|minLevel=2|maxLevel=3}
+
+h2(#introduction). Introduction
+
+Sirius supports the definition of sophisticated graphical modelers, with support for many features like filters, layers, drag'n'drop, complex styling etc.
+
+Diagrams support several kinds of graphical constructs: simple nodes, containers (which can contain other nodes or containers), lists, bordered nodes (nodes which appear on the side of other elements, typically to represent ports), and edges between all of these. Each kind of element supports a rich set of possible styles (shape and color).
+
+As the specifier of Sirius diagrams, you have total control on how the elements in your semantic models are _represented_ using the constructs provided by Sirius, and how they _behave_. In particular, this means the structure of the graphical elements shown on a diagram (which element contains which, how they are connected) does not have to match the "physical" structure of the semantic model being represented. The two are completely de-correlated, and you can choose to represent your semantic models in ways which make sense from various point of views.
+
+h2(#diagram_description). Diagram Description
+
+Diagrams are configured by creating a _Diagram Description_ element (inside a _Viewpoint_) and its sub-elements (which describe the layers, graphical elements and tools).
+
+Like many elements inside a "_VSM_":../../Glossary.html#VSM, _Diagram Description_ have a mandatory _Id_, which should be unique and stable across revisions of the diagram specification, and an optional _Label_ which is used for presentation purpose (i.e. it is the name visible to end-users). If no _Label_ is specified, the _Id_ is used for presentation. Note that changing the _Id_ will break existing diagrams which were created using the previous version; changing the _Label_ is safe.
+
+The mandatory _Domain Class_ attribute is the type of semantic element which are represented by the diagram. In the _Model Explorer_, end-users will be able to create new instances of this diagram on semantic elements of this type (assuming the corresponding viewpoint is enabled in the _Modeling Project_). The syntax for the domain class name can be the basic name, like @Package@, a qualified name using name of the EMF EPackage which defines the type, like @uml.Package@, or a fully qualified URI like @http://www.eclipse.org/uml2/3.0.0/UML#//Package@.
+
+By default, new diagrams can be created on _any_ instance of the _Domain Class_. You can use the _Precondition Expression_ to change this. If such an expression is specified, it will be evaluated in the context of the semantic element the user has selected, and only if the expression returns @true@ will the user be able to create a new diagram on this element.
+
+The default title for newly created diagram can be specified using the _Title expression_ (_Advanced_ category), which is evaluated in the context of the semantic element on which the diagram is created, and should return a string. If the expression is not specified, the default title is the label of the diagram description (of its _Id_ if no _Label_ is set) prefixed with the string @"new "@ (e.g. @new Package Contents@).
+
+It is recommended that the _Diagram Description_ be explicitly associated with the meta-model(s) of the semantic elements it will represent. You can add referenced meta-models from different sources in the _Metamodels_ property section of the _Diagram Description_. Sirius will work even without this association, but setting it explicitly will give you better feedback when validating your "_VSM_":../../Glossary.html#VSM.
+
+The _Initialization_ and _Show on startup_ flags control whether diagram instances are created and/or opened automatically without user intervention. If _Initialization_ is set, then when the viewpoint which contains this diagram description is enabled, instances of this diagram description will be automatically created on all compatible semantic elements. If _Show on startup_ in set, then when a modeling project is opened which contains instances of this diagram description, they will be opened: if only one such representation exist, it will be opened automatically; if there are more than one, a dialog box will appear to allow the user to select which one(s) to open. *WARNING*: Then _Initialization_ flag can have a negative impact on performance: if it is set on a given diagram, then when the user enables the viewpoint which defines this diagram Sirius will attempt to find all possible elements in the semantic model on which it may be possible to create such a diagram. This can take a long time on big semantic models.
+
+If _Enable Popup Bars_ flag is set, then when the end-user leaves the mouse pointer still on a diagram (or diagram element) for a small time, a _popup bar_ will appear with shortcut buttons to all the tools which can be applied in this context. It can be useful to create elements without going to the palette to select tools, but it can also become visually distracting if too many tools are available in the popup bar.
+
+The _Reused Mappings_ and _Reused Tools_ properties in the _Imports_ category are depreciated. They should not be used for new diagram descriptions. If you have existing diagram descriptions which use these features (or which contained mappings directly inside the _Diagram Description), these should be moved inside the _Default Layer_ of the diagram instead.
+
+The content of the _Diagram Description_ is mostly made of "graphical elements mappings":#graphical_elements, organized in "layers":#layers, and their associated "tools":#tools. In addition, it can also contain "validation rules":#validation, "filters":#filters and "layout configuration":#layout information.
+
+h3(#layout). Layout Configuration
+
+Sirius provides a default algorithm to perform an automatic layout of all the graphical elements on a diagram (excluding "pinned elements":../../user/diagrams/Diagrams.html#diagram_element_pinning ). If the default algorithm does not fit your needs, you can configure some parameters or request for alternate algorithms (currently only one) directly inside the VSM.
+
+The _Composite Layout_ enables one to specify the @padding@ between elements and the @direction@ for the default algorithm.
+
+The _Ordered Tree Layout_ enables one to lay out nodes as an ordered tree. The manner to retrieve children for each node should be specified.
+
+If you need to go beyond that, you can provide your own layout algorithm programmatically (see the "developer documentation":../../developer/Sirius20Developer%20Manual.html for details).
+
+h2(#layers_graphical_elements). Layers and Graphical Elements
+
+This section describes how to specify the graphical elements which should appear on your diagram, and how to organize them.
+
+h3(#layers). Layers
+
+All the graphical elements and tools on a Sirius diagram are part of a _Layer_. Every diagram _must_ have a default layer, which is always enabled, and zero or more _additional layers_ that the end-user can enable or disable following the optional flag value. When a layer is enabled, all the graphical elements and tools it defines are also enabled.
+
+The elements which are defined in different layers can interact and reference themselves. For example, it is possible to define a type of edge (connection) between elements which are defined in different layers; the edges will only be visible if all the concerned layers are enabled: the ones which define the source graphical element, the one for the target graphical element, and the one for the edge itself.
+
+Layers are defined directly inside the _Diagram Description_ element. You must create exactly one _Default Layer_ (whose name does not matter), and as many _Additional Layers_ as you need. 
+* Additional layers have an _Optional_ flag (unset by default) that specify whether the additional layer can be disabled (if true) or not by the end-user.
+* The _Active by default_ flag, if it set (unset by default), the layer will be automatically enabled when the user creates a new diagram of this type. This flag has no effect in the case where the optional flag is unset, the layer become mandatory and cannot be disabled by the end-user.
+
+The _Label_ (or _Id_ if not label is set) of an optional layer is used in the drop-down menu available to users in the diagram's tabbar, from which they can enable or disable them. Mandatory layers are not visible in this menu. The _Layers_ can _contain_ graphical elements and tools definitions (as described below), but they can also _reuse_ tools and mappings (graphical elements definitions) which are defined in other layers using the _Reused Tools_ and _Reused Mappings_ in the _Advanced_ category. If a layer _L1_ reuses elements defined in another layer _L2_, these elements will be enabled whenever _L1_ is enabled, even if _L2_ is not. However if both _L1_ and _L2_ are enabled, the elements are enabled only once (i.e. graphical elements do not appear once for _L1_ and once for _L2_).
+
+h3(#graphical_elements). Graphical Elements and Mappings
+
+This section describes the different kinds of graphical elements supported on Sirius diagrams and the general principle of how they are specified inside the VSM, through the notion of _mapping_.
+
+*Graphical Vocabulary.* Sirius diagrams can contain several different types of graphical elements, which are described inside the _Layer_ elements. These are:
+* _Nodes_ for elements which can not contain other elements;
+* _Containers_ for elements which can contain other elements, including other containers;
+* _List containers_ (or just _Lists_), which are a special kind of containers. They present their direct sub-elements as a vertical list of text items (with an optional icon). List containers are not recursive.
+* _Bordered nodes_ are like normal nodes, but instead of appearing directly on the diagram or inside a container, they are placed on the border of another element (node or container). This is useful to represent things like communication ports.
+* Finally, _Edges_ are connections between a source and target element. The source and target element can be any of the other kind of graphical element mentioned above. It is also possible for the source or the target of an edge (but not both) to be another edge.
+
+table(table table-striped table-condensed).
+|!images/styles/Graphical_Vocabulary_Node.png!|!images/styles/Graphical_Vocabulary_Container.png!|!images/styles/Graphical_Vocabulary_List_Container.png!|!images/styles/Graphical_Vocabulary_Bordered_Node.png!|
+|_. Nodes|_. Containers|_. List Containers|_. BorderedNodes|
+
+p(#mappings). *Mappings.* All these graphical elements are described using the concept of a _mapping_ (for example a _Node Mapping_ to describe a kind of nodes). A mapping is an element defined inside the VSM which identifies a sub-set of the elements in the semantic model and associates a graphical representation to them: it _maps_ semantic elements onto some graphical notation. At runtime, each active mapping  (i.e. defined in a layer which is enabled) will produce zero or more graphical elements on the diagram, depending on how many semantic elements currently match the mapping's definition. In the default functioning mode, whenever the semantic model changes Sirius will automatically re-compute which graphical elements should appear on the diagram according to the active mappings, and create or remove the necessary elements.
+
+You can think of the set of mappings defined in a diagram as a description of how to _project_ the concepts in your semantic model onto the graphical language provided by Sirius (nodes, containers, edges...) according to the _viewpoint_ you want the diagram to represent.
+
+*Mapping Definition.* The mapping descriptions for all the different types of graphical elements share the same common principles:
+* Some of the elements of the semantic model are selected, using a combination of mapping configuration attributes (see below). These elements are called _targets_, and each one has a single graphical diagram element of this type representing it. 
+* Each of these diagram elements is also associated to a set of _semantic elements_: model elements which are logically grouped together and include all the semantically relevant information for the node. By default, the only semantic element of a node is its target, but this can be overridden. This is useful if the meta-model is fine-grained and describes a single logical entity with a group of inter-related model elements: the graphical element will be represent a single _target_ (the main semantic element), but you can also associate to it the other semantically related elements.
+* The graphical aspect of the mapping is defined by a _style_. Sirius provides a rich set of possible styles, which are described later in this document.
+* Finally, the behavior of the graphical element (how to create it, how it reacts to edition of its label, to drag and drop operations, etc.) are defined by _tools_ associated to the mapping.
+
+Each mapping is defined in a _context_ in the VSM: either directly inside a layer or inside another mapping. At runtime, the corresponding _context element_ would be (respectively) either the target semantic element of the diagram itself, or the target of an instance of the parent mapping. This context element is used as a starting point to determine which instances of a mapping should be created on the diagram:
+# First, the _Semantic Candidates Expression_ of the mapping is evaluated, starting from the context element. It should return a set (possibly empty) of elements in the semantic model.
+# This list of candidates is then filtered using the _Domain Class_ specified in the mapping: only the candidates which are instance of the specified class are retained.
+# Finally, the optional _Precondition Expression_ of the mapping (in the _Advanced_ category) is evaluated, once for each of the remaining candidate. It should return a boolean value. Only the candidates for which the predicate returns a true value are kept and will actually produce a graphical element on the diagram, with that element as its semantic target.
+
+This order of evaluation should be kept in mind when specifying diagrams. In particular, to avoid performance issues you should:
+* Limit the number of model elements with _Semantic Candidates Expression_.
+* Avoid testing instances type in _Semantic Candidates Expression_ (this will be done anyway when filtering the _Domain Class_).
+* Use the most specific type in _Domain Class_.
+* Avoid navigation and long computations in _Precondition Expression_.
+
+*Associated Semantic Elements.* To associate more semantic elements to a graphical element than just its semantic target, you can specify the _Associated Elements Expression_ (in the _Advanced_ category). It will be evaluated for each instance of the mapping in the context of the semantic target, and should return a set of semantic elements. These will be visible to the end-user in the _Properties_ view when the graphical element is selected, and any change on one of these elements will trigger a refresh of the graphical element. This means that if you use properties of other elements than the target to compute an element's label or conditional style (for example), you should make sure that these other elements appear in the _Associated Elements_, otherwise the label or style will not be properly refreshed when the elements are modified.
+
+*Synchronization.* All mappings have a _Synchronization_ parameter (in the _Advanced_ category) which controls when instances of the mapping are created on the diagram. The possible values are:
+* _Synchronized_: It means that when Sirius refreshes the diagram (either automatically or due to an explicit _Refresh_ action from the user), it will ensure that exactly one instance of the mapping exists on the diagram for each compatible semantic target element (as defined by the mapping's properties). In this mode, if a new semantic element compatible with the mapping is created (even by an action on another representation or a change in the semantic model's file), the corresponding graphical element will automatically appear on the diagram. Symmetrically, if the semantic element of one of the mapping's instances is deleted from the model, the graphical element (view) will disappear automatically.
+* _Not Synchronized_: In this mode, the graphical instances of the mapping are only created and deleted when explicitly requested by a tool (using the _Create View_ and _Delete View_ operations). It means that if a new semantic element compatible with the mapping is created, the corresponding view will not appear on the diagram by default. Symmetrically, if the semantic element of one of the mapping's instances is deleted from the model, the graphical element (view) will not disappear automatically, but a red cross will appear on it to indicate it represents an element which does not exist anymore. An explicit _Refresh_ operation removes these obsolete graphical elements, but will not create new ones. This mode is useful if you want the user to decide which parts of a big semantic model he wants to see: set the mapping to _Unsynchronized_ and create specific tools to allow the user to reveal progressively the parts of the model which interest him.
+* _Unsynchronizable_: This is the default. This mode is similar to _Synchronized_ be default, but hives some control to end-users: if they put the whole diagram in _Unsynchronized mode_ (using the context menu on the diagram), all the diagram's mappings which are _Unsynchronizable_ will behave as if they were _Unsynchronized_. They will go back to a _Synchronized_ behavior if the user disables the _Unsynchronized_ mode.
+
+*Mapping Imports.* A mapping import is a feature which can be used to _specialize_ (modify) a mapping defined somewhere else (in an other layer, an other graphical representation or an other viewpoint). It is available for Nodes, Containers and Edges. Although it can be used in normal diagram descriptions, its main use case is when defining "diagram extensions":#diagram_extension, so mapping imports are describe in "their own section":#mapping_imports.
+
+h3(#nodes). Nodes
+
+A _Node Mapping_ is used to represent model elements graphically as atomic elements, i.e. elements which can not contain other elements. _Node Mappings_ can appear directly inside a layer description, in which case the node will appear directly on the diagram, or inside another element (for example a container). A node mapping which is defined inside another element can be either a _sub-node mapping_, in which case it will appear inside its parent (which must be a container), or a _bordered node mapping_, in which case it will appear on the border of its parent (which may be a container or a node, including another bordered node). Bordered node mappings are useful to represent ports.
+
+table(table table-striped table-condensed).
+|!images/styles/Graphical_Vocabulary_Node.png!|!images/styles/Graphical_Vocabulary_Container.png!|!images/styles/Graphical_Vocabulary_List_Container.png!|!images/styles/Graphical_Vocabulary_Bordered_Node.png!|
+|_. Nodes on a diagram|_. Nodes in container|_. Nodes in containers displayed as lists|_. Nodes on borders|
+
+The definition of a node mapping follows the general rules described "above":#mappings to determine the semantic elements for which a node should be created. All the properties available in the _Behavior_ category of the _Node Mapping_ configuration allow you to see all the various tools, defined elsewhere in the VSM, which apply to this mapping.
+
+A node can not contain sub-nodes, but it can have _bordered nodes_, which are defined inside the node mapping (_New Diagram Element > Bordered Node_). You can also _reuse_ node mappings defined elsewhere in the VSM using the _Reused Bordered Node Mappings_ property in the _Import_ category. The effect at runtime is the same as if you had created an equivalent _Bordered Node Mapping_ inside the node mapping.
+
+<div style="display: none">
+*TODO* Bordered Node Import
+</div>
+
+h4(#node_styles). Node Styles
+
+See the "styles":#styling section for a general presentation of how styles are defined, including conditional styles. This section only presents the aspects which are specific to nodes.
+
+For nodes you can use the following styles:
+* _Square_, _Lozenge_, _Ellipse_ to display basic shapes.
+* _Basic Shape_ to represent nodes with predefined shapes provided with the runtime.
+* _Note_ to represent nodes as a square with one folded corner.
+* _Gauge_ to display gauges, for instance progress indicators.
+* _Image_ to represent nodes with an image (from the workspace or from inside a plug-in).
+* _Custom Style_ can be used when none of the predefined styles correspond to your need. Custom style are implemented in Java and use the @org.eclipse.sirius.diagram.styleConfigurationProvider@ extension point.
+
+table(table table-striped table-condensed).
+|!images/styles/Node_Style_Basic_Square.png!|!images/styles/Node_Style_Basic_Stroke.png!|!images/styles/Node_Style_Basic_Triangle.png!|!images/styles/Node_Style_Basic_Dot.png!|!images/styles/Node_Style_Basic_Ring.png!|
+|_. Basic Shape Square|_. Basic Shape Stroke|_. Basic Shape Triangle|_. Basic Shape Dot|_. Basic Shape Ring|
+table(table table-striped table-condensed).
+|!images/styles/Node_Style_Square.png!|!images/styles/Node_Style_Lozenge.png!|!images/styles/Node_Style_Ellipse.png!|!images/styles/Node_Style_Note.png!|!images/styles/Node_Style_Gauge.png!|!images/styles/Node_Style_Image.png!|!images/styles/Node_Style_Custom.png!|
+|_. Square|_. Lozenge|_. Ellipse|_. Note|_. Gauge|_. Image|_. Custom|
+
+Most of the properties used to configure the various styles are self-explanatory. See the "styles":#styling section below for a general discussion. You can also refer to the tool-tips available directly in the editor on the "question mark" icon of each property.
+
+*Gauge Style.* The gauge style is more complex than the others and deserves a specific description. It is used to represent nodes as a (set of) gauges, which can be used for example as progress indicators.
+
+	!images/styles/mini_Node_Gauge_Vertical.jpg!
+	!images/styles/mini_Node_Gauge_Horizontal.jpg!
+	!images/styles/mini_Node_Gauge_Square.jpg!
+
+In addition to the standard style properties for the label, size and colors, gauges have an _Alignment_ attribute (in the _Advanced_ category) which indicates how the individual gauges are layed out:
+* @VERTICAL@ The gauges are aligned vertically, from top to bottom.
+* @HORIZONTAL@ The gauges are aligned horizontally, from left to right.
+* @SQUARE@ The gauges are aligned in a square, which may not be complete. Gauges are added from left to right in lines, and lines added from top to bottom.
+
+You can specify the gauge composite's border color using a color sub-element,
+which can be any of:
+
+Gauge composites need one or more *Gauge Section*, which represent an individual gauge. Each _Gauge Section_ has a _Label, a _Min_ and a _Max Value Expression_, and a _Value Expression_. The size of the gauge section depends on where the _Value Expression_ sits between the _Min_ (the section is invisible) and the _Max_ (the section occupies all the available space). You can specify each gauge section's foreground and background colors using color sub-elements. "Interpolated colors":../general/Colors.html#interpolated_colors are particularly suited for gauge sections.
+
+h4(#node_tools). Node Tools
+
+See the "tools":#tools section for a general presentation of how tools are defined. This section only presents tools which are specific to nodes.
+
+*Node Creation.* The only type of tool which is really specific to node mappings is the _Node Creation Tool_, used to create new nodes. These work like all the other creation tools. You simply specify the _Node Mappings_ that this tool can create and specify the behavior of the tool inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
+
+By default, your node creation tools will be available on all the graphical elements which can contain an instance of the _Node Mappings_ you specified in the tool, and users will see a "forbidden" sign if they try to apply the tool on an incompatible type of element. You can specify a _Precondition_ to forbid the application of the tool on some of the elements where it would normally be allowed. The precondition is evaluated in the context of the _view element_ on which the user has put the mouse. If it returns a false value, the tool's application will be forbidden. Symmetrically, you can specify _Extra Mappings_ (_Advanced_ section) on which the tool should be applicable, even though these mapping can not contain nodes of the type you will create. In this case, the node created by the tool will actually appear elsewhere on the diagram, but it can often help usability to allow users to click on related elements.
+
+h3(#containers). Containers
+
+A _Container Mapping_ is used to represent model elements graphically as containers, which can contain sub-elements (including other containers, recursively). A container can also have _bordered nodes_, which are like normal nodes but appear on the border of the container, for example to represent ports. _Container Mappings_ can appear directly inside a layer description, in which case the container will appear directly on the diagram, or inside another container mapping. 
+
+!images/styles/Containers_on_diagram_or_another_container.png!
+
+The definition of a container mapping follows the general rules described "above":#mappings to determine the semantic elements for which a container should be created. All the properties available in the _Behavior_ category of the _Container Mapping_ configuration allow you to see all the various tools, defined elsewhere in the VSM, which apply to this mapping.
+
+A container can contain _sub-containers_, _sub-nodes_, and _bordered nodes_, all of which are defined inside the container mapping (_New Diagram Element > Container_, _Sub-node_ and _Bordered Node_, respectively). You can also _reuse_ node and container mappings defined elsewhere in the VSM in any of these three roles using the corresponding _Reused X Mappings_ properties in the _Import_ category. The effect at runtime is the same as if you had created an equivalent mappings inside the container mapping.
+
+<div style="display: none">
+*TODO* Bordered Node Import, Sub-node import and container import.
+</div>
+
+p(#list_containers). *List Containers* You can enable a special "list mode" for containers by setting the _Children Presentation_ attribute to _List_ in the mapping configuration. List containers are represented in a special way, in which only the labels of their direct sub-elements (nodes or containers) are taken into account and presented in a vertical list. When represented as a list, only some of the style attributes (label text, tool-tip, colors) of the container are taken into account. For the list items themselves, only the label text is used.
+
+!images/styles/List_container_with_items.png!
+
+h4(#container_styles). Container Styles
+
+See the "styles":#styling section for a general presentation of how styles are defined, including conditional styles. This section only presents the aspects which are specific to containers.
+
+For containers you can use the following styles:
+* _Gradient_ to display containers as rectangles filled with a gradient between two colors (or a flat rectangle if both colors in the gradient are the same).
+* _Parallelogram_ to represent containers as a parallelogram.
+* _Image_ to use a custom image (from the workspace or from inside a plug-in).
+
+table(table table-striped table-condensed).
+|!images/styles/Container_Style_Gradient.png!|!images/styles/Container_Style_Parallelogram.png!|!images/styles/Container_Style_Image.png!|
+|_. Gradient|_. Parallelogram|_. Image|
+
+Most of the properties used to configure the various styles are self-explanatory. See the "styles":#styling section below for a general discussion. You can also refer to the tool-tips available directly in the editor on the "question mark" icon of each property.
+
+h4(#container_tools). Container Tools
+
+See the "tools":#tools section for a general presentation of how tools are defined. This section only presents tools which are specific to containers.
+
+*Container Creation.* These tools are used to create new containers. They work like all the other creation tools. You simply specify the _Container Mappings_ that this tool can create and specify the behavior of the tool inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
+
+By default, your container creation tools will be available on all the graphical elements which can contain an instance of the _Container Mappings_ you specified in the tool, and users will see a "forbidden" sign if they try to apply the tool on an incompatible type of element. You can specify a _Precondition_ to forbid the application of the tool on some of the elements where it would normally be allowed. The precondition is evaluated in the context of the _view element_ on which the user has put the mouse. If it returns a false value, the tool's application will be forbidden. Symmetrically, you can specify _Extra Mappings_ (_Advanced_ section) on which the tool should be applicable, even though these mapping can not contain containers of the type you will create. In this case, the container created by the tool will actually appear elsewhere on the diagram, but it can often help usability to allow users to click on related elements.
+
+*Container Drop Description* You can associate a _Container Drop Description_ to your container mappings to react to drag'n'drop operations into the container. The _Drag Source_ property indicates if you want to react to graphical elements from a diagram, to semantic model elements dragged from another Eclipse view (for example from the _Model Explorer_), or both. The _Containers_ property indicates for which drop kind of container mappings this tool applies. The _Mappings_ property indicates what kinds of graphical elements can be dropped into the specified containers, when the _Drag Source_ is _Diagram_ or _Both_. The body of the tool (the "model operations":../general/Model_Operations.html ) specify how to react when an element is dropped into a container.
+
+__WARNING__: if you choose _Model_ or _Both_ as source, your tool must be prepared to accept any type of source element which can be present in the _Model Explorer_ view, including elements which have no relation to the source mappings you specified for the tool. Use a precondition to check the nature of the element being dragged (available through the @element@ variable) to disable the tool source elements your tool does not support.
+
+When drag and dropping workspace resources (files, folders...) from an Eclipse view, some conversions are performed to ease the operations specifications. Depending of the dropped resource, the @element@ variable content in the root operation will be different:
+* Loadable model:  the model will be loaded and added to the semantic resources of the session. The root content of the model will be set as @element@ variable value.
+* File: a @DFile@ instance will be created and set as @element@ variable value.
+* Folder: a @DFolder@ instance will be created and set as @element@ variable value. For each resource contained by the folder, a @DResource@ instance will be created.
+* Project: a @DProject@ instance will be created and set as @element@ variable value. For each resource contained by the folder, a @DResource@ instance will be created.
+
+@DFile@, @DFolder@, @DProject@ are instances of @DResource@. A @DResource@ instance has a *name* and a *path*. The path is the absolute location of the resource.
+@DFolder@, @DProject@ are instances of @DResourceContainer@. A @DResourceContainer@ instance has *members*, which are @DResource@ instances.
+
+h3(#bordered_nodes). Bordered Nodes
+
+Bordered nodes are specified using normal "node mappings":#nodes. They can appear inside node mappings (include other node mappings which are bordered nodes) and container mappings. They can have the same styles and tools associated to them as normal node mappings (although they should generally be kept small to avoid weird graphical effects).
+
+h3(#edges). Edges
+
+Edges are used to define connections between diagram elements. There are two kinds of edges, which are defined using different mappings:
+* _Relation-Based Edges_ are used to represent a relation between model elements such as containment or reference (including computed references). An example in UML would be the inheritance relationship, which is represented by references between a class and its super-classes. Those would be modeled using a relation-based edge.
+* _Domain-Based Edges_ are used when a semantic model element (instead of simply a reference) exists to represent the relation itself. An example in UML would be an association between two classes _A_ and _B_: it is not represented by a reference between _A_ to _B_, but by an explicit _Association_ model element which itself references _A_ and _B_. Such an association would be modeled using a domain-based edge on the _Association_ element.
+
+h4(#relation_based_edges). Relation-Based Edges
+
+To specify a _Relation-Based Edge_, you must fill the _Source Mapping_ and _Target Mapping_ properties. They indicate from what kind of graphical element the edges will start and to what kind of element they go. Both properties can contain several mappings, and some mappings can appear as both source and targets. Note that it is possible to have edges whose source _or_ target is another edge, but not both.
+
+You must also specify the _Target Finder Expression_. It will be evaluated in the context of the semantic target element of a potential source (as defined by _Source Mappings_) and should return the semantic element(s) of the targets elements to connect with the source. The expression can return zero elements to indicate that  no edge starting from this element.
+
+An edge (instance of this mapping) will appear between each pair of graphical elements _E1_ and _E2_ on the diagram where:
+* _E1_'s mapping is in the _Source Mappings_.
+* _E2_'s mapping is in the _Target Mappings_.
+* The (optional) _Precondition Expression_ (_Advanced_ category) returns true for the semantic element of _E1_.
+* The semantic element of _E2_ appears in the result of evaluating the _Target Finder Expression_ in the context of _E1_'s semantic element.
+
+Because a relation-based edge does not represent an actual semantic element but a relation between elements, its own semantic element is the same as its source's.
+
+*Paths.* Edges only exist between one source and one target element. Sometimes such an edge is just one segment of a more complex _path_ which traverses many elements. You can highlight such a complex path using the properties in the _Path_ category. _Path Mappings_ should be the list of mappings considered by the path, and the _Path Expression_ should return the list of semantic elements the edge path should go through, in the order the should be traversed.
+
+h4(#element_based_edges). Element-Based Edges
+
+_Element-Based Edges_ are configured much like nodes and containers. You must specify the _Domain Class_, _Semantic Candidate Expression_ and (optionally) _Precondition Expression_ to select the semantic elements the edges will represent. In addition, you must specify:
+* the _Source Mapping_ and _Target Mapping_ properties, which indicates from what kind of graphical element the edges will start and to what kind of element they go. Both properties can contain several mappings, and some mappings can appear as both source and targets. Note that it is possible to have edges whose source _or_ target is another edge, but not both.
+* the _Source Finder Expression_ and _Target Finder Expression_, which will be evaluated in the context of the semantic element of the edge, should return the actual elements that the edge connects.
+
+An edge (instance of this mapping) will appear between each pair of graphical elements _E1_ and _E2_ on the diagram where:
+* _E1_'s mapping is in the _Source Mappings_.
+* _E2_'s mapping is in the _Target Mappings_.
+* There is a semantic element, selected by the _Domain Class_ and _Semantic Candidate Expression_, from which the _Source Finder Expression_ returns _E1_ and the _Target Finder Expression_ returns _E2_.
+
+*Paths.* Edges only exist between one source and one target element. Sometimes such an edge is just one segment of a more complex _path_ which traverses many elements. You can highlight such a complex path using the properties in the _Path_ category. _Path Mappings_ should be the list of mappings considered by the path, and the _Path Expression_ should return the list of semantic elements the edge path should go through, in the order the should be traversed.
+
+h4(#edges_styles). Edge Style
+
+Both types of edges (relation-based and element-based) share the same style type. It supports conditional style like for other mappings.
+
+You can specify the line style (_solid_, _dash_, _dot_ or _dash-dot_), color, width (using the _Size Computation Expression_ in the _Advanced Category_), and optional decorations (like arrowheads) to be put on the end-points of the edge.
+
+The _Routing Style_ can be one of:
+* _Straight_: the edge is drawn using straight line segments. When created, only one segment directly connects the source and target elements, except when the source and target are the same elements. End users can create and remove sub-segments, and move the bend-points.
+* _Manhattan_: the edge is drawn using only vertical and horizontal segments. Otherwise it is similar to _Straight_.
+* _Tree_: this style can be seen as a special case of _Manhattan_, with always two vertical segments and an horizontal one between them. If one graphical element serves as the source for several edges using this style, their first vertical segment (the stem of the tree) will be merged, and their horizontal segments will all appear as a single line.
+
+table(table table-striped table-condensed).
+|!images/styles/Edge_Style_Straight.png!|!images/styles/Edge_Style_Manhattan.png!|!images/styles/Edge_Style_Tree.png!|
+|_. Straight|_. Manhattan|_. Tree|
+
+Note that end-users can change the routing style of the edges individually, independently of the default style you set in the VSM.
+
+*Edge Labels.* Edges can have from zero to three labels. By default they have a single which will be placed at its center. You can delete it and/or add labels to be shown at the beginning (near the source) or end (near the target) of the edge. In all cases, the configuration is "the same as for all labels":#label_style. Note that currently only the center label (if present) is editable if a _Direct Edit_ tool is associated to the edge mapping.
+
+*Edge Folding.* It can often be useful, from one end of the edge, to be able to hide the elements at the other end. Think for example when and edge is used to represent some kind of containment relationship between elements and you want to hide the "contents" of an element to concentrate on the rest of the diagram. You can allow end-users to do this be setting a _Folding Style_ on an edge mapping (in the _Advanced_ category). When the _Folding Style_ is set to _Source_ or _Target_, the element (node or container) at the source or target of the edge will have a small " - " sign in its top-left corner. If the user clicks on it, the edges instance of this mapping for which the element is a source (resp. target) will fold: the edges and the elements they are connected to at the other side will disappear from view. The behavior is recursive: if the elements hidden were connected to other elements using this kind edges, those too will be hidden. When an element has been folded, the " - " sign becomes a " + " sign which can be used to unfold the edges. This is useful when representing trees of elements: if you enable folding, users will be able with a single click to hide or reveal complete sub-hierarchies of elements.
+
+h4(#bracket_edge_style). Bracket Edge Style
+
+The bracket edge figure is designed to be drawn from the middle of a node side to the middle of another node side.The user can move the main segment and rotate the figure (horizontal-> vertical or vertical->horizontal).
+
+	!images/styles/Edge_Style_bracketStyle.png!
+
+The optional decorations (like arrowheads) will be put on the end-points of the main segment.	
+  
+See the "Edge Style":#edges_styles section for the other properties.
+
+h4(#edge_tools). Edge Tools
+
+See the "tools":#tools section for a general presentation of how tools are defined. This section only presents tools which are specific to edges.
+
+*Edge Creation Tool.* This tool is used to create new edges. They work like all the other creation tools. You simply specify the _Edge Mappings_ that this tool can create and specify the behavior of the tool inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
+
+Because edges have two ends, their creation requires users to specify both the source and target elements. By default, the possible sources are all the instances of one of the _Source Mappings_ specified for this kind of edge (and similarly for the possible targets). You can restrict this using the _Connection Start Precondition_ (resp. _Connection Complete Precondition_) to forbid the use of the tool from (resp. to) some element. 
+
+_Connection Start Precondition_ expressions can use the following variables to allow/disallow first click for connection creation:
+
+* @preSourceView@: the graphical element which is pointed on the first click.
+* @preSource@: the semantic element which is pointed on the first click.
+* @diagram@: the current Diagram.
+* @container@: the semantic element of the Diagram.
+
+_Connection Complete Precondition_ expressions can use the following variables to allow/disallow second click for connection creation:
+
+* @preSourceView@: the graphical element which is pointed on the first click.
+* @preSource@: the semantic element which is pointed on the first click.
+* @preTargetView@: the graphical element which is pointed on the second click.
+* @preTarget@: the semantic element which is pointed on the second click.
+* @diagram@: the current Diagram.
+* @container@: the semantic element of the Diagram.
+
+On the opposite, you can specify _Extra Source Mappings_ and _Extra Target Mappings_ (_Advanced_ category)  which the user will be able to select as "virtual" source and targets, even though the real edge created by the tool will not be between these elements.
+
+
+*Reconnect Edge.* The _Reconnect Edge_ tool is used to allow end-users to change the source and/or target of an edge by moving the corresponding end onto another graphical element. If a tool is specified to handle the user's reconnection attempt, it will be invoked with all the appropriate information so that it can execute the corresponding semantic change. In addition to the _Mappings_ property, which indicate the types of edges supported by the tool, you must specify one _Reconnection Kind_: a tool can be written to only support reconnection of the source end, the target end, or of both. Tools that handle both cases are complex to write, so it is recommended if possible to write two separate tools: one which handle the source re-connections, and one for the target re-connections.
+
+The body of the tool is evaluated on the target semantic element of the edge that the user wants to reconnect, with the following variables available to describe the reconnection:
+* @source@: the semantic element which is pointed before the reconnect.
+* @target@: the semantic element which is pointed after the reconnect.
+* @sourceView@ : the graphical element which is pointed before the reconnect.
+* @targetView@ : the graphical element which is pointed after the reconnect.
+* @otherEnd@ : the edge end (graphical element) that has not changed during the reconnection
+* @edgeView@ : the Edge after the graphical reconnection
+* @diagram@ : the current Diagram.
+* @element@: the semantic element of the current edge.
+
+Here are illustration to show the values of this variables in a concrete case. Before the reconnection:
+
+	!./images/references/reconnect/ReconnectTool_Before.png!
+
+After the reconnection:
+
+	!./images/references/reconnect/ReconnectTool_After.png!
+
+* The @sourceView@ is the graphical node 'A'.
+* The @targetView@ is the graphical node 'B'.
+* The @otherEnd@ is the graphical node 'C', that has not changed during the reconnection.
+* @edgeView.sourceNode@ is the graphical node 'C'.
+* @edgeView.targetNode@ is the graphical node 'B'.
+
+For the semantic, we will consider that we represent "Box" and the link means "is contained in":
+* the @source@ is the box 'A'.
+* the @target@ is the box 'B'.
+* @element@ is the link "is contained" between 'C' and 'A'.
+
+h3(#decorations). Decorations
+
+Decorations can be used to add small graphical annotations to the elements of a diagram. They are defined directly inside a layer, and they can be either _Mapping Based Decorations_ or _Semantic Based Decorations_. Both have a name, a _Position_ which indicate where the decorator should be place relative to its target element, and a _Decorator Path_, which should point to a small icon to use as decorator.
+
+_Mapping Based Decorations_ have a list of _Mappings_ to which they may apply, while _Semantic Based Decoration_ have a _Domain Class_ and will apply to all graphical elements which have an instance of this class as their semantic element, whatever are the mapping(s) used to represent them.
+
+The _Precondition Expression_ is evaluated in the context of a candidate semantic element (as selected by either the _Mappings_ or _Domain Class_ property, and if the expression returns true, the decorator will be shown as the specified location on top of the graphical element's shape.
+
+h2(#styling). Styling
+
+Styles define the graphical appearance of diagram elements. Sirius supports a rich set of possible styles, including conditional styles which can dynamically change depending on the current state of the underlying model elements. Each mapping must define at least one style do be visible on the diagram.
+
+h3(#conditional_styles). Conditional Styles
+
+Conditional styles make it possible to support different graphical aspects for a single mapping. The actual style used to render an element is determined dynamically depending on the current state of the models elements.
+
+To use conditional style, you must first create a non-conditional style, which will be the default. You can then add one or several conditional styles as siblings to the default style. Each conditional style is associated to a condition specified as a predicate. If there are conditional styles on a mapping, their conditions are tested in their order of appearance in the mapping description. The first one for which the condition is *true* is selected. If none of the conditional styles condition is true, the default style is used instead.
+
+* NOTE : There is an exception to the rule of Conditional Styles:
+if a user customized a Node with a WorkspaceImage style (through the "Set style to workspace image" action), then if a new style is computed through the VSM (e.g. through a Conditional Style appliance), this new style will not override the WorkspaceImage style to preserve this last customization (See "_Style Customizations_":../../user/diagrams/Diagrams.html#styleCustomizations ).
+
+h3(#label_style). Label Properties
+
+One of the responsibility of styles is to describe labels which will be displayed and how they will be formated. The following properties are available :
+
+* _Label Expression_ is used to compute the text of the label describing the element. It is evaluated in the context of the semantic target element.
+* _Label Position_ is used to set the position of the label relative to nodes (this property is not available for containers and edges). The label can be put on the _border_ of the node (outside), where it can be freely moved around the node's border, or in the _node_ itself.
+* _Label Size_ indicates the font size to use in points.
+* _Label Format_ is used to specify the font style attributes (_Bold_ and/or _Italic_).
+* _Label Alignment_ is used for labels positioned inside node to specify their alignment (note that not all alignment values are supported for all styles). For nodes, this attribute only applies when *Label position* is set to *node* (otherwise, the label is freely movable by the user). For containers, it only applies to the container's label itself, not its content. This attribute does not apply to edges (again, their label is freely movable by users) and list items.
+* _Label border style_ (only available for a _Flat Container Style_): the specifier can choose a label border style among a list. As a result a border will be drawn around the container label.
+* _Show icon_ indicates whether or not the element's icon should be made visible. If set, the icon used is the one associated with the type of the target element, and is rendered on the left of the label. Note that end-user will always be able to hide such icons by using the _Label icons_  preferences (_Window_/ _Preferences_/ _Sirius_/ _Sirius Diagram_/ _Appearance_).
+
+While not strictly part of the label properties, a _Tooltip Expression_ can be set for most style, and is used to compute the text of the optional tool-tip shown when the user leaves the mouse on an element. It can be seen as an alternate _Label Expression_ which is not visible by default, and can be used to show additional details on an element only when the user requests them, to avoid visual clutter on the diagram.
+
+h3(#size). Size Properties
+
+Most styles give you some control on the size of the graphical elements. The properties described below are not available for all styles, but when they are they have the same meaning (unless specified for special cases):
+
+* _Allow resizing_: You can decide if end-users are allowed to resize graphical elements _Horizontally_ and/or _Vertically_. Most styles allow resizing on both directions by default.
+* Initial _Width_ and _Height_ can be specified explicitly. A value of 0 indicates no explicit width or height. The initial value will be taken from the style's default or from the _Size Computation Expression_ if specified.
+* _Size Computation Expression_: An expression used to dynamically compute the size of a graphical element. It is evaluated in the context of the target element, and should return an integer.
+* _Border Size Computation Expression_: An expression which is used to dynamically compute the size of the border of graphical element. It is evaluated in the context of the target element, and should return the border size _in pixels_.
+
+h3(#colors). Colors
+
+Whenever you have to specify colors for a style, you can use either one of the pre-defined system colors or one which you have defined yourself in a _Users Color Palette_. The palette is created directly inside the _Viewpoint_ element, and its colors can be used by any representation, not just diagram. See "the general section on colors":../general/Colors.html for more details.
+
+h2(#tools). Tools
+
+Tools are used to define the behavior of your modeler. Some tools will appear in the diagram's palette (e.g. a tool to create a new node), while others are automatically invoked when the user performs certain operations (e.g. a delete tool which is triggered when the user deletes an element from the diagram).
+
+h3(#tools_organization). Tools Organization
+
+Tools are defined in _Tool Sections_, which appear directly inside layers. If a tool is defined inside an additional layer, it will be enabled only when the corresponding layer is enabled.
+
+The top-level _Tool Sections_ inside a layer are simply used to separate tools definition from mapping definitions and have no impact on how the tools are presented. However, if you create sub-sections inside those top-level section (_New Tool... > Section_), and if those sections contain tools which appear in the palette, then the sub-sections will be used to group the corresponding tools in expansible sections in the palette. You can also create _Groups_ (_New Tools... > Group_), which behave like combo-boxes in the palette: only one of the tools defined inside the group is active (and visible) at a time.
+
+Tool sections can have _Reused Tools_, which are defined elsewhere (including in another layer, even from a different representation). They will appear and behave as if they were defined inside the section which reuses them.
+
+The _Group Extension_ elements (defined inside a tool section) allow you to add tools in a existing _Group_ defined elsewhere. It can be used for example to merge tools defined in an additional layer into a group of tools defined in the default layer. You must select the existing _Group_ to extend, and any tool declared in a group extension will be added in the targeted group by the 'group' attribute.
+
+__WARNING__ : It was possible to define a ToolSection directly under a DiagramDescription, outside a layer. Defining tool section outside a layer is discouraged, that's why this action has been deleted. The tool sections created before are still present but you should move it into the default layer since it is likely to be deleted in the future.
+
+h3(#tools_specification). Tools Specification
+
+All tools are specified in roughly the same way. Like most elements inside the VSM, they have an _Id_ and a _Label_. For elements which will appear to the end-user (in the palette or in menus), make sure the _Label_ is meaningful to them.
+
+*Tools Applicability*. Most tools apply to a set of _Mappings_, sometimes only on certain kinds of mappings (e.g. _Container Drop Description_ only makes sense for container mappings). For tools which create new elements, the _Mappings_ correspond to the kinds of elements the tool will create. For other tools, it corresponds to the kinds of element the tool can be applied to.
+
+Many tools also support the notion of _Extra Mappings_. If these are specified, they indicate other kinds of elements than the primary ones on which the tool can be applied.
+
+The _Precondition_ of a tool definition can be used to restrict its applicability to only some instances of the _Mappings_ (and _Extra Mappings_) associated with the tool. When the user tries to invoke the tool on an element, the expression will be evaluated in the context of that element' semantic target, and the tool will be applicable only if the expression returns true. Otherwise the user will have a feedback (typically a change in the mouse cursor's shape) to indicate the tool can not be applied on this element.
+
+*Force Refresh.* Tools have a _Force Refresh_ flag. As most tools only perform a local change in the underlying model, by default Sirius will try to optimize its refresh operation (which synchronizes the graphical view with the state of the underlying semantic model) by only refreshing elements of the mappings explicitly associated with the tool. If you know your tool will have side-effects which can change other parts of the diagram, set the _Force Refresh_ flag to force Sirius to perform a complete refresh of the whole diagram after the tool is executed. This ensures a perfect synchronization of the graphical representation with the state of the underlying model, possibly at the cost of performance and reactivity on big diagrams.
+
+*Tools' Body and Variables.* The actual effect of a tool is defined inside its _body_, which is usually represented by a _Begin_ element (the starting point of the tool's execution). You can use any of the available "model operations":../general/Model_Operations.html to specify the behavior of your tools, including, if necessary, operations which invoke complex algorithms written in Java. Inside the tools'body, you have access to _variables_, which are specific to each kind of tools and give you all the necessary information on how the tool was invoked, on which elements, etc. How you access these variables from the expressions inside the tool's body depend on the query language you use for the expressions.
+
+*Static Variables.* The static variables defined by each tool are visible directly inside the tool's element in the VSM. The exact set of variables available will depend on each tool, but typically you will have access to both _semantic variables_ which reference semantic elements and _view variables_ which reference graphical elements. As an example, in a _Node Creation Tool_, you have both a _container_ and a _containerView_ variable. _containerView_ will point to the graphical element on which the user invoked the node creation tool (for example a container view) while _container_ will point to that view's target semantic element. Usually the tools use only the semantic variables, but you may want to use the view variables if the same semantic elements can be represented in different ways on your diagram and you want your tool to behave differently depending on which of these representations the user targeted.
+
+*User-Defined Variables.* In addition to the static variables which are pre-defined by Sirius for each kind of tool, you can define your own, which will also be available inside the tool's body. These user variables are defined as sub-elements of the static variables using the _New Variable..._ context menu. There are two kinds:
+* _Expression Variables_ have a name and a _Computation Expression_. When the tool is invoked, the computation expression will be evaluated in the context or the parent variable's value (i.e. the static variable inside which the _Expression Variable_ is defined).
+* _Select Model Element Variables_ will open a dialog box when the tool is invoked, from which the user can manually select model elements from a list you can configure. The element or elements selected by the user will become the value of the variable. To configure the dialog box, you must set a _Message_ and a _Candidates Expression_ (evaluated in the context of the parent variable's value). The candidates expression should return a list of elements from which the user can select the variable's value. By default these candidates are presented as a list. You can also enable the _Tree_ mode, and specify a _Children Expression_, which will be evaluated recursively on each candidate to build a tree of possible values. Finally, you can set the _Multiple_ flag to allow users to select several of the candidates instead of a single one.
+
+*Tool Filters.* Tool filters can be specified inside a tool to hide a tool in the diagram palette depending on dynamic conditions. The _Elements To Listen_ is evaluated in the context of the diagram's semantic element, and should return a set of semantic elements. The _Precondition_ is re-evaluated on each of these elements whenever a change occurs.
+
+<div style="display: none">
+*TODO* Study the exact semantic of this and complete the description.
+</div>
+
+h3(#tools_reference). Tools Reference
+
+In this section we describe each kind of tool available on a diagram.
+
+h4(#node_creation). Node Creation
+
+See the description in the "node-specific tools section":#node_tools.
+
+h4(#container_creation). Container Creation
+
+See the description in the "container-specific tools section":#container_tools.
+
+h4(#edge_creation). Edge Creation
+
+See the description in the "edge-specific tools section":#edge_tools.
+
+h4(#container_drop). Container Drop Description
+
+See the description in the "container-specific tools section":#container_tools.
+
+h4(#reconnect_edge). Reconnect Edge Description
+
+See the description in the "edge-specific tools section":#edge_tools.
+
+h4(#paste_description). Paste Description
+
+The paste tool aims to define operations to paste the given copied semantic element, accessible through the _copiedElement_ variable, into the semantic paste receiver, accessible through the _container_ variable. The _copiedView_ and _containerView_ variables reference the corresponding graphical element. The _Containers_ property indicates the mappings to which this tool apply.
+
+Its semantic target is the copied semantic element. If the copied element was a non domain based element (e.g. relation edge), the semantic element is the original except if it is targeted by a domain based element also selected. When the semantic target is not copied, the tool receive a null copied element.
+
+*Warning*: The generic behavior is used only when there is no tool defined on the paste receiver. Otherwise the first tool with a precondition evaluated as true will be chosen and if all defined tools have a false precondition, paste action will be disabled.
+
+<div style="display: none">
+*TODO* Description not clear at all.
+</div>
+
+h4(#delete_tool). Delete Element Description
+
+If you do not associate a _Delete Tool_ to a mapping, the default delete behavior when the user deletes a graphical element is to remove the target semantic element and all the associated semantic elements from the semantic model. If you want a different behavior or if you want to forbid the deletion of some elements, you must set an explicit _Delete Tool_. Delete tools are invoked when the user select the _Delete from model_ action (from the context menu, from the tab-bar or using the _Delete_ key). The _element_ variable will be set to the main semantic target element being deleted (excluding any associated semantic elements) while the _elementView_ and _containerView_ tell you which graphical view is being deleted and in which context it is.
+
+If you want to completely disable deletion for some elements, you can either create a _Delete Tool_ which does nothing for these elements or, if possible, setup the tool's _Precondition_ to return _false_ for these elements. Setting a precondition is usually preferred as it will mark the _Delete_ action as disabled in the UI (tab-bar and context menu) while a tool which simply does nothing can still be invoked by users, but with no effect. Note however that the _Precondition_ will be evaluated each time the user selects and element to decide whether or not the delete action should be enabled in the UI. A precondition which is complex to evaluate can have a negative impact on the perceived performance of the modeler.
+
+h4(#direct_edit). Direct Edit Label
+
+The _Direct Edit Label_ tool is used to allow users to directly edit the label of a representation element. It specifies how to interpret the new label value, and which changes to apply to the model element. Users can invoke it using the _F2_ shortcut, through a slow double-click, or directly by starting to type some text when a label is selected.
+
+If you want to display a different label during the edition, you can use the @input label expression@. This expression is evaluated during the invocation of the direct edit and displayed to the end-user instead of the standard label (defined in the style of the mapping).
+For example, you can display a class with a stereotype, @<<utility>> Math@, and display only the class name, @Math@, during the edition.
+
+Inside a _Direct Edit Label_ tool, you _must_ specify an _Edit Mask Variable_ element. The mask is used to parse the new label's value as entered by the user, and to select part of this label as input variables to the editing action's body. The mask can contain substrings of the form <code>{N}</code> where @N@ is a number. The parts of the new label's value which corresponds to these substring will be available as variables name @argN@ (strings) in the body of the direct edit action. The default mask is <code>{0}</code>, which means the whole text entered by the user will be available through the variable @arg0@.
+
+_Note:_ Edges can have up to three different labels (one in the center and one at each extremity), but currently if a _Direct Edit_ tool is associated to an _Edge Mapping_, only the center label (if it exists) can be edited. This restriction will probably be lifted in future versions.
+
+_Note:_ If you use the legacy Acceleo 2-based query language, where variables are prefixed with a @$@-sign, the edit mask variables are also available directly as @$0@, @$1@, etc. This is still supported for compatibility reasons, but it is recommended that you use the new @argN@ variables from now on. The old names are not usable with languages like Acceleo 3 which do not have a prefix for variables.
+
+h4(#selection_wizard). Selection Wizard Description
+
+This tool can be used to open a wizard dialog asking the user to select one or several model elements. The body of the tool is then executed in the context of the element selected by the user.
+
+When the tool is selected, the user must first select a diagram element as the tool's target. Then a dialog box opens with a list of candidate elements to select. The list is computed from the target using expressions you specify in the tool's description.
+
+The _Window Title_, _Icon Path_, _Windows Image Path_ and _Message_ can be used to customize the look of the selection window.
+
+The _Candidates Expression_ should return a list of elements from which the user can select the variable's value. By default these candidates are presented as a list. You can also enable the _Tree_ mode, and specify a _Children Expression_, which will be evaluated recursively on each candidate to build a tree of possible values. Finally, you can set the _Multiple_ flag to allow users to select several of the candidates instead of a single one.
+
+<div style="display: none">
+*TODO* What is the context where the tool's body is executed if several elements are selected?
+</div>
+
+!images/styles/Selection_Tool.png!
+
+h4(#pane_based_selection_wizard). Pane-Based Selection Wizard Description
+
+The _Pane-Based Selection Wizard_ is very similar to the "Selection Wizard Description":#selection_wizard. It differs only in the presentation of the selection window. The pane-based wizard offers two panels: on the left are all the candidates, which corresponds to the contents of the basic _Selection Wizard_. On the right is the current selection. The user has buttons to add or remove candidates from the left panel into the right one. The _Pre Selected Candidates Expression_ can be used to define the initial content of the right-side panel.
+
+<div style="display: none">
+*TODO* What is the context where the tool's body is executed if several elements are selected?
+</div>
+
+!images/styles/Pane-Based_Selection_Tool.png!
+
+h4(#representation_creation). Representation Creation
+
+Each dialect supported by Sirius defines a tool which can be used to create a new representation using this dialect. They are (using the default supported dialects): _Diagram Creation Description_, _Table Creation Description_ and _Tree Creation Description_.
+
+These tools (one for each kind of representation supported by Sirius) can be used to create (and open) a new representation from an existing diagram element. They will be available to end-users in the _Navigate_ context menu on compatible diagram elements. To configure the tool, simply select in the _Mappings_ property which kinds of elements the tool should appear on (you can be more precise using the _Precondition_ expression if necessary), and select the representation which should be created using the _Representation Description_ property (in practice, one of _Diagram Description_, _Table Description_ or _Tree Description_ depending on the tool). Normally, the new representation will be created on the semantic element represented by the diagram element on which the user invoked the tool. Sometimes you want the tool to appear on one element, but create a representation on another one. In this case, use the _Browse expression_ (in the _Advanced_ category) to navigate from the element selected to the one one which the new representation should actually be created. The _Title Expression_ (_Advanced_ category) can be used to set the title of the newly created representation. Finally, any operation you specify in the body of the tool will be executed when the tool is invoked; you can use it to initialize the content of the model represented. 
+
+h4(#representation_navigation). Representation Navigation
+
+Each dialect supported by Sirius defines a tool which can be used to navigate to existing representation of this dialect. They are (using the default supported dialects): _Diagram Navigation Description_, _Table Navigation Description_ and _Tree Navigation Description_.
+
+These tools are very similar to the "representation creation tools":#representation_creation. The only differences is that they allow users to navigate to existing representation instead of creating new ones. If such a tool exists, the _Navigate_ context menu on an element will contains an entry for each corresponding representation which already exists on the element selected (or reachable from the selected element using the _Browse expression_). You can specify a _Navigation name expression_ (_Advanced_ category) to be used in the menu entry instead of using the title of the existing representation. This can be useful to make it more explicit what the relationship is between the current element and the target tree.
+
+h4(#double_click_tool). Double-Click Tool
+
+This tool is used to trigger operations when the user double-clicks on an element. The _Mappings_ property indicate for what kinds of element this tool is applicable.  
+
+Inside the body of the tool, the _elementView_ variable refers to the graphical element the user double-clicked on, while the _element_ variable represents its semantic target element.
+
+h4(#generic_tool). Generic Tool
+
+This generic tool is used to provide a palette entry which can execute any code describe in the internal tool language, including for example invoking external Java actions.
+
+Inside the body of the tool, the _elementView_ variable refers to the graphical element the user invoked the tool on, while the _element_ variable represents its semantic target element.
+
+h4(#popup_menu). Popup Menu
+
+This tool can be used to define an entry in the context menu which can contain "_Operation Actions_":#operation_action and "_External Java Action_":#external_java_action tools. Which ones are visible when the menu is opened depend on the preconditions of these actions, which can thus be activated or not depending on the currently selected element.
+
+h4(#operation_action). Operation Action
+
+This tool can be used to define an operation which will appear as an entry in the context menu (or in a sub-menu if defined inside a _Popup Menu_ element). When invoked, the body of the action is executed with the _views_ variable referencing all the representation elements which were selected on the diagram.
+
+h4(#external_java_action). External Java Action
+
+The _External Java Action_ tool simply creates a menu entry in the context menu which directly invokes any "External Java Action":../general/Model_Operations.html#external_java_action you can define.
+
+h4(#request_description). Request Description
+
+This tool is for advanced uses only. It requires understanding and extending GMF, the graphical framework used by Sirius to display diagrams. A _Request Description_ tool will contribute an item in the palette, and when invoked on a graphical element it will send a GMF request to the corresponding edit part. The type of the request to send is specified as a fixed string in the _Type_ property. The target edit part should have an edit policy capable of understanding and reacting to the request.
+
+<div style="display: none">
+h4(#behavior_tool). Behavior Tool
+*TODO* Understand what this does exactly, and decide whether we want to keep it or not. Document it if we keep it.
+</div>
+
+h2(#filters). Filters
+
+A diagram can define any number of filters, which can be enabled or disabled dynamically by the user to show or hide some elements of a diagram. Filters differ from layers on three main points:
+* they are more fine-grained, they can selectively hide or show elements depending on their individual characteristics, whereas layers activate or deactivate whole mapping types.
+* they are purely graphical: even if some representation elements are hidden from the user's view, they still exist;
+* they have no links with tools, they can not show or hide tools. 
+
+To add a filter to a diagram, create a _Filter Group_ inside the _Diagram Description_ element, specify its _Name_ (a fixed string), and add one or several _Mapping Filter_ or _Variable Filter_ elements inside of it.
+
+h3(#mapping_filter). Mapping Filter
+
+A mapping filter applies to all the elements instance of some mappings, and can filter some of them according to configurable conditions.
+
+The _Filter Kind_ attribute of a _Mapping Filter_ can be @HIDE@, which will completely remove the element from view, or @COLLAPSE@ which will minimize its size to a small transparent square of 4-by-4 pixels. The collapse mode is useful because the edges which use the filtered element as a source or target are still visible when the element is collapsed, while they disappear when the element is hidden.
+
+The _Mappings_  property indicates the list of mappings to which the filter will apply.
+
+The _Semantic Condition Expression_ will be evaluated in the context of the target semantic elements of each instances of the specified mapping. It should return *true* if the element should be kept visible, and *false* if it should be hidden/collapsed.
+
+The _View Condition Expression_ is similar to the _Semantic Condition Expression_, but is evaluated on the context of the _view element_ of each instance of the specified mapping. The view element is the model element used by Sirius to represent the graphical element. Using these expressions require some knowledge of the structure of the view model used by Sirius.
+
+Both expressions are optional. If none is specified, the filter will have no effect. If both are specified, only the elements for which both expressions return *false* will be hidden/collapsed.
+
+The expressions of all active filters are evaluated whenever the diagram is refreshed (in the default _Auto-refresh_ mode, whenever a change occurs in the semantic model), not just when the user enables the filter. This means that the active filters can have a big impact on performance if they perform complex tests, so keep this in mind when writing the condition expressions.
+
+h3(#variable_filter). Variable Filter
+
+A _Variable Filter_ is similar to a _Mapping Filter_, except that instead of using a list of mappings to select the candidate elements to filter, it opens a dialog box from which the user can select the specific elements he wants to filter. The configuration of the dialog box uses the same properties and semantic as the "Selection Wizard":#selection_wizard tool. Refer to its documentation for the details.
+
+h2(#validation). Validation Rules
+
+A diagram description can define custom validation rules which will only be applied when launching a validation on an instance of this diagram (using the _Validate_ operation in the context menu). To define validation rules you must first create a _Validation_ element inside the diagram, and then add one or more _Semantic Validation Rule_ or _View Validation Rule_. Both kinds of rules are similar, but semantic rules check the structure of the underlying semantic model which view validation rules can check the structure of the representation itself. When a rule is violated, a marker will appear on the diagram on the problematic elements and in the _Problems_ view.
+
+Each rule has a _Level_, which represents its severity when it is violated. It can be _Information_, _Warning_ or _Error_. It also has a computed _Message_ expression (evaluated in the context of the checked element) to provide the user an explanation of the problem detected. Semantic validation rules must specify _Target Class_, and will be checked on all the instances of that class in the semantic model. View validation rules have instead of a list of _Targets_ which are the mappings it applies to.
+
+Inside a rule you must define one or more _Audit_, which perform the actual checks using an _Audit Expression_. The expression will be evaluated on each (semantic or graphical) element to check, and must return _false_ if the rule is violated. If a rule contains several audits, it is triggered if at least one of them detects an issue.
+
+You may also define one or more _Fixes_ inside a rule. When a rule is violated, if it defines fixes they will be available to the end-users in the context menu of the corresponding marker. Each fix has a name and a body. The body is defined in the same way as the body of a tool, using any of the available "model operations":../general/Model_Operations.html. It should perform any required change in the model to fix the issue detected by the validation rule, if possible.
+
+h2(#extensibility). Diagram Extensibility Features
+
+Sirius has specific support for extending and refining diagram descriptions and mappings without modifying the original. The extensions are applied transparently when the viewpoint they are defined in are enabled, and removed when the viewpoint is disabled.
+
+For example, if a base viewpoint _V1_ defines a diagram description _D_, you can define a separate viewpoint _V2_ (maybe even from inside a different plug-in, you do not need access to the source of _V1_) and in _V2_ define an extension _DE_ to _D_. When users enable only _V1_, they see _D_ as defined in _V1_. When they enable both _V1_ and _V2_, _D_ is automatically extended by _DE_.
+
+Note that a given diagram type can be extended by multiple extensions at the same time. However if several extensions try to redefine elements defined in the base diagram (instead of just adding new elements), the result is not specified.
+
+h3(#diagram_extension). Diagram Extensions
+
+A _Diagram Extension_ is defined directly inside a _Viewpoint_ element, and it must specify precisely which diagram description it extends using the _Viewpoint URI_ and _Representation Name_ properties (the _Name_ property is the name of the extension itself).
+
+The _Viewpoint URI_ indicates in which viewpoint the extended diagram is defined. It has the following syntax: @viewpoint:/pluginId/ViewpointName@, where @pluginId@ is the identifier of the Eclipse plug-in in which the viewpoint is defined, and @ViewpointName@ is the name of the viewpoint. Note that the name must be unique among all the viewpoints defined in all the VSMs contributed by that plug-in.
+
+The _Representation Name_ is simply the identifier (_Id_ field) of the diagram to extend, which is defined inside the specified viewpoint.
+
+A _Diagram Extension_ can specify the _Metamodels_ of the semantic elements it represents if it supports types of elements which were not represented in the extended diagram. Inside a _Diagram Extension_, you can define "validation rules":#validation, "filters":#filters and additional "layers":#layers. When the extension is enabled (i.e. when both the viewpoint it is defined in and the one it extends are enabled), the elements defined in the extension will be merged (added) into the base diagram's definition as if they had been defined directly in the base diagram.
+
+The simplest use case of a diagram extension is to simply _augment_ the base diagram with new graphical elements, tools, filters and validation rules. However you can also use the notion of _Mapping Import_ to _modify_ the definition of some of the base diagram's mappings. _Mapping Imports_ are actually independent of diagram extensions, and can be used inside a normal diagram description as their semantic is defined in terms of layers activation, but their main use case is when using diagram extensions.
+
+h3(#mapping_imports). Mapping Imports
+
+A mapping import is used to _specialize_ (modify) a mapping defined somewhere else (in an other layer, an other graphical representation or an other viewpoint). This feature is only available for diagram kind representations.
+
+For example, if a layer _L1_ defines a mapping _M1_ and an other layer _L2_ defines a mapping import _M2_ which imports _M1_, then _M2_ may override/overload some of the features of _M1_ like a more specific "Semantic Candidate Expression" or a conditional style taking into account other specific aspects. When only _L1_ is activated the normal definition of _M1_ is applied. If _L2_ is also activated, _M2_ is applied instead of _M1_, the overloaded features in _M2_ replace the ones of _M1_ and  the new defined features or sub-elements are added.
+
+You can define _Node Mapping Imports_, _Container Mapping Imports_ or _Edge Mapping Imports_. They all behave in the same way. For each one you must specify the _Imported Mapping_ (typically from another layer defined in a diagram you are extending or in the same diagram). Mapping imports have all the properties of normal mappings, but when you set an explicit value for a property in a mapping import:
+* if it is an attribute (for example the _Semantic Candidates Expression_), the value defined in the mapping import will override the one defined in the imported mapping.
+* if it is a reference (for example the _Reused Bordered Node Mappings_ on a _Node Mapping Import_), the values defined in the mapping import will be _added_ to the ones defined in the imported mapping.
+
+Two parameters which are specific to import mappings can change this last behavior:
+* If the _Inherits Ancestor Filters_ flag is set, the "mapping filters":#mapping_filter which apply to the imported mapping will also apply to the import itself. However if you do *not* want to inherit these filters, you can un-check the _Inherits Ancestor Filters_ flag. In that case only the mapping filters which explicitly target the import mapping will apply to it.
+* If the _Hide Sub-Mappings_ flag is set, then when the import mapping is active, only the sub-mappings it defines explicitly (including bordered node mappings) are taken into account. This is different from the standard behavior in which both the sub-mappings defined in the imported mapping and in the import mapping are used. For example, this means that if the imported mapping defines a bordered node mapping, a mapping import can _hide_ these bordered nodes by using this flag and simply not define any bordered node mapping of its own.
+
+h2(#customization). Diagram Styles Customization
+
+Diagram elements support conditional styles, which can be used to completely change the appearance of an element depending on some arbitrary condition. However, defining a complete conditional style can be cumbersome when you just want to customize a specific aspect of the element's style (for example a single color). A more fine grained customization of styles is possible using _Style Customization_ elements.
+
+To use this feature, you must first create a _Style Customizations_ element inside a layer (from the _New Customization..._ context sub-menu). Only one such element can exist in a layer, and it serves as a container for all style customizations the layer defines. Inside a _Style Customizations_ you can define any number of individual _Style Customization_ elements, each of which re-groups a set of actual customizations which can be either an _Property Customization (by expression)_ or a _Property Customization (by selection)_. Both kinds work on the same principle, and you must define:
+* The style elements to customize, using the _Applied On_ attribute. You can specify multiple styles if the customization should apply to different style elements or to different styles for a given element (e.g. the default and some or all of the conditional styles).
+* The feature to customize, using the _Property Name_ field (you can use completion with _Ctrl+Space_ to see the list of possible values depending on which element(s) you selected in _Applied On_).
+* And finally the value to set for that feature. For references (_Property Customization (by selection)_), you must select the actual value from the available choices in the combo box. For attributes (_Property Customization (by expression)_), the value is computed using an interpreted expression evaluated in the context of the semantic element whose style is being customized.
+
+A _Style Customization_ can define a predicate expression to control whether or not it should apply. If defined, the expression is evaluated in the context of a semantic element to determine whether or not the customizations should be applied. If no expression is defined, the customizations will apply. If a _Style Customization_ applies to a given element, the _base style_ that the element would normally have will be modified by applying all the _Property Customization_ (by expression and by reference) defined in the _Style Customization_ , if they are compatible with that base style.
+
+A _Style Customizations_ group can also contain _Style Customization Reuse_ elements. These can be used to reuse customizations defined elsewhere in a different context (specified using the _Reuse_ property), and apply them to other elements (specified using the _Applied On_ property). They will behave as if they had been defined locally inside a _Style Customization_ with no precondition.

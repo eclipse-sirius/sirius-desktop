@@ -207,10 +207,15 @@ public class EObjectQuery {
     public Session getSession() {
         Session found = SessionManager.INSTANCE.getSession(eObject);
         if (found == null) {
-            final EObject root = EcoreUtil.getRootContainer(eObject);
-            final Resource res = root != null ? root.eResource() : null;
-            if (res != null && new ResourceQuery(res).isRepresentationsResource()) {
-                found = getSession(res);
+            try {
+                final EObject root = EcoreUtil.getRootContainer(eObject);
+                final Resource res = root != null ? root.eResource() : null;
+                if (res != null && new ResourceQuery(res).isRepresentationsResource()) {
+                    found = getSession(res);
+                }
+            } catch (IllegalStateException e) {
+                // Silent catch: this can happen when trying to get the session
+                // on a disposed Eobject
             }
         }
         return found;

@@ -1,0 +1,306 @@
+h1. Modeling Projects and Representations
+
+In this document you will learn how to create and manage Modeling Projects, which are used in Sirius to organize your models and their representations (diagrams, tables, etc.).
+
+{toc:style=disc|minLevel=2|maxLevel=3}
+
+h2(#Introduction). Introduction
+
+The Sirius system is used to create, visualize and edit your _models_ using interactive editors called _modelers_. These modelers can be of different kinds, depending on the type of visual representations. Out of the box, Sirius supports three different _dialects_ (kinds of representations) _diagrams_ (graphical modelers), _tables_, and _trees_ (hierarchical representations). New dialects can be added through programming.
+
+Provided with the right configuration file (something called a _Viewpoint Specification Model_ or _VSM_ for short), Sirius can represent any model which is compatible with EMF (the de facto standard for modeling tools in the Eclipse world). This includes standards like UML, SysML, TOGAF etc., but also any _Domain Specific Model_ (_DSM_) which you can create to better suit your specific needs. For one kind of model (e.g. TOGAF, which is used to describe Enterprise Architectures), several Sirius configurations can be created, each one specific to a particular _viewpoint_. Different kinds of users can thus see the same model through different viewpoints, each adapted to his preoccupations: from the same TOGAF model, the CEO(Chief Executing Officer) will want to see a general overview of how the company is organized, the COO(Chief Operating Officer) may want a view more oriented towards processes, and a system administrator will need a view on just the parts which concern software systems put in place to implement these processes.
+
+Sirius makes it easy for architects to create _Viewpoint Specification Model_ suited for any kind of model. These are then packaged as Eclipse plug-ins that you can install to use their modelers. Note that Sirius itself must also be installed for the viewpoints to run (they are not self-sufficient).
+
+As an end-user, you will use already configured modelers specially adapted to your needs. If you want to create your own modelers, please refer to the "Sirius Specifier Manual":../../specifier/Sirius%20Specifier%20Manual.html. Simple modelers do not require any programming to create, and once you know the basics, a new graphical modeler can be created from scratch in less than an hour.
+
+To use already existing modelers (assuming the plug-ins which provide them are installed), you will need to know the following notions (see also "the Glossary":../../Glossary.html ):
+* a _resource_ is a file (in your workspace or inside a plug-in) which contains a model;
+* the _semantic model_ is the model (or models) which contains your business data. It can be stored in one of several resources (files) which can reference each other. The type of semantic model can be different for each user. It can be based on a standard (for example @.uml@ files for UML models) or based on a _Domain Specific Model_ (sometimes called _Domain Specific Language_) which was specially created for your needs.
+* a _dialect_ is a kind of representation supported by Sirius. Out of the box, Sirius supports three dialects: diagrams, tables, and trees. Sequence diagrams and cross-tables, which are special kinds of diagrams (resp. tables) can also be considered of as dialects, although technically they are not.
+* a _representation_ is a particular diagram, table, or tree which you created on your semantic model. It is simply a more general term than "diagram" which is also usable for other dialects.
+* a _representation file_ is a file in which Sirius stores all informations related to which representations you created, what appears on them, the positions and colors of the elements, etc. This files have a @.aird@ extension (typically @representations.aird@). Representation files reference the semantic model(s) they contain representations for, but you semantic models are kept unaware (and unpolluted) of any Sirius-specific data.
+* a _viewpoint_ is a set of representation descriptions which provide a specific point of view on some kind of semantic model. For example we could have a _UML Structural_ viewpoint, which describes the sub-set of all the standard UML diagrams which deal only with structural aspects of UML models (as opposed to behavioral or requirements aspects). Siriuss are defined in _Viewpoint Specification Models_ and packaged as Eclipse plug-ins. Once you install such a plug-in, the viewpoints it defines will be available to you (with all the representations they define) on all compatible semantic models.
+* a _modeling project_ is a special kind of project in your workspace which makes it easy to manipulate representation files and semantic models in a consistent way.
+
+The rest of this document explains how you can use the Sirius UI to create and manipulate representations of your semantic models. Each viewpoint and representation is specific. We will use the _Family_ example (see the "Getting Started":../../../../fr.obeo.dsl.designer.doc/html/Getting_Started_User.html section) for illustration purpose, but note that not all features may be available with all kinds of models and all viewpoints.
+
+h2(#FormerUsers). Note to Users of Previous Versions
+
+New users can skip this section safely. For users of previous version who have existing models, this section explains the required steps to use their models with this version, and gives an overview of the main UI changes. See also the "release notes":../../Release%20Notes.html for more details.
+
+h3(#Migration). Migration of Existing Representation Files
+
+Representation files are now automatically migrated when opened. This migration is transparent for the end-user.
+
+h3(#UICHanges). User Interface Changes
+
+You will notice some radical changes in the user interface. The most important change is the disappearance of the _Model Content_ view. It has been replaced with a streamlined UI which integrates directly into the Eclipse explorer view. The notion of "Local Session" has disappeared from the user interface; its management has been made as transparent as possible so you do not have to deal with it except in some very specific circumstances.
+
+The recommended way to use Sirius is now to use the new notion of _Modeling Project_ described below. If you already have existing Sirius representation files (@aird@ files), a "conversion":#MPConversion is necessary. Modeling projects have some constraints on how the files are organized. If you do not want or can not convert your models to the new recommended way, a "legacy mode":#LegacyMode is provided which does not require any change to your projects organisation (beyond the files' migration). Note that the support for this legacy mode is not guaranteed to be maintained in all future versions of Sirius.
+
+h2(#ModelingPerspective). The Modeling Perspective
+
+When you first start Sirius, it opens on the _Modeling_ perspective. This new perspective provides all the required views, wizards and menus to exploit designers as an end user. When run in the context of Obeo Designer, the perspective will also give you access to the main feature of the other components of Obeo Designer (e.g. shortcuts to launch Acceleo generator).
+
+  !images/modeling_perspective.png!
+
+The Modeling perspective provides the following views by default:
+* A "_Model Explorer_":#ModelExplorer, which is the main UI to interact with your models. (For users of previous versions, this explorer includes directly all the features which were found in the "Model Content" view before).
+* An _Outline_ view, which provides a structural overview of the document or model currently opened. For diagrams, it shows a miniature view of the whole diagram on which you can easily navigate to other parts of the diagram for large ones.
+* The _Properties_ view gives detailed information about the currently selected element. Depending on the nature of the selected element, some of these properties can be edited directly in the _Properties_ view with immediate effect.
+* The _Problems_ view contains information markers of different severities (information only, warnings, or errors). This is where you will find validation errors on your models for example. 
+
+This perspective also provides useful actions available by right-clicking in the view "_Model Explorer_":#ModelExplorer.
+
+As usual in Eclipse, this perspective can be customized at will by adding, moving or removing views, shortcuts, etc.
+
+h3(#ModelExplorer). The Model Explorer View
+
+The _Model Explorer_ view shows all the projects in you workspace and the files they contain. It adds some special capabilities to _Modeling Projects_, to allow you to view and manipulate your semantic models and their Sirius representations directly inside the explorer.
+
+For instance, inside the _Model Explorer_, semantic models and representation files which are part of a _Modeling Project_  or model files can be expanded to display their content directly:
+
+  !images/model_explorer_view.png!
+
+In the example above, the @example@ modeling project (note the blue "M" decorator on the project icon) contains a single semantic model, the @example.ecore@ file, and a single representation file @representations.aird@. Both can be expanded directly from inside the _Model Explorer_ view, to discover the structure of the semantic model and the graphical representations which already exist.
+
+The _Model Explorer_ supports the "Link with Editor" feature, which can be enabled by pressing the icon in the top right corner of the view (the one with two horizontal arrows, pressed in the screenshot above). When this mode is enabled, if you have a representation opened, clicking anywhere on it will automatically select the corresponding representation inside the _Model Explorer_ (expanding the project and files if necessary). Conversely, if you select a semantic element from one of your semantic models in the _Model Explorer_ view and if this element is represented somewhere on the opened editor, it will be automatically selected. This can be very useful when you have many projects and representation or large representations to avoid getting lost.
+
+The _Model Explorer_ also supports filtering of elements from inside _Modeling Projects_ (and only these elements): if you enter some text in the search box at the top of the view, the view will filter out all the elements which do not match your text. For example if you enter @Element@ in the search box, only the model elements whose name starts with @Element@ will be shown. You can use the @*@ and @?@ special characters in your search string to mean respectively "any text" (including none) and "any single character". For example the search string @*Element@ will show all elements whose name _contains_ the string @Element@ anywhere.
+
+The _Model Explorer_ allows to group tree items with an intermediary level. This feature clearly enhances the expand time on huge models.
+  !images/groupItems.png!
+You can customize this feature with three preferences:
+* Enable/disable this feature globally
+* Increase/decrease the threshold that triggers the intermediary level
+* Increase/decrease the group size
+  !images/groupItems_1.png!
+  
+When you update these preferences, you need to make a refresh (F5) on all resources already expanded to get an updated tree items.
+
+!images/groupItems_2.png!
+
+This feature is also enabled on tree selection wizards in Sirius diagram tools.
+
+!images/groupItems_3.png!
+
+h2(#MP). Modeling Projects
+
+Modeling Projects, which are used in Sirius to organize and manage your models and their representations (diagrams, tables, etc.).
+
+Modeling projects are responsible for storing the representation data (diagrams, tables, etc.) in special _representation files_ with the extension @.aird@. Modeling projects can also be used to store the semantic data of your models but this is not mandatory. Semantic data can be stored anywhere, but representation data *must be stored in @aird@ files within modeling projects* (the only exception is the "legacy mode":#LegacyMode supported for compatibility with previous versions).
+
+Moreover, modeling projects provide _actions to manage viewpoints and representations_: viewpoints are associated to a modeling project, so the viewpoints that will be available for a given Modeling Project's representations are the one attached to this project. Viewpoints selection is made by right-clicking on a Modeling Project and choosing _Viewpoints Selection_.
+
+h3(#MPCreation). Creating a New Modeling Project
+
+To create a new _Modeling Project_, simply right-click in the "Model Explorer":#ModelExplorer (or use the _File > New..._ menu) and select _New > Modeling Project_.
+
+  !images/new_project1.png!
+
+A wizard opens, asking for a mandatory project name. Entering an invalid project name will result in an error message. By default, the modeling project will be created in the workspace's location, but this can be changed: just uncheck "Use default location" and enter the path to the location where you want your modeling project to be created.
+
+  !images/new_project2.png!
+
+When you are done, click _Finish_ to actually create the modeling project. It will appear in the _Model Explorer_, and by default contains two elements:
+* _Project Dependencies_, where you can add external dependencies you rely on, i.e. models you will depend on but which are stored oustide of the project;
+* @representations.aird@, which is the top-level representation file for the project. 
+
+  !images/new_project3.png!
+
+h3(#MPConversion). Converting an Existing Project into a Modeling Project
+
+It can be useful to convert an existing project into a Modeling Project, since it is necessary for example to be able to create representations in it. An action is available to do this. Right-click on any project, then select _Configure... > Convert to Modeling Project_.
+
+  !images/convert_to_modeling_project1.png!
+
+This action does not alter in any way the nature of the project. For example, if the project was a Java project, it will still be a Java project afterwards. The action just adds the _Modeling Project_ nature to the selected project.
+
+  !images/convert_to_modeling_project2.png!
+
+If there is a suitable representation file, it will be considered to be the top-level representation file for the converted project. Otherwise, a new representation file named _representations.aird_ will be created automatically at the root of the project.
+
+h3(#MPConversionReverse). Removing the Modeling Nature from a Project
+
+If for some reason you want to revert the conversion of a project into a _Modeling Project_, you can use the _Configure... > Remove Modeling Project Nature_ action on the context menu of the project.
+
+The action will simply remove the nature from the project itself, but will not remove or alter the representation files stored inside. You will still be able to use your representations using the "legacy mode":#LegacyMode.
+
+h3(#SiriusSelection). Selecting Which Viewpoints to Enable
+
+Each modeling project has a set of viewpoints which are _enabled_. This controls what kind of representations you can create on the semantic models inside the project. The set of viewpoints which are available to you will depend on what plug-ins you have installed, and on the type of semantic models which are inside the modeling projects. For example, even if you have installed the "UML Designer":http://marketplace.obeonetwork.com/module/uml, you will only be able to enable to corresponding viewpoints if your project contains UML models (@.uml@ files).
+
+To select which viewpoints are enable on your project, simply use the _Viewpoint Selection_ action in the context menu of the project itself. A dialog box will open which will show you all the viewpoints which are compatible with your project (depending on the kind of models it contains). You can check or un-check each viewpoint individually to enable or disable it, and click _OK_ to validate your choice. Note that some viewpoints depend on other ones (especially viewpoints which extend other ones). If your selection of viewpoints does not include all the required dependencies, a message will be shown to indicate which dependencies are not resolved. You can then adjust your selection and re-validate it.
+
+  !images/viewpoint_selection1.png! !images/viewpoint_selection2.png!
+  
+h3(#ProjectDependencies). Project Dependencies
+
+A modeling project will always have an element called _Project Dependencies_ available. This is used to import external models, which are stored outside of the modeling project but used in it, for instance for certain representations of the project.
+
+To use a semantic model stored outside of the current modeling project, it must be added to the project dependencies. That will not change its location but will simply allow access to its content.
+To add an external model to a modeling project, right-click on _Project Dependencies_ then select _Add Model_.
+Project dependencies can contain both semantic models and graphical models (_i.e. representations files_)
+
+  !images/project_dependencies1.png!
+
+A wizard page opens, allowing you to enter the URI of the model to add. If the model is in the workspace, you can use the button _Browse Workspace_ to look for it. If the model in in the file system, you can use the button _Browse File System..._ to find it. Otherwise, you must enter the model's URI manually.
+
+  !images/project_dependencies2.png!
+
+Once the model's URI is entered, click _OK_. The model is added under _Project Dependencies_ and a pop-up window is displayed to allow you to select the viewpoints you need. Just select or unselect the viewpoints you want and click _OK_ when you're done.
+
+  !images/project_dependencies3.png!
+
+Referenced models can be removed if they are not used, just right-click on the model in the _Model Dependencies_ and select _Remove_.
+
+  !images/remove_dependencies1.png!
+
+*Note:* If the referenced model is a non-modeling project in the workspace, the corresponding file will be decorated with an _M_ in the upper right corner to indicate that this model is used in a Modeling Project. This decorator disappears if the modeling projects that use this model are closed.
+
+  !images/decorated_model1.png!
+
+h3(#ModelsInMP). Models in Modeling Projects
+
+Any model available in a modeling project, whether physically located in the modeling project or just referenced by it (_via_ the _Project Dependencies_), will be expandable. This means that the content of any model used or referenced in a modeling project can be browse directly in the modeling project, in the view "Model Explorer":#ModelExplorer.
+
+  !images/models_content1.png!
+
+h3(#ModelActions). Actions Available on Model Elements
+
+When browsing a model in a modeling project, several actions can be accessed by right-clicking on a model element:
+* _New Representation_ allows you to create a new representation. The availability of this action depends on the kind of model and selected viewpoints, the action being displayed only when it makes sense;
+* _Export diagrams as images_ allows you to export the diagrams related to this element (those that are displayed directly under this element) in image files.
+
+h3(#AirdFiles). Representations Files
+
+Representations files are used to store representations. They have the extension @.aird@.
+Such files contain the data needed to display the diagrams (or other kinds of representations) but they do not contain semantic data, which are stored by the models themselves.
+Representations files located in modeling projects can be unfolded to browse their content.
+
+h3(#AirdStructure). Structure of a _Representations File_
+
+The content of a _representations file_ is structured in three levels:
+* Viewpoint 1
+** Representation Type 1.1
+*** Representation 1.1.1
+*** Representation 1.1.2
+** Representation Type 1.2
+*** Representation 1.2.1
+* Viewpoint 2
+** Representation Type 2.1
+*** Representation 2.1.1
+
+The first level displays the available viewpoints, which match the viewpoints selected on the _modeling project_.
+The second level, inside a given viewpoint, displays _representation types_. Only _representation types_ for which at least one representation exists are displayed.
+The third level, inside a _representation type_, displays the representations actually present for this type.
+
+  !images/aird_unfolded1.png!
+ 
+
+
+h3(#repair). Repair action
+
+A repair action is available in representations file context menu
+In some case, you will need to execute a repair action on your representations file, especially when you have modified the VSM (odesign file). 
+
+h4. Operations done during repair execution
+
+* Deleting representations without semantic target.
+* Deactivating behavior, filter, rules that no longer exist in VSM.
+* Saving all diagram elements state (such as style, bounds, expended bounds for collapsed node).
+* Deleting diagram elements that will be recreated by refresh.
+* Refresh all representations.
+* Restore diagram elements state.
+
+
+h4. Cases where using repair action
+
+* After removing behavior, rules or filter into VSM.
+* After removing or updating some mapping.
+* After removing some semantic elements.
+
+In most of case, a simple refresh of representation should be enough. Note that repair action could take some time depending on representations file size.
+
+h3(#MPConstraints). Constraints
+
+There is one important constraint regarding _modeling projects_. They can only contain *one* top-level _representations file_.
+
+A top-level _representations file_ is a file that stores representations. Such files can be modularized, which means they can be split in several files, but there is always one _master_ file which references the others and is referenced by none. This file is the top-level file, and there can be only one per _modeling project_.
+To say this differently: If you want to have several independent _representations files_, each of them must be placed in its own _modeling project_.
+
+h3(#Lifecycle). Modeling Project Lifecycle
+
+As mentioned before, models in a _Modeling Project_ are automatically loaded when first needed. They are not unloaded automatically. If you want them to be unloaded (and retreive the associated memory), you must close the modeling project itself.
+
+Besides, all representations of a given _modeling project_ are part of the same model. Any modification to one of these representations will cause all of them to go dirty (which means that a little * symbol will be displayed in the editor title to indicate that the file contains unsaved modifications). Conversely, saving any representation of a _modeling project_ saves all of them. What is actually saved is the _representations file_, which contains all the representations.
+
+h2(#Representations). Representations
+
+Representations are stored in @*.aird@ files. An @*.aird@ file is called a "*Representations File*":#AirdFiles.
+A representation can be a diagram, a table, a cross-table, a tree, etc.
+
+*Note:* _Representations files_ located in _modeling projects_ are loaded automatically.
+
+h3(#ReprCreation). Creating a Representation
+
+There are two ways of creating a representation. Both take place in the _Model Explorer_.
+
+The first way of creating a representation is to navigate in a model to an element for which you know there is a _representation type_ available. Right-click on this element, then select _New Representation > <Representation type>_.
+
+  !images/create_representation1.png!
+
+The other way consists in right-clicking on the _Modeling Project_ itself. Select _Create Representation_.
+
+  !images/create_representation1_alt.png!
+
+This opens a wizard that displays available viewpoints and available _representation types_ in these viewpoints.
+Just select the type of representation you want to create and click _Next >_.
+
+  !images/create_representation2.png!
+
+The wizard then displays the available models (those that are in the current modeling project and those that are imported). When you browse the content of these models, you will notice that their content is filtered to display only elements that are relevant for the selected representation type.
+Select the element for which you want to create a representation and click _Finish_.
+
+  !images/create_representation3.png!
+
+Either way, a pop-up window appears, where you can enter a name for the new representation. A default name is proposed. Click _OK_.
+
+  !images/create_representation4.png!
+
+If there are several _representations files_ in the current _modeling project_, a pop-up window appears before the actual creation to allow you to select the _representations file_ that will contain the representation.
+
+  !images/create_representation5.png!
+
+The representation is then created and opened.
+
+h3(#ReprManagement). Managing Representations
+
+Available representations can be accessed by browsing _representation files_ to the third level. Right-clicking on a representation then offers several actions:
+
+  !images/managing_representation1.png!
+
+* *Open* opens the representation in the relevant editor. You can also open the representation by double-click on it;
+* *Delete* deletes the representation: Del key can be used as shortcut (*Warning:* this cannot be undone);
+* *Rename* opens a pop-up window where you can enter a new name for the representation: F2 key can be used as shortcut;
+* *Copy* duplicates the representation, opening a pop-up window where you can enter the name of the copy;
+* *Move* (only if there are several _representations files_ in the current _modeling project_) allows you to move a representation to another _representations file_;
+* *Extract to .aird file ...* extracts the selected element to another _representations file_, which will be located in the workspace. A pop-up window opens to let you select the destination file, and the new file is automatically added to the project's dependencies if needed;
+* *Export Diagrams as images* allows you to export all the diagrams stored inside a representation file in one operation. You can choose the destination folder and image format..
+
+h2(#LegacyMode). Legacy Mode 
+
+The legacy UI mode is made available for users of previous versions of Sirius who can not or do not want to convert their projects into _Modeling Projects_. As such, it works with all existing representation files (provided they have been migrated if required), even if they are inside non-Modeling projects or if there are several top-level representation files inside the same project.
+
+When using the legacy mode, you must explicitly _open_ a representation file using the _Open_ action in the context menu of the file. This is equivalent to opening a _session_ in previous versions of Sirius. Once the representation file is open, you can expand it, and inside you will find all the same elements that you would find inside a normal _Modeling Project_: the semantic model(s) associated to the representation file, and the representations themselves.
+
+  !images/legacy_mode1.png!
+
+All the actions which are normally performed on the modeling project itslef, like selecting which viewpoints are enabled, are available in the context menu of the representation file itself:
+
+  !images/legacy_mode2.png!
+
+Note that the _Project dependencies_ entry is not available in legacy mode. To associate new semantic models to the representation file, use the _Add model_ action directly on the representation file.
+
+Once you have finished using the models and or representations, you must explitly close it (equivalent to closing the _session_ in previous versions) by using the _Close_ action on the top-level representation file.

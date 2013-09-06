@@ -75,7 +75,7 @@ public class DescriptionResourceFactoryImpl extends ResourceFactoryImpl {
             extendedMetaData = new VSMExtendedMetaData(loadedVersion);
             resourceHandler = new VSMResourceHandler(loadedVersion);
         }
-        XMIResource resource = new DescriptionResourceImpl(uri);
+        XMIResource resource = new DescriptionResourceImpl(uri, loadedVersion);
 
         // set load options
         final Map<Object, Object> loadOptions = new HashMap<Object, Object>();

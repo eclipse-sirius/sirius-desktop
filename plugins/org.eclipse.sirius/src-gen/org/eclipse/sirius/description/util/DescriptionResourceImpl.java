@@ -12,9 +12,13 @@ package org.eclipse.sirius.description.util;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
+import org.osgi.framework.Version;
 
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMVersionSAXParser;
 import org.eclipse.sirius.business.internal.migration.description.VSMXMIHelper;
 
@@ -26,6 +30,11 @@ import org.eclipse.sirius.business.internal.migration.description.VSMXMIHelper;
  * @generated NOT
  */
 public class DescriptionResourceImpl extends XMIResourceImpl {
+
+    private String loadedVersion;
+
+    private boolean migrationIsNeeded = false;
+
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -39,17 +48,42 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
      * 
      * @param uri
      *            the URI of the new resource.
-     * @generated
+     * @param loadedVersion
+     *            the last migration version of the representations file.
+     * @generated NOT
      */
-    public DescriptionResourceImpl(URI uri) {
+    public DescriptionResourceImpl(URI uri, String loadedVersion) {
         super(uri);
+        this.loadedVersion = loadedVersion;
+        this.migrationIsNeeded = VSMMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(loadedVersion));
+
     }
 
     @Override
     protected XMLHelper createXMLHelper() {
+        if (loadedVersion == null) {
+            VSMVersionSAXParser parser = new VSMVersionSAXParser(this.getURI());
+            loadedVersion = parser.getVersion(new NullProgressMonitor());
+            this.migrationIsNeeded = VSMMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(loadedVersion));
 
-        VSMVersionSAXParser parser = new VSMVersionSAXParser(this.getURI());
-        return new VSMXMIHelper(parser.getVersion(new NullProgressMonitor()), this);
+        }
+        return new VSMXMIHelper(loadedVersion, this);
+    }
+
+    /**
+     * Override to migrate fragment if necessary (when a reference has been
+     * renamed) before getting the EObject.
+     */
+    @Override
+    public EObject getEObject(String uriFragment) {
+        if (migrationIsNeeded) {
+            Option<String> optionalRewrittenFragment = VSMMigrationService.getInstance().getNewFragment(uriFragment, loadedVersion);
+            if (optionalRewrittenFragment.some()) {
+                return getEObject(optionalRewrittenFragment.get());
+            }
+        }
+        return super.getEObject(uriFragment);
+
     }
 
 } // DescriptionResourceImpl

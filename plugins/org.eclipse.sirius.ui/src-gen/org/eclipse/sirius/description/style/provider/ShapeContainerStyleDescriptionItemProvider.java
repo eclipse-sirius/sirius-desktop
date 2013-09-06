@@ -66,6 +66,8 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
+            addWidthComputationExpressionPropertyDescriptor(object);
+            addHeightComputationExpressionPropertyDescriptor(object);
             addShapePropertyDescriptor(object);
             addBackgroundColorPropertyDescriptor(object);
         }
@@ -96,6 +98,40 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
                 getString("_UI_ShapeContainerStyleDescription_backgroundColor_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_ShapeContainerStyleDescription_backgroundColor_feature", "_UI_ShapeContainerStyleDescription_type"),
                 StylePackage.Literals.SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), null));
+    }
+
+    /**
+     * This adds a property descriptor for the Width Computation Expression
+     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addWidthComputationExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(
+                        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(),
+                        getString("_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_widthComputationExpression_feature",
+                                "_UI_SizeComputationContainerStyleDescription_type"), StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION, true, false,
+                        false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+    }
+
+    /**
+     * This adds a property descriptor for the Height Computation Expression
+     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addHeightComputationExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(
+                        ((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+                        getResourceLocator(),
+                        getString("_UI_SizeComputationContainerStyleDescription_heightComputationExpression_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_heightComputationExpression_feature",
+                                "_UI_SizeComputationContainerStyleDescription_type"), StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, true, false,
+                        false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
     }
 
     /**
@@ -140,6 +176,8 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
         updateChildren(notification);
 
         switch (notification.getFeatureID(ShapeContainerStyleDescription.class)) {
+        case StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION:
+        case StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION:
         case StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__SHAPE:
         case StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

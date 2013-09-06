@@ -38,6 +38,7 @@ import org.eclipse.sirius.description.style.NodeStyleDescription;
 import org.eclipse.sirius.description.style.NoteDescription;
 import org.eclipse.sirius.description.style.RoundedCornerStyleDescription;
 import org.eclipse.sirius.description.style.ShapeContainerStyleDescription;
+import org.eclipse.sirius.description.style.SizeComputationContainerStyleDescription;
 import org.eclipse.sirius.description.style.SquareDescription;
 import org.eclipse.sirius.description.style.StyleDescription;
 import org.eclipse.sirius.description.style.StylePackage;
@@ -239,6 +240,11 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseBracketEdgeStyleDescription(BracketEdgeStyleDescription object) {
             return createBracketEdgeStyleDescriptionAdapter();
+        }
+
+        @Override
+        public Adapter caseSizeComputationContainerStyleDescription(SizeComputationContainerStyleDescription object) {
+            return createSizeComputationContainerStyleDescriptionAdapter();
         }
 
         @Override
@@ -578,6 +584,22 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createBracketEdgeStyleDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.description.style.SizeComputationContainerStyleDescription
+     * <em>Size Computation Container Style Description</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.description.style.SizeComputationContainerStyleDescription
+     * @generated
+     */
+    public Adapter createSizeComputationContainerStyleDescriptionAdapter() {
         return null;
     }
 

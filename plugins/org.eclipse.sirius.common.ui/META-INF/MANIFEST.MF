@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.common.ui;singleton:=true
-Bundle-Version: 2.6.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.emf.edit.ui,
  org.eclipse.sirius.common,
@@ -14,11 +14,12 @@ Require-Bundle: org.eclipse.emf.edit.ui,
 Export-Package: org.eclipse.sirius.common.ui,
  org.eclipse.sirius.common.ui.business.api.interpreter,
  org.eclipse.sirius.common.ui.business.api.views.properties.tabbed,
- org.eclipse.sirius.common.ui.business.internal.views.properties.tabbed;x-friends:="org.eclipse.sirius.tests,org.eclipse.sirius.tests.swtbot",
+ org.eclipse.sirius.common.ui.business.internal.views.properties.tabbed;x-friends:="fr.obeo.dsl.viewpoint.tests,fr.obeo.dsl.viewpoint.tests.swtbot",
  org.eclipse.sirius.common.ui.tools.api.contentassist,
  org.eclipse.sirius.common.ui.tools.api.dialog,
  org.eclipse.sirius.common.ui.tools.api.editor,
  org.eclipse.sirius.common.ui.tools.api.find,
+ org.eclipse.sirius.common.ui.tools.api.navigator,
  org.eclipse.sirius.common.ui.tools.api.plugin,
  org.eclipse.sirius.common.ui.tools.api.profiler,
  org.eclipse.sirius.common.ui.tools.api.profiler.view,
@@ -27,10 +28,11 @@ Export-Package: org.eclipse.sirius.common.ui,
  org.eclipse.sirius.common.ui.tools.api.selection.page,
  org.eclipse.sirius.common.ui.tools.api.util,
  org.eclipse.sirius.common.ui.tools.api.view,
+ org.eclipse.sirius.common.ui.tools.api.view.common.item,
  org.eclipse.sirius.common.ui.tools.api.wizard,
  org.eclipse.sirius.common.ui.tools.internal.contentassist;x-friends:="org.eclipse.sirius.ui",
- org.eclipse.sirius.common.ui.tools.internal.preference;x-internal:=true,
  org.eclipse.sirius.common.ui.tools.internal.interpreter;x-internal:=true,
+ org.eclipse.sirius.common.ui.tools.internal.preference;x-internal:=true,
  org.eclipse.sirius.common.ui.tools.internal.resource;x-internal:=true,
  org.eclipse.sirius.common.ui.tools.internal.util;x-internal:=true
 Bundle-Activator: org.eclipse.sirius.common.ui.SiriusTransPlugin$Implementation

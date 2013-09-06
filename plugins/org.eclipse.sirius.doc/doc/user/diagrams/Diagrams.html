@@ -1,0 +1,1048 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Diagrams</title>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="DiagramEditors">Diagram Editors</h1>
+		<p>This document explains how to use diagram editors/modelers supported by Sirius which allow to view and manipulate data in a graphical way.</p>
+		<ol class="toc" style="list-style: disc;">
+			<li>
+				<a href="Diagrams.html#DiagramEditors">Diagram Editors</a>
+				<ol style="list-style: disc;">
+					<li>
+						<a href="Diagrams.html#introduction">Introduction</a>
+					</li>
+					<li>
+						<a href="Diagrams.html#features_overview">Features Overview</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Diagrams.html#Creatingdiagrams">Creating diagrams</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#ManagingDiagrams">Managing Diagrams</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#Hidingelements">Hiding elements</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#Validatingthemodel">Validating the model</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#Filters">Filters</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#Exportingimages">Exporting images</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#Batchimagesexport">Batch images export</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#PortshiftingPortDragandDrop">Port shifting - Port Drag and Drop</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#Copypasteoflayout">Copy/paste of layout</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#diagram_element_pinning">Diagram element pinning</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#Layoutingmodearrangeyourdiagramswithoutmodifyingsemanticmodels">Layouting mode: arrange your diagrams without modifying semantic models</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#synchronized_diagram">Synchronized/Unsynchronized diagram</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#UsingRegularExpressionstoFindDiagramElements">Using Regular Expressions to Find Diagram Elements</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#styleCustomizations">Style customizations </a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="Diagrams.html#reference">Reference</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Diagrams.html#GraphicalArea">Graphical Area</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#Palette">Palette</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#ref_tabbar">Tab-bar</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#PropertiesView">Properties View</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#Outline">Outline</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="Diagrams.html#preferences">Preferences</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Diagrams.html#GlobalPreferences">Global Preferences</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#Appearance">Appearance</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#Printing">Printing</a>
+							</li>
+							<li>
+								<a href="Diagrams.html#RulersAndGrid">Rulers And Grid</a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<h2 id="introduction">Introduction</h2>
+		<p>Sirius provides support for diagrammatic representations, which represent information in a graphical way. Diagrams are the main and most sophisticated type of representations supported by Sirius.</p>
+		<p>	
+			<img border="0" src="images/diagram_sample1.png"/>
+		</p>
+		<p><div style="display:none">
+			<strong>TODO</strong> Add other sample screenshots showing various kinds of diagrams.</div>
+		</p>
+		<p>A diagram editor is divided in three areas:</p>
+		<ol>
+			<li>the 
+				<span style="color:orange">main graphical</span> area, which shows the elements and supports direct interaction with them;
+			</li>
+			<li>the 
+				<span style="color:red">palette</span>, which gives access to additional tools (for example creation tools to add new elements to the diagram);
+			</li>
+			<li>the 
+				<span style="color:green">
+					<em>tabbar</em>
+				</span> at the top of the graphical area, which provides additional, more global operations.
+			</li>
+		</ol>
+		<p>	
+			<img border="0" src="images/diagram_sample_annotated.png"/>
+		</p>
+		<p>In addition to these areas which are immediately visible inside the diagram editor, it is also possible to interact with the diagram and its elements through the 
+			<em>Properties View</em> and through 
+			<em>contextual menus</em> available on the graphical elements themselves and on the diagram&#8217;s background. When the current editor is a Sirius diagram, the Eclipse 
+			<em>Outline</em> view shows a graphical overview of the diagram which can be used to navigate inside it if the whole diagram is not visible in the main area.
+		</p>
+		<p>This document is structured in three parts. 
+			<a href="Diagrams.html#features_overview">The first part</a> gives an overview of all the main features, and is organized from a functional perspective. For example it contains a section which explains the different ways available to control which elements are hidden or not on a diagram, with links to the corresponding parts of the reference section. 
+			<a href="Diagrams.html#reference">The second part</a> is a reference and describes all the features available by looking at each of the main areas of the diagram editors (the palette, the tab-bar etc.). Finally, 
+			<a href="Diagrams.html#preferences">the last part</a> gives a reference on all the preferences and configuration parameters which can affect the look and feel of diagrams.
+		</p>
+		<p>Note that as always with Sirius, some of the features described below may or may not be available with all specific kinds of diagrams. It all depends on which features the person who 
+			<em>specified</em> (configured) the diagram decided to support. For example, the names and effect of the tools available in the palette will be different for each graphical modeler. Refer to the documentation of the specific modeler if available for more precise details.
+		</p>
+		<h2 id="features_overview">Features Overview</h2>
+		<h3 id="Creatingdiagrams">Creating diagrams</h3>
+		<p>Creating new diagrams works in the same as for any other kinds of representation in Sirius. There are three main ways:</p>
+		<ol>
+			<li>In the 
+				<em>Model Explorer</em> view, find the semantic element you want to create a diagram on (it must be part of a semantic model inside a 
+				<em>Modeling Project</em>), and in the context menu (available with a right click), select the 
+				<em>New representation...</em> sub-menu. It will give you a list of all the representations which can be created on this object, some of which may be diagrams (there may be other kinds of representations available too, like tables for example). Just select the type of diagram you want, and enter the name of the new diagram in the dialog box which appears then. The newly created diagram will automatically open. 
+			</li>
+			<li>In the 
+				<em>Model Explorer</em> view, right-click on the 
+				<em>Modeling Project</em> which contains the semantic element to represent and select 
+				<em>Create Representation</em>. In the wizard which appears, first select the type of diagram to create (if diagrams are available), and in the next page, select the semantic element to create it on. Only the semantic elements which are compatible with the selected diagram type will be available. Just select the element you want to represent, finish the wizard, and enter the name of the new diagram in the dialog box which appears then. The newly created diagram will automatically open.
+			</li>
+			<li>Finally, on some representations (diagrams or other kinds), it may be possible to create new diagrams directly from the context menu of the element on which you want to create the diagram. If this is possible (this depends on the representations' configuration), it will be available in the 
+				<em>Navigate</em> category of the element&#8217;s context menu, with a name starting with 
+				<em>New detail:</em>. Once again, after selecting the type of diagram to create, enter the name of the new diagram in the dialog box which appears. The newly created diagram will automatically open.
+			</li>
+		</ol>
+		<p>Note that the set of diagrams you can create will depend both on the type of the selected element and on the set of viewpoints which are currently enabled.</p>
+		<p>When you create a new diagram, unless you have unchecked the 
+			<a href="Diagrams.html#synchronized_diagram">
+				<em>Synchronized mode for new diagrams</em>
+			</a> preference, it will be initially populated with graphical elements according to its configuration and the current state of the semantic model(s) it represent. If the preference is checked, the diagram will be created empty, and only the elements you ask explicitly to be represented (through tools, which will be specific to each kind of diagram) will appear on the diagram.
+		</p>
+		<h3 id="ManagingDiagrams">Managing Diagrams</h3>
+		<p>Opening existing diagrams and renaming or deleting them works exactly as for any other kind of representation. Refer to the general documentation about the 
+			<em>Modeling Project</em> UI for details.
+		</p>
+		<h3 id="Hidingelements">Hiding elements</h3>
+		<p>Every graphical element on a diagram can be hidden explicitly. To do that, simply right click on the graphical element (or elements if you want to hide several elements at once) you want to hide. Then, choose 
+			<i>Show/Hide</i> / 
+			<i>Hide Element</i>. The graphical element is now hidden from view.
+		</p>
+		<p>The icon in the tool-bar changes showing a &#171;check box&#187; on it as soon as at least one element has been hidden, to remind you that what you see is not a complete view of the model being represented:</p>
+		<p>	
+			<img border="0" src="images/diagram_editor11.png"/>
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor12.png"/>
+		</p>
+		<p>It is also possible to hide an element from the outline view. Choose outline mode to see the semantic model in a tree viewer. You can now right click on an element and choose 
+			<em>Hide element</em>.
+		</p>
+		<p>There are two ways to reveal hidden elements:</p>
+		<ul>
+			<li>on the outline view, in outline mode, you can see every model element. The elements that are hidden have their names displayed in italic style. To reveal one of this element, simply right click on it and choose 
+				<i>Show element</i>.
+			</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/diagram_editor13.png"/>
+		</p>
+		<ul>
+			<li>Show/Hide elements using a tree viewer</li>
+		</ul>
+		<p>When there is no selected element on the diagram, the tab bar provides the button 
+			<em>Show/Hide</em>.
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_show_hide_dialog1.png"/>
+		</p>
+		<p>This button opens a dialog to manage the shown and hidden elements on the diagram with a tree view, using various selection buttons (Check all, Uncheck all, Expand All and Collapse all) and various filters (All element, only checked elements and only unchecked elements).</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_show_hide_dialog2.png"/>
+		</p>
+		<p>You can also use 
+			<a href="Diagrams.html#UsingRegularExpressionstoFindDiagramElements">regular expressions</a> to easily retrieve the elements you want to hide/reveal.
+		</p>
+		<h4 id="Hidinglabels">Hiding labels</h4>
+		<h5 id="Nodeslabels">Nodes labels</h5>
+		<p>It is also possible to hide the node label if it is on the border of its node.</p>
+		<p>The approach is the same as for other elements, except that there are a specific menus named &#171;Hide/Show Label&#187;. It is possible to call this menu directly on the label or on its node.</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_hide_label_1.png"/>
+		</p>
+		<h5 id="Edgeslabels">Edges labels</h5>
+		<p>It is also possible to hide the edge label. The approach is the same than the nodes labels with the specific menus &#171;Hide/Show Label&#187; called from the edge or its label.</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_hide_edge_label_1.png"/>
+		</p>
+		<p>Note that if a label of an edge is hidden (center, begin or end), all the labels of the edge will be hidden. Same behavior for the reveal action, if a label of an edge is revealed (center, begin or end), all the labels of the edge will be revealed.</p>
+		<h4 id="HidingiconsoflabelsonShapesorConnectors">Hiding icons of labels on Shapes or Connectors</h4>
+		<p>When working on 
+			<em>big</em> diagrams, you may want to hide the icons of the labels on all shapes or connectors, in order to improve the readability of your representations. To do so, open the Eclipse Preferences (
+			<em>Window</em>/ 
+			<em>Preferences</em>), and select the &#171;Appearance&#187; category (
+			<em>Sirius</em>/ 
+			<em>Sirius Diagram</em>/ 
+			<em>Appearance</em>).
+		</p>
+		<p>The options 
+			<em>"Hide label icons on shapes"</em> and 
+			<em>"Hide label icons on connectors"</em> will allow you to do so.
+		</p>
+		<p>By default, no shapes neither connectors are hidden :</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_hide_label_icon_1.png"/>
+		</p>
+		<p>If you check both  "
+			<em>Hide label icons on shapes</em>" and  "
+			<em>Hide label icons on connectors</em>", next time you will open your diagram, all label icons of shapes and connectors will be hidden :
+		</p>	
+		<img border="0" src="images/diagram_editor_hide_label_icon_2.png"/>
+		<h3 id="Validatingthemodel">Validating the model</h3>
+		<p>On a diagram, you can have validation rules. These rules were previously created by the architect who created the diagram&#8217;s configuration. As a user of the modeler, you can validate these rules on your model.</p>
+		<p>To validate the rules open the context menu of the diagram itself (by right-clicking on its background) and choose the 
+			<i>Validate</i> action.
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor16.png"/>
+		</p>
+		<p><div style="display:none">
+			<br/>TODO fix the family.odesign validation rules on Persons diagram before update this screenshot
+			<br/>	
+			<img border="0" src="images/diagram_editor17.png"/>
+			<br/></div>
+		</p>
+		<h3 id="Filters">Filters</h3>
+		<p>Filters are created by the architect who created the diagram&#8217;s configuration. Applying a filter on a diagram will hide the graphical elements which match the filter&#8217;s criterion. To apply a filter, open the 
+			<a href="Diagrams.html#ref_tabbar_diagram">
+				<em>Filters</em> menu in the tab-bar
+			</a> to select which filters should be enabled or disabled.
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor18.png"/>
+		</p>
+		<p>To see more easily if one or more filters are activated, the icon in the tab-bar changes, showing a small check mark if at least one filter is activated.</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_filter_toolbar_activated.png"/>
+		</p>
+		<h3 id="Exportingimages">Exporting images</h3>
+		<p>You can export a diagram to an image file. To do that right-click on the diagram and choose the menu  
+			<i>Export diagram as image.</i> or on this icon present in the tab-bar 
+			<img border="0" src="images/diagram_export_image_tabbar.png"/> . After selecting the file path, you can choose the image format and if you want to overwrite an existing file without warning.
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor19.png"/>
+		</p>
+		<p>On the first export of diagram as image the name is set by default with the representation name. After there is an history to select the last export.</p>
+		<p>	
+			<img border="0" src="images/diagram_export_history.png"/>
+		</p>
+		<p>If you do not specify the file extension, the extension is determined from the selected image format. You can choose the directory in which to create the file using the 
+			<em>Browse</em> button.
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_export_one_image.png"/>
+		</p>
+		<p>If you enter a path with an unsupported extension the file path is created with the wrong extension with selected extension in image format append to.</p>
+		<p>	
+			<img border="0" src="images/diagram_export_wrong_extension.png"/>
+		</p>
+		<p>
+			<em>
+				<strong>Note:</strong>
+			</em> Due to some technical limitations, not all export format support all the features of diagrams. For example, exporting to PNG files will not show gradients on diagram elements. The JPG format is the one which currently produces the best result in terms of fidelity to what you see in the diagram editors. 
+		</p>
+		<h3 id="Batchimagesexport">Batch images export</h3>
+		<p>It is possible to export all diagram of a representations file at once. To do that, select your representations file (
+			<code>aird</code> file) and right-click on it. Then choose the menu 
+			<i>Export diagrams as image...</i>. On the opened pop-up select the path of the folder where the images will be exported.
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor20.png"/>
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor21.png"/>
+		</p>
+		<p>The same functionality is available on every semantic elements which has representations from the 
+			<em>Model Explorer</em> view. In this case, only the diagrams of the selected element will be exported.
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor20b.png"/>
+		</p>
+		<h3 id="PortshiftingPortDragandDrop">Port shifting &#8211; Port Drag and Drop</h3>
+		<p>Drag and drop is a feature which can be enabled by the specifier in the Viewpoint Specification Model. It is turned off by default.</p>
+		<h4 id="Selectionhandles">Selection handles</h4>
+		<p>If the resize of the port is disabled by the specifier in the Viewpoint Specification Model, there is 4 selection handles to indicate the selection, one at each corner of the figure. Only the shifting is authorized.</p>
+		<p>
+			<img border="0" src="images/port_selection_handles1.png"/> 
+			<img border="0" src="images/port_selection_handles2.png"/>
+		</p>
+		<p>If the resize of the port is enabled by the specifier in the Viewpoint Specification Model, there is more than 4 selection handles to indicate the selection. To shift the port, you should not click on one of this handles.</p>
+		<p>
+			<img border="0" src="images/port_selection_handles3.png"/> 
+			<img border="0" src="images/port_selection_handles4.png"/>
+		</p>
+		<h4 id="Portshiftinganddraganddrop">Port shifting and 'drag and drop'</h4>
+		<p>Ports are special shapes because they are linked to a parent container, but are sometimes laid out over two containers.</p>
+		<p>When you try to shift a port, if you click over the port at a location where it is not over the parent container, a virtual area is built around the parent container. This virtual area is not visible and its size is calculated to cover the container and the port itself.</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_dnd01.png"/> 
+			<img border="0" src="images/diagram_editor_dnd02a.png"/> 	
+			<img border="0" src="images/diagram_editor_dnd03a.png"/>
+		</p>
+		<p>The port shifting is protected against unexpected drag and drop in the container above mouse location.</p>
+		<p>If you want to drag and drop the port in a new container, just drag the port with the mouse beyond this virtual area (e.g., on screenshots, drag farther than right edge of port).</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_dnd01.png"/> 
+			<img border="0" src="images/diagram_editor_dnd02b.png"/> 	
+			<img border="0" src="images/diagram_editor_dnd03b.png"/>
+		</p>
+		<p>The port is dropped in the container above the mouse location and linked to its closest edge.</p>
+		<h3 id="Copypasteoflayout">Copy/paste of layout</h3>
+		<p>It is possible to duplicate layout of diagram elements, that is to say to replicate mutual organization of diagram elements from one diagram to another. This replication only applies to the same semantic elements between diagrams.</p>
+		<p>The next picture shows a partial view of a diagram. The tool to replicate the layout is called &#171;Copy layout&#187; and can be activated from the tab-bar or the contextual menu (see &#171;edit&#187; section). In this picture, layout of John Doe and Earvin Johnson persons will be replicated to another diagram.</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_copy_layout1.png"/>
+		</p>
+		<p>The next picture shows the diagram where the layout will be replicated. The tool to paste layout is called &#171;Paste layout&#187; and can be activated from the toolbar or the contextual menu (see &#171;edit&#187; section).</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_copy_layout2.png"/>
+		</p>
+		<p>The layout applies to John Doe and Earvin Johnson and is exactly the same as the original one (compare John Doe and Earvin Johnson each other positions with first screenshot).</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_copy_layout3.png"/>
+		</p>
+		<p>
+			<strong>Warning</strong> : This copy/paste operation copies exactly what you see on a diagram. When using low zoom level, some diagram elements can be twisted and the paste operation will duplicate theses twistings on the other diagram. Please, zoom in to reduce twistings.
+		</p>
+		<h3 id="diagram_element_pinning">Diagram element pinning</h3>
+		<h4 id="Introduction">Introduction</h4>
+		<p>It is possible to mark specific elements in a diagram as having a fixed location so that they are not moved by the 
+			<i>Arrange All</i> action.
+		</p>
+		<p>Diagram element pinning allows you to combine both methods: manually arranging the position and size of elements when it is important while still being able to call 
+			<i>Arrange All</i> for the rest, without the risk of destroying your manual layouts.
+		</p>
+		<h4 id="Pinunpinactions">Pin/unpin actions</h4>
+		<p>The next picture shows a diagram with three persons.</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_pin01.png"/>
+		</p>
+		<p>
+			<i>Arrange All</i> action lays out all diagram elements in order to produce the &#171;best&#187; layout. As we can see on the next picture, all diagram elements are moved.
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_pin02.png"/>
+		</p>
+		<p>But we would like to have a fixed location for 
+			<i>John Doe</i> and 
+			<i>Jane Smith</i>. So theses elements must be marked as pinned thanks to the contextual menu.
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_pin03.png"/>
+		</p>
+		<p>Now 
+			<i>John Doe</i> and 
+			<i>Jane Smith</i> are pinned, a new 
+			<i>Arrange All</i> action will preserve their locations.
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_pin04.png"/>
+		</p>
+		<p>It is also possible to pin/unpin diagram elements thanks to the palette. Multiple element selections can be achieved by holding simultaneously 
+			<i>Ctrl + Mouse-left-click</i> on each diagram elements to pin or unpin.
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_pin05.png"/>
+		</p>
+		<p>Notes:</p>
+		<ul>
+			<li>Pin/unpin information are persistent and saved in 
+				<i>.aird</i> session file.
+			</li>
+			<li>it is not possible to pin/unpin edges.</li>
+		</ul>
+		<h4 id="Configuration">Configuration</h4>
+		<p>Every diagram elements that you move will be pinned by default and will need an unpin operation to be &#171;moveable&#187; again.</p>
+		<p>This default behavior can be changed in Eclipse preferences, as can be seen in the next picture.</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_pin_configuration01.png"/>
+		</p>
+		<h4 id="PinUnpinonNotes">Pin/Unpin on Notes</h4>
+		<p>The notes can be pinned if they are attached to a pinned diagram element. If a note is attached to several elements of which at least one is pinned then the note is pinned.</p>
+		<p>Otherwise for notes linked to any elements, it&#8217;s possible to use the preferences &#171;Move unlinked notes during layout&#187;. By default, this preference is disabled, in this case the unlinked notes are pinned.</p>
+		<p>This default behavior can be changed in Eclipse preferences, as can be seen in the next picture.</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_note_pin_configuration01.png"/>
+		</p>
+		<h4 id="PinUnpinelementsusingatreeviewer">Pin/Unpin elements using a tree viewer</h4>
+		<p>When there is no selected element on the diagram, the tab bar provides the button 
+			<em>Pin/Unpin</em>.
+		</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_pin_dialog1.png"/>
+		</p>
+		<p>This button opens a dialog to manage the pinned and unpinned elements of the diagram with a tree view, using various selection buttons (Check all, Uncheck all, Expand All and Collapse all) and various filters (All element, only checked elements and only unchecked elements).</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_pin_dialog2.png"/>
+		</p>
+		<p>You can also use 
+			<a href="Diagrams.html#UsingRegularExpressionstoFindDiagramElements">RegularExpressions</a> to easily retrieve the elements you want to pin/unpin.
+		</p>
+		<p>To see more easily if one or more graphical elements are pinned, the icon in the toolbar change, showing a &#171;checked&#187; if an element is pinned.</p>
+		<p>	
+			<img border="0" src="images/diagram_editor_pin_toolbar_activated.png"/>
+		</p>
+		<h3 id="Layoutingmodearrangeyourdiagramswithoutmodifyingsemanticmodels">Layouting mode: arrange your diagrams without modifying semantic models</h3>
+		<p>When you only want to do layout operations (e.g. arrange a diagram by moving nodes or edges), you may modify the semantic models without paying attention. For example, when organizing bordered nodes, you may change the container of the semantic element, without wanting do so.</p>
+		<p>When this mode is enabled, the following operations are changed:</p>
+		<ul>
+			<li>direct edit is disabled on all elements;</li>
+			<li>moving elements by dragging them can be used to change their position, but will never trigger a drag and drop operation;</li>
+			<li>moving the extremity of an edge to adjust its connection point (to the source or target element) is possible, but will never trigger a reconnection operation.</li>
+		</ul>
+		<p>Note that other operations which can change the semantic model are still possible. Only the operations listed above, which are easy to misuse, are disabled/modified. 
+			<strong>Layout Mode is not a &#171;read-only&#187; mode and does not guarantee that the semantic model is not modified when it is enabled.</strong>
+		</p>
+		<p>
+			<strong>Layouting mode</strong> can be activated/disabled on a diagram through the tab bar (when there is no selected element) : 
+		</p>
+		<p>
+			<img border="0" src="images/layouting_mode_tabbar_activate.png"/>
+		</p>
+		<p>The diagram&#8217;s status line then indicates that the diagram is currently in 
+			<em>Layouting mode</em> : 
+		</p>
+		<p>
+			<img border="0" src="images/layoutingMode_forbidden_dnd.png"/>
+		</p>
+		<p>In this example, as 
+			<em>Layouting mode</em> is activated, reconnecting the Edge from 
+			<em>Abstrat Customer</em> to 
+			<em>Company</em> is forbidden. You can arrange this edge (change start location, add bending points...) without risking to modify the underlying semantic model.
+		</p>
+		<p>When a diagram is closed, the 
+			<em>Layouting mode</em> is automatically disabled.
+		</p>
+		<h3 id="synchronized_diagram">Synchronized/Unsynchronized diagram</h3>
+		<p>The contextual menu on the background of the diagram provides an action to toggle between 
+			<i>Synchronized</i> / 
+			<i>Unsynchronized</i> modes.
+		</p>
+		<p>
+			<img border="0" src="images/synchronized_diagram1.png"/>
+		</p>
+		<p>When the action is checked, the mode is 
+			<i>Unsynchronized</i>. Otherwise, the mode is 
+			<i>Synchronized</i>. With 
+			<i>Synchronized</i> mode, the displayed diagram represents what is provided by the modeler. However, with 
+			<i>Unsynchronized</i> mode, the diagram may not display all elements provided by the modeler, but only the elements that the user selected.
+		</p>
+		<p>For instance, we will consider having a semantic model with a root element that contains a child element. In the Viewpoint Specification Model, the feature 
+			<i>Synchronization</i> (See the Common Attributes section of the specifier guide) of the mapping for the elements is defined as 
+			<i>Not synchronized</i> and the edge mapping specifies an 
+			<i>Unsynchronizable</i> behavior (default feature). To start we only have the root displayed.
+		</p>
+		<p>	
+			<img border="0" src="images/synchronized_diagram3.png"/>
+		</p>
+		<p>Then, we will drag and drop the child element from 
+			<i>Model Content</i> view. With 
+			<i>Synchronized</i> mode, the edges related to this dropped element will be displayed.
+		</p>
+		<p>	
+			<img border="0" src="images/synchronized_diagram4.png"/>
+		</p>
+		<p>Note: If the edge mapping was defined as 
+			<i>Synchronized</i>, the result will be the same. But if it is 
+			<i>Not synchronized</i>, the edges will not be displayed.
+		</p>
+		<p>However, with 
+			<i>Unsynchronized</i> mode, only the dropped element will be displayed.
+		</p>
+		<p>	
+			<img border="0" src="images/synchronized_diagram5.png"/>
+		</p>
+		<p>Note: If the edge mapping was defined as 
+			<i>Not Synchronized</i>, the result will be the same. But if it is 
+			<i>Synchronized</i>, the edges will be displayed.
+		</p>
+		<p>The 
+			<i>Synchronized</i> / 
+			<i>Unsynchronized</i> status of a diagram on creation can be set by default with a preference in the  preferences. You can access it by menu 
+			<i>Window</i> / 
+			<i>Preferences...</i> / 
+			<i>Sirius</i> / 
+			<i>Sirius Diagram</i>. The property is 
+			<i>Synchronized mode for new diagrams</i>. If you want your new diagrams be 
+			<i>unsynchronized</i>, uncheck this property.
+		</p>
+		<p>	
+			<img border="0" src="images/synchronized_diagram2.png"/>
+		</p>
+		<h3 id="UsingRegularExpressionstoFindDiagramElements">Using Regular Expressions to Find Diagram Elements</h3>
+		<h4 id="Rules">Rules</h4>
+		<p>Several dialogs of the Diagram Editor (like the 
+			<em>Pin/Unpin</em> or 
+			<em>Hide/Reveal</em> dialogs) allow you to filter Diagram elements using regular expressions.
+		</p>
+		<p>Those regular expressions support only the 
+			<em>'*'</em> and 
+			<em>'?'</em> wild-cards.
+		</p>
+		<ol>
+			<li>All Diagram elements which name is 
+				<strong>beginning</strong> with the given regular expression is conform to this regular expression ;
+			</li>
+			<li>Case is not relevant (i.e. 
+				<em>'a'</em> and 
+				<em>'A'</em> are strictly equivalent);
+			</li>
+			<li>A &#8249;?&#8250; wild-card can be used to replace exactly 1 character in the search ;</li>
+			<li>A &#8249;*&#8250; wild-card can be used to replace exactly 0 or more characters in the search.</li>
+		</ol>
+		<h4 id="Examples">Examples</h4>
+		<p>Consider that you have a Diagram containing the following Diagram elements :</p>
+		<ul>
+			<li>myPackage (Package)</li>
+			<li>myClass1 (Class)</li>
+			<li>MyClass2 (Class)</li>
+			<li>myAttribute1 (Attribute)</li>
+			<li>myAttribute2 (Attribute)</li>
+			<li>isaBot (Attribute)</li>
+			<li>isaBoot (Attribute)</li>
+			<li>isaBT (Attribute)</li>
+		</ul>
+		<p>Elements matching the regular expression 
+			<em>"m"</em> are all elements that starts with the letter 
+			<em>'m'</em> (any case) :
+		</p>
+		<ul>
+			<li>myPackage</li>
+			<li>myClass1</li>
+			<li>MyClass2</li>
+			<li>myAttribute1</li>
+			<li>myAttribute2</li>
+		</ul>
+		<p>Notice that you will obtain the same result with 
+			<em>"my"</em>.
+		</p>
+		<p>Elements matching the regular expression 
+			<em>"isab?t"</em> are the following elements :
+		</p>
+		<ul>
+			<li>isaBot</li>
+		</ul>
+		<p>As &#8249;?&#8250; stands for 
+			<strong>exactly</strong> one character, 
+			<em>isaBoot</em> and 
+			<em>isaBt</em> aren&#8217;t matching this regular expression.
+		</p>
+		<p>Elements matching the regular expression 
+			<em>"*1"</em> are all elements that contain the 
+			<em>'1'</em> character :
+		</p>
+		<ul>
+			<li>myClass1</li>
+			<li>myAttribute1</li>
+		</ul>
+		<p>Elements matching the regular expression _"my*a*2" are the following elements :</p>
+		<ul>
+			<li>myClass2</li>
+			<li>myAttribute2</li>
+		</ul>
+		<p>Here you can notice that for 
+			<em>myAttribute2</em> the first 
+			<em>'*'</em> represents no character.
+		</p>
+		<h3 id="styleCustomizations">Style customizations </h3>
+		<p>Although the style of the diagram elements is defined in the VSM, it can be customized for each diagram elements. This customization can be applied from the tool bar, from the &#171;Style&#187; and &#171;Appearance&#187; tab of the property view, from the &#171;Diagram&#187; menu or from the contextual menu Format.</p>
+		<p>You have the possibility to customize :</p>
+		<ul>
+			<li>in container style : the background color, the background style, the border size, the foreground color, the label alignment, the label size and the label format.</li>
+			<li>in node style: the border size, the color, the label alignment, format, position and size.</li>
+			<li>in edge style: the folding style, the color,  the label alignment, format, position and size, the line and routing style, the size and the target and source arrow.</li>
+		</ul>
+		<p>Theses customizations can be reset by the &#171;Reset style customization&#187; button available in the &#171;Appearance&#187; tab of the property view and in the diagram editor tool bar.</p>
+		<p>NOTE: in case a user customized a Node with a WorkspaceImage style (through the &#171;Set style to workspace image&#187; action), it is considered in its whole customized then it can&#8217;t be updated by the refresh action, only the &#171;Reset style properties to default values&#187; action can update it by reset it.</p>
+		<h2 id="reference">Reference</h2>
+		<p>This section describes all the features which are (or can be) available on graphical modelers</p>
+		<h3 id="GraphicalArea">Graphical Area</h3>
+		<h3 id="Palette">Palette</h3>
+		<p>All Sirius diagrams have a palette of tools, which by default is docked on the right hand side of the main graphical area. The top row of the palette contains some general tools which are available on all Sirius diagrams, while the rest contains tools specific to each graphical modeler.</p>
+		<h4 id="ManagingThePalette">Managing The Palette</h4>
+		<p>By default, the palette appears with a pre-defined size on the right hand side of the diagram.</p>
+		<p>
+			<i>Resizing</i>. You can resize it to take more or less horizontal space by dragging the vertical separator between the palette and the diagram with your mouse.
+		</p>
+		<p>	
+			<img border="0" src="images/palette_resizing.png"/>
+		</p>
+		<p>
+			<i>Folding</i>. You can also fold the palette to hide it almost completely by clicking on the triangular icon in the corner of the palette header. When folded, you can restore it by clicking again on the same triangular icon. You can also keep it folded except when needed: when it is folded, a single click in the vertical folded area will reveal the palette temporarily so that you can select a tool. It will automatically hide again if you select a tool or click elsewhere.
+		</p>
+		<p>	
+			<img border="0" src="images/palette_folding.png"/>
+		</p>
+		<p>
+			<i>Moving</i>. If you prefer, you can move the palette to the left side of the diagram editor by dragging the palette&#8217;s header with the mouse, or right-clicking on the header and choosing 
+			<em>Dock On &gt; Left</em> or 
+			<em>Dock On &gt; Right</em>.
+		</p>
+		<p>	
+			<img border="0" src="images/palette_moving.png"/>
+		</p>
+		<h4 id="StandardTools">Standard Tools</h4>
+		<p>A few general tools are available in standard on all Sirius diagrams. They appear in the top row of the palette, just below the header.</p>
+		<p>	
+			<img border="0" src="images/palette_tools.png"/>
+		</p>
+		<p>
+			<i>Selection</i>. The 
+			<em>selection</em> tool is the default one initially selected when you open a diagram. To select an element on a diagram while this tool is active, simply click on it. To select several elements at the same time, you can either draw a rectangle on the diagram (all the elements completely contained in the rectangle will get selected), or click on each element individually while keeping the 
+			<em>Ctrl</em> key pressed.When selecting elements which are already selected using this method, by clicking on them or drawing a rectangle around them, they are removed from the selection. You can combine both methods (de/selection by single click or by zone) to build complex selection incrementally by always keeping the 
+			<em>Ctrl</em> key pressed.
+		</p>
+		<p>Selected elements have an outline and anchors drawn on their border. Note that when a selection contains multiple elements, exactly one of them has black selection anchors; the rest have white anchors. The element with the black anchors is called the primary selection, and some tools treat it differently than the others (for example alignment tools).</p>
+		<p>
+			<i>Zoom</i>. Next in the palette come two buttons to control the zoom level of the main diagram area. When the 
+			<em>Zoom in</em> (resp. 
+			<em>Zoom out</em>) button is active, clicking anywhere on the diagram will increment (resp. decrement) the zoom level by 25%. The current zoom level is visible in the tabbar when no diagram element is selected (see the section on the tabbar buttons for more ways to control the zoom level).
+		</p>
+		<p id="notes">
+			<i>Notes and note attachments</i>. All Sirius diagrams support the creation of notes and text elements, which can be attached to diagram elements. These elements are purely graphical annotations, and have no effect on the semantic model. The three tools used to create them are available in a combo-box in the palette&#8217;s top row. By default, the 
+			<em>Note</em> tool (represented by a yellow sticky note) is selected. If you click on the small arrow next to the sticky note, a menu appears where you can select which of the three tools to enable: 
+			<em>Note</em>, 
+			<em>Text</em> or 
+			<em>Note attachment</em>.
+		</p>
+		<p>
+			<em>Notes</em> and 
+			<em>Text</em> elements are created in a similar way: either a single click somewhere on the diagram (which creates an element with a default size), or a click-drag to create the element with a custom initial size. Once created, one can edit the text inside the note or text zone usual the standard &#171;direct edit&#187; behavior (
+			<em>F2</em>, a slow double click, or by directly starting to enter alpha-numeric text). The only difference between notes and text zones is the visual presentation; notes have a yellow background (by default) and a border which represents a sticky not with a folded top-right corner. 
+		</p>
+		<p>
+			<em>Note attachments</em> can be created to link either notes or text zone to diagram elements (including other notes and text attachments). To create an attachment, activate the tool and then click once on the source element and once on the target element. You can also click and drag from the source to the target elements.
+		</p>
+		<p id="pinning">
+			<i>Pin/Unpin</i>. The final standard tools which are available in the top row of all the palette allow to mark or unmark diagram elements as 
+			<em>pinned</em>. Pinning an element on the diagram means that when an automatic layout of the diagram is requested (see the 
+			<i>Arrange All</i> action), the element will not be moved or resized: it will stay at the exact same position as you placed it. Pinned element can still be moved manually. To pin or unpin an element, simply select the appropriate tool (using the arrow right next to the icon to make the menu appear), and when the tool is active, click on the element to mark as pinned or un-pinned.
+		</p>
+		<h4 id="PaletteContents">Palette Contents</h4>
+		<p>Below the palette&#8217;s header, which contains the general tools described above, you will find all the custom tools which have been configured for your modeler. Note that depending on which 
+			<em>Viewpoints</em> and 
+			<em>Layers</em> are currently enabled, some tools may or may not be visible for a given modeler. Refer to your specific designer/modeler&#8217;s documentation for details about which tools are available and how they are organized.
+		</p>
+		<p>
+			<em>Tool Drawers</em>. Tools in the palette may be organized in expandable 
+			<em>drawers</em> to group them by category. To expand a drawer and show its content, simply click once in the drawer&#8217;s header. Click again to fold it back and hide its tools. When you expand a drawer, some others may be folded automatically if there is not enough space to show all of them. To prevent this, you can &#171;pin&#187; a drawer opened by clicking on the &#171;pin&#187; icon in the drawer&#8217;s title area when it is expanded. This will force it to be kept opened, and its tools available, at all times.
+		</p>
+		<p>	
+			<img border="0" src="images/palette_tool_drawer.png"/>
+		</p>
+		<p>
+			<em>Tool Groups</em>. Most entries in the palette correspond to a single tool, but some of them represent tool groups. Tool groups are identified by a small right-facing arrow on the left of the tool&#8217;s icon. They behave like combo-boxes: click on the arrow to expand the group and reveal all the tools available in this group. Click on the tool you want to activate to make it the default and close the group. You can then use the selected tool as any other, but you have to re-open the popup menu if you want to enable a different one. When the group is expanded, you can click on the &#171;pin&#187; icon to the right to of the top-most tool to force the group to stay expanded, so that you can easily have access to all the tools. 
+		</p>
+		<p>	
+			<img border="0" src="images/palette_tool_group.png"/>
+		</p>
+		<h4 id="UsingTheToolsFromThePalette">Using The Tools From The Palette</h4>
+		<p>There are different interaction modes possible for the tools available in the palette. The basic pattern is to select the tool in the palette with a simple left-click on in it the palette, and then apply it once on the diagram.</p>
+		<p>Normally, when you have used a tool once, it does not stay selected; if you want to reuse it a second time, you have to re-select it in the palette. If you want to apply the same tool several times in a row, simply hold the 
+			<em>Ctrl</em> key pressed while using it; it will stay &#171;armed&#187; until you release the 
+			<em>Ctrl</em> key or select another tool.
+		</p>
+		<p>To deselect a tool without executing it, simply press the 
+			<em>Esc</em> key, or select another one (for example the default 
+			<em>Selection</em> tool).
+		</p>
+		<p>When a tool is selected and you move the mouse on the diagram, you will notice that the mouse cursor&#8217;s shape changes depending on where it is, to indicate whether or not the selected tool can be applied at this particular location. For example some elements can only be created at the top-level of the diagram (in the diagram&#8217;s background itself), and not inside other elements. For such a tool, if you put the cursor on top of another diagram element, the mouse cursor will change to indicate the action is not allowed. Note that the exact shape of the mouse cursor depends on the operating system.</p>
+		<p>
+			<em>Direct Action Tools</em>. Direct action tools are the simplest and most common one. They require a single click somewhere on the diagram (as long as it is allowed). The most common direct action tools are element creation tools.
+		</p>
+		<p>
+			<em>Edge Creation Tools</em>. Edge creation tools are a little more complex, in that they require the specification of both the source and target element of the new edge. Once the tool is selected, there are two possible usage modes:
+		</p>
+		<ol>
+			<li>First do a single click on the source element, then move the mouse to the target element (which may be the same) and click a second time to finish the edge creation.</li>
+			<li>Alternatively, you can click on the source element, keep the mouse button pressed, move the mouse to the target element and release it there. Both methods are equivalent.</li>
+		</ol>
+		<p>
+			<em>Tools With Selection Dialog</em>. Some complex tools require additional information to perform their jobs. In particular, tools with selection dialogs will open a dialog box when you use them on a diagram element to ask for more information. The details will vary from tool to tool, but to complete the interaction simply select the requested information and finish the dialog/wizard.
+		</p>
+		<p>
+			<em>Other Tools</em>. Finally, because Sirius is an extremely extensible system, graphical modelers may be configured with tools which have more complex interaction patterns. These will usually be custom tools very specific to a particular domain or modeler. Refer to their documentation for details.
+		</p>
+		<h3 id="ref_tabbar">Tab-bar</h3>
+		<p>The top area of all Sirius diagram editors is filled with the 
+			<em>tab-bar</em>, which provides access to many operations on diagrams and their elements. The content of the tab-bar will depend on whether the current selection is the diagram itself (i.e. no element is selected) or one or several diagram elements.
+		</p>
+		<h4 id="ref_tabbar_diagram">Tab-bar Actions Available on Diagram</h4>
+		<p>	
+			<img border="0" src="images/tabbar01.png"/>
+		</p>
+		<p>When the diagram itself (and not a specific element) is selected, the tab-bar contains the following buttons:</p>
+		<p>
+			<img border="0" src="images/tabbar_automatic_layout_tools.png"/> 
+			<em>Automatic Layout Tools</em>. The first group of tools are used to trigger an automatic layout of the elements on the diagram. Automatic layout uses a generic algorithm which tries to arrange the position and sizes of the elements on the diagram in a nice, readable way. In particular it makes sure, unless specific constraints pervent it, that no elements overlap each other, and that elements which contain others (i.e. containers) are large enough to show all their contents. It also tries to minimize the crossing of edges. The two ways to invoke the automatic layout algorithms are available as a drop-down menu on the left-most icon in the tab-bar.
+		</p>
+		<ul>
+			<li>
+				<em>Arrange All</em>. This is the action available by default. It launches the layout algorithm on all the elements in the diagram. Note that elements which have been 
+				<em>pinned</em> to their position will 
+				<strong>not</strong> be moved by the algorithm.
+			</li>
+			<li>
+				<em>Arrange Linked Bordered Nodes</em> This special action will only concerns nodes which are on the border of another element and which are either the source or the target of at least one edge. When invoked, the action will try to move these bordered nodes on the border of their parent on the most &#171;natural&#187; side of their parent element depending on the direction of the edge. For example if a bordered node is on the top side of an element but has an edge which does down to a target element below its parent, this action will move the bordered node to the bottom side so that the edge does not cross the parent element.
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/tabbar_selection_tools.png"/> 
+			<em>Selection Tools</em>. The next group of tab-bar tools, also organized in a drop-down menu, can be used to select groups of diagram elements in a single operation.
+		</p>
+		<ul>
+			<li>
+				<em>Select All</em>. This is the default operation and will select all the elements visible on the diagram. It is also available via the 
+				<em>Ctrl+A</em> keyboard shortcut.
+			</li>
+			<li>
+				<em>Select All Connectors</em>. This action will select all connectors (aka 
+				<em>edges</em>) between diagram elements which are visible on the diagram, and only them.
+			</li>
+			<li>
+				<em>Select All Shapes</em>. This action will select all diagram elements which are not connectors/edges which are visible on the diagram.
+			</li>
+		</ul>
+		<p>
+			<img border="0" src="images/tabbar_refresh.png"/> 
+			<em>Refresh</em>. This operation, which can also be invoked with the 
+			<em>F5</em> keyboard shortcut, will force an update of the diagram&#8217;s content according to the latest version of the underlying semantic model. The default operational mode for Sirius is to automatically refresh the diagram&#8217;s content whenever any relevant change is detected in the semantic model. This can be disabled using the 
+			<em>Automatic Refresh</em> preference (see 
+			<em>Window &gt; Preferences &gt; Sirius</em>). When in manual refresh mode (i.e. 
+			<em>Automatic Refresh</em> is unchecked), you must manually use the 
+			<em>Refresh</em> operation whenever you want the diagram to take into account changes in the model. Even in automatic refresh mode, it may be sometimes necessary to invoke an explicit, manual refresh using this operation if Sirius got confused.
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_layers_selection.png"/> 
+			<em>Layers Selection</em>. The various kinds of elements which can appear on a diagram, and the tools which are available to manipulate them, are organized in 
+			<em>Layers</em>. Each diagram has a default layer which is always enabled, but may also have additional layers. Addtional layers can be optional or not. You can enable or disable the optional layers at will, to hide or reveal new kinds of elements. Note that the list of layers available to you on a diagram may depend on which 
+			<em>Viewpoints</em> are currently enabled in the 
+			<em>Modeling Project</em>, as some viewpoints can contribute additional layers to diagrams. The set of layers currently enabled can be controlled using the drop-down menu in the tab-bar. Note that mandatory layers can not be disabled and are not displayed in this menu. Simply click on the button to reveal the menu, and check or un-check the optional layers you want to have enabled or disabled. A tick-mark is visible on the tab-bar button if at least one optional layer is currently enabled.
+		</p>
+		<p>
+			<img border="0" src="images/diagram_editor7.png"/>
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_filters_selection.png"/> 
+			<em>Filters Selection</em>. Diagram configurations may define 
+			<em>filters</em>, than you can enable or disable to hide (or show) diagram elements depending on semantic conditions. For example on a UML class diagram, a filter may be defined to hide all abstract classes and interfaces, so that only concrete classes are visible. The set of filters currently enabled can be controlled using the drop-down menu in the tab-bar. Simply click on the button to reveal the menu, and check or un-check the filters you want to have enabled or disabled. A tick-mark is visible on the tab-bar button if at least one filter is currently enabled.
+		</p>
+		<p>
+			<img border="0" src="images/diagram_editor8.png"/>
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_show_hide.png"/> 
+			<em>Show/Hide</em>. You can chose to hide (or reveal) specific diagram elements (or just their labels) independently of the conditions in pre-defined filters. This can be useful if you want to concentrate on specific parts of your model, or if you want hide parts which are not relevant to simplify communication with other people. You can hide elements from their context menu (using the 
+			<em>Show/Hide</em> sub-menu) or more globally by using the 
+			<em>Show/Hide</em> button in the tab-bar. This button opens a dialog box which presents all the elements visible on the diagram, organised in a hierarchical way which corresponds to their graphical organization. Note that because a single semantic element may have multiple representations on the diagram, they may appear multiple times in the dialog box. Making one representation hidden will not hide the other graphical representations of the same element. You can chose which elements should be visible (resp. hidden) on the diagram by checking (resp. unchecking) them in the dialog. The top area of the dialog box contains various buttons to help you find the elements you want, by show only the checked (i.e. visible) or unchecked (i.e. hidden) elements, by expanding or collapsing the tree viewer, or by checking or un-checking all elements at once. You can also search for elements by their name using the search box. For some elements (e.g. edges), you can hide the label (or labels) while keeping the element itself visible. When this is possible, the label is presented as a sub-item of the element in the dialog box, with its own check-box.
+		</p>
+		<p>
+			<img border="0" src="images/diagram_editor_show_hide_dialog2.png"/>
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_pin_unpin.png"/> 
+			<em>Pin/Unpin</em>. You can chose to pin (or unpin) elements on the diagram. Pinned elements are kept in their position by the automatic layout algorithms (see 
+			<em>Arrange All</em>), while unpinned elements can be moved and resized. You can pin/unpin elements from their context menu (using the 
+			<em>Layout</em> sub-menu) or more globally by using the 
+			<em>Pin/Unpin</em> button in the tab-bar. This button opens a dialog box which presents all the elements on the diagram, organised in a hierarchical way which corresponds to their graphical organization. Note that because a single semantic element may have multiple representations on the diagram, they may appear multiple times in the dialog box. Making one representation pinned will not pin the other graphical representations of the same element. You can chose which elements should be pinned (resp. unpinned) on the diagram by checking (resp. unchecking) them in the dialog. The top area of the dialog box contains various buttons to help you find the elements you want, by show only the checked (i.e. visible) or unchecked (i.e. hidden) elements, by expanding or collapsing the tree viewer, or by checking or un-checking all elements at once. You can also search for elements by their name using the search box. Note that pinning has currently no effect on edges.
+		</p>
+		<p>
+			<img border="0" src="images/diagram_editor_pin_dialog2.png"/>
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_paste_layout.png"/> 
+			<em>Paste Layout</em>. This button is only enabled if you have previously copied the layout of some elements in the clipboard, using the 
+			<em>Copy layout</em> action (only visible in the tab-bar when elements are select). 
+			<em>Paste layout</em> will apply the same size and positions which were copied in the clipboard to the corresponding elements in the current diagram. For the purpose of this command, the &#171;corresponding elements&#187; are the graphical elements which represent the same semantic objects.
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_zoom.png"/> 
+			<em>Zoom Controls</em>. Next in the tab-bar is a set of buttons to control the zoom level. The 
+			<em>Zoom in</em> and 
+			<em>Zoom out</em> buttons behave similarly to their equivalents in the palette. The combo-box shows the current zoom level and allows you to choose among some pre-defined levels. You can also manually enter a specific zoom level (e.g. &#171;42&#187;) and hit 
+			<em>Return</em> to apply it.
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_export_image.png"/> 
+			<em>Export As Image</em>. This button can be used to export the current diagram as an image file stored on disk. When you select it, a dialog box appears 
+			<img border="0" src="images/diagram_export_one_image.png"/> 
+			<br/>in which you can chose the file&#8217;s destination and format. Note that not all formats are currently equally supported; they may not all produce the same result. For diagrams which are tool large to export as a single image, the 
+			<em>Export to HTML</em> check-box can be used: when it is checked, instead of exporting a single image Sirius will split it in a matrix of smaller images, and produce an HTML file while loads them all arranged in a table to reproduce the original image.
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_layouting_mode.png"/> 
+			<em>Layout Mode</em>. This button enables a special &#171;layout mode&#187;, in which some operations are prevented from having an effect on the semantic model. It can be used when you want to tweak the layout of a diagram and want to be sure to only make graphical changes, and not semantic ones by mistake. Click on the button to enable the &#171;layout mode&#187;, and click again when finished to return to the normal model. When this mode is enabled, the following operations are changed:
+		</p>
+		<ul>
+			<li>direct edit is disabled on all elements;</li>
+			<li>moving elements by dragging them can be used to change their position, but will never trigger a drag and drop operation;</li>
+			<li>moving the extremity of an edge to adjust its connection point (to the source or target element) is possible, but will never trigger a reconnection operation.</li>
+		</ul>
+		<p>Note that other operations which can change the semantic model are still possible. Only the operations listed above, which are easy to misuse, are disabled/modified. 
+			<strong>Layout Mode is not a &#171;read-only&#187; mode and does not guarantee that the semantic model is not modified when it is enabled.</strong>
+		</p>
+		<p>The diagram&#8217;s status line indicates when 
+			<em>Layouting mode</em> is enabled: 
+		</p>
+		<p>
+			<img border="0" src="images/layoutingMode_forbidden_dnd.png"/>
+		</p>
+		<p>When a diagram is closed, the 
+			<em>Layouting mode</em> is automatically disabled.
+		</p>
+		<h4 id="ref_tabbar_element">Tab-bar Actions Available on Diagram Elements</h4>
+		<p>The tab-bar contains a different set of actions when at least one element is selected.</p>
+		<p>	
+			<img border="0" src="images/tabbar02.png"/>
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_arrange_selection.png"/> 
+			<em>Arrange Selection</em>. This action launches the layout algorithm only for the diagram elements which are selected (and not pinned). All the other elements on the diagram, whether pinned or not, will not be moved. Note that edges may be re-arranged if one of their ends is part of the selection.
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_alignment_control.png"/> 
+			<em>Alignment Control</em>. This menu contains several operations which can be used to align several graphical elements in variouse ways. The actions in this menu are only enabled when several elements are selected.
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_pin_unpin_02.png"/> 
+			<em>Pin/Unpin</em>. These two buttons can be used to mark all the selected elements as pinned or not.
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_copy_layout.png"/> 
+			<em>Copy Layout</em>. This tool can be used to duplicate the layout of some diagram elements from this diagram into another. This replication only applies to the same semantic elements between diagrams. First, select the set of elements of interset, and use this 
+			<em>Copy layout</em> action. Then go to the target diagram, and choose the 
+			<em>Paste layout</em> action from the tab-bar there.
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_hide.png"/> 
+			<em>Hide</em>. This button hides all the selected elements from view. It can also be invoked with the 
+			<em>Ctrl+H</em> keyboard shortcut. To reveal elements which have been hidden, you can for example deselect all element, and in the diagram&#8217;s tab-bar, choose the 
+			<em>Show/Hide</em> button, which opens a dialog box to control the elements' visibility.
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_delete_from_diagram.png"/> 
+			<em>Delete from Diagram</em>. This action removes the selected graphical element from the diagram, but does not delete the corresponding semantic elements. It is only available on un-synchronized diagrams or element types.
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_delete_from_model.png"/> 
+			<em>Delete from Model</em>. This action removes both the selected graphical element and the corresponding semantic elements. The exact effect of deletion on the semantic model depends on how the diagram was configured, and may have other consequences (i.e. removing or modifying other parts of the model to keep everything consistent).
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_font_controls.png"/> 
+			<em>Font Controls</em>. The next set of buttons can be used to control the font attributes (bold or italic), the font color, and the font to use itself, for the labels of the select elements. Note that all font-related attributes 
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_color_style_controls.png"/> 
+			<em>Color and Visual Style Controls</em>. The next group of buttons can be used to control some graphical attributes of the selected elements: fill color, line color and line style. The 
+			<em>Workspace image</em> button can be used to replace the graphical representation of an element by an image that you can select from anyware in your Eclipse workspace.
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_cancel_custom_style.png"/> 
+			<em>Cancel Custom Style</em>. As soon as you modify manually any of the graphical properties of an element, the element&#8217;s style is marked as 
+			<em>customized</em>, and is not refreshed if its definition changes. The 
+			<em>Cancel Custom Style</em> button resets all the style attributes of an element to its default values and un-marks it as customized.
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_apply_style.png"/> 
+			<em>Apply Style</em>. Use this button to reproduce the visual style of an element onto others. Select first the element which has the visual style you want, then the others. When you click on this button, all the visual attributes from the first element which can are compatible with the other elements will be applied to them.
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_make_same_size.png"/> 
+			<em>Make Same Size</em>. When multiple elements are selected, clicking on this tool will resize all of them to have the same size (both width and height). The element used for reference to decide the size to apply is the last selected.
+		</p>
+		<p>
+			<img border="0" src="images/tabbar_auto_size.png"/> 
+			<em>Auto-Size</em>. This button marks the selected elements as auto-sized. Auto-sized elements will adjust their width an height dynamically according to their contents.
+		</p>
+		<h4 id="ref_tabbar_4x">Tab-bar in Eclipse 4.x</h4>
+		<p>Due to a current limitation, on Eclipse 4.x the tab-bar content does not depend on the current selection and extensibility is not available:
+			<br/>
+			<img border="0" src="images/tabbar4x01.png"/>
+		</p>
+		<p>The tab-bar content enablement changes when at least one element is selected:	
+			<br/>
+			<img border="0" src="images/tabbar4x02.png"/>
+		</p>
+		<p>See the previous sections for content description.</p>
+		<h3 id="PropertiesView">Properties View</h3>
+		<p>In the Properties view, you will find several tabs which will not be the same if an element is selected on the diagram or not.</p>
+		<p>If an element is selected on the diagram, you will have on the 
+			<i>Properties</i> view the following tabs:
+		</p>
+		<ul>
+			<li>Semantic : This tab shows the properties of the semantic element selected. You will find the same informations as in the properties view of an Ecore editor.</li>
+			<li>Style : This tab presents the properties about the graphical representation of the element. You will find informations like label size and format, shape of the graphical object, background and foreground colors...</li>
+			<li>Appearance : This tab allows to choose the style and size of text fields contained by the element.</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/diagram_editor3.png"/>
+		</p>
+		<p>If you do not select an element, you will have in the 
+			<i>Properties view</i> the properties of the diagram itself :
+		</p>
+		<ul>
+			<li>Semantic : The diagram has a semantic element which is the element on which we have created the diagram in the 
+				<i>Model Content</i> view. The content is the same as presented previously.
+			</li>
+			<li>Filters : You can apply filters on your diagram. Filters will be presented in a following part.</li>
+			<li>Documentation : This tab provides a text area for the current diagram documentation.</li>
+			<li>Rulers &amp; Grid : Allow the user to display vertical and horizontal rulers and also a grid on the diagram. You can choose how is displayed the grid (Solid style, Dash style, Dot style...).</li>
+			<li>Appearance : This tab allows to choose the style and size of text fields of every elements of diagram which have not been specifically set on the Representation Diagram.</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/diagram_editor4.png"/>
+		</p>
+		<h3 id="Outline">Outline</h3>
+		<p>The outline view has two display modes that you can select in its upper toolbar:</p>
+		<ul>
+			<li>In 
+				<em>Outline</em> mode, it shows the content of the model in a tree view:
+			</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/diagram_editor5.png"/>
+		</p>
+		<ul>
+			<li>In 
+				<em>Overview</em> mode, it shows a complete overview of the active diagram. If the diagram is too big to be seen entirely on the diagram modeler, the overview is an easy way to navigate on the active diagram.
+			</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/diagram_editor6.png"/>
+		</p>
+		<h2 id="preferences">Preferences</h2>
+		<p>Some preferences and configuration parameters are avilable for you to customize your experience. They can affect either the look or the behavior of diagrams. </p>
+		<h3 id="GlobalPreferences">Global Preferences</h3>
+		<p>Global preferences are global to a Sirius installation, or more precisely to an Eclipse workspace. If you change them, they will affect all the modeling projects and all their diagrams for the current workspace. They are available through the standard Eclipse preference UI (menu 
+			<em>Window &gt; Preferences</em>), under the category 
+			<em>Sirius &gt; Sirius Diagram</em> and its sub-categories:
+		</p> 
+		<img border="0" src="images/preferences_sirius_diagram.png"/>
+		<p>The illusration above shows the default value of all these preferences.</p>
+		<ul>
+			<li>
+				<em>Show connector handles:</em> This has no effect for Sirius diagram (it is inherited from the standard GMF settings).
+			</li>
+			<li>
+				<em>Show popup bars:</em> If checked, and if the diagram&#8217;s configuration supports this feature, then when you keep the mouse cursor still for a small delay on a diagram element, a 
+				<em>popup bar</em> will appear with buttons corresponding to all the tools which can be applied in this context. The tools which appear are the same as the ones available on the palette, but it can be more convenient sometimes to use the popup bar instead of going back to the palette to select the tool:
+			</li>
+		</ul> 
+		<img align="center" border="0" src="images/popup_bar.png"/>
+		<ul>
+			<li>
+				<em>Enable animated layout:</em> If checked, then when you launch an automatic layout (
+				<em>Arrange all</em>), the shapes will move smoothly to their final location. This makes the arrangement operation take a little longer, but it is easier to follow where your elements have been moved.
+			</li>
+			<li>
+				<em>Enable animated zoom:</em> If checked, when you change the zoom value, Sirius will show intermediate steps to smooth the change.
+			</li>
+			<li>
+				<em>Enable anti-aliasing:</em> If checked, the graphics on the diagram will use anti-aliasing. This preference does not take effect on all platforms.
+			</li>
+			<li>
+				<em>Show status line:</em> This has no effect for Sirius diagram (it is inherited from the standard GMF settings).
+			</li>
+		</ul>
+		<ul>
+			<li>
+				<em>Auto-size containers during arrange-all action:</em> Container elements which have an explicit size are normally not resized during an 
+				<em>Arrange All</em>. This can be problematic if the elements they contain are re-arranged so that the container&#8217;s size is not appropriate anymore. When this preference is enabled, the arrange all action will treat all containers as if they are &#171;auto-sized&#187;, and adjust their size to the computed arrangement for their content. After the arrange all action is finished, the containers which had an explicit size before will still have an explicit size (although potentially different); they are only switched to auto-size mode during the arrange all action. 
+			</li>
+			<li>
+				<em>Move unlinked notes during layout:</em> If checked, then the 
+				<em>Arrange all</em> will consider all 
+				<a href="#notes">notes</a> on the diagram and arrange them. If unchecked, only the notes which are attached to non-note diagram elements are moved by the layout; the rest (which are considered just comments on the diagram itself), are not touched. 
+			</li>
+			<li>
+				<em>Automatically mark moved elements as pinned:</em> If checked, then as soon as you explicitly move a element (node or container) on the diagram, Sirius will mark it as 
+				<a href="#pinning">pinned</a> and consider it should not be moved by the automatic layout. You can still explicitly 
+				<a href="#pinning">unpin</a> these elements.
+			</li>
+			<li><span id="synchronized_preference">
+				<em>Synchronized mode for new diagrams:</em></span> If checked, all newly created diagrams will initially be in 
+				<a href="Diagrams.html#synchronized_diagram">unsynchronized</a> mode. You can still change the mode manually after the diagram is created.
+			</li>
+			<li>
+				<em>Remove/hide note when the annotated element is removed/hidden:</em> If checked, then notes attached to a diagram element will be deleted if the element is deleted, or hidden if the element is hidden.
+			</li>
+		</ul>
+		<h3 id="Appearance">Appearance</h3>
+		<p>Tha 
+			<em>Appearance</em> preferences page (see below) gives you two preferences to control whether or not to show the labels on shapes (nodes, containers, bordered nodes) and connectors (edges). It also allows you to customize the default font and colors used for some basic diagram elements. Diagram configurations already specify default values for these style attributes, so in practice these preferences are mostly useful for notes.
+		</p> 
+		<img border="0" src="images/preferences_sirius_diagram_appearance.png"/>
+		<h3 id="Printing">Printing</h3>
+		<p>The 
+			<em>Printing</em> page (see below) gives you various preferences related to page layout for layout printing.
+		</p> 
+		<img border="0" src="images/preferences_sirius_diagram_printing.png"/>
+		<h3 id="RulersAndGrid">Rulers And Grid</h3>
+		<p>Finally, the 
+			<em>Rulers And Grid</em> page (see below) contains preferences to control whether or not new diagrams should initialy show the rulers and/or grids, and whether to enable the 
+			<em>Snap to grid</em> and 
+			<em>Snap to shapes</em> behavior by default. The preferences on this page are only taken into account as starting values for new diagrams. Each diagram has its own configuration of rulers and grid which can be modified  in the 
+			<em>Rulers &amp; Grid</em> section of the 
+			<em>Properties</em> view of the diagram itself.
+		</p> 
+		<img border="0" src="images/preferences_sirius_diagram_rulers_grid.png"/>
+	</body>
+</html>

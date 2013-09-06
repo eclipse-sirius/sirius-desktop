@@ -391,7 +391,7 @@
        <propertyTester
       		namespace="org.eclipse.debug.ui"
             properties="matchesContentType, matchesPattern"
-            type="org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem"
+            type="org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem"
             class="org.eclipse.sirius.ui.tools.internal.views.common.ResourceExtender"
             id="org.eclipse.sirius.ui.commonItemIResourceExtender">
       </propertyTester>
@@ -419,9 +419,14 @@
               class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.RepresentationInSemanticSorter"
               id="org.eclipse.sirius.ui.navigatorSorter.representation">
            <parentExpression>
-              <instanceof
-                    value="org.eclipse.emf.ecore.EObject">
-              </instanceof>
+              <or>
+                 <instanceof
+                       value="org.eclipse.sirius.common.ui.tools.api.navigator.GroupingItem">
+                 </instanceof>
+                 <instanceof
+                       value="org.eclipse.emf.ecore.EObject">
+                 </instanceof>
+              </or>
            </parentExpression>
         </commonSorter>
         <commonSorter
@@ -430,7 +435,7 @@
            <parentExpression>
               <or>
                  <instanceof
-                       value="org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem">
+                       value="org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem">
                  </instanceof>
                  <instanceof
                        value="org.eclipse.sirius.description.RepresentationDescription">
@@ -481,7 +486,7 @@
                        value="org.eclipse.emf.ecore.resource.Resource">
                  </instanceof>
                  <instanceof
-                       value="org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem">
+                       value="org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem">
                  </instanceof>
                  <instanceof
                        value="org.eclipse.core.resources.IFile">
@@ -495,7 +500,7 @@
         <possibleChildren>
            <or>
               <instanceof
-                    value="org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem">
+                    value="org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem">
               </instanceof>
               <instanceof
                     value="org.eclipse.emf.ecore.EObject">
@@ -563,7 +568,7 @@
         </enablement>
      </commonWizard> 
     <commonFilter
-           description="Hides &quot;Representations per resource&quot; item in viewpoint legacy mode. This item displays linked aird files with their activated viewpoints and their available representations."
+           description="Hides &quot;Representations per resource&quot; item in viewpoint legacy mode. This item displays linked aird files with their activated viewpoint and their available representations."
            id="org.eclipse.sirius.ui.commonFilter.resourceFolderItem"
            name="Representations per resource">
         <filterExpression>

@@ -31,9 +31,7 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.Action;
-import org.eclipse.jface.action.ControlContribution;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
@@ -48,18 +46,15 @@ import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
-import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.part.IPageSite;
 import org.eclipse.ui.part.PageBook;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.IObjectActionDelegateWrapper;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.DEdge;

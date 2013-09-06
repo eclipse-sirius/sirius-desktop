@@ -26,24 +26,22 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.AbstractMetamodelExtender;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtensionFeatureDescription;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
-
-import org.eclipse.sirius.ecore.extender.business.api.accessor.AbstractMetamodelExtender;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtensionFeatureDescription;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.IllegalURIException;
 
 /**
  * This metamodel Extender accesses the intrinsic data of an EObject.
@@ -55,11 +53,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
 
     private static final String SEPARATOR = ".";
 
-    private static PackageRegistryIndex platformIndex = new PackageRegistryIndex(EPackage.Registry.INSTANCE, new Predicate<EPackage>() {
-        public boolean apply(EPackage value) {
-            return value.getNsURI() == null;
-        }
-    });
+    private static PackageRegistryIndex platformIndex = new PackageRegistryIndex(EPackage.Registry.INSTANCE, Predicates.<EPackage> alwaysTrue());
 
     private Multimap<String, EClass> viewpointIndex = HashMultimap.create();
 
@@ -431,13 +425,10 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
     }
 
     private void addTypesToSiriusIndex(final EPackage value) {
-        if (value.getNsURI() == null) {
-            for (EClass cur : Iterables.filter(value.getEClassifiers(), EClass.class)) {
-                viewpointIndex.put(cur.getName(), cur);
-                viewpointIndex.put(value.getName() + EcoreIntrinsicExtender.SEPARATOR + cur.getName(), cur);
-            }
+        for (EClass cur : Iterables.filter(value.getEClassifiers(), EClass.class)) {
+            viewpointIndex.put(cur.getName(), cur);
+            viewpointIndex.put(value.getName() + EcoreIntrinsicExtender.SEPARATOR + cur.getName(), cur);
         }
-
     }
 
     /**

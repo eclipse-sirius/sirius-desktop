@@ -434,9 +434,9 @@ public class LayoutdataPackageImpl extends EPackageImpl implements LayoutdataPac
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(nodeLayoutDataEClass, NodeLayoutData.class, "NodeLayoutData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getNodeLayoutData_Width(), ecorePackage.getEInt(), "width", "-1", 0, 1, NodeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+        initEAttribute(getNodeLayoutData_Width(), ecorePackage.getEInt(), "width", "-2", 0, 1, NodeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getNodeLayoutData_Height(), ecorePackage.getEInt(), "height", "-1", 0, 1, NodeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+        initEAttribute(getNodeLayoutData_Height(), ecorePackage.getEInt(), "height", "-2", 0, 1, NodeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
         initEReference(getNodeLayoutData_Children(), this.getNodeLayoutData(), null, "children", null, 0, -1, NodeLayoutData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

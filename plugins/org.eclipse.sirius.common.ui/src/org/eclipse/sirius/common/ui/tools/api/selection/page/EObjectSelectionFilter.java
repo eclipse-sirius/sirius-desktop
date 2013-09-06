@@ -18,6 +18,7 @@ import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.eclipse.sirius.common.tools.api.util.StringMatcher;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
+import org.eclipse.sirius.common.ui.tools.api.view.common.item.CommonItem;
 
 /**
  * A selection filter.
@@ -74,7 +75,7 @@ public class EObjectSelectionFilter extends ViewerFilter {
             element2 = element;
         }
 
-        if (element2 instanceof EObject) {
+        if (element2 instanceof EObject || element2 instanceof CommonItem) {
             if (regExp == null || regExp.length() == 0) {
                 selected = true;
             }

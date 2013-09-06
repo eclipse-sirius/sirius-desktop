@@ -1,0 +1,568 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Modeling Project</title>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="ModelingProjectsandRepresentations">Modeling Projects and Representations</h1>
+		<p>In this document you will learn how to create and manage Modeling Projects, which are used in Sirius to organize your models and their representations (diagrams, tables, etc.).</p>
+		<ol class="toc" style="list-style: disc;">
+			<li>
+				<a href="Modeling%20Project.html#ModelingProjectsandRepresentations">Modeling Projects and Representations</a>
+				<ol style="list-style: disc;">
+					<li>
+						<a href="Modeling%20Project.html#Introduction">Introduction</a>
+					</li>
+					<li>
+						<a href="Modeling%20Project.html#FormerUsers">Note to Users of Previous Versions</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Modeling%20Project.html#Migration">Migration of Existing Representation Files</a>
+							</li>
+							<li>
+								<a href="Modeling%20Project.html#UICHanges">User Interface Changes</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="Modeling%20Project.html#ModelingPerspective">The Modeling Perspective</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Modeling%20Project.html#ModelExplorer">The Model Explorer View</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="Modeling%20Project.html#MP">Modeling Projects</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Modeling%20Project.html#MPCreation">Creating a New Modeling Project</a>
+							</li>
+							<li>
+								<a href="Modeling%20Project.html#MPConversion">Converting an Existing Project into a Modeling Project</a>
+							</li>
+							<li>
+								<a href="Modeling%20Project.html#MPConversionReverse">Removing the Modeling Nature from a Project</a>
+							</li>
+							<li>
+								<a href="Modeling%20Project.html#SiriusSelection">Selecting Which Viewpoints to Enable</a>
+							</li>
+							<li>
+								<a href="Modeling%20Project.html#ProjectDependencies">Project Dependencies</a>
+							</li>
+							<li>
+								<a href="Modeling%20Project.html#ModelsInMP">Models in Modeling Projects</a>
+							</li>
+							<li>
+								<a href="Modeling%20Project.html#ModelActions">Actions Available on Model Elements</a>
+							</li>
+							<li>
+								<a href="Modeling%20Project.html#AirdFiles">Representations Files</a>
+							</li>
+							<li>
+								<a href="Modeling%20Project.html#AirdStructure">Structure of a _Representations File_</a>
+							</li>
+							<li>
+								<a href="Modeling%20Project.html#repair">Repair action</a>
+							</li>
+							<li>
+								<a href="Modeling%20Project.html#MPConstraints">Constraints</a>
+							</li>
+							<li>
+								<a href="Modeling%20Project.html#Lifecycle">Modeling Project Lifecycle</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="Modeling%20Project.html#Representations">Representations</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Modeling%20Project.html#ReprCreation">Creating a Representation</a>
+							</li>
+							<li>
+								<a href="Modeling%20Project.html#ReprManagement">Managing Representations</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="Modeling%20Project.html#LegacyMode">Legacy Mode </a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<h2 id="Introduction">Introduction</h2>
+		<p>The Sirius system is used to create, visualize and edit your 
+			<em>models</em> using interactive editors called 
+			<em>modelers</em>. These modelers can be of different kinds, depending on the type of visual representations. Out of the box, Sirius supports three different 
+			<em>dialects</em> (kinds of representations) 
+			<em>diagrams</em> (graphical modelers), 
+			<em>tables</em>, and 
+			<em>trees</em> (hierarchical representations). New dialects can be added through programming.
+		</p>
+		<p>Provided with the right configuration file (something called a 
+			<em>Viewpoint Specification Model</em> or 
+			<em>VSM</em> for short), Sirius can represent any model which is compatible with EMF (the de facto standard for modeling tools in the Eclipse world). This includes standards like UML, SysML, TOGAF etc., but also any 
+			<em>Domain Specific Model</em> (
+			<em>DSM</em>) which you can create to better suit your specific needs. For one kind of model (e.g. TOGAF, which is used to describe Enterprise Architectures), several Sirius configurations can be created, each one specific to a particular 
+			<em>viewpoint</em>. Different kinds of users can thus see the same model through different viewpoints, each adapted to his preoccupations: from the same TOGAF model, the 
+			<acronym title="Chief Executing Officer">CEO</acronym> will want to see a general overview of how the company is organized, the 
+			<acronym title="Chief Operating Officer">COO</acronym> may want a view more oriented towards processes, and a system administrator will need a view on just the parts which concern software systems put in place to implement these processes.
+		</p>
+		<p>Sirius makes it easy for architects to create 
+			<em>Viewpoint Specification Model</em> suited for any kind of model. These are then packaged as Eclipse plug-ins that you can install to use their modelers. Note that Sirius itself must also be installed for the viewpoints to run (they are not self-sufficient).
+		</p>
+		<p>As an end-user, you will use already configured modelers specially adapted to your needs. If you want to create your own modelers, please refer to the 
+			<a href="../../specifier/Sirius%20Specifier%20Manual.html">Sirius Specifier Manual</a>. Simple modelers do not require any programming to create, and once you know the basics, a new graphical modeler can be created from scratch in less than an hour.
+		</p>
+		<p>To use already existing modelers (assuming the plug-ins which provide them are installed), you will need to know the following notions (see also 
+			<a href="../../Glossary.html">the Glossary</a> ):
+		</p>
+		<ul>
+			<li>a 
+				<em>resource</em> is a file (in your workspace or inside a plug-in) which contains a model;
+			</li>
+			<li>the 
+				<em>semantic model</em> is the model (or models) which contains your business data. It can be stored in one of several resources (files) which can reference each other. The type of semantic model can be different for each user. It can be based on a standard (for example 
+				<code>.uml</code> files for UML models) or based on a 
+				<em>Domain Specific Model</em> (sometimes called 
+				<em>Domain Specific Language</em>) which was specially created for your needs.
+			</li>
+			<li>a 
+				<em>dialect</em> is a kind of representation supported by Sirius. Out of the box, Sirius supports three dialects: diagrams, tables, and trees. Sequence diagrams and cross-tables, which are special kinds of diagrams (resp. tables) can also be considered of as dialects, although technically they are not.
+			</li>
+			<li>a 
+				<em>representation</em> is a particular diagram, table, or tree which you created on your semantic model. It is simply a more general term than &#171;diagram&#187; which is also usable for other dialects.
+			</li>
+			<li>a 
+				<em>representation file</em> is a file in which Sirius stores all informations related to which representations you created, what appears on them, the positions and colors of the elements, etc. This files have a 
+				<code>.aird</code> extension (typically 
+				<code>representations.aird</code>). Representation files reference the semantic model(s) they contain representations for, but you semantic models are kept unaware (and unpolluted) of any Sirius-specific data.
+			</li>
+			<li>a 
+				<em>viewpoint</em> is a set of representation descriptions which provide a specific point of view on some kind of semantic model. For example we could have a 
+				<em>UML Structural</em> viewpoint, which describes the sub-set of all the standard UML diagrams which deal only with structural aspects of UML models (as opposed to behavioral or requirements aspects). Siriuss are defined in 
+				<em>Viewpoint Specification Models</em> and packaged as Eclipse plug-ins. Once you install such a plug-in, the viewpoints it defines will be available to you (with all the representations they define) on all compatible semantic models.
+			</li>
+			<li>a 
+				<em>modeling project</em> is a special kind of project in your workspace which makes it easy to manipulate representation files and semantic models in a consistent way.
+			</li>
+		</ul>
+		<p>The rest of this document explains how you can use the Sirius UI to create and manipulate representations of your semantic models. Each viewpoint and representation is specific. We will use the 
+			<em>Family</em> example (see the 
+			<a href="../../../../fr.obeo.dsl.designer.doc/html/Getting_Started_User.html">Getting Started</a> section) for illustration purpose, but note that not all features may be available with all kinds of models and all viewpoints.
+		</p>
+		<h2 id="FormerUsers">Note to Users of Previous Versions</h2>
+		<p>New users can skip this section safely. For users of previous version who have existing models, this section explains the required steps to use their models with this version, and gives an overview of the main UI changes. See also the 
+			<a href="../../Release%20Notes.html">release notes</a> for more details.
+		</p>
+		<h3 id="Migration">Migration of Existing Representation Files</h3>
+		<p>Representation files are now automatically migrated when opened. This migration is transparent for the end-user.</p>
+		<h3 id="UICHanges">User Interface Changes</h3>
+		<p>You will notice some radical changes in the user interface. The most important change is the disappearance of the 
+			<em>Model Content</em> view. It has been replaced with a streamlined UI which integrates directly into the Eclipse explorer view. The notion of &#171;Local Session&#187; has disappeared from the user interface; its management has been made as transparent as possible so you do not have to deal with it except in some very specific circumstances.
+		</p>
+		<p>The recommended way to use Sirius is now to use the new notion of 
+			<em>Modeling Project</em> described below. If you already have existing Sirius representation files (
+			<code>aird</code> files), a 
+			<a href="Modeling%20Project.html#MPConversion">conversion</a> is necessary. Modeling projects have some constraints on how the files are organized. If you do not want or can not convert your models to the new recommended way, a 
+			<a href="Modeling%20Project.html#LegacyMode">legacy mode</a> is provided which does not require any change to your projects organisation (beyond the files' migration). Note that the support for this legacy mode is not guaranteed to be maintained in all future versions of Sirius.
+		</p>
+		<h2 id="ModelingPerspective">The Modeling Perspective</h2>
+		<p>When you first start Sirius, it opens on the 
+			<em>Modeling</em> perspective. This new perspective provides all the required views, wizards and menus to exploit designers as an end user. When run in the context of Obeo Designer, the perspective will also give you access to the main feature of the other components of Obeo Designer (e.g. shortcuts to launch Acceleo generator).
+		</p> 
+		<img border="0" src="images/modeling_perspective.png"/>
+		<p>The Modeling perspective provides the following views by default:</p>
+		<ul>
+			<li>A 
+				<a href="Modeling%20Project.html#ModelExplorer">
+					<em>Model Explorer</em>
+				</a>, which is the main UI to interact with your models. (For users of previous versions, this explorer includes directly all the features which were found in the &#171;Model Content&#187; view before).
+			</li>
+			<li>An 
+				<em>Outline</em> view, which provides a structural overview of the document or model currently opened. For diagrams, it shows a miniature view of the whole diagram on which you can easily navigate to other parts of the diagram for large ones.
+			</li>
+			<li>The 
+				<em>Properties</em> view gives detailed information about the currently selected element. Depending on the nature of the selected element, some of these properties can be edited directly in the 
+				<em>Properties</em> view with immediate effect.
+			</li>
+			<li>The 
+				<em>Problems</em> view contains information markers of different severities (information only, warnings, or errors). This is where you will find validation errors on your models for example. 
+			</li>
+		</ul>
+		<p>This perspective also provides useful actions available by right-clicking in the view 
+			<a href="Modeling%20Project.html#ModelExplorer">
+				<em>Model Explorer</em>
+			</a>.
+		</p>
+		<p>As usual in Eclipse, this perspective can be customized at will by adding, moving or removing views, shortcuts, etc.</p>
+		<h3 id="ModelExplorer">The Model Explorer View</h3>
+		<p>The 
+			<em>Model Explorer</em> view shows all the projects in you workspace and the files they contain. It adds some special capabilities to 
+			<em>Modeling Projects</em>, to allow you to view and manipulate your semantic models and their Sirius representations directly inside the explorer.
+		</p>
+		<p>For instance, inside the 
+			<em>Model Explorer</em>, semantic models and representation files which are part of a 
+			<em>Modeling Project</em>  or model files can be expanded to display their content directly:
+		</p> 
+		<img border="0" src="images/model_explorer_view.png"/>
+		<p>In the example above, the 
+			<code>example</code> modeling project (note the blue &#171;M&#187; decorator on the project icon) contains a single semantic model, the 
+			<code>example.ecore</code> file, and a single representation file 
+			<code>representations.aird</code>. Both can be expanded directly from inside the 
+			<em>Model Explorer</em> view, to discover the structure of the semantic model and the graphical representations which already exist.
+		</p>
+		<p>The 
+			<em>Model Explorer</em> supports the &#171;Link with Editor&#187; feature, which can be enabled by pressing the icon in the top right corner of the view (the one with two horizontal arrows, pressed in the screenshot above). When this mode is enabled, if you have a representation opened, clicking anywhere on it will automatically select the corresponding representation inside the 
+			<em>Model Explorer</em> (expanding the project and files if necessary). Conversely, if you select a semantic element from one of your semantic models in the 
+			<em>Model Explorer</em> view and if this element is represented somewhere on the opened editor, it will be automatically selected. This can be very useful when you have many projects and representation or large representations to avoid getting lost.
+		</p>
+		<p>The 
+			<em>Model Explorer</em> also supports filtering of elements from inside 
+			<em>Modeling Projects</em> (and only these elements): if you enter some text in the search box at the top of the view, the view will filter out all the elements which do not match your text. For example if you enter 
+			<code>Element</code> in the search box, only the model elements whose name starts with 
+			<code>Element</code> will be shown. You can use the 
+			<code>*</code> and 
+			<code>?</code> special characters in your search string to mean respectively &#171;any text&#187; (including none) and &#171;any single character&#187;. For example the search string 
+			<code>*Element</code> will show all elements whose name 
+			<em>contains</em> the string 
+			<code>Element</code> anywhere.
+		</p>
+		<p>The 
+			<em>Model Explorer</em> allows to group tree items with an intermediary level. This feature clearly enhances the expand time on huge models.
+			<br/>  
+			<img border="0" src="images/groupItems.png"/>
+			<br/>You can customize this feature with three preferences:
+		</p>
+		<ul>
+			<li>Enable/disable this feature globally</li>
+			<li>Increase/decrease the threshold that triggers the intermediary level</li>
+			<li>Increase/decrease the group size</li>
+		</ul> 
+		<img border="0" src="images/groupItems_1.png"/>
+		<p>When you update these preferences, you need to make a refresh (F5) on all resources already expanded to get an updated tree items.</p>
+		<p>
+			<img border="0" src="images/groupItems_2.png"/>
+		</p>
+		<p>This feature is also enabled on tree selection wizards in Sirius diagram tools.</p>
+		<p>
+			<img border="0" src="images/groupItems_3.png"/>
+		</p>
+		<h2 id="MP">Modeling Projects</h2>
+		<p>Modeling Projects, which are used in Sirius to organize and manage your models and their representations (diagrams, tables, etc.).</p>
+		<p>Modeling projects are responsible for storing the representation data (diagrams, tables, etc.) in special 
+			<em>representation files</em> with the extension 
+			<code>.aird</code>. Modeling projects can also be used to store the semantic data of your models but this is not mandatory. Semantic data can be stored anywhere, but representation data 
+			<strong>must be stored in 
+				<code>aird</code> files within modeling projects
+			</strong> (the only exception is the 
+			<a href="Modeling%20Project.html#LegacyMode">legacy mode</a> supported for compatibility with previous versions).
+		</p>
+		<p>Moreover, modeling projects provide 
+			<em>actions to manage viewpoints and representations</em>: viewpoints are associated to a modeling project, so the viewpoints that will be available for a given Modeling Project&#8217;s representations are the one attached to this project. Viewpoints selection is made by right-clicking on a Modeling Project and choosing 
+			<em>Viewpoints Selection</em>.
+		</p>
+		<h3 id="MPCreation">Creating a New Modeling Project</h3>
+		<p>To create a new 
+			<em>Modeling Project</em>, simply right-click in the 
+			<a href="Modeling%20Project.html#ModelExplorer">Model Explorer</a> (or use the 
+			<em>File &gt; New...</em> menu) and select 
+			<em>New &gt; Modeling Project</em>.
+		</p> 
+		<img border="0" src="images/new_project1.png"/>
+		<p>A wizard opens, asking for a mandatory project name. Entering an invalid project name will result in an error message. By default, the modeling project will be created in the workspace&#8217;s location, but this can be changed: just uncheck &#171;Use default location&#187; and enter the path to the location where you want your modeling project to be created.</p> 
+		<img border="0" src="images/new_project2.png"/>
+		<p>When you are done, click 
+			<em>Finish</em> to actually create the modeling project. It will appear in the 
+			<em>Model Explorer</em>, and by default contains two elements:
+		</p>
+		<ul>
+			<li>
+				<em>Project Dependencies</em>, where you can add external dependencies you rely on, i.e. models you will depend on but which are stored oustide of the project;
+			</li>
+			<li>
+				<code>representations.aird</code>, which is the top-level representation file for the project. 
+			</li>
+		</ul> 
+		<img border="0" src="images/new_project3.png"/>
+		<h3 id="MPConversion">Converting an Existing Project into a Modeling Project</h3>
+		<p>It can be useful to convert an existing project into a Modeling Project, since it is necessary for example to be able to create representations in it. An action is available to do this. Right-click on any project, then select 
+			<em>Configure... &gt; Convert to Modeling Project</em>.
+		</p> 
+		<img border="0" src="images/convert_to_modeling_project1.png"/>
+		<p>This action does not alter in any way the nature of the project. For example, if the project was a Java project, it will still be a Java project afterwards. The action just adds the 
+			<em>Modeling Project</em> nature to the selected project.
+		</p> 
+		<img border="0" src="images/convert_to_modeling_project2.png"/>
+		<p>If there is a suitable representation file, it will be considered to be the top-level representation file for the converted project. Otherwise, a new representation file named 
+			<em>representations.aird</em> will be created automatically at the root of the project.
+		</p>
+		<h3 id="MPConversionReverse">Removing the Modeling Nature from a Project</h3>
+		<p>If for some reason you want to revert the conversion of a project into a 
+			<em>Modeling Project</em>, you can use the 
+			<em>Configure... &gt; Remove Modeling Project Nature</em> action on the context menu of the project.
+		</p>
+		<p>The action will simply remove the nature from the project itself, but will not remove or alter the representation files stored inside. You will still be able to use your representations using the 
+			<a href="Modeling%20Project.html#LegacyMode">legacy mode</a>.
+		</p>
+		<h3 id="SiriusSelection">Selecting Which Viewpoints to Enable</h3>
+		<p>Each modeling project has a set of viewpoints which are 
+			<em>enabled</em>. This controls what kind of representations you can create on the semantic models inside the project. The set of viewpoints which are available to you will depend on what plug-ins you have installed, and on the type of semantic models which are inside the modeling projects. For example, even if you have installed the 
+			<a href="http://marketplace.obeonetwork.com/module/uml">UML Designer</a>, you will only be able to enable to corresponding viewpoints if your project contains UML models (
+			<code>.uml</code> files).
+		</p>
+		<p>To select which viewpoints are enable on your project, simply use the 
+			<em>Viewpoint Selection</em> action in the context menu of the project itself. A dialog box will open which will show you all the viewpoints which are compatible with your project (depending on the kind of models it contains). You can check or un-check each viewpoint individually to enable or disable it, and click 
+			<em>OK</em> to validate your choice. Note that some viewpoints depend on other ones (especially viewpoints which extend other ones). If your selection of viewpoints does not include all the required dependencies, a message will be shown to indicate which dependencies are not resolved. You can then adjust your selection and re-validate it.
+		</p> 
+		<img border="0" src="images/viewpoint_selection1.png"/> 
+		<img border="0" src="images/viewpoint_selection2.png"/>
+		<h3 id="ProjectDependencies">Project Dependencies</h3>
+		<p>A modeling project will always have an element called 
+			<em>Project Dependencies</em> available. This is used to import external models, which are stored outside of the modeling project but used in it, for instance for certain representations of the project.
+		</p>
+		<p>To use a semantic model stored outside of the current modeling project, it must be added to the project dependencies. That will not change its location but will simply allow access to its content.
+			<br/>To add an external model to a modeling project, right-click on 
+			<em>Project Dependencies</em> then select 
+			<em>Add Model</em>.
+			<br/>Project dependencies can contain both semantic models and graphical models (
+			<em>i.e. representations files</em>)
+		</p> 
+		<img border="0" src="images/project_dependencies1.png"/>
+		<p>A wizard page opens, allowing you to enter the URI of the model to add. If the model is in the workspace, you can use the button 
+			<em>Browse Workspace</em> to look for it. If the model in in the file system, you can use the button 
+			<em>Browse File System...</em> to find it. Otherwise, you must enter the model&#8217;s URI manually.
+		</p> 
+		<img border="0" src="images/project_dependencies2.png"/>
+		<p>Once the model&#8217;s URI is entered, click 
+			<em>OK</em>. The model is added under 
+			<em>Project Dependencies</em> and a pop-up window is displayed to allow you to select the viewpoints you need. Just select or unselect the viewpoints you want and click 
+			<em>OK</em> when you&#8217;re done.
+		</p> 
+		<img border="0" src="images/project_dependencies3.png"/>
+		<p>Referenced models can be removed if they are not used, just right-click on the model in the 
+			<em>Model Dependencies</em> and select 
+			<em>Remove</em>.
+		</p> 
+		<img border="0" src="images/remove_dependencies1.png"/>
+		<p>
+			<strong>Note:</strong> If the referenced model is a non-modeling project in the workspace, the corresponding file will be decorated with an 
+			<em>M</em> in the upper right corner to indicate that this model is used in a Modeling Project. This decorator disappears if the modeling projects that use this model are closed.
+		</p> 
+		<img border="0" src="images/decorated_model1.png"/>
+		<h3 id="ModelsInMP">Models in Modeling Projects</h3>
+		<p>Any model available in a modeling project, whether physically located in the modeling project or just referenced by it (
+			<em>via</em> the 
+			<em>Project Dependencies</em>), will be expandable. This means that the content of any model used or referenced in a modeling project can be browse directly in the modeling project, in the view 
+			<a href="Modeling%20Project.html#ModelExplorer">Model Explorer</a>.
+		</p> 
+		<img border="0" src="images/models_content1.png"/>
+		<h3 id="ModelActions">Actions Available on Model Elements</h3>
+		<p>When browsing a model in a modeling project, several actions can be accessed by right-clicking on a model element:</p>
+		<ul>
+			<li>
+				<em>New Representation</em> allows you to create a new representation. The availability of this action depends on the kind of model and selected viewpoints, the action being displayed only when it makes sense;
+			</li>
+			<li>
+				<em>Export diagrams as images</em> allows you to export the diagrams related to this element (those that are displayed directly under this element) in image files.
+			</li>
+		</ul>
+		<h3 id="AirdFiles">Representations Files</h3>
+		<p>Representations files are used to store representations. They have the extension 
+			<code>.aird</code>.
+			<br/>Such files contain the data needed to display the diagrams (or other kinds of representations) but they do not contain semantic data, which are stored by the models themselves.
+			<br/>Representations files located in modeling projects can be unfolded to browse their content.
+		</p>
+		<h3 id="AirdStructure">Structure of a 
+			<em>Representations File</em>
+		</h3>
+		<p>The content of a 
+			<em>representations file</em> is structured in three levels:
+		</p>
+		<ul>
+			<li>Viewpoint 1
+				<ul>
+					<li>Representation Type 1.1
+						<ul>
+							<li>Representation 1.1.1</li>
+							<li>Representation 1.1.2</li>
+						</ul>
+					</li>
+					<li>Representation Type 1.2
+						<ul>
+							<li>Representation 1.2.1</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>Viewpoint 2
+				<ul>
+					<li>Representation Type 2.1
+						<ul>
+							<li>Representation 2.1.1</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>The first level displays the available viewpoints, which match the viewpoints selected on the 
+			<em>modeling project</em>.
+			<br/>The second level, inside a given viewpoint, displays 
+			<em>representation types</em>. Only 
+			<em>representation types</em> for which at least one representation exists are displayed.
+			<br/>The third level, inside a 
+			<em>representation type</em>, displays the representations actually present for this type.
+		</p> 
+		<img border="0" src="images/aird_unfolded1.png"/>
+		<h3 id="repair">Repair action</h3>
+		<p>A repair action is available in representations file context menu
+			<br/>In some case, you will need to execute a repair action on your representations file, especially when you have modified the VSM (odesign file). 
+		</p>
+		<h4 id="Operationsdoneduringrepairexecution">Operations done during repair execution</h4>
+		<ul>
+			<li>Deleting representations without semantic target.</li>
+			<li>Deactivating behavior, filter, rules that no longer exist in VSM.</li>
+			<li>Saving all diagram elements state (such as style, bounds, expended bounds for collapsed node).</li>
+			<li>Deleting diagram elements that will be recreated by refresh.</li>
+			<li>Refresh all representations.</li>
+			<li>Restore diagram elements state.</li>
+		</ul>
+		<h4 id="Caseswhereusingrepairaction">Cases where using repair action</h4>
+		<ul>
+			<li>After removing behavior, rules or filter into VSM.</li>
+			<li>After removing or updating some mapping.</li>
+			<li>After removing some semantic elements.</li>
+		</ul>
+		<p>In most of case, a simple refresh of representation should be enough. Note that repair action could take some time depending on representations file size.</p>
+		<h3 id="MPConstraints">Constraints</h3>
+		<p>There is one important constraint regarding 
+			<em>modeling projects</em>. They can only contain 
+			<strong>one</strong> top-level 
+			<em>representations file</em>.
+		</p>
+		<p>A top-level 
+			<em>representations file</em> is a file that stores representations. Such files can be modularized, which means they can be split in several files, but there is always one 
+			<em>master</em> file which references the others and is referenced by none. This file is the top-level file, and there can be only one per 
+			<em>modeling project</em>.
+			<br/>To say this differently: If you want to have several independent 
+			<em>representations files</em>, each of them must be placed in its own 
+			<em>modeling project</em>.
+		</p>
+		<h3 id="Lifecycle">Modeling Project Lifecycle</h3>
+		<p>As mentioned before, models in a 
+			<em>Modeling Project</em> are automatically loaded when first needed. They are not unloaded automatically. If you want them to be unloaded (and retreive the associated memory), you must close the modeling project itself.
+		</p>
+		<p>Besides, all representations of a given 
+			<em>modeling project</em> are part of the same model. Any modification to one of these representations will cause all of them to go dirty (which means that a little * symbol will be displayed in the editor title to indicate that the file contains unsaved modifications). Conversely, saving any representation of a 
+			<em>modeling project</em> saves all of them. What is actually saved is the 
+			<em>representations file</em>, which contains all the representations.
+		</p>
+		<h2 id="Representations">Representations</h2>
+		<p>Representations are stored in 
+			<code>*.aird</code> files. An 
+			<code>*.aird</code> file is called a 
+			<a href="Modeling%20Project.html#AirdFiles">
+				<strong>Representations File</strong>
+			</a>.
+			<br/>A representation can be a diagram, a table, a cross-table, a tree, etc.
+		</p>
+		<p>
+			<strong>Note:</strong> 
+			<em>Representations files</em> located in 
+			<em>modeling projects</em> are loaded automatically.
+		</p>
+		<h3 id="ReprCreation">Creating a Representation</h3>
+		<p>There are two ways of creating a representation. Both take place in the 
+			<em>Model Explorer</em>.
+		</p>
+		<p>The first way of creating a representation is to navigate in a model to an element for which you know there is a 
+			<em>representation type</em> available. Right-click on this element, then select 
+			<em>New Representation &gt; &lt;Representation type&gt;</em>.
+		</p> 
+		<img border="0" src="images/create_representation1.png"/>
+		<p>The other way consists in right-clicking on the 
+			<em>Modeling Project</em> itself. Select 
+			<em>Create Representation</em>.
+		</p> 
+		<img border="0" src="images/create_representation1_alt.png"/>
+		<p>This opens a wizard that displays available viewpoints and available 
+			<em>representation types</em> in these viewpoints.
+			<br/>Just select the type of representation you want to create and click 
+			<em>Next &gt;</em>.
+		</p> 
+		<img border="0" src="images/create_representation2.png"/>
+		<p>The wizard then displays the available models (those that are in the current modeling project and those that are imported). When you browse the content of these models, you will notice that their content is filtered to display only elements that are relevant for the selected representation type.
+			<br/>Select the element for which you want to create a representation and click 
+			<em>Finish</em>.
+		</p> 
+		<img border="0" src="images/create_representation3.png"/>
+		<p>Either way, a pop-up window appears, where you can enter a name for the new representation. A default name is proposed. Click 
+			<em>OK</em>.
+		</p> 
+		<img border="0" src="images/create_representation4.png"/>
+		<p>If there are several 
+			<em>representations files</em> in the current 
+			<em>modeling project</em>, a pop-up window appears before the actual creation to allow you to select the 
+			<em>representations file</em> that will contain the representation.
+		</p> 
+		<img border="0" src="images/create_representation5.png"/>
+		<p>The representation is then created and opened.</p>
+		<h3 id="ReprManagement">Managing Representations</h3>
+		<p>Available representations can be accessed by browsing 
+			<em>representation files</em> to the third level. Right-clicking on a representation then offers several actions:
+		</p> 
+		<img border="0" src="images/managing_representation1.png"/>
+		<ul>
+			<li>
+				<strong>Open</strong> opens the representation in the relevant editor. You can also open the representation by double-click on it;
+			</li>
+			<li>
+				<strong>Delete</strong> deletes the representation: Del key can be used as shortcut (
+				<strong>Warning:</strong> this cannot be undone);
+			</li>
+			<li>
+				<strong>Rename</strong> opens a pop-up window where you can enter a new name for the representation: F2 key can be used as shortcut;
+			</li>
+			<li>
+				<strong>Copy</strong> duplicates the representation, opening a pop-up window where you can enter the name of the copy;
+			</li>
+			<li>
+				<strong>Move</strong> (only if there are several 
+				<em>representations files</em> in the current 
+				<em>modeling project</em>) allows you to move a representation to another 
+				<em>representations file</em>;
+			</li>
+			<li>
+				<strong>Extract to .aird file ...</strong> extracts the selected element to another 
+				<em>representations file</em>, which will be located in the workspace. A pop-up window opens to let you select the destination file, and the new file is automatically added to the project&#8217;s dependencies if needed;
+			</li>
+			<li>
+				<strong>Export Diagrams as images</strong> allows you to export all the diagrams stored inside a representation file in one operation. You can choose the destination folder and image format..
+			</li>
+		</ul>
+		<h2 id="LegacyMode">Legacy Mode </h2>
+		<p>The legacy UI mode is made available for users of previous versions of Sirius who can not or do not want to convert their projects into 
+			<em>Modeling Projects</em>. As such, it works with all existing representation files (provided they have been migrated if required), even if they are inside non-Modeling projects or if there are several top-level representation files inside the same project.
+		</p>
+		<p>When using the legacy mode, you must explicitly 
+			<em>open</em> a representation file using the 
+			<em>Open</em> action in the context menu of the file. This is equivalent to opening a 
+			<em>session</em> in previous versions of Sirius. Once the representation file is open, you can expand it, and inside you will find all the same elements that you would find inside a normal 
+			<em>Modeling Project</em>: the semantic model(s) associated to the representation file, and the representations themselves.
+		</p> 
+		<img border="0" src="images/legacy_mode1.png"/>
+		<p>All the actions which are normally performed on the modeling project itslef, like selecting which viewpoints are enabled, are available in the context menu of the representation file itself:</p> 
+		<img border="0" src="images/legacy_mode2.png"/>
+		<p>Note that the 
+			<em>Project dependencies</em> entry is not available in legacy mode. To associate new semantic models to the representation file, use the 
+			<em>Add model</em> action directly on the representation file.
+		</p>
+		<p>Once you have finished using the models and or representations, you must explitly close it (equivalent to closing the 
+			<em>session</em> in previous versions) by using the 
+			<em>Close</em> action on the top-level representation file.
+		</p>
+	</body>
+</html>

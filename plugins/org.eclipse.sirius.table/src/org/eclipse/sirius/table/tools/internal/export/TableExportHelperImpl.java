@@ -28,7 +28,7 @@ import org.eclipse.sirius.table.tools.internal.export.csv.TableCsvHelper;
  */
 public final class TableExportHelperImpl implements TableExportHelper {
 
-    private static final String EXCEPTION_ON_SAVE_CONTENT = "AbstractExportTableAction.saveContent(..) "; //$NON-NLS-1$
+    private static final String EXCEPTION_ON_SAVE_CONTENT = "Error while saving the exported content."; //$NON-NLS-1$
 
     private TableExportHelperImpl() {
     }

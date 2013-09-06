@@ -169,13 +169,15 @@ public final class DisplayServiceImpl implements DisplayService {
     /**
      * Tell whether an element is displayed or not in a {@link DDiagram}.
      * 
+     * @param diagramMappingsManager
+     *            the {@link DiagramMappingsManager} to use
      * @param diagram
      *            the diagram.
      * @param element
      *            an element.
      * @return true if the element is in the viewpoint, false otherwise.
      */
-    private boolean doIsVisible(DiagramMappingsManager session, final DDiagram diagram, final DDiagramElement element) {
+    private boolean doIsVisible(DiagramMappingsManager diagramMappingsManager, final DDiagram diagram, final DDiagramElement element) {
 
         boolean isVisible = true;
         final Boolean cachedValue = getFromCache(element);
@@ -190,15 +192,15 @@ public final class DisplayServiceImpl implements DisplayService {
             if (isVisible) {
                 final EObject eContainer = element.eContainer();
                 if (eContainer instanceof DDiagramElement) {
-                    isVisible = computeVisibility(session, diagram, (DDiagramElement) eContainer);
+                    isVisible = computeVisibility(diagramMappingsManager, diagram, (DDiagramElement) eContainer);
                 } else if (element instanceof DEdge) {
-                    isVisible = isDEdgeVisible(session, diagram, (DEdge) element);
+                    isVisible = isDEdgeVisible(diagramMappingsManager, diagram, (DEdge) element);
                 }
             }
 
             /* if element seems to be visible, check its parent layer */
             if (isVisible) {
-                isVisible = LayerHelper.isInActivatedLayer(session, element);
+                isVisible = LayerHelper.isInActivatedLayer(diagramMappingsManager, element);
             }
             if (isVisible) {
                 isVisible = !isFold(element);
@@ -208,13 +210,13 @@ public final class DisplayServiceImpl implements DisplayService {
         return isVisible;
     }
 
-    private boolean isDEdgeVisible(DiagramMappingsManager session, final DDiagram vp, final DEdge edge) {
+    private boolean isDEdgeVisible(DiagramMappingsManager diagramMappingsManager, final DDiagram vp, final DEdge edge) {
         boolean isVisible = true;
         if (edge.getSourceNode() instanceof DDiagramElement) {
-            isVisible = computeVisibility(session, vp, (DDiagramElement) edge.getSourceNode());
+            isVisible = computeVisibility(diagramMappingsManager, vp, (DDiagramElement) edge.getSourceNode());
         }
         if (isVisible && edge.getTargetNode() instanceof DDiagramElement) {
-            isVisible = computeVisibility(session, vp, (DDiagramElement) edge.getTargetNode());
+            isVisible = computeVisibility(diagramMappingsManager, vp, (DDiagramElement) edge.getTargetNode());
         }
         return isVisible;
     }

@@ -1,0 +1,142 @@
+h1. Specifying Table Editors
+
+{toc:style=disc|minLevel=2|maxLevel=3}
+
+h2(#introduction). Introduction
+
+Sirius supports the definition of two kinds of tabular modelers:
+* _Edition Tables_ are classical tables, where each line represents an element and each column (from a fixed set) represents some (potentially computed) property of the element. Lines can contain sub-lines (recursively) to represent sub-elements, and the end-user can expand/collapse these at will. Provided that you specify the corresponding tools, users can create new lines and delete existing ones.
+* _Cross Tables_ are slightly different, optimized to represent relationship between elements in a matrix-like way. Both lines and columns represent elements, and each call at an intersection if a certain relationship exists between them. Cross tables also support sub-lines, but not sub-columns. However provided the right tools are specified, users can create and/or delete columns in addition to lines.
+
+Both kinds of table share a lot of elements. This document will focus on "edition tables":#edition_tables, which are the most commonly used. The "section on cross-tables":#cross_tables describes them by their differences with edition tables.
+
+  !./images/table_description_editor.png!
+<em>
+<ul>
+!images/tricks.png! _use the !images/questionMarque.png! icon to access the available fields tooltips:_
+<ul>
+	<li> **Id** field: The identifier of this element. Must be unique. Changing this identifier will break existing user models which reference the old identifier.</li>
+	<li> **Label** field: The label used to display this to the end-user.</li>
+	<li> **Domain Class** field: Type of the element represented by the Node.</li>
+	<li> **Semantic Candidates Expression** field: Restrict the list of elements to consider before creating the graphical elements. If it is not set, then all semantic models in session will be browsed and any element of the given type validating the precondition expression will cause the creation of a graphical element. If you set this attribute then only the elements returned by the expression evaluation will be considered.</li>
+</ul>
+</ul>
+</em>
+
+*Note*: Advanced features like layers, filters and mapping imports which exist for diagrams are not currently available for tables.
+
+h2(#edition_tables). Edition Tables
+
+Edition tables are configured by creating an _Edition Table Description_ element (inside a _Viewpoint_) and its sub-elements (which describe the lines, columns and tools). _Edition Table Descriptions_ are similar to other representation description elements.
+
+The mandatory _Domain Class_ attribute is the type of semantic element which are represented by the table. In the _Model Explorer_, end-users will be able to create new instances of this table on semantic elements of this type (assuming the corresponding viewpoint is enabled in the _Modeling Project_). The syntax for the domain class name can be the basic name, like @Class@, a qualified name using name of the EMF EPackage which defines the type, like @uml.Class@, or a fully qualified URI like @http://www.eclipse.org/uml2/3.0.0/UML#//Class@.
+
+By default, new tables can be created on _any_ instance of the _Domain Class_. You can use the _Precondition Expression_ (available in the _Advanced_ category) to change this. If such an expression is specified, it will be evaluated in the context of the semantic element the user has selected, and only if the expression returns @true@ will the user be able to create a new table on this element.
+
+The default title for newly created table can be specified using the _Title expression_ (_Advanced_ category), which is evaluated in the context of the semantic element on which the table is created, and should return a string. If the expression is not specified, the default title is the label of the table description (of its _Id_ if no _Label_ is set) prefixed with the string @"new "@ (e.g. @new Package Contents@).
+
+It is recommended that the _Edition Table Description_ be explicitly associated with the meta-model(s) of the semantic elements it will represent. You can add referenced meta-models from different sources in the _Metamodels_ property section of the _Edition Table Description_. Sirius will work even without this association, but setting it explicitly will give you better feedback when validating your "_VSM_":../../Glossary.html#VSM.
+
+The _Initialization_ and _Show on startup_ flags control whether table instances are created and/or opened automatically without user intervention. If _Initialization_ is set, then when the viewpoint which contains this table description is enabled, instances of this table description will be automatically created on all compatible semantic elements. If _Show on startup_ in set, then when a modeling project is opened which contains instances of this table description, they will be opened: if only one such representation exist, it will be opened automatically; is there are more than one, a dialog box will appear to allow the user to select which one(s) to open.
+
+Finally, the _Initial Header Column Width_ (_Advanced_ category) is specific to table descriptions (both edition tables and cross tables). It can be used to specify the default size (in pixels) of the left-most column of the table, which contains the labels of the elements represented by each line. If the value if 0 (the default), the column width will be computed from the initial content when the table is created.
+
+h3(#table_tools). Table Tools
+
+Some tools which apply to the whole table are specified directly inside the _Edition Table Description_:
+* _Representation Creation Tools_: These tools (one for each kind of representation supported by Sirius) can be used to create (and open) a new representation from an existing table element. It will be available to end-users in the _Navigate_ context menu on compatible table elements. To configure the tool, simply select in the _Mappings_ property which kinds of lines the tool should appear on (you can be more precise using the _Precondition_ expression if necessary), and select the kind of representation which should be created using the _Representation Description_ property (in practice, one of _Diagram Description_, _Table Description_ or _Tree Description_ depending on the tool). Normally, the new representation will be created on the semantic element represented by the tree item on which the user invoked the tool. Sometimes you want the tool to appear on one element, but create a representation on another one. In this case, use the _Browse expression_ (in the _Advanced_ category) to navigate from the element selected to the one one which the new representation should actually be created. Finally, any operation you specify in the body of the tool will be executed when the tool is invoked; you can use it to initialize the content of the model represented.
+* _Representation Navigation Tools_: These tools (one for each kind of representation supported by Sirius) are very similar to the previous ones. The only differences is that they allow users to navigate to existing representation instead of creating new ones. If such a tool exists, the _Navigate_ context menu on an element will contains an entry for each corresponding representation which already exists on the element selected (or reachable from the selected element using the _Browse expression_). You can specify a _Navigation name expression_ (_Advanced_ category) to be used in the menu entry instead of using the title of the existing representation. This can be useful to make it more explicit what the relationship is between the current element and the target tree.
+* _Line Creation Tools_ which are directly contained inside the _Table Description_ are used to create root table lines. They are available to end-users through a combo button in the main Eclipse tool-bar. To configure it, simply select the kind of line the tool will create in the _Mapping_ property, and specify the tool's behavior using normal model operations.
+
+h3(#line_mappings). Line Mappings
+
+The lines which will appear in a table (and their organization in sub-lines) are defined by the _Line Mapping_ elements inside the _Table Description_ element. A _Table Description_ contains _Line Mappings_ which define which elements will appear as top-level lines of the table, while each _Line Mapping_ can contain sub-mappings which define its own direct sub-lines. If an element (the table or a line mapping) contains several sub-mappings, the element's content will appear in the order of the mappings: first all the instances of the first mapping, then the instances of the second one, etc.
+
+A _Line Mapping_ is defined by a _Domain Class_ and a _Semantic Candidates Expression_. The _Semantic Candidates Expression_ indicates where to look in the semantic model for elements which should be represented by the mapping. The expression is evaluated in the context of the parent's semantic element (the parent being either the table itself or a parent line). It should return a set of semantic elements. Only those which are instances of the specified _Domain Class_ are retained and actually represented as instances of this mapping. The semantic element thus associated to each line is called the line's _target_ element.
+
+You can associate more semantic elements to a line by defining the _Associated Elements Expression_ (in the _Advanced Category_), which is evaluated in the context of the target and may return more semantic elements. Any change in the target element or one of the associated elements will automatically trigger a refresh of the line.
+
+The _Header Label Expression_ (in the _Label_ category) is evaluated in the context of a line's target and should return the text to be shown for the line in the header column (on the left of the table).
+
+A _Line Mapping_ may _Reuse Sub Lines_ (see the _Import_ category), including itself, as sub-mappings. The effect is exactly the same as if the reused mapping(s) were created as children if the parent. However because a mapping can reuse itself or one of its parent mapping, this allows to create table of infinite depth (or at least not bounded a priori). The _Reused in Mappings_ property is the symmetrical of _Reused Sub Lines_: it shows you which line mappings reuse this one as a sub-line.
+
+h4(#line_style). Line Style
+
+You can create _Style_ elements inside a line mapping to set the default style of all the cells on this line (note that the actual style can be overridden by the column mappings).
+
+A _Foreground Style_ element can be used to set the font size, font style (e.g. italic) and text color. A _Background Style_ can be used to set the background color. Both are optional.
+
+You can also specify _Conditional styles_ for the foreground. Each one is a normal foreground style wrapped in a predicate expression (evaluated in the context of the line's semantic element). If conditional styles are specified, their conditions are tested in order, and the first one which matches is used. If no conditional style is defined, the _Foreground Style_ (or the default) is applied.
+
+h4(#line_tools). Line Tools
+
+There are two kinds of tools which can be created inside line mappings (and apply to all instances of that mapping).
+* _Create Line Tool_ are used to create a new lines. A mapping can contain several such tools. They appear in the context menu of the instances of the mapping, if the (optional) _Precondition_ of the tool holds for the instance's target. A creation tool must specify what kind of _Mapping_ it will create. The actual behavior of the creation tool is defined in the tool's body, using all the standard model operations.
+* _Delete Line Tool_, used to delete elements. If a line mapping does not define explicitly a deletion tool, the default behavior of the _Delete line_ operation is to remove the line's semantic _target_ and all _associated elements_ from the semantic model. If you want a specific behavior, you must create a _Delete Line Tool_ explicitly and describe the behavior in the tool's body. If you want to prevent the deletion of an element, you must create a _Delete Line Tool_ and set a _Precondition_ to return @false@ for the elements which should not be deleted.
+
+h3(#feature_column_mapping). Feature Column Mappings
+
+The columns which will appear in an edition table are defined by the _Feature Column Mapping_ elements inside the _Table Description_ element. They are named _Feature Column Mappings_ because they normally represent a property (maybe computed) of the elements which are represented by the table's lines, and also to distinguish them from the kind of columns which appear in "cross tables":#cross_tables. 
+
+A _Feature Column Mapping_ is defined by its _Feature Name_, which should normally be the name of a valid feature (attribute or reference) of the element which appear in the tables' lines. If a line represents a semantic element _S1_ but you want on some column to show a property of an element reachable from _S1_ instead of _S1_ itself, you can use the _Feature Parent Expression_ (_Advanced_ category), which is evaluated in the context of _S1_ and should return an element _S2_. _S2_ will be considered the _target_ element of the cell at this intersection instead of _S1_.
+
+You can associate more semantic elements to the mapping using the _Associated elements expression_ in the _Advanced_ category. The expression will be evaluated in the context of the target semantic element of the cell.
+
+The _Label Expression_ is used to compute the text to show in each cell. It is evaluated for each cell in the context of its target semantic element.
+
+In tables, the contents of the cell is editable by default. Even with no direct edit tool specified, Sirius will try to interpret the text entered by the user according to the type of the feature the column represents (as defined by the _Feature Name_. For example if a column represents a boolean attribute, Sirius will correctly interpret the strings @"true"@ and @"false"@ and set the value accordingly when the user edits a cell. You can disable this behavior by giving a _Can Edit_ expression, which is evaluated in the context of the semantic element of each individual cell. It should return @false@ if that cell should not be editable.
+
+Finally, the _Header Label Expression_ is used to compute the header of the column itself, and is evaluated in the context of the table's target semantic element, and the _Initial width_, if set to a non-zero value, is used as the initial width of the column.
+
+h4(#column_styles). Column Styles
+
+Columns can contain style definition which, if present, override the styles which may be present in the line mappings for the cells of this column. The style definition elements, including support for conditional styles, is the same as for style associated to line mappings. Refer to "the corresponding section":#line_style for more details.
+
+h4(#column_tools). Column Tools
+
+Column can currently only define a _Label edit_ tool, which will apply to all the cells of the column. It works like all edit The _Edit Mask_ element (contained inside the tool) is used to parse the new label's value as entered by the user, and to select part of this label as input variables to the editing action's body. The mask can contain substrings of the form @{N}@ where _N_ is a number. The parts of the new label's value which correspond to these substring will be available as variables named <code>argN</code>. For example, with an edit mask of <code>{0}:{1}</code> and an input string entered by the user of <code>attr : EString</code>, the tool's body would be executed with variables <code>arg0</code> set to <code>attr&#9251;</code> and <code>arg1</code> set to <code>&#9251;EString</code>.
+
+h2(#cross_tables). Cross Tables
+
+_Cross Tables_ are slightly different from edition tables. They are optimized to represent relationship between elements in a matrix-like way. Both lines and columns represent elements, and each call at an intersection if a certain relationship exists between them. Cross tables also support sub-lines, but not sub-columns. However provided the right tools are specified, users can create and/or delete columns in addition to lines.
+
+Cross tables are specified using a _Cross Table Description_ element, which works exactly like "_Edition Table Description_":#edition_tables elements. The differences appear in the type of elements they can contain.
+
+h3(#cross_table_tools). Table Tools
+
+Cross tables can contain the same kinds of tools as edition tables (see "the corresponding section":#table_tools for details). In addition, they can contain _Create Column Tools_, which behave exactly like _Create Line_ tools, except that they apply to "_Element Column Mappings_":#element_column_mapping (see below) and are used to create new columns in the table.
+
+h3(#element_column_mapping). Element Column Mappings
+
+In cross tables, columns represent elements instead of elements' properties (as is the case for edition tables). The set of columns is defined by one or more _Element Column Mappings_. They are almost identical to "line mappings":#line_mappings, except that:
+* they can not be nested (there are no "sub-columns" like there are sub-lines), and thus can not "reuse" column mappings either;
+* they can have an _Initial width_ (set in the _Advanced_ category). 
+
+_Element Column Mappings_ can contain a _Create Column Tool_ and a _Delete Column Tool_, which are specified and behave in a similar way than the _Create Line_ and _Delete Line_ "tools for line mappings":#line_tools.
+
+They can also contain style definitions (including conditional style), which apply to all the cells in the column (unless overridden by the intersection mapping). For a given cell, the styles defined on the column mapping overrides the styles which are defined on the line mapping (if any).
+
+h3(#intersection_mapping). Intersection Mappings
+
+The line and element column mappings in a cross table define which lines and columns will be present in the tables, but not the contents of the cells. This is defined by _Intersection Mappings_. The _Line Mapping_ and _Column Mapping_ properties indicate which cells the mapping describes. The _Label Expression_, evaluated in the context of the cell's targets semantic element, should return the text to show in the cell, while the _Can Edit_ expression indicates whether or not the cell's value can be edited by end-users.
+
+There are two slightly different use cases for intersection mapping, which use different sub-sets of the remaining properties:
+# Intersections which represent a relation between the element on a line and the element on a column. For example, if both lines and columns represented UML classes, this could be the "super-class" reference between a class and those it inherits from;
+# Intersections which represent a semantic element (instead of just a relation) which is itself related to both the element on the line and the element on a column. To continue with the UML example, this would be used to represent UML Associations, which are full-blown objects representing a relationship between classes.
+
+If you are familiar with it, this is similar to _Relation Based Edges_ and _Element Based Edges_ in Sirius diagrams.
+
+In the first case ("relation-based intersection"), the semantic element of a cell will the the semantic element of the cell's line. To configure such an intersection, you must only set the _Column Finder Expression_: from a line's semantic target element, it should return the semantic element of the column in which the cell should appear.
+
+The second use case ("element-based intersection") is enabled by setting the _Use Domain Class_ flag in the _Domain Based_ category. You must then indicate the _Domain Class_ of the elements which will be represented by the cells, and the _Semantic Candidates Expression_. The expression will be evaluated in the context of the whole table's semantic element, and should return all elements (instances of the _Domain Class_) which should be represented by cells. These elements will be the semantic target element of the cell. You can use the _Precondition Expression_ and _Associated elements expression_ (_Advanced_ category) with the same semantics as for other mappings. Finally, you must set both the _Column Finder Expression_ (_General_ category) and the _Line Finder Expression_ (_Domain Based_ category): they will both be evaluated in the context of the cell's semantic element, and should return the semantic elements of the column and line at which the intersection should appear. In our example, these would be expressions which, from the _Association_ element, find the source and target classes of the association.
+
+h4(#intersection_mapping_style). Intersection Style
+
+An _Intersection Mapping_ can contain style elements, including conditional styles. If they are present, they override any style set on the corresponding column mapping or line mapping.
+
+h4(#intersection_mapping_tools). Intersection Tools
+
+Intersection mappings can contain two kinds of tools:
+* _Label Edit_ tools are standard "direct edit" tools, which allow end-users to edit a cell's label. You can specify the actual changes in the model in the tool's body.
+* _Create Cell Tools_ are used when the user edits an initially empty cell, where there is no relation (or element relating) the line and column. It is defined like a _Label Edit_ tool (with an _Edit Mask Variable_ to obtain the text entered by the user), but instead of editing an existing relation, it should create a relation (e.g. add the class in the column as a super-class to the one on the line) or the element relating the line and column (e.g. create an _Association_ which links the classes). 
+

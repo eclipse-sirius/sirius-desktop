@@ -38,6 +38,7 @@ import org.eclipse.sirius.description.style.NodeStyleDescription;
 import org.eclipse.sirius.description.style.NoteDescription;
 import org.eclipse.sirius.description.style.RoundedCornerStyleDescription;
 import org.eclipse.sirius.description.style.ShapeContainerStyleDescription;
+import org.eclipse.sirius.description.style.SizeComputationContainerStyleDescription;
 import org.eclipse.sirius.description.style.SquareDescription;
 import org.eclipse.sirius.description.style.StyleDescription;
 import org.eclipse.sirius.description.style.StylePackage;
@@ -373,6 +374,8 @@ public class StyleSwitch<T> {
             if (result == null)
                 result = caseContainerStyleDescription(flatContainerStyleDescription);
             if (result == null)
+                result = caseSizeComputationContainerStyleDescription(flatContainerStyleDescription);
+            if (result == null)
                 result = caseRoundedCornerStyleDescription(flatContainerStyleDescription);
             if (result == null)
                 result = caseBorderedStyleDescription(flatContainerStyleDescription);
@@ -393,6 +396,8 @@ public class StyleSwitch<T> {
             T result = caseShapeContainerStyleDescription(shapeContainerStyleDescription);
             if (result == null)
                 result = caseContainerStyleDescription(shapeContainerStyleDescription);
+            if (result == null)
+                result = caseSizeComputationContainerStyleDescription(shapeContainerStyleDescription);
             if (result == null)
                 result = caseRoundedCornerStyleDescription(shapeContainerStyleDescription);
             if (result == null)
@@ -489,6 +494,13 @@ public class StyleSwitch<T> {
                 result = caseEdgeStyleDescription(bracketEdgeStyleDescription);
             if (result == null)
                 result = caseStyleDescription(bracketEdgeStyleDescription);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case StylePackage.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION: {
+            SizeComputationContainerStyleDescription sizeComputationContainerStyleDescription = (SizeComputationContainerStyleDescription) theEObject;
+            T result = caseSizeComputationContainerStyleDescription(sizeComputationContainerStyleDescription);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -835,6 +847,23 @@ public class StyleSwitch<T> {
      * @generated
      */
     public T caseBracketEdgeStyleDescription(BracketEdgeStyleDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Size Computation Container Style Description</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null
+     * result will terminate the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Size Computation Container Style Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseSizeComputationContainerStyleDescription(SizeComputationContainerStyleDescription object) {
         return null;
     }
 

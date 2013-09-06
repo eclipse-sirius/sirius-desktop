@@ -42,10 +42,12 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
  * 
  * @author pcdavid
  */
-public class ServiceInterpreter extends AbstractInterpreter implements org.eclipse.sirius.common.tools.api.interpreter.IInterpreter, IInterpreterProvider {
+public class ServiceInterpreter extends VariableInterpreter implements org.eclipse.sirius.common.tools.api.interpreter.IInterpreter, IInterpreterProvider {
 
     /** The Service interpreter prefix. */
     public static final String PREFIX = "service:";
+
+    private static final String RECEIVER_SEPARATOR = ".";
 
     private static final String EOBJECT_CLASS_NAME = EObject.class.getCanonicalName();
 
@@ -62,9 +64,8 @@ public class ServiceInterpreter extends AbstractInterpreter implements org.eclip
             String[] segments = file.split(Pattern.quote("/"));
             if (segments != null && segments.length > 1) {
                 return segments[1];
-            } else {
-                return null;
             }
+            return null;
         }
     };
 
@@ -82,21 +83,52 @@ public class ServiceInterpreter extends AbstractInterpreter implements org.eclip
     /**
      * {@inheritDoc}
      */
+    @Override
     public Object evaluate(EObject target, String expression) throws EvaluationException {
         Object evaluation = null;
         if (target != null && expression != null && expression.startsWith(PREFIX)) {
-            String serviceName = expression.substring(PREFIX.length());
-            evaluation = callService(target, serviceName);
+            String serviceCall = expression.substring(PREFIX.length());
+            int indexOfServiceName = serviceCall.indexOf(RECEIVER_SEPARATOR);
+            int indexOfParenthesis = serviceCall.indexOf("(");
+            String serviceName = serviceCall;
+            EObject receiver = target;
+            if (indexOfServiceName != -1) {
+                String receiverVariableName = serviceCall.substring(0, indexOfServiceName);
+                serviceCall = serviceCall.substring(indexOfServiceName + 1);
+                indexOfParenthesis = serviceCall.indexOf("(");
+                Object objectReceiver = evaluate(receiverVariableName);
+                if (objectReceiver instanceof EObject) {
+                    receiver = (EObject) objectReceiver;
+                } else {
+                    throw new EvaluationException("The receiver of the service call" + serviceName + ".");
+                }
+            }
+            serviceName = serviceCall.substring(0, indexOfParenthesis == -1 ? serviceCall.length() : indexOfParenthesis);
+            Object[] parameters = new Object[] { receiver };
+
+            if (indexOfParenthesis != -1) {
+                String[] values = serviceCall.split("[(,)]");
+                parameters = new Object[values.length];
+                parameters[0] = receiver;
+                for (int i = 1; i < values.length; i++) {
+                    parameters[i] = evaluate(values[i]);
+                }
+            }
+            evaluation = callService(parameters, serviceName);
         }
         return evaluation;
     }
 
-    private Object callService(EObject target, String serviceName) throws EvaluationException {
+    private Object evaluate(String parameter) {
+        return getVariable(parameter.trim());
+    }
+
+    private Object callService(Object[] target, String serviceName) throws EvaluationException {
         if (services.containsKey(serviceName)) {
             IService service = services.get(serviceName);
             return service.call(target);
         } else {
-            throw new EvaluationException("Unknown service " + serviceName + ".");
+            throw new EvaluationException("Unknown service " + serviceName);
         }
     }
 
@@ -149,7 +181,7 @@ public class ServiceInterpreter extends AbstractInterpreter implements org.eclip
     public static boolean isValidServiceMethod(Method m) {
         int mods = m.getModifiers();
         Class<?>[] parameterTypes = m.getParameterTypes();
-        if (!Modifier.isPublic(mods) || Modifier.isStatic(mods) || parameterTypes.length != 1) {
+        if (!Modifier.isPublic(mods) || (parameterTypes.length < 1)) {
             return false;
         }
 
@@ -198,7 +230,7 @@ public class ServiceInterpreter extends AbstractInterpreter implements org.eclip
     @Override
     public void setProperty(Object key, Object value) {
         properties.put(key, value);
-        if (IInterpreter.FILES.equals(key) && value instanceof List<?>) {
+        if (IInterpreter.FILES.equals(key) && (value instanceof List<?>)) {
             updateBundlePath(Iterables.filter((List<?>) value, String.class));
             services.clear();
         }

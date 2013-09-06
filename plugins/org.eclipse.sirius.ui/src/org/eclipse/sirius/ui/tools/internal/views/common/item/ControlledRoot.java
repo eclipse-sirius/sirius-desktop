@@ -102,16 +102,19 @@ public class ControlledRoot implements ItemWrapper, IAdaptable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getChildren()
+     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getChildren()
      */
     public Collection<?> getChildren() {
+        // This controlled root is just here to show that there is a fragment,
+        // and is not supposed to have children. Children will be displayed in
+        // the parent resource (similar to the Ecore reflective editor).
         return Collections.emptyList();
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getSession()
+     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getSession()
      */
     public Option<Session> getSession() {
         Session session = null;
@@ -138,7 +141,7 @@ public class ControlledRoot implements ItemWrapper, IAdaptable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getParent()
+     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getParent()
      */
     public Object getParent() {
         return parent;

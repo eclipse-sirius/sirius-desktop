@@ -46,11 +46,11 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
+import org.eclipse.sirius.description.AdditionalLayer;
 import org.eclipse.sirius.description.DiagramDescription;
 import org.eclipse.sirius.description.DiagramExtensionDescription;
 import org.eclipse.sirius.description.DiagramImportDescription;
 import org.eclipse.sirius.description.Layer;
-import org.eclipse.sirius.description.OptionalLayer;
 import org.eclipse.sirius.description.RepresentationDescription;
 import org.eclipse.sirius.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.description.Sirius;
@@ -398,20 +398,21 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
      */
     private void updateDiagram(final DSemanticDiagram diagram, final DiagramExtensionDescription ext, final boolean activated, final Session session) {
         for (final Layer layer : ext.getLayers()) {
-            if (layer instanceof OptionalLayer) {
-                OptionalLayer optionalLayer = (OptionalLayer) layer;
+            if (layer instanceof AdditionalLayer) {
+                AdditionalLayer additionalLayer = (AdditionalLayer) layer;
 
                 // Change Layer Activation if the Sirius is activated and
                 // layer deactivated
-                Boolean shouldChangeLayerActivation = activated && !diagram.getActivatedLayers().contains(optionalLayer);
+                Boolean shouldChangeLayerActivation = activated && !diagram.getActivatedLayers().contains(additionalLayer);
                 // Change Layer Activation if the Sirius is deactivated and
                 // layer activated
-                shouldChangeLayerActivation = shouldChangeLayerActivation || (!activated && diagram.getActivatedLayers().contains(optionalLayer));
-                // Change Layer Activation if the layer is active by default
-                shouldChangeLayerActivation = shouldChangeLayerActivation && optionalLayer.isActiveByDefault();
+                shouldChangeLayerActivation = shouldChangeLayerActivation || (!activated && diagram.getActivatedLayers().contains(additionalLayer));
+                // Change Layer Activation if the layer is mandatory or active
+                // by default
+                shouldChangeLayerActivation = shouldChangeLayerActivation && (!additionalLayer.isOptional() || additionalLayer.isActiveByDefault());
 
                 if (shouldChangeLayerActivation) {
-                    new ChangeLayerActivationCommand(session.getTransactionalEditingDomain(), diagram, optionalLayer, new NullProgressMonitor()).execute();
+                    new ChangeLayerActivationCommand(session.getTransactionalEditingDomain(), diagram, additionalLayer, new NullProgressMonitor()).execute();
                 }
             }
         }

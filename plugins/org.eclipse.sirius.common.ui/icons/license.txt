@@ -4,6 +4,7 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
+icons/ArrayPartition.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/obj16/arraypartition_obj.gif
 icons/MinusWFocus.png - org.eclipse.sirius.common.ui - org.eclipse.sirius.common.ui/icons/MinusWFocus.png
 icons/MinusWOFocus.png - org.eclipse.sirius.common.ui - org.eclipse.sirius.common.ui/icons/MinusWOFocus.png
 icons/PlusWFocus.png - org.eclipse.sirius.common.ui - org.eclipse.sirius.common.ui/icons/PlusWFocus.png

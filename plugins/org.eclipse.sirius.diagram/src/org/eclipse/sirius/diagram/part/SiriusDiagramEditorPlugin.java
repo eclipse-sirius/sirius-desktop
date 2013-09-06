@@ -151,7 +151,10 @@ public class SiriusDiagramEditorPlugin extends AbstractUIPlugin {
             adapterFactory = null;
         } catch (NullPointerException e) {
             // can occur when using CDO (if the view is
-            // closed when transactions have been closed )
+            // closed when transactions have been closed)
+        } catch (IllegalStateException e) {
+            // can occur when using CDO (if the view is
+            // closed when transactions have been closed)
         }
         instance = null;
 

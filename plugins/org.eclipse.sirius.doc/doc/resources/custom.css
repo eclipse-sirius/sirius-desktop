@@ -1,0 +1,61 @@
+/*
+ Sections padding customizations.
+*/
+body {
+	margin-left: 20px;
+	margin-right: 10px;
+}
+h1 {
+	margin-left : 50px;
+}
+h2 {
+	margin-left : 50px;
+}
+h3,h4,h5 {
+	margin-left : 50px;
+}
+p,dl {
+	padding-left : 50px;
+}
+ul,ol {
+	padding-left : 50px;
+}
+ul ul {
+	padding-left : 20px;
+}
+ol ol {
+	padding-left : 20px;
+}
+table {
+	margin-left:50px;
+}
+img {
+	box-shadow: 1px 1px 12px #555;
+	margin: 0 auto;
+	margin-top: 1.5em;
+	margin-bottom: 2em;
+	display: block;
+}
+pre {
+	left:50px;
+	width:90%;
+	position:relative;
+}
+/*
+ Color customizations.
+*/
+td,th {
+	border: 1px solid #ddd;
+}
+.toc {
+	margin-top:20px;
+	padding-top:10px;
+	margin-right:20px;
+	padding-bottom:10px;
+	maring-bottom:10px;
+	border: 1px solid #ddd;
+	
+}
+code, pre {
+	color:#25587E;
+}

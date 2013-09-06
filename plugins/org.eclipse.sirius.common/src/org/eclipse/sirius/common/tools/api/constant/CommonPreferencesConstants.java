@@ -30,4 +30,19 @@ public interface CommonPreferencesConstants {
      */
     String PREF_TRACE_ON = "REFRESH_PROFILING";
 
+    /**
+     * Defines the enable state of grouping content.
+     */
+    String PREF_GROUP_ENABLE = "GROUP_ENABLE";
+    
+    /**
+     * Defines the size of children that triggers the group in sub block.
+     */
+    String PREF_GROUP_TRIGGER = "GROUP_TRIGGER";
+
+    /**
+     * Defines the size of elements contained in a group.
+     */
+    String PREF_GROUP_SIZE = "GROUP_SIZE";
+
 }

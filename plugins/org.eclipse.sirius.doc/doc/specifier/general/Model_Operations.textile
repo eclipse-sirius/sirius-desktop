@@ -1,0 +1,153 @@
+h1. Specifying Model Operations
+
+h2(#introduction). Introduction
+
+Most modelers created with Sirius are not just used to view models, but also to edit them. The edition behavior is specified through different kinds of tools (e.g. _Direct Edit_, _Creation Tool_, etc.) which depend on the dialect. The behavior of each tool of each dialect is specified inside the VSM using a small _Domain Specific Language_ of model operations. This document describes all the model operations supported by this language. Unless otherwise specified, model operations can be used/composed for any tool of any dialect.
+
+{toc:style=disc|minLevel=2|maxLevel=3}
+
+h2(#flow). Flow Control Operations
+
+h3(#begin). Begin
+
+This element has no property. It only serves as an entry point to the specification of a tool's behavior. Note that a _Begin_ element can only contain a single operation. It is recommended to begin a tool's specification by creating a no-op "_Go To_":#goto operation directly inside the _Begin_, as a _Go To_ can contain multiple operations.
+
+h3(#goto). Go To
+
+Every model operation is executed in the context of a specific model element (the equivalent of @this@ or @self@ in a programming language). Usually, at the beginning of a tool, the context is the semantic element to which the tool is applied (the actual details can vary from tool to tool, refer to their documentation). The _Go To_ operation changes the context to a new element and then executes any sub-operations it contains in sequence (in the order of definition).
+
+The new context element to go to is specified by the _Browse Expression_ property of the _Go To_ operation. It is executed in the context element of the _Go To_ operation itself, and should return another model element (which will become the context for the sub-operations). If the expression does not return any element, it is not an error, but the sub-operations are not executed. If the expression returns several elements, only the first one is retained and used as the context for the sub-operations.
+
+_Tip:_ Using a no-op _Go To_ (with a browse expression like @[self/]@  which does not actually change the context) can be useful to group multiple operations into a single "block", especially in contexts where only one model operation is supported (e.g. inside a _Begin_ element).
+
+h3(#if). If
+
+The _If_ operation is used for condition execution. It first evaluates its _Condition Expression_ in the current context, and if the result of this expression (interpreted as a boolean) is true then it executes any sub-operations it contains in sequence (in the order of definition). If the expression returns a false value, _If_ does nothing.
+
+_Note:_ "else" and "else if" constructs are not supported directly, but the same effect can be achieved using the "_Switch_":#switch operation with the appropriate _Cases_.
+
+h3(#switch). Switch/Case
+
+A _Switch_ operation is used for branching. It is a generalization of the _If_ constructs which supports multiple conditions. The _Switch_ operation itself has not property; it serves only as a container for one or more _Case_ elements, and an optional _Default_ element. Each _Case_ element has a _Condition Expression_, and may contain sub-operations. The _Default_ element has no property but may contain sub-operations.
+
+When a _Switch_ is executed, the _Condition Expressions_ or each of its _Case_ elements is evaluated (in the current context) until one returns a true value. If one is found, the sub-operations of the _Case_ element are executed in sequence, and the rest of the _Switch_ is ignored (the remaining conditions, if any, are not tested). If none of the _Cases_ has an expression which returns true, then the sub-operations of the _Default_ element, if any, are executed in sequence.
+
+A combination of _Switch/Case/Default_ is equivalent to @if (...) { ... } elsif (...) { ... } else { ... }@ in a programming language.
+
+h3(#for). For
+
+The _For_ element is used to loop over collections of model elements and execute some operations on all of them. The _Expression_ of the _For_ element is executed in the current context, and should return a collection of model elements. The _Iterator name_ property is a fixed string (@i@ by default) which give the name of the variable used for the iteration.
+
+After evaluating the _Expression_, each of the element in the returned collection will be bound in turn to a variable named as specified in _Iterator name_ before the sub-operations of the _For_ element are executed in sequence (once for each of the returned element). Inside the sub-operations, you can access the current element of the iteration using the variable named in _Iterator name_. The actual syntax will vary depending on the query language; for the legacy query language it would be @$i@, for Acceleo 3 simply @i@.
+
+h2(#model_change). Model Change Operations
+
+h3(#create_instance). Create Instance
+
+The _Create Instance_ operation is used to create new semantic elements to be added into the user's model. You must specify : 
+# the _Type Name_ (using the same syntax as for _Domain Class_ properties) of the new object to create
+# the _Reference Name_ through which the created element will be attached to the current context. 
+
+When the _Create Instance_ operation is executed, say in the context of semantic element _S_, a new instance of the specified type name is created and then added to _S_'s reference named in _Reference Name_. The reference name must correspond to a valid containment reference for the context element of the operation, otherwise the newly created object will not be properly integrated into the semantic model.
+
+The _Variable Name_ property can be set to any valid variable name (@instance@ by default). The named variable is assigned with the newly created object, so that it can be accessed from the remaining operations in the tool. 
+
+Inside the _Create Instance_ element you can add sub-operations, which will be executed in sequence in the context of the newly created element. This is useful to correctly initialize the new object's properties.
+
+h3(#set). Set
+
+The _Set_ operation is used to set the value of a feature (attribute or reference) of the current element. When executed, it evaluates the _Value Expression_ in the current context element. The expression's result is then _set_ as the new value of the feature named in _Feature Name_ of the current context element. The value returned by the expression must be type-compatible with the named feature.
+
+Inside the _Set_ element you can add sub-operations, which will be executed in sequence in the same context.
+
+h3(#unset). Unset
+
+The _Unset_ operation is used to remove elements from a feature (attribute or reference) of the current element. When executed, it evaluates the _Element Expression_ in the current context element, which may return one or more elements. Each of the returned elements are then removed from the feature named in _Feature Name_ of the current context element. It is not an error if some of the returned elements are not actually part of the specified feature, they are simply ignored.
+
+Inside the _Unset_ element you can add sub-operations, which will be executed in sequence in the same context.
+
+h3(#remove). Remove
+
+The _Remove_ operation is used to remove the current element from its parent element. It takes no parameter. When executed, it simply removes the element from its containing feature. 
+
+h3(#move). Move
+
+The _Move_ operation is used to move the current element from its current parent into a new one. The _New Container Expression_ is evaluated in the current context and should return the (single) element in which to move. The _Feature Name_ indicates the containment feature of the new parent in which to add the current element.
+
+h2(#representations). Representations Operations
+
+h3(#create_view). Create View
+
+This operation is specific to diagrams. It can be used to explicitly create a view (graphical representation) of the current element, which is mostly useful when using unsynchronized diagrams and/or mappings.
+
+The _Container View Expression_ is evaluated in the context of the current semantic element, and should return the view (@DDiagram@, @DNode@ or @DNodeContainer@) in which the new view should appear. The _Mapping_ indicates the kind of view to create. If the container view expression returns an element which can contain a view for the current semantic element and specified mapping (and does not already contain one), the view will be created, even if the diagram and/or mapping is not synchronized.
+
+Note that because the _Container View Expression_ is evaluated in the context of a semantic element and must return a view, you must use the cross-referencer to navigate from the semantic model to the view model. Using the legacy language you can use the @~@ syntax, as in @self.~target@ to find which elements point to the current one through a reference named @target@ (the views in Sirius diagrams reference their target semantic element through this reference). Using the Acceleo 3 language, you need to use the @eInverse()@ service.
+
+The _Variable Name_ property can be set to any valid variable name (@createdView@ by default). The named variable is assigned with the newly created view, so that it can be accessed from the remaining operations in the tool.
+
+h3(#created_edge_view). Create Edge View
+
+This operation is specific to diagrams. It can be used to explicitly create an edge view (graphical representation) of the current element, which is mostly useful when using unsynchronized diagrams and/or mappings.
+
+It works similarly to the "_Create View_":#create_view operation, except that in addition to the _Container View Expression_, you must also provide a _Source Expression_ and a _Target Expression_, which should return the semantic elements between which the edge should be created, if source and target views are found regarding the selected edge mapping properties. 
+
+h3(#delete_view). Delete View
+
+This operation is specific to diagrams. It can be used to explicitly remove a view (graphical representation) from the diagram, without deleting the corresponding semantic element. It is mostly useful when using unsynchronized diagrams and/or mappings.
+
+It has no parameter and works similarly to the _Remove_ operation; you must already be in the context of the view element you want to delete.
+
+h3(#navigation). Navigation
+
+This operation is specific to diagrams. It can be used to navigate to another diagram representing the current element. The _Diagram Description_ indicates the type of diagram to open, and the _Create if not existent_ flag indicates whether a new diagram of the specified type should be created on the current element if none exists.
+
+The operation does nothing if the current element is not compatible with the specified diagram type or if there is no existing diagram and the _Create if not existent_ flag is not set.
+
+h2(#extensions). Java Extensions
+
+Beyond the operations which are described above, you can also execute arbitrary Java code in the context of a tool by providing an _External Java Action_ and invoking it with the corresponding operation.
+
+h3(#external_java_action). External Java Action
+
+When used as a model operation (instead of as a full-blown tool), you only have to specify the _Java Action Id_. It should correspond to an extension of the @org.eclipse.sirius.externalJavaAction@ extension point which registers a class implementing @org.eclipse.sirius.tools.api.ui.IExternalJavaAction@ to be executed. You may also create _External Java Action Parameter_ elements inside the _External Java Action_ element. Each one has a fixed _Key_ and a computed _Value_, which will be evaluated before the operation is executed and made available to the Java class through the @parameters@ argument of the @execute()@ method.
+
+As the External Java Action uses the Eclipse extension point mechanism, it means you cannot use it in development mode (when the "_Viewpoint Specification Model_":../../Glossary.html#VSM you are working on is in the workspace).
+
+h4. IExternalJavaAction and IExternalJavaAction2
+
+The previous part presented External Java Action by implementing @org.eclipse.sirius.tools.api.ui.IExternalJavaAction@. A second interface @org.eclipse.sirius.tools.api.ui.IExternalJavaAction2@ ("Naming Convention":http://wiki.eclipse.org/Evolving_Java-based_APIs_3#.222.22_Convention ) is also available. It is an extension of the first interface that add the possibility for the specifier to warn Sirius if the External Java Action will delete elements. As it is executed externally, a @org.eclipse.sirius.tools.internal.command.listener.ChangeListener@ is used to keep tracks on the deleted elements. Therefore, implementing @org.eclipse.sirius.tools.api.ui.IExternalJavaAction2@ and warning Sirius that the execution of this tool will not delete any element (method mayDeleteElements returning false), will not create this @org.eclipse.sirius.tools.internal.command.listener.ChangeListener@, which can improve refresh performances.
+
+h3(#external_java_action_call). External Java Action Call
+
+_External Java Action Call_ is simply a convenience operation to invoke an _External Java Action_ defined elsewhere in the VSM, with potentially different parameters.
+
+h3(#standard_java_actions). Standard Java Actions
+
+The following External Java Actions are available in standard and can be used in "_Viewpoint Specification Models_":../../Glossary.html#VSM. Note that if you want to create your own actions, you can implement @org.eclipse.sirius.tools.api.ui.IExternalJavaAction@ directly or inherit from @org.eclipse.sirius.business.api.action.AbstractExternalJavaAction@ which provides some helper methods.
+
+h4. org.eclipse.sirius.business.api.action.moveElement
+    
+This external Java action can be used to move an element to a different position inside a many-valued EReference.
+
+Action parameters:
+* @referenceOwner@ (an EObject): the owner of the EReference to edit.
+* @referenceName@ (a string): the name of the EReference of the owner object to edit. This must be a many-valued, changeable reference.
+* @element@ (an EObject): the element to move inside the list. It is an error if the specified element is not in the list.
+* @predecessor@: the element of the list right before which element must be moved, i.e. after the operation, predecessor will be the direct predecessor of element in the list. May be null to indicate that element should be moved at the front of the list. If not null, it is an error if predecessor is not in the list.
+
+h4. org.eclipse.sirius.business.api.action.printVariables
+
+This external Java action is designed to help debugging _Viewpoint Specification Models_ by printing (in standard output)
+all the variables accessible to model operations at the invocation point.
+
+Action parameters:
+* @title@: an optional string header to print before the list of variables, for example to distinguish different uses of this action in the same VSM.
+* @enabled@: an optional boolean (defaults to true) to indicate if the action should be executed or not. This is useful to quickly enable/disable an action with minimal editing of the VSM.
+
+h4. org.eclipse.sirius.ui.business.api.action.openHelpSection
+
+This external Java action can be used to open the Eclipse Help system (or actually any web page) on a specific section from inside a tool (typically a popup menu).
+
+Action parameters:
+* @href@: the URL of the help resource. To open an Eclipse Help section, use an URI of the form @/com.example.pluginName/path/to/document.html#sectionId@

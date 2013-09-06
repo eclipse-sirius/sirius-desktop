@@ -73,7 +73,7 @@ public class AnalysisResourceItemImpl implements org.eclipse.sirius.ui.tools.api
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.ItemDecorator#getImage()
+     * @see org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator#getImage()
      */
     public Image getImage() {
         return SESSION_IMAGE;
@@ -82,7 +82,7 @@ public class AnalysisResourceItemImpl implements org.eclipse.sirius.ui.tools.api
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.ItemDecorator#getText()
+     * @see org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator#getText()
      */
     public String getText() {
         String result = StringUtil.EMPTY_STRING;
@@ -99,7 +99,7 @@ public class AnalysisResourceItemImpl implements org.eclipse.sirius.ui.tools.api
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getSession()
+     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getSession()
      */
     public Option<Session> getSession() {
         return Options.newSome((Session) session);
@@ -148,7 +148,7 @@ public class AnalysisResourceItemImpl implements org.eclipse.sirius.ui.tools.api
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getChildren()
+     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getChildren()
      */
     public Collection<?> getChildren() {
         final List<SiriusItemImpl> all = Lists.newArrayList();
@@ -164,7 +164,7 @@ public class AnalysisResourceItemImpl implements org.eclipse.sirius.ui.tools.api
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getParent()
+     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getParent()
      */
     public Object getParent() {
         return parent;
@@ -173,7 +173,7 @@ public class AnalysisResourceItemImpl implements org.eclipse.sirius.ui.tools.api
     /**
      * Allow to use this object as a children creator. It should not be added to
      * a hierarchy. It will link created
-     * {@link org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem}s
+     * {@link org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem}s
      * to its parent.
      * 
      * @param linkChildrenToParent

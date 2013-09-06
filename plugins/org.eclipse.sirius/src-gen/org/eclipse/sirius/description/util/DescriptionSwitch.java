@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.sirius.description.AbstractMappingImport;
 import org.eclipse.sirius.description.AbstractNodeMapping;
+import org.eclipse.sirius.description.AdditionalLayer;
 import org.eclipse.sirius.description.AnnotationEntry;
 import org.eclipse.sirius.description.ColorDescription;
 import org.eclipse.sirius.description.ColorStep;
@@ -63,7 +64,6 @@ import org.eclipse.sirius.description.MappingBasedDecoration;
 import org.eclipse.sirius.description.MetamodelExtensionSetting;
 import org.eclipse.sirius.description.NodeMapping;
 import org.eclipse.sirius.description.NodeMappingImport;
-import org.eclipse.sirius.description.OptionalLayer;
 import org.eclipse.sirius.description.OrderedTreeLayout;
 import org.eclipse.sirius.description.PasteTargetDescription;
 import org.eclipse.sirius.description.RepresentationDescription;
@@ -631,17 +631,17 @@ public class DescriptionSwitch<T> {
                 result = defaultCase(theEObject);
             return result;
         }
-        case DescriptionPackage.OPTIONAL_LAYER: {
-            OptionalLayer optionalLayer = (OptionalLayer) theEObject;
-            T result = caseOptionalLayer(optionalLayer);
+        case DescriptionPackage.ADDITIONAL_LAYER: {
+            AdditionalLayer additionalLayer = (AdditionalLayer) theEObject;
+            T result = caseAdditionalLayer(additionalLayer);
             if (result == null)
-                result = caseLayer(optionalLayer);
+                result = caseLayer(additionalLayer);
             if (result == null)
-                result = caseDocumentedElement(optionalLayer);
+                result = caseDocumentedElement(additionalLayer);
             if (result == null)
-                result = caseEndUserDocumentedElement(optionalLayer);
+                result = caseEndUserDocumentedElement(additionalLayer);
             if (result == null)
-                result = caseIdentifiedElement(optionalLayer);
+                result = caseIdentifiedElement(additionalLayer);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -1539,6 +1539,23 @@ public class DescriptionSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
+     * <em>Additional Layer</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Additional Layer</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseAdditionalLayer(AdditionalLayer object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
      * <em>Customization</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
@@ -1653,23 +1670,6 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     public T caseEReferenceCustomization(EReferenceCustomization object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Optional Layer</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch.
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Optional Layer</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseOptionalLayer(OptionalLayer object) {
         return null;
     }
 

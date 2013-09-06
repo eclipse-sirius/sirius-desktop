@@ -33,6 +33,7 @@ import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
@@ -51,7 +52,9 @@ import org.eclipse.swt.widgets.TreeItem;
 import com.google.common.collect.Iterators;
 
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
+import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
 import org.eclipse.sirius.common.ui.tools.api.util.TreeItemWrapperContentProvider;
+import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 
 /**
  * A pane based wizard page to select an EObject.
@@ -181,7 +184,7 @@ public class EObjectPaneBasedSelectionWizardPage extends AbstractSelectionWizard
         myViewerfilter.setTreeViewer(treeViewer);
 
         /* expand before compute prefix => see trac #1323 */
-        treeViewer.expandAll();
+        expandTreeViewer(treeViewer);
 
         initRootPrefix();
         if (treeViewer.getTree().getItemCount() > 0) {
@@ -308,11 +311,10 @@ public class EObjectPaneBasedSelectionWizardPage extends AbstractSelectionWizard
         gridLayout.marginWidth = 0;
         gridLayout.numColumns = 1;
         pane.setLayout(gridLayout);
-        
+
         final GridData gridData = new GridData(SWT.FILL, SWT.FILL, true, true);
         gridData.widthHint = 250;
-       pane.setLayoutData(gridData);
-
+        pane.setLayoutData(gridData);
 
         final Label label = new Label(pane, SWT.NONE);
         label.setText(choiceOfValuesMessage);
@@ -323,7 +325,7 @@ public class EObjectPaneBasedSelectionWizardPage extends AbstractSelectionWizard
 
         treeViewer = createTreeViewer(pane);
         treeViewer.setInput(this.treeObjects);
-        treeViewer.expandAll();
+        expandTreeViewer(treeViewer);
     }
 
     private void createSelectionComposite(final Composite parent) {
@@ -374,7 +376,8 @@ public class EObjectPaneBasedSelectionWizardPage extends AbstractSelectionWizard
         viewer.getControl().setLayoutData(gridData);
         viewer.getTree().setHeaderVisible(false);
         viewer.getTree().setLinesVisible(false);
-        viewer.setContentProvider(new TreeItemWrapperContentProvider());
+        final ITreeContentProvider contentProvider = new GroupingContentProvider(new TreeItemWrapperContentProvider());
+        viewer.setContentProvider(contentProvider);
         viewer.setLabelProvider(new EObjectSelectionLabelProvider());
         viewer.addFilter(this.myViewerfilter);
         return viewer;
@@ -467,18 +470,28 @@ public class EObjectPaneBasedSelectionWizardPage extends AbstractSelectionWizard
 
         @Override
         public Image getImage(final Object element) {
+            Image result = null;
             if (element instanceof TreeItemWrapper) {
-                return myAdapterFactoryLabelProvider.getImage(((TreeItemWrapper) element).getWrappedObject());
+                result = myAdapterFactoryLabelProvider.getImage(((TreeItemWrapper) element).getWrappedObject());
+            } else if (element instanceof ItemDecorator) {
+                result = ((ItemDecorator) element).getImage();
+            } else {
+                result = myAdapterFactoryLabelProvider.getImage(element);
             }
-            return myAdapterFactoryLabelProvider.getImage(element);
+            return result;
         }
 
         @Override
         public String getText(final Object element) {
+            String result = null;
             if (element instanceof TreeItemWrapper) {
-                return myAdapterFactoryLabelProvider.getText(((TreeItemWrapper) element).getWrappedObject());
+                result = myAdapterFactoryLabelProvider.getText(((TreeItemWrapper) element).getWrappedObject());
+            } else if (element instanceof ItemDecorator) {
+                result = ((ItemDecorator) element).getText();
+            } else {
+                result = myAdapterFactoryLabelProvider.getText(element);
             }
-            return myAdapterFactoryLabelProvider.getText(element);
+            return result;
         }
     }
 

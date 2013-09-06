@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2007, 2013 THALES GLOBAL SERVICES
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <prerequisites>
+    <maven>3.0</maven>
+  </prerequisites>
+
+  <groupId>org.eclipse.sirius</groupId>
+  <artifactId>sirius-parent</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>Sirius Parent</name>
+
+  <licenses>
+    <license>
+      <name>Eclipse Public License v1.0</name>
+      <comments>
+        All rights reserved.
+
+        This program and the accompanying materials are made available under the
+        terms of the Eclipse Public License v1.0 which accompanies this
+        distribution, and is available at
+        http://www.eclipse.org/legal/epl-v10.htm
+      </comments>
+    </license>
+  </licenses>
+
+  <properties>
+    <tycho-version>0.18.1</tycho-version>
+    <tycho-extras-version>0.18.1</tycho-extras-version>
+    <platform-version-name>juno3</platform-version-name>
+  </properties>
+
+  <repositories>
+    <repository><id>guava</id>    <layout>p2</layout><url>${guava.repo}</url></repository>
+    <repository><id>acceleo3</id> <layout>p2</layout><url>${acceleo3.repo}</url></repository>
+    <repository><id>eef</id>      <layout>p2</layout><url>${eef.repo}</url></repository>
+    <repository><id>compare2</id> <layout>p2</layout><url>${compare2.repo}</url></repository>
+    <repository><id>xtext</id>    <layout>p2</layout><url>${xtext.repo}</url></repository>
+  </repositories>
+
+  <modules>
+    <!-- plugins -->
+    <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl.ide</module>
+    <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl</module>
+    <module>../../plugins/org.eclipse.sirius.common.ocl</module>
+    <module>../../plugins/org.eclipse.sirius.common.ui</module>
+    <module>../../plugins/org.eclipse.sirius.common</module>
+    <module>../../plugins/org.eclipse.sirius.diagram.layoutdata</module>
+    <module>../../plugins/org.eclipse.sirius.diagram.sequence.edit</module>
+    <module>../../plugins/org.eclipse.sirius.diagram.sequence.ui</module>
+    <module>../../plugins/org.eclipse.sirius.diagram.sequence</module>
+    <module>../../plugins/org.eclipse.sirius.diagram</module>
+    <module>../../plugins/org.eclipse.sirius.doc</module>
+    <module>../../plugins/org.eclipse.sirius.ecore.extender</module>
+    <module>../../plugins/org.eclipse.sirius.editor.sequence</module>
+    <module>../../plugins/org.eclipse.sirius.editor.table</module>
+    <module>../../plugins/org.eclipse.sirius.editor.tree</module>
+    <module>../../plugins/org.eclipse.sirius.editor</module>
+    <module>../../plugins/org.eclipse.sirius.eef.adapters</module>
+    <module>../../plugins/org.eclipse.sirius.interpreter</module>
+    <module>../../plugins/org.eclipse.sirius.pim.ecore.design</module>
+    <module>../../plugins/org.eclipse.sirius.synchronizer</module>
+    <module>../../plugins/org.eclipse.sirius.table.ui</module>
+    <module>../../plugins/org.eclipse.sirius.table</module>
+    <module>../../plugins/org.eclipse.sirius.tree.ui</module>
+    <module>../../plugins/org.eclipse.sirius.tree</module>
+    <module>../../plugins/org.eclipse.sirius.ui</module>
+    <module>../../plugins/org.eclipse.sirius</module>
+
+    <!-- third party -->
+    <module>../../plugins/net.sf.paperclips</module>
+    <module>../../plugins/net.sf.paperclips.ui</module>
+
+    <!-- features -->
+    <module>../../packaging/org.eclipse.sirius.runtime</module>
+    <module>../../packaging/org.eclipse.sirius.runtime.acceleo</module>
+    <module>../../packaging/org.eclipse.sirius.runtime.ide.ui</module>
+    <module>../../packaging/org.eclipse.sirius.specifier.ide.ui.acceleo</module>
+    <module>../../packaging/org.eclipse.sirius.runtime.ide.ui.acceleo</module>
+    <module>../../packaging/org.eclipse.sirius.runtime.ocl</module>
+    <module>../../packaging/org.eclipse.sirius.specifier.ide.ui</module>
+    <module>../../packaging/org.eclipse.sirius.runtime.ide.eef</module>
+    <module>../../packaging/org.eclipse.sirius.doc.feature</module>
+
+    <!-- update sites -->
+    <module>../../packaging/org.eclipse.sirius.update/${platform-version-name}</module>
+  </modules>
+
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <extensions>true</extensions>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <resolver>p2</resolver>
+          <dependency-resolution>
+            <optionalDependencies>ignore</optionalDependencies>
+          </dependency-resolution>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-source-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <executions>
+          <execution>
+            <id>plugin-source</id>
+            <goals>
+              <goal>plugin-source</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>target-platform-configuration</artifactId>
+          <version>${tycho-version}</version>
+          <configuration>
+            <environments>
+              <environment>
+                <os>linux</os>
+                <ws>gtk</ws>
+                <arch>x86</arch>
+              </environment>
+              <environment>
+                <os>linux</os>
+                <ws>gtk</ws>
+                <arch>x86_64</arch>
+              </environment>
+              <environment>
+                <os>win32</os>
+                <ws>win32</ws>
+                <arch>x86</arch>
+              </environment>
+              <environment>
+                <os>win32</os>
+                <ws>win32</ws>
+                <arch>x86_64</arch>
+              </environment>
+              <environment>
+                <os>macosx</os>
+                <ws>cocoa</ws>
+                <arch>x86_64</arch>
+              </environment>
+            </environments>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.eclipse.tycho</groupId>
+          <artifactId>tycho-compiler-plugin</artifactId>
+          <version>${tycho-version}</version>
+          <configuration>
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>2.4.1</version>
+          <configuration>
+            <encoding>ISO-8859-1</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>1.3</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <profiles>
+
+    <profile>
+      <id>helios</id>
+      <activation>
+        <property>
+          <name>platform-version-name</name>
+          <value>helios</value>
+        </property>
+      </activation>
+      <properties>
+	<xtext-support>false</xtext-support>
+      </properties>
+      <repositories>
+        <repository><id>helios</id>         <layout>p2</layout><url>${helios.repo}</url></repository>
+        <repository><id>helios-gmf-patches</id>         <layout>p2</layout><url>${helios.gmf-patches.repo}</url></repository>
+        <repository><id>helios-patches</id> <layout>p2</layout><url>${helios-patches.repo}</url></repository>
+      </repositories>
+    </profile>
+
+    <profile>
+      <id>indigo</id>
+      <activation>
+        <property>
+          <name>platform-version-name</name>
+          <value>indigo</value>
+        </property>
+      </activation>
+      <repositories>
+        <repository><id>indigo</id>         <layout>p2</layout><url>${indigo.repo}</url></repository>
+        <repository><id>indigo-gmf-patches</id>         <layout>p2</layout><url>${indigo.gmf-patches.repo}</url></repository>
+        <repository><id>indigo-patches</id> <layout>p2</layout><url>${indigo-patches.repo}</url></repository>
+      </repositories>
+      <modules>
+        <module>../../plugins/org.eclipse.sirius.common.xtext</module>
+        <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
+      </modules>
+    </profile>
+
+    <profile>
+      <id>juno3</id>
+      <activation>
+        <property>
+          <name>platform-version-name</name>
+          <value>juno3</value>
+        </property>
+      </activation>
+      <repositories>
+        <repository><id>juno3</id>          <layout>p2</layout><url>${juno3.repo}</url></repository>
+        <repository><id>juno3-patches</id>         <layout>p2</layout><url>${juno3-patches.repo}</url></repository>
+        <repository><id>juno-gmf-patches</id>         <layout>p2</layout><url>${juno.gmf-patches.repo}</url></repository>
+      </repositories>
+      <modules>
+        <module>../../plugins/org.eclipse.sirius.common.xtext</module>
+        <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
+      </modules>
+    </profile>
+
+    <profile>
+      <id>juno</id>
+      <activation>
+        <property>
+          <name>platform-version-name</name>
+          <value>juno</value>
+        </property>
+      </activation>
+      <repositories>
+        <repository><id>juno</id>         <layout>p2</layout><url>${juno.repo}</url></repository>
+        <repository><id>juno3-patches</id>         <layout>p2</layout><url>${juno3-patches.repo}</url></repository>
+        <repository><id>juno-gmf-patches</id>         <layout>p2</layout><url>${juno.gmf-patches.repo}</url></repository>
+        <repository><id>juno.emf</id>       <layout>p2</layout><url>${juno.emf.repo}</url></repository>
+        <repository><id>juno.emft</id>      <layout>p2</layout><url>${juno.emft.repo}</url></repository>
+        <repository><id>juno.gmf</id>       <layout>p2</layout><url>${juno.gmf.repo}</url></repository>
+        <repository><id>juno.ocl</id>       <layout>p2</layout><url>${juno.ocl.repo}</url></repository>
+        <repository><id>juno.gef</id>       <layout>p2</layout><url>${juno.gef.repo}</url></repository>
+        <repository><id>juno.uml2</id>      <layout>p2</layout><url>${juno.uml2.repo}</url></repository>
+      </repositories>
+      <modules>
+        <module>../../plugins/org.eclipse.sirius.common.xtext</module>
+        <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
+      </modules>
+    </profile>
+
+    <profile>
+      <id>kepler</id>
+      <activation>
+        <property>
+          <name>platform-version-name</name>
+          <value>kepler</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>target-platform-configuration</artifactId>
+            <version>${tycho-version}</version>
+            <configuration>
+              <target>
+                <artifact>
+                  <groupId>${tp.groupId}</groupId>
+                  <artifactId>${tp.artifactId}</artifactId>
+                  <version>${tp.version}</version>
+                  <classifier>${kepler.tp.classifier}</classifier>
+                </artifact>
+              </target>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+      <modules>
+        <module>../../plugins/org.eclipse.sirius.common.xtext</module>
+        <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
+      </modules>
+    </profile>
+
+  </profiles>
+
+</project>

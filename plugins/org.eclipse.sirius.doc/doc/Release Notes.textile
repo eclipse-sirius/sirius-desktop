@@ -1,0 +1,5 @@
+h1. Release Notes for Sirius
+
+{toc:style=disc|minLevel=2|maxLevel=2}
+
+This document contains the release notes for all major releases of Sirius.

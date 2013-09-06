@@ -65,6 +65,7 @@ import org.osgi.framework.Bundle;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -74,6 +75,7 @@ import org.eclipse.sirius.business.api.query.SiriusQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.provider.SiriusEditPlugin;
+import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelection;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 
 /**
@@ -173,7 +175,20 @@ public class SiriussSelectionWizardPage extends WizardPage {
      */
     @Override
     public boolean isPageComplete() {
-        return !viewpoints.isEmpty();
+        String errorMessage = null;
+        boolean complete = false;
+
+        if (!viewpoints.isEmpty()) {
+            Multimap<String, String> missingDependencies = SiriusSelection.getMissingDependencies(Sets.newHashSet(viewpoints));
+            if (missingDependencies.isEmpty()) {
+                complete = true;
+            } else {
+                errorMessage = SiriusSelection.getMissingDependenciesErrorMessage(missingDependencies);
+            }
+        }
+
+        setErrorMessage(errorMessage);
+        return complete;
     }
 
     /**

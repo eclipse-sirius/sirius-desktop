@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Colors</title>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="DefiningColorPalettes">Defining Color Palettes</h1>
+		<ol class="toc" style="list-style: disc;">
+			<li>
+				<a href="Colors.html#DefiningColorPalettes">Defining Color Palettes</a>
+				<ol style="list-style: disc;">
+					<li>
+						<a href="Colors.html#introduction">Introduction</a>
+					</li>
+					<li>
+						<a href="Colors.html#system_colors">System Colors</a>
+					</li>
+					<li>
+						<a href="Colors.html#fixed_colors">User Fixed Colors</a>
+					</li>
+					<li>
+						<a href="Colors.html#computed_colors">Computed Colors</a>
+					</li>
+					<li>
+						<a href="Colors.html#interpolated_colors">Interpolated Colors</a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<h2 id="introduction">Introduction</h2>
+		<p>Whenever you have to specify colors for a style, in any kind of representation supported by Sirius, you can use either one of the pre-defined system colors or one which you have defined yourself in a 
+			<em>Users Color Palette</em>. The palette is created directly inside the 
+			<em>Viewpoint</em> element, and its colors can be used by any representation.
+		</p>
+		<p>You can define three different kind of colors inside a palette:</p>
+		<ul>
+			<li>
+				<em>User Fixed Colors</em>
+			</li>
+			<li>
+				<em>Computed Colors</em>
+			</li>
+			<li>
+				<em>Interpolated Colors</em>
+			</li>
+		</ul>
+		<p>All have a name, which should be unique. It is useful to give semantic names to the colors (i.e. &#171;Software System&#187; instead of &#171;Navy Blue&#187;) so that they can be easily used consistently across all your representations. This way if you decide to change to color used for some kind of element you can be sure the new color will be applied everywhere.</p>
+		<h2 id="system_colors">System Colors</h2>
+		<p>System colors are not defined in your palette, but are always available.</p>
+		<p>	
+			<img border="0" src="images/standard_colors.png"/>
+		</p>
+		<h2 id="fixed_colors">User Fixed Colors</h2>
+		<p>User Fixed Colors are the simplest: they are simply defined by fixed integer values for their 
+			<em>Red</em>, 
+			<em>Green</em> and 
+			<em>Blue</em> components. All components values must be between 0 and 255. You can either specify them numerically or using a color wheel.
+		</p>
+		<h2 id="computed_colors">Computed Colors</h2>
+		<p>Computed color have RGB components values which are dynamically computed. You must specify one expression for each of the 
+			<em>Red</em>, 
+			<em>Green</em> and 
+			<em>Blue</em> components. They will be evaluated in the context of the semantic target element of the graphical element where the color is used. The expressions should return a number between 0 and 255.
+		</p>
+		<h2 id="interpolated_colors">Interpolated Colors</h2>
+		<p>This element is used to specify a custom color which create dynamically a color between two or more 
+			<em>Color Steps</em>. Those 
+			<em>Color Steps</em> are defined as children of the 
+			<em>Interpolated Color</em>.
+		</p>
+		<p>Each 
+			<em>Color Step</em> associates a color (from the palette) with a numerical 
+			<em>Associated Value</em> (which can be computed). The successive color steps in an interpolated color should have increasing associated values.
+		</p>
+		<p>The 
+			<em>Interpolated Color</em> itself has a 
+			<em>Color Value Computation Expression</em>, which should return a numeric value.
+		</p>
+		<ul>
+			<li>If the value is below or equal the value associated with the first color step, the final color is the one of the first color step.</li>
+			<li>If the value is above or equal the value associated with the last color step, the final color is the one of the last color step.</li>
+			<li>If the value is between the associated values of two successive color steps 
+				<em>S1</em> and 
+				<em>S2</em>, the final color is interpolated between the colors of 
+				<em>S1</em> and 
+				<em>S2</em>. Each of the RGB components is linearly interpolated between the ones of 
+				<em>S1</em> and 
+				<em>S2</em> according to the distance between the associated values.
+			</li>
+		</ul>
+	</body>
+</html>

@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
@@ -33,7 +34,11 @@ import org.eclipse.sirius.common.tools.internal.interpreter.FeatureInterpreter;
  */
 public class FeatureProposalProvider implements IProposalProvider {
 
-    private static final String SEPARATOR = ".";
+    private static final String SEPARATOR_1 = ":";
+
+    private static final String SEPARATOR_2 = " - ";
+
+    private static final String SEPARATOR_3 = "[0..*]";
 
     /**
      * {@inheritDoc}
@@ -55,18 +60,35 @@ public class FeatureProposalProvider implements IProposalProvider {
             FeatureInterpreter featureInterpreter = (FeatureInterpreter) interpreter;
             IInterpreterContext interpreterContext = context.getInterpreterContext();
             proposals = new ArrayList<ContentProposal>();
-            for (String defaultFeatureName : FeatureInterpreter.DEFAULT_FEATURE_NAMES) {
-                proposals.add(new ContentProposal(defaultFeatureName, defaultFeatureName, defaultFeatureName));
-            }
+            String eObjectName = EObject.class.getSimpleName();
+
+            String eContainerFeatureName = FeatureInterpreter.DEFAULT_FEATURE_NAMES[0];
+            String displayedName = eContainerFeatureName + SEPARATOR_1 + eObjectName + SEPARATOR_2 + eObjectName;
+            proposals.add(new ContentProposal(eContainerFeatureName, displayedName, displayedName));
+
+            String eContentsFeatureName = FeatureInterpreter.DEFAULT_FEATURE_NAMES[1];
+            displayedName = eContentsFeatureName + SEPARATOR_1 + eObjectName + SEPARATOR_3 + SEPARATOR_2 + eObjectName;
+            proposals.add(new ContentProposal(eContentsFeatureName, displayedName, displayedName));
+
+            String eAllContentsFeatureName = FeatureInterpreter.DEFAULT_FEATURE_NAMES[2];
+            displayedName = eAllContentsFeatureName + SEPARATOR_1 + "TreeIterator" + SEPARATOR_2 + eObjectName;
+            proposals.add(new ContentProposal(eAllContentsFeatureName, displayedName, displayedName));
+
+            String eClassFeatureName = FeatureInterpreter.DEFAULT_FEATURE_NAMES[3];
+            displayedName = eClassFeatureName + SEPARATOR_1 + eObjectName + SEPARATOR_3 + SEPARATOR_2 + EClass.class.getSimpleName();
+            proposals.add(new ContentProposal(eClassFeatureName, displayedName, displayedName));
+
+            String eReferencesFeatureName = FeatureInterpreter.DEFAULT_FEATURE_NAMES[4];
+            displayedName = eReferencesFeatureName + SEPARATOR_1 + eObjectName + SEPARATOR_3 + SEPARATOR_2 + eObjectName;
+            proposals.add(new ContentProposal(eReferencesFeatureName, displayedName, displayedName));
 
             EClass currentElementType = featureInterpreter.getCurrentElementType(interpreterContext);
             if (currentElementType != null) {
                 for (EStructuralFeature eStructuralFeature : currentElementType.getEAllStructuralFeatures()) {
-                    String displayedName = eStructuralFeature.getEContainingClass().getName()
-                            + SEPARATOR
-                            + eStructuralFeature.getName()
+                    displayedName = eStructuralFeature.getName()
                             + (eStructuralFeature.isMany() ? "[" + eStructuralFeature.getLowerBound() + ".." + (eStructuralFeature.getUpperBound() == -1 ? "*" : eStructuralFeature.getUpperBound())
-                                    + "]" : "") + (eStructuralFeature.getEType() != null ? ":" + eStructuralFeature.getEType().getName() : "");
+                                    + "]" : "") + (eStructuralFeature.getEType() != null ? SEPARATOR_1 + eStructuralFeature.getEType().getName() : "") + SEPARATOR_2
+                            + eStructuralFeature.getEContainingClass().getName();
                     proposals.add(new ContentProposal(eStructuralFeature.getName(), displayedName, displayedName));
                 }
             }
@@ -85,16 +107,37 @@ public class FeatureProposalProvider implements IProposalProvider {
             proposals = Collections.singletonList(getNewEmtpyExpression());
         } else {
             proposals = new ArrayList<ContentProposal>();
-            for (String defaultFeatureName : FeatureInterpreter.DEFAULT_FEATURE_NAMES) {
-                proposals.add(new ContentProposal(defaultFeatureName, defaultFeatureName, defaultFeatureName));
-            }
-            for (EStructuralFeature eStructuralFeature : context.getCurrentSelected().eClass().getEAllStructuralFeatures()) {
-                String displayedName = eStructuralFeature.getEContainingClass().getName()
-                        + SEPARATOR
-                        + eStructuralFeature.getName()
-                        + (eStructuralFeature.isMany() ? "[" + eStructuralFeature.getLowerBound() + ".." + (eStructuralFeature.getUpperBound() == -1 ? "*" : eStructuralFeature.getUpperBound()) + "]"
-                                : "") + (eStructuralFeature.getEType() != null ? ":" + eStructuralFeature.getEType().getName() : "");
-                proposals.add(new ContentProposal(eStructuralFeature.getName(), displayedName, displayedName));
+            String eObjectName = EObject.class.getSimpleName();
+
+            String eContainerFeatureName = FeatureInterpreter.DEFAULT_FEATURE_NAMES[0];
+            String displayedName = eContainerFeatureName + SEPARATOR_1 + eObjectName + SEPARATOR_2 + eObjectName;
+            proposals.add(new ContentProposal(eContainerFeatureName, displayedName, displayedName));
+
+            String eContentsFeatureName = FeatureInterpreter.DEFAULT_FEATURE_NAMES[1];
+            displayedName = eContentsFeatureName + SEPARATOR_1 + eObjectName + SEPARATOR_3 + SEPARATOR_2 + eObjectName;
+            proposals.add(new ContentProposal(eContentsFeatureName, displayedName, displayedName));
+
+            String eAllContentsFeatureName = FeatureInterpreter.DEFAULT_FEATURE_NAMES[2];
+            displayedName = eAllContentsFeatureName + SEPARATOR_1 + "TreeIterator" + SEPARATOR_2 + eObjectName;
+            proposals.add(new ContentProposal(eAllContentsFeatureName, displayedName, displayedName));
+
+            String eClassFeatureName = FeatureInterpreter.DEFAULT_FEATURE_NAMES[3];
+            displayedName = eClassFeatureName + SEPARATOR_1 + eObjectName + SEPARATOR_3 + SEPARATOR_2 + EClass.class.getSimpleName();
+            proposals.add(new ContentProposal(eClassFeatureName, displayedName, displayedName));
+
+            String eReferencesFeatureName = FeatureInterpreter.DEFAULT_FEATURE_NAMES[4];
+            displayedName = eReferencesFeatureName + SEPARATOR_1 + eObjectName + SEPARATOR_3 + SEPARATOR_2 + eObjectName;
+            proposals.add(new ContentProposal(eReferencesFeatureName, displayedName, displayedName));
+
+            EClass currentElementType = context.getCurrentSelected().eClass();
+            if (currentElementType != null) {
+                for (EStructuralFeature eStructuralFeature : currentElementType.getEAllStructuralFeatures()) {
+                    displayedName = eStructuralFeature.getName()
+                            + (eStructuralFeature.isMany() ? "[" + eStructuralFeature.getLowerBound() + ".." + (eStructuralFeature.getUpperBound() == -1 ? "*" : eStructuralFeature.getUpperBound())
+                                    + "]" : "") + (eStructuralFeature.getEType() != null ? SEPARATOR_1 + eStructuralFeature.getEType().getName() : "") + SEPARATOR_2
+                            + eStructuralFeature.getEContainingClass().getName();
+                    proposals.add(new ContentProposal(eStructuralFeature.getName(), displayedName, displayedName));
+                }
             }
         }
         return proposals;

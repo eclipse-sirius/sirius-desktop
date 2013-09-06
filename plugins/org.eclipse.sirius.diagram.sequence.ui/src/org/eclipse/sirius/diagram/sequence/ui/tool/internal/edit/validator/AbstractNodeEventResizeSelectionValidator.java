@@ -265,12 +265,12 @@ public class AbstractNodeEventResizeSelectionValidator {
             Range newRange = Range.verticalRange(newBounds);
             int deltaYStart = newRange.getLowerBound() - oldRange.getLowerBound();
             int deltaYFinish = newRange.getUpperBound() - oldRange.getUpperBound();
-            
+
             int delimitedDeltaY = 0;
             int delimitedDeltaH = 0;
             if (delimitedSee != null) {
                 delimitedDeltaY = delimitedSee.isStart() ? deltaYStart : deltaYFinish;
-                
+
                 if (requestQuery.isDirectedByMessage()) {
                     Message msg = delimitingMessages.get(0);
                     if (delimitedSee.isStart() && requestQuery.isResizeFromTop() && msg.isReflective()) {
@@ -283,9 +283,6 @@ public class AbstractNodeEventResizeSelectionValidator {
                     }
                 }
             }
-
-            
-
 
             ISequenceEvent prevMessageRemote = FinalParentHelper.getFinalRemoteParent(abstractNodeEvent, delimitingMessages.get(0), 0, 0);
             ISequenceEvent delimitingMessageRemote = FinalParentHelper.getFinalRemoteParent(abstractNodeEvent, delimitingMessages.get(0), delimitedDeltaY, delimitedDeltaH);

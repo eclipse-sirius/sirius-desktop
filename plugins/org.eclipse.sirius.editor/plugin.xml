@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <!--
-  Copyright (c) 2007, 2012 THALES GLOBAL SERVICES
+  Copyright (c) 2007, 2013 THALES GLOBAL SERVICES
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
@@ -1113,12 +1113,28 @@
                 tab="viewpoint.tab.color">
         <input type="org.eclipse.sirius.description.style.ShapeContainerStyleDescription"/>        
       </propertySection>
+      
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.style.shapecontainerstyledescription.ShapeContainerStyleDescriptionShapePropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.style.shapecontainerstyledescription.ShapeContainerStyleDescriptionShapeFilter"
                id="style.section.shapeContainerStyleDescription.Shape"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.description.style.ShapeContainerStyleDescription"/>        
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.editor.properties.sections.style.sizecomputationcontainerstyledescription.SizeComputationContainerStyleDescriptionHeightComputationExpressionPropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.style.sizecomputationcontainerstyledescription.SizeComputationContainerStyleDescriptionHeightComputationExpressionFilter"
+               id="style.section.sizeComputationContainerStyleDescription.HeightComputationExpression"
+               afterSection="style.section.sizeComputationContainerStyleDescription.WidthComputationExpression"
+                tab="viewpoint.tab.advanced">
+        <input type="org.eclipse.sirius.description.style.SizeComputationContainerStyleDescription"/>        
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.editor.properties.sections.style.sizecomputationcontainerstyledescription.SizeComputationContainerStyleDescriptionWidthComputationExpressionPropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.style.sizecomputationcontainerstyledescription.SizeComputationContainerStyleDescriptionWidthComputationExpressionFilter"
+               id="style.section.sizeComputationContainerStyleDescription.WidthComputationExpression"
+                tab="viewpoint.tab.advanced">
+        <input type="org.eclipse.sirius.description.style.SizeComputationContainerStyleDescription"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.style.flatcontainerstyledescription.FlatContainerStyleDescriptionLabelBorderStylePropertySection"
@@ -1632,12 +1648,20 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.description.EAttributeCustomization"/>        
       </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.editor.properties.sections.description.optionallayer.OptionalLayerActiveByDefaultPropertySection"
-               filter="org.eclipse.sirius.editor.properties.filters.description.optionallayer.OptionalLayerActiveByDefaultFilter"
-               id="description.section.optionalLayer.ActiveByDefault"
+      <propertySection
+               class="org.eclipse.sirius.editor.properties.sections.description.additionallayer.AdditionalLayerOptionalPropertySection"
+               filter="org.eclipse.sirius.editor.properties.filters.description.additionallayer.AdditionalLayerOptionalFilter"
+               id="description.section.additionalLayer.Optional"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.description.OptionalLayer"/>        
+        <input type="org.eclipse.sirius.description.AdditionalLayer"/>        
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.editor.properties.sections.description.additionallayer.AdditionalLayerActiveByDefaultPropertySectionSpec"
+               filter="org.eclipse.sirius.editor.properties.filters.description.additionallayer.AdditionalLayerActiveByDefaultFilter"
+               id="description.section.additionalLayer.ActiveByDefault"
+               afterSection="description.section.additionalLayer.Optional"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.description.AdditionalLayer"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.layer.LayerIconPropertySection"
@@ -2369,7 +2393,7 @@
   <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension targetID="org.eclipse.sirius.ui.tools.perspective.design">
-         <newWizardShortcut id="org.eclipse.sirius.presentation.DescriptionModelWizardID"/>
+         <newWizardShortcut id="org.eclipse.sirius..presentation.DescriptionModelWizardID"/>
          <newWizardShortcut id="org.eclipse.sirius.ui.specificationproject.wizard"/>
       </perspectiveExtension>
   </extension>

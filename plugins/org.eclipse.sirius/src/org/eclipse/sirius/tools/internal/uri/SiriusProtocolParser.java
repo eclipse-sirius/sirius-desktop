@@ -15,24 +15,23 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.Resource.Factory;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
 import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.description.util.DescriptionResourceFactoryImpl;
 
 /**
  * A protocol parser for viewpoints URI.
  * 
  * @author cbrun
  */
-public class SiriusProtocolParser implements Factory {
+public class SiriusProtocolParser extends DescriptionResourceFactoryImpl {
     /**
      * {@inheritDoc}
      */
     public Resource createResource(final URI uri) {
         SiriusProtocolParser.getSirius(uri);
-        return new XMIResourceImpl(uri);
+        return super.createResource(uri);
     }
 
     /**

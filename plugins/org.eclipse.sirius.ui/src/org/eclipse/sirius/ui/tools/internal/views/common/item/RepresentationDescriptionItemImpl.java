@@ -151,7 +151,7 @@ public class RepresentationDescriptionItemImpl
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getSession()
+	 * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getSession()
 	 */
 	public Option<Session> getSession() {
 		return Options.newSome(session);
@@ -160,7 +160,7 @@ public class RepresentationDescriptionItemImpl
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getChildren()
+	 * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getChildren()
 	 */
 	public Collection<?> getChildren() {
 		final List<DRepresentation> representationsCandidates = Lists
@@ -206,7 +206,7 @@ public class RepresentationDescriptionItemImpl
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getParent()
+	 * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getParent()
 	 */
 	public Object getParent() {
 		return parent;

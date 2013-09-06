@@ -1731,14 +1731,14 @@
    
       </description>
    </context>
-   <context id="OptionalLayer">
+   <context id="AdditionalLayer">
      <description>
        
        
          
-   <!-- Start of user code OptionalLayer description -->
+   <!-- Start of user code AdditionalLayer description -->
    
-   <!-- End of user code OptionalLayer description -->
+   <!-- End of user code AdditionalLayer description -->
    
       </description>
    </context>
@@ -2403,6 +2403,10 @@
           - tooltipExpression: a string.
                 . view: the current view.
 
+          - widthComputationExpression: an integer.
+
+          - heightComputationExpression: an integer.
+
 
          
    <!-- Start of user code FlatContainerStyleDescription description -->
@@ -2423,6 +2427,10 @@
 
           - tooltipExpression: a string.
                 . view: the current view.
+
+          - widthComputationExpression: an integer.
+
+          - heightComputationExpression: an integer.
 
 
          
@@ -2567,6 +2575,22 @@
    <!-- Start of user code BracketEdgeStyleDescription description -->
    
    <!-- End of user code BracketEdgeStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="SizeComputationContainerStyleDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - widthComputationExpression: an integer.
+
+          - heightComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code SizeComputationContainerStyleDescription description -->
+   
+   <!-- End of user code SizeComputationContainerStyleDescription description -->
    
       </description>
    </context>

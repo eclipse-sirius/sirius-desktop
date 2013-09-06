@@ -61,7 +61,7 @@ public class AirDResourceFactory extends GMFResourceFactory {
             extendedMetaData = new RepresentationsFileExtendedMetaData(loadedVersion);
             resourceHandler = new RepresentationsFileResourceHandler(loadedVersion);
         }
-        final XMIResource resource = doCreateAirdResourceImpl(uri);
+        final XMIResource resource = doCreateAirdResourceImpl(uri, loadedVersion);
         setLoadOptions(resource, migrationIsNeeded);
         setSaveOptions(resource, migrationIsNeeded);
 
@@ -81,10 +81,12 @@ public class AirDResourceFactory extends GMFResourceFactory {
      * 
      * @param uri
      *            the uri of the AirdResource
+     * @param loadedVersion
+     *            the representations file version.
      * @return the implementation of the AirdResourceImpl to use
      */
-    protected XMIResource doCreateAirdResourceImpl(URI uri) {
-        return new AirDResourceImpl(uri);
+    protected XMIResource doCreateAirdResourceImpl(URI uri, String loadedVersion) {
+        return new AirDResourceImpl(uri, loadedVersion);
     }
 
     /**

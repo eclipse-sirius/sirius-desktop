@@ -1,0 +1,662 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Sequence Diagrams</title>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SpecifyingSequenceDiagramEditors">Specifying Sequence Diagram Editors</h1>
+		<ol class="toc" style="list-style: disc;">
+			<li>
+				<a href="Sequence%20Diagrams.html#SpecifyingSequenceDiagramEditors">Specifying Sequence Diagram Editors</a>
+				<ol style="list-style: disc;">
+					<li>
+						<a href="Sequence%20Diagrams.html#introduction">Introduction</a>
+					</li>
+					<li>
+						<a href="Sequence%20Diagrams.html#semantics">Sequence Diagrams Semantics</a>
+					</li>
+					<li>
+						<a href="Sequence%20Diagrams.html#restrictions">Restrictions and Limitations</a>
+					</li>
+					<li>
+						<a href="Sequence%20Diagrams.html#prerequisites">Prerequisites</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Sequence%20Diagrams.html#Interaction">Interaction</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#LifelineandInstancerole">Lifeline and Instance role</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#Execution">Execution</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#Message">Message</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#SingleEventEndandCompoundEventEnd">SingleEventEnd and CompoundEventEnd</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#Ordering">Ordering</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="Sequence%20Diagrams.html#sd_description">Sequence Diagram Description</a>
+					</li>
+					<li>
+						<a href="Sequence%20Diagrams.html#DefaultLayer">Default Layer</a>
+					</li>
+					<li>
+						<a href="Sequence%20Diagrams.html#mappings">Mappings</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Sequence%20Diagrams.html#InstanceRoleMapping">Instance Role Mapping</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#ExecutionMappings">Execution Mappings</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#BasicMessageMapping">Basic Message Mapping</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="Sequence%20Diagrams.html#tools">Tools</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Sequence%20Diagrams.html#JavaServices">Java Services</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#CreationTools">Creation Tools</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#eventReorderTool">Event Reorder Tool</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#instanceRoleReorderTool">Instance Role Reorder Tool</a>
+							</li>
+							<li>
+								<a href="Sequence%20Diagrams.html#OtherTools">Other Tools</a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<h2 id="introduction">Introduction</h2>
+		<p>This document describes how to specify sequence diagram modelers with Sirius. It has been written for software architects who want to specify sequence diagrams on their own meta-models.</p>
+		<p>This tutorial is based on an example, i.e. the specification of a UML sequence diagram editor. The resulting diagram is  available in the 
+			<em>Obeo UML Behavioral</em> viewpoint (available for free at 
+			<a href="https://github.com/ObeoNetwork/UML-Modeling">https://github.com/ObeoNetwork/UML-Modeling</a> ) which is based on the Eclipse Foundation&#8217;s 
+			<a href="http://wiki.eclipse.org/MDT-UML2">UML2 meta-model</a>.
+		</p>
+		<h2 id="semantics">Sequence Diagrams Semantics</h2>
+		<p>As their name says, sequence diagrams are meant to represent ordered sequences of elements. Typically, they represent 
+			<em>events</em> sent and received between some entities over 
+			<em>time</em>. The canonical case is a UML Sequence Diagram (where the notation comes from), which represents the messages exchanged between objects in a software system.
+		</p>
+		<p>The most important consequence of this is that contrary to what happens on a classical diagram, 
+			<em>the relative graphical positions of elements on a sequence diagram have strong meaning</em>. This is true for the vertical placement and for the left-to-right order of lifelines. However placing a message above or below another one has a strong implication on the ordering of the events they represent, and thus on the structure of the underlying semantic model which is represented. Sirius works hard to ensure that what you see on you sequence diagram (in terms of vertical ordering of elements and horizontal ordering of lifelines) always correspond to the semantic ordering of the represented events.
+		</p>
+		<p>This works both ways:</p>
+		<ul>
+			<li>Assuming a diagram is synchronized (i.e. you are in 
+				<em>Automatic Refresh</em> mode or your manually refreshed it since the last semantic changes), Sirius will always organize the elements on the diagram in a way which is compatible with the semantic ordering of the events: if you see an execution 
+				<em>E1</em> placed above another execution 
+				<em>E2</em>, you can be sure the events corresponding to 
+				<em>E1</em> happen before the events of 
+				<em>E2</em> in the semantic model.
+			</li>
+			<li>Symmetrically, and perhaps more importantly, 
+				<em>moving</em> elements on a sequence diagram may trigger changes in the underlying semantic model to reflect the new event order implied by the positions you changed. This is very different from what happens in other diagrams, where most graphical repositioning of elements are only cosmetic. Keeping the example above, moving execution 
+				<em>E2</em> graphically above 
+				<em>E1</em> will trigger changes in the semantic model to move the corresponding event of 
+				<em>E2</em> before the events of 
+				<em>E1</em>.
+			</li>
+		</ul>
+		<p>Most of the specific features and restrictions of sequence diagrams compared to other diagrams derive from this strong guarantee that at all time, the graphical (vertical) order of the elements you see on the diagram match exactly the semantic order of the events which exist in the underlying model and the horizontal order of the instance roles you see on the diagram match exactly the semantic order of the corresponding elements which exist in the underlying model.</p>
+		<p>From the specifier point of view, this means that sequence diagrams can only be defined on meta-models in which you can provide a total ordering of the events represented, and that you can reorder these elements in a predictable way (see the description of the 
+			<a href="Sequence%20Diagrams.html#eventReorderTool">Event Reorder Tool</a> and 
+			<a href="Sequence%20Diagrams.html#instanceRoleReorderTool">Instance Role Reorder Tool</a> for details).
+		</p>
+		<h2 id="restrictions">Restrictions and Limitations</h2>
+		<p>In order to guarantee the strong guarantee described above, some of the features present on normal diagrams are not supported, or even completely disabled on sequence diagrams. Basically, anything which would make it possible on a normal diagram to have meaningful semantic elements not visible on the diagram is forbidden. This would make it impossible for Sirius to keep consistent tracking of the &#171;position&#187; of these invisible elements relative to the ones which are visible.</p>
+		<ul>
+			<li>
+				<em>Layers</em>: sequence diagrams may define optional layers, as long as they do not make graphical elements appear or disappear on the diagram when they are selected or de-selected. Layers which contribute new tools in the palette for example are fine.
+			</li>
+			<li>
+				<em>Filters</em>: filters which may hide elements from a sequence diagram when enabled are not supported.
+			</li>
+			<li>
+				<em>Hide/Reveal</em>: hiding elements explicitly is not supported. The actions are disabled in the UI.
+			</li>
+			<li>
+				<em>Pin/Unpin</em>: pinning graphical elements has no effect on the automatic layout of sequence diagrams. Even if an element has been marked as pinned, Sirius must be able to move it graphically as needed in order to maintain the graphical order of element in sync with the semantic order. The actions are disabled in the UI.
+			</li>
+		</ul>
+		<h2 id="prerequisites">Prerequisites</h2>
+		<p>As with any Sirius diagram, the semantic model used for a sequence diagram defines some elements and relationships that must be mapped to graphical elements in order to be represented on the sequence diagrams. For the UML2 modeler, the semantic model is defined in 
+			<code>.uml</code> files and the mapping in the 
+			<code>uml2.odesign</code> Viewpoint Specification file.
+		</p>
+		<p>The job of the architect is to map the UML2 interactions, life-lines, executions and messages. Even if the support for sequence diagrams in Sirius is not dedicated to UML2, these four kinds of elements (or similar ones) must be provided by the sequence meta-model in order to be represented as sequence diagrams in Sirius.</p>
+		<h3 id="Interaction">Interaction</h3>
+		<p>The interaction is the semantic container for all the sequence diagram elements.</p> 
+		<img border="0" src="images/interaction.png"/>
+		<p>In UML2, the interaction is represented by an element of type 
+			<code>Interaction</code>.
+		</p>
+		<h3 id="LifelineandInstancerole">Lifeline and Instance role</h3>
+		<p>The instance role and the lifeline represents one participant in the interaction.</p> 
+		<img border="0" src="images/lifeline.png"/>
+		<p>In UML2, the instance role and the lifeline are represented by one element of type 
+			<code>Lifeline</code>.
+		</p>
+		<h3 id="Execution">Execution</h3>
+		<p>The execution typically represents a period in the participant&#8217;s lifetime when it is active. An execution is composed of three elements:</p>
+		<ul>
+			<li>
+				<em>Execution start</em>: the start occurrence of the execution;
+			</li>
+			<li>
+				<em>Execution</em>: the execution by itself (the duration of the execution);
+			</li>
+			<li>
+				<em>Execution finish</em>: the finish occurrence of the execution.
+			</li>
+		</ul> 
+		<img border="0" src="images/execution.png"/>
+		<p>In UML2, the execution is represented by an element of type 
+			<code>Execution Specification</code>, the execution start and finish are defined by an abstract type 
+			<code>Occurrence Specification</code>.
+		</p>
+		<h3 id="Message">Message</h3>
+		<p>The message represents a kind of communication between lifelines of an interaction. A message is composed by three elements:</p>
+		<ul>
+			<li>
+				<em>Message send</em> (or 
+				<em>source</em>): the send occurrence of the message;
+			</li>
+			<li>
+				<em>Message</em>: the message by itself (the kind of communication, e.g. synchronous/asynchronous call);
+			</li>
+			<li>
+				<em>Message receive</em> (or 
+				<em>target</em>): the receive occurrence of the message
+			</li>
+		</ul> 
+		<img border="0" src="images/message.png"/>
+		<p>In UML2, the message is represented by an element of type 
+			<code>Message Specification</code>, the message send and receive are defined by one abstract type 
+			<code>Occurrence Specification</code>.
+		</p>
+		<h3 id="SingleEventEndandCompoundEventEnd">SingleEventEnd and CompoundEventEnd</h3>
+		<p>Sirius internally manages a list of start/finish execution occurrences and sender/receiver message occurrences defined for each interaction. All these occurrences are event ends contained in the 
+			<code>EventEnds</code> list.
+		</p>
+		<p>An 
+			<code>eventEnd</code> contains two properties:
+		</p>
+		<ul>
+			<li>
+				<code>semanticEvent</code>: points to the semantic event which could be a message or an execution,
+			</li>
+			<li>
+				<code>semanticEnd</code>: points to one connection end of the semantic event, i.e. the semantic element which could be a message sender, a message receiver, an execution start or an execution finish.
+			</li>
+		</ul>
+		<p>There are two kinds of 
+			<code>EventEnds</code>:
+		</p>
+		<ul>
+			<li>
+				<code>SingleEventEnd</code>: Is an element which is used only as start/send or finish/receive by one execution/message. In UML2, an execution could be started or finished by an 
+				<code>Execution Occurrence Specification</code> and a message could be sent or received by a 
+				<code>Message occurrence Specification</code>.
+			</li>
+			<li>
+				<code>CompoundEventEnd</code>: Is an element that represents the combination of a message and an execution. This kind of 
+				<code>EventEnd</code> exists in order to associate graphically a message to an execution. As the 
+				<code>CompoundEventEnd</code> is an 
+				<code>EventEnd</code>, it contains the two properties:
+				<ul>
+					<li>
+						<code>semanticEvent</code> which points to a message or an execution.
+					</li>
+					<li>
+						<code>semanticEnd</code> which points to a 
+						<code>MixEnd</code> element.
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<p>Depending on how the meta-model is defined, the 
+			<code>MixEnd</code> could be represented by:
+		</p>
+		<ul>
+			<li>one 
+				<code>SingleEventEnd</code>: This is the case in UML2, the 
+				<code>Execution Specification</code> could be defined with a start/finish element of type 
+				<code>Execution Occurrence Specification</code> or 
+				<code>Message Occurrence Specification</code>
+			</li>
+			<li>two 
+				<code>SingleEventEnds</code>: one 
+				<code>SingleEventElement</code> which points to the message and one 
+				<code>SingleEventElement</code> which points to the execution.
+			</li>
+		</ul>
+		<p>An example of MixEnd composed by two 
+			<code>SingleEventEnds</code> is described in the 
+			<i>Interactions Modelers</i> described in the 
+			<code>fr.obeo.sample.ecore.interactions</code> plug-in.
+		</p> 
+		<img border="0" src="images/event_ends.png"/>
+		<p>The 
+			<code>Operation_0</code> message ends on the left border of the 
+			<code>Operation_0()</code> execution because 
+			<code>Operation_0_receiver</code> is associated to the start of the execution. Otherwise, the message would be associated to the lifeline. For example, the 
+			<code>Message_3</code> is a simple message not linked to an execution. Consequently, the 
+			<code>Message_3_receiver</code> is a 
+			<code>SingleEventEnd</code> and is attached to the lifeline.
+		</p>
+		<p>Hence, for an asynchronous call, we get:</p>
+		<ul>
+			<li>one 
+				<code>SingleEventEnd</code> for the message sending: 
+				<code>Operation_0_sender</code>
+				<ul>
+					<li>
+						<code>semanticEvent</code> = 
+						<code>Operation_0</code> message
+					</li>
+					<li>
+						<code>semanticEnd</code> = 
+						<code>Operation_0_sender</code> message occurrence specification
+					</li>
+				</ul>
+			</li>
+			<li>one 
+				<code>CompoundEventEnd</code> for the 
+				<code>Operation_0</code> message receiving and 
+				<code>Operation_0</code> execution 
+				<code>startingEnd</code> composed by one 
+				<code>SingleEventEnd</code> = 
+				<code>Operation_receiver</code>
+				<ul>
+					<li>
+						<code>semanticEvent</code> = 
+						<code>Operation_0</code> message
+					</li>
+					<li>
+						<code>semanticEnd</code> = 
+						<code>Operation_0_receiver</code> message occurrence specification
+					</li>
+				</ul>
+			</li>
+			<li>one 
+				<code>SingleEventEnd</code> for the execution finish: 
+				<code>Operation_0_finish</code>
+				<ul>
+					<li>
+						<code>semanticEvent</code> = 
+						<code>Operation_0</code> execution
+					</li>
+					<li>
+						<code>semanticEnd</code> = 
+						<code>Operation_0_finish</code> execution occurrence specification
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<h3 id="Ordering">Ordering</h3>
+		<p>In a Sirius sequence diagram, the elements are totally ordered.</p>
+		<p>Internally, Sirius maintains three ordered sets:</p>
+		<ul>
+			<li>two for the vertical ordering : a graphical set which orders the graphical elements, a semantic set which orders the semantic elements.</li>
+			<li>one for the horizontal ordering, a semantic set which orders the semantic instance roles (the graphical ordering of instance roles is available without heavy computation).</li>
+		</ul> 
+		<img border="0" src="images/orderings.png"/>
+		<p>To provide a functional diagram, each semantic/graphical orderings couple must always be coherent. Creation tools and reordering tool must manage the semantic orderings. More explanations are given in the next section.</p>
+		<h2 id="sd_description">Sequence Diagram Description</h2>
+		<p>First, in an odesign file, from an existing viewpoint, you have to create a new kind of representation : Sequence Diagram Description.</p> 
+		<img border="0" src="images/new_description.png"/> 
+		<img border="0" src="images/description_properties.png"/>
+		<p>As for other representations, you define mandatory properties:</p>
+		<ul>
+			<li>
+				<em>Id</em>: unique identifier for the diagram type in Sirius
+			</li>
+			<li>
+				<em>Label</em>: used to display information to end-user
+			</li>
+			<li>
+				<em>Domain class</em>: type of the semantic element representing the sequence diagram container
+			</li>
+		</ul>
+		<p>For a complete description of each property, have a look at the 
+			<em>Help &gt; Sirius  Specifier Guide &gt; Reference Guide &gt; Representation &gt; Sequence Diagram</em>.
+		</p>
+		<p>The most important properties to understand are the 
+			<em>Ends Ordering</em> and 
+			<em>Instance Roles Ordering</em>.
+		</p> 
+		<img border="0" src="images/ends_ordering.png"/>
+		<p>In a sequence diagram, graphical elements are ordered chronologically and this order is essential. Maintaining and updating the elements global order will be the main purpose of all tools that you will create later. Your tools must keep all the time the order of semantic elements and according to this, Sirius manages the graphical representation order.</p>
+		<p>The ordered elements in a sequence diagram are defined with the 
+			<em>Ends Ordering</em> and 
+			<em>Instance Roles Ordering</em> fields. These properties will be used by Sirius to automatically order the graphical elements when you open a sequence diagram for an interaction. 
+		</p>
+		<p>The 
+			<em>Ends Ordering</em> handles the vertical order of events. It specifies with an expression how semantic elements must be ordered. These elements should be execution1 start/finish and message send/receive occurrences. 
+		</p>
+		<p>A specific variable exists for this expression: 
+			<code>eventEnds</code> (
+			<code>$eventEnds</code> if you use the legacy Acceleo 2 language). The variable 
+			<code>eventEnds</code> contains the list of all 
+			<code>EventEnds</code> existing for the current interaction.
+		</p>
+		<p>Pay attention: the evaluation of the 
+			<em>Ends Ordering</em> expression should returned only elements contained in the 
+			<code>eventEnds</code> list.
+		</p>
+		<p>The 
+			<em>Instance Roles Ordering</em> handles the horizontal order of instance roles / lifelines. It specifies with an expression how semantic elements must be ordered. These elements should be the semantic elements which will be represented as instance role. 
+		</p>
+		<p>If we have a look at the UML2 meta-model, the fragment reference defined in an 
+			<code>Interaction</code> contains all the execution occurrences and the message occurrences. Execution occurrences and messages occurrences are 
+			<code>EventEnd</code> elements. But the fragment reference contains also some other types of elements as execution specifications. In order that the 
+			<em>Ends Ordering</em> property only references 
+			<code>EventEnd</code> elements we need to do an intersection of fragments elements and eventEnds: 
+			<code>&lt;%fragment &amp;&amp; $eventEnds%&gt;</code>. 
+		</p>
+		<p>Furthermore, the lifeline reference defined in an 
+			<code>Interaction</code> contains all the 
+			<code>Lifeline</code> representing both lifeline and instance role.
+		</p> 
+		<img border="0" src="images/ends_ordering_visual.png"/>
+		<p>For the UML Modeler, the 
+			<em>Ends Ordering</em> expression will return for the diagram below, the ordered list: 
+			<code>[Operation_0_sender, Operation_0_receiver, Operation_0_finish, test_sender, test_receiver, test_reply_sender, test_reply_receiver, Message_3_sender, Message_3 _receiver]</code>. 
+			<br/>And the 
+			<em>Instance Roles Ordering</em> expression will return for the diagram below, the ordered list: 
+			<code>[producers, consumers]</code>.
+		</p>
+		<h2 id="DefaultLayer">Default Layer</h2>
+		<p>When the sequence diagram description is complete, you can add a Default layer.</p> 
+		<img border="0" src="images/default_layer.png"/>
+		<p>Next step is to define the mappings and all the tools to manage the interaction elements.</p>
+		<h2 id="mappings">Mappings</h2>
+		<p>We want to represent on a sequence diagram four different elements and then associate a mapping to each element:</p>
+		<ul>
+			<li>
+				<em>Instance</em>: instance role mapping
+			</li>
+			<li>
+				<em>Lifetime</em>: execution mapping
+			</li>
+			<li>
+				<em>Execution</em>: execution mapping
+			</li>
+			<li>
+				<em>Message</em>: basic message mapping
+			</li>
+		</ul> 
+		<img border="0" src="images/mappings.png"/>
+		<h3 id="InstanceRoleMapping">Instance Role Mapping</h3>
+		<p>Firstly, create the instance role mapping. It graphically corresponds to the box at the top of the lifeline.</p> 
+		<img border="0" src="images/new_instance_role_mapping.png"/>
+		<p>Set the mandatory properties 
+			<em>Id</em>, 
+			<em>Label</em> and 
+			<em>Domain class</em>:
+		</p> 
+		<img border="0" src="images/instance_role_mapping_properties.png"/>
+		<p>The Semantic Candidates Expression is an Acceleo expression returning the semantic elements for which the mapping will be evaluated and then a graphical element will represent the semantic element on the diagram.</p>
+		<p>Don&#8217;t forget to create a new Style for the instance role mapping.</p>
+		<img border="0" src="images/instance_role_mapping_style.png"/>
+		<h3 id="ExecutionMappings">Execution Mappings</h3>
+		<p>Execution mappings are used when you have an element which is composed by a start, a duration and a finish element. </p>
+		<p>We will define the execution mappings:</p> 
+		<img border="0" src="images/new_execution_mapping.png"/>
+		<p>First, create the execution mapping for the lifeline execution. This represents the dashed line of lifeline.</p> 
+		<img border="0" src="images/execution_mapping_properties1.png"/>
+		<p>And create the execution mapping for the execution. This represents the execution square on lifeline or other execution.</p> 
+		<img border="0" src="images/execution_mapping_properties2.png"/>
+		<p>Set the mandatory properties:</p>
+		<ul>
+			<li>
+				<em>Id</em>, 
+				<em>Label</em>, 
+				<em>Domain class</em>
+			</li>
+			<li>
+				<em>Semantic Candidates Expression</em>:  expression that returns the first level executions associated to the current execution. 
+			</li>
+		</ul> 
+		<img border="0" src="images/execution_mappings_visual.png"/>
+		<p>Here, a java service1 executionSemanticCandidates() is called.</p>
+		<ul>
+			<li>
+				<em>Starting End Finder Expression</em>: semantic element defining the execution start
+			</li>
+			<li>
+				<em>Finishing End Finder Expression</em>: semantic element defining the execution finish
+			</li>
+		</ul>
+		<p>The end finder expressions are used by Sirius to graphically link the execution to its start and finish elements and to find during creation and reorder operations where to reattach the dragged element.</p>
+		<p>As an execution could recursively contain other executions, don&#8217;t forget to import the mapping on itself by setting the property Reused bordered node mappings :</p> 
+		<img border="0" src="images/execution_mapping_reused.png"/>
+		<p>For both execution mappings, don&#8217;t forget to create a New Style:</p> 
+		<img border="0" src="images/execution_mapping_style.png"/>
+		<h3 id="BasicMessageMapping">Basic Message Mapping</h3>
+		<p>Now, we will define the basic message mapping:</p> 
+		<img border="0" src="images/new_message_mapping.png"/>
+		<p>Create the basic message mapping:</p> 
+		<img border="0" src="images/new_basic_message_mapping.png"/> 
+		<img border="0" src="images/basic_message_mapping_properties.png"/>
+		<p>Set the mandatory properties:</p>
+		<ul>
+			<li>
+				<em>Id</em>, 
+				<em>Label</em>, 
+				<em>Domain class</em>
+			</li>
+			<li>
+				<em>Semantic Candidates Expression</em>: expression to get all the messages defined in an interaction
+			</li>
+			<li>
+				<em>Semantic Elements</em>:  Associates a group of logical semantic elements to the graphical element. For example, here we associate to the graphical message the semantic element of type 
+				<code>Message</code>, the message send event of type 
+				<code>Message Occurrence Specification</code> and the message receive event of type 
+				<code>Message Occurrence Specification</code>. Sirius will use this information to:
+				<ul>
+					<li>show associated semantic elements in properties view,</li>
+					<li>listen for associated elements changes to refresh if necessary,</li>
+					<li>delete associated elements if there is no specific delete tool.</li>
+				</ul>
+			</li>
+			<li>
+				<em>Source/Target mapping</em>: a list of graphical mappings that could be source/target of the message. Several mappings could be defined as source or target mapping for a message. In UML2, Lifeline mapping and Execution mapping can be source/target of message. On the illustration below, the consumers lifeline and the 
+				<code>compute()</code> execution can be selected as source for the get message. The producers lifeline and the get execution can be selected as target for the get message.
+			</li>
+		</ul> 
+		<img border="0" src="images/basic_message_mapping_visual1.png"/>
+		<ul>
+			<li>
+				<em>Source/Target finder expression</em>: the expression which must return the source/target semantic element, i.e. the source/target context of the message. In UML2, the expression return is the lifeline or the execution for example. On the illustration below, the compute execution is the semantic source element for the message get and the get execution is the semantic target element.
+			</li>
+		</ul> 
+		<img border="0" src="images/basic_message_mapping_visual2.png"/>
+		<ul>
+			<li>
+				<em>Sending/Receiving End Finder Expression</em>: expression which must return the semantic element which represents the message sender/receiver.
+			</li>
+		</ul> 
+		<img border="0" src="images/basic_message_mapping_visual3.png"/>
+		<h4 id="LostandFoundmessages">Lost and Found messages</h4>
+		<p>Standard node mappings, direct children of a layer of the current sequence diagram description, can be used to represent the unknown message end. Lost and found messages should be created using a generic tool.</p>
+		<h2 id="tools">Tools</h2>
+		<h3 id="JavaServices">Java Services</h3>
+		<p>To use a java service in an Acceleo expression, service must be define like this in odesign:</p> 
+		<img border="0" src="images/java_service.png"/>
+		<h3 id="CreationTools">Creation Tools</h3>
+		<p>Define a new Section to add creation tools:</p> 
+		<img border="0" src="images/new_creation_tool_section.png"/>
+		<h4 id="CreateLifeline">Create Lifeline</h4>
+		<p>Lifelines should be created using an Instance Role Creation Tool associated to the instance role mapping.</p> 
+		<img border="0" src="images/lifeline_creation_tool.png"/>
+		<p>The 
+			<code>predecessor</code> variable represents in the global instance role ordering, the element preceding the new instance role.  
+		</p>
+		<h4 id="CreateExecution">Create Execution</h4>
+		<p>An Execution can be created using 
+			<em>Execution Creation Tool</em>.
+		</p> 
+		<img border="0" src="images/new_execution_creation_tool.png"/>
+		<p>The following variables can be used from inside the tool definition:</p>
+		<ul>
+			<li>
+				<code>container</code>: the element (lifeline or execution) that will contain graphically the new execution, in the example below the container would be the get() execution.
+			</li>
+			<li>
+				<code>startingEndPredecessor</code> and 
+				<code>finishingEndPredecessor</code>: represent in the global event ends list, the element preceding the new execution start and the element preceding the new execution finish. To get the corresponding semantic end element associated to event end: 
+				<code>startingEndPredecessor.semanticEnd</code> or 
+				<code>finishingEndPredecessor.semanticEnd</code>.
+			</li>
+		</ul> 
+		<img border="0" src="images/execution_creation_tool_visual.png"/>
+		<p>In the example above, we want to create a new 
+			<code>BehaviorExecution_2</code> on the existing get execution. Thus, the 
+			<code>startingEndPredecessor</code> and 
+			<code>finishingEndPredecessor</code> will point to the 
+			<code>get_receiver</code> message occurrence. This variables represent the semantic elements (
+			<code>get_receiver</code>) associated to the graphical element preceding the 
+			<code>startingEnd</code> (
+			<code>BehaviorExecution_2_start</code>) and 
+			<code>finishingEnd</code> (
+			<code>BehaviorExecution_2_finish</code>) of the new element.
+		</p>
+		<h4 id="MessageCreationTool">Message Creation Tool</h4>
+		<p>A Message can be created using Message Creation Tool.</p> 
+		<img border="0" src="images/new_message_creation_tool.png"/>
+		<p>The following variables can be used from inside the tool definition:</p>
+		<ul>
+			<li>
+				<code>source</code>: Semantic element associated to message send;
+			</li>
+			<li>
+				<code>target</code>: Semantic element associated to message receive;
+			</li>
+			<li>
+				<code>startingEndPredecessor</code> and 
+				<code>finishingEndPredecessor</code>: represent in the global event ends list, the element preceding the new message send and the element preceding the new message receive.
+			</li>
+		</ul> 
+		<img border="0" src="images/message_creation_tool_visual.png"/>
+		<p>In this example, we want to create a new 
+			<code>Message_1</code> from the existing compute execution to the producers lifeline. Thus, the 
+			<code>startingEndPredecessor</code> and 
+			<code>finishingEndPredecessor</code> will point to the 
+			<code>get_finish</code> execution occurrence. These variables represent the semantic elements (
+			<code>get_finish</code>) associated to the graphical element preceding the 
+			<code>startingEnd</code> (
+			<code>Message_1_sender</code>) and 
+			<code>finishingEnd</code> (
+			<code>Message_1_receiver</code>) of the new element.
+		</p>
+		<p>
+			<strong>Precondition.</strong> As for many other tools, it is possible to define a precondition for message creation tools. Depending on the precondition expression, the tool allows the element creation only under certain conditions. The precondition is defined as an interpreted expression.
+		</p> 
+		<img border="0" src="images/message_creation_precondition.png"/>
+		<p>A variable is available for the Acceleo expression : $preTarget. This variable is the semantic element associated to graphical element that is currently hovered by the mouse.</p>
+		<h3 id="eventReorderTool">Event Reorder Tool</h3>
+		<p>This tool is called when the user moves or changes the size of graphical elements on the diagram.</p>
+		<p>A single unique event reorder tool can and must be specified for message and execution mappings. The purpose of the tool is to re-synchronize the graphical ordering with the semantic ordering. When the user reorders a graphical element, the global order of graphical elements changes and the tool must then reorder the semantic elements according to these changes.</p> 
+		<img border="0" src="images/new_reorder_tool.png"/>
+		<p>This tool has access to the following two variables usable in expressions:</p>
+		<ul>
+			<li>
+				<code>startingEndPredecessorAfter</code>: represents in the global event end list the element preceding the moved element start/send. It is the event which, 
+				<strong>after</strong> the move, will be directly 
+				<strong>preceding</strong> the 
+				<strong>starting end</strong> (top) of the moved element;
+			</li>
+			<li>
+				<code>finishingEndPredecessorAfter</code>: represents in the global event end list the element preceding the moved element finish/receive. It is the event which, 
+				<strong>after</strong> the move, will be directly 
+				<strong>preceding</strong> the 
+				<strong>finishing end</strong> (bottom) of the moved element.
+			</li>
+		</ul> 
+		<img border="0" src="images/reorder_tool_visual1.png"/>
+		<p>In this example, we want to move the get execution after the 
+			<code>Message_0</code>. Thus, the 
+			<code>startingEndPredecessorAfter</code> variable will point to the 
+			<code>compute_finish</code> execution occurrence. This variable represents the semantic elements (
+			<code>compute_finish</code>) associated to the graphical element preceding the 
+			<code>startingEnd</code> (
+			<code>get_start</code>) after the move of get execution. The 
+			<code>finishingEndPredecessorAfter</code> variable will point to the 
+			<code>get_start</code> execution occurrence. This variable represents the semantic elements (
+			<code>get_start</code>) associated to the graphical element preceding the 
+			<code>finishingEnd</code> (
+			<code>get_finish</code>) after the move of get execution.
+		</p>
+		<p>Now, we will have a look to a more complex reorder operation.</p> 
+		<img border="0" src="images/reorder_tool_visual2.png"/>
+		<p>In this example, we want to move the get execution after the 
+			<code>Message_1</code>. The get execution is linked to the get synchronous message, thus the get execution 
+			<code>startingEnd</code> is a 
+			<code>compoundEvent</code> representing the 
+			<code>get_receiver</code> message occurrence. When we move the execution, the associated message must be also moved. In this case, the 
+			<code>startingEndPredecessorAfter</code> variable will point to the 
+			<code>compute_finish</code> execution occurrence. This variable represents the semantic elements (
+			<code>compute_finish</code>) associated to the graphical element preceding the 
+			<code>startingEnd</code> (
+			<code>get_send</code>) after the move of get execution. The 
+			<code>finishingEndPredecessorAfter</code> variable will point to the 
+			<code>get_receiver</code> message occurrence. This variable represents the semantic elements (
+			<code>get_receiver</code>) associated to the graphical element preceding the 
+			<code>finishingEnd</code> (
+			<code>get_finish</code>) after the move of get execution.
+		</p>
+		<h3 id="instanceRoleReorderTool">Instance Role Reorder Tool</h3>
+		<p>This tool is called when the user horizontally moves an instance role on the diagram.</p>
+		<p>A single unique event reorder tool can and must be specified for instance role mappings. The purpose of the tool is to re-synchronize the graphical ordering with the semantic ordering. When the user reorders a graphical instance role, the global order of graphical instance roles changes and the tool must then reorder the semantic instance roles according to these changes.</p> 
+		<img border="0" src="images/new_instance_role_reorder_tool.png"/>
+		<p>This tool has access to the following two variables usable in expressions:</p>
+		<ul>
+			<li>
+				<code>predecessorBefore</code>: represents in the global instance role ordering the element previously preceding the moved instance role. It is the element which, 
+				<strong>before</strong> the move, was directly 
+				<strong>preceding</strong> the moved element;
+			</li>
+			<li>
+				<code>predecessorAfter</code>: represents in the global instance role ordering the element preceding the moved instance role. It is the event which, 
+				<strong>after</strong> the move, will be directly 
+				<strong>preceding</strong> the moved element;
+			</li>
+		</ul> 
+		<img border="0" src="images/instance_role_reorder_tool_visual1.png"/>
+		<p>In this example, we want to move the 
+			<code>consumers</code> instance role after the 
+			<code>producers</code> instance role. Thus, the 
+			<code>predecessorAfter</code> variable will point to the 
+			<code>producers</code> execution occurrence. This variable represents the semantic elements (
+			<code>producers</code>) associated to the graphical element preceding the 
+			<code>consumers</code> instance role after its move. The 
+			<code>predecessorBefore</code> variable will be null, because 
+			<code>consumers</code> was the first element of the ordering.
+		</p>
+		<h3 id="OtherTools">Other Tools</h3>
+		<p>Nothing specific for deletion tool, edit label tool, diagram creation and diagram navigation tool, have a look at the Sirius Specifier Guide.</p>
+	</body>
+</html>

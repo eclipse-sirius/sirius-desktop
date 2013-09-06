@@ -2242,13 +2242,31 @@ public interface StylePackage extends EPackage {
     int FLAT_CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER;
 
     /**
+     * The feature id for the '<em><b>Width Computation Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Height Computation Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
      * The feature id for the '<em><b>Background Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_STYLE = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_STYLE = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
@@ -2257,7 +2275,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Foreground Color</b></em>' attribute. <!--
@@ -2266,7 +2284,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__FOREGROUND_COLOR = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__FOREGROUND_COLOR = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Label Border Style</b></em>' reference.
@@ -2275,7 +2293,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_BORDER_STYLE = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION__LABEL_BORDER_STYLE = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The number of structural features of the '
@@ -2285,7 +2303,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
+    int FLAT_CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Arc Width</b></em>' attribute. <!--
@@ -2408,13 +2426,31 @@ public interface StylePackage extends EPackage {
     int SHAPE_CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER = CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER;
 
     /**
+     * The feature id for the '<em><b>Width Computation Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Height Computation Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
      * The feature id for the '<em><b>Shape</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__SHAPE = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__SHAPE = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
@@ -2423,7 +2459,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '
@@ -2433,7 +2469,7 @@ public interface StylePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '
@@ -3156,6 +3192,46 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int BRACKET_EDGE_STYLE_DESCRIPTION_FEATURE_COUNT = EDGE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.description.style.impl.SizeComputationContainerStyleDescriptionImpl
+     * <em>Size Computation Container Style Description</em>}' class. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.description.style.impl.SizeComputationContainerStyleDescriptionImpl
+     * @see org.eclipse.sirius.description.style.impl.StylePackageImpl#getSizeComputationContainerStyleDescription()
+     * @generated
+     */
+    int SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION = 27;
+
+    /**
+     * The feature id for the '<em><b>Width Computation Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = 0;
+
+    /**
+     * The feature id for the '<em><b>Height Computation Expression</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = 1;
+
+    /**
+     * The number of structural features of the '
+     * <em>Size Computation Container Style Description</em>' class. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = 2;
 
     /**
      * Returns the meta object for class '
@@ -4016,6 +4092,47 @@ public interface StylePackage extends EPackage {
      * @generated
      */
     EClass getBracketEdgeStyleDescription();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.description.style.SizeComputationContainerStyleDescription
+     * <em>Size Computation Container Style Description</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '
+     *         <em>Size Computation Container Style Description</em>'.
+     * @see org.eclipse.sirius.description.style.SizeComputationContainerStyleDescription
+     * @generated
+     */
+    EClass getSizeComputationContainerStyleDescription();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression
+     * <em>Width Computation Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the attribute '
+     *         <em>Width Computation Expression</em>'.
+     * @see org.eclipse.sirius.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression()
+     * @see #getSizeComputationContainerStyleDescription()
+     * @generated
+     */
+    EAttribute getSizeComputationContainerStyleDescription_WidthComputationExpression();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression
+     * <em>Height Computation Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the attribute '
+     *         <em>Height Computation Expression</em>'.
+     * @see org.eclipse.sirius.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression()
+     * @see #getSizeComputationContainerStyleDescription()
+     * @generated
+     */
+    EAttribute getSizeComputationContainerStyleDescription_HeightComputationExpression();
 
     /**
      * Returns the meta object for class '
@@ -4940,6 +5057,36 @@ public interface StylePackage extends EPackage {
          * @generated
          */
         EClass BRACKET_EDGE_STYLE_DESCRIPTION = eINSTANCE.getBracketEdgeStyleDescription();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.description.style.impl.SizeComputationContainerStyleDescriptionImpl
+         * <em>Size Computation Container Style Description</em>}' class. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.description.style.impl.SizeComputationContainerStyleDescriptionImpl
+         * @see org.eclipse.sirius.description.style.impl.StylePackageImpl#getSizeComputationContainerStyleDescription()
+         * @generated
+         */
+        EClass SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION = eINSTANCE.getSizeComputationContainerStyleDescription();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Width Computation Expression</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = eINSTANCE.getSizeComputationContainerStyleDescription_WidthComputationExpression();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Height Computation Expression</b></em>' attribute feature.
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = eINSTANCE.getSizeComputationContainerStyleDescription_HeightComputationExpression();
 
         /**
          * The meta object literal for the '

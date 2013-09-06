@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -87,24 +87,25 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
     }
 
     private Option<SequenceDiagramEditPart> shouldRetargetToDiagram(CreateRequest request) {
-        AbstractToolDescription tool = getTool(request);
-        if (!(getHost() instanceof StateEditPart) && (tool instanceof InteractionUseCreationTool || tool instanceof CombinedFragmentCreationTool)) {
-            /*
-             * If the user is trying to create an IU or CF by clicking on a
-             * lifeline or execution, redirect the request to the diagram, but
-             * note the original target so that the initial coverage can be
-             * computed.
-             */
-            IGraphicalEditPart self = (IGraphicalEditPart) getHost();
-            SequenceDiagramEditPart sdep = EditPartsHelper.getSequenceDiagramPart(self);
-            if (sdep != null) {
-                @SuppressWarnings("unchecked")
-                Map<Object, Object> extData = request.getExtendedData();
-                extData.put(FrameCreationValidator.ORIGINAL_TARGET, getHost());
-                return Options.newSome(sdep);
+        if (REQ_CREATE.equals(request.getType()) && !(getHost() instanceof StateEditPart)) {
+            AbstractToolDescription tool = getTool(request);
+            if (tool instanceof InteractionUseCreationTool || tool instanceof CombinedFragmentCreationTool) {
+                /*
+                 * If the user is trying to create an IU or CF by clicking on a
+                 * lifeline or execution, redirect the request to the diagram,
+                 * but note the original target so that the initial coverage can
+                 * be computed.
+                 */
+                IGraphicalEditPart self = (IGraphicalEditPart) getHost();
+                SequenceDiagramEditPart sdep = EditPartsHelper.getSequenceDiagramPart(self);
+                if (sdep != null) {
+                    @SuppressWarnings("unchecked")
+                    Map<Object, Object> extData = request.getExtendedData();
+                    extData.put(FrameCreationValidator.ORIGINAL_TARGET, getHost());
+                    return Options.newSome(sdep);
+                }
             }
         }
-
         return Options.newNone();
     }
 

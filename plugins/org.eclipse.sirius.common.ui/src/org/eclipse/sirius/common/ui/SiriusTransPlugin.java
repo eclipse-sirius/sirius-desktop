@@ -16,10 +16,9 @@ import java.net.MalformedURLException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.EMFPlugin;
+import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.util.IPropertyChangeListener;
@@ -30,7 +29,6 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.framework.BundleContext;
 
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
@@ -246,9 +244,7 @@ public final class SiriusTransPlugin extends EMFPlugin {
      * 
      * @generated-not
      */
-    public static class Implementation extends EclipsePlugin {
-
-        private IPreferenceStore preferenceStore;
+    public static class Implementation extends EclipseUIPlugin {
 
         private ISaveDialogExtensionRegistryListener registryListener;
 
@@ -257,6 +253,8 @@ public final class SiriusTransPlugin extends EMFPlugin {
          * propertyContributorLabelProviderDelegate extension changes.
          */
         private LabelProviderProviderRegistryListener labelProviderProviderRegistryListener;
+
+        private PreferenceChangeListener preferenceChangeListener;
 
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -269,8 +267,7 @@ public final class SiriusTransPlugin extends EMFPlugin {
             // Remember the static instance.
             //
             plugin = this;
-            initProfiler();
-            getPreferenceStore().addPropertyChangeListener(new PreferenceChangeListener());
+            preferenceChangeListener = new PreferenceChangeListener();
         }
 
         private void initProfiler() {
@@ -305,19 +302,6 @@ public final class SiriusTransPlugin extends EMFPlugin {
         }
 
         /**
-         * Returns the preference store of the plugin.
-         * 
-         * @return the preference store of the plugin.
-         */
-        public IPreferenceStore getPreferenceStore() {
-            // Create the preference store lazily.
-            if (preferenceStore == null) {
-                preferenceStore = new ScopedPreferenceStore(new InstanceScope(), PLUGIN_ID);
-            }
-            return preferenceStore;
-        }
-
-        /**
          * {@inheritDoc}
          * 
          * @see org.eclipse.core.runtime.Plugin#start(org.osgi.framework.BundleContext)
@@ -327,6 +311,8 @@ public final class SiriusTransPlugin extends EMFPlugin {
         public void start(BundleContext context) throws Exception {
             super.start(context);
 
+            initProfiler();
+            getPreferenceStore().addPropertyChangeListener(preferenceChangeListener);
             registryListener = new ISaveDialogExtensionRegistryListener();
             registryListener.init();
             labelProviderProviderRegistryListener = new LabelProviderProviderRegistryListener();
@@ -342,6 +328,7 @@ public final class SiriusTransPlugin extends EMFPlugin {
          */
         @Override
         public void stop(BundleContext context) throws Exception {
+            getPreferenceStore().removePropertyChangeListener(preferenceChangeListener);
             registryListener.dispose();
             registryListener = null;
             labelProviderProviderRegistryListener.dispose();

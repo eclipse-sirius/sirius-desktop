@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import org.eclipse.sirius.business.internal.metamodel.description.spec.AdditionalLayerSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.spec.ConditionalContainerStyleDescriptionSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.spec.ConditionalEdgeStyleDescriptionSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.spec.ConditionalNodeStyleDescriptionSpec;
@@ -33,10 +34,10 @@ import org.eclipse.sirius.business.internal.metamodel.description.spec.LayerSpec
 import org.eclipse.sirius.business.internal.metamodel.description.spec.MetamodelExtensionSettingSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.spec.NodeMappingImportSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.spec.NodeMappingSpec;
-import org.eclipse.sirius.business.internal.metamodel.description.spec.OptionalLayerSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.spec.SiriusSpec;
 import org.eclipse.sirius.business.internal.metamodel.spec.FixedColorSpec;
 import org.eclipse.sirius.business.internal.metamodel.spec.InterpolatedColorSpec;
+import org.eclipse.sirius.description.AdditionalLayer;
 import org.eclipse.sirius.description.AnnotationEntry;
 import org.eclipse.sirius.description.ColorStep;
 import org.eclipse.sirius.description.CompositeLayout;
@@ -73,7 +74,6 @@ import org.eclipse.sirius.description.MetamodelExtensionSetting;
 import org.eclipse.sirius.description.NavigationTargetType;
 import org.eclipse.sirius.description.NodeMapping;
 import org.eclipse.sirius.description.NodeMappingImport;
-import org.eclipse.sirius.description.OptionalLayer;
 import org.eclipse.sirius.description.OrderedTreeLayout;
 import org.eclipse.sirius.description.Position;
 import org.eclipse.sirius.description.SemanticBasedDecoration;
@@ -184,8 +184,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return createSemanticBasedDecoration();
         case DescriptionPackage.LAYER:
             return createLayer();
-        case DescriptionPackage.OPTIONAL_LAYER:
-            return createOptionalLayer();
+        case DescriptionPackage.ADDITIONAL_LAYER:
+            return createAdditionalLayer();
         case DescriptionPackage.CUSTOMIZATION:
             return createCustomization();
         case DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION:
@@ -541,6 +541,16 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
+     * @not-generated
+     */
+    public AdditionalLayer createAdditionalLayer() {
+        AdditionalLayerImpl additionalLayer = new AdditionalLayerSpec();
+        return additionalLayer;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Customization createCustomization() {
@@ -586,17 +596,6 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public EReferenceCustomization createEReferenceCustomization() {
         EReferenceCustomizationImpl eReferenceCustomization = new EReferenceCustomizationImpl();
         return eReferenceCustomization;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @not-generated
-     * @since 2.0
-     */
-    public OptionalLayer createOptionalLayer() {
-        OptionalLayerSpec optionalLayer = new OptionalLayerSpec();
-        return optionalLayer;
     }
 
     /**

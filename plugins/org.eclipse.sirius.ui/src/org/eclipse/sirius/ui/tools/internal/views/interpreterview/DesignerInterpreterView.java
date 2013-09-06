@@ -374,6 +374,7 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
         gridData2.horizontalAlignment = GridData.FILL;
         interpreterForm = getFormToolkit().createForm(intepreterSection);
         getFormToolkit().decorateFormHeading(interpreterForm);
+        interpreterForm.setText("Requests interpreter");
         acceleoExpression = getFormToolkit().createText(interpreterForm.getBody(), null, SWT.SINGLE | SWT.BORDER);
         acceleoExpression.setLayoutData(gridData2);
         acceleoExpression.addModifyListener(new ModifyListener() {

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet title="Creating your own domain model">
+   <intro>
+      <description>
+         <b>Learn how to initialize a custom domain model and define it graphically.</b> Sirius can work with any EMF-compatible domain model. You can use an existing standard like UML, or create you own Domain-Specific Model customized for you own needs. This cheat-sheet will show you how to use the Ecore modeler provided by Sirius to easily bootstrap the creation of your own domain model.
+      </description>
+   </intro>
+   <item title="Setup" dialog="false" skip="false">
+     <description>
+       First, make sure you are in the &quot;Sirius&quot; perspective.
+     </description>
+   </item>
+   <item title="Create the project" dialog="true" skip="false">
+     <description>
+       Create an Ecore Modeling project.
+     </description>
+     <subitem label="In the &quot;Model Explorer&quot; right, right-click and select &quot;New &gt; Ecore Modeling Project&quot;." skip="false"/>
+     <subitem label="Enter the project name, like &quot;com.example.project.domain&quot;. This will be the name of the main EMF plug-in which defines your domain model. Hit &quot;Next&quot;." skip="false"/>
+     <subitem label="In the next page, enter the namespace prefix and URI e of the EMF package that will contain your domain definition. Then hit &quot;Next&quot;." skip="false"/>
+     <subitem label="In the next page you can choose which of the available viewpoints compatible with Ecore to enable. The &quot;Design&quot; viewpoint is enabled by default, and provide a class diagram-like graphical modeler for Ecore models. Hit &quot;Finish&quot;." skip="false"/>
+   </item>
+   <item title="Define your model" skip="false">
+     <description>
+       The newly created project is both a complete EMF project (with the <b>ecore</b> and <b>genmodel</b> already created) and a <b>Modeling</b> project. If you have enabled the <b>Design</b> viewpoint, a diagram will automatically be opened, ready for you to define your domain model.
+       <br />
+       Refer to the <b>Sirius Ecore Modeler</b> documentation for how to use the modeler, and to the standard <b>EMF Documentation</b> on how to define your domain model and generate the corresponding Java code.
+     </description>
+   </item>
+</cheatsheet>

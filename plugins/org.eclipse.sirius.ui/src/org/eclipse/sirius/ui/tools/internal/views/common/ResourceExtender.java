@@ -16,7 +16,7 @@ import org.eclipse.core.expressions.PropertyTester;
  * Property tester to avoid CoreException while
  * org.eclipse.debug.ui.actions.LaunchShortcutsAction (menu Run > External tools
  * > Run as > ) computes the available sub-menus for ant when a
- * {@link org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem} or an
+ * {@link org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem} or an
  * {@link org.eclipse.emf.ecore.EObject} is selected.
  * 
  * The concerned properties are "matchesContentType" and "matchesPattern" but we just want to avoid the

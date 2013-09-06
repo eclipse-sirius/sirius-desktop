@@ -27,6 +27,7 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.core.providers.IViewProvider;
@@ -65,6 +66,7 @@ import org.eclipse.sirius.diagram.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.business.internal.view.LayoutData;
 import org.eclipse.sirius.diagram.internal.providers.SiriusViewProvider;
 import org.eclipse.sirius.diagram.internal.refresh.borderednode.CanonicalDBorderItemLocator;
+import org.eclipse.sirius.diagram.internal.view.factories.DNodeContainerViewFactory;
 import org.eclipse.sirius.diagram.internal.view.factories.ViewSizeHint;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.part.SiriusDiagramUpdater;
@@ -155,7 +157,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
 
         // create a view for each remaining semantic element.
         Set<View> createdViews = createViews(semanticChildren, gmfView.getType(), gmfView);
-        
+
         boolean regionContainer = semanticView instanceof DNodeContainer && new DNodeContainerExperimentalQuery((DNodeContainer) semanticView).isRegionContainer();
         boolean region = semanticView instanceof DDiagramElementContainer && new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) semanticView).isRegion();
         if (!orphaned.isEmpty() || !createdViews.isEmpty()) {
@@ -167,11 +169,8 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                     eContainer = eContainer.eContainer();
                 }
                 regionsToLayout.add(eContainer);
-            }  
+            }
         }
-        
-       
-        
 
         // Manage Nodes ordering in Compartment according to DNodeListElement
         // ordering
@@ -300,6 +299,14 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
                 if (!updateLocationAndSize(createdView, previousCreatedView)) {
                     createdViewsToLayout.add(createdView);
                 } else {
+                    // location and size will not be updated so we remove this
+                    // marker to make sure that the next arrange all with auto
+                    // size will layout this view "normally". see
+                    // ArrangeAllWithAutoSize#isDefaultSizeHasJustBeenSet for
+                    // more details
+                    if (viewKind == Node.class) {
+                        removeJustCreatedMarker(createdView);
+                    }
                     previousCreatedView = createdView;
                 }
                 if (createdView instanceof Node) {
@@ -321,6 +328,24 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         }
 
         return createdViews;
+
+    }
+
+    private void removeJustCreatedMarker(View createdView) {
+
+        // to avoid concurrent modification exception
+        Set<Adapter> adapters = Sets.newLinkedHashSet(createdView.eAdapters());
+        Iterator<Adapter> iterator = adapters.iterator();
+        List<Adapter> adaptersToRemove = new ArrayList<Adapter>();
+        while (iterator.hasNext()) {
+            Adapter adapter = iterator.next();
+            if (adapter.isAdapterForType(DNodeContainerViewFactory.class)) {
+                adaptersToRemove.add(adapter);
+            }
+        }
+        for (Adapter adapterToRemove : adaptersToRemove) {
+            createdView.eAdapters().remove(adapterToRemove);
+        }
 
     }
 

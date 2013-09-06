@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Trees</title>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="TreeEditors">Tree Editors</h1>
+		<p>This document explains how to use Sirius tree editors/modelers which allow to view and manipulate data in a hierarchical way.</p>
+		<ol class="toc" style="list-style: disc;">
+			<li>
+				<a href="Trees.html#TreeEditors">Tree Editors</a>
+				<ol style="list-style: disc;">
+					<li>
+						<a href="Trees.html#introduction">Introduction</a>
+					</li>
+					<li>
+						<a href="Trees.html#managing">Creating, Renaming and Deleting Trees</a>
+					</li>
+					<li>
+						<a href="Trees.html#refresh">Refreshing Trees</a>
+					</li>
+					<li>
+						<a href="Trees.html#items">Adding and Removing Tree Items</a>
+					</li>
+					<li>
+						<a href="Trees.html#editing">Editing Tree Items</a>
+					</li>
+					<li>
+						<a href="Trees.html#TreeItemsDragandDrop">Tree Items Drag and Drop</a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<h2 id="introduction">Introduction</h2>
+		<p>Sirius provides support for hierarchical representations called 
+			<em>trees</em>, which represent information in a hierarchical way.
+		</p> 
+		<img border="0" src="images/tree_representation1.png"/>
+		<p>Note that as always with Sirius, some of the features described below may or may not be available with all specific tree editors. Some tree editors are configured to only display information but do not allow edition for example. It all depends on which features the person who 
+			<em>specified</em> (configured) the tree decided to support.
+		</p>
+		<h2 id="managing">Creating, Renaming and Deleting Trees</h2>
+		<p>Trees are managed in the same way as the other kinds or representations supported by Sirius (diagrams, tables...). They are created either through the 
+			<em>New Representation</em> context menu on a semantic element, or through the 
+			<em>Create Representation</em> action on the context menu of a 
+			<em>Modeling Project</em>. Newly created trees are automatically opened. To open an existing tree, simply double-click on it in the 
+			<em>Model Explorer</em>: it will appear both inside the representation file (
+			<code>aird</code> file) and under the semantic element it represents inside the semantic model.
+		</p>
+		<p>You can rename, duplicate or delete a tree by choosing the corresponding action (resp. 
+			<em>Rename</em>, 
+			<em>Copy</em> or 
+			<em>Delete</em>) in the context menu on the tree element in the 
+			<em>Model Explorer</em>.
+		</p>
+		<h2 id="refresh">Refreshing Trees</h2>
+		<p>Depending on the value of the 
+			<i>Automatic refresh</i> Sirius preference (accessible through 
+			<i>Window</i> / 
+			<i>Preferences...</i> / 
+			<i>Sirius</i>), the contents of opened trees may or may not be automatically updated when the underlying semantic model changes. In 
+			<em>manual refresh</em> mode (when 
+			<i>Automatic refresh</i> is unchecked), you can explicitly request a refresh of the whole tree by using the 
+			<em>Refresh</em> button in the main Eclipse toolbar, as shown below:
+		</p> 
+		<img border="0" src="images/tree_representation2.png"/>
+		<h2 id="items">Adding and Removing Tree Items</h2>
+		<p>If the tree&#8217;s configuration has defined tools to create new element (tree items), they will appear in the context menu of existing tree items. The name of the creation tools is not fixed; it depend on the tree&#8217;s configuration, so it will be different for each tree modeler. Note that you must have a tree element selected for the creation tools to appear in the context menu, and the behavior of the tool may depend on the selected element. </p> 
+		<img border="0" src="images/tree_representation3.png"/>
+		<p>If the tree is completely empty and you have no element to select, you can still create elements (if supported by the tree&#8217;s configuration) by using the drop-down menus in the main Eclipse toolbar (see screenshot).</p>
+		<img border="0" src="images/tree_representation4.png"/>
+		<h2 id="editing">Editing Tree Items</h2>
+		<p>There are several ways to activate the edition of a tree item:</p>
+		<ul>
+			<li>F2 key, </li>
+			<li>Double-click, </li>
+			<li>Any alpha-numeric character key (for text edition only).</li>
+		</ul>
+		<p>Once the edit mode is enabled, simply enter your text and hit 
+			<em>Return</em> to validate. The expected format of the edit string and its interpretation depends on how the tree&#8217;s configuration has been set up to interpret the text you enter.
+		</p>
+		<h2 id="TreeItemsDragandDrop">Tree Items Drag and Drop</h2>
+		<p>Drag and drop is a feature which can be enabled by the specifier in the tree configuration. It is turned off by default.</p>
+		<p>Simply select the Tree Items you would like to drag, and drop them inside an other Tree Item. Most of the time, this will result in the dropped element being added to the new location, but the exact effect of the operation is entirely dependent on how the tree was configured by its specifier.</p>
+		<p>Notice that it may also possible to drag elements from other Eclipse views. Again, this depends on how the tree was configured.</p>
+	</body>
+</html>

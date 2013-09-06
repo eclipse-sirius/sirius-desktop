@@ -24,9 +24,9 @@ import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Iterables;
 
+import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.provider.SiriusEditPlugin;
-import org.eclipse.sirius.ui.tools.api.views.common.item.ItemDecorator;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 
 /**

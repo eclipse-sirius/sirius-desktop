@@ -43,6 +43,8 @@ public class SaveSessionWhenNoDialectEditorsListener implements ResourceSyncClie
 
     private final Session session;
 
+    private Job saveSessionJob;
+
     private boolean activation = true;
 
     /**
@@ -67,6 +69,7 @@ public class SaveSessionWhenNoDialectEditorsListener implements ResourceSyncClie
      */
     public void unregister() {
         ResourceSetSync.getOrInstallResourceSetSync(session.getTransactionalEditingDomain()).unregisterClient(this);
+        saveSessionJob = null;
     }
 
     /**
@@ -129,8 +132,10 @@ public class SaveSessionWhenNoDialectEditorsListener implements ResourceSyncClie
                 return;
 
             if (SessionStatus.DIRTY.equals(session.getStatus())) {
-                Job saveSessionJob = new SaveSessionJob(session);
-                saveSessionJob.schedule();
+                if (saveSessionJob == null || saveSessionJob != null && saveSessionJob.getState() == Job.NONE) {
+                    saveSessionJob = new SaveSessionJob(session);
+                    saveSessionJob.schedule();
+                }
             }
         }
     }

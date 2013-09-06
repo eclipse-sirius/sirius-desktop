@@ -22,6 +22,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.ui.PlatformUI;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -94,37 +95,29 @@ public class VisibilityPostCommitListener extends ResourceSetListenerImpl {
     }
 
     private void forceNodeAndEdgeEditPartsRefresh(ResourceSetChangeEvent event) {
-        Set<IGraphicalEditPart> parts = Sets.newHashSet();
-        Set<View> changedElements = getElementsWhoseVisibilityChanged(event);
+        final Set<View> changedElements = getElementsWhoseVisibilityChanged(event);
+        final Set<IGraphicalEditPart> parts = Sets.newHashSet();
         for (View view : changedElements) {
             Option<IGraphicalEditPart> elementParts = getEditPartsFor(view);
             if (elementParts.some()) {
                 parts.add(elementParts.get());
             }
         }
-        for (DEdgeEditPart edgePart : Iterables.filter(parts, DEdgeEditPart.class)) {
-            Edge edge = (Edge) edgePart.getNotationView();
-            Option<IGraphicalEditPart> sourcePart = getEditPartsFor(edge.getSource());
-            if (sourcePart.some()) {
-                sourcePart.get().refresh();
-            }
-            Option<IGraphicalEditPart> targetPart = getEditPartsFor(edge.getTarget());
-            if (targetPart.some()) {
-                targetPart.get().refresh();
-            }
-        }
-        for (Edge edge : Iterables.filter(changedElements, Edge.class)) {
-            if (!getEditPartsFor(edge).some()) {
-                Option<IGraphicalEditPart> sourcePart = getEditPartsFor(edge.getSource());
-                if (sourcePart.some()) {
-                    sourcePart.get().refresh();
-                }
-                Option<IGraphicalEditPart> targetPart = getEditPartsFor(edge.getTarget());
-                if (targetPart.some()) {
-                    targetPart.get().refresh();
+        PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+            public void run() {
+                for (DEdgeEditPart edgePart : Iterables.filter(parts, DEdgeEditPart.class)) {
+                    Edge edge = (Edge) edgePart.getNotationView();
+                    Option<IGraphicalEditPart> sourcePart = getEditPartsFor(edge.getSource());
+                    if (sourcePart.some()) {
+                        sourcePart.get().refresh();
+                    }
+                    Option<IGraphicalEditPart> targetPart = getEditPartsFor(edge.getTarget());
+                    if (targetPart.some()) {
+                        targetPart.get().refresh();
+                    }
                 }
             }
-        }
+        });
     }
 
     private Option<IGraphicalEditPart> getEditPartsFor(View view) {

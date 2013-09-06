@@ -1,0 +1,359 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Specifying_Viewpoints</title>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SpecifyingViewpoints">Specifying Viewpoints</h1>
+		<ol class="toc" style="list-style: disc;">
+			<li>
+				<a href="Specifying_Viewpoints.html#SpecifyingViewpoints">Specifying Viewpoints</a>
+				<ol style="list-style: disc;">
+					<li>
+						<a href="Specifying_Viewpoints.html#introduction">Introduction</a>
+					</li>
+					<li>
+						<a href="Specifying_Viewpoints.html#concepts">Philosophy and Concepts</a>
+					</li>
+					<li>
+						<a href="Specifying_Viewpoints.html#vsp">Viewpoint Specification Projects</a>
+					</li>
+					<li>
+						<a href="Specifying_Viewpoints.html#vsm">Viewpoint Specification Models</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Specifying_Viewpoints.html#vsm_organization">Organization</a>
+							</li>
+							<li>
+								<a href="Specifying_Viewpoints.html#common_attributes">Common attributes</a>
+							</li>
+							<li>
+								<a href="Specifying_Viewpoints.html#type_names">Type Names</a>
+							</li>
+							<li>
+								<a href="Specifying_Viewpoints.html#interpreted_expressions">Interpreted Expressions</a>
+							</li>
+							<li>
+								<a href="Specifying_Viewpoints.html#model_operations">Model Operations</a>
+							</li>
+							<li>
+								<a href="Specifying_Viewpoints.html#validation">VSM Validation</a>
+							</li>
+							<li>
+								<a href="Specifying_Viewpoints.html#dynamic">Dynamic Development</a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<p><div style="display: none">
+			<br/>  TODO Add a few screenshots to make the document less dry.
+			<br/></div>
+		</p>
+		<p>This document gives a general overview of how viewpoints are specified, tested and deployed.</p>
+		<h2 id="introduction">Introduction</h2>
+		<p>
+			<em>Sirius</em> is a modeling tool which has been originally created in the context of complex systems modeling. The complexity of those systems makes necessary the collaboration of people with different concerns. For the same domain and on the same data, there are different levels of analysis, different roles and different concerns possible. Each of these correspond to a different 
+			<em>viewpoint</em> on the same 
+			<em>domain  model</em>, and Sirius (the system) gives you all the tools to specify the viewpoints which are relevant to your business domain, whatever it is.
+		</p>
+		<p>More pragmatically, Sirius assumes that you 
+			<em>domain model</em> is defined using 
+			<em>EMF</em> (Eclipse Modeling Framework), which is an industry standard with a rich eco-system. Many existing standards like UML (for software systems) or TOGAF (for Enterprise Architecture) have an implementation based on EMF. You can also easily define your own 
+			<em>Domain-Specific Model</em> (sometimes called 
+			<em>Domain-Specific Language</em>) to more precisely suit your specific needs and avoid unnecessary complexities. While this part (the domain specification) is not strictly in the scope of Sirius, the system provides a graphical modeler to ease the creation of your own 
+			<em>DSM</em> (Domain-Specific Model).
+		</p>
+		<p>Given such a domain model, which defines concepts and their relations in the abstract, Sirius will allow you to easily specify 
+			<em>concrete representations</em> of these models. Representations can be diagrams, tables, matrices (cross-tables) or hierarchies (trees). You can define as many of them as you need, some more detailed than others, some customized for certain tasks or roles (e.g. initial design, review, certification, etc.). These representations are not just static: provided you specify the appropriate tools (see below), they can be complete modeling environments where users can create, modify and validate their designs. Representations can be logically organized in 
+			<em>viewpoints</em>, and end-users can enable or disable viewpoints at will to work on the same model through different, but logically consistent, points of view.
+		</p>
+		<p>The main strengths of the Sirius platform can be summarized as is:</p>
+		<ul>
+			<li>it is based on an open and widely used 
+				<em>industry standard</em> (the Eclipse Modeling Framework);
+			</li>
+			<li>it can 
+				<em>adapt itself</em> to any EMF-compatible DSM: it can use standards like UML if they suit your needs, but it does not force you to do so, and you can easily create your own DSM which can thus be simpler and better suited to your specific needs;
+			</li>
+			<li>it provides a 
+				<em>strong separation</em> between the semantic models it manipulates, where your business value resides, and the representation models (which deal with, for example, the size and location of graphical shapes on a diagram). This means your domain models have no adherence to Sirius itself, and can be manipulate with any of the other tools in the EMF eco-system (e.g. Acceleo to generate source code or other textual artifacts);
+			</li>
+			<li>it allows you to define many 
+				<em>different representations</em> on your domain models: diagrams, tables, trees, showing different levels of details and offering different edition capabilities depending on their usage;
+			</li>
+			<li>it is 
+				<em>easy to use</em> and supports 
+				<em>very fast</em> development. Once you become familiar with the tool, you will be able to get a simple diagram in a matter of minutes, a prototype suited for a client demonstration in a few hours, and a fully-functional and customized modeler in a few days of work;
+			</li>
+			<li>it is 
+				<em>extensible</em>: by integrating in the Eclipse platform and offering open APIs, you can extend and integrate your Sirius modelers with other tools to provide a fully-customized modeling workbench to your users.
+			</li>
+		</ul>
+		<h2 id="concepts">Philosophy and Concepts</h2>
+		<p>As explained in introduction, 
+			<em>Sirius</em> allows you to specify dedicated representations and associated tooling. As a 
+			<em>specifier</em>, your role will be to configure the generic Sirius platform to provide these representations to your users. This is done by creating and configuring a 
+			<a href="../../Glossary.html#VSM">
+				<em>Viewpoint Specification Model</em>
+			</a> which describes the structure, appearance and behavior of your modelers. This document does not deal with the definition of your domain model; you can use a standard one like UML, SysML, BPMN or TOGAF, or create a custom one. The only assumptions Sirius makes is that your model is based on EMF.
+		</p>
+		<p>The main concepts you will work with as a specifier are:</p>
+		<ul>
+			<li>
+				<strong>Viewpoint</strong> A viewpoint is one of the core elements that a specifier defines: it is a logical set of 
+				<strong>representation specifications</strong> and 
+				<strong>representation extension specifications</strong>.
+			</li>
+			<li>
+				<strong>Representation</strong> A 
+				<em>representation</em> is a group of 
+				<strong>graphical construction which represent domain data</strong>. A representation describes the structure, appearance and behavior of your modelers. By default, Sirius supports four kinds of representations (called 
+				<em>dialects</em>): diagrams, tables, matrices (aka cross-tables), and trees. All follow the same basic principles in their definitions.
+			</li>
+			<li>
+				<strong>Mapping</strong> A 
+				<em>mapping</em> identifies a sub-set of the semantic model&#8217;s element that should appear in a representation and indicates how they should be represented. Each dialect offers different kinds of mappings. For example, diagrams provide 
+				<em>container mappings</em>, which can be used to represent semantic elements with graphical containers, where other elements (specified by other mappings) can appear. A mapping exists inside the 
+				<em>Viewpoint Specification Model</em>, but on a concrete representation it will produce 
+				<em>instances</em>. If you specify a container mapping to represent, say, divisions in an enterprise, and the model of your enterprise contains four divisions, a concrete diagram will show four containers, each an instance of the same mapping, but associated to a different semantic element.
+			</li>
+			<li>
+				<strong>Style</strong> Each mapping can have one or several 
+				<em>styles</em> associated to it, which are used to configure the visual appearance of the elements they represent. For example, for diagram elements this would include their shape and colors.
+			</li>
+			<li>
+				<strong>Tool</strong> Without tools, your representations would be only visualizations, with no edition capabilities. While this can be sometimes useful, most representations will allow users to create, edit and delete elements. Tools are associated to mappings to describe their behaviors. Each kind of user interaction supported by 
+				<em>Sirius</em> (e.g. creation or deletion, label editing, edge reconnection...) is specified by a different kind of tool, but they all follow the same principles in their definition. 
+			</li>
+		</ul>
+		<h2 id="vsp">Viewpoint Specification Projects</h2>
+		<p>Note: When working as a Sirius specifier, it is recommended to use the 
+			<em>Sirius</em> perspective, which provides some additional shortcuts and views. The 
+			<em>Modeling</em> perspective is simpler and oriented towards end-users.
+		</p>
+		<p>Siriuss are specified as models (see below) inside 
+			<em>Viewpoint Specification Projects</em>. These 
+			<a href="../../Glossary.html#VSP">
+				<em>VSPs</em>
+			</a> are normal Eclipse plug-in project, which happen to contain one or several 
+			<code>*.odesign</code> files (the extension used for 
+			<a href="../../Glossary.html#VSM">
+				<em>Viewpoint Specification Models</em>
+			</a> ). You can create such a project using the supplied wizard: 
+			<em>New &gt; Viewpoint Specification Project</em>.
+		</p>
+		<p>By convention, the VSM (or VSMs) defined in your project are stored inside a 
+			<code>description</code> folder. If you want to place them in a different location, make sure to add this location into the plug-in&#8217;s 
+			<code>build.properties</code> so that it is included in the deployed version.
+		</p>
+		<p>The 
+			<em>Viewpoint Specification Projects</em> created by the default wizard are also Acceleo 3 projects. This is because inside a VSM you will need to write 
+			<a href="Writing_Queries.html">model query expression</a>, and the default language to do so is Acceleo 3. Being an Acceleo project means that you can easily add Acceleo files (
+			<code>*.mtl</code>) inside the project&#8217;s source to define complex or commonly used queries (but be sure to read 
+			<a href="Writing_Queries.html#acceleo">the Acceleo 3 section</a> about how to properly deploy such plug-ins if you do).
+		</p>
+		<p>Other than that, the project is a normal Java plug-in project. You can add 
+			<a href="Writing_Queries.html#service_methods">service classes</a> into it if the query language you use support it, and any other Java code, including Eclipse views, actions, etc.
+		</p>
+		<p>
+			<strong>Important:</strong> Any VSM you place in the Eclipse workspace will be immediately available for use and testing, with no deployment. This is to facilitate dynamic and iterative development of viewpoints. However, when you 
+			<strong>deploy</strong> your VSMs, they 
+			<strong>must</strong> be part of a 
+			<em>VSP</em>, and they 
+			<strong>must</strong> be registered in the plug-in&#8217;s activator class. The activator generated by the 
+			<em>VSP</em> wizard is properly configured, but if you rename your 
+			<em>VSM</em> or add new ones, be sure to edit the activator class so that all your 
+			<em>VSMs</em> are correctly registered inside the Sirius platform when deployed.
+		</p>
+		<h2 id="vsm">Viewpoint Specification Models</h2>
+		<p>The core part of a 
+			<em>VSP</em> is the 
+			<em>Viewpoint Specification Model</em> (or models) it contains. These are stored in 
+			<code>*.odesign</code> files, usually in the 
+			<code>description</code> folder of the project. A 
+			<em>VSM</em> specifies a set of 
+			<em>Viewpoints</em> and their representations (diagrams, trees...).
+		</p>
+		<p>To edit a 
+			<em>VSM</em>, simply double-click on it, and a tree editor will open. The editor follows the conventions of standard EMF editors: selecting an element will show its properties in the 
+			<em>Properties</em> view, where you can edit them. To create new elements, simply right-click on its parent and choose from one one the 
+			<em>New XXX</em> menus. To delete an element and all its sub-elements, simply select it and hit the 
+			<em>Delete</em> key or right-click and choose 
+			<em>Delete</em>.
+		</p>
+		<h3 id="vsm_organization">Organization</h3>
+		<p>The top-level element of a 
+			<em>VSM</em> is a 
+			<em>Group</em> element. It has no specific semantics and serves only as a container for the other elements. Note however that once you define its 
+			<em>Name</em>, you should never change it as it becomes part of the identification of all the elements inside the 
+			<em>VSM</em>. If you change it, any concrete representations created using that 
+			<em>VSM</em> will be broken.
+		</p>
+		<p>Inside a 
+			<em>Group</em>, you can create an optional 
+			<em>User Colors Palette</em>, with shared 
+			<a href="Colors.html">color definitions</a>; this is useful to define a uniform color palette for all your viewpoints and representations. You can also, and more importantly, define 
+			<em>Viewpoint</em> elements.
+		</p>
+		<p>Besides its 
+			<em>Id</em> and 
+			<em>Label</em> (see below), a 
+			<em>Viewpoint</em> can be associated to one or more 
+			<em>Model File Extensions</em>, separated by space. This can be used to restrict the availability of the viewpoint only to modeling projects which contain semantic models of the specified types. For example, to make your viewpoint available to UML and SysML models, you can specify 
+			<code>uml sysml</code> (note that the syntax specifies only the file extension, 
+			<code>uml</code>, not a pattern like 
+			<code>*.uml</code>). You can use a star, 
+			<code>*</code>, to make your viewpoint available for 
+			<strong>all</strong> models, but it is normally prefered be as specific as possible so as not to interfere with unrelated models and projects.
+		</p>
+		<p>Inside a 
+			<em>Viewpoint</em> element, you can create:
+		</p>
+		<ul>
+			<li>
+				<em>Representation Descriptions</em>, for 
+				<a href="../diagrams/Diagrams.html">diagrams</a>, 
+				<a href="../sequences/Sequence%20Diagrams.html">sequence diagrams</a>, 
+				<a href="../tables/Tables.html">tables and cross-tables</a>, and 
+				<a href="../trees/Trees.html">trees</a>.
+			</li>
+			<li>
+				<em>Representation Extensions</em>, currently supported only for 
+				<a href="../diagrams/Diagrams.html#diagram_extension">diagrams</a>.
+			</li>
+			<li>
+				<a href="../diagrams/Diagrams.html#validation">
+					<em>Validation Rules</em>
+				</a>, which will apply to all representations defined inside this viewpoint.
+			</li>
+			<li>And finally 
+				<em>Java Extensions</em>. These refer (through its fully qualified name), to a Java class defined in the 
+				<em>Viewpoint Specification Project</em> which defines 
+				<a href="Writing_Queries.html#service_methods">service methods</a> and make these services available inside all the representations defined in the viewpoint. If you 
+				<a href="Writing_Queries.html#acceleo">use Acceleo 3 to write your expressions</a>, you can also use these elements to declare Acceleo modules in the project that define MTL queries you want to use in your expressions.
+			</li>
+		</ul>
+		<h3 id="common_attributes">Common attributes</h3>
+		<p>Many of the elements used to specify viewpoint share some common configuration attributes. They are described in general terms in this section, and referenced from the specific element&#8217;s sections which used them (sometimes with additional details only relevant for this element).</p>
+		<ul>
+			<li>
+				<em>Id</em>: The mandatory identifier of the element. This identifier is mostly visible to the specifier in the description editor. It must be unique in the context of the viewpoint it is part of. The 
+				<em>Id</em> is used internally to identify the element, and must be kept stable across different versions of the VSM (or it will make representations created with the old 
+				<em>Id</em> unusable).
+			</li>
+			<li>
+				<em>Label</em>: The label of the element. It&#8217;s used to display this element to the end-user. By default, if this label is blank, the 
+				<em>Id</em> is used to display this element to the end user. It can be changed with no impact on existing representation files.
+			</li>
+			<li>
+				<em>Documentation</em>: All the elements in a description file contain a 
+				<strong>Documentation</strong> attribute available in the 
+				<strong>Documentation</strong> category. This attribute can be used by the specifier to add comments and documentation to these elements. The content of this attribute is not visible to the end users of the viewpoints.
+			</li>
+			<li>
+				<em>End-user documentation</em>: This attribute describes this element for the end-user. It&#8217;s available in the 
+				<strong>Documentation</strong> category. This attribute can be used by the specifier to add comments and documentation to these elements bounds for the end-user.
+			</li>
+		</ul>
+		<h3 id="type_names">Type Names</h3>
+		<p>Some 
+			<em>VSM</em> elements will need you to specify one or more 
+			<em>Type Names</em> to configure them, usually types from the semantic domain model being represented (for example the 
+			<em>Domain Class</em> for mapping definitions). You can easily identify 
+			<em>Type Name</em> fields by their green background in the 
+			<em>Properties</em> sheet of an element.
+		</p>
+		<p>
+			<img border="0" src="images/domain_class.png"/>
+			<br/><em>
+			<br/><ul>
+			<br/>
+			<img border="0" src="images/tricks.png"/> 
+			<em>use the 
+				<img border="0" src="images/questionMarque.png"/> icon to access the available fields tooltips:
+			</em>
+			<br/><ul>
+			<br/>	<li> 
+			<b>Id</b> field: The identifier of this element. Must be unique. Changing this identifier will break existing user models which reference the old identifier.</li>
+			<br/>	<li> 
+			<b>Label</b> field: The label used to display this to the end-user.</li>
+			<br/>	<li> 
+			<b>Domain Class</b> field: Type of the element represented by the Node.</li>
+			<br/>	<li> 
+			<b>Semantic Candidates Expression</b> field: Restrict the list of elements to consider before creating the graphical elements. If it is not set, then all semantic models in session will be browsed and any element of the given type validating the precondition expression will cause the creation of a graphical element. If you set this attribute then only the elements returned by the expression evaluation will be considered.</li>
+			<br/>	<li> 
+			<b>List Container</b> field: Tell whether the container will display it&#8217;s child as list elements or as shapes.</li>
+			<br/></ul>
+			<br/></ul>
+			<br/></em>
+		</p>
+		<p>The syntax for type names can be the basic name, like 
+			<code>Class</code>, a qualified name using name of the EMF EPackage which defines the type, like 
+			<code>uml.Class</code>, or a fully qualified URI like 
+			<code>http://www.eclipse.org/uml2/3.0.0/UML#//Class</code>.
+		</p>
+		<p>Auto-completion is available in these fields using the 
+			<em>Ctrl+Space</em> shortcut. It is recommended to explicitly associate a meta-model (or more) to your representations definitions to allow for smarter completion. Otherwise by default it will include all types from any EMF meta-model available.
+		</p>
+		<h3 id="interpreted_expressions">Interpreted Expressions</h3>
+		<p>Many 
+			<em>VSM</em> elements require you to specify 
+			<em>Interpreted Expressions</em> to configure them. These can be queries to select elements (as in mappings for example), or more general expressions to compute value (like the text to use for the elements' labels).
+		</p>
+		<p>You can easily identify 
+			<em>Interpreted Expressions</em> by their yellow background in the 
+			<em>Prorperties</em> sheet of an element. For all such field, you can use any of the supported languages to write the expression. Refer to the 
+			<a href="Writing_Queries.html">queries documentation</a> for more details.
+		</p>
+		<p>
+			<img border="0" src="images/interpreted_expressions.png"/>
+		</p>
+		<h3 id="model_operations">Model Operations</h3>
+		<p>Whenever a 
+			<em>VSM</em> requires you to specify a behavior, for example inside any 
+			<em>Tool</em> definition, you can use any of the available 
+			<em>Model Operations</em> to do so. Refer to the 
+			<a href="Model_Operations.html">Model Operations documentation</a> for more details.
+		</p>
+		<h3 id="validation">VSM Validation</h3>
+		<p>It is possible to validate your 
+			<a href="../../Glossary.html#VSM">
+				<em>Viewpoint Specification Model</em>
+			</a> , to check that your Representations, Mappings and Tools are correctly specified. It will help you to find missing element or erroneous one (e.g. missing required expression).
+		</p>
+		<p>To validate your VSM, open your 
+			<code>odesign</code> file, right-click on the top-level 
+			<em>Group</em> element and select 
+			<em>Viewpoint specification Editor &gt; Validate</em>. A dialog Box will appear and indicate if the validation succeeded. If not, it will give you details about the detected problems (click on the &#8249;details&#8250; button of the dialog box). If problems are detected, they will also be added to the Eclipse 
+			<em>Problems</em> view. Double-clicking on one of these problems will select the concerned element in the 
+			<a href="../../Glossary.html#VSM">
+				<em>Viewpoint Specification Model</em>
+			</a> editor.
+		</p>
+		<p>You can also validate one specific element by right-clicking on it in the 
+			<a href="../../Glossary.html#VSM">
+				<em>Viewpoint Specification Models</em>
+			</a> and launching the validation process. All the children of the selected element will be validated too. This fine-grained validation is useful to localize issues in the Specification Model, especially when it contains a lot of elements.
+		</p>
+		<p>It is also possible to use the button <img src="images/specifier-guide/complete_task.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/>, at the top right corner of the editor to launch the validation. This icon changes (<img src="images/specifier-guide/validate_model.png" style="box-shadow:none;display:inline;margin:0px;padding:0px;"/>) when we change the VSM to encourage the user to validate the VSM before saving.</p>
+		<h3 id="dynamic">Dynamic Development</h3>
+		<p>Sirius supports dynamic development of your 
+			<em>VSM</em> with no need for deployment of your project to test it. If the domain model definition (the EMF meta-model plug-in) is installed in your development environment, and as long as your VSM does not use advanced features which require a deployment (like the definition of new 
+			<em>External Java Actions</em> for example), you can test your representations while you are developing them. It is the recommended way to work, especially in the initial development phases, to easily experiment different approaches and see the results immediately.
+		</p>
+		<p>To do this, simply create a modeling project in your development environment, alongside the Sirius Specification Project, and add a sample domain model to it. When you open the 
+			<em>Viewpoint Selection</em> dialog on the sample project, you will see that all the viewpoints which are being developed in the same workspace are also made available, in addition to the ones installed as plug-ins. Select the ones you want and create sample representations.
+		</p>
+		<p>Keep both your representations and the VSM that define them open at the same time. Whenever you change some definition or add new elements into your VSM, simply save it. Sirius will automatically detect the change, reload the new definition and apply it to your existing representations. This way you can develop your representations iteratively, for example starting from an empty diagram and adding more elements, styles and tools while and testing them immediately.</p>
+		<p><div style="display: none">
+			<br/>  TODO Add a screenshot with both a VSM (on the left) and the corresponding diagram (on the right) opened at the same time. Make sure the &#171;Model Explorer&#187; is also visible to show both the VSP and the Modeling project they correspond to.
+			<br/></div>
+		</p>
+		<p>Note that Sirius does its best to take into account any change in the VSM, even for existing and opened representations. Sometimes, if the changes are too complex or in some corner cases not yet supported, you may need to close and reopen your representation, or in extreme case delete it and create a new one, in order to take the VSM changes into account properly.</p>
+	</body>
+</html>

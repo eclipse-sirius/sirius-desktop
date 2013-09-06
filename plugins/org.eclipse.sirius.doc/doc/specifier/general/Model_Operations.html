@@ -1,0 +1,362 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Model_Operations</title>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SpecifyingModelOperations">Specifying Model Operations</h1>
+		<h2 id="introduction">Introduction</h2>
+		<p>Most modelers created with Sirius are not just used to view models, but also to edit them. The edition behavior is specified through different kinds of tools (e.g. 
+			<em>Direct Edit</em>, 
+			<em>Creation Tool</em>, etc.) which depend on the dialect. The behavior of each tool of each dialect is specified inside the VSM using a small 
+			<em>Domain Specific Language</em> of model operations. This document describes all the model operations supported by this language. Unless otherwise specified, model operations can be used/composed for any tool of any dialect.
+		</p>
+		<ol class="toc" style="list-style: disc;">
+			<li>
+				<a href="Model_Operations.html#SpecifyingModelOperations">Specifying Model Operations</a>
+				<ol style="list-style: disc;">
+					<li>
+						<a href="Model_Operations.html#introduction">Introduction</a>
+					</li>
+					<li>
+						<a href="Model_Operations.html#flow">Flow Control Operations</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Model_Operations.html#begin">Begin</a>
+							</li>
+							<li>
+								<a href="Model_Operations.html#goto">Go To</a>
+							</li>
+							<li>
+								<a href="Model_Operations.html#if">If</a>
+							</li>
+							<li>
+								<a href="Model_Operations.html#switch">Switch/Case</a>
+							</li>
+							<li>
+								<a href="Model_Operations.html#for">For</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="Model_Operations.html#model_change">Model Change Operations</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Model_Operations.html#create_instance">Create Instance</a>
+							</li>
+							<li>
+								<a href="Model_Operations.html#set">Set</a>
+							</li>
+							<li>
+								<a href="Model_Operations.html#unset">Unset</a>
+							</li>
+							<li>
+								<a href="Model_Operations.html#remove">Remove</a>
+							</li>
+							<li>
+								<a href="Model_Operations.html#move">Move</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="Model_Operations.html#representations">Representations Operations</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Model_Operations.html#create_view">Create View</a>
+							</li>
+							<li>
+								<a href="Model_Operations.html#created_edge_view">Create Edge View</a>
+							</li>
+							<li>
+								<a href="Model_Operations.html#delete_view">Delete View</a>
+							</li>
+							<li>
+								<a href="Model_Operations.html#navigation">Navigation</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="Model_Operations.html#extensions">Java Extensions</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Model_Operations.html#external_java_action">External Java Action</a>
+							</li>
+							<li>
+								<a href="Model_Operations.html#external_java_action_call">External Java Action Call</a>
+							</li>
+							<li>
+								<a href="Model_Operations.html#standard_java_actions">Standard Java Actions</a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<h2 id="flow">Flow Control Operations</h2>
+		<h3 id="begin">Begin</h3>
+		<p>This element has no property. It only serves as an entry point to the specification of a tool&#8217;s behavior. Note that a 
+			<em>Begin</em> element can only contain a single operation. It is recommended to begin a tool&#8217;s specification by creating a no-op 
+			<a href="Model_Operations.html#goto">
+				<em>Go To</em>
+			</a> operation directly inside the 
+			<em>Begin</em>, as a 
+			<em>Go To</em> can contain multiple operations.
+		</p>
+		<h3 id="goto">Go To</h3>
+		<p>Every model operation is executed in the context of a specific model element (the equivalent of 
+			<code>this</code> or 
+			<code>self</code> in a programming language). Usually, at the beginning of a tool, the context is the semantic element to which the tool is applied (the actual details can vary from tool to tool, refer to their documentation). The 
+			<em>Go To</em> operation changes the context to a new element and then executes any sub-operations it contains in sequence (in the order of definition).
+		</p>
+		<p>The new context element to go to is specified by the 
+			<em>Browse Expression</em> property of the 
+			<em>Go To</em> operation. It is executed in the context element of the 
+			<em>Go To</em> operation itself, and should return another model element (which will become the context for the sub-operations). If the expression does not return any element, it is not an error, but the sub-operations are not executed. If the expression returns several elements, only the first one is retained and used as the context for the sub-operations.
+		</p>
+		<p>
+			<em>Tip:</em> Using a no-op 
+			<em>Go To</em> (with a browse expression like 
+			<code>[self/]</code>  which does not actually change the context) can be useful to group multiple operations into a single &#171;block&#187;, especially in contexts where only one model operation is supported (e.g. inside a 
+			<em>Begin</em> element).
+		</p>
+		<h3 id="if">If</h3>
+		<p>The 
+			<em>If</em> operation is used for condition execution. It first evaluates its 
+			<em>Condition Expression</em> in the current context, and if the result of this expression (interpreted as a boolean) is true then it executes any sub-operations it contains in sequence (in the order of definition). If the expression returns a false value, 
+			<em>If</em> does nothing.
+		</p>
+		<p>
+			<em>Note:</em> &#171;else&#187; and &#171;else if&#187; constructs are not supported directly, but the same effect can be achieved using the 
+			<a href="Model_Operations.html#switch">
+				<em>Switch</em>
+			</a> operation with the appropriate 
+			<em>Cases</em>.
+		</p>
+		<h3 id="switch">Switch/Case</h3>
+		<p>A 
+			<em>Switch</em> operation is used for branching. It is a generalization of the 
+			<em>If</em> constructs which supports multiple conditions. The 
+			<em>Switch</em> operation itself has not property; it serves only as a container for one or more 
+			<em>Case</em> elements, and an optional 
+			<em>Default</em> element. Each 
+			<em>Case</em> element has a 
+			<em>Condition Expression</em>, and may contain sub-operations. The 
+			<em>Default</em> element has no property but may contain sub-operations.
+		</p>
+		<p>When a 
+			<em>Switch</em> is executed, the 
+			<em>Condition Expressions</em> or each of its 
+			<em>Case</em> elements is evaluated (in the current context) until one returns a true value. If one is found, the sub-operations of the 
+			<em>Case</em> element are executed in sequence, and the rest of the 
+			<em>Switch</em> is ignored (the remaining conditions, if any, are not tested). If none of the 
+			<em>Cases</em> has an expression which returns true, then the sub-operations of the 
+			<em>Default</em> element, if any, are executed in sequence.
+		</p>
+		<p>A combination of 
+			<em>Switch/Case/Default</em> is equivalent to 
+			<code>if (...) { ... } elsif (...) { ... } else { ... }</code> in a programming language.
+		</p>
+		<h3 id="for">For</h3>
+		<p>The 
+			<em>For</em> element is used to loop over collections of model elements and execute some operations on all of them. The 
+			<em>Expression</em> of the 
+			<em>For</em> element is executed in the current context, and should return a collection of model elements. The 
+			<em>Iterator name</em> property is a fixed string (
+			<code>i</code> by default) which give the name of the variable used for the iteration.
+		</p>
+		<p>After evaluating the 
+			<em>Expression</em>, each of the element in the returned collection will be bound in turn to a variable named as specified in 
+			<em>Iterator name</em> before the sub-operations of the 
+			<em>For</em> element are executed in sequence (once for each of the returned element). Inside the sub-operations, you can access the current element of the iteration using the variable named in 
+			<em>Iterator name</em>. The actual syntax will vary depending on the query language; for the legacy query language it would be 
+			<code>$i</code>, for Acceleo 3 simply 
+			<code>i</code>.
+		</p>
+		<h2 id="model_change">Model Change Operations</h2>
+		<h3 id="create_instance">Create Instance</h3>
+		<p>The 
+			<em>Create Instance</em> operation is used to create new semantic elements to be added into the user&#8217;s model. You must specify : 
+		</p>
+		<ol>
+			<li>the 
+				<em>Type Name</em> (using the same syntax as for 
+				<em>Domain Class</em> properties) of the new object to create
+			</li>
+			<li>the 
+				<em>Reference Name</em> through which the created element will be attached to the current context. 
+			</li>
+		</ol>
+		<p>When the 
+			<em>Create Instance</em> operation is executed, say in the context of semantic element 
+			<em>S</em>, a new instance of the specified type name is created and then added to 
+			<em>S</em>'s reference named in 
+			<em>Reference Name</em>. The reference name must correspond to a valid containment reference for the context element of the operation, otherwise the newly created object will not be properly integrated into the semantic model.
+		</p>
+		<p>The 
+			<em>Variable Name</em> property can be set to any valid variable name (
+			<code>instance</code> by default). The named variable is assigned with the newly created object, so that it can be accessed from the remaining operations in the tool. 
+		</p>
+		<p>Inside the 
+			<em>Create Instance</em> element you can add sub-operations, which will be executed in sequence in the context of the newly created element. This is useful to correctly initialize the new object&#8217;s properties.
+		</p>
+		<h3 id="set">Set</h3>
+		<p>The 
+			<em>Set</em> operation is used to set the value of a feature (attribute or reference) of the current element. When executed, it evaluates the 
+			<em>Value Expression</em> in the current context element. The expression&#8217;s result is then 
+			<em>set</em> as the new value of the feature named in 
+			<em>Feature Name</em> of the current context element. The value returned by the expression must be type-compatible with the named feature.
+		</p>
+		<p>Inside the 
+			<em>Set</em> element you can add sub-operations, which will be executed in sequence in the same context.
+		</p>
+		<h3 id="unset">Unset</h3>
+		<p>The 
+			<em>Unset</em> operation is used to remove elements from a feature (attribute or reference) of the current element. When executed, it evaluates the 
+			<em>Element Expression</em> in the current context element, which may return one or more elements. Each of the returned elements are then removed from the feature named in 
+			<em>Feature Name</em> of the current context element. It is not an error if some of the returned elements are not actually part of the specified feature, they are simply ignored.
+		</p>
+		<p>Inside the 
+			<em>Unset</em> element you can add sub-operations, which will be executed in sequence in the same context.
+		</p>
+		<h3 id="remove">Remove</h3>
+		<p>The 
+			<em>Remove</em> operation is used to remove the current element from its parent element. It takes no parameter. When executed, it simply removes the element from its containing feature. 
+		</p>
+		<h3 id="move">Move</h3>
+		<p>The 
+			<em>Move</em> operation is used to move the current element from its current parent into a new one. The 
+			<em>New Container Expression</em> is evaluated in the current context and should return the (single) element in which to move. The 
+			<em>Feature Name</em> indicates the containment feature of the new parent in which to add the current element.
+		</p>
+		<h2 id="representations">Representations Operations</h2>
+		<h3 id="create_view">Create View</h3>
+		<p>This operation is specific to diagrams. It can be used to explicitly create a view (graphical representation) of the current element, which is mostly useful when using unsynchronized diagrams and/or mappings.</p>
+		<p>The 
+			<em>Container View Expression</em> is evaluated in the context of the current semantic element, and should return the view (
+			<code>DDiagram</code>, 
+			<code>DNode</code> or 
+			<code>DNodeContainer</code>) in which the new view should appear. The 
+			<em>Mapping</em> indicates the kind of view to create. If the container view expression returns an element which can contain a view for the current semantic element and specified mapping (and does not already contain one), the view will be created, even if the diagram and/or mapping is not synchronized.
+		</p>
+		<p>Note that because the 
+			<em>Container View Expression</em> is evaluated in the context of a semantic element and must return a view, you must use the cross-referencer to navigate from the semantic model to the view model. Using the legacy language you can use the 
+			<code>~</code> syntax, as in 
+			<code>self.~target</code> to find which elements point to the current one through a reference named 
+			<code>target</code> (the views in Sirius diagrams reference their target semantic element through this reference). Using the Acceleo 3 language, you need to use the 
+			<code>eInverse()</code> service.
+		</p>
+		<p>The 
+			<em>Variable Name</em> property can be set to any valid variable name (
+			<code>createdView</code> by default). The named variable is assigned with the newly created view, so that it can be accessed from the remaining operations in the tool.
+		</p>
+		<h3 id="created_edge_view">Create Edge View</h3>
+		<p>This operation is specific to diagrams. It can be used to explicitly create an edge view (graphical representation) of the current element, which is mostly useful when using unsynchronized diagrams and/or mappings.</p>
+		<p>It works similarly to the 
+			<a href="Model_Operations.html#create_view">
+				<em>Create View</em>
+			</a> operation, except that in addition to the 
+			<em>Container View Expression</em>, you must also provide a 
+			<em>Source Expression</em> and a 
+			<em>Target Expression</em>, which should return the semantic elements between which the edge should be created, if source and target views are found regarding the selected edge mapping properties. 
+		</p>
+		<h3 id="delete_view">Delete View</h3>
+		<p>This operation is specific to diagrams. It can be used to explicitly remove a view (graphical representation) from the diagram, without deleting the corresponding semantic element. It is mostly useful when using unsynchronized diagrams and/or mappings.</p>
+		<p>It has no parameter and works similarly to the 
+			<em>Remove</em> operation; you must already be in the context of the view element you want to delete.
+		</p>
+		<h3 id="navigation">Navigation</h3>
+		<p>This operation is specific to diagrams. It can be used to navigate to another diagram representing the current element. The 
+			<em>Diagram Description</em> indicates the type of diagram to open, and the 
+			<em>Create if not existent</em> flag indicates whether a new diagram of the specified type should be created on the current element if none exists.
+		</p>
+		<p>The operation does nothing if the current element is not compatible with the specified diagram type or if there is no existing diagram and the 
+			<em>Create if not existent</em> flag is not set.
+		</p>
+		<h2 id="extensions">Java Extensions</h2>
+		<p>Beyond the operations which are described above, you can also execute arbitrary Java code in the context of a tool by providing an 
+			<em>External Java Action</em> and invoking it with the corresponding operation.
+		</p>
+		<h3 id="external_java_action">External Java Action</h3>
+		<p>When used as a model operation (instead of as a full-blown tool), you only have to specify the 
+			<em>Java Action Id</em>. It should correspond to an extension of the 
+			<code>org.eclipse.sirius.externalJavaAction</code> extension point which registers a class implementing 
+			<code>org.eclipse.sirius.tools.api.ui.IExternalJavaAction</code> to be executed. You may also create 
+			<em>External Java Action Parameter</em> elements inside the 
+			<em>External Java Action</em> element. Each one has a fixed 
+			<em>Key</em> and a computed 
+			<em>Value</em>, which will be evaluated before the operation is executed and made available to the Java class through the 
+			<code>parameters</code> argument of the 
+			<code>execute()</code> method.
+		</p>
+		<p>As the External Java Action uses the Eclipse extension point mechanism, it means you cannot use it in development mode (when the 
+			<a href="../../Glossary.html#VSM">
+				<em>Viewpoint Specification Model</em>
+			</a> you are working on is in the workspace).
+		</p>
+		<h4 id="IExternalJavaActionandIExternalJavaAction2">IExternalJavaAction and IExternalJavaAction2</h4>
+		<p>The previous part presented External Java Action by implementing 
+			<code>org.eclipse.sirius.tools.api.ui.IExternalJavaAction</code>. A second interface 
+			<code>org.eclipse.sirius.tools.api.ui.IExternalJavaAction2</code> (
+			<a href="http://wiki.eclipse.org/Evolving_Java-based_APIs_3#.222.22_Convention">Naming Convention</a> ) is also available. It is an extension of the first interface that add the possibility for the specifier to warn Sirius if the External Java Action will delete elements. As it is executed externally, a 
+			<code>org.eclipse.sirius.tools.internal.command.listener.ChangeListener</code> is used to keep tracks on the deleted elements. Therefore, implementing 
+			<code>org.eclipse.sirius.tools.api.ui.IExternalJavaAction2</code> and warning Sirius that the execution of this tool will not delete any element (method mayDeleteElements returning false), will not create this 
+			<code>org.eclipse.sirius.tools.internal.command.listener.ChangeListener</code>, which can improve refresh performances.
+		</p>
+		<h3 id="external_java_action_call">External Java Action Call</h3>
+		<p>
+			<em>External Java Action Call</em> is simply a convenience operation to invoke an 
+			<em>External Java Action</em> defined elsewhere in the VSM, with potentially different parameters.
+		</p>
+		<h3 id="standard_java_actions">Standard Java Actions</h3>
+		<p>The following External Java Actions are available in standard and can be used in 
+			<a href="../../Glossary.html#VSM">
+				<em>Viewpoint Specification Models</em>
+			</a>. Note that if you want to create your own actions, you can implement 
+			<code>org.eclipse.sirius.tools.api.ui.IExternalJavaAction</code> directly or inherit from 
+			<code>org.eclipse.sirius.business.api.action.AbstractExternalJavaAction</code> which provides some helper methods.
+		</p>
+		<h4 id="org.eclipse.sirius.business.api.action.moveElement">org.eclipse.sirius.business.api.action.moveElement</h4>
+		<p>This external Java action can be used to move an element to a different position inside a many-valued EReference.</p>
+		<p>Action parameters:</p>
+		<ul>
+			<li>
+				<code>referenceOwner</code> (an EObject): the owner of the EReference to edit.
+			</li>
+			<li>
+				<code>referenceName</code> (a string): the name of the EReference of the owner object to edit. This must be a many-valued, changeable reference.
+			</li>
+			<li>
+				<code>element</code> (an EObject): the element to move inside the list. It is an error if the specified element is not in the list.
+			</li>
+			<li>
+				<code>predecessor</code>: the element of the list right before which element must be moved, i.e. after the operation, predecessor will be the direct predecessor of element in the list. May be null to indicate that element should be moved at the front of the list. If not null, it is an error if predecessor is not in the list.
+			</li>
+		</ul>
+		<h4 id="org.eclipse.sirius.business.api.action.printVariables">org.eclipse.sirius.business.api.action.printVariables</h4>
+		<p>This external Java action is designed to help debugging 
+			<em>Viewpoint Specification Models</em> by printing (in standard output)
+			<br/>all the variables accessible to model operations at the invocation point.
+		</p>
+		<p>Action parameters:</p>
+		<ul>
+			<li>
+				<code>title</code>: an optional string header to print before the list of variables, for example to distinguish different uses of this action in the same VSM.
+			</li>
+			<li>
+				<code>enabled</code>: an optional boolean (defaults to true) to indicate if the action should be executed or not. This is useful to quickly enable/disable an action with minimal editing of the VSM.
+			</li>
+		</ul>
+		<h4 id="org.eclipse.sirius.ui.business.api.action.openHelpSection">org.eclipse.sirius.ui.business.api.action.openHelpSection</h4>
+		<p>This external Java action can be used to open the Eclipse Help system (or actually any web page) on a specific section from inside a tool (typically a popup menu).</p>
+		<p>Action parameters:</p>
+		<ul>
+			<li>
+				<code>href</code>: the URL of the help resource. To open an Eclipse Help section, use an URI of the form 
+				<code>/com.example.pluginName/path/to/document.html#sectionId</code>
+			</li>
+		</ul>
+	</body>
+</html>

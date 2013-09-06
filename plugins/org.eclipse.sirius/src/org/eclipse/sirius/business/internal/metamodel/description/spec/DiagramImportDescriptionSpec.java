@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 
+import org.eclipse.sirius.description.AdditionalLayer;
 import org.eclipse.sirius.description.DescriptionPackage;
 import org.eclipse.sirius.description.DiagramDescription;
 import org.eclipse.sirius.description.DiagramImportDescription;
 import org.eclipse.sirius.description.Layer;
-import org.eclipse.sirius.description.OptionalLayer;
 
 /**
  * Implementation of the DiagramImportDescription interface.
@@ -145,20 +145,20 @@ public class DiagramImportDescriptionSpec extends DiagramDescriptionSpec impleme
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getOptionalLayers()
+     * @see org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getAdditionalLayers()
      */
     @Override
-    public EList<OptionalLayer> getOptionalLayers() {
+    public EList<AdditionalLayer> getAdditionalLayers() {
 
-        if (optionalLayers == null) {
-            optionalLayers = new EObjectContainmentEList.Resolving<OptionalLayer>(OptionalLayer.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS);
+        if (additionalLayers == null) {
+            additionalLayers = new EObjectContainmentEList.Resolving<AdditionalLayer>(AdditionalLayer.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS);
             if (importedDiagramDescription != null) {
-                optionalLayers.addAll(importedDiagramDescription.getOptionalLayers());
+                additionalLayers.addAll(importedDiagramDescription.getAdditionalLayers());
                 // optionalLayers.addAll(ComponentizationHelper.getContributedLayers(importedDiagramDescription,
                 // viewpoints));getOptionalLayers(importedDiagramDescription));
             }
         }
-        return optionalLayers;
+        return additionalLayers;
     }
 
     /**

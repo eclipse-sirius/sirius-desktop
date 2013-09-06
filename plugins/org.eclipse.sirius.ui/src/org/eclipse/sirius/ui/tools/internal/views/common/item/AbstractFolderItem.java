@@ -16,23 +16,26 @@ import org.eclipse.ui.PlatformUI;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem;
-import org.eclipse.sirius.ui.tools.api.views.common.item.ItemDecorator;
+import org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem;
 
 /**
  * Represents common behaviors for *FolderItem classes.
  * 
  * @author dlecan
  */
-public abstract class AbstractFolderItem implements CommonItem, ItemDecorator, InternalCommonItem {
+public abstract class AbstractFolderItem implements CommonSessionItem, ItemDecorator, InternalCommonItem {
 
     /**
      * Current session.
      */
     protected Session session;
 
-    private Object parent;
+    /**
+     * This item's parent.
+     */
+    protected Object parent;
 
     /**
      * Constructor.
@@ -50,7 +53,7 @@ public abstract class AbstractFolderItem implements CommonItem, ItemDecorator, I
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.ItemDecorator#getImage()
+     * @see org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator#getImage()
      */
     public Image getImage() {
         return PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
@@ -89,7 +92,7 @@ public abstract class AbstractFolderItem implements CommonItem, ItemDecorator, I
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getSession()
+     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getSession()
      */
     public Option<Session> getSession() {
         return Options.newSome(session);
@@ -98,7 +101,7 @@ public abstract class AbstractFolderItem implements CommonItem, ItemDecorator, I
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getParent()
+     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getParent()
      */
     public Object getParent() {
         return parent;

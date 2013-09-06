@@ -263,7 +263,8 @@ public class OutlineContentProvider implements ITreeContentProvider, DiagramOutl
      *      java.lang.Object, java.lang.Object)
      */
     public void inputChanged(final Viewer viewer, final Object oldInput, final Object newInput) {
-        if (oldInput != null) {
+        // Only remove listener of oldInput if old input is valid
+        if (oldInput != null && (!(oldInput instanceof EObject) || ((EObject) oldInput).eResource() != null)) {
             removeListenerFrom((View) oldInput);
         }
         if (newInput != null) {

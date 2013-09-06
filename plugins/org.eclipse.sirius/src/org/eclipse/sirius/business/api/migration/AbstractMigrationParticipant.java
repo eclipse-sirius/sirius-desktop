@@ -23,6 +23,9 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.osgi.framework.Version;
 
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
+
 /**
  * Abstract {@link IMigrationParticipant} implementation providing:
  * <UL>
@@ -81,8 +84,30 @@ public abstract class AbstractMigrationParticipant implements IMigrationParticip
     /**
      * {@inheritDoc}
      */
+    public Option<String> getNewFragment(String uriFragment, String loadedVersion) {
+        // Nothing to migrate by default.
+        return Options.newNone();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public void postLoad(XMLResource resource, String loadedVersion) {
         handleUnknownData(resource);
+    }
+
+    /**
+     * Handle unknown feature of the specified {@link EObject}.
+     * 
+     * @param owner
+     *            the unknown feature owner
+     * @param unkownFeature
+     *            the unknown feature of the specified {@link EObject}
+     * @param valueOfUnknownFeature
+     *            the value to migrate of the unknown feature
+     */
+    protected void handleFeature(final EObject owner, final EStructuralFeature unkownFeature, final Object valueOfUnknownFeature) {
+
     }
 
     /**
@@ -117,19 +142,5 @@ public abstract class AbstractMigrationParticipant implements IMigrationParticip
             final FeatureMap.Entry entry = iter.next();
             handleFeature(owner, entry.getEStructuralFeature(), entry.getValue());
         }
-    }
-
-    /**
-     * Handle unknown feature of the specified {@link EObject}.
-     * 
-     * @param owner
-     *            the unknown feature owner
-     * @param unkownFeature
-     *            the unknown feature of the specified {@link EObject}
-     * @param valueOfUnknownFeature
-     *            the value to migrate of the unknown feature
-     */
-    protected void handleFeature(final EObject owner, final EStructuralFeature unkownFeature, final Object valueOfUnknownFeature) {
-
     }
 }

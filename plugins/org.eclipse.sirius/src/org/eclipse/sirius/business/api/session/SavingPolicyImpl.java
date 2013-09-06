@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.api.session;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -118,16 +119,18 @@ public class SavingPolicyImpl implements SavingPolicy {
                 return shouldSave(input);
             }
         };
-        final Collection<Resource> resourcesToSave = Lists.newArrayList(Iterables.filter(allResources, savingFilter));
+        final Collection<Resource> resourcesToSave = new ArrayList<Resource>();
         try {
             monitor.beginTask("Save Session", IProgressMonitor.UNKNOWN);
             if (alreadyIsInWorkspaceModificationOperation()) {
+                resourcesToSave.addAll(Lists.newArrayList(Iterables.filter(allResources, savingFilter)));
                 wrappedSave(resourcesToSave, allResources, options, new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN));
             } else {
                 final IWorkspace workspace = ResourcesPlugin.getWorkspace();
                 try {
                     workspace.run(new IWorkspaceRunnable() {
                         public void run(final IProgressMonitor monitor) throws CoreException {
+                            resourcesToSave.addAll(Lists.newArrayList(Iterables.filter(allResources, savingFilter)));
                             wrappedSave(resourcesToSave, allResources, options, monitor);
                         }
                     }, new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN));

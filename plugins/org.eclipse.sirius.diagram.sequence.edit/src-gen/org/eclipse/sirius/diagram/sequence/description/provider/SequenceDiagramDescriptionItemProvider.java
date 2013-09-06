@@ -199,7 +199,7 @@ public class SequenceDiagramDescriptionItemProvider extends DiagramDescriptionIt
         Object childObject = child;
 
         boolean qualify = childFeature == org.eclipse.sirius.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER
-                || childFeature == org.eclipse.sirius.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS;
+                || childFeature == org.eclipse.sirius.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS;
 
         if (qualify) {
             return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });

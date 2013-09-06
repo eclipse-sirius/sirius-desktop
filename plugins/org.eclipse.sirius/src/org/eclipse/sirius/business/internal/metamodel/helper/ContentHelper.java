@@ -85,7 +85,7 @@ public final class ContentHelper {
             if (withoutOptionalLayers) {
                 layers = new ArrayList<Layer>(1);
             } else {
-                layers = new ArrayList<Layer>(diagramDescription.getOptionalLayers());
+                layers = new ArrayList<Layer>(diagramDescription.getAdditionalLayers());
             }
 
             layers.add(diagramDescription.getDefaultLayer());
@@ -224,7 +224,7 @@ public final class ContentHelper {
             if (withoutOptionalLayers) {
                 layers = new ArrayList<Layer>(1);
             } else {
-                layers = new ArrayList<Layer>(diagramDescription.getOptionalLayers());
+                layers = new ArrayList<Layer>(diagramDescription.getAdditionalLayers());
             }
 
             layers.add(diagramDescription.getDefaultLayer());
@@ -305,7 +305,7 @@ public final class ContentHelper {
             if (withoutOptionalLayers) {
                 layers = new ArrayList<Layer>(1);
             } else {
-                layers = new ArrayList<Layer>(diagramDescription.getOptionalLayers());
+                layers = new ArrayList<Layer>(diagramDescription.getAdditionalLayers());
             }
 
             layers.add(diagramDescription.getDefaultLayer());

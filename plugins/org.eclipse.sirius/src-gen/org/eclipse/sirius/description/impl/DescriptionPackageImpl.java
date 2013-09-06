@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.description.AbstractMappingImport;
 import org.eclipse.sirius.description.AbstractNodeMapping;
+import org.eclipse.sirius.description.AdditionalLayer;
 import org.eclipse.sirius.description.AnnotationEntry;
 import org.eclipse.sirius.description.ColorDescription;
 import org.eclipse.sirius.description.ColorStep;
@@ -73,7 +74,6 @@ import org.eclipse.sirius.description.MetamodelExtensionSetting;
 import org.eclipse.sirius.description.NavigationTargetType;
 import org.eclipse.sirius.description.NodeMapping;
 import org.eclipse.sirius.description.NodeMappingImport;
-import org.eclipse.sirius.description.OptionalLayer;
 import org.eclipse.sirius.description.OrderedTreeLayout;
 import org.eclipse.sirius.description.PasteTargetDescription;
 import org.eclipse.sirius.description.Position;
@@ -414,6 +414,13 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    private EClass additionalLayerEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     private EClass customizationEClass = null;
 
     /**
@@ -457,13 +464,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     private EClass eReferenceCustomizationEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass optionalLayerEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1220,7 +1220,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
-    public EReference getDiagramDescription_OptionalLayers() {
+    public EReference getDiagramDescription_AdditionalLayers() {
         return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(17);
     }
 
@@ -2354,6 +2354,33 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    public EClass getAdditionalLayer() {
+        return additionalLayerEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getAdditionalLayer_ActiveByDefault() {
+        return (EAttribute) additionalLayerEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getAdditionalLayer_Optional() {
+        return (EAttribute) additionalLayerEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public EClass getCustomization() {
         return customizationEClass;
     }
@@ -2500,24 +2527,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     public EReference getEReferenceCustomization_Value() {
         return (EReference) eReferenceCustomizationEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getOptionalLayer() {
-        return optionalLayerEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getOptionalLayer_ActiveByDefault() {
-        return (EAttribute) optionalLayerEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -3132,7 +3141,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         createEReference(diagramDescriptionEClass, DIAGRAM_DESCRIPTION__LAYOUT);
         createEReference(diagramDescriptionEClass, DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION);
         createEReference(diagramDescriptionEClass, DIAGRAM_DESCRIPTION__DEFAULT_LAYER);
-        createEReference(diagramDescriptionEClass, DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS);
+        createEReference(diagramDescriptionEClass, DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS);
         createEReference(diagramDescriptionEClass, DIAGRAM_DESCRIPTION__ALL_LAYERS);
         createEReference(diagramDescriptionEClass, DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS);
         createEReference(diagramDescriptionEClass, DIAGRAM_DESCRIPTION__NODE_MAPPINGS);
@@ -3291,8 +3300,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         createEReference(layerEClass, LAYER__ALL_ACTIVATED_EDGE_MAPPINGS);
         createEReference(layerEClass, LAYER__CUSTOMIZATION);
 
-        optionalLayerEClass = createEClass(OPTIONAL_LAYER);
-        createEAttribute(optionalLayerEClass, OPTIONAL_LAYER__ACTIVE_BY_DEFAULT);
+        additionalLayerEClass = createEClass(ADDITIONAL_LAYER);
+        createEAttribute(additionalLayerEClass, ADDITIONAL_LAYER__ACTIVE_BY_DEFAULT);
+        createEAttribute(additionalLayerEClass, ADDITIONAL_LAYER__OPTIONAL);
 
         customizationEClass = createEClass(CUSTOMIZATION);
         createEReference(customizationEClass, CUSTOMIZATION__VSM_ELEMENT_CUSTOMIZATIONS);
@@ -3490,7 +3500,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         layerEClass.getESuperTypes().add(this.getDocumentedElement());
         layerEClass.getESuperTypes().add(this.getEndUserDocumentedElement());
         layerEClass.getESuperTypes().add(this.getIdentifiedElement());
-        optionalLayerEClass.getESuperTypes().add(this.getLayer());
+        additionalLayerEClass.getESuperTypes().add(this.getLayer());
         vsmElementCustomizationEClass.getESuperTypes().add(this.getIVSMElementCustomization());
         vsmElementCustomizationReuseEClass.getESuperTypes().add(this.getIVSMElementCustomization());
         eAttributeCustomizationEClass.getESuperTypes().add(this.getEStructuralFeatureCustomization());
@@ -3620,9 +3630,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getDiagramDescription_DefaultLayer(), this.getLayer(), null, "defaultLayer", null, 0, 1, DiagramDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDiagramDescription_OptionalLayers(), this.getOptionalLayer(), null, "optionalLayers", null, 0, -1, DiagramDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        getDiagramDescription_OptionalLayers().getEKeys().add(this.getIdentifiedElement_Name());
+        initEReference(getDiagramDescription_AdditionalLayers(), this.getAdditionalLayer(), null, "additionalLayers", null, 0, -1, DiagramDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        getDiagramDescription_AdditionalLayers().getEKeys().add(this.getIdentifiedElement_Name());
         initEReference(getDiagramDescription_AllLayers(), this.getLayer(), null, "allLayers", null, 0, -1, DiagramDescription.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
         initEReference(getDiagramDescription_AllActivatedTools(), theToolPackage.getAbstractToolDescription(), null, "allActivatedTools", null, 0, -1, DiagramDescription.class, IS_TRANSIENT,
@@ -3656,7 +3666,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(diagramExtensionDescriptionEClass, DiagramExtensionDescription.class, "DiagramExtensionDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDiagramExtensionDescription_Layers(), this.getOptionalLayer(), null, "layers", null, 0, -1, DiagramExtensionDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+        initEReference(getDiagramExtensionDescription_Layers(), this.getAdditionalLayer(), null, "layers", null, 0, -1, DiagramExtensionDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         getDiagramExtensionDescription_Layers().getEKeys().add(this.getIdentifiedElement_Name());
         initEReference(getDiagramExtensionDescription_ValidationSet(), theValidationPackage.getValidationSet(), null, "validationSet", null, 0, 1, DiagramExtensionDescription.class, !IS_TRANSIENT,
@@ -4009,9 +4019,11 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEReference(getLayer_Customization(), this.getCustomization(), null, "customization", null, 0, 1, Layer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
                 !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        initEClass(optionalLayerEClass, OptionalLayer.class, "OptionalLayer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getOptionalLayer_ActiveByDefault(), theEcorePackage.getEBoolean(), "activeByDefault", null, 0, 1, OptionalLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+        initEClass(additionalLayerEClass, AdditionalLayer.class, "AdditionalLayer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getAdditionalLayer_ActiveByDefault(), theEcorePackage.getEBoolean(), "activeByDefault", null, 0, 1, AdditionalLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getAdditionalLayer_Optional(), ecorePackage.getEBoolean(), "optional", "true", 0, 1, AdditionalLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(customizationEClass, Customization.class, "Customization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getCustomization_VsmElementCustomizations(), this.getIVSMElementCustomization(), null, "vsmElementCustomizations", null, 1, -1, Customization.class, !IS_TRANSIENT,

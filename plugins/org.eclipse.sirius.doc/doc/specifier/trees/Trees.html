@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Trees</title>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SpecifyingTreeEditors">Specifying Tree Editors</h1>
+		<ol class="toc" style="list-style: disc;">
+			<li>
+				<a href="Trees.html#SpecifyingTreeEditors">Specifying Tree Editors</a>
+				<ol style="list-style: disc;">
+					<li>
+						<a href="Trees.html#introduction">Introduction</a>
+					</li>
+					<li>
+						<a href="Trees.html#tree_description">Tree Descriptions</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Trees.html#tree_tools">Tree Tools</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="Trees.html#mappings">Tree Item Mappings</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="Trees.html#item_style">Item Style</a>
+							</li>
+							<li>
+								<a href="Trees.html#item_tools">Item Tools</a>
+							</li>
+						</ol>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<h2 id="introduction">Introduction</h2>
+		<p>A tree is a representation which provides a hierarchical viewpoint on your data. It can provide a lot of information in a clear and concise way, and can be especially useful to progressively reveal more and more detailed information on a model when the user expands the tree elements to &#171;dig into&#187; the model.</p>
+		<p>Trees are probably the easiest kind of representation to define in Sirius. Do not hesitate to define small tree descriptions, even read-only, to provide alternative and synthetic viewpoints on your data, like type hierarchies, dependencies between elements, etc.</p> 
+		<img border="0" src="./images/tree_description_editor.png"/>
+<em>
+<ul>
+
+		<img border="0" src="images/tricks.png"/> 
+		<em>use the 
+			<img border="0" src="images/questionMarque.png"/> icon to access the available fields tooltips:
+		</em>
+<ul>
+			<li> 
+		<b>Id</b> field: The identifier of this element. Must be unique. Changing this identifier will break existing user models which reference the old identifier.</li>
+			<li> 
+		<b>Label</b> field: The label used to display this to the end-user.</li>
+			<li> 
+		<b>Domain Class</b> field: Type of the element represented by the Node.</li>
+			<li> 
+		<b>Semantic Candidates Expression</b> field:
+			    <ul>
+			    <li>Expected return type: a 
+		<code>Collection&lt;EObject&gt;</code> or an EObject.</li>
+			        <li>vailable variables: 
+			        <ul>
+		    		    <li> containerView: ecore.EObject | container of the current DTreeElement (variable is available if container is not null).</li>
+			    	    <li> view: sirius.DTreeElement | current DTreeElement.</li>
+				        <li> container: ecore.EObject | semantic target of $containerView (if it is a DSemanticDecorator).</li>
+			        </ul>
+			    </li>
+			    </ul>
+			</li>
+</ul>
+</ul>
+</em>
+		<p>
+			<strong>Note</strong>: Advanced features like layers, filters and mapping imports which exist for diagrams are not currently available for trees.
+		</p>
+		<h2 id="tree_description">Tree Descriptions</h2>
+		<p>Similar to other kinds of Sirius representations, trees are configured by creating a 
+			<em>Tree Description</em> element and its sub-elements inside a 
+			<a href="../../Glossary.html#VSM">
+				<em>Viewpoint Specification Model</em>
+			</a>.
+		</p>
+		<p>A 
+			<em>Tree Description</em> has a mandatory 
+			<em>Id</em>, which must be unique in the context of the viewpoint it is part of, and an optional 
+			<em>Label</em>. The 
+			<em>Id</em> is used internally to identify the type of tree, and must be kept stable across different versions of the description (or it will make trees created with the old 
+			<em>Id</em> unusable). The 
+			<em>Label</em> is used in the UI and will be visible to end-users. It can be changed with no impact on existing representation files. If the 
+			<em>Label</em> is not specified, the 
+			<em>Id</em> is used instead in the UI.
+		</p>
+		<p>The mandatory 
+			<em>Domain Class</em> attribute of a 
+			<em>Tree Description</em> is the type of semantic element which are represented by the tree. In the 
+			<em>Model Explorer</em>, end-users will be able to create new instances of this tree on semantic elements of this type (assuming the corresponding viewpoint is enabled in the 
+			<em>Modeling Project</em>). The syntax for the domain class name can be the basic name, like 
+			<code>Class</code>, a qualified name using name of the EMF EPackage which defines the type, like 
+			<code>uml.Class</code>, or a fully qualified URI like 
+			<code>http://www.eclipse.org/uml2/3.0.0/UML#//Class</code>.
+		</p>
+		<p>By default, new trees can be created on 
+			<em>any</em> instance of the 
+			<em>Domain Class</em>. You can use the 
+			<em>Precondition Expression</em> (available in the 
+			<em>Advanced</em> category) to change this. If such an expression is specified, it will be evaluated in the context of the semantic element the user has selected, and only if the expression returns 
+			<code>true</code> will the user be able to create a new tree on this element.
+		</p>
+		<p>The default title for newly created trees can be specified using the 
+			<em>Title expression</em>, which is evaluated in the context of the semantic element on which the tree is created, and should return a string. If the expression is not specified, the default title is the label of the tree description (of its 
+			<em>Id</em> if no 
+			<em>Label</em> is set) prefixed with the string 
+			<code>"new "</code> (e.g. 
+			<code>new Class Hierarchy</code>).
+		</p>
+		<p>It is recommended that the 
+			<em>Tree Description</em> be explicitly associated with the meta-model(s) of the semantic elements it will represent. You can add referenced meta-models from different sources in the 
+			<em>Metamodels</em> property section of the 
+			<em>Tree Description</em>. Sirius will work even without this association, but setting it explicitly will give you better feedback when validating your 
+			<a href="../../Glossary.html#VSM">
+				<em>VSM</em>
+			</a>.
+		</p>
+		<p>Finally, the 
+			<em>Initialization</em> and 
+			<em>Show on startup</em> flags control whether tree instances are created and/or opened automatically without user intervention. If 
+			<em>Initialization</em> is set, then when the viewpoint which contains this tree description is enabled, instances of this tree description will be automatically created on all compatible semantic elements. If 
+			<em>Show on startup</em> in set, then when a modeling project is opened which contains instances of this tree description, they will be opened: if only one such representation exist, it will be opened automatically; is there are more than one, a dialog box will appear to allow the user to select which one(s) to open.
+		</p>
+		<p>The main concepts which define a tree are:</p>
+		<ul>
+			<li>
+				<em>Tree Item Mappings</em>, which describe the elements that will appear on this tree, and how they map to the underlying semantic elements they represent;
+			</li>
+			<li>
+				<em>Styles</em>, which describe the graphical appearance of these representation elements;
+			</li>
+			<li>
+				<em>Tools</em>, which describe the actions the end-user can perform on the tree and its items and their effect on the associated semantic elements.
+			</li>
+		</ul>
+		<h3 id="tree_tools">Tree Tools</h3>
+		<p>Some of the tools which can be defined on tree editors are specified directly inside the top-level 
+			<em>Tree Description</em> element:
+		</p>
+		<ul>
+			<li>
+				<em>Create</em>: The 
+				<em>Create</em> tools which are directly contained inside the 
+				<em>Tree Description</em> are used to create root tree items. They are available to end-users through a combo button in the main Eclipse tool-bar. To configure it, simply select the kind of tree item the tool will create in the 
+				<em>Mapping</em> property, and specify the tool&#8217;s behavior using normal model operations.
+			</li>
+			<li>
+				<em>Drop Tool</em>: When defined directly inside the 
+				<em>Tree Description</em>, a 
+				<em>Drop Tool</em> specifies what happens when the user drops an element at the root of the tree (i.e. inside the editor, but not on an existing tree item). The 
+				<em>Drag source</em> property indicates whether the tool accepts elements dragged from a tree representation (value 
+				<em>Tree</em>), from the 
+				<em>Model Explorer</em> view (value 
+				<em>Model</em>), or both. If such a drop is detected and the 
+				<em>Precondition</em> evaluates to 
+				<code>true</code>, then the body of the drop tool is executed, with the 
+				<code>element</code> variable pointing to the semantic element being dropped and 
+				<code>newContainer</code> the semantic element in which it is dropped (in this case the tree&#8217;s semantic element). 
+				<i>WARNING</i>: if you choose 
+				<em>Model</em> or 
+				<em>Both</em> as source, your tool must be prepared to accept any type of source element which can be present in the 
+				<em>Model Explorer</em> view, including elements which have no relation to the source mappings you specified for the tool. Use a precondition to check the nature of the element being dragged (available through the 
+				<code>element</code> variable) to disable the tool source elements your tool does not support.
+			</li>
+			<li>
+				<em>Tree Creation Description</em>: This tool can be used to create (and open) a new tree from an existing tree item. It will be available to end-users in the 
+				<em>Navigate</em> context menu on compatible tree items. To configure the tool, simply select in the 
+				<em>Mappings</em> property which kinds of tree items the tool should appear on (you can be more precise using the 
+				<em>Precondition</em> expression if necessary), and select which kind of tree should be created using the 
+				<em>Tree Description</em> property. Normally, the new tree representation will be created on the semantic element represented by the tree item on which the user invoked the tool. Sometimes you want the tool to appear on one element, but create a representation on another one. In this case, use the 
+				<em>Browse expression</em> (in the 
+				<em>Advanced</em> category) to navigate from the element selected to the one one which the new tree should actually be created. Finally, any operation you specify in the body of the tool will be executed when the tool is invoked; you can use it to initialize the content of the model represented.
+			</li>
+			<li>
+				<em>Tree Navigation Description</em>: This tool is very similar to the previous one. The only differences is that it allows users to navigate to existing trees instead of creating new ones. If such a tool exists, the 
+				<em>Navigate</em> context menu on an item will contains an entry for each corresponding tree which already exists on the element selected (or reachable from the selected element using the 
+				<em>Browse expression</em>). You can specify a 
+				<em>Navigation name expression</em> (
+				<em>Advanced</em> category) to be used in the menu entry instead of using the title of the existing tree. This can be useful to make it more explicit what the relationship is between the current element and the target tree.
+			</li>
+		</ul>
+		<h2 id="mappings">Tree Item Mappings</h2>
+		<p>Trees are recursive by nature. There contents is specified using a single concept of 
+			<em>Tree Item Mapping</em> which can be composed recursively. A 
+			<em>Tree Description</em> contains 
+			<em>Tree Item Mappings</em> which define which elements will appear at the top-level of the tree, while each 
+			<em>Tree Item Mapping</em> can contain sub-mappings which define its own direct content. If an element (the tree or a tree item mapping) contains several sub-mappings, the element&#8217;s content will appear in the order of the mappings: first all the instances of the first mapping, then the instances of the second one, etc.
+		</p>
+		<p>A 
+			<em>Tree Item Mapping</em> is defined by a 
+			<em>Domain Class</em>, a 
+			<em>Semantic Candidates Expression</em> and an optional 
+			<em>Precondition Expression</em> (in the 
+			<em>Advanced</em> category). The 
+			<em>Semantic Candidates Expression</em> indicates where to look in the semantic model for elements which should be represented by the mapping. The expression is evaluated in the context of the parent&#8217;s semantic element (the parent being either the tree itself or the parent item). It should return a set of semantic elements. Only those which are instances of the specified 
+			<em>Domain Class</em> and which also validate the optional 
+			<em>Precondition expression</em> are retained and actually represented as instances of this mapping. The semantic element thus associated to each tree item is called the item&#8217;s 
+			<em>target</em> element.
+		</p>
+		<p>You can associate more semantic elements to an item by defining the 
+			<em>Associated Elements Expression</em> (in the 
+			<em>Advanced Category</em>), which is evaluated in the context of the target and may return more semantic elements. Any change in the target element or one of the associated elements will automatically trigger a refresh of the tree item.
+		</p>
+		<p>A 
+			<em>Tree Item Mapping</em> may 
+			<em>Specialize</em> another mapping, in which case it will inherit all of the specialized mapping&#8217;s properties for which it does not specify an explicit value.
+		</p>
+		<p>A 
+			<em>Tree Item Mapping</em> may 
+			<em>Reuse</em> (see the 
+			<em>Imports</em> category) existing mappings, including itself, as sub-mappings. The effect is exactly the same as if the reused mapping(s) were created as children if the parent. However because a mapping can reuse itself or one of its parent mapping, this allows to create trees of infinite depth (or at least not bounded a priori).
+		</p>
+		<p>Tree items are created lazily, only when the user expands a parent item. This means that if you define sub-mappings which use costly operations to create, the cost will only be paid when the user actually &#171;digs into&#187; the tree to the corresponding level of details. This also means that through reuse you can create trees of potentially infinite depth (as deep as the user chooses to expand them) without risking an infinite loop. Note however that once created tree items do not disappear if their parent is collapsed. They are only removed if the user explicitly deletes them.</p>
+		<p>The actual appearance of a tree item is defined by its 
+			<a href="Trees.html#item_style">style</a>, while its behavior is defined by the 
+			<a href="Trees.html#item_tools">tools</a> associated to it.
+		</p>
+		<h3 id="item_style">Item Style</h3>
+		<p>An item&#8217;s appearance is controlled by one or more 
+			<em>Style</em> element(s) defined in the corresponding tree item mapping. Each tree item mapping 
+			<em>must</em> contain exactly one default style (which is created automatically when the mapping itself is created), and 
+			<em>may</em> contain one or more 
+			<em>conditional styles</em>.
+		</p>
+		<p>An item&#8217;s style is comprised of a 
+			<em>Label expression</em>, evaluated in the context of the item&#8217;s semantic target, and which should return the text to show for the item, and several configuration properties to control the font, style, color (both of the text and its background) and icon of the item. The default icon shown for an element (if 
+			<em>Show icon</em> is set), is the one defined in the semantic meta-model for the item&#8217;s target element. You can specify a different one using the 
+			<em>Icon path</em> property (in the 
+			<em>Advanced</em> category). This is especially useful if you have several items which represent different aspects of the same semantic element and thus share the same target.
+		</p>
+		<p>
+			<em>Tree Item Mappings</em> can have one ore more 
+			<em>Conditional Style</em>. They are normal style elements with the same properties as described above, but wrapped in a 
+			<em>Conditional Style</em> element which defines a boolean expression. If an item mapping contains such styles, then for each instance of the mapping, the conditional styles will first be tried, in the order of their definitions. The first style whose condition returns 
+			<code>true</code> for the item&#8217;s target is used (and the remaining ones are not tested). If none of the conditional style apply, the default one is used. Note that because the conditions are tested in the order of definition, you should order them from the most likely to the least likely to optimize performance.
+		</p>
+		<h3 id="item_tools">Item Tools</h3>
+		<p>The behavior of a tree item is defined by the tools which are associated to its mapping. The tools which should apply to a tree item mapping are simply created inside the mapping itself. They can be:</p>
+		<ul>
+			<li>
+				<em>Creation Tool</em>, which is used to create a new Tree Item. A mapping can contain several such tools. They appear in the context menu of the instances of the mapping, if the (optional) 
+				<em>Precondition</em> of the tool holds for the instance&#8217;s target. A creation tool must specify what kind of 
+				<em>Mapping</em> it will create. The actual behavior of the creation tool is defined in the tool&#8217;s body, using all the standard model operations.
+			</li>
+			<li>
+				<em>Deletion Tool</em>, used to delete elements. If a mapping does not define explicitly a deletion tool, the default behavior of the 
+				<em>Delete tree item</em> operation is to remove the item&#8217;s semantic 
+				<em>target</em> and all 
+				<em>associated elements</em> from the semantic model. If you want a specific behavior, you must create a 
+				<em>Deletion tool</em> explicitly and describe the behavior in the tool&#8217;s body. If you want to prevent the deletion of an element, you must create a 
+				<em>Deletion tool</em> and set a 
+				<em>Precondition</em> to return 
+				<code>false</code> for the elements which should not be deleted.
+			</li>
+			<li>
+				<em>Direct Edit Tool</em>, used to allow end-users to directly edit the label of a Tree Item (by double-clicking or pressing 
+				<em>F2</em> or 
+				<em>Return</em> on a Tree Item). It specifies how to interpret the new label value, and which changes to apply to the model element. The 
+				<em>Edit Mask</em> element (contained inside the tool) is used to parse the new label&#8217;s value as entered by the user, and to select part of this label as input variables to the editing action&#8217;s body. The mask can contain substrings of the form 
+				<code>{N}</code> where 
+				<em>N</em> is a number. The parts of the new label&#8217;s value which correspond to these substring will be available as variables named <code>argN</code>. For example, with an edit mask of <code>{0}:{1}</code> and an input string entered by the user of <code>attr : EString</code>, the tool&#8217;s body would be executed with variables <code>arg0</code> set to <code>attr&#9251;</code> and <code>arg1</code> set to <code>&#9251;EString</code>.
+			</li>
+			<li>
+				<em>Drop Tool</em>: When defined inside a 
+				<em>Tree Item Mapping</em>, a 
+				<em>Drop Tool</em> specifies what happens when the user drops an element onto an instance of the mapping. The 
+				<em>Drag source</em> property indicates whether the tool accepts elements dragged from a tree representation (value 
+				<em>Tree</em>), from the 
+				<em>Model Explorer</em> view (value 
+				<em>Model</em>), or both. If such a drop is detected and the 
+				<em>Precondition</em> evaluates to 
+				<code>true</code>, then the body of the drop tool is executed, with the 
+				<code>element</code> variable pointing to the semantic element being dropped and 
+				<code>newContainer</code> the semantic element in which it is dropped (in this case the tree&#8217;s semantic element).
+			</li>
+			<li>
+				<em>Pop-up menus</em> are used to add new menus and actions to the context menu associated to any Tree Item.
+			</li>
+		</ul>
+	</body>
+</html>

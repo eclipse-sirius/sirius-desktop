@@ -32,7 +32,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.business.api.session.SessionListener;
 
@@ -68,11 +67,9 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
      * session's transactional editing domain.
      */
     public void init() {
-        if (session != null) {
-            // Detect controlled resources for future resource add.
-            detectControlledResources();
-            session.getTransactionalEditingDomain().addResourceSetListener(this);
-        }
+        // Detect controlled resources for future resource add.
+        detectControlledResources();
+        session.getTransactionalEditingDomain().addResourceSetListener(this);
     }
 
     /**
@@ -80,10 +77,8 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
      * domain.
      */
     public void dispose() {
-        if (session != null) {
-            session.getTransactionalEditingDomain().removeResourceSetListener(this);
-            session = null;
-        }
+        session.getTransactionalEditingDomain().removeResourceSetListener(this);
+        session = null;
     }
 
     private void detectControlledResources() {
@@ -136,55 +131,15 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
      */
     @Override
     public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
-        Collection<Object> addedResources = Sets.newHashSet();
-        Collection<Object> removedResources = Sets.newHashSet();
-
-        // No check on notifer and feature : already done by filter.
+        // No check on notifier and feature : already done by filter.
         for (Notification notif : Iterables.filter(event.getNotifications(), Notification.class)) {
-            categorizeNotification(notif, addedResources, removedResources);
-        }
-
-        if (session != null) {
-            // See if this removal code should be called once we also remove sub-resources when a semantic resource is removed.
-            // if (!removedResources.isEmpty()) {
-            // //session.getControlledResources().removeAll(removedResources);
-            // }
-
-            if (!addedResources.isEmpty()) {
+            int change = notif.getEventType();
+            boolean resourcesWereAdded = change == Notification.ADD || change == Notification.SET || change ==  Notification.ADD_MANY;
+            if (resourcesWereAdded) {
                 return new ControlledResourcesDetectionCommand(session.getTransactionalEditingDomain());
             }
         }
-
         return null;
-    }
-
-    private void categorizeNotification(Notification notif, Collection<Object> addedResources, Collection<Object> removedResources) {
-        switch (notif.getEventType()) {
-        case Notification.ADD:
-        case Notification.SET:
-            addedResources.add(notif.getNewValue());
-            break;
-        case Notification.ADD_MANY:
-            if (notif.getNewValue() instanceof Collection) {
-                addedResources.addAll((Collection<?>) notif.getNewValue());
-            } else {
-                addedResources.add(notif.getNewValue());
-            }
-            break;
-        case Notification.REMOVE:
-        case Notification.UNSET:
-            removedResources.add(notif.getOldValue());
-            break;
-        case Notification.REMOVE_MANY:
-            if (notif.getOldValue() instanceof Collection) {
-                removedResources.addAll((Collection<?>) notif.getOldValue());
-            } else {
-                removedResources.add(notif.getOldValue());
-            }
-            break;
-        default:
-            break;
-        }
     }
 
     /**
@@ -195,21 +150,14 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
         return NotificationFilter.createFeatureFilter(ResourceSet.class, ResourceSet.RESOURCE_SET__RESOURCES).and(NotificationFilter.NOT_TOUCH);
     }
 
+    /**
+     * Simply wraps a call to {@link #detectControlledResources()} into a {@link RecordingCommand}.
+     */
     private class ControlledResourcesDetectionCommand extends RecordingCommand {
-
-        /**
-         * Constructor.
-         * 
-         * @param domain
-         *            the editing domain.
-         */
         public ControlledResourcesDetectionCommand(TransactionalEditingDomain domain) {
-            super(domain, "Controleld resource detection");
+            super(domain, "Controled resource detection");
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         protected void doExecute() {
             detectControlledResources();

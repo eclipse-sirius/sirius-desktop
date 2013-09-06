@@ -20,6 +20,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.graph.Node;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
@@ -31,6 +32,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.graph.VirtualNode;
+import org.eclipse.gmf.runtime.notation.View;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -50,6 +52,7 @@ import org.eclipse.sirius.diagram.edit.api.part.IDiagramListEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.SquareEditPart;
 import org.eclipse.sirius.diagram.internal.operation.RegionContainerUpdateLayoutOperation;
+import org.eclipse.sirius.diagram.internal.view.factories.DNodeContainerViewFactory;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
@@ -72,6 +75,7 @@ public class ArrangeAllWithAutoSize {
      */
     public static boolean shouldBeAutosized(final IGraphicalEditPart part) {
         boolean enabled = ArrangeAllWithAutoSize.isEnabled() && (ArrangeAllWithAutoSize.isContainer(part) || ArrangeAllWithAutoSize.isList(part)) && !ArrangeAllWithAutoSize.isPinned(part);
+        enabled = enabled && !ArrangeAllWithAutoSize.isDefaultSizeHasJustBeenSet(part);
         if (enabled && ArrangeAllWithAutoSize.isRegion(part)) {
             EditPart regionContainerCompartment = part.getParent();
             if (regionContainerCompartment != null) {
@@ -80,6 +84,7 @@ public class ArrangeAllWithAutoSize {
             }
         }
         return enabled;
+
     }
 
     private static boolean isPinned(final IGraphicalEditPart part) {
@@ -87,6 +92,33 @@ public class ArrangeAllWithAutoSize {
             IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) part;
             DDiagramElement dDiagramElement = diagramElementEditPart.resolveDiagramElement();
             return new PinHelper().isPinned(dDiagramElement);
+        }
+        return false;
+    }
+
+    /**
+     * Tests if the gmf view attached to this part contained the
+     * <code>{@link DNodeContainerViewFactory} JUST_CREATED</code> marker
+     * adapter. The marker is added by the DNodeContainerViewFactory to
+     * distinguish the views which have just been created to keep their default
+     * dimension setted by the view factory. We removed this marker if it's
+     * found.
+     * 
+     * @param part
+     *            the graphical edit part.
+     * @return true if the marker is found.
+     */
+    private static boolean isDefaultSizeHasJustBeenSet(final IGraphicalEditPart part) {
+        View view = part.getNotationView();
+        if (view != null) {
+            Iterator<Adapter> iterator = view.eAdapters().iterator();
+            while (iterator.hasNext()) {
+                Adapter adapter = iterator.next();
+                if (adapter.isAdapterForType(DNodeContainerViewFactory.class)) {
+                    iterator.remove();
+                    return true;
+                }
+            }
         }
         return false;
     }

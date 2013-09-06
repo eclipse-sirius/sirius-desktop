@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.tree.ui;singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.sirius.tree.ui.provider.TreeUIPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -20,15 +20,15 @@ Export-Package: org.eclipse.sirius.tree.description.provider,
  org.eclipse.sirius.tree.ui.tools.api.editor,
  org.eclipse.sirius.tree.ui.tools.internal.command;x-internal:=true,
  org.eclipse.sirius.tree.ui.tools.internal.editor;x-friends:="org.eclipse.sirius.tree.tests",
- org.eclipse.sirius.tree.ui.tools.internal.editor.actions;x-friends:="org.eclipse.sirius.tests",
+ org.eclipse.sirius.tree.ui.tools.internal.editor.actions;x-friends:="fr.obeo.dsl.viewpoint.tests",
  org.eclipse.sirius.tree.ui.tools.internal.editor.listeners;x-internal:=true,
  org.eclipse.sirius.tree.ui.tools.internal.editor.preferences;x-internal:=true,
- org.eclipse.sirius.tree.ui.tools.internal.editor.provider;x-friends:="org.eclipse.sirius.tests.tree"
+ org.eclipse.sirius.tree.ui.tools.internal.editor.provider;x-friends:="fr.obeo.dsl.viewpoint.tests.tree"
 Require-Bundle: org.eclipse.sirius.tree;visibility:=reexport,
  org.eclipse.sirius.ui;visibility:=reexport,
  org.eclipse.emf.edit.ui,
  com.google.guava;bundle-version="[11.0.0,12.0.0)",
- org.eclipse.sirius.ecore.extender;bundle-version="1.1.0",
+ org.eclipse.sirius.ecore.extender;bundle-version="0.1.0",
  org.eclipse.sirius.common,
  org.eclipse.ui.views.properties.tabbed,
  org.eclipse.emf.workspace,

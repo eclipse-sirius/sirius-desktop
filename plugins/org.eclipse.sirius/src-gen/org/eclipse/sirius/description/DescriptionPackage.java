@@ -1234,13 +1234,13 @@ public interface DescriptionPackage extends EPackage {
     int DIAGRAM_DESCRIPTION__DEFAULT_LAYER = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 25;
 
     /**
-     * The feature id for the '<em><b>Optional Layers</b></em>' containment
+     * The feature id for the '<em><b>Additional Layers</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 26;
+    int DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 26;
 
     /**
      * The feature id for the '<em><b>All Layers</b></em>' reference list. <!--
@@ -1587,13 +1587,13 @@ public interface DescriptionPackage extends EPackage {
     int DIAGRAM_IMPORT_DESCRIPTION__DEFAULT_LAYER = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 18;
 
     /**
-     * The feature id for the '<em><b>Optional Layers</b></em>' containment
+     * The feature id for the '<em><b>Additional Layers</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__OPTIONAL_LAYERS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 19;
+    int DIAGRAM_IMPORT_DESCRIPTION__ADDITIONAL_LAYERS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 19;
 
     /**
      * The feature id for the '<em><b>All Layers</b></em>' reference list. <!--
@@ -4152,6 +4152,198 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The meta object id for the '
+     * {@link org.eclipse.sirius.description.impl.AdditionalLayerImpl
+     * <em>Additional Layer</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.description.impl.AdditionalLayerImpl
+     * @see org.eclipse.sirius.description.impl.DescriptionPackageImpl#getAdditionalLayer()
+     * @generated
+     */
+    int ADDITIONAL_LAYER = 41;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__DOCUMENTATION = LAYER__DOCUMENTATION;
+
+    /**
+     * The feature id for the '<em><b>End User Documentation</b></em>'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__END_USER_DOCUMENTATION = LAYER__END_USER_DOCUMENTATION;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__NAME = LAYER__NAME;
+
+    /**
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__LABEL = LAYER__LABEL;
+
+    /**
+     * The feature id for the '<em><b>Node Mappings</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__NODE_MAPPINGS = LAYER__NODE_MAPPINGS;
+
+    /**
+     * The feature id for the '<em><b>Edge Mappings</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__EDGE_MAPPINGS = LAYER__EDGE_MAPPINGS;
+
+    /**
+     * The feature id for the '<em><b>Edge Mapping Imports</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__EDGE_MAPPING_IMPORTS = LAYER__EDGE_MAPPING_IMPORTS;
+
+    /**
+     * The feature id for the '<em><b>Container Mappings</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__CONTAINER_MAPPINGS = LAYER__CONTAINER_MAPPINGS;
+
+    /**
+     * The feature id for the '<em><b>Reused Mappings</b></em>' reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__REUSED_MAPPINGS = LAYER__REUSED_MAPPINGS;
+
+    /**
+     * The feature id for the '<em><b>All Tools</b></em>' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__ALL_TOOLS = LAYER__ALL_TOOLS;
+
+    /**
+     * The feature id for the '<em><b>Tool Sections</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__TOOL_SECTIONS = LAYER__TOOL_SECTIONS;
+
+    /**
+     * The feature id for the '<em><b>Reused Tools</b></em>' reference list.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__REUSED_TOOLS = LAYER__REUSED_TOOLS;
+
+    /**
+     * The feature id for the '<em><b>Decoration Descriptions Set</b></em>'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__DECORATION_DESCRIPTIONS_SET = LAYER__DECORATION_DESCRIPTIONS_SET;
+
+    /**
+     * The feature id for the '<em><b>Icon</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__ICON = LAYER__ICON;
+
+    /**
+     * The feature id for the '<em><b>All Edge Mappings</b></em>' reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__ALL_EDGE_MAPPINGS = LAYER__ALL_EDGE_MAPPINGS;
+
+    /**
+     * The feature id for the '<em><b>All Activated Edge Mappings</b></em>'
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__ALL_ACTIVATED_EDGE_MAPPINGS = LAYER__ALL_ACTIVATED_EDGE_MAPPINGS;
+
+    /**
+     * The feature id for the '<em><b>Customization</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__CUSTOMIZATION = LAYER__CUSTOMIZATION;
+
+    /**
+     * The feature id for the '<em><b>Active By Default</b></em>' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__ACTIVE_BY_DEFAULT = LAYER_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Optional</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER__OPTIONAL = LAYER_FEATURE_COUNT + 1;
+
+    /**
+     * The number of structural features of the '<em>Additional Layer</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ADDITIONAL_LAYER_FEATURE_COUNT = LAYER_FEATURE_COUNT + 2;
+
+    /**
+     * The meta object id for the '
      * {@link org.eclipse.sirius.description.impl.CustomizationImpl
      * <em>Customization</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
@@ -4221,204 +4413,6 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      */
     int EREFERENCE_CUSTOMIZATION = 48;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.description.impl.OptionalLayerImpl
-     * <em>Optional Layer</em>}' class. <!-- begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @see org.eclipse.sirius.description.impl.OptionalLayerImpl
-     * @see org.eclipse.sirius.description.impl.DescriptionPackageImpl#getOptionalLayer()
-     * @generated
-     */
-    int OPTIONAL_LAYER = 41;
-
-    /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__DOCUMENTATION = LAYER__DOCUMENTATION;
-
-    /**
-     * The feature id for the '<em><b>End User Documentation</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__END_USER_DOCUMENTATION = LAYER__END_USER_DOCUMENTATION;
-
-    /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__NAME = LAYER__NAME;
-
-    /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__LABEL = LAYER__LABEL;
-
-    /**
-     * The feature id for the '<em><b>Node Mappings</b></em>' containment
-     * reference list. <!-- begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__NODE_MAPPINGS = LAYER__NODE_MAPPINGS;
-
-    /**
-     * The feature id for the '<em><b>Edge Mappings</b></em>' containment
-     * reference list. <!-- begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__EDGE_MAPPINGS = LAYER__EDGE_MAPPINGS;
-
-    /**
-     * The feature id for the '<em><b>Edge Mapping Imports</b></em>' containment
-     * reference list. <!-- begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__EDGE_MAPPING_IMPORTS = LAYER__EDGE_MAPPING_IMPORTS;
-
-    /**
-     * The feature id for the '<em><b>Container Mappings</b></em>' containment
-     * reference list. <!-- begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__CONTAINER_MAPPINGS = LAYER__CONTAINER_MAPPINGS;
-
-    /**
-     * The feature id for the '<em><b>Reused Mappings</b></em>' reference list.
-     * <!-- begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__REUSED_MAPPINGS = LAYER__REUSED_MAPPINGS;
-
-    /**
-     * The feature id for the '<em><b>All Tools</b></em>' reference list. <!--
-     * begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__ALL_TOOLS = LAYER__ALL_TOOLS;
-
-    /**
-     * The feature id for the '<em><b>Tool Sections</b></em>' containment
-     * reference list. <!-- begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__TOOL_SECTIONS = LAYER__TOOL_SECTIONS;
-
-    /**
-     * The feature id for the '<em><b>Reused Tools</b></em>' reference list.
-     * <!-- begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__REUSED_TOOLS = LAYER__REUSED_TOOLS;
-
-    /**
-     * The feature id for the '<em><b>Decoration Descriptions Set</b></em>'
-     * containment reference. <!-- begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__DECORATION_DESCRIPTIONS_SET = LAYER__DECORATION_DESCRIPTIONS_SET;
-
-    /**
-     * The feature id for the '<em><b>Icon</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__ICON = LAYER__ICON;
-
-    /**
-     * The feature id for the '<em><b>All Edge Mappings</b></em>' reference
-     * list. <!-- begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__ALL_EDGE_MAPPINGS = LAYER__ALL_EDGE_MAPPINGS;
-
-    /**
-     * The feature id for the '<em><b>All Activated Edge Mappings</b></em>'
-     * reference list. <!-- begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__ALL_ACTIVATED_EDGE_MAPPINGS = LAYER__ALL_ACTIVATED_EDGE_MAPPINGS;
-
-    /**
-     * The feature id for the '<em><b>Customization</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__CUSTOMIZATION = LAYER__CUSTOMIZATION;
-
-    /**
-     * The feature id for the '<em><b>Active By Default</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER__ACTIVE_BY_DEFAULT = LAYER_FEATURE_COUNT + 0;
-
-    /**
-     * The number of structural features of the '<em>Optional Layer</em>' class.
-     * <!-- begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @generated
-     * @ordered
-     */
-    int OPTIONAL_LAYER_FEATURE_COUNT = LAYER_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Vsm Element Customizations</b></em>'
@@ -5793,16 +5787,17 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.description.DiagramDescription#getOptionalLayers
-     * <em>Optional Layers</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.DiagramDescription#getAdditionalLayers
+     * <em>Additional Layers</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      * 
      * @return the meta object for the containment reference list '
-     *         <em>Optional Layers</em>'.
-     * @see org.eclipse.sirius.description.DiagramDescription#getOptionalLayers()
+     *         <em>Additional Layers</em>'.
+     * @see org.eclipse.sirius.description.DiagramDescription#getAdditionalLayers()
      * @see #getDiagramDescription()
      * @generated
      */
-    EReference getDiagramDescription_OptionalLayers();
+    EReference getDiagramDescription_AdditionalLayers();
 
     /**
      * Returns the meta object for the reference list '
@@ -7680,6 +7675,43 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * Returns the meta object for class '
+     * {@link org.eclipse.sirius.description.AdditionalLayer
+     * <em>Additional Layer</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @return the meta object for class '<em>Additional Layer</em>'.
+     * @see org.eclipse.sirius.description.AdditionalLayer
+     * @generated
+     */
+    EClass getAdditionalLayer();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.description.AdditionalLayer#isActiveByDefault
+     * <em>Active By Default</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @return the meta object for the attribute '<em>Active By Default</em>'.
+     * @see org.eclipse.sirius.description.AdditionalLayer#isActiveByDefault()
+     * @see #getAdditionalLayer()
+     * @generated
+     */
+    EAttribute getAdditionalLayer_ActiveByDefault();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.description.AdditionalLayer#isOptional
+     * <em>Optional</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Optional</em>'.
+     * @see org.eclipse.sirius.description.AdditionalLayer#isOptional()
+     * @see #getAdditionalLayer()
+     * @generated
+     */
+    EAttribute getAdditionalLayer_Optional();
+
+    /**
+     * Returns the meta object for class '
      * {@link org.eclipse.sirius.description.Customization
      * <em>Customization</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -7888,31 +7920,6 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      */
     EReference getEReferenceCustomization_Value();
-
-    /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.description.OptionalLayer
-     * <em>Optional Layer</em>}'. <!-- begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @return the meta object for class '<em>Optional Layer</em>'.
-     * @see org.eclipse.sirius.description.OptionalLayer
-     * @generated
-     */
-    EClass getOptionalLayer();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.description.OptionalLayer#isActiveByDefault
-     * <em>Active By Default</em>}'. <!-- begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @return the meta object for the attribute '<em>Active By Default</em>'.
-     * @see org.eclipse.sirius.description.OptionalLayer#isActiveByDefault()
-     * @see #getOptionalLayer()
-     * @generated
-     */
-    EAttribute getOptionalLayer_ActiveByDefault();
 
     /**
      * Returns the meta object for class '
@@ -8932,13 +8939,13 @@ public interface DescriptionPackage extends EPackage {
         EReference DIAGRAM_DESCRIPTION__DEFAULT_LAYER = eINSTANCE.getDiagramDescription_DefaultLayer();
 
         /**
-         * The meta object literal for the '<em><b>Optional Layers</b></em>'
+         * The meta object literal for the '<em><b>Additional Layers</b></em>'
          * containment reference list feature. <!-- begin-user-doc --> <!--
          * end-user-doc -->
          * 
          * @generated
          */
-        EReference DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS = eINSTANCE.getDiagramDescription_OptionalLayers();
+        EReference DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS = eINSTANCE.getDiagramDescription_AdditionalLayers();
 
         /**
          * The meta object literal for the '<em><b>All Layers</b></em>'
@@ -10297,6 +10304,34 @@ public interface DescriptionPackage extends EPackage {
 
         /**
          * The meta object literal for the '
+         * {@link org.eclipse.sirius.description.impl.AdditionalLayerImpl
+         * <em>Additional Layer</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.description.impl.AdditionalLayerImpl
+         * @see org.eclipse.sirius.description.impl.DescriptionPackageImpl#getAdditionalLayer()
+         * @generated
+         */
+        EClass ADDITIONAL_LAYER = eINSTANCE.getAdditionalLayer();
+
+        /**
+         * The meta object literal for the '<em><b>Active By Default</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute ADDITIONAL_LAYER__ACTIVE_BY_DEFAULT = eINSTANCE.getAdditionalLayer_ActiveByDefault();
+
+        /**
+         * The meta object literal for the '<em><b>Optional</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute ADDITIONAL_LAYER__OPTIONAL = eINSTANCE.getAdditionalLayer_Optional();
+
+        /**
+         * The meta object literal for the '
          * {@link org.eclipse.sirius.description.impl.CustomizationImpl
          * <em>Customization</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
@@ -10460,27 +10495,6 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EReference EREFERENCE_CUSTOMIZATION__VALUE = eINSTANCE.getEReferenceCustomization_Value();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.description.impl.OptionalLayerImpl
-         * <em>Optional Layer</em>}' class. <!-- begin-user-doc -->
-         * 
-         * @since 2.0 <!-- end-user-doc -->
-         * @see org.eclipse.sirius.description.impl.OptionalLayerImpl
-         * @see org.eclipse.sirius.description.impl.DescriptionPackageImpl#getOptionalLayer()
-         * @generated
-         */
-        EClass OPTIONAL_LAYER = eINSTANCE.getOptionalLayer();
-
-        /**
-         * The meta object literal for the '<em><b>Active By Default</b></em>'
-         * attribute feature. <!-- begin-user-doc -->
-         * 
-         * @since 2.0 <!-- end-user-doc -->
-         * @generated
-         */
-        EAttribute OPTIONAL_LAYER__ACTIVE_BY_DEFAULT = eINSTANCE.getOptionalLayer_ActiveByDefault();
 
         /**
          * The meta object literal for the '

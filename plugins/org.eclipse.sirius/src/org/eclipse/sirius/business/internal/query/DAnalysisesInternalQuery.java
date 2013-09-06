@@ -62,7 +62,7 @@ public class DAnalysisesInternalQuery {
     }
 
     private void addAllReferencedAnalyses(final Collection<DAnalysis> analysisAndReferenced, final DAnalysis analysis) {
-        for (final DAnalysis referenced : analysis.getReferencedAnalysis()) {
+        for (final DAnalysis referenced : Sets.newLinkedHashSet(analysis.getReferencedAnalysis())) {
             if (!analysisAndReferenced.contains(referenced) && referenced.eResource() != null) {
                 analysisAndReferenced.add(referenced);
                 addAllReferencedAnalyses(analysisAndReferenced, referenced);

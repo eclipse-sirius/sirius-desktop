@@ -34,7 +34,8 @@ import org.eclipse.ui.navigator.CommonViewer;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
-import org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem;
+import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingItem;
+import org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ProjectDependenciesItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ResourcesFolderItem;
@@ -285,7 +286,7 @@ public class PatternFilter extends ViewerFilter {
             result = isParentMatch(viewer, element);
         } else if (element instanceof RepresentationDescriptionItem) {
             result = isParentMatch(viewer, element) || (isLeafMatch(viewer, element) && !isFilterWithEmptyDescription(viewer, (RepresentationDescriptionItem) element));
-        } else if (element instanceof EObject || element instanceof CommonItem || element instanceof ResourceFactoryImpl || element instanceof XMLResource) {
+        } else if (element instanceof EObject || element instanceof CommonSessionItem || element instanceof ResourceFactoryImpl || element instanceof XMLResource) {
             result = isParentMatch(viewer, element) || isLeafMatch(viewer, element);
         } else {
             result = false;
@@ -343,6 +344,7 @@ public class PatternFilter extends ViewerFilter {
     public boolean isOnlySearchIn(Object element) {
         boolean result = element instanceof IWorkingSet || element instanceof IProject || element instanceof IFolder || element instanceof IFile;
         result = result || element instanceof SiriussFolderItem || element instanceof ResourcesFolderItem || element instanceof ProjectDependenciesItem;
+        result = result || element instanceof GroupingItem;
         return result;
     }
 
@@ -406,6 +408,7 @@ public class PatternFilter extends ViewerFilter {
         // Need to avoid both String.split and regular expressions, in order to
         // compile against JCL Foundation.
         // Also need to do this in an NL-sensitive way.
+
         BreakIterator iter = BreakIterator.getWordInstance();
         iter.setText(text);
         int i = iter.first();

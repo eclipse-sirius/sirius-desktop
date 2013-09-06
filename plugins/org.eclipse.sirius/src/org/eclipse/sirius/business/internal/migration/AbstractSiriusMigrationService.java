@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.osgi.framework.Version;
 
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.migration.IMigrationParticipant;
 
@@ -127,6 +129,26 @@ public abstract class AbstractSiriusMigrationService {
             }
         }
         return returnedValue;
+    }
+
+    /**
+     * Returns the new fragment if the corresponding reference has changed.
+     * 
+     * @param uriFragment
+     *            the current fragment.
+     * @param loadedVersion
+     *            the loaded version.
+     * @return the optional new uri fragment (none if no changes).
+     */
+    public Option<String> getNewFragment(String uriFragment, String loadedVersion) {
+        Option<String> optionalNewFragment = Options.newNone();
+        for (IMigrationParticipant contribution : delegatesParticipants) {
+            optionalNewFragment = contribution.getNewFragment(uriFragment, loadedVersion);
+            if (optionalNewFragment.some()) {
+                break;
+            }
+        }
+        return optionalNewFragment;
     }
 
     /**

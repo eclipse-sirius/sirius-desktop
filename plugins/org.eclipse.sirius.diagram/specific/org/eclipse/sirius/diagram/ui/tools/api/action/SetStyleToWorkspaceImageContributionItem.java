@@ -131,6 +131,11 @@ public class SetStyleToWorkspaceImageContributionItem extends ActionContribution
         if (partListener != null && service != null) {
             service.removePartListener(partListener);
         }
+
+        if (representationPart != null && representationPart.getSite() != null && representationPart.getSite().getPage() != null) {
+            representationPart.getSite().getPage().removeSelectionListener(editPartSelectionListener);
+        }
+
         partListener = null;
         representationPart = null;
         super.dispose();

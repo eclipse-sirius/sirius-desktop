@@ -229,7 +229,7 @@ public class DiagramExtensionDescriptionItemProvider extends ItemProviderAdapter
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS, DescriptionFactory.eINSTANCE.createOptionalLayer()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS, DescriptionFactory.eINSTANCE.createAdditionalLayer()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET, ValidationFactory.eINSTANCE.createValidationSet()));
 

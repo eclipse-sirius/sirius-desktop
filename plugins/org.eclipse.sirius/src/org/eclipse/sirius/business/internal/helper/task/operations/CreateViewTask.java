@@ -201,7 +201,8 @@ public class CreateViewTask extends AbstractOperationTask {
         final DisplayService service = DisplayServiceManager.INSTANCE.getDisplayService(DisplayMode.CREATION);
         if (service != null && diagramElement != null && diagram != null) {
             Session session = SessionManager.INSTANCE.getSession(diagramElement.getTarget());
-            diagramElement.setVisible(service.computeVisibility(session, diagram, diagramElement));
+            DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, diagram);
+            diagramElement.setVisible(service.computeVisibility(mappingManager, diagram, diagramElement));
             if (!service.computeLabelVisibility(diagram, diagramElement)) {
                 HideFilterHelper.INSTANCE.hideLabel(diagramElement);
             }

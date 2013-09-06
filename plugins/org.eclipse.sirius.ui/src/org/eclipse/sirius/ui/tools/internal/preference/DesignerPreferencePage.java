@@ -12,6 +12,7 @@ package org.eclipse.sirius.ui.tools.internal.preference;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
+import org.eclipse.jface.preference.IntegerFieldEditor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -47,7 +48,13 @@ public class DesignerPreferencePage extends FieldEditorPreferencePage implements
     private BooleanFieldEditor defensiveFileEdit;
 
     private BooleanFieldEditor traceMode;
-    
+
+    private BooleanFieldEditor groupEnable;
+
+    private IntegerFieldEditor groupTrigger;
+
+    private IntegerFieldEditor groupSize;
+
     /**
      * {@inheritDoc}
      * 
@@ -66,6 +73,7 @@ public class DesignerPreferencePage extends FieldEditorPreferencePage implements
         addRefreshFields(parent);
         addFilesFields(parent);
         addProfilingField(parent);
+        addGroupTreeItemsField(parent);
 
     }
 
@@ -95,9 +103,31 @@ public class DesignerPreferencePage extends FieldEditorPreferencePage implements
     private void addProfilingField(Composite parent) {
         Composite profilerComposite = createGroup(parent, "Profiler");
 
-        traceMode = new BooleanFieldEditorWithHelp(CommonPreferencesConstants.PREF_TRACE_ON, "Profiling", "Open the profiler view: Sirius Profiler > Time Profiler View.", new Composite(profilerComposite,
-                SWT.NONE));
+        traceMode = new BooleanFieldEditorWithHelp(CommonPreferencesConstants.PREF_TRACE_ON, "Profiling", "Open the profiler view: Sirius Profiler > Time Profiler View.", new Composite(
+                profilerComposite, SWT.NONE));
         addField(traceMode);
+    }
+
+    private void addGroupTreeItemsField(Composite parent) {
+        Composite groupComposite = createGroup(parent, "Group tree items");
+
+        groupEnable = new BooleanFieldEditorWithHelp(CommonPreferencesConstants.PREF_GROUP_ENABLE, "Enable",
+                "This feature handles a new intermediary tree level if the children size is above the threshold.", new Composite(groupComposite, SWT.NONE));
+
+        Composite groupTriggerComposite = new Composite(groupComposite, SWT.NONE);
+        groupTriggerComposite.setLayout(new GridLayout(2, false));
+        groupTriggerComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        groupTrigger = new IntegerFieldEditor(CommonPreferencesConstants.PREF_GROUP_TRIGGER, "Threshold", groupTriggerComposite);
+        groupTrigger.setValidRange(0, Integer.MAX_VALUE);
+
+        Composite groupSizeComposite = new Composite(groupComposite, SWT.NONE);
+        groupSizeComposite.setLayout(new GridLayout(2, false));
+        groupSizeComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+        groupSize = new IntegerFieldEditor(CommonPreferencesConstants.PREF_GROUP_SIZE, "Group size", groupSizeComposite);
+        groupSize.setValidRange(0, Integer.MAX_VALUE);
+        addField(groupEnable);
+        addField(groupTrigger);
+        addField(groupSize);
     }
 
     private Group createGroup(Composite parent, String text) {
@@ -133,8 +163,18 @@ public class DesignerPreferencePage extends FieldEditorPreferencePage implements
         // will take the value there.
         defensiveFileEdit.setPreferenceStore(SiriusTransPlugin.getPlugin().getPreferenceStore());
         defensiveFileEdit.load();
+
         traceMode.setPreferenceStore(SiriusTransPlugin.getPlugin().getPreferenceStore());
         traceMode.load();
+
+        groupEnable.setPreferenceStore(SiriusTransPlugin.getPlugin().getPreferenceStore());
+        groupEnable.load();
+
+        groupTrigger.setPreferenceStore(SiriusTransPlugin.getPlugin().getPreferenceStore());
+        groupTrigger.load();
+
+        groupSize.setPreferenceStore(SiriusTransPlugin.getPlugin().getPreferenceStore());
+        groupSize.load();
     }
 
 }

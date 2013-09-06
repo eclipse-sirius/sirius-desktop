@@ -43,7 +43,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.api.views.common.item.AnalysisResourceItem;
-import org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem;
+import org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.ui.tools.internal.views.common.FileSessionFinder;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
@@ -252,16 +252,16 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
      *            the object to check.
      * @return true if the object is in a modeling project.
      */
-    private boolean isInModelingProject(CommonItem object) {
+    private boolean isInModelingProject(CommonSessionItem object) {
         IResource parentResource = null;
 
-        CommonItem wrapper = object;
+        CommonSessionItem wrapper = object;
         while (wrapper != null && wrapper.getParent() != null && parentResource == null) {
             Object parent = wrapper.getParent();
             if (parent instanceof IResource) {
                 parentResource = (IResource) parent;
-            } else if (parent instanceof CommonItem) {
-                wrapper = (CommonItem) wrapper.getParent();
+            } else if (parent instanceof CommonSessionItem) {
+                wrapper = (CommonSessionItem) wrapper.getParent();
             } else {
                 break;
             }

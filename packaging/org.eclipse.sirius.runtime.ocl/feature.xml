@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature
-      id="org.eclipse.sirius.runtime.ocl"
-      label="%featureName"
-      version="6.8.0.qualifier"
-      provider-name="%providerName">
+<!--
+  Copyright (c) 2007, 2013 THALES GLOBAL SERVICES
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
 
-   <description url="http://www.eclipse.org/sirius">
-      Sirius runtime support for interpreting OCL queries
-used in Sirius Specification Models.
-   </description>
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+<feature id="org.eclipse.sirius.runtime.ocl"
+	 label="%featureName"
+	 version="0.1.0.qualifier"
+	 provider-name="%providerName">
 
-   <copyright>
-      %copyright
-   </copyright>
+  <description url="http://www.eclipse.org/sirius">
+    Sirius runtime support for interpreting OCL queries used in Viewpoint Specification Models.
+  </description>
 
-   <license url="%licenseURL">
-      %license
-   </license>
+  <copyright>
+    %copyright
+  </copyright>
 
-   <plugin
-         id="org.eclipse.sirius.common.ocl"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+  <license url="%licenseURL">
+    %license
+  </license>
+
+  <plugin id="org.eclipse.sirius.common.ocl" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
 </feature>

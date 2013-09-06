@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.sirius.description.AdditionalLayer;
 import org.eclipse.sirius.description.DescriptionPackage;
 import org.eclipse.sirius.description.DiagramExtensionDescription;
-import org.eclipse.sirius.description.OptionalLayer;
 import org.eclipse.sirius.description.concern.ConcernSet;
 import org.eclipse.sirius.description.validation.ValidationSet;
 
@@ -152,7 +152,7 @@ public class DiagramExtensionDescriptionImpl extends EObjectImpl implements Diag
      * @generated
      * @ordered
      */
-    protected EList<OptionalLayer> layers;
+    protected EList<AdditionalLayer> layers;
 
     /**
      * The cached value of the '{@link #getValidationSet()
@@ -274,9 +274,9 @@ public class DiagramExtensionDescriptionImpl extends EObjectImpl implements Diag
      * 
      * @generated
      */
-    public EList<OptionalLayer> getLayers() {
+    public EList<AdditionalLayer> getLayers() {
         if (layers == null) {
-            layers = new EObjectContainmentEList.Resolving<OptionalLayer>(OptionalLayer.class, this, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS);
+            layers = new EObjectContainmentEList.Resolving<AdditionalLayer>(AdditionalLayer.class, this, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS);
         }
         return layers;
     }
@@ -493,7 +493,7 @@ public class DiagramExtensionDescriptionImpl extends EObjectImpl implements Diag
             return;
         case DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS:
             getLayers().clear();
-            getLayers().addAll((Collection<? extends OptionalLayer>) newValue);
+            getLayers().addAll((Collection<? extends AdditionalLayer>) newValue);
             return;
         case DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__VALIDATION_SET:
             setValidationSet((ValidationSet) newValue);

@@ -255,7 +255,7 @@ public final class GMFHelper {
                     replaceAutoSize(node, bounds, useFigureForAutoSizeConstraint, new Dimension(50, 20));
                 }
             } else {
-                replaceAutoSize(node, bounds, useFigureForAutoSizeConstraint, getDefaultSize(abstractDNode));
+                replaceAutoSize(node, bounds, useFigureForAutoSizeConstraint, null);
             }
         }
         return bounds;
@@ -271,12 +271,21 @@ public final class GMFHelper {
      *            The bounds with auto-size to replace.
      * @param useFigureForAutoSizeConstraint
      *            true to use draw2d figure to get size
-     * @param defaultSize
+     * @param providedDefaultSize
      *            The size used for creation for this kind of <code>node</code>.
      *            It is the minimum size.
      */
-    private static void replaceAutoSize(Node node, Rectangle bounds, boolean useFigureForAutoSizeConstraint, Dimension defaultSize) {
+    private static void replaceAutoSize(Node node, Rectangle bounds, boolean useFigureForAutoSizeConstraint, Dimension providedDefaultSize) {
         if (bounds.width == -1 || bounds.height == -1) {
+            Dimension defaultSize = providedDefaultSize;
+            if (providedDefaultSize == null) {
+                // if there is no default size, we compute it from the given
+                // node.
+                EObject element = node.getElement();
+                if (element instanceof AbstractDNode) {
+                    defaultSize = getDefaultSize((AbstractDNode) element);
+                }
+            }
             if (useFigureForAutoSizeConstraint) {
                 // Use the figure (if founded) to set width and height
                 // instead of (-1, -1)

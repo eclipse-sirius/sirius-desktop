@@ -2011,7 +2011,7 @@
    <extension
          point="org.eclipse.sirius.migrationParticipant">
       <participant
-            class="org.eclipse.sirius.diagram.business.internal.migration.DiagramRepresentationsFileMigrationParticiant"
+            class="org.eclipse.sirius.diagram.business.internal.migration.DiagramRepresentationsFileMigrationParticipant"
             kind="RepresentationsFile">
       </participant>
       <participant

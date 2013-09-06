@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,9 +19,11 @@ import java.util.Set;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
-import org.eclipse.gef.requests.CreateRequest;
+import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnectionRequest;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
@@ -189,15 +191,7 @@ public class RequestQuery extends org.eclipse.sirius.diagram.business.internal.q
      *         create message
      */
     public boolean isCreateMessageCreation() {
-        boolean result = false;
-        if (!isNoteAttachmentCreationRequest() && request instanceof CreateRequest) {
-            CreateRequest createRequest = (CreateRequest) request;
-            if (createRequest.getNewObject() instanceof MessageCreationTool) {
-                MessageCreationTool messageCreationTool = (MessageCreationTool) createRequest.getNewObject();
-                result = Iterables.any(messageCreationTool.getEdgeMappings(), Predicates.instanceOf(CreationMessageMapping.class));
-            }
-        }
-        return result;
+        return isSequenceMessageCreation(Predicates.instanceOf(CreationMessageMapping.class));
     }
 
     /**
@@ -208,15 +202,7 @@ public class RequestQuery extends org.eclipse.sirius.diagram.business.internal.q
      *         destroy message
      */
     public boolean isDestroyMessageCreation() {
-        boolean result = false;
-        if (!isNoteAttachmentCreationRequest() && request instanceof CreateRequest) {
-            CreateRequest createRequest = (CreateRequest) request;
-            if (createRequest.getNewObject() instanceof MessageCreationTool) {
-                MessageCreationTool messageCreationTool = (MessageCreationTool) createRequest.getNewObject();
-                result = Iterables.any(messageCreationTool.getEdgeMappings(), Predicates.instanceOf(DestructionMessageMapping.class));
-            }
-        }
-        return result;
+        return isSequenceMessageCreation(Predicates.instanceOf(DestructionMessageMapping.class));
     }
 
     /**
@@ -227,12 +213,29 @@ public class RequestQuery extends org.eclipse.sirius.diagram.business.internal.q
      *         standard message
      */
     public boolean isStandardMessageCreation() {
+        return isSequenceMessageCreation(Predicates.instanceOf(BasicMessageMapping.class));
+    }
+
+    /**
+     * Checks if the current request is a creation request for a message.
+     * 
+     * @return true if the current request is a creation request for message
+     */
+    public boolean isSequenceMessageCreation() {
+        return isSequenceMessageCreation(null);
+    }
+
+    private boolean isSequenceMessageCreation(Predicate<Object> expectedMessageCreationToolMappingTypes) {
         boolean result = false;
-        if (!isNoteAttachmentCreationRequest() && request instanceof CreateRequest) {
-            CreateRequest createRequest = (CreateRequest) request;
-            if (createRequest.getNewObject() instanceof MessageCreationTool) {
-                MessageCreationTool messageCreationTool = (MessageCreationTool) createRequest.getNewObject();
-                result = Iterables.any(messageCreationTool.getEdgeMappings(), Predicates.instanceOf(BasicMessageMapping.class));
+        if (!isNoteAttachmentCreationRequest() && request instanceof CreateConnectionRequest) {
+            CreateConnectionRequest createRequest = (CreateConnectionRequest) request;
+            if (!(request instanceof CreateUnspecifiedTypeConnectionRequest) && createRequest.getNewObject() instanceof MessageCreationTool) {
+                if (expectedMessageCreationToolMappingTypes != null) {
+                    MessageCreationTool messageCreationTool = (MessageCreationTool) createRequest.getNewObject();
+                    result = Iterables.any(messageCreationTool.getEdgeMappings(), expectedMessageCreationToolMappingTypes);
+                } else {
+                    result = true;
+                }
             }
         }
         return result;
@@ -250,21 +253,6 @@ public class RequestQuery extends org.eclipse.sirius.diagram.business.internal.q
 
     public Map getExtendedData() {
         return request.getExtendedData();
-    }
-
-    /**
-     * Checks if the current request is a creation request for a message.
-     * 
-     * @return true if the current request is a creation request for message
-     */
-    public boolean isSequenceMessageCreation() {
-        boolean result = false;
-        if (!isNoteAttachmentCreationRequest() && request instanceof CreateRequest) {
-            CreateRequest createRequest = (CreateRequest) request;
-            Object tool = createRequest.getNewObject();
-            result = tool instanceof MessageCreationTool;
-        }
-        return result;
     }
 
 }

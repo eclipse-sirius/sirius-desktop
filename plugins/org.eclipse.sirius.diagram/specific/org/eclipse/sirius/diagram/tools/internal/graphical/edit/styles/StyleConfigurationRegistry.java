@@ -12,11 +12,12 @@ package org.eclipse.sirius.diagram.tools.internal.graphical.edit.styles;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.WeakHashMap;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -70,7 +71,7 @@ public final class StyleConfigurationRegistry extends SessionManagerListener2.St
     private static final IStyleConfigurationRegistry INSTANCE = new StyleConfigurationRegistry();
 
     /** Map of styles to StyleConfiguration. */
-    private final HashMap<StyleWrapper, StyleConfiguration> styleToConfig = new HashMap<StyleWrapper, StyleConfiguration>();
+    private final Map<StyleWrapper, StyleConfiguration> styleToConfig = new WeakHashMap<StyleWrapper, StyleConfiguration>();
 
     /**
      * Avoid instantiation.

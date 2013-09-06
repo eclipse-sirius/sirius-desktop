@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.table.ui;singleton:=true
-Bundle-Version: 2.1.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -13,20 +13,20 @@ Export-Package: org.eclipse.sirius.table.metamodel.table.description.provider,
  org.eclipse.sirius.table.ui.business.api.helper,
  org.eclipse.sirius.table.ui.business.internal.dialect;x-internal:=true,
  org.eclipse.sirius.table.ui.tools.api.editor,
- org.eclipse.sirius.table.ui.tools.internal.command;x-friends:="org.eclipse.sirius.tests.collab",
+ org.eclipse.sirius.table.ui.tools.internal.command;x-friends:="fr.obeo.dsl.viewpoint.tests.collab",
  org.eclipse.sirius.table.ui.tools.internal.editor;
   x-friends:="org.eclipse.sirius.collab.ui.table,
-   org.eclipse.sirius.tests.swtbot,
-   org.eclipse.sirius.tests,
-   org.eclipse.sirius.tests.collab.support",
- org.eclipse.sirius.table.ui.tools.internal.editor.action;x-friends:="org.eclipse.sirius.tests",
+   fr.obeo.dsl.viewpoint.tests.swtbot,
+   fr.obeo.dsl.viewpoint.tests,
+   fr.obeo.dsl.viewpoint.tests.collab.support",
+ org.eclipse.sirius.table.ui.tools.internal.editor.action;x-friends:="fr.obeo.dsl.viewpoint.tests",
  org.eclipse.sirius.table.ui.tools.internal.editor.command;x-internal:=true,
  org.eclipse.sirius.table.ui.tools.internal.editor.listeners;x-internal:=true,
  org.eclipse.sirius.table.ui.tools.internal.editor.preferences;x-internal:=true,
  org.eclipse.sirius.table.ui.tools.internal.editor.print;x-internal:=true,
- org.eclipse.sirius.table.ui.tools.internal.editor.provider;x-friends:="org.eclipse.sirius.tests.collab.swtbot",
- org.eclipse.sirius.table.ui.tools.internal.editor.utils;x-friends:="org.eclipse.sirius.tests.swtbot.support",
- org.eclipse.sirius.table.ui.tools.internal.export;x-friends:="org.eclipse.sirius.tests",
+ org.eclipse.sirius.table.ui.tools.internal.editor.provider;x-friends:="fr.obeo.dsl.viewpoint.tests.collab.swtbot",
+ org.eclipse.sirius.table.ui.tools.internal.editor.utils;x-friends:="fr.obeo.dsl.viewpoint.tests.swtbot.support",
+ org.eclipse.sirius.table.ui.tools.internal.export;x-friends:="fr.obeo.dsl.viewpoint.tests",
  org.eclipse.sirius.table.ui.tools.internal.properties.propertysource;x-internal:=true,
  org.eclipse.sirius.table.ui.tools.internal.properties.section.common;x-internal:=true,
  org.eclipse.sirius.table.ui.tools.internal.properties.section.core;x-internal:=true,

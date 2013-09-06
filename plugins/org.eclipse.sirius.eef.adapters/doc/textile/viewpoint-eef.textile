@@ -17,7 +17,7 @@ Initialize EEF generation models with the action _EEF > Initialize EEF models_ i
 !(shadow)../images/1 - Initializing EEF models.png!
 
 The created files use a simple strategy to define EEF properties. You can change theses settings to improve the logic of your properties. 
-If you plan to use EEF properties only in a designer (for diagrams, tables, ... but not on the EMF treeviewer), you can configure the viewpoint contributor ID for the EEF views. Open the generated EEFGen model, under the root element   _Model_, select the _Gen Edition Context_   and set the value *org.eclipse.sirius.diagram* to the _Descriptors contributorID_ properties.  
+If you plan to use EEF properties only in a designer  (for diagrams, tables, ... but not on the EMF treeviewer), you can configure the viewpoint contributor ID for the EEF views. Open the generated EEFGen model, under the root element   _Model_, select the _Gen Edition Context_   and set the value *org.eclipse.sirius.diagram* to the _Descriptors contributorID_ properties.  
 
 !(shadow)../images/2 - VP Contributor ID.png!
 

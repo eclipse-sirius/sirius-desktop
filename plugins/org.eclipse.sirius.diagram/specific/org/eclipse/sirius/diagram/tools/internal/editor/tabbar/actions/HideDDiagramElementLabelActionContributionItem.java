@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.ISelectionListener;
@@ -82,8 +83,11 @@ public class HideDDiagramElementLabelActionContributionItem extends TabbarAction
 
             if (editor != null && editor.getRepresentation() != null) {
                 final DDiagram editorDiagram = (DDiagram) editor.getRepresentation();
-                IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(editor.getSession().getSessionResource().getResourceSet());
-                canEditInstance = permissionAuthority.canEditInstance(editorDiagram);
+                Resource sessionResource = editor.getSession().getSessionResource();
+                if (sessionResource != null) {
+                    IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(sessionResource.getResourceSet());
+                    canEditInstance = permissionAuthority.canEditInstance(editorDiagram);
+                }
             }
         }
         setCanEdit(canEditInstance);

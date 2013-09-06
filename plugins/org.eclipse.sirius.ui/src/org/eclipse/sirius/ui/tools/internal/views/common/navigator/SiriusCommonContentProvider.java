@@ -100,7 +100,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     private Collection<RefreshViewerTrigger> viewerRefreshTriggers = Sets.newHashSet();
 
     // This field will be set to false when a call to default content provider
-    // is done, it allows to call children form extensions only once.
+    // is done, it allows to call children from extensions only once.
     private boolean shouldAskExtension;
 
     private ITreeViewerListener expandListener;

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.editor;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -63,7 +63,7 @@ Export-Package: org.eclipse.sirius.editor.assist.content,
  org.eclipse.sirius.editor.properties.filters.description.mappingbaseddecoration,
  org.eclipse.sirius.editor.properties.filters.description.metamodelextensionsetting,
  org.eclipse.sirius.editor.properties.filters.description.nodemappingimport,
- org.eclipse.sirius.editor.properties.filters.description.optionallayer,
+ org.eclipse.sirius.editor.properties.filters.description.additionallayer,
  org.eclipse.sirius.editor.properties.filters.description.orderedtreelayout,
  org.eclipse.sirius.editor.properties.filters.description.pastetargetdescription,
  org.eclipse.sirius.editor.properties.filters.description.representationdescription,
@@ -197,7 +197,7 @@ Export-Package: org.eclipse.sirius.editor.assist.content,
  org.eclipse.sirius.editor.properties.sections.description.mappingbaseddecoration,
  org.eclipse.sirius.editor.properties.sections.description.metamodelextensionsetting,
  org.eclipse.sirius.editor.properties.sections.description.nodemappingimport,
- org.eclipse.sirius.editor.properties.sections.description.optionallayer,
+ org.eclipse.sirius.editor.properties.sections.description.additionallayer,
  org.eclipse.sirius.editor.properties.sections.description.orderedtreelayout,
  org.eclipse.sirius.editor.properties.sections.description.pastetargetdescription,
  org.eclipse.sirius.editor.properties.sections.description.representationdescription,
@@ -294,11 +294,11 @@ Export-Package: org.eclipse.sirius.editor.assist.content,
  org.eclipse.sirius.editor.tools.api.assist,
  org.eclipse.sirius.editor.tools.api.editor,
  org.eclipse.sirius.editor.tools.api.menu,
- org.eclipse.sirius.editor.tools.internal.actions;x-friends:="org.eclipse.sirius.tests",
- org.eclipse.sirius.editor.tools.internal.assist;x-friends:="org.eclipse.sirius.tests",
+ org.eclipse.sirius.editor.tools.internal.actions;x-friends:="fr.obeo.dsl.viewpoint.tests",
+ org.eclipse.sirius.editor.tools.internal.assist;x-friends:="fr.obeo.dsl.viewpoint.tests",
  org.eclipse.sirius.editor.tools.internal.color;x-internal:=true,
  org.eclipse.sirius.editor.tools.internal.editor;x-internal:=true,
- org.eclipse.sirius.editor.tools.internal.marker;x-friends:="org.eclipse.sirius.editor.eef,org.eclipse.sirius.tests.staging",
+ org.eclipse.sirius.editor.tools.internal.marker;x-friends:="org.eclipse.sirius.editor.eef,fr.obeo.dsl.viewpoint.tests.staging",
  org.eclipse.sirius.editor.tools.internal.menu;x-internal:=true,
  org.eclipse.sirius.editor.tools.internal.menu.child;x-internal:=true,
  org.eclipse.sirius.editor.tools.internal.menu.refactoring;x-internal:=true,

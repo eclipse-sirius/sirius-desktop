@@ -50,6 +50,7 @@ import org.eclipse.sirius.description.style.NodeStyleDescription;
 import org.eclipse.sirius.description.style.NoteDescription;
 import org.eclipse.sirius.description.style.RoundedCornerStyleDescription;
 import org.eclipse.sirius.description.style.ShapeContainerStyleDescription;
+import org.eclipse.sirius.description.style.SizeComputationContainerStyleDescription;
 import org.eclipse.sirius.description.style.SquareDescription;
 import org.eclipse.sirius.description.style.StyleDescription;
 import org.eclipse.sirius.description.style.StyleFactory;
@@ -215,6 +216,13 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * @generated
      */
     private EClass bracketEdgeStyleDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass sizeComputationContainerStyleDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -988,6 +996,33 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * 
      * @generated
      */
+    public EClass getSizeComputationContainerStyleDescription() {
+        return sizeComputationContainerStyleDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getSizeComputationContainerStyleDescription_WidthComputationExpression() {
+        return (EAttribute) sizeComputationContainerStyleDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getSizeComputationContainerStyleDescription_HeightComputationExpression() {
+        return (EAttribute) sizeComputationContainerStyleDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public EClass getTooltipStyleDescription() {
         return tooltipStyleDescriptionEClass;
     }
@@ -1307,6 +1342,10 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         endLabelStyleDescriptionEClass = createEClass(END_LABEL_STYLE_DESCRIPTION);
 
         bracketEdgeStyleDescriptionEClass = createEClass(BRACKET_EDGE_STYLE_DESCRIPTION);
+
+        sizeComputationContainerStyleDescriptionEClass = createEClass(SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION);
+        createEAttribute(sizeComputationContainerStyleDescriptionEClass, SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION);
+        createEAttribute(sizeComputationContainerStyleDescriptionEClass, SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION);
     }
 
     /**
@@ -1363,7 +1402,9 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         containerStyleDescriptionEClass.getESuperTypes().add(this.getLabelStyleDescription());
         containerStyleDescriptionEClass.getESuperTypes().add(this.getTooltipStyleDescription());
         flatContainerStyleDescriptionEClass.getESuperTypes().add(this.getContainerStyleDescription());
+        flatContainerStyleDescriptionEClass.getESuperTypes().add(this.getSizeComputationContainerStyleDescription());
         shapeContainerStyleDescriptionEClass.getESuperTypes().add(this.getContainerStyleDescription());
+        shapeContainerStyleDescriptionEClass.getESuperTypes().add(this.getSizeComputationContainerStyleDescription());
         workspaceImageDescriptionEClass.getESuperTypes().add(this.getNodeStyleDescription());
         workspaceImageDescriptionEClass.getESuperTypes().add(this.getContainerStyleDescription());
         edgeStyleDescriptionEClass.getESuperTypes().add(this.getStyleDescription());
@@ -1551,6 +1592,13 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
 
         initEClass(bracketEdgeStyleDescriptionEClass, BracketEdgeStyleDescription.class, "BracketEdgeStyleDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+        initEClass(sizeComputationContainerStyleDescriptionEClass, SizeComputationContainerStyleDescription.class, "SizeComputationContainerStyleDescription", IS_ABSTRACT, !IS_INTERFACE,
+                IS_GENERATED_INSTANCE_CLASS);
+        initEAttribute(getSizeComputationContainerStyleDescription_WidthComputationExpression(), theDescriptionPackage.getInterpretedExpression(), "widthComputationExpression", "0", 0, 1,
+                SizeComputationContainerStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getSizeComputationContainerStyleDescription_HeightComputationExpression(), theDescriptionPackage.getInterpretedExpression(), "heightComputationExpression", "0", 0, 1,
+                SizeComputationContainerStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
         // Create annotations
         // http://www.eclipse.org/sirius/interpreted/expression/returnType
         createReturnTypeAnnotations();
@@ -1582,6 +1630,8 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         addAnnotation(getGaugeSectionDescription_MinValueExpression(), source, new String[] { "returnType", "an integer." });
         addAnnotation(getGaugeSectionDescription_MaxValueExpression(), source, new String[] { "returnType", "an integer." });
         addAnnotation(getGaugeSectionDescription_ValueExpression(), source, new String[] { "returnType", "an integer." });
+        addAnnotation(getSizeComputationContainerStyleDescription_WidthComputationExpression(), source, new String[] { "returnType", "an integer." });
+        addAnnotation(getSizeComputationContainerStyleDescription_HeightComputationExpression(), source, new String[] { "returnType", "an integer." });
     }
 
     /**
@@ -1607,6 +1657,8 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         addAnnotation(getGaugeSectionDescription_MinValueExpression(), source, new String[] {});
         addAnnotation(getGaugeSectionDescription_MaxValueExpression(), source, new String[] {});
         addAnnotation(getGaugeSectionDescription_ValueExpression(), source, new String[] {});
+        addAnnotation(getSizeComputationContainerStyleDescription_WidthComputationExpression(), source, new String[] {});
+        addAnnotation(getSizeComputationContainerStyleDescription_HeightComputationExpression(), source, new String[] {});
     }
 
     /**

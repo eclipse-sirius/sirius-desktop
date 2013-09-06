@@ -16,6 +16,6 @@ package org.eclipse.sirius.ui.tools.api.views.common.item;
  * @author mchauvin
  * @since 2.4
  */
-public interface ResourcesFolderItem extends CommonItem {
+public interface ResourcesFolderItem extends CommonSessionItem {
 
 }

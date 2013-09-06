@@ -33,7 +33,7 @@ public interface IService {
      * @return <code>true</code> iff this service can be invoked on the
      *         specified target object.
      */
-    boolean appliesTo(Object target);
+    boolean appliesTo(Object[] target);
 
     /**
      * Invoke the service on the specified target.
@@ -44,5 +44,5 @@ public interface IService {
      * @throws EvaluationException
      *             if an error occurred during the invocation of the service.
      */
-    Object call(Object target) throws EvaluationException;
+    Object call(Object[] target) throws EvaluationException;
 }

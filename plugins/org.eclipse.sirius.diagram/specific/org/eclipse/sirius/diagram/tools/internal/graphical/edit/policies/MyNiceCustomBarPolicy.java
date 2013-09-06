@@ -32,7 +32,6 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.resource.ImageDescriptor;
 
-import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
@@ -43,9 +42,8 @@ import org.eclipse.sirius.business.api.componentization.DiagramComponentizationM
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.description.AdditionalLayer;
 import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.Layer;
-import org.eclipse.sirius.description.OptionalLayer;
 import org.eclipse.sirius.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
@@ -202,21 +200,22 @@ public class MyNiceCustomBarPolicy extends DiagramAssistantEditPolicy implements
         final DiagramDescription desc = dDiagram.getDescription();
 
         final Session session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) dDiagram).getTarget());
-        final Iterable<Layer> optionalLayers = Iterables.filter(new DiagramComponentizationManager().getAllLayers(session.getSelectedSiriuss(false), desc), Predicates.instanceOf(OptionalLayer.class));
-        for (final Layer optionalLayer : optionalLayers) {
+        final Iterable<AdditionalLayer> additionalLayers = Iterables.filter(new DiagramComponentizationManager().getAllLayers(session.getSelectedSiriuss(false), desc), AdditionalLayer.class);
+        for (final AdditionalLayer additionalLayer : additionalLayers) {
+            if (additionalLayer.isOptional()) {
+                final boolean activated = EqualityHelper.contains(dDiagram.getActivatedLayers(), additionalLayer);
+                final ImageDescriptor imgDesc = activated ? DESC_ACTIVE_LAYER : DESC_INACTIVE_LAYER;
 
-            final boolean activated = EqualityHelper.contains(dDiagram.getActivatedLayers(), optionalLayer);
-            final ImageDescriptor imgDesc = activated ? DESC_ACTIVE_LAYER : DESC_INACTIVE_LAYER;
+                dropMenu.addToMenu(SiriusEditPlugin.getPlugin().getImage(imgDesc), new IdentifiedElementQuery(additionalLayer).getLabel(), new Runnable() {
+                    public void run() {
+                        hideDiagramAssistant();
 
-            dropMenu.addToMenu(SiriusEditPlugin.getPlugin().getImage(imgDesc), new IdentifiedElementQuery(optionalLayer).getLabel(), new Runnable() {
-                public void run() {
-                    hideDiagramAssistant();
-
-                    TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(dDiagram);
-                    Command changeActivatedLayersCmd = new ChangeLayerActivationCommand(domain, dDiagram, optionalLayer);
-                    domain.getCommandStack().execute(changeActivatedLayersCmd);
-                }
-            });
+                        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(dDiagram);
+                        Command changeActivatedLayersCmd = new ChangeLayerActivationCommand(domain, dDiagram, additionalLayer);
+                        domain.getCommandStack().execute(changeActivatedLayersCmd);
+                    }
+                });
+            }
         }
         dropMenu.updateFigure();
     }

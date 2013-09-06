@@ -313,18 +313,13 @@ public final class SiriusSelection {
                     if (missingDependencies.isEmpty()) {
                         super.okPressed();
                     } else {
-                        String explanation = "- "
-                                + Joiner.on("\n- ").withKeyValueSeparator(" requires: ").join(Maps.transformValues(missingDependencies.asMap(), new Function<Collection<String>, String>() {
-                                    public String apply(java.util.Collection<String> from) {
-                                        return Joiner.on(", ").join(from);
-                                    }
-                                }));
-                        MessageDialog.openInformation(getShell(), "Invalid selection", "The list of selected viewpoints is invalid; please fix the problems:\n" + explanation);
+                        String message = getMissingDependenciesErrorMessage(missingDependencies);
+                        MessageDialog.openInformation(getShell(), "Invalid selection", message);
                     }
                 }
             };
             dialog.create();
-            dialog.getShell().setText("Viewpoints Selection");
+            dialog.getShell().setText("Viewpoint Selection");
             dialog.setTitle("Selected viewpoints");
             dialog.setMessage("Change viewpoints selection status (see tooltip for details about each viewpoint)");
             dialog.setBlockOnOpen(true);
@@ -334,6 +329,29 @@ public final class SiriusSelection {
                 SiriusSelection.applyNewSiriusSelection(viewpointsMap, copyOfSiriussMap, session, createNewRepresentations);
             }
         }
+    }
+
+    /**
+     * Compute the error message for the given missing dependencies which
+     * indicates the required Sirius ativation to complete the current
+     * selection.
+     * 
+     * @param missingDependencies
+     *            a multimap, for example the result
+     *            {@link SiriusSelection#getMissingDependencies(Set)} which
+     *            contains for each selected viewpoint which has missing
+     *            dependencies, an entry with the selected viewpoint's name as
+     *            key and the list of the missing viewpoints' names as value.
+     * @return an error message which indicates the required Sirius ativation
+     *         to complete the current selection.
+     */
+    public static String getMissingDependenciesErrorMessage(Multimap<String, String> missingDependencies) {
+        return "The list of selected viewpoints is invalid; please fix the problems:\n" + "- "
+                + Joiner.on("\n- ").withKeyValueSeparator(" requires: ").join(Maps.transformValues(missingDependencies.asMap(), new Function<Collection<String>, String>() {
+                    public String apply(java.util.Collection<String> from) {
+                        return Joiner.on(", ").join(from);
+                    }
+                }));
     }
 
     private static void applySiriusSelectionChange(final Session session, org.eclipse.sirius.business.internal.movida.SiriusSelection selection, Set<URI> selectedBefore) {

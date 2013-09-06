@@ -100,7 +100,7 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
     private void deactivateLayoutingMode() {
         if (this.getModel() instanceof Diagram) {
             Diagram diagramGMF = (Diagram) this.getModel();
-            if (diagramGMF.getElement() instanceof DDiagram) {
+            if (diagramGMF.eResource() != null && diagramGMF.getElement() instanceof DDiagram) {
                 final DDiagram dDiagram = (DDiagram) diagramGMF.getElement();
                 if (dDiagram.isIsInLayoutingMode()) {
                     this.getEditingDomain().getCommandStack().execute(new SetLayoutingModeCommand(this.getEditingDomain(), dDiagram, false));

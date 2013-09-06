@@ -10,11 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.api.views.common.item;
 
+import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
+
 /**
  * A representation description item.
  * 
  * @author mporhel
  */
-public interface ProjectDependenciesItem extends CommonItem, ItemDecorator {
+public interface ProjectDependenciesItem extends CommonSessionItem, ItemDecorator {
 
 }

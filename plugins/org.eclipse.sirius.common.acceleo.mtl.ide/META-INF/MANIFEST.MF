@@ -2,14 +2,14 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.common.acceleo.mtl.ide;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-Activator: org.eclipse.sirius.common.acceleo.mtl.ide.AcceleoMTLInterpreterIDEPlugin
-Require-Bundle: org.eclipse.sirius.common.acceleo.mtl;bundle-version="1.0.0",
+Require-Bundle: org.eclipse.sirius.common.acceleo.mtl;bundle-version="0.1.0",
  org.eclipse.core.resources;bundle-version="3.5.0",
  org.eclipse.core.runtime;bundle-version="3.5.0",
  org.eclipse.acceleo.model;bundle-version="3.2.1",
  org.eclipse.jdt.core;bundle-version="3.5.0",
- org.eclipse.sirius.common;bundle-version="3.2.0",
+ org.eclipse.sirius.common;bundle-version="0.1.0",
  org.eclipse.acceleo.common;bundle-version="3.2.1",
  org.eclipse.acceleo.parser;bundle-version="3.2.1",
  org.eclipse.jface.text;bundle-version="3.5.0",
@@ -20,5 +20,5 @@ Require-Bundle: org.eclipse.sirius.common.acceleo.mtl;bundle-version="1.0.0",
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: %providerName
-Export-Package: org.eclipse.sirius.common.acceleo.mtl.ide;x-friends:="org.eclipse.sirius.tests.staging"
+Export-Package: org.eclipse.sirius.common.acceleo.mtl.ide;x-friends:="fr.obeo.dsl.viewpoint.tests.staging"
 Bundle-Localization: plugin

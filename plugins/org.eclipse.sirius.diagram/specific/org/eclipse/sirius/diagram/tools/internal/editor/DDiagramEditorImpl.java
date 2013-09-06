@@ -660,7 +660,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             gmfDiagramUpdater = null;
         }
         // Remove the change listener ContentAdapter.
-        if (getDiagram() != null) {
+        if (getDiagram() != null && getDiagram().eResource() != null) {
             EObject semantic = ViewUtil.resolveSemanticElement(getDiagram());
             if (semantic instanceof DSemanticDecorator) {
                 // Remove the ChangeListener to the DDiagram
@@ -671,12 +671,13 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                     // nothing to do, rest of dispose steps will be performed
                 }
             }
+            if (dRepresentationLockStatusListener != null) {
+                IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(getDiagram().getElement());
+                permissionAuthority.removeAuthorityListener(dRepresentationLockStatusListener);
+            }
         }
         SessionManager.INSTANCE.removeSessionsListener(sessionManagerListener);
-        if (dRepresentationLockStatusListener != null) {
-            IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(getDiagram().getElement());
-            permissionAuthority.removeAuthorityListener(dRepresentationLockStatusListener);
-        }
+
         dRepresentationLockStatusListener = null;
         if (getSession() != null) {
             getSession().removeListener(this);
@@ -1066,7 +1067,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     private Session getSessionFromDiagramInstance() {
-        if (getDiagram() != null) {
+        if (getDiagram() != null && getDiagram().eResource() != null) {
             Session mySession = DiagramSessionHelper.findSession(getDiagram());
             if (mySession == null) {
                 if (getEditorInput() instanceof SessionEditorInput) {
@@ -1534,7 +1535,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectEditor#getRepresentation()
      */
     public DRepresentation getRepresentation() {
-        if (getDiagram() != null && getDiagram().getElement() instanceof DRepresentation) {
+        if (getDiagram() != null && getDiagram().eResource() != null && getDiagram().getElement() instanceof DRepresentation) {
             return (DRepresentation) getDiagram().getElement();
         }
         return null;

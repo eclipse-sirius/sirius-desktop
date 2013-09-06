@@ -123,6 +123,20 @@ public class ViewQuery {
     }
 
     /**
+     * Tests whether the queried View corresponds to an edge name edit part.
+     * 
+     * @return <code>true</code> if the queried View corresponds to an edge name
+     *         edit part.
+     */
+    public boolean isForEdgeNameEditPart() {
+        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
+        boolean result = type == DEdgeNameEditPart.VISUAL_ID;
+        result = result || type == DEdgeEndNameEditPart.VISUAL_ID;
+        result = result || type == DEdgeBeginNameEditPart.VISUAL_ID;
+        return result;
+    }
+
+    /**
      * Tests whether the queried View corresponds to a NameEditPart that is
      * located on the border of its node.
      * 

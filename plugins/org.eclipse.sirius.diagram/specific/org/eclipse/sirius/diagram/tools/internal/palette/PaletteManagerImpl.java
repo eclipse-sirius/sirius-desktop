@@ -216,7 +216,7 @@ public class PaletteManagerImpl implements PaletteManager {
             // Step 2: Replace the ConnectionCreationTool for
             // DiagramPaletteFactory.TOOL_NOTEATTACHMENT (if needed)
             replaceNoteAttachmentCreationToolIfNeeded();
-            if (description != null && description.eResource() != null && !description.eIsProxy()) {
+            if (session != null && description != null && description.eResource() != null && !description.eIsProxy()) {
                 updatePalette(description, session, dDiagram);
             }
         }

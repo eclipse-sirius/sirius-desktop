@@ -22,13 +22,13 @@ import org.eclipse.swt.graphics.Image;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.description.RepresentationDescription;
 import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.provider.SiriusEditPlugin;
-import org.eclipse.sirius.ui.tools.api.views.common.item.ItemDecorator;
 import org.eclipse.sirius.ui.tools.api.views.common.item.SiriusItem;
 
 /**
@@ -166,7 +166,7 @@ public class SiriusItemImpl implements SiriusItem,
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getSession()
+	 * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getSession()
 	 */
 	public Option<Session> getSession() {
 		return Options.newSome(session);
@@ -175,7 +175,7 @@ public class SiriusItemImpl implements SiriusItem,
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getChildren()
+	 * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getChildren()
 	 */
 	public Collection<?> getChildren() {
 		final List<RepresentationDescriptionItemImpl> all = new ArrayList<RepresentationDescriptionItemImpl>();
@@ -202,7 +202,7 @@ public class SiriusItemImpl implements SiriusItem,
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getParent()
+	 * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getParent()
 	 */
 	public Object getParent() {
 		return parent;

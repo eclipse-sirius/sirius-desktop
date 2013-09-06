@@ -1,0 +1,134 @@
+h1. Writing Queries and Interpreted Expressions
+
+{toc:style=disc|minLevel=2|maxLevel=3}
+
+h2(#introduction). Introduction
+
+Many parts of a _VSM_ require you to provide _interpreted expressions_, which will be evaluated at runtime to provide a behavior specific to your domain and representations. Some of these expressions return model elements (in which case we call them _queries_), while others simply produce text (for example the expressions used for labels), but the principles stay the same.
+
+Sirius does not force the use of a specific language to write these queries. Currently, three different languages are provided by default, and if you have specific needs, you can extend the system and  "provide your own":#custom. You can use several different languages inside the same VSM (but only one in each expression).
+
+Whatever the language(s) you use, because they are all optional from Sirius's point of view, make sure the Viewpoint Specification Project which contains your VSMs explicitly depends on the Sirius plug-in which provides supports for these languages. Otherwise when you modelers are deployed to end-users you can not be sure the proper support will be available. The _Viewpoint Specification Projects_ which are created using the standard wizard are pre-configured to use Acceleo 3. See the sections below for each of the standard languages for the name of the Sirius support plug-ins to depend on if you use the language.
+
+h2(#general). General Rules
+
+Some general rules are independent of the language details.
+
+*Auto-completion.* First, in the _VSM_ editor, any field in the property view which has a yellow background is an interpreted expression.  In these fields, auto-completion can be triggered by hitting _Ctrl+Space_. 
+
+!images/emptyFieldAutoCompletion.jpg!
+
+The completion will correspond to the empty expression for the installed query language (e.g. **[/]** for Acceleo 3). It will also place the cursor at the expected place where it is ready to start typing the expression.
+
+!images/emptyExpressionCursor.jpg!
+
+When hitting auto-completion on an empty expression, the first completion proposal will correspond to the variables which are available in the expression's context, and the rest correspond to all the features, services, etc. which are available on the current element.
+
+!images/emptyExpressionAutoCompletion.jpg!
+
+Sometimes Sirius is not able to statically determine the precise type of the model elements on which an expression will be evaluated. In that case, it assumes a plain _EObject_. This means you will not get completion proposals specific to your custom types, and that if you use features or services which are not available on _EObject_, the VSM's validation will fail. To prevent this, if you know the precise type of the elements and the language supports it, add a cast operation to tell Sirius the actual type (e.g. <code>[filter(ExpectedType).theRestOfTheExpression/]</code> if using Acceleo 3.
+
+*The Interpreter view.* The _Interpreter_ view can be used to develop complex expressions interactively. The view can work in either the native _Acceleo_ mode (corresponding to Acceleo 3/MTL) or in the _Sirius_ mode. In the _Sirius_ mode, you can use any of the languages supported by Sirius, but you lose the benefits of syntax coloring and auto-completion.
+
+To use the _Interpreter_ view, simply open a Sirius representation, select and element in it (for example a shape on a diagram), and type some expression in the view's upper text field. The result of the expression (a set of model elements or a string) will appear in the lower part of the view. If you select a different element, the result will automatically be re-evaluated in the context of the new element.
+
+!images/viewpoint_interpreter.png!
+
+_Warning:_ When using the _Interpreter_ view from an element selected in a Sirius representation, the context of the expression is *not* the _semantic_ element, but the _view_ model element used internally by Sirius. To access the semantic element you must use the view's @target@ reference. More concretely, imagine you have a Sirius diagram representing UML classes with nodes. If you select a class and enter <code>[self/]</code> in the interpreter view, the result will not be a UML @Class@ element, but a @DNode@ (the type used internally by Sirius to represent graphical nodes). To get the UML class, you must enter <code>[self.target/]</code>. Keep this in mind when using the _Interpreter_ view to develop expressions you want to use inside a VSM: most expressions defined in the VSM will be evaluated in the context of a semantic element, so you will need to add/remove @target@ references when switching between the two.
+
+*Determinism.* In general, you should try to ensure that your queries are deterministic, i.e. from the same input model they should always return the same result, and in the same order (if returning collections of elements). Otherwise, each time a representation is refreshed it might become dirty (as Sirius will see the order difference as a change) or even visually unstable (i.e. elements shown in a different order). There are several things to be aware of in order to ensure determinism in your queries:
+* At the meta-model level, if you control it, make sure any derived feature always return its values in the same order. If you do not control the meta-model and it has unordered references which can cause problems (UML is an example), you can impose your own ordering by sorting the elements whenever they are used in a Sirius query.
+* At the Sirius query level, make sure you call only operations which are deterministic in the query language(s) you use. For example, the @nMinimize()@ standard service on the legacy query language is not. Unfortunately, this information is not often documented in the query languages semantics, so some trial and error experimentation is required for now.
+* At the service level, if you create your own "Java services":#service_methods, make sure to use data structures which ensure a fixed iteration order, like @LinkedHashSet@ instead of @HashSet@ for example.
+
+h2(#specialized). Using the Specialized interpreters
+
+Sirius provides several specialized interpreters to handle more efficiently some forms of simple expressions which can occur very often in a typical VSM. Each interpreter focuses on a very limited case, and none supports complex expressions. This allows them to be very fast, but it requires that you use them explicitly when possible. All these interpreters are available by default in Sirius, you do not need to declare additional dependencies in your VSM project to be able to use them.
+
+* *@var:@* This interpreter can only do direct access to the value of a named variable. For example, instead of <code>[containerView/]</code> (using Acceleo) or @<%$containerView%>@ (using the legacy language), the equivalent using the specialized interpreter would be @var:containerView@. As a special case, the pseudo-variable @self@ is available to access the current element (the evaluation context): @var:self@ is equivalent to <code>[self/]</code> in Acceleo, @<%self%>@ and @<%current%>@ using the legacy language.
+* *@feature:@* This interpreter can only do direct access to a named feature of the current element. For example, instead of <code>[name/]</code> or <code>[self.name/]</code>, the equivalent using this interpreter would be @feature:name@. This interpreter also supports the following pseudo-features:
+** @feature:eContainer@ returns the container of the current element (or @null@ if there is none). This is equivalent to <code>[self.eContainer()/]</code>.
+** @feature:eContents@ returns the direct contents of the current element (or an empty collection if there is none). This is equivalent to <code>[self.eContents()/]</code>.
+** @feature:eAllContents@ returns all the elements directly and indirectly contained inside the current element (or an empty collection if there is none). This is equivalent to <code>[self.eAllContents()/]</code>.
+** @feature:eCrossReferences@ returns all the model elements which are directly referenced by the current element (or an empty collection if there is none). This is equivalent to <code>[self.eCrossReferences()/]</code>.
+* *@service:@* This interpreter can be used to directly invoke a service method (i.e. a Java method that follows conventions for "service methods":#service_methods ) on the current element. Currently this interpreters only supports services with no parameters, which correspond to Java methods with a single argument, the model element on which to invoke the service. For example, assuming the service class "@FamilyServices@":#family_services has been correctly registered in the VSM, the expression @service:getFamiliesContainingParents@ (note the absence of parenthesis) will invoke the @getFamiliesContainingParents@ on the current element if it is an instance of @Family@.
+
+h2(#acceleo). Using Acceleo
+
+Acceleo is the recommended language to use for new VSMs. It provides better static validation than the rest, and more precise auto-completion when editing your expressions. Viewpoint Specification Projects created with the default wizard will be already setup to use it. Otherwise you need to add a dependency to the @org.eclipse.sirius.common.acceleo.mtl@ plug-in to ensure Acceleo support will be available wherever your modelers are used.
+
+Acceleo expressions are enclosed in brackets: <code>[theExpression/]</code>. Inside the brackets you can write any valid Acceleo expression, including using @if@ and @let@ statements, for example. See "the Acceleo documentation":/help/topic/org.eclipse.acceleo.doc/pages/index.html for the exact syntax and semantics of the language.
+
+Note that currently Acceleo expressions used inside VSMs *must* be enclosed inside a single bracket. It is not currently possible to mix Acceleo expressions and fixed text (like @"prefix[someExpression/]suffix"@). Instead, you can use Acceleo's string manipulation operations to obtain the same result: <code>['prefix' + someExpression + 'suffix'/]</code>). Related to this, auto-completion only works if you are inside a well-formed bracket (i.e. <code>[&lt;cursor&gt;/]</code>); if you have simply opened the bracket but not closed it (i.e. <code>[&lt;cursor&gt;</code>), completion will not be available.
+
+Acceleo expressions can transparently invoke methods from Java classes which follow the "service methods":#service_methods conventions and have been properly declared in the VSM. Note that currently this only works if the Java service class is in the same project as the _VSM_. You can also invoke Acceleo _queries_ defined in @.mtl@ files in your Viewpoint Specification Project. For this to work, your Viewpoint Specification Project should be an Acceleo Generator project. This is the default for projects created with the wizard. If you want to use queries from @.mtl@ files in you Sirius project, the parent _Viewpoint_ element must have a _Java Extension_ element which references the MTL file, using the @com::example::domain::design::module@ syntax. Also make sure to read "http://www.obeonetwork.com/page/building-an-acceleo-generator":http://www.obeonetwork.com/page/building-an-acceleo-generator to ensure the project is built correctly, or the queries defined in the @.mtl@ files may not be available when the project is deployed as a plug-in.
+
+Acceleo is more precise than the legacy language, but also more demanding, about the types of elements your queries are executed on. This generally means you get better auto-completion and more useful validation and diagnostics. However sometimes Sirius is not able to statically determine the precise type of the model elements on which an expression will be evaluated. In that case, it assumes a plain _EObject_. If you know the actual type which will be used, prefix your expression with @filter(ExpectedType)@ to help Sirius. Note that if the actual type at runtime is not compatible with @ExpectedType@, the rest of your expression will silently be ignored.
+
+In the context of Sirius, you have access to a special feature which can be used to follow "back-links" or "cross-references". From a given model element, this allows you to easily (and efficiently) find all the elements which refer to it in the scope of the models and representations in the same modeling project. This feature is available through the @eInverse()@ method, which can be used on any model element inside an Acceleo expression.
+
+Note that in most cases, expressions in Sirius are evaluated in a context where _variables_ are defined. For example, most expressions inside tool definitions have access to variables telling them which elements the tool has been applied on. In some cases, the names of these variable can conflict with names of features in your meta-model. The evaluation rules of Acceleo (OCL actually) give precedence to variables, so it is recommended to always prefix accesses to your meta-model features with @self@ (or another expression) to avoid ambiguity. As a concrete example, say you have an expression @"[target/]"@ that you expect to access the @target@ feature of one of your object. If evaluated in a context where a @target@ variable exist, the value of the expression will be the value of the variable, _not_ the value of the object's property. To avoid ambiguity, always use expressions of the form @"[self.target/]"@ in such cases.
+
+h2(#ocl). Using Raw OCL
+
+Sirius also supports raw OCL expressions, but this support is deprecated and will be removed in future versions. OCL expressions must be prefixed with @ocl:@. If you use it your Sirius project must declare a dependency to the @org.eclipse.sirius.common.ocl@ plug-in to ensure OCL support will be available wherever your modelers are used.
+
+It is highly recommended that you use Acceleo, which implemented the MTL standard and is a super-set of the OCL language, instead of raw OCL.
+
+h2(#custom). Providing a Custom Language
+
+Sirius allows you to provide your own language implementations, if you have very specific needs or want to reuse an existing custom language. Note that Sirius must be able to syntactically and unambiguously determine from an expression which language it is written in (to send it to the appropriate interpreter). The simplest way to achieve this is to define a prefix (like @ocl:@ for OCL) so that expressions written in your language can be distinguished from expressions written in any of the others.
+
+To provide your custom language, you must _at least_ implement the @org.eclipse.sirius.common.expressionInterpreter@ extension point, and provide an implementation of the @org.eclipse.sirius.common.tools.api.interpreter.IInterpreter@ interface. The example below shows how the Acceleo interpreter is registered. The @AcceleoMTLInterpreterProvider@ is the one which implements the @IInterpreter@ interface.
+
+bc. 
+   <extension point="org.eclipse.sirius.common.expressionInterpreter"
+              id="org.eclipse.sirius.common.acceleo.mtl.AcceleoMTLInterpreter">
+      <expressionInterpreterProvider
+            interpreterProviderClass="org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.AcceleoMTLInterpreterProvider" />
+   </extension>
+
+You can also optionally provide support for auto-completion for your language by implementing the @org.eclipse.sirius.common.proposalProvider@ extension point and providing an implementation of @org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider@ interface. For example, here is how the completion support for Acceleo is registered (@AcceleoProposalProvider@ is the class which implements the @IProposalProvider@ interface):
+
+bc. 
+   <extension point="org.eclipse.sirius.common.proposalProvider">
+      <proposalProvider
+            class="org.eclipse.sirius.common.acceleo.mtl.ide.AcceleoProposalProvider"
+            interpreter="org.eclipse.sirius.common.acceleo.mtl.AcceleoMTLInterpreter" />
+   </extension>
+
+h2(#service_methods). Writing Java Services
+
+Both Acceleo and the legacy language (which is an older, incompatible version of Acceleo) support the notion of _Java services_, which are methods written in Java that can be transparently invoked from interpreted expressions in Sirius. All you need to do is to create a Java class whose methods follow some conventions (described below) in your Viewpoint Specification Project, and declare the class (using its fully qualified Java name) in the VSM. You can then use the services defined in that class in any of you interpreted expressions written in either Acceleo or the legacy language.
+
+A service is simply a public Java methods which follows some conventions:
+* The class containing the method must be public and have a default constructor which takes no argument.
+* The class can contain many public instance methods, each of which will be visible as a service if they follow the right conventions.
+* A service method must take at least one parameter, which should be an EMF type (i.e. @EObject@ or a sub-type of @EObject@).
+* A service method may take more parameters, which can be:
+** strings
+** numbers
+** EMF types (i.e. @EObject@ or a sub-type)
+** Java collections of EMF types (note that array types are *not* supported).
+* A service method may return a value, which can have the same kinds of types as parameters.
+
+Here is an example of a Java service taken from the @com.obeodesigner.sample.family.design@ example (you can obtain the project's sources using _New... > Example... > Obeo Designer > Family Designer_):
+
+bc(#family_services). 
+public class FamilyServices {
+    public List<Family> getFamiliesContainingParents(Family currentFamily) {
+        List<Family> familiesContainingParents = new ArrayList<Family>();
+        // The service code. 
+        return familiesContainingParents;
+    }
+}
+
+Once a service has been defined and its class is registered in your VSM, you can invoke it in the expressions of languages which support it (Acceleo and the legacy language) like this: <code>[aFamily.getFamiliesContainingParents()/]</code>. The invocation looks as if the service was a normal feature of the @Family@ type. When the service is invoked, the model element on which it is invoked is used as the first argument to the Java method. If arguments are passed in the expression, they are mapped to the second, third, etc. parameters of the Java method, assuming the types are compatible. The result of evaluating a service invocation is the result of the Java method.
+
+_Warning:_ Java service methods should be stateless. There is no guarantee that two successive invocations of the same service method on two model elements (or even on the same one) will use the same instance of the service class.
+
+_Warning:_ To test a Java service invoked through a legacy language expression, you have to launch an Eclipse runtime or to type its parameters with @EObject@ and then cast them to your domain types in the service body.The legacy language interpreter is not able to retrieve non-deployed service with domain types parameters.
+
+_Warning:_ There are currently some limitations on the use of Java services from Acceleo:
+* primitive types can not be used as arguments or return types for service methods invoked from Acceleo 3 expressions. The workaround is to use the corresponding wrapper type (e.g. @Integer@ instead of @int@).
+* service methods invoked from Acceleo 3 expressions can not return @void@. You can return any value instead, for example target argument (the service method's first parameter). 

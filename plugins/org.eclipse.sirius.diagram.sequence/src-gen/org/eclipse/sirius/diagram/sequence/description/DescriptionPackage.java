@@ -317,13 +317,13 @@ public interface DescriptionPackage extends EPackage {
     int SEQUENCE_DIAGRAM_DESCRIPTION__DEFAULT_LAYER = org.eclipse.sirius.description.DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER;
 
     /**
-     * The feature id for the '<em><b>Optional Layers</b></em>' containment
+     * The feature id for the '<em><b>Additional Layers</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS = org.eclipse.sirius.description.DescriptionPackage.DIAGRAM_DESCRIPTION__OPTIONAL_LAYERS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS = org.eclipse.sirius.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS;
 
     /**
      * The feature id for the '<em><b>All Layers</b></em>' reference list. <!--

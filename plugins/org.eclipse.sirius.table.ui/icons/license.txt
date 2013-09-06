@@ -4,6 +4,12 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
+icons/full/obj16/CellUpdater.gif - org.eclipse.emf.codegen.ecore - org.eclipse.emf.codegen.ecore/templates/edit/Item.gif
+icons/full/obj16/ColumnMapping.gif - org.eclipse.emf.codegen.ecore - org.eclipse.emf.codegen.ecore/templates/edit/Item.gif
+icons/full/obj16/DCellStyle.gif - org.eclipse.emf.codegen.ecore - org.eclipse.emf.codegen.ecore/templates/edit/Item.gif
+icons/full/obj16/DTableElementStyle.gif - org.eclipse.emf.codegen.ecore - org.eclipse.emf.codegen.ecore/templates/edit/Item.gif
+icons/full/obj16/TableMapping.gif - org.eclipse.emf.codegen.ecore - org.eclipse.emf.codegen.ecore/templates/edit/Item.gif
+icons/full/obj16/TableTool.gif - org.eclipse.emf.codegen.ecore - org.eclipse.emf.codegen.ecore/templates/edit/Item.gif
 icons/full/obj16/BackgroundStyleDescription.gif - org.eclipse.sirius.table.ui - org.eclipse.sirius.table.ui/icons/full/obj16/BackgroundStyleDescription.gif
 icons/full/obj16/ForegroundStyleDescription.gif - org.eclipse.sirius.table.ui - org.eclipse.sirius.table.ui/icons/full/obj16/ForegroundStyleDescription.gif
 icons/full/obj16/BackgroundConditionalStyle.gif	-	org.eclipse.uml2.uml.edit	-	org.eclipse.uml2.uml.edit/icons/full/obj16/InteractionConstraint.gif

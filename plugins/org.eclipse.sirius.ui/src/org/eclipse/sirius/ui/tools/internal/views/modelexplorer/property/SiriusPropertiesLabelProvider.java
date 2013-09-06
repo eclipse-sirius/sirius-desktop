@@ -40,26 +40,32 @@ public class SiriusPropertiesLabelProvider extends DecoratingLabelProvider {
      * {@inheritDoc}
      */
     public String getText(Object element) {
+        String text = "";
         EObject selected = adapt(element);
-        if (selected instanceof DSemanticDecorator && ((DSemanticDecorator) selected).getTarget() != null) {
+        if (selected instanceof DSemanticDecorator && ((DSemanticDecorator) selected).eResource() != null && ((DSemanticDecorator) selected).getTarget() != null) {
             EObject eObject = ((DSemanticDecorator) selected).getTarget();
             AdapterFactory adapterFactory = SiriusEditPlugin.getPlugin().getItemProvidersAdapterFactory();
             IItemLabelProvider itemLabelProvider = (IItemLabelProvider) adapterFactory.adapt(eObject, IItemLabelProvider.class);
-            return itemLabelProvider.getText(eObject);
+            text = itemLabelProvider.getText(eObject);
+        } else if (selected != null && selected.eResource() != null) {
+            text = super.getText(selected);
         }
-        return super.getText(selected);
+        return text;
     }
 
     /**
      * {@inheritDoc}
      */
     public Image getImage(Object element) {
+        Image image = null;
         EObject selected = adapt(element);
-        if (selected instanceof DSemanticDecorator && ((DSemanticDecorator) selected).getTarget() != null) {
+        if (selected instanceof DSemanticDecorator && ((DSemanticDecorator) selected).eResource() != null && ((DSemanticDecorator) selected).getTarget() != null) {
             EObject eObject = ((DSemanticDecorator) selected).getTarget();
-            return SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.getPlugin().getItemImageDescriptor(eObject));
+            image = SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.getPlugin().getItemImageDescriptor(eObject));
+        } else if (selected != null && selected.eResource() != null) {
+            image = super.getImage(selected);
         }
-        return super.getImage(selected);
+        return image;
     }
 
     private EObject adapt(Object object) {

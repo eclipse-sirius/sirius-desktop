@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet title="Creating a viewpoint specification project">
+  <intro>
+    <description>Learn how to create a minimal working viewpoint specification project that can be enriched later.</description>
+  </intro>
+  <item title="Create the project" dialog="true" skip="false">
+    <description>First, you need to create a Viewpoint Specification Project.</description>
+    
+    <subitem label="Go to the 'Sirius' perspective." />
+    <subitem label="In the 'Model Explorer' view, right-click and select New &gt; Viewpoint Specification Project." />
+    <subitem label="Enter the name of the new project and hit 'Next'. The convention is to use the name of the main domain model&apos;s plug-in, followed by '.design'." />
+    <subitem label="On the next page, enter the name of the Viewpoint Specification Model file, and then 'Finish'." />
+  </item>
+  <item title="Fill the Viewpoint Specification Model" dialog="true" skip="false">
+    <description>
+      The project created is a complete Eclipse plug-in project, and contains an empty Viewpoint Specification Model. Refer to the Sirius Specifier Manual to learn of to specify viewpoints and representations. The basic idea is to:
+    </description>
+    <subitem label="Create one or more Viewpoint element inside the VSM." />
+    <subitem label="Inside each Viewpoint, create one or more representation descriptions, for example a diagram description." />
+    <subitem label="Define the structure of your representation, i.e. what elements should be visible and how should they be organized." />
+    <subitem label="Define the style of your representation, i.e. for each kind of element it will show, what shape, color, etc. should it have." />
+    <subitem label="Finally, define the behavior of your representation by associating tools to each kind of element." />
+  </item>
+  <item title="Test and refine your representations" dialog="true" skip="false">
+    <description>
+      Once you have a basic representation defined, even if it is just a skeleton with no behavior, start to test it and refine the definition. In most cases, it is possible to test your VSMs dynamically, with no need to compile or deploy anything.
+    </description>
+    <subitem label="In the same workspace where you are defining your VSM, create a Modeling project with a sample domain model." />
+    <subitem label="On the Modeling project, enable the Sirius which you are currently specifying." />
+    <subitem label="Create an instance of the representation your are developing." />
+    <subitem label="Keep both the representation and the VSM opened. When you change and save your VSM, the representation will automatically be updated to take the new, improved definition into account." />
+    <subitem label="Continue to develop your representation(s) interactively and interactively until you are satisfied. "/> 
+  </item>
+  <item title="Test your representation in deployed mode" dialog="true" skip="false">
+    <description>
+      When you are satisfied with your viewpoints and representations definitions, you can test them in a non-dynamic setting, closer to how your users will experience it.
+    </description>
+    <subitem label="Create a new 'Eclipse Application' launch configuration using the 'Run > Run Configurations...' menu." />
+    <subitem label="In the 'Arguments / VM Arguments' configuration section, add '-XX:MaxPermSize=256m' to ensure enough memory for the Eclipse runtime." />
+    <subitem label="Run the launch configuration, and test your viewpoints." />
+  </item>
+  <item title="Deploy your viewpoints" dialog="true" skip="false">
+    <description>
+      When development is finished, you can build and deploy your Viewpoint Specification Project like any other Eclipse plug-in. Juste make sure the project's dependencies include everything you need, in particular the domain model plug-ins and the Sirius plug-ins which provide support for the query language(s) you used in your VSM.
+    </description>
+  </item>
+</cheatsheet>

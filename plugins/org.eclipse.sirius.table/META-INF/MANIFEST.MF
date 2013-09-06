@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.table;singleton:=true
-Bundle-Version: 3.0.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -19,7 +19,7 @@ Export-Package: org.eclipse.sirius.table.business.api.helper,
  org.eclipse.sirius.table.business.internal.metamodel.description.spec.util;x-internal:=true,
  org.eclipse.sirius.table.business.internal.metamodel.operations;x-internal:=true,
  org.eclipse.sirius.table.business.internal.metamodel.spec;x-internal:=true,
- org.eclipse.sirius.table.business.internal.refresh;x-friends:="org.eclipse.sirius.tests",
+ org.eclipse.sirius.table.business.internal.refresh;x-friends:="fr.obeo.dsl.viewpoint.tests",
  org.eclipse.sirius.table.metamodel.table,
  org.eclipse.sirius.table.metamodel.table.description,
  org.eclipse.sirius.table.metamodel.table.description.impl,
@@ -40,3 +40,5 @@ Require-Bundle: org.eclipse.sirius;visibility:=reexport,
  org.eclipse.emf.transaction,
  org.eclipse.jface,
  com.google.guava;bundle-version="[11.0.0,12.0.0)"
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: org.eclipse.sirius.table.tools.internal.TablePlugin

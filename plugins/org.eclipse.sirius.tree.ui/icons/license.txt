@@ -4,20 +4,27 @@ These followings icons are made available under the terms of the Eclipse Public 
 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
-icons/icons/full/obj16/DTree.gif - org.eclipse.jdt.junit - org.eclipse.jdt.junit/icons/full/elcl16/hierarchicalLayout.gif
-icons/icons/full/obj16/DTreeItem.gif - org.eclipse.jpt.jpa.ui - org.eclipse.jpt.jpa.ui/images/views/jpa-structure.gif
-icons/icons/full/obj16/TreeDescription.gif - org.eclipse.jdt.junit - org.eclipse.jdt.junit/icons/full/elcl16/hierarchicalLayout.gif
+icons/full/obj16/DTree.gif - org.eclipse.jdt.junit - org.eclipse.jdt.junit/icons/full/elcl16/hierarchicalLayout.gif
+icons/full/obj16/DTreeElement.gif - org.eclipse.emf.codegen.ecore - org.eclipse.emf.codegen.ecore/templates/edit/Item.gif
+icons/full/obj16/DTreeElementSynchronizer.gif - org.eclipse.emf.codegen.ecore - org.eclipse.emf.codegen.ecore/templates/edit/Item.gif
+icons/full/obj16/DTreeElementUpdater.gif - org.eclipse.emf.codegen.ecore - org.eclipse.emf.codegen.ecore/templates/edit/Item.gif
+icons/full/obj16/DTreeItem.gif - org.eclipse.jpt.jpa.ui - org.eclipse.jpt.jpa.ui/images/views/jpa-structure.gif
+icons/full/obj16/TreeDescription.gif - org.eclipse.jdt.junit - org.eclipse.jdt.junit/icons/full/elcl16/hierarchicalLayout.gif
+icons/full/obj16/StyleUpdater.gif - org.eclipse.emf.codegen.ecore - org.eclipse.emf.codegen.ecore/templates/edit/Item.gif
 icons/full/obj16/TreeCreationDescription.gif - org.eclipse.jdt.junit - org.eclipse.jdt.junit/icons/full/elcl16/hierarchicalLayout.gif
 icons/full/obj16/TreeNavigationDescription.gif - org.eclipse.jdt.junit - org.eclipse.jdt.junit/icons/full/elcl16/hierarchicalLayout.gif
-icons/icons/full/obj16/TreeItemContainerDropTool.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/stepover_co.gif
-icons/icons/full/obj16/TreeItemCreationTool.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/add_to_buildpath.gif
-icons/icons/full/obj16/TreeItemDeletionTool.gif - org.eclipse.buckminster.jnlp.p2 - org.eclipse.buckminster.jnlp.p2/src/resources/icons/distro.incompatible.gif
-icons/icons/full/obj16/TreeItemDragTool.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/stepover_co.gif
-icons/icons/full/obj16/TreeItemMapping.gif - org.eclipse.jpt.jpa.ui - org.eclipse.jpt.jpa.ui/images/views/jpa-structure.gif
-icons/icons/full/obj16/TreeItemStyleDescription.gif - org.eclipse.wst.html.ui - org.eclipse.wst.html.ui/icons/full/obj16/tag-font.gif
-icons/icons/tree/delete.gif - org.eclipse.buckminster.jnlp.p2 - org.eclipse.buckminster.jnlp.p2/src/resources/icons/distro.incompatible.gif
-icons/icons/tree/newTreeItem.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/add_to_buildpath.gif
-icons/icons/tree/refresh.gif - org.eclipse.jdt.astview - org.eclipse.jdt.astview/icons/c/refresh.gif
+icons/full/obj16/TreeItemContainerDropTool.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/stepover_co.gif
+icons/full/obj16/TreeItemCreationTool.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/add_to_buildpath.gif
+icons/full/obj16/TreeItemDeletionTool.gif - org.eclipse.buckminster.jnlp.p2 - org.eclipse.buckminster.jnlp.p2/src/resources/icons/distro.incompatible.gif
+icons/full/obj16/TreeItemDragTool.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/stepover_co.gif
+icons/full/obj16/TreeItemMapping.gif - org.eclipse.jpt.jpa.ui - org.eclipse.jpt.jpa.ui/images/views/jpa-structure.gif
+icons/full/obj16/TreeItemStyle.gif - org.eclipse.emf.codegen.ecore - org.eclipse.emf.codegen.ecore/templates/edit/Item.gif
+icons/full/obj16/TreeItemUpdater.gif - org.eclipse.emf.codegen.ecore - org.eclipse.emf.codegen.ecore/templates/edit/Item.gif
+icons/full/obj16/TreeMapping.gif - org.eclipse.emf.codegen.ecore - org.eclipse.emf.codegen.ecore/templates/edit/Item.gif
+icons/full/obj16/TreeItemStyleDescription.gif - org.eclipse.wst.html.ui - org.eclipse.wst.html.ui/icons/full/obj16/tag-font.gif
+icons/tree/delete.gif - org.eclipse.buckminster.jnlp.p2 - org.eclipse.buckminster.jnlp.p2/src/resources/icons/distro.incompatible.gif
+icons/tree/newTreeItem.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/elcl16/add_to_buildpath.gif
+icons/tree/refresh.gif - org.eclipse.jdt.astview - org.eclipse.jdt.astview/icons/c/refresh.gif
 icons/full/obj16/ConditionalTreeItemStyleDescription.gif -	org.eclipse.uml2.uml.edit	-	org.eclipse.uml2.uml.edit/icons/full/obj16/InteractionConstraint.gif
 icons/full/obj16/PrecedingSiblingsVariables.gif -	org.eclipse.uml2.uml.edit	-	org.eclipse.uml2.uml.edit/icons/full/obj16/RemoveVariableValueAction.gif
 icons/full/obj16/TreeVariable.gif -	org.eclipse.uml2.uml.edit	-	org.eclipse.uml2.uml.edit/icons/full/obj16/RemoveVariableValueAction.gif

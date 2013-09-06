@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.ecore.extender;singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi,
@@ -15,8 +15,8 @@ Export-Package: org.eclipse.sirius.ecore.extender.business.api.accessor,
  org.eclipse.sirius.ecore.extender.business.internal;x-internal:=true,
  org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore;x-friends:="org.eclipse.sirius.ecore.extension.tests",
  org.eclipse.sirius.ecore.extender.business.internal.common;x-internal:=true,
- org.eclipse.sirius.ecore.extender.business.internal.permission;x-friends:="org.eclipse.sirius.ecore.extension.tests,org.eclipse.sirius.tests.swtbot",
- org.eclipse.sirius.ecore.extender.business.internal.permission.descriptors;x-friends:="org.eclipse.sirius.tests.swtbot",
+ org.eclipse.sirius.ecore.extender.business.internal.permission;x-friends:="org.eclipse.sirius.ecore.extension.tests,fr.obeo.dsl.viewpoint.tests.swtbot",
+ org.eclipse.sirius.ecore.extender.business.internal.permission.descriptors;x-friends:="fr.obeo.dsl.viewpoint.tests.swtbot",
  org.eclipse.sirius.ecore.extender.tool.api,
  org.eclipse.sirius.ecore.extender.tool.internal;x-internal:=true
 Bundle-Activator: org.eclipse.sirius.ecore.extender.business.internal.ExtenderPlugin

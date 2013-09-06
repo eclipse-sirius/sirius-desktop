@@ -10,11 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.internal.refresh;
 
+import com.google.common.base.Objects;
+
 import org.eclipse.sirius.table.metamodel.table.DFeatureColumn;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 
 /**
- * This class represente a candidate for a DColumn, a candidate is a "possible"
+ * This class represents a candidate for a DColumn, a candidate is a "possible"
  * DColumn which has not been confirmed yet by validation and preconditions.
  * 
  * @author cbrun
@@ -32,6 +34,8 @@ public class DFeatureColumnCandidate {
      */
     private DFeatureColumn element;
 
+    private final int hashCode;
+
     /**
      * Create a new candidate.
      * 
@@ -41,9 +45,9 @@ public class DFeatureColumnCandidate {
      *            the target feature name.
      */
     public DFeatureColumnCandidate(final ColumnMapping mapping, final String featureName) {
-        super();
         this.mapping = mapping;
         this.featureName = featureName;
+        this.hashCode = computeHashCode();
     }
 
     /**
@@ -56,6 +60,7 @@ public class DFeatureColumnCandidate {
         this.mapping = tableElement.getOriginMapping();
         this.featureName = tableElement.getFeatureName();
         this.element = tableElement;
+        this.hashCode = computeHashCode();
     }
 
     /**
@@ -84,11 +89,11 @@ public class DFeatureColumnCandidate {
      */
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((mapping == null || mapping.getName() == null) ? 0 : mapping.getName().hashCode());
-        result = prime * result + ((featureName == null) ? 0 : featureName.hashCode());
-        return result;
+        return this.hashCode;
+    }
+
+    private int computeHashCode() {
+        return KeyCache.DEFAULT.getKey(((mapping == null || mapping.getName() == null) ? "" : mapping.getName()) + Objects.firstNonNull(featureName,  ""));
     }
 
     /**

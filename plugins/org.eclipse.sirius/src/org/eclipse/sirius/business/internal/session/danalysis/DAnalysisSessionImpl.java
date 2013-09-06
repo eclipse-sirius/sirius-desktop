@@ -151,19 +151,18 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /** The {@link TransactionalEditingDomain} associated to this Session. */
     protected final TransactionalEditingDomain transactionalEditingDomain;
 
+    // Session's state and helpers for its maintenance.
+    // See also the following fields inherited from DAnalysisSessionEObject:
+    // - resources: all the @*.aird@ resources in the session.
+    // - controlledResources: all the semantic resources in the session which
+    // are not in DASI.semanticResources and which are
+    // contained/controled, directly or indirectly, by a semanticResource
+
     /** The main Session Resource. */
     protected Resource sessionResource;
 
-    /**
-     * The event broker suitable for identifying local or remote atomic changes.
-     */
-    protected SessionEventBroker broker;
-
-    /** The listener suitable for refresh the opened viewpoint editors. */
-    protected RefreshEditorsPrecommitListener refreshEditorsListeners;
-
-    /** The custom saving policy the session should use. */
-    protected SavingPolicy savingPolicy;
+    /** The {@link DAnalysis} of the main session resource (*.aird). */
+    private DAnalysis mainDAnalysis;
 
     /** The semantic resources collection. */
     protected Collection<Resource> semanticResources;
@@ -171,8 +170,29 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /** The semantic resources collection updater. */
     protected SemanticResourcesUpdater semanticResourcesUpdater;
 
-    /** The {@link DAnalysis} of the main session resource (*.aird). */
-    private DAnalysis mainDAnalysis;
+    private final ControlledResourcesDetector controlledResourcesDetector;
+
+    private DAnalysisRefresher dAnalysisRefresher;
+
+    // Session's configuration
+
+    /** The custom saving policy the session should use. */
+    protected SavingPolicy savingPolicy;
+
+    private ReloadingPolicy reloadingPolicy;
+
+    private boolean disposeEditingDomainOnClose = true;
+
+    private MovidaSupport movidaSupport = new MovidaSupport(this);
+
+    private IResourceCollector currentResourceCollector;
+
+    // Generic services offered by the session
+
+    /**
+     * The event broker suitable for identifying local or remote atomic changes.
+     */
+    protected SessionEventBroker broker;
 
     private SessionService services;
 
@@ -184,23 +204,16 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     private int lastNotification = -1;
 
+    // Default listeners
+
+    /** The listener suitable for refresh the opened viewpoint editors. */
+    protected RefreshEditorsPrecommitListener refreshEditorsListeners;
+
     private VisibilityPropagatorAdapter visibilityPropagator;
 
     private final RepresentationsChangeAdapter representationsChangeAdapter;
 
-    private ReloadingPolicy reloadingPolicy;
-
     private final ResourceSetListener representationNameListener;
-
-    private final ControlledResourcesDetector controlledResourcesDetector;
-
-    private DAnalysisRefresher dAnalysisRefresher;
-
-    private boolean disposeEditingDomainOnClose = true;
-
-    private MovidaSupport movidaSupport = new MovidaSupport(this);
-
-    private IResourceCollector currentResourceCollector;
 
     /**
      * Create a new session.
@@ -759,7 +772,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                     // The resource is probably loaded (created) with a proxy
                     // resolution. Indeed, in case of proxy, the method
                     // eResolveProxy
-            // So we must unload it before load it again.
+                    // So we must unload it before load it again.
                     // resourceSet.
                     newSemanticResource.unload();
                 }
@@ -1378,7 +1391,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     public void removeAdaptersOnAnalysis(final DAnalysis analysis) {
         if (this.visibilityPropagator != null) {
-            // TODO remove this try/catch once the offline mode will be supported
             analysis.eAdapters().remove(this.visibilityPropagator);
         }
         if (this.representationsChangeAdapter != null) {

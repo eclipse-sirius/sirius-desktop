@@ -1,0 +1,39 @@
+h1. Defining Color Palettes
+
+{toc:style=disc|minLevel=2|maxLevel=3}
+
+h2(#introduction). Introduction
+
+Whenever you have to specify colors for a style, in any kind of representation supported by Sirius, you can use either one of the pre-defined system colors or one which you have defined yourself in a _Users Color Palette_. The palette is created directly inside the _Viewpoint_ element, and its colors can be used by any representation.
+
+You can define three different kind of colors inside a palette:
+* _User Fixed Colors_
+* _Computed Colors_
+* _Interpolated Colors_
+
+All have a name, which should be unique. It is useful to give semantic names to the colors (i.e. "Software System" instead of "Navy Blue") so that they can be easily used consistently across all your representations. This way if you decide to change to color used for some kind of element you can be sure the new color will be applied everywhere.
+
+h2(#system_colors). System Colors
+
+System colors are not defined in your palette, but are always available.
+
+	!images/standard_colors.png!
+
+h2(#fixed_colors). User Fixed Colors
+
+User Fixed Colors are the simplest: they are simply defined by fixed integer values for their _Red_, _Green_ and _Blue_ components. All components values must be between 0 and 255. You can either specify them numerically or using a color wheel.
+
+h2(#computed_colors). Computed Colors
+
+Computed color have RGB components values which are dynamically computed. You must specify one expression for each of the _Red_, _Green_ and _Blue_ components. They will be evaluated in the context of the semantic target element of the graphical element where the color is used. The expressions should return a number between 0 and 255.
+
+h2(#interpolated_colors). Interpolated Colors
+
+This element is used to specify a custom color which create dynamically a color between two or more _Color Steps_. Those _Color Steps_ are defined as children of the _Interpolated Color_.
+
+Each _Color Step_ associates a color (from the palette) with a numerical _Associated Value_ (which can be computed). The successive color steps in an interpolated color should have increasing associated values.
+
+The _Interpolated Color_ itself has a _Color Value Computation Expression_, which should return a numeric value.
+* If the value is below or equal the value associated with the first color step, the final color is the one of the first color step.
+* If the value is above or equal the value associated with the last color step, the final color is the one of the last color step.
+* If the value is between the associated values of two successive color steps _S1_ and _S2_, the final color is interpolated between the colors of _S1_ and _S2_. Each of the RGB components is linearly interpolated between the ones of _S1_ and _S2_ according to the distance between the associated values.

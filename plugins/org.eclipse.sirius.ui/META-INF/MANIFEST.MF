@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.ui;singleton:=true
-Bundle-Version: 4.1.0.qualifier
+Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.sirius.provider.SiriusEditPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -37,7 +37,7 @@ Export-Package: org.eclipse.sirius.description.audit.provider,
  org.eclipse.sirius.ui.business.internal.dialect.editor;x-internal:=true,
  org.eclipse.sirius.ui.business.internal.featureExtensions;x-internal:=true,
  org.eclipse.sirius.ui.business.internal.preference;x-internal:=true,
- org.eclipse.sirius.ui.business.internal.session;x-friends:="org.eclipse.sirius.tests.swtbot,org.eclipse.sirius.collab.ui",
+ org.eclipse.sirius.ui.business.internal.session;x-friends:="fr.obeo.dsl.viewpoint.tests.swtbot,org.eclipse.sirius.collab.ui",
  org.eclipse.sirius.ui.business.internal.session.analysis;x-internal:=true,
  org.eclipse.sirius.ui.business.internal.session.factory;x-internal:=true,
  org.eclipse.sirius.ui.business.internal.template;x-internal:=true,
@@ -64,11 +64,11 @@ Export-Package: org.eclipse.sirius.description.audit.provider,
  org.eclipse.sirius.ui.tools.internal.actions.analysis;x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.actions.control;x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.actions.copy;x-internal:=true,
- org.eclipse.sirius.ui.tools.internal.actions.creation;x-friends:="org.eclipse.sirius.tests",
+ org.eclipse.sirius.ui.tools.internal.actions.creation;x-friends:="fr.obeo.dsl.viewpoint.tests",
  org.eclipse.sirius.ui.tools.internal.actions.export;x-friends:="org.eclipse.sirius.diagram",
- org.eclipse.sirius.ui.tools.internal.actions.nature;x-friends:="org.eclipse.sirius.tests",
- org.eclipse.sirius.ui.tools.internal.actions.repair;x-friends:="org.eclipse.sirius.tests,org.eclipse.sirius.tests.swtbot",
- org.eclipse.sirius.ui.tools.internal.actions.session;x-friends:="org.eclipse.sirius.tests,org.eclipse.sirius.tests.swtbot,org.eclipse.sirius.tests.swtbot.support",
+ org.eclipse.sirius.ui.tools.internal.actions.nature;x-friends:="fr.obeo.dsl.viewpoint.tests",
+ org.eclipse.sirius.ui.tools.internal.actions.repair;x-friends:="fr.obeo.dsl.viewpoint.tests,fr.obeo.dsl.viewpoint.tests.swtbot",
+ org.eclipse.sirius.ui.tools.internal.actions.session;x-friends:="fr.obeo.dsl.viewpoint.tests,fr.obeo.dsl.viewpoint.tests.swtbot,fr.obeo.dsl.viewpoint.tests.swtbot.support",
  org.eclipse.sirius.ui.tools.internal.commands;x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.dialogs;x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.editor;
@@ -78,24 +78,24 @@ Export-Package: org.eclipse.sirius.description.audit.provider,
    org.eclipse.sirius.collab.ui.table",
  org.eclipse.sirius.ui.tools.internal.operations;x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.perspectives;x-internal:=true,
- org.eclipse.sirius.ui.tools.internal.preference;x-friends:="org.eclipse.sirius.tests.swtbot",
- org.eclipse.sirius.ui.tools.internal.util;x-friends:="org.eclipse.sirius.tests",
+ org.eclipse.sirius.ui.tools.internal.preference;x-friends:="fr.obeo.dsl.viewpoint.tests.swtbot",
+ org.eclipse.sirius.ui.tools.internal.util;x-friends:="fr.obeo.dsl.viewpoint.tests",
  org.eclipse.sirius.ui.tools.internal.views;x-friends:="org.eclipse.sirius.collab.ui",
- org.eclipse.sirius.ui.tools.internal.views.common;x-friends:="org.eclipse.sirius.tests,org.eclipse.sirius.collab.ui",
+ org.eclipse.sirius.ui.tools.internal.views.common;x-friends:="fr.obeo.dsl.viewpoint.tests,org.eclipse.sirius.collab.ui",
  org.eclipse.sirius.ui.tools.internal.views.common.action;x-internal:=true,
- org.eclipse.sirius.ui.tools.internal.views.common.item;x-friends:="org.eclipse.sirius.tests,org.eclipse.sirius.collab.ui",
- org.eclipse.sirius.ui.tools.internal.views.common.modelingproject;x-friends:="org.eclipse.sirius.tests,org.eclipse.sirius.collab.ui",
- org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.manager;x-friends:="org.eclipse.sirius.tests,org.eclipse.sirius.tests.swtbot,org.eclipse.sirius.tests.swtbot.support",
+ org.eclipse.sirius.ui.tools.internal.views.common.item;x-friends:="fr.obeo.dsl.viewpoint.tests,org.eclipse.sirius.collab.ui",
+ org.eclipse.sirius.ui.tools.internal.views.common.modelingproject;x-friends:="fr.obeo.dsl.viewpoint.tests,org.eclipse.sirius.collab.ui",
+ org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.manager;x-friends:="fr.obeo.dsl.viewpoint.tests,fr.obeo.dsl.viewpoint.tests.swtbot,fr.obeo.dsl.viewpoint.tests.swtbot.support",
  org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.model;x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.resourcelistener;x-internal:=true,
- org.eclipse.sirius.ui.tools.internal.views.common.navigator;x-friends:="org.eclipse.sirius.tests,org.eclipse.sirius.tests.swtbot,org.eclipse.sirius.tests.swtbot.support",
+ org.eclipse.sirius.ui.tools.internal.views.common.navigator;x-friends:="fr.obeo.dsl.viewpoint.tests,fr.obeo.dsl.viewpoint.tests.swtbot,fr.obeo.dsl.viewpoint.tests.swtbot.support",
  org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter;x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter;x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.views.interpreterview;x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.views.modelexplorer;x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.tab;x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.views.modelexplorer.property;x-internal:=true,
- org.eclipse.sirius.ui.tools.internal.views.sessionview;x-friends:="org.eclipse.sirius.tests,org.eclipse.sirius.tests.swtbot",
+ org.eclipse.sirius.ui.tools.internal.views.sessionview;x-friends:="fr.obeo.dsl.viewpoint.tests,fr.obeo.dsl.viewpoint.tests.swtbot",
  org.eclipse.sirius.ui.tools.internal.views.sessionview.extension;x-friends:="org.eclipse.sirius.collab",
  org.eclipse.sirius.ui.tools.internal.wizards;x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.wizards.pages;x-internal:=true
@@ -112,7 +112,8 @@ Require-Bundle: com.google.guava;bundle-version="[11.0.0,12.0.0)",
  org.eclipse.ui.ide,
  org.eclipse.ui.navigator,
  org.eclipse.ui.views.properties.tabbed,
- org.eclipse.core.expressions
+ org.eclipse.core.expressions,
+ org.eclipse.ui.editors
 Eclipse-LazyStart: true
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy

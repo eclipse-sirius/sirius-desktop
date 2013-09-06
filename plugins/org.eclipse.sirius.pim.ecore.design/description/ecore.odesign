@@ -543,7 +543,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[performEdit(arg0)/]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="ShowPropertiesView" mappings="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute'] //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation'] //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType'] //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum'] //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral'] //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass'] //@ownedSiriuss[name='Archetype']/@ownedRepresentationExtensions[name='Entities%20With%20Archetypes']/@layers[name='Archetypes']/@containerMappings[name='Archetyped%20EClass']">
+          <ownedTools xsi:type="tool:DoubleClickDescription" name="ShowPropertiesView" mappings="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute'] //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation'] //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType'] //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum'] //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral'] //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -673,46 +673,8 @@
     <ownedRepresentationExtensions xsi:type="description:DiagramExtensionDescription" name="Entities With Archetypes" viewpointURI="viewpoint:/org.eclipse.sirius.pim.ecore.design/Design" representationName="Entities">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <layers name="Archetypes" activeByDefault="true">
-        <containerMappings xsi:type="description:ContainerMappingImport" name="Archetyped EClass" detailDescriptions="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.2/@ownedTools[name='Hierarchy%20Diagram'] //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.2/@ownedTools[name='Relation%20for%20class%20Diagram']" semanticCandidatesExpression="[eClassifiers/]" doubleClickDescription="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='ShowPropertiesView']" domainClass="EClass" childrenPresentation="List" importedMapping="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
-          <conditionnalStyles predicateExpression="[isMomentInterval()/]">
-            <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[name/]" tooltipExpression="[eContainer()->filter(ecore::EPackage).name + '.' + name/]" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='MomentIntervalColor']">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="[isDescription()/]">
-            <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[name/]" tooltipExpression="[eContainer()->filter(ecore::EPackage).name + '.' + name/]" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='DescriptionColor']">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="[isThing()/]">
-            <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[name/]" tooltipExpression="[eContainer()->filter(ecore::EPackage).name + '.' + name/]" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='PartyPlaceThingColor']">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="[isRole()/]">
-            <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[name/]" tooltipExpression="[eContainer()->filter(ecore::EPackage).name + '.' + name/]" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='RoleColor']">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="[interface/]">
-            <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[name/]" tooltipExpression="[eContainer()->filter(ecore::EPackage).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            </style>
-          </conditionnalStyles>
-        </containerMappings>
         <toolSections name="Archetype">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a moment or interval of time that we need to track for business or legal reasons? " name="MomentInterval" forceRefresh="true" containerMappings="//@ownedSiriuss[name='Archetype']/@ownedRepresentationExtensions[name='Entities%20With%20Archetypes']/@layers[name='Archetypes']/@containerMappings[name='Archetyped%20EClass']" iconPath="/org.eclipse.sirius.pim.ecore.design/icons/full/obj16/MomentInterval.gif" extraMappings="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a moment or interval of time that we need to track for business or legal reasons? " name="MomentInterval" forceRefresh="true" containerMappings="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.pim.ecore.design/icons/full/obj16/MomentInterval.gif" extraMappings="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -730,7 +692,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a catalog-entry like description? " name="Description" forceRefresh="true" containerMappings="//@ownedSiriuss[name='Archetype']/@ownedRepresentationExtensions[name='Entities%20With%20Archetypes']/@layers[name='Archetypes']/@containerMappings[name='Archetyped%20EClass']" iconPath="/org.eclipse.sirius.pim.ecore.design/icons/full/obj16/Description.gif" extraMappings="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a catalog-entry like description? " name="Description" forceRefresh="true" containerMappings="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.pim.ecore.design/icons/full/obj16/Description.gif" extraMappings="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -748,7 +710,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a role being played by a party (person or organization), place or thing? " name="Role" forceRefresh="true" containerMappings="//@ownedSiriuss[name='Archetype']/@ownedRepresentationExtensions[name='Entities%20With%20Archetypes']/@layers[name='Archetypes']/@containerMappings[name='Archetyped%20EClass']" iconPath="/org.eclipse.sirius.pim.ecore.design/icons/full/obj16/Role.gif" extraMappings="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a role being played by a party (person or organization), place or thing? " name="Role" forceRefresh="true" containerMappings="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.pim.ecore.design/icons/full/obj16/Role.gif" extraMappings="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -766,7 +728,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Place/Thing" forceRefresh="true" containerMappings="//@ownedSiriuss[name='Archetype']/@ownedRepresentationExtensions[name='Entities%20With%20Archetypes']/@layers[name='Archetypes']/@containerMappings[name='Archetyped%20EClass']" iconPath="/org.eclipse.sirius.pim.ecore.design/icons/full/obj16/Thing.gif" extraMappings="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Place/Thing" forceRefresh="true" containerMappings="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.pim.ecore.design/icons/full/obj16/Thing.gif" extraMappings="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -785,6 +747,20 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.isMomentInterval()/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']/@style //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style" referenceName="foregroundColor" value="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='MomentIntervalColor']"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.isDescription()/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']/@style //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style" referenceName="foregroundColor" value="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='DescriptionColor']"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.isThing()/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']/@style //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style" referenceName="foregroundColor" value="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='PartyPlaceThingColor']"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.isRole()/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']/@style //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style" referenceName="foregroundColor" value="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='RoleColor']"/>
+          </vsmElementCustomizations>
+        </customization>
       </layers>
     </ownedRepresentationExtensions>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.ecore.design.service.ArchetypeServices"/>
@@ -1088,7 +1064,7 @@
     </ownedRepresentations>
     <ownedRepresentationExtensions xsi:type="description:DiagramExtensionDescription" name="Entities" viewpointURI="viewpoint:/org.eclipse.sirius.pim.ecore.design/Design" representationName="Entities">
       <layers name="Size">
-        <containerMappings xsi:type="description:ContainerMappingImport" name="Doc Class" semanticCandidatesExpression="[eAllContents()/]" reusedNodeMappings="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute'] //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']" childrenPresentation="List" importedMapping="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+        <containerMappings xsi:type="description:ContainerMappingImport" name="Doc Class" semanticCandidatesExpression="[eAllContents()/]" reusedNodeMappings="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute'] //@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']" importedMapping="//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" childrenPresentation="List">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelFormat="italic" labelExpression="[name/]" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Size%20Based%20Color']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

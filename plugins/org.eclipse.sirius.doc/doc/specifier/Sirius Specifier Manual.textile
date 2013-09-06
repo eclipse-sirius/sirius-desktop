@@ -1,0 +1,19 @@
+h1. Sirius Specifier Manual
+
+This document describes how to create your own designers using Sirius. To learn how to *_use_* existing designers, refer to the "Sirius User Manual":../user/Sirius%20User%20Manual.html .
+
+You will find the following sections:
+* "*Viewpoints*":general/Specifying_Viewpoints.html gives a general overview of what viewpoints are and how they are specified, tested and deployed.
+* The next sections are specific to a kind of representation supported by Sirius:
+** "*Diagrams*":diagrams/Diagrams.html describes how to specify general graphical modelers.
+** "*Sequence Diagrams*":sequences/Sequence%20Diagrams.html are a special case of diagram with many peculiarities and specific kinds of tools, which are detailed here.
+** "*Tables*":tables/Tables.html covers how to specify both edition tables and matrix-like cross-tables.
+** "*Trees*":trees/Trees.html shows how to create tree-like modelers for a hierarchical view of data.
+* "*Model Operations*":general/Model_Operations.html describes the small language which can be used throughout "_Viewpoint Specification Models_":../Glossary.html#VSM to describe behavior (for example for tools).
+* "*Colors*":general/Colors.html explains how colors can be specified for all kinds of representations.
+* "*Queries and Interpreted Expressions*":general/Writing_Queries.html explains the general rules to follow to write the expressions used inside "_Viewpoint Specification Models_":../Glossary.html#VSM, and the various languages supported.
+* The "*Feature Matrix*":general/Feature_Matrix.html provides a cross-reference between most of the features of Sirius and concrete example usages of them in the Family example modeler.
+
+For more information on Sirius, please refer to the "*Sirius User Manual*":../user/Sirius%20User%20Manual.html, which describes how end-users can use the designers you created.
+
+In addition to this documentation, see also the "main project site":http://www.eclipse.org/sirius and the "top-level wiki page":http://wiki.eclipse.org/Sirius.

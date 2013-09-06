@@ -20,6 +20,7 @@ import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.gef.RootEditPart;
 import org.eclipse.gmf.runtime.common.core.util.Log;
 import org.eclipse.gmf.runtime.common.core.util.Trace;
@@ -84,13 +85,13 @@ public class SiriusEnhancedPrintActionHelper implements IPrintActionHelper {
         // get actual map mode, default is MapModeUtil.getMapMode()
         final IMapMode mapMode = (rootEP instanceof DiagramRootEditPart) ? ((DiagramRootEditPart) rootEP).getMapMode() : MapModeUtil.getMapMode();
 
-        if (!System.getProperty("os.name").toUpperCase().startsWith("WIN")) { //$NON-NLS-1$ //$NON-NLS-2$
-            // do default action when not Windows and this action is enabled
+        if (Platform.getOS().startsWith(Platform.OS_WIN32) && Platform.getOSArch().equals(Platform.ARCH_X86)) {
+            DiagramPrinterUtil.printWithSettings(diagramEditor, createDiagramMap(), new SiriusRenderedDiagramPrinter(preferencesHint, mapMode));
+        } else {
+            // do default action when OS is not a Windows 32 bits or a Windows
+            // 64 bits with a 32 bits JVM.
             DefaultPrintActionHelper.doRun(diagramEditor, new SiriusRenderedDiagramPrinter(preferencesHint, mapMode));
-            return;
         }
-
-        DiagramPrinterUtil.printWithSettings(diagramEditor, createDiagramMap(), new SiriusRenderedDiagramPrinter(preferencesHint, mapMode));
     }
 
     /**

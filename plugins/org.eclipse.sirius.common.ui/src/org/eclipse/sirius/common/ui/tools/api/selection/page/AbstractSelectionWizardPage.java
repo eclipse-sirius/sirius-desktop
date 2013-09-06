@@ -11,6 +11,7 @@
 package org.eclipse.sirius.common.ui.tools.api.selection.page;
 
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -18,7 +19,11 @@ import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.TreeItem;
 
+import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
+import org.eclipse.sirius.common.ui.SiriusTransPlugin;
+import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingItem;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 
 /**
@@ -72,6 +77,32 @@ public abstract class AbstractSelectionWizardPage extends WizardPage {
 
         return composite;
 
+    }
+
+    /**
+     * Expand the tree viewer. If the GroupingContentProvider is enable, we
+     * expand the first level only if it does not contain any grouping items for
+     * performance purposes. We cannot expandAll the tree viewer because it can
+     * contain grouping items also in each branches.
+     * 
+     * @param treeViewer
+     *            the treeViewer to expand
+     */
+    protected static void expandTreeViewer(TreeViewer treeViewer) {
+        if (SiriusTransPlugin.getPlugin().getPreferenceStore().getBoolean(CommonPreferencesConstants.PREF_GROUP_ENABLE)) {
+            boolean hasGroupingItem = false;
+            for (TreeItem item : treeViewer.getTree().getItems()) {
+                if (item.getData() instanceof GroupingItem) {
+                    hasGroupingItem = true;
+                    break;
+                }
+            }
+            if (!hasGroupingItem) {
+                treeViewer.expandToLevel(2);
+            }
+        } else {
+            treeViewer.expandAll();
+        }
     }
 
     /**

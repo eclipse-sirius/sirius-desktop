@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,24 +11,23 @@
 package org.eclipse.sirius.ui.tools.internal.actions.nature;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.expressions.EvaluationContext;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.jdt.internal.core.JavaProject;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.handlers.HandlerUtil;
+
+import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.provider.SiriusEditPlugin;
@@ -45,63 +44,34 @@ import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 public class ModelingToggleNatureAction extends AbstractHandler {
 
     /**
-     * The current selection.
-     */
-    private ISelection selection;
-
-    /**
-     * Indicating if the action is enabled.
-     */
-    private boolean enabled;
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.eclipse.core.commands.IHandler#execute(org.eclipse.core.commands.ExecutionEvent)
      */
     public Object execute(ExecutionEvent event) throws ExecutionException {
-        Object applicationContext = null;
-        if (event != null) {
-            applicationContext = event.getApplicationContext();
-        }
-        if (applicationContext instanceof EvaluationContext) {
-            EvaluationContext context = (EvaluationContext) applicationContext;
-            Object defaultVariable = context.getDefaultVariable();
-            if (defaultVariable instanceof List) {
-                @SuppressWarnings("unchecked")
-                List<Object> variables = (List<Object>) defaultVariable;
-                List<IProject> projects = new ArrayList<IProject>();
-                for (Object object : variables) {
-                    if (object instanceof IProject) {
-                        IProject project = (IProject) object;
-                        projects.add(project);
-                    } else if (object instanceof JavaProject) {
-                        JavaProject javaProject = (JavaProject) object;
-                        projects.add(javaProject.getProject());
-                    } else if (Platform.getAdapterManager().getAdapter(object, IProject.class) instanceof IProject) {
-                        projects.add((IProject) Platform.getAdapterManager().getAdapter(object, IProject.class));
-                    }
-                }
-                if (!projects.isEmpty()) {
-                    selection = new StructuredSelection(projects);
-                }
-            }
-        }
-
-        if (selection instanceof IStructuredSelection) {
-            for (Object element : ((IStructuredSelection) selection).toList()) {
-                IProject project = null;
-                if (element instanceof IProject) {
-                    project = (IProject) element;
-                } else if (element instanceof IAdaptable) {
-                    project = (IProject) ((IAdaptable) element).getAdapter(IProject.class);
-                }
-                if (project != null) {
-                    toggleNature(project);
-                }
-            }
+        Set<IProject> selectedProjects = getSelectedProjects(event);
+        for (IProject project : selectedProjects) {
+            toggleNature(project);
         }
         return null;
+    }
+
+    private Set<IProject> getSelectedProjects(ExecutionEvent event) {
+        Set<IProject> selectedProjects = Sets.newHashSet();
+        ISelection currentSelection = HandlerUtil.getCurrentSelection(event);
+        if (currentSelection instanceof IStructuredSelection) {
+            for (Object object : ((IStructuredSelection) currentSelection).toList()) {
+                if (object instanceof IProject) {
+                    selectedProjects.add((IProject) object);
+                } else if (object instanceof JavaProject) {
+                    JavaProject javaProject = (JavaProject) object;
+                    selectedProjects.add(javaProject.getProject());
+                } else if (Platform.getAdapterManager().getAdapter(object, IProject.class) instanceof IProject) {
+                    selectedProjects.add((IProject) Platform.getAdapterManager().getAdapter(object, IProject.class));
+                }
+            }
+        }
+        return selectedProjects;
     }
 
     /**
@@ -137,50 +107,5 @@ public class ModelingToggleNatureAction extends AbstractHandler {
         } catch (final InterruptedException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.commands.AbstractHandler#setEnabled(java.lang.Object)
-     */
-    @Override
-    public void setEnabled(Object evaluationContext) {
-        if (evaluationContext instanceof EvaluationContext) {
-            EvaluationContext context = (EvaluationContext) evaluationContext;
-            Object defaultVariable = context.getDefaultVariable();
-            if (defaultVariable instanceof List && ((List) defaultVariable).size() > 0) {
-                List<Object> variables = (List<Object>) defaultVariable;
-                for (Object object : variables) {
-                    if (object instanceof IProject) {
-                        enabled = true;
-                    } else if (object instanceof JavaProject) {
-                        enabled = true;
-                    } else if (Platform.getAdapterManager().getAdapter(object, IProject.class) instanceof IProject) {
-                        enabled = true;
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Sets the selection.
-     * 
-     * @param s
-     *            The new selection.
-     */
-    public void setSelection(ISelection s) {
-        this.selection = s;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.commands.AbstractHandler#isEnabled()
-     */
-    @Override
-    public boolean isEnabled() {
-        return enabled;
     }
 }

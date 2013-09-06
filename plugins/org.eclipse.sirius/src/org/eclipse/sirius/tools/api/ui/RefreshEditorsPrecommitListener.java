@@ -209,12 +209,7 @@ public class RefreshEditorsPrecommitListener extends ResourceSetListenerImpl imp
     }
 
     private boolean needsRefresh() {
-        if (Boolean.valueOf(System.getProperty("org.eclipse.sirius.enableUnsafeOptimisations", "false"))) {
-            return (isForceRefresh() || isAutoRefresh()) && !(RefreshFilterManager.INSTANCE.getOpenedRepresantationsToRefresh().isEmpty() && representationsToForceRefresh.isEmpty());    
-        } else {
-            return isForceRefresh() || isAutoRefresh();
-        }
-        
+        return (isForceRefresh() || isAutoRefresh()) && !(RefreshFilterManager.INSTANCE.getOpenedRepresantationsToRefresh().isEmpty() && representationsToForceRefresh.isEmpty());
     }
 
     /**

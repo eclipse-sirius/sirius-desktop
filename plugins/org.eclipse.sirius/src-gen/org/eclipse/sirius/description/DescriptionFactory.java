@@ -254,6 +254,15 @@ public interface DescriptionFactory extends EFactory {
     Layer createLayer();
 
     /**
+     * Returns a new object of class '<em>Additional Layer</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Additional Layer</em>'.
+     * @generated
+     */
+    AdditionalLayer createAdditionalLayer();
+
+    /**
      * Returns a new object of class '<em>Customization</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -297,16 +306,6 @@ public interface DescriptionFactory extends EFactory {
      * @generated
      */
     EReferenceCustomization createEReferenceCustomization();
-
-    /**
-     * Returns a new object of class '<em>Optional Layer</em>'. <!--
-     * begin-user-doc -->
-     * 
-     * @since 2.0 <!-- end-user-doc -->
-     * @return a new object of class '<em>Optional Layer</em>'.
-     * @generated
-     */
-    OptionalLayer createOptionalLayer();
 
     /**
      * Returns a new object of class '<em>System Color</em>'. <!--

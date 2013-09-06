@@ -16,7 +16,7 @@ package org.eclipse.sirius.ui.tools.api.views.common.item;
  * @author mchauvin
  * @since 2.4
  */
-public interface ItemWrapper extends CommonItem {
+public interface ItemWrapper extends CommonSessionItem {
     /**
      * Get the wrapped object.
      * 

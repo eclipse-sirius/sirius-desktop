@@ -39,7 +39,7 @@ import org.eclipse.sirius.description.ColorDescription;
  * @model
  * @generated
  */
-public interface FlatContainerStyleDescription extends ContainerStyleDescription {
+public interface FlatContainerStyleDescription extends ContainerStyleDescription, SizeComputationContainerStyleDescription {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

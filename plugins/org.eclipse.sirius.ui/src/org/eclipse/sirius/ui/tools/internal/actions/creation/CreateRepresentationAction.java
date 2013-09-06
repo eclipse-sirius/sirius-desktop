@@ -111,6 +111,9 @@ public class CreateRepresentationAction extends Action {
 
         try {
             final String representationName = getRepresentationName();
+            if (representationName == null) {
+                return;
+            }
 
             IRunnableWithProgress representationCreationRunnable = new IRunnableWithProgress() {
 

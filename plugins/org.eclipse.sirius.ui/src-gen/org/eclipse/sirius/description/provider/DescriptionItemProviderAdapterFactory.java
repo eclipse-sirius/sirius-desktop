@@ -665,6 +665,31 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.description.AdditionalLayer} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected AdditionalLayerItemProvider additionalLayerItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.description.AdditionalLayer}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Adapter createAdditionalLayerAdapter() {
+        if (additionalLayerItemProvider == null) {
+            additionalLayerItemProvider = new AdditionalLayerItemProvider(this);
+        }
+
+        return additionalLayerItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.description.Customization} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -786,31 +811,6 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
         }
 
         return eReferenceCustomizationItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.description.OptionalLayer} instances. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected OptionalLayerItemProvider optionalLayerItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.description.OptionalLayer}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createOptionalLayerAdapter() {
-        if (optionalLayerItemProvider == null) {
-            optionalLayerItemProvider = new OptionalLayerItemProvider(this);
-        }
-
-        return optionalLayerItemProvider;
     }
 
     /**
@@ -1257,8 +1257,8 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
             semanticBasedDecorationItemProvider.dispose();
         if (layerItemProvider != null)
             layerItemProvider.dispose();
-        if (optionalLayerItemProvider != null)
-            optionalLayerItemProvider.dispose();
+        if (additionalLayerItemProvider != null)
+            additionalLayerItemProvider.dispose();
         if (customizationItemProvider != null)
             customizationItemProvider.dispose();
         if (vsmElementCustomizationItemProvider != null)

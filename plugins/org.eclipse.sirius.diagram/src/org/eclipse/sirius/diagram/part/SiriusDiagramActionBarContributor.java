@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.part;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Preferences;
 import org.eclipse.gef.Disposable;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
@@ -23,6 +24,8 @@ import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.actions.RetargetAction;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.Version;
 
 import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
@@ -222,42 +225,45 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
             cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_SELECT);
             cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_ARRANGE);
         } else {
+            Bundle uiWorkbenchBundle = Platform.getBundle("org.eclipse.ui.workbench"); //$NON-NLS-1$
+            Version junoStart = Version.parseVersion("3.103");
+            // Version keplerStart = Version.parseVersion("3.105");
 
-            IContributionItem arrange = toolBarManager.find(ActionIds.MENU_ARRANGE);
-            IContributionItem diagram = toolBarManager.find(REFRESH_DIAGRAM);
-            if (arrange != null && diagram != null) {
-                toolBarManager.remove(arrange);
-                toolBarManager.insertBefore(REFRESH_DIAGRAM, arrange);
+            if (uiWorkbenchBundle != null && uiWorkbenchBundle.getVersion().compareTo(junoStart) < 0) {
+                // Do not reorder old ui toolbar for 4.x.
+                IContributionItem arrange = toolBarManager.find(ActionIds.MENU_ARRANGE);
+                IContributionItem diagram = toolBarManager.find(REFRESH_DIAGRAM);
+                if (arrange != null && diagram != null) {
+                    toolBarManager.remove(arrange);
+                    toolBarManager.insertBefore(REFRESH_DIAGRAM, arrange);
 
-                IContributionItem select = toolBarManager.find(ActionIds.MENU_SELECT);
-                if (select != null) {
-                    toolBarManager.remove(select);
-                    toolBarManager.insertAfter(ActionIds.MENU_ARRANGE, select);
+                    IContributionItem select = toolBarManager.find(ActionIds.MENU_SELECT);
+                    if (select != null) {
+                        toolBarManager.remove(select);
+                        toolBarManager.insertAfter(ActionIds.MENU_ARRANGE, select);
 
-                    IContributionItem align = toolBarManager.find(ActionIds.MENU_ALIGN);
-                    if (align != null) {
-                        toolBarManager.remove(align);
-                        toolBarManager.insertAfter(ActionIds.MENU_SELECT, align);
-
-                        toolBarManager.insertAfter(ActionIds.MENU_ALIGN, new Separator());
-
+                        IContributionItem align = toolBarManager.find(ActionIds.MENU_ALIGN);
+                        if (align != null) {
+                            toolBarManager.remove(align);
+                            toolBarManager.insertAfter(ActionIds.MENU_SELECT, align);
+                            toolBarManager.insertAfter(ActionIds.MENU_ALIGN, new Separator());
+                        }
                     }
-
                 }
-            }
 
-            IContributionItem setStyleItem = toolBarManager.find(SetStyleToWorkspaceImageAction.SET_STYLE_TO_WORKSPACE_IMAGE_ACTION_ID);
-            IContributionItem copyApparenceItem = toolBarManager.find(ActionIds.ACTION_COPY_APPEARANCE_PROPERTIES);
-            if (setStyleItem != null && copyApparenceItem != null) {
-                toolBarManager.remove(setStyleItem);
-                toolBarManager.insertBefore(ActionIds.ACTION_COPY_APPEARANCE_PROPERTIES, setStyleItem);
-            }
+                IContributionItem setStyleItem = toolBarManager.find(SetStyleToWorkspaceImageAction.SET_STYLE_TO_WORKSPACE_IMAGE_ACTION_ID);
+                IContributionItem copyApparenceItem = toolBarManager.find(ActionIds.ACTION_COPY_APPEARANCE_PROPERTIES);
+                if (setStyleItem != null && copyApparenceItem != null) {
+                    toolBarManager.remove(setStyleItem);
+                    toolBarManager.insertBefore(ActionIds.ACTION_COPY_APPEARANCE_PROPERTIES, setStyleItem);
+                }
 
-            IContributionItem zoom = toolBarManager.find(ActionIds.CUSTOM_ZOOM);
-            IContributionItem launchBehavior = toolBarManager.find(LAUNCH_BEHAVIOR);
-            if (zoom != null && launchBehavior != null) {
-                toolBarManager.remove(zoom);
-                toolBarManager.insertAfter(LAUNCH_BEHAVIOR, zoom);
+                IContributionItem zoom = toolBarManager.find(ActionIds.CUSTOM_ZOOM);
+                IContributionItem launchBehavior = toolBarManager.find(LAUNCH_BEHAVIOR);
+                if (zoom != null && launchBehavior != null) {
+                    toolBarManager.remove(zoom);
+                    toolBarManager.insertAfter(LAUNCH_BEHAVIOR, zoom);
+                }
             }
         }
     }

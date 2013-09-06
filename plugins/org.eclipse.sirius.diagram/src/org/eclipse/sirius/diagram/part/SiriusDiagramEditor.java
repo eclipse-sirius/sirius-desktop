@@ -211,7 +211,7 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
             Session session = sessionEditorInput.getSession();
             if (session != null) {
                 Resource sessionResource = session.getSessionResource();
-                if (sessionResource.getURI().isPlatformResource()) {
+                if (sessionResource != null && sessionResource.getURI().isPlatformResource()) {
                     final IFile file = WorkspaceSynchronizer.getFile(sessionResource);
                     if (file != null) {
                         return new StructuredSelection(file);

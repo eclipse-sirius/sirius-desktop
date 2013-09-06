@@ -116,7 +116,7 @@ public class RepresentationItemImpl implements ItemWrapper, IAdaptable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getChildren()
+     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getChildren()
      */
     public Collection<?> getChildren() {
         return Collections.emptyList();
@@ -125,7 +125,7 @@ public class RepresentationItemImpl implements ItemWrapper, IAdaptable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getChildren()
+     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getChildren()
      */
     public Option<Session> getSession() {
         Session session = null;
@@ -154,7 +154,7 @@ public class RepresentationItemImpl implements ItemWrapper, IAdaptable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getParent()
+     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getParent()
      */
     public Object getParent() {
         return parent;

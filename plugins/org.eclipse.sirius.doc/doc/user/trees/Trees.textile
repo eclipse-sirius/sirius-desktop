@@ -1,0 +1,52 @@
+h1. Tree Editors
+
+This document explains how to use Sirius tree editors/modelers which allow to view and manipulate data in a hierarchical way.
+
+{toc:style=disc|minLevel=2|maxLevel=3}
+
+h2(#introduction). Introduction
+
+Sirius provides support for hierarchical representations called _trees_, which represent information in a hierarchical way.
+
+  !images/tree_representation1.png!
+
+Note that as always with Sirius, some of the features described below may or may not be available with all specific tree editors. Some tree editors are configured to only display information but do not allow edition for example. It all depends on which features the person who _specified_ (configured) the tree decided to support.
+
+h2(#managing). Creating, Renaming and Deleting Trees
+
+Trees are managed in the same way as the other kinds or representations supported by Sirius (diagrams, tables...). They are created either through the _New Representation_ context menu on a semantic element, or through the _Create Representation_ action on the context menu of a _Modeling Project_. Newly created trees are automatically opened. To open an existing tree, simply double-click on it in the _Model Explorer_: it will appear both inside the representation file (@aird@ file) and under the semantic element it represents inside the semantic model.
+
+You can rename, duplicate or delete a tree by choosing the corresponding action (resp. _Rename_, _Copy_ or _Delete_) in the context menu on the tree element in the _Model Explorer_.
+
+h2(#refresh). Refreshing Trees
+
+Depending on the value of the __Automatic refresh__ Sirius preference (accessible through __Window__ / __Preferences...__ / __Sirius__), the contents of opened trees may or may not be automatically updated when the underlying semantic model changes. In _manual refresh_ mode (when __Automatic refresh__ is unchecked), you can explicitly request a refresh of the whole tree by using the _Refresh_ button in the main Eclipse toolbar, as shown below:
+
+  !images/tree_representation2.png!
+
+h2(#items). Adding and Removing Tree Items
+
+If the tree's configuration has defined tools to create new element (tree items), they will appear in the context menu of existing tree items. The name of the creation tools is not fixed; it depend on the tree's configuration, so it will be different for each tree modeler. Note that you must have a tree element selected for the creation tools to appear in the context menu, and the behavior of the tool may depend on the selected element. 
+
+  !images/tree_representation3.png!
+  
+If the tree is completely empty and you have no element to select, you can still create elements (if supported by the tree's configuration) by using the drop-down menus in the main Eclipse toolbar (see screenshot).
+
+ !images/tree_representation4.png!
+
+h2(#editing). Editing Tree Items
+
+There are several ways to activate the edition of a tree item:
+* F2 key, 
+* Double-click, 
+* Any alpha-numeric character key (for text edition only).
+
+Once the edit mode is enabled, simply enter your text and hit _Return_ to validate. The expected format of the edit string and its interpretation depends on how the tree's configuration has been set up to interpret the text you enter.
+
+h2. Tree Items Drag and Drop
+
+Drag and drop is a feature which can be enabled by the specifier in the tree configuration. It is turned off by default.
+
+Simply select the Tree Items you would like to drag, and drop them inside an other Tree Item. Most of the time, this will result in the dropped element being added to the new location, but the exact effect of the operation is entirely dependent on how the tree was configured by its specifier.
+
+Notice that it may also possible to drag elements from other Eclipse views. Again, this depends on how the tree was configured.

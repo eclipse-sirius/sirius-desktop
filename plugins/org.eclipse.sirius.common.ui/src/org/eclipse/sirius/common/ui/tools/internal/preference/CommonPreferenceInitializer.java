@@ -34,6 +34,9 @@ public class CommonPreferenceInitializer extends AbstractPreferenceInitializer {
         final IPreferenceStore preferenceStore = getPreferenceStore();
         preferenceStore.setDefault(CommonPreferencesConstants.PREF_TRACE_ON, false);
         preferenceStore.setDefault(CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, true);
+        preferenceStore.setDefault(CommonPreferencesConstants.PREF_GROUP_ENABLE, true);
+        preferenceStore.setDefault(CommonPreferencesConstants.PREF_GROUP_TRIGGER, 10000);
+        preferenceStore.setDefault(CommonPreferencesConstants.PREF_GROUP_SIZE, 100);
     }
 
     /**

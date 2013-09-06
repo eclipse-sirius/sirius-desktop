@@ -60,7 +60,6 @@ import org.eclipse.sirius.table.metamodel.table.description.TableCreationDescrip
 import org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription;
 import org.eclipse.sirius.table.metamodel.table.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.table.metamodel.table.provider.TableItemProviderAdapterFactory;
-import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.table.tools.api.export.TableExportHelper;
 import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
 import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
@@ -209,10 +208,12 @@ public class TableDialectUIServices implements DialectUIServices {
                 public void run() {
 
                     try {
-                        ((AbstractDTableEditor) editorPart).getTableModel().deactivate();
+                        DTable dTable = ((AbstractDTableEditor) editorPart).getTableModel();
+                        if (dTable != null) {
+                            dTable.deactivate();
+                        }
                     } catch (IllegalStateException e) {
-                        // In case of CDO server shutdown
-                        TableUIPlugin.getPlugin().log(e);
+                        // Can occur when Eobject has been disposed
                     } finally {
                         PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().closeEditor(editorPart, save);
                     }

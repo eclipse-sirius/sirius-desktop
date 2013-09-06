@@ -93,7 +93,14 @@ public class ResourceQuery {
      *         otherwise.
      */
     public boolean isRepresentationsResource() {
-        boolean isRepresentationsResource = resource.getURI() == null ? false : new FileQuery(resource.getURI().fileExtension()).isSessionResourceFile();
+        boolean isRepresentationsResource = false;
+        try {
+            isRepresentationsResource = resource.getURI() != null;
+        } catch (IllegalStateException e) {
+            // Silent catch: if an issue occurred while getting this Resource's
+            // URI, then it will not be considered as a representation resource
+        }
+        isRepresentationsResource = isRepresentationsResource && new FileQuery(resource.getURI().fileExtension()).isSessionResourceFile();
         isRepresentationsResource = isRepresentationsResource || resource instanceof AirdResource;
         if (!isRepresentationsResource && resource.getContents() != null && resource.getContents().size() == 1) {
             isRepresentationsResource = resource.getContents().get(0).eClass().equals(SiriusPackage.eINSTANCE.getDAnalysis());

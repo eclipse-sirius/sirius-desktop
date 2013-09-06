@@ -14,6 +14,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
@@ -250,8 +251,11 @@ public class SelectHiddenElementsAction extends DiagramAction {
         if (getWorkbenchPart() instanceof DDiagramEditor && ((DDiagramEditor) getWorkbenchPart()).getRepresentation() instanceof DDiagram) {
             final DDiagramEditor editor = (DDiagramEditor) getWorkbenchPart();
             final DDiagram editorDiagram = (DDiagram) editor.getRepresentation();
-            IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(editor.getSession().getSessionResource().getResourceSet());
-            canEditInstance = permissionAuthority.canEditInstance(editorDiagram);
+            Resource sessionResource = editor.getSession().getSessionResource();
+            if (sessionResource != null) {
+                IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(sessionResource.getResourceSet());
+                canEditInstance = permissionAuthority.canEditInstance(editorDiagram);
+            }
         }
         return canEditInstance && super.calculateEnabled();
     }

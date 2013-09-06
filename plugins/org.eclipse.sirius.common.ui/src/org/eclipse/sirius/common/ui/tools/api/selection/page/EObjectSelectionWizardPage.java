@@ -21,6 +21,7 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -33,7 +34,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TreeItem;
 
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
+import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
 import org.eclipse.sirius.common.ui.tools.api.util.TreeItemWrapperContentProvider;
+import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 
 /**
  * A wizard page to select an EObject.
@@ -159,12 +162,14 @@ public class EObjectSelectionWizardPage extends AbstractSelectionWizardPage {
         myViewerfilter.setTreeViewer(treeViewer);
 
         /* expand before compute prefix */
-        treeViewer.expandAll();
+        expandTreeViewer(treeViewer);
 
         initRootPrefix();
         if (selectFirst && treeViewer.getTree().getItemCount() > 0) {
             treeViewer.getTree().setSelection(treeViewer.getTree().getItem(0));
-            selectedEObjects.add((EObject) ((TreeItemWrapper) treeViewer.getTree().getItem(0).getData()).getWrappedObject());
+            if (treeViewer.getTree().getItem(0).getData() instanceof TreeItemWrapper) {
+                selectedEObjects.add((EObject) ((TreeItemWrapper) treeViewer.getTree().getItem(0).getData()).getWrappedObject());
+            }
             setPageComplete(true);
         }
         setControl(pageComposite);
@@ -199,7 +204,8 @@ public class EObjectSelectionWizardPage extends AbstractSelectionWizardPage {
         viewer.getControl().setLayoutData(gridData);
         viewer.getTree().setHeaderVisible(false);
         viewer.getTree().setLinesVisible(false);
-        viewer.setContentProvider(new TreeItemWrapperContentProvider());
+        final ITreeContentProvider contentProvider = new GroupingContentProvider(new TreeItemWrapperContentProvider());
+        viewer.setContentProvider(contentProvider);
         viewer.setLabelProvider(new EObjectSelectionLabelProvider());
         viewer.setComparator(new ViewerComparator());
 
@@ -352,18 +358,28 @@ public class EObjectSelectionWizardPage extends AbstractSelectionWizardPage {
 
         @Override
         public Image getImage(final Object element) {
+            Image result = null;
             if (element instanceof TreeItemWrapper) {
-                return myAdapterFactoryLabelProvider.getImage(((TreeItemWrapper) element).getWrappedObject());
+                result = myAdapterFactoryLabelProvider.getImage(((TreeItemWrapper) element).getWrappedObject());
+            } else if (element instanceof ItemDecorator) {
+                result = ((ItemDecorator) element).getImage();
+            } else {
+                result = myAdapterFactoryLabelProvider.getImage(element);
             }
-            return myAdapterFactoryLabelProvider.getImage(element);
+            return result;
         }
 
         @Override
         public String getText(final Object element) {
+            String result = null;
             if (element instanceof TreeItemWrapper) {
-                return myAdapterFactoryLabelProvider.getText(((TreeItemWrapper) element).getWrappedObject());
+                result = myAdapterFactoryLabelProvider.getText(((TreeItemWrapper) element).getWrappedObject());
+            } else if (element instanceof ItemDecorator) {
+                result = ((ItemDecorator) element).getText();
+            } else {
+                result = myAdapterFactoryLabelProvider.getText(element);
             }
-            return myAdapterFactoryLabelProvider.getText(element);
+            return result;
         }
     }
 

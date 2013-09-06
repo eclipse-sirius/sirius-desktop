@@ -264,7 +264,8 @@ public class CanonicalDBorderItemLocator {
             boolean takeIntoAccount = true;
             // Does not consider label that is not on border.
             ViewQuery viewQuery = new ViewQuery(borderItem);
-            if (viewQuery.isForNameEditPart() && !viewQuery.isForNameEditPartOnBorder()) {
+            NodeQuery nodeQuery = new NodeQuery(borderItem);
+            if (!nodeQuery.isBorderedNode() && !viewQuery.isForNameEditPartOnBorder()) {
                 takeIntoAccount = false;
             }
             if (borderItem.isVisible() && takeIntoAccount) {

@@ -42,7 +42,7 @@ public class SiriussFolderItemImpl extends AbstractFolderItem implements org.ecl
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.ItemDecorator#getText()
+     * @see org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator#getText()
      */
     public String getText() {
         return FOLDER_LABEL;
@@ -51,7 +51,7 @@ public class SiriussFolderItemImpl extends AbstractFolderItem implements org.ecl
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonItem#getChildren()
+     * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getChildren()
      */
     public Collection<?> getChildren() {
         final List<SiriusItemImpl> all = Lists.newArrayList();
