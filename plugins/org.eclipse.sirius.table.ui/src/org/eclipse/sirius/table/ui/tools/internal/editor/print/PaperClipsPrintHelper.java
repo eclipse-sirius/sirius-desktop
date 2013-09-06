@@ -10,22 +10,21 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.print;
 
-import net.sf.paperclips.DefaultGridLook;
-import net.sf.paperclips.GridColumn;
-import net.sf.paperclips.GridPrint;
-import net.sf.paperclips.ImagePrint;
-import net.sf.paperclips.LineBorder;
-import net.sf.paperclips.LinePrint;
-import net.sf.paperclips.PageDecoration;
-import net.sf.paperclips.PageNumberPageDecoration;
-import net.sf.paperclips.PagePrint;
-import net.sf.paperclips.PaperClips;
-import net.sf.paperclips.Print;
-import net.sf.paperclips.PrintJob;
-import net.sf.paperclips.ScalePrint;
-import net.sf.paperclips.SimplePageDecoration;
-import net.sf.paperclips.TextPrint;
-
+import org.eclipse.nebula.paperclips.core.ImagePrint;
+import org.eclipse.nebula.paperclips.core.LinePrint;
+import org.eclipse.nebula.paperclips.core.PaperClips;
+import org.eclipse.nebula.paperclips.core.Print;
+import org.eclipse.nebula.paperclips.core.PrintJob;
+import org.eclipse.nebula.paperclips.core.ScalePrint;
+import org.eclipse.nebula.paperclips.core.border.LineBorder;
+import org.eclipse.nebula.paperclips.core.grid.DefaultGridLook;
+import org.eclipse.nebula.paperclips.core.grid.GridColumn;
+import org.eclipse.nebula.paperclips.core.grid.GridPrint;
+import org.eclipse.nebula.paperclips.core.page.PageDecoration;
+import org.eclipse.nebula.paperclips.core.page.PageNumberPageDecoration;
+import org.eclipse.nebula.paperclips.core.page.PagePrint;
+import org.eclipse.nebula.paperclips.core.page.SimplePageDecoration;
+import org.eclipse.nebula.paperclips.core.text.TextPrint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.RGB;
