@@ -2,7 +2,7 @@ target "sirius_indigo"
 
 // Eclipse release
 location "http://download.eclipse.org/releases/indigo" {
-	with source
+	with source, requirements
 	com.ibm.icu;version="[4.0.0,5.0.0)"
 	org.eclipse.platform.sdk;version="[3.7.0,3.8.0)"
 	org.eclipse.sdk.ide;version="[3.7.0,3.8.0)"
@@ -24,13 +24,13 @@ location "http://download.eclipse.org/releases/indigo" {
 
 // EMF Compare 2
 location "http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1" {
-	with source
+	with source, requirements
 	org.eclipse.emf.compare.feature.group;version="[2.1.0, 3.0.0)"
 }
 
 // Acceleo 3
 location "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/" {
-	with source
+	with source, requirements
 	org.eclipse.acceleo.feature.group;version="[3.0.0,4.0.0)"
 	org.eclipse.acceleo.doc.feature.group;version="[3.0.0,4.0.0)"
 	org.eclipse.acceleo.examples.feature.group;version="[3.0.0,4.0.0)"
@@ -42,27 +42,24 @@ location "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/
 
 // EEF 2
 location "http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/" {
-	with source
+	with source, requirements
 	org.eclipse.emf.eef.runtime;version="[1.0.0,2.0.0)"
 }
 
 // Guava
 location "http://download.eclipse.org/tools/orbit/downloads/drops/I20130827062727/repository/" {
-	with allEnvironments
+	with source, requirements
 	com.google.guava.sdk.feature.feature.group;version="[11.0.1,12.0.0)"
 }
 
 // PaperClips
 location "http://download.eclipse.org/technology/nebula/snapshot/" {
-	with source
+	with source, requirements
 	org.eclipse.nebula.widgets.paperclips.feature.feature.group;version="[2.0.0,3.0.0)"
 }
 
 // Xtext
 location "http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases" {
-	with source
-	org.eclipse.xtext.sdk.feature.group;version="[2.4.1,2.5.0)"
-	org.apache.commons.cli;version="[1.0.0,2.0.0)"
-	org.apache.commons.logging;version="[1.0.0,2.0.0)"
-	org.apache.commons.lang;version="[2.0.0,3.0.0)"
+	with source, requirements
+	org.eclipse.xtext.sdk.feature.group;version="[2.2.1,2.3.0)"
 }
