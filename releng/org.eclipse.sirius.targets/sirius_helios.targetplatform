@@ -57,3 +57,9 @@ location "http://download.eclipse.org/technology/nebula/snapshot/" {
 	with source
 	org.eclipse.nebula.widgets.paperclips.feature.feature.group;version="[2.0.0,3.0.0)"
 }
+
+// Xtext
+location "http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases" {
+	with source, requirements
+	org.eclipse.xtext.sdk.feature.group;version="[2.1.1,2.2.0)"
+}

@@ -50,6 +50,7 @@
     <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl</module>
     <module>../../plugins/org.eclipse.sirius.common.ocl</module>
     <module>../../plugins/org.eclipse.sirius.common.ui</module>
+    <module>../../plugins/org.eclipse.sirius.common.xtext</module>
     <module>../../plugins/org.eclipse.sirius.common</module>
     <module>../../plugins/org.eclipse.sirius.diagram.layoutdata</module>
     <module>../../plugins/org.eclipse.sirius.diagram.sequence.edit</module>
@@ -74,15 +75,16 @@
     <module>../../plugins/org.eclipse.sirius</module>
 
     <!-- features -->
-    <module>../../packaging/org.eclipse.sirius.runtime</module>
-    <module>../../packaging/org.eclipse.sirius.runtime.acceleo</module>
-    <module>../../packaging/org.eclipse.sirius.runtime.ide.ui</module>
-    <module>../../packaging/org.eclipse.sirius.specifier.ide.ui.acceleo</module>
-    <module>../../packaging/org.eclipse.sirius.runtime.ide.ui.acceleo</module>
-    <module>../../packaging/org.eclipse.sirius.runtime.ocl</module>
-    <module>../../packaging/org.eclipse.sirius.specifier.ide.ui</module>
-    <module>../../packaging/org.eclipse.sirius.runtime.ide.eef</module>
     <module>../../packaging/org.eclipse.sirius.doc.feature</module>
+    <module>../../packaging/org.eclipse.sirius.runtime.acceleo</module>
+    <module>../../packaging/org.eclipse.sirius.runtime.ide.eef</module>
+    <module>../../packaging/org.eclipse.sirius.runtime.ide.ui.acceleo</module>
+    <module>../../packaging/org.eclipse.sirius.runtime.ide.ui</module>
+    <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
+    <module>../../packaging/org.eclipse.sirius.runtime.ocl</module>
+    <module>../../packaging/org.eclipse.sirius.runtime</module>
+    <module>../../packaging/org.eclipse.sirius.specifier.ide.ui.acceleo</module>
+    <module>../../packaging/org.eclipse.sirius.specifier.ide.ui</module>
 
     <!-- update sites -->
     <module>../../packaging/org.eclipse.sirius.update/${platform-version-name}</module>
@@ -107,6 +109,14 @@
           <dependency-resolution>
             <optionalDependencies>ignore</optionalDependencies>
           </dependency-resolution>
+          <target>
+            <artifact>
+              <groupId>org.eclipse.sirius</groupId>
+              <artifactId>sirius-parent</artifactId>
+              <version>0.1.0-SNAPSHOT</version>
+              <classifier>../../releng/org.eclipse.sirius.targets/sirius_${platform-version-name}</classifier>
+            </artifact>
+          </target>
         </configuration>
       </plugin>
       <plugin>
@@ -183,174 +193,5 @@
       </plugins>
     </pluginManagement>
   </build>
-
-  <profiles>
-
-    <profile>
-      <id>helios</id>
-      <activation>
-        <property>
-          <name>platform-version-name</name>
-          <value>helios</value>
-        </property>
-      </activation>
-      <properties>
-        <xtext-support>false</xtext-support>
-      </properties>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.eclipse.tycho</groupId>
-            <artifactId>target-platform-configuration</artifactId>
-            <version>${tycho-version}</version>
-            <configuration>
-              <target>
-                <artifact>
-                  <groupId>org.eclipse.sirius</groupId>
-                  <artifactId>sirius-parent</artifactId>
-                  <version>0.1.0-SNAPSHOT</version>
-                  <classifier>../../releng/org.eclipse.sirius.targets/sirius_${platform-version-name}</classifier>
-                </artifact>
-              </target>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-
-    </profile>
-
-    <profile>
-      <id>indigo</id>
-      <activation>
-        <property>
-          <name>platform-version-name</name>
-          <value>indigo</value>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.eclipse.tycho</groupId>
-            <artifactId>target-platform-configuration</artifactId>
-            <version>${tycho-version}</version>
-            <configuration>
-              <target>
-                <artifact>
-                  <groupId>org.eclipse.sirius</groupId>
-                  <artifactId>sirius-parent</artifactId>
-                  <version>0.1.0-SNAPSHOT</version>
-                  <classifier>../../releng/org.eclipse.sirius.targets/sirius_${platform-version-name}</classifier>
-                </artifact>
-              </target>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-      <modules>
-        <module>../../plugins/org.eclipse.sirius.common.xtext</module>
-        <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
-      </modules>
-    </profile>
-
-    <profile>
-      <id>juno3</id>
-      <activation>
-        <property>
-          <name>platform-version-name</name>
-          <value>juno3</value>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.eclipse.tycho</groupId>
-            <artifactId>target-platform-configuration</artifactId>
-            <version>${tycho-version}</version>
-            <configuration>
-              <target>
-                <artifact>
-                  <groupId>org.eclipse.sirius</groupId>
-                  <artifactId>sirius-parent</artifactId>
-                  <version>0.1.0-SNAPSHOT</version>
-                  <classifier>../../releng/org.eclipse.sirius.targets/sirius_${platform-version-name}</classifier>
-                </artifact>
-              </target>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-      <modules>
-        <module>../../plugins/org.eclipse.sirius.common.xtext</module>
-        <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
-      </modules>
-    </profile>
-
-    <profile>
-      <id>juno</id>
-      <activation>
-        <property>
-          <name>platform-version-name</name>
-          <value>juno</value>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.eclipse.tycho</groupId>
-            <artifactId>target-platform-configuration</artifactId>
-            <version>${tycho-version}</version>
-            <configuration>
-              <target>
-                <artifact>
-                  <groupId>org.eclipse.sirius</groupId>
-                  <artifactId>sirius-parent</artifactId>
-                  <version>0.1.0-SNAPSHOT</version>
-                  <classifier>../../releng/org.eclipse.sirius.targets/sirius_${platform-version-name}</classifier>
-                </artifact>
-              </target>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-      <modules>
-        <module>../../plugins/org.eclipse.sirius.common.xtext</module>
-        <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
-      </modules>
-    </profile>
-
-    <profile>
-      <id>kepler</id>
-      <activation>
-        <property>
-          <name>platform-version-name</name>
-          <value>kepler</value>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.eclipse.tycho</groupId>
-            <artifactId>target-platform-configuration</artifactId>
-            <version>${tycho-version}</version>
-            <configuration>
-              <target>
-                <artifact>
-                  <groupId>org.eclipse.sirius</groupId>
-                  <artifactId>sirius-parent</artifactId>
-                  <version>0.1.0-SNAPSHOT</version>
-                  <classifier>../../releng/org.eclipse.sirius.targets/sirius_${platform-version-name}</classifier>
-                </artifact>
-              </target>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-      <modules>
-        <module>../../plugins/org.eclipse.sirius.common.xtext</module>
-        <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
-      </modules>
-    </profile>
-
-  </profiles>
 
 </project>

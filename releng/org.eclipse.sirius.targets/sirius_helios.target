@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?><target name="sirius_helios" sequenceNumber="0">
 <locations>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="com.ibm.icu" version="4.2.1.v20100412"/>
 <unit id="org.eclipse.platform.sdk" version="3.6.2.M20110210-1200"/>
 <unit id="org.eclipse.sdk.ide" version="3.6.2.M20110210-1200"/>
@@ -19,11 +19,11 @@
 <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.4.2.v20110201-1000-67G49E9QYBfkXgwmVt5ksk7w9Vqi"/>
 <repository location="http://download.eclipse.org/releases/helios"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.compare.feature.group" version="2.1.0.201306250935"/>
 <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.acceleo.feature.group" version="3.4.0.201306101458"/>
 <unit id="org.eclipse.acceleo.doc.feature.group" version="3.4.0.201306101458"/>
 <unit id="org.eclipse.acceleo.examples.feature.group" version="3.4.0.201306101458"/>
@@ -32,16 +32,20 @@
 <unit id="org.eclipse.acceleo.ui.capabilities.feature.group" version="3.4.0.201306101458"/>
 <repository location="http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.eef.runtime" version="1.2.0.201301031409"/>
 <repository location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/I20130827062727/repository/"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.nebula.widgets.paperclips.feature.feature.group" version="2.0.0.201307092147"/>
 <repository location="http://download.eclipse.org/technology/nebula/snapshot/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.xtext.sdk.feature.group" version="2.1.1.v201111141332"/>
+<repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases"/>
 </location>
 </locations>
 </target>
