@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?><target name="sirius_indigo" sequenceNumber="0">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="com.ibm.icu" version="4.4.2.v20110823"/>
+<unit id="org.eclipse.platform.sdk" version="3.7.2.M20120208-0800"/>
+<unit id="org.eclipse.sdk.ide" version="3.7.2.M20120208-0800"/>
+<unit id="org.eclipse.emf.feature.group" version="2.7.2.v20120130-0943"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.7.2.v20120130-0943"/>
+<unit id="org.eclipse.emf.edit.feature.group" version="2.7.2.v20120130-0943"/>
+<unit id="org.eclipse.emf.common.feature.group" version="2.7.0.v20120127-1122"/>
+<unit id="org.eclipse.emf.ecore.feature.group" version="2.7.1.v20120127-1122"/>
+<unit id="org.eclipse.emf.workspace.feature.group" version="1.5.1.v20110823-1800-37708s734D3C7D3CCC1"/>
+<unit id="org.eclipse.emf.transaction.feature.group" version="1.5.0.v20110502-1600-377-8s734C3E7D15D6B"/>
+<unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.5.0.v20110502-1600-67O-96SGR55YJeZPedcQnghI6uFA"/>
+<unit id="org.eclipse.ocl.all.feature.group" version="3.1.2.v20120206-0606"/>
+<unit id="org.eclipse.gef.feature.group" version="3.7.2.v20110927-2020-777D381B4Bz0755B465D34242"/>
+<unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="1.5.0.v20110426-2159-47D08xGD6ExNBM7CIJa3CIKK9t84"/>
+<unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.5.0.v20110607-1200-67N09E9QnChoWswz-3wf_rz0kQ8Y"/>
+<repository location="http://download.eclipse.org/releases/indigo"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.emf.compare.feature.group" version="2.1.0.201306250935"/>
+<repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.acceleo.feature.group" version="3.4.0.201306101458"/>
+<unit id="org.eclipse.acceleo.doc.feature.group" version="3.4.0.201306101458"/>
+<unit id="org.eclipse.acceleo.examples.feature.group" version="3.4.0.201306101458"/>
+<unit id="org.eclipse.acceleo.runtime.feature.group" version="3.4.0.201306101458"/>
+<unit id="org.eclipse.acceleo.sdk.feature.group" version="3.4.0.201306101458"/>
+<unit id="org.eclipse.acceleo.ui.capabilities.feature.group" version="3.4.0.201306101458"/>
+<repository location="http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.emf.eef.runtime" version="1.2.0.201301031409"/>
+<repository location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/I20130827062727/repository/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.nebula.widgets.paperclips.feature.feature.group" version="2.0.0.201307092147"/>
+<repository location="http://download.eclipse.org/technology/nebula/snapshot/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.xtext.sdk.feature.group" version="2.4.3.v201309030823"/>
+<unit id="org.apache.commons.cli" version="1.2.0.v201105210650"/>
+<unit id="org.apache.commons.lang" version="2.6.0.v201205030909"/>
+<repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases"/>
+</location>
+</locations>
+</target>

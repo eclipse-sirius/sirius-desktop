@@ -44,15 +44,6 @@
     <tycho-extras-version>0.18.1</tycho-extras-version>
     <platform-version-name>juno3</platform-version-name>
   </properties>
-
-  <repositories>
-    <repository><id>guava</id>    <layout>p2</layout><url>${guava.repo}</url></repository>
-    <repository><id>acceleo3</id> <layout>p2</layout><url>${acceleo3.repo}</url></repository>
-    <repository><id>eef</id>      <layout>p2</layout><url>${eef.repo}</url></repository>
-    <repository><id>compare2</id> <layout>p2</layout><url>${compare2.repo}</url></repository>
-    <repository><id>xtext</id>    <layout>p2</layout><url>${xtext.repo}</url></repository>
-  </repositories>
-
   <modules>
     <!-- plugins -->
     <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl.ide</module>
@@ -204,13 +195,28 @@
         </property>
       </activation>
       <properties>
-	<xtext-support>false</xtext-support>
+        <xtext-support>false</xtext-support>
       </properties>
-      <repositories>
-        <repository><id>helios</id>         <layout>p2</layout><url>${helios.repo}</url></repository>
-        <repository><id>helios-gmf-patches</id>         <layout>p2</layout><url>${helios.gmf-patches.repo}</url></repository>
-        <repository><id>helios-patches</id> <layout>p2</layout><url>${helios-patches.repo}</url></repository>
-      </repositories>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>target-platform-configuration</artifactId>
+            <version>${tycho-version}</version>
+            <configuration>
+              <target>
+                <artifact>
+                  <groupId>org.eclipse.sirius</groupId>
+                  <artifactId>sirius-parent</artifactId>
+                  <version>0.1.0-SNAPSHOT</version>
+                  <classifier>../../releng/org.eclipse.sirius.targets/sirius_${platform-version-name}</classifier>
+                </artifact>
+              </target>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+
     </profile>
 
     <profile>
@@ -221,11 +227,25 @@
           <value>indigo</value>
         </property>
       </activation>
-      <repositories>
-        <repository><id>indigo</id>         <layout>p2</layout><url>${indigo.repo}</url></repository>
-        <repository><id>indigo-gmf-patches</id>         <layout>p2</layout><url>${indigo.gmf-patches.repo}</url></repository>
-        <repository><id>indigo-patches</id> <layout>p2</layout><url>${indigo-patches.repo}</url></repository>
-      </repositories>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>target-platform-configuration</artifactId>
+            <version>${tycho-version}</version>
+            <configuration>
+              <target>
+                <artifact>
+                  <groupId>org.eclipse.sirius</groupId>
+                  <artifactId>sirius-parent</artifactId>
+                  <version>0.1.0-SNAPSHOT</version>
+                  <classifier>../../releng/org.eclipse.sirius.targets/sirius_${platform-version-name}</classifier>
+                </artifact>
+              </target>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
       <modules>
         <module>../../plugins/org.eclipse.sirius.common.xtext</module>
         <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
@@ -240,11 +260,25 @@
           <value>juno3</value>
         </property>
       </activation>
-      <repositories>
-        <repository><id>juno3</id>          <layout>p2</layout><url>${juno3.repo}</url></repository>
-        <repository><id>juno3-patches</id>         <layout>p2</layout><url>${juno3-patches.repo}</url></repository>
-        <repository><id>juno-gmf-patches</id>         <layout>p2</layout><url>${juno.gmf-patches.repo}</url></repository>
-      </repositories>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>target-platform-configuration</artifactId>
+            <version>${tycho-version}</version>
+            <configuration>
+              <target>
+                <artifact>
+                  <groupId>org.eclipse.sirius</groupId>
+                  <artifactId>sirius-parent</artifactId>
+                  <version>0.1.0-SNAPSHOT</version>
+                  <classifier>../../releng/org.eclipse.sirius.targets/sirius_${platform-version-name}</classifier>
+                </artifact>
+              </target>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
       <modules>
         <module>../../plugins/org.eclipse.sirius.common.xtext</module>
         <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
@@ -259,17 +293,25 @@
           <value>juno</value>
         </property>
       </activation>
-      <repositories>
-        <repository><id>juno</id>         <layout>p2</layout><url>${juno.repo}</url></repository>
-        <repository><id>juno3-patches</id>         <layout>p2</layout><url>${juno3-patches.repo}</url></repository>
-        <repository><id>juno-gmf-patches</id>         <layout>p2</layout><url>${juno.gmf-patches.repo}</url></repository>
-        <repository><id>juno.emf</id>       <layout>p2</layout><url>${juno.emf.repo}</url></repository>
-        <repository><id>juno.emft</id>      <layout>p2</layout><url>${juno.emft.repo}</url></repository>
-        <repository><id>juno.gmf</id>       <layout>p2</layout><url>${juno.gmf.repo}</url></repository>
-        <repository><id>juno.ocl</id>       <layout>p2</layout><url>${juno.ocl.repo}</url></repository>
-        <repository><id>juno.gef</id>       <layout>p2</layout><url>${juno.gef.repo}</url></repository>
-        <repository><id>juno.uml2</id>      <layout>p2</layout><url>${juno.uml2.repo}</url></repository>
-      </repositories>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>target-platform-configuration</artifactId>
+            <version>${tycho-version}</version>
+            <configuration>
+              <target>
+                <artifact>
+                  <groupId>org.eclipse.sirius</groupId>
+                  <artifactId>sirius-parent</artifactId>
+                  <version>0.1.0-SNAPSHOT</version>
+                  <classifier>../../releng/org.eclipse.sirius.targets/sirius_${platform-version-name}</classifier>
+                </artifact>
+              </target>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
       <modules>
         <module>../../plugins/org.eclipse.sirius.common.xtext</module>
         <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
@@ -293,10 +335,10 @@
             <configuration>
               <target>
                 <artifact>
-                  <groupId>${tp.groupId}</groupId>
-                  <artifactId>${tp.artifactId}</artifactId>
-                  <version>${tp.version}</version>
-                  <classifier>${kepler.tp.classifier}</classifier>
+                  <groupId>org.eclipse.sirius</groupId>
+                  <artifactId>sirius-parent</artifactId>
+                  <version>0.1.0-SNAPSHOT</version>
+                  <classifier>../../releng/org.eclipse.sirius.targets/sirius_${platform-version-name}</classifier>
                 </artifact>
               </target>
             </configuration>
