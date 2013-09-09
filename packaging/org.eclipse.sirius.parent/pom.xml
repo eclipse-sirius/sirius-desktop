@@ -87,7 +87,7 @@
     <module>../../packaging/org.eclipse.sirius.specifier.ide.ui</module>
 
     <!-- update sites -->
-    <module>../../packaging/org.eclipse.sirius.update/${platform-version-name}</module>
+    <module>../../packaging/org.eclipse.sirius.update</module>
   </modules>
 
   <build>
