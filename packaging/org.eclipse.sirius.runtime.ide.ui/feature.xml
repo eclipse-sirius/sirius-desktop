@@ -34,7 +34,6 @@
     <import feature="org.eclipse.gmf" version="1.4.2"/>
   </requires>
 
-  <plugin id="net.sf.paperclips.ui" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.eclipse.sirius.common.ui" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.eclipse.sirius.diagram" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.eclipse.sirius.diagram.layoutdata" download-size="0" install-size="0" version="0.0.0" unpack="false"/>

@@ -82,10 +82,6 @@
     <module>../../plugins/org.eclipse.sirius.ui</module>
     <module>../../plugins/org.eclipse.sirius</module>
 
-    <!-- third party -->
-    <module>../../plugins/net.sf.paperclips</module>
-    <module>../../plugins/net.sf.paperclips.ui</module>
-
     <!-- features -->
     <module>../../packaging/org.eclipse.sirius.runtime</module>
     <module>../../packaging/org.eclipse.sirius.runtime.acceleo</module>
