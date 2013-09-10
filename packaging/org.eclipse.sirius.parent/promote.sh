@@ -32,12 +32,12 @@ promote()
   UPDATE_SITE="$1"
   MODULE="$2"
 
-  if [ -f "$WORKSPACE/packaging/$UPDATE_SITE/target/repository/artifacts.jar" ]
+  if [ -f "$WORKSPACE/$UPDATE_SITE/target/repository/artifacts.jar" ]
   then
       ssh "$SSH_ACCOUNT" rm -rf   "$PROMOTION_ROOT/$MODULE"
       ssh "$SSH_ACCOUNT" mkdir -p "$PROMOTION_ROOT/$MODULE"
-      scp -r "$WORKSPACE/packaging/$UPDATE_SITE/target/repository/" "$SSH_ACCOUNT:$PROMOTION_ROOT/$MODULE/"
+      scp -r "$WORKSPACE/$UPDATE_SITE/target/repository/" "$SSH_ACCOUNT:$PROMOTION_ROOT/$MODULE/"
   fi
 }
 
-promote "org.eclipse.sirius.update/$PLATFORM"      "sirius/master/$PLATFORM"
+promote "packaging/org.eclipse.sirius.update" "org.eclipse.sirius/master/$PLATFORM"
