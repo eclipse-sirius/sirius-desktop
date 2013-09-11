@@ -29,4 +29,14 @@
 			<stylesheet url="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css" />
 		</wikitext-to-html>
 	</target>
+	
+	<target name="generate-site-html" description="Generate Eclipse help from textile source">
+		<wikitext-to-html markupLanguage="Textile" formatOutput="true">
+			<fileset dir="${basedir}">
+				<include name="doc/**/*.textile" />
+			</fileset>
+			<stylesheet url="/sirius/doc/resources/bootstrap.css" />
+			<stylesheet url="/sirius/doc/resources/custom.css" />
+		</wikitext-to-html>
+	</target>
 </project>

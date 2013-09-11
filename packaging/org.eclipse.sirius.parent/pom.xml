@@ -175,6 +175,9 @@
           <version>${tycho-version}</version>
           <configuration>
             <encoding>UTF-8</encoding>
+            <compilerArguments>
+              <properties>${project.basedir}/.settings/org.eclipse.jdt.core.prefs</properties>
+            </compilerArguments>
           </configuration>
         </plugin>
         <plugin>
