@@ -105,7 +105,7 @@ public final class GMFHelper {
      * @return the absolute bounds of the edge relative to the origin (Diagram)
      */
     public static Option<Rectangle> getAbsoluteBounds(Edge edge) {
-        // Hack for canonical refresh about edge on edge
+        // Workaround for canonical refresh about edge on edge
         Option<Rectangle> optionalSourceBounds = getAbsoluteBounds(edge.getSource());
         Option<Rectangle> optionalTargetBounds = getAbsoluteBounds(edge.getTarget());
         if (optionalSourceBounds.some() && optionalTargetBounds.some()) {

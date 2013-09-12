@@ -60,7 +60,6 @@ public class EditorNameAdapter extends AdapterImpl {
     public void notifyChanged(final org.eclipse.emf.common.notify.Notification n) {
         Object notifier = n.getNotifier();
 
-        // Hack for the VP-2403
         if (notifier instanceof Adapter) {
             Adapter adapter = (Adapter) notifier;
             Notifier target = adapter.getTarget();

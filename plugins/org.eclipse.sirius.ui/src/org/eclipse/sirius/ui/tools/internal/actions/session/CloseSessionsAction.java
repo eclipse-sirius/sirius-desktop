@@ -61,7 +61,7 @@ public class CloseSessionsAction extends SelectionListenerAction {
             for (Session concernedSession : Iterables.filter(selection.toList(), Session.class)) {
                 sessionsToCloseURI.add(concernedSession.getSessionResource().getURI());
             }
-            // This is a hack to avoid the session to close to be stored in the
+            // This is a workaround to avoid the session to close to be stored in the
             // selection field by the super class (BaseSelectionListener) and
             // hence create a memory leak
             if (!selection.isEmpty()) {
