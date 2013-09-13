@@ -6,7 +6,9 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Obeo - initial API and implementation
+ *    Obeo - initial API and implementation 
+ *    IBM - Initial API and implementation for the parts taken
+ *          from org.eclipse.emf.ecore.action.CreateDynamicInstanceAction
  *******************************************************************************/
 package org.eclipse.sirius.pim.ecore.design.action;
 

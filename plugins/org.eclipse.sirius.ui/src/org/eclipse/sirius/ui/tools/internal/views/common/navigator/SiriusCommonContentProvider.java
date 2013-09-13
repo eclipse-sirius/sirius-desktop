@@ -7,6 +7,8 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    IBM Corporation - for some methods taken from
+ *                      org.eclipse.jdt.internal.ui.packageview.PackageExplorerContentProvider
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.navigator;
 
