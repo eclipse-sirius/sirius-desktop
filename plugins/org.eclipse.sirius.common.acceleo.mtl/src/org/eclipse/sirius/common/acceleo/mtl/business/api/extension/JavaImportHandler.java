@@ -77,34 +77,31 @@ public class JavaImportHandler extends AbstractImportHandler {
         return signatures;
     }
 
-    /**
-     * Copy/pasted from java.lang.reflect.Field#getTypeName(java.lang.Class).
-     * 
-     * @param type
-     *            Type of which we need the qualified name.
-     */
-    private static String getTypeName(Class<?> type) {
+    private static String getTypeName(Class type) {
+        String typeName = null;
+        // If type is array:
+        // - getTypeName from first non-array enclosing type
+        // - add arrays to signature
         if (type.isArray()) {
-            try {
-                Class<?> cl = type;
-                int dimensions = 0;
-                while (cl.isArray()) {
-                    dimensions++;
-                    cl = cl.getComponentType();
-                }
-                StringBuffer sb = new StringBuffer();
-                sb.append(cl.getName());
-                for (int i = 0; i < dimensions; i++) {
-                    sb.append("[]"); //$NON-NLS-1$
-                }
-                return sb.toString();
-                // CHECKSTYLE:OFF copy/pasted from JDK
-            } catch (Throwable e) {
-                // CHECKSTYLE:ON
-                // ignored
+            Class enclosingContainer = type.getComponentType();
+            String arrays = "[]";
+            while (enclosingContainer.isArray()) {
+                arrays += "[]";
+                enclosingContainer = enclosingContainer.getComponentType();
+            }
+            typeName = getTypeName(enclosingContainer) + arrays;
+        } else {
+            // If type is an inner type
+            Class enclosingClass = type.getEnclosingClass();
+            if (enclosingClass != null) {
+                // get enclosing class type name
+                typeName = getTypeName(enclosingClass) + type.getName().substring(enclosingClass.getName().length());
+            } else {
+                // Not an inner class: get canonical name
+                typeName = type.getCanonicalName();
             }
         }
-        return type.getName();
+        return typeName;
     }
 
     /**
