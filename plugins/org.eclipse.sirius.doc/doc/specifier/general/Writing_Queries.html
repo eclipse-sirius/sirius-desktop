@@ -157,6 +157,15 @@
 				<code>service:getFamiliesContainingParents</code> (note the absence of parenthesis) will invoke the 
 				<code>getFamiliesContainingParents</code> on the current element if it is an instance of 
 				<code>Family</code>.
+				<ul>
+					<li>Intended limitation exists to be more efficient: The services should be in the same 
+						<strong>bundle</strong> as the VSM and should be deployed. If the services already exist in another bundle, you must declare a &#171;proxy&#187; in the bundle of the 
+						<em>VSM</em>.
+					</li>
+					<li>
+						<em>Tips</em>: You could put your bundle in workspace and runtime to have completion enabled on the service interpreter. 
+					</li>
+				</ul>
 			</li>
 		</ul>
 		<h2 id="acceleo">Using Acceleo</h2>

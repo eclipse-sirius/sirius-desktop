@@ -385,6 +385,18 @@ Theses customizations can be reset by the "Reset style customization" button ava
 
 NOTE: in case a user customized a Node with a WorkspaceImage style (through the "Set style to workspace image" action), it is considered in its whole customized then it can't be updated by the refresh action, only the "Reset style properties to default values" action can update it by reset it.
 
+h4(#routingStylePref). Customize edge routing style from preferences
+
+Since Viewpoint 6.9, you have the possibility to customize the routing style of all new edges from the preferences. In the preference page _Viewpoint/Viewpoint Diagram/Connections_, you can enable _user specific default values_ and select a default routing style for all new edges.
+
+!images/preferences_viewpoint_diagram_connections_VP6.9.png!
+
+For example:
+* The _user specific default values_ is enabled and the line style is set to _Rectilinear_.
+* You create a new edge.
+* The routing style is set to _Rectilinear_ (regardless of the value specified in the VSM) and the _routingStyle_ is considered as custom.
+* If you call the action _Reset style to default value_ on this edge, then it keeps its routing style (because the preference is considered as the default value).
+
 h2(#reference). Reference
 
 This section describes all the features which are (or can be) available on graphical modelers

@@ -52,6 +52,8 @@ Sirius provides several specialized interpreters to handle more efficiently some
 ** @feature:eAllContents@ returns all the elements directly and indirectly contained inside the current element (or an empty collection if there is none). This is equivalent to <code>[self.eAllContents()/]</code>.
 ** @feature:eCrossReferences@ returns all the model elements which are directly referenced by the current element (or an empty collection if there is none). This is equivalent to <code>[self.eCrossReferences()/]</code>.
 * *@service:@* This interpreter can be used to directly invoke a service method (i.e. a Java method that follows conventions for "service methods":#service_methods ) on the current element. Currently this interpreters only supports services with no parameters, which correspond to Java methods with a single argument, the model element on which to invoke the service. For example, assuming the service class "@FamilyServices@":#family_services has been correctly registered in the VSM, the expression @service:getFamiliesContainingParents@ (note the absence of parenthesis) will invoke the @getFamiliesContainingParents@ on the current element if it is an instance of @Family@.
+** Intended limitation exists to be more efficient: The services should be in the same *bundle* as the VSM and should be deployed. If the services already exist in another bundle, you must declare a "proxy" in the bundle of the _VSM_.
+** _Tips_: You could put your bundle in workspace and runtime to have completion enabled on the service interpreter. 
 
 h2(#acceleo). Using Acceleo
 
