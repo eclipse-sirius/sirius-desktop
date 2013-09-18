@@ -10,13 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.query;
 
-import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-
+import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.sirius.DEdge;
+import org.eclipse.sirius.EdgeRouting;
 import org.eclipse.sirius.EdgeStyle;
 import org.eclipse.sirius.EdgeTarget;
 import org.eclipse.sirius.description.FoldingStyle;
+
+import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
 
 /**
  * Queries relative to a DEdge.
@@ -80,4 +82,23 @@ public class DEdgeQuery {
             return edge.getSourceNode();
         }
     }
+
+    /**
+     * Convert the Viewpoint routing as GMF routing.
+     * 
+     * @return the GMF routing style of this DEdge.
+     */
+    public Routing getRouting() {
+        Routing routing = null;
+        EdgeRouting newRoutingStyle = edge.getOwnedStyle().getRoutingStyle();
+        if (newRoutingStyle == EdgeRouting.MANHATTAN_LITERAL) {
+            routing = Routing.RECTILINEAR_LITERAL;
+        } else if (newRoutingStyle == EdgeRouting.TREE_LITERAL) {
+            routing = Routing.TREE_LITERAL;
+        } else {
+            routing = Routing.MANUAL_LITERAL;
+        }
+        return routing;
+    }
+
 }

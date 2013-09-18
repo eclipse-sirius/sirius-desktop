@@ -10,9 +10,6 @@
  *****************************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter;
 
-import org.eclipse.sirius.common.acceleo.mtl.AcceleoMTLInterpreterPlugin;
-import org.eclipse.sirius.common.tools.api.util.LRUCache;
-
 import com.google.common.base.Objects;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
@@ -61,6 +58,8 @@ import org.eclipse.ocl.ecore.VariableExp;
 import org.eclipse.ocl.expressions.CollectionKind;
 import org.eclipse.ocl.types.OCLStandardLibrary;
 import org.eclipse.ocl.util.Bag;
+import org.eclipse.sirius.common.acceleo.mtl.AcceleoMTLInterpreterPlugin;
+import org.eclipse.sirius.common.tools.api.util.LRUCache;
 
 /**
  * This class has been mostly copy/pasted from
@@ -733,7 +732,9 @@ public class DynamicAcceleoModule {
                     // CHECKSTYLE:ON
                     // Ignore this, let the main compilation task fail
                 }
-                new AcceleoParserTrimUtil().trimEnvironment(result);
+                if (result != null) {
+                    new AcceleoParserTrimUtil().trimEnvironment(result);
+                }
                 compiledModules.put(actualModule, result);
             }
 

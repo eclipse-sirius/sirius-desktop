@@ -130,7 +130,7 @@ public class TreeItemStyleDescriptionImpl extends EObjectImpl implements TreeIte
      * @generated
      * @ordered
      */
-    protected static final String LABEL_EXPRESSION_EDEFAULT = "<%name%>";
+    protected static final String LABEL_EXPRESSION_EDEFAULT = "feature:name";
 
     /**
      * The cached value of the '{@link #getLabelExpression()

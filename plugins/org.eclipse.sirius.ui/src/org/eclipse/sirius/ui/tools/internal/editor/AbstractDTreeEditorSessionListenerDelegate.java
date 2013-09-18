@@ -12,8 +12,10 @@ package org.eclipse.sirius.ui.tools.internal.editor;
 
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPart;
-
 import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 
 /**
  * Delegate the managment of {@link SessionListener} events.
@@ -56,18 +58,27 @@ public class AbstractDTreeEditorSessionListenerDelegate implements Runnable {
             abstractDTreeEditor.launchRefresh();
             break;
         case SessionListener.REPRESENTATION_EDITION_PERMISSION_GRANTED:
-            if (!abstractDTreeEditor.getInitialImage().equals(abstractDTreeEditor.getTitleImage())) {
+            IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(abstractDTreeEditor.getRepresentation());
+            if (permissionAuthority == null || permissionAuthority.canEditInstance(abstractDTreeEditor.getRepresentation())) {
                 abstractDTreeEditor.setTitleImage(abstractDTreeEditor.getInitialImage());
+            } else {
+                abstractDTreeEditor.setTitleImage(abstractDTreeEditor.getNoWritePermissionImage());
             }
             break;
         case SessionListener.REPRESENTATION_EDITION_PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY:
-            if (!abstractDTreeEditor.getLockByMeImage().equals(abstractDTreeEditor.getTitleImage())) {
+            permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(abstractDTreeEditor.getRepresentation());
+            if (permissionAuthority == null || permissionAuthority.canEditInstance(abstractDTreeEditor.getRepresentation())) {
                 abstractDTreeEditor.setTitleImage(abstractDTreeEditor.getLockByMeImage());
+            } else {
+                abstractDTreeEditor.setTitleImage(abstractDTreeEditor.getNoWritePermissionImage());
             }
             break;
         case SessionListener.REPRESENTATION_EDITION_PERMISSION_DENIED:
-            if (!abstractDTreeEditor.getLockByOtherImage().equals(abstractDTreeEditor.getTitleImage())) {
+            permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(abstractDTreeEditor.getRepresentation());
+            if (permissionAuthority == null || LockStatus.LOCKED_BY_OTHER.equals(permissionAuthority.getLockStatus(abstractDTreeEditor.getRepresentation()))) {
                 abstractDTreeEditor.setTitleImage(abstractDTreeEditor.getLockByOtherImage());
+            } else {
+                abstractDTreeEditor.setTitleImage(abstractDTreeEditor.getNoWritePermissionImage());
             }
             break;
         case SessionListener.REPRESENTATION_FROZEN:

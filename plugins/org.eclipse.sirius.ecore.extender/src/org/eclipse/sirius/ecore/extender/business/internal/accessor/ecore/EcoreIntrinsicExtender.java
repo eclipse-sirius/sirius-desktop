@@ -360,8 +360,17 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
     public Object eSet(final EObject instance, final String name, final Object value) {
         if (eValid(instance, name)) {
             final EStructuralFeature feature = instance.eClass().getEStructuralFeature(name);
-            if (feature.getEType() instanceof EEnum && value instanceof String) {
-                final EEnumLiteral literal = ((EEnum) feature.getEType()).getEEnumLiteral((String) value);
+            // If feature is an EEnum, then we expect the new litteral's value
+            if (feature.getEType() instanceof EEnum) {
+                EEnumLiteral literal = null;
+                if (value instanceof Integer) {
+                    literal = ((EEnum) feature.getEType()).getEEnumLiteral((Integer) value);
+                } else if (value instanceof String) {
+                    literal = ((EEnum) feature.getEType()).getEEnumLiteral((String) value);
+                    if (literal == null) {
+                        literal = ((EEnum) feature.getEType()).getEEnumLiteralByLiteral((String) value);
+                    }
+                }
                 if (literal != null) {
                     instance.eSet(feature, literal.getInstance());
                 }
@@ -421,7 +430,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
      * {@inheritDoc}
      */
     public void init(final ResourceSet set) {
-        //platformIndex.init();
+        // platformIndex.init();
     }
 
     private void addTypesToSiriusIndex(final EPackage value) {
@@ -465,7 +474,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
      * {@inheritDoc}
      */
     public void dispose() {
-        //platformIndex.clear();
+        // platformIndex.clear();
     }
 
     /**

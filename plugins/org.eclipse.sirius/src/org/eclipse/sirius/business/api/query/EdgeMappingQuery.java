@@ -157,6 +157,15 @@ public class EdgeMappingQuery extends DiagramElementMappingQuery {
     }
 
     /**
+     * return true if the mapping defines a target finder expression.
+     * 
+     * @return true if the mapping defines a target finder expression.
+     */
+    public boolean hasTargetFinderExpression() {
+        return mapping.getTargetFinderExpression() != null && !StringUtil.isEmpty(mapping.getTargetFinderExpression());
+    }
+
+    /**
      * Evaluate a the source finder expression.
      * 
      * @param diagram

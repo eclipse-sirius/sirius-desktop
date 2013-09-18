@@ -193,7 +193,7 @@ public class AbstractNodeMappingItemProvider extends DiagramElementMappingItemPr
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         NodeMapping createNodeMapping = DescriptionFactory.eINSTANCE.createNodeMapping();
-        createNodeMapping.setSemanticCandidatesExpression("<%eAllContents()%>");
+        createNodeMapping.setSemanticCandidatesExpression("feature:eAllContents");
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS, createNodeMapping));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createNodeMappingImport()));

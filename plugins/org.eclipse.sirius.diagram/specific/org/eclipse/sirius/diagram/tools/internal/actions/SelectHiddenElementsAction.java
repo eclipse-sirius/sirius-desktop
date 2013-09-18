@@ -236,13 +236,18 @@ public class SelectHiddenElementsAction extends DiagramAction {
     }
 
     private Command getElementsSelectionCommand(IDDiagramEditPart diagramEditPart) {
-        EObject semanticElement = diagramEditPart.resolveSemanticElement();
-        if (semanticElement instanceof DDiagram) {
-            DDiagram diagram = (DDiagram) semanticElement;
-            return new ICommandProxy(new HiddenElementsSelectionCommand(diagramEditPart.getEditingDomain(), TOOLTIP, diagram));
-        } else {
-            return UnexecutableCommand.INSTANCE;
+        Command elementsSelectionCommand = UnexecutableCommand.INSTANCE;
+        // If the edit part's editing domain has been disposed (session is
+        // closing) then we return an unexecutable command (editor is about to
+        // close)
+        if (diagramEditPart.getEditingDomain() != null && diagramEditPart.getEditingDomain().getCommandStack() != null) {
+            EObject semanticElement = diagramEditPart.resolveSemanticElement();
+            if (semanticElement instanceof DDiagram) {
+                DDiagram diagram = (DDiagram) semanticElement;
+                elementsSelectionCommand = new ICommandProxy(new HiddenElementsSelectionCommand(diagramEditPart.getEditingDomain(), TOOLTIP, diagram));
+            }
         }
+        return elementsSelectionCommand;
     }
 
     @Override

@@ -427,8 +427,8 @@ public class DDiagramElementSynchronizer {
                 final String label = computeLabel(edge, edgeStyleDescription.getEndLabelStyleDescription());
                 edge.setEndLabel(label);
                 if (!("".equals(edge.getEndLabel()) && label == null)) {
-                    // This is a workaround for a CDO issue in legacy mode (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
-                    // VP-4008)
+                    // This is a workaround for a CDO issue in legacy mode
+                    // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
                     edge.setEndLabel(label);
                 }
             } else if (!StringUtil.isEmpty(edge.getName())) {
@@ -448,8 +448,8 @@ public class DDiagramElementSynchronizer {
             if (!StringUtil.isEmpty(edgeStyleDescription.getBeginLabelStyleDescription().getLabelExpression())) {
                 final String label = computeLabel(edge, edgeStyleDescription.getBeginLabelStyleDescription());
                 if (!("".equals(edge.getBeginLabel()) && label == null)) {
-                    // This is a workaround for a CDO issue in legacy mode (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
-                    // VP-4008)
+                    // This is a workaround for a CDO issue in legacy mode
+                    // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
                     edge.setBeginLabel(label);
                 }
 
@@ -470,8 +470,8 @@ public class DDiagramElementSynchronizer {
             if (!StringUtil.isEmpty(edgeStyleDescription.getCenterLabelStyleDescription().getLabelExpression())) {
                 final String label = computeLabel(edge, edgeStyleDescription.getCenterLabelStyleDescription());
                 if (!("".equals(edge.getName()) && label == null)) {
-                    // This is a workaround for a CDO issue in legacy mode (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
-                    // VP-4008)
+                    // This is a workaround for a CDO issue in legacy mode
+                    // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
                     edge.setName(label);
                 }
             } else if (!StringUtil.isEmpty(edge.getName())) {
@@ -515,8 +515,8 @@ public class DDiagramElementSynchronizer {
                     diagram);
             if (style != null) {
                 if (!StringUtil.isEmpty(style.getLabelExpression()) && !("".equals(newNode.getName()) && computeLabel(newNode, style) == null)) {
-                        // This is a workaround for a CDO issue in legacy mode (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
-                    // VP-4008)
+                    // This is a workaround for a CDO issue in legacy mode
+                    // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
                     newNode.setName(computeLabel(newNode, style));
                 }
                 refreshTooltip(newNode, style);
@@ -547,8 +547,8 @@ public class DDiagramElementSynchronizer {
                 if (!StringUtil.isEmpty(containerStyleDescription.getLabelExpression())) {
                     String computeLabel = computeLabel(container, containerStyleDescription);
                     if (!("".equals(container.getName()) && computeLabel == null)) {
-                        // This is a workaround for a CDO issue in legacy mode (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
-                        // (See VP-4008)
+                        // This is a workaround for a CDO issue in legacy mode
+                        // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
                         container.setName(computeLabel);
                     }
                 }
@@ -590,8 +590,8 @@ public class DDiagramElementSynchronizer {
                 if (!StringUtil.isEmpty(nodeStyleDescription.getLabelExpression())) {
                     String computeLabel = computeLabel(newNode, nodeStyleDescription);
                     if (!("".equals(newNode.getName()) && computeLabel == null)) {
-                        // This is a workaround for a CDO issue in legacy mode (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
-                        // (See VP-4008)
+                        // This is a workaround for a CDO issue in legacy mode
+                        // (https://bugs.eclipse.org/bugs/show_bug.cgi?id=404152)
                         newNode.setName(computeLabel);
                     }
                 }
@@ -785,8 +785,12 @@ public class DDiagramElementSynchronizer {
             }
             this.mappingHelper.affectAndRefreshStyle(mapping, edge, edge.getTarget(), containerVariable, parentDiagram);
         } else {
-            Option<EdgeStyle> noPreviousStyle = Options.newNone();
-            styleHelper.refreshStyle(edge.getOwnedStyle(), noPreviousStyle);
+            if (edge.getStyle().getCustomFeatures().isEmpty()) {
+                Option<EdgeStyle> noPreviousStyle = Options.newNone();
+                styleHelper.refreshStyle(edge.getOwnedStyle(), noPreviousStyle);
+            } else {
+                styleHelper.refreshStyle(edge.getOwnedStyle(), Options.newSome(edge.getOwnedStyle()));
+            }
         }
     }
 

@@ -37,6 +37,8 @@ public class GMFDiagramUpdater {
 
     private ComputedStyleDescriptionCacheCleaner computedStyleDescriptionCacheCleaner;
 
+    private EdgeStyleUpdater edgeStyleUpdater;
+    
     private SessionEventBroker eventBroker;
 
     /**
@@ -61,6 +63,7 @@ public class GMFDiagramUpdater {
         dDiagramHiddenElementsUpdater = new DDiagramHiddenElementsUpdater(domain, dDiagram);
 
         computedStyleDescriptionCacheCleaner = new ComputedStyleDescriptionCacheCleaner(domain, dDiagram);
+        edgeStyleUpdater = new EdgeStyleUpdater(domain, session.getSemanticCrossReferencer());
     }
 
     /**
@@ -74,6 +77,7 @@ public class GMFDiagramUpdater {
         dDiagramHiddenElementsUpdater.dispose();
         computedStyleDescriptionCacheCleaner.dispose();
         computedStyleDescriptionCacheCleaner = null;
+        edgeStyleUpdater.dispose();
         eventBroker.removeLocalTrigger(filterListener);
         eventBroker = null;
     }

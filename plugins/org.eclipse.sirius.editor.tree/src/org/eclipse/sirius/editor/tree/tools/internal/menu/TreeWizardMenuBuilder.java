@@ -192,7 +192,7 @@ class TreeDescriptionBuilderFromEClass {
     public void fillContent() {
         doneClasses = HashMultimap.create();
         doneItems = HashMultimap.create();
-        buildMappingRecursively(treeDesc, rootEClass, "<%self%>");
+        buildMappingRecursively(treeDesc, rootEClass, "var:self");
     }
 
     private TreeItemMapping buildMappingRecursively(TreeItemMappingContainer container, EClass eClassToStartFrom, String semanticCandidateExpression2) {
@@ -201,11 +201,11 @@ class TreeDescriptionBuilderFromEClass {
         map.setDomainClass(qualifiedName(eClassToStartFrom));
         map.setName(eClassToStartFrom.getName());
         map.setSemanticCandidatesExpression(semanticCandidateExpression2);
-        map.setSemanticElements("<%self%>");
+        map.setSemanticElements("var:self");
         TreeItemStyleDescription style = DescriptionFactory.eINSTANCE.createTreeItemStyleDescription();
         map.setDefaultStyle(style);
         if (lookForEditableName(eClassToStartFrom).some()) {
-            style.setLabelExpression("<%name%>");
+            style.setLabelExpression("feature:name");
         } else {
             style.setLabelExpression("<%eClass.name%>");
         }

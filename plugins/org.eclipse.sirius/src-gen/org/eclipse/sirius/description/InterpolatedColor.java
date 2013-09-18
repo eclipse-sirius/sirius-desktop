@@ -90,7 +90,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
     /**
      * Returns the value of the '
      * <em><b>Min Value Computation Expression</b></em>' attribute. The default
-     * value is <code>"<%0%>"</code>. <!-- begin-user-doc -->
+     * value is <code>"0"</code>. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Min Value Computation Expression</em>'
      * attribute isn't clear, there really should be more of a description
@@ -102,7 +102,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
      *         attribute.
      * @see #setMinValueComputationExpression(String)
      * @see org.eclipse.sirius.description.DescriptionPackage#getInterpolatedColor_MinValueComputationExpression()
-     * @model default="<%0%>"
+     * @model default="0"
      *        dataType="org.eclipse.sirius.description.InterpretedExpression"
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
@@ -127,7 +127,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
     /**
      * Returns the value of the '
      * <em><b>Max Value Computation Expression</b></em>' attribute. The default
-     * value is <code>"<%10%>"</code>. <!-- begin-user-doc -->
+     * value is <code>"10"</code>. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Max Value Computation Expression</em>'
      * attribute isn't clear, there really should be more of a description
@@ -139,7 +139,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
      *         attribute.
      * @see #setMaxValueComputationExpression(String)
      * @see org.eclipse.sirius.description.DescriptionPackage#getInterpolatedColor_MaxValueComputationExpression()
-     * @model default="<%10%>"
+     * @model default="10"
      *        dataType="org.eclipse.sirius.description.InterpretedExpression"
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"

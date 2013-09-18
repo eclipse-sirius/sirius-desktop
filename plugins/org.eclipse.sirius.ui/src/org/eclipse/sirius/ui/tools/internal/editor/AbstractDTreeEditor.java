@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.editor;
 
+
 import java.util.Collections;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -29,6 +30,35 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.sirius.DRepresentation;
+import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
+import org.eclipse.sirius.business.api.query.URIQuery;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.api.session.SessionManagerListener2;
+import org.eclipse.sirius.business.api.session.SessionStatus;
+import org.eclipse.sirius.common.ui.SiriusTransPlugin;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyWrapperPermissionAuthority;
+import org.eclipse.sirius.provider.SiriusEditPlugin;
+import org.eclipse.sirius.tools.api.command.ICommandFactory;
+import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.tools.api.permission.DRepresentationPermissionStatusListener;
+import org.eclipse.sirius.tools.api.permission.DRepresentationPermissionStatusQuery;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditorDialogFactory;
+import org.eclipse.sirius.ui.business.api.session.IEditingSession;
+import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.ui.business.internal.dialect.TreeEditorDialogFactory;
+import org.eclipse.sirius.ui.tools.api.properties.DTablePropertySheetpage;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
@@ -53,36 +83,6 @@ import org.eclipse.ui.part.EditorPart;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 
-import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.SiriusPlugin;
-import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
-import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
-import org.eclipse.sirius.business.api.query.URIQuery;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionListener;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.api.session.SessionManagerListener2;
-import org.eclipse.sirius.business.api.session.SessionStatus;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
-import org.eclipse.sirius.tools.api.command.ICommandFactory;
-import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.tools.api.permission.DRepresentationPermissionStatusListener;
-import org.eclipse.sirius.tools.api.permission.DRepresentationPermissionStatusQuery;
-import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
-import org.eclipse.sirius.ui.business.api.dialect.DialectEditorDialogFactory;
-import org.eclipse.sirius.ui.business.api.session.IEditingSession;
-import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.ui.business.internal.dialect.TreeEditorDialogFactory;
-import org.eclipse.sirius.ui.tools.api.properties.DTablePropertySheetpage;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener;
-import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
-import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
-import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
-import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyWrapperPermissionAuthority;
-
 /**
  * Provides generic support for DTable and DTree editors. <BR>
  * Clients may extend this class.
@@ -99,6 +99,8 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
 
     /** The PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY icon descriptor. */
     private static final ImageDescriptor LOCK_BY_OTHER_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif");
+
+    private static final ImageDescriptor NO_WRITE_PERMISSION_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_no_write.gif");;
 
     /**
      * This is the one adapter factory used for providing views of the model.
@@ -190,6 +192,12 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
     private Image lockByOtherImage;
 
     /**
+     * Singleton instance of the image when DRepresentation has no write
+     * permission
+     */
+    private Image noWritePermissionImage;
+
+    /**
      * Default constructor.
      */
     public AbstractDTreeEditor() {
@@ -229,6 +237,20 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
     }
 
     /**
+     * Lasily gets the image when there is no write permission of the
+     * DRepresentation.
+     * 
+     * @return the image when there is no write permission of the
+     *         DRepresentation.
+     */
+    protected Image getNoWritePermissionImage() {
+        if (noWritePermissionImage == null || noWritePermissionImage.isDisposed()) {
+            noWritePermissionImage = SiriusEditPlugin.getPlugin().getImage(NO_WRITE_PERMISSION_IMAGE_DESCRIPTOR);
+        }
+        return noWritePermissionImage;
+    }
+
+    /**
      * Get lazily the Image for the REPRESENTATION_FROZEN state.
      * 
      * @return the Image for the REPRESENTATION_FROZEN state
@@ -253,7 +275,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
      * 
      */
     protected void performSave(final boolean overwrite, final IProgressMonitor progressMonitor) {
-        session.save();
+        session.save(progressMonitor);
     }
 
     /**
@@ -603,7 +625,9 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
      */
     @Override
     public void setTitleImage(Image titleImage) {
-        super.setTitleImage(titleImage);
+        if (!getTitleImage().equals(titleImage)) {
+            super.setTitleImage(titleImage);
+        }
     }
 
     /**
@@ -791,12 +815,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
         return searchedTreeItem;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectEditor#getDialogFactory()
-     */
     public DialectEditorDialogFactory getDialogFactory() {
         return myDialogFactory;
     }
@@ -804,7 +822,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.SiriusRegistryListener2#modelerDesciptionFilesLoaded()
+     * @see org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2#modelerDesciptionFilesLoaded()
      */
     protected void modelerDescriptionFilesLoaded() {
         if (isAutoRefresh()) {
@@ -812,7 +830,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
 
                 @Override
                 protected IStatus run(IProgressMonitor monitor) {
-                    getEditingDomain().getCommandStack().execute(new RefreshRepresentationsCommand(getEditingDomain(), getRepresentation()));
+                    getEditingDomain().getCommandStack().execute(new RefreshRepresentationsCommand(getEditingDomain(), monitor, getRepresentation()));
                     Display.getDefault().asyncExec(new Runnable() {
                         public void run() {
                             getViewer().refresh();

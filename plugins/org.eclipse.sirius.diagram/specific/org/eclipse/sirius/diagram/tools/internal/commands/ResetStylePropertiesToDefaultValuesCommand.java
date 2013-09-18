@@ -20,8 +20,6 @@ import org.eclipse.gmf.runtime.notation.Connector;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ContainerStyle;
 import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.DDiagramElement;
@@ -31,9 +29,11 @@ import org.eclipse.sirius.DNode;
 import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.EdgeStyle;
 import org.eclipse.sirius.NodeStyle;
-import org.eclipse.sirius.Style;
 import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.Style;
 import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.business.internal.metamodel.helper.StyleHelper;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.internal.refresh.diagram.ViewPropertiesSynchronizer;
@@ -73,17 +73,18 @@ public class ResetStylePropertiesToDefaultValuesCommand extends RecordingCommand
     protected void doExecute() {
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(dDiagram);
         MappingHelper mappingHelper = new MappingHelper(interpreter);
+        StyleHelper styleHelper = new StyleHelper(interpreter);
         for (Entry<View, DDiagramElement> entry : customizedViews.entrySet()) {
             View view = entry.getKey();
             DDiagramElement dDiagramElement = entry.getValue();
             if (dDiagramElement != null) {
-                resetDDiagramElementCustomizations(dDiagramElement, mappingHelper);
+                resetDDiagramElementCustomizations(dDiagramElement, mappingHelper, styleHelper);
             }
             resetViewStylePropertiesToDefaultValues(view);
         }
     }
 
-    private void resetDDiagramElementCustomizations(DDiagramElement dDiagramElement, MappingHelper mappingHelper) {
+    private void resetDDiagramElementCustomizations(DDiagramElement dDiagramElement, MappingHelper mappingHelper, StyleHelper styleHelper) {
         DSemanticDecorator parentDDiagramElt = (DSemanticDecorator) dDiagramElement.eContainer();
         DiagramElementMapping diagramElementMapping = dDiagramElement.getDiagramElementMapping();
         if (dDiagramElement instanceof DEdge) {
@@ -103,6 +104,11 @@ public class ResetStylePropertiesToDefaultValuesCommand extends RecordingCommand
                 if (bestStyle instanceof EdgeStyle) {
                     EdgeStyle edgeStyle = (EdgeStyle) bestStyle;
                     dEdge.setOwnedStyle(edgeStyle);
+                    // Now the style has a container. This container is needed
+                    // to compute the interpreted expression. So launch a
+                    // refresh for these expressions (edge size and some
+                    // colors).
+                    styleHelper.refreshStyle(edgeStyle);
                 }
             }
         } else if (dDiagramElement instanceof DNode) {
@@ -113,6 +119,11 @@ public class ResetStylePropertiesToDefaultValuesCommand extends RecordingCommand
                 if (bestStyle instanceof NodeStyle) {
                     NodeStyle nodeStyle = (NodeStyle) bestStyle;
                     dNode.setOwnedStyle(nodeStyle);
+                    // Now the style has a container. This container is needed
+                    // to compute the interpreted expression. So launch a
+                    // refresh for these expressions
+                    // (borderSizeComputationExpression, ...).
+                    styleHelper.refreshStyle(nodeStyle);
                 }
             }
         } else if (dDiagramElement instanceof DDiagramElementContainer) {
@@ -123,6 +134,11 @@ public class ResetStylePropertiesToDefaultValuesCommand extends RecordingCommand
                 if (bestStyle instanceof ContainerStyle) {
                     ContainerStyle containerStyle = (ContainerStyle) bestStyle;
                     dDiagramElementContainer.setOwnedStyle(containerStyle);
+                    // Now the style has a container. This container is needed
+                    // to compute the interpreted expression. So launch a
+                    // refresh for these expressions
+                    // (borderSizeComputationExpression, ...).
+                    styleHelper.refreshStyle(containerStyle);
                 }
             }
         }

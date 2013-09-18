@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tree"
-    nsURI="http://www.eclipse.org/sirius/tree/1.0.0" nsPrefix="tree">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tree" nsURI="http://www.obeo.fr/dsl/viewpoint/tree/1.0.0" nsPrefix="tree">
   <eClassifiers xsi:type="ecore:EClass" name="DTree" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DRepresentation #//DTreeItemContainer #//DTreeElementUpdater">
     <eStructuralFeatures xsi:type="ecore:EReference" name="semanticElements" upperBound="-1"
         eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>

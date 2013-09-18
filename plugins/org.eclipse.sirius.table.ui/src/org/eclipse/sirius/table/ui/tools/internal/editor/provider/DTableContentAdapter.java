@@ -558,7 +558,7 @@ public class DTableContentAdapter extends ResourceSetListenerImpl {
     @Override
     public void resourceSetChanged(final ResourceSetChangeEvent event) {
         super.resourceSetChanged(event);
-        for (Notification notif : Iterables.filter(event.getNotifications(), Notification.class)) {
+        for (Notification notif : event.getNotifications()) {
             if (!isCustom(notif)) {
                 notifyChanged(notif);
             }

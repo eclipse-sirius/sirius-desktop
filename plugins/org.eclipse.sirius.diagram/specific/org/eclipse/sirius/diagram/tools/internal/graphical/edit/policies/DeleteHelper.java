@@ -117,7 +117,6 @@ public final class DeleteHelper {
             Set<View> allViewsToDelete = Sets.newHashSet();
 
             allContentsViewsToDelete(view, allViewsToDelete);
-            Iterators.filter(view.eAllContents(), View.class);
             final Iterator<View> allContents = Iterators.filter(view.eAllContents(), View.class);
             while (allContents.hasNext()) {
                 final Object next = allContents.next();

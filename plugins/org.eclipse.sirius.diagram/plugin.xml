@@ -530,14 +530,12 @@
             category="org.eclipse.sirius.diagram.general"
             class="org.eclipse.sirius.diagram.internal.preferences.DiagramAppearancePreferencePage">
       </page>
-      <!--
       <page
             id="org.eclipse.sirius.diagram.connections"
             name="%preference.page.title.org.eclipse.sirius.diagram.connections"
             category="org.eclipse.sirius.diagram.general"
             class="org.eclipse.sirius.diagram.internal.preferences.DiagramConnectionsPreferencePage">
       </page>
-      -->
       <page
             id="org.eclipse.sirius.diagram.printing"
             name="%preference.page.title.org.eclipse.sirius.diagram.printing"

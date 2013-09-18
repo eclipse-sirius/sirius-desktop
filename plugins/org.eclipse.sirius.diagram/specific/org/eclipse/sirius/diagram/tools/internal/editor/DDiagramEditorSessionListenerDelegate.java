@@ -16,6 +16,16 @@ import java.util.List;
 import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.diagram.ImagesPath;
+import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager;
+import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.provider.SiriusEditPlugin;
+import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorInput;
@@ -23,14 +33,6 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorRegistry;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.business.api.session.SessionListener;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
-import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
 
 /**
  * {@link SessionListener} used to manage {@link DDiagramEditorImpl}
@@ -46,6 +48,9 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
 
     /** The PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY icon descriptor. */
     private static final ImageDescriptor LOCK_BY_OTHER_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif");
+
+    /** The NO_WRITE_PERMISSION icon description icon descriptor. */
+    private static final ImageDescriptor NO_WRITE_PERMISSION_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_no_write.gif");
 
     private DDiagramEditorImpl dDiagramEditorImpl;
 
@@ -68,6 +73,8 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
     private ToolFilter toolFilterWhenRepresentationIsLocked;
 
     private int changeKind;
+    
+    private Image noWritePermissionImage;
 
     /**
      * Default constructor.
@@ -91,6 +98,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
      * 
      * {@inheritDoc}
      */
+    // CHECKSTYLE:OFF
     public void run() {
         PaletteManager paletteManager = dDiagramEditorImpl.getPaletteManager();
         Diagram gmfDiagram = dDiagramEditorImpl.getDiagram();
@@ -137,6 +145,12 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
             }
             /* update editor's title image and palette */
             updateTitleImage(getInitialImage());
+            IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dDiagramEditorImpl.getRepresentation());
+            if (permissionAuthority == null || permissionAuthority.canEditInstance(dDiagramEditorImpl.getRepresentation())) {
+                updateTitleImage(getInitialImage());
+            } else {
+                updateTitleImage(getNoWritePermissionImage());
+            }
             reloadPalette(paletteManager, gmfDiagram, false);
             break;
         case SessionListener.REPRESENTATION_EDITION_PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY:
@@ -147,6 +161,10 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
                 }
             }
             updateTitleImage(getLockByMeImage());
+            permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dDiagramEditorImpl.getRepresentation());
+            if (permissionAuthority == null || permissionAuthority.canEditInstance(dDiagramEditorImpl.getRepresentation())) {
+                updateTitleImage(getLockByMeImage());
+            }
             reloadPalette(paletteManager, gmfDiagram, false);
             break;
         case SessionListener.REPRESENTATION_EDITION_PERMISSION_DENIED:
@@ -161,6 +179,12 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
             }
             /* update title image and palette */
             updateTitleImage(getLockByOtherImage());
+            permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dDiagramEditorImpl.getRepresentation());
+            if (permissionAuthority == null || LockStatus.LOCKED_BY_OTHER.equals(permissionAuthority.getLockStatus(dDiagramEditorImpl.getRepresentation()))) {
+                updateTitleImage(getLockByOtherImage());
+            } else {
+                updateTitleImage(getNoWritePermissionImage());
+            }
             reloadPalette(paletteManager, gmfDiagram, false);
             break;
         case SessionListener.REPRESENTATION_FROZEN:
@@ -177,6 +201,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
             break;
         }
     }
+    // CHECKSTYLE:ON
 
     private void updateTitleImage(Image newTitleImage) {
         if (newTitleImage != null && !newTitleImage.equals(dDiagramEditorImpl.getTitleImage())) {
@@ -245,5 +270,19 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
             frozenRepresentationImage = SiriusDiagramEditorPlugin.getInstance().getImage(composedImageDescriptor);
         }
         return frozenRepresentationImage;
+    }
+
+    /**
+     * Lazily gets the image to use when there is no write permission for the
+     * DRepresentation.
+     * 
+     * @return the image to use when there is no write permission for the
+     *         DRepresentation
+     */
+    private Image getNoWritePermissionImage() {
+        if (noWritePermissionImage == null || noWritePermissionImage.isDisposed()) {
+            noWritePermissionImage = SiriusDiagramEditorPlugin.getInstance().getImage(NO_WRITE_PERMISSION_IMAGE_DESCRIPTOR);
+        }
+        return noWritePermissionImage;
     }
 }

@@ -190,7 +190,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
      * @generated
      * @ordered
      */
-    protected static final String LABEL_EXPRESSION_EDEFAULT = "<%name%>";
+    protected static final String LABEL_EXPRESSION_EDEFAULT = "feature:name";
 
     /**
      * The cached value of the '{@link #getLabelExpression()

@@ -15,8 +15,8 @@ import java.util.Collection;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.ISchedulingRule;
 import org.eclipse.core.runtime.jobs.Job;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
 
@@ -31,6 +31,21 @@ public class ResourceSyncClientNotifier extends Job {
     public static final String FAMILY = DslCommonPlugin.PLUGIN_ID + ".ResourceSyncClientNotification";
 
     private static final String ACTION_NAME = "ResourceSyncClient notification";
+
+    /**
+     * Scheduling rule to prevent concurrent ResourceSyncClientNotifier
+     * executions and guarantee the execution order.
+     */
+    private static final ISchedulingRule MUTEX = new ISchedulingRule() {
+        public boolean contains(ISchedulingRule rule) {
+            return rule == this;
+        }
+
+        public boolean isConflicting(ISchedulingRule rule) {
+            return rule == this;
+        }
+    };
+
 
     private ResourceSyncClient resourceSyncClient;
 
@@ -48,6 +63,10 @@ public class ResourceSyncClientNotifier extends Job {
         super(ACTION_NAME);
         this.resourceSyncClient = resourceSyncClient;
         this.changes = changes;
+
+        // avoid concurrent client notifications and execute the jobs in their
+        // schedule/creation order (this kind of job is created and scheduled).
+        this.setRule(MUTEX);
     }
 
     @Override

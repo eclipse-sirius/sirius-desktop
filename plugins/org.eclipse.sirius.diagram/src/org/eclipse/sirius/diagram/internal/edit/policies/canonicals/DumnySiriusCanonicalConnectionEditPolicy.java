@@ -137,6 +137,7 @@ public class DumnySiriusCanonicalConnectionEditPolicy extends CanonicalConnectio
     protected boolean isOrphaned(Collection semanticChildren, View view) {
         boolean isOrphaned = false;
         View parentView = (View) view.eContainer();
+
         int visualID = SiriusVisualIDRegistry.getVisualID(parentView);
         isOrphaned = new IsOrphanedSwitch(view, semanticChildren, parentView).doSwitch(visualID);
         return isOrphaned;

@@ -5,7 +5,7 @@
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <layers endUserDocumentation="Add support for documentation annotations." name="Documentation">
         <nodeMappings name="EC Doc Annotation" labelDirectEdit="//@ownedSiriuss[name='Documentation']/@ownedRepresentationExtensions[name='Entities']/@layers[name='Documentation']/@toolSections.0/@ownedTools[name='Edit%20Detail']" semanticCandidatesExpression="[eContents(ecore::EModelElement).eAnnotations->union(eContents(ecore::EClass).eStructuralFeatures.eAnnotations)->union(self->filter(ecore::EModelElement).eAnnotations->asSequence()).details->select(key = 'documentation')/]" domainClass="EStringToStringMapEntry">
-          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="[value/]" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="feature:value" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
@@ -34,7 +34,7 @@
           <reusedNodeMappings href="ecore.odesign#//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
           <reusedNodeMappings href="ecore.odesign#//@ownedSiriuss[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
           <conditionnalStyles predicateExpression="[eAnnotations.details->select(key = 'documentation')->size() = 0/]">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelFormat="italic" labelExpression="[name/]" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelFormat="italic" labelExpression="feature:name" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -48,7 +48,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:If" conditionExpression="[eAnnotations->select(source = 'http://www.eclipse.org/emf/2002/GenModel')->size() = 0/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="EAnnotation" referenceName="eAnnotations">
                     <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="['http://www.eclipse.org/emf/2002/GenModel'/]"/>

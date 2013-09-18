@@ -118,13 +118,11 @@ public class CreateDEdgeTask extends AbstractCommandTask implements ICreationTas
             BestMappingGetter bestMappingGetter = new BestMappingGetter(sourceView, targetView, semanticElt);
             EdgeMapping bestEdgeMapping = bestMappingGetter.getBestEdgeMapping(tool.getEdgeMappings());
             if (bestEdgeMapping != null) {
-                if (modelAccessor.eInstanceOf(semanticElt, bestEdgeMapping.getDomainClass()) || !bestEdgeMapping.isUseDomainElement()) {
-                    Option<DEdge> createdDEdgeOption = dDiagramSynchronizer.createEdgeMapping(mappingManager, mappingsToEdgeTargets, bestEdgeMapping, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration);
-                    if (createdDEdgeOption.some()) {
-                        createdDEdges.add(createdDEdgeOption.get());
-                    }
+                Option<DEdge> createdDEdgeOption = dDiagramSynchronizer.createEdgeMapping(mappingManager, mappingsToEdgeTargets, bestEdgeMapping, edgeToMappingBasedDecoration,
+                        edgeToSemanticBasedDecoration);
+                if (createdDEdgeOption.some()) {
+                    createdDEdges.add(createdDEdgeOption.get());
                 }
-
             }
         }
     }

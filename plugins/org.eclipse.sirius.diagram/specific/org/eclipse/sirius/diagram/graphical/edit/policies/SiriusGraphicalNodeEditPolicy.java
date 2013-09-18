@@ -65,26 +65,21 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.RoutingStyle;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Display;
-
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.DEdge;
 import org.eclipse.sirius.DMappingBased;
 import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.EdgeRouting;
-import org.eclipse.sirius.EdgeStyle;
 import org.eclipse.sirius.EdgeTarget;
 import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.EdgeCreationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.business.api.query.ReconnectEdgeDescriptionQuery;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.description.CompositeLayout;
 import org.eclipse.sirius.description.EdgeMapping;
 import org.eclipse.sirius.description.Layout;
@@ -95,8 +90,9 @@ import org.eclipse.sirius.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.description.tool.ReconnectionKind;
 import org.eclipse.sirius.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
-import org.eclipse.sirius.diagram.business.internal.command.TreeLayoutSetConnectionAnchorsCommand;
 import org.eclipse.sirius.diagram.business.internal.command.SiriusSetConnectionAnchorsCommand;
+import org.eclipse.sirius.diagram.business.internal.command.TreeLayoutSetConnectionAnchorsCommand;
+import org.eclipse.sirius.diagram.business.internal.query.DEdgeQuery;
 import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData;
 import org.eclipse.sirius.diagram.business.internal.view.LayoutData;
@@ -111,6 +107,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.tools.internal.command.builders.EdgeCreationCommandBuilder;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
 
 /**
  * This class manages the reconnection of an edge.
@@ -664,7 +662,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             DDiagramElement element = ((IDiagramEdgeEditPart) connection).resolveDiagramElement();
             if (element instanceof DEdge) {
                 DEdge dEdge = (DEdge) element;
-                newRouterType = getRouting(dEdge);
+                newRouterType = new DEdgeQuery(dEdge).getRouting();
                 if (newRouterType != null && !currentRouterType.equals(newRouterType)) {
                     // add commands for line routing. Convert the new connection
                     // and also the targeted connection.
@@ -681,20 +679,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         }
         return cmd;
     }
-
-    private Routing getRouting(DEdge dEdge) {
-        Routing routing = null;
-        EdgeRouting newRoutingStyle = ((EdgeStyle) dEdge.getStyle()).getRoutingStyle();
-        if (newRoutingStyle == EdgeRouting.MANHATTAN_LITERAL) {
-            routing = Routing.RECTILINEAR_LITERAL;
-        } else if (newRoutingStyle == EdgeRouting.TREE_LITERAL) {
-            routing = Routing.TREE_LITERAL;
-        } else {
-            routing = Routing.MANUAL_LITERAL;
-        }
-        return routing;
-    }
-
+    
     /**
      * {@inheritDoc}
      * 

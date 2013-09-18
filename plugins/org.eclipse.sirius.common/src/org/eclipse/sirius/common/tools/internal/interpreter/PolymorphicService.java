@@ -13,13 +13,13 @@ package org.eclipse.sirius.common.tools.internal.interpreter;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 
 /**
  * A service which corresponds to more than one Java method. Which of the
@@ -27,10 +27,10 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
  * 
  * @author pcdavid
  */
-class PolymorphicService implements IService {
+class PolymorphicService implements IPolymorphicService {
     private final String name;
 
-    private final Set<MonomorphicService> implementers = Sets.newLinkedHashSet();
+    private final Set<IMonomorphicService> implementers = Sets.newLinkedHashSet();
 
     public PolymorphicService(String name) {
         this.name = Preconditions.checkNotNull(name);
@@ -51,7 +51,7 @@ class PolymorphicService implements IService {
     }
 
     public Object call(Object[] target) throws EvaluationException {
-        List<MonomorphicService> candidates = Lists.newArrayList(Iterables.filter(implementers, getCompatibilityChecker(target)));
+        List<IMonomorphicService> candidates = Lists.newArrayList(Iterables.filter(implementers, getCompatibilityChecker(target)));
         if (!candidates.isEmpty()) {
             return candidates.get(0).call(target);
         } else {
@@ -59,9 +59,9 @@ class PolymorphicService implements IService {
         }
     }
 
-    private Predicate<MonomorphicService> getCompatibilityChecker(final Object[] target) {
-        Predicate<MonomorphicService> isCompatible = new Predicate<MonomorphicService>() {
-            public boolean apply(MonomorphicService svc) {
+    private Predicate<IMonomorphicService> getCompatibilityChecker(final Object[] target) {
+        Predicate<IMonomorphicService> isCompatible = new Predicate<IMonomorphicService>() {
+            public boolean apply(IMonomorphicService svc) {
                 return svc.appliesTo(target);
             }
         };
@@ -71,5 +71,9 @@ class PolymorphicService implements IService {
     @Override
     public String toString() {
         return "Polymorphic service " + getName() + " (" + implementers.size() + " implementations).";
+    }
+
+    public Set<IMonomorphicService> getImplementers() {
+        return implementers;
     }
 }

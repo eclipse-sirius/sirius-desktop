@@ -179,7 +179,8 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
             }
             if (!resource.isLoaded()) {
                 try {
-                    final Map<?, ?> options = new HashMap(GMFResourceFactory.getDefaultLoadOptions());
+                    @SuppressWarnings("unchecked")
+                    final Map<?, ?> options = new HashMap<Object, Object>(GMFResourceFactory.getDefaultLoadOptions());
                     // @see 171060
                     // options.put(org.eclipse.emf.ecore.xmi.XMLResource.
                     // OPTION_RECORD_UNKNOWN_FEATURE,
@@ -350,7 +351,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
                 if (fragment != null) {
                     EObject intputEObject = resource.getEObject(fragment);
                     IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resourceSet);
-                    isModifiable = permissionAuthority.canEditInstance(intputEObject);
+                    isModifiable = intputEObject != null && permissionAuthority.canEditInstance(intputEObject);
                     if (isModifiable && intputEObject instanceof Diagram) {
                         Diagram diagram = (Diagram) intputEObject;
                         EObject diagramElt = diagram.getElement();

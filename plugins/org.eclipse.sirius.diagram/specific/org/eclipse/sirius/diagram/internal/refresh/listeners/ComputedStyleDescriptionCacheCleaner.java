@@ -10,10 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.internal.refresh.listeners;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -26,12 +27,11 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
 import org.eclipse.sirius.ComputedStyleDescriptionRegistry;
 import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.Style;
 import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.Style;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.internal.metamodel.helper.BestStyleDescriptionRegistry;
 import org.eclipse.sirius.description.DiagramElementMapping;
@@ -83,7 +83,7 @@ public class ComputedStyleDescriptionCacheCleaner extends ResourceSetListenerImp
     @Override
     public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
         Command command = null;
-        Collection<StyleDescription> orphanedComputedStyleDescriptions = getOrphanedComputedStyleDescriptions(event.getNotifications());
+        Set<StyleDescription> orphanedComputedStyleDescriptions = getOrphanedComputedStyleDescriptions(event.getNotifications());
         if (!orphanedComputedStyleDescriptions.isEmpty()) {
             CompoundCommand compoundCommand = new CompoundCommand();
             for (StyleDescription orphanedComputedStyleDescription : orphanedComputedStyleDescriptions) {
@@ -140,8 +140,8 @@ public class ComputedStyleDescriptionCacheCleaner extends ResourceSetListenerImp
         }
     }
 
-    private Collection<StyleDescription> getOrphanedComputedStyleDescriptions(List<Notification> notifications) {
-        Collection<StyleDescription> orphanedComputedStyleDescriptions = new ArrayList<StyleDescription>();
+    private Set<StyleDescription> getOrphanedComputedStyleDescriptions(List<Notification> notifications) {
+        Set<StyleDescription> orphanedComputedStyleDescriptions = new HashSet<StyleDescription>();
         for (Notification notification : notifications) {
             Style removedStyle = null;
             if (notification.getEventType() == Notification.REMOVE && notification.getOldValue() instanceof DDiagramElement) {

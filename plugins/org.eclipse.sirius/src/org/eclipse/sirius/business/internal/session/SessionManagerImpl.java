@@ -30,15 +30,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
-import org.eclipse.sirius.common.tools.api.util.MarkerUtil;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.DAnalysisSessionEObject;
 import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.logger.MarkerRuntimeLogger;
@@ -49,9 +40,16 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.business.api.session.SessionManagerListener2;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+import org.eclipse.sirius.common.tools.api.util.MarkerUtil;
+import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.impl.SessionManagerEObjectImpl;
-import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 /**
  * Default implementation for a session manager.
@@ -188,10 +186,9 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
 
             /*
              * no more session, we should dispose all the model accessor
-             * registered and permission authorities
+             * registered
              */
             if (sessionsToListeners.isEmpty()) {
-                PermissionAuthorityRegistry.getDefault().dispose();
                 SiriusPlugin.getDefault().getModelAccessorRegistry().dispose();
             }
         }

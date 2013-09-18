@@ -17,13 +17,13 @@ import java.util.List;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
@@ -166,9 +166,9 @@ public class RepresentationFilesRepairValidator {
             }
             if (session.isOpen()) {
                 if (saveSessions) {
-                    session.save();
+                    session.save(new NullProgressMonitor());
                 }
-                session.close();
+                session.save(new NullProgressMonitor());
             }
         }
     }

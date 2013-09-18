@@ -194,4 +194,15 @@ public class GroupingContentProvider implements ITreeContentProvider {
             return children;
         }
     }
+
+    /**
+     * Returns the base TreeContentProvider used to delegate calls if no
+     * grouping is needed.
+     * 
+     * @return the base TreeContentProvider used to delegate calls if no
+     *         grouping is needed
+     */
+    public ITreeContentProvider getDelegateTreeContentProvider() {
+        return delegateTreeContentProvider;
+    }
 }

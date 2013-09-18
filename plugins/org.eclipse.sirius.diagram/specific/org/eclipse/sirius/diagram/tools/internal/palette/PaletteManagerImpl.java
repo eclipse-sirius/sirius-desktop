@@ -53,6 +53,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.DSemanticDiagram;
@@ -168,17 +169,38 @@ public class PaletteManagerImpl implements PaletteManager {
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager#update()
      */
     public void update(final Diagram diagram, boolean clean) {
-        final PaletteViewer viewer = editDomain.getPaletteViewer();
-        if (viewer != null && diagram != null) {
-            clearFilters(diagram);
-            paletteRoot = viewer.getPaletteRoot();
+        // final PaletteViewer viewer = editDomain.getPaletteViewer();
+        // if (viewer != null && diagram != null) {
+        // clearFilters(diagram);
+        // paletteRoot = viewer.getPaletteRoot();
 
-            if (clean && !paletteRoot.getChildren().isEmpty()) {
-                /* Removes children and avoid concurrent modification exception */
-                PaletteContainer defaultTools = paletteRoot.getDefaultEntry().getParent();
-                for (final PaletteEntry child : Lists.newArrayList(Iterables.filter(paletteRoot.getChildren(), PaletteEntry.class))) {
-                    if (child != defaultTools) {
-                        paletteRoot.remove(child);
+        if (diagram != null) {
+            initPaletteRoot();
+
+            // if (clean && !paletteRoot.getChildren().isEmpty()) {
+            // /* Removes children and avoid concurrent modification exception
+            // */
+            // PaletteContainer defaultTools =
+            // paletteRoot.getDefaultEntry().getParent();
+            // for (final PaletteEntry child :
+            // Lists.newArrayList(Iterables.filter(paletteRoot.getChildren(),
+            // PaletteEntry.class))) {
+            // if (child != defaultTools) {
+            // paletteRoot.remove(child);
+
+            if (paletteRoot != null) {
+                clearFilters(diagram);
+
+                if (clean && !paletteRoot.getChildren().isEmpty()) {
+                    /*
+                     * Removes children and avoid concurrent modification
+                     * exception
+                     */
+                    PaletteContainer defaultTools = paletteRoot.getDefaultEntry().getParent();
+                    for (final PaletteEntry child : Lists.newArrayList(Iterables.filter(paletteRoot.getChildren(), PaletteEntry.class))) {
+                        if (child != defaultTools) {
+                            paletteRoot.remove(child);
+                        }
                     }
                 }
             }
@@ -190,6 +212,21 @@ public class PaletteManagerImpl implements PaletteManager {
             updatePalette(diagram);
 
             paletteRoot = null;
+        }
+    }
+
+    /**
+     * Set the palette root field with the palette root referenced in the
+     * palette viewer and if there is no palette viewer, use reflection to
+     * directly get the palette root of the edit domain (protected field).
+     */
+    private void initPaletteRoot() {
+        final PaletteViewer viewer = editDomain.getPaletteViewer();
+        if (viewer != null) {
+            paletteRoot = viewer.getPaletteRoot();
+        } else {
+            paletteRoot = (PaletteRoot) ReflectionHelper.getFieldValueWithoutException(editDomain, "paletteRoot").get();
+
         }
     }
 
@@ -430,9 +467,11 @@ public class PaletteManagerImpl implements PaletteManager {
      *            the layer
      */
     public void hideLayer(final Layer layer) {
-        final PaletteViewer viewer = editDomain.getPaletteViewer();
-        if (viewer != null) {
-            paletteRoot = viewer.getPaletteRoot();
+        // final PaletteViewer viewer = editDomain.getPaletteViewer();
+        // if (viewer != null) {
+        // paletteRoot = viewer.getPaletteRoot();
+        initPaletteRoot();
+        if (paletteRoot != null) {
             setLayerVisibility(layer, false);
             paletteRoot = null;
         }
@@ -574,7 +613,10 @@ public class PaletteManagerImpl implements PaletteManager {
         // Copy of all layers
         List<Layer> deactivatedLayers = Lists.newArrayList(new DiagramComponentizationManager().getAllLayers(session.getSelectedSiriuss(false), description));
 
-        List<Layer> activatedLayers = dDiagram.getActivatedLayers();
+        // Use a copy of activated layers to avoid a potential
+        // ConcurrentModificationException linked to async execution of this
+        // code during the activation of a Viewpoint.
+        List<Layer> activatedLayers = Lists.newArrayList(dDiagram.getActivatedLayers());
 
         for (Layer layer : activatedLayers) {
             Iterator<Layer> iterator = deactivatedLayers.iterator();

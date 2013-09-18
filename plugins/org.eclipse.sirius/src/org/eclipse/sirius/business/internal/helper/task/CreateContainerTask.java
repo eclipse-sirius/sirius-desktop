@@ -104,7 +104,6 @@ public class CreateContainerTask extends AbstractCommandTask implements ICreatio
             BestMappingGetter bestMappingGetter = new BestMappingGetter((DSemanticDecorator) containerView, semanticElt);
             ContainerMapping bestMapping = bestMappingGetter.getBestContainerMapping(tool.getContainerMappings());
             if (bestMapping != null) {
-                if (modelAccessor.eInstanceOf(semanticElt, bestMapping.getDomainClass())) {
                     AbstractDNodeCandidate abstractDNodeCandidate = new AbstractDNodeCandidate(bestMapping, semanticElt, containerView);
                     AbstractDNode createdAbstractDNode = dDiagramElementSynchronizer.createNewNode(mappingManager, abstractDNodeCandidate, false);
                     if (createdAbstractDNode != null) {
@@ -118,7 +117,6 @@ public class CreateContainerTask extends AbstractCommandTask implements ICreatio
                         AbstractNodeMappingSpecOperations.setInitialVisibility(createdAbstractDNode, dSemanticDiagram, session);
                         createdAbstractDNodes.add(createdAbstractDNode);
                     }
-                }
             }
         }
     }

@@ -2735,14 +2735,14 @@
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="minValueComputationExpression"
-          lowerBound="1" eType="#//description/InterpretedExpression" defaultValueLiteral="&lt;%0%>">
+          lowerBound="1" eType="#//description/InterpretedExpression" defaultValueLiteral="0">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="an integer."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxValueComputationExpression"
-          lowerBound="1" eType="#//description/InterpretedExpression" defaultValueLiteral="&lt;%10%>">
+          lowerBound="1" eType="#//description/InterpretedExpression" defaultValueLiteral="10">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="an integer."/>
         </eAnnotations>
@@ -2966,7 +2966,7 @@
           </eAnnotations>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="#//description/InterpretedExpression"
-            defaultValueLiteral="&lt;%name%>">
+            defaultValueLiteral="feature:name">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="Expression that computes the name of a node."/>
           </eAnnotations>
@@ -3329,21 +3329,21 @@
           <details key="documentation" value="The gauge section represents one gauge of a GaugeCompositeStyle."/>
         </eAnnotations>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="minValueExpression"
-            eType="#//description/InterpretedExpression" defaultValueLiteral="&lt;%0%>">
+            eType="#//description/InterpretedExpression" defaultValueLiteral="0">
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
             <details key="returnType" value="an integer."/>
           </eAnnotations>
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxValueExpression"
-            eType="#//description/InterpretedExpression" defaultValueLiteral="&lt;%0%>">
+            eType="#//description/InterpretedExpression" defaultValueLiteral="0">
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
             <details key="returnType" value="an integer."/>
           </eAnnotations>
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="#//description/InterpretedExpression"
-            defaultValueLiteral="&lt;%0%>">
+            defaultValueLiteral="0">
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
             <details key="returnType" value="an integer."/>
           </eAnnotations>

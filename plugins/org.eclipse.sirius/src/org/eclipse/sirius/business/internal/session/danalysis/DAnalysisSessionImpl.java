@@ -454,8 +454,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.OPEN_SESSION_KEY);
 
             if (Movida.isEnabled()) {
-                org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry) SiriusRegistry
-                        .getInstance();
+                org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry) SiriusRegistry.getInstance();
                 registry.addListener((SiriusRegistryListener) this);
             } else {
                 SiriusRegistry.getInstance().addListener(this);
@@ -756,22 +755,25 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * {@inheritDoc}
      */
     public synchronized void addSemanticResource(final URI semanticModelURI, final boolean addCrossReferencedResources, IProgressMonitor monitor) {
-        try {
-            if (semanticModelURI != null) {
-                if (new FileQuery(semanticModelURI.fileExtension()).isSessionResourceFile()) {
-                    throw new IllegalArgumentException("A representation file cannot be added as semantic resource.");
-                }
+
+        if (semanticModelURI != null) {
+            if (new FileQuery(semanticModelURI.fileExtension()).isSessionResourceFile()) {
+                throw new IllegalArgumentException("A representation file cannot be added as semantic resource.");
+            }
+            monitor.beginTask("Semantic resource addition : " + semanticModelURI.lastSegment(), 3);
+            ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
+            // Make ResourceSet aware of resource loading with progress
+            // monitor
+            ResourceSetUtil.setProgressMonitor(resourceSet, new SubProgressMonitor(monitor, 2));
+            try {
                 monitor.beginTask("Semantic resource addition : " + semanticModelURI.lastSegment(), 3);
-                ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
-                // Make ResourceSet aware of resource loading with progress
-                // monitor
-                ResourceSetUtil.setProgressMonitor(resourceSet, new SubProgressMonitor(monitor, 2));
 
                 Resource newSemanticResource = resourceSet.getResource(semanticModelURI, false);
                 if (newSemanticResource != null && newSemanticResource.getContents().isEmpty()) {
                     // The resource is probably loaded (created) with a proxy
                     // resolution. Indeed, in case of proxy, the method
-                    // eResolveProxy
+                    // eResolveProxy causes a creation of an empty resource in
+                    // the resourceSet.
                     // So we must unload it before load it again.
                     // resourceSet.
                     newSemanticResource.unload();
@@ -781,9 +783,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 if (!getSemanticResources().contains(newSemanticResource)) {
                     addSemanticResource(newSemanticResource, addCrossReferencedResources, monitor);
                 }
+            } finally {
+                monitor.done();
+                ResourceSetUtil.resetProgressMonitor(resourceSet);
             }
-        } finally {
-            monitor.done();
         }
     }
 
@@ -1899,8 +1902,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (!isOpen())
             return;
         if (Movida.isEnabled()) {
-            org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry) SiriusRegistry
-                    .getInstance();
+            org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry) SiriusRegistry.getInstance();
             registry.removeListener((SiriusRegistryListener) this);
         } else {
             SiriusRegistry.getInstance().removeListener(this);
@@ -1983,6 +1985,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             ((LazyCrossReferencer) getSemanticCrossReferencer()).enableResolve();
         }
         if (disposeEditingDomainOnClose) {
+            // To remove remaining resource like environment:/viewpoint
+            for (Resource resource : new ArrayList<Resource>(resourceSet.getResources())) {
+                resource.unload();
+                resourceSet.getResources().remove(resource);
+            }
             transactionalEditingDomain.dispose();
             doDisposePermissionAuthority(resourceSet);
         }

@@ -69,6 +69,10 @@ public class DiagramRepresentationsFileMigrationParticipant extends AbstractRepr
                 diagramRepresentationsFileMigrationParticipantV680.migrateEdgeLabelLocationToBounds(diagrams);
             }
         }
+        if (loadedVersion.compareTo(DiagramRepresentationsFileMigrationParticipantV690.MIGRATION_VERSION) < 0) {
+            DiagramRepresentationsFileMigrationParticipantV690 diagramRepresentationsFileMigrationParticipantV690 = new DiagramRepresentationsFileMigrationParticipantV690();
+            diagramRepresentationsFileMigrationParticipantV690.migrateEdgeRoutingStyle(getGMFDiagrams(dAnalysis));
+        }
     }
 
     /**

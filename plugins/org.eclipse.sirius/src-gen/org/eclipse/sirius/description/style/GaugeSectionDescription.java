@@ -59,7 +59,7 @@ public interface GaugeSectionDescription extends EObject {
 
     /**
      * Returns the value of the '<em><b>Min Value Expression</b></em>'
-     * attribute. The default value is <code>"<%0%>"</code>. <!-- begin-user-doc
+     * attribute. The default value is <code>"0"</code>. <!-- begin-user-doc
      * -->
      * <p>
      * If the meaning of the '<em>Min Value Expression</em>' attribute isn't
@@ -70,7 +70,7 @@ public interface GaugeSectionDescription extends EObject {
      * @return the value of the '<em>Min Value Expression</em>' attribute.
      * @see #setMinValueExpression(String)
      * @see org.eclipse.sirius.description.style.StylePackage#getGaugeSectionDescription_MinValueExpression()
-     * @model default="<%0%>"
+     * @model default="0"
      *        dataType="org.eclipse.sirius.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
@@ -94,7 +94,7 @@ public interface GaugeSectionDescription extends EObject {
 
     /**
      * Returns the value of the '<em><b>Max Value Expression</b></em>'
-     * attribute. The default value is <code>"<%0%>"</code>. <!-- begin-user-doc
+     * attribute. The default value is <code>"0"</code>. <!-- begin-user-doc
      * -->
      * <p>
      * If the meaning of the '<em>Max Value Expression</em>' attribute isn't
@@ -105,7 +105,7 @@ public interface GaugeSectionDescription extends EObject {
      * @return the value of the '<em>Max Value Expression</em>' attribute.
      * @see #setMaxValueExpression(String)
      * @see org.eclipse.sirius.description.style.StylePackage#getGaugeSectionDescription_MaxValueExpression()
-     * @model default="<%0%>"
+     * @model default="0"
      *        dataType="org.eclipse.sirius.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
@@ -129,7 +129,7 @@ public interface GaugeSectionDescription extends EObject {
 
     /**
      * Returns the value of the '<em><b>Value Expression</b></em>' attribute.
-     * The default value is <code>"<%0%>"</code>. <!-- begin-user-doc -->
+     * The default value is <code>"0"</code>. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Value Expression</em>' attribute isn't clear,
      * there really should be more of a description here...
@@ -139,7 +139,7 @@ public interface GaugeSectionDescription extends EObject {
      * @return the value of the '<em>Value Expression</em>' attribute.
      * @see #setValueExpression(String)
      * @see org.eclipse.sirius.description.style.StylePackage#getGaugeSectionDescription_ValueExpression()
-     * @model default="<%0%>"
+     * @model default="0"
      *        dataType="org.eclipse.sirius.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"

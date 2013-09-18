@@ -249,9 +249,9 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
             Object tempValue = value;
             if (eClassifier instanceof EEnum) {
                 if (value instanceof Enumerator) {
-                    tempValue = ((Enumerator) value).getLiteral();
+                    tempValue = ((Enumerator) value).getValue();
                 } else if (value != null) {
-                    tempValue = ((EEnum) eClassifier).getELiterals().get(((Integer) value).intValue()).getLiteral();
+                    tempValue = ((EEnum) eClassifier).getELiterals().get(((Integer) value).intValue()).getValue();
                 }
             } else if (value instanceof String && eClassifier != null) {
                 try {

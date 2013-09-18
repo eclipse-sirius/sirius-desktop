@@ -431,12 +431,15 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         super.createPartControl(parent);
 
         // Initialize drag'n drop listener from palette
-        PaletteViewer paletteViewer = getPaletteViewerProvider().getEditDomain().getPaletteViewer();
-        paletteTransferDragSourceListener = new TemplateTransferDragSourceListener(paletteViewer);
-        paletteViewer.addDragSourceListener(paletteTransferDragSourceListener);
-
-        paletteTransferDropTargetListener = new SiriusPaletteToolDropTargetListener(getGraphicalViewer());
-        getDiagramGraphicalViewer().addDropTargetListener(paletteTransferDropTargetListener);
+        // PaletteViewer paletteViewer =
+        // getPaletteViewerProvider().getEditDomain().getPaletteViewer();
+        // paletteTransferDragSourceListener = new
+        // TemplateTransferDragSourceListener(paletteViewer);
+        // paletteViewer.addDragSourceListener(paletteTransferDragSourceListener);
+        //
+        // paletteTransferDropTargetListener = new
+        // ViewpointPaletteToolDropTargetListener(getGraphicalViewer());
+        // getDiagramGraphicalViewer().addDropTargetListener(paletteTransferDropTargetListener);
 
         tabbarPostCommitListener = new TabbarRefresher(getEditingDomain());
         visibilityPostCommitListener = new VisibilityPostCommitListener(getDiagramEditPart());
@@ -457,7 +460,19 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * {@inheritDoc}
      */
     protected PaletteViewer constructPaletteViewer() {
-        return new SiriusPaletteViewer();
+        // return new ViewpointPaletteViewer();
+        PaletteViewer pv = new SiriusPaletteViewer();
+
+        // Initialize drag'n drop listener from palette
+        paletteTransferDragSourceListener = new TemplateTransferDragSourceListener(pv);
+        pv.addDragSourceListener(paletteTransferDragSourceListener);
+
+        // Handle the palette view case.
+        if (paletteManager != null) {
+            paletteManager.update(getDiagram());
+        }
+
+        return pv;
     }
 
     /**
@@ -609,6 +624,11 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         paletteManager = new PaletteManagerImpl(getEditDomain());
         paletteManager.update(getDiagram());
 
+        // Initialize drag'n drop listener from palette
+        paletteTransferDropTargetListener = new SiriusPaletteToolDropTargetListener(getGraphicalViewer());
+        getDiagramGraphicalViewer().addDropTargetListener(paletteTransferDropTargetListener);
+
+
         /* initialize Java Service. */
         EObject semantic = ViewUtil.resolveSemanticElement(gmfDiagram);
         if (semantic instanceof DSemanticDecorator) {
@@ -661,15 +681,15 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         }
         // Remove the change listener ContentAdapter.
         if (getDiagram() != null && getDiagram().eResource() != null) {
-            EObject semantic = ViewUtil.resolveSemanticElement(getDiagram());
-            if (semantic instanceof DSemanticDecorator) {
-                // Remove the ChangeListener to the DDiagram
-                try {
+            try {
+                EObject semantic = ViewUtil.resolveSemanticElement(getDiagram());
+                if (semantic instanceof DSemanticDecorator) {
+                    // Remove the ChangeListener to the DDiagram
                     semantic.eAdapters().remove(changeListener);
                     // Can cause a NPE with CDO
-                } catch (NullPointerException e) {
-                    // nothing to do, rest of dispose steps will be performed
                 }
+            } catch (NullPointerException e) {
+                // nothing to do, rest of dispose steps will be performed
             }
             if (dRepresentationLockStatusListener != null) {
                 IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(getDiagram().getElement());

@@ -12,17 +12,19 @@ package org.eclipse.sirius.common.tools.internal.interpreter;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
-import com.google.common.base.Preconditions;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+
+import com.google.common.base.Preconditions;
 
 /**
  * A service which correspond exactly to a single Java method.
  * 
  * @author pcdavid
  */
-class MonomorphicService implements IService {
+class MonomorphicService implements IMonomorphicService {
     /**
      * An instance of the Java class which defines the service method, needed to
      * actually invoke the service method.
@@ -85,4 +87,16 @@ class MonomorphicService implements IService {
     public String toString() {
         return serviceInstance.getClass().getCanonicalName() + "." + serviceMethod.getName() + "(" + serviceMethod.getParameterTypes()[0].getCanonicalName() + ")";
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public List<String> getParametersTypes() {
+        List<String> parametersTypes = new ArrayList<String>();
+        for (Class<?> type : serviceMethod.getParameterTypes()) {
+            parametersTypes.add(type.getSimpleName());
+        }
+        return parametersTypes;
+    }
+
 }

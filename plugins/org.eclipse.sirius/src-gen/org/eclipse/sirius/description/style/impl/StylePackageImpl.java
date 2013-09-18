@@ -1435,7 +1435,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getBasicLabelStyleDescription_ShowIcon(), ecorePackage.getEBoolean(), "showIcon", "true", 0, 1, BasicLabelStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getBasicLabelStyleDescription_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", "<%name%>", 0, 1, BasicLabelStyleDescription.class,
+        initEAttribute(getBasicLabelStyleDescription_LabelExpression(), theDescriptionPackage.getInterpretedExpression(), "labelExpression", "feature:name", 0, 1, BasicLabelStyleDescription.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getBasicLabelStyleDescription_LabelColor(), theDescriptionPackage.getColorDescription(), null, "labelColor", null, 1, 1, BasicLabelStyleDescription.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1571,11 +1571,11 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(gaugeSectionDescriptionEClass, GaugeSectionDescription.class, "GaugeSectionDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getGaugeSectionDescription_MinValueExpression(), theDescriptionPackage.getInterpretedExpression(), "minValueExpression", "<%0%>", 0, 1, GaugeSectionDescription.class,
+        initEAttribute(getGaugeSectionDescription_MinValueExpression(), theDescriptionPackage.getInterpretedExpression(), "minValueExpression", "0", 0, 1, GaugeSectionDescription.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getGaugeSectionDescription_MaxValueExpression(), theDescriptionPackage.getInterpretedExpression(), "maxValueExpression", "<%0%>", 0, 1, GaugeSectionDescription.class,
+        initEAttribute(getGaugeSectionDescription_MaxValueExpression(), theDescriptionPackage.getInterpretedExpression(), "maxValueExpression", "0", 0, 1, GaugeSectionDescription.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getGaugeSectionDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", "<%0%>", 0, 1, GaugeSectionDescription.class, !IS_TRANSIENT,
+        initEAttribute(getGaugeSectionDescription_ValueExpression(), theDescriptionPackage.getInterpretedExpression(), "valueExpression", "0", 0, 1, GaugeSectionDescription.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getGaugeSectionDescription_BackgroundColor(), theDescriptionPackage.getColorDescription(), null, "backgroundColor", null, 1, 1, GaugeSectionDescription.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

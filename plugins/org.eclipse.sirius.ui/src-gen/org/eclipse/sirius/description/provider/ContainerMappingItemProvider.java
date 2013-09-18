@@ -256,13 +256,13 @@ public class ContainerMappingItemProvider extends AbstractNodeMappingItemProvide
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         NodeMapping createNodeMapping = DescriptionFactory.eINSTANCE.createNodeMapping();
-        createNodeMapping.setSemanticCandidatesExpression("<%eAllContents()%>");
+        createNodeMapping.setSemanticCandidatesExpression("feature:eAllContents");
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS, createNodeMapping));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createNodeMappingImport()));
 
         ContainerMapping createContainerMapping = DescriptionFactory.eINSTANCE.createContainerMapping();
-        createContainerMapping.setSemanticCandidatesExpression("<%eAllContents()%>");
+        createContainerMapping.setSemanticCandidatesExpression("feature:eAllContents");
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS, createContainerMapping));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createContainerMappingImport()));

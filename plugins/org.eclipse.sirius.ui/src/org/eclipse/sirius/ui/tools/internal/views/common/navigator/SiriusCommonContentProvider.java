@@ -41,6 +41,28 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.ITreeViewerListener;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.sirius.DAnalysisSessionEObject;
+import org.eclipse.sirius.DRepresentation;
+import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.api.query.URIQuery;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.api.session.SessionManagerListener2;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
+import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.ui.business.api.session.IEditingSession;
+import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
+import org.eclipse.sirius.ui.tools.internal.views.common.FileSessionFinder;
+import org.eclipse.sirius.ui.tools.internal.views.common.SessionWrapperContentProvider;
+import org.eclipse.sirius.ui.tools.internal.views.common.item.AnalysisResourceItemImpl;
+import org.eclipse.sirius.ui.tools.internal.views.common.item.ControlledRoot;
+import org.eclipse.sirius.ui.tools.internal.views.common.item.InternalCommonItem;
+import org.eclipse.sirius.ui.tools.internal.views.common.item.ProjectDependenciesItemImpl;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IMemento;
@@ -53,28 +75,6 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DAnalysisSessionEObject;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
-import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
-import org.eclipse.sirius.business.api.query.URIQuery;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionListener;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.api.session.SessionManagerListener2;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.ui.business.api.session.IEditingSession;
-import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
-import org.eclipse.sirius.ui.tools.internal.views.common.FileSessionFinder;
-import org.eclipse.sirius.ui.tools.internal.views.common.SessionWrapperContentProvider;
-import org.eclipse.sirius.ui.tools.internal.views.common.item.AnalysisResourceItemImpl;
-import org.eclipse.sirius.ui.tools.internal.views.common.item.ControlledRoot;
-import org.eclipse.sirius.ui.tools.internal.views.common.item.InternalCommonItem;
-import org.eclipse.sirius.ui.tools.internal.views.common.item.ProjectDependenciesItemImpl;
 
 /**
  * Sirius content provider for common navigator.
@@ -191,8 +191,17 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         }
 
         // Provided ISessionViewExtension extensions.
-        if (shouldAskExtension && defaultContentProvider instanceof SessionWrapperContentProvider) {
-            allChildren.addAll(((SessionWrapperContentProvider) defaultContentProvider).getChildrenFromExtensions(parentElement));
+        if (shouldAskExtension) {
+            SessionWrapperContentProvider sessionWrapperContentProvider = null;
+            if (defaultContentProvider instanceof SessionWrapperContentProvider) {
+                sessionWrapperContentProvider = (SessionWrapperContentProvider) defaultContentProvider;
+            } else if (defaultContentProvider instanceof GroupingContentProvider
+                    && ((GroupingContentProvider) defaultContentProvider).getDelegateTreeContentProvider() instanceof SessionWrapperContentProvider) {
+                sessionWrapperContentProvider = (SessionWrapperContentProvider) ((GroupingContentProvider) defaultContentProvider).getDelegateTreeContentProvider();
+            }
+            if (sessionWrapperContentProvider != null) {
+                allChildren.addAll(sessionWrapperContentProvider.getChildrenFromExtensions(parentElement));
+            }
         }
 
         return allChildren.toArray();
@@ -623,11 +632,15 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
             }
 
             for (Resource res : resources) {
-                if (res.getURI() != null && res.getURI().isPlatformResource()) {
-                    IFile file = WorkspaceSynchronizer.getFile(res);
-                    if (file != null && file.exists() && file.getProject() != null) {
-                        projectsToRefresh.add(file.getProject());
+                try {
+                    if (res.getURI() != null && res.getURI().isPlatformResource()) {
+                        IFile file = WorkspaceSynchronizer.getFile(res);
+                        if (file != null && file.exists() && file.getProject() != null) {
+                            projectsToRefresh.add(file.getProject());
+                        }
                     }
+                } catch (IllegalStateException e) {
+                    // In case cdoView is closed
                 }
             }
         }

@@ -109,7 +109,6 @@ public class CreateDNodeTask extends AbstractCommandTask implements ICreationTas
             BestMappingGetter bestMappingGetter = new BestMappingGetter(containerViewDSemanticDecorator, semanticElt);
             NodeMapping bestMapping = bestMappingGetter.getBestNodeMapping(tool.getNodeMappings());
             if (bestMapping != null) {
-                if (modelAccessor.eInstanceOf(semanticElt, bestMapping.getDomainClass())) {
                     AbstractDNodeCandidate abstractDNodeCandidate = new AbstractDNodeCandidate(bestMapping, semanticElt, containerView);
                     AbstractDNode createdAbstractDNode = dDiagramElementSynchronizer.createNewNode(mappingManager, abstractDNodeCandidate,
                             bestMapping.eContainingFeature() == DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS);
@@ -123,7 +122,6 @@ public class CreateDNodeTask extends AbstractCommandTask implements ICreationTas
                         AbstractNodeMappingSpecOperations.setInitialVisibility(createdAbstractDNode, dSemanticDiagram, session);
                         createdAbstractDNodes.add(createdAbstractDNode);
                     }
-                }
             }
         }
     }

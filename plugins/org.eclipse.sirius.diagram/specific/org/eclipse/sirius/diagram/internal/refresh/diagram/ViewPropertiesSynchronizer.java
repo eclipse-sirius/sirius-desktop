@@ -24,9 +24,6 @@ import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.swt.graphics.RGB;
-
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.BasicLabelStyle;
 import org.eclipse.sirius.BorderedStyle;
 import org.eclipse.sirius.BundledImage;
@@ -46,18 +43,20 @@ import org.eclipse.sirius.NodeStyle;
 import org.eclipse.sirius.Note;
 import org.eclipse.sirius.RGBValues;
 import org.eclipse.sirius.ShapeContainerStyle;
-import org.eclipse.sirius.Square;
 import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.Square;
 import org.eclipse.sirius.WorkspaceImage;
 import org.eclipse.sirius.business.api.color.RGBValuesProvider;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.business.internal.metamodel.helper.GetDefaultStyle;
 import org.eclipse.sirius.business.internal.metamodel.helper.StyleHelper;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.description.FixedColor;
 import org.eclipse.sirius.description.SystemColors;
 import org.eclipse.sirius.description.style.StyleDescription;
 import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.swt.graphics.RGB;
 
 /**
  * Update the GMF {@link View} properties according to Sirius properties and
@@ -92,8 +91,8 @@ public class ViewPropertiesSynchronizer {
      */
     public void synchronizeViewProperties(View view) {
         EObject element = view.getElement();
-        // Visibility initialization, in case of invisible creation
         if (element instanceof DDiagramElement) {
+            // Visibility initialization, in case of invisible creation
             DDiagramElement dDiagramElement = (DDiagramElement) element;
             if (new ViewQuery(view).isForNameEditPart()) {
                 view.setVisible(!new DDiagramElementQuery(dDiagramElement).isLabelHidden());
@@ -101,6 +100,7 @@ public class ViewPropertiesSynchronizer {
                 view.setVisible(dDiagramElement.isVisible());
             }
 
+            // Adapt GMF font according to Viewpoint font.
             if (dDiagramElement.getStyle() instanceof LabelStyle) {
                 LabelStyle labelStyle = (LabelStyle) dDiagramElement.getStyle();
                 FontStyle fontStyle = (FontStyle) createOrFindStyle(view, NotationPackage.eINSTANCE.getFontStyle());
@@ -137,7 +137,6 @@ public class ViewPropertiesSynchronizer {
                 }
             }
         }
-
     }
 
     /**

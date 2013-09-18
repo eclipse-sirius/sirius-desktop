@@ -328,7 +328,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     }
 
     private void closeOthersEditors(final boolean save) {
-        Display.getDefault().syncExec(new Runnable() {
+        Display.getDefault().asyncExec(new Runnable() {
             public void run() {
                 final IWorkbenchPage page = EclipseUIUtil.getActivePage();
                 if (page != null) {

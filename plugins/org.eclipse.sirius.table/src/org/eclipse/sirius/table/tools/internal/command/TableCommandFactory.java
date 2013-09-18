@@ -26,7 +26,6 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
@@ -66,6 +65,7 @@ import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping
 import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableTool;
+import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
 import org.eclipse.sirius.tools.api.command.AbstractCommandFactory;
@@ -315,10 +315,19 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                         variables.put(TableHelper.getVariable(creationTool, IInterpreterSiriusVariables.CONTAINER), ((DLine) containerView).getTarget());
                     }
                 } else if (containerView instanceof DTable) {
-                    variables.put(TableHelper.getVariable(creationTool, IInterpreterSiriusVariables.ROOT), ((DTable) containerView).getTarget());
-                    variables.put(TableHelper.getVariable(creationTool, IInterpreterSiriusVariables.CONTAINER), ((DTable) containerView).getTarget());
+                    TableVariable rootVariable = TableHelper.getVariable(creationTool, IInterpreterSiriusVariables.ROOT);
+                    if (rootVariable != null) {
+                        variables.put(rootVariable, ((DTable) containerView).getTarget());
+                    }
+                    TableVariable containerVariable = TableHelper.getVariable(creationTool, IInterpreterSiriusVariables.CONTAINER);
+                    if (containerVariable != null) {
+                        variables.put(containerVariable, ((DTable) containerView).getTarget());
+                    }
                 }
-                variables.put(TableHelper.getVariable(creationTool, IInterpreterSiriusVariables.ELEMENT), semanticCurrentElement);
+                TableVariable elementVariable = TableHelper.getVariable(creationTool, IInterpreterSiriusVariables.ELEMENT);
+                if (elementVariable != null) {
+                    variables.put(elementVariable, semanticCurrentElement);
+                }
                 // Initialization of the variables
                 result.getTasks().add(new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(semanticCurrentElement), uiCallBack));
                 // Creation of the tasks to execute the tool

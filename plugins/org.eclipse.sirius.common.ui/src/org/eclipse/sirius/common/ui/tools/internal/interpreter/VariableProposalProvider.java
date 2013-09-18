@@ -12,8 +12,10 @@ package org.eclipse.sirius.common.ui.tools.internal.interpreter;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
@@ -21,6 +23,10 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.internal.interpreter.VariableInterpreter;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Maps;
 
 /**
  * A {@link IProposalProvider} to provide completion for the variable
@@ -34,7 +40,7 @@ public class VariableProposalProvider implements IProposalProvider {
      * {@inheritDoc}
      */
     public ContentProposal getNewEmtpyExpression() {
-        return new ContentProposal(VariableInterpreter.PREFIX, VariableInterpreter.PREFIX, "New variable expression.", 1);
+        return new ContentProposal(VariableInterpreter.PREFIX, VariableInterpreter.PREFIX, "New variable expression.", VariableInterpreter.PREFIX.length());
     }
 
     /**
@@ -47,13 +53,7 @@ public class VariableProposalProvider implements IProposalProvider {
         } else if (context.getContents() == null || context.getContents().length() == 0) {
             proposals = Collections.singletonList(getNewEmtpyExpression());
         } else {
-            proposals = new ArrayList<ContentProposal>();
-            proposals.add(new ContentProposal(VariableInterpreter.SELF_VARIABLE_NAME, VariableInterpreter.SELF_VARIABLE_NAME, VariableInterpreter.SELF_VARIABLE_NAME));
-            for (Map.Entry<String, String> variableEntry : context.getInterpreterContext().getVariables().entrySet()) {
-                String variableName = variableEntry.getKey();
-                String variableType = variableEntry.getValue();
-                proposals.add(new ContentProposal(variableName, variableName + ":" + variableType, variableType));
-            }
+            proposals = getProposals(context.getContents(), context.getPosition(), context.getInterpreterContext().getVariables().entrySet().iterator());
         }
         return proposals;
     }
@@ -68,13 +68,54 @@ public class VariableProposalProvider implements IProposalProvider {
         } else if (context.getCurrentSelected() == null) {
             proposals = Collections.singletonList(getNewEmtpyExpression());
         } else {
+            // Transform Entry<String, Object> to Entry<String, String>
             VariableInterpreter variableInterpreter = (VariableInterpreter) interpreter;
-            proposals = new ArrayList<ContentProposal>();
-            proposals.add(new ContentProposal(VariableInterpreter.SELF_VARIABLE_NAME, VariableInterpreter.SELF_VARIABLE_NAME, VariableInterpreter.SELF_VARIABLE_NAME));
-            for (Map.Entry<String, ?> variableEntry : variableInterpreter.getVariables().entrySet()) {
-                String variableName = variableEntry.getKey();
-                Object variableType = variableEntry.getValue();
-                proposals.add(new ContentProposal(variableName, variableName + ":" + variableType.toString(), variableType.toString()));
+            Iterator<Entry<String, String>> variablesIterator = Iterators.transform(variableInterpreter.getVariables().entrySet().iterator(),
+                    new Function<Entry<String, Object>, Entry<String, String>>() {
+                        public Map.Entry<String, String> apply(Map.Entry<String, Object> input) {
+                            return Maps.immutableEntry(input.getKey(), input.getValue().toString());
+                        };
+                    });
+            proposals = getProposals(context.getTextSoFar(), context.getCursorPosition(), variablesIterator);
+        }
+        return proposals;
+    }
+
+    /**
+     * Evaluates the content proposals for a given expression and returns the
+     * result as a list.
+     * 
+     * @param writtenExpression
+     *            The complete expression with feature: prefix.
+     * @param cursorPosition
+     *            The current cursor position to consider only characters before
+     *            it.
+     * @param variablesIterator
+     *            Iterator on entries corresponding to the available variables.
+     * @return content proposal list.
+     */
+    private List<ContentProposal> getProposals(String writtenExpression, int cursorPosition, Iterator<Entry<String, String>> variablesIterator) {
+        final List<ContentProposal> proposals = new ArrayList<ContentProposal>();
+        // Keep only characters before cursor
+        String variableNamePrefix = writtenExpression.substring(0, cursorPosition);
+        // Remove not needed space characters.
+        variableNamePrefix = variableNamePrefix.trim();
+        // Remove "var:" prefix if the cursor position is after the prefix
+        // If the cursor position is before the prefix, there is no proposal
+        // returned.
+        if (variableNamePrefix.length() >= VariableInterpreter.PREFIX.length()) {
+            variableNamePrefix = variableNamePrefix.substring(VariableInterpreter.PREFIX.length());
+
+            if (VariableInterpreter.SELF_VARIABLE_NAME.startsWith(variableNamePrefix)) {
+                proposals.add(new ContentProposal(VariableInterpreter.SELF_VARIABLE_NAME, VariableInterpreter.SELF_VARIABLE_NAME, VariableInterpreter.SELF_VARIABLE_NAME));
+            }
+            while (variablesIterator.hasNext()) {
+                Map.Entry<java.lang.String, java.lang.String> entry = (Map.Entry<java.lang.String, java.lang.String>) variablesIterator.next();
+                String variableName = entry.getKey();
+                String variableType = entry.getValue();
+                if (variableName.startsWith(variableNamePrefix)) {
+                    proposals.add(new ContentProposal(variableName, variableName + ":" + variableType, variableType));
+                }
             }
         }
         return proposals;

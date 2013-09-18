@@ -234,13 +234,18 @@ public class SelectPinnedElementsAction extends DiagramAction {
     }
 
     private Command getElementsSelectionCommand(IDDiagramEditPart diagramEditPart) {
-        EObject semanticElement = diagramEditPart.resolveSemanticElement();
-        if (semanticElement instanceof DDiagram) {
-            DDiagram diagram = (DDiagram) semanticElement;
-            return new ICommandProxy(new PinnedElementsSelectionCommand(diagramEditPart.getEditingDomain(), TITLE, diagram));
-        } else {
-            return UnexecutableCommand.INSTANCE;
+        Command elementsSelectionCommand = UnexecutableCommand.INSTANCE;
+        // If the edit part's editing domain has been disposed (session is
+        // closing) then we return an unexecutable command (editor is about to
+        // close)
+        if (diagramEditPart.getEditingDomain() != null && diagramEditPart.getEditingDomain().getCommandStack() != null) {
+            EObject semanticElement = diagramEditPart.resolveSemanticElement();
+            if (semanticElement instanceof DDiagram) {
+                DDiagram diagram = (DDiagram) semanticElement;
+                elementsSelectionCommand = new ICommandProxy(new PinnedElementsSelectionCommand(diagramEditPart.getEditingDomain(), TITLE, diagram));
+            }
         }
+        return elementsSelectionCommand;
     }
 
     @Override

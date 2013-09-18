@@ -174,7 +174,7 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
      */
     private boolean shouldBeLoggedThroughPopup(Throwable exception) {
         // We only consider LockedInstanceException
-        return exception instanceof LockedInstanceException;
+        return exception instanceof LockedInstanceException || exception instanceof SecurityException;
     }
 
     /**

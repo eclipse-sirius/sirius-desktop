@@ -12,18 +12,13 @@ package org.eclipse.sirius.business.internal.metamodel.helper;
 
 import java.util.List;
 
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.AbstractDNode;
 import org.eclipse.sirius.BasicLabelStyle;
 import org.eclipse.sirius.BeginLabelStyle;
@@ -40,6 +35,7 @@ import org.eclipse.sirius.DNodeList;
 import org.eclipse.sirius.DNodeListElement;
 import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.Dot;
+import org.eclipse.sirius.EdgeRouting;
 import org.eclipse.sirius.EdgeStyle;
 import org.eclipse.sirius.Ellipse;
 import org.eclipse.sirius.EndLabelStyle;
@@ -53,13 +49,19 @@ import org.eclipse.sirius.Lozenge;
 import org.eclipse.sirius.NodeStyle;
 import org.eclipse.sirius.Note;
 import org.eclipse.sirius.ShapeContainerStyle;
-import org.eclipse.sirius.Square;
-import org.eclipse.sirius.Style;
 import org.eclipse.sirius.SiriusFactory;
 import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.Square;
+import org.eclipse.sirius.Style;
 import org.eclipse.sirius.WorkspaceImage;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.internal.color.DiagramStyleColorUpdater;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.description.style.BeginLabelStyleDescription;
 import org.eclipse.sirius.description.style.BorderedStyleDescription;
@@ -84,6 +86,7 @@ import org.eclipse.sirius.description.style.SquareDescription;
 import org.eclipse.sirius.description.style.StyleDescription;
 import org.eclipse.sirius.description.style.StylePackage;
 import org.eclipse.sirius.description.style.WorkspaceImageDescription;
+import org.eclipse.sirius.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.util.SiriusSwitch;
 
 /**
@@ -274,14 +277,41 @@ public final class StyleHelper {
                     edgeStyle.setSize(size);
                 }
             }
-            if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName())) {
-                edgeStyle.setRoutingStyle(previousStyle.get().getRoutingStyle());
-                edgeStyle.getCustomFeatures().add(SiriusPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName());
-            } else {
-                if (edgeDescription.getRoutingStyle().getValue() != edgeStyle.getRoutingStyle().getValue()
-                        && !edgeStyle.getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName())) {
-                    edgeStyle.setRoutingStyle(edgeDescription.getRoutingStyle());
+            // Get the override edge routing from the diagram preferences. If
+            // the edge routing override is enable, it is more priority than the
+            // VSM style but less that the manual customization.
+            final IPreferencesService service = Platform.getPreferencesService();
+            Option<EdgeRouting> overrideEdgeRouting = Options.newNone();
+            boolean isOverideEnabled = service.getBoolean("org.eclipse.sirius.diagram", SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE,
+                    SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE_DEFAULT_VALUE, null);
+            if (isOverideEnabled) {
+                int routingStyle = service
+                        .getInt("fr.obeo.dsl.viewpoint.diagram", SiriusDiagramCorePreferences.PREF_LINE_STYLE, SiriusDiagramCorePreferences.PREF_LINE_STYLE_DEFAULT_VALUE, null);
+                overrideEdgeRouting = Options.newSome(EdgeRouting.get(routingStyle));
+            }
+            // If a previous style exists, we are not on a creation of an edge
+            // so the potential override is ignored.
+            if (previousStyle.some()) {
+                // If the previous style has been manually customized we use the
+                // same customization.
+                if (previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName())) {
+                    edgeStyle.setRoutingStyle(previousStyle.get().getRoutingStyle());
+                    edgeStyle.getCustomFeatures().add(SiriusPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName());
                 }
+            } else if (overrideEdgeRouting.some()) {
+                // Add the feature routingStyle as customization
+                edgeStyle.getCustomFeatures().add(SiriusPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName());
+                // Set the new value if different.
+                if (edgeStyle.getRoutingStyle().getValue() != overrideEdgeRouting.get().getValue()) {
+                    edgeStyle.setRoutingStyle(overrideEdgeRouting.get());
+                }
+            }
+            // Use the VSM value if there is no customization (from manual
+            // customization of existing style or from preference)
+
+            if (edgeDescription.getRoutingStyle().getValue() != edgeStyle.getRoutingStyle().getValue()
+                    && !edgeStyle.getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName())) {
+                edgeStyle.setRoutingStyle(edgeDescription.getRoutingStyle());
             }
             updateLabels(edgeDescription, edgeStyle, previousStyle);
         }
@@ -789,8 +819,7 @@ public final class StyleHelper {
             updateLabelStyleFeatures(description, image, (Option<LabelStyle>) previousStyle);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName())
-                && previousStyle.get() instanceof WorkspaceImage) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName()) && previousStyle.get() instanceof WorkspaceImage) {
             image.setWorkspacePath(((WorkspaceImage) previousStyle.get()).getWorkspacePath());
             image.getCustomFeatures().add(SiriusPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName());
         } else {

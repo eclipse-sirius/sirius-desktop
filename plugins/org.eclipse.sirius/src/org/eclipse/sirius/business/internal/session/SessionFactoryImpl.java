@@ -154,6 +154,7 @@ public final class SessionFactoryImpl implements SessionFactory {
             throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, "Error while loading representations file", e));
         } finally {
             monitor.done();
+            ResourceSetUtil.resetProgressMonitor(resourceSet);
         }
         return session;
     }

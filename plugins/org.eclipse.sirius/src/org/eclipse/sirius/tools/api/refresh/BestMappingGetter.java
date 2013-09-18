@@ -122,7 +122,7 @@ public class BestMappingGetter {
             if (firstValidMappingCandidate instanceof ContainerMapping) {
                 bestContainerMapping = (ContainerMapping) firstValidMappingCandidate;
             }
-        } else if (mappingCandidates.size() == 1) {
+        } else if (mappingCandidates.size() == 1 && isSemanticCandidate(new DiagramElementMappingQuery(mappingCandidates.get(0)))) {
             bestContainerMapping = mappingCandidates.get(0);
         }
         return bestContainerMapping;
@@ -193,7 +193,7 @@ public class BestMappingGetter {
             if (firstValidMappingCandidate instanceof NodeMapping) {
                 bestNodeMapping = (NodeMapping) firstValidMappingCandidate;
             }
-        } else if (mappingCandidates.size() == 1) {
+        } else if (mappingCandidates.size() == 1 && isSemanticCandidate(new DiagramElementMappingQuery(mappingCandidates.get(0)))) {
             bestNodeMapping = mappingCandidates.get(0);
         }
         return bestNodeMapping;
@@ -270,7 +270,7 @@ public class BestMappingGetter {
             if (firstValidEdgeMappingCandidate != null) {
                 bestEdgeMapping = firstValidEdgeMappingCandidate;
             }
-        } else if (mappingCandidates.size() == 1) {
+        } else if (mappingCandidates.size() == 1 && isSemanticCandidate(mappingCandidates.get(0), new EdgeMappingQuery(mappingCandidates.get(0)))) {
             bestEdgeMapping = mappingCandidates.get(0);
         }
         return bestEdgeMapping;
@@ -313,15 +313,12 @@ public class BestMappingGetter {
     private AbstractNodeMapping getFirstValidAbstractNodeMappingCandidate(List<? extends AbstractNodeMapping> mappingCandidates) {
         AbstractNodeMapping firstValidMappingCandidate = null;
         for (AbstractNodeMapping mappingCandidate : mappingCandidates) {
-            if (modelAccessor.eInstanceOf(semanticElt, mappingCandidate.getDomainClass())) {
-                AbstractNodeMappingQuery abstractNodeMappingQuery = new AbstractNodeMappingQuery(mappingCandidate);
-                Collection<EObject> semanticCandidates = getSemanticCandidates(abstractNodeMappingQuery);
-                if (semanticCandidates.contains(semanticElt)) {
-                    if (abstractNodeMappingQuery.evaluatePrecondition(parentDDiagram, (DragAndDropTarget) containerView, interpreter, semanticElt)) {
-                        firstValidMappingCandidate = mappingCandidate;
-                        break;
-                    }
-                }
+            // if (modelAccessor.eInstanceOf(semanticElt,
+            // mappingCandidate.getDomainClass())) {
+            AbstractNodeMappingQuery abstractNodeMappingQuery = new AbstractNodeMappingQuery(mappingCandidate);
+            if (isSemanticCandidate(abstractNodeMappingQuery) && abstractNodeMappingQuery.evaluatePrecondition(parentDDiagram, (DragAndDropTarget) containerView, interpreter, semanticElt)) {
+                firstValidMappingCandidate = mappingCandidate;
+                break;
             }
         }
         return firstValidMappingCandidate;
@@ -331,45 +328,46 @@ public class BestMappingGetter {
         EdgeMapping firstValidMappingCandidate = null;
         for (EdgeMapping mappingCandidate : mappingCandidates) {
             EdgeMappingQuery edgeMappingQuery = new EdgeMappingQuery(mappingCandidate);
-            Collection<EObject> semanticCandidates = null;
             if (edgeMappingQuery.canCreate((DMappingBased) sourceView, (DMappingBased) targetView)) {
-                // If candidate is domain based, check domain class of
-                // semanticElt
-                if (!mappingCandidate.isUseDomainElement() || modelAccessor.eInstanceOf(semanticElt, mappingCandidate.getDomainClass())) {
-                    semanticCandidates = getSemanticCandidates(mappingCandidate, edgeMappingQuery);
-                    if (semanticCandidates.contains(semanticElt)) {
-                        if (evaluateEdgeMappingPrecondition(parentDDiagram, edgeMappingQuery)) {
-                            firstValidMappingCandidate = mappingCandidate;
-                            break;
-                        }
-                    }
+                if (isSemanticCandidate(mappingCandidate, edgeMappingQuery) && evaluateEdgeMappingPrecondition(parentDDiagram, edgeMappingQuery)) {
+                    firstValidMappingCandidate = mappingCandidate;
+                    break;
                 }
             }
         }
         return firstValidMappingCandidate;
     }
 
-    private Collection<EObject> getSemanticCandidates(EdgeMapping mappingCandidate, EdgeMappingQuery edgeMappingQuery) {
-        Collection<EObject> semanticCandidates;
+    private boolean isSemanticCandidate(EdgeMapping mappingCandidate, EdgeMappingQuery edgeMappingQuery) {
+        boolean candidate;
         if (mappingCandidate.isUseDomainElement()) {
-            semanticCandidates = getSemanticCandidates(edgeMappingQuery);
+            // If candidate is domain based, check domain class of semanticElt
+            candidate = isSemanticCandidate(edgeMappingQuery);
         } else {
             EObject sourceSemantic = ((DSemanticDecorator) sourceView).getTarget();
-            semanticCandidates = new ArrayList<EObject>();
+            Collection<EObject> semanticCandidates = new ArrayList<EObject>();
             semanticCandidates.add(sourceSemantic);
-            semanticCandidates.addAll(edgeMappingQuery.evaluateTargetFinderExpression(parentDDiagram, interpreter, sourceSemantic));
+            if (edgeMappingQuery.hasTargetFinderExpression()) {
+                semanticCandidates.addAll(edgeMappingQuery.evaluateTargetFinderExpression(parentDDiagram, interpreter, sourceSemantic));
+            }
+            candidate = semanticCandidates.contains(semanticElt);
         }
-        return semanticCandidates;
+        return candidate;
     }
 
-    private Collection<EObject> getSemanticCandidates(DiagramElementMappingQuery query) {
-        Collection<EObject> semanticCandidates;
-        if (query.hasCandidatesExpression()) {
-            semanticCandidates = query.evaluateCandidateExpression(parentDDiagram, interpreter, (DragAndDropTarget) containerView);
-        } else {
-            semanticCandidates = query.getAllCandidates(session, modelAccessor);
+    /**
+     * First check if semanticElt is an instance of the mapping candidate domain
+     * class. Then if the semantic element has the expected type, and if the
+     * mapping defines a semantic candidate expression, check that the semantic
+     * candidates contains the semanticElt.
+     */
+    private boolean isSemanticCandidate(DiagramElementMappingQuery query) {
+        boolean candidate = modelAccessor.eInstanceOf(semanticElt, query.getDomainClass().get());
+        if (candidate && query.hasCandidatesExpression()) {
+            Collection<EObject> semanticCandidates = query.evaluateCandidateExpression(parentDDiagram, interpreter, (DragAndDropTarget) containerView);
+            candidate = semanticCandidates.contains(semanticElt);
         }
-        return semanticCandidates;
+        return candidate;
     }
 
     private boolean evaluateEdgeMappingPrecondition(DSemanticDiagram dDiagram, EdgeMappingQuery edgeMappingQuery) {
