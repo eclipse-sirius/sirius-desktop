@@ -20,16 +20,16 @@
 <repository location="http://download.eclipse.org/releases/indigo"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.compare.feature.group" version="2.1.0.201306250935"/>
+<unit id="org.eclipse.emf.compare.feature.group" version="2.1.1.201309031318"/>
 <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.acceleo.feature.group" version="3.4.0.201306101458"/>
-<unit id="org.eclipse.acceleo.doc.feature.group" version="3.4.0.201306101458"/>
-<unit id="org.eclipse.acceleo.examples.feature.group" version="3.4.0.201306101458"/>
-<unit id="org.eclipse.acceleo.runtime.feature.group" version="3.4.0.201306101458"/>
-<unit id="org.eclipse.acceleo.sdk.feature.group" version="3.4.0.201306101458"/>
-<unit id="org.eclipse.acceleo.ui.capabilities.feature.group" version="3.4.0.201306101458"/>
+<unit id="org.eclipse.acceleo.feature.group" version="3.4.1.201309031307"/>
+<unit id="org.eclipse.acceleo.doc.feature.group" version="3.4.1.201309031307"/>
+<unit id="org.eclipse.acceleo.examples.feature.group" version="3.4.1.201309031307"/>
+<unit id="org.eclipse.acceleo.runtime.feature.group" version="3.4.1.201309031307"/>
+<unit id="org.eclipse.acceleo.sdk.feature.group" version="3.4.1.201309031307"/>
+<unit id="org.eclipse.acceleo.ui.capabilities.feature.group" version="3.4.1.201309031307"/>
 <repository location="http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
@@ -37,11 +37,11 @@
 <repository location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/I20130827062727/repository/"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.nebula.widgets.paperclips.feature.feature.group" version="2.0.0.201307092147"/>
-<repository location="http://download.eclipse.org/technology/nebula/snapshot/"/>
+<unit id="org.eclipse.nebula.widgets.paperclips.feature.feature.group" version="2.0.0.201309241436"/>
+<repository location="http://download.eclipse.org/sirius/targetplatform/0.9.0/all/nebula/N201309241436"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.xtext.sdk.feature.group" version="2.2.1.v201112130541"/>
