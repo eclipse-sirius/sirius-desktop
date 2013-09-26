@@ -17,6 +17,7 @@ import java.io.OutputStream;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl;
 
@@ -28,7 +29,7 @@ import org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl;
  */
 public class FileURIHandlerWithProgressMonitorImpl extends FileURIHandlerImpl {
 
-    private IProgressMonitor monitor;
+    private IProgressMonitor monitor = new NullProgressMonitor();
 
     /**
      * Default constructor.
