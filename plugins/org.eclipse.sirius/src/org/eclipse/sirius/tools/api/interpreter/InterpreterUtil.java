@@ -11,9 +11,8 @@
 package org.eclipse.sirius.tools.api.interpreter;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Useful operations for interpreters.

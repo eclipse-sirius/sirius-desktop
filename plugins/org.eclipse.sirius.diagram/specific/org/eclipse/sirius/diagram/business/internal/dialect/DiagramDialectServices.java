@@ -22,19 +22,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.DView;
-import org.eclipse.sirius.NodeStyle;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
@@ -46,14 +35,6 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
-import org.eclipse.sirius.description.AdditionalLayer;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramExtensionDescription;
-import org.eclipse.sirius.description.DiagramImportDescription;
-import org.eclipse.sirius.description.Layer;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationExtensionDescription;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionQuery;
 import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizerFactory;
@@ -68,6 +49,24 @@ import org.eclipse.sirius.diagram.tools.internal.graphical.edit.DiagramCreationU
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ChangeLayerActivationCommand;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.DiagramCommandFactoryService;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.NodeStyle;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.AdditionalLayer;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramImportDescription;
+import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
@@ -268,14 +267,14 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     /**
      * {@inheritDoc}
      */
-    public void initRepresentations(final Sirius vp, final EObject semantic) {
+    public void initRepresentations(final Viewpoint vp, final EObject semantic) {
         super.initRepresentations(semantic, vp, DiagramDescription.class);
     }
 
     /**
      * {@inheritDoc}
      */
-    public void initRepresentations(final Sirius vp, final EObject semantic, IProgressMonitor monitor) {
+    public void initRepresentations(final Viewpoint vp, final EObject semantic, IProgressMonitor monitor) {
         super.initRepresentations(semantic, vp, DiagramDescription.class, monitor);
     }
 
@@ -372,7 +371,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
      * {@inheritDoc}
      */
     @Override
-    public void updateRepresentationsExtendedBy(final Session session, final Sirius viewpoint, final boolean activated) {
+    public void updateRepresentationsExtendedBy(final Session session, final Viewpoint viewpoint, final boolean activated) {
         final EList<RepresentationExtensionDescription> extensions = viewpoint.getOwnedRepresentationExtensions();
 
         for (final DView view : session.getOwnedViews()) {
@@ -433,7 +432,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.description.RepresentationDescription)
+     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
      */
     public boolean handles(RepresentationDescription representationDescription) {
         return (representationDescription instanceof DiagramDescription) || (representationDescription instanceof DiagramImportDescription);

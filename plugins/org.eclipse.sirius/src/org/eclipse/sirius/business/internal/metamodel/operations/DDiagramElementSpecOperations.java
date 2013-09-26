@@ -11,9 +11,8 @@
 package org.eclipse.sirius.business.internal.metamodel.operations;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Implementation of DDiagramElement.java.

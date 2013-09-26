@@ -18,13 +18,8 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.EdgeTarget;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
@@ -33,13 +28,17 @@ import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.business.internal.experimental.sync.DDiagramSynchronizer;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.MappingBasedDecoration;
-import org.eclipse.sirius.description.SemanticBasedDecoration;
-import org.eclipse.sirius.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.refresh.BestMappingGetter;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.MappingBasedDecoration;
+import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
+import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**

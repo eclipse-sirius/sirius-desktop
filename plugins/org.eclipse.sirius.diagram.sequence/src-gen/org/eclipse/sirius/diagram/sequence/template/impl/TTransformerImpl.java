@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
 import org.eclipse.sirius.diagram.sequence.template.TTransformer;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 

@@ -15,10 +15,10 @@ import java.util.Iterator;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DMappingBased;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.viewpoint.DMappingBased;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 
 /**
  * A class aggregating all the queries (read-only!) having a

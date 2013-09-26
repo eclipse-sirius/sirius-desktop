@@ -39,17 +39,17 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DView;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * A {@link ResourceSetListener} to update the
- * {@link SiriusPackage#DANALYSIS__MODELS} feature according changes in
+ * {@link ViewpointPackage#DANALYSIS__MODELS} feature according changes in
  * representations resources. This class also contains some methods to load + *
  * resources and detects new semantic resources.
  * 
@@ -111,7 +111,7 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl implements Resou
             Set<EObject> rootSemanticResourceElts = entry.getValue();
             if (!dAnalysis.getModels().containsAll(rootSemanticResourceElts)) {
                 rootSemanticResourceElts.removeAll(dAnalysis.getModels());
-                Command refreshDAnalysisCmd = AddCommand.create(event.getEditingDomain(), dAnalysis, SiriusPackage.Literals.DANALYSIS__MODELS, rootSemanticResourceElts);
+                Command refreshDAnalysisCmd = AddCommand.create(event.getEditingDomain(), dAnalysis, ViewpointPackage.Literals.DANALYSIS__MODELS, rootSemanticResourceElts);
                 refreshDAnalysisCmds.append(refreshDAnalysisCmd);
 
             }
@@ -190,8 +190,8 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl implements Resou
         List<Resource> resolvedResources = Lists.newArrayList();
         for (DAnalysis dAnalysis : allAnalysis) {
             for (DView dView : dAnalysis.getOwnedViews()) {
-                if (dView.getSirius() != null && dView.getSirius().eResource() != null) {
-                    Resource vsmResource = dView.getSirius().eResource();
+                if (dView.getViewpoint() != null && dView.getViewpoint().eResource() != null) {
+                    Resource vsmResource = dView.getViewpoint().eResource();
                     if (!resolvedResources.contains(vsmResource)) {
                         ModelUtils.resolveAll(vsmResource, true);
                         resolvedResources.add(vsmResource);

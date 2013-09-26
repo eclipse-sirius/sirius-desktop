@@ -21,15 +21,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.sirius.DLabelled;
-import org.eclipse.sirius.DMappingBased;
-import org.eclipse.sirius.DRefreshable;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.DStylizable;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.description.RepresentationElementMapping;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeElementSynchronizer;
 import org.eclipse.sirius.tree.DTreeElementUpdater;
@@ -41,6 +32,14 @@ import org.eclipse.sirius.tree.description.StyleUpdater;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.tree.description.TreeItemUpdater;
 import org.eclipse.sirius.tree.description.TreeMapping;
+import org.eclipse.sirius.viewpoint.DLabelled;
+import org.eclipse.sirius.viewpoint.DMappingBased;
+import org.eclipse.sirius.viewpoint.DRefreshable;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -48,25 +47,23 @@ import org.eclipse.sirius.tree.description.TreeMapping;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getName <em>Name
- * </em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getSemanticElements
  * <em>Semantic Elements</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getTreeElementMapping
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getTreeElementMapping
  * <em>Tree Element Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#isExpanded <em>
- * Expanded</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getOwnedStyle <em>
- * Owned Style</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getActualMapping
- * <em>Actual Mapping</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#isExpanded <em>Expanded
+ * </em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getOwnedStyle <em>Owned
+ * Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getActualMapping <em>
+ * Actual Mapping</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getContainer <em>
  * Container</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getStyleUpdater <em>
  * Style Updater</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getUpdater <em>
- * Updater</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeItemImpl#getUpdater <em>Updater
+ * </em>}</li>
  * </ul>
  * </p>
  * 
@@ -333,7 +330,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
     public DTreeItemContainer getContainer() {
         if (eContainerFeatureID() != TreePackage.DTREE_ITEM__CONTAINER)
             return null;
-        return (DTreeItemContainer) eContainer();
+        return (DTreeItemContainer) eInternalContainer();
     }
 
     /**
@@ -693,9 +690,9 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
         if (baseClass == DRepresentationElement.class) {
             switch (derivedFeatureID) {
             case TreePackage.DTREE_ITEM__NAME:
-                return SiriusPackage.DREPRESENTATION_ELEMENT__NAME;
+                return ViewpointPackage.DREPRESENTATION_ELEMENT__NAME;
             case TreePackage.DTREE_ITEM__SEMANTIC_ELEMENTS:
-                return SiriusPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS;
+                return ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS;
             default:
                 return -1;
             }
@@ -750,9 +747,9 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
         }
         if (baseClass == DRepresentationElement.class) {
             switch (baseFeatureID) {
-            case SiriusPackage.DREPRESENTATION_ELEMENT__NAME:
+            case ViewpointPackage.DREPRESENTATION_ELEMENT__NAME:
                 return TreePackage.DTREE_ITEM__NAME;
-            case SiriusPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS:
+            case ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS:
                 return TreePackage.DTREE_ITEM__SEMANTIC_ELEMENTS;
             default:
                 return -1;

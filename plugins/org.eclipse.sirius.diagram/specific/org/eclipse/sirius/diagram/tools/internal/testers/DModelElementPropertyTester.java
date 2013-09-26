@@ -13,9 +13,8 @@ package org.eclipse.sirius.diagram.tools.internal.testers;
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * DModel property tester.

@@ -12,9 +12,8 @@ package org.eclipse.sirius.diagram.ui.tools.internal.layout.diagram;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.sirius.DEdge;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.EdgeLayoutDataKey;
+import org.eclipse.sirius.viewpoint.DEdge;
 
 /**
  * Kind of key use to store the layout data corresponding to an {@link DEdge}.

@@ -45,11 +45,9 @@ import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.internal.session.ReloadingPolicyImpl;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilter;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilterManager;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
@@ -59,6 +57,8 @@ import org.eclipse.sirius.ui.business.api.session.EditorNameAdapter;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.internal.dialect.editor.DialectEditorCloser;
 import org.eclipse.sirius.ui.tools.internal.util.SessionCallBackWithUI;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * An {@link EditingSession} is responsible of keeping track of the opened
@@ -464,7 +464,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.session.IEditingSession#getEditor(org.eclipse.sirius.DRepresentation)
+     * @see org.eclipse.sirius.ui.business.api.session.IEditingSession#getEditor(org.eclipse.sirius.viewpoint.DRepresentation)
      */
     public DialectEditor getEditor(final DRepresentation representation) {
         for (final DialectEditor editorPart : this.editors) {

@@ -23,8 +23,8 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.diagram.tools.internal.clipboard.SiriusClipboardManager;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * A copy command which is a proxy to {@link CopyToClipboardCommand} but set the

@@ -16,8 +16,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A manager for the menu builders contributions.

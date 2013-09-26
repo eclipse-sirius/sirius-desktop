@@ -28,10 +28,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
-
-import org.eclipse.sirius.BracketEdgeStyle;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.EdgeStyle;
 import org.eclipse.sirius.diagram.business.internal.bracket.BracketConnectionAnchor;
 import org.eclipse.sirius.diagram.business.internal.bracket.BracketConnectionQuery;
 import org.eclipse.sirius.diagram.business.internal.bracket.BracketRelativeBendpoint;
@@ -48,6 +44,9 @@ import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.internal.edit.policies.DEdgeItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.BracketConnectionRouter;
+import org.eclipse.sirius.viewpoint.BracketEdgeStyle;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.EdgeStyle;
 
 /**
  * A custom edge edit part to override router, anchors, anchors decorations and

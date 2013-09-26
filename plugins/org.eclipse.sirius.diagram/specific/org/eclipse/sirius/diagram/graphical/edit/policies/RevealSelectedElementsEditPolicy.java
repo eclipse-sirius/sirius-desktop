@@ -15,11 +15,10 @@ import java.util.Set;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.gef.Request;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Edit policy to reveal only user selected elements.

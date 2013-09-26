@@ -15,11 +15,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.description.EdgeMapping;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 
 /**
  * Validates mandatory DomainClass attributes.
@@ -43,7 +42,7 @@ public class MandatoryDomainClassConstraint extends AbstractConstraint {
 
         // In the case of batch mode.
         if (eventType == EMFEventType.NULL) {
-            if (eObj.eClass().getEPackage().getNsURI().startsWith(SiriusPackage.eINSTANCE.getNsURI()) && elementContainedInMetamodelAwareSirius(eObj)) {
+            if (eObj.eClass().getEPackage().getNsURI().startsWith(ViewpointPackage.eINSTANCE.getNsURI()) && elementContainedInMetamodelAwareSirius(eObj)) {
                 final EStructuralFeature domainClassFeature = eObj.eClass().getEStructuralFeature(DOMAIN_CLASS_FEATURE);
                 if (domainClassFeature != null) {
                     final Object[] result = checkError(domainClassFeature, eObj);

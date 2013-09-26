@@ -14,11 +14,10 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DFeatureExtension;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.description.FeatureExtensionDescription;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.DFeatureExtension;
+import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Stateless services.
@@ -40,7 +39,7 @@ public interface FeatureExtensionServices {
      * @return a List of T instances or <code>null</code> if the input class is
      *         not the expected one.
      */
-    <T extends FeatureExtensionDescription> List<T> getFeatureExtensionDescriptions(final Sirius viewpoint, final Class<T> clazz);
+    <T extends FeatureExtensionDescription> List<T> getFeatureExtensionDescriptions(final Viewpoint viewpoint, final Class<T> clazz);
 
     /**
      * Save custom data.

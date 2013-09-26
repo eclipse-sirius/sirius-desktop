@@ -17,10 +17,10 @@ import org.eclipse.emf.ecore.EObject;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.ArrangeConstraint;
-import org.eclipse.sirius.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.tools.api.migration.DiagramCrossReferencer;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.ArrangeConstraint;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
  * Diagram element state for {@link AbstractDNode}.
@@ -53,8 +53,8 @@ public abstract class AbstractAbstractDNodeDiagramElementState<D extends Abstrac
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.diagram.tools.internal.actions.migration.state.AbstractDiagramElementState#storeElementState(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.sirius.description.DiagramElementMapping,
-     *      org.eclipse.sirius.DDiagramElement)
+     *      org.eclipse.sirius.viewpoint.description.DiagramElementMapping,
+     *      org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     @Override
     public void storeElementState(EObject target, DiagramElementMapping mapping, D element) {
@@ -69,7 +69,7 @@ public abstract class AbstractAbstractDNodeDiagramElementState<D extends Abstrac
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.internal.actions.migration.state.AbstractDiagramElementState#restoreElementState(org.eclipse.sirius.DDiagramElement)
+     * @see org.eclipse.sirius.diagram.tools.internal.actions.migration.state.AbstractDiagramElementState#restoreElementState(org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     @Override
     public void restoreElementState(D element) {

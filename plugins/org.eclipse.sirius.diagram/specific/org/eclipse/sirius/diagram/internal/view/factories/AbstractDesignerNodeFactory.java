@@ -14,9 +14,8 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.view.factories.AbstractShapeViewFactory;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.DStylizable;
 import org.eclipse.sirius.diagram.internal.refresh.diagram.ViewPropertiesSynchronizer;
+import org.eclipse.sirius.viewpoint.DStylizable;
 
 /**
  * Creates and decorates GMF views.

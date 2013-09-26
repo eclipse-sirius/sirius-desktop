@@ -27,15 +27,14 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.eclipse.sirius.SiriusFactory;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
+ * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
@@ -46,7 +45,7 @@ public class DTableElementStyleItemProvider extends ItemProviderAdapter implemen
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * This constructs an instance from a factory and a notifier. <!--
@@ -222,9 +221,9 @@ public class DTableElementStyleItemProvider extends ItemProviderAdapter implemen
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(TablePackage.Literals.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR, SiriusFactory.eINSTANCE.createRGBValues()));
+        newChildDescriptors.add(createChildParameter(TablePackage.Literals.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR, ViewpointFactory.eINSTANCE.createRGBValues()));
 
-        newChildDescriptors.add(createChildParameter(TablePackage.Literals.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR, SiriusFactory.eINSTANCE.createRGBValues()));
+        newChildDescriptors.add(createChildParameter(TablePackage.Literals.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR, ViewpointFactory.eINSTANCE.createRGBValues()));
     }
 
     /**

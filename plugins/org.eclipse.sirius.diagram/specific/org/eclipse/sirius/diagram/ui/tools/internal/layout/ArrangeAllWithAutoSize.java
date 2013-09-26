@@ -38,9 +38,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DNodeContainer;
 import org.eclipse.sirius.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramBorderNodeEditPart;
@@ -58,6 +55,9 @@ import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramPrefer
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.AbstractCompositeLayoutProvider;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
 
 /**
  * This class capture all the needed changes to make to the arrange all behavior

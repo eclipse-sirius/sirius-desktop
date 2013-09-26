@@ -13,20 +13,19 @@ package org.eclipse.sirius.business.internal.metamodel.description.spec;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DMappingBased;
-import org.eclipse.sirius.EdgeStyle;
-import org.eclipse.sirius.EdgeTarget;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
 import org.eclipse.sirius.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.impl.EdgeMappingImpl;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DMappingBased;
+import org.eclipse.sirius.viewpoint.EdgeStyle;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.impl.EdgeMappingImpl;
 
 /**
  * Implementation of EdgeMapping.
@@ -38,8 +37,8 @@ public class EdgeMappingSpec extends EdgeMappingImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.EdgeMappingImpl#createEdge(org.eclipse.sirius.EdgeTarget,
-     *      org.eclipse.sirius.EdgeTarget, org.eclipse.emf.ecore.EObject)
+     * @see org.eclipse.sirius.viewpoint.description.impl.EdgeMappingImpl#createEdge(org.eclipse.sirius.viewpoint.EdgeTarget,
+     *      org.eclipse.sirius.viewpoint.EdgeTarget, org.eclipse.emf.ecore.EObject)
      */
     @Override
     public DEdge createEdge(final EdgeTarget source, final EdgeTarget target, final EObject semanticTarget) {
@@ -49,8 +48,8 @@ public class EdgeMappingSpec extends EdgeMappingImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.EdgeMappingImpl#createEdge(org.eclipse.sirius.EdgeTarget,
-     *      org.eclipse.sirius.EdgeTarget, org.eclipse.emf.ecore.EObject,
+     * @see org.eclipse.sirius.viewpoint.description.impl.EdgeMappingImpl#createEdge(org.eclipse.sirius.viewpoint.EdgeTarget,
+     *      org.eclipse.sirius.viewpoint.EdgeTarget, org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EObject)
      */
     @Override
@@ -62,7 +61,7 @@ public class EdgeMappingSpec extends EdgeMappingImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.EdgeMappingImpl#getBestStyle(org.eclipse.emf.ecore.EObject,
+     * @see org.eclipse.sirius.viewpoint.description.impl.EdgeMappingImpl#getBestStyle(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
      */
     @Override
@@ -74,7 +73,7 @@ public class EdgeMappingSpec extends EdgeMappingImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.EdgeMappingImpl#updateEdge(org.eclipse.sirius.DEdge)
+     * @see org.eclipse.sirius.viewpoint.description.impl.EdgeMappingImpl#updateEdge(org.eclipse.sirius.viewpoint.DEdge)
      */
     @Override
     public void updateEdge(final DEdge dEdge) {
@@ -85,8 +84,8 @@ public class EdgeMappingSpec extends EdgeMappingImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.EdgeMappingImpl#getEdgeTargetCandidates(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.sirius.DDiagram)
+     * @see org.eclipse.sirius.viewpoint.description.impl.EdgeMappingImpl#getEdgeTargetCandidates(org.eclipse.emf.ecore.EObject,
+     *      org.eclipse.sirius.viewpoint.DDiagram)
      */
     @Override
     public EList<EObject> getEdgeTargetCandidates(final EObject semanticOrigin, final DDiagram diagram) {
@@ -97,8 +96,8 @@ public class EdgeMappingSpec extends EdgeMappingImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.EdgeMappingImpl#getEdgeSourceCandidates(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.sirius.DDiagram)
+     * @see org.eclipse.sirius.viewpoint.description.impl.EdgeMappingImpl#getEdgeSourceCandidates(org.eclipse.emf.ecore.EObject,
+     *      org.eclipse.sirius.viewpoint.DDiagram)
      */
     @Override
     public EList<EObject> getEdgeSourceCandidates(final EObject semanticOrigin, final DDiagram diagram) {
@@ -113,7 +112,7 @@ public class EdgeMappingSpec extends EdgeMappingImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramElementMappingImpl#checkPrecondition(org.eclipse.emf.ecore.EObject,
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramElementMappingImpl#checkPrecondition(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
      */
     @Override
@@ -124,7 +123,7 @@ public class EdgeMappingSpec extends EdgeMappingImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramElementMappingImpl#getAllMappings()
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramElementMappingImpl#getAllMappings()
      */
     @Override
     public EList<DiagramElementMapping> getAllMappings() {
@@ -134,7 +133,7 @@ public class EdgeMappingSpec extends EdgeMappingImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramElementMappingImpl#isFrom(org.eclipse.sirius.DMappingBased)
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramElementMappingImpl#isFrom(org.eclipse.sirius.viewpoint.DMappingBased)
      */
     @Override
     public boolean isFrom(final DMappingBased element) {
@@ -144,7 +143,7 @@ public class EdgeMappingSpec extends EdgeMappingImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.EdgeMappingImpl#toString()
+     * @see org.eclipse.sirius.viewpoint.description.impl.EdgeMappingImpl#toString()
      */
     @Override
     public String toString() {

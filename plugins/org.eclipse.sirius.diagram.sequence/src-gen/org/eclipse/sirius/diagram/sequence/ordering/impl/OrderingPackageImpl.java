@@ -16,8 +16,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl;
@@ -33,6 +31,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 import org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -128,7 +127,7 @@ public class OrderingPackageImpl extends EPackageImpl implements OrderingPackage
         isInited = true;
 
         // Initialize simple dependencies
-        SiriusPackage.eINSTANCE.eClass();
+        ViewpointPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
         SequencePackageImpl theSequencePackage = (SequencePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(SequencePackage.eNS_URI) instanceof SequencePackageImpl ? EPackage.Registry.INSTANCE

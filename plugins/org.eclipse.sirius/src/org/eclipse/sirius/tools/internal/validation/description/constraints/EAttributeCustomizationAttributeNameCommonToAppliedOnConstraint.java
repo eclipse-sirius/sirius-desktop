@@ -18,8 +18,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.validation.IValidationContext;
-
-import org.eclipse.sirius.description.EAttributeCustomization;
+import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
 
 /**
  * A

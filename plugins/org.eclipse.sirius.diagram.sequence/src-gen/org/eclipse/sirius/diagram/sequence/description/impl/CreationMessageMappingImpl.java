@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.sequence.description.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.sirius.diagram.sequence.description.CreationMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 

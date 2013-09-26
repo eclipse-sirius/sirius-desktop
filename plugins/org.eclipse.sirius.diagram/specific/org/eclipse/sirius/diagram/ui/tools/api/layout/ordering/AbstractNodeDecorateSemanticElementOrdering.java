@@ -11,9 +11,8 @@
 package org.eclipse.sirius.diagram.ui.tools.api.layout.ordering;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * This class orders a list of {@link DSemanticDecorator}s that represent a
@@ -45,8 +44,8 @@ public abstract class AbstractNodeDecorateSemanticElementOrdering extends Abstra
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.AbstractViewNodeOrdering#compare(org.eclipse.sirius.AbstractDNode,
-     *      org.eclipse.sirius.AbstractDNode)
+     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.AbstractViewNodeOrdering#compare(org.eclipse.sirius.viewpoint.AbstractDNode,
+     *      org.eclipse.sirius.viewpoint.AbstractDNode)
      */
     @Override
     public int compare(final AbstractDNode vp1, final AbstractDNode vp2) {
@@ -58,7 +57,7 @@ public abstract class AbstractNodeDecorateSemanticElementOrdering extends Abstra
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.AbstractViewNodeOrdering#isAbleToManageAbstractViewNode(org.eclipse.sirius.AbstractDNode)
+     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.AbstractViewNodeOrdering#isAbleToManageAbstractViewNode(org.eclipse.sirius.viewpoint.AbstractDNode)
      */
     @Override
     public final boolean isAbleToManageAbstractViewNode(final AbstractDNode node) {

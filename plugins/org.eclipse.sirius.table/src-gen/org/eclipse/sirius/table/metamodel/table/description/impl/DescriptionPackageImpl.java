@@ -16,10 +16,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.description.contribution.ContributionPackage;
-import org.eclipse.sirius.description.tool.ToolPackage;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription;
@@ -37,7 +33,6 @@ import org.eclipse.sirius.table.metamodel.table.description.DeleteTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
-import org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription;
 import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle;
@@ -53,6 +48,8 @@ import org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescr
 import org.eclipse.sirius.table.metamodel.table.description.TableTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
 import org.eclipse.sirius.table.metamodel.table.impl.TablePackageImpl;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -66,7 +63,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -81,13 +78,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     private EClass editionTableDescriptionEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass editionTableExtensionDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -323,7 +313,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         isInited = true;
 
         // Initialize simple dependencies
-        SiriusPackage.eINSTANCE.eClass();
+        ViewpointPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
         TablePackageImpl theTablePackage = (TablePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(TablePackage.eNS_URI) instanceof TablePackageImpl ? EPackage.Registry.INSTANCE
@@ -532,60 +522,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      */
     public EReference getEditionTableDescription_AllColumnMappings() {
         return (EReference) editionTableDescriptionEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getEditionTableExtensionDescription() {
-        return editionTableExtensionDescriptionEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getEditionTableExtensionDescription_OwnedLineMappings() {
-        return (EReference) editionTableExtensionDescriptionEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getEditionTableExtensionDescription_OwnedColumnMappings() {
-        return (EReference) editionTableExtensionDescriptionEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getEditionTableExtensionDescription_OwnedTools() {
-        return (EReference) editionTableExtensionDescriptionEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getEditionTableExtensionDescription_PreconditionExpression() {
-        return (EAttribute) editionTableExtensionDescriptionEClass.getEStructuralFeatures().get(3);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getEditionTableExtensionDescription_DomainClass() {
-        return (EAttribute) editionTableExtensionDescriptionEClass.getEStructuralFeatures().get(4);
     }
 
     /**
@@ -1405,13 +1341,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         createEReference(editionTableDescriptionEClass, EDITION_TABLE_DESCRIPTION__REUSED_COLUMN_MAPPINGS);
         createEReference(editionTableDescriptionEClass, EDITION_TABLE_DESCRIPTION__ALL_COLUMN_MAPPINGS);
 
-        editionTableExtensionDescriptionEClass = createEClass(EDITION_TABLE_EXTENSION_DESCRIPTION);
-        createEReference(editionTableExtensionDescriptionEClass, EDITION_TABLE_EXTENSION_DESCRIPTION__OWNED_LINE_MAPPINGS);
-        createEReference(editionTableExtensionDescriptionEClass, EDITION_TABLE_EXTENSION_DESCRIPTION__OWNED_COLUMN_MAPPINGS);
-        createEReference(editionTableExtensionDescriptionEClass, EDITION_TABLE_EXTENSION_DESCRIPTION__OWNED_TOOLS);
-        createEAttribute(editionTableExtensionDescriptionEClass, EDITION_TABLE_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION);
-        createEAttribute(editionTableExtensionDescriptionEClass, EDITION_TABLE_EXTENSION_DESCRIPTION__DOMAIN_CLASS);
-
         crossTableDescriptionEClass = createEClass(CROSS_TABLE_DESCRIPTION);
         createEReference(crossTableDescriptionEClass, CROSS_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS);
         createEReference(crossTableDescriptionEClass, CROSS_TABLE_DESCRIPTION__INTERSECTION);
@@ -1549,12 +1478,11 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         setNsURI(eNS_URI);
 
         // Obtain other dependent packages
-        org.eclipse.sirius.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.description.DescriptionPackage) EPackage.Registry.INSTANCE
-                .getEPackage(org.eclipse.sirius.description.DescriptionPackage.eNS_URI);
+        org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eNS_URI);
         ToolPackage theToolPackage = (ToolPackage) EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI);
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
-        ContributionPackage theContributionPackage = (ContributionPackage) EPackage.Registry.INSTANCE.getEPackage(ContributionPackage.eNS_URI);
-        SiriusPackage theSiriusPackage = (SiriusPackage) EPackage.Registry.INSTANCE.getEPackage(SiriusPackage.eNS_URI);
+        ViewpointPackage theViewpointPackage = (ViewpointPackage) EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
 
         // Create type parameters
 
@@ -1565,9 +1493,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         tableDescriptionEClass.getESuperTypes().add(theDescriptionPackage_1.getDocumentedElement());
         tableDescriptionEClass.getESuperTypes().add(theDescriptionPackage_1.getEndUserDocumentedElement());
         editionTableDescriptionEClass.getESuperTypes().add(this.getTableDescription());
-        editionTableDescriptionEClass.getESuperTypes().add(theContributionPackage.getContributionProvider());
-        editionTableExtensionDescriptionEClass.getESuperTypes().add(theDescriptionPackage_1.getRepresentationExtensionDescription());
-        editionTableExtensionDescriptionEClass.getESuperTypes().add(theContributionPackage.getContributionProvider());
         crossTableDescriptionEClass.getESuperTypes().add(this.getTableDescription());
         tableMappingEClass.getESuperTypes().add(theDescriptionPackage_1.getRepresentationElementMapping());
         lineMappingEClass.getESuperTypes().add(this.getTableMapping());
@@ -1652,20 +1577,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEReference(getEditionTableDescription_AllColumnMappings(), this.getFeatureColumnMapping(), null, "allColumnMappings", null, 1, -1, EditionTableDescription.class, IS_TRANSIENT,
                 IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
         getEditionTableDescription_AllColumnMappings().getEKeys().add(theDescriptionPackage_1.getIdentifiedElement_Name());
-
-        initEClass(editionTableExtensionDescriptionEClass, EditionTableExtensionDescription.class, "EditionTableExtensionDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getEditionTableExtensionDescription_OwnedLineMappings(), this.getLineMapping(), null, "ownedLineMappings", null, 1, -1, EditionTableExtensionDescription.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        getEditionTableExtensionDescription_OwnedLineMappings().getEKeys().add(theDescriptionPackage_1.getIdentifiedElement_Name());
-        initEReference(getEditionTableExtensionDescription_OwnedColumnMappings(), this.getFeatureColumnMapping(), null, "ownedColumnMappings", null, 1, -1, EditionTableExtensionDescription.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        getEditionTableExtensionDescription_OwnedColumnMappings().getEKeys().add(theDescriptionPackage_1.getIdentifiedElement_Name());
-        initEReference(getEditionTableExtensionDescription_OwnedTools(), this.getTableTool(), null, "ownedTools", null, 0, -1, EditionTableExtensionDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getEditionTableExtensionDescription_PreconditionExpression(), theDescriptionPackage_1.getInterpretedExpression(), "preconditionExpression", "", 0, 1,
-                EditionTableExtensionDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getEditionTableExtensionDescription_DomainClass(), theDescriptionPackage_1.getTypeName(), "domainClass", null, 1, 1, EditionTableExtensionDescription.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(crossTableDescriptionEClass, CrossTableDescription.class, "CrossTableDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getCrossTableDescription_OwnedColumnMappings(), this.getElementColumnMapping(), null, "ownedColumnMappings", null, 1, -1, CrossTableDescription.class, !IS_TRANSIENT,
@@ -1810,7 +1721,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEClass(foregroundStyleDescriptionEClass, ForegroundStyleDescription.class, "ForegroundStyleDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getForegroundStyleDescription_LabelSize(), theEcorePackage.getEInt(), "labelSize", "12", 0, 1, ForegroundStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getForegroundStyleDescription_LabelFormat(), theSiriusPackage.getFontFormat(), "labelFormat", "normal", 0, 1, ForegroundStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
+        initEAttribute(getForegroundStyleDescription_LabelFormat(), theViewpointPackage.getFontFormat(), "labelFormat", "normal", 0, 1, ForegroundStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getForegroundStyleDescription_ForeGroundColor(), theDescriptionPackage_1.getColorDescription(), null, "foreGroundColor", null, 1, 1, ForegroundStyleDescription.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1860,7 +1771,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
     protected void createReturnTypeAnnotations() {
         String source = "http://www.eclipse.org/sirius/interpreted/expression/returnType";
         addAnnotation(getTableDescription_PreconditionExpression(), source, new String[] { "returnType", "boolean" });
-        addAnnotation(getEditionTableExtensionDescription_PreconditionExpression(), source, new String[] { "returnType", "boolean" });
         addAnnotation(getTableMapping_SemanticElements(), source, new String[] { "returnType", "a Collection<EObject> or an EObject." });
         addAnnotation(getLineMapping_SemanticCandidatesExpression(), source, new String[] { "returnType", "a Collection<EObject> or an EObject." });
         addAnnotation(getLineMapping_HeaderLabelExpression(), source, new String[] { "returnType", "a string." });
@@ -1888,7 +1798,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
     protected void createVariablesAnnotations() {
         String source = "http://www.eclipse.org/sirius/interpreted/expression/variables";
         addAnnotation(getTableDescription_PreconditionExpression(), source, new String[] {});
-        addAnnotation(getEditionTableExtensionDescription_PreconditionExpression(), source, new String[] {});
         addAnnotation(getTableMapping_SemanticElements(), source, new String[] { "view", "table.DTableElement | current DTableElement (DCell, DColumn, DLine, ...).", "containerView",
                 "ecore.EObject | container of the current DTableElement (variable is available if container is not null).", "container",
                 "ecore.EObject | semantic target of containerView (if it is a DSemanticDecorator)." });

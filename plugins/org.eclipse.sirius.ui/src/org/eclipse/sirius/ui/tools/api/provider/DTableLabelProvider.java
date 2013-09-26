@@ -28,8 +28,8 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.ui.business.api.views.properties.tabbed.LabelProviderProviderService;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Label provider of the DTable tabbed property sheet page.

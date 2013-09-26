@@ -21,10 +21,9 @@ import org.eclipse.jface.viewers.DecoratingLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.graphics.Image;
-
 import org.eclipse.sirius.common.ui.business.api.views.properties.tabbed.LabelProviderProviderService;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * @was-generated

@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.api.graphical.edit.palette;
 
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
  * A filter allows one to hide tools in the palette.

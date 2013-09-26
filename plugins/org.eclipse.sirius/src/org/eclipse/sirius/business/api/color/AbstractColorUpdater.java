@@ -11,15 +11,14 @@
 package org.eclipse.sirius.business.api.color;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.description.ColorDescription;
-import org.eclipse.sirius.description.ComputedColor;
-import org.eclipse.sirius.description.FixedColor;
-import org.eclipse.sirius.description.InterpolatedColor;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
+import org.eclipse.sirius.viewpoint.description.ComputedColor;
+import org.eclipse.sirius.viewpoint.description.FixedColor;
+import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
 
 /**
  * Base classe for colors updating.
@@ -44,7 +43,7 @@ public class AbstractColorUpdater {
                 return new RGBValuesProvider().getRGBValues(descValue, context, interpreter);
             }
         }
-        return SiriusFactory.eINSTANCE.createRGBValues();
+        return ViewpointFactory.eINSTANCE.createRGBValues();
     }
 
     /**
@@ -63,7 +62,7 @@ public class AbstractColorUpdater {
                 return new RGBValuesProvider().getRGBValues(descValue, context, interpreter);
             }
         }
-        return SiriusFactory.eINSTANCE.createRGBValues();
+        return ViewpointFactory.eINSTANCE.createRGBValues();
     }
 
     /**
@@ -85,7 +84,7 @@ public class AbstractColorUpdater {
      * @return a default rgbvalue.
      */
     protected RGBValues createDefaultRGBValue() {
-        final RGBValues newValues = SiriusFactory.eINSTANCE.createRGBValues();
+        final RGBValues newValues = ViewpointFactory.eINSTANCE.createRGBValues();
         newValues.setRed(209);
         newValues.setGreen(209);
         newValues.setBlue(209);

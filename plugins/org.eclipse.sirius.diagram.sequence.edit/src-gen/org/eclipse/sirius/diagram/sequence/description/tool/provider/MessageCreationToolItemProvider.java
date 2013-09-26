@@ -25,12 +25,11 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.tool.ToolFactory;
-import org.eclipse.sirius.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * This is the item provider adapter for a

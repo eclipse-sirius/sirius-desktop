@@ -53,11 +53,11 @@ import org.eclipse.sirius.business.api.session.SessionManagerListener2;
 import org.eclipse.sirius.business.internal.modelingproject.manager.InitializeModelingProjectJob;
 import org.eclipse.sirius.business.internal.modelingproject.marker.ModelingMarker;
 import org.eclipse.sirius.business.internal.query.ModelingProjectQuery;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.ModelingProjectFileQuery;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * A manager for modeling projects.

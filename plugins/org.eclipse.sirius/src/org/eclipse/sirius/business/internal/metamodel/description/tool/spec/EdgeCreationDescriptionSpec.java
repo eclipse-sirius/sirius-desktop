@@ -12,11 +12,10 @@ package org.eclipse.sirius.business.internal.metamodel.description.tool.spec;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.EdgeTarget;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.tool.impl.EdgeCreationDescriptionImpl;
 import org.eclipse.sirius.tools.api.refresh.BestMappingGetter;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.tool.impl.EdgeCreationDescriptionImpl;
 
 /**
  * Implementation of EdgeCreationDescriptionImpl.java.
@@ -27,8 +26,8 @@ public class EdgeCreationDescriptionSpec extends EdgeCreationDescriptionImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.impl.EdgeCreationDescriptionImpl#getBestMapping(org.eclipse.sirius.EdgeTarget,
-     *      org.eclipse.sirius.EdgeTarget, org.eclipse.emf.common.util.EList)
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.EdgeCreationDescriptionImpl#getBestMapping(org.eclipse.sirius.viewpoint.EdgeTarget,
+     *      org.eclipse.sirius.viewpoint.EdgeTarget, org.eclipse.emf.common.util.EList)
      */
     @Override
     public EdgeMapping getBestMapping(final EdgeTarget source, final EdgeTarget target, final EList<EObject> createdElements) {

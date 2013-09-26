@@ -21,15 +21,14 @@ import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.common.ui.services.parser.IParserEditStatus;
 import org.eclipse.gmf.runtime.common.ui.services.parser.ParserEditStatus;
 import org.eclipse.osgi.util.NLS;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.internal.metamodel.helper.DiagramElementMappingHelper;
-import org.eclipse.sirius.description.tool.DirectEditLabel;
 import org.eclipse.sirius.diagram.part.Messages;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
 
 /**
  * @was-generated

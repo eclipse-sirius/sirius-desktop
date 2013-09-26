@@ -18,7 +18,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import com.google.common.base.Function;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Common interface for all the elements of a sequence diagram.

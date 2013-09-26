@@ -37,10 +37,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.RepresentationDescription;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 /**
  * A class to update the {@link RepresentationDescription#getMetamodel()}

@@ -25,18 +25,16 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.provider.DRepresentationItemProvider;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.TreeFactory;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.provider.DRepresentationItemProvider;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.sirius.tree.DTree} object. <!-- begin-user-doc --> <!--
- * end-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.sirius.tree.DTree}
+ * object. <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
@@ -79,7 +77,7 @@ public class DTreeItemProvider extends DRepresentationItemProvider implements IE
     protected void addTargetPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_DSemanticDecorator_target_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DSemanticDecorator_target_feature", "_UI_DSemanticDecorator_type"),
-                SiriusPackage.Literals.DSEMANTIC_DECORATOR__TARGET, true, false, true, null, null, null));
+                ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET, true, false, true, null, null, null));
     }
 
     /**

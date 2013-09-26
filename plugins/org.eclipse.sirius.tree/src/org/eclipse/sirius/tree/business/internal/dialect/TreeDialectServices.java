@@ -18,21 +18,15 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
@@ -43,6 +37,11 @@ import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.Global
 import org.eclipse.sirius.tree.business.internal.dialect.description.TreeInterpretedExpressionQuery;
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.tools.internal.command.TreeCommandFactory;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
@@ -108,14 +107,14 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
     /**
      * {@inheritDoc}
      */
-    public void initRepresentations(Sirius vp, EObject semantic) {
+    public void initRepresentations(Viewpoint vp, EObject semantic) {
         super.initRepresentations(semantic, vp, TreeDescription.class);
     }
 
     /**
      * {@inheritDoc}
      */
-    public void initRepresentations(Sirius vp, EObject semantic, IProgressMonitor monitor) {
+    public void initRepresentations(Viewpoint vp, EObject semantic, IProgressMonitor monitor) {
         super.initRepresentations(semantic, vp, TreeDescription.class, monitor);
     }
 
@@ -247,7 +246,7 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.description.RepresentationDescription)
+     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
      */
     public boolean handles(RepresentationDescription representationDescription) {
         return representationDescription instanceof TreeDescription;

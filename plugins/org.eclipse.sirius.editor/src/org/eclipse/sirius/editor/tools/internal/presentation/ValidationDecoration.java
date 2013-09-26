@@ -24,11 +24,10 @@ import org.eclipse.jface.viewers.IDecorationContext;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.LabelDecorator;
 import org.eclipse.jface.viewers.LabelProviderChangedEvent;
+import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-
-import org.eclipse.sirius.provider.SiriusEditPlugin;
-import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
 
 public class ValidationDecoration extends LabelDecorator {
     /**

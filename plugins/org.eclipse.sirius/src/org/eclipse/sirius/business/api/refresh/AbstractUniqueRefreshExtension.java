@@ -21,22 +21,22 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DNodeList;
-import org.eclipse.sirius.DNodeListElement;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.helper.refresh.EdgeFilter;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.viewpoint.DNodeListElement;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
 
 /**
  * A refresh extension that constrained all views that are issued from the
@@ -50,7 +50,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
+     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.viewpoint.DDiagram)
      */
     public void beforeRefresh(final DDiagram viewPoint) {
         // Do nothing.
@@ -59,7 +59,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
+     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.viewpoint.DDiagram)
      */
     public void postRefresh(final DDiagram diagram) {
         final DiagramDescription desc = diagram.getDescription();

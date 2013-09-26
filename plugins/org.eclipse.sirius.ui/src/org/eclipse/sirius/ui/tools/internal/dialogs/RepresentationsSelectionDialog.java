@@ -31,8 +31,8 @@ import org.eclipse.swt.widgets.Shell;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * A dialog which lets user select representations among a list of candidates.

@@ -11,8 +11,7 @@
 package org.eclipse.sirius.tree.description;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.sirius.description.tool.MappingBasedToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

@@ -26,8 +26,6 @@ import com.google.common.collect.Maps;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.description.SystemColor;
 import org.eclipse.sirius.table.business.api.query.DCellQuery;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DCellStyle;
@@ -50,6 +48,8 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.description.SystemColor;
 
 /**
  * Utility methods to handle Table models.

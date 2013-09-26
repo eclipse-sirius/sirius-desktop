@@ -13,9 +13,8 @@ package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 import org.eclipse.jface.action.Action;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * This action shows the Eclipse properties View.

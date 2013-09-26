@@ -13,8 +13,7 @@ package org.eclipse.sirius.ui.tools.api.actions.export;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IPath;
-
-import org.eclipse.sirius.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * The interface to implement to contribute an action to execute in instead of

@@ -27,12 +27,6 @@ import org.eclipse.gef.editpolicies.ResizableEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.BundledImage;
-import org.eclipse.sirius.BundledImageShape;
-import org.eclipse.sirius.FontFormat;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.description.SystemColors;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IStyleEditPart;
@@ -42,6 +36,11 @@ import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.BundledImageFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.BundledImage;
+import org.eclipse.sirius.viewpoint.BundledImageShape;
+import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.description.SystemColors;
 
 /**
  * @was-generated
@@ -134,7 +133,7 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
             bif = (BundledImageFigure) BundledImageFigure.createImageFigure((BundledImage) resolveSemanticElement());
         } else {
             SiriusDiagramEditorPlugin.getInstance().logWarning("The element is not a BundledImage");
-            final BundledImage bundle = SiriusFactory.eINSTANCE.createBundledImage();
+            final BundledImage bundle = ViewpointFactory.eINSTANCE.createBundledImage();
             bundle.setShape(BundledImageShape.SQUARE_LITERAL);
             bundle.setLabelFormat(FontFormat.NORMAL_LITERAL);
             bundle.setLabelSize(10);

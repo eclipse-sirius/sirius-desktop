@@ -14,14 +14,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
-
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.Group;
-import org.eclipse.sirius.description.IdentifiedElement;
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.description.TreeMapping;
 import org.eclipse.sirius.tree.description.TreeNavigationDescription;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
  * A label provider for mappings to display their hierarchy.

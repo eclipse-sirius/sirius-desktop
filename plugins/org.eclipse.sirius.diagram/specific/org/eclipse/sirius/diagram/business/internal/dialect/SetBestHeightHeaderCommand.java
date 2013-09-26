@@ -20,7 +20,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
-import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.business.api.diagramtype.HeaderData;
 import org.eclipse.sirius.business.api.diagramtype.IDiagramTypeDescriptor;

@@ -45,19 +45,12 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DragAndDropTarget;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.RemoveDanglingReferencesTask;
 import org.eclipse.sirius.business.api.resource.WorkspaceDragAndDropSupport;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
-import org.eclipse.sirius.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.description.tool.DragSource;
 import org.eclipse.sirius.diagram.business.internal.command.AddLayoutDataToManageCommand;
 import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.business.internal.view.AbstractLayoutData;
@@ -73,6 +66,13 @@ import org.eclipse.sirius.diagram.ui.tools.internal.dnd.DragAndDropWrapper;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DragAndDropTarget;
+import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
+import org.eclipse.sirius.viewpoint.description.tool.DragSource;
 
 /**
  * EditPolicy used to handle Drop of ViewNodes in a DDiagramElementContainer.

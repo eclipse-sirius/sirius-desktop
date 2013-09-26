@@ -32,12 +32,6 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.ContainerCreationDescription;
-import org.eclipse.sirius.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.graphical.edit.policies.CreationUtil;
 import org.eclipse.sirius.diagram.graphical.edit.policies.NodeCreationEditPolicy;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
@@ -65,6 +59,12 @@ import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
 
 /**
  * A node creation edit policy which invokes the ExecutionCreationTool correctly

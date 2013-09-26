@@ -11,10 +11,9 @@
 package org.eclipse.sirius.diagram.sequence.description.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.sirius.description.impl.NodeMappingImpl;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.ObservationPointMapping;
+import org.eclipse.sirius.viewpoint.description.impl.NodeMappingImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

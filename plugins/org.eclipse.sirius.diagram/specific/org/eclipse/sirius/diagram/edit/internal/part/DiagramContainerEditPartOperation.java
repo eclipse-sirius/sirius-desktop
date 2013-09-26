@@ -19,21 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
-
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.BackgroundStyle;
-import org.eclipse.sirius.ContainerStyle;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DStylizable;
-import org.eclipse.sirius.FlatContainerStyle;
-import org.eclipse.sirius.LabelAlignment;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.ShapeContainerStyle;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.WorkspaceImage;
-import org.eclipse.sirius.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.diagram.business.internal.edit.helpers.LabelAlignmentHelper;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.DiagramNameEditPartOperation;
@@ -49,6 +35,19 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangle
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.ui.tools.api.dialogs.ImageFileFormat;
+import org.eclipse.sirius.viewpoint.BackgroundStyle;
+import org.eclipse.sirius.viewpoint.ContainerStyle;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.FlatContainerStyle;
+import org.eclipse.sirius.viewpoint.LabelAlignment;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ShapeContainerStyle;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.WorkspaceImage;
+import org.eclipse.sirius.viewpoint.description.style.ContainerStyleDescription;
 
 /**
  * Implementation of {@link IDiagramContainerEditPart}.

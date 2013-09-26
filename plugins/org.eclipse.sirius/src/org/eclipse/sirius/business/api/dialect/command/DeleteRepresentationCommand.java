@@ -13,10 +13,9 @@ package org.eclipse.sirius.business.api.dialect.command;
 import java.util.Set;
 
 import org.eclipse.emf.transaction.RecordingCommand;
-
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * Specific command to delete the given representations.

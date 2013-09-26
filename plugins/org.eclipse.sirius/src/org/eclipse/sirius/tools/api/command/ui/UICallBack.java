@@ -17,11 +17,10 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.description.tool.SelectModelElementVariable;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 
 /**
  * This interface is called when one need a UI callback, for variables

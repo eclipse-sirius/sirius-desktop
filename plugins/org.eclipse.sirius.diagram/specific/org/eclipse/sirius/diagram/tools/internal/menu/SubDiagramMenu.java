@@ -27,28 +27,27 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchPart;
-
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeListElement;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.description.tool.DiagramCreationDescription;
-import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.diagram.tools.internal.actions.CreateRepresentationFromRepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeListElement;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.tool.DiagramCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 
 /**
  * This menu contribution add a "create" menu in the DDiagram diagram editor.
@@ -207,7 +206,7 @@ public class SubDiagramMenu implements IContributionItemProvider {
     }
 
     private boolean isFromActiveSirius(final Session session, final RepresentationDescription description) {
-        final Sirius vp = SiriusRegistry.getInstance().getSirius(description);
+        final Viewpoint vp = SiriusRegistry.getInstance().getSirius(description);
         return vp != null && session.getSelectedSiriuss(false).contains(vp);
     }
 

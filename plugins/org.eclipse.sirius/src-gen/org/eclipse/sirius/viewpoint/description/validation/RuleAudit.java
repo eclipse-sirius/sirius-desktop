@@ -1,0 +1,73 @@
+/*******************************************************************************
+ * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.viewpoint.description.validation;
+
+import org.eclipse.emf.ecore.EObject;
+
+/**
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Rule Audit</b></em>'. <!-- end-user-doc -->
+ * 
+ * <!-- begin-model-doc --> The validation expression. <!-- end-model-doc -->
+ * 
+ * <p>
+ * The following features are supported:
+ * <ul>
+ * <li>
+ * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit#getAuditExpression
+ * <em>Audit Expression</em>}</li>
+ * </ul>
+ * </p>
+ * 
+ * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getRuleAudit()
+ * @model
+ * @generated
+ */
+public interface RuleAudit extends EObject {
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation";
+
+    /**
+     * Returns the value of the '<em><b>Audit Expression</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Audit Expression</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc --> <!-- begin-model-doc --> The expression. <!--
+     * end-model-doc -->
+     * 
+     * @return the value of the '<em>Audit Expression</em>' attribute.
+     * @see #setAuditExpression(String)
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getRuleAudit_AuditExpression()
+     * @model required="true"
+     * @generated
+     */
+    String getAuditExpression();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit#getAuditExpression
+     * <em>Audit Expression</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Audit Expression</em>' attribute.
+     * @see #getAuditExpression()
+     * @generated
+     */
+    void setAuditExpression(String value);
+
+} // RuleAudit

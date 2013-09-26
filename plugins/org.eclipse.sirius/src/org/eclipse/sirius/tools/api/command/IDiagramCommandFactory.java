@@ -16,35 +16,34 @@ import java.util.Set;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DLabelled;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DRefreshable;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DragAndDropTarget;
-import org.eclipse.sirius.EdgeTarget;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.tool.BehaviorTool;
-import org.eclipse.sirius.description.tool.ContainerCreationDescription;
-import org.eclipse.sirius.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.description.tool.DirectEditLabel;
-import org.eclipse.sirius.description.tool.DoubleClickDescription;
-import org.eclipse.sirius.description.tool.EdgeCreationDescription;
-import org.eclipse.sirius.description.tool.ExternalJavaAction;
-import org.eclipse.sirius.description.tool.NodeCreationDescription;
-import org.eclipse.sirius.description.tool.OperationAction;
-import org.eclipse.sirius.description.tool.PaneBasedSelectionWizardDescription;
-import org.eclipse.sirius.description.tool.PasteDescription;
-import org.eclipse.sirius.description.tool.ReconnectEdgeDescription;
-import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.description.tool.SelectionWizardDescription;
-import org.eclipse.sirius.description.tool.ToolDescription;
-import org.eclipse.sirius.description.validation.ValidationFix;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DLabelled;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DRefreshable;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DragAndDropTarget;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.tool.BehaviorTool;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
+import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
+import org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription;
+import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
+import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
+import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
+import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
 
 /**
  * The command factory for diagram dialect.
@@ -123,38 +122,38 @@ public interface IDiagramCommandFactory extends ICommandFactory {
 
     /**
      * Create a command that is able to execute the operations of a
-     * {@link org.eclipse.sirius.description.tool.SelectionWizardDescription}
+     * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription}
      * .
      * 
      * @param tool
      *            the tool, it must be a
-     *            {@link org.eclipse.sirius.description.tool.SelectionWizardDescription}
+     *            {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription}
      *            .
      * @param dContainer
      *            the clicked designer container.
      * @param selectedElement
      *            the selected element.
      * @return a command that is able to execute the operations of
-     *         {@link org.eclipse.sirius.description.tool.SelectionWizardDescription}
+     *         {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription}
      *         .
      */
     Command buildSelectionWizardCommandFromTool(SelectionWizardDescription tool, DSemanticDecorator dContainer, Collection<EObject> selectedElement);
 
     /**
      * Create a command that is able to execute the operations of a
-     * {@link org.eclipse.sirius.description.tool.PaneBasedSelectionWizardDescription}
+     * {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription}
      * .
      * 
      * @param tool
      *            the tool, it must be a
-     *            {@link org.eclipse.sirius.description.tool.PaneBasedSelectionWizardDescription}
+     *            {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription}
      *            .
      * @param dContainer
      *            the clicked designer container.
      * @param selectedElement
      *            the selected element.
      * @return a command that is able to execute the operations of
-     *         {@link org.eclipse.sirius.description.tool.PaneBasedSelectionWizardDescription}
+     *         {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription}
      *         .
      */
     Command buildPaneBasedSelectionWizardCommandFromTool(PaneBasedSelectionWizardDescription tool, DSemanticDecorator dContainer, Collection<EObject> selectedElement);

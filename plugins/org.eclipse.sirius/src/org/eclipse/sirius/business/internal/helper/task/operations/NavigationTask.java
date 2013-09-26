@@ -14,18 +14,17 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.tool.Navigation;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.command.view.CreateDiagramWithInitialOperation;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.tool.Navigation;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**

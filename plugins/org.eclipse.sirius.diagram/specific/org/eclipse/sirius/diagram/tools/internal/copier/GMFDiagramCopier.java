@@ -18,15 +18,14 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.NodeStyle;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.diagram.business.internal.dialect.identifier.DiagramIdentifier;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.NodeStyle;
 
 /**
  * An extended copier to handle correctly semantic containment.

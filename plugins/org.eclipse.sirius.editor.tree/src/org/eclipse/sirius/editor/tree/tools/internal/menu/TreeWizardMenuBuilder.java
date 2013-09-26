@@ -39,16 +39,6 @@ import com.google.common.collect.Sets;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.description.tool.ChangeContext;
-import org.eclipse.sirius.description.tool.ContainerViewVariable;
-import org.eclipse.sirius.description.tool.CreateInstance;
-import org.eclipse.sirius.description.tool.EditMaskVariables;
-import org.eclipse.sirius.description.tool.ElementDropVariable;
-import org.eclipse.sirius.description.tool.InitialOperation;
-import org.eclipse.sirius.description.tool.MenuItemDescriptionReference;
-import org.eclipse.sirius.description.tool.OperationAction;
-import org.eclipse.sirius.description.tool.SetValue;
-import org.eclipse.sirius.description.tool.ToolFactory;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractEObjectRefactoringAction;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractUndoRecordingCommand;
@@ -59,6 +49,16 @@ import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.tree.description.TreeItemMappingContainer;
 import org.eclipse.sirius.tree.description.TreeItemStyleDescription;
 import org.eclipse.sirius.tree.description.TreePopupMenu;
+import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
+import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
+import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
+import org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable;
+import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
+import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference;
+import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
+import org.eclipse.sirius.viewpoint.description.tool.SetValue;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 public class TreeWizardMenuBuilder extends AbstractMenuBuilder {
 

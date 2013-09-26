@@ -140,17 +140,6 @@
    
       </description>
    </context>
-   <context id="ExtensibleRepresentation">
-     <description>
-       
-       
-         
-   <!-- Start of user code ExtensibleRepresentation description -->
-   
-   <!-- End of user code ExtensibleRepresentation description -->
-   
-      </description>
-   </context>
    <context id="DRepresentationElement">
      <description>
        
@@ -189,7 +178,7 @@
    </context>
    <context id="DDiagram">
      <description>
-       Sirius is the type of all diagrams in AIR.
+       ViewPoint is the type of all diagrams in AIR.
        A viewpoint is composed of nodes, containers and connections. It is owned by an anlysis or by a parent viewpoint. In this last case the viewpoint should be called detailed viewpoint.
 
        
@@ -344,7 +333,7 @@
    </context>
    <context id="DDiagramLink">
      <description>
-       A link that references a Sirius.
+       A link that references a ViewPoint.
 
        
          
@@ -391,7 +380,7 @@
    </context>
    <context id="DDiagramElementContainer">
      <description>
-       The referenced Sirius.
+       The referenced ViewPoint.
 
        
          
@@ -595,7 +584,7 @@
    </context>
    <context id="BundledImage">
      <description>
-       The bundled image style allows to use the default images provide by the Sirius editor.
+       The bundled image style allows to use the default images provide by the ViewPoint editor.
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
@@ -1042,15 +1031,15 @@
    
       </description>
    </context>
-   <context id="Sirius">
+   <context id="Viewpoint">
      <description>
-       A Sirius defines a "way of looking at your model", you could make an analogy with "What is your current concern about your analysis". It defines representations and might also define specific data only relevant for this concern.
+       A Viewpoint defines a "way of looking at your model", you could make an analogy with "What is your current concern about your analysis". It defines representations and might also define specific data only relevant for this concern.
 
        
          
-   <!-- Start of user code Sirius description -->
+   <!-- Start of user code Viewpoint description -->
    
-   <!-- End of user code Sirius description -->
+   <!-- End of user code Viewpoint description -->
    
       </description>
    </context>
@@ -1204,7 +1193,7 @@
    </context>
    <context id="DiagramElementMapping">
      <description>
-       Represent the mapping of a SiriusElement.
+       Represent the mapping of a ViewPointElement.
 
        Interpreted expressions, requested return type and available variables:
           - preconditionExpression: a boolean.
@@ -2273,7 +2262,7 @@
    </context>
    <context id="BundledImageDescription">
      <description>
-       The bundled image style allows to use the default images provide by the Sirius editor.
+       The bundled image style allows to use the default images provide by the Viewpoint editor.
 
        Interpreted expressions, requested return type and available variables:
           - borderSizeComputationExpression: an integer.
@@ -2657,7 +2646,7 @@
    </context>
    <context id="MappingBasedToolDescription">
      <description>
-       A mapping based tool. This is a tool that create a SiriusElement.
+       A mapping based tool. This is a tool that create a ViewPointElement.
 
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
@@ -2700,7 +2689,7 @@
 
        List of the available variables for tool operations:
             - container: The variable container that represents the semantic element of the clicked view.
-            - containerView: The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+            - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
   
    <!-- Start of user code NodeCreationDescription description -->
    
@@ -2746,7 +2735,7 @@
 
        List of the available variables for tool operations:
             - container: The semantic element of the cicked view.
-            - containerView: The clicked view (instance of Sirius or ViewNodeContainer).
+            - containerView: The clicked view (instance of ViewPoint or ViewNodeContainer).
   
    <!-- Start of user code ContainerCreationDescription description -->
    
@@ -2767,7 +2756,7 @@
             - oldSemanticElement: The semantic element of the old container view.
             - newSemanticContainer: The semantic element of the new container view.
             - element: The semantic element that is dragged and dropped.
-            - newContainerView: The new view container (instance of Sirius or SiriusElement).
+            - newContainerView: The new view container (instance of ViewPoint or ViewPointElement).
   
    <!-- Start of user code ContainerDropDescription description -->
    
@@ -2798,7 +2787,7 @@
    </context>
    <context id="DeleteElementDescription">
      <description>
-       Tool that describes how to delete a SiriusElement.
+       Tool that describes how to delete a ViewPointElement.
 
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
@@ -2806,9 +2795,9 @@
 
 
        List of the available variables for tool operations:
-            - element: The semantic element of the SiriusElement to delete.
+            - element: The semantic element of the ViewPointElement to delete.
             - elementView: 
-            - containerView: The view that contains the SiriusElement to delete.
+            - containerView: The view that contains the ViewPointElement to delete.
   
    <!-- Start of user code DeleteElementDescription description -->
    
@@ -2826,7 +2815,7 @@
 
 
        List of the available variables for tool operations:
-            - element: The semantic element of the SiriusElement to delete.
+            - element: The semantic element of the ViewPointElement to delete.
             - elementView: 
   
    <!-- Start of user code DoubleClickDescription description -->
@@ -2984,7 +2973,7 @@
 
 
        List of the available variables for tool operations:
-            - containerView: The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+            - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
             - representationName: The variable representationName that represents the name of the created representation.
   
    <!-- Start of user code RepresentationCreationDescription description -->
@@ -3007,7 +2996,7 @@
 
 
        List of the available variables for tool operations:
-            - containerView: The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+            - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
             - container: The variable container that represents the semantic element of the clicked view.
             - representationName: The variable representationName that represents the name of the representation to open.
   
@@ -3119,7 +3108,7 @@
    </context>
    <context id="DirectEditLabel">
      <description>
-       A tool that allows to edit the label of a SiriusElement.
+       A tool that allows to edit the label of a ViewPointElement.
 
        Interpreted expressions, requested return type and available variables:
           - precondition: a boolean.
@@ -3688,7 +3677,7 @@
 
 
        List of the available variables for tool operations:
-            - containerView: The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+            - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
             - representationName: The variable representationName that represents the name of the created representation.
   
    <!-- Start of user code DiagramCreationDescription description -->
@@ -3711,7 +3700,7 @@
 
 
        List of the available variables for tool operations:
-            - containerView: The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+            - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
             - container: The variable container that represents the semantic element of the clicked view.
             - representationName: The variable representationName that represents the name of the representation to open.
   

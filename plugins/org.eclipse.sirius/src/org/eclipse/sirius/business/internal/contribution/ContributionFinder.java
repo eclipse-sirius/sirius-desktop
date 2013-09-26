@@ -20,8 +20,8 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.AllContents;
-import org.eclipse.sirius.description.contribution.Contribution;
-import org.eclipse.sirius.description.contribution.ContributionPackage;
+import org.eclipse.sirius.viewpoint.description.contribution.Contribution;
+import org.eclipse.sirius.viewpoint.description.contribution.ContributionPackage;
 
 /**
  * Implementations of a

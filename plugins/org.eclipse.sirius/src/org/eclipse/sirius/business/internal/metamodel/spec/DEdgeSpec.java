@@ -28,15 +28,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.EdgeTarget;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.EdgeMappingQuery;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
@@ -44,12 +35,21 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.business.internal.metamodel.operations.DDiagramElementSpecOperations;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.EdgeMappingImport;
-import org.eclipse.sirius.impl.DEdgeImpl;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
+import org.eclipse.sirius.viewpoint.impl.DEdgeImpl;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
@@ -62,7 +62,7 @@ public class DEdgeSpec extends DEdgeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DEdgeImpl#getMapping()
+     * @see org.eclipse.sirius.viewpoint.impl.DEdgeImpl#getMapping()
      */
     @Override
     public DiagramElementMapping getMapping() {
@@ -72,7 +72,7 @@ public class DEdgeSpec extends DEdgeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DEdgeImpl#refresh()
+     * @see org.eclipse.sirius.viewpoint.impl.DEdgeImpl#refresh()
      */
     @Override
     public void refresh() {
@@ -85,7 +85,7 @@ public class DEdgeSpec extends DEdgeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DEdgeImpl#getStyle()
+     * @see org.eclipse.sirius.viewpoint.impl.DEdgeImpl#getStyle()
      */
     @Override
     public Style getStyle() {
@@ -95,7 +95,7 @@ public class DEdgeSpec extends DEdgeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DDiagramElementImpl#getParentDiagram()
+     * @see org.eclipse.sirius.viewpoint.impl.DDiagramElementImpl#getParentDiagram()
      */
     @Override
     public DDiagram getParentDiagram() {
@@ -105,7 +105,7 @@ public class DEdgeSpec extends DEdgeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DEdgeImpl#isFold(java.util.Map)
+     * @see org.eclipse.sirius.viewpoint.impl.DEdgeImpl#isFold(java.util.Map)
      */
     @Override
     @Deprecated
@@ -116,7 +116,7 @@ public class DEdgeSpec extends DEdgeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DEdgeImpl#validate()
+     * @see org.eclipse.sirius.viewpoint.impl.DEdgeImpl#validate()
      */
     @Override
     public boolean validate() {
@@ -208,7 +208,7 @@ public class DEdgeSpec extends DEdgeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DEdgeImpl#isRootFolding()
+     * @see org.eclipse.sirius.viewpoint.impl.DEdgeImpl#isRootFolding()
      */
     @Override
     @Deprecated
@@ -279,13 +279,13 @@ public class DEdgeSpec extends DEdgeImpl {
      * Overridden because of
      * https://bugs.eclipse.org/bugs/show_bug.cgi?id=89325. {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DEdgeImpl#getPath()
+     * @see org.eclipse.sirius.viewpoint.impl.DEdgeImpl#getPath()
      */
     @SuppressWarnings("serial")
     @Override
     public EList<EdgeTarget> getPath() {
         if (path == null) {
-            path = new EObjectResolvingEList<EdgeTarget>(EdgeTarget.class, this, SiriusPackage.DEDGE__PATH) {
+            path = new EObjectResolvingEList<EdgeTarget>(EdgeTarget.class, this, ViewpointPackage.DEDGE__PATH) {
                 /**
                  * {@inheritDoc}
                  */
@@ -304,7 +304,7 @@ public class DEdgeSpec extends DEdgeImpl {
      */
     @Override
     public void eNotify(Notification notification) {
-        if (notification.getEventType() == Notification.SET && notification.getFeatureID(DEdge.class) == SiriusPackage.DEDGE__ACTUAL_MAPPING) {
+        if (notification.getEventType() == Notification.SET && notification.getFeatureID(DEdge.class) == ViewpointPackage.DEDGE__ACTUAL_MAPPING) {
             if (notification.getOldValue() instanceof EdgeMappingImport && EdgeMappingImportWrapper.getWrapper((EdgeMappingImport) notification.getOldValue()) == notification.getNewValue()) {
                 // silently replace the EdgeMappingImport by its corresponding
                 // wrapper : occurs only once on the first refresh after load.

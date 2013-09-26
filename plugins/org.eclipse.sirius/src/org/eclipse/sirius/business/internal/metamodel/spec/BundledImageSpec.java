@@ -12,10 +12,10 @@ package org.eclipse.sirius.business.internal.metamodel.spec;
 
 import org.eclipse.sirius.business.internal.metamodel.operations.BorderedStyleSpecOperation;
 import org.eclipse.sirius.business.internal.metamodel.operations.StyleSpecOperations;
-import org.eclipse.sirius.impl.BundledImageImpl;
+import org.eclipse.sirius.viewpoint.impl.BundledImageImpl;
 
 /**
- * Implementation of {@link org.eclipse.sirius.BundledImage}.
+ * Implementation of {@link org.eclipse.sirius.viewpoint.BundledImage}.
  * 
  * @author ymortier
  */
@@ -24,7 +24,7 @@ public class BundledImageSpec extends BundledImageImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.NodeStyleImpl#refresh()
+     * @see org.eclipse.sirius.viewpoint.impl.NodeStyleImpl#refresh()
      */
     @Override
     public void refresh() {

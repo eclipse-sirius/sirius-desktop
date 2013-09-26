@@ -19,9 +19,9 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.business.api.helper.graphicalfilters.HideFilterHelper;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Command that is able to reveal all elements of a viewpoint.

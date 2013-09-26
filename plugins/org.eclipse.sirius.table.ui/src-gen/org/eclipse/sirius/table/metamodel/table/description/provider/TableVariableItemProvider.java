@@ -26,13 +26,12 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.eclipse.sirius.description.tool.ToolFactory;
-import org.eclipse.sirius.description.tool.ToolPackage;
-import org.eclipse.sirius.description.tool.provider.AbstractVariableItemProvider;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.provider.AbstractVariableItemProvider;
 
 /**
  * This is the item provider adapter for a
@@ -48,7 +47,7 @@ public class TableVariableItemProvider extends AbstractVariableItemProvider impl
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * This constructs an instance from a factory and a notifier. <!--

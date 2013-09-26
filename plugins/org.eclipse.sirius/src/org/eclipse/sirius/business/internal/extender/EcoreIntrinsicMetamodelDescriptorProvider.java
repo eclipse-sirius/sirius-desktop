@@ -14,14 +14,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationExtensionDescription;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Provider for Ecore metamodels.
@@ -34,7 +33,7 @@ public class EcoreIntrinsicMetamodelDescriptorProvider implements MetamodelDescr
      * 
      * {@inheritDoc}
      */
-    public Collection<MetamodelDescriptor> provides(final Sirius vp) {
+    public Collection<MetamodelDescriptor> provides(final Viewpoint vp) {
         final Collection<MetamodelDescriptor> result = new ArrayList<MetamodelDescriptor>();
 
         for (final RepresentationDescription desc : new SiriusQuery(vp).getAllRepresentationDescriptions()) {

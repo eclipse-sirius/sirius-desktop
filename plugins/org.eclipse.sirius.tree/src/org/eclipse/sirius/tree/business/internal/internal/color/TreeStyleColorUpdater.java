@@ -11,11 +11,10 @@
 package org.eclipse.sirius.tree.business.internal.internal.color;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.RGBValues;
 import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
-import org.eclipse.sirius.description.ColorDescription;
 import org.eclipse.sirius.tree.TreeItemStyle;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
  * Tree implementation to update the item style colors.

@@ -34,8 +34,8 @@ public interface CompoundEventEnd extends EventEnd {
     /**
      * Returns the value of the '<em><b>Event Ends</b></em>' containment
      * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd}.
-     * <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd}. <!--
+     * begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Event Ends</em>' reference list isn't clear,
      * there really should be more of a description here...

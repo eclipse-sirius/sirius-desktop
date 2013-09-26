@@ -23,9 +23,8 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionDelegate;
-
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.repair.SiriusRepairProcess;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * This action will be called when the user needs to repair a representations

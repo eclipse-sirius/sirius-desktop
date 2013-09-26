@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.api.migration;
 
-import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Provides identifier for diagram elements.

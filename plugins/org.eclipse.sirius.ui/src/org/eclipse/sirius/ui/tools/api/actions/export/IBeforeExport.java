@@ -14,8 +14,7 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * The interface to implement to contribute an action before the representations

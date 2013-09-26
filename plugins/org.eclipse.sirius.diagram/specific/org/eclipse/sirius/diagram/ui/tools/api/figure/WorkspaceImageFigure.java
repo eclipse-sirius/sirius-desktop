@@ -17,12 +17,11 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
-
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
-import org.eclipse.sirius.ContainerStyle;
-import org.eclipse.sirius.WorkspaceImage;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.internal.image.ImagesPath;
+import org.eclipse.sirius.viewpoint.ContainerStyle;
+import org.eclipse.sirius.viewpoint.WorkspaceImage;
 
 /**
  * The {@link WorkspaceImageFigure} is useful to load images using a cache. The

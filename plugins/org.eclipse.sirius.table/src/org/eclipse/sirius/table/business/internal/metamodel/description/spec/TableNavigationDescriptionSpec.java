@@ -20,11 +20,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationElementMapping;
 import org.eclipse.sirius.table.metamodel.table.description.impl.TableNavigationDescriptionImpl;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
  * Specific implementation for model instances.
@@ -37,7 +36,7 @@ public class TableNavigationDescriptionSpec extends TableNavigationDescriptionIm
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.impl.RepresentationCreationDescriptionImpl#basicGetRepresentationDescription()
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl#basicGetRepresentationDescription()
      */
     @Override
     public RepresentationDescription basicGetRepresentationDescription() {
@@ -47,7 +46,7 @@ public class TableNavigationDescriptionSpec extends TableNavigationDescriptionIm
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.impl.RepresentationNavigationDescriptionImpl#getRepresentationDescription()
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationNavigationDescriptionImpl#getRepresentationDescription()
      */
     @Override
     public RepresentationDescription getRepresentationDescription() {
@@ -57,7 +56,7 @@ public class TableNavigationDescriptionSpec extends TableNavigationDescriptionIm
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.impl.RepresentationNavigationDescriptionImpl#getMappings()
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationNavigationDescriptionImpl#getMappings()
      */
     @Override
     public EList<RepresentationElementMapping> getMappings() {

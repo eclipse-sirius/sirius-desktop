@@ -28,10 +28,10 @@ import org.eclipse.gmf.runtime.notation.View;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DEdge;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.business.internal.view.EdgeLabelLayoutData;
+import org.eclipse.sirius.viewpoint.DEdge;
 
 /**
  * @was-generated

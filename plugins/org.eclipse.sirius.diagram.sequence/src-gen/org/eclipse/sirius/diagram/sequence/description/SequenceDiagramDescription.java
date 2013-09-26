@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description;
 
-import org.eclipse.sirius.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -76,7 +76,8 @@ public interface SequenceDiagramDescription extends DiagramDescription {
      * @return the value of the '<em>Instance Roles Ordering</em>' attribute.
      * @see #setInstanceRolesOrdering(String)
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getSequenceDiagramDescription_InstanceRolesOrdering()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      * @generated

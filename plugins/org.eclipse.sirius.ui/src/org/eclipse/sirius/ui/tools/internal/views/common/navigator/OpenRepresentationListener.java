@@ -22,8 +22,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.ui.tools.internal.actions.session.OpenRepresentationsAction;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * A double click listener which opens an editor if the clicked element is a representation.

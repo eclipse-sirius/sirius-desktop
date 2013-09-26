@@ -26,14 +26,14 @@ import com.google.common.collect.Iterables;
 
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.description.JavaExtension;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.JavaExtension;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * This class registers all {@link AcceleoInterpreter} for each viewpoint
@@ -171,7 +171,7 @@ public class InterpreterRegistry {
 
         final LinkedHashSet<String> allImports = new LinkedHashSet<String>();
         if (session != null) {
-            for (final Sirius vp : session.getSelectedSiriuss(false)) {
+            for (final Viewpoint vp : session.getSelectedSiriuss(false)) {
                 if (vp.eResource() != null) {
                     for (JavaExtension javaExtension : vp.getOwnedJavaExtensions()) {
                         allImports.add(javaExtension.getQualifiedClassName());

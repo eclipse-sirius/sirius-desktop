@@ -34,10 +34,10 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.tool.impl.NodeCreationDescriptionImpl;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.tool.impl.NodeCreationDescriptionImpl;
 
 /**
  * Queries on GEF and GMF requests.

@@ -11,9 +11,8 @@
 package org.eclipse.sirius.business.internal.migration.description;
 
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.sirius.business.internal.migration.AbstractVersionSAXParser;
-import org.eclipse.sirius.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
  * A parser to get VSM version.

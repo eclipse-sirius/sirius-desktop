@@ -11,9 +11,8 @@
 package org.eclipse.sirius.business.api.query;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 /**
  * A class aggregating all the queries (read-only!) having a

@@ -15,19 +15,18 @@ import java.util.Set;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreEList;
-
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.SiriusFactory;
 import org.eclipse.sirius.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.business.internal.metamodel.helper.DiagramDescriptionHelper;
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.Layer;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.impl.DiagramDescriptionImpl;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
  * Implementation of DiagramDescriptionImpl.java.
@@ -41,13 +40,13 @@ public class DiagramDescriptionSpec extends DiagramDescriptionImpl {
     @Override
     public DSemanticDiagram createDiagram() {
         // Create a plain DSemanticDiagram by default.
-        return SiriusFactory.eINSTANCE.createDSemanticDiagram();
+        return ViewpointFactory.eINSTANCE.createDSemanticDiagram();
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getAllTools()
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl#getAllTools()
      */
     @Override
     public EList<AbstractToolDescription> getAllTools() {
@@ -58,7 +57,7 @@ public class DiagramDescriptionSpec extends DiagramDescriptionImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getAllActivatedTools()
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl#getAllActivatedTools()
      */
     @Override
     public EList<AbstractToolDescription> getAllActivatedTools() {
@@ -69,7 +68,7 @@ public class DiagramDescriptionSpec extends DiagramDescriptionImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getAllLayers()
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl#getAllLayers()
      */
     @Override
     public EList<Layer> getAllLayers() {
@@ -79,7 +78,7 @@ public class DiagramDescriptionSpec extends DiagramDescriptionImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getAllEdgeMappings()
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl#getAllEdgeMappings()
      */
     @Override
     public EList<EdgeMapping> getAllEdgeMappings() {
@@ -89,7 +88,7 @@ public class DiagramDescriptionSpec extends DiagramDescriptionImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getAllActivatedEdgeMappings()
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl#getAllActivatedEdgeMappings()
      */
     @Override
     public EList<EdgeMapping> getAllActivatedEdgeMappings() {
@@ -99,7 +98,7 @@ public class DiagramDescriptionSpec extends DiagramDescriptionImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getAllContainerMappings()
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl#getAllContainerMappings()
      */
     @Override
     public EList<ContainerMapping> getAllContainerMappings() {
@@ -109,7 +108,7 @@ public class DiagramDescriptionSpec extends DiagramDescriptionImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getAllNodeMappings()
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl#getAllNodeMappings()
      */
     @Override
     public EList<NodeMapping> getAllNodeMappings() {

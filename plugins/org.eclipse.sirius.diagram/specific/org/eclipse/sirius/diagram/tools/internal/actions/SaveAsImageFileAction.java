@@ -16,10 +16,7 @@ import java.util.Collections;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.PlatformUI;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
@@ -27,6 +24,8 @@ import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.ui.tools.internal.actions.export.AbstractExportRepresentationsAction;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Action to save current diagram as an image file.

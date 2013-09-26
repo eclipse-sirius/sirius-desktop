@@ -15,14 +15,14 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 
 import com.google.common.base.Predicate;
 
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.WorkspaceImage;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.BendpointsHelper;
 import org.eclipse.sirius.diagram.sequence.util.NotificationQuery;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.WorkspaceImage;
 
 /**
  * Default refresh layout scope for sequence diagram. This predicate decides
@@ -112,9 +112,9 @@ public class RefreshLayoutScope implements Predicate<Notification> {
         boolean wkpImageCustomization = false;
         boolean wkpImageDeCustomization = false;
 
-        if (notification.getEventType() == Notification.SET && SiriusPackage.eINSTANCE.getDNode_OwnedStyle().equals(notification.getFeature()) && hasSequenceMapping(notification.getNotifier())) {
+        if (notification.getEventType() == Notification.SET && ViewpointPackage.eINSTANCE.getDNode_OwnedStyle().equals(notification.getFeature()) && hasSequenceMapping(notification.getNotifier())) {
             newStyle = true;
-        } else if (SiriusPackage.eINSTANCE.getCustomizable_CustomFeatures().equals(notification.getFeature()) && notification.getNotifier() instanceof WorkspaceImage) {
+        } else if (ViewpointPackage.eINSTANCE.getCustomizable_CustomFeatures().equals(notification.getFeature()) && notification.getNotifier() instanceof WorkspaceImage) {
             WorkspaceImage workspaceImage = (WorkspaceImage) notification.getNotifier();
             wkpImageCustomization = !workspaceImage.getCustomFeatures().isEmpty();
             wkpImageDeCustomization = !wkpImageCustomization;

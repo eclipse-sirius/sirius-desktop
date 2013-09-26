@@ -13,8 +13,7 @@ package org.eclipse.sirius.diagram.sequence.description.provider;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
-
-import org.eclipse.sirius.provider.SiriusEditPlugin;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the central singleton for the Sequence edit plugin. <!--

@@ -19,10 +19,9 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.EMFPlugin;
-
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.business.internal.helper.refresh.AbstractProviderDescriptor;
 import org.eclipse.sirius.business.internal.helper.refresh.RefreshExtensionProviderDescriptor;
+import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * This class provides services to enable the extension of the refresh
@@ -110,7 +109,7 @@ public final class RefreshExtensionService implements IRefreshExtension {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.DDiagram)
+     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.viewpoint.DDiagram)
      */
     public void beforeRefresh(final DDiagram viewPoint) {
         final ListIterator<RefreshExtensionProviderDescriptor> iterProviders = this.getProviders().listIterator();
@@ -129,7 +128,7 @@ public final class RefreshExtensionService implements IRefreshExtension {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.DDiagram)
+     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.viewpoint.DDiagram)
      */
     public void postRefresh(final DDiagram viewPoint) {
         final ListIterator<RefreshExtensionProviderDescriptor> iterProviders = this.getProviders().listIterator();

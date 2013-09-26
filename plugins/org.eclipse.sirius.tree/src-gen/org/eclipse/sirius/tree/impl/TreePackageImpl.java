@@ -17,8 +17,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeElementSynchronizer;
@@ -30,6 +28,7 @@ import org.eclipse.sirius.tree.TreeItemStyle;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.impl.DescriptionPackageImpl;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -138,7 +137,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
         isInited = true;
 
         // Initialize simple dependencies
-        SiriusPackage.eINSTANCE.eClass();
+        ViewpointPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl ? EPackage.Registry.INSTANCE
@@ -403,7 +402,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
 
         // Obtain other dependent packages
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
-        SiriusPackage theSiriusPackage = (SiriusPackage) EPackage.Registry.INSTANCE.getEPackage(SiriusPackage.eNS_URI);
+        ViewpointPackage theViewpointPackage = (ViewpointPackage) EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
         // Add subpackages
@@ -414,16 +413,16 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
         // Set bounds for type parameters
 
         // Add supertypes to classes
-        dTreeEClass.getESuperTypes().add(theSiriusPackage.getDRepresentation());
+        dTreeEClass.getESuperTypes().add(theViewpointPackage.getDRepresentation());
         dTreeEClass.getESuperTypes().add(this.getDTreeItemContainer());
         dTreeEClass.getESuperTypes().add(this.getDTreeElementUpdater());
-        dTreeElementEClass.getESuperTypes().add(theSiriusPackage.getDRepresentationElement());
-        dTreeItemContainerEClass.getESuperTypes().add(theSiriusPackage.getDSemanticDecorator());
+        dTreeElementEClass.getESuperTypes().add(theViewpointPackage.getDRepresentationElement());
+        dTreeItemContainerEClass.getESuperTypes().add(theViewpointPackage.getDSemanticDecorator());
         dTreeItemEClass.getESuperTypes().add(this.getDTreeItemContainer());
         dTreeItemEClass.getESuperTypes().add(this.getDTreeElement());
         dTreeItemEClass.getESuperTypes().add(this.getDTreeElementUpdater());
-        treeItemStyleEClass.getESuperTypes().add(theSiriusPackage.getStyle());
-        treeItemStyleEClass.getESuperTypes().add(theSiriusPackage.getLabelStyle());
+        treeItemStyleEClass.getESuperTypes().add(theViewpointPackage.getStyle());
+        treeItemStyleEClass.getESuperTypes().add(theViewpointPackage.getLabelStyle());
 
         // Initialize classes and features; add operations and parameters
         initEClass(dTreeEClass, DTree.class, "DTree", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -462,7 +461,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
         initEClass(treeItemStyleEClass, TreeItemStyle.class, "TreeItemStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getTreeItemStyle_BackgroundColor(), theSiriusPackage.getRGBValues(), null, "backgroundColor", null, 0, 1, TreeItemStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+        initEReference(getTreeItemStyle_BackgroundColor(), theViewpointPackage.getRGBValues(), null, "backgroundColor", null, 0, 1, TreeItemStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(dTreeElementSynchronizerEClass, DTreeElementSynchronizer.class, "DTreeElementSynchronizer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

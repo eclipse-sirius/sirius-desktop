@@ -12,11 +12,10 @@ package org.eclipse.sirius.tree.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.sirius.impl.DRepresentationElementImpl;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.description.TreeMapping;
+import org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

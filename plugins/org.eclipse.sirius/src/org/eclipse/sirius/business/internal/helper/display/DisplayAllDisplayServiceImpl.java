@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.helper.display;
 
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.helper.display.DisplayService;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * An implementation of {@link DisplayService} which return always true.
@@ -60,8 +60,8 @@ public final class DisplayAllDisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#isDisplayed(org.eclipse.sirius.DDiagram,
-     *      org.eclipse.sirius.DDiagramElement)
+     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#isDisplayed(org.eclipse.sirius.viewpoint.DDiagram,
+     *      org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public boolean isDisplayed(final DDiagram diagram, final DDiagramElement element) {
         return true;
@@ -70,8 +70,8 @@ public final class DisplayAllDisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeVisibility(org.eclipse.sirius.DDiagram,
-     *      org.eclipse.sirius.DDiagramElement)
+     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeVisibility(org.eclipse.sirius.viewpoint.DDiagram,
+     *      org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public boolean computeVisibility(DiagramMappingsManager session, final DDiagram diagram, final DDiagramElement element) {
         return true;
@@ -80,8 +80,8 @@ public final class DisplayAllDisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeLabelVisibility(org.eclipse.sirius.DDiagram,
-     *      org.eclipse.sirius.DDiagramElement)
+     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeLabelVisibility(org.eclipse.sirius.viewpoint.DDiagram,
+     *      org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public boolean computeLabelVisibility(DDiagram diagram, DDiagramElement element) {
         return true;

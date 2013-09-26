@@ -12,8 +12,7 @@ package org.eclipse.sirius.diagram.tools.api.graphical.edit.styles;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
-
-import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Provides Item Locator.

@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.sirius.diagram.sequence.business.internal.color.DefaultColorStyleDescription;
 import org.eclipse.sirius.diagram.sequence.template.TAbstractMapping;
 import org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping;
@@ -50,7 +49,7 @@ public class TemplateFactoryImpl extends EFactoryImpl implements TemplateFactory
      */
     public static TemplateFactory init() {
         try {
-            TemplateFactory theTemplateFactory = (TemplateFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/sirius/diagram/sequence/template/2.0.0");
+            TemplateFactory theTemplateFactory = (TemplateFactory) EPackage.Registry.INSTANCE.getEFactory(TemplatePackage.eNS_URI);
             if (theTemplateFactory != null) {
                 return theTemplateFactory;
             }

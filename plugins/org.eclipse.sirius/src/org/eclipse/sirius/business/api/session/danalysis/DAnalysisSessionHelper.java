@@ -27,19 +27,19 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationContainer;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DView;
-import org.eclipse.sirius.SiriusFactory;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
 import org.eclipse.sirius.business.internal.movida.SiriusSelection;
 import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Helper for {@link DAnalysisSession}.
@@ -88,7 +88,7 @@ public final class DAnalysisSessionHelper {
      *            the added representation.
      * @return the selected analysis
      */
-    public static DAnalysis selectAnalysis(final Sirius viewpoint, final Collection<DAnalysis> candidates, final DAnalysisSelector analysisSelector, final DRepresentation addedRepresentation) {
+    public static DAnalysis selectAnalysis(final Viewpoint viewpoint, final Collection<DAnalysis> candidates, final DAnalysisSelector analysisSelector, final DRepresentation addedRepresentation) {
 
         if (candidates.size() > 1 && analysisSelector != null) {
             return analysisSelector.selectSmartlyAnalysisForAddedRepresentation(addedRepresentation, candidates);
@@ -130,14 +130,14 @@ public final class DAnalysisSessionHelper {
      *            the selector
      * @return the free container if found or <code>null</code> otherwise.
      */
-    public static DRepresentationContainer findContainer(final EObject semanticRoot, final Sirius viewpoint, final Collection<DAnalysis> all, final DAnalysisSelector analysisSelector) {
+    public static DRepresentationContainer findContainer(final EObject semanticRoot, final Viewpoint viewpoint, final Collection<DAnalysis> all, final DAnalysisSelector analysisSelector) {
 
         final List<DRepresentationContainer> containers = new ArrayList<DRepresentationContainer>();
 
         for (DAnalysis analysis : all) {
             for (final DView view : analysis.getOwnedViews()) {
                 if (view instanceof DRepresentationContainer) {
-                    if (viewpoint == ((DRepresentationContainer) view).getSirius()) {
+                    if (viewpoint == ((DRepresentationContainer) view).getViewpoint()) {
                         containers.add((DRepresentationContainer) view);
                         /* break to go to the next analysis */
                         break;
@@ -188,7 +188,7 @@ public final class DAnalysisSessionHelper {
      *            the added representation.
      * @return the free container if found or <code>null</code> otherwise.
      */
-    public static DRepresentationContainer findContainerForAddedRepresentation(final EObject semanticRoot, final Sirius viewpoint, final Collection<DAnalysis> all,
+    public static DRepresentationContainer findContainerForAddedRepresentation(final EObject semanticRoot, final Viewpoint viewpoint, final Collection<DAnalysis> all,
             final DAnalysisSelector analysisSelector, final DRepresentation representation) {
 
         final List<DRepresentationContainer> containers = new ArrayList<DRepresentationContainer>();
@@ -196,7 +196,7 @@ public final class DAnalysisSessionHelper {
         for (DAnalysis analysis : all) {
             for (final DView view : analysis.getOwnedViews()) {
                 if (view instanceof DRepresentationContainer) {
-                    if (viewpoint == ((DRepresentationContainer) view).getSirius()) {
+                    if (viewpoint == ((DRepresentationContainer) view).getViewpoint()) {
                         containers.add((DRepresentationContainer) view);
                         /* break to go to the next analysis */
                         break;
@@ -232,8 +232,8 @@ public final class DAnalysisSessionHelper {
         // if the DRepresentationContainer of the selected DAnalysis does not exist yet, and if it is located on a CDORepository
         if (freeContainer == null && URIQuery.CDO_URI_SCHEME.equals(analysis.eResource().getURI().scheme())) {
             // We create this representation container
-            DRepresentationContainer newContainer = SiriusFactory.eINSTANCE.createDRepresentationContainer();
-            newContainer.setSirius(viewpoint);
+            DRepresentationContainer newContainer = ViewpointFactory.eINSTANCE.createDRepresentationContainer();
+            newContainer.setViewpoint(viewpoint);
             newContainer.setInitialized(true);
             analysis.getOwnedViews().add(newContainer);
             analysis.getSelectedViews().add(newContainer);
@@ -282,14 +282,14 @@ public final class DAnalysisSessionHelper {
      * @return the free container if found or <code>null</code> otherwise.
      * @since 2.6
      */
-    public static DRepresentationContainer findFreeContainer(final Sirius viewpoint, final Collection<DAnalysis> analyses, final DAnalysisSelector analysisSelector) {
+    public static DRepresentationContainer findFreeContainer(final Viewpoint viewpoint, final Collection<DAnalysis> analyses, final DAnalysisSelector analysisSelector) {
 
         final List<DRepresentationContainer> views = new ArrayList<DRepresentationContainer>();
 
         for (final DAnalysis analysis : analyses) {
             for (final DView representationContainer : analysis.getOwnedViews()) {
                 if (representationContainer instanceof DRepresentationContainer) {
-                    if (representationContainer.getSirius() == null) {
+                    if (representationContainer.getViewpoint() == null) {
                         views.add((DRepresentationContainer) representationContainer);
                     }
                 }
@@ -337,7 +337,7 @@ public final class DAnalysisSessionHelper {
      *            the added representation.
      * @return the free container if found or <code>null</code> otherwise.
      */
-    public static DRepresentationContainer findFreeContainerForAddedRepresentation(final Sirius viewpoint, final EObject semantic, final Collection<DAnalysis> analyses,
+    public static DRepresentationContainer findFreeContainerForAddedRepresentation(final Viewpoint viewpoint, final EObject semantic, final Collection<DAnalysis> analyses,
             final DAnalysisSelector analysisSelector, final DRepresentation representation) {
 
         final List<DRepresentationContainer> views = new ArrayList<DRepresentationContainer>();
@@ -345,7 +345,7 @@ public final class DAnalysisSessionHelper {
         for (final DAnalysis analysis : analyses) {
             for (final Object representationContainer : analysis.getOwnedViews()) {
                 if (representationContainer instanceof DRepresentationContainer) {
-                    if (((DRepresentationContainer) representationContainer).getSirius() == null) {
+                    if (((DRepresentationContainer) representationContainer).getViewpoint() == null) {
                         views.add((DRepresentationContainer) representationContainer);
                     }
                 }
@@ -412,8 +412,8 @@ public final class DAnalysisSessionHelper {
      */
     public static SiriusSelection getSiriusSelection(org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry registry, DAnalysisSession session) {
         SiriusSelection selection = new SiriusSelection(registry);
-        Set<URI> selectedBefore = Sets.newHashSet(Iterables.transform(session.getSelectedSiriuss(false), new Function<Sirius, URI>() {
-            public URI apply(Sirius from) {
+        Set<URI> selectedBefore = Sets.newHashSet(Iterables.transform(session.getSelectedSiriuss(false), new Function<Viewpoint, URI>() {
+            public URI apply(Viewpoint from) {
                 return new SiriusQuery(from).getSiriusURI().get();
             }
         }));

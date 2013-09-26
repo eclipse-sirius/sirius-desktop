@@ -15,16 +15,16 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
-import org.eclipse.sirius.BorderedStyle;
-import org.eclipse.sirius.DStylizable;
-import org.eclipse.sirius.LabelAlignment;
-import org.eclipse.sirius.LabelStyle;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.description.style.LabelBorderStyleDescription;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
+import org.eclipse.sirius.viewpoint.BorderedStyle;
+import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.LabelAlignment;
+import org.eclipse.sirius.viewpoint.LabelStyle;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 import org.eclipse.swt.graphics.Color;
 
 import com.google.common.collect.Iterables;
@@ -207,7 +207,7 @@ public class ContainerWithTitleBlockFigure extends DefaultSizeNodeFigure {
      * @return the defined label alignment of the title block
      */
     private LabelAlignment getLabelAlignment() {
-        LabelAlignment alignment = (LabelAlignment) SiriusPackage.eINSTANCE.getLabelStyle_LabelAlignment().getDefaultValue();
+        LabelAlignment alignment = (LabelAlignment) ViewpointPackage.eINSTANCE.getLabelStyle_LabelAlignment().getDefaultValue();
         if (viewNode.getStyle() instanceof LabelStyle) {
             alignment = ((LabelStyle) viewNode.getStyle()).getLabelAlignment();
         }

@@ -14,8 +14,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.description.RepresentationTemplate;
 import org.eclipse.sirius.diagram.sequence.template.TAbstractMapping;
 import org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping;
 import org.eclipse.sirius.diagram.sequence.template.TConditionalExecutionStyle;
@@ -35,6 +33,7 @@ import org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping;
 import org.eclipse.sirius.diagram.sequence.template.TTransformer;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 
 /**
  * <!-- begin-user-doc --> The <b>Switch</b> for the model's inheritance

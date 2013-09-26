@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.layout.ordering;
 
-import org.eclipse.sirius.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
  * Represents an object that provides {@link ViewOrdering}.

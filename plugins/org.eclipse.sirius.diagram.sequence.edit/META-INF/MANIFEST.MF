@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: org.eclipse.sirius.diagram.sequence.edit; singleton:=true
+Bundle-SymbolicName: org.eclipse.sirius.diagram.sequence.edit;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.sirius.diagram.sequence.description.provider.SequenceEditPlugin$Implementation
@@ -13,5 +13,12 @@ Export-Package: org.eclipse.sirius.diagram.sequence.description.provider,
  org.eclipse.sirius.diagram.sequence.ordering.provider,
  org.eclipse.sirius.diagram.sequence.provider,
  org.eclipse.sirius.diagram.sequence.template.provider
-Require-Bundle: org.eclipse.sirius.diagram.sequence;visibility:=reexport
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.sirius.diagram.sequence;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.emf.ecore.edit;visibility:=reexport,
+ org.eclipse.sirius;visibility:=reexport,
+ org.eclipse.sirius.ui;visibility:=reexport
+Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy

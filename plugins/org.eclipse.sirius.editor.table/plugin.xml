@@ -21,7 +21,6 @@
                class="org.eclipse.sirius.table.editor.properties.sections.description.tablenavigationdescription.TableNavigationDescriptionTableDescriptionPropertySection"
                id="description.section.tableNavigationDescription.TableDescription"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.tablenavigationdescription.TableNavigationDescriptionTableDescriptionFilter"
-               afterSection="tool.section.representationCreationDescription.Mappings"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription"/>
       </propertySection>
@@ -29,7 +28,6 @@
                class="org.eclipse.sirius.table.editor.properties.sections.description.tablecreationdescription.TableCreationDescriptionTableDescriptionPropertySection"
                id="description.section.tableCreationDescription.TableDescription"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.tablecreationdescription.TableCreationDescriptionTableDescriptionFilter"
-               afterSection="tool.section.representationCreationDescription.Mappings"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription"/>
       </propertySection>
@@ -62,15 +60,7 @@
         <input type="org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.table.editor.properties.sections.description.foregroundstyledescription.ForegroundStyleDescriptionForeGroundColorPropertySection"
-               id="description.section.foregroundStyleDescription.ForeGroundColor"
-               filter="org.eclipse.sirius.table.editor.properties.filters.description.foregroundstyledescription.ForegroundStyleDescriptionForeGroundColorFilter"
-               afterSection="description.section.foregroundStyleDescription.LabelFormat"
-                tab="viewpoint.tab.color">
-        <input type="org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.table.editor.properties.sections.description.spec.foregroundstyledescription.ForegroundStyleDescriptionLabelFormatPropertySection"
+               class="org.eclipse.sirius.table.editor.properties.sections.description.foregroundstyledescription.ForegroundStyleDescriptionLabelFormatPropertySection"
                id="description.section.foregroundStyleDescription.LabelFormat"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.foregroundstyledescription.ForegroundStyleDescriptionLabelFormatFilter"
                afterSection="description.section.foregroundStyleDescription.LabelSize"
@@ -81,14 +71,21 @@
                class="org.eclipse.sirius.table.editor.properties.sections.description.foregroundstyledescription.ForegroundStyleDescriptionLabelSizePropertySection"
                id="description.section.foregroundStyleDescription.LabelSize"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.foregroundstyledescription.ForegroundStyleDescriptionLabelSizeFilter"
+               afterSection="description.section.foregroundStyleDescription.ForeGroundColor"
                 tab="viewpoint.tab.label">
+        <input type="org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.table.editor.properties.sections.description.foregroundstyledescription.ForegroundStyleDescriptionForeGroundColorPropertySection"
+               id="description.section.foregroundStyleDescription.ForeGroundColor"
+               filter="org.eclipse.sirius.table.editor.properties.filters.description.foregroundstyledescription.ForegroundStyleDescriptionForeGroundColorFilter"
+                tab="viewpoint.tab.color">
         <input type="org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.table.editor.properties.sections.description.createlinetool.CreateLineToolMappingPropertySection"
                id="description.section.createLineTool.Mapping"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.createlinetool.CreateLineToolMappingFilter"
-               afterSection="description.section.identifiedElement.Label"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.table.metamodel.table.description.CreateLineTool"/>
       </propertySection>
@@ -96,9 +93,16 @@
                class="org.eclipse.sirius.table.editor.properties.sections.description.createcrosscolumntool.CreateCrossColumnToolMappingPropertySection"
                id="description.section.createCrossColumnTool.Mapping"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.createcrosscolumntool.CreateCrossColumnToolMappingFilter"
-               afterSection="description.section.identifiedElement.Label"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.table.editor.properties.sections.description.intersectionmapping.IntersectionMappingCreatePropertySection"
+               id="description.section.intersectionMapping.Create"
+               filter="org.eclipse.sirius.table.editor.properties.filters.description.intersectionmapping.IntersectionMappingCreateFilter"
+               afterSection="description.section.intersectionMapping.PreconditionExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.table.editor.properties.sections.description.intersectionmapping.IntersectionMappingPreconditionExpressionPropertySection"
@@ -112,7 +116,7 @@
                class="org.eclipse.sirius.table.editor.properties.sections.description.intersectionmapping.IntersectionMappingDomainClassPropertySection"
                id="description.section.intersectionMapping.DomainClass"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.intersectionmapping.IntersectionMappingDomainClassFilter"
-               afterSection="description.section.intersectionMapping.UseDomainClass"
+               afterSection="description.section.intersectionMapping.SemanticCandidatesExpression"
                 tab="viewpoint.tab.domain_based">
         <input type="org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping"/>
       </propertySection>
@@ -128,7 +132,7 @@
                class="org.eclipse.sirius.table.editor.properties.sections.description.intersectionmapping.IntersectionMappingLineFinderExpressionPropertySection"
                id="description.section.intersectionMapping.LineFinderExpression"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.intersectionmapping.IntersectionMappingLineFinderExpressionFilter"
-               afterSection="description.section.intersectionMapping.DomainClass"
+               afterSection="description.section.intersectionMapping.LabelExpression"
                 tab="viewpoint.tab.domain_based">
         <input type="org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping"/>
       </propertySection>
@@ -144,7 +148,7 @@
                class="org.eclipse.sirius.table.editor.properties.sections.description.intersectionmapping.IntersectionMappingColumnFinderExpressionPropertySection"
                id="description.section.intersectionMapping.ColumnFinderExpression"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.intersectionmapping.IntersectionMappingColumnFinderExpressionFilter"
-               afterSection="description.section.intersectionMapping.ColumnMapping"
+               afterSection="description.section.intersectionMapping.UseDomainClass"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping"/>
       </propertySection>
@@ -152,7 +156,7 @@
                class="org.eclipse.sirius.table.editor.properties.sections.description.intersectionmapping.IntersectionMappingUseDomainClassPropertySection"
                id="description.section.intersectionMapping.UseDomainClass"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.intersectionmapping.IntersectionMappingUseDomainClassFilter"
-               afterSection="description.section.intersectionMapping.LineMapping"
+               afterSection="description.section.intersectionMapping.ColumnMapping"
                 tab="viewpoint.tab.domain_based">
         <input type="org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping"/>
       </propertySection>
@@ -168,7 +172,6 @@
                class="org.eclipse.sirius.table.editor.properties.sections.description.intersectionmapping.IntersectionMappingLineMappingPropertySection"
                id="description.section.intersectionMapping.LineMapping"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.intersectionmapping.IntersectionMappingLineMappingFilter"
-               afterSection="description.section.identifiedElement.Label"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping"/>
       </propertySection>
@@ -199,7 +202,6 @@
                class="org.eclipse.sirius.table.editor.properties.sections.description.featurecolumnmapping.FeatureColumnMappingFeatureNamePropertySection"
                id="description.section.featureColumnMapping.FeatureName"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.featurecolumnmapping.FeatureColumnMappingFeatureNameFilter"
-               afterSection="description.section.identifiedElement.Label"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping"/>
       </propertySection>
@@ -215,7 +217,6 @@
                class="org.eclipse.sirius.table.editor.properties.sections.description.elementcolumnmapping.ElementColumnMappingDomainClassPropertySection"
                id="description.section.elementColumnMapping.DomainClass"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.elementcolumnmapping.ElementColumnMappingDomainClassFilter"
-               afterSection="description.section.identifiedElement.Label"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping"/>
       </propertySection>
@@ -246,7 +247,7 @@
                class="org.eclipse.sirius.table.editor.properties.sections.description.linemapping.LineMappingSemanticCandidatesExpressionPropertySection"
                id="description.section.lineMapping.SemanticCandidatesExpression"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.linemapping.LineMappingSemanticCandidatesExpressionFilter"
-               afterSection="description.section.lineMapping.DomainClass"
+               afterSection="description.section.lineMapping.ReusedInMappings"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.table.metamodel.table.description.LineMapping"/>
       </propertySection>
@@ -263,14 +264,13 @@
                id="description.section.lineMapping.ReusedSubLines"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.linemapping.LineMappingReusedSubLinesFilter"
                afterSection="description.section.lineMapping.DomainClass"
-                tab="viewpoint.tab.import">
+                tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.table.metamodel.table.description.LineMapping"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.table.editor.properties.sections.description.linemapping.LineMappingDomainClassPropertySection"
                id="description.section.lineMapping.DomainClass"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.linemapping.LineMappingDomainClassFilter"
-               afterSection="description.section.identifiedElement.Label"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.table.metamodel.table.description.LineMapping"/>
       </propertySection>
@@ -280,30 +280,6 @@
                filter="org.eclipse.sirius.table.editor.properties.filters.description.tablemapping.TableMappingSemanticElementsFilter"
                 tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.table.metamodel.table.description.TableMapping"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.table.editor.properties.sections.description.editiontableextensiondescription.EditionTableExtensionDescriptionPreconditionExpressionPropertySection"
-               id="description.section.editionTableExtensionDescription.PreconditionExpression"
-               filter="org.eclipse.sirius.table.editor.properties.filters.description.editiontableextensiondescription.EditionTableExtensionDescriptionPreconditionExpressionFilter"
-               afterSection="description.section.editionTableExtensionDescription.OwnedTools"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.table.editor.properties.sections.description.editiontableextensiondescription.EditionTableExtensionDescriptionOwnedToolsPropertySection"
-               id="description.section.editionTableExtensionDescription.OwnedTools"
-               filter="org.eclipse.sirius.table.editor.properties.filters.description.editiontableextensiondescription.EditionTableExtensionDescriptionOwnedToolsFilter"
-               afterSection="description.section.representationExtensionDescription.Metamodel"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.table.editor.properties.sections.description.editiontableextensiondescription.EditionTableExtensionDescriptionDomainClassPropertySection"
-               id="description.section.editionTableExtensionDescription.DomainClass"
-               filter="org.eclipse.sirius.table.editor.properties.filters.description.editiontableextensiondescription.EditionTableExtensionDescriptionDomainClassFilter"
-               afterSection="description.section.representationExtensionDescription.RepresentationName"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.table.editor.properties.sections.description.tabledescription.TableDescriptionInitialHeaderColumnWidthPropertySection"

@@ -19,11 +19,11 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * A predicate to identify pinned/fixed edit-parts.

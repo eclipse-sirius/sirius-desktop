@@ -20,12 +20,12 @@ import org.eclipse.jface.action.Action;
 
 import com.google.common.collect.Iterables;
 
-import org.eclipse.sirius.DAnalysisSessionEObject;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand;
+import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Action to remove semantic resources from a session.

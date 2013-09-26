@@ -10,11 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.internal.menu.child;
 
-import org.eclipse.sirius.description.DescriptionPackage;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuilder;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
- * A {@link AbstractTypeRestrictingMenuBuilder} to contribute the "Customization" menu.
+ * A {@link AbstractTypeRestrictingMenuBuilder} to contribute the
+ * "Customization" menu.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -31,6 +32,7 @@ public class CustomizationMenuBuilder extends AbstractTypeRestrictingMenuBuilder
         addValidType(DescriptionPackage.eINSTANCE.getEAttributeCustomization());
         addValidType(DescriptionPackage.eINSTANCE.getEReferenceCustomization());
     }
+
     @Override
     protected String getLabel() {
         return "New Customization...";

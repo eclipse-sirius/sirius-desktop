@@ -28,16 +28,16 @@ import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager;
 import org.eclipse.sirius.business.api.query.DiagramDescriptionMappingManagerQuery;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.description.AbstractMappingImport;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.ContainerMappingImport;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.EdgeMappingImport;
-import org.eclipse.sirius.description.Layer;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.NodeMappingImport;
+import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.ContainerMappingImport;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
+import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.NodeMappingImport;
 
 /**
  * Manage the candidate mappings availability based on activated layers.

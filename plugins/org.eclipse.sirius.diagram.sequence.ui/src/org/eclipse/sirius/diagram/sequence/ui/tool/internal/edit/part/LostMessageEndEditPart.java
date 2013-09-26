@@ -15,9 +15,6 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.editpolicies.ResizableEditPolicy;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DNode;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
@@ -26,6 +23,8 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.Conne
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.LostMessageEndSelectionPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DNode;
 
 /**
  * The edit part for lost message end.

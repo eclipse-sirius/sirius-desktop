@@ -18,11 +18,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.sirius.impl.DSemanticDecoratorImpl;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.TreePackage;
+import org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

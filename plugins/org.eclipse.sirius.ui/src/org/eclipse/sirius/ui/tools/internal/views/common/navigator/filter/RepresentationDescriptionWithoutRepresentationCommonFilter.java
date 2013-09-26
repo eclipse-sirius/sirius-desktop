@@ -17,7 +17,7 @@ import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescripti
 
 /**
  * Filter to allow the user to hide {@link RepresentationDescriptionItem} if
- * there is no corresponding {@link org.eclipse.sirius.DRepresentation}.
+ * there is no corresponding {@link org.eclipse.sirius.viewpoint.DRepresentation}.
  * 
  * @author mporhel
  * 

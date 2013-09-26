@@ -35,12 +35,12 @@ import com.google.common.collect.Sets;
 import org.eclipse.sirius.common.tools.api.util.AllContents;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * Represents a sequence diagram. This is the root of all sequence elements.

@@ -20,10 +20,9 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
-
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * Filters table viewer.

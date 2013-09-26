@@ -27,7 +27,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.sirius.diagram.sequence.util.SequenceAdapterFactory;
 
 /**
@@ -83,8 +82,8 @@ public class SequenceItemProviderAdapterFactory extends SequenceAdapterFactory i
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.sequence.SequenceDDiagram} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */

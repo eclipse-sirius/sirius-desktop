@@ -19,11 +19,10 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
 
 /**
  * The label provider.

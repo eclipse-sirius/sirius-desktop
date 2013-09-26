@@ -18,13 +18,13 @@ import org.eclipse.emf.ecore.EObject;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.AbsoluteBoundsFilter;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.SiriusFactory;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.LostMessageEnd;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
+import org.eclipse.sirius.viewpoint.AbsoluteBoundsFilter;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 
 /**
  * Helper to compute and attach absolute bounds flag for sequence events.
@@ -84,7 +84,7 @@ public abstract class AbstractSequenceAbsoluteBoundsFlagger {
         }
 
         if (flag == null) {
-            flag = SiriusFactory.eINSTANCE.createAbsoluteBoundsFilter();
+            flag = ViewpointFactory.eINSTANCE.createAbsoluteBoundsFilter();
             dde.getGraphicalFilters().add(flag);
         }
         return flag;

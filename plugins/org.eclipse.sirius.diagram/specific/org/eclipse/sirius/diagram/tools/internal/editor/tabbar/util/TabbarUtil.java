@@ -13,10 +13,9 @@ package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.util;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.ui.IWorkbenchPart;
-
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * Utility class for tabbar management.

@@ -20,16 +20,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractRadioButtonPropertySection;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractRadioButtonPropertySection;
 
 /**
  * A section for the doubleClickDescription property of a DiagramElementMapping

@@ -13,8 +13,7 @@ package org.eclipse.sirius.diagram.tools.internal.editor.header;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
-
-import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * A SelectionAdapter to resize the header composite when sash is moved.

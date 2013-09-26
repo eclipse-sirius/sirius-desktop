@@ -35,7 +35,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 
 /**

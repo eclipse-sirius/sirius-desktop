@@ -16,8 +16,8 @@ import org.eclipse.sirius.diagram.ui.tools.internal.layout.NodeLayoutDataKey;
 
 /**
  * Kind of key use to store the layout data corresponding to a semantic element
- * represented by a {@link org.eclipse.sirius.AbstractDNode} or a
- * {@link org.eclipse.sirius.DDiagram}.
+ * represented by a {@link org.eclipse.sirius.viewpoint.AbstractDNode} or a
+ * {@link org.eclipse.sirius.viewpoint.DDiagram}.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * 

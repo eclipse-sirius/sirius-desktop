@@ -40,8 +40,6 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -50,6 +48,8 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.SessionHelper;
 import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelection;
 import org.eclipse.sirius.ui.tools.internal.wizards.CreateSessionResourceWizard;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Fill the session when a drop event comes.

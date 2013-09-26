@@ -14,15 +14,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.description.DocumentedElement;
-import org.eclipse.sirius.description.IdentifiedElement;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.ContainerCreationDescription;
-import org.eclipse.sirius.description.tool.EdgeCreationDescription;
-import org.eclipse.sirius.description.tool.MappingBasedToolDescription;
-import org.eclipse.sirius.description.tool.NodeCreationDescription;
-import org.eclipse.sirius.description.tool.ToolEntry;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.CoveringElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
@@ -38,6 +29,14 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.SequenceDiagramToolDescription;
 import org.eclipse.sirius.diagram.sequence.description.tool.StateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
 
 /**
  * <!-- begin-user-doc --> The <b>Switch</b> for the model's inheritance

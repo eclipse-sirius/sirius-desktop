@@ -21,13 +21,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
-
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.business.api.query.EObjectQuery;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 
 /**
  * A Type Assistant provides type names from incomplete names.

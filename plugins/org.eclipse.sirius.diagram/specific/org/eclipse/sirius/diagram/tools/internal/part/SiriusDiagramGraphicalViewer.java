@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.tools.internal.graphical.edit.policies.ChangeB
 
 /**
  * {@link org.eclipse.gef.GraphicalViewer} used for the
- * {@link org.eclipse.sirius.DDiagram} modeler.
+ * {@link org.eclipse.sirius.viewpoint.DDiagram} modeler.
  * 
  * @author mchauvin
  */

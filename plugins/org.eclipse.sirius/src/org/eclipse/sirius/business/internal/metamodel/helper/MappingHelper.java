@@ -11,16 +11,15 @@
 package org.eclipse.sirius.business.internal.metamodel.helper;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.EdgeMappingImport;
-import org.eclipse.sirius.description.IEdgeMapping;
-import org.eclipse.sirius.description.style.StyleDescription;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
+import org.eclipse.sirius.viewpoint.description.IEdgeMapping;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
  * Helper to create/update diagram elements.

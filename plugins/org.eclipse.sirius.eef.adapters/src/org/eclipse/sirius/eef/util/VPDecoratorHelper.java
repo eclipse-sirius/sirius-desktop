@@ -12,9 +12,8 @@ package org.eclipse.sirius.eef.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter;
-
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Helper to get an EEF {@link SemanticAdapter} from a Sirius element. If the
@@ -54,7 +53,7 @@ public class VPDecoratorHelper {
     public SemanticAdapter createSemanticAdapterFromDSemanticDecorator() {
         SemanticAdapter result = null;
         if (canAdapt()) {
-            if (SiriusPackage.eINSTANCE.getDSemanticDecorator().isInstance(target)) {
+            if (ViewpointPackage.eINSTANCE.getDSemanticDecorator().isInstance(target)) {
                 result = new SemanticAdapter() {
                     public EObject getEObject() {
                         return ((DSemanticDecorator) target).getTarget();

@@ -13,19 +13,18 @@ package org.eclipse.sirius.business.internal.helper.task;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.operations.AbstractOperationTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.ForTask;
-import org.eclipse.sirius.description.tool.ContainerModelOperation;
-import org.eclipse.sirius.description.tool.ModelOperation;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
+import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;

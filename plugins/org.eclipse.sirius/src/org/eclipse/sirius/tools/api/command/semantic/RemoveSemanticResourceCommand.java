@@ -19,8 +19,8 @@ import org.eclipse.emf.transaction.RecordingCommand;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DAnalysisSessionEObject;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 
 /**
  * Specific command do remove semantic resources from the given session.

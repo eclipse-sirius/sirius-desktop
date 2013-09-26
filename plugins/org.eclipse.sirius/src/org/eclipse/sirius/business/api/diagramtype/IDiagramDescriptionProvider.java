@@ -22,11 +22,11 @@ import org.eclipse.emf.edit.command.CommandParameter;
 import com.google.common.base.Predicate;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
 
 /**
  * Provides a new Diagram Type that can be managed by the diagram dialect.
@@ -74,7 +74,7 @@ public interface IDiagramDescriptionProvider {
      * 
      * @param feature
      *            the feature to consider (for example
-     *            {@link org.eclipse.sirius.description.DescriptionPackage#eINSTANCE
+     *            {@link org.eclipse.sirius.viewpoint.description.DescriptionPackage#eINSTANCE
      *            #getDiagramElementMapping_SemanticCandidatesExpression()}
      * @param parentSwitch
      *            the {@link IInterpretedExpressionTargetSwitch} to call

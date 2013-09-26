@@ -12,10 +12,10 @@ package org.eclipse.sirius.business.internal.metamodel.description.filter.spec;
 
 import java.util.Iterator;
 
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.description.filter.Filter;
-import org.eclipse.sirius.description.filter.FilterKind;
-import org.eclipse.sirius.description.filter.impl.CompositeFilterDescriptionImpl;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.description.filter.Filter;
+import org.eclipse.sirius.viewpoint.description.filter.FilterKind;
+import org.eclipse.sirius.viewpoint.description.filter.impl.CompositeFilterDescriptionImpl;
 
 /**
  * Customizations for the <code>CompositeFilterDescription</code>

@@ -37,9 +37,6 @@ import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.DView;
 import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
@@ -48,14 +45,17 @@ import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionCreationOperation;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.SessionSpecificEditorInput;
 import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelectionCallback;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeSiriusSelectionCommand;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Transform a standard editor input into a session, by creating silently a
@@ -94,7 +94,7 @@ public class SpecificEditorInputTranformer {
      * The viewpoint containing the diagram description used to create the
      * diagram.
      */
-    private Sirius viewpoint;
+    private Viewpoint viewpoint;
 
     /**
      * Init environment.
@@ -111,7 +111,7 @@ public class SpecificEditorInputTranformer {
         description = getRepresentationDescription(representationDescriptionName);
     }
 
-    private Sirius getSirius(URI viewpointURI) {
+    private Viewpoint getSirius(URI viewpointURI) {
         return SiriusRegistry.getInstance().getSirius(viewpointURI);
     }
 
@@ -291,7 +291,7 @@ public class SpecificEditorInputTranformer {
     private void activateSirius() {
         final SiriusSelectionCallback selectionCallback = new SiriusSelectionCallback();
         session.getTransactionalEditingDomain().getCommandStack()
-                .execute(new ChangeSiriusSelectionCommand(session, selectionCallback, Sets.newHashSet(viewpoint), Sets.<Sirius> newHashSet(), new NullProgressMonitor()) {
+                .execute(new ChangeSiriusSelectionCommand(session, selectionCallback, Sets.newHashSet(viewpoint), Sets.<Viewpoint> newHashSet(), new NullProgressMonitor()) {
 
                     @Override
                     public boolean canUndo() {

@@ -11,9 +11,8 @@
 package org.eclipse.sirius.tree.description;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.ModelOperation;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -25,8 +24,8 @@ import org.eclipse.sirius.description.tool.ModelOperation;
  * <li>
  * {@link org.eclipse.sirius.tree.description.TreeItemTool#getFirstModelOperation
  * <em>First Model Operation</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.TreeItemTool#getVariables
- * <em>Variables</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemTool#getVariables <em>
+ * Variables</em>}</li>
  * </ul>
  * </p>
  * 

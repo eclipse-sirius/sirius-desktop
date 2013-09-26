@@ -14,10 +14,10 @@ import java.util.Iterator;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.Group;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link Group} as a
@@ -46,11 +46,11 @@ public class GroupQuery {
      * @param viewpointName
      *            the viewpointName to look for
      * 
-     * @return the first {@link Sirius} of this Group
+     * @return the first {@link Viewpoint} of this Group
      */
-    public Sirius getSiriusFromName(String viewpointName) {
-        Sirius result = null;
-        for (Sirius viewpoint : group.getOwnedSiriuss()) {
+    public Viewpoint getSiriusFromName(String viewpointName) {
+        Viewpoint result = null;
+        for (Viewpoint viewpoint : group.getOwnedViewpoints()) {
             if (viewpoint.getName() != null && viewpoint.getName().equals(viewpointName)) {
                 result = viewpoint;
                 break;
@@ -69,9 +69,9 @@ public class GroupQuery {
      *         one .
      */
     public Option<DiagramDescription> findDiagramDescription(String diagramDescriptionName) {
-        Iterator<Sirius> itSirius = group.getOwnedSiriuss().iterator();
+        Iterator<Viewpoint> itSirius = group.getOwnedViewpoints().iterator();
         while (itSirius.hasNext()) {
-            Sirius viewpoint = itSirius.next();
+            Viewpoint viewpoint = itSirius.next();
             Iterator<RepresentationDescription> itRepresentationDescription = new SiriusQuery(viewpoint).getAllRepresentationDescriptions().iterator();
             while (itRepresentationDescription.hasNext()) {
                 RepresentationDescription description = itRepresentationDescription.next();

@@ -42,8 +42,8 @@ public interface TSourceTargetMessageMapping extends TMessageMapping {
     /**
      * Returns the value of the '<em><b>Source</b></em>' reference list. The
      * list contents are of type
-     * {@link org.eclipse.sirius.diagram.sequence.template.TMessageExtremity}
-     * . <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.diagram.sequence.template.TMessageExtremity}.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Source</em>' reference list isn't clear, there
      * really should be more of a description here...

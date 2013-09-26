@@ -12,10 +12,10 @@ package org.eclipse.sirius.business.internal.metamodel.spec;
 
 import org.eclipse.sirius.business.internal.metamodel.operations.BorderedStyleSpecOperation;
 import org.eclipse.sirius.business.internal.metamodel.operations.StyleSpecOperations;
-import org.eclipse.sirius.impl.WorkspaceImageImpl;
+import org.eclipse.sirius.viewpoint.impl.WorkspaceImageImpl;
 
 /**
- * Implementation of {@link org.eclipse.sirius.WorkspaceImage}.
+ * Implementation of {@link org.eclipse.sirius.viewpoint.WorkspaceImage}.
  * 
  * @author cbru, mchauvin, ymortier
  */
@@ -24,7 +24,7 @@ public class WorkspaceImageSpec extends WorkspaceImageImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.NodeStyleImpl#refresh()
+     * @see org.eclipse.sirius.viewpoint.impl.NodeStyleImpl#refresh()
      */
     @Override
     public void refresh() {

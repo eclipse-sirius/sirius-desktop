@@ -20,13 +20,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.sirius.description.tool.SubVariable;
-import org.eclipse.sirius.description.tool.ToolPackage;
-import org.eclipse.sirius.description.tool.VariableContainer;
-import org.eclipse.sirius.description.tool.impl.AbstractVariableImpl;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeVariable;
+import org.eclipse.sirius.viewpoint.description.tool.SubVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
+import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractVariableImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

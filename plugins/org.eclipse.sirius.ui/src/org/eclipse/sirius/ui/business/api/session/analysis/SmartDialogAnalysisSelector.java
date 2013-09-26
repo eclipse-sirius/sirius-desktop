@@ -22,11 +22,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
-
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * A dialog which select smartly analysis.
@@ -48,7 +47,7 @@ public class SmartDialogAnalysisSelector implements DAnalysisSelector {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector#selectSmartlyAnalysisForAddedRepresentation(org.eclipse.sirius.DRepresentation,
+     * @see org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector#selectSmartlyAnalysisForAddedRepresentation(org.eclipse.sirius.viewpoint.DRepresentation,
      *      java.util.Collection)
      */
     public DAnalysis selectSmartlyAnalysisForAddedRepresentation(final DRepresentation representation, final Collection<DAnalysis> allAnalysis) {

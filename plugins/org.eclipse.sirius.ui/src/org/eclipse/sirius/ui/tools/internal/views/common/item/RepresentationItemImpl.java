@@ -21,11 +21,11 @@ import com.google.common.base.Function;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * {@link DRepresentation} item wrapper class.

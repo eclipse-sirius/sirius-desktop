@@ -19,16 +19,15 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
-
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
-import org.eclipse.sirius.description.RepresentationElementMapping;
 import org.eclipse.sirius.table.business.internal.metamodel.operations.DColumnOperations;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
 import org.eclipse.sirius.table.metamodel.table.impl.DTargetColumnImpl;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
  * Specialization of DTargetColumn.

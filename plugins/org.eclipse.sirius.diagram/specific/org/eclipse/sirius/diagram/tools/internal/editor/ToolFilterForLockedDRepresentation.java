@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.editor;
 
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
  * a {@link ToolFilter} to hide creation tool when a {@link DDiagram} is locked.

@@ -15,15 +15,14 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.sirius.FontFormat;
-import org.eclipse.sirius.LabelAlignment;
-import org.eclipse.sirius.description.ColorDescription;
-import org.eclipse.sirius.description.style.BasicLabelStyleDescription;
-import org.eclipse.sirius.description.style.LabelStyleDescription;
-import org.eclipse.sirius.description.style.StylePackage;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeItemStyleDescription;
+import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.LabelAlignment;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
+import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

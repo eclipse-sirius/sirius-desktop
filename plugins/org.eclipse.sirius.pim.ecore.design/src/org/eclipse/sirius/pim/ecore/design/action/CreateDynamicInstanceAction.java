@@ -26,9 +26,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * A dynamic action which can be invoked from the Sirius Ecore modeler to

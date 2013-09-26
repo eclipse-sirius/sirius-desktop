@@ -13,10 +13,10 @@ package org.eclipse.sirius.business.internal.query;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.sirius.description.Customization;
-import org.eclipse.sirius.description.IVSMElementCustomization;
-import org.eclipse.sirius.description.VSMElementCustomization;
-import org.eclipse.sirius.description.VSMElementCustomizationReuse;
+import org.eclipse.sirius.viewpoint.description.Customization;
+import org.eclipse.sirius.viewpoint.description.IVSMElementCustomization;
+import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
+import org.eclipse.sirius.viewpoint.description.VSMElementCustomizationReuse;
 
 /**
  * A Query on {@link Customization}.

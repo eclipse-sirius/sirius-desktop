@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.metamodel.table.description;
 
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -27,6 +27,6 @@ public interface DeleteTool extends AbstractToolDescription, TableTool {
      * 
      * @generated
      */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
 } // DeleteTool

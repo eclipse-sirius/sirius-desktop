@@ -35,10 +35,10 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.CommonItemSorter;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Page to select representations from an Aird.
@@ -121,7 +121,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
 
             @Override
             public boolean select(Viewer viewer, Object parentElement, Object element) {
-                if (element instanceof Sirius && ((Sirius) element).getOwnedRepresentations().isEmpty()) {
+                if (element instanceof Viewpoint && ((Viewpoint) element).getOwnedRepresentations().isEmpty()) {
                     return false;
                 }
                 return true;
@@ -215,8 +215,8 @@ public class RepresentationSelectionWizardPage extends WizardPage {
             Object[] children = empty;
             if (parentElement instanceof Session) {
                 children = ((Session) parentElement).getSelectedSiriuss(false).toArray();
-            } else if (parentElement instanceof Sirius) {
-                List<RepresentationDescription> reps = Lists.newArrayList(((Sirius) parentElement).getOwnedRepresentations());
+            } else if (parentElement instanceof Viewpoint) {
+                List<RepresentationDescription> reps = Lists.newArrayList(((Viewpoint) parentElement).getOwnedRepresentations());
                 Collections.sort(reps, new Comparator<RepresentationDescription>() {
                     public int compare(RepresentationDescription rep1, RepresentationDescription rep2) {
                         return CommonItemSorter.compareRepresentationDescriptions(rep1, rep2);

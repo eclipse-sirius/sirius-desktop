@@ -49,20 +49,6 @@ import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DNodeList;
-import org.eclipse.sirius.DNodeListElement;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.DragAndDropTarget;
-import org.eclipse.sirius.EdgeTarget;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.helper.SiriusHelper;
@@ -86,26 +72,40 @@ import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHel
 import org.eclipse.sirius.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.business.internal.sync.visitor.DiagramElementsHierarchyVisitor;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.AdditionalLayer;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.ContainerMappingImport;
-import org.eclipse.sirius.description.DecorationDescription;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.EdgeMappingImport;
-import org.eclipse.sirius.description.IEdgeMapping;
-import org.eclipse.sirius.description.Layer;
-import org.eclipse.sirius.description.MappingBasedDecoration;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.NodeMappingImport;
-import org.eclipse.sirius.description.RepresentationElementMapping;
-import org.eclipse.sirius.description.SemanticBasedDecoration;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.viewpoint.DNodeListElement;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.DragAndDropTarget;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.AdditionalLayer;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.ContainerMappingImport;
+import org.eclipse.sirius.viewpoint.description.DecorationDescription;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
+import org.eclipse.sirius.viewpoint.description.IEdgeMapping;
+import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.viewpoint.description.MappingBasedDecoration;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.NodeMappingImport;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
@@ -226,7 +226,7 @@ public class DDiagramSynchronizer {
             activateInitialLayers();
             monitor.worked(1);
             if (this.diagram.getFilterVariableHistory() == null) {
-                this.diagram.setFilterVariableHistory(SiriusFactory.eINSTANCE.createFilterVariableHistory());
+                this.diagram.setFilterVariableHistory(ViewpointFactory.eINSTANCE.createFilterVariableHistory());
             }
             initDiagramRelatedFields();
             monitor.worked(1);
@@ -1589,11 +1589,11 @@ public class DDiagramSynchronizer {
         protected EReference getOwnedDiagramElementsToUpdate() {
             EReference ref = null;
             if (viewContainer instanceof DDiagram) {
-                ref = SiriusPackage.eINSTANCE.getDDiagram_OwnedDiagramElements();
+                ref = ViewpointPackage.eINSTANCE.getDDiagram_OwnedDiagramElements();
             } else if (viewContainer instanceof DNodeList) {
-                ref = SiriusPackage.eINSTANCE.getDNodeList_OwnedElements();
+                ref = ViewpointPackage.eINSTANCE.getDNodeList_OwnedElements();
             } else if (viewContainer instanceof DNodeContainer) {
-                ref = SiriusPackage.eINSTANCE.getDNodeContainer_OwnedDiagramElements();
+                ref = ViewpointPackage.eINSTANCE.getDNodeContainer_OwnedDiagramElements();
             }
             if (ref == null) {
                 /*

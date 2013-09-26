@@ -30,21 +30,21 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
 
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.DAnalysisSessionEObject;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ControlledRoot;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ResourcesFolderItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.SiriussFolderItemImpl;
+import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * ContentProvider handling sessions and mixing semantic/representations.
@@ -356,12 +356,12 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
             if (representation.eResource() != null) {
                 RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
                 if (description != null) {
-                    Sirius reprSirius = SiriusRegistry.getInstance().getSirius(description);
+                    Viewpoint reprSirius = SiriusRegistry.getInstance().getSirius(description);
                     // representationDescription.eContainer() can be null in the
                     // case that the viewpoint has been renamed after the aird
                     // creation
                     if (reprSirius != null && !reprSirius.eIsProxy() && reprSirius.eResource() != null) {
-                        for (final Sirius viewpoint : session.getSelectedSiriuss(false)) {
+                        for (final Viewpoint viewpoint : session.getSelectedSiriuss(false)) {
                             if (EqualityHelper.areEquals(viewpoint, reprSirius)) {
                                 return true;
                             }

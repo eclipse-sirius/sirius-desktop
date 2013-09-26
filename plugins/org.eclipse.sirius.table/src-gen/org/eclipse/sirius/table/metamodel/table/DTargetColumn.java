@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.metamodel.table;
 
-import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -28,5 +28,5 @@ public interface DTargetColumn extends DSemanticDecorator, DColumn, DTableElemen
      * 
      * @generated
      */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 } // DTargetColumn

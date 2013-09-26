@@ -28,7 +28,7 @@ import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.business.api.query.SiriusURIQuery;
 import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Represents a set of logical Siriuss, for example the ones requested by a
@@ -71,8 +71,8 @@ public class SiriusSelection {
         }
     };
 
-    private final Function<URI, Sirius> viewpointImplementation = new Function<URI, Sirius>() {
-        public Sirius apply(URI from) {
+    private final Function<URI, Viewpoint> viewpointImplementation = new Function<URI, Viewpoint>() {
+        public Viewpoint apply(URI from) {
             return registry.getSirius(from);
         }
     };
@@ -218,7 +218,7 @@ public class SiriusSelection {
     private boolean noConflictsBetweenRequiredSiriuss() {
         Set<URI> forbidden = Sets.newHashSet();
         for (URI uri : logicalSiriuss) {
-            Sirius vp = viewpointImplementation.apply(uri);
+            Viewpoint vp = viewpointImplementation.apply(uri);
             if (vp != null) {
                 Iterables.addAll(forbidden, vp.getConflicts());
             }

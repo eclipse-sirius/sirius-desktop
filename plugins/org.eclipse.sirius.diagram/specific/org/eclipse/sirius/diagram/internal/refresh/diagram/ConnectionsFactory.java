@@ -36,12 +36,7 @@ import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.CenterLabelStyle;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData;
@@ -51,6 +46,10 @@ import org.eclipse.sirius.diagram.internal.refresh.edge.SlidableAnchor;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.part.SiriusLinkDescriptor;
 import org.eclipse.sirius.diagram.tools.internal.util.GMFNotationUtilities;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.CenterLabelStyle;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
 
 /**
  * Specific factory for {@link Edge} used by the

@@ -18,12 +18,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
-
 import org.eclipse.sirius.business.api.query.ResourceQuery;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramExtensionDescription;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 
 /**
  * The base class of viewpoint constraints.

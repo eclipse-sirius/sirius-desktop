@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.diagramtype;
 
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.SiriusFactory;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 
 /**
  * A specific class grouping all data of a header :
@@ -32,17 +32,17 @@ public class HeaderData {
      * The default background color for header when <code>backgroundColor</code>
      * is null.
      */
-    public static final RGBValues DEFAULT_BACKGROUND_COLOR = SiriusFactory.eINSTANCE.createRGBValues();
+    public static final RGBValues DEFAULT_BACKGROUND_COLOR = ViewpointFactory.eINSTANCE.createRGBValues();
 
     /**
      * The default label color for header when <code>labelColor</code> is null.
      */
-    public static final RGBValues DEFAULT_LABEL_COLOR = SiriusFactory.eINSTANCE.createRGBValues();
+    public static final RGBValues DEFAULT_LABEL_COLOR = ViewpointFactory.eINSTANCE.createRGBValues();
 
     /**
      * The default background color for space between each header.
      */
-    public static final RGBValues DEFAULT_SEPARATOR_BACKGROUND_COLOR = SiriusFactory.eINSTANCE.createRGBValues();
+    public static final RGBValues DEFAULT_SEPARATOR_BACKGROUND_COLOR = ViewpointFactory.eINSTANCE.createRGBValues();
 
     static {
         DEFAULT_BACKGROUND_COLOR.setRed(200);

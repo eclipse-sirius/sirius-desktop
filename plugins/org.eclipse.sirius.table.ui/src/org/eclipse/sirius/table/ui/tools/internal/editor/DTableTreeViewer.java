@@ -24,10 +24,8 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Item;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DRepresentationElement;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
@@ -38,6 +36,7 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.listeners.DLineExpansio
 import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableColumnHeaderLabelProvider;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeViewer;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableColumnViewerEditorActivationStrategy;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 /**
  * A specific TreeViewer for the specials needs of DTable :

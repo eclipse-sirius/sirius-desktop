@@ -19,10 +19,9 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.EMFPlugin;
-
-import org.eclipse.sirius.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrderingProvider;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
  * This class registers all {@link ViewOrderingProvider}s.

@@ -17,9 +17,8 @@ import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
-
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerTabExtension;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 public class OpenedSessionsTab implements IModelExplorerTabExtension {
 

@@ -15,8 +15,7 @@ import java.util.Iterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.IPropertySourceProvider;
-
-import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Displays the semantic and the extension properties.

@@ -13,7 +13,7 @@ package org.eclipse.sirius.business.internal.metamodel.helper;
 import java.util.Set;
 
 import org.eclipse.sirius.business.internal.experimental.sync.AbstractDNodeCandidate;
-import org.eclipse.sirius.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
  * A visitor interface to iterate over a mappings list in the smartest ways for

@@ -44,8 +44,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.BasicResourceHandler;
 import org.eclipse.emf.ecore.xml.type.AnyType;
-
-import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A common class to share migration methods.

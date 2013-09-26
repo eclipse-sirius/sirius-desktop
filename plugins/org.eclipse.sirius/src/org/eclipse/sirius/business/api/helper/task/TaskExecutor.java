@@ -13,9 +13,9 @@ package org.eclipse.sirius.business.api.helper.task;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Provide methods to execute tasks recursively.

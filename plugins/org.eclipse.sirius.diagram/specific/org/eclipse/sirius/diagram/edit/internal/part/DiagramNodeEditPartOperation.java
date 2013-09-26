@@ -21,15 +21,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.editpolicies.ResizableEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.NoteFigure;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.BorderedStyle;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.LabelAlignment;
-import org.eclipse.sirius.LabelPosition;
-import org.eclipse.sirius.LabelStyle;
-import org.eclipse.sirius.NodeStyle;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.ResizeKind;
 import org.eclipse.sirius.diagram.business.internal.edit.helpers.LabelAlignmentHelper;
 import org.eclipse.sirius.diagram.business.internal.query.StyleConfigurationQuery;
 import org.eclipse.sirius.diagram.edit.api.part.DiagramNameEditPartOperation;
@@ -43,6 +34,14 @@ import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfigura
 import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.BorderedStyle;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.LabelAlignment;
+import org.eclipse.sirius.viewpoint.LabelPosition;
+import org.eclipse.sirius.viewpoint.LabelStyle;
+import org.eclipse.sirius.viewpoint.NodeStyle;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ResizeKind;
 
 /**
  * Implementation of {@link IDiagramNodeEditPart}.

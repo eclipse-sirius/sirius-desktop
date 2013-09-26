@@ -20,13 +20,12 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
-
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.internal.handler.ChangeFilterActivation;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
 
 /**
  * Contribute a menu to tab bar to activate and deactivate filters.

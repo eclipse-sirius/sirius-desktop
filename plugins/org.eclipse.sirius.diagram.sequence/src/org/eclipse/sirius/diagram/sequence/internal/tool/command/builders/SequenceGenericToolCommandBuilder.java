@@ -19,11 +19,8 @@ import com.google.common.base.Predicates;
 
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
-import org.eclipse.sirius.description.tool.ToolDescription;
 import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
@@ -35,6 +32,9 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.State;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.internal.command.builders.GenericToolCommandBuilder;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 
 /**
  * Specific GenericToolCommandBuilder.

@@ -12,8 +12,8 @@ package org.eclipse.sirius.business.internal.experimental.sync;
 
 import com.google.common.base.Predicate;
 
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
  * {@link Predicate} to checks if a {@link DiagramElementMapping} is owned by a

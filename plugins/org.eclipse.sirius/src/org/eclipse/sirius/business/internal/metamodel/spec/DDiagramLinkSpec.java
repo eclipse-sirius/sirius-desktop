@@ -13,11 +13,10 @@ package org.eclipse.sirius.business.internal.metamodel.spec;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.EdgeTarget;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.impl.DDiagramLinkImpl;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.impl.DDiagramLinkImpl;
 
 /**
  * Implementation of DDiagramLinkImpl.java.
@@ -29,7 +28,7 @@ public class DDiagramLinkSpec extends DDiagramLinkImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DDiagramLinkImpl#setNode(org.eclipse.sirius.EdgeTarget)
+     * @see org.eclipse.sirius.viewpoint.impl.DDiagramLinkImpl#setNode(org.eclipse.sirius.viewpoint.EdgeTarget)
      */
     @Override
     public void setNode(final EdgeTarget newNode) {
@@ -49,14 +48,14 @@ public class DDiagramLinkSpec extends DDiagramLinkImpl {
             }
         }
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, SiriusPackage.DDIAGRAM_LINK__NODE, oldNode, getNode()));
+            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DDIAGRAM_LINK__NODE, oldNode, getNode()));
         }
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DDiagramLinkImpl#isAvailable()
+     * @see org.eclipse.sirius.viewpoint.impl.DDiagramLinkImpl#isAvailable()
      */
     @Override
     public boolean isAvailable() {
@@ -66,7 +65,7 @@ public class DDiagramLinkSpec extends DDiagramLinkImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DNavigationLinkImpl#getLabel()
+     * @see org.eclipse.sirius.viewpoint.impl.DNavigationLinkImpl#getLabel()
      */
     @Override
     public String getLabel() {

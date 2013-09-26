@@ -15,14 +15,13 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreEList;
-
-import org.eclipse.sirius.description.validation.ValidationPackage;
-import org.eclipse.sirius.description.validation.ValidationRule;
-import org.eclipse.sirius.description.validation.impl.ValidationSetImpl;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl;
 
 /**
  * Implementation of
- * {@link org.eclipse.sirius.description.validation.ValidationSet}.
+ * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet}.
  * 
  * @author ymortier, mchauvin, cbrun.
  */
@@ -31,7 +30,7 @@ public class ValidationSetSpec extends ValidationSetImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.validation.impl.ValidationSetImpl#getAllRules()
+     * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl#getAllRules()
      */
     @Override
     public EList<ValidationRule> getAllRules() {

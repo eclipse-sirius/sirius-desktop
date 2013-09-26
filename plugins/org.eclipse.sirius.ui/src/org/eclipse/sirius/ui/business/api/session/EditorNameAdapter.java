@@ -21,12 +21,11 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.session.SessionListener;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Adapter which update name of editors when diagram name change.
@@ -69,7 +68,7 @@ public class EditorNameAdapter extends AdapterImpl {
         }
 
         // Update session's editors if name property of DSemanticDiagram changed
-        if (notifier instanceof DRepresentation && n.getFeatureID(DRepresentation.class) == SiriusPackage.DREPRESENTATION__NAME) {
+        if (notifier instanceof DRepresentation && n.getFeatureID(DRepresentation.class) == ViewpointPackage.DREPRESENTATION__NAME) {
             final List<IEditorInput> mades = new ArrayList<IEditorInput>();
             for (IEditorPart editor : editingSession.getEditors()) {
                 // Update editor

@@ -13,10 +13,9 @@ package org.eclipse.sirius.business.internal.migration;
 import java.util.Iterator;
 
 import org.osgi.framework.Version;
-
-import org.eclipse.sirius.DAnalysis;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
-import org.eclipse.sirius.description.DAnnotationEntry;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
 
 /**
  * Remove the old migration tags used before the refactoring of the migration

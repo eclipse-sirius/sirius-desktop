@@ -25,32 +25,31 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.tools.internal.commands.InitializeLayoutCommand;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.api.image.ImagesPath;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Create a new Representation from a {@link RepresentationCreationDescription}.
@@ -83,7 +82,7 @@ public class CreateRepresentationFromRepresentationCreationDescription extends A
      * @param editingDomain
      *            current {@link org.eclipse.emf.edit.domain.EditingDomain}.
      * @param curPart
-     *            editpart of the current {@link org.eclipse.sirius.DNode}.
+     *            editpart of the current {@link org.eclipse.sirius.viewpoint.DNode}.
      * @since 2.0
      */
     public CreateRepresentationFromRepresentationCreationDescription(final RepresentationCreationDescription desc, final DRepresentationElement dNode, final TransactionalEditingDomain editingDomain,

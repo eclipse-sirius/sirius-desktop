@@ -765,7 +765,7 @@
        List of the available variables for tool operations:
             - predecessor: 
             - container: The variable container that represents the semantic element of the clicked view.
-            - containerView: The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+            - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
   
    <!-- Start of user code InstanceRoleCreationTool description -->
    
@@ -783,7 +783,7 @@
 
        List of the available variables for tool operations:
             - container: The semantic element of the cicked view.
-            - containerView: The clicked view (instance of Sirius or ViewNodeContainer).
+            - containerView: The clicked view (instance of ViewPoint or ViewNodeContainer).
   
    <!-- Start of user code LifelineCreationTool description -->
    
@@ -829,7 +829,7 @@
 
        List of the available variables for tool operations:
             - container: The variable container that represents the semantic element of the clicked view.
-            - containerView: The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+            - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
             - startingEndPredecessor: 
             - finishingEndPredecessor: 
   
@@ -849,7 +849,7 @@
 
        List of the available variables for tool operations:
             - container: The variable container that represents the semantic element of the clicked view.
-            - containerView: The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+            - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
             - startingEndPredecessor: 
             - finishingEndPredecessor: 
   
@@ -869,7 +869,7 @@
 
        List of the available variables for tool operations:
             - container: The semantic element of the cicked view.
-            - containerView: The clicked view (instance of Sirius or ViewNodeContainer).
+            - containerView: The clicked view (instance of ViewPoint or ViewNodeContainer).
             - startingEndPredecessor: 
             - finishingEndPredecessor: 
             - coveredLifelines: 
@@ -890,7 +890,7 @@
 
        List of the available variables for tool operations:
             - container: The semantic element of the cicked view.
-            - containerView: The clicked view (instance of Sirius or ViewNodeContainer).
+            - containerView: The clicked view (instance of ViewPoint or ViewNodeContainer).
             - startingEndPredecessor: 
             - finishingEndPredecessor: 
             - coveredLifelines: 
@@ -911,7 +911,7 @@
 
        List of the available variables for tool operations:
             - container: The semantic element of the cicked view.
-            - containerView: The clicked view (instance of Sirius or ViewNodeContainer).
+            - containerView: The clicked view (instance of ViewPoint or ViewNodeContainer).
             - startingEndPredecessor: 
             - finishingEndPredecessor: 
   
@@ -931,7 +931,7 @@
 
        List of the available variables for tool operations:
             - container: The variable container that represents the semantic element of the clicked view.
-            - containerView: The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+            - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
             - startingEndPredecessor: 
             - finishingEndPredecessor: 
   

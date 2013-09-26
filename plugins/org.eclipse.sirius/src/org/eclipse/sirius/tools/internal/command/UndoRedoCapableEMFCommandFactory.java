@@ -26,22 +26,10 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DLabelled;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DRefreshable;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DragAndDropTarget;
-import org.eclipse.sirius.EdgeTarget;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
@@ -49,24 +37,6 @@ import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.tool.AbstractVariable;
-import org.eclipse.sirius.description.tool.BehaviorTool;
-import org.eclipse.sirius.description.tool.ContainerCreationDescription;
-import org.eclipse.sirius.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.description.tool.DirectEditLabel;
-import org.eclipse.sirius.description.tool.DoubleClickDescription;
-import org.eclipse.sirius.description.tool.EdgeCreationDescription;
-import org.eclipse.sirius.description.tool.ExternalJavaAction;
-import org.eclipse.sirius.description.tool.NodeCreationDescription;
-import org.eclipse.sirius.description.tool.OperationAction;
-import org.eclipse.sirius.description.tool.PaneBasedSelectionWizardDescription;
-import org.eclipse.sirius.description.tool.PasteDescription;
-import org.eclipse.sirius.description.tool.ReconnectEdgeDescription;
-import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.description.tool.SelectionWizardDescription;
-import org.eclipse.sirius.description.tool.ToolDescription;
-import org.eclipse.sirius.description.validation.ValidationFix;
 import org.eclipse.sirius.tools.api.command.AbstractCommandFactory;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
@@ -95,6 +65,35 @@ import org.eclipse.sirius.tools.internal.command.builders.PaneBasedSelectionWiza
 import org.eclipse.sirius.tools.internal.command.builders.PasteCommandBuilder;
 import org.eclipse.sirius.tools.internal.command.builders.ReconnectionCommandBuilder;
 import org.eclipse.sirius.tools.internal.command.builders.SelectionWizardCommandBuilder;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DLabelled;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DRefreshable;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DragAndDropTarget;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.tool.BehaviorTool;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
+import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
+import org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription;
+import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
+import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
+import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
+import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 
@@ -144,7 +143,7 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildLaunchRuleCommandFromTool(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.sirius.description.tool.BehaviorTool, boolean,
+     *      org.eclipse.sirius.viewpoint.description.tool.BehaviorTool, boolean,
      *      boolean)
      */
     public Command buildLaunchRuleCommandFromTool(final DSemanticDecorator rootObject, final BehaviorTool tool, final boolean executeFromRootContainer, final boolean deepProcess) {
@@ -190,8 +189,8 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildCreateNodeCommandFromTool(org.eclipse.sirius.DDiagramElementContainer,
-     *      org.eclipse.sirius.description.tool.AbstractToolDescription)
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildCreateNodeCommandFromTool(org.eclipse.sirius.viewpoint.DDiagramElementContainer,
+     *      org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription)
      */
     public Command buildCreateNodeCommandFromTool(final DDiagramElementContainer container, final NodeCreationDescription tool) {
         final CommandBuilder builder = new NodeCreationCommandBuilder(tool, container);
@@ -202,8 +201,8 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildCreateNodeCommandFromTool(org.eclipse.sirius.DNode,
-     *      org.eclipse.sirius.description.tool.AbstractToolDescription)
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildCreateNodeCommandFromTool(org.eclipse.sirius.viewpoint.DNode,
+     *      org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription)
      */
     public Command buildCreateNodeCommandFromTool(final DNode node, final NodeCreationDescription tool) {
         final CommandBuilder builder = new NodeCreationCommandBuilder(tool, node);
@@ -214,8 +213,8 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildCreateNodeCommandFromTool(org.eclipse.sirius.DDiagram,
-     *      org.eclipse.sirius.description.tool.AbstractToolDescription)
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildCreateNodeCommandFromTool(org.eclipse.sirius.viewpoint.DDiagram,
+     *      org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription)
      */
     public Command buildCreateNodeCommandFromTool(final DDiagram diagram, final NodeCreationDescription tool) {
         final CommandBuilder builder = new NodeCreationCommandBuilder(tool, diagram);
@@ -226,8 +225,8 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildCreateContainerCommandFromTool(org.eclipse.sirius.DDiagram,
-     *      org.eclipse.sirius.description.tool.ContainerCreationDescription)
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildCreateContainerCommandFromTool(org.eclipse.sirius.viewpoint.DDiagram,
+     *      org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription)
      */
     public Command buildCreateContainerCommandFromTool(final DDiagram diagram, final ContainerCreationDescription tool) {
         final CommandBuilder builder = new ContainerCreationCommandBuilder(tool, diagram);
@@ -238,8 +237,8 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildCreateContainerCommandFromTool(org.eclipse.sirius.DNodeContainer,
-     *      org.eclipse.sirius.description.tool.ContainerCreationDescription)
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildCreateContainerCommandFromTool(org.eclipse.sirius.viewpoint.DNodeContainer,
+     *      org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription)
      */
     public Command buildCreateContainerCommandFromTool(final DDiagramElementContainer nodeContainer, final ContainerCreationDescription tool) {
         final CommandBuilder builder = new ContainerCreationCommandBuilder(tool, nodeContainer);
@@ -250,8 +249,8 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildSelectionWizardCommandFromTool(org.eclipse.sirius.description.tool.SelectionWizardDescription,
-     *      org.eclipse.sirius.DSemanticDecorator, java.util.Collection)
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildSelectionWizardCommandFromTool(org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription,
+     *      org.eclipse.sirius.viewpoint.DSemanticDecorator, java.util.Collection)
      */
     public Command buildSelectionWizardCommandFromTool(final SelectionWizardDescription tool, final DSemanticDecorator containerView, final Collection<EObject> selectedElement) {
         final CommandBuilder builder = new SelectionWizardCommandBuilder(tool, containerView, selectedElement);
@@ -262,8 +261,8 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildPaneBasedSelectionWizardCommandFromTool(org.eclipse.sirius.description.tool.PaneBasedSelectionWizardDescription,
-     *      org.eclipse.sirius.DSemanticDecorator, java.util.Collection)
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildPaneBasedSelectionWizardCommandFromTool(org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription,
+     *      org.eclipse.sirius.viewpoint.DSemanticDecorator, java.util.Collection)
      */
     public Command buildPaneBasedSelectionWizardCommandFromTool(final PaneBasedSelectionWizardDescription tool, final DSemanticDecorator containerView, final Collection<EObject> selectedElement) {
         final CommandBuilder builder = new PaneBasedSelectionWizardCommandBuilder(tool, containerView, selectedElement);
@@ -358,9 +357,9 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildCreateEdgeCommandFromTool(org.eclipse.sirius.EdgeTarget,
-     *      org.eclipse.sirius.EdgeTarget,
-     *      org.eclipse.sirius.description.tool.EdgeCreationDescription)
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildCreateEdgeCommandFromTool(org.eclipse.sirius.viewpoint.EdgeTarget,
+     *      org.eclipse.sirius.viewpoint.EdgeTarget,
+     *      org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription)
      */
     public Command buildCreateEdgeCommandFromTool(final EdgeTarget source, final EdgeTarget target, final EdgeCreationDescription tool) {
         final CommandBuilder builder = new EdgeCreationCommandBuilder(tool, source, target);
@@ -371,9 +370,9 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildReconnectEdgeCommandFromTool(org.eclipse.sirius.description.tool.ReconnectEdgeDescription,
-     *      org.eclipse.sirius.DEdge, org.eclipse.sirius.EdgeTarget,
-     *      org.eclipse.sirius.EdgeTarget)
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildReconnectEdgeCommandFromTool(org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription,
+     *      org.eclipse.sirius.viewpoint.DEdge, org.eclipse.sirius.viewpoint.EdgeTarget,
+     *      org.eclipse.sirius.viewpoint.EdgeTarget)
      */
     public Command buildReconnectEdgeCommandFromTool(final ReconnectEdgeDescription tool, final DEdge edge, final EdgeTarget source, final EdgeTarget target) {
         final CommandBuilder builder = new ReconnectionCommandBuilder(tool, edge, source, target);
@@ -384,9 +383,9 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildDropInContainerCommandFromTool(org.eclipse.sirius.DragAndDropTarget,
-     *      org.eclipse.sirius.DDiagramElement,
-     *      org.eclipse.sirius.description.tool.ContainerDropDescription)
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildDropInContainerCommandFromTool(org.eclipse.sirius.viewpoint.DragAndDropTarget,
+     *      org.eclipse.sirius.viewpoint.DDiagramElement,
+     *      org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription)
      */
     public Command buildDropInContainerCommandFromTool(final DragAndDropTarget container, final DDiagramElement element, final ContainerDropDescription tool) {
         final CommandBuilder builder = new DragAndDropCommandBuilder(tool, container, element);
@@ -421,8 +420,8 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildDoExecuteDetailsOperation(org.eclipse.sirius.DSemanticDecorator,
-     *      org.eclipse.sirius.description.tool.RepresentationCreationDescription,
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildDoExecuteDetailsOperation(org.eclipse.sirius.viewpoint.DSemanticDecorator,
+     *      org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription,
      *      java.lang.String)
      */
     public Command buildDoExecuteDetailsOperation(final DSemanticDecorator target, final RepresentationCreationDescription desc, final String newRepresentationName) {
@@ -445,7 +444,7 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildDeleteDiagram(org.eclipse.sirius.DDiagram)
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildDeleteDiagram(org.eclipse.sirius.viewpoint.DDiagram)
      */
     public Command buildDeleteDiagram(final DDiagram dDiagram) {
         final CommandBuilder builder = new DeletionCommandBuilder(dDiagram);
@@ -456,7 +455,7 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildDeleteFromDiagramCommand(org.eclipse.sirius.DDiagramElement)
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildDeleteFromDiagramCommand(org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public Command buildDeleteFromDiagramCommand(final DDiagramElement element) {
         final CommandBuilder builder = new DeletionCommandBuilder(element, true);
@@ -467,7 +466,7 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildDeleteDiagramElement(org.eclipse.sirius.DDiagramElement)
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildDeleteDiagramElement(org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public Command buildDeleteDiagramElement(final DDiagramElement element) {
         final CommandBuilder builder = new DeletionCommandBuilder(element, false);
@@ -478,8 +477,8 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildDirectEditLabelFromTool(org.eclipse.sirius.DLabelled,
-     *      org.eclipse.sirius.description.tool.DirectEditLabel,
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildDirectEditLabelFromTool(org.eclipse.sirius.viewpoint.DLabelled,
+     *      org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel,
      *      java.lang.String)
      */
     public Command buildDirectEditLabelFromTool(final DLabelled labeled, final DirectEditLabel directEditTool, final String newValue) {
@@ -491,7 +490,7 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildRefreshCommand(org.eclipse.sirius.DRefreshable)
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildRefreshCommand(org.eclipse.sirius.viewpoint.DRefreshable)
      */
     public Command buildRefreshCommand(final DRefreshable vpElem) {
         if (getPermissionAuthority().canEditInstance(vpElem)) {
@@ -551,7 +550,7 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildRevealCommand(org.eclipse.sirius.DDiagramElement)
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildRevealCommand(org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public Command buildRevealCommand(final DDiagramElement vpe) {
         if (getPermissionAuthority().canEditInstance(vpe)) {
@@ -563,7 +562,7 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildRevealLabelCommand(org.eclipse.sirius.DDiagramElement)
+     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildRevealLabelCommand(org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public Command buildRevealLabelCommand(DDiagramElement diagramElement) {
         if (getPermissionAuthority().canEditInstance(diagramElement)) {

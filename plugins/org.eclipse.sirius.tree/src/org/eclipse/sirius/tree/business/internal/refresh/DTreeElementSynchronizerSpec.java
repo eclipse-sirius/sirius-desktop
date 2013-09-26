@@ -16,13 +16,10 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.FontFormat;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
@@ -39,6 +36,8 @@ import org.eclipse.sirius.tree.description.TreeItemStyleDescription;
 import org.eclipse.sirius.tree.description.TreeMapping;
 import org.eclipse.sirius.tree.impl.DTreeElementSynchronizerImpl;
 import org.eclipse.sirius.tree.tools.api.interpreter.IInterpreterSiriusTreeVariables;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**

@@ -27,14 +27,13 @@ import org.eclipse.jface.viewers.IDecorationContext;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.jface.viewers.LabelDecorator;
+import org.eclipse.sirius.editor.tools.internal.marker.SiriusEditorInterpreterMarkerService;
+import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.editor.tools.internal.marker.SiriusEditorInterpreterMarkerService;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
-import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
 
 /**
  * Decorates all elements by adding an "Error" or "Warning" decoration if any

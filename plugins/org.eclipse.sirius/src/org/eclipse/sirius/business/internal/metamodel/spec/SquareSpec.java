@@ -12,10 +12,10 @@ package org.eclipse.sirius.business.internal.metamodel.spec;
 
 import org.eclipse.sirius.business.internal.metamodel.operations.BorderedStyleSpecOperation;
 import org.eclipse.sirius.business.internal.metamodel.operations.StyleSpecOperations;
-import org.eclipse.sirius.impl.SquareImpl;
+import org.eclipse.sirius.viewpoint.impl.SquareImpl;
 
 /**
- * Implementation of {@link org.eclipse.sirius.Square}.
+ * Implementation of {@link org.eclipse.sirius.viewpoint.Square}.
  * 
  * @author cbrun, mchauvin, ymortier.
  */
@@ -24,7 +24,7 @@ public class SquareSpec extends SquareImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.NodeStyleImpl#refresh()
+     * @see org.eclipse.sirius.viewpoint.impl.NodeStyleImpl#refresh()
      */
     @Override
     public void refresh() {

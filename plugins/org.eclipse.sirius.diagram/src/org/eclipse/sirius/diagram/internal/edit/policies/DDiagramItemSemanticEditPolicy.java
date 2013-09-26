@@ -16,12 +16,11 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.commands.DuplicateEObjectsCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DuplicateElementsRequest;
-
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.diagram.internal.edit.commands.DNodeContainerCreateCommand;
 import org.eclipse.sirius.diagram.internal.edit.commands.DNodeCreateCommand;
 import org.eclipse.sirius.diagram.internal.edit.commands.DNodeListCreateCommand;
 import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * @was-generated
@@ -34,19 +33,19 @@ public class DDiagramItemSemanticEditPolicy extends SiriusBaseItemSemanticEditPo
     protected Command getCreateCommand(CreateElementRequest req) {
         if (SiriusElementTypes.DNode_2001 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(SiriusPackage.eINSTANCE.getDDiagram_OwnedDiagramElements());
+                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getDDiagram_OwnedDiagramElements());
             }
             return getGEFWrapper(new DNodeCreateCommand(req));
         }
         if (SiriusElementTypes.DNodeContainer_2002 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(SiriusPackage.eINSTANCE.getDDiagram_OwnedDiagramElements());
+                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getDDiagram_OwnedDiagramElements());
             }
             return getGEFWrapper(new DNodeContainerCreateCommand(req));
         }
         if (SiriusElementTypes.DNodeList_2003 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(SiriusPackage.eINSTANCE.getDDiagram_OwnedDiagramElements());
+                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getDDiagram_OwnedDiagramElements());
             }
             return getGEFWrapper(new DNodeListCreateCommand(req));
         }

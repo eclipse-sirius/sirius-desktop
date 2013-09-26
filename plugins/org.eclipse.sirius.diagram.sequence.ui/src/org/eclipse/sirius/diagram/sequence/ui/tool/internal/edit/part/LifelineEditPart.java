@@ -28,11 +28,6 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-
-import org.eclipse.sirius.BorderedStyle;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DStylizable;
-import org.eclipse.sirius.Style;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
@@ -47,6 +42,10 @@ import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigur
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.BorderedStyle;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.Style;
 
 /**
  * Special edit part for Executions. They are treated as bordered nodes.

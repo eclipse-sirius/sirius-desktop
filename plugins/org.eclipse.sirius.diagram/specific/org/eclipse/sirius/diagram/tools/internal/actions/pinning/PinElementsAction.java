@@ -14,10 +14,9 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * An external action which marks diagram elements as "pinned" so they are not

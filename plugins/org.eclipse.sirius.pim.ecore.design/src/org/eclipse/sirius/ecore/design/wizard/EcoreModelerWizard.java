@@ -63,15 +63,15 @@ import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DView;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.api.wizards.page.SiriussSelectionWizardPage;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ecore.design.service.EcoreSamplePlugin;
 
 /**
@@ -187,7 +187,7 @@ public class EcoreModelerWizard extends EmptyProjectWizard {
 
         if (finished && project != null) {
             final EcoreModelingProjectCreationOperation ecoreModelingProjectCreationOperation = new EcoreModelingProjectCreationOperation(project, modelPage.getEPackage(),
-                    modelPage.getEcoreFileName(), modelPage.getGenModelFileName(), modelPage.getRepresentationFileName(), new LinkedHashSet<Sirius>(viewpointsSelectionWizardPage.getSiriuss()));
+                    modelPage.getEcoreFileName(), modelPage.getGenModelFileName(), modelPage.getRepresentationFileName(), new LinkedHashSet<Viewpoint>(viewpointsSelectionWizardPage.getSiriuss()));
             try {
                 getContainer().run(true, false, ecoreModelingProjectCreationOperation);
             } catch (InvocationTargetException e) {

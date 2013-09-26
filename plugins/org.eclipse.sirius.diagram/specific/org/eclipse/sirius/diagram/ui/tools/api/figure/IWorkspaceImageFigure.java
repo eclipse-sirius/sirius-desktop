@@ -11,9 +11,8 @@
 package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
 import org.eclipse.draw2d.IFigure;
-
-import org.eclipse.sirius.ContainerStyle;
-import org.eclipse.sirius.WorkspaceImage;
+import org.eclipse.sirius.viewpoint.ContainerStyle;
+import org.eclipse.sirius.viewpoint.WorkspaceImage;
 
 /**
  * Interface for worskpace image figures.

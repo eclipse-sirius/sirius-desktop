@@ -12,12 +12,11 @@ package org.eclipse.sirius.table.metamodel.table.description;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.description.DocumentedElement;
-import org.eclipse.sirius.description.EndUserDocumentedElement;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.description.tool.RepresentationNavigationDescription;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
+import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -88,7 +87,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * 
      * @generated
      */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * Returns the value of the '<em><b>Precondition Expression</b></em>'
@@ -131,8 +130,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableDescription_DomainClass()
-     * @model dataType="org.eclipse.sirius.description.TypeName"
-     *        required="true"
+     * @model dataType="org.eclipse.sirius.description.TypeName" required="true"
      * @generated
      */
     String getDomainClass();
@@ -154,7 +152,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * Returns the value of the '
      * <em><b>Owned Representation Creation Descriptions</b></em>' containment
      * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.description.tool.RepresentationCreationDescription}
+     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All tools of the section. <!-- end-model-doc -->
      * 
@@ -171,7 +169,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * Returns the value of the '
      * <em><b>Reused Representation Creation Descriptions</b></em>' reference
      * list. The list contents are of type
-     * {@link org.eclipse.sirius.description.tool.RepresentationCreationDescription}
+     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All tools of the section. <!-- end-model-doc -->
      * 
@@ -188,7 +186,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * Returns the value of the '
      * <em><b>All Representation Creation Descriptions</b></em>' reference list.
      * The list contents are of type
-     * {@link org.eclipse.sirius.description.tool.RepresentationCreationDescription}
+     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All tools of the section. <!-- end-model-doc -->
      * 
@@ -206,7 +204,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * Returns the value of the '
      * <em><b>Owned Representation Navigation Descriptions</b></em>' containment
      * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.description.tool.RepresentationNavigationDescription}
+     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All navigation tools. <!-- end-model-doc -->
      * 
@@ -223,7 +221,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * Returns the value of the '
      * <em><b>Reused Representation Navigation Descriptions</b></em>' reference
      * list. The list contents are of type
-     * {@link org.eclipse.sirius.description.tool.RepresentationNavigationDescription}
+     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All navigation tools. <!-- end-model-doc -->
      * 
@@ -240,7 +238,7 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
      * Returns the value of the '
      * <em><b>All Representation Navigation Descriptions</b></em>' reference
      * list. The list contents are of type
-     * {@link org.eclipse.sirius.description.tool.RepresentationNavigationDescription}
+     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All navigation tools. <!-- end-model-doc -->
      * 
@@ -257,8 +255,8 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
     /**
      * Returns the value of the '<em><b>Owned Line Mappings</b></em>'
      * containment reference list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}
-     * . <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Owned Line Mappings</em>' containment
      * reference list isn't clear, there really should be more of a description
@@ -277,8 +275,8 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
     /**
      * Returns the value of the '<em><b>Reused Line Mappings</b></em>' reference
      * list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}
-     * . <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Reused Line Mappings</em>' reference list
      * isn't clear, there really should be more of a description here...
@@ -295,8 +293,8 @@ public interface TableDescription extends RepresentationDescription, DocumentedE
     /**
      * Returns the value of the '<em><b>All Line Mappings</b></em>' reference
      * list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}
-     * . <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>All Line Mappings</em>' reference list isn't
      * clear, there really should be more of a description here...

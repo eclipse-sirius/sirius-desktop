@@ -19,10 +19,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.sirius.description.contribution.Contribution;
-import org.eclipse.sirius.description.contribution.ContributionPackage;
-import org.eclipse.sirius.description.contribution.ContributionProvider;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
@@ -33,9 +29,6 @@ import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl#getContributions
- * <em>Contributions</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableDescriptionImpl#getOwnedColumnMappings
  * <em>Owned Column Mappings</em>}</li>
@@ -56,18 +49,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
-
-    /**
-     * The cached value of the '{@link #getContributions()
-     * <em>Contributions</em>}' containment reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @see #getContributions()
-     * @generated
-     * @ordered
-     */
-    protected EList<Contribution> contributions;
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * The cached value of the '{@link #getOwnedColumnMappings()
@@ -108,18 +90,6 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
     @Override
     protected EClass eStaticClass() {
         return DescriptionPackage.Literals.EDITION_TABLE_DESCRIPTION;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EList<Contribution> getContributions() {
-        if (contributions == null) {
-            contributions = new EObjectContainmentEList.Resolving<Contribution>(Contribution.class, this, DescriptionPackage.EDITION_TABLE_DESCRIPTION__CONTRIBUTIONS);
-        }
-        return contributions;
     }
 
     /**
@@ -171,8 +141,6 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case DescriptionPackage.EDITION_TABLE_DESCRIPTION__CONTRIBUTIONS:
-            return ((InternalEList<?>) getContributions()).basicRemove(otherEnd, msgs);
         case DescriptionPackage.EDITION_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS:
             return ((InternalEList<?>) getOwnedColumnMappings()).basicRemove(otherEnd, msgs);
         }
@@ -187,8 +155,6 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case DescriptionPackage.EDITION_TABLE_DESCRIPTION__CONTRIBUTIONS:
-            return getContributions();
         case DescriptionPackage.EDITION_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS:
             return getOwnedColumnMappings();
         case DescriptionPackage.EDITION_TABLE_DESCRIPTION__REUSED_COLUMN_MAPPINGS:
@@ -208,10 +174,6 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case DescriptionPackage.EDITION_TABLE_DESCRIPTION__CONTRIBUTIONS:
-            getContributions().clear();
-            getContributions().addAll((Collection<? extends Contribution>) newValue);
-            return;
         case DescriptionPackage.EDITION_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS:
             getOwnedColumnMappings().clear();
             getOwnedColumnMappings().addAll((Collection<? extends FeatureColumnMapping>) newValue);
@@ -232,9 +194,6 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case DescriptionPackage.EDITION_TABLE_DESCRIPTION__CONTRIBUTIONS:
-            getContributions().clear();
-            return;
         case DescriptionPackage.EDITION_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS:
             getOwnedColumnMappings().clear();
             return;
@@ -253,8 +212,6 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case DescriptionPackage.EDITION_TABLE_DESCRIPTION__CONTRIBUTIONS:
-            return contributions != null && !contributions.isEmpty();
         case DescriptionPackage.EDITION_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS:
             return ownedColumnMappings != null && !ownedColumnMappings.isEmpty();
         case DescriptionPackage.EDITION_TABLE_DESCRIPTION__REUSED_COLUMN_MAPPINGS:
@@ -263,42 +220,6 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
             return !getAllColumnMappings().isEmpty();
         }
         return super.eIsSet(featureID);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-        if (baseClass == ContributionProvider.class) {
-            switch (derivedFeatureID) {
-            case DescriptionPackage.EDITION_TABLE_DESCRIPTION__CONTRIBUTIONS:
-                return ContributionPackage.CONTRIBUTION_PROVIDER__CONTRIBUTIONS;
-            default:
-                return -1;
-            }
-        }
-        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-        if (baseClass == ContributionProvider.class) {
-            switch (baseFeatureID) {
-            case ContributionPackage.CONTRIBUTION_PROVIDER__CONTRIBUTIONS:
-                return DescriptionPackage.EDITION_TABLE_DESCRIPTION__CONTRIBUTIONS;
-            default:
-                return -1;
-            }
-        }
-        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
     }
 
 } // EditionTableDescriptionImpl

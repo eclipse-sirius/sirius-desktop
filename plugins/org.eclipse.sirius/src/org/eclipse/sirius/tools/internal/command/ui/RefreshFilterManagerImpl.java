@@ -15,9 +15,9 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilter;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilterManager;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * Default implementation.
@@ -78,7 +78,7 @@ public final class RefreshFilterManagerImpl implements RefreshFilterManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.ui.RefreshFilter#shouldRefresh(org.eclipse.sirius.DRepresentation)
+     * @see org.eclipse.sirius.tools.api.command.ui.RefreshFilter#shouldRefresh(org.eclipse.sirius.viewpoint.DRepresentation)
      */
     public boolean shouldRefresh(final DRepresentation representation) {
         final Iterator<RefreshFilter> it = filters.iterator();

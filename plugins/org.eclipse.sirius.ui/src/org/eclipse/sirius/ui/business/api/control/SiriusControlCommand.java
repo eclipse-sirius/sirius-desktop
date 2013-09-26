@@ -25,13 +25,6 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationContainer;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DView;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
@@ -40,9 +33,16 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.internal.command.control.ControlCommand;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * An extension of the basic {@link ControlCommand} to handle both the semantic
@@ -194,9 +194,9 @@ public class SiriusControlCommand extends ControlCommand {
             // viewpoint. This way, we will be able to open the empty aird
             // fragment with the viewpoints properly set
             DAnalysis newDAnalysis = getDAnalysis(newRepresentationsFile);
-            for (Sirius viewpoint : session.getSelectedSiriuss(false)) {
-                DRepresentationContainer createDRepresentationContainer = SiriusFactory.eINSTANCE.createDRepresentationContainer();
-                createDRepresentationContainer.setSirius(viewpoint);
+            for (Viewpoint viewpoint : session.getSelectedSiriuss(false)) {
+                DRepresentationContainer createDRepresentationContainer = ViewpointFactory.eINSTANCE.createDRepresentationContainer();
+                createDRepresentationContainer.setViewpoint(viewpoint);
                 newDAnalysis.getOwnedViews().add(createDRepresentationContainer);
                 newDAnalysis.getSelectedViews().add(createDRepresentationContainer);
             }
@@ -334,7 +334,7 @@ public class SiriusControlCommand extends ControlCommand {
             }
         }
 
-        final DAnalysis newAnalysis = SiriusFactory.eINSTANCE.createDAnalysis();
+        final DAnalysis newAnalysis = ViewpointFactory.eINSTANCE.createDAnalysis();
         aird.getContents().add(newAnalysis);
         return newAnalysis;
     }

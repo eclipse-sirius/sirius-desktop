@@ -17,17 +17,16 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.sirius.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManagerListener;
 import org.eclipse.sirius.business.api.helper.layers.LayerService;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Mappings available for a given diagram description.
@@ -60,7 +59,7 @@ public class DiagramDescriptionMappingsManagerImpl implements DiagramDescription
     /**
      * {@inheritDoc}
      */
-    public void computeMappings(Collection<Sirius> enabledSiriuss) {
+    public void computeMappings(Collection<Viewpoint> enabledSiriuss) {
         nodeMappings = new DiagramComponentizationManager().getAllNodeMappings(enabledSiriuss, this.description);
         edgeMappings = new DiagramComponentizationManager().getAllEdgeMappings(enabledSiriuss, this.description);
         containerMappings = new DiagramComponentizationManager().getAllContainerMappings(enabledSiriuss, this.description);
@@ -100,7 +99,7 @@ public class DiagramDescriptionMappingsManagerImpl implements DiagramDescription
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager#getContainerMappings(org.eclipse.sirius.description.ContainerMapping)
+     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager#getContainerMappings(org.eclipse.sirius.viewpoint.description.ContainerMapping)
      */
     public List<ContainerMapping> getContainerMappings(final ContainerMapping containerMapping) {
         List<ContainerMapping> result = Collections.emptyList();
@@ -113,7 +112,7 @@ public class DiagramDescriptionMappingsManagerImpl implements DiagramDescription
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager#getNodeMappings(org.eclipse.sirius.description.ContainerMapping)
+     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager#getNodeMappings(org.eclipse.sirius.viewpoint.description.ContainerMapping)
      */
     public List<NodeMapping> getNodeMappings(final ContainerMapping containerMapping) {
         List<NodeMapping> result = Collections.emptyList();
@@ -126,7 +125,7 @@ public class DiagramDescriptionMappingsManagerImpl implements DiagramDescription
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager#getBorderedNodeMappings(org.eclipse.sirius.description.AbstractNodeMapping)
+     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager#getBorderedNodeMappings(org.eclipse.sirius.viewpoint.description.AbstractNodeMapping)
      */
     public List<NodeMapping> getBorderedNodeMappings(final AbstractNodeMapping mapping) {
         List<NodeMapping> result = Collections.emptyList();

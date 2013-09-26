@@ -15,15 +15,14 @@ import java.util.Collections;
 import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.IModificationTask;
-import org.eclipse.sirius.description.tool.SetObject;
-import org.eclipse.sirius.description.tool.SetValue;
-import org.eclipse.sirius.description.tool.ToolPackage;
 import org.eclipse.sirius.tools.api.command.CommandContext;
+import org.eclipse.sirius.viewpoint.description.tool.SetObject;
+import org.eclipse.sirius.viewpoint.description.tool.SetValue;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 

@@ -19,7 +19,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * An event handler for representations files.
@@ -61,19 +61,19 @@ public class RepresentationsFileHandler extends DefaultHandler {
      */
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        if (qName.equals(SiriusPackage.eINSTANCE.getDAnalysis_Models().getName())) {
+        if (qName.equals(ViewpointPackage.eINSTANCE.getDAnalysis_Models().getName())) {
             dAnalysisModels = true;
             String hrefValue = attributes.getValue("href");
             if (hrefValue != null) {
                 usedModels.add(URI.createURI(hrefValue).resolve(sessionURI).trimFragment());
             }
-        } else if (qName.equals(SiriusPackage.eINSTANCE.getDAnalysis_ReferencedAnalysis().getName())) {
+        } else if (qName.equals(ViewpointPackage.eINSTANCE.getDAnalysis_ReferencedAnalysis().getName())) {
             dAnalysisReferencedAnalysis = true;
             String hrefValue = attributes.getValue("href");
             if (hrefValue != null) {
                 referencedAnalysis.add(URI.createURI(hrefValue).resolve(sessionURI).trimFragment());
             }
-        } else if (qName.equals(SiriusPackage.eINSTANCE.getDAnalysis_OwnedViews().getName()) && (dAnalysisReferencedAnalysis || dAnalysisModels)) {
+        } else if (qName.equals(ViewpointPackage.eINSTANCE.getDAnalysis_OwnedViews().getName()) && (dAnalysisReferencedAnalysis || dAnalysisModels)) {
             throw new SiriusSaxParserNormalAbortException("All needed informations have been reached. Stop the parsing.");
         }
     }

@@ -39,15 +39,14 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.description.audit.provider.AuditItemProviderAdapterFactory;
-import org.eclipse.sirius.description.filter.provider.FilterItemProviderAdapterFactory;
-import org.eclipse.sirius.description.provider.DescriptionItemProviderAdapterFactory;
-import org.eclipse.sirius.description.tool.provider.ToolItemProviderAdapterFactory;
-import org.eclipse.sirius.description.validation.provider.ValidationItemProviderAdapterFactory;
-import org.eclipse.sirius.provider.SiriusItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.filter.provider.FilterItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 
 /**
  * Wizard page to select the representations you want to export.
@@ -179,7 +178,7 @@ public class SelectExtractedRepresentationsPage extends WizardPage {
      *            the factories list to fill
      */
     protected void fillItemProviderFactories(final List<AdapterFactory> factories) {
-        factories.add(new SiriusItemProviderAdapterFactory());
+        factories.add(new ViewpointItemProviderAdapterFactory());
         factories.add(new DescriptionItemProviderAdapterFactory());
         factories.add(new ToolItemProviderAdapterFactory());
         factories.add(new FilterItemProviderAdapterFactory());

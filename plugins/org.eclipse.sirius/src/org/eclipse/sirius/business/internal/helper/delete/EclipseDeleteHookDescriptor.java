@@ -15,9 +15,8 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.delete.IDeleteHook;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Describes a extension as contributed to the

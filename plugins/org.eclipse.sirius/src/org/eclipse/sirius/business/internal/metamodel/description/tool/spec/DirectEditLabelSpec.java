@@ -20,10 +20,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.tool.impl.DirectEditLabelImpl;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.tool.impl.DirectEditLabelImpl;
 
 /**
  * Implementation of DirectEditLabel.
@@ -36,7 +35,7 @@ public class DirectEditLabelSpec extends DirectEditLabelImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.impl.DirectEditLabelImpl#getMapping()
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.DirectEditLabelImpl#getMapping()
      */
     @Override
     public EList<DiagramElementMapping> getMapping() {

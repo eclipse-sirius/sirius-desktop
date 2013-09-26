@@ -21,15 +21,15 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
-import org.eclipse.sirius.AbsoluteBoundsFilter;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.SiriusFactory;
 import org.eclipse.sirius.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
+import org.eclipse.sirius.viewpoint.AbsoluteBoundsFilter;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 
 /**
  * Specific refresh extension to handle structural changes in sequence diagrams.
@@ -81,7 +81,7 @@ public class SequenceRefreshExtension implements IRefreshExtension {
                     if (semanticTarget != null && Iterables.isEmpty(flag) && flags.containsKey(semanticTarget)) {
                         AbsoluteBoundsFilter prevFlag = flags.get(semanticTarget);
 
-                        AbsoluteBoundsFilter newFlag = SiriusFactory.eINSTANCE.createAbsoluteBoundsFilter();
+                        AbsoluteBoundsFilter newFlag = ViewpointFactory.eINSTANCE.createAbsoluteBoundsFilter();
                         newFlag.setX(LayoutConstants.EXTERNAL_CHANGE_FLAG.x);
                         newFlag.setY(prevFlag.getY());
                         newFlag.setHeight(prevFlag.getHeight());

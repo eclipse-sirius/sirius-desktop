@@ -19,17 +19,16 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.swt.graphics.Image;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ui.tools.api.views.common.item.SiriusItem;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Represents viewpoint item in session view.
@@ -41,7 +40,7 @@ public class SiriusItemImpl implements SiriusItem,
 
 	private final Session session;
 
-	private final Sirius viewpoint;
+	private final Viewpoint viewpoint;
 
 	private Resource resource;
 
@@ -59,7 +58,7 @@ public class SiriusItemImpl implements SiriusItem,
 	 * @param parent
 	 *            Parent tree item
 	 */
-	public SiriusItemImpl(final Session session, final Sirius viewpoint,
+	public SiriusItemImpl(final Session session, final Viewpoint viewpoint,
 			final Object parent) {
 		this.session = session;
 		this.viewpoint = viewpoint;
@@ -77,9 +76,9 @@ public class SiriusItemImpl implements SiriusItem,
 	 *            Sirius
 	 * @param parent
 	 *            Parent tree item
-	 * @see #SiriusItem(Session, Sirius, Object)
+	 * @see #SiriusItem(Session, Viewpoint, Object)
 	 */
-	public SiriusItemImpl(final Session session, final Sirius viewpoint,
+	public SiriusItemImpl(final Session session, final Viewpoint viewpoint,
 			final Resource resource, final Object parent) {
 		this(session, viewpoint, parent);
 		this.resource = resource;

@@ -15,10 +15,9 @@ import java.text.Collator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
-
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 /**
  * Common sorter for representations.

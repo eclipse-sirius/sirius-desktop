@@ -19,10 +19,9 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
-
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.dialog.RenameDialog;
-import org.eclipse.sirius.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.business.api.dialect.command.CopyRepresentationCommand;
 import org.eclipse.sirius.business.api.session.Session;
 

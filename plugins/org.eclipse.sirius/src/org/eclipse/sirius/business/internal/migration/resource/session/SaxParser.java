@@ -42,15 +42,14 @@ import org.xml.sax.SAXParseException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
-
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.migration.resource.StringCouple;
 import org.eclipse.sirius.business.internal.migration.resource.MigrationUtil;
-import org.eclipse.sirius.description.Group;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * A sax handler for migration preprocessing.
@@ -463,7 +462,7 @@ public class SaxParser extends DefaultHandler {
             if (candidate.getURI().lastSegment().equals(descriptionName)) {
                 for (final EObject candidateRoot : candidate.getContents()) {
                     if (candidateRoot instanceof Group) {
-                        for (final Sirius candidateSirius : ((Group) candidateRoot).getOwnedSiriuss()) {
+                        for (final Viewpoint candidateSirius : ((Group) candidateRoot).getOwnedViewpoints()) {
                             for (final RepresentationDescription desc : candidateSirius.getOwnedRepresentations()) {
                                 if (representationName.equals(desc.getName())) {
                                     representationToVP.put(representationName, candidateSirius.getName());

@@ -28,11 +28,10 @@ import org.eclipse.gmf.runtime.common.ui.services.parser.IParser;
 import org.eclipse.gmf.runtime.common.ui.services.parser.ParserService;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
 import org.eclipse.sirius.diagram.internal.providers.SiriusParserProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * @was-generated
@@ -122,7 +121,7 @@ public class DNodeContainerNameEditPart extends AbstractGeneratedDiagramNameEdit
      */
     protected void handleNotificationEvent(Notification event) {
         Object feature = event.getFeature();
-        if (SiriusPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle() == feature) {
+        if (ViewpointPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle() == feature) {
             refreshVisuals();
         }
         super.handleNotificationEvent(event);

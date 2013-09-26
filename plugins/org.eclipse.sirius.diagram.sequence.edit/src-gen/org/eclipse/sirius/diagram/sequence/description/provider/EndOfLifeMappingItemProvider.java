@@ -23,11 +23,10 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.provider.NodeMappingItemProvider;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.provider.NodeMappingItemProvider;
 
 /**
  * This is the item provider adapter for a

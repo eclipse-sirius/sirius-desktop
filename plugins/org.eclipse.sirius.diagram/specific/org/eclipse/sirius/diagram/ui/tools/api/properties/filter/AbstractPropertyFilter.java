@@ -20,9 +20,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.IFilter;
-
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * The base filter for property. The job of this filter is to initialize the

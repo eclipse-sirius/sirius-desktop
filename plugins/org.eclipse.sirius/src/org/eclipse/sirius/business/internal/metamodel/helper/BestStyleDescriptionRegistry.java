@@ -31,21 +31,21 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import com.google.common.primitives.Primitives;
 
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.ComputedStyleDescriptionRegistry;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.SiriusFactory;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.ConditionalStyleSpecOperations;
 import org.eclipse.sirius.business.internal.query.EAttributeCustomizationQuery;
 import org.eclipse.sirius.business.internal.query.StyleDescriptionQuery;
-import org.eclipse.sirius.description.AnnotationEntry;
-import org.eclipse.sirius.description.ConditionalStyleDescription;
-import org.eclipse.sirius.description.DescriptionFactory;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.EAttributeCustomization;
-import org.eclipse.sirius.description.EReferenceCustomization;
-import org.eclipse.sirius.description.EStructuralFeatureCustomization;
-import org.eclipse.sirius.description.style.StyleDescription;
+import org.eclipse.sirius.viewpoint.ComputedStyleDescriptionRegistry;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
+import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
+import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
+import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
  * A registry of {@link StyleDescription}. Its lifecycle must be valid only
@@ -239,7 +239,7 @@ public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKe
             annotationEntry = annotationEntries.iterator().next();
         }
         if (annotationEntry.getData() == null || !(annotationEntry.getData() instanceof ComputedStyleDescriptionRegistry)) {
-            computedStyleDescriptionRegistry = SiriusFactory.eINSTANCE.createComputedStyleDescriptionRegistry();
+            computedStyleDescriptionRegistry = ViewpointFactory.eINSTANCE.createComputedStyleDescriptionRegistry();
             annotationEntry.setData(computedStyleDescriptionRegistry);
         } else {
             computedStyleDescriptionRegistry = (ComputedStyleDescriptionRegistry) annotationEntry.getData();

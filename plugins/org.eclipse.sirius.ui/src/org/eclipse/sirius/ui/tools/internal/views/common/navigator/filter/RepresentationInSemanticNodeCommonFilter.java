@@ -13,9 +13,8 @@ package org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter;
 import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * Filter to allow the user to hide {@link DRepresentation} displayed as

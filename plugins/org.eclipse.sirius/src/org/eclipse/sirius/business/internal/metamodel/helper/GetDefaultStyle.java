@@ -11,17 +11,16 @@
 package org.eclipse.sirius.business.internal.metamodel.helper;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.ContainerMappingImport;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.EdgeMappingImport;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.NodeMappingImport;
-import org.eclipse.sirius.description.style.StyleDescription;
-import org.eclipse.sirius.description.util.DescriptionSwitch;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.ContainerMappingImport;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.NodeMappingImport;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
+import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 
 /**
  * Swith to get the default style description of a mapping.
@@ -34,7 +33,7 @@ public class GetDefaultStyle extends DescriptionSwitch<StyleDescription> {
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseNodeMappingImport(org.eclipse.sirius.description.NodeMappingImport)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseNodeMappingImport(org.eclipse.sirius.viewpoint.description.NodeMappingImport)
      */
     @Override
     public StyleDescription caseNodeMappingImport(final NodeMappingImport object) {
@@ -47,7 +46,7 @@ public class GetDefaultStyle extends DescriptionSwitch<StyleDescription> {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseNodeMapping(org.eclipse.sirius.description.NodeMapping)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseNodeMapping(org.eclipse.sirius.viewpoint.description.NodeMapping)
      */
     @Override
     public StyleDescription caseNodeMapping(final NodeMapping object) {
@@ -57,7 +56,7 @@ public class GetDefaultStyle extends DescriptionSwitch<StyleDescription> {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseEdgeMapping(org.eclipse.sirius.description.EdgeMapping)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseEdgeMapping(org.eclipse.sirius.viewpoint.description.EdgeMapping)
      */
     @Override
     public StyleDescription caseEdgeMapping(final EdgeMapping object) {
@@ -67,7 +66,7 @@ public class GetDefaultStyle extends DescriptionSwitch<StyleDescription> {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseEdgeMappingImport(org.eclipse.sirius.description.EdgeMappingImport)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseEdgeMappingImport(org.eclipse.sirius.viewpoint.description.EdgeMappingImport)
      */
     @Override
     public StyleDescription caseEdgeMappingImport(final EdgeMappingImport object) {
@@ -82,7 +81,7 @@ public class GetDefaultStyle extends DescriptionSwitch<StyleDescription> {
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseContainerMappingImport(org.eclipse.sirius.description.ContainerMappingImport)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseContainerMappingImport(org.eclipse.sirius.viewpoint.description.ContainerMappingImport)
      */
     @Override
     public StyleDescription caseContainerMappingImport(final ContainerMappingImport object) {
@@ -96,7 +95,7 @@ public class GetDefaultStyle extends DescriptionSwitch<StyleDescription> {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseContainerMapping(org.eclipse.sirius.description.ContainerMapping)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseContainerMapping(org.eclipse.sirius.viewpoint.description.ContainerMapping)
      */
     @Override
     public StyleDescription caseContainerMapping(final ContainerMapping object) {
@@ -106,7 +105,7 @@ public class GetDefaultStyle extends DescriptionSwitch<StyleDescription> {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#defaultCase(org.eclipse.emf.ecore.EObject)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#defaultCase(org.eclipse.emf.ecore.EObject)
      */
     @Override
     public StyleDescription defaultCase(final EObject object) {

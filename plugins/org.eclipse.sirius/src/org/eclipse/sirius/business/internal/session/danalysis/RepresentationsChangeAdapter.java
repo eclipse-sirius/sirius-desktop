@@ -19,12 +19,12 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 
 import com.google.common.collect.Iterables;
 
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DView;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Adapter which notify session listener when representation is added or
@@ -55,7 +55,7 @@ public class RepresentationsChangeAdapter extends AdapterImpl {
         final Object notifier = n.getNotifier();
 
         /* add and remove adapter on DView instances */
-        if (notifier instanceof DAnalysis && n.getFeatureID(DAnalysis.class) == SiriusPackage.DANALYSIS__OWNED_VIEWS) {
+        if (notifier instanceof DAnalysis && n.getFeatureID(DAnalysis.class) == ViewpointPackage.DANALYSIS__OWNED_VIEWS) {
             switch (n.getEventType()) {
             case Notification.ADD:
                 final DView newView = (DView) n.getNewValue();
@@ -69,7 +69,7 @@ public class RepresentationsChangeAdapter extends AdapterImpl {
                 break;
             }
             /* update editors and views on representation creation or deletion */
-        } else if (notifier instanceof DView && n.getFeatureID(DView.class) == SiriusPackage.DVIEW__OWNED_REPRESENTATIONS) {
+        } else if (notifier instanceof DView && n.getFeatureID(DView.class) == ViewpointPackage.DVIEW__OWNED_REPRESENTATIONS) {
             switch (n.getEventType()) {
             case Notification.ADD:
                 SessionManager.INSTANCE.notifyRepresentationCreated(session);

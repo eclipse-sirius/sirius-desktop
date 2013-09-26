@@ -13,9 +13,9 @@ package org.eclipse.sirius.business.api.query;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.eclipse.sirius.DMappingBased;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.DMappingBased;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
  * A class aggregating all the queries (read-only!) having a

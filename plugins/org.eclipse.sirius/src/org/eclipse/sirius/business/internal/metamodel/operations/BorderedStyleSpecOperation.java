@@ -11,14 +11,13 @@
 package org.eclipse.sirius.business.internal.metamodel.operations;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.BorderedStyle;
-import org.eclipse.sirius.DMappingBased;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.BorderedStyle;
+import org.eclipse.sirius.viewpoint.DMappingBased;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 
 /**
@@ -59,7 +58,7 @@ public final class BorderedStyleSpecOperation {
         if (!StringUtil.isEmpty(instance.getBorderSizeComputationExpression())) {
             if (interpreter != null) {
                 final Integer computedSize = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateInteger(context, instance,
-                        SiriusPackage.eINSTANCE.getBorderedStyle_BorderSizeComputationExpression());
+                        ViewpointPackage.eINSTANCE.getBorderedStyle_BorderSizeComputationExpression());
                 if (computedSize != null && instance.getBorderSize().intValue() != computedSize) {
                     instance.setBorderSize(computedSize);
                 }

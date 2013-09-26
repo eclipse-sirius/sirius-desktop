@@ -27,7 +27,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.sirius.diagram.sequence.description.tool.util.ToolAdapterFactory;
 
 /**
@@ -242,8 +241,8 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */

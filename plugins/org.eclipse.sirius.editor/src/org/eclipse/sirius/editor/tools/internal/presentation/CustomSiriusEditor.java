@@ -42,6 +42,23 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.sirius.business.api.logger.MarkerRuntimeLogger;
+import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.internal.movida.DynamicVSMLoader;
+import org.eclipse.sirius.business.internal.movida.Movida;
+import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry;
+import org.eclipse.sirius.business.internal.movida.registry.SiriusURIConverter;
+import org.eclipse.sirius.business.internal.movida.registry.SiriusURIHandler;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.ui.tools.api.editor.IEObjectNavigable;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
+import org.eclipse.sirius.editor.properties.validation.SiriusInterpreterErrorDecorator;
+import org.eclipse.sirius.editor.tools.internal.actions.ValidateAction;
+import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
@@ -52,24 +69,6 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.ui.tools.api.editor.IEObjectNavigable;
-import org.eclipse.sirius.business.api.logger.MarkerRuntimeLogger;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
-import org.eclipse.sirius.business.internal.movida.DynamicVSMLoader;
-import org.eclipse.sirius.business.internal.movida.Movida;
-import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry;
-import org.eclipse.sirius.business.internal.movida.registry.SiriusURIConverter;
-import org.eclipse.sirius.business.internal.movida.registry.SiriusURIHandler;
-import org.eclipse.sirius.description.DAnnotation;
-import org.eclipse.sirius.description.Group;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
-import org.eclipse.sirius.editor.properties.validation.SiriusInterpreterErrorDecorator;
-import org.eclipse.sirius.editor.tools.internal.actions.ValidateAction;
-import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
 
 /**
  * The advanced Sirius Specification Model (*.odesign) Editor, base on the
@@ -202,8 +201,8 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                 decoratingLabelProvider = new GeneratedElementsLabelProvider((ILabelProvider) selectionViewer.getLabelProvider(), validationDecorator) {
                     public String getText(Object element) {
                         String result = super.getText(element);
-                        if (element instanceof Sirius && ((Sirius) element).eResource() != null) {
-                            Resource res = ((Sirius) element).eResource();
+                        if (element instanceof Viewpoint && ((Viewpoint) element).eResource() != null) {
+                            Resource res = ((Viewpoint) element).eResource();
                             if (res.getResourceSet().getResources().indexOf(res) != 0) {
                                 result = result + " (" + res.getURI() + ")";
                             }
@@ -219,8 +218,8 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             if (Movida.isEnabled()) {
                 /*
                  * Customize the content provider not to show the whole
-                 * resources loaded by dependency, but only the Siriuss
-                 * (inside these resources) which the main VSM depend on.
+                 * resources loaded by dependency, but only the Siriuss (inside
+                 * these resources) which the main VSM depend on.
                  */
                 final SiriusRegistry registry = (SiriusRegistry) org.eclipse.sirius.business.api.componentization.SiriusRegistry.getInstance();
                 selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory) {
@@ -231,7 +230,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                             List<Object> elements = Lists.newArrayList();
                             Resource mainResource = ((ResourceSet) object).getResources().get(0);
                             elements.add(mainResource);
-                            for (Sirius additionalVP : Iterables.filter(viewpoints, Sirius.class)) {
+                            for (Viewpoint additionalVP : Iterables.filter(viewpoints, Viewpoint.class)) {
                                 if (additionalVP.eResource() != null && additionalVP.eResource() != mainResource) {
                                     elements.add(additionalVP);
                                 }
@@ -248,8 +247,8 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                             Option<URI> provider = registry.getProvider(uri);
                             if (provider.some()) {
                                 Resource res = resourceSet.getResource(provider.get(), true);
-                                viewpoints.add(Iterables.find(registry.getSiriusResourceHandler().collectSiriusDefinitions(res), new Predicate<Sirius>() {
-                                    public boolean apply(Sirius input) {
+                                viewpoints.add(Iterables.find(registry.getSiriusResourceHandler().collectSiriusDefinitions(res), new Predicate<Viewpoint>() {
+                                    public boolean apply(Viewpoint input) {
                                         Option<URI> inputURI = new SiriusQuery(input).getSiriusURI();
                                         return inputURI.some() && inputURI.get().equals(uri);
                                     }
@@ -376,8 +375,8 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
     /**
      * {@inheritDoc}.
      * 
-     * Overridden to add our own vsmURIHandler in save options.
-     * it's about cascading odesign references and to save using logical URIs.
+     * Overridden to add our own vsmURIHandler in save options. it's about
+     * cascading odesign references and to save using logical URIs.
      */
     @Override
     public void doSave(IProgressMonitor progressMonitor) {

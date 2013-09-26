@@ -1,10 +1,9 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -45,6 +44,9 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -63,10 +65,6 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
-
-import org.eclipse.sirius.description.validation.ValidationFactory;
-import org.eclipse.sirius.description.validation.ValidationPackage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 
 // End of user code imports
 
@@ -428,8 +426,8 @@ public class ValidationModelWizard extends Wizard implements INewWizard {
         newFileCreationPage = new ValidationModelWizardNewFileCreationPage("Whatever", selection);
         newFileCreationPage.setTitle(SiriusEditorPlugin.INSTANCE.getString("_UI_ValidationModelWizard_label"));
         newFileCreationPage.setDescription(SiriusEditorPlugin.INSTANCE.getString("_UI_ValidationModelWizard_description"));
-        newFileCreationPage.setFileName(SiriusEditorPlugin.INSTANCE.getString("_UI_SiriusEditorFilenameDefaultBase") + "."
-                + SiriusEditorPlugin.INSTANCE.getString("_UI_SiriusEditorFilenameExtension"));
+        newFileCreationPage
+                .setFileName(SiriusEditorPlugin.INSTANCE.getString("_UI_SiriusEditorFilenameDefaultBase") + "." + SiriusEditorPlugin.INSTANCE.getString("_UI_SiriusEditorFilenameExtension"));
         addPage(newFileCreationPage);
 
         // Try and get the resource selection to determine a current directory

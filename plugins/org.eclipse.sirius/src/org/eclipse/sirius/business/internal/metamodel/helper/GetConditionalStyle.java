@@ -21,21 +21,21 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
-import org.eclipse.sirius.description.ConditionalContainerStyleDescription;
-import org.eclipse.sirius.description.ConditionalEdgeStyleDescription;
-import org.eclipse.sirius.description.ConditionalNodeStyleDescription;
-import org.eclipse.sirius.description.ConditionalStyleDescription;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.ContainerMappingImport;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.EdgeMappingImport;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.NodeMappingImport;
-import org.eclipse.sirius.description.util.DescriptionSwitch;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.ConditionalContainerStyleDescription;
+import org.eclipse.sirius.viewpoint.description.ConditionalEdgeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.ConditionalNodeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.ContainerMappingImport;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.NodeMappingImport;
+import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 
 /**
  * Switch to get the conditional styles of a mapping.
@@ -63,7 +63,7 @@ public class GetConditionalStyle extends DescriptionSwitch<List<? extends Condit
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseNodeMapping(org.eclipse.sirius.description.NodeMapping)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseNodeMapping(org.eclipse.sirius.viewpoint.description.NodeMapping)
      */
     @Override
     public EList<? extends ConditionalStyleDescription> caseNodeMapping(final NodeMapping object) {
@@ -73,7 +73,7 @@ public class GetConditionalStyle extends DescriptionSwitch<List<? extends Condit
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseEdgeMapping(org.eclipse.sirius.description.EdgeMapping)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseEdgeMapping(org.eclipse.sirius.viewpoint.description.EdgeMapping)
      */
     @Override
     public EList<? extends ConditionalStyleDescription> caseEdgeMapping(final EdgeMapping object) {
@@ -153,7 +153,7 @@ public class GetConditionalStyle extends DescriptionSwitch<List<? extends Condit
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseContainerMapping(org.eclipse.sirius.description.ContainerMapping)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseContainerMapping(org.eclipse.sirius.viewpoint.description.ContainerMapping)
      */
     @Override
     public EList<? extends ConditionalStyleDescription> caseContainerMapping(final ContainerMapping object) {
@@ -163,7 +163,7 @@ public class GetConditionalStyle extends DescriptionSwitch<List<? extends Condit
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#defaultCase(org.eclipse.emf.ecore.EObject)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#defaultCase(org.eclipse.emf.ecore.EObject)
      */
     @Override
     public EList<? extends ConditionalStyleDescription> defaultCase(final EObject object) {

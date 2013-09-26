@@ -69,13 +69,6 @@ import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
@@ -83,20 +76,6 @@ import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.description.DescriptionFactory;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.Layer;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.description.audit.provider.AuditItemProviderAdapterFactory;
-import org.eclipse.sirius.description.concern.provider.ConcernItemProviderAdapterFactory;
-import org.eclipse.sirius.description.filter.provider.FilterItemProviderAdapterFactory;
-import org.eclipse.sirius.description.provider.DescriptionItemProviderAdapterFactory;
-import org.eclipse.sirius.description.style.provider.StyleItemProviderAdapterFactory;
-import org.eclipse.sirius.description.tool.ToolFactory;
-import org.eclipse.sirius.description.tool.provider.ToolItemProviderAdapterFactory;
-import org.eclipse.sirius.description.validation.provider.ValidationItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.business.internal.command.CreateAndStoreGMFDiagramCommand;
@@ -104,7 +83,6 @@ import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.tools.api.part.DiagramEditPartService;
-import org.eclipse.sirius.provider.SiriusItemProviderAdapterFactory;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -115,6 +93,28 @@ import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelectionCallback;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeSiriusSelectionCommand;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.concern.provider.ConcernItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.filter.provider.FilterItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.style.provider.StyleItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
+import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 
 /**
  * The default diagram ui services.
@@ -168,7 +168,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                 // needed Siriuss are not activated (for example a
                 // contributed
                 // activated layer)
-                Set<Sirius> viewpointsActivated = null;
+                Set<Viewpoint> viewpointsActivated = null;
                 if (URIQuery.CDO_URI_SCHEME.equals(diag.eResource().getURI().scheme())) {
                     viewpointsActivated = activateNeededSiriuss(session, diag, monitor);
                 }
@@ -221,22 +221,22 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return dialectEditor;
     }
 
-    private Set<Sirius> activateNeededSiriuss(Session session, DDiagram dDiagram, IProgressMonitor monitor) {
+    private Set<Viewpoint> activateNeededSiriuss(Session session, DDiagram dDiagram, IProgressMonitor monitor) {
         List<Layer> activatedLayers = dDiagram.getActivatedLayers();
-        Set<Sirius> neededSiriuss = new LinkedHashSet<Sirius>();
+        Set<Viewpoint> neededSiriuss = new LinkedHashSet<Viewpoint>();
         for (Layer activatedLayer : activatedLayers) {
             if (!activatedLayer.eIsProxy() && activatedLayer.eContainer() != null) {
-                Sirius viewpoint = (Sirius) activatedLayer.eContainer().eContainer();
+                Viewpoint viewpoint = (Viewpoint) activatedLayer.eContainer().eContainer();
                 neededSiriuss.add(viewpoint);
             }
         }
-        Set<Sirius> selectedSiriuss = new LinkedHashSet<Sirius>();
-        for (Sirius viewpoint : session.getSelectedSiriuss(false)) {
+        Set<Viewpoint> selectedSiriuss = new LinkedHashSet<Viewpoint>();
+        for (Viewpoint viewpoint : session.getSelectedSiriuss(false)) {
             selectedSiriuss.add(SiriusResourceHelper.getCorrespondingSirius(session, viewpoint));
         }
         neededSiriuss.removeAll(selectedSiriuss);
         if (!neededSiriuss.isEmpty()) {
-            Command changeSiriussSelectionCmd = new ChangeSiriusSelectionCommand(session, new SiriusSelectionCallback(), neededSiriuss, Collections.<Sirius> emptySet(),
+            Command changeSiriussSelectionCmd = new ChangeSiriusSelectionCommand(session, new SiriusSelectionCallback(), neededSiriuss, Collections.<Viewpoint> emptySet(),
                     new SubProgressMonitor(monitor, neededSiriuss.size()));
             session.getTransactionalEditingDomain().getCommandStack().execute(changeSiriussSelectionCmd);
             monitor.worked(1);
@@ -244,9 +244,9 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return neededSiriuss;
     }
 
-    private void informOfActivateNeededSiriuss(Set<Sirius> viewpointsActivated) {
-        Iterator<Sirius> iterator = viewpointsActivated.iterator();
-        Sirius neededSirius = iterator.next();
+    private void informOfActivateNeededSiriuss(Set<Viewpoint> viewpointsActivated) {
+        Iterator<Viewpoint> iterator = viewpointsActivated.iterator();
+        Viewpoint neededSirius = iterator.next();
         String viewpointsName = neededSirius.getName();
         while (iterator.hasNext()) {
             neededSirius = iterator.next();
@@ -366,7 +366,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
             }
         }
         factory.addAdapterFactory(new DescriptionItemProviderAdapterFactory());
-        factory.addAdapterFactory(new SiriusItemProviderAdapterFactory());
+        factory.addAdapterFactory(new ViewpointItemProviderAdapterFactory());
         factory.addAdapterFactory(new StyleItemProviderAdapterFactory());
         factory.addAdapterFactory(new ToolItemProviderAdapterFactory());
         factory.addAdapterFactory(new FilterItemProviderAdapterFactory());
@@ -379,7 +379,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationManagedByEditor(org.eclipse.sirius.DRepresentation,
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationManagedByEditor(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.ui.IEditorPart)
      */
     public boolean isRepresentationManagedByEditor(final DRepresentation representation, final IEditorPart editorPart) {
@@ -401,7 +401,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationDescriptionManagedByEditor(org.eclipse.sirius.description.RepresentationDescription,
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationDescriptionManagedByEditor(org.eclipse.sirius.viewpoint.description.RepresentationDescription,
      *      org.eclipse.ui.IEditorPart)
      */
     public boolean isRepresentationDescriptionManagedByEditor(final RepresentationDescription representationDescription, final IEditorPart editor) {
@@ -420,7 +420,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.DRepresentation)
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.DRepresentation)
      */
     public boolean canHandle(final DRepresentation representation) {
         return representation instanceof DSemanticDiagram;
@@ -439,7 +439,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#export(org.eclipse.sirius.DRepresentation,
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#export(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.sirius.business.api.session.Session)
      */
     public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat format, final IProgressMonitor monitor) throws SizeTooLargeException {
@@ -554,7 +554,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getEditorName(org.eclipse.sirius.DRepresentation)
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getEditorName(org.eclipse.sirius.viewpoint.DRepresentation)
      */
     public String getEditorName(final DRepresentation representation) {
         String editorName = representation.getName();

@@ -17,11 +17,10 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RunnableWithResult;
-
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * A {@link Adapter} to update the collection of semantic resources in a
@@ -60,8 +59,8 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
     public void notifyChanged(Notification msg) {
         // CHECKSTYLE:OFF
         if (!msg.isTouch()
-                && (msg.getFeature() == SiriusPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES || msg.getFeature() == SiriusPackage.Literals.DANALYSIS__REFERENCED_ANALYSIS
-                        || msg.getFeature() == SiriusPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES || msg.getFeature() == SiriusPackage.Literals.DANALYSIS__MODELS || msg.getFeature() == SiriusPackage.Literals.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES)) {
+                && (msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS__REFERENCED_ANALYSIS
+                        || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__ANALYSES || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS__MODELS || msg.getFeature() == ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES)) {
             // CHECKSTYLE:ON
             RunnableWithResult<Collection<Resource>> semanticResourcesGetter = new SemanticResourceGetter(dAnalysisSessionImpl);
             semanticResourcesGetter.run();

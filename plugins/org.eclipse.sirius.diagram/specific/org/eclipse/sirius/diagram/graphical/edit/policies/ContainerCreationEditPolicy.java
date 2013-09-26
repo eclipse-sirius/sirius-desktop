@@ -18,15 +18,14 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.ContainerCreationDescription;
-import org.eclipse.sirius.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
 
 /**
  * Edit policy for diagram containers.

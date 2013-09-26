@@ -20,14 +20,14 @@ import com.google.common.collect.Sets;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.filter.MappingFilter;
-import org.eclipse.sirius.description.filter.VariableFilter;
-import org.eclipse.sirius.description.filter.util.FilterSwitch;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.filter.MappingFilter;
+import org.eclipse.sirius.viewpoint.description.filter.VariableFilter;
+import org.eclipse.sirius.viewpoint.description.filter.util.FilterSwitch;
 
 /**
  * A switch that will return the Target Types associated to a given element
- * (part of the {@link org.eclipse.sirius.description.filter.FilterPackage})
+ * (part of the {@link org.eclipse.sirius.viewpoint.description.filter.FilterPackage})
  * and feature corresponding to an Interpreted Expression. For example, for a
  * NodeMapping :
  * <p>
@@ -80,7 +80,7 @@ public class FilterInterpretedExpressionTargetSwitch extends FilterSwitch<Option
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.util.ToolSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
+     * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
      */
     @Override
     public Option<Collection<String>> doSwitch(EObject theEObject) {
@@ -96,7 +96,7 @@ public class FilterInterpretedExpressionTargetSwitch extends FilterSwitch<Option
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.filter.util.FilterSwitch#caseMappingFilter(org.eclipse.sirius.description.filter.MappingFilter)
+     * @see org.eclipse.sirius.viewpoint.description.filter.util.FilterSwitch#caseMappingFilter(org.eclipse.sirius.viewpoint.description.filter.MappingFilter)
      */
     @Override
     public Option<Collection<String>> caseMappingFilter(MappingFilter object) {
@@ -115,7 +115,7 @@ public class FilterInterpretedExpressionTargetSwitch extends FilterSwitch<Option
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.filter.util.FilterSwitch#caseVariableFilter(org.eclipse.sirius.description.filter.VariableFilter)
+     * @see org.eclipse.sirius.viewpoint.description.filter.util.FilterSwitch#caseVariableFilter(org.eclipse.sirius.viewpoint.description.filter.VariableFilter)
      */
     @Override
     public Option<Collection<String>> caseVariableFilter(VariableFilter object) {

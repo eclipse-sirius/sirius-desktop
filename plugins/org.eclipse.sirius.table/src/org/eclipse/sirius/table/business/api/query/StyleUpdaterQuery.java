@@ -12,8 +12,8 @@ package org.eclipse.sirius.table.business.api.query;
 
 import com.google.common.base.Preconditions;
 
-import org.eclipse.sirius.description.ColorDescription;
 import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
  * A class aggregating all the queries (read-only!) having a

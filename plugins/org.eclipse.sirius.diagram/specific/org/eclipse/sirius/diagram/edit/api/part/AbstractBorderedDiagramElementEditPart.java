@@ -24,13 +24,13 @@ import org.eclipse.swt.graphics.Image;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.diagram.edit.internal.part.AbstractDiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.EditStatusUpdater;
 import org.eclipse.sirius.diagram.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Some Default behaviors for non border IAbstractDiagramNodeEditPart: nodes,
@@ -230,7 +230,7 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart#createBorderItemLocator(org.eclipse.draw2d.IFigure,
-     *      org.eclipse.sirius.DDiagramElement)
+     *      org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public IBorderItemLocator createBorderItemLocator(final IFigure figure, final DDiagramElement vpElementBorderItem) {
         return AbstractDiagramNodeEditPartOperation.createBorderItemLocator(this, figure, vpElementBorderItem);

@@ -14,8 +14,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import org.eclipse.sirius.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * Interface used by the {@link RefreshEditorsPrecommitListener} to launch

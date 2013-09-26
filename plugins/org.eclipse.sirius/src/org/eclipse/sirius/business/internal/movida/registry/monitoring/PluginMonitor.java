@@ -30,8 +30,8 @@ import org.osgi.framework.BundleListener;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.componentization.SiriusResourceHandler;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Monitors VSMs installed in Eclipse plug-ins and registered through the

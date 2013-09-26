@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.helper.graphicalfilters;
 
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.business.internal.metamodel.helper.HideFilterHelperImpl;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Helper to handle HideFilter.
@@ -41,8 +41,8 @@ public interface HideFilterHelper {
 
     /**
      * Check if an element has been hidden or is hidden thanks to another
-     * element (container in case of {@link org.eclipse.sirius.AbstractDNode}
-     * , source or target in case of {@link org.eclipse.sirius.DEdge}.
+     * element (container in case of {@link org.eclipse.sirius.viewpoint.AbstractDNode}
+     * , source or target in case of {@link org.eclipse.sirius.viewpoint.DEdge}.
      * 
      * @deprecated Use
      *             {@link org.eclipse.sirius.business.api.query.DDiagramElementQuery#isIndirectlyHidden()}

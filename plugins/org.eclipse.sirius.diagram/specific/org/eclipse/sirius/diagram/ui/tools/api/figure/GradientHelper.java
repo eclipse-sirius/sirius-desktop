@@ -15,10 +15,9 @@ import org.eclipse.draw2d.SWTGraphics;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Pattern;
-
-import org.eclipse.sirius.BackgroundStyle;
 import org.eclipse.sirius.diagram.tools.internal.figure.util.GraphicsUtilities;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.BackgroundStyle;
 
 /**
  * Helper for the creation of gradient from ViewGradientFigureDesc.

@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.metamodel.spec;
 
-import org.eclipse.sirius.description.impl.FixedColorImpl;
+import org.eclipse.sirius.viewpoint.description.impl.FixedColorImpl;
 
 /**
  * Customization of FixedColorImpl.
@@ -22,7 +22,7 @@ public class FixedColorSpec extends FixedColorImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.FixedColorImpl#setBlue(int)
+     * @see org.eclipse.sirius.viewpoint.description.impl.FixedColorImpl#setBlue(int)
      */
     @Override
     public void setBlue(final int newBlue) {
@@ -38,7 +38,7 @@ public class FixedColorSpec extends FixedColorImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.FixedColorImpl#setRed(int)
+     * @see org.eclipse.sirius.viewpoint.description.impl.FixedColorImpl#setRed(int)
      */
     @Override
     public void setRed(final int newRed) {
@@ -54,7 +54,7 @@ public class FixedColorSpec extends FixedColorImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.FixedColorImpl#setGreen(int)
+     * @see org.eclipse.sirius.viewpoint.description.impl.FixedColorImpl#setGreen(int)
      */
     @Override
     public void setGreen(final int newGreen) {

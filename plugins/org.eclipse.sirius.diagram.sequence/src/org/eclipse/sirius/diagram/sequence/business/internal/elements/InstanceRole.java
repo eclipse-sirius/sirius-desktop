@@ -24,13 +24,13 @@ import com.google.common.collect.Iterables;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.RGBValues;
 import org.eclipse.sirius.business.api.query.NodeStyleQuery;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.util.NotationPredicate;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.RGBValues;
 
 /**
  * Represents the instance role node at the top of a lifeline.

@@ -11,13 +11,12 @@
 package org.eclipse.sirius.diagram.business.internal.navigation;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.util.SiriusSwitch;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.util.ViewpointSwitch;
 
 /**
  * Class responsible for retrieving a definition from any EObject instance.
@@ -25,7 +24,7 @@ import org.eclipse.sirius.util.SiriusSwitch;
  * @author cbrun
  * 
  */
-public class MappingDefinitionFinder extends SiriusSwitch<EObject> {
+public class MappingDefinitionFinder extends ViewpointSwitch<EObject> {
     /**
      * return the element definition.
      * 

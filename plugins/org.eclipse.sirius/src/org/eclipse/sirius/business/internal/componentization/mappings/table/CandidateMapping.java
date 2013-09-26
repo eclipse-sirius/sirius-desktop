@@ -13,10 +13,9 @@ package org.eclipse.sirius.business.internal.componentization.mappings.table;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.Layer;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.Layer;
 
 /**
  * A candidate mapping.

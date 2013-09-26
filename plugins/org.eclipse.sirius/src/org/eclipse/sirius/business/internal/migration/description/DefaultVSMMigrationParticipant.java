@@ -11,9 +11,8 @@
 package org.eclipse.sirius.business.internal.migration.description;
 
 import org.osgi.framework.Version;
-
 import org.eclipse.sirius.business.api.migration.AbstractVSMMigrationParticipant;
-import org.eclipse.sirius.description.Group;
+import org.eclipse.sirius.viewpoint.description.Group;
 
 /**
  * The default participant for VSM migration rules. Updates the version

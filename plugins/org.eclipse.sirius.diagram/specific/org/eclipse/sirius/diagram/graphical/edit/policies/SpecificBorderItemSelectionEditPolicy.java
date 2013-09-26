@@ -56,8 +56,6 @@ import org.eclipse.gmf.runtime.notation.View;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.business.api.query.AbstractDNodeQuery;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
@@ -70,6 +68,8 @@ import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IBorderItemOff
 import org.eclipse.sirius.diagram.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.locator.FeedbackDBorderItemLocator;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * The specific

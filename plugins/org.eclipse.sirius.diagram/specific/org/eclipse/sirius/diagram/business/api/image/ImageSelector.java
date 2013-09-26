@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.image;
 
-import org.eclipse.sirius.BasicLabelStyle;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 
 /**
  * A interface use to select a image from a image source (workspace, CDO repo,

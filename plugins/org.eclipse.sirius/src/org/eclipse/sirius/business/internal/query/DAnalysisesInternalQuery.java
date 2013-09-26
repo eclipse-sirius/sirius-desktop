@@ -15,7 +15,7 @@ import java.util.Collection;
 
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.DAnalysis;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 
 /**
  * A class defining all queries (read-only) having a collection of DAnalysis as

@@ -18,17 +18,16 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramExtensionDescription;
-import org.eclipse.sirius.description.Layer;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationExtensionDescription;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.tools.internal.uri.SiriusProtocolParser;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * This class helps to use the Imported Diagram and Diagram Extension on
@@ -51,7 +50,7 @@ public final class ComponentizationHelper {
      *            the available viewpoints
      * @return the layer list of a given DiagramDescription
      */
-    public static List<Layer> getContributedLayers(final DiagramDescription diagramDescription, final Collection<Sirius> viewpoints) {
+    public static List<Layer> getContributedLayers(final DiagramDescription diagramDescription, final Collection<Viewpoint> viewpoints) {
 
         /*
          * We browse all the representationExtension of viewpoints registered
@@ -74,7 +73,7 @@ public final class ComponentizationHelper {
          * We browse a first time, all the DIagramRepresentation in all
          * Siriuss to find contribution to the "diagramDescription"
          */
-        for (final Sirius viewpoint : viewpoints) {
+        for (final Viewpoint viewpoint : viewpoints) {
             for (final RepresentationExtensionDescription representationExtension : viewpoint.getOwnedRepresentationExtensions()) {
                 if (representationExtension instanceof DiagramExtensionDescription) {
                     final DiagramExtensionDescription diagramExtension = (DiagramExtensionDescription) representationExtension;
@@ -91,7 +90,7 @@ public final class ComponentizationHelper {
          * contribution to the DiagramRepresentation which already contribute.
          */
         while (!foundDiagramContributors.isEmpty()) {
-            for (final Sirius viewpoint : viewpoints) {
+            for (final Viewpoint viewpoint : viewpoints) {
                 for (final RepresentationExtensionDescription representationExtension : viewpoint.getOwnedRepresentationExtensions()) {
                     if (representationExtension instanceof DiagramExtensionDescription) {
                         final DiagramExtensionDescription diagramExtension = (DiagramExtensionDescription) representationExtension;
@@ -127,11 +126,11 @@ public final class ComponentizationHelper {
      *            the available viewpoints
      * @return the diagram extension description
      */
-    public static DiagramDescription getDiagramDescription(final DiagramExtensionDescription diagramExtensionDescription, final Collection<Sirius> viewpoints) {
+    public static DiagramDescription getDiagramDescription(final DiagramExtensionDescription diagramExtensionDescription, final Collection<Viewpoint> viewpoints) {
 
         DiagramDescription diagramDescriptionFound = null;
-        for (Iterator<Sirius> iterator = viewpoints.iterator(); iterator.hasNext() && diagramDescriptionFound == null; /* */) {
-            Sirius viewpoint = iterator.next();
+        for (Iterator<Viewpoint> iterator = viewpoints.iterator(); iterator.hasNext() && diagramDescriptionFound == null; /* */) {
+            Viewpoint viewpoint = iterator.next();
             for (Iterator<RepresentationDescription> iterator2 = new SiriusQuery(viewpoint).getAllRepresentationDescriptions().iterator(); iterator2.hasNext() && diagramDescriptionFound == null; /* */) {
                 RepresentationDescription representation = iterator2.next();
                 if (representation instanceof DiagramDescription) {
@@ -185,7 +184,7 @@ public final class ComponentizationHelper {
          */
         final EObject container = desc.eContainer();
         if (container != null) {
-            String representationExtensionSiriusURI = representationExtensionDescription.getSiriusURI();
+            String representationExtensionSiriusURI = representationExtensionDescription.getViewpointURI();
             if (URI.decode(EcoreUtil.getURI(container).toString()).equals(representationExtensionSiriusURI)
                     || SiriusProtocolParser.match(EcoreUtil.getURI(container), URI.createURI(representationExtensionSiriusURI, false))) {
                 if (descName.equals(representationExtensionDescription.getRepresentationName())) {
@@ -209,7 +208,7 @@ public final class ComponentizationHelper {
      *            extension Sirius
      * @return true if the extensionSirius extends the baseSirius
      */
-    public static boolean isExtendedBy(final Sirius extensionSirius, final Sirius baseSirius) {
+    public static boolean isExtendedBy(final Viewpoint extensionSirius, final Viewpoint baseSirius) {
         boolean result = false;
         for (RepresentationExtensionDescription representationExtensionDescription : extensionSirius.getOwnedRepresentationExtensions()) {
             for (RepresentationDescription representationDescription : new SiriusQuery(baseSirius).getAllRepresentationDescriptions()) {

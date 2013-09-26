@@ -154,12 +154,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAnnotationEntries"
         upperBound="-1" eType="#//description/AnnotationEntry" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExtensibleRepresentation" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="effectiveDescription" eType="#//description/RepresentationDescription"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="contributionPoints" upperBound="-1"
-        eType="ecore:EClass contribution.ecore#//ContributionPoint" containment="true"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DRepresentationElement" abstract="true"
       eSuperTypes="#//DLabelled #//DMappingBased #//DStylizable #//DRefreshable #//DSemanticDecorator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -207,13 +201,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="referencedRepresentations"
         upperBound="-1" eType="#//DRepresentation">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Siriuss referenced but not contained in this analysis."/>
+        <details key="documentation" value="ViewPoints referenced but not contained in this analysis."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialized" lowerBound="1"
         eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="viewpoint" lowerBound="1"
-        eType="#//description/Sirius">
+        eType="#//description/Viewpoint">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The viewpoint that is used for this view"/>
       </eAnnotations>
@@ -232,7 +226,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DDiagram" eSuperTypes="#//DRepresentation #//description/DocumentedElement #//DragAndDropTarget #//DValidable #//DContainer">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Sirius is the type of all diagrams in AIR.&#xD;&#xA;A viewpoint is composed of nodes, containers and connections. It is owned by an anlysis or by a parent viewpoint. In this last case the viewpoint should be called detailed viewpoint."/>
+      <details key="documentation" value="ViewPoint is the type of all diagrams in AIR.&#xD;&#xA;A viewpoint is composed of nodes, containers and connections. It is owned by an anlysis or by a parent viewpoint. In this last case the viewpoint should be called detailed viewpoint."/>
     </eAnnotations>
     <eOperations name="clean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -265,7 +259,7 @@
       </eAnnotations>
       <eParameters name="mapping" eType="#//description/ContainerMapping">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The mapping that has created the returned SiriusElementContainers"/>
+          <details key="documentation" value="The mapping that has created the returned ViewPointElementContainers"/>
         </eAnnotations>
       </eParameters>
     </eOperations>
@@ -396,7 +390,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="DDiagramElement" abstract="true" eSuperTypes="#//DRepresentationElement #//DValidable #//DNavigable">
     <eOperations name="getParentDiagram" eType="#//DDiagram">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Return the parent of this SiriusElement."/>
+        <details key="documentation" value="Return the parent of this ViewPointElement."/>
       </eAnnotations>
     </eOperations>
     <eOperations name="isFold" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
@@ -524,12 +518,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DDiagramLink" eSuperTypes="#//DNavigationLink">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A link that references a Sirius."/>
+      <details key="documentation" value="A link that references a ViewPoint."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="#//DDiagram">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The referenced Sirius."/>
+        <details key="documentation" value="The referenced ViewPoint."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//EdgeTarget">
@@ -623,7 +617,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="DDiagramElementContainer" abstract="true"
       eSuperTypes="#//AbstractDNode #//EdgeTarget #//DragAndDropTarget #//DContainer">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="The referenced Sirius."/>
+      <details key="documentation" value="The referenced ViewPoint."/>
     </eAnnotations>
     <eOperations name="getNodesFromMapping" upperBound="-1" eType="#//DNode">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -695,6 +689,8 @@
         <details key="deprecated" value="This field should not be used"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DNodeContainer" eSuperTypes="#//DDiagramElementContainer">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -845,7 +841,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//description/DiagramDescription"
         unsettable="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The SiriusDescription of all viewpoints that are in this set."/>
+        <details key="documentation" value="The ViewPointDescription of all viewpoints that are in this set."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="diagrams" ordered="false"
@@ -1058,7 +1054,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BundledImage" eSuperTypes="#//NodeStyle">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="The bundled image style allows to use the default images provide by the Sirius editor."/>
+      <details key="documentation" value="The bundled image style allows to use the default images provide by the ViewPoint editor."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="shape" lowerBound="1" eType="#//BundledImageShape">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1355,8 +1351,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="controlledResources" upperBound="-1"
         eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EResource"
         transient="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="activatedSiriuss" upperBound="-1"
-        eType="#//description/Sirius"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activatedViewpoints" upperBound="-1"
+        eType="#//description/Viewpoint"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="analyses" upperBound="-1"
         eType="#//DAnalysis"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="synchronizationStatus"
@@ -1485,8 +1481,8 @@
     <eClassifiers xsi:type="ecore:EClass" name="Group" eSuperTypes="#//description/DModelElement #//description/DocumentedElement">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
           defaultValueLiteral=""/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedSiriuss" upperBound="-1"
-          eType="#//description/Sirius" containment="true" eKeys="#//description/IdentifiedElement/name"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedViewpoints" upperBound="-1"
+          eType="#//description/Viewpoint" containment="true" eKeys="#//description/IdentifiedElement/name"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="systemColorsPalette"
           lowerBound="1" eType="#//description/SytemColorsPalette" transient="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="userColorsPalettes" upperBound="-1"
@@ -1494,9 +1490,9 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true" interface="true"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Sirius" eSuperTypes="#//description/DocumentedElement #//description/Component #//description/EndUserDocumentedElement #//description/IdentifiedElement">
+    <eClassifiers xsi:type="ecore:EClass" name="Viewpoint" eSuperTypes="#//description/DocumentedElement #//description/Component #//description/EndUserDocumentedElement #//description/IdentifiedElement">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="A Sirius defines a &quot;way of looking at your model&quot;, you could make an analogy with &quot;What is your current concern about your analysis&quot;. It defines representations and might also define specific data only relevant for this concern."/>
+        <details key="documentation" value="A Viewpoint defines a &quot;way of looking at your model&quot;, you could make an analogy with &quot;What is your current concern about your analysis&quot;. It defines representations and might also define specific data only relevant for this concern."/>
       </eAnnotations>
       <eOperations name="initView">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1589,7 +1585,7 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="viewpointURI" lowerBound="1"
           eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The logical URI of the viewpoint you want to extend, in the form of viewpoint:/pluginID/SiriusName"/>
+          <details key="documentation" value="The logical URI of the viewpoint you want to extend, in the form of viewpoint:/pluginID/ViewpointName"/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="representationName" lowerBound="1"
@@ -1831,7 +1827,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="DiagramElementMapping" abstract="true"
         eSuperTypes="#//description/RepresentationElementMapping #//description/PasteTargetDescription">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Represent the mapping of a SiriusElement."/>
+        <details key="documentation" value="Represent the mapping of a ViewPointElement."/>
       </eAnnotations>
       <eOperations name="checkPrecondition" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1860,11 +1856,11 @@
       </eOperations>
       <eOperations name="isFrom" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Returns true if the given SiriusElement has been produced from this Mapping or any imported mapping."/>
+          <details key="documentation" value="Returns true if the given ViewPointElement has been produced from this Mapping or any imported mapping."/>
         </eAnnotations>
         <eParameters name="element" eType="#//DMappingBased">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Any SiriusElement"/>
+            <details key="documentation" value="Any ViewPointElement"/>
           </eAnnotations>
         </eParameters>
       </eOperations>
@@ -2642,6 +2638,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="EStructuralFeatureCustomization" abstract="true">
       <eStructuralFeatures xsi:type="ecore:EReference" name="appliedOn" lowerBound="1"
           upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="applyOnAll" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="EAttributeCustomization" eSuperTypes="#//description/EStructuralFeatureCustomization">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributeName" lowerBound="1"
@@ -3138,7 +3135,7 @@
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="BundledImageDescription" eSuperTypes="#//description/style/NodeStyleDescription">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The bundled image style allows to use the default images provide by the Sirius editor."/>
+          <details key="documentation" value="The bundled image style allows to use the default images provide by the Viewpoint editor."/>
         </eAnnotations>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="shape" lowerBound="1"
             eType="#//BundledImageShape">
@@ -3386,7 +3383,7 @@
       <eClassifiers xsi:type="ecore:EClass" name="SizeComputationContainerStyleDescription"
           abstract="true">
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="widthComputationExpression"
-            eType="#//description/InterpretedExpression" defaultValueLiteral="0">
+            eType="#//description/InterpretedExpression" defaultValueLiteral="-1">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="Expression that computes the size of the node."/>
           </eAnnotations>
@@ -3396,7 +3393,7 @@
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="heightComputationExpression"
-            eType="#//description/InterpretedExpression" defaultValueLiteral="0">
+            eType="#//description/InterpretedExpression" defaultValueLiteral="-1">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="Expression that computes the size of the node."/>
           </eAnnotations>
@@ -3490,7 +3487,7 @@
       <eClassifiers xsi:type="ecore:EClass" name="MappingBasedToolDescription" abstract="true"
           eSuperTypes="#//description/tool/AbstractToolDescription">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="A mapping based tool. This is a tool that create a SiriusElement."/>
+          <details key="documentation" value="A mapping based tool. This is a tool that create a ViewPointElement."/>
         </eAnnotations>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="ToolDescription" eSuperTypes="#//description/tool/MappingBasedToolDescription">
@@ -3550,7 +3547,7 @@
         <eStructuralFeatures xsi:type="ecore:EReference" name="viewVariable" lowerBound="1"
             eType="#//description/tool/ContainerViewVariable" containment="true">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The variable containerView that represents the clickedView (instance of Sirius or SiriusElement)."/>
+            <details key="documentation" value="The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement)."/>
             <details key="documentedName" value="containerView"/>
           </eAnnotations>
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
@@ -3696,7 +3693,7 @@
         <eStructuralFeatures xsi:type="ecore:EReference" name="viewVariable" lowerBound="1"
             eType="#//description/tool/ContainerViewVariable" containment="true">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The clicked view (instance of Sirius or ViewNodeContainer)."/>
+            <details key="documentation" value="The clicked view (instance of ViewPoint or ViewNodeContainer)."/>
             <details key="documentedName" value="containerView"/>
           </eAnnotations>
         </eStructuralFeatures>
@@ -3757,7 +3754,7 @@
         <eStructuralFeatures xsi:type="ecore:EReference" name="newViewContainer" lowerBound="1"
             eType="#//description/tool/ContainerViewVariable" containment="true">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The new view container (instance of Sirius or SiriusElement)."/>
+            <details key="documentation" value="The new view container (instance of ViewPoint or ViewPointElement)."/>
             <details key="documentedName" value="newContainerView"/>
           </eAnnotations>
         </eStructuralFeatures>
@@ -3821,13 +3818,13 @@
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="DeleteElementDescription" eSuperTypes="#//description/tool/MappingBasedToolDescription">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Tool that describes how to delete a SiriusElement."/>
+          <details key="documentation" value="Tool that describes how to delete a ViewPointElement."/>
         </eAnnotations>
         <eOperations name="getMappings" lowerBound="1" upperBound="-1" eType="#//description/DiagramElementMapping"/>
         <eStructuralFeatures xsi:type="ecore:EReference" name="element" lowerBound="1"
             eType="#//description/tool/ElementDeleteVariable" containment="true">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The semantic element of the SiriusElement to delete."/>
+            <details key="documentation" value="The semantic element of the ViewPointElement to delete."/>
           </eAnnotations>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EReference" name="elementView" eType="#//description/tool/ElementDeleteVariable"
@@ -3835,7 +3832,7 @@
         <eStructuralFeatures xsi:type="ecore:EReference" name="containerView" lowerBound="1"
             eType="#//description/tool/ContainerViewVariable" containment="true">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The view that contains the SiriusElement to delete."/>
+            <details key="documentation" value="The view that contains the ViewPointElement to delete."/>
           </eAnnotations>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
@@ -3860,7 +3857,7 @@
         <eStructuralFeatures xsi:type="ecore:EReference" name="element" lowerBound="1"
             eType="#//description/tool/ElementDoubleClickVariable" containment="true">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The semantic element of the SiriusElement to delete."/>
+            <details key="documentation" value="The semantic element of the ViewPointElement to delete."/>
           </eAnnotations>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EReference" name="elementView" eType="#//description/tool/ElementDoubleClickVariable"
@@ -4087,7 +4084,7 @@
         <eStructuralFeatures xsi:type="ecore:EReference" name="containerViewVariable"
             lowerBound="1" eType="#//description/tool/ContainerViewVariable" containment="true">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The variable containerView that represents the clickedView (instance of Sirius or SiriusElement)."/>
+            <details key="documentation" value="The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement)."/>
             <details key="documentedName" value="containerView"/>
           </eAnnotations>
         </eStructuralFeatures>
@@ -4126,7 +4123,7 @@
         <eStructuralFeatures xsi:type="ecore:EReference" name="containerViewVariable"
             lowerBound="1" eType="#//description/tool/ContainerViewVariable" containment="true">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The variable containerView that represents the clickedView (instance of Sirius or SiriusElement)."/>
+            <details key="documentation" value="The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement)."/>
             <details key="documentedName" value="containerView"/>
           </eAnnotations>
         </eStructuralFeatures>
@@ -4188,7 +4185,7 @@
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="DirectEditLabel" eSuperTypes="#//description/tool/MappingBasedToolDescription">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="A tool that allows to edit the label of a SiriusElement."/>
+          <details key="documentation" value="A tool that allows to edit the label of a ViewPointElement."/>
         </eAnnotations>
         <eOperations name="getMapping" lowerBound="1" upperBound="-1" eType="#//description/DiagramElementMapping"/>
         <eStructuralFeatures xsi:type="ecore:EReference" name="mask" lowerBound="1"

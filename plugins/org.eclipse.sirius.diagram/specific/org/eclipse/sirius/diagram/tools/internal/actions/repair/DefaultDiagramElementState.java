@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.actions.repair;
 
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.migration.DiagramCrossReferencer;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Default diagram element state.

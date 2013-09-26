@@ -59,7 +59,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutExtender;
@@ -68,6 +67,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.ExtendableLayoutP
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.ArrangeAllWithAutoSize;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.AutoSizeAndRegionAwareGraphLayout;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.DiagramLayoutCustomization;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Abstract base class to factor out the common code between

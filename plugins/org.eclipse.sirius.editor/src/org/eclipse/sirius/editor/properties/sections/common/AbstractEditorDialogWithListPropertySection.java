@@ -23,14 +23,13 @@ import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.sirius.common.ui.tools.api.dialog.FeatureEditorDialog;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIManager;
+import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
-
-import org.eclipse.sirius.common.ui.tools.api.dialog.FeatureEditorDialog;
-import org.eclipse.sirius.provider.SiriusItemProviderAdapterFactory;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIManager;
 
 /**
  * An abstract implementation of a section with a non-editable Text and a button
@@ -84,7 +83,7 @@ public abstract class AbstractEditorDialogWithListPropertySection extends Abstra
         factories.add(DialectUIManager.INSTANCE.createAdapterFactory());
         factories.add(FeatureExtensionsUIManager.INSTANCE.createAdapterFactory());
         factories.add(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
-        factories.add(new SiriusItemProviderAdapterFactory());
+        factories.add(new ViewpointItemProviderAdapterFactory());
         factories.add(new ResourceItemProviderAdapterFactory());
         factories.add(new EcoreItemProviderAdapterFactory());
         factories.add(new ReflectiveItemProviderAdapterFactory());

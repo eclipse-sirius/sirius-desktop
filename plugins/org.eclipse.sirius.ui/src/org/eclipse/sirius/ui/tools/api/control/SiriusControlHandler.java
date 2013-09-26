@@ -49,15 +49,15 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.control.SiriusControlCommand;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ui.tools.internal.util.EMFCoreUtil;
 import org.eclipse.sirius.ui.tools.internal.wizards.SelectRepresentationsWizard;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Implements the UI part of the "Control" operation. This class gathers the

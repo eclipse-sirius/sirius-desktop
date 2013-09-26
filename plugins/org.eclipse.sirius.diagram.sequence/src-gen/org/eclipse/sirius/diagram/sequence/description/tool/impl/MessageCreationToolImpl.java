@@ -22,27 +22,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.sirius.EdgeTarget;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.DocumentedElement;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.IdentifiedElement;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.EdgeCreationDescription;
-import org.eclipse.sirius.description.tool.InitEdgeCreationOperation;
-import org.eclipse.sirius.description.tool.MappingBasedToolDescription;
-import org.eclipse.sirius.description.tool.SourceEdgeCreationVariable;
-import org.eclipse.sirius.description.tool.SourceEdgeViewCreationVariable;
-import org.eclipse.sirius.description.tool.TargetEdgeCreationVariable;
-import org.eclipse.sirius.description.tool.TargetEdgeViewCreationVariable;
-import org.eclipse.sirius.description.tool.ToolEntry;
-import org.eclipse.sirius.description.tool.ToolFilterDescription;
 import org.eclipse.sirius.diagram.sequence.description.MessageEndVariable;
 import org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;
+import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.SourceEdgeCreationVariable;
+import org.eclipse.sirius.viewpoint.description.tool.SourceEdgeViewCreationVariable;
+import org.eclipse.sirius.viewpoint.description.tool.TargetEdgeCreationVariable;
+import org.eclipse.sirius.viewpoint.description.tool.TargetEdgeViewCreationVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -1350,11 +1349,11 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         if (baseClass == AbstractToolDescription.class) {
             switch (derivedFeatureID) {
             case ToolPackage.MESSAGE_CREATION_TOOL__PRECONDITION:
-                return org.eclipse.sirius.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION;
+                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION;
             case ToolPackage.MESSAGE_CREATION_TOOL__FORCE_REFRESH:
-                return org.eclipse.sirius.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH;
+                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH;
             case ToolPackage.MESSAGE_CREATION_TOOL__FILTERS:
-                return org.eclipse.sirius.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
+                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS;
             default:
                 return -1;
             }
@@ -1368,25 +1367,25 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         if (baseClass == EdgeCreationDescription.class) {
             switch (derivedFeatureID) {
             case ToolPackage.MESSAGE_CREATION_TOOL__EDGE_MAPPINGS:
-                return org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS;
+                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS;
             case ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE:
-                return org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VARIABLE;
+                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VARIABLE;
             case ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE:
-                return org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VARIABLE;
+                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VARIABLE;
             case ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE:
-                return org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE;
+                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE;
             case ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE:
-                return org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE;
+                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE;
             case ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION:
-                return org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__INITIAL_OPERATION;
+                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__INITIAL_OPERATION;
             case ToolPackage.MESSAGE_CREATION_TOOL__ICON_PATH:
-                return org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__ICON_PATH;
+                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__ICON_PATH;
             case ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_SOURCE_MAPPINGS:
-                return org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS;
+                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS;
             case ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_TARGET_MAPPINGS:
-                return org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS;
+                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS;
             case ToolPackage.MESSAGE_CREATION_TOOL__CONNECTION_START_PRECONDITION:
-                return org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION;
+                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION;
             default:
                 return -1;
             }
@@ -1437,11 +1436,11 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         }
         if (baseClass == AbstractToolDescription.class) {
             switch (baseFeatureID) {
-            case org.eclipse.sirius.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION:
+            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION:
                 return ToolPackage.MESSAGE_CREATION_TOOL__PRECONDITION;
-            case org.eclipse.sirius.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH:
+            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FORCE_REFRESH:
                 return ToolPackage.MESSAGE_CREATION_TOOL__FORCE_REFRESH;
-            case org.eclipse.sirius.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS:
+            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS:
                 return ToolPackage.MESSAGE_CREATION_TOOL__FILTERS;
             default:
                 return -1;
@@ -1455,25 +1454,25 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
         }
         if (baseClass == EdgeCreationDescription.class) {
             switch (baseFeatureID) {
-            case org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS:
+            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS:
                 return ToolPackage.MESSAGE_CREATION_TOOL__EDGE_MAPPINGS;
-            case org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VARIABLE:
+            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VARIABLE:
                 return ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE;
-            case org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VARIABLE:
+            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VARIABLE:
                 return ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE;
-            case org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE:
+            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE:
                 return ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE;
-            case org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE:
+            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE:
                 return ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE;
-            case org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__INITIAL_OPERATION:
+            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__INITIAL_OPERATION:
                 return ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION;
-            case org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__ICON_PATH:
+            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__ICON_PATH:
                 return ToolPackage.MESSAGE_CREATION_TOOL__ICON_PATH;
-            case org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS:
+            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS:
                 return ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_SOURCE_MAPPINGS;
-            case org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS:
+            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS:
                 return ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_TARGET_MAPPINGS;
-            case org.eclipse.sirius.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION:
+            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION:
                 return ToolPackage.MESSAGE_CREATION_TOOL__CONNECTION_START_PRECONDITION;
             default:
                 return -1;

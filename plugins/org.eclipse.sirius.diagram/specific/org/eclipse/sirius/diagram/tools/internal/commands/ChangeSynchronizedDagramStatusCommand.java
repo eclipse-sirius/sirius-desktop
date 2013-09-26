@@ -12,8 +12,7 @@ package org.eclipse.sirius.diagram.tools.internal.commands;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * Specific command to change synchronized diagram status.

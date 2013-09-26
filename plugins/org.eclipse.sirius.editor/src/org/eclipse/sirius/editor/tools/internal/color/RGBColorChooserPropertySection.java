@@ -19,6 +19,12 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.business.api.color.RGBValuesProvider;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractSiriusPropertySection;
+import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -32,13 +38,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.business.api.color.RGBValuesProvider;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.FixedColor;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractSiriusPropertySection;
-import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 
 /**
  * An abstract implementation of a section displaying a spinner for an integer
@@ -123,8 +122,7 @@ public class RGBColorChooserPropertySection extends AbstractSiriusPropertySectio
                 if (eObject instanceof FixedColor) {
                     final FixedColor newColor = (FixedColor) eObject;
                     /*
-                     * do not try to set the color if the widget
-                     * is disposed
+                     * do not try to set the color if the widget is disposed
                      */
                     if (!colorLabel.isDisposed()) {
                         colorLabel.setBackground(VisualBindingManager.getDefault().getColorFromRGBValues(new RGBValuesProvider().getRGBValues(newColor)));

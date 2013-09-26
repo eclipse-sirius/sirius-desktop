@@ -32,10 +32,10 @@ import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.movida.registry.SiriusRelations;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationExtensionDescription;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Locates all the representation extensions which apply to some representation
@@ -70,7 +70,7 @@ public class RepresentationExtensionsFinder {
      *         RepresentationExtensionDescriptions returned are the instances
      *         loaded in the session's ResourceSet.
      */
-    public List<RepresentationExtensionDescription> findApplicableExtensions(Iterable<Sirius> context) {
+    public List<RepresentationExtensionDescription> findApplicableExtensions(Iterable<Viewpoint> context) {
         String targetSiriusURI = getTargetSiriusURI();
         String targetRepresentationName = extensionTarget.getName();
         if (targetSiriusURI != null && targetRepresentationName != null) {
@@ -90,7 +90,7 @@ public class RepresentationExtensionsFinder {
      * @return <code>true</code> if the viewpoint contains any representation
      *         description extension which applies to the representation.
      */
-    public boolean isAffectedBy(Sirius vp) {
+    public boolean isAffectedBy(Viewpoint vp) {
         return !findApplicableExtensions(Collections.singleton(vp)).isEmpty();
     }
 
@@ -106,13 +106,13 @@ public class RepresentationExtensionsFinder {
      * @return all the Siriuss which are relevant for the computation of the
      *         effective representation description.
      */
-    public LinkedHashSet<Sirius> findAllRelevantSiriuss(Session session) {
+    public LinkedHashSet<Viewpoint> findAllRelevantSiriuss(Session session) {
         RepresentationDescription mainRepresentationDescription = extensionTarget;
-        LinkedHashSet<Sirius> result = Sets.newLinkedHashSet();
-        Sirius mainVP = new RepresentationDescriptionQuery(mainRepresentationDescription).getParentSirius();
+        LinkedHashSet<Viewpoint> result = Sets.newLinkedHashSet();
+        Viewpoint mainVP = new RepresentationDescriptionQuery(mainRepresentationDescription).getParentSirius();
         if (mainVP != null) {
-            BiMap<URI, Sirius> candidates = HashBiMap.create();
-            for (Sirius vp : session.getSelectedSiriuss(false)) {
+            BiMap<URI, Viewpoint> candidates = HashBiMap.create();
+            for (Viewpoint vp : session.getSelectedSiriuss(false)) {
                 Option<URI> uri = new SiriusQuery(vp).getSiriusURI();
                 if (uri.some()) {
                     candidates.put(uri.get(), vp);
@@ -130,12 +130,12 @@ public class RepresentationExtensionsFinder {
             while (changed) {
                 changed = false;
                 // Add all the Siriuss we reuse.
-                for (Sirius v1 : Lists.newArrayList(result)) {
+                for (Viewpoint v1 : Lists.newArrayList(result)) {
                     URI uri = candidates.inverse().get(v1);
                     changed = changed || Iterables.addAll(result, Iterables.transform(relations.getReuse().apply(uri), Functions.forMap(candidates)));
                 }
                 // Add all the Siriuss which extend any of us.
-                for (Sirius v : session.getSelectedSiriuss(false)) {
+                for (Viewpoint v : session.getSelectedSiriuss(false)) {
                     URI extenderUri = candidates.inverse().get(v);
                     for (URI extendeeUri : relations.getCustomize().apply(extenderUri)) {
                         if (result.contains(candidates.get(extendeeUri))) {
@@ -149,9 +149,9 @@ public class RepresentationExtensionsFinder {
     }
 
     private String getTargetSiriusURI() {
-        Option<EObject> parentVp = new EObjectQuery(extensionTarget).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getSirius());
+        Option<EObject> parentVp = new EObjectQuery(extensionTarget).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getViewpoint());
         if (parentVp.some()) {
-            Option<URI> viewpointURI = new SiriusQuery((Sirius) parentVp.get()).getSiriusURI();
+            Option<URI> viewpointURI = new SiriusQuery((Viewpoint) parentVp.get()).getSiriusURI();
             if (viewpointURI.some()) {
                 return viewpointURI.get().toString();
             }
@@ -159,9 +159,9 @@ public class RepresentationExtensionsFinder {
         return null;
     }
 
-    private List<RepresentationExtensionDescription> findApplicableExtensions(Iterable<Sirius> context, String targetSiriusURI, String targetRepresentationName) {
+    private List<RepresentationExtensionDescription> findApplicableExtensions(Iterable<Viewpoint> context, String targetSiriusURI, String targetRepresentationName) {
         List<RepresentationExtensionDescription> result = Lists.newArrayList();
-        for (Sirius vp : context) {
+        for (Viewpoint vp : context) {
             for (RepresentationExtensionDescription ext : vp.getOwnedRepresentationExtensions()) {
                 if (appliesTo(ext, targetSiriusURI, targetRepresentationName)) {
                     result.add(ext);
@@ -172,6 +172,6 @@ public class RepresentationExtensionsFinder {
     }
 
     private boolean appliesTo(RepresentationExtensionDescription ext, String targetSiriusURI, String targetRepresentationName) {
-        return targetSiriusURI.equals(ext.getSiriusURI()) && targetRepresentationName.equals(ext.getRepresentationName());
+        return targetSiriusURI.equals(ext.getViewpointURI()) && targetRepresentationName.equals(ext.getRepresentationName());
     }
 }

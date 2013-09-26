@@ -12,9 +12,8 @@ package org.eclipse.sirius.editor.tools.internal.menu.refactoring;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
-import org.eclipse.sirius.description.EdgeMapping;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractUndoRecordingCommand;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 
 /**
  * Command changing an edge mapping using or not domain based.

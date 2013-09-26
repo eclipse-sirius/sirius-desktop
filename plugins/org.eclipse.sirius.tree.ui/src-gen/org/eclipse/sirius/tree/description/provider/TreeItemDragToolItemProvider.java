@@ -27,17 +27,16 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.description.tool.ToolFactory;
-import org.eclipse.sirius.description.tool.ToolPackage;
-import org.eclipse.sirius.description.tool.provider.MappingBasedToolDescriptionItemProvider;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeItemDragTool;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.ui.tools.api.provider.ItemProviderHelper;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.provider.MappingBasedToolDescriptionItemProvider;
+
+import com.google.common.collect.Lists;
 
 /**
  * This is the item provider adapter for a

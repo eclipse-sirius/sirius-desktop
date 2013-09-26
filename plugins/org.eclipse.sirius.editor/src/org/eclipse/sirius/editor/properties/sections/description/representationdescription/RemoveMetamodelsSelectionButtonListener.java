@@ -13,13 +13,12 @@ package org.eclipse.sirius.editor.properties.sections.description.representation
 import java.util.List;
 
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
-
-import org.eclipse.sirius.description.RepresentationDescription;
 
 /**
  * A {@link SelectionAdapter} to remove currently selected {@link EPackage}s.

@@ -1,10 +1,9 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -14,18 +13,17 @@ package org.eclipse.sirius.editor.properties.filters.style.nodestyledescription;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.sirius.description.ConditionalStyleDescription;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.style.StylePackage;
-import org.eclipse.sirius.editor.properties.filters.common.SiriusPropertyFilter;
+import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
+import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 // End of user code specific imports
 
 /**
  * A filter for the hideLabelByDefault property section.
  */
-public class NodeStyleDescriptionHideLabelByDefaultFilter extends SiriusPropertyFilter {
+public class NodeStyleDescriptionHideLabelByDefaultFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
@@ -38,7 +36,7 @@ public class NodeStyleDescriptionHideLabelByDefaultFilter extends SiriusProperty
      * {@inheritDoc}
      */
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.description.style.NodeStyleDescription;
+        return arg0 instanceof org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
     }
 
     // Start of user code user methods
@@ -47,7 +45,7 @@ public class NodeStyleDescriptionHideLabelByDefaultFilter extends SiriusProperty
      * {@inheritDoc}
      */
     public boolean select(Object arg0) {
-        if (isRightInputType(arg0) && isStyleInNodeMapping((org.eclipse.sirius.description.style.NodeStyleDescription) arg0)) {
+        if (isRightInputType(arg0) && isStyleInNodeMapping((org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription) arg0)) {
             EStructuralFeature feature = getFeature();
             if (feature != null && isVisible(feature)) {
                 return true;
@@ -64,7 +62,7 @@ public class NodeStyleDescriptionHideLabelByDefaultFilter extends SiriusProperty
      * @return <code>true</code> if the style is contained in a node mapping,
      *         <code>false</code> otherwise
      */
-    private boolean isStyleInNodeMapping(org.eclipse.sirius.description.style.NodeStyleDescription styleDescription) {
+    private boolean isStyleInNodeMapping(org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription styleDescription) {
         EObject container = styleDescription.eContainer();
         while (container instanceof ConditionalStyleDescription) {
             container = container.eContainer();

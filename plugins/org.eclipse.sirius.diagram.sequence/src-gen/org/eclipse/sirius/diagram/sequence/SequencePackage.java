@@ -13,8 +13,7 @@ package org.eclipse.sirius.diagram.sequence;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -79,7 +78,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__DOCUMENTATION = SiriusPackage.DSEMANTIC_DIAGRAM__DOCUMENTATION;
+    int SEQUENCE_DDIAGRAM__DOCUMENTATION = ViewpointPackage.DSEMANTIC_DIAGRAM__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>EAnnotations</b></em>' containment
@@ -88,7 +87,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__EANNOTATIONS = SiriusPackage.DSEMANTIC_DIAGRAM__EANNOTATIONS;
+    int SEQUENCE_DDIAGRAM__EANNOTATIONS = ViewpointPackage.DSEMANTIC_DIAGRAM__EANNOTATIONS;
 
     /**
      * The feature id for the '<em><b>Owned Representation Elements</b></em>'
@@ -97,7 +96,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__OWNED_REPRESENTATION_ELEMENTS = SiriusPackage.DSEMANTIC_DIAGRAM__OWNED_REPRESENTATION_ELEMENTS;
+    int SEQUENCE_DDIAGRAM__OWNED_REPRESENTATION_ELEMENTS = ViewpointPackage.DSEMANTIC_DIAGRAM__OWNED_REPRESENTATION_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Representation Elements</b></em>'
@@ -106,7 +105,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__REPRESENTATION_ELEMENTS = SiriusPackage.DSEMANTIC_DIAGRAM__REPRESENTATION_ELEMENTS;
+    int SEQUENCE_DDIAGRAM__REPRESENTATION_ELEMENTS = ViewpointPackage.DSEMANTIC_DIAGRAM__REPRESENTATION_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -115,7 +114,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__NAME = SiriusPackage.DSEMANTIC_DIAGRAM__NAME;
+    int SEQUENCE_DDIAGRAM__NAME = ViewpointPackage.DSEMANTIC_DIAGRAM__NAME;
 
     /**
      * The feature id for the '<em><b>Owned Annotation Entries</b></em>'
@@ -124,7 +123,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__OWNED_ANNOTATION_ENTRIES = SiriusPackage.DSEMANTIC_DIAGRAM__OWNED_ANNOTATION_ENTRIES;
+    int SEQUENCE_DDIAGRAM__OWNED_ANNOTATION_ENTRIES = ViewpointPackage.DSEMANTIC_DIAGRAM__OWNED_ANNOTATION_ENTRIES;
 
     /**
      * The feature id for the '<em><b>Owned Diagram Elements</b></em>'
@@ -133,7 +132,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__OWNED_DIAGRAM_ELEMENTS = SiriusPackage.DSEMANTIC_DIAGRAM__OWNED_DIAGRAM_ELEMENTS;
+    int SEQUENCE_DDIAGRAM__OWNED_DIAGRAM_ELEMENTS = ViewpointPackage.DSEMANTIC_DIAGRAM__OWNED_DIAGRAM_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Diagram Elements</b></em>' reference list.
@@ -142,7 +141,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__DIAGRAM_ELEMENTS = SiriusPackage.DSEMANTIC_DIAGRAM__DIAGRAM_ELEMENTS;
+    int SEQUENCE_DDIAGRAM__DIAGRAM_ELEMENTS = ViewpointPackage.DSEMANTIC_DIAGRAM__DIAGRAM_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
@@ -151,7 +150,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__DESCRIPTION = SiriusPackage.DSEMANTIC_DIAGRAM__DESCRIPTION;
+    int SEQUENCE_DDIAGRAM__DESCRIPTION = ViewpointPackage.DSEMANTIC_DIAGRAM__DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Info</b></em>' attribute. <!--
@@ -160,7 +159,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__INFO = SiriusPackage.DSEMANTIC_DIAGRAM__INFO;
+    int SEQUENCE_DDIAGRAM__INFO = ViewpointPackage.DSEMANTIC_DIAGRAM__INFO;
 
     /**
      * The feature id for the '<em><b>Sub Diagrams</b></em>' containment
@@ -169,7 +168,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__SUB_DIAGRAMS = SiriusPackage.DSEMANTIC_DIAGRAM__SUB_DIAGRAMS;
+    int SEQUENCE_DDIAGRAM__SUB_DIAGRAMS = ViewpointPackage.DSEMANTIC_DIAGRAM__SUB_DIAGRAMS;
 
     /**
      * The feature id for the '<em><b>Edges</b></em>' reference list. <!--
@@ -178,7 +177,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__EDGES = SiriusPackage.DSEMANTIC_DIAGRAM__EDGES;
+    int SEQUENCE_DDIAGRAM__EDGES = ViewpointPackage.DSEMANTIC_DIAGRAM__EDGES;
 
     /**
      * The feature id for the '<em><b>Nodes</b></em>' reference list. <!--
@@ -187,7 +186,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__NODES = SiriusPackage.DSEMANTIC_DIAGRAM__NODES;
+    int SEQUENCE_DDIAGRAM__NODES = ViewpointPackage.DSEMANTIC_DIAGRAM__NODES;
 
     /**
      * The feature id for the '<em><b>Node List Elements</b></em>' reference
@@ -196,7 +195,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__NODE_LIST_ELEMENTS = SiriusPackage.DSEMANTIC_DIAGRAM__NODE_LIST_ELEMENTS;
+    int SEQUENCE_DDIAGRAM__NODE_LIST_ELEMENTS = ViewpointPackage.DSEMANTIC_DIAGRAM__NODE_LIST_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Containers</b></em>' reference list. <!--
@@ -205,7 +204,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__CONTAINERS = SiriusPackage.DSEMANTIC_DIAGRAM__CONTAINERS;
+    int SEQUENCE_DDIAGRAM__CONTAINERS = ViewpointPackage.DSEMANTIC_DIAGRAM__CONTAINERS;
 
     /**
      * The feature id for the '<em><b>Current Concern</b></em>' reference. <!--
@@ -214,7 +213,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__CURRENT_CONCERN = SiriusPackage.DSEMANTIC_DIAGRAM__CURRENT_CONCERN;
+    int SEQUENCE_DDIAGRAM__CURRENT_CONCERN = ViewpointPackage.DSEMANTIC_DIAGRAM__CURRENT_CONCERN;
 
     /**
      * The feature id for the '<em><b>Activated Filters</b></em>' reference
@@ -223,7 +222,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__ACTIVATED_FILTERS = SiriusPackage.DSEMANTIC_DIAGRAM__ACTIVATED_FILTERS;
+    int SEQUENCE_DDIAGRAM__ACTIVATED_FILTERS = ViewpointPackage.DSEMANTIC_DIAGRAM__ACTIVATED_FILTERS;
 
     /**
      * The feature id for the '<em><b>All Filters</b></em>' reference list. <!--
@@ -232,7 +231,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__ALL_FILTERS = SiriusPackage.DSEMANTIC_DIAGRAM__ALL_FILTERS;
+    int SEQUENCE_DDIAGRAM__ALL_FILTERS = ViewpointPackage.DSEMANTIC_DIAGRAM__ALL_FILTERS;
 
     /**
      * The feature id for the '<em><b>Activated Rules</b></em>' reference list.
@@ -241,7 +240,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__ACTIVATED_RULES = SiriusPackage.DSEMANTIC_DIAGRAM__ACTIVATED_RULES;
+    int SEQUENCE_DDIAGRAM__ACTIVATED_RULES = ViewpointPackage.DSEMANTIC_DIAGRAM__ACTIVATED_RULES;
 
     /**
      * The feature id for the '<em><b>Activate Behaviors</b></em>' reference
@@ -250,7 +249,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__ACTIVATE_BEHAVIORS = SiriusPackage.DSEMANTIC_DIAGRAM__ACTIVATE_BEHAVIORS;
+    int SEQUENCE_DDIAGRAM__ACTIVATE_BEHAVIORS = ViewpointPackage.DSEMANTIC_DIAGRAM__ACTIVATE_BEHAVIORS;
 
     /**
      * The feature id for the '<em><b>Filter Variable History</b></em>'
@@ -259,7 +258,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__FILTER_VARIABLE_HISTORY = SiriusPackage.DSEMANTIC_DIAGRAM__FILTER_VARIABLE_HISTORY;
+    int SEQUENCE_DDIAGRAM__FILTER_VARIABLE_HISTORY = ViewpointPackage.DSEMANTIC_DIAGRAM__FILTER_VARIABLE_HISTORY;
 
     /**
      * The feature id for the '<em><b>Activated Layers</b></em>' reference list.
@@ -268,7 +267,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__ACTIVATED_LAYERS = SiriusPackage.DSEMANTIC_DIAGRAM__ACTIVATED_LAYERS;
+    int SEQUENCE_DDIAGRAM__ACTIVATED_LAYERS = ViewpointPackage.DSEMANTIC_DIAGRAM__ACTIVATED_LAYERS;
 
     /**
      * The feature id for the '<em><b>Synchronized</b></em>' attribute. <!--
@@ -277,7 +276,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__SYNCHRONIZED = SiriusPackage.DSEMANTIC_DIAGRAM__SYNCHRONIZED;
+    int SEQUENCE_DDIAGRAM__SYNCHRONIZED = ViewpointPackage.DSEMANTIC_DIAGRAM__SYNCHRONIZED;
 
     /**
      * The feature id for the '<em><b>Hidden Elements</b></em>' reference list.
@@ -286,7 +285,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__HIDDEN_ELEMENTS = SiriusPackage.DSEMANTIC_DIAGRAM__HIDDEN_ELEMENTS;
+    int SEQUENCE_DDIAGRAM__HIDDEN_ELEMENTS = ViewpointPackage.DSEMANTIC_DIAGRAM__HIDDEN_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Is In Layouting Mode</b></em>' attribute.
@@ -295,7 +294,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__IS_IN_LAYOUTING_MODE = SiriusPackage.DSEMANTIC_DIAGRAM__IS_IN_LAYOUTING_MODE;
+    int SEQUENCE_DDIAGRAM__IS_IN_LAYOUTING_MODE = ViewpointPackage.DSEMANTIC_DIAGRAM__IS_IN_LAYOUTING_MODE;
 
     /**
      * The feature id for the '<em><b>Header Height</b></em>' attribute. <!--
@@ -304,7 +303,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__HEADER_HEIGHT = SiriusPackage.DSEMANTIC_DIAGRAM__HEADER_HEIGHT;
+    int SEQUENCE_DDIAGRAM__HEADER_HEIGHT = ViewpointPackage.DSEMANTIC_DIAGRAM__HEADER_HEIGHT;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -313,7 +312,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__TARGET = SiriusPackage.DSEMANTIC_DIAGRAM__TARGET;
+    int SEQUENCE_DDIAGRAM__TARGET = ViewpointPackage.DSEMANTIC_DIAGRAM__TARGET;
 
     /**
      * The feature id for the '<em><b>Semantic Ordering</b></em>' containment
@@ -322,7 +321,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__SEMANTIC_ORDERING = SiriusPackage.DSEMANTIC_DIAGRAM_FEATURE_COUNT + 0;
+    int SEQUENCE_DDIAGRAM__SEMANTIC_ORDERING = ViewpointPackage.DSEMANTIC_DIAGRAM_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Graphical Ordering</b></em>' containment
@@ -331,7 +330,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__GRAPHICAL_ORDERING = SiriusPackage.DSEMANTIC_DIAGRAM_FEATURE_COUNT + 1;
+    int SEQUENCE_DDIAGRAM__GRAPHICAL_ORDERING = ViewpointPackage.DSEMANTIC_DIAGRAM_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Instance Role Semantic Ordering</b></em>'
@@ -340,7 +339,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM__INSTANCE_ROLE_SEMANTIC_ORDERING = SiriusPackage.DSEMANTIC_DIAGRAM_FEATURE_COUNT + 2;
+    int SEQUENCE_DDIAGRAM__INSTANCE_ROLE_SEMANTIC_ORDERING = ViewpointPackage.DSEMANTIC_DIAGRAM_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '<em>DDiagram</em>' class. <!--
@@ -349,7 +348,7 @@ public interface SequencePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DDIAGRAM_FEATURE_COUNT = SiriusPackage.DSEMANTIC_DIAGRAM_FEATURE_COUNT + 3;
+    int SEQUENCE_DDIAGRAM_FEATURE_COUNT = ViewpointPackage.DSEMANTIC_DIAGRAM_FEATURE_COUNT + 3;
 
     /**
      * Returns the meta object for class '

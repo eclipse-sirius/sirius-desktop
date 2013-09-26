@@ -47,15 +47,6 @@ import org.eclipse.gmf.runtime.notation.RoutingStyle;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.DStylizable;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -69,6 +60,14 @@ import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfigura
 import org.eclipse.sirius.diagram.tools.api.part.DiagramEditPartService;
 import org.eclipse.sirius.diagram.tools.internal.graphical.edit.DiagramCreationUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.LayoutUtil;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.DStylizable;
 
 /**
  * Useful operations.

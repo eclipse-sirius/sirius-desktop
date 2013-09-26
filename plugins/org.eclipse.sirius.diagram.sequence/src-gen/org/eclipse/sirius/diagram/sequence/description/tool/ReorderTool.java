@@ -11,11 +11,10 @@
 package org.eclipse.sirius.diagram.sequence.description.tool;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.InitialOperation;
 import org.eclipse.sirius.diagram.sequence.description.EventMapping;
 import org.eclipse.sirius.diagram.sequence.description.MessageEndVariable;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

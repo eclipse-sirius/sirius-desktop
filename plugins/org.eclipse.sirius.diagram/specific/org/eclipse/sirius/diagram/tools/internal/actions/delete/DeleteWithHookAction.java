@@ -21,9 +21,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.actions.PromptingDeleteAction;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.ui.IWorkbenchPart;
-
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.helper.delete.DeleteHookHelper;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Delete Action originating via keyboard using the 'Delete' hot/shortcut key.

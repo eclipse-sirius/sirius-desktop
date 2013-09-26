@@ -16,17 +16,16 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.SiriusFactory;
 import org.eclipse.sirius.business.api.helper.concern.ConcernService;
-import org.eclipse.sirius.description.concern.ConcernDescription;
-import org.eclipse.sirius.description.filter.CompositeFilterDescription;
-import org.eclipse.sirius.description.filter.FilterDescription;
-import org.eclipse.sirius.description.filter.VariableFilter;
 import org.eclipse.sirius.diagram.tools.internal.filter.FilterTools;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.description.concern.ConcernDescription;
+import org.eclipse.sirius.viewpoint.description.filter.CompositeFilterDescription;
+import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
+import org.eclipse.sirius.viewpoint.description.filter.VariableFilter;
 
 /**
  * Specific command to set the current concern.
@@ -76,7 +75,7 @@ public class SetCurrentConcernCommand extends RecordingCommand {
 
         final ConcernDescription previousConcern = diagram.getCurrentConcern();
         if (diagram.getFilterVariableHistory() == null) {
-            diagram.setFilterVariableHistory(SiriusFactory.eINSTANCE.createFilterVariableHistory());
+            diagram.setFilterVariableHistory(ViewpointFactory.eINSTANCE.createFilterVariableHistory());
         }
         try {
             final Iterator<FilterDescription> itFilter = desc.getFilters().iterator();

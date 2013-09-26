@@ -39,9 +39,6 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.PartInitException;
-
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
@@ -68,6 +65,8 @@ import org.eclipse.sirius.editor.tools.internal.menu.child.ValidationMenuBuilder
 import org.eclipse.sirius.editor.tools.internal.menu.child.VariablesMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.VisualMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.refactoring.RefactoringMenu;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PartInitException;
 
 /**
  * Specific class to provide actions.

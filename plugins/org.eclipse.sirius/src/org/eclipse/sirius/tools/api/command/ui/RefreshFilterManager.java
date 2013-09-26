@@ -32,7 +32,7 @@ public interface RefreshFilterManager extends RefreshFilter {
 
     /**
      * Add a new {@link RefreshFilter}. It will be used in automatic refresh
-     * mode to decide whether a {@link org.eclipse.sirius.DDiagram} should be
+     * mode to decide whether a {@link org.eclipse.sirius.viewpoint.DDiagram} should be
      * refreshed or not.
      * 
      * @param filter

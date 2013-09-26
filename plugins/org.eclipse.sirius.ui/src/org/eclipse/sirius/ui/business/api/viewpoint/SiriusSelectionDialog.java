@@ -52,8 +52,8 @@ import com.google.common.collect.Ordering;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
 import org.eclipse.sirius.business.internal.movida.SiriusDependenciesTracker;
 import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * A dialog box which allow end-users to select which Siriuss are enabled
@@ -87,13 +87,13 @@ public class SiriusSelectionDialog extends TitleAreaDialog {
 
     // CHECKSTYLE:OFF
     private class Item {
-        public final Sirius viewpoint;
+        public final Viewpoint viewpoint;
 
         public final Item parent;
 
         public final List<Item> descendants = Lists.newArrayList();
 
-        public Item(Item parent, Sirius vp) {
+        public Item(Item parent, Viewpoint vp) {
             this.parent = parent;
             this.viewpoint = vp;
             index.put(viewpoint, this);
@@ -278,7 +278,7 @@ public class SiriusSelectionDialog extends TitleAreaDialog {
 
     private final List<Item> input;
 
-    private Multimap<Sirius, Item> index = ArrayListMultimap.create();
+    private Multimap<Viewpoint, Item> index = ArrayListMultimap.create();
 
     /**
      * Constructor.
@@ -305,8 +305,8 @@ public class SiriusSelectionDialog extends TitleAreaDialog {
     }
 
     private List<Item> computeItemHierarchy(final Collection<String> fileExtensions) {
-        final Predicate<Sirius> isTopLevel = new Predicate<Sirius>() {
-            public boolean apply(final Sirius vp) {
+        final Predicate<Viewpoint> isTopLevel = new Predicate<Viewpoint>() {
+            public boolean apply(final Viewpoint vp) {
                 boolean top = vp != null && vp.getCustomizes().isEmpty();
                 boolean matchesSemancitModel = Iterables.any(fileExtensions, new Predicate<String>() {
                     public boolean apply(String ext) {
@@ -317,8 +317,8 @@ public class SiriusSelectionDialog extends TitleAreaDialog {
             }
         };
 
-        List<Item> roots = Lists.newArrayList(Iterables.transform(Iterables.filter(this.registry.getSiriuss(), isTopLevel), new Function<Sirius, Item>() {
-            public Item apply(Sirius from) {
+        List<Item> roots = Lists.newArrayList(Iterables.transform(Iterables.filter(this.registry.getSiriuss(), isTopLevel), new Function<Viewpoint, Item>() {
+            public Item apply(Viewpoint from) {
                 return new Item(null, from);
             }
         }));

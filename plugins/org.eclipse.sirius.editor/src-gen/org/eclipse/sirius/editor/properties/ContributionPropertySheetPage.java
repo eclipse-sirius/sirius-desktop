@@ -13,9 +13,8 @@ package org.eclipse.sirius.editor.properties;
 // Start of user code imports
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 // End of user code imports
 

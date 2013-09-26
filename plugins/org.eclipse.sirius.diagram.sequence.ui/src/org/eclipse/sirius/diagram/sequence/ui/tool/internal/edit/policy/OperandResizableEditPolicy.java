@@ -36,7 +36,6 @@ import org.eclipse.gmf.runtime.notation.Size;
 import com.google.common.collect.Iterables;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DNodeContainer;
 import org.eclipse.sirius.diagram.graphical.edit.policies.AirResizableEditPolicy;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
@@ -45,6 +44,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEdi
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.OperandResizeValidator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
 
 /**
  * A specific AirResizableEditPolicy to operand roles move & resize requests.

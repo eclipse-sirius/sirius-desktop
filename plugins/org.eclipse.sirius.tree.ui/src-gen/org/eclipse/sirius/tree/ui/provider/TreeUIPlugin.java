@@ -34,20 +34,19 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.tree.provider.TreeItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.concern.provider.ConcernItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.filter.provider.FilterItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.description.audit.provider.AuditItemProviderAdapterFactory;
-import org.eclipse.sirius.description.concern.provider.ConcernItemProviderAdapterFactory;
-import org.eclipse.sirius.description.filter.provider.FilterItemProviderAdapterFactory;
-import org.eclipse.sirius.description.provider.DescriptionItemProviderAdapterFactory;
-import org.eclipse.sirius.description.tool.provider.ToolItemProviderAdapterFactory;
-import org.eclipse.sirius.description.validation.provider.ValidationItemProviderAdapterFactory;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
-import org.eclipse.sirius.provider.SiriusItemProviderAdapterFactory;
-import org.eclipse.sirius.tree.provider.TreeItemProviderAdapterFactory;
 
 /**
  * This is the central singleton for the Tree edit plugin. <!-- begin-user-doc
@@ -224,7 +223,7 @@ public final class TreeUIPlugin extends EMFPlugin {
          * @generated NOT
          */
         protected void fillItemProviderFactories(List<AdapterFactory> factories) {
-            factories.add(new SiriusItemProviderAdapterFactory());
+            factories.add(new ViewpointItemProviderAdapterFactory());
             factories.add(new DescriptionItemProviderAdapterFactory());
             factories.add(new ToolItemProviderAdapterFactory());
             factories.add(new FilterItemProviderAdapterFactory());

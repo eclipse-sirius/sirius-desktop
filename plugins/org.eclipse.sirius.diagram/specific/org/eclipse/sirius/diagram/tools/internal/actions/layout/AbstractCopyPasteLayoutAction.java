@@ -25,12 +25,12 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DSemanticDiagram;
 import org.eclipse.sirius.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.business.api.diagramtype.IDiagramTypeDescriptor;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 
 /**
  * Abstract class to define a common enablement computation.

@@ -11,14 +11,13 @@
 package org.eclipse.sirius.business.internal.metamodel.helper;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.HideFilter;
-import org.eclipse.sirius.HideLabelFilter;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.HideFilter;
+import org.eclipse.sirius.viewpoint.HideLabelFilter;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Default implementation of an helper to handle HideFilter.
@@ -74,7 +73,7 @@ public final class HideFilterHelperImpl implements HideFilterHelper {
             return;
         }
 
-        HideFilter filter = SiriusFactory.eINSTANCE.createHideFilter();
+        HideFilter filter = ViewpointFactory.eINSTANCE.createHideFilter();
         element.getGraphicalFilters().add(filter);
     }
 
@@ -88,7 +87,7 @@ public final class HideFilterHelperImpl implements HideFilterHelper {
             return;
         }
 
-        final Object hidefilter = EcoreUtil.getObjectByType(element.getGraphicalFilters(), SiriusPackage.eINSTANCE.getHideFilter());
+        final Object hidefilter = EcoreUtil.getObjectByType(element.getGraphicalFilters(), ViewpointPackage.eINSTANCE.getHideFilter());
         if (hidefilter instanceof HideFilter) {
             element.getGraphicalFilters().remove(hidefilter);
         }
@@ -104,7 +103,7 @@ public final class HideFilterHelperImpl implements HideFilterHelper {
             return;
         }
 
-        HideLabelFilter filter = SiriusFactory.eINSTANCE.createHideLabelFilter();
+        HideLabelFilter filter = ViewpointFactory.eINSTANCE.createHideLabelFilter();
         element.getGraphicalFilters().add(filter);
     }
 
@@ -118,7 +117,7 @@ public final class HideFilterHelperImpl implements HideFilterHelper {
             return;
         }
 
-        final Object filter = EcoreUtil.getObjectByType(element.getGraphicalFilters(), SiriusPackage.eINSTANCE.getHideLabelFilter());
+        final Object filter = EcoreUtil.getObjectByType(element.getGraphicalFilters(), ViewpointPackage.eINSTANCE.getHideLabelFilter());
         if (filter instanceof HideLabelFilter) {
             element.getGraphicalFilters().remove(filter);
         }

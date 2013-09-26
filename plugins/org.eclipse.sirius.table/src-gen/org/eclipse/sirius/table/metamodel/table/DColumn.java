@@ -11,7 +11,6 @@
 package org.eclipse.sirius.table.metamodel.table;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 
 /**
@@ -25,20 +24,17 @@ import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
  * Label</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getCells <em>
  * Cells</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getOriginMapping
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getOriginMapping
  * <em>Origin Mapping</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getTable <em>
  * Table</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getOrderedCells
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getOrderedCells
  * <em>Ordered Cells</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#isVisible <em>
  * Visible</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getWidth <em>
  * Width</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.DColumn#getCurrentStyle
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DColumn#getCurrentStyle
  * <em>Current Style</em>}</li>
  * </ul>
  * </p>
@@ -53,7 +49,7 @@ public interface DColumn extends DTableElement {
      * 
      * @generated
      */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * Returns the value of the '<em><b>Label</b></em>' attribute. <!--

@@ -13,10 +13,9 @@ package org.eclipse.sirius.tools.api.permission;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Query to checks LockStatus of DRepresentation.

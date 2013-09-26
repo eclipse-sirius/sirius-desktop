@@ -15,11 +15,10 @@ import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.core.services.ViewService;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
-
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
-import org.eclipse.sirius.description.AnnotationEntry;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 
 /**
  * An utility to create GMF diagram if necessary. (We may need to ask session

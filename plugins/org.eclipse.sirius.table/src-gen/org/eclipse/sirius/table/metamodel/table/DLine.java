@@ -11,7 +11,6 @@
 package org.eclipse.sirius.table.metamodel.table;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 
 /**
@@ -21,19 +20,18 @@ import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getLabel <em>
- * Label</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.DLine#getOriginMapping
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getLabel <em>Label
+ * </em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getOriginMapping
  * <em>Origin Mapping</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#isVisible <em>
  * Visible</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#isCollapsed <em>
  * Collapsed</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getCells <em>
- * Cells</em>}</li>
- * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getContainer
- * <em>Container</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getCells <em>Cells
+ * </em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getContainer <em>
+ * Container</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getOrderedCells
  * <em>Ordered Cells</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.DLine#getCurrentStyle
@@ -51,7 +49,7 @@ public interface DLine extends LineContainer, DTableElement, DTableElementUpdate
      * 
      * @generated
      */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * Returns the value of the '<em><b>Label</b></em>' attribute. <!--

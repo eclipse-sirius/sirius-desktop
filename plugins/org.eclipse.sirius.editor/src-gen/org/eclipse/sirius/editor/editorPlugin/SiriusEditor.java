@@ -1,10 +1,9 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -94,6 +93,19 @@ import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
+import org.eclipse.sirius.editor.utils.SelectionTreeTextEditor;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIManager;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.concern.provider.ConcernItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.filter.provider.FilterItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.style.provider.StyleItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
 import org.eclipse.swt.custom.CTabFolder;
@@ -131,24 +143,10 @@ import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributor;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
-import org.eclipse.sirius.description.DescriptionFactory;
-import org.eclipse.sirius.description.audit.provider.AuditItemProviderAdapterFactory;
-import org.eclipse.sirius.description.concern.provider.ConcernItemProviderAdapterFactory;
-import org.eclipse.sirius.description.filter.provider.FilterItemProviderAdapterFactory;
-import org.eclipse.sirius.description.provider.DescriptionItemProviderAdapterFactory;
-import org.eclipse.sirius.description.style.provider.StyleItemProviderAdapterFactory;
-import org.eclipse.sirius.description.tool.provider.ToolItemProviderAdapterFactory;
-import org.eclipse.sirius.description.validation.provider.ValidationItemProviderAdapterFactory;
-import org.eclipse.sirius.editor.properties.SiriusPropertySheetPage;
-import org.eclipse.sirius.editor.utils.SelectionTreeTextEditor;
-import org.eclipse.sirius.provider.SiriusItemProviderAdapterFactory;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIManager;
-
 // End of user code imports
 
 /**
- * This is an example of a Sirius model editor.
+ * This is an example of a Viewpoint model editor.
  */
 public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactoryProvider, IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider,
         ITabbedPropertySheetPageContributor, IGotoMarker {
@@ -197,7 +195,7 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
     /**
      * This is the property sheet page.
      */
-    protected SiriusPropertySheetPage propertySheetPage;
+    protected ViewpointPropertySheetPage propertySheetPage;
 
     /**
      * This is the viewer that shadows the selection in the content outline. The
@@ -596,7 +594,7 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
         factories.add(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
         // End of user code put your specific adapter factories
         factories.add(new ResourceItemProviderAdapterFactory());
-        factories.add(new SiriusItemProviderAdapterFactory());
+        factories.add(new ViewpointItemProviderAdapterFactory());
         factories.add(new DescriptionItemProviderAdapterFactory());
         factories.add(new StyleItemProviderAdapterFactory());
         factories.add(new ToolItemProviderAdapterFactory());
@@ -844,7 +842,7 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
 
                 selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
                 selectionViewer.setInput(editingDomain.getResourceSet());
-                viewerPane.setTitle("Sirius Specification Editor", new AdapterFactoryLabelProvider(adapterFactory).getImage(DescriptionFactory.eINSTANCE.createSirius()));
+                viewerPane.setTitle("Sirius Specification Editor", new AdapterFactoryLabelProvider(adapterFactory).getImage(DescriptionFactory.eINSTANCE.createViewpoint()));
 
                 new SelectionTreeTextEditor(editingDomain, selectionViewer.getTree(), adapterFactory);
 
@@ -998,7 +996,7 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
      */
     public TabbedPropertySheetPage getPropertySheetPage() {
         if (propertySheetPage == null || propertySheetPage.getControl() == null) {
-            propertySheetPage = new SiriusPropertySheetPage(this);
+            propertySheetPage = new ViewpointPropertySheetPage(this);
         }
 
         return propertySheetPage;

@@ -21,16 +21,15 @@ import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.jface.fieldassist.IContentProposalListener2;
 import org.eclipse.jface.fieldassist.IContentProposalProvider;
 import org.eclipse.jface.fieldassist.TextContentAdapter;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.editor.properties.sections.common.ModelViewBinding;
+import org.eclipse.sirius.editor.tools.internal.assist.TypeAssistant;
+import org.eclipse.sirius.editor.tools.internal.assist.TypeContentProposal;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.keys.IBindingService;
 import org.eclipse.ui.texteditor.ITextEditorActionDefinitionIds;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.editor.properties.sections.common.ModelViewBinding;
-import org.eclipse.sirius.editor.tools.internal.assist.TypeAssistant;
-import org.eclipse.sirius.editor.tools.internal.assist.TypeContentProposal;
 
 /**
  * Content Proposal Provider for Type names.

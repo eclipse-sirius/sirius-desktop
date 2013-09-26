@@ -25,20 +25,19 @@ import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.WorkspaceImage;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.description.style.NodeStyleDescription;
-import org.eclipse.sirius.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.diagram.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.business.internal.query.WorkspaceImageQuery;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.WorkspaceImage;
+import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.WorkspaceImageDescription;
 
 /**
  * A ResourceSet listener to resize image with this default size.
@@ -58,9 +57,9 @@ public class GMFBoundsUpdater extends ResourceSetListenerImpl {
      *            {@link DDiagram}.
      */
     public GMFBoundsUpdater(TransactionalEditingDomain domain, DDiagram dDiagram) {
-        super(NotificationFilter.NOT_TOUCH.and(NotificationFilter.createFeatureFilter(SiriusPackage.eINSTANCE.getDNode_OwnedStyle()))
-                .or(NotificationFilter.createFeatureFilter(SiriusPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle()))
-                .or(NotificationFilter.createFeatureFilter(SiriusPackage.eINSTANCE.getDNode_Height())).or(NotificationFilter.createFeatureFilter(SiriusPackage.eINSTANCE.getDNode_Width())));
+        super(NotificationFilter.NOT_TOUCH.and(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getDNode_OwnedStyle()))
+                .or(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle()))
+                .or(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getDNode_Height())).or(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getDNode_Width())));
         this.dDiagram = dDiagram;
         domain.addResourceSetListener(this);
     }

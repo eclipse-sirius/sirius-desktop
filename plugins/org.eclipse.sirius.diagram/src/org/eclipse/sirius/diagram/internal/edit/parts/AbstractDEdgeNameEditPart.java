@@ -20,18 +20,17 @@ import org.eclipse.gmf.runtime.common.ui.services.parser.ParserService;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.description.EdgeMapping;
 import org.eclipse.sirius.diagram.graphical.edit.policies.DEdgeNameSelectionFeedbackEditPolicy;
 import org.eclipse.sirius.diagram.graphical.edit.policies.ResizableShapeLabelEditPolicy;
 import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
 import org.eclipse.sirius.diagram.internal.providers.SiriusParserProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 
 /**
  * @was-generated
@@ -107,7 +106,7 @@ public class AbstractDEdgeNameEditPart extends AbstractGeneratedDiagramNameEditP
     protected void handleNotificationEvent(Notification event) {
         if (resolveSemanticElement() instanceof DEdge) {
             Object feature = event.getFeature();
-            if (SiriusPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle() == feature) {
+            if (ViewpointPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle() == feature) {
                 refreshVisuals();
             }
             if (NotationPackage.eINSTANCE.getNode_LayoutConstraint().equals(feature)) {

@@ -21,16 +21,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.sirius.DLabelled;
-import org.eclipse.sirius.DMappingBased;
-import org.eclipse.sirius.DRefreshable;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.DStylizable;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.description.RepresentationElementMapping;
-import org.eclipse.sirius.impl.DSemanticDecoratorImpl;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DCellStyle;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
@@ -42,6 +32,15 @@ import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
 import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
+import org.eclipse.sirius.viewpoint.DLabelled;
+import org.eclipse.sirius.viewpoint.DMappingBased;
+import org.eclipse.sirius.viewpoint.DRefreshable;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -49,8 +48,7 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getName
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getName
  * <em>Name</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getSemanticElements
@@ -58,14 +56,11 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getTableElementMapping
  * <em>Table Element Mapping</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getLabel
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getLabel
  * <em>Label</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getLine
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getLine
  * <em>Line</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getColumn
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getColumn
  * <em>Column</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DCellImpl#getCurrentStyle
@@ -87,7 +82,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -276,7 +271,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
     public DLine getLine() {
         if (eContainerFeatureID() != TablePackage.DCELL__LINE)
             return null;
-        return (DLine) eContainer();
+        return (DLine) eInternalContainer();
     }
 
     /**
@@ -773,9 +768,9 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
         if (baseClass == DRepresentationElement.class) {
             switch (derivedFeatureID) {
             case TablePackage.DCELL__NAME:
-                return SiriusPackage.DREPRESENTATION_ELEMENT__NAME;
+                return ViewpointPackage.DREPRESENTATION_ELEMENT__NAME;
             case TablePackage.DCELL__SEMANTIC_ELEMENTS:
-                return SiriusPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS;
+                return ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS;
             default:
                 return -1;
             }
@@ -830,9 +825,9 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
         }
         if (baseClass == DRepresentationElement.class) {
             switch (baseFeatureID) {
-            case SiriusPackage.DREPRESENTATION_ELEMENT__NAME:
+            case ViewpointPackage.DREPRESENTATION_ELEMENT__NAME:
                 return TablePackage.DCELL__NAME;
-            case SiriusPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS:
+            case ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS:
                 return TablePackage.DCELL__SEMANTIC_ELEMENTS;
             default:
                 return -1;

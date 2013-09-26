@@ -117,7 +117,7 @@ public class DTreeItemEditingSupport extends EditingSupport {
                     try {
                         canEdit = interpreter.evaluateBoolean(item.getTarget(), precondition);
                     } catch (final EvaluationException e) {
-                        RuntimeLoggerManager.INSTANCE.error(item.getUpdater().getDirectEdit(), org.eclipse.sirius.description.tool.ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition(),
+                        RuntimeLoggerManager.INSTANCE.error(item.getUpdater().getDirectEdit(), org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition(),
                                 e);
                     }
 

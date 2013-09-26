@@ -18,15 +18,15 @@ import com.google.common.collect.Iterables;
 
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.SiriusFactory;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.description.ColorStep;
-import org.eclipse.sirius.description.ComputedColor;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.FixedColor;
-import org.eclipse.sirius.description.InterpolatedColor;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.description.ColorStep;
+import org.eclipse.sirius.viewpoint.description.ComputedColor;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.FixedColor;
+import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
 
 /**
  * Class responsible to provide RGBValues from the color definitions.
@@ -55,7 +55,7 @@ public class RGBValuesProvider {
      * @return the rgb values from the color definition.
      */
     public RGBValues getRGBValues(final FixedColor object) {
-        final RGBValues rgb = SiriusFactory.eINSTANCE.createRGBValues();
+        final RGBValues rgb = ViewpointFactory.eINSTANCE.createRGBValues();
         if (object != null) {
             rgb.setBlue(object.getBlue());
             rgb.setGreen(object.getGreen());
@@ -89,7 +89,7 @@ public class RGBValuesProvider {
             blue = 0;
         }
 
-        final RGBValues rgb = SiriusFactory.eINSTANCE.createRGBValues();
+        final RGBValues rgb = ViewpointFactory.eINSTANCE.createRGBValues();
         rgb.setBlue(blue);
         rgb.setGreen(green);
         rgb.setRed(red);
@@ -116,7 +116,7 @@ public class RGBValuesProvider {
     }
 
     private RGBValues getInterpolatedRGBValues(final InterpolatedColor object, final EObject evaluationContext, final IInterpreter interpreter) {
-        final RGBValues rgb = SiriusFactory.eINSTANCE.createRGBValues();
+        final RGBValues rgb = ViewpointFactory.eINSTANCE.createRGBValues();
         rgb.setBlue(0);
         rgb.setGreen(0);
         rgb.setRed(0);
@@ -207,7 +207,7 @@ public class RGBValuesProvider {
     }
 
     private RGBValues getDefaultRGBValues(final InterpolatedColor object, final EObject evaluationContext, final IInterpreter interpreter) {
-        final RGBValues rgb = SiriusFactory.eINSTANCE.createRGBValues();
+        final RGBValues rgb = ViewpointFactory.eINSTANCE.createRGBValues();
         rgb.setBlue(0);
         rgb.setGreen(0);
         rgb.setRed(0);
@@ -255,7 +255,7 @@ public class RGBValuesProvider {
     }
 
     private RGBValues red() {
-        final RGBValues values = SiriusFactory.eINSTANCE.createRGBValues();
+        final RGBValues values = ViewpointFactory.eINSTANCE.createRGBValues();
         values.setRed(255);
         values.setBlue(0);
         values.setGreen(0);
@@ -263,7 +263,7 @@ public class RGBValuesProvider {
     }
 
     private RGBValues green() {
-        final RGBValues values = SiriusFactory.eINSTANCE.createRGBValues();
+        final RGBValues values = ViewpointFactory.eINSTANCE.createRGBValues();
         values.setRed(0);
         values.setBlue(0);
         values.setGreen(255);

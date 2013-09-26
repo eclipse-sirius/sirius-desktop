@@ -23,16 +23,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.sirius.DLabelled;
-import org.eclipse.sirius.DMappingBased;
-import org.eclipse.sirius.DRefreshable;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.DStylizable;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.description.RepresentationElementMapping;
-import org.eclipse.sirius.impl.DSemanticDecoratorImpl;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DTable;
@@ -44,6 +34,15 @@ import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
+import org.eclipse.sirius.viewpoint.DLabelled;
+import org.eclipse.sirius.viewpoint.DMappingBased;
+import org.eclipse.sirius.viewpoint.DRefreshable;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -95,7 +94,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -370,7 +369,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     public DTable getTable() {
         if (eContainerFeatureID() != TablePackage.DTARGET_COLUMN__TABLE)
             return null;
-        return (DTable) eContainer();
+        return (DTable) eInternalContainer();
     }
 
     /**
@@ -802,9 +801,9 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
         if (baseClass == DRepresentationElement.class) {
             switch (derivedFeatureID) {
             case TablePackage.DTARGET_COLUMN__NAME:
-                return SiriusPackage.DREPRESENTATION_ELEMENT__NAME;
+                return ViewpointPackage.DREPRESENTATION_ELEMENT__NAME;
             case TablePackage.DTARGET_COLUMN__SEMANTIC_ELEMENTS:
-                return SiriusPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS;
+                return ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS;
             default:
                 return -1;
             }
@@ -881,9 +880,9 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
         }
         if (baseClass == DRepresentationElement.class) {
             switch (baseFeatureID) {
-            case SiriusPackage.DREPRESENTATION_ELEMENT__NAME:
+            case ViewpointPackage.DREPRESENTATION_ELEMENT__NAME:
                 return TablePackage.DTARGET_COLUMN__NAME;
-            case SiriusPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS:
+            case ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS:
                 return TablePackage.DTARGET_COLUMN__SEMANTIC_ELEMENTS;
             default:
                 return -1;

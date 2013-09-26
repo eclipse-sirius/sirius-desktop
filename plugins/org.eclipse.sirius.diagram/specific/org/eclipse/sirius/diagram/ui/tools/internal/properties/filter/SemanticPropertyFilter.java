@@ -13,11 +13,10 @@ package org.eclipse.sirius.diagram.ui.tools.internal.properties.filter;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.properties.filter.AbstractPropertyFilter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessorsRegistry;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Filters for semantic elements.

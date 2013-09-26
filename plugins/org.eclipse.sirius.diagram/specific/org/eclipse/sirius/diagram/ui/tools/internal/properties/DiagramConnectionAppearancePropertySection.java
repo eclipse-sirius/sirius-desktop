@@ -41,19 +41,18 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IWorkbenchPart;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.BracketEdgeStyle;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.EdgeStyle;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
-import org.eclipse.sirius.description.DescriptionFactory;
-import org.eclipse.sirius.description.UserFixedColor;
 import org.eclipse.sirius.diagram.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ColorPalettePopup;
+import org.eclipse.sirius.viewpoint.BracketEdgeStyle;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.EdgeStyle;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.UserFixedColor;
 
 /**
  * allow color customization of diagram edges.

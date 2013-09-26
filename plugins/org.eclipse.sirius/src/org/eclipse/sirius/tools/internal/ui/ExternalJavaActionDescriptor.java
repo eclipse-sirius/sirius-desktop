@@ -12,9 +12,8 @@ package org.eclipse.sirius.tools.internal.ui;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A factory proxy for creating a IExternalJavaAction.

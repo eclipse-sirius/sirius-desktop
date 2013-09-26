@@ -22,20 +22,19 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.jface.viewers.IStructuredSelection;
-
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DragAndDropTarget;
 import org.eclipse.sirius.business.api.resource.WorkspaceDragAndDropSupport;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.description.tool.DragSource;
 import org.eclipse.sirius.diagram.ui.tools.internal.dnd.DragAndDropWrapper;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DragAndDropTarget;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
+import org.eclipse.sirius.viewpoint.description.tool.DragSource;
 
 /**
  * Validator for drag'n drop request.

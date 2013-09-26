@@ -24,12 +24,11 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.eclipse.sirius.description.tool.ToolFactory;
-import org.eclipse.sirius.description.tool.provider.AbstractToolDescriptionItemProvider;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreePopupMenu;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
+import org.eclipse.sirius.viewpoint.description.tool.provider.AbstractToolDescriptionItemProvider;
 
 /**
  * This is the item provider adapter for a

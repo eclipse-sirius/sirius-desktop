@@ -15,11 +15,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
-
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.description.CompositeLayout;
-import org.eclipse.sirius.description.Layout;
-import org.eclipse.sirius.description.OrderedTreeLayout;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.description.CompositeLayout;
+import org.eclipse.sirius.viewpoint.description.Layout;
+import org.eclipse.sirius.viewpoint.description.OrderedTreeLayout;
 
 /**
  * A class aggregating all the queries (read-only!) having a

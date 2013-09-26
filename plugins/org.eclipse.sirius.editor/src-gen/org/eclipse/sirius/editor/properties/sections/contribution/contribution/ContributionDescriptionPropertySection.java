@@ -13,11 +13,10 @@ package org.eclipse.sirius.editor.properties.sections.contribution.contribution;
 // Start of user code imports
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
+import org.eclipse.sirius.viewpoint.description.contribution.ContributionPackage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.eclipse.sirius.description.contribution.ContributionPackage;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 
 // End of user code imports
 

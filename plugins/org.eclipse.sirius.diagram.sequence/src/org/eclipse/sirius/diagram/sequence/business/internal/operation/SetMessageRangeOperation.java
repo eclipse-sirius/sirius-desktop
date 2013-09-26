@@ -16,10 +16,10 @@ import org.eclipse.gmf.runtime.notation.View;
 
 import com.google.common.base.Objects;
 
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.EdgeTarget;
 import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
 
 /**
  * An operation to set the vertical range of a sequence message.

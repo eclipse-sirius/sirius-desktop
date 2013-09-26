@@ -23,14 +23,14 @@ import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Maps;
 
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.internal.dialogs.RepresentationsSelectionDialog;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Utility class for clients wanting to start their own sessions.
@@ -119,7 +119,7 @@ public final class SessionHelper {
      */
     public static Collection<DRepresentation> findAllStartupCandidates(final Session session) {
         Collection<DRepresentation> candidates = new ArrayList<DRepresentation>();
-        Collection<Sirius> selectedSiriuss = session.getSelectedSiriuss(false);
+        Collection<Viewpoint> selectedSiriuss = session.getSelectedSiriuss(false);
 
         if (!selectedSiriuss.isEmpty()) {
             Map<RepresentationDescription, Boolean> alreadyCheckedDescriptions = Maps.newHashMap();
@@ -134,11 +134,11 @@ public final class SessionHelper {
         return candidates;
     }
 
-    private static boolean checkStartupDescInSelectedVps(RepresentationDescription description, Map<RepresentationDescription, Boolean> checkedDescriptions, Collection<Sirius> selectedVps) {
+    private static boolean checkStartupDescInSelectedVps(RepresentationDescription description, Map<RepresentationDescription, Boolean> checkedDescriptions, Collection<Viewpoint> selectedVps) {
         if (!checkedDescriptions.containsKey(description)) {
             boolean candidate = false;
             if (description.isShowOnStartup()) {
-                Sirius parentSirius = new RepresentationDescriptionQuery(description).getParentSirius();
+                Viewpoint parentSirius = new RepresentationDescriptionQuery(description).getParentSirius();
                 candidate = parentSirius == null ? false : selectedVps.contains(parentSirius);
             }
             checkedDescriptions.put(description, candidate);

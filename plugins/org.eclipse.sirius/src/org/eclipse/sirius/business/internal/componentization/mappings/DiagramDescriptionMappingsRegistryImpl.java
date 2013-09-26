@@ -21,8 +21,8 @@ import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappin
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * The implementation of {@link DiagramDescriptionMappingsRegistry}.
@@ -53,7 +53,7 @@ public final class DiagramDescriptionMappingsRegistryImpl implements DiagramDesc
              * {@inheritDoc}
              */
             @Override
-            public void viewpointDeselected(final Sirius deselectedSirius) {
+            public void viewpointDeselected(final Viewpoint deselectedSirius) {
                 computeMappings();
             }
 
@@ -61,7 +61,7 @@ public final class DiagramDescriptionMappingsRegistryImpl implements DiagramDesc
              * {@inheritDoc}
              */
             @Override
-            public void viewpointSelected(final Sirius selectedSirius) {
+            public void viewpointSelected(final Viewpoint selectedSirius) {
                 computeMappings();
             }
 
@@ -90,7 +90,7 @@ public final class DiagramDescriptionMappingsRegistryImpl implements DiagramDesc
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsRegistry#getDiagramDescriptionMappingsManager(org.eclipse.sirius.business.api.session.Session,
-     *      org.eclipse.sirius.description.DiagramDescription)
+     *      org.eclipse.sirius.viewpoint.description.DiagramDescription)
      */
     public DiagramDescriptionMappingsManager getDiagramDescriptionMappingsManager(final Session session, final DiagramDescription description) {
         final Key key = new Key(session, description);

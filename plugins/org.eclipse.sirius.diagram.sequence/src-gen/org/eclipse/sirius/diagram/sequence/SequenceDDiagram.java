@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence;
 
-import org.eclipse.sirius.DSemanticDiagram;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
 import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

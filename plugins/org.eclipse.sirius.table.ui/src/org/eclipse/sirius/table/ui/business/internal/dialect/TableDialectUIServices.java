@@ -43,13 +43,8 @@ import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.movida.Movida;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.RepresentationDescription;
 import org.eclipse.sirius.table.business.internal.metamodel.TableToolVariables;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
@@ -72,6 +67,11 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIServices;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 /**
  * The table dialect ui services.
@@ -143,7 +143,7 @@ public class TableDialectUIServices implements DialectUIServices {
         newChilds.add(new CommandParameter(null, DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, DescriptionFactory.eINSTANCE.createEditionTableDescription()));
         newChilds.add(new CommandParameter(null, DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, DescriptionFactory.eINSTANCE.createCrossTableDescription()));
         if (Movida.isEnabled()) {
-            newChilds.add(new CommandParameter(null, DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATION_EXTENSIONS, DescriptionFactory.eINSTANCE.createEditionTableExtensionDescription()));
+            //newChilds.add(new CommandParameter(null, DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATION_EXTENSIONS, DescriptionFactory.eINSTANCE.createEditionTableExtensionDescription()));
         }
         return newChilds;
     }
@@ -226,7 +226,7 @@ public class TableDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationManagedByEditor(org.eclipse.sirius.DRepresentation,
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationManagedByEditor(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.ui.IEditorPart)
      */
     public boolean isRepresentationManagedByEditor(final DRepresentation representation, final IEditorPart editorPart) {
@@ -243,7 +243,7 @@ public class TableDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationDescriptionManagedByEditor(org.eclipse.sirius.description.RepresentationDescription,
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationDescriptionManagedByEditor(org.eclipse.sirius.viewpoint.description.RepresentationDescription,
      *      org.eclipse.ui.IEditorPart)
      */
     public boolean isRepresentationDescriptionManagedByEditor(final RepresentationDescription representationDescription, final IEditorPart editor) {
@@ -257,7 +257,7 @@ public class TableDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.DRepresentation)
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.DRepresentation)
      */
     public boolean canHandle(final DRepresentation representation) {
         return representation instanceof DTable;
@@ -273,7 +273,7 @@ public class TableDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#export(org.eclipse.sirius.DRepresentation,
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#export(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.sirius.business.api.session.Session)
      */
     public void export(final DRepresentation representation, final Session session, final IPath path, final ExportFormat exportFormat, final IProgressMonitor monitor) {

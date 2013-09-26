@@ -14,10 +14,9 @@ import java.util.Collection;
 
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * An editing session is responsible of link between graphical resources

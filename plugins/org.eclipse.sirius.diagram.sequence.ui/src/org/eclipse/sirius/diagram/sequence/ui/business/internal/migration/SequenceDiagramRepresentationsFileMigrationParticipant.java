@@ -27,18 +27,6 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.CollapseFilter;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DNodeList;
-import org.eclipse.sirius.DView;
-import org.eclipse.sirius.GraphicalFilter;
-import org.eclipse.sirius.IndirectlyCollapseFilter;
-import org.eclipse.sirius.SiriusFactory;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
@@ -53,6 +41,18 @@ import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype.SequenceCollapseUpdater;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.CollapseFilter;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.GraphicalFilter;
+import org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 
 /**
  * Migration contribution for sequence diagram part of representations file.
@@ -173,7 +173,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
             }
         }
         for (DDiagramElement indirectlyCollaspedDDE : indirectlyCollaspedDDEs) {
-            IndirectlyCollapseFilter indirectlyCollapseFilter = SiriusFactory.eINSTANCE.createIndirectlyCollapseFilter();
+            IndirectlyCollapseFilter indirectlyCollapseFilter = ViewpointFactory.eINSTANCE.createIndirectlyCollapseFilter();
             indirectlyCollaspedDDE.getGraphicalFilters().add(indirectlyCollapseFilter);
         }
     }

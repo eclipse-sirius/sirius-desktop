@@ -20,8 +20,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.RectangularDropShadowLineBorder;
-
-import org.eclipse.sirius.AlignmentKind;
+import org.eclipse.sirius.viewpoint.AlignmentKind;
 
 /**
  * Figures that paints many gauges.

@@ -11,10 +11,9 @@
 package org.eclipse.sirius.diagram.business.internal.command;
 
 import org.eclipse.emf.transaction.RecordingCommand;
-
-import org.eclipse.sirius.DSemanticDiagram;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.business.internal.dialect.DiagramDialectServices;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 
 /**
  * Specific command to create and store gmf diagram.

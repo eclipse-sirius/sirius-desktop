@@ -51,19 +51,6 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.util.ResourceUtil;
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DDiagramSet;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationContainer;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.DView;
-import org.eclipse.sirius.FilterVariableValue;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
@@ -84,12 +71,25 @@ import org.eclipse.sirius.business.internal.repair.commands.SaveModelElementStat
 import org.eclipse.sirius.business.internal.repair.resource.DiagramKey;
 import org.eclipse.sirius.business.internal.repair.resource.RepairRepresentationRefresher;
 import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.description.filter.FilterDescription;
-import org.eclipse.sirius.description.tool.BehaviorTool;
-import org.eclipse.sirius.description.validation.ValidationRule;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramSet;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.FilterVariableValue;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
+import org.eclipse.sirius.viewpoint.description.tool.BehaviorTool;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
  * Repair process extract from
@@ -550,9 +550,9 @@ public class SiriusRepairProcess {
             final DRepresentation representation = view.getAllRepresentations().get(0);
             final RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
             if (description != null) {
-                Sirius vp = new RepresentationDescriptionQuery(description).getParentSirius();
+                Viewpoint vp = new RepresentationDescriptionQuery(description).getParentSirius();
                 if (vp != null) {
-                    view.setSirius(vp);
+                    view.setViewpoint(vp);
                 }
             }
             ((DAnalysis) view.eContainer()).getSelectedViews().add(view);

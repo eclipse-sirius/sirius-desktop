@@ -1,10 +1,9 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -20,6 +19,8 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -35,13 +36,10 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.properties.SiriusPropertySheetPage;
-
 /**
  * An abstract implementation of a section displaying radio buttons.
  */
-public abstract class AbstractRadioButtonPropertySection extends AbstractSiriusPropertySection {
+public abstract class AbstractRadioButtonPropertySection extends AbstractViewpointPropertySection {
     /** The button controls for the section. */
     protected Button[] button;
 
@@ -71,8 +69,8 @@ public abstract class AbstractRadioButtonPropertySection extends AbstractSiriusP
      *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
      */
     public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
-        if (aTabbedPropertySheetPage instanceof SiriusPropertySheetPage)
-            super.createControls(parent, (SiriusPropertySheetPage) aTabbedPropertySheetPage);
+        if (aTabbedPropertySheetPage instanceof ViewpointPropertySheetPage)
+            super.createControls(parent, (ViewpointPropertySheetPage) aTabbedPropertySheetPage);
         else
             super.createControls(parent, aTabbedPropertySheetPage);
         composite = getWidgetFactory().createFlatFormComposite(parent);
@@ -154,7 +152,7 @@ public abstract class AbstractRadioButtonPropertySection extends AbstractSiriusP
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractSiriusPropertySection#setInput(org.eclipse.ui.IWorkbenchPart,
+     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection#setInput(org.eclipse.ui.IWorkbenchPart,
      *      org.eclipse.jface.viewers.ISelection)
      */
     @Override

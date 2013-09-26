@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description.tool;
 
-import org.eclipse.sirius.description.tool.NodeCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

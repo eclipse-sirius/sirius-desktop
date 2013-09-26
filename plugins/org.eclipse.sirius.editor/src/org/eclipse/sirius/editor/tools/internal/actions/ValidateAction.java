@@ -16,9 +16,8 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
-
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
  * Action for validation delegation.

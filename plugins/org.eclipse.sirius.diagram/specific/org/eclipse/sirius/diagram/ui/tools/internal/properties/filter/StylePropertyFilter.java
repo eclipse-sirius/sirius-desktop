@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.properties.filter;
 
-import org.eclipse.sirius.DStylizable;
 import org.eclipse.sirius.diagram.ui.tools.api.properties.filter.AbstractPropertyFilter;
+import org.eclipse.sirius.viewpoint.DStylizable;
 
 /**
  * Filter for the style section.

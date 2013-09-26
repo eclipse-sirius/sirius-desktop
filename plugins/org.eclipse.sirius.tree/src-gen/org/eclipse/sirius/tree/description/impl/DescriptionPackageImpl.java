@@ -17,10 +17,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.description.style.StylePackage;
-import org.eclipse.sirius.description.tool.ToolPackage;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.description.ConditionalTreeItemStyleDescription;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
@@ -45,6 +41,9 @@ import org.eclipse.sirius.tree.description.TreeNavigationDescription;
 import org.eclipse.sirius.tree.description.TreePopupMenu;
 import org.eclipse.sirius.tree.description.TreeVariable;
 import org.eclipse.sirius.tree.impl.TreePackageImpl;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -245,7 +244,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         isInited = true;
 
         // Initialize simple dependencies
-        SiriusPackage.eINSTANCE.eClass();
+        ViewpointPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
         TreePackageImpl theTreePackage = (TreePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(TreePackage.eNS_URI) instanceof TreePackageImpl ? EPackage.Registry.INSTANCE
@@ -1023,8 +1022,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         setNsURI(eNS_URI);
 
         // Obtain other dependent packages
-        org.eclipse.sirius.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.description.DescriptionPackage) EPackage.Registry.INSTANCE
-                .getEPackage(org.eclipse.sirius.description.DescriptionPackage.eNS_URI);
+        org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eNS_URI);
         ToolPackage theToolPackage = (ToolPackage) EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI);
         StylePackage theStylePackage = (StylePackage) EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI);
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);

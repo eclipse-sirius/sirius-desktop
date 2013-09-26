@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description;
 
-import org.eclipse.sirius.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -47,7 +47,8 @@ public interface MessageMapping extends EdgeMapping, EventMapping {
      *         attribute.
      * @see #setSendingEndFinderExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getMessageMapping_SendingEndFinderExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      * @generated
@@ -82,7 +83,8 @@ public interface MessageMapping extends EdgeMapping, EventMapping {
      *         attribute.
      * @see #setReceivingEndFinderExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getMessageMapping_ReceivingEndFinderExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      * @generated

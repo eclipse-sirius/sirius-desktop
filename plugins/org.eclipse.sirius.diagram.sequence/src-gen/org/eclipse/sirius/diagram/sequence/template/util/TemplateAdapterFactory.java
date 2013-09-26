@@ -14,8 +14,6 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.description.RepresentationTemplate;
 import org.eclipse.sirius.diagram.sequence.template.TAbstractMapping;
 import org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping;
 import org.eclipse.sirius.diagram.sequence.template.TConditionalExecutionStyle;
@@ -35,6 +33,7 @@ import org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping;
 import org.eclipse.sirius.diagram.sequence.template.TTransformer;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
@@ -496,14 +495,14 @@ public class TemplateAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.RepresentationTemplate
+     * {@link org.eclipse.sirius.viewpoint.description.RepresentationTemplate
      * <em>Representation Template</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.description.RepresentationTemplate
+     * @see org.eclipse.sirius.viewpoint.description.RepresentationTemplate
      * @generated
      */
     public Adapter createRepresentationTemplateAdapter() {

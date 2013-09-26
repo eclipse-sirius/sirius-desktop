@@ -13,16 +13,15 @@ package org.eclipse.sirius.editor.properties.filters.tool.directeditlabel;
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.editor.properties.filters.common.SiriusPropertyFilter;
+import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 // End of user code specific imports
 
 /**
  * A filter for the mapping property section.
  */
-public class DirectEditLabelMappingFilter extends SiriusPropertyFilter {
+public class DirectEditLabelMappingFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
@@ -37,7 +36,7 @@ public class DirectEditLabelMappingFilter extends SiriusPropertyFilter {
      */
     @Override
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.description.tool.DirectEditLabel;
+        return arg0 instanceof org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
     }
 
     // Start of user code user methods

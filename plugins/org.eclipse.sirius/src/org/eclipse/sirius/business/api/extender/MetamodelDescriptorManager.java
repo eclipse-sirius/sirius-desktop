@@ -13,8 +13,8 @@ package org.eclipse.sirius.business.api.extender;
 import java.util.Collection;
 
 import org.eclipse.sirius.business.internal.extender.MetamodelDescriptorManagerImpl;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * The metamodel descriptor manager.
@@ -46,6 +46,6 @@ public interface MetamodelDescriptorManager {
      * @return the list of provided MetamodelDescriptors from the selected
      *         viewpoints.
      */
-    Collection<MetamodelDescriptor> provides(Collection<Sirius> enabledRepresentationDescriptions);
+    Collection<MetamodelDescriptor> provides(Collection<Viewpoint> enabledRepresentationDescriptions);
 
 }

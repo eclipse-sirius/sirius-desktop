@@ -23,15 +23,14 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.LabelPosition;
-import org.eclipse.sirius.NodeStyle;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
 import org.eclipse.sirius.diagram.internal.providers.SiriusParserProvider;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.LabelPosition;
+import org.eclipse.sirius.viewpoint.NodeStyle;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * @was-generated
@@ -139,7 +138,7 @@ public class DNodeNameEditPart extends AbstractGeneratedDiagramNameEditPart impl
      */
     protected void handleNotificationEvent(final Notification event) {
         final Object feature = event.getFeature();
-        if (SiriusPackage.eINSTANCE.getDNode_OwnedStyle() == feature) {
+        if (ViewpointPackage.eINSTANCE.getDNode_OwnedStyle() == feature) {
             refreshVisuals();
         }
         super.handleNotificationEvent(event);

@@ -14,9 +14,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.gef.palette.PaletteDrawer;
-
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.description.Layer;
+import org.eclipse.sirius.viewpoint.description.Layer;
 
 /**
  * A palette drawer associated to a section.
@@ -39,7 +38,7 @@ public class SectionPaletteDrawer extends PaletteDrawer implements ILayerContrib
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.internal.palette.ILayerContributionRegister#addLayer(org.eclipse.sirius.description.Layer)
+     * @see org.eclipse.sirius.diagram.tools.internal.palette.ILayerContributionRegister#addLayer(org.eclipse.sirius.viewpoint.description.Layer)
      */
     public void addLayer(final Layer layer) {
         if (!EqualityHelper.contains(contributingLayers, layer)) {
@@ -50,7 +49,7 @@ public class SectionPaletteDrawer extends PaletteDrawer implements ILayerContrib
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.internal.palette.ILayerContributionRegister#removeLayer(org.eclipse.sirius.description.Layer)
+     * @see org.eclipse.sirius.diagram.tools.internal.palette.ILayerContributionRegister#removeLayer(org.eclipse.sirius.viewpoint.description.Layer)
      */
     public void removeLayer(final Layer layer) {
         EqualityHelper.remove(contributingLayers, layer);

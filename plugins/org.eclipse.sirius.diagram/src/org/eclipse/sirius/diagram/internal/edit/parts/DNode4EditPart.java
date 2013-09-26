@@ -30,10 +30,6 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Color;
-
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DStylizable;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.internal.edit.policies.BorderedNodeLayoutEditPolicy;
 import org.eclipse.sirius.diagram.internal.edit.policies.DNode4ItemSemanticEditPolicy;
@@ -48,6 +44,9 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClipping
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DStylizable;
 
 /**
  * @was-generated

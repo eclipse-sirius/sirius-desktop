@@ -34,10 +34,10 @@ import org.eclipse.swt.widgets.ToolItem;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * .

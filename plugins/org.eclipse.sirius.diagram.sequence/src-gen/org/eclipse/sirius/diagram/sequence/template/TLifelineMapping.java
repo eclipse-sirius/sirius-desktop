@@ -11,8 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.template;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.sirius.description.style.NodeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -59,7 +58,8 @@ public interface TLifelineMapping extends TAbstractMapping, TMessageExtremity {
      * @return the value of the '<em>Eol Visible Expression</em>' attribute.
      * @see #setEolVisibleExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTLifelineMapping_EolVisibleExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      *        annotation=
@@ -85,8 +85,8 @@ public interface TLifelineMapping extends TAbstractMapping, TMessageExtremity {
     /**
      * Returns the value of the '<em><b>Execution Mappings</b></em>' containment
      * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping}
-     * . <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping}.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Execution Mappings</em>' containment reference
      * list isn't clear, there really should be more of a description here...

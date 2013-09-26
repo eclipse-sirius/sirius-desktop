@@ -13,13 +13,12 @@ package org.eclipse.sirius.diagram.tools.internal.commands;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * Specific command to navigate to another representation.

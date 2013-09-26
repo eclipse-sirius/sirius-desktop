@@ -24,38 +24,38 @@ import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.BasicLabelStyle;
-import org.eclipse.sirius.BorderedStyle;
-import org.eclipse.sirius.BundledImage;
-import org.eclipse.sirius.ContainerStyle;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.Dot;
-import org.eclipse.sirius.EdgeStyle;
-import org.eclipse.sirius.Ellipse;
-import org.eclipse.sirius.FlatContainerStyle;
-import org.eclipse.sirius.FontFormat;
-import org.eclipse.sirius.LabelStyle;
-import org.eclipse.sirius.Lozenge;
-import org.eclipse.sirius.NodeStyle;
-import org.eclipse.sirius.Note;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.ShapeContainerStyle;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.Square;
-import org.eclipse.sirius.WorkspaceImage;
 import org.eclipse.sirius.business.api.color.RGBValuesProvider;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.business.internal.metamodel.helper.GetDefaultStyle;
 import org.eclipse.sirius.business.internal.metamodel.helper.StyleHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.description.FixedColor;
-import org.eclipse.sirius.description.SystemColors;
-import org.eclipse.sirius.description.style.StyleDescription;
 import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
+import org.eclipse.sirius.viewpoint.BorderedStyle;
+import org.eclipse.sirius.viewpoint.BundledImage;
+import org.eclipse.sirius.viewpoint.ContainerStyle;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.Dot;
+import org.eclipse.sirius.viewpoint.EdgeStyle;
+import org.eclipse.sirius.viewpoint.Ellipse;
+import org.eclipse.sirius.viewpoint.FlatContainerStyle;
+import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.LabelStyle;
+import org.eclipse.sirius.viewpoint.Lozenge;
+import org.eclipse.sirius.viewpoint.NodeStyle;
+import org.eclipse.sirius.viewpoint.Note;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ShapeContainerStyle;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.Square;
+import org.eclipse.sirius.viewpoint.WorkspaceImage;
+import org.eclipse.sirius.viewpoint.description.FixedColor;
+import org.eclipse.sirius.viewpoint.description.SystemColors;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.swt.graphics.RGB;
 
 /**
@@ -73,11 +73,11 @@ public class ViewPropertiesSynchronizer {
     public static final Map<EStructuralFeature, EStructuralFeature> GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING = new HashMap<EStructuralFeature, EStructuralFeature>();
 
     static {
-        GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__FONT_HEIGHT, SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE);
-        GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__ITALIC, SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
-        GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__BOLD, SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
-        GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__FONT_COLOR, SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR);
-        GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__FONT_HEIGHT, SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE);
+        GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__FONT_HEIGHT, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE);
+        GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__ITALIC, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
+        GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__BOLD, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
+        GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__FONT_COLOR, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR);
+        GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__FONT_HEIGHT, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE);
     }
 
     private static final String DEFAULT_FONT_STYLE = "Arial";
@@ -186,7 +186,7 @@ public class ViewPropertiesSynchronizer {
         // Add corresponding features to the custom features list of the style
         if (view.getElement() instanceof DDiagramElement) {
             DDiagramElement dDiagramElement = (DDiagramElement) view.getElement();
-            org.eclipse.sirius.Style style = dDiagramElement.getStyle();
+            org.eclipse.sirius.viewpoint.Style style = dDiagramElement.getStyle();
             List<EStructuralFeature> features = getFeatures(propertyId, style);
             if (Properties.ID_FONTCOLOR.equals(propertyId) && style instanceof EdgeStyle) {
                 EdgeStyle edgeStyle = (EdgeStyle) style;
@@ -271,35 +271,35 @@ public class ViewPropertiesSynchronizer {
         }
     }
 
-    private List<EStructuralFeature> getFeatures(String gmfPropertyID, org.eclipse.sirius.Style style) {
+    private List<EStructuralFeature> getFeatures(String gmfPropertyID, org.eclipse.sirius.viewpoint.Style style) {
         List<EStructuralFeature> features = new ArrayList<EStructuralFeature>();
         if (Properties.ID_FILLCOLOR.equals(gmfPropertyID)) {
             if (style instanceof Square) {
-                features.add(SiriusPackage.Literals.SQUARE__COLOR);
+                features.add(ViewpointPackage.Literals.SQUARE__COLOR);
             } else if (style instanceof Lozenge) {
-                features.add(SiriusPackage.Literals.LOZENGE__COLOR);
+                features.add(ViewpointPackage.Literals.LOZENGE__COLOR);
             } else if (style instanceof Ellipse) {
-                features.add(SiriusPackage.Literals.ELLIPSE__COLOR);
+                features.add(ViewpointPackage.Literals.ELLIPSE__COLOR);
             } else if (style instanceof Dot) {
-                features.add(SiriusPackage.Literals.DOT__BACKGROUND_COLOR);
+                features.add(ViewpointPackage.Literals.DOT__BACKGROUND_COLOR);
             } else if (style instanceof Note) {
-                features.add(SiriusPackage.Literals.NOTE__COLOR);
+                features.add(ViewpointPackage.Literals.NOTE__COLOR);
             } else if (style instanceof BundledImage) {
-                features.add(SiriusPackage.Literals.BUNDLED_IMAGE__COLOR);
+                features.add(ViewpointPackage.Literals.BUNDLED_IMAGE__COLOR);
             } else if (style instanceof FlatContainerStyle) {
-                features.add(SiriusPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR);
-                features.add(SiriusPackage.Literals.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR);
+                features.add(ViewpointPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR);
+                features.add(ViewpointPackage.Literals.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR);
             } else if (style instanceof ShapeContainerStyle) {
-                features.add(SiriusPackage.Literals.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR);
+                features.add(ViewpointPackage.Literals.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR);
             }
         } else if (Properties.ID_LINECOLOR.equals(gmfPropertyID)) {
             if (style instanceof EdgeStyle) {
-                features.add(SiriusPackage.Literals.EDGE_STYLE__STROKE_COLOR);
+                features.add(ViewpointPackage.Literals.EDGE_STYLE__STROKE_COLOR);
             } else {
-                features.add(SiriusPackage.Literals.BORDERED_STYLE__BORDER_COLOR);
+                features.add(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_COLOR);
             }
         } else if (Properties.ID_FONTCOLOR.equals(gmfPropertyID)) {
-            features.add(SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR);
+            features.add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR);
         }
         return features;
     }

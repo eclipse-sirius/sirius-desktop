@@ -16,10 +16,6 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-
-import org.eclipse.sirius.description.tool.PaneBasedSelectionWizardDescription;
-import org.eclipse.sirius.description.tool.SelectionWizardDescription;
-import org.eclipse.sirius.description.tool.ToolDescription;
 import org.eclipse.sirius.diagram.graphical.edit.policies.CreationUtil;
 import org.eclipse.sirius.diagram.graphical.edit.policies.LaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
@@ -30,6 +26,9 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceGraph
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
+import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
+import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 
 /**
  * Edit policy for launching tools. Adding the support of $endBefore variable.

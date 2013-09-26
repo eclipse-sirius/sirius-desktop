@@ -13,18 +13,18 @@ package org.eclipse.sirius.business.api.componentization;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DNodeList;
-import org.eclipse.sirius.DragAndDropTarget;
 import org.eclipse.sirius.business.internal.metamodel.helper.MappingsListVisitor;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.Layer;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.viewpoint.DragAndDropTarget;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Build the mapping table for one diagram. Build is launch on layer
@@ -46,7 +46,7 @@ public interface DiagramMappingsManager {
      *            if set to <code>true</code>, the available mappings from
      *            diagram description will be recomputed
      */
-    void computeMappings(Collection<Sirius> vps, boolean computeDescriptionMappings);
+    void computeMappings(Collection<Viewpoint> vps, boolean computeDescriptionMappings);
 
     /**
      * Get available node mappings for the diagram.
@@ -206,7 +206,7 @@ public interface DiagramMappingsManager {
      * 
      * @param mapping
      *            any
-     *            {@link org.eclipse.sirius.description.AbstractNodeMapping}.
+     *            {@link org.eclipse.sirius.viewpoint.description.AbstractNodeMapping}.
      * @return a containing Layer if available.
      */
     Collection<Layer> getActiveParentLayers(final DiagramElementMapping mapping);

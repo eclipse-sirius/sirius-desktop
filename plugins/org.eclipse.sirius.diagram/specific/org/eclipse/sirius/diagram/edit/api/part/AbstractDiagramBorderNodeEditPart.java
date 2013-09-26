@@ -51,10 +51,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.LabelPosition;
-import org.eclipse.sirius.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.edit.internal.part.AbstractDiagramNodeEditPartOperation;
@@ -73,6 +69,10 @@ import org.eclipse.sirius.diagram.tools.internal.ui.SiriusDragEditPartsTrackerEx
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.LabelPosition;
+import org.eclipse.sirius.viewpoint.NodeStyle;
 
 /**
  * Basic implementation of top level edit part for nodes that on the border of
@@ -369,7 +369,7 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart#createBorderItemLocator(org.eclipse.draw2d.IFigure,
-     *      org.eclipse.sirius.DDiagramElement)
+     *      org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public IBorderItemLocator createBorderItemLocator(final IFigure figure, final DDiagramElement vpElementBorderItem) {
         return AbstractDiagramNodeEditPartOperation.createBorderItemLocator(this, figure, vpElementBorderItem);

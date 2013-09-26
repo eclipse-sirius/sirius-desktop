@@ -29,13 +29,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.ListMultimap;
 
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationContainer;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.DView;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.migration.resource.session.commands.MigrationCommandExecutor;
@@ -46,6 +39,13 @@ import org.eclipse.sirius.business.internal.migration.resource.session.diagram.d
 import org.eclipse.sirius.business.internal.repair.commands.RefreshAllElementsVisibilityCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Provides refresh representation action in repair context.

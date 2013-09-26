@@ -62,13 +62,13 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * 
      * @generated
      */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * Returns the value of the '<em><b>Line Mapping</b></em>' reference list.
      * The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}
-     * . <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Line Mapping</em>' reference list isn't clear,
      * there really should be more of a description here...
@@ -124,7 +124,8 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_LabelExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'"
      *        annotation=
@@ -188,7 +189,8 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * @return the value of the '<em>Column Finder Expression</em>' attribute.
      * @see #setColumnFinderExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_ColumnFinderExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      * @generated
@@ -221,7 +223,8 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      * @return the value of the '<em>Line Finder Expression</em>' attribute.
      * @see #setLineFinderExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_LineFinderExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      * @generated
@@ -255,7 +258,8 @@ public interface IntersectionMapping extends TableMapping, CellUpdater, StyleUpd
      *         attribute.
      * @see #setSemanticCandidatesExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping_SemanticCandidatesExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      * @generated

@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DNode;
 import org.eclipse.sirius.business.internal.query.AbstractNodeMappingApplicabilityTester;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.tool.NodeCreationDescription;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
 
 /**
  * A class aggregating all the queries (read-only!) having a

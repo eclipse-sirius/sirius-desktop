@@ -11,9 +11,8 @@
 package org.eclipse.sirius.business.internal.metamodel.helper;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
  * A key of {@link BestStyleDescriptionRegistry}.

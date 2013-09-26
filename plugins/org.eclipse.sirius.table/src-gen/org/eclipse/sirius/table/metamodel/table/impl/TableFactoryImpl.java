@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.sirius.table.business.internal.metamodel.spec.DCellSpec;
 import org.eclipse.sirius.table.business.internal.metamodel.spec.DFeatureColumnSpec;
 import org.eclipse.sirius.table.business.internal.metamodel.spec.DLineSpec;
@@ -43,7 +42,7 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
@@ -53,7 +52,7 @@ public class TableFactoryImpl extends EFactoryImpl implements TableFactory {
      */
     public static TableFactory init() {
         try {
-            TableFactory theTableFactory = (TableFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/sirius/table/1.1.0");
+            TableFactory theTableFactory = (TableFactory) EPackage.Registry.INSTANCE.getEFactory(TablePackage.eNS_URI);
             if (theTableFactory != null) {
                 return theTableFactory;
             }

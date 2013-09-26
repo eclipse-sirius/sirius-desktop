@@ -14,20 +14,6 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.description.DocumentedElement;
-import org.eclipse.sirius.description.EndUserDocumentedElement;
-import org.eclipse.sirius.description.IdentifiedElement;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationElementMapping;
-import org.eclipse.sirius.description.RepresentationExtensionDescription;
-import org.eclipse.sirius.description.contribution.ContributionProvider;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.AbstractVariable;
-import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.description.tool.RepresentationNavigationDescription;
-import org.eclipse.sirius.description.tool.ToolEntry;
-import org.eclipse.sirius.description.tool.VariableContainer;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription;
 import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
@@ -43,7 +29,6 @@ import org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.DeleteTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
-import org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription;
 import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle;
@@ -58,6 +43,17 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
+import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
+import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
@@ -73,7 +69,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -129,11 +125,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseEditionTableDescription(EditionTableDescription object) {
             return createEditionTableDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseEditionTableExtensionDescription(EditionTableExtensionDescription object) {
-            return createEditionTableExtensionDescriptionAdapter();
         }
 
         @Override
@@ -287,16 +278,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseContributionProvider(ContributionProvider object) {
-            return createContributionProviderAdapter();
-        }
-
-        @Override
-        public Adapter caseRepresentationExtensionDescription(RepresentationExtensionDescription object) {
-            return createRepresentationExtensionDescriptionAdapter();
-        }
-
-        @Override
         public Adapter caseRepresentationElementMapping(RepresentationElementMapping object) {
             return createRepresentationElementMappingAdapter();
         }
@@ -380,22 +361,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createEditionTableDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription
-     * <em>Edition Table Extension Description</em>}'. <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore
-     * cases; it's useful to ignore a case when inheritance will catch all the
-     * cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription
-     * @generated
-     */
-    public Adapter createEditionTableExtensionDescriptionAdapter() {
         return null;
     }
 
@@ -817,14 +782,14 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.RepresentationDescription
+     * {@link org.eclipse.sirius.viewpoint.description.RepresentationDescription
      * <em>Representation Description</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.description.RepresentationDescription
+     * @see org.eclipse.sirius.viewpoint.description.RepresentationDescription
      * @generated
      */
     public Adapter createRepresentationDescriptionAdapter() {
@@ -833,46 +798,14 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.contribution.ContributionProvider
-     * <em>Provider</em>}'. <!-- begin-user-doc --> This default implementation
-     * returns null so that we can easily ignore cases; it's useful to ignore a
-     * case when inheritance will catch all the cases anyway. <!-- end-user-doc
-     * -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.description.contribution.ContributionProvider
-     * @generated
-     */
-    public Adapter createContributionProviderAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.RepresentationExtensionDescription
-     * <em>Representation Extension Description</em>}'. <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore
-     * cases; it's useful to ignore a case when inheritance will catch all the
-     * cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.description.RepresentationExtensionDescription
-     * @generated
-     */
-    public Adapter createRepresentationExtensionDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.RepresentationElementMapping
+     * {@link org.eclipse.sirius.viewpoint.description.RepresentationElementMapping
      * <em>Representation Element Mapping</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.description.RepresentationElementMapping
+     * @see org.eclipse.sirius.viewpoint.description.RepresentationElementMapping
      * @generated
      */
     public Adapter createRepresentationElementMappingAdapter() {
@@ -881,14 +814,14 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.DocumentedElement
+     * {@link org.eclipse.sirius.viewpoint.description.DocumentedElement
      * <em>Documented Element</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.description.DocumentedElement
+     * @see org.eclipse.sirius.viewpoint.description.DocumentedElement
      * @generated
      */
     public Adapter createDocumentedElementAdapter() {
@@ -897,14 +830,14 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.EndUserDocumentedElement
+     * {@link org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement
      * <em>End User Documented Element</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.description.EndUserDocumentedElement
+     * @see org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement
      * @generated
      */
     public Adapter createEndUserDocumentedElementAdapter() {
@@ -913,14 +846,14 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.IdentifiedElement
+     * {@link org.eclipse.sirius.viewpoint.description.IdentifiedElement
      * <em>Identified Element</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.description.IdentifiedElement
+     * @see org.eclipse.sirius.viewpoint.description.IdentifiedElement
      * @generated
      */
     public Adapter createIdentifiedElementAdapter() {
@@ -929,13 +862,14 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.tool.ToolEntry <em>Entry</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.description.tool.ToolEntry
+     * <em>Entry</em>}'. <!-- begin-user-doc --> This default implementation
+     * returns null so that we can easily ignore cases; it's useful to ignore a
+     * case when inheritance will catch all the cases anyway. <!-- end-user-doc
+     * -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.description.tool.ToolEntry
+     * @see org.eclipse.sirius.viewpoint.description.tool.ToolEntry
      * @generated
      */
     public Adapter createToolEntryAdapter() {
@@ -944,14 +878,14 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.tool.AbstractToolDescription
+     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription
      * <em>Abstract Tool Description</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.description.tool.AbstractToolDescription
+     * @see org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription
      * @generated
      */
     public Adapter createAbstractToolDescriptionAdapter() {
@@ -960,14 +894,14 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.tool.AbstractVariable
+     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractVariable
      * <em>Abstract Variable</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.description.tool.AbstractVariable
+     * @see org.eclipse.sirius.viewpoint.description.tool.AbstractVariable
      * @generated
      */
     public Adapter createAbstractVariableAdapter() {
@@ -976,14 +910,14 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.tool.VariableContainer
+     * {@link org.eclipse.sirius.viewpoint.description.tool.VariableContainer
      * <em>Variable Container</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.description.tool.VariableContainer
+     * @see org.eclipse.sirius.viewpoint.description.tool.VariableContainer
      * @generated
      */
     public Adapter createVariableContainerAdapter() {
@@ -992,14 +926,14 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.tool.RepresentationCreationDescription
+     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription
      * <em>Representation Creation Description</em>}'. <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore
      * cases; it's useful to ignore a case when inheritance will catch all the
      * cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.description.tool.RepresentationCreationDescription
+     * @see org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription
      * @generated
      */
     public Adapter createRepresentationCreationDescriptionAdapter() {
@@ -1008,14 +942,14 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.tool.RepresentationNavigationDescription
+     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription
      * <em>Representation Navigation Description</em>}'. <!-- begin-user-doc -->
      * This default implementation returns null so that we can easily ignore
      * cases; it's useful to ignore a case when inheritance will catch all the
      * cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.description.tool.RepresentationNavigationDescription
+     * @see org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription
      * @generated
      */
     public Adapter createRepresentationNavigationDescriptionAdapter() {

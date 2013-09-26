@@ -45,7 +45,6 @@ import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.business.api.componentization.SiriusRegistryFilter;
 import org.eclipse.sirius.business.api.componentization.SiriusRegistryListener2;
@@ -63,9 +62,10 @@ import org.eclipse.sirius.business.internal.movida.registry.monitoring.PluginMon
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.SiriusResourceListener;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.SiriusResourceMonitor;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.WorkspaceMonitor;
-import org.eclipse.sirius.description.Component;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.Component;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * The registry of all canonical Sirius definitions known in the system.
@@ -510,7 +510,7 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
     private Set<Entry> createNewEntries(Resource vsm) {
         ensureLoaded(vsm);
         Set<Entry> newEntries = Sets.newHashSet();
-        for (Sirius viewpoint : compositeResourceHandler.collectSiriusDefinitions(vsm)) {
+        for (Viewpoint viewpoint : compositeResourceHandler.collectSiriusDefinitions(vsm)) {
             newEntries.add(new Entry(viewpoint));
         }
         return newEntries;
@@ -613,9 +613,9 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
     /**
      * {@inheritDoc}
      */
-    public synchronized Set<Sirius> getSiriuss() {
-        return ImmutableSet.copyOf(Iterables.transform(entries.values(), new Function<Entry, Sirius>() {
-            public Sirius apply(Entry from) {
+    public synchronized Set<Viewpoint> getSiriuss() {
+        return ImmutableSet.copyOf(Iterables.transform(entries.values(), new Function<Entry, Viewpoint>() {
+            public Viewpoint apply(Entry from) {
                 return from.getSirius();
             }
         }));
@@ -624,7 +624,7 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
     /**
      * {@inheritDoc}
      */
-    public boolean isFromPlugin(Sirius viewpoint) {
+    public boolean isFromPlugin(Viewpoint viewpoint) {
         if (viewpoint != null && viewpoint.eResource() != null) {
             URI uri = viewpoint.eResource().getURI();
             return uri.isPlatformPlugin();
@@ -663,14 +663,14 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
     /**
      * {@inheritDoc}
      */
-    public Sirius getSirius(RepresentationDescription description) {
+    public Viewpoint getSirius(RepresentationDescription description) {
         return new RepresentationDescriptionQuery(description).getParentSirius();
     }
 
     /**
      * {@inheritDoc}
      */
-    public Sirius getSirius(URI viewpointUri) {
+    public Viewpoint getSirius(URI viewpointUri) {
         if (entries.containsKey(viewpointUri)) {
             return (entries.get(viewpointUri)).getSirius();
         } else {
@@ -695,7 +695,7 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
     /**
      * {@inheritDoc}
      */
-    public Set<Sirius> registerFromPlugin(String modelerModelResourcePath) {
+    public Set<Viewpoint> registerFromPlugin(String modelerModelResourcePath) {
         try {
             return legacyMonitor.registerFromPlugin(modelerModelResourcePath);
         } catch (final WrappedException e) {
@@ -711,7 +711,7 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
     /**
      * {@inheritDoc}
      */
-    public void disposeFromPlugin(Sirius viewpoint) {
+    public void disposeFromPlugin(Viewpoint viewpoint) {
         legacyMonitor.disposeFromPlugin(viewpoint);
     }
 

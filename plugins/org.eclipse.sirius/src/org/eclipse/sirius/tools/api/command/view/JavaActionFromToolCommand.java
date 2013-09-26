@@ -18,16 +18,15 @@ import java.util.Map;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.description.tool.ExternalJavaAction;
-import org.eclipse.sirius.description.tool.ExternalJavaActionParameter;
-import org.eclipse.sirius.description.tool.ToolPackage;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
+import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * Specific command to set the actual mapping of an edge.

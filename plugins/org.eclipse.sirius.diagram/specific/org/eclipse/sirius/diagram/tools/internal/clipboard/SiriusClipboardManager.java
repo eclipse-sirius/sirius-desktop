@@ -24,7 +24,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.description.Group;
+import org.eclipse.sirius.viewpoint.description.Group;
 
 /**
  * This class allows Sirius to handle copy/paste operations between several

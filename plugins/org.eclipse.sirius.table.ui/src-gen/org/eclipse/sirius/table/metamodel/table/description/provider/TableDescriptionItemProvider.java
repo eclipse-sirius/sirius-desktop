@@ -26,17 +26,16 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.provider.DocumentedElementItemProvider;
-import org.eclipse.sirius.description.tool.ToolFactory;
 import org.eclipse.sirius.table.business.internal.metamodel.TableToolVariables;
 import org.eclipse.sirius.table.metamodel.table.description.CreateLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
  * This is the item provider adapter for a
@@ -52,7 +51,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * This constructs an instance from a factory and a notifier. <!--
@@ -354,12 +353,10 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS,
                 ToolFactory.eINSTANCE.createDiagramCreationDescription()));
 
-        newChildDescriptors.add(createChildParameter(
-                org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS,
                 DescriptionFactory.eINSTANCE.createTableNavigationDescription()));
 
-        newChildDescriptors.add(createChildParameter(
-                org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS,
                 ToolFactory.eINSTANCE.createDiagramNavigationDescription()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS,

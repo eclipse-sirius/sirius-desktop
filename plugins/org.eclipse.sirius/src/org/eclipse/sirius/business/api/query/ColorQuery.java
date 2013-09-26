@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
-import org.eclipse.sirius.description.ColorDescription;
-import org.eclipse.sirius.description.SystemColor;
-import org.eclipse.sirius.description.UserColor;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
+import org.eclipse.sirius.viewpoint.description.SystemColor;
+import org.eclipse.sirius.viewpoint.description.UserColor;
 
 /**
  * A query for color.

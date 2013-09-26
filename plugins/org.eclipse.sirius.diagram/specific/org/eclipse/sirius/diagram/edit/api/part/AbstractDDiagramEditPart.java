@@ -42,12 +42,6 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.business.api.query.CompositeFilterDescriptionQuery;
 import org.eclipse.sirius.business.api.query.DDiagramQuery;
@@ -56,13 +50,6 @@ import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.Layer;
-import org.eclipse.sirius.description.filter.CompositeFilterDescription;
-import org.eclipse.sirius.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusPopupBarEditPolicy;
@@ -80,6 +67,19 @@ import org.eclipse.sirius.diagram.ui.tools.internal.commands.InitializeHiddenEle
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.ordering.ViewOrderingProviderRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.viewpoint.description.filter.CompositeFilterDescription;
+import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
 
 /**
  * 
@@ -196,7 +196,7 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         /*
          * Special case for activatedFilters
          */
-        if (SiriusPackage.eINSTANCE.getDDiagram_ActivatedFilters().equals(notification.getFeature())) {
+        if (ViewpointPackage.eINSTANCE.getDDiagram_ActivatedFilters().equals(notification.getFeature())) {
             refresh();
             refreshSourceAndTargetOfRevealedEdges(notification);
             SubDiagramDecoratorProvider.refreshEditParts(getRoot());
@@ -266,7 +266,7 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
      * 
      * @param notification
      *            A notification of feature
-     *            SiriusPackage.eINSTANCE.getDDiagram_ActivatedFilters()
+     *            ViewpointPackage.eINSTANCE.getDDiagram_ActivatedFilters()
      */
     protected void refreshSourceAndTargetOfRevealedEdges(Notification notification) {
         EList<Edge> edgesToRefresh = new BasicEList<Edge>();

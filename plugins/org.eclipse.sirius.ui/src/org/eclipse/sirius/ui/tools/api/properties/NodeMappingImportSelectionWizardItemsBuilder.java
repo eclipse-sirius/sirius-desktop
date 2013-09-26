@@ -15,15 +15,14 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
-import org.eclipse.sirius.description.AbstractMappingImport;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.NodeMappingImport;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.NodeMappingImport;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * A class which is able to build the items tree to select node mappings to
@@ -42,14 +41,14 @@ public class NodeMappingImportSelectionWizardItemsBuilder extends AbstractMappin
      * @param availableSiriuss
      *            the available viewpoints
      */
-    public NodeMappingImportSelectionWizardItemsBuilder(final NodeMapping nodeMapping, final Collection<Sirius> availableSiriuss) {
+    public NodeMappingImportSelectionWizardItemsBuilder(final NodeMapping nodeMapping, final Collection<Viewpoint> availableSiriuss) {
         super(nodeMapping, availableSiriuss);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.properties.AbstractMappingImportSelectionWizardBuilder#checkImportType(org.eclipse.sirius.description.AbstractNodeMapping)
+     * @see org.eclipse.sirius.ui.tools.api.properties.AbstractMappingImportSelectionWizardBuilder#checkImportType(org.eclipse.sirius.viewpoint.description.AbstractNodeMapping)
      */
     @Override
     protected boolean checkImportType(final AbstractNodeMapping mapping) {
@@ -62,7 +61,7 @@ public class NodeMappingImportSelectionWizardItemsBuilder extends AbstractMappin
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.properties.AbstractMappingImportSelectionWizardBuilder#getImportedMapping(org.eclipse.sirius.description.AbstractMappingImport)
+     * @see org.eclipse.sirius.ui.tools.api.properties.AbstractMappingImportSelectionWizardBuilder#getImportedMapping(org.eclipse.sirius.viewpoint.description.AbstractMappingImport)
      */
     @Override
     protected AbstractNodeMapping getImportedMapping(final AbstractMappingImport mappingImport) {
@@ -75,7 +74,7 @@ public class NodeMappingImportSelectionWizardItemsBuilder extends AbstractMappin
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.properties.AbstractMappingImportSelectionWizardBuilder#getAllMappings(org.eclipse.sirius.description.DiagramDescription)
+     * @see org.eclipse.sirius.ui.tools.api.properties.AbstractMappingImportSelectionWizardBuilder#getAllMappings(org.eclipse.sirius.viewpoint.description.DiagramDescription)
      */
     @Override
     protected <T extends AbstractNodeMapping> Collection<T> getAllMappings(final DiagramDescription diagramDescription) {
@@ -86,7 +85,7 @@ public class NodeMappingImportSelectionWizardItemsBuilder extends AbstractMappin
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.ui.tools.api.properties.AbstractMappingImportSelectionWizardBuilder#addMappings(org.eclipse.sirius.common.tools.api.util.TreeItemWrapper,
-     *      org.eclipse.sirius.description.DiagramDescription)
+     *      org.eclipse.sirius.viewpoint.description.DiagramDescription)
      */
     @Override
     protected void addMappings(final TreeItemWrapper parentItem, final DiagramDescription diagramDescription) {

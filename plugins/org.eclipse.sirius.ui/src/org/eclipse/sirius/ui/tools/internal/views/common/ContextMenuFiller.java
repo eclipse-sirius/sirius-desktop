@@ -61,9 +61,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.MoveRepresentationCommand;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
@@ -72,8 +69,6 @@ import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
@@ -99,6 +94,11 @@ import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItem
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider;
 import org.eclipse.sirius.ui.tools.internal.views.sessionview.extension.IContextMenuActionProvider;
 import org.eclipse.sirius.ui.tools.internal.wizards.ExtractRepresentationsWizard;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Helper to fill context menu with viewpoint actions.

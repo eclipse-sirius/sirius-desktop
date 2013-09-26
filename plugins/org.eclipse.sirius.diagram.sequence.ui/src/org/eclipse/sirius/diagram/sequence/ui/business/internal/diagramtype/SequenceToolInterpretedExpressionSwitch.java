@@ -23,10 +23,6 @@ import com.google.common.collect.Sets;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationElementMapping;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.ChangeContext;
 import org.eclipse.sirius.diagram.sequence.description.EventMapping;
 import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool;
@@ -34,6 +30,10 @@ import org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.sequence.description.tool.util.ToolSwitch;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 
 /**
  * A switch that will return the Target Types associated to a given element
@@ -91,7 +91,7 @@ public class SequenceToolInterpretedExpressionSwitch extends ToolSwitch<Option<C
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.util.ToolSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
+     * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
      */
     @Override
     public Option<Collection<String>> doSwitch(EObject theEObject) {

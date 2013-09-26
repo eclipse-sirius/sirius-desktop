@@ -11,8 +11,7 @@
 package org.eclipse.sirius.business.internal.migration;
 
 import org.eclipse.emf.common.util.URI;
-
-import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Parser to get representationsFile current version.
@@ -23,7 +22,7 @@ import org.eclipse.sirius.SiriusPackage;
 public class RepresentationsFileVersionSAXParser extends AbstractVersionSAXParser {
 
     /* In Representations files, the DAnalysis element is versioned. */
-    private static final String VERSIONED_ELEMENT_QUALIFIED_NAME = SiriusPackage.eINSTANCE.getNsPrefix() + ":" + SiriusPackage.eINSTANCE.getDAnalysis().getName();
+    private static final String VERSIONED_ELEMENT_QUALIFIED_NAME = ViewpointPackage.eINSTANCE.getNsPrefix() + ":" + ViewpointPackage.eINSTANCE.getDAnalysis().getName();
 
     /**
      * Constructor.

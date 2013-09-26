@@ -29,12 +29,6 @@ import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.AbsoluteBoundsFilter;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.SiriusFactory;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -45,6 +39,12 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConsta
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.ui.PostRefreshCommandFactory;
 import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
+import org.eclipse.sirius.viewpoint.AbsoluteBoundsFilter;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 
 /**
  * Specific sequence viewpoint command to flag created elements from tool.
@@ -174,7 +174,7 @@ public class SequenceCreatedEventsFlaggingSiriusCommand extends SiriusCommand {
     }
 
     private AbsoluteBoundsFilter getFlag(Rectangle toolCreationFlag) {
-        AbsoluteBoundsFilter flag = SiriusFactory.eINSTANCE.createAbsoluteBoundsFilter();
+        AbsoluteBoundsFilter flag = ViewpointFactory.eINSTANCE.createAbsoluteBoundsFilter();
         flag.setX(toolCreationFlag.x);
         flag.setY(toolCreationFlag.y);
         flag.setHeight(toolCreationFlag.height);

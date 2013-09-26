@@ -14,8 +14,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.sirius.description.EReferenceCustomization;
+import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
 
 /**
  * A query on a {@link EReferenceCustomization}.

@@ -20,10 +20,10 @@ import com.google.common.collect.Lists;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationExtensionDescription;
-import org.eclipse.sirius.description.RepresentationTemplate;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * A class aggregating all the queries (read-only!) having a Sirius as a
@@ -34,7 +34,7 @@ import org.eclipse.sirius.description.Sirius;
  */
 public class SiriusQuery {
 
-    private Sirius vp;
+    private Viewpoint vp;
 
     /**
      * Create a new query.
@@ -42,7 +42,7 @@ public class SiriusQuery {
      * @param vp
      *            the starting point.
      */
-    public SiriusQuery(Sirius vp) {
+    public SiriusQuery(Viewpoint vp) {
         this.vp = vp;
     }
 
@@ -101,7 +101,7 @@ public class SiriusQuery {
      * @return <code>true</code> iff the queried Sirius has the same logical
      *         URI as <code>other</code>.
      */
-    public boolean hasSameSiriusURI(Sirius other) {
+    public boolean hasSameSiriusURI(Viewpoint other) {
         Preconditions.checkNotNull(other);
         Option<URI> vpURI = getSiriusURI();
         Option<URI> otherURI = new SiriusQuery(other).getSiriusURI();

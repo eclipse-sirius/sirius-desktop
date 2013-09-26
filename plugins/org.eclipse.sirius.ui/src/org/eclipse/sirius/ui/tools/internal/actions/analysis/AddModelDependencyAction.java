@@ -29,13 +29,13 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelection;
 import org.eclipse.sirius.ui.tools.api.actions.analysis.IAddModelDependencyWizard;
 import org.eclipse.sirius.ui.tools.internal.dialogs.SemanticResourceDialog;
 import org.eclipse.sirius.ui.tools.internal.operations.SemanticResourceAdditionOperation;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Action to add a model dependency to a modeling project.

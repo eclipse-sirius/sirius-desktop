@@ -13,16 +13,15 @@ package org.eclipse.sirius.editor.properties.sections.description.representation
 // Start of user code imports
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 
 // End of user code imports
 
@@ -70,7 +69,7 @@ public class RepresentationExtensionDescriptionSiriusURIPropertySection extends 
      * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getFeature()
      */
     public EAttribute getFeature() {
-        return DescriptionPackage.eINSTANCE.getRepresentationExtensionDescription_SiriusURI();
+        return DescriptionPackage.eINSTANCE.getRepresentationExtensionDescription_ViewpointURI();
     }
 
     /**

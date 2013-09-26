@@ -27,7 +27,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.sirius.diagram.sequence.description.util.DescriptionAdapterFactory;
 
 /**
@@ -142,8 +141,8 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.sequence.description.ExecutionMapping}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.sequence.description.ExecutionMapping}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -192,8 +191,8 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -417,8 +416,8 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.sequence.description.OperandMapping}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.sequence.description.OperandMapping}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */

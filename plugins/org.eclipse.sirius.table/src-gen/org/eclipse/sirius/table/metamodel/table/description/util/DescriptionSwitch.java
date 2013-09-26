@@ -14,20 +14,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.description.DocumentedElement;
-import org.eclipse.sirius.description.EndUserDocumentedElement;
-import org.eclipse.sirius.description.IdentifiedElement;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationElementMapping;
-import org.eclipse.sirius.description.RepresentationExtensionDescription;
-import org.eclipse.sirius.description.contribution.ContributionProvider;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.AbstractVariable;
-import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.description.tool.RepresentationNavigationDescription;
-import org.eclipse.sirius.description.tool.ToolEntry;
-import org.eclipse.sirius.description.tool.VariableContainer;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription;
 import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
@@ -43,7 +29,6 @@ import org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.DeleteTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
-import org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription;
 import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle;
@@ -58,6 +43,17 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
+import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
+import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 
 /**
  * <!-- begin-user-doc --> The <b>Switch</b> for the model's inheritance
@@ -76,7 +72,7 @@ public class DescriptionSwitch<T> {
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -160,8 +156,6 @@ public class DescriptionSwitch<T> {
             if (result == null)
                 result = caseTableDescription(editionTableDescription);
             if (result == null)
-                result = caseContributionProvider(editionTableDescription);
-            if (result == null)
                 result = caseRepresentationDescription(editionTableDescription);
             if (result == null)
                 result = caseDocumentedElement(editionTableDescription);
@@ -169,17 +163,6 @@ public class DescriptionSwitch<T> {
                 result = caseEndUserDocumentedElement(editionTableDescription);
             if (result == null)
                 result = caseIdentifiedElement(editionTableDescription);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case DescriptionPackage.EDITION_TABLE_EXTENSION_DESCRIPTION: {
-            EditionTableExtensionDescription editionTableExtensionDescription = (EditionTableExtensionDescription) theEObject;
-            T result = caseEditionTableExtensionDescription(editionTableExtensionDescription);
-            if (result == null)
-                result = caseRepresentationExtensionDescription(editionTableExtensionDescription);
-            if (result == null)
-                result = caseContributionProvider(editionTableExtensionDescription);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -578,23 +561,6 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     public T caseEditionTableDescription(EditionTableDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Edition Table Extension Description</em>'. <!-- begin-user-doc -->
-     * This implementation returns null; returning a non-null result will
-     * terminate the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Edition Table Extension Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseEditionTableExtensionDescription(EditionTableExtensionDescription object) {
         return null;
     }
 
@@ -1054,40 +1020,6 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     public T caseRepresentationDescription(RepresentationDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Provider</em>'. <!-- begin-user-doc --> This implementation returns
-     * null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Provider</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseContributionProvider(ContributionProvider object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Representation Extension Description</em>'. <!-- begin-user-doc -->
-     * This implementation returns null; returning a non-null result will
-     * terminate the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Representation Extension Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseRepresentationExtensionDescription(RepresentationExtensionDescription object) {
         return null;
     }
 

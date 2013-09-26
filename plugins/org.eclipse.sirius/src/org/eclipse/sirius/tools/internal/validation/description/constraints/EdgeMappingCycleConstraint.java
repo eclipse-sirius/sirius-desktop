@@ -22,7 +22,7 @@ import org.eclipse.emf.validation.IValidationContext;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 
 /**
  * Check that {@link EdgeMapping}s with an {@link EdgeMapping} as source or

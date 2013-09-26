@@ -25,9 +25,8 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
-
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * @not-generated now that we have a new type, the dimension edge type
@@ -264,45 +263,45 @@ public class SiriusElementTypes extends ElementInitializers {
         if (elements == null) {
             elements = new IdentityHashMap<IElementType, EClass>();
 
-            elements.put(DDiagram_1000, SiriusPackage.eINSTANCE.getDDiagram());
+            elements.put(DDiagram_1000, ViewpointPackage.eINSTANCE.getDDiagram());
 
-            elements.put(DNode_2001, SiriusPackage.eINSTANCE.getDNode());
+            elements.put(DNode_2001, ViewpointPackage.eINSTANCE.getDNode());
 
-            elements.put(DNodeContainer_2002, SiriusPackage.eINSTANCE.getDNodeContainer());
+            elements.put(DNodeContainer_2002, ViewpointPackage.eINSTANCE.getDNodeContainer());
 
-            elements.put(DNodeList_2003, SiriusPackage.eINSTANCE.getDNodeList());
+            elements.put(DNodeList_2003, ViewpointPackage.eINSTANCE.getDNodeList());
 
-            elements.put(DNode_3001, SiriusPackage.eINSTANCE.getDNode());
+            elements.put(DNode_3001, ViewpointPackage.eINSTANCE.getDNode());
 
-            elements.put(BundledImage_3004, SiriusPackage.eINSTANCE.getBundledImage());
+            elements.put(BundledImage_3004, ViewpointPackage.eINSTANCE.getBundledImage());
 
-            elements.put(Dot_3002, SiriusPackage.eINSTANCE.getDot());
+            elements.put(Dot_3002, ViewpointPackage.eINSTANCE.getDot());
 
-            elements.put(GaugeCompositeStyle_3006, SiriusPackage.eINSTANCE.getGaugeCompositeStyle());
+            elements.put(GaugeCompositeStyle_3006, ViewpointPackage.eINSTANCE.getGaugeCompositeStyle());
 
-            elements.put(Square_3003, SiriusPackage.eINSTANCE.getSquare());
+            elements.put(Square_3003, ViewpointPackage.eINSTANCE.getSquare());
 
-            elements.put(Ellipse_3016, SiriusPackage.eINSTANCE.getEllipse());
+            elements.put(Ellipse_3016, ViewpointPackage.eINSTANCE.getEllipse());
 
-            elements.put(Lozenge_3017, SiriusPackage.eINSTANCE.getLozenge());
+            elements.put(Lozenge_3017, ViewpointPackage.eINSTANCE.getLozenge());
 
-            elements.put(WorkspaceImage_3005, SiriusPackage.eINSTANCE.getWorkspaceImage());
+            elements.put(WorkspaceImage_3005, ViewpointPackage.eINSTANCE.getWorkspaceImage());
 
-            elements.put(Note_3013, SiriusPackage.eINSTANCE.getNote());
+            elements.put(Note_3013, ViewpointPackage.eINSTANCE.getNote());
 
-            elements.put(CustomStyle_3014, SiriusPackage.eINSTANCE.getCustomStyle());
+            elements.put(CustomStyle_3014, ViewpointPackage.eINSTANCE.getCustomStyle());
 
-            elements.put(DNode_3007, SiriusPackage.eINSTANCE.getDNode());
+            elements.put(DNode_3007, ViewpointPackage.eINSTANCE.getDNode());
 
-            elements.put(DNodeContainer_3008, SiriusPackage.eINSTANCE.getDNodeContainer());
+            elements.put(DNodeContainer_3008, ViewpointPackage.eINSTANCE.getDNodeContainer());
 
-            elements.put(DNodeList_3009, SiriusPackage.eINSTANCE.getDNodeList());
+            elements.put(DNodeList_3009, ViewpointPackage.eINSTANCE.getDNodeList());
 
-            elements.put(DNodeListElement_3010, SiriusPackage.eINSTANCE.getDNodeListElement());
+            elements.put(DNodeListElement_3010, ViewpointPackage.eINSTANCE.getDNodeListElement());
 
-            elements.put(DNode_3012, SiriusPackage.eINSTANCE.getDNode());
+            elements.put(DNode_3012, ViewpointPackage.eINSTANCE.getDNode());
 
-            elements.put(DEdge_4001, SiriusPackage.eINSTANCE.getDEdge());
+            elements.put(DEdge_4001, ViewpointPackage.eINSTANCE.getDEdge());
         }
         return (ENamedElement) elements.get(type);
     }

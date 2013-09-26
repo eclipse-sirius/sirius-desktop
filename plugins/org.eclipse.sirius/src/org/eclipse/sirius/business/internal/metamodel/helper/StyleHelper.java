@@ -19,41 +19,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.BasicLabelStyle;
-import org.eclipse.sirius.BeginLabelStyle;
-import org.eclipse.sirius.BorderedStyle;
-import org.eclipse.sirius.BundledImage;
-import org.eclipse.sirius.CenterLabelStyle;
-import org.eclipse.sirius.ContainerStyle;
-import org.eclipse.sirius.CustomStyle;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DNodeList;
-import org.eclipse.sirius.DNodeListElement;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.Dot;
-import org.eclipse.sirius.EdgeRouting;
-import org.eclipse.sirius.EdgeStyle;
-import org.eclipse.sirius.Ellipse;
-import org.eclipse.sirius.EndLabelStyle;
-import org.eclipse.sirius.FlatContainerStyle;
-import org.eclipse.sirius.FontFormat;
-import org.eclipse.sirius.GaugeCompositeStyle;
-import org.eclipse.sirius.GaugeSection;
-import org.eclipse.sirius.LabelAlignment;
-import org.eclipse.sirius.LabelStyle;
-import org.eclipse.sirius.Lozenge;
-import org.eclipse.sirius.NodeStyle;
-import org.eclipse.sirius.Note;
-import org.eclipse.sirius.ShapeContainerStyle;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.Square;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.WorkspaceImage;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.internal.color.DiagramStyleColorUpdater;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
@@ -62,32 +27,67 @@ import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.description.style.BasicLabelStyleDescription;
-import org.eclipse.sirius.description.style.BeginLabelStyleDescription;
-import org.eclipse.sirius.description.style.BorderedStyleDescription;
-import org.eclipse.sirius.description.style.BracketEdgeStyleDescription;
-import org.eclipse.sirius.description.style.BundledImageDescription;
-import org.eclipse.sirius.description.style.CenterLabelStyleDescription;
-import org.eclipse.sirius.description.style.ContainerStyleDescription;
-import org.eclipse.sirius.description.style.CustomStyleDescription;
-import org.eclipse.sirius.description.style.DotDescription;
-import org.eclipse.sirius.description.style.EdgeStyleDescription;
-import org.eclipse.sirius.description.style.EllipseNodeDescription;
-import org.eclipse.sirius.description.style.EndLabelStyleDescription;
-import org.eclipse.sirius.description.style.FlatContainerStyleDescription;
-import org.eclipse.sirius.description.style.GaugeCompositeStyleDescription;
-import org.eclipse.sirius.description.style.GaugeSectionDescription;
-import org.eclipse.sirius.description.style.LabelStyleDescription;
-import org.eclipse.sirius.description.style.LozengeNodeDescription;
-import org.eclipse.sirius.description.style.NodeStyleDescription;
-import org.eclipse.sirius.description.style.NoteDescription;
-import org.eclipse.sirius.description.style.ShapeContainerStyleDescription;
-import org.eclipse.sirius.description.style.SquareDescription;
-import org.eclipse.sirius.description.style.StyleDescription;
-import org.eclipse.sirius.description.style.StylePackage;
-import org.eclipse.sirius.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.tools.api.preferences.SiriusDiagramCorePreferences;
-import org.eclipse.sirius.util.SiriusSwitch;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
+import org.eclipse.sirius.viewpoint.BeginLabelStyle;
+import org.eclipse.sirius.viewpoint.BorderedStyle;
+import org.eclipse.sirius.viewpoint.BundledImage;
+import org.eclipse.sirius.viewpoint.CenterLabelStyle;
+import org.eclipse.sirius.viewpoint.ContainerStyle;
+import org.eclipse.sirius.viewpoint.CustomStyle;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.viewpoint.DNodeListElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.Dot;
+import org.eclipse.sirius.viewpoint.EdgeRouting;
+import org.eclipse.sirius.viewpoint.EdgeStyle;
+import org.eclipse.sirius.viewpoint.Ellipse;
+import org.eclipse.sirius.viewpoint.EndLabelStyle;
+import org.eclipse.sirius.viewpoint.FlatContainerStyle;
+import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.GaugeCompositeStyle;
+import org.eclipse.sirius.viewpoint.GaugeSection;
+import org.eclipse.sirius.viewpoint.LabelAlignment;
+import org.eclipse.sirius.viewpoint.LabelStyle;
+import org.eclipse.sirius.viewpoint.Lozenge;
+import org.eclipse.sirius.viewpoint.NodeStyle;
+import org.eclipse.sirius.viewpoint.Note;
+import org.eclipse.sirius.viewpoint.ShapeContainerStyle;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.Square;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.WorkspaceImage;
+import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.BeginLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.BorderedStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.BracketEdgeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.BundledImageDescription;
+import org.eclipse.sirius.viewpoint.description.style.CenterLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.ContainerStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.CustomStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.DotDescription;
+import org.eclipse.sirius.viewpoint.description.style.EdgeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription;
+import org.eclipse.sirius.viewpoint.description.style.EndLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.FlatContainerStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.GaugeCompositeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.GaugeSectionDescription;
+import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription;
+import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.NoteDescription;
+import org.eclipse.sirius.viewpoint.description.style.ShapeContainerStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.SquareDescription;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
+import org.eclipse.sirius.viewpoint.description.style.WorkspaceImageDescription;
+import org.eclipse.sirius.viewpoint.util.ViewpointSwitch;
 
 /**
  * This helper class contains utility methods to create and update (refresh)
@@ -200,18 +200,18 @@ public final class StyleHelper {
     public EdgeStyle createEdgeStyle(final EdgeStyleDescription description) {
         EdgeStyle style = null;
         if (description instanceof BracketEdgeStyleDescription) {
-            style = SiriusFactory.eINSTANCE.createBracketEdgeStyle();
+            style = ViewpointFactory.eINSTANCE.createBracketEdgeStyle();
         } else {
-            style = SiriusFactory.eINSTANCE.createEdgeStyle();
+            style = ViewpointFactory.eINSTANCE.createEdgeStyle();
         }
         if (description.getBeginLabelStyleDescription() != null) {
-            style.setBeginLabelStyle(SiriusFactory.eINSTANCE.createBeginLabelStyle());
+            style.setBeginLabelStyle(ViewpointFactory.eINSTANCE.createBeginLabelStyle());
         }
         if (description.getEndLabelStyleDescription() != null) {
-            style.setEndLabelStyle(SiriusFactory.eINSTANCE.createEndLabelStyle());
+            style.setEndLabelStyle(ViewpointFactory.eINSTANCE.createEndLabelStyle());
         }
         if (description.getCenterLabelStyleDescription() != null) {
-            style.setCenterLabelStyle(SiriusFactory.eINSTANCE.createCenterLabelStyle());
+            style.setCenterLabelStyle(ViewpointFactory.eINSTANCE.createCenterLabelStyle());
         }
         updateEdgeStyle(description, style);
         Option<Style> noPreviousStyle = Options.newNone();
@@ -226,49 +226,49 @@ public final class StyleHelper {
             edgeStyle.setDescription(edgeDescription);
         }
         if (edgeDescription != null) {
-            if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__SOURCE_ARROW.getName())) {
+            if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__SOURCE_ARROW.getName())) {
                 edgeStyle.setSourceArrow(previousStyle.get().getSourceArrow());
-                edgeStyle.getCustomFeatures().add(SiriusPackage.Literals.EDGE_STYLE__SOURCE_ARROW.getName());
+                edgeStyle.getCustomFeatures().add(ViewpointPackage.Literals.EDGE_STYLE__SOURCE_ARROW.getName());
             } else {
                 if (edgeStyle.getSourceArrow().getValue() != edgeDescription.getSourceArrow().getValue()
-                        && !edgeStyle.getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__SOURCE_ARROW.getName())) {
+                        && !edgeStyle.getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__SOURCE_ARROW.getName())) {
                     edgeStyle.setSourceArrow(edgeDescription.getSourceArrow());
                 }
             }
-            if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__TARGET_ARROW.getName())) {
+            if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__TARGET_ARROW.getName())) {
                 edgeStyle.setTargetArrow(previousStyle.get().getTargetArrow());
-                edgeStyle.getCustomFeatures().add(SiriusPackage.Literals.EDGE_STYLE__TARGET_ARROW.getName());
+                edgeStyle.getCustomFeatures().add(ViewpointPackage.Literals.EDGE_STYLE__TARGET_ARROW.getName());
             } else {
                 if (edgeStyle.getTargetArrow().getValue() != edgeDescription.getTargetArrow().getValue()
-                        && !edgeStyle.getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__TARGET_ARROW.getName())) {
+                        && !edgeStyle.getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__TARGET_ARROW.getName())) {
                     edgeStyle.setTargetArrow(edgeDescription.getTargetArrow());
                 }
             }
 
-            if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__LINE_STYLE.getName())) {
+            if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__LINE_STYLE.getName())) {
                 edgeStyle.setLineStyle(previousStyle.get().getLineStyle());
-                edgeStyle.getCustomFeatures().add(SiriusPackage.Literals.EDGE_STYLE__LINE_STYLE.getName());
+                edgeStyle.getCustomFeatures().add(ViewpointPackage.Literals.EDGE_STYLE__LINE_STYLE.getName());
             } else {
                 if (edgeStyle.getLineStyle().getValue() != edgeDescription.getLineStyle().getValue()
-                        && !edgeStyle.getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__LINE_STYLE.getName())) {
+                        && !edgeStyle.getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__LINE_STYLE.getName())) {
                     edgeStyle.setLineStyle(edgeDescription.getLineStyle());
                 }
             }
-            if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__FOLDING_STYLE.getName())) {
+            if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__FOLDING_STYLE.getName())) {
                 edgeStyle.setFoldingStyle(previousStyle.get().getFoldingStyle());
-                edgeStyle.getCustomFeatures().add(SiriusPackage.Literals.EDGE_STYLE__FOLDING_STYLE.getName());
+                edgeStyle.getCustomFeatures().add(ViewpointPackage.Literals.EDGE_STYLE__FOLDING_STYLE.getName());
             } else {
                 if (edgeStyle.getFoldingStyle().getValue() != edgeDescription.getFoldingStyle().getValue()
-                        && !edgeStyle.getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__FOLDING_STYLE.getName())) {
+                        && !edgeStyle.getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__FOLDING_STYLE.getName())) {
                     edgeStyle.setFoldingStyle(edgeDescription.getFoldingStyle());
                 }
             }
-            if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__SIZE.getName())) {
+            if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__SIZE.getName())) {
                 edgeStyle.setSize(previousStyle.get().getSize());
-                edgeStyle.getCustomFeatures().add(SiriusPackage.Literals.EDGE_STYLE__SIZE.getName());
+                edgeStyle.getCustomFeatures().add(ViewpointPackage.Literals.EDGE_STYLE__SIZE.getName());
             } else {
                 if (edgeDescription.getSizeComputationExpression() != null && edgeStyle.eContainer() != null
-                        && !edgeStyle.getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__SIZE.getName())) {
+                        && !edgeStyle.getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__SIZE.getName())) {
                     try {
                         size = interpreter.evaluateInteger(((DSemanticDecorator) edgeStyle.eContainer()).getTarget(), edgeDescription.getSizeComputationExpression());
                     } catch (final EvaluationException e) {
@@ -294,13 +294,13 @@ public final class StyleHelper {
             if (previousStyle.some()) {
                 // If the previous style has been manually customized we use the
                 // same customization.
-                if (previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName())) {
+                if (previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName())) {
                     edgeStyle.setRoutingStyle(previousStyle.get().getRoutingStyle());
-                    edgeStyle.getCustomFeatures().add(SiriusPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName());
+                    edgeStyle.getCustomFeatures().add(ViewpointPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName());
                 }
             } else if (overrideEdgeRouting.some()) {
                 // Add the feature routingStyle as customization
-                edgeStyle.getCustomFeatures().add(SiriusPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName());
+                edgeStyle.getCustomFeatures().add(ViewpointPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName());
                 // Set the new value if different.
                 if (edgeStyle.getRoutingStyle().getValue() != overrideEdgeRouting.get().getValue()) {
                     edgeStyle.setRoutingStyle(overrideEdgeRouting.get());
@@ -310,7 +310,7 @@ public final class StyleHelper {
             // customization of existing style or from preference)
 
             if (edgeDescription.getRoutingStyle().getValue() != edgeStyle.getRoutingStyle().getValue()
-                    && !edgeStyle.getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName())) {
+                    && !edgeStyle.getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName())) {
                 edgeStyle.setRoutingStyle(edgeDescription.getRoutingStyle());
             }
             updateLabels(edgeDescription, edgeStyle, previousStyle);
@@ -329,40 +329,40 @@ public final class StyleHelper {
 
     private void updateLabels(EdgeStyleDescription edgeDescription, EdgeStyle edgeStyle, Option<EdgeStyle> previousStyle) {
         if (previousStyle.some()) {
-            if (previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__CENTER_LABEL_STYLE.getName())) {
-                edgeStyle.getCustomFeatures().add(SiriusPackage.Literals.EDGE_STYLE__CENTER_LABEL_STYLE.getName());
+            if (previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__CENTER_LABEL_STYLE.getName())) {
+                edgeStyle.getCustomFeatures().add(ViewpointPackage.Literals.EDGE_STYLE__CENTER_LABEL_STYLE.getName());
                 edgeStyle.setCenterLabelStyle(previousStyle.get().getCenterLabelStyle());
             }
         }
         if (edgeDescription.getCenterLabelStyleDescription() != null && edgeStyle.getCenterLabelStyle() == null
-                && !edgeStyle.getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__CENTER_LABEL_STYLE.getName())) {
-            CenterLabelStyle centerLabelStyle = SiriusFactory.eINSTANCE.createCenterLabelStyle();
+                && !edgeStyle.getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__CENTER_LABEL_STYLE.getName())) {
+            CenterLabelStyle centerLabelStyle = ViewpointFactory.eINSTANCE.createCenterLabelStyle();
             edgeStyle.setCenterLabelStyle(centerLabelStyle);
         }
         updateEdgeLabel(edgeDescription.getCenterLabelStyleDescription(), edgeStyle.getCenterLabelStyle());
 
         if (previousStyle.some()) {
-            if (previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__BEGIN_LABEL_STYLE.getName())) {
-                edgeStyle.getCustomFeatures().add(SiriusPackage.Literals.EDGE_STYLE__BEGIN_LABEL_STYLE.getName());
+            if (previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__BEGIN_LABEL_STYLE.getName())) {
+                edgeStyle.getCustomFeatures().add(ViewpointPackage.Literals.EDGE_STYLE__BEGIN_LABEL_STYLE.getName());
                 edgeStyle.setBeginLabelStyle(previousStyle.get().getBeginLabelStyle());
             }
         }
         if (edgeDescription.getBeginLabelStyleDescription() != null && edgeStyle.getBeginLabelStyle() == null
-                && !edgeStyle.getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__BEGIN_LABEL_STYLE.getName())) {
-            BeginLabelStyle beginLabelStyle = SiriusFactory.eINSTANCE.createBeginLabelStyle();
+                && !edgeStyle.getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__BEGIN_LABEL_STYLE.getName())) {
+            BeginLabelStyle beginLabelStyle = ViewpointFactory.eINSTANCE.createBeginLabelStyle();
             edgeStyle.setBeginLabelStyle(beginLabelStyle);
         }
         updateEdgeLabel(edgeDescription.getBeginLabelStyleDescription(), edgeStyle.getBeginLabelStyle());
 
         if (previousStyle.some()) {
-            if (previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__END_LABEL_STYLE.getName())) {
-                edgeStyle.getCustomFeatures().add(SiriusPackage.Literals.EDGE_STYLE__END_LABEL_STYLE.getName());
+            if (previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__END_LABEL_STYLE.getName())) {
+                edgeStyle.getCustomFeatures().add(ViewpointPackage.Literals.EDGE_STYLE__END_LABEL_STYLE.getName());
                 edgeStyle.setBeginLabelStyle(previousStyle.get().getBeginLabelStyle());
             }
         }
         if (edgeDescription.getEndLabelStyleDescription() != null && edgeStyle.getEndLabelStyle() == null
-                && !edgeStyle.getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__END_LABEL_STYLE.getName())) {
-            EndLabelStyle endLabelStyle = SiriusFactory.eINSTANCE.createEndLabelStyle();
+                && !edgeStyle.getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__END_LABEL_STYLE.getName())) {
+            EndLabelStyle endLabelStyle = ViewpointFactory.eINSTANCE.createEndLabelStyle();
             edgeStyle.setEndLabelStyle(endLabelStyle);
         }
         updateEdgeLabel(edgeDescription.getEndLabelStyleDescription(), edgeStyle.getEndLabelStyle());
@@ -382,11 +382,11 @@ public final class StyleHelper {
         }
 
         if (description != null && style != null) {
-            if (style.isShowIcon() != description.isShowIcon() && !style.getCustomFeatures().contains(SiriusPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName())) {
+            if (style.isShowIcon() != description.isShowIcon() && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName())) {
                 style.setShowIcon(description.isShowIcon());
             }
             if (style.getIconPath() != null && !style.getIconPath().equals(description.getIconPath())
-                    && !style.getCustomFeatures().contains(SiriusPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName())) {
+                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName())) {
                 style.setIconPath(description.getIconPath());
             }
 
@@ -398,11 +398,11 @@ public final class StyleHelper {
     private void updateLabelStyleFeatures(final LabelStyleDescription description, final LabelStyle style, Option<? extends LabelStyle> previousStyle) {
         final LabelAlignment alignment = description.getLabelAlignment();
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.LABEL_STYLE__LABEL_ALIGNMENT.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.LABEL_STYLE__LABEL_ALIGNMENT.getName())) {
             style.setLabelAlignment(previousStyle.get().getLabelAlignment());
-            style.getCustomFeatures().add(SiriusPackage.Literals.LABEL_STYLE__LABEL_ALIGNMENT.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.LABEL_STYLE__LABEL_ALIGNMENT.getName());
         } else {
-            if (style.getLabelAlignment() != alignment && !style.getCustomFeatures().contains(SiriusPackage.Literals.LABEL_STYLE__LABEL_ALIGNMENT.getName())) {
+            if (style.getLabelAlignment() != alignment && !style.getCustomFeatures().contains(ViewpointPackage.Literals.LABEL_STYLE__LABEL_ALIGNMENT.getName())) {
                 style.setLabelAlignment(alignment);
             }
         }
@@ -413,39 +413,39 @@ public final class StyleHelper {
         final FontFormat format = description.getLabelFormat();
         final int size = description.getLabelSize();
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName())) {
             style.setShowIcon(previousStyle.get().isShowIcon());
-            style.getCustomFeatures().add(SiriusPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName());
         } else {
-            if (style.isShowIcon() != description.isShowIcon() && !style.getCustomFeatures().contains(SiriusPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName())) {
+            if (style.isShowIcon() != description.isShowIcon() && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName())) {
                 style.setShowIcon(description.isShowIcon());
             }
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName())) {
             style.setIconPath(previousStyle.get().getIconPath());
-            style.getCustomFeatures().add(SiriusPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName());
         } else {
             if (style.getIconPath() != null && !style.getIconPath().equals(description.getIconPath())
-                    && !style.getCustomFeatures().contains(SiriusPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName())) {
+                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName())) {
                 style.setIconPath(description.getIconPath());
             }
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName())) {
             style.setLabelFormat(previousStyle.get().getLabelFormat());
-            style.getCustomFeatures().add(SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName());
         } else {
-            if (style.getLabelFormat() != format && !style.getCustomFeatures().contains(SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName())) {
+            if (style.getLabelFormat() != format && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName())) {
                 style.setLabelFormat(format);
             }
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName())) {
             style.setLabelSize(previousStyle.get().getLabelSize());
-            style.getCustomFeatures().add(SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName());
         } else {
-            if (style.getLabelSize() != size && !style.getCustomFeatures().contains(SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName())) {
+            if (style.getLabelSize() != size && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName())) {
                 style.setLabelSize(size);
             }
         }
@@ -488,25 +488,25 @@ public final class StyleHelper {
      *            ContainerStyle.
      */
     private void updateContainerStyle(final ContainerStyleDescription description, final ContainerStyle style, Option<? extends Style> previousStyle) {
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName())) {
             if (previousStyle.get() instanceof BasicLabelStyle) {
                 style.setShowIcon(((BasicLabelStyle) previousStyle.get()).isShowIcon());
             }
-            style.getCustomFeatures().add(SiriusPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName());
         } else {
-            if (style.isShowIcon() != description.isShowIcon() && !style.getCustomFeatures().contains(SiriusPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName())) {
+            if (style.isShowIcon() != description.isShowIcon() && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName())) {
                 style.setShowIcon(description.isShowIcon());
             }
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName())) {
             if (previousStyle.get() instanceof BasicLabelStyle) {
                 style.setIconPath(((BasicLabelStyle) previousStyle.get()).getIconPath());
             }
-            style.getCustomFeatures().add(SiriusPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName());
         } else {
             if (style.getIconPath() != null && !style.getIconPath().equals(description.getIconPath())
-                    && !style.getCustomFeatures().contains(SiriusPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName())) {
+                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH.getName())) {
                 style.setIconPath(description.getIconPath());
             }
         }
@@ -657,24 +657,24 @@ public final class StyleHelper {
             updateBorderedStyleFeatures(description, style, noPreviousBorderedStyle);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.NODE_STYLE__LABEL_POSITION.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.NODE_STYLE__LABEL_POSITION.getName())) {
             if (previousStyle.get() instanceof NodeStyle) {
                 style.setLabelPosition(((NodeStyle) previousStyle.get()).getLabelPosition());
             }
-            style.getCustomFeatures().add(SiriusPackage.Literals.NODE_STYLE__LABEL_POSITION.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.NODE_STYLE__LABEL_POSITION.getName());
         } else {
-            if (!style.getCustomFeatures().contains(SiriusPackage.Literals.NODE_STYLE__LABEL_POSITION.getName())) {
+            if (!style.getCustomFeatures().contains(ViewpointPackage.Literals.NODE_STYLE__LABEL_POSITION.getName())) {
                 style.setLabelPosition(description.getLabelPosition());
             }
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.NODE_STYLE__HIDE_LABEL_BY_DEFAULT.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.NODE_STYLE__HIDE_LABEL_BY_DEFAULT.getName())) {
             if (previousStyle.get() instanceof NodeStyle) {
                 style.setHideLabelByDefault(((NodeStyle) previousStyle.get()).isHideLabelByDefault());
             }
-            style.getCustomFeatures().add(SiriusPackage.Literals.NODE_STYLE__HIDE_LABEL_BY_DEFAULT.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.NODE_STYLE__HIDE_LABEL_BY_DEFAULT.getName());
         } else {
-            if (!style.getCustomFeatures().contains(SiriusPackage.Literals.NODE_STYLE__HIDE_LABEL_BY_DEFAULT.getName())) {
+            if (!style.getCustomFeatures().contains(ViewpointPackage.Literals.NODE_STYLE__HIDE_LABEL_BY_DEFAULT.getName())) {
                 style.setHideLabelByDefault(description.isHideLabelByDefault());
             }
         }
@@ -686,12 +686,12 @@ public final class StyleHelper {
      * @param previousStyle
      */
     private void updateBorderedStyleFeatures(BorderedStyleDescription description, BorderedStyle style, Option<BorderedStyle> previousStyle) {
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE.getName())) {
             style.setBorderSize(previousStyle.get().getBorderSize());
-            style.getCustomFeatures().add(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE.getName());
         } else {
             if (style.eContainer() instanceof AbstractDNode && style.getBorderSizeComputationExpression() != null
-                    && !style.getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE.getName())) {
+                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE.getName())) {
                 try {
                     style.setBorderSize(interpreter.evaluateInteger(((AbstractDNode) style.eContainer()).getTarget(), description.getBorderSizeComputationExpression()));
                 } catch (final EvaluationException e) {
@@ -702,7 +702,7 @@ public final class StyleHelper {
     }
 
     private void affectStyle(final AbstractDNode container, final NodeStyle newStyle) {
-        final SiriusSwitch<?> sw = new SiriusSwitch<Object>() {
+        final ViewpointSwitch<?> sw = new ViewpointSwitch<Object>() {
 
             @Override
             public Object caseDNode(final DNode object) {
@@ -721,7 +721,7 @@ public final class StyleHelper {
     }
 
     private FlatContainerStyle createFlatContainerStyle(final FlatContainerStyleDescription description) {
-        final FlatContainerStyle style = SiriusFactory.eINSTANCE.createFlatContainerStyle();
+        final FlatContainerStyle style = ViewpointFactory.eINSTANCE.createFlatContainerStyle();
         Option<ContainerStyle> noPreviousStyle = Options.newNone();
         updateFlatContainerStyle(style, description, noPreviousStyle);
         return style;
@@ -732,23 +732,23 @@ public final class StyleHelper {
             style.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE.getName())
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE.getName())
                 && previousStyle.get() instanceof FlatContainerStyle) {
             style.setBackgroundStyle(((FlatContainerStyle) previousStyle.get()).getBackgroundStyle());
-            style.getCustomFeatures().add(SiriusPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE.getName());
         } else {
             if (style.getBackgroundStyle().getValue() != description.getBackgroundStyle().getValue()
-                    && !style.getCustomFeatures().contains(SiriusPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE.getName())) {
+                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE.getName())) {
                 style.setBackgroundStyle(description.getBackgroundStyle());
             }
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
             style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
         } else {
             if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
                 style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
             }
         }
@@ -757,7 +757,7 @@ public final class StyleHelper {
     }
 
     private ShapeContainerStyle createShapeContainerStyle(final ShapeContainerStyleDescription description) {
-        final ShapeContainerStyle style = SiriusFactory.eINSTANCE.createShapeContainerStyle();
+        final ShapeContainerStyle style = ViewpointFactory.eINSTANCE.createShapeContainerStyle();
         Option<ContainerStyle> noPreviousStyle = Options.newNone();
         updateShapeContainerStyle(style, description, noPreviousStyle);
         return style;
@@ -768,24 +768,24 @@ public final class StyleHelper {
             style.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
             style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
         } else {
             if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
                 style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
             }
         }
 
         updateLabelStyleFeatures(description, style, previousStyle);
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.SHAPE_CONTAINER_STYLE__SHAPE.getName())
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.SHAPE_CONTAINER_STYLE__SHAPE.getName())
                 && previousStyle.get() instanceof ShapeContainerStyle) {
             style.setShape(((ShapeContainerStyle) previousStyle.get()).getShape());
-            style.getCustomFeatures().add(SiriusPackage.Literals.SHAPE_CONTAINER_STYLE__SHAPE.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.SHAPE_CONTAINER_STYLE__SHAPE.getName());
         } else {
-            if (style.getShape().getValue() != description.getShape().getValue() && !style.getCustomFeatures().contains(SiriusPackage.Literals.SHAPE_CONTAINER_STYLE__SHAPE.getName())) {
+            if (style.getShape().getValue() != description.getShape().getValue() && !style.getCustomFeatures().contains(ViewpointPackage.Literals.SHAPE_CONTAINER_STYLE__SHAPE.getName())) {
                 style.setShape(description.getShape());
             }
         }
@@ -793,7 +793,7 @@ public final class StyleHelper {
     }
 
     private WorkspaceImage createWorkspaceImage(final WorkspaceImageDescription description) {
-        final WorkspaceImage image = SiriusFactory.eINSTANCE.createWorkspaceImage();
+        final WorkspaceImage image = ViewpointFactory.eINSTANCE.createWorkspaceImage();
         Option<ContainerStyle> noPreviousStyle = Options.newNone();
         updateWorkspaceImage(image, description, noPreviousStyle);
         return image;
@@ -804,13 +804,13 @@ public final class StyleHelper {
             image.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())
                 && previousStyle.get() instanceof BorderedStyle) {
             image.setBorderSizeComputationExpression(((BorderedStyle) previousStyle.get()).getBorderSizeComputationExpression());
-            image.getCustomFeatures().add(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
+            image.getCustomFeatures().add(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
         } else {
             if (!image.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !image.getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+                    && !image.getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
                 image.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
             }
         }
@@ -819,12 +819,12 @@ public final class StyleHelper {
             updateLabelStyleFeatures(description, image, (Option<LabelStyle>) previousStyle);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName()) && previousStyle.get() instanceof WorkspaceImage) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName()) && previousStyle.get() instanceof WorkspaceImage) {
             image.setWorkspacePath(((WorkspaceImage) previousStyle.get()).getWorkspacePath());
-            image.getCustomFeatures().add(SiriusPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName());
+            image.getCustomFeatures().add(ViewpointPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName());
         } else {
             if (image.getWorkspacePath() == null || !image.getWorkspacePath().equals(description.getWorkspacePath())
-                    && !image.getCustomFeatures().contains(SiriusPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName())) {
+                    && !image.getCustomFeatures().contains(ViewpointPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName())) {
                 image.setWorkspacePath(description.getWorkspacePath());
             }
         }
@@ -844,7 +844,7 @@ public final class StyleHelper {
     }
 
     private BundledImage createBundledImage(final BundledImageDescription description) {
-        final BundledImage image = SiriusFactory.eINSTANCE.createBundledImage();
+        final BundledImage image = ViewpointFactory.eINSTANCE.createBundledImage();
         Option<NodeStyle> noPreviousStyle = Options.newNone();
         updateBundledImage(image, description, noPreviousStyle);
         return image;
@@ -855,30 +855,30 @@ public final class StyleHelper {
             image.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
             image.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            image.getCustomFeatures().add(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
+            image.getCustomFeatures().add(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
         } else {
             if (!image.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !image.getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+                    && !image.getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
                 image.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
             }
         }
 
         updateLabelStyleFeatures(description, image, previousStyle);
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BUNDLED_IMAGE__SHAPE.getName()) && previousStyle.get() instanceof BundledImage) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BUNDLED_IMAGE__SHAPE.getName()) && previousStyle.get() instanceof BundledImage) {
             image.setShape(((BundledImage) previousStyle.get()).getShape());
-            image.getCustomFeatures().add(SiriusPackage.Literals.BUNDLED_IMAGE__SHAPE.getName());
+            image.getCustomFeatures().add(ViewpointPackage.Literals.BUNDLED_IMAGE__SHAPE.getName());
         } else {
-            if (image.getShape().getValue() != description.getShape().getValue() && !image.getCustomFeatures().contains(SiriusPackage.Literals.BUNDLED_IMAGE__SHAPE.getName())) {
+            if (image.getShape().getValue() != description.getShape().getValue() && !image.getCustomFeatures().contains(ViewpointPackage.Literals.BUNDLED_IMAGE__SHAPE.getName())) {
                 image.setShape(description.getShape());
             }
         }
     }
 
     private Note createNote(final NoteDescription description) {
-        final Note style = SiriusFactory.eINSTANCE.createNote();
+        final Note style = ViewpointFactory.eINSTANCE.createNote();
         Option<NodeStyle> noPreviousStyle = Options.newNone();
         updateNote(style, description, noPreviousStyle);
         return style;
@@ -889,12 +889,12 @@ public final class StyleHelper {
             style.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
             style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
         } else {
             if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
                 style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
             }
         }
@@ -904,7 +904,7 @@ public final class StyleHelper {
     }
 
     private GaugeCompositeStyle createGaugeCompositeStyle(final GaugeCompositeStyleDescription description) {
-        final GaugeCompositeStyle style = SiriusFactory.eINSTANCE.createGaugeCompositeStyle();
+        final GaugeCompositeStyle style = ViewpointFactory.eINSTANCE.createGaugeCompositeStyle();
         Option<NodeStyle> noPreviousStyle = Options.newNone();
         updateGaugeCompositeStyle(style, description, noPreviousStyle);
         return style;
@@ -915,12 +915,12 @@ public final class StyleHelper {
             style.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
             style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
         } else {
             if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
                 style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
             }
         }
@@ -930,7 +930,7 @@ public final class StyleHelper {
         EList<GaugeSection> newGaugeSections = new BasicEList<GaugeSection>();
 
         for (final GaugeSectionDescription section : description.getSections()) {
-            final GaugeSection styleSection = SiriusFactory.eINSTANCE.createGaugeSection();
+            final GaugeSection styleSection = ViewpointFactory.eINSTANCE.createGaugeSection();
             styleSection.setLabel(section.getLabel());
 
             // The context.
@@ -960,12 +960,12 @@ public final class StyleHelper {
         org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper equalityHelper = new org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper();
         // TODO : manage a finer GaugeSection customization
         // Change sections only if new list is different from original one
-        if (!equalityHelper.equals((List) style.getSections(), (List) newGaugeSections) && !style.getCustomFeatures().contains(SiriusPackage.Literals.GAUGE_COMPOSITE_STYLE__SECTIONS.getName())) {
+        if (!equalityHelper.equals((List) style.getSections(), (List) newGaugeSections) && !style.getCustomFeatures().contains(ViewpointPackage.Literals.GAUGE_COMPOSITE_STYLE__SECTIONS.getName())) {
             style.getSections().clear();
             style.getSections().addAll(newGaugeSections);
         }
 
-        if (style.getAlignment().getValue() != description.getAlignment().getValue() && !style.getCustomFeatures().contains(SiriusPackage.Literals.GAUGE_COMPOSITE_STYLE__ALIGNMENT.getName())) {
+        if (style.getAlignment().getValue() != description.getAlignment().getValue() && !style.getCustomFeatures().contains(ViewpointPackage.Literals.GAUGE_COMPOSITE_STYLE__ALIGNMENT.getName())) {
             style.setAlignment(description.getAlignment());
         }
     }
@@ -981,7 +981,7 @@ public final class StyleHelper {
     }
 
     private Dot createDot(final DotDescription description) {
-        final Dot style = SiriusFactory.eINSTANCE.createDot();
+        final Dot style = ViewpointFactory.eINSTANCE.createDot();
         Option<NodeStyle> noPreviousStyle = Options.newNone();
         updateDot(style, description, noPreviousStyle);
         return style;
@@ -992,31 +992,31 @@ public final class StyleHelper {
             style.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
             style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
         } else {
             if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
                 style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
             }
         }
 
         updateLabelStyleFeatures(description, style, previousStyle);
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION.getName()) && previousStyle.get() instanceof Dot) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION.getName()) && previousStyle.get() instanceof Dot) {
             style.setStrokeSizeComputationExpression(((Dot) previousStyle.get()).getStrokeSizeComputationExpression());
-            style.getCustomFeatures().add(SiriusPackage.Literals.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION.getName());
         } else {
             if (!style.getStrokeSizeComputationExpression().equals(description.getStrokeSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(SiriusPackage.Literals.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION.getName())) {
+                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION.getName())) {
                 style.setStrokeSizeComputationExpression(description.getStrokeSizeComputationExpression());
             }
         }
     }
 
     private Square createSquare(final SquareDescription description) {
-        final Square style = SiriusFactory.eINSTANCE.createSquare();
+        final Square style = ViewpointFactory.eINSTANCE.createSquare();
         Option<NodeStyle> noPreviousStyle = Options.newNone();
         updateSquare(style, description, noPreviousStyle);
         return style;
@@ -1029,20 +1029,20 @@ public final class StyleHelper {
             style.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
             style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
         } else {
             if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
                 style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
             }
         }
         updateLabelStyleFeatures(description, style, previousStyle);
-        if (style.getHeight().intValue() != description.getHeight().intValue() && !style.getCustomFeatures().contains(SiriusPackage.Literals.SQUARE__HEIGHT.getName())) {
+        if (style.getHeight().intValue() != description.getHeight().intValue() && !style.getCustomFeatures().contains(ViewpointPackage.Literals.SQUARE__HEIGHT.getName())) {
             style.setHeight(description.getHeight());
         }
-        if (style.getWidth().intValue() != description.getWidth().intValue() && !style.getCustomFeatures().contains(SiriusPackage.Literals.SQUARE__WIDTH.getName())) {
+        if (style.getWidth().intValue() != description.getWidth().intValue() && !style.getCustomFeatures().contains(ViewpointPackage.Literals.SQUARE__WIDTH.getName())) {
             style.setWidth(description.getWidth());
         }
         if (style.eContainer() instanceof DNode) {
@@ -1057,7 +1057,7 @@ public final class StyleHelper {
             } else {
                 setComputedSize(node, description);
             }
-            if (style.getBorderSizeComputationExpression() != null && !style.getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE.getName())) {
+            if (style.getBorderSizeComputationExpression() != null && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE.getName())) {
                 try {
                     style.setBorderSize(interpreter.evaluateInteger(node.getTarget(), description.getBorderSizeComputationExpression()));
                 } catch (final EvaluationException e) {
@@ -1068,7 +1068,7 @@ public final class StyleHelper {
     }
 
     private CustomStyle createCustomStyle(final CustomStyleDescription description) {
-        final CustomStyle style = SiriusFactory.eINSTANCE.createCustomStyle();
+        final CustomStyle style = ViewpointFactory.eINSTANCE.createCustomStyle();
         Option<NodeStyle> noPreviousStyle = Options.newNone();
         updateCustomStyle(style, description, noPreviousStyle);
         return style;
@@ -1079,30 +1079,30 @@ public final class StyleHelper {
             style.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
             style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
         } else {
             if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
                 style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
             }
         }
 
         updateLabelStyleFeatures(description, style, previousStyle);
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.CUSTOM_STYLE__ID.getName()) && previousStyle.get() instanceof CustomStyle) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.CUSTOM_STYLE__ID.getName()) && previousStyle.get() instanceof CustomStyle) {
             style.setId(((CustomStyle) previousStyle.get()).getId());
-            style.getCustomFeatures().add(SiriusPackage.Literals.CUSTOM_STYLE__ID.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.CUSTOM_STYLE__ID.getName());
         } else {
-            if (style.getId() == null || !style.getId().equals(description.getId()) && !style.getCustomFeatures().contains(SiriusPackage.Literals.CUSTOM_STYLE__ID.getName())) {
+            if (style.getId() == null || !style.getId().equals(description.getId()) && !style.getCustomFeatures().contains(ViewpointPackage.Literals.CUSTOM_STYLE__ID.getName())) {
                 style.setId(description.getId());
             }
         }
     }
 
     private Lozenge createLozenge(final LozengeNodeDescription description) {
-        final Lozenge style = SiriusFactory.eINSTANCE.createLozenge();
+        final Lozenge style = ViewpointFactory.eINSTANCE.createLozenge();
         Option<NodeStyle> noPreviousStyle = Options.newNone();
         updateLozenge(style, description, noPreviousStyle);
         return style;
@@ -1113,12 +1113,12 @@ public final class StyleHelper {
             style.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
             style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
         } else {
             if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
                 style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
             }
         }
@@ -1144,15 +1144,15 @@ public final class StyleHelper {
                     if (node.getWidth() == null || node.getWidth().intValue() != width.intValue()) {
                         node.setWidth(width);
                     }
-                    if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.LOZENGE__WIDTH.getName()) && previousStyle.get() instanceof Lozenge) {
+                    if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.LOZENGE__WIDTH.getName()) && previousStyle.get() instanceof Lozenge) {
                         style.setWidth(((Lozenge) previousStyle.get()).getWidth());
-                        style.getCustomFeatures().add(SiriusPackage.Literals.LOZENGE__WIDTH.getName());
-                    } else if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.ELLIPSE__HORIZONTAL_DIAMETER.getName())
+                        style.getCustomFeatures().add(ViewpointPackage.Literals.LOZENGE__WIDTH.getName());
+                    } else if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.ELLIPSE__HORIZONTAL_DIAMETER.getName())
                             && previousStyle.get() instanceof Ellipse) {
                         style.setWidth(((Ellipse) previousStyle.get()).getHorizontalDiameter());
-                        style.getCustomFeatures().add(SiriusPackage.Literals.LOZENGE__WIDTH.getName());
+                        style.getCustomFeatures().add(ViewpointPackage.Literals.LOZENGE__WIDTH.getName());
                     } else {
-                        if (style.getWidth().intValue() != width.intValue() && !style.getCustomFeatures().contains(SiriusPackage.Literals.LOZENGE__WIDTH.getName())) {
+                        if (style.getWidth().intValue() != width.intValue() && !style.getCustomFeatures().contains(ViewpointPackage.Literals.LOZENGE__WIDTH.getName())) {
                             style.setWidth(width);
                         }
                     }
@@ -1160,15 +1160,15 @@ public final class StyleHelper {
                         node.setHeight(height);
                     }
 
-                    if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.LOZENGE__HEIGHT.getName()) && previousStyle.get() instanceof Lozenge) {
+                    if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.LOZENGE__HEIGHT.getName()) && previousStyle.get() instanceof Lozenge) {
                         style.setHeight(((Lozenge) previousStyle.get()).getHeight());
-                        style.getCustomFeatures().add(SiriusPackage.Literals.LOZENGE__HEIGHT.getName());
-                    } else if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.ELLIPSE__VERTICAL_DIAMETER.getName())
+                        style.getCustomFeatures().add(ViewpointPackage.Literals.LOZENGE__HEIGHT.getName());
+                    } else if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.ELLIPSE__VERTICAL_DIAMETER.getName())
                             && previousStyle.get() instanceof Ellipse) {
                         style.setHeight(((Ellipse) previousStyle.get()).getVerticalDiameter());
-                        style.getCustomFeatures().add(SiriusPackage.Literals.LOZENGE__HEIGHT.getName());
+                        style.getCustomFeatures().add(ViewpointPackage.Literals.LOZENGE__HEIGHT.getName());
                     } else {
-                        if (style.getHeight().intValue() != height.intValue() && !style.getCustomFeatures().contains(SiriusPackage.Literals.LOZENGE__HEIGHT.getName())) {
+                        if (style.getHeight().intValue() != height.intValue() && !style.getCustomFeatures().contains(ViewpointPackage.Literals.LOZENGE__HEIGHT.getName())) {
                             style.setHeight(height);
                         }
                     }
@@ -1182,7 +1182,7 @@ public final class StyleHelper {
     }
 
     private NodeStyle createEllipse(final EllipseNodeDescription description) {
-        final Ellipse style = SiriusFactory.eINSTANCE.createEllipse();
+        final Ellipse style = ViewpointFactory.eINSTANCE.createEllipse();
         Option<NodeStyle> noPreviousStyle = Options.newNone();
         updateEllipse(style, description, noPreviousStyle);
         return style;
@@ -1193,12 +1193,12 @@ public final class StyleHelper {
             style.setDescription(description);
         }
 
-        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
             style.setBorderSizeComputationExpression(previousStyle.get().getBorderSizeComputationExpression());
-            style.getCustomFeatures().add(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
+            style.getCustomFeatures().add(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName());
         } else {
             if (!style.getBorderSizeComputationExpression().equals(description.getBorderSizeComputationExpression())
-                    && !style.getCustomFeatures().contains(SiriusPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
+                    && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION.getName())) {
                 style.setBorderSizeComputationExpression(description.getBorderSizeComputationExpression());
             }
         }
@@ -1224,30 +1224,30 @@ public final class StyleHelper {
                     if (node.getWidth() == null || node.getWidth().intValue() != width.intValue()) {
                         node.setWidth(width);
                     }
-                    if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.LOZENGE__WIDTH.getName()) && previousStyle.get() instanceof Lozenge) {
+                    if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.LOZENGE__WIDTH.getName()) && previousStyle.get() instanceof Lozenge) {
                         style.setHorizontalDiameter(((Lozenge) previousStyle.get()).getWidth());
-                        style.getCustomFeatures().add(SiriusPackage.Literals.ELLIPSE__HORIZONTAL_DIAMETER.getName());
-                    } else if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.ELLIPSE__HORIZONTAL_DIAMETER.getName())
+                        style.getCustomFeatures().add(ViewpointPackage.Literals.ELLIPSE__HORIZONTAL_DIAMETER.getName());
+                    } else if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.ELLIPSE__HORIZONTAL_DIAMETER.getName())
                             && previousStyle.get() instanceof Ellipse) {
                         style.setHorizontalDiameter(((Ellipse) previousStyle.get()).getHorizontalDiameter());
-                        style.getCustomFeatures().add(SiriusPackage.Literals.ELLIPSE__HORIZONTAL_DIAMETER.getName());
+                        style.getCustomFeatures().add(ViewpointPackage.Literals.ELLIPSE__HORIZONTAL_DIAMETER.getName());
                     } else {
-                        if (style.getHorizontalDiameter().intValue() != width.intValue() && !style.getCustomFeatures().contains(SiriusPackage.Literals.ELLIPSE__HORIZONTAL_DIAMETER.getName())) {
+                        if (style.getHorizontalDiameter().intValue() != width.intValue() && !style.getCustomFeatures().contains(ViewpointPackage.Literals.ELLIPSE__HORIZONTAL_DIAMETER.getName())) {
                             style.setHorizontalDiameter(width);
                         }
                     }
                     if (node.getHeight() == null || node.getHeight().intValue() != height.intValue()) {
                         node.setHeight(height);
                     }
-                    if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.LOZENGE__HEIGHT.getName()) && previousStyle.get() instanceof Lozenge) {
+                    if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.LOZENGE__HEIGHT.getName()) && previousStyle.get() instanceof Lozenge) {
                         style.setVerticalDiameter(((Lozenge) previousStyle.get()).getHeight());
-                        style.getCustomFeatures().add(SiriusPackage.Literals.ELLIPSE__VERTICAL_DIAMETER.getName());
-                    } else if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(SiriusPackage.Literals.ELLIPSE__VERTICAL_DIAMETER.getName())
+                        style.getCustomFeatures().add(ViewpointPackage.Literals.ELLIPSE__VERTICAL_DIAMETER.getName());
+                    } else if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.ELLIPSE__VERTICAL_DIAMETER.getName())
                             && previousStyle.get() instanceof Ellipse) {
                         style.setVerticalDiameter(((Ellipse) previousStyle.get()).getVerticalDiameter());
-                        style.getCustomFeatures().add(SiriusPackage.Literals.ELLIPSE__VERTICAL_DIAMETER.getName());
+                        style.getCustomFeatures().add(ViewpointPackage.Literals.ELLIPSE__VERTICAL_DIAMETER.getName());
                     } else {
-                        if (style.getVerticalDiameter().intValue() != height.intValue() && !style.getCustomFeatures().contains(SiriusPackage.Literals.ELLIPSE__VERTICAL_DIAMETER.getName())) {
+                        if (style.getVerticalDiameter().intValue() != height.intValue() && !style.getCustomFeatures().contains(ViewpointPackage.Literals.ELLIPSE__VERTICAL_DIAMETER.getName())) {
                             style.setVerticalDiameter(height);
                         }
                     }
@@ -1402,7 +1402,7 @@ public final class StyleHelper {
      * 
      * @author ymortier
      */
-    private final class SetStyleSwitch extends SiriusSwitch<Object> {
+    private final class SetStyleSwitch extends ViewpointSwitch<Object> {
 
         /**
          * The style to affect.
@@ -1428,7 +1428,7 @@ public final class StyleHelper {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseDNode(org.eclipse.sirius.DNode)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDNode(org.eclipse.sirius.viewpoint.DNode)
          */
         @Override
         public Object caseDNode(final DNode object) {
@@ -1439,7 +1439,7 @@ public final class StyleHelper {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseDNodeListElement(org.eclipse.sirius.DNodeListElement)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDNodeListElement(org.eclipse.sirius.viewpoint.DNodeListElement)
          */
         @Override
         public Object caseDNodeListElement(final DNodeListElement object) {
@@ -1450,7 +1450,7 @@ public final class StyleHelper {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseDNodeContainer(org.eclipse.sirius.DNodeContainer)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDNodeContainer(org.eclipse.sirius.viewpoint.DNodeContainer)
          */
         @Override
         public Object caseDNodeContainer(final DNodeContainer object) {
@@ -1461,7 +1461,7 @@ public final class StyleHelper {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseDNodeList(org.eclipse.sirius.DNodeList)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDNodeList(org.eclipse.sirius.viewpoint.DNodeList)
          */
         @Override
         public Object caseDNodeList(final DNodeList object) {
@@ -1476,7 +1476,7 @@ public final class StyleHelper {
      * 
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
-    private final class RefreshStyleSwitch extends SiriusSwitch<Object> {
+    private final class RefreshStyleSwitch extends ViewpointSwitch<Object> {
         Option<? extends Style> previousStyle = Options.newNone();
 
         /**
@@ -1509,7 +1509,7 @@ public final class StyleHelper {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseDNode(org.eclipse.sirius.DNode)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDNode(org.eclipse.sirius.viewpoint.DNode)
          */
         @Override
         public Object caseDNode(final DNode object) {
@@ -1520,7 +1520,7 @@ public final class StyleHelper {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseDNodeListElement(org.eclipse.sirius.DNodeListElement)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDNodeListElement(org.eclipse.sirius.viewpoint.DNodeListElement)
          */
         @Override
         public Object caseDNodeListElement(final DNodeListElement object) {
@@ -1531,7 +1531,7 @@ public final class StyleHelper {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseDNodeContainer(org.eclipse.sirius.DNodeContainer)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDNodeContainer(org.eclipse.sirius.viewpoint.DNodeContainer)
          */
         @Override
         public Object caseDNodeContainer(final DNodeContainer object) {
@@ -1542,7 +1542,7 @@ public final class StyleHelper {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseDNodeList(org.eclipse.sirius.DNodeList)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDNodeList(org.eclipse.sirius.viewpoint.DNodeList)
          */
         @Override
         public Object caseDNodeList(final DNodeList object) {

@@ -11,9 +11,8 @@
 package org.eclipse.sirius.tree.description;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.sirius.description.tool.EditMaskVariables;
-import org.eclipse.sirius.description.tool.ElementDropVariable;
+import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
+import org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -22,8 +21,7 @@ import org.eclipse.sirius.description.tool.ElementDropVariable;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreeItemEditionTool#getMask
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemEditionTool#getMask
  * <em>Mask</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.tree.description.TreeItemEditionTool#getMapping
@@ -31,8 +29,7 @@ import org.eclipse.sirius.description.tool.ElementDropVariable;
  * <li>
  * {@link org.eclipse.sirius.tree.description.TreeItemEditionTool#getElement
  * <em>Element</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreeItemEditionTool#getRoot
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemEditionTool#getRoot
  * <em>Root</em>}</li>
  * </ul>
  * </p>

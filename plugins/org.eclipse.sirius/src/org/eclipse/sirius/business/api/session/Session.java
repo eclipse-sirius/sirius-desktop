@@ -20,11 +20,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.DView;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
@@ -332,7 +331,7 @@ public interface Session {
      *             {@link Session#getSelectedSiriuss(true)} to keep the same
      *             viewpoint selection as before this deprecation
      */
-    Collection<Sirius> getSelectedSiriuss();
+    Collection<Viewpoint> getSelectedSiriuss();
 
     /**
      * Get current viewpoint selection.
@@ -345,7 +344,7 @@ public interface Session {
      *            on the main DAnalysis
      * @return current viewpoint selection
      */
-    Collection<Sirius> getSelectedSiriuss(boolean includeReferencedAnalysis);
+    Collection<Viewpoint> getSelectedSiriuss(boolean includeReferencedAnalysis);
 
     /**
      * Creates a view with the given viewpoint.
@@ -356,9 +355,9 @@ public interface Session {
      *            collection of semantic model root element
      * @since 2.6
      * @deprecated use
-     *             {@link Session#createView(Sirius, Collection, IProgressMonitor)}
+     *             {@link Session#createView(Viewpoint, Collection, IProgressMonitor)}
      */
-    void createView(Sirius viewpoint, Collection<EObject> semantics);
+    void createView(Viewpoint viewpoint, Collection<EObject> semantics);
 
     /**
      * Creates a view with the given viewpoint.
@@ -372,7 +371,7 @@ public interface Session {
      *            creation
      * @since 2.6
      */
-    void createView(Sirius viewpoint, Collection<EObject> semantics, IProgressMonitor monitor);
+    void createView(Viewpoint viewpoint, Collection<EObject> semantics, IProgressMonitor monitor);
 
     /**
      * Creates a view with the given viewpoint specifying if we want create new
@@ -385,11 +384,11 @@ public interface Session {
      * @param createNewRepresentations
      *            true to create new DRepresentation for
      *            RepresentationDescription having their initialization
-     *            attribute at true for selected {@link Sirius}s.
+     *            attribute at true for selected {@link Viewpoint}s.
      * @deprecated use
-     *             {@link Session#createView(Sirius, Collection, boolean, IProgressMonitor)}
+     *             {@link Session#createView(Viewpoint, Collection, boolean, IProgressMonitor)}
      */
-    void createView(Sirius viewpoint, Collection<EObject> semantics, boolean createNewRepresentations);
+    void createView(Viewpoint viewpoint, Collection<EObject> semantics, boolean createNewRepresentations);
 
     /**
      * Creates a view with the given viewpoint specifying if we want create new
@@ -402,12 +401,12 @@ public interface Session {
      * @param createNewRepresentations
      *            true to create new DRepresentation for
      *            RepresentationDescription having their initialization
-     *            attribute at true for selected {@link Sirius}s.
+     *            attribute at true for selected {@link Viewpoint}s.
      * @param monitor
      *            a {@link IProgressMonitor} to show progression of view
      *            creation
      */
-    void createView(Sirius viewpoint, Collection<EObject> semantics, boolean createNewRepresentations, IProgressMonitor monitor);
+    void createView(Viewpoint viewpoint, Collection<EObject> semantics, boolean createNewRepresentations, IProgressMonitor monitor);
 
     /**
      * Adds a selected view to this session.

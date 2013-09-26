@@ -17,8 +17,8 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import com.google.common.base.Predicate;
 
 import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
-import org.eclipse.sirius.GraphicalFilter;
-import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.viewpoint.GraphicalFilter;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * A NotificationFilter for {@link FilterListener}.
@@ -40,7 +40,7 @@ public class FilterListenerScope implements Predicate<Notification> {
 
             // Do not react to internal storage on filter application nor to
             // their modifications.
-            applies = applies && !(notifier instanceof GraphicalFilter) && !(SiriusPackage.eINSTANCE.getDDiagramElement_GraphicalFilters().equals(input.getFeature()));
+            applies = applies && !(notifier instanceof GraphicalFilter) && !(ViewpointPackage.eINSTANCE.getDDiagramElement_GraphicalFilters().equals(input.getFeature()));
 
             // Do not react to transient notifications.
             applies = applies && !(new NotificationQuery(input).isTransientNotification());

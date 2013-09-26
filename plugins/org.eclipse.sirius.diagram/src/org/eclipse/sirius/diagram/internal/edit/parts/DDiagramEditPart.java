@@ -15,8 +15,6 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDDiagramEditPart;
 import org.eclipse.sirius.diagram.graphical.edit.policies.AirXYLayoutEditPolicy;
 import org.eclipse.sirius.diagram.graphical.edit.policies.ContainerCreationEditPolicy;
@@ -32,6 +30,7 @@ import org.eclipse.sirius.diagram.internal.edit.policies.canonicals.DumnySiriusC
 import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
+import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * @was-generated

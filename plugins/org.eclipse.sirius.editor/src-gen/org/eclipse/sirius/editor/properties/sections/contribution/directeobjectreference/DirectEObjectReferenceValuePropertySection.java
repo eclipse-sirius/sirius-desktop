@@ -29,6 +29,19 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.componentization.SiriusResourceHandler;
+import org.eclipse.sirius.business.internal.movida.Movida;
+import org.eclipse.sirius.common.tools.api.util.AllContents;
+import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
+import org.eclipse.sirius.common.ui.tools.api.selection.EObjectSelectionWizard;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
+import org.eclipse.sirius.ui.tools.api.properties.AbstractMappingImportSelectionWizardBuilder;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.contribution.ContributionPackage;
+import org.eclipse.sirius.viewpoint.description.contribution.DirectEObjectReference;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -41,20 +54,6 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.util.AllContents;
-import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
-import org.eclipse.sirius.common.ui.tools.api.selection.EObjectSelectionWizard;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
-import org.eclipse.sirius.business.api.componentization.SiriusResourceHandler;
-import org.eclipse.sirius.business.internal.movida.Movida;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.description.contribution.ContributionPackage;
-import org.eclipse.sirius.description.contribution.DirectEObjectReference;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
-import org.eclipse.sirius.ui.tools.api.properties.AbstractMappingImportSelectionWizardBuilder;
 
 // End of user code imports
 
@@ -143,7 +142,7 @@ public class DirectEObjectReferenceValuePropertySection extends AbstractComboPro
             ResourceSet rs = eObject.eResource().getResourceSet();
             for (Resource res : rs.getResources()) {
                 if (vrh.handles(res.getURI())) {
-                    for (Sirius vp : vrh.collectSiriusDefinitions(res)) {
+                    for (Viewpoint vp : vrh.collectSiriusDefinitions(res)) {
                         Iterables.addAll(elementsInScope, AllContents.of(vp, true));
                     }
                 }

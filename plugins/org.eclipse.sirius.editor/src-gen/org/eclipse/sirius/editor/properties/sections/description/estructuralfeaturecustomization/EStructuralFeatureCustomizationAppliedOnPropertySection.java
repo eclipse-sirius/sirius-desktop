@@ -1,10 +1,9 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -21,24 +20,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractEditorDialogPropertySection;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
+import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
+import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.GaugeSectionDescription;
+import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.EAttributeCustomization;
-import org.eclipse.sirius.description.EReferenceCustomization;
-import org.eclipse.sirius.description.style.BasicLabelStyleDescription;
-import org.eclipse.sirius.description.style.GaugeSectionDescription;
-import org.eclipse.sirius.description.style.LabelBorderStyleDescription;
-import org.eclipse.sirius.description.style.StyleDescription;
-import org.eclipse.sirius.description.style.StylePackage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractEditorDialogPropertySection;
 
 // End of user code imports
 

@@ -29,19 +29,19 @@ import org.eclipse.swt.widgets.Display;
 
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DNodeList;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.diagram.tools.internal.editor.DiagramOutlinePageListener;
-import org.eclipse.sirius.provider.SiriusItemProviderAdapterFactory;
 import org.eclipse.sirius.ui.business.api.provider.DEdgeLabelItemProvider;
 import org.eclipse.sirius.ui.business.api.provider.DNodeLabelItemProvider;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 
 /**
  * This class is an EMF Transaction resource listener which listen post commit
@@ -182,10 +182,10 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
         final int featureID = n.getFeatureID(DDiagramElement.class);
 
         switch (featureID) {
-        case SiriusPackage.DDIAGRAM_ELEMENT__VISIBLE:
+        case ViewpointPackage.DDIAGRAM_ELEMENT__VISIBLE:
             addToRefresh(SiriusUtil.findDiagram(diagramElement));
             break;
-        case SiriusPackage.DDIAGRAM_ELEMENT__NAME:
+        case ViewpointPackage.DDIAGRAM_ELEMENT__NAME:
             addToUpdate(diagramElement);
             break;
         default:
@@ -197,8 +197,8 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
         final int featureID = n.getFeatureID(AbstractDNode.class);
 
         switch (featureID) {
-        case SiriusPackage.ABSTRACT_DNODE__OWNED_BORDERED_NODES:
-        case SiriusPackage.ABSTRACT_DNODE__GRAPHICAL_FILTERS:
+        case ViewpointPackage.ABSTRACT_DNODE__OWNED_BORDERED_NODES:
+        case ViewpointPackage.ABSTRACT_DNODE__GRAPHICAL_FILTERS:
             addToRefresh(SiriusUtil.findDiagram(node));
             break;
         default:
@@ -232,7 +232,7 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
      */
     private AdapterFactory getAdapterFactoryForNodeLabelItems() {
         List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
-        factories.add(new SiriusItemProviderAdapterFactory());
+        factories.add(new ViewpointItemProviderAdapterFactory());
         factories.add(new ResourceItemProviderAdapterFactory());
         factories.add(new EcoreItemProviderAdapterFactory());
         factories.add(new ReflectiveItemProviderAdapterFactory());
@@ -243,7 +243,7 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
         final int featureID = n.getFeatureID(DNodeContainer.class);
 
         switch (featureID) {
-        case SiriusPackage.DNODE_CONTAINER__OWNED_DIAGRAM_ELEMENTS:
+        case ViewpointPackage.DNODE_CONTAINER__OWNED_DIAGRAM_ELEMENTS:
             addToRefresh(SiriusUtil.findDiagram(nodeContainer));
             break;
         default:
@@ -255,7 +255,7 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
         final int featureID = n.getFeatureID(DNodeList.class);
 
         switch (featureID) {
-        case SiriusPackage.DNODE_LIST__OWNED_ELEMENTS:
+        case ViewpointPackage.DNODE_LIST__OWNED_ELEMENTS:
             addToRefresh(SiriusUtil.findDiagram(nodeList));
             break;
         default:
@@ -265,7 +265,7 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
 
     private void caseDDiagram(final Notification n, final DDiagram diagram) {
         final int featureID = n.getFeatureID(DDiagram.class);
-        if (featureID == SiriusPackage.DDIAGRAM__OWNED_DIAGRAM_ELEMENTS) {
+        if (featureID == ViewpointPackage.DDIAGRAM__OWNED_DIAGRAM_ELEMENTS) {
             switch (n.getEventType()) {
             case Notification.ADD:
             case Notification.REMOVE:
@@ -275,7 +275,7 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
             default:
                 break;
             }
-        } else if (featureID == SiriusPackage.DDIAGRAM__ACTIVATED_FILTERS) {
+        } else if (featureID == ViewpointPackage.DDIAGRAM__ACTIVATED_FILTERS) {
             switch (n.getEventType()) {
             case Notification.ADD:
             case Notification.REMOVE:

@@ -12,9 +12,8 @@ package org.eclipse.sirius.tree;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.tree.description.TreeDescription;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -25,8 +24,8 @@ import org.eclipse.sirius.tree.description.TreeDescription;
  * <ul>
  * <li>{@link org.eclipse.sirius.tree.DTree#getSemanticElements <em>Semantic
  * Elements</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.DTree#getDescription <em>Description
- * </em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.DTree#getDescription <em>Description</em>}
+ * </li>
  * </ul>
  * </p>
  * 
@@ -72,9 +71,8 @@ public interface DTree extends DRepresentation, DTreeItemContainer, DTreeElement
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.tree.DTree#getDescription
-     * <em>Description</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * {@link org.eclipse.sirius.tree.DTree#getDescription <em>Description</em>}
+     * ' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Description</em>' reference.

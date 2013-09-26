@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.template;
 
-import org.eclipse.sirius.description.ColorDescription;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

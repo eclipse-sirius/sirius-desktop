@@ -23,21 +23,21 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.CollapseFilter;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DNodeList;
-import org.eclipse.sirius.IndirectlyCollapseFilter;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.business.api.diagramtype.ICollapseUpdater;
 import org.eclipse.sirius.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.CollapseFilter;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * A default {@link ICollapseUpdater} to modify the graphical filters of
@@ -103,7 +103,7 @@ public class CollapseUpdater implements ICollapseUpdater {
 
     /**
      * Adds or removes the graphical filter ({@link CollapseFilter} or
-     * {@link org.eclipse.sirius.IndirectlyCollapseFilter} of
+     * {@link org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter} of
      * <code>element</code> and update (if needed) the bounds of the GMF Node
      * according to the collapse changes.
      * 
@@ -118,7 +118,7 @@ public class CollapseUpdater implements ICollapseUpdater {
      *            filters of kind <code>kindOfFilter</code> must be removed.
      * @param kindOfFilter
      *            the kind of filter to add or remove ( {@link CollapseFilter}
-     *            or {@link org.eclipse.sirius.IndirectlyCollapseFilter}
+     *            or {@link org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter}
      */
     protected void synchronizeCollapseFiltersAndGMFBounds(DDiagramElement element, Option<Node> optionalNode, boolean add, Class<? extends CollapseFilter> kindOfFilter) {
         if (add) {
@@ -140,7 +140,7 @@ public class CollapseUpdater implements ICollapseUpdater {
      *            repair process).
      * @param kindOfFilter
      *            the kind of filter to add or remove ( {@link CollapseFilter}
-     *            or {@link org.eclipse.sirius.IndirectlyCollapseFilter}
+     *            or {@link org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter}
      */
     protected void addNewGraphicalFilter(DDiagramElement element, Option<Node> optionalNode, Class<? extends CollapseFilter> kindOfFilter) {
         DDiagramElementQuery query = new DDiagramElementQuery(element);
@@ -150,13 +150,13 @@ public class CollapseUpdater implements ICollapseUpdater {
 
         if (kindOfFilter.equals(CollapseFilter.class)) {
             if (!query.isCollapsed()) {
-                CollapseFilter collapseApplication = SiriusFactory.eINSTANCE.createCollapseFilter();
+                CollapseFilter collapseApplication = ViewpointFactory.eINSTANCE.createCollapseFilter();
                 element.getGraphicalFilters().add(collapseApplication);
             }
             addIndirectlyCollapseFilterToChildren(element);
         } else if (kindOfFilter.equals(IndirectlyCollapseFilter.class)) {
             if (!query.isOnlyIndirectlyCollapsed()) {
-                IndirectlyCollapseFilter indirectlyCollapseFilter = SiriusFactory.eINSTANCE.createIndirectlyCollapseFilter();
+                IndirectlyCollapseFilter indirectlyCollapseFilter = ViewpointFactory.eINSTANCE.createIndirectlyCollapseFilter();
                 element.getGraphicalFilters().add(indirectlyCollapseFilter);
             }
         }
@@ -205,7 +205,7 @@ public class CollapseUpdater implements ICollapseUpdater {
      *            repair process).
      * @param kindOfFilter
      *            the kind of filter to add or remove ( {@link CollapseFilter}
-     *            or {@link org.eclipse.sirius.IndirectlyCollapseFilter}
+     *            or {@link org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter}
      */
     protected void removeGraphicalFilter(DDiagramElement element, Option<Node> optionalNode, Class<? extends CollapseFilter> kindOfFilter) {
         // Compute the expanded Bounds that will be used at the end if the node
@@ -300,7 +300,7 @@ public class CollapseUpdater implements ICollapseUpdater {
             int referenceWidth = bounds.getWidth();
             int referenceHeight = bounds.getHeight();
             for (CollapseFilter filter : Iterables.filter(diagramElement.getGraphicalFilters(), CollapseFilter.class)) {
-                if (filter.eIsSet(SiriusPackage.eINSTANCE.getCollapseFilter_Width()) && filter.eIsSet(SiriusPackage.eINSTANCE.getCollapseFilter_Height())) {
+                if (filter.eIsSet(ViewpointPackage.eINSTANCE.getCollapseFilter_Width()) && filter.eIsSet(ViewpointPackage.eINSTANCE.getCollapseFilter_Height())) {
                     referenceWidth = filter.getWidth();
                     referenceHeight = filter.getHeight();
                 } else {

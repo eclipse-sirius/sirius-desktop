@@ -41,9 +41,6 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.ITreeViewerListener;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.sirius.DAnalysisSessionEObject;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.query.URIQuery;
@@ -53,7 +50,6 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener2;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
@@ -63,6 +59,10 @@ import org.eclipse.sirius.ui.tools.internal.views.common.item.AnalysisResourceIt
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ControlledRoot;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.InternalCommonItem;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ProjectDependenciesItemImpl;
+import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IMemento;
@@ -840,11 +840,11 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
             /* do nothing as this method is deprecated */
         }
 
-        public void viewpointSelected(Sirius selectedSirius) {
+        public void viewpointSelected(Viewpoint selectedSirius) {
             /* does nothing. */
         }
 
-        public void viewpointDeselected(Sirius deselectedSirius) {
+        public void viewpointDeselected(Viewpoint deselectedSirius) {
             // does nothing.
         }
 
@@ -979,7 +979,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
             Object notifier = notification.getNotifier();
             boolean result = false;
 
-            if (notifier instanceof DRepresentation && SiriusPackage.eINSTANCE.getDRepresentation_Name().equals(notification.getFeature())) {
+            if (notifier instanceof DRepresentation && ViewpointPackage.eINSTANCE.getDRepresentation_Name().equals(notification.getFeature())) {
                 result = true;
             } else if (notifier instanceof EObject && ((EObject) notifier).eResource() != null && session != null && session.isOpen()) {
                 result = isSemanticChange(((EObject) notifier).eResource());

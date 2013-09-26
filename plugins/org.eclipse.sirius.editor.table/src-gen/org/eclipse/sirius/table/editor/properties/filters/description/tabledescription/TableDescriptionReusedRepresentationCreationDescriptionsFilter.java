@@ -13,8 +13,7 @@ package org.eclipse.sirius.table.editor.properties.filters.description.tabledesc
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.sirius.editor.properties.filters.common.SiriusPropertyFilter;
+import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 
 // End of user code specific imports
@@ -22,7 +21,7 @@ import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 /**
  * A filter for the reusedRepresentationCreationDescriptions property section.
  */
-public class TableDescriptionReusedRepresentationCreationDescriptionsFilter extends SiriusPropertyFilter {
+public class TableDescriptionReusedRepresentationCreationDescriptionsFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}

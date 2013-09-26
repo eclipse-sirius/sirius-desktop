@@ -19,8 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreeItemUpdater#getDirectEdit
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemUpdater#getDirectEdit
  * <em>Direct Edit</em>}</li>
  * </ul>
  * </p>
@@ -64,8 +63,8 @@ public interface TreeItemUpdater extends EObject {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @model kind="operation"
-     *        dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model kind="operation" dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true"
      * @generated
      */

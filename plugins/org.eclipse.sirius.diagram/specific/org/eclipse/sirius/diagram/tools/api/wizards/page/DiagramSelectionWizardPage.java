@@ -41,14 +41,13 @@ import org.eclipse.ui.IMemento;
 import org.eclipse.ui.dialogs.ContainerCheckedTreeViewer;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonContentProvider;
-
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationContainer;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.DView;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 
 /**
@@ -119,9 +118,9 @@ public class DiagramSelectionWizardPage extends WizardPage {
 
         final StringBuilder title = new StringBuilder();
         title.append(PAGE_TITLE);
-        if (root.getSirius() != null && !StringUtil.isEmpty(new IdentifiedElementQuery(root.getSirius()).getLabel())) {
+        if (root.getViewpoint() != null && !StringUtil.isEmpty(new IdentifiedElementQuery(root.getViewpoint()).getLabel())) {
             title.append(" for ");
-            title.append(new IdentifiedElementQuery(root.getSirius()).getLabel());
+            title.append(new IdentifiedElementQuery(root.getViewpoint()).getLabel());
         }
         this.setTitle(title.toString());
     }

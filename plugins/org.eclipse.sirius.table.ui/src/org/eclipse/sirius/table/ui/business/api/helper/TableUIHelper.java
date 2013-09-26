@@ -19,12 +19,8 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.description.SystemColors;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.business.api.query.DCellQuery;
 import org.eclipse.sirius.table.business.api.query.DTableQuery;
@@ -34,6 +30,9 @@ import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.description.SystemColors;
 
 /**
  * Utility methods to handle Table models.
@@ -301,7 +300,7 @@ public final class TableUIHelper {
                     result = text;
                 } else if (!isCellExist(treeItem, index - 1)) {
                     final Color foregroundColor = treeItem.getForeground(index);
-                    final RGBValues newRGB = SiriusFactory.eINSTANCE.createRGBValues();
+                    final RGBValues newRGB = ViewpointFactory.eINSTANCE.createRGBValues();
                     newRGB.setRed(foregroundColor.getRed());
                     newRGB.setGreen(foregroundColor.getGreen());
                     newRGB.setBlue(foregroundColor.getBlue());
@@ -423,7 +422,7 @@ public final class TableUIHelper {
                 String result = treeItem.getText(index);
                 if (index != 0) {
                     final Color backgroundColor = treeItem.getBackground(index);
-                    final RGBValues newRGB = SiriusFactory.eINSTANCE.createRGBValues();
+                    final RGBValues newRGB = ViewpointFactory.eINSTANCE.createRGBValues();
                     newRGB.setRed(backgroundColor.getRed());
                     newRGB.setGreen(backgroundColor.getGreen());
                     newRGB.setBlue(backgroundColor.getBlue());

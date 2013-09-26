@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.description;
 
-import org.eclipse.sirius.description.tool.AbstractVariable;
-import org.eclipse.sirius.description.tool.VariableContainer;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -20,8 +20,7 @@ import org.eclipse.sirius.description.tool.VariableContainer;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreeVariable#getDocumentation
+ * <li>{@link org.eclipse.sirius.tree.description.TreeVariable#getDocumentation
  * <em>Documentation</em>}</li>
  * </ul>
  * </p>

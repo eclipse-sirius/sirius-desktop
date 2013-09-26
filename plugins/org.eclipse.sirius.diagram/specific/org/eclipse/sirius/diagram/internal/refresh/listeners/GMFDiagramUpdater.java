@@ -11,10 +11,9 @@
 package org.eclipse.sirius.diagram.internal.refresh.listeners;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
+import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * Register all gmf diagram updaters.

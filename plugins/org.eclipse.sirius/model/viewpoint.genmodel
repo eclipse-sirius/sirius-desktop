@@ -2,14 +2,16 @@
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation&#xA;"
     modelDirectory="/org.eclipse.sirius/src-gen" creationIcons="false" editDirectory="/org.eclipse.sirius.ui/src-gen"
-    editorDirectory="" modelPluginID="org.eclipse.sirius" templateDirectory=""
-    redirection="" modelName="Sirius" codeFormatting="true" testsDirectory="" importerID="org.eclipse.emf.importer.ecore"
-    containmentProxies="true" complianceLevel="5.0" runtimeVersion="2.3" usedGenPackages="contribution.genmodel#//contribution platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+    editorDirectory="" modelPluginID="org.eclipse.sirius" templateDirectory="" redirection=""
+    modelName="Viewpoint" editPluginClass="org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin"
+    codeFormatting="true" testsDirectory="" importerID="org.eclipse.emf.importer.ecore"
+    containmentProxies="true" complianceLevel="5.0" editPluginID="org.eclipse.sirius.ui"
+    testsPluginID="org.eclipse.sirius.editor" runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <genAnnotations source="http://www.eclipse.org/sirius/cdo/CDOGenModel">
-    <details key="cdoNativeGenModels" value="org.eclipse.sirius.cdonative/model/viewpoint.genmodel"/>
+    <details key="cdoNativeGenModels" value="fr.obeo.dsl.viewpoint.cdonative/model/viewpoint.genmodel"/>
   </genAnnotations>
   <foreignModel>viewpoint.ecore</foreignModel>
-  <genPackages prefix="Sirius" basePackage="org.eclipse.sirius" disposableProviderFactory="true"
+  <genPackages prefix="Viewpoint" basePackage="org.eclipse.sirius" disposableProviderFactory="true"
       ecorePackage="viewpoint.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="viewpoint.ecore#//ContainerLayout">
       <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//ContainerLayout/FreeForm"/>
@@ -142,10 +144,6 @@
       </genOperations>
       <genOperations ecoreOperation="viewpoint.ecore#//DRepresentation/updateContent"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="viewpoint.ecore#//ExtensibleRepresentation">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ExtensibleRepresentation/effectiveDescription"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ExtensibleRepresentation/contributionPoints"/>
-    </genClasses>
     <genClasses image="false" ecoreClass="viewpoint.ecore#//DRepresentationElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DRepresentationElement/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentationElement/semanticElements"/>
@@ -271,6 +269,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramElementContainer/originalStyle"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramElementContainer/actualMapping"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DDiagramElementContainer/candidatesMapping"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DDiagramElementContainer/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DDiagramElementContainer/height"/>
       <genOperations ecoreOperation="viewpoint.ecore#//DDiagramElementContainer/getNodesFromMapping">
         <genParameters ecoreParameter="viewpoint.ecore#//DDiagramElementContainer/getNodesFromMapping/mapping"/>
       </genOperations>
@@ -428,7 +428,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DAnalysisSessionEObject/blocked"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DAnalysisSessionEObject/resources"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DAnalysisSessionEObject/controlledResources"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DAnalysisSessionEObject/activatedSiriuss"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DAnalysisSessionEObject/activatedViewpoints"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DAnalysisSessionEObject/analyses"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DAnalysisSessionEObject/synchronizationStatus"/>
     </genClasses>
@@ -500,8 +500,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ContainerVariable2StyleDescription/key"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//ContainerVariable2StyleDescription/value"/>
     </genClasses>
-    <nestedGenPackages prefix="Description" basePackage="org.eclipse.sirius" resource="XMI"
-        disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description">
+    <nestedGenPackages prefix="Description" basePackage="org.eclipse.sirius.viewpoint"
+        resource="XMI" disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description">
       <genEnums ecoreEnum="viewpoint.ecore#//description/NavigationTargetType">
         <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/NavigationTargetType/model"/>
         <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/NavigationTargetType/file"/>
@@ -562,30 +562,30 @@
       <genClasses ecoreClass="viewpoint.ecore#//description/Group">
         <genFeatures createChild="false" propertyCategory="General" propertyDescription=""
             ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Group/name"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Group/ownedSiriuss"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Group/ownedViewpoints"/>
         <genFeatures property="None" createChild="false" propertyCategory="" propertySortChoices="true"
             ecoreFeature="ecore:EReference viewpoint.ecore#//description/Group/systemColorsPalette"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Group/userColorsPalettes"/>
         <genFeatures property="None" createChild="false" propertyCategory="" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Group/version"/>
       </genClasses>
       <genClasses image="false" ecoreClass="viewpoint.ecore#//description/Component"/>
-      <genClasses ecoreClass="viewpoint.ecore#//description/Sirius">
+      <genClasses ecoreClass="viewpoint.ecore#//description/Viewpoint">
         <genFeatures createChild="false" propertyCategory="General" propertyDescription="This field allows to associate this viewpoint to one or more semantic resource file extension(s), for several file extensions, they must be space separeted. For example to associate this viewpoint to uml and ecore metamodels, put \&quot;uml ecore\&quot;."
-            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Sirius/modelFileExtension"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Sirius/validationSet"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Sirius/ownedRepresentations"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Sirius/ownedRepresentationExtensions"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Sirius/ownedJavaExtensions"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Sirius/ownedMMExtensions"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Sirius/ownedFeatureExtensions"/>
-        <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Sirius/icon"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Sirius/ownedTemplates"/>
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Viewpoint/modelFileExtension"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Viewpoint/validationSet"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Viewpoint/ownedRepresentations"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Viewpoint/ownedRepresentationExtensions"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Viewpoint/ownedJavaExtensions"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Viewpoint/ownedMMExtensions"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Viewpoint/ownedFeatureExtensions"/>
+        <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Viewpoint/icon"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Viewpoint/ownedTemplates"/>
         <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription=""
-            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Sirius/conflicts"/>
-        <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Sirius/reuses"/>
-        <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Sirius/customizes"/>
-        <genOperations ecoreOperation="viewpoint.ecore#//description/Sirius/initView">
-          <genParameters ecoreParameter="viewpoint.ecore#//description/Sirius/initView/model"/>
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Viewpoint/conflicts"/>
+        <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Viewpoint/reuses"/>
+        <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Viewpoint/customizes"/>
+        <genOperations ecoreOperation="viewpoint.ecore#//description/Viewpoint/initView">
+          <genParameters ecoreParameter="viewpoint.ecore#//description/Viewpoint/initView/model"/>
         </genOperations>
       </genClasses>
       <genClasses image="false" ecoreClass="viewpoint.ecore#//description/FeatureExtensionDescription"/>
@@ -607,9 +607,9 @@
       <genClasses image="false" ecoreClass="viewpoint.ecore#//description/RepresentationImportDescription"/>
       <genClasses image="false" ecoreClass="viewpoint.ecore#//description/RepresentationExtensionDescription">
         <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/RepresentationExtensionDescription/name"/>
-        <genFeatures createChild="false" propertyCategory="General" propertyDescription="URI of the viewpoint which contains the representation to extend. Example : viewpoint:/pluginID/SiriusName."
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="URI of the viewpoint which contains the representation to extend. Example : viewpoint:/pluginID/ViewpointName.\nIn case of diagram extension that contains only Style Customizations, you can match several Viewpoints by using a java regular expression."
             ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/RepresentationExtensionDescription/viewpointURI"/>
-        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Name of the extended representation."
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Name of the extended representation.\nIn case of diagram extension that contains only Style Customizations, you can match several Representations by using a java regular expression."
             ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/RepresentationExtensionDescription/representationName"/>
         <genFeatures notify="false" createChild="false" propertyCategory="Advanced"
             propertyDescription="You might want to associate your description with an ecore model, this is not mandatory, but if you do so the editor will provides you a richer validation."
@@ -1006,6 +1006,8 @@
       <genClasses image="false" ecoreClass="viewpoint.ecore#//description/EStructuralFeatureCustomization">
         <genFeatures notify="false" createChild="false" propertyDescription="The style to customize."
             propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/EStructuralFeatureCustomization/appliedOn"/>
+        <genFeatures createChild="false" propertyCategory="" propertyDescription="If true, this customization will be applied on all style description."
+            ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/EStructuralFeatureCustomization/applyOnAll"/>
       </genClasses>
       <genClasses ecoreClass="viewpoint.ecore#//description/EAttributeCustomization">
         <genFeatures createChild="false" propertyDescription="The name of the property to customize."
@@ -1086,7 +1088,7 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DAnnotationEntry/source"/>
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DAnnotationEntry/details"/>
       </genClasses>
-      <nestedGenPackages prefix="Style" basePackage="org.eclipse.sirius.description"
+      <nestedGenPackages prefix="Style" basePackage="org.eclipse.sirius.viewpoint.description"
           disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/style">
         <genClasses image="false" ecoreClass="viewpoint.ecore#//description/style/StyleDescription"/>
         <genClasses image="false" ecoreClass="viewpoint.ecore#//description/style/RoundedCornerStyleDescription">
@@ -1229,7 +1231,7 @@
           <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/SizeComputationContainerStyleDescription/heightComputationExpression"/>
         </genClasses>
       </nestedGenPackages>
-      <nestedGenPackages prefix="Tool" basePackage="org.eclipse.sirius.description"
+      <nestedGenPackages prefix="Tool" basePackage="org.eclipse.sirius.viewpoint.description"
           disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/tool">
         <genEnums ecoreEnum="viewpoint.ecore#//description/tool/ReconnectionKind">
           <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/tool/ReconnectionKind/RECONNECT_TARGET"/>
@@ -1368,7 +1370,7 @@
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/DoubleClickDescription/initialOperation"/>
         </genClasses>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/DeleteHook">
-          <genFeatures createChild="false" propertyCategory="General" propertyDescription="An id of an extension to org.eclipse.sirius.deleteHook extension point. It may be used to add a confirmation dialog before deletion"
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="An id of an extension to fr.obeo.dsl.viewpoint.deleteHook extension point. It may be used to add a confirmation dialog before deletion"
               ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/DeleteHook/id"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/DeleteHook/parameters"/>
         </genClasses>
@@ -1456,7 +1458,7 @@
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/OperationAction/initialOperation"/>
         </genClasses>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/ExternalJavaAction">
-          <genFeatures createChild="false" propertyCategory="General" propertyDescription="The id of the extension using \&quot;org.eclipse.sirius.externalJavaAction\&quot; extension point to define this action."
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="The id of the extension using \&quot;fr.obeo.dsl.viewpoint.externalJavaAction\&quot; extension point to define this action."
               ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/ExternalJavaAction/id"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ExternalJavaAction/parameters"/>
         </genClasses>
@@ -1638,7 +1640,7 @@
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/Switch/default"/>
         </genClasses>
       </nestedGenPackages>
-      <nestedGenPackages prefix="Filter" basePackage="org.eclipse.sirius.description"
+      <nestedGenPackages prefix="Filter" basePackage="org.eclipse.sirius.viewpoint.description"
           disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/filter">
         <genEnums ecoreEnum="viewpoint.ecore#//description/filter/FilterKind">
           <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/filter/FilterKind/HIDE"/>
@@ -1676,7 +1678,7 @@
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/filter/FilterVariable/name"/>
         </genClasses>
       </nestedGenPackages>
-      <nestedGenPackages prefix="Validation" basePackage="org.eclipse.sirius.description"
+      <nestedGenPackages prefix="Validation" basePackage="org.eclipse.sirius.viewpoint.description"
           disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/validation">
         <genEnums ecoreEnum="viewpoint.ecore#//description/validation/ERROR_LEVEL">
           <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/validation/ERROR_LEVEL/INFO"/>
@@ -1719,7 +1721,7 @@
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/validation/ValidationFix/initialOperation"/>
         </genClasses>
       </nestedGenPackages>
-      <nestedGenPackages prefix="Audit" basePackage="org.eclipse.sirius.description"
+      <nestedGenPackages prefix="Audit" basePackage="org.eclipse.sirius.viewpoint.description"
           disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/audit">
         <genClasses image="false" ecoreClass="viewpoint.ecore#//description/audit/InformationSection">
           <genOperations ecoreOperation="viewpoint.ecore#//description/audit/InformationSection/getContent">
@@ -1731,7 +1733,7 @@
               ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/audit/TemplateInformationSection/templatePath"/>
         </genClasses>
       </nestedGenPackages>
-      <nestedGenPackages prefix="Concern" basePackage="org.eclipse.sirius.description"
+      <nestedGenPackages prefix="Concern" basePackage="org.eclipse.sirius.viewpoint.description"
           disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/concern">
         <genClasses ecoreClass="viewpoint.ecore#//description/concern/ConcernSet">
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/concern/ConcernSet/ownedConcernDescriptions"/>

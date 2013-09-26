@@ -19,10 +19,9 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RunnableWithResult;
-
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A {@link RunnableWithResult} to get semantic resources in a read transaction.

@@ -13,10 +13,9 @@ package org.eclipse.sirius.business.api.session.factory;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
-
-import org.eclipse.sirius.DAnalysis;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.session.SessionFactoryImpl;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 
 /**
  * The factory to create sessions.

@@ -15,10 +15,9 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * The contract for DAnalysis session.

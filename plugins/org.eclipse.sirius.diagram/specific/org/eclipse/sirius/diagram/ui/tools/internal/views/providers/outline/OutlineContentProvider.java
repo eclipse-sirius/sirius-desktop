@@ -26,14 +26,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DSemanticDiagram;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
@@ -41,10 +34,16 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.tools.internal.editor.DiagramOutlinePageListener;
-import org.eclipse.sirius.provider.SiriusItemProviderAdapterFactory;
 import org.eclipse.sirius.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
 import org.eclipse.sirius.ui.business.api.provider.DEdgeLabelItemProvider;
 import org.eclipse.sirius.ui.business.api.provider.DNodeLabelItemProvider;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 
 /**
  * This class is responsible of the outline tree viewer content.
@@ -321,7 +320,7 @@ public class OutlineContentProvider implements ITreeContentProvider, DiagramOutl
      */
     public AdapterFactory getAdapterFactory() {
         List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
-        factories.add(new SiriusItemProviderAdapterFactory());
+        factories.add(new ViewpointItemProviderAdapterFactory());
         factories.add(new ResourceItemProviderAdapterFactory());
         factories.add(new EcoreItemProviderAdapterFactory());
         factories.add(new ReflectiveItemProviderAdapterFactory());

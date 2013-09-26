@@ -17,9 +17,8 @@ import org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationPreCommitListener;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.swt.graphics.Image;
-
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.permission.EditPartAuthorityListener;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * This is the top level interface of the hierarchy of all edit parts.
@@ -37,11 +36,11 @@ public interface IDiagramElementEditPart extends IGraphicalEditPart {
 
     /**
      * Returns the target value of the
-     * {@link org.eclipse.sirius.DSemanticDecorator} that is represented by
+     * {@link org.eclipse.sirius.viewpoint.DSemanticDecorator} that is represented by
      * this edit part.
      * 
      * @return the target value of the
-     *         {@link org.eclipse.sirius.DSemanticDecorator} that is
+     *         {@link org.eclipse.sirius.viewpoint.DSemanticDecorator} that is
      *         represented by this edit part.
      */
     EObject resolveTargetSemanticElement();

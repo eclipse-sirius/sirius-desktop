@@ -10,18 +10,18 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.migration.resource.session.diagram.data;
 
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DNodeList;
-import org.eclipse.sirius.DNodeListElement;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DSemanticDiagram;
 import org.eclipse.sirius.business.api.helper.SiriusHelper;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.viewpoint.DNodeListElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
  * Class to handle lost node data.

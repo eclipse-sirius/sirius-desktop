@@ -29,14 +29,14 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Accessor to get the sequence element corresponding to a notation one.
@@ -404,12 +404,12 @@ public final class ISequenceElementAccessor {
     }
 
     private static boolean isDiagramElementTargetReference(Setting setting) {
-        EReference targetReference = SiriusPackage.eINSTANCE.getDSemanticDecorator_Target();
+        EReference targetReference = ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target();
         return setting.getEObject() instanceof DDiagramElement && setting.getEStructuralFeature().equals(targetReference);
     }
 
     private static boolean isDiagramTargetReference(Setting setting) {
-        EReference targetReference = SiriusPackage.eINSTANCE.getDSemanticDecorator_Target();
+        EReference targetReference = ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target();
         return setting.getEObject() instanceof DDiagram && setting.getEStructuralFeature().equals(targetReference);
     }
 

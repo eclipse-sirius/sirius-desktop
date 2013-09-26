@@ -22,23 +22,22 @@ import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
-
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.description.validation.ERROR_LEVEL;
-import org.eclipse.sirius.description.validation.SemanticValidationRule;
-import org.eclipse.sirius.description.validation.ValidationRule;
-import org.eclipse.sirius.description.validation.ValidationSet;
-import org.eclipse.sirius.description.validation.ViewValidationRule;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
+import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
+import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
 
 /**
  * Common class for all the DDiagram constraints. This class wrapp the base
@@ -151,9 +150,9 @@ public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint
         final ValidationRule firstFailingRule = null;
         final Session session = SessionManager.INSTANCE.getSession(semantic);
         if (session != null) {
-            final Iterator<Sirius> it = session.getSelectedSiriuss(false).iterator();
+            final Iterator<Viewpoint> it = session.getSelectedSiriuss(false).iterator();
             while (it.hasNext() && firstFailingRule == null) {
-                final Sirius vp = it.next();
+                final Viewpoint vp = it.next();
                 if (vp.getValidationSet() != null) {
                     return getFaillingRulesFromCollection(objetTeste, vp.getValidationSet().getAllRules().iterator());
                 }

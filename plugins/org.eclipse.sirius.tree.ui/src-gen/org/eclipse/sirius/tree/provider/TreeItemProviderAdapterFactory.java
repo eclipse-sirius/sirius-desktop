@@ -27,7 +27,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.sirius.tree.util.TreeAdapterFactory;
 
 /**
@@ -83,16 +82,16 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.tree.DTree} instances. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.DTree} instances. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * 
      * @generated
      */
     protected DTreeItemProvider dTreeItemProvider;
 
     /**
-     * This creates an adapter for a {@link org.eclipse.sirius.tree.DTree}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This creates an adapter for a {@link org.eclipse.sirius.tree.DTree}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -116,8 +115,8 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.tree.DTreeElementUpdater}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.DTreeElementUpdater}. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -157,17 +156,16 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.tree.DTreeItem} instances. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.DTreeItem} instances. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @generated
      */
     protected DTreeItemItemProvider dTreeItemItemProvider;
 
     /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.tree.DTreeItem}. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * This creates an adapter for a {@link org.eclipse.sirius.tree.DTreeItem}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -207,8 +205,8 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.tree.DTreeElementSynchronizer} instances.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.DTreeElementSynchronizer} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */

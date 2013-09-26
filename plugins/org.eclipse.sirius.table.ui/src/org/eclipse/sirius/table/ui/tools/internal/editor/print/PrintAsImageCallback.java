@@ -19,9 +19,8 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
-
-import org.eclipse.sirius.description.SystemColors;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.description.SystemColors;
 
 /**
  * Callback to print a given displayed control as an image.
@@ -117,7 +116,7 @@ public class PrintAsImageCallback implements PrintCallback {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.table.ui.tools.internal.editor.print.SWTPrintHelper.PrintCallback#setParameters(org.eclipse.sirius.table.ui.tools.internal.editor.print.SWTPrintHelper.PrintJobParameters)
+     * @see org.eclipse.sirius.viewpoint.table.ui.tools.internal.editor.print.SWTPrintHelper.PrintCallback#setParameters(org.eclipse.sirius.viewpoint.table.ui.tools.internal.editor.print.SWTPrintHelper.PrintJobParameters)
      */
     public void setParameters(final PrintJobParameters parameters) {
         this.printParameters = parameters;
@@ -160,7 +159,7 @@ public class PrintAsImageCallback implements PrintCallback {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.table.ui.tools.internal.editor.print.SWTPrintHelper.PrintCallback#numberOfPages()
+     * @see org.eclipse.sirius.viewpoint.table.ui.tools.internal.editor.print.SWTPrintHelper.PrintCallback#numberOfPages()
      */
     public int numberOfPages() {
         /* return the entire division +1 */
@@ -206,7 +205,7 @@ public class PrintAsImageCallback implements PrintCallback {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.table.ui.tools.internal.editor.print.SWTPrintHelper.PrintCallback#printPage(int)
+     * @see org.eclipse.sirius.viewpoint.table.ui.tools.internal.editor.print.SWTPrintHelper.PrintCallback#printPage(int)
      */
     public void printPage(final int page) {
 

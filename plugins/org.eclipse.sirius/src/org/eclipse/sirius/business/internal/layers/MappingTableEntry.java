@@ -17,8 +17,8 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.Layer;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.Layer;
 
 /**
  * A mapping node is wrapper to a mapping with references to its importer and

@@ -11,9 +11,8 @@
 package org.eclipse.sirius.business.internal.metamodel.description.validation.spec;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.business.internal.metamodel.description.validation.operations.ValidationRuleSpecOperations;
-import org.eclipse.sirius.description.validation.impl.ViewValidationRuleImpl;
+import org.eclipse.sirius.viewpoint.description.validation.impl.ViewValidationRuleImpl;
 
 /**
  * Implementation of ViewValidationRule.
@@ -24,7 +23,7 @@ public class ViewValidationRuleSpec extends ViewValidationRuleImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.validation.impl.ValidationRuleImpl#checkRule(org.eclipse.emf.ecore.EObject)
+     * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl#checkRule(org.eclipse.emf.ecore.EObject)
      */
     @Override
     public boolean checkRule(final EObject obj) {
@@ -34,7 +33,7 @@ public class ViewValidationRuleSpec extends ViewValidationRuleImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.validation.impl.ValidationRuleImpl#getMessage(org.eclipse.emf.ecore.EObject)
+     * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl#getMessage(org.eclipse.emf.ecore.EObject)
      */
     @Override
     public String getMessage(final EObject obj) {

@@ -11,12 +11,11 @@
 package org.eclipse.sirius.diagram.business.api.query;
 
 import org.eclipse.core.runtime.Platform;
-
 import org.eclipse.sirius.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.business.api.diagramtype.IDiagramTypeDescriptor;
-import org.eclipse.sirius.description.DiagramDescription;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
 
 /**
  * A class aggregating all the graphical queries (read-only!) having a

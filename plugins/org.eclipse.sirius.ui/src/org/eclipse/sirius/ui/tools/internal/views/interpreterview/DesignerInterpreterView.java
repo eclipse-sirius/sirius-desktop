@@ -70,7 +70,6 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.ui.keys.IBindingService;
 import org.eclipse.ui.part.ViewPart;
-
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -79,14 +78,14 @@ import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.business.api.interpreter.VariableContentProvider;
 import org.eclipse.sirius.common.ui.tools.api.contentassist.ContentInstanceProposalProvider;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ui.tools.api.views.interpreterview.InterpreterView;
 import org.eclipse.sirius.ui.tools.internal.views.sessionview.ModelDragTargetAdapter;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * An Eclipse view to launch model requests language requests and see the
@@ -277,7 +276,7 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
                         // Look for available odesign file paths, to be able to
                         // resolve available dependencies.
                         final List<String> filePaths = new ArrayList<String>();
-                        for (final Sirius vp : SiriusRegistry.getInstance().getSiriuss()) {
+                        for (final Viewpoint vp : SiriusRegistry.getInstance().getSiriuss()) {
                             if (vp.eResource() != null) {
                                 filePaths.add(vp.eResource().getURI().toPlatformString(true));
                             }

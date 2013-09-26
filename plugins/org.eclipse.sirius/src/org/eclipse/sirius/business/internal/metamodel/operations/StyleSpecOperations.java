@@ -11,8 +11,8 @@
 package org.eclipse.sirius.business.internal.metamodel.operations;
 
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.business.internal.metamodel.helper.StyleHelper;
 
 /**

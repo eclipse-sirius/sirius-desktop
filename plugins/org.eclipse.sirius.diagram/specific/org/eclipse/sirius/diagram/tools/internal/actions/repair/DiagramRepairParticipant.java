@@ -32,21 +32,21 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.UnmodifiableIterator;
 
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DView;
 import org.eclipse.sirius.business.api.helper.concern.ConcernService;
 import org.eclipse.sirius.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.business.api.repair.IRepairParticipant;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.migration.resource.session.commands.MigrationCommandExecutor;
-import org.eclipse.sirius.description.DiagramDescription;
 import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.internal.refresh.listeners.GMFDiagramUpdater;
 import org.eclipse.sirius.diagram.tools.api.migration.DiagramCrossReferencer;
 import org.eclipse.sirius.diagram.tools.internal.actions.repair.commands.RemoveInvalidViewsCommand;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
 
 /**
  * General diagram repair participant.

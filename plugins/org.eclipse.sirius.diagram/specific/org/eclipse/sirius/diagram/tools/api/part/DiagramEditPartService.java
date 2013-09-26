@@ -39,14 +39,13 @@ import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.PaletteData;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Shell;
-
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.diagram.internal.refresh.layout.SiriusCanonicalLayoutHandler;
 import org.eclipse.sirius.diagram.tools.internal.part.OffscreenEditPartFactory;
 import org.eclipse.sirius.diagram.tools.internal.part.SiriusImageLoader;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Utility class to render a diagram to an image file (with the use of specific

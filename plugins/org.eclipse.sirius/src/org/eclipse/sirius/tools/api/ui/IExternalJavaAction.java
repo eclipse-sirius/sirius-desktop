@@ -28,7 +28,7 @@ public interface IExternalJavaAction {
      * 
      * @param selections
      *            a collection of
-     *            {@link org.eclipse.sirius.DSemanticDecorator
+     *            {@link org.eclipse.sirius.viewpoint.DSemanticDecorator
      *            DSemanticDecorator} or of
      *            {@link org.eclipse.emf.ecore.EObject semantic elements} on
      *            which the action should be executed
@@ -42,7 +42,7 @@ public interface IExternalJavaAction {
      * 
      * @param selections
      *            a collection of
-     *            {@link org.eclipse.sirius.DSemanticDecorator
+     *            {@link org.eclipse.sirius.viewpoint.DSemanticDecorator
      *            DSemanticDecorator} or of
      *            {@link org.eclipse.emf.ecore.EObject semantic elements} on
      *            which the action should be executed

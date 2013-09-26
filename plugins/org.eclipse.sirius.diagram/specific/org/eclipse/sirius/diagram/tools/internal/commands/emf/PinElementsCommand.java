@@ -17,8 +17,8 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * A command to mark a collection of diagram elements as "pinned" so that they

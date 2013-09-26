@@ -16,12 +16,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-
-import org.eclipse.sirius.description.AdditionalLayer;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramImportDescription;
-import org.eclipse.sirius.description.Layer;
+import org.eclipse.sirius.viewpoint.description.AdditionalLayer;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramImportDescription;
+import org.eclipse.sirius.viewpoint.description.Layer;
 
 /**
  * Implementation of the DiagramImportDescription interface.
@@ -58,7 +57,7 @@ public class DiagramImportDescriptionSpec extends DiagramDescriptionSpec impleme
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.DiagramDescription#getImportedDiagram()
+     * @see org.eclipse.sirius.viewpoint.description.DiagramDescription#getImportedDiagram()
      */
     public DiagramDescription getImportedDiagram() {
         if (importedDiagramDescription != null && importedDiagramDescription.eIsProxy()) {
@@ -76,7 +75,7 @@ public class DiagramImportDescriptionSpec extends DiagramDescriptionSpec impleme
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.DiagramImportDescription#setImportedDiagram(org.eclipse.sirius.description.DiagramDescription)
+     * @see org.eclipse.sirius.viewpoint.description.DiagramImportDescription#setImportedDiagram(org.eclipse.sirius.viewpoint.description.DiagramDescription)
      */
     public void setImportedDiagram(final DiagramDescription value) {
         final DiagramDescription oldImportedDescription = importedDiagramDescription;
@@ -89,7 +88,7 @@ public class DiagramImportDescriptionSpec extends DiagramDescriptionSpec impleme
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramImportDescriptionImpl#eGet(int,
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramImportDescriptionImpl#eGet(int,
      *      boolean, boolean)
      */
     @Override
@@ -115,7 +114,7 @@ public class DiagramImportDescriptionSpec extends DiagramDescriptionSpec impleme
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramImportDescriptionImpl#eSet(int,
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramImportDescriptionImpl#eSet(int,
      *      java.lang.Object)
      */
     @Override
@@ -133,7 +132,7 @@ public class DiagramImportDescriptionSpec extends DiagramDescriptionSpec impleme
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getDefaultLayer()
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl#getDefaultLayer()
      */
     @Override
     public Layer getDefaultLayer() {
@@ -145,7 +144,7 @@ public class DiagramImportDescriptionSpec extends DiagramDescriptionSpec impleme
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramDescriptionImpl#getAdditionalLayers()
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl#getAdditionalLayers()
      */
     @Override
     public EList<AdditionalLayer> getAdditionalLayers() {

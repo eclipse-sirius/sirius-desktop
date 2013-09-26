@@ -41,10 +41,6 @@ import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.CollapseFilter;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
@@ -68,6 +64,10 @@ import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceDiagr
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.CollapseFilter;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * {@link ModelChangeTrigger} which return a {@link Command} to be executed just
@@ -208,7 +208,7 @@ public class SequenceCanonicalSynchronizerAdapter implements ModelChangeTrigger 
                 DDiagramElement dde = (DDiagramElement) newNode.getElement();
                 CollapseFilter filter = Iterables.filter(dde.getGraphicalFilters(), CollapseFilter.class).iterator().next();
 
-                Command setFilterHeightCmd = SetCommand.create(domain, filter, SiriusPackage.Literals.COLLAPSE_FILTER__HEIGHT, height);
+                Command setFilterHeightCmd = SetCommand.create(domain, filter, ViewpointPackage.Literals.COLLAPSE_FILTER__HEIGHT, height);
                 Command setHeightCmd = SetCommand.create(domain, newNode.getLayoutConstraint(), NotationPackage.Literals.SIZE__HEIGHT, height);
                 result = globalCmd.chain(setFilterHeightCmd);
                 result = result.chain(setHeightCmd);

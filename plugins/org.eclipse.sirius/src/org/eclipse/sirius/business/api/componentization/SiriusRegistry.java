@@ -20,15 +20,14 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.internal.movida.Movida;
-import org.eclipse.sirius.description.Component;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.Component;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * The registry for all the {@link Sirius viewpoints} available.
+ * The registry for all the {@link Viewpoint viewpoints} available.
  * 
  * This class is responsible for locating and loading all the valid viewpoints
  * registered in plug-ins (through
@@ -50,7 +49,7 @@ public class SiriusRegistry implements IResourceChangeListener {
      * @author cbrun
      * @since 2.0
      */
-    public static final class SiriusComparator implements Comparator<Sirius>, Serializable {
+    public static final class SiriusComparator implements Comparator<Viewpoint>, Serializable {
         /**
          * Generated SUID.
          */
@@ -67,7 +66,7 @@ public class SiriusRegistry implements IResourceChangeListener {
          * @return the result of the comparison, as defined in
          *         {@link Comparator#compare(Object, Object)}.
          */
-        public int compare(final Sirius vp1, final Sirius vp2) {
+        public int compare(final Viewpoint vp1, final Viewpoint vp2) {
             int result = -1;
 
             if (!SiriusRegistry.getInstance().isFromPlugin(vp1)) {
@@ -89,7 +88,7 @@ public class SiriusRegistry implements IResourceChangeListener {
             return result;
         }
 
-        private int compareSameFrom(Sirius vp1, Sirius vp2) {
+        private int compareSameFrom(Viewpoint vp1, Viewpoint vp2) {
             IdentifiedElementQuery vp1Query = new IdentifiedElementQuery(vp1);
             IdentifiedElementQuery vp2Query = new IdentifiedElementQuery(vp2);
 
@@ -144,7 +143,7 @@ public class SiriusRegistry implements IResourceChangeListener {
      * 
      * @return the viewpoints registered
      */
-    public Set<Sirius> getSiriuss() {
+    public Set<Viewpoint> getSiriuss() {
         throw new UnsupportedOperationException();
     }
 
@@ -156,7 +155,7 @@ public class SiriusRegistry implements IResourceChangeListener {
      * @return <code>true</code> if the plug-in comes from plug-in false if it
      *         comes from workspace.
      */
-    public boolean isFromPlugin(Sirius viewpoint) {
+    public boolean isFromPlugin(Viewpoint viewpoint) {
         throw new UnsupportedOperationException();
     }
 
@@ -201,7 +200,7 @@ public class SiriusRegistry implements IResourceChangeListener {
      *         <code>null</code> if it could not be found.
      * @since 2.3
      */
-    public Sirius getSirius(RepresentationDescription description) {
+    public Viewpoint getSirius(RepresentationDescription description) {
         throw new UnsupportedOperationException();
     }
 
@@ -213,7 +212,7 @@ public class SiriusRegistry implements IResourceChangeListener {
      * @return the viewpoint if found, throw an exception otherwise
      * @since 2.7
      */
-    public Sirius getSirius(URI viewpointUri) {
+    public Viewpoint getSirius(URI viewpointUri) {
         throw new UnsupportedOperationException();
     }
 
@@ -248,18 +247,18 @@ public class SiriusRegistry implements IResourceChangeListener {
      *            the platform file path ("pluginname/rep1/rep2/file.odesign)
      * @return the added Siriuss;
      */
-    public Set<Sirius> registerFromPlugin(String modelerModelResourcePath) {
+    public Set<Viewpoint> registerFromPlugin(String modelerModelResourcePath) {
         throw new UnsupportedOperationException();
     }
 
     /**
-     * Dispose a {@link Sirius}. This method should be called on
+     * Dispose a {@link Viewpoint}. This method should be called on
      * {@link org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)}
      * 
      * @param viewpoint
      *            the viewpoint to dispose
      */
-    public void disposeFromPlugin(Sirius viewpoint) {
+    public void disposeFromPlugin(Viewpoint viewpoint) {
         throw new UnsupportedOperationException();
     }
 

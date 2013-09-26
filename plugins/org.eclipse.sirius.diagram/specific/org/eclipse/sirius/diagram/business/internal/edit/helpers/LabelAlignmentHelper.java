@@ -12,10 +12,9 @@ package org.eclipse.sirius.diagram.business.internal.edit.helpers;
 
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.ToolbarLayout;
-
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.LabelAlignment;
-import org.eclipse.sirius.LabelStyle;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.LabelAlignment;
+import org.eclipse.sirius.viewpoint.LabelStyle;
 
 /**
  * Utility class to retrieve diagram elements' {@link LabelAlignment} and

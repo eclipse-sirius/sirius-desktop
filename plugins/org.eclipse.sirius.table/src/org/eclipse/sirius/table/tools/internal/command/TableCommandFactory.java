@@ -31,8 +31,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
@@ -43,10 +41,6 @@ import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromParsedVariableTask2;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.AbstractVariable;
-import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.description.tool.ToolPackage;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.business.internal.helper.task.CreateTableTask;
 import org.eclipse.sirius.table.business.internal.helper.task.DeleteTableElementTask;
@@ -76,6 +70,12 @@ import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -277,13 +277,13 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
     /**
      * Build a command that covers all the model operations corresponding to a
      * the semantic container and a
-     * {@link org.eclipse.sirius.description.tool.ToolDescription}.
+     * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription}.
      * 
      * @param semanticCurrentElement
      *            the semantic current Element.
      * @param tool
      *            the
-     *            {@link org.eclipse.sirius.description.tool.ToolDescription}
+     *            {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription}
      *            .
      * @param containerView
      *            the container View
@@ -827,8 +827,8 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#buildDoExecuteDetailsOperation(org.eclipse.sirius.DSemanticDecorator,
-     *      org.eclipse.sirius.description.tool.RepresentationCreationDescription,
+     * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#buildDoExecuteDetailsOperation(org.eclipse.sirius.viewpoint.DSemanticDecorator,
+     *      org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription,
      *      java.lang.String)
      */
     public AbstractCommand buildDoExecuteDetailsOperation(final DSemanticDecorator target, final RepresentationCreationDescription desc, final String newRepresentationName) {

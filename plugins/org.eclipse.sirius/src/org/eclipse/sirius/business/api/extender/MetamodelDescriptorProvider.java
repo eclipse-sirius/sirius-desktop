@@ -12,8 +12,8 @@ package org.eclipse.sirius.business.api.extender;
 
 import java.util.Collection;
 
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Provider able to return a list of MetamodelDescriptor from Sirius's.
@@ -29,5 +29,5 @@ public interface MetamodelDescriptorProvider {
      *            any representation description.
      * @return the list of metamodel descritor provided by the viewpoint.
      */
-    Collection<MetamodelDescriptor> provides(Sirius vp);
+    Collection<MetamodelDescriptor> provides(Viewpoint vp);
 }

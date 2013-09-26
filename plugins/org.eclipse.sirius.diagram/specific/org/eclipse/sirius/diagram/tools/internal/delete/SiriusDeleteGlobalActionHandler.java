@@ -28,8 +28,7 @@ import org.eclipse.gmf.runtime.diagram.ui.providers.DiagramGlobalActionHandler;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchPart;
-
-import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * A {@link IGlobalActionHandler} to manage the delete action.

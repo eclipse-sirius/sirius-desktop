@@ -13,10 +13,10 @@ package org.eclipse.sirius.editor.properties.section.description.containermappin
 import java.util.Collections;
 import java.util.List;
 
-import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.ContainerLayout;
 import org.eclipse.sirius.editor.properties.sections.description.containermapping.ContainerMappingChildrenPresentationPropertySection;
+import org.eclipse.sirius.viewpoint.ContainerLayout;
+
+import com.google.common.collect.Lists;
 
 /**
  * A section for the childrenPresentation property of a ContainerMapping object.

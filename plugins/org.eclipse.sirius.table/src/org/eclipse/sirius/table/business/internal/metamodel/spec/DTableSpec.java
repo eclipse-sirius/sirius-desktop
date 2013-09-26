@@ -18,15 +18,15 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 import com.google.common.collect.Iterables;
 
 import org.eclipse.sirius.common.tools.api.util.AllContents;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.internal.query.DModelElementInternalQuery;
-import org.eclipse.sirius.description.DAnnotation;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
 import org.eclipse.sirius.table.metamodel.table.DTableElementUpdater;
 import org.eclipse.sirius.table.metamodel.table.impl.DTableImpl;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
 
 /**
  * Specialization of DTable.
@@ -70,7 +70,7 @@ public class DTableSpec extends DTableImpl {
         EList<DRepresentationElement> result = new BasicEList<DRepresentationElement>(getColumns().size() + getLines().size());
         result.addAll(getColumns());
         result.addAll(getLines());
-        return new EcoreEList.UnmodifiableEList<DRepresentationElement>(eInternalContainer(), SiriusPackage.eINSTANCE.getDRepresentation_OwnedRepresentationElements(), result.size(),
+        return new EcoreEList.UnmodifiableEList<DRepresentationElement>(eInternalContainer(), ViewpointPackage.eINSTANCE.getDRepresentation_OwnedRepresentationElements(), result.size(),
                 result.toArray());
     }
 
@@ -84,7 +84,7 @@ public class DTableSpec extends DTableImpl {
         for (DLine line : getLines()) {
             result.addAll(getRepresentationElements(line));
         }
-        return new EcoreEList.UnmodifiableEList<DRepresentationElement>(eInternalContainer(), SiriusPackage.eINSTANCE.getDRepresentation_RepresentationElements(), result.size(), result.toArray());
+        return new EcoreEList.UnmodifiableEList<DRepresentationElement>(eInternalContainer(), ViewpointPackage.eINSTANCE.getDRepresentation_RepresentationElements(), result.size(), result.toArray());
     }
 
     /**

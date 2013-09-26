@@ -18,10 +18,10 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ILayoutDataManagerProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManagerForSemanticElementsFactory;
+import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * Registry containing all layout data manager providers that have been parsed

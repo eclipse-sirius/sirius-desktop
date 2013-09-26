@@ -22,8 +22,6 @@ import org.eclipse.ui.PlatformUI;
 import com.google.common.collect.Iterables;
 
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tree.DTree;
@@ -32,6 +30,8 @@ import org.eclipse.sirius.tree.TreeItemStyle;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewer;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewerManager;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * This class is an EMF Adapter which listen change in the model to update a
@@ -230,9 +230,9 @@ public class DTreeContentAdapter extends ResourceSetListenerImpl {
         final int featureID = notification.getFeatureID(TreeItemStyle.class);
 
         switch (featureID) {
-        case SiriusPackage.RGB_VALUES__BLUE:
-        case SiriusPackage.RGB_VALUES__GREEN:
-        case SiriusPackage.RGB_VALUES__RED:
+        case ViewpointPackage.RGB_VALUES__BLUE:
+        case ViewpointPackage.RGB_VALUES__GREEN:
+        case ViewpointPackage.RGB_VALUES__RED:
             EObject notifierContainer = notifier.eContainer();
             if (notifierContainer instanceof TreeItemStyle) {
                 TreeItemStyle treeItemStyle = (TreeItemStyle) notifierContainer;

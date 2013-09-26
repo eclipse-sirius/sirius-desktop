@@ -31,15 +31,14 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.Customizable;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.EdgeStyle;
-import org.eclipse.sirius.FontFormat;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.diagram.internal.refresh.SynchronizeDDiagramElementStylePropertiesCommand;
 import org.eclipse.sirius.diagram.internal.refresh.diagram.ViewPropertiesSynchronizer;
+import org.eclipse.sirius.viewpoint.Customizable;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.EdgeStyle;
+import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.Style;
 
 /**
  * This class update the notation and viewpoint models font style attributes
@@ -110,22 +109,22 @@ public class FontFormatUpdater extends ResourceSetListenerImpl {
                         EdgeStyle edgeStyle = (EdgeStyle) style;
                         if (edgeStyle.getBeginLabelStyle() != null) {
                             featureNames.addAll(edgeStyle.getBeginLabelStyle().getCustomFeatures());
-                            Command addCustomFeaturesCmd = SetCommand.create(getTarget(), edgeStyle.getBeginLabelStyle(), SiriusPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, featureNames);
+                            Command addCustomFeaturesCmd = SetCommand.create(getTarget(), edgeStyle.getBeginLabelStyle(), ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, featureNames);
                             cc.append(addCustomFeaturesCmd);
                         }
                         if (edgeStyle.getCenterLabelStyle() != null) {
                             featureNames.addAll(edgeStyle.getCenterLabelStyle().getCustomFeatures());
-                            Command addCustomFeaturesCmd = SetCommand.create(getTarget(), edgeStyle.getCenterLabelStyle(), SiriusPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, featureNames);
+                            Command addCustomFeaturesCmd = SetCommand.create(getTarget(), edgeStyle.getCenterLabelStyle(), ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, featureNames);
                             cc.append(addCustomFeaturesCmd);
                         }
                         if (edgeStyle.getEndLabelStyle() != null) {
                             featureNames.addAll(edgeStyle.getEndLabelStyle().getCustomFeatures());
-                            Command addCustomFeaturesCmd = SetCommand.create(getTarget(), edgeStyle.getEndLabelStyle(), SiriusPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, featureNames);
+                            Command addCustomFeaturesCmd = SetCommand.create(getTarget(), edgeStyle.getEndLabelStyle(), ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, featureNames);
                             cc.append(addCustomFeaturesCmd);
                         }
                     } else {
                         featureNames.addAll(style.getCustomFeatures());
-                        Command addCustomFeaturesCmd = SetCommand.create(getTarget(), style, SiriusPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, featureNames);
+                        Command addCustomFeaturesCmd = SetCommand.create(getTarget(), style, ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES, featureNames);
                         cc.append(addCustomFeaturesCmd);
                     }
                     cc.append(new SynchronizeDDiagramElementStylePropertiesCommand(getTarget(), view));

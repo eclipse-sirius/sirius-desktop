@@ -16,9 +16,8 @@ import org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Edge;
-
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.eef.util.VPDecoratorHelper;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * An adapter factory to convert an element from Sirius into an EEF

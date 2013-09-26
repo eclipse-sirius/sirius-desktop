@@ -17,14 +17,13 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
-
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.dialog.RenameDialog;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.dialect.command.RenameRepresentationCommand;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Action to rename one or more Sirius representations.
@@ -90,7 +89,7 @@ public class RenameRepresentationAction extends Action {
         if (isEnabled) {
             for (DRepresentation dRepresentation : selectedRepresentations) {
                 IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dRepresentation);
-                if (!permissionAuthority.canEditFeature(dRepresentation, SiriusPackage.eINSTANCE.getDRepresentation_Name().getName())) {
+                if (!permissionAuthority.canEditFeature(dRepresentation, ViewpointPackage.eINSTANCE.getDRepresentation_Name().getName())) {
                     isEnabled = false;
                     break;
                 }

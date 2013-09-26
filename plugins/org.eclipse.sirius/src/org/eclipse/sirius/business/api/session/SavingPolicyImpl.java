@@ -34,7 +34,7 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
-import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.business.internal.session.danalysis.ResourceSaveDiagnose;
 
 /**

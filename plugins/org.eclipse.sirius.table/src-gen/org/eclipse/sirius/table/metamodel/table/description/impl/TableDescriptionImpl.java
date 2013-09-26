@@ -23,16 +23,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.sirius.description.EndUserDocumentedElement;
-import org.eclipse.sirius.description.IdentifiedElement;
-import org.eclipse.sirius.description.impl.DocumentedElementImpl;
-import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.description.tool.RepresentationNavigationDescription;
 import org.eclipse.sirius.table.metamodel.table.description.CreateLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
+import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -120,7 +119,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * The default value of the '{@link #getEndUserDocumentation()
@@ -1124,7 +1123,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
         if (baseClass == EndUserDocumentedElement.class) {
             switch (derivedFeatureID) {
             case DescriptionPackage.TABLE_DESCRIPTION__END_USER_DOCUMENTATION:
-                return org.eclipse.sirius.description.DescriptionPackage.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION;
+                return org.eclipse.sirius.viewpoint.description.DescriptionPackage.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION;
             default:
                 return -1;
             }
@@ -1132,9 +1131,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
         if (baseClass == IdentifiedElement.class) {
             switch (derivedFeatureID) {
             case DescriptionPackage.TABLE_DESCRIPTION__NAME:
-                return org.eclipse.sirius.description.DescriptionPackage.IDENTIFIED_ELEMENT__NAME;
+                return org.eclipse.sirius.viewpoint.description.DescriptionPackage.IDENTIFIED_ELEMENT__NAME;
             case DescriptionPackage.TABLE_DESCRIPTION__LABEL:
-                return org.eclipse.sirius.description.DescriptionPackage.IDENTIFIED_ELEMENT__LABEL;
+                return org.eclipse.sirius.viewpoint.description.DescriptionPackage.IDENTIFIED_ELEMENT__LABEL;
             default:
                 return -1;
             }
@@ -1151,7 +1150,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == EndUserDocumentedElement.class) {
             switch (baseFeatureID) {
-            case org.eclipse.sirius.description.DescriptionPackage.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION:
+            case org.eclipse.sirius.viewpoint.description.DescriptionPackage.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION:
                 return DescriptionPackage.TABLE_DESCRIPTION__END_USER_DOCUMENTATION;
             default:
                 return -1;
@@ -1159,9 +1158,9 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
         }
         if (baseClass == IdentifiedElement.class) {
             switch (baseFeatureID) {
-            case org.eclipse.sirius.description.DescriptionPackage.IDENTIFIED_ELEMENT__NAME:
+            case org.eclipse.sirius.viewpoint.description.DescriptionPackage.IDENTIFIED_ELEMENT__NAME:
                 return DescriptionPackage.TABLE_DESCRIPTION__NAME;
-            case org.eclipse.sirius.description.DescriptionPackage.IDENTIFIED_ELEMENT__LABEL:
+            case org.eclipse.sirius.viewpoint.description.DescriptionPackage.IDENTIFIED_ELEMENT__LABEL:
                 return DescriptionPackage.TABLE_DESCRIPTION__LABEL;
             default:
                 return -1;

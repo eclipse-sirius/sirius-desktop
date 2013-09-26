@@ -66,12 +66,11 @@ import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
-
 import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
-import org.eclipse.sirius.description.DescriptionFactory;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.Group;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Manage viewpoint specification projects.

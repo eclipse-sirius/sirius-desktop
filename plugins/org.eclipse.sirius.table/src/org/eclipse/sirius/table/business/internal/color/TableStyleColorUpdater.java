@@ -11,11 +11,10 @@
 package org.eclipse.sirius.table.business.internal.color;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.RGBValues;
 import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
-import org.eclipse.sirius.description.ColorDescription;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
  * Table implementation to update the cell style colors.

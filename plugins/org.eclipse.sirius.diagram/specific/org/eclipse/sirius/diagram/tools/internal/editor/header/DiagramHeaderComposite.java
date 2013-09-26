@@ -48,13 +48,13 @@ import org.eclipse.swt.widgets.Sash;
 import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.business.api.diagramtype.HeaderData;
 import org.eclipse.sirius.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * A specific composite to display header diagram. This composite has 2 sub
@@ -141,7 +141,7 @@ public class DiagramHeaderComposite extends Composite {
         gd.heightHint = DiagramHeaderComposite.getDiagramHeaderLineHeight();
         // Get the height stored in dDiagram (to restore the header to its
         // previous size).
-        if (dDiagram != null && dDiagram.eIsSet(SiriusPackage.eINSTANCE.getDDiagram_HeaderHeight())) {
+        if (dDiagram != null && dDiagram.eIsSet(ViewpointPackage.eINSTANCE.getDDiagram_HeaderHeight())) {
             gd.heightHint = dDiagram.getHeaderHeight() * DiagramHeaderComposite.getDiagramHeaderLineHeight();
         }
         headerSection.setLayoutData(gd);
@@ -519,7 +519,7 @@ public class DiagramHeaderComposite extends Composite {
             getParent().layout(true, true);
 
             TransactionalEditingDomain ted = TransactionUtil.getEditingDomain(dDiagram);
-            ted.getCommandStack().execute(new SetCommand(ted, dDiagram, SiriusPackage.eINSTANCE.getDDiagram_HeaderHeight(), newHeight / DiagramHeaderComposite.getDiagramHeaderLineHeight()));
+            ted.getCommandStack().execute(new SetCommand(ted, dDiagram, ViewpointPackage.eINSTANCE.getDDiagram_HeaderHeight(), newHeight / DiagramHeaderComposite.getDiagramHeaderLineHeight()));
         }
     }
 }

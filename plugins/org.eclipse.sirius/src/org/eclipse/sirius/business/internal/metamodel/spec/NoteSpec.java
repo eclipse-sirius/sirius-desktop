@@ -12,10 +12,10 @@ package org.eclipse.sirius.business.internal.metamodel.spec;
 
 import org.eclipse.sirius.business.internal.metamodel.operations.BorderedStyleSpecOperation;
 import org.eclipse.sirius.business.internal.metamodel.operations.StyleSpecOperations;
-import org.eclipse.sirius.impl.NoteImpl;
+import org.eclipse.sirius.viewpoint.impl.NoteImpl;
 
 /**
- * Implementation of {@link org.eclipse.sirius.Note}.
+ * Implementation of {@link org.eclipse.sirius.viewpoint.Note}.
  * 
  * @author ymortier
  */
@@ -24,7 +24,7 @@ public class NoteSpec extends NoteImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.NodeStyleImpl#refresh()
+     * @see org.eclipse.sirius.viewpoint.impl.NodeStyleImpl#refresh()
      */
     @Override
     public void refresh() {

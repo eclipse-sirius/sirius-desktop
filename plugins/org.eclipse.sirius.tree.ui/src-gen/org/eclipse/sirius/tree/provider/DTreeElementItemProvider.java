@@ -23,16 +23,15 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-import org.eclipse.sirius.provider.DRepresentationElementItemProvider;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
+import org.eclipse.sirius.viewpoint.provider.DRepresentationElementItemProvider;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.tree.DTreeElement} object. <!-- begin-user-doc
- * --> <!-- end-user-doc -->
+ * {@link org.eclipse.sirius.tree.DTreeElement} object. <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
  * 
  * @generated
  */

@@ -26,8 +26,8 @@ import org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedEx
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.description.tool.DirectEditLabel;
-import org.eclipse.sirius.description.tool.EditMaskVariables;
+import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
+import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 
 /**
  * Query allowing to get the target domain classes and available packages for a

@@ -19,11 +19,11 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Routing;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.EdgeRouting;
-import org.eclipse.sirius.EdgeStyle;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.EdgeRouting;
+import org.eclipse.sirius.viewpoint.EdgeStyle;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterables;
@@ -97,7 +97,7 @@ public class DiagramRepresentationsFileMigrationParticipantV690 {
                     DEdge dEdge = (DEdge) edge.getElement();
                     EdgeStyle edgeStyle = dEdge.getOwnedStyle();
                     edgeStyle.setRoutingStyle(EdgeRouting.MANHATTAN_LITERAL);
-                    edgeStyle.getCustomFeatures().add(SiriusPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName());
+                    edgeStyle.getCustomFeatures().add(ViewpointPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName());
                 }
             }
         }
@@ -121,7 +121,7 @@ public class DiagramRepresentationsFileMigrationParticipantV690 {
             if (edge.getElement() instanceof DEdge) {
                 DEdge dEdge = (DEdge) edge.getElement();
                 if (EdgeRouting.STRAIGHT_LITERAL.equals(dEdge.getOwnedStyle().getRoutingStyle())) {
-                    if (!dEdge.getOwnedStyle().getCustomFeatures().contains(SiriusPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName())) {
+                    if (!dEdge.getOwnedStyle().getCustomFeatures().contains(ViewpointPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName())) {
                         return true;
                     }
                 }

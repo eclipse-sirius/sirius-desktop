@@ -13,8 +13,7 @@ package org.eclipse.sirius.business.api.componentization;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * This interface represent the capability to extract Siriuss from a given
@@ -43,5 +42,5 @@ public interface SiriusFileCollector {
      *            any model
      * @return a list of collected viewpoints from this model.
      */
-    Collection<Sirius> collect(EObject root);
+    Collection<Viewpoint> collect(EObject root);
 }

@@ -21,17 +21,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.sirius.description.DocumentedElement;
-import org.eclipse.sirius.description.IdentifiedElement;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.EditMaskVariables;
-import org.eclipse.sirius.description.tool.ToolEntry;
-import org.eclipse.sirius.description.tool.ToolFilterDescription;
-import org.eclipse.sirius.description.tool.ToolPackage;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
+import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -74,7 +73,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * The default value of the '{@link #getDocumentation()
@@ -390,7 +389,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     public IntersectionMapping getMapping() {
         if (eContainerFeatureID() != DescriptionPackage.CREATE_CELL_TOOL__MAPPING)
             return null;
-        return (IntersectionMapping) eContainer();
+        return (IntersectionMapping) eInternalContainer();
     }
 
     /**
@@ -612,7 +611,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
         if (baseClass == DocumentedElement.class) {
             switch (derivedFeatureID) {
             case DescriptionPackage.CREATE_CELL_TOOL__DOCUMENTATION:
-                return org.eclipse.sirius.description.DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
+                return org.eclipse.sirius.viewpoint.description.DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
             default:
                 return -1;
             }
@@ -620,9 +619,9 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
         if (baseClass == IdentifiedElement.class) {
             switch (derivedFeatureID) {
             case DescriptionPackage.CREATE_CELL_TOOL__NAME:
-                return org.eclipse.sirius.description.DescriptionPackage.IDENTIFIED_ELEMENT__NAME;
+                return org.eclipse.sirius.viewpoint.description.DescriptionPackage.IDENTIFIED_ELEMENT__NAME;
             case DescriptionPackage.CREATE_CELL_TOOL__LABEL:
-                return org.eclipse.sirius.description.DescriptionPackage.IDENTIFIED_ELEMENT__LABEL;
+                return org.eclipse.sirius.viewpoint.description.DescriptionPackage.IDENTIFIED_ELEMENT__LABEL;
             default:
                 return -1;
             }
@@ -657,7 +656,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == DocumentedElement.class) {
             switch (baseFeatureID) {
-            case org.eclipse.sirius.description.DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+            case org.eclipse.sirius.viewpoint.description.DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
                 return DescriptionPackage.CREATE_CELL_TOOL__DOCUMENTATION;
             default:
                 return -1;
@@ -665,9 +664,9 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
         }
         if (baseClass == IdentifiedElement.class) {
             switch (baseFeatureID) {
-            case org.eclipse.sirius.description.DescriptionPackage.IDENTIFIED_ELEMENT__NAME:
+            case org.eclipse.sirius.viewpoint.description.DescriptionPackage.IDENTIFIED_ELEMENT__NAME:
                 return DescriptionPackage.CREATE_CELL_TOOL__NAME;
-            case org.eclipse.sirius.description.DescriptionPackage.IDENTIFIED_ELEMENT__LABEL:
+            case org.eclipse.sirius.viewpoint.description.DescriptionPackage.IDENTIFIED_ELEMENT__LABEL:
                 return DescriptionPackage.CREATE_CELL_TOOL__LABEL;
             default:
                 return -1;

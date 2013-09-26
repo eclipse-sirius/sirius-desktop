@@ -37,13 +37,12 @@ import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IPartService;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
-
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.SetCurrentConcernCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.SetDefaultConcernCommand;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.concern.ConcernDescription;
 
 /**
  * A ControlContribution that uses a {@link org.eclipse.swt.widgets.Combo} as

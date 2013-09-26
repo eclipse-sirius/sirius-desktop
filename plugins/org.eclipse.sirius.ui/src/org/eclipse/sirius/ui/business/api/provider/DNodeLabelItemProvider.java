@@ -11,11 +11,10 @@
 package org.eclipse.sirius.ui.business.api.provider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DNode;
 import org.eclipse.sirius.business.api.query.DNodeQuery;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DNode;
 
 /**
  * A custom ItemProvider to add the label of Node. This ItemProvider "simulates"

@@ -14,9 +14,8 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.sirius.description.RepresentationTemplate;
 import org.eclipse.sirius.ui.business.internal.template.RepresentationTemplateEditManagerImpl;
+import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 
 /**
  * Class responsible for aggregating the RepresentationTemplate Edit's .

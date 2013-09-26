@@ -102,7 +102,7 @@
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
     <factory
        uri = "http://www.eclipse.org/sirius/1.1.0"
-       class = "org.eclipse.sirius.provider.SiriusItemProviderAdapterFactory"
+       class = "org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory"
        supportedTypes =
          "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
           org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -115,7 +115,7 @@
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
     <factory
        uri = "http://www.eclipse.org/sirius/description/1.1.0"
-       class = "org.eclipse.sirius.description.provider.DescriptionItemProviderAdapterFactory"
+       class = "org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory"
        supportedTypes =
          "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
           org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -124,7 +124,7 @@
           org.eclipse.emf.edit.provider.IItemPropertySource" />
               <factory
        uri = "http://www.eclipse.org/sirius/description/tool/1.1.0"
-       class = "org.eclipse.sirius.description.tool.provider.ToolItemProviderAdapterFactory"
+       class = "org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory"
        supportedTypes =
          "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
           org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -133,7 +133,7 @@
           org.eclipse.emf.edit.provider.IItemPropertySource" />
               <factory
        uri = "http://www.eclipse.org/sirius/description/style/1.1.0"
-       class = "org.eclipse.sirius.description.style.provider.StyleItemProviderAdapterFactory"
+       class = "org.eclipse.sirius.viewpoint.description.style.provider.StyleItemProviderAdapterFactory"
        supportedTypes =
          "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
           org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -142,7 +142,7 @@
           org.eclipse.emf.edit.provider.IItemPropertySource" />
               <factory
        uri = "http://www.eclipse.org/sirius/description/filter/1.1.0"
-       class = "org.eclipse.sirius.description.filter.provider.FilterItemProviderAdapterFactory"
+       class = "org.eclipse.sirius.viewpoint.description.filter.provider.FilterItemProviderAdapterFactory"
        supportedTypes =
          "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
           org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -151,7 +151,7 @@
           org.eclipse.emf.edit.provider.IItemPropertySource" />
               <factory
        uri = "http://www.eclipse.org/sirius/description/validation/1.1.0"
-       class = "org.eclipse.sirius.description.validation.provider.ValidationItemProviderAdapterFactory"
+       class = "org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory"
        supportedTypes =
          "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
           org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -160,7 +160,7 @@
           org.eclipse.emf.edit.provider.IItemPropertySource" />
               <factory
        uri = "http://www.eclipse.org/sirius/description/audit/1.1.0"
-       class = "org.eclipse.sirius.description.audit.provider.AuditItemProviderAdapterFactory"
+       class = "org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory"
        supportedTypes =
          "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
           org.eclipse.emf.edit.provider.IStructuredItemContentProvider
@@ -168,11 +168,89 @@
           org.eclipse.emf.edit.provider.IItemLabelProvider
           org.eclipse.emf.edit.provider.IItemPropertySource" />
   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated viewpoint -->
+      <factory
+            uri="http://www.eclipse.org/sirius/description/style/1.1.0"
+            class="org.eclipse.sirius.viewpoint.description.style.provider.StyleItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated viewpoint -->
+      <factory
+            uri="http://www.eclipse.org/sirius/description/tool/1.1.0"
+            class="org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated viewpoint -->
+      <factory
+            uri="http://www.eclipse.org/sirius/description/filter/1.1.0"
+            class="org.eclipse.sirius.viewpoint.description.filter.provider.FilterItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated viewpoint -->
+      <factory
+            uri="http://www.eclipse.org/sirius/description/validation/1.1.0"
+            class="org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated viewpoint -->
+      <factory
+            uri="http://www.eclipse.org/sirius/description/audit/1.1.0"
+            class="org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated viewpoint -->
+      <factory
+            uri="http://www.eclipse.org/sirius/description/concern/1.1.0"
+            class="org.eclipse.sirius.viewpoint.description.concern.provider.ConcernItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
   
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
     <factory
        uri = "http://www.eclipse.org/sirius/description/contribution/1.0.0"
-       class = "org.eclipse.sirius.description.contribution.provider.ContributionItemProviderAdapterFactory"
+       class = "org.eclipse.sirius.viewpoint.description.contribution.provider.ContributionItemProviderAdapterFactory"
        supportedTypes =
          "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
           org.eclipse.emf.edit.provider.IStructuredItemContentProvider

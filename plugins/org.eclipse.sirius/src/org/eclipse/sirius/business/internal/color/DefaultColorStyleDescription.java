@@ -11,25 +11,24 @@
 package org.eclipse.sirius.business.internal.color;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.description.style.BasicLabelStyleDescription;
-import org.eclipse.sirius.description.style.BeginLabelStyleDescription;
-import org.eclipse.sirius.description.style.BorderedStyleDescription;
-import org.eclipse.sirius.description.style.BundledImageDescription;
-import org.eclipse.sirius.description.style.CenterLabelStyleDescription;
-import org.eclipse.sirius.description.style.DotDescription;
-import org.eclipse.sirius.description.style.EdgeStyleDescription;
-import org.eclipse.sirius.description.style.EllipseNodeDescription;
-import org.eclipse.sirius.description.style.EndLabelStyleDescription;
-import org.eclipse.sirius.description.style.FlatContainerStyleDescription;
-import org.eclipse.sirius.description.style.GaugeSectionDescription;
-import org.eclipse.sirius.description.style.LabelStyleDescription;
-import org.eclipse.sirius.description.style.LozengeNodeDescription;
-import org.eclipse.sirius.description.style.NoteDescription;
-import org.eclipse.sirius.description.style.ShapeContainerStyleDescription;
-import org.eclipse.sirius.description.style.SquareDescription;
-import org.eclipse.sirius.description.style.util.StyleSwitch;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
+import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.BeginLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.BorderedStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.BundledImageDescription;
+import org.eclipse.sirius.viewpoint.description.style.CenterLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.DotDescription;
+import org.eclipse.sirius.viewpoint.description.style.EdgeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription;
+import org.eclipse.sirius.viewpoint.description.style.EndLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.FlatContainerStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.GaugeSectionDescription;
+import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription;
+import org.eclipse.sirius.viewpoint.description.style.NoteDescription;
+import org.eclipse.sirius.viewpoint.description.style.ShapeContainerStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.SquareDescription;
+import org.eclipse.sirius.viewpoint.description.style.util.StyleSwitch;
 
 /**
  * Class responsible for setting default color values on style descriptions.

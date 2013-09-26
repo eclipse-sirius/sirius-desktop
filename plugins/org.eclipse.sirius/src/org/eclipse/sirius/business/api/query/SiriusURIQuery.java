@@ -21,8 +21,8 @@ import com.google.common.base.Preconditions;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Queries about Sirius URIs of the form
@@ -93,14 +93,14 @@ public class SiriusURIQuery {
             }
             if (target != null) {
                 String pluginId = uri.segment(1);
-                if (target instanceof Sirius) {
-                    String viewpointName = ((Sirius) target).getName();
+                if (target instanceof Viewpoint) {
+                    String viewpointName = ((Viewpoint) target).getName();
                     URI logicalSiriusUri = URI.createURI(SiriusURIQuery.VIEWPOINT_URI_SCHEME + ":/" + pluginId + "/" + viewpointName);
                     result = Options.newSome(logicalSiriusUri);
                 } else {
-                    Option<EObject> viewpointContext = new EObjectQuery(target).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getSirius());
+                    Option<EObject> viewpointContext = new EObjectQuery(target).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getViewpoint());
                     if (viewpointContext.some()) {
-                        String viewpointName = ((Sirius) viewpointContext.get()).getName();
+                        String viewpointName = ((Viewpoint) viewpointContext.get()).getName();
                         URI logicalSiriusUri = URI.createURI(SiriusURIQuery.VIEWPOINT_URI_SCHEME + ":/" + pluginId + "/" + viewpointName);
                         result = Options.newSome(logicalSiriusUri.appendFragment(uri.fragment()));
                     }

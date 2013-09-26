@@ -29,11 +29,10 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-
-import org.eclipse.sirius.BasicLabelStyle;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.WorkspaceImage;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.WorkspaceImage;
 
 /**
  * Dialog to select an image from workspace.
@@ -62,7 +61,7 @@ public class SelectDiagramElementBackgroundImageDialog extends Dialog {
      */
     public SelectDiagramElementBackgroundImageDialog(Shell shell, BasicLabelStyle basicLabelStyle) {
         super(shell);
-        this.workspaceImageForWorkspace = SiriusFactory.eINSTANCE.createWorkspaceImage();
+        this.workspaceImageForWorkspace = ViewpointFactory.eINSTANCE.createWorkspaceImage();
         if (basicLabelStyle instanceof WorkspaceImage) {
             WorkspaceImage workspaceImage = (WorkspaceImage) basicLabelStyle;
             workspaceImageForWorkspace.setWorkspacePath(workspaceImage.getWorkspacePath());
@@ -110,7 +109,7 @@ public class SelectDiagramElementBackgroundImageDialog extends Dialog {
         controlDecoration.setImage(fieldDecoration.getImage());
 
         ISWTObservableValue workspacePathTextObservable = WidgetProperties.text(SWT.Modify).observe(workspacePathText);
-        IObservableValue workspaceImageObservable = EMFProperties.value(SiriusPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH).observe(workspaceImageForWorkspace);
+        IObservableValue workspaceImageObservable = EMFProperties.value(ViewpointPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH).observe(workspaceImageForWorkspace);
         DataBindingContext ctx = new DataBindingContext();
         WorkspacePathValidator workspacePathValidator = new WorkspacePathValidator(controlDecoration);
         ctx.bindValue(workspacePathTextObservable, workspaceImageObservable, new UpdateValueStrategy().setAfterConvertValidator(workspacePathValidator), null);

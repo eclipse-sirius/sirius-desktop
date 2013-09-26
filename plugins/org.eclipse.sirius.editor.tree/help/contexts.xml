@@ -279,7 +279,7 @@
 
 
        List of the available variables for tool operations:
-            - containerView: The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+            - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
             - representationName: The variable representationName that represents the name of the created representation.
   
    <!-- Start of user code TreeCreationDescription description -->
@@ -302,7 +302,7 @@
 
 
        List of the available variables for tool operations:
-            - containerView: The variable containerView that represents the clickedView (instance of Sirius or SiriusElement).
+            - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
             - container: The variable container that represents the semantic element of the clicked view.
             - representationName: The variable representationName that represents the name of the representation to open.
   

@@ -24,7 +24,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 
 import org.eclipse.sirius.business.api.query.SiriusQuery;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Operations to manipulate Sirius Resources (VSMs).
@@ -76,8 +76,8 @@ public class SiriusResourceOperations {
         Iterator<EObject> allContents = EcoreUtil.getAllProperContents(resource, false);
         while (allContents.hasNext()) {
             EObject internal = allContents.next();
-            if (internal instanceof Sirius) {
-                currentSiriusURI = new SiriusQuery((Sirius) internal).getSiriusURI().get();
+            if (internal instanceof Viewpoint) {
+                currentSiriusURI = new SiriusQuery((Viewpoint) internal).getSiriusURI().get();
             }
             if (currentSiriusURI != null) {
                 String fragment = internal.eResource().getURIFragment(internal);

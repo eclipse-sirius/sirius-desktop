@@ -14,9 +14,8 @@ import java.util.Set;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.business.api.helper.graphicalfilters.HideFilterHelper;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * A simple command to reveal diagram elements.

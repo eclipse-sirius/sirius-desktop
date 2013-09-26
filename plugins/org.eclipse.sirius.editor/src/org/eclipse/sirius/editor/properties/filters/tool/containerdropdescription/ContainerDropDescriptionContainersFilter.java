@@ -13,16 +13,15 @@ package org.eclipse.sirius.editor.properties.filters.tool.containerdropdescripti
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.editor.properties.filters.common.SiriusPropertyFilter;
+import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 // End of user code specific imports
 
 /**
  * A filter for the containers property section.
  */
-public class ContainerDropDescriptionContainersFilter extends SiriusPropertyFilter {
+public class ContainerDropDescriptionContainersFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
@@ -37,7 +36,7 @@ public class ContainerDropDescriptionContainersFilter extends SiriusPropertyFilt
      */
     @Override
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.description.tool.ContainerDropDescription;
+        return arg0 instanceof org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
     }
 
     // Start of user code user methods

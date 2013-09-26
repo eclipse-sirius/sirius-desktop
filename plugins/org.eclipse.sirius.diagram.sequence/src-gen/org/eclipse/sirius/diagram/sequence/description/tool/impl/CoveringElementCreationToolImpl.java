@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.sirius.diagram.sequence.description.CoveredLifelinesVariable;
 import org.eclipse.sirius.diagram.sequence.description.tool.CoveringElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;

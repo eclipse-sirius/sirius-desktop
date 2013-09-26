@@ -17,12 +17,12 @@ import org.eclipse.swt.graphics.Image;
 
 import com.google.common.base.Preconditions;
 
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.EdgeTarget;
 import org.eclipse.sirius.diagram.business.internal.query.EdgeTargetQuery;
 import org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.internal.commands.ToggleFoldingStateCommand;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
 
 /**
  * A figure which displays and controls the folding state of an element.

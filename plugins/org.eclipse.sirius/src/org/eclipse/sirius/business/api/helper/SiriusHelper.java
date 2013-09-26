@@ -20,31 +20,30 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DNodeList;
-import org.eclipse.sirius.DNodeListElement;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.DragAndDropTarget;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.GroupQuery;
-import org.eclipse.sirius.description.AnnotationEntry;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.DescriptionFactory;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.Group;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.viewpoint.DNodeListElement;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.DragAndDropTarget;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
  * Utility class for managing DDiagram models.
@@ -122,7 +121,7 @@ public final class SiriusHelper {
         }
         final Iterator<EObject> toRemoves = referedElementsToRemove.iterator();
         while (toRemoves.hasNext()) {
-            EcoreUtil.remove(elem, SiriusPackage.eINSTANCE.getDRepresentationElement_SemanticElements(), toRemoves.next());
+            EcoreUtil.remove(elem, ViewpointPackage.eINSTANCE.getDRepresentationElement_SemanticElements(), toRemoves.next());
         }
         /*
          * We'll do the same kind of trick for possible dangling reference to an
@@ -302,7 +301,7 @@ public final class SiriusHelper {
      */
     @Deprecated
     public static DAnalysis createDAnalysis() {
-        final DAnalysis analysis = SiriusFactory.eINSTANCE.createDAnalysis();
+        final DAnalysis analysis = ViewpointFactory.eINSTANCE.createDAnalysis();
 
         return analysis;
     }

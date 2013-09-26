@@ -19,8 +19,7 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Routing;
-
-import org.eclipse.sirius.DEdge;
+import org.eclipse.sirius.viewpoint.DEdge;
 
 /**
  * Store the layout information of a DEdge at a given time. This class is used

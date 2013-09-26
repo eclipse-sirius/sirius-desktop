@@ -13,9 +13,8 @@ package org.eclipse.sirius.diagram.business.internal.dialect;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.LayoutUtil;
+import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * Arrange operation is responsible of the diagram needing arrange all mark

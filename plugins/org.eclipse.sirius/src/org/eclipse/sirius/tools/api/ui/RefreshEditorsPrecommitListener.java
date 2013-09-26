@@ -32,13 +32,13 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilterManager;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A listener to refresh all Sirius opened editors. It is used as :

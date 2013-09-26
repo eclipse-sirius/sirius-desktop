@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.metamodel.spec;
 
-import org.eclipse.sirius.description.impl.InterpolatedColorImpl;
+import org.eclipse.sirius.viewpoint.description.impl.InterpolatedColorImpl;
 
 /**
  * Customization of InterpolatedColorImpl.

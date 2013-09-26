@@ -59,20 +59,9 @@ import com.google.common.collect.Iterables;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DStylizable;
-import org.eclipse.sirius.FlatContainerStyle;
-import org.eclipse.sirius.ResizeKind;
-import org.eclipse.sirius.ShapeContainerStyle;
-import org.eclipse.sirius.WorkspaceImage;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.description.style.FlatContainerStyleDescription;
-import org.eclipse.sirius.description.style.LabelBorderStyleDescription;
 import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramContainerEditPartOperation;
@@ -89,6 +78,17 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelo
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.FlatContainerStyle;
+import org.eclipse.sirius.viewpoint.ResizeKind;
+import org.eclipse.sirius.viewpoint.ShapeContainerStyle;
+import org.eclipse.sirius.viewpoint.WorkspaceImage;
+import org.eclipse.sirius.viewpoint.description.style.FlatContainerStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 
 /**
  * Basic implementation of top Level type of Diagram Containers.

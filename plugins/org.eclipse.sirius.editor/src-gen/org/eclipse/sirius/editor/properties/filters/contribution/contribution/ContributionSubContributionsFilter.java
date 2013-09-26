@@ -13,9 +13,8 @@ package org.eclipse.sirius.editor.properties.filters.contribution.contribution;
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.sirius.description.contribution.ContributionPackage;
 import org.eclipse.sirius.editor.properties.filters.common.ContributionPropertyFilter;
+import org.eclipse.sirius.viewpoint.description.contribution.ContributionPackage;
 
 // End of user code specific imports
 
@@ -35,7 +34,7 @@ public class ContributionSubContributionsFilter extends ContributionPropertyFilt
      * {@inheritDoc}
      */
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.description.contribution.Contribution;
+        return arg0 instanceof org.eclipse.sirius.viewpoint.description.contribution.Contribution;
     }
 
     // Start of user code user methods

@@ -26,18 +26,17 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.provider.StyleItemProvider;
 import org.eclipse.sirius.tree.TreeItemStyle;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.provider.StyleItemProvider;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.tree.TreeItemStyle} object. <!-- begin-user-doc
- * --> <!-- end-user-doc -->
+ * {@link org.eclipse.sirius.tree.TreeItemStyle} object. <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
  * 
  * @generated
  */
@@ -82,7 +81,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider implements IEdi
     protected void addLabelSizePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_BasicLabelStyle_labelSize_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyle_labelSize_feature", "_UI_BasicLabelStyle_type"),
-                SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+                ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -94,7 +93,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider implements IEdi
     protected void addLabelFormatPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_BasicLabelStyle_labelFormat_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyle_labelFormat_feature", "_UI_BasicLabelStyle_type"),
-                SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -106,7 +105,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider implements IEdi
     protected void addShowIconPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_BasicLabelStyle_showIcon_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyle_showIcon_feature", "_UI_BasicLabelStyle_type"),
-                SiriusPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+                ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -118,7 +117,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider implements IEdi
     protected void addIconPathPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_BasicLabelStyle_iconPath_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyle_iconPath_feature", "_UI_BasicLabelStyle_type"),
-                SiriusPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                ViewpointPackage.Literals.BASIC_LABEL_STYLE__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -130,7 +129,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider implements IEdi
     protected void addLabelAlignmentPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_LabelStyle_labelAlignment_feature"), getString("_UI_PropertyDescriptor_description", "_UI_LabelStyle_labelAlignment_feature", "_UI_LabelStyle_type"),
-                SiriusPackage.Literals.LABEL_STYLE__LABEL_ALIGNMENT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                ViewpointPackage.Literals.LABEL_STYLE__LABEL_ALIGNMENT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -147,7 +146,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider implements IEdi
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR);
+            childrenFeatures.add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR);
             childrenFeatures.add(TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR);
         }
         return childrenFeatures;
@@ -229,9 +228,9 @@ public class TreeItemStyleItemProvider extends StyleItemProvider implements IEdi
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR, SiriusFactory.eINSTANCE.createRGBValues()));
+        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR, ViewpointFactory.eINSTANCE.createRGBValues()));
 
-        newChildDescriptors.add(createChildParameter(TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR, SiriusFactory.eINSTANCE.createRGBValues()));
+        newChildDescriptors.add(createChildParameter(TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR, ViewpointFactory.eINSTANCE.createRGBValues()));
     }
 
     /**
@@ -246,7 +245,7 @@ public class TreeItemStyleItemProvider extends StyleItemProvider implements IEdi
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR || childFeature == TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR;
+        boolean qualify = childFeature == ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR || childFeature == TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR;
 
         if (qualify) {
             return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });

@@ -15,9 +15,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.sirius.description.style.StylePackage;
-import org.eclipse.sirius.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -83,7 +82,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__DOCUMENTATION;
+    int TREE_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>End User Documentation</b></em>'
@@ -92,7 +91,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_DESCRIPTION__END_USER_DOCUMENTATION = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__END_USER_DOCUMENTATION;
+    int TREE_DESCRIPTION__END_USER_DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__END_USER_DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -101,7 +100,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_DESCRIPTION__NAME = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__NAME;
+    int TREE_DESCRIPTION__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -110,7 +109,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_DESCRIPTION__LABEL = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__LABEL;
+    int TREE_DESCRIPTION__LABEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__LABEL;
 
     /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
@@ -119,7 +118,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_DESCRIPTION__TITLE_EXPRESSION = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__TITLE_EXPRESSION;
+    int TREE_DESCRIPTION__TITLE_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__TITLE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Initialisation</b></em>' attribute. <!--
@@ -128,7 +127,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_DESCRIPTION__INITIALISATION = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__INITIALISATION;
+    int TREE_DESCRIPTION__INITIALISATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__INITIALISATION;
 
     /**
      * The feature id for the '<em><b>Metamodel</b></em>' reference list. <!--
@@ -137,7 +136,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_DESCRIPTION__METAMODEL = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__METAMODEL;
+    int TREE_DESCRIPTION__METAMODEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__METAMODEL;
 
     /**
      * The feature id for the '<em><b>Show On Startup</b></em>' attribute. <!--
@@ -146,7 +145,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_DESCRIPTION__SHOW_ON_STARTUP = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__SHOW_ON_STARTUP;
+    int TREE_DESCRIPTION__SHOW_ON_STARTUP = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__SHOW_ON_STARTUP;
 
     /**
      * The feature id for the '<em><b>Sub Item Mappings</b></em>' containment
@@ -155,7 +154,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_DESCRIPTION__SUB_ITEM_MAPPINGS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 0;
+    int TREE_DESCRIPTION__SUB_ITEM_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Drop Tools</b></em>' containment reference
@@ -164,7 +163,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_DESCRIPTION__DROP_TOOLS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 1;
+    int TREE_DESCRIPTION__DROP_TOOLS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -173,7 +172,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_DESCRIPTION__DOMAIN_CLASS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 2;
+    int TREE_DESCRIPTION__DOMAIN_CLASS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -182,7 +181,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_DESCRIPTION__PRECONDITION_EXPRESSION = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 3;
+    int TREE_DESCRIPTION__PRECONDITION_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Create Tree Item</b></em>' containment
@@ -191,7 +190,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_DESCRIPTION__CREATE_TREE_ITEM = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 4;
+    int TREE_DESCRIPTION__CREATE_TREE_ITEM = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '
@@ -201,7 +200,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 5;
+    int TREE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '
@@ -211,7 +210,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 6;
+    int TREE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The number of structural features of the '<em>Tree Description</em>'
@@ -220,7 +219,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 7;
+    int TREE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 7;
 
     /**
      * The meta object id for the '
@@ -241,7 +240,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_MAPPING__NAME = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__NAME;
+    int TREE_MAPPING__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -250,7 +249,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_MAPPING__LABEL = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__LABEL;
+    int TREE_MAPPING__LABEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -259,7 +258,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__DETAIL_DESCRIPTIONS;
+    int TREE_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -268,7 +267,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int TREE_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -277,7 +276,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING_FEATURE_COUNT + 0;
+    int TREE_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Tree Mapping</em>' class.
@@ -286,7 +285,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_MAPPING_FEATURE_COUNT = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING_FEATURE_COUNT + 1;
+    int TREE_MAPPING_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -602,7 +601,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION__PREDICATE_EXPRESSION = org.eclipse.sirius.description.DescriptionPackage.CONDITIONAL_STYLE_DESCRIPTION__PREDICATE_EXPRESSION;
+    int CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION__PREDICATE_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONDITIONAL_STYLE_DESCRIPTION__PREDICATE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -611,7 +610,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION__STYLE = org.eclipse.sirius.description.DescriptionPackage.CONDITIONAL_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+    int CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION__STYLE = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONDITIONAL_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -621,7 +620,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.description.DescriptionPackage.CONDITIONAL_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int CONDITIONAL_TREE_ITEM_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONDITIONAL_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '

@@ -22,7 +22,6 @@ import org.eclipse.gmf.runtime.notation.View;
 
 import com.google.common.collect.Iterables;
 
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.diagram.graphical.edit.part.specific.BracketEdgeEditPart;
 import org.eclipse.sirius.diagram.internal.edit.commands.CreateSiriusElementCommand;
 import org.eclipse.sirius.diagram.internal.edit.commands.DEdgeCreateCommand;
@@ -42,6 +41,7 @@ import org.eclipse.sirius.diagram.internal.edit.parts.SquareEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.WorkspaceImageEditPart;
 import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Abstract policy to put common ex generated code for
@@ -57,55 +57,55 @@ public abstract class AbstractDNodeItemSemanticEditPolicy extends SiriusBaseItem
     protected Command getCreateCommand(CreateElementRequest req) {
         if (SiriusElementTypes.BundledImage_3004 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(SiriusPackage.eINSTANCE.getDNode_OwnedStyle());
+                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getDNode_OwnedStyle());
             }
             return getGEFWrapper(new CreateSiriusElementCommand(req));
         }
         if (SiriusElementTypes.CustomStyle_3014 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(SiriusPackage.eINSTANCE.getDNode_OwnedStyle());
+                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getDNode_OwnedStyle());
             }
             return getGEFWrapper(new CreateSiriusElementCommand(req));
         }
         if (SiriusElementTypes.Dot_3002 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(SiriusPackage.eINSTANCE.getDNode_OwnedStyle());
+                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getDNode_OwnedStyle());
             }
             return getGEFWrapper(new CreateSiriusElementCommand(req));
         }
         if (SiriusElementTypes.Ellipse_3016 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(SiriusPackage.eINSTANCE.getDNode_OwnedStyle());
+                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getDNode_OwnedStyle());
             }
             return getGEFWrapper(new CreateSiriusElementCommand(req));
         }
         if (SiriusElementTypes.GaugeCompositeStyle_3006 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(SiriusPackage.eINSTANCE.getDNode_OwnedStyle());
+                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getDNode_OwnedStyle());
             }
             return getGEFWrapper(new CreateSiriusElementCommand(req));
         }
         if (SiriusElementTypes.Lozenge_3017 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(SiriusPackage.eINSTANCE.getDNode_OwnedStyle());
+                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getDNode_OwnedStyle());
             }
             return getGEFWrapper(new CreateSiriusElementCommand(req));
         }
         if (SiriusElementTypes.Note_3013 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(SiriusPackage.eINSTANCE.getDNode_OwnedStyle());
+                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getDNode_OwnedStyle());
             }
             return getGEFWrapper(new CreateSiriusElementCommand(req));
         }
         if (SiriusElementTypes.Square_3003 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(SiriusPackage.eINSTANCE.getDNode_OwnedStyle());
+                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getDNode_OwnedStyle());
             }
             return getGEFWrapper(new CreateSiriusElementCommand(req));
         }
         if (SiriusElementTypes.WorkspaceImage_3005 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(SiriusPackage.eINSTANCE.getDNode_OwnedStyle());
+                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getDNode_OwnedStyle());
             }
             return getGEFWrapper(new WorkspaceImageCreateCommand(req));
         }

@@ -19,8 +19,8 @@ import org.eclipse.gmf.runtime.notation.View;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * @was-generated

@@ -20,44 +20,43 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IAcceleoInterpreterVariables;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
-import org.eclipse.sirius.description.ConditionalStyleDescription;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.style.ContainerStyleDescription;
-import org.eclipse.sirius.description.style.NodeStyleDescription;
-import org.eclipse.sirius.description.style.StylePackage;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.AbstractVariable;
-import org.eclipse.sirius.description.tool.AcceleoVariable;
-import org.eclipse.sirius.description.tool.ChangeContext;
-import org.eclipse.sirius.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.description.tool.CreateEdgeView;
-import org.eclipse.sirius.description.tool.CreateInstance;
-import org.eclipse.sirius.description.tool.CreateView;
-import org.eclipse.sirius.description.tool.DeleteElementDescription;
-import org.eclipse.sirius.description.tool.DiagramCreationDescription;
-import org.eclipse.sirius.description.tool.DirectEditLabel;
-import org.eclipse.sirius.description.tool.DragSource;
-import org.eclipse.sirius.description.tool.EdgeCreationDescription;
-import org.eclipse.sirius.description.tool.EditMaskVariables;
-import org.eclipse.sirius.description.tool.For;
-import org.eclipse.sirius.description.tool.MoveElement;
-import org.eclipse.sirius.description.tool.SelectModelElementVariable;
-import org.eclipse.sirius.description.tool.SelectionWizardDescription;
-import org.eclipse.sirius.description.tool.SetValue;
-import org.eclipse.sirius.description.tool.ToolPackage;
-import org.eclipse.sirius.description.tool.util.ToolSwitch;
-import org.eclipse.sirius.description.util.DescriptionSwitch;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
+import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.style.ContainerStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
+import org.eclipse.sirius.viewpoint.description.tool.CreateEdgeView;
+import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
+import org.eclipse.sirius.viewpoint.description.tool.CreateView;
+import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
+import org.eclipse.sirius.viewpoint.description.tool.DiagramCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
+import org.eclipse.sirius.viewpoint.description.tool.DragSource;
+import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
+import org.eclipse.sirius.viewpoint.description.tool.For;
+import org.eclipse.sirius.viewpoint.description.tool.MoveElement;
+import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
+import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
+import org.eclipse.sirius.viewpoint.description.tool.SetValue;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch;
+import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 
 /**
  * This constraint validates that all expressions use.
@@ -724,7 +723,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseSiriusDescription(org.eclipse.sirius.description.DiagramDescription)
+         * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseSiriusDescription(org.eclipse.sirius.viewpoint.description.DiagramDescription)
          */
         public IStatus caseSiriusDescription(final DiagramDescription object) {
             if (this.currentStatus.isOK()) {
@@ -741,7 +740,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseSiriusElementMapping(org.eclipse.sirius.description.DiagramElementMapping)
+         * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseSiriusElementMapping(org.eclipse.sirius.viewpoint.description.DiagramElementMapping)
          */
         public IStatus caseSiriusElementMapping(final DiagramElementMapping object) {
             if (this.currentStatus.isOK()) {
@@ -764,7 +763,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseNodeMapping(org.eclipse.sirius.description.NodeMapping)
+         * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseNodeMapping(org.eclipse.sirius.viewpoint.description.NodeMapping)
          */
         @Override
         public IStatus caseNodeMapping(final NodeMapping object) {
@@ -785,7 +784,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseContainerMapping(org.eclipse.sirius.description.ContainerMapping)
+         * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseContainerMapping(org.eclipse.sirius.viewpoint.description.ContainerMapping)
          */
         @Override
         public IStatus caseContainerMapping(final ContainerMapping object) {
@@ -803,7 +802,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseEdgeMapping(org.eclipse.sirius.description.EdgeMapping)
+         * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseEdgeMapping(org.eclipse.sirius.viewpoint.description.EdgeMapping)
          */
         @Override
         public IStatus caseEdgeMapping(final EdgeMapping object) {
@@ -836,7 +835,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseConditionalStyleDescription(org.eclipse.sirius.description.ConditionalStyleDescription)
+         * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseConditionalStyleDescription(org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription)
          */
         @Override
         public IStatus caseConditionalStyleDescription(final ConditionalStyleDescription object) {
@@ -854,7 +853,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.util.DescriptionSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
+         * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
          */
         @Override
         public IStatus doSwitch(final EObject theEObject) {
@@ -898,7 +897,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.tool.util.ToolSwitch#caseAbstractToolDescription(org.eclipse.sirius.description.tool.AbstractToolDescription)
+         * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseAbstractToolDescription(org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription)
          */
         @Override
         public IStatus caseAbstractToolDescription(final AbstractToolDescription object) {
@@ -917,7 +916,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
          * 
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.tool.util.ToolSwitch#caseSelectModelElementVariable(org.eclipse.sirius.description.tool.SelectModelElementVariable)
+         * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseSelectModelElementVariable(org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable)
          */
         @Override
         public IStatus caseSelectModelElementVariable(final SelectModelElementVariable object) {
@@ -936,7 +935,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
          * 
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.tool.util.ToolSwitch#caseCreateInstance(org.eclipse.sirius.description.tool.CreateInstance)
+         * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseCreateInstance(org.eclipse.sirius.viewpoint.description.tool.CreateInstance)
          */
         @Override
         public IStatus caseCreateInstance(final CreateInstance object) {
@@ -954,7 +953,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.tool.util.ToolSwitch#caseChangeContext(org.eclipse.sirius.description.tool.ChangeContext)
+         * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseChangeContext(org.eclipse.sirius.viewpoint.description.tool.ChangeContext)
          */
         @Override
         public IStatus caseChangeContext(final ChangeContext object) {
@@ -972,7 +971,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.tool.util.ToolSwitch#caseSetValue(org.eclipse.sirius.description.tool.SetValue)
+         * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseSetValue(org.eclipse.sirius.viewpoint.description.tool.SetValue)
          */
         @Override
         public IStatus caseSetValue(final SetValue object) {
@@ -990,7 +989,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.tool.util.ToolSwitch#caseMoveElement(org.eclipse.sirius.description.tool.MoveElement)
+         * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseMoveElement(org.eclipse.sirius.viewpoint.description.tool.MoveElement)
          */
         @Override
         public IStatus caseMoveElement(final MoveElement object) {
@@ -1008,7 +1007,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.tool.util.ToolSwitch#caseFor(org.eclipse.sirius.description.tool.For)
+         * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseFor(org.eclipse.sirius.viewpoint.description.tool.For)
          */
         @Override
         public IStatus caseFor(final For object) {
@@ -1026,7 +1025,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.tool.util.ToolSwitch#caseCreateView(org.eclipse.sirius.description.tool.CreateView)
+         * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseCreateView(org.eclipse.sirius.viewpoint.description.tool.CreateView)
          */
         @Override
         public IStatus caseCreateView(final CreateView object) {
@@ -1045,7 +1044,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
          * 
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.tool.util.ToolSwitch#caseCreateEdgeView(org.eclipse.sirius.description.tool.CreateEdgeView)
+         * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseCreateEdgeView(org.eclipse.sirius.viewpoint.description.tool.CreateEdgeView)
          */
         @Override
         public IStatus caseCreateEdgeView(final CreateEdgeView object) {
@@ -1066,7 +1065,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.tool.util.ToolSwitch#caseAcceleoVariable(org.eclipse.sirius.description.tool.AcceleoVariable)
+         * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseAcceleoVariable(org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable)
          */
         @Override
         public IStatus caseAcceleoVariable(final AcceleoVariable object) {
@@ -1084,7 +1083,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.tool.util.ToolSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
+         * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
          */
         @Override
         public IStatus doSwitch(final EObject theEObject) {

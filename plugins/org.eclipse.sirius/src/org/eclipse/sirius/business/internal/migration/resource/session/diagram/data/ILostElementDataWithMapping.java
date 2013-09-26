@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.migration.resource.session.diagram.data;
 
-import org.eclipse.sirius.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
  * Lost element data with mapping.

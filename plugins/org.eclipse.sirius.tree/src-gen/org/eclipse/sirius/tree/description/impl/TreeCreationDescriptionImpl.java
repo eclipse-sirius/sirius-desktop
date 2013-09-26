@@ -14,11 +14,10 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.sirius.description.tool.impl.RepresentationCreationDescriptionImpl;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeCreationDescription;
 import org.eclipse.sirius.tree.description.TreeDescription;
+import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

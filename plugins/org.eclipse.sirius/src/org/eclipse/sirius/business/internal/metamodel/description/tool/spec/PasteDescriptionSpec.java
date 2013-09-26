@@ -22,9 +22,9 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.PasteTargetDescription;
-import org.eclipse.sirius.description.tool.impl.PasteDescriptionImpl;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
+import org.eclipse.sirius.viewpoint.description.tool.impl.PasteDescriptionImpl;
 
 /**
  * Implementation of PasteDescription.
@@ -36,7 +36,7 @@ public class PasteDescriptionSpec extends PasteDescriptionImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.impl.PasteDescriptionImpl#getContainers()
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.PasteDescriptionImpl#getContainers()
      */
     @Override
     public EList<PasteTargetDescription> getContainers() {

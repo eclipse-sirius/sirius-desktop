@@ -41,9 +41,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.HideLabelFilter;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeBeginNameEditPart;
@@ -54,6 +51,9 @@ import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.HideLabelFilter;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * This class update the notation model views visibility attribute when it
@@ -74,9 +74,9 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
      *            the current session.
      */
     public NotationVisibilityUpdater(Session session) {
-        super(NotificationFilter.NOT_TOUCH.and(NotificationFilter.createFeatureFilter(SiriusPackage.eINSTANCE.getDDiagramElement_Visible()).or(
-                NotificationFilter.createFeatureFilter(SiriusPackage.eINSTANCE.getDEdge_IsFold()).or(
-                        NotificationFilter.createFeatureFilter(SiriusPackage.eINSTANCE.getDDiagramElement_GraphicalFilters())))));
+        super(NotificationFilter.NOT_TOUCH.and(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getDDiagramElement_Visible()).or(
+                NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getDEdge_IsFold()).or(
+                        NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getDDiagramElement_GraphicalFilters())))));
         this.session = session;
         session.getTransactionalEditingDomain().addResourceSetListener(this);
     }
@@ -105,7 +105,7 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
                 DDiagramElement dDiagramElement = (DDiagramElement) notification.getNotifier();
                 View referencingView = getReferencingView(dDiagramElement);
                 if (referencingView != null) {
-                    if (notification.getFeature() == SiriusPackage.eINSTANCE.getDDiagramElement_Visible()) {
+                    if (notification.getFeature() == ViewpointPackage.eINSTANCE.getDDiagramElement_Visible()) {
                         viewsToUpdate.put(referencingView, Boolean.valueOf(notification.getNewBooleanValue()));
                         if (removeHideNote) {
                             Set<View> allViewsToHide = new HashSet<View>();
@@ -120,9 +120,9 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
                                 viewsToUpdate.put(view, notification.getNewBooleanValue());
                             }
                         }
-                    } else if (notification.getFeature() == SiriusPackage.eINSTANCE.getDEdge_IsFold()) {
+                    } else if (notification.getFeature() == ViewpointPackage.eINSTANCE.getDEdge_IsFold()) {
                         viewsToUpdate.put(referencingView, !Boolean.valueOf(notification.getNewBooleanValue()));
-                    } else if (notification.getFeature() == SiriusPackage.eINSTANCE.getDDiagramElement_GraphicalFilters()) {
+                    } else if (notification.getFeature() == ViewpointPackage.eINSTANCE.getDDiagramElement_GraphicalFilters()) {
                         List<View> correspondingLabelView = lookForCorrespondingLabelView(dDiagramElement);
                         if (notification.getOldValue() instanceof HideLabelFilter) {
                             for (View view : correspondingLabelView) {

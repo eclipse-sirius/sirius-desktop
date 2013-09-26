@@ -17,17 +17,17 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import com.google.common.collect.Iterables;
 
 import org.eclipse.sirius.common.tools.api.listener.NotificationReceiver;
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DNodeList;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.DView;
-import org.eclipse.sirius.EdgeTarget;
-import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.helper.display.DisplayServiceManager;
@@ -132,15 +132,15 @@ public class VisibilityPropagatorAdapter extends EContentAdapter implements Noti
             case Notification.SET:
             case Notification.UNSET:
 
-                if (notifier instanceof DSemanticDiagram && SiriusPackage.eINSTANCE.getDDiagram_ActivatedFilters().equals(n.getFeature())) {
+                if (notifier instanceof DSemanticDiagram && ViewpointPackage.eINSTANCE.getDDiagram_ActivatedFilters().equals(n.getFeature())) {
                     DisplayServiceManager.INSTANCE.getDisplayService().refreshAllElementsVisibility((DDiagram) notifier);
                 }
 
-                if (notifier instanceof DSemanticDiagram && SiriusPackage.eINSTANCE.getDDiagram_ActivatedLayers().equals(n.getFeature())) {
+                if (notifier instanceof DSemanticDiagram && ViewpointPackage.eINSTANCE.getDDiagram_ActivatedLayers().equals(n.getFeature())) {
                     DisplayServiceManager.INSTANCE.getDisplayService().refreshAllElementsVisibility((DDiagram) notifier);
                 }
 
-                if (notifier instanceof DDiagramElement && n.getFeatureID(DDiagramElement.class) == SiriusPackage.DDIAGRAM_ELEMENT__VISIBLE) {
+                if (notifier instanceof DDiagramElement && n.getFeatureID(DDiagramElement.class) == ViewpointPackage.DDIAGRAM_ELEMENT__VISIBLE) {
                     propagateElementVisibility((DDiagramElement) notifier, n);
                 }
 

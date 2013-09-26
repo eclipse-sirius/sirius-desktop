@@ -11,10 +11,9 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline;
 
 import org.eclipse.jface.viewers.ViewerComparator;
-
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
 
 /**
  * A comparator for the outline tree viewer.

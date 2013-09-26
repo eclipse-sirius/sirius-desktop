@@ -31,13 +31,12 @@ import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.eclipse.sirius.FontFormat;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxGroupPropertySection;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription;
+import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * A section for the font label.
@@ -178,7 +177,7 @@ public class ForegroundStyleDescriptionLabelFormatPropertySection extends Abstra
     }
 
     protected EEnum getFeatures() {
-        return SiriusPackage.eINSTANCE.getFontFormat();
+        return ViewpointPackage.eINSTANCE.getFontFormat();
 
     }
 
@@ -260,7 +259,7 @@ public class ForegroundStyleDescriptionLabelFormatPropertySection extends Abstra
 
     protected EAttribute getAttribute() {
         EAttribute attribute = null;
-        for (EAttribute eAttribute : SiriusPackage.eINSTANCE.getBasicLabelStyle().getEAllAttributes()) {
+        for (EAttribute eAttribute : ViewpointPackage.eINSTANCE.getBasicLabelStyle().getEAllAttributes()) {
             if (eAttribute.getEType().equals(getFeatures())) {
                 attribute = eAttribute;
                 break;

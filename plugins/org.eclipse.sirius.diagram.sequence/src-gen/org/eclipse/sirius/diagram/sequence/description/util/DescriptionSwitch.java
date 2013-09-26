@@ -14,22 +14,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.DocumentedElement;
-import org.eclipse.sirius.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.EndUserDocumentedElement;
-import org.eclipse.sirius.description.IEdgeMapping;
-import org.eclipse.sirius.description.IdentifiedElement;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.PasteTargetDescription;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationElementMapping;
-import org.eclipse.sirius.description.tool.AbstractVariable;
 import org.eclipse.sirius.diagram.sequence.description.BasicMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.CombinedFragmentMapping;
 import org.eclipse.sirius.diagram.sequence.description.CoveredLifelinesVariable;
@@ -50,6 +34,21 @@ import org.eclipse.sirius.diagram.sequence.description.OperandMapping;
 import org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 import org.eclipse.sirius.diagram.sequence.description.StateMapping;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
+import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
+import org.eclipse.sirius.viewpoint.description.IEdgeMapping;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 
 /**
  * <!-- begin-user-doc --> The <b>Switch</b> for the model's inheritance

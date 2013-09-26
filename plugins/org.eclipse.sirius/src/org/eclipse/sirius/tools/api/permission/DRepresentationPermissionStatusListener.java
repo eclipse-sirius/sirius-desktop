@@ -14,13 +14,12 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * A permission status listener to notify the editor about permission authority
@@ -41,7 +40,7 @@ public class DRepresentationPermissionStatusListener implements IAuthorityListen
      * Constructor.
      * 
      * @param representation
-     *            the current {@link org.eclipse.sirius.DSemanticDecorator}.
+     *            the current {@link org.eclipse.sirius.viewpoint.DSemanticDecorator}.
      * @param editor
      *            the current editor.
      */
@@ -52,7 +51,7 @@ public class DRepresentationPermissionStatusListener implements IAuthorityListen
     }
 
     /**
-     * {@link org.eclipse.sirius.DSemanticDecorator} getter method.
+     * {@link org.eclipse.sirius.viewpoint.DSemanticDecorator} getter method.
      * 
      * @return this.representation
      */

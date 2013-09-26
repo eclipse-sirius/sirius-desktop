@@ -17,12 +17,12 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * A task allowing to delete any DRepresentationElement or any EObject.

@@ -22,10 +22,9 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-import org.eclipse.sirius.description.tool.provider.ContainerCreationDescriptionItemProvider;
 import org.eclipse.sirius.diagram.sequence.description.provider.SequenceEditPlugin;
 import org.eclipse.sirius.diagram.sequence.description.tool.LifelineCreationTool;
+import org.eclipse.sirius.viewpoint.description.tool.provider.ContainerCreationDescriptionItemProvider;
 
 /**
  * This is the item provider adapter for a

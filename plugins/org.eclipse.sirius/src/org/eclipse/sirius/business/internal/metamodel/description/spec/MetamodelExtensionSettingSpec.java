@@ -11,12 +11,11 @@
 package org.eclipse.sirius.business.internal.metamodel.description.spec;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DRepresentationContainer;
-import org.eclipse.sirius.MetaModelExtension;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPlugin;
-import org.eclipse.sirius.description.impl.MetamodelExtensionSettingImpl;
+import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.MetaModelExtension;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.impl.MetamodelExtensionSettingImpl;
 
 /**
  * Implementation of MetamodelExtensionSettingImpl.java.
@@ -28,12 +27,12 @@ public class MetamodelExtensionSettingSpec extends MetamodelExtensionSettingImpl
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.SiriusOperationImpl#updateAnalysis(org.eclipse.sirius.DRepresentationContainer)
+     * @see org.eclipse.sirius.description.impl.SiriusOperationImpl#updateAnalysis(org.eclipse.sirius.viewpoint.DRepresentationContainer)
      */
     public void updateAnalysis(final DRepresentationContainer analysis) {
         if (getExtensionGroup() != null && SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(analysis).eInstanceOf(getExtensionGroup(), "ExtensionGroup")) {
             final EObject group = getExtensionGroup();
-            final MetaModelExtension extension = SiriusFactory.eINSTANCE.createMetaModelExtension();
+            final MetaModelExtension extension = ViewpointFactory.eINSTANCE.createMetaModelExtension();
             extension.setExtensionGroup(group);
             analysis.setOwnedExtensions(extension);
         }

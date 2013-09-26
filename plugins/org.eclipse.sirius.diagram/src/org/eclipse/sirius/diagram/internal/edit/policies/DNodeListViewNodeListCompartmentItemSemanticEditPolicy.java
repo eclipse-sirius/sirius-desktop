@@ -12,10 +12,9 @@ package org.eclipse.sirius.diagram.internal.edit.policies;
 
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
-
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.diagram.internal.edit.commands.DNodeListElementCreateCommand;
 import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * @was-generated
@@ -28,7 +27,7 @@ public class DNodeListViewNodeListCompartmentItemSemanticEditPolicy extends Siri
     protected Command getCreateCommand(CreateElementRequest req) {
         if (SiriusElementTypes.DNodeListElement_3010 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(SiriusPackage.eINSTANCE.getDNodeList_OwnedElements());
+                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getDNodeList_OwnedElements());
             }
             return getGEFWrapper(new DNodeListElementCreateCommand(req));
         }

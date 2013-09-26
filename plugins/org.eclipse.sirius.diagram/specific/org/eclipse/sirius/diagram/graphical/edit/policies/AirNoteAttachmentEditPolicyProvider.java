@@ -24,7 +24,7 @@ import org.eclipse.gmf.runtime.notation.View;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Provides Edit Policy for Note Attachment.
@@ -76,7 +76,7 @@ public class AirNoteAttachmentEditPolicyProvider implements IEditPolicyProvider 
             if (model instanceof View) {
                 final View view = (View) model;
                 if (view.getDiagram() != null && view.getDiagram().getElement() != null
-                        && view.getDiagram().getElement().eClass().getEPackage().getNsURI().equals(SiriusPackage.eINSTANCE.getNsURI())) {
+                        && view.getDiagram().getElement().eClass().getEPackage().getNsURI().equals(ViewpointPackage.eINSTANCE.getNsURI())) {
                     if ("NoteAttachment".equals(view.getType())) {
                         return true;
                     }

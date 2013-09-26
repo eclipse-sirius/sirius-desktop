@@ -17,14 +17,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.DragAndDropTarget;
-import org.eclipse.sirius.EdgeTarget;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.session.Session;
@@ -33,12 +26,18 @@ import org.eclipse.sirius.business.internal.experimental.sync.AbstractDNodeCandi
 import org.eclipse.sirius.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.business.internal.experimental.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.business.internal.experimental.sync.DEdgeCandidate;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.MappingBasedDecoration;
-import org.eclipse.sirius.description.SemanticBasedDecoration;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.DragAndDropTarget;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.MappingBasedDecoration;
+import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 
 /**
  * A command to create a viewpoint diagram element.

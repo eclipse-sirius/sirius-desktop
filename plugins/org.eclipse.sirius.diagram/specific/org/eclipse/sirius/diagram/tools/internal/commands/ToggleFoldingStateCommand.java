@@ -20,16 +20,16 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.EdgeTarget;
-import org.eclipse.sirius.GraphicalFilter;
-import org.eclipse.sirius.SiriusFactory;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DEdgeQuery;
 import org.eclipse.sirius.diagram.business.internal.query.EdgeTargetQuery;
 import org.eclipse.sirius.diagram.business.internal.query.EdgeTargetQuery.FoldingState;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.GraphicalFilter;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 
 /**
  * A command to fold all the edges (which support it) which have a given element
@@ -104,27 +104,27 @@ public class ToggleFoldingStateCommand extends RecordingCommand {
 
     private void setEdgeFoldingPointState(DEdge edge) {
         if (folding) {
-            addFilterType(edge, SiriusFactory.eINSTANCE.createFoldingPointFilter());
+            addFilterType(edge, ViewpointFactory.eINSTANCE.createFoldingPointFilter());
         } else {
-            removeFilterType(edge, SiriusFactory.eINSTANCE.createFoldingPointFilter());
+            removeFilterType(edge, ViewpointFactory.eINSTANCE.createFoldingPointFilter());
         }
     }
 
     private void setEdgeFoldedState(DEdge edge) {
         if (folding) {
             if (!new DDiagramElementQuery(edge).isExplicitlyFolded()) {
-                addFilterType(edge, SiriusFactory.eINSTANCE.createFoldingFilter());
+                addFilterType(edge, ViewpointFactory.eINSTANCE.createFoldingFilter());
             }
         } else {
-            removeFilterType(edge, SiriusFactory.eINSTANCE.createFoldingFilter());
+            removeFilterType(edge, ViewpointFactory.eINSTANCE.createFoldingFilter());
         }
     }
 
     private void setElementFoldedState(DDiagramElement element) {
         if (folding) {
-            addFilterType(element, SiriusFactory.eINSTANCE.createFoldingFilter());
+            addFilterType(element, ViewpointFactory.eINSTANCE.createFoldingFilter());
         } else {
-            removeFilterType(element, SiriusFactory.eINSTANCE.createFoldingFilter());
+            removeFilterType(element, ViewpointFactory.eINSTANCE.createFoldingFilter());
         }
     }
 

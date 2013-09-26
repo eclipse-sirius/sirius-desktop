@@ -15,9 +15,8 @@ import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl;
 import org.eclipse.emf.ecore.util.EcoreEMap;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.impl.DAnnotationImpl;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.impl.DAnnotationImpl;
 
 /**
  * Customization of the generated {@link DAnnotationImpl} class.
@@ -30,7 +29,7 @@ public class DAnnotationSpec extends DAnnotationImpl {
     /**
      * Overridden to customize the type of the returned Map. {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DAnnotationImpl#getDetails()
+     * @see org.eclipse.sirius.viewpoint.description.impl.DAnnotationImpl#getDetails()
      * 
      * 
      */

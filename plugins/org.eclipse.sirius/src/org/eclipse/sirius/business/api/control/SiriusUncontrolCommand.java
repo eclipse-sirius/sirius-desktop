@@ -25,9 +25,9 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;

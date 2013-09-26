@@ -33,7 +33,6 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Maps;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData;
@@ -46,6 +45,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.semantic.SemanticEdgeLayoutDataKey;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.semantic.SemanticNodeLayoutDataKey;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Helper to manage the layout data.

@@ -14,11 +14,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.jface.wizard.Wizard;
-
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.RepresentationsSelectionWizardPage;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * This wizard ask the user for which viewpoints he wants to externalize and

@@ -19,11 +19,10 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionUI;
 import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIManager;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Class able to manage a set of featureExtensions to provides the usual apects

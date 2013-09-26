@@ -30,8 +30,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.DAnalysisSessionEObject;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.logger.MarkerRuntimeLogger;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -43,8 +41,10 @@ import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.common.tools.api.util.MarkerUtil;
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.impl.SessionManagerEObjectImpl;
+import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.impl.SessionManagerEObjectImpl;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -71,7 +71,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
      */
     private Set<SessionManagerListener> programmaticListeners = Sets.newLinkedHashSet();
 
-    private Set<Sirius> selectedSiriuss = new HashSet<Sirius>();
+    private Set<Viewpoint> selectedSiriuss = new HashSet<Viewpoint>();
 
     private final Map<Session, SessionListener> sessionsToListeners = Maps.newHashMap();
 
@@ -370,21 +370,21 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
      * @param session
      */
     private void fireVPSelectionDeselectionEvents(Session session) {
-        final Set<Sirius> newSelectedSiriuss = this.collectSelectedSiriuss();
+        final Set<Viewpoint> newSelectedSiriuss = this.collectSelectedSiriuss();
 
         //
         // Selecting.
-        final Set<Sirius> selectingSiriuss = new HashSet<Sirius>(newSelectedSiriuss);
+        final Set<Viewpoint> selectingSiriuss = new HashSet<Viewpoint>(newSelectedSiriuss);
         selectingSiriuss.removeAll(this.selectedSiriuss);
-        for (final Sirius viewpoint : selectingSiriuss) {
+        for (final Viewpoint viewpoint : selectingSiriuss) {
             fireSelectedSiriusEvent(viewpoint);
         }
 
         //
         // Deselecting.
-        final Set<Sirius> deselectingSiriuss = new HashSet<Sirius>(this.selectedSiriuss);
+        final Set<Viewpoint> deselectingSiriuss = new HashSet<Viewpoint>(this.selectedSiriuss);
         deselectingSiriuss.removeAll(newSelectedSiriuss);
-        for (final Sirius viewpoint : deselectingSiriuss) {
+        for (final Viewpoint viewpoint : deselectingSiriuss) {
             fireDeselectedSiriusEvent(viewpoint);
         }
 
@@ -397,21 +397,21 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
      * 
      * @return all selected viewpoints.
      */
-    private Set<Sirius> collectSelectedSiriuss() {
-        final Set<Sirius> result = new HashSet<Sirius>();
+    private Set<Viewpoint> collectSelectedSiriuss() {
+        final Set<Viewpoint> result = new HashSet<Viewpoint>();
         for (final Session session : this.doGetSessions()) {
             result.addAll(session.getSelectedSiriuss(false));
         }
         return result;
     }
 
-    private void fireSelectedSiriusEvent(final Sirius viewpoint) {
+    private void fireSelectedSiriusEvent(final Viewpoint viewpoint) {
         for (final SessionManagerListener listener : getAllListeners()) {
             listener.viewpointSelected(viewpoint);
         }
     }
 
-    private void fireDeselectedSiriusEvent(final Sirius viewpoint) {
+    private void fireDeselectedSiriusEvent(final Viewpoint viewpoint) {
         for (final SessionManagerListener listener : getAllListeners()) {
             listener.viewpointDeselected(viewpoint);
         }

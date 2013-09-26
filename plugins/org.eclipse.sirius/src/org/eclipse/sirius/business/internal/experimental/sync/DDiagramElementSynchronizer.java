@@ -35,26 +35,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DNodeList;
-import org.eclipse.sirius.DNodeListElement;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.Decoration;
-import org.eclipse.sirius.DragAndDropTarget;
-import org.eclipse.sirius.EdgeStyle;
-import org.eclipse.sirius.EdgeTarget;
-import org.eclipse.sirius.NodeStyle;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.WorkspaceImage;
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.helper.SiriusHelper;
@@ -71,30 +51,50 @@ import org.eclipse.sirius.business.internal.metamodel.helper.DiagramElementMappi
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.business.internal.metamodel.helper.StyleHelper;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.DecorationDescription;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.MappingBasedDecoration;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.SemanticBasedDecoration;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.description.style.BasicLabelStyleDescription;
-import org.eclipse.sirius.description.style.ContainerStyleDescription;
-import org.eclipse.sirius.description.style.EdgeStyleDescription;
-import org.eclipse.sirius.description.style.EllipseNodeDescription;
-import org.eclipse.sirius.description.style.LozengeNodeDescription;
-import org.eclipse.sirius.description.style.NodeStyleDescription;
-import org.eclipse.sirius.description.style.SquareDescription;
-import org.eclipse.sirius.description.style.StyleDescription;
-import org.eclipse.sirius.description.style.StylePackage;
-import org.eclipse.sirius.description.style.TooltipStyleDescription;
-import org.eclipse.sirius.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.viewpoint.DNodeListElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.Decoration;
+import org.eclipse.sirius.viewpoint.DragAndDropTarget;
+import org.eclipse.sirius.viewpoint.EdgeStyle;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.NodeStyle;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.WorkspaceImage;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.DecorationDescription;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.MappingBasedDecoration;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.ContainerStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.EdgeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription;
+import org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription;
+import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.SquareDescription;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
+import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
@@ -198,18 +198,18 @@ public class DDiagramElementSynchronizer {
             final NodeMapping mapping = (NodeMapping) candidate.getMapping();
             if (container instanceof DNodeList) {
                 if (!border) {
-                    final DNodeListElement newNode = SiriusFactory.eINSTANCE.createDNodeListElement();
+                    final DNodeListElement newNode = ViewpointFactory.eINSTANCE.createDNodeListElement();
                     newNode.setTarget(candidate.getSemantic());
                     newNode.setActualMapping(mapping);
                     result = newNode;
                 } else {
-                    final DNode newNode = SiriusFactory.eINSTANCE.createDNode();
+                    final DNode newNode = ViewpointFactory.eINSTANCE.createDNode();
                     newNode.setTarget(candidate.getSemantic());
                     newNode.setActualMapping(mapping);
                     result = newNode;
                 }
             } else {
-                final DNode newNode = SiriusFactory.eINSTANCE.createDNode();
+                final DNode newNode = ViewpointFactory.eINSTANCE.createDNode();
                 newNode.setTarget(candidate.getSemantic());
                 newNode.setActualMapping(mapping);
                 result = newNode;
@@ -220,10 +220,10 @@ public class DDiagramElementSynchronizer {
             final ContainerMapping mapping = (ContainerMapping) candidate.getMapping();
             DDiagramElementContainer newContainer = null;
             if (new ContainerMappingQuery(mapping).isListContainer()) {
-                newContainer = SiriusFactory.eINSTANCE.createDNodeList();
+                newContainer = ViewpointFactory.eINSTANCE.createDNodeList();
             } else {
                 // Other behaviors : ContainerLayout.FreeForm/VerticalStack
-                DNodeContainer nodeContainer = SiriusFactory.eINSTANCE.createDNodeContainer();
+                DNodeContainer nodeContainer = ViewpointFactory.eINSTANCE.createDNodeContainer();
                 nodeContainer.setChildrenPresentation(mapping.getChildrenPresentation());
                 newContainer = nodeContainer;
             }
@@ -242,7 +242,7 @@ public class DDiagramElementSynchronizer {
      * 
      * @return the requested map
      */
-    public Map<DiagramElementMapping, Collection<EdgeTarget>> computeMappingsToEdgeTargets(Collection<Sirius> enabledVp) {
+    public Map<DiagramElementMapping, Collection<EdgeTarget>> computeMappingsToEdgeTargets(Collection<Viewpoint> enabledVp) {
         final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets = new HashMap<DiagramElementMapping, Collection<EdgeTarget>>();
 
         final DiagramDescription description = diagram.getDescription();
@@ -332,7 +332,7 @@ public class DDiagramElementSynchronizer {
      * @return the newly created edge.
      */
     private DEdge createEdge(final DEdgeCandidate candidate) {
-        final DEdge newEdge = SiriusFactory.eINSTANCE.createDEdge();
+        final DEdge newEdge = ViewpointFactory.eINSTANCE.createDEdge();
         newEdge.setTarget(candidate.getSemantic());
         newEdge.setActualMapping(candidate.getMapping());
         newEdge.setSourceNode(candidate.getSourceView());
@@ -686,7 +686,7 @@ public class DDiagramElementSynchronizer {
         boolean isCustomizedWorkspaceImageWorkspacePath = false;
         if (style instanceof WorkspaceImage) {
             WorkspaceImage workspaceImage = (WorkspaceImage) style;
-            isCustomizedWorkspaceImageWorkspacePath = workspaceImage.getCustomFeatures().contains(SiriusPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName());
+            isCustomizedWorkspaceImageWorkspacePath = workspaceImage.getCustomFeatures().contains(ViewpointPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName());
         }
         return isCustomizedWorkspaceImageWorkspacePath;
     }
@@ -910,7 +910,7 @@ public class DDiagramElementSynchronizer {
         }
         // new decoration
         if (checkDecoratorPrecondition(element.getTarget(), (DSemanticDecorator) element.eContainer(), decorationDescription)) {
-            final Decoration decoration = SiriusFactory.eINSTANCE.createDecoration();
+            final Decoration decoration = ViewpointFactory.eINSTANCE.createDecoration();
             decoration.setDescription(decorationDescription);
             element.getDecorations().add(decoration);
         }

@@ -17,7 +17,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 
-import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Predicate to check whether a GMF View represents an EndOfLife.

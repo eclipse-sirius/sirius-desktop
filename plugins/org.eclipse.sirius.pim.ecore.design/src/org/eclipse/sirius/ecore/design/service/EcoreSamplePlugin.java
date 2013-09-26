@@ -15,9 +15,8 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
-
 import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * The activator class controls the plug-in life cycle.
@@ -32,7 +31,7 @@ public class EcoreSamplePlugin extends Plugin {
     /** This plug-in's shared instance. */
     private static EcoreSamplePlugin plugin;
 
-    private static Set<Sirius> viewpoints;
+    private static Set<Viewpoint> viewpoints;
 
     /**
      * Default constructor for the plugin.
@@ -58,7 +57,7 @@ public class EcoreSamplePlugin extends Plugin {
     @Override
     public void start(final BundleContext context) throws Exception {
         super.start(context);
-        viewpoints = new HashSet<Sirius>();
+        viewpoints = new HashSet<Viewpoint>();
         viewpoints.addAll(SiriusRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/ecore.odesign"));
         viewpoints.addAll(SiriusRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/ecore_extension.odesign"));
     }
@@ -72,7 +71,7 @@ public class EcoreSamplePlugin extends Plugin {
     public void stop(final BundleContext context) throws Exception {
         plugin = null;
         if (viewpoints != null) {
-            for (final Sirius viewpoint : viewpoints) {
+            for (final Viewpoint viewpoint : viewpoints) {
                 SiriusRegistry.getInstance().disposeFromPlugin(viewpoint);
             }
             viewpoints.clear();

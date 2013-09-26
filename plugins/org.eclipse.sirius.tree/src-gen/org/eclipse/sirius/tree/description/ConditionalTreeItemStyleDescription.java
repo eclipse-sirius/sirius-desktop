@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.description;
 
-import org.eclipse.sirius.description.ConditionalStyleDescription;
+import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.sequence.description.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 

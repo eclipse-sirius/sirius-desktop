@@ -14,11 +14,6 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.description.tool.ExternalJavaAction;
-import org.eclipse.sirius.description.tool.OperationAction;
-import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
@@ -28,6 +23,10 @@ import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;
 import org.eclipse.sirius.tree.description.TreeItemCreationTool;
 import org.eclipse.sirius.tree.description.TreeItemEditionTool;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
+import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**

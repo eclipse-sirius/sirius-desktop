@@ -12,18 +12,18 @@ package org.eclipse.sirius.business.api.query;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.BundledImage;
-import org.eclipse.sirius.CustomStyle;
-import org.eclipse.sirius.Dot;
-import org.eclipse.sirius.Ellipse;
-import org.eclipse.sirius.GaugeCompositeStyle;
-import org.eclipse.sirius.Lozenge;
-import org.eclipse.sirius.NodeStyle;
-import org.eclipse.sirius.Note;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.Square;
-import org.eclipse.sirius.WorkspaceImage;
-import org.eclipse.sirius.util.SiriusSwitch;
+import org.eclipse.sirius.viewpoint.BundledImage;
+import org.eclipse.sirius.viewpoint.CustomStyle;
+import org.eclipse.sirius.viewpoint.Dot;
+import org.eclipse.sirius.viewpoint.Ellipse;
+import org.eclipse.sirius.viewpoint.GaugeCompositeStyle;
+import org.eclipse.sirius.viewpoint.Lozenge;
+import org.eclipse.sirius.viewpoint.NodeStyle;
+import org.eclipse.sirius.viewpoint.Note;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.Square;
+import org.eclipse.sirius.viewpoint.WorkspaceImage;
+import org.eclipse.sirius.viewpoint.util.ViewpointSwitch;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link NodeStyle}
@@ -41,7 +41,7 @@ public class NodeStyleQuery {
      * 
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
-    private static final class GetBackgroundColorForNodeStyleSwitch extends SiriusSwitch<RGBValues> {
+    private static final class GetBackgroundColorForNodeStyleSwitch extends ViewpointSwitch<RGBValues> {
 
         /**
          * Default constructor.
@@ -52,7 +52,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseNodeStyle(org.eclipse.sirius.NodeStyle)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseNodeStyle(org.eclipse.sirius.viewpoint.NodeStyle)
          */
         @Override
         public RGBValues caseNodeStyle(NodeStyle object) {
@@ -62,7 +62,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseBundledImage(org.eclipse.sirius.BundledImage)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseBundledImage(org.eclipse.sirius.viewpoint.BundledImage)
          */
         @Override
         public RGBValues caseBundledImage(BundledImage object) {
@@ -72,7 +72,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseCustomStyle(org.eclipse.sirius.CustomStyle)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseCustomStyle(org.eclipse.sirius.viewpoint.CustomStyle)
          */
         @Override
         public RGBValues caseCustomStyle(CustomStyle object) {
@@ -82,7 +82,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseDot(org.eclipse.sirius.Dot)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDot(org.eclipse.sirius.viewpoint.Dot)
          */
         @Override
         public RGBValues caseDot(Dot object) {
@@ -92,7 +92,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseEllipse(org.eclipse.sirius.Ellipse)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseEllipse(org.eclipse.sirius.viewpoint.Ellipse)
          */
         @Override
         public RGBValues caseEllipse(Ellipse object) {
@@ -102,7 +102,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseGaugeCompositeStyle(org.eclipse.sirius.GaugeCompositeStyle)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseGaugeCompositeStyle(org.eclipse.sirius.viewpoint.GaugeCompositeStyle)
          */
         @Override
         public RGBValues caseGaugeCompositeStyle(GaugeCompositeStyle object) {
@@ -112,7 +112,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseLozenge(org.eclipse.sirius.Lozenge)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseLozenge(org.eclipse.sirius.viewpoint.Lozenge)
          */
         @Override
         public RGBValues caseLozenge(Lozenge object) {
@@ -122,7 +122,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseNote(org.eclipse.sirius.Note)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseNote(org.eclipse.sirius.viewpoint.Note)
          */
         @Override
         public RGBValues caseNote(Note object) {
@@ -132,7 +132,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseSquare(org.eclipse.sirius.Square)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseSquare(org.eclipse.sirius.viewpoint.Square)
          */
         @Override
         public RGBValues caseSquare(Square object) {
@@ -142,7 +142,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.util.SiriusSwitch#caseWorkspaceImage(org.eclipse.sirius.WorkspaceImage)
+         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseWorkspaceImage(org.eclipse.sirius.viewpoint.WorkspaceImage)
          */
         @Override
         public RGBValues caseWorkspaceImage(WorkspaceImage object) {

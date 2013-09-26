@@ -20,11 +20,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationElementMapping;
 import org.eclipse.sirius.tree.description.impl.TreeNavigationDescriptionImpl;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
  * Implementation od TreeNavigationDescription.
@@ -37,7 +36,7 @@ public class TreeNavigationDescriptionSpec extends TreeNavigationDescriptionImpl
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.impl.RepresentationNavigationDescriptionImpl#getMappings()
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationNavigationDescriptionImpl#getMappings()
      */
     @Override
     public EList<RepresentationElementMapping> getMappings() {
@@ -63,7 +62,7 @@ public class TreeNavigationDescriptionSpec extends TreeNavigationDescriptionImpl
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.impl.RepresentationNavigationDescriptionImpl#basicGetRepresentationDescription()
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationNavigationDescriptionImpl#basicGetRepresentationDescription()
      */
     @Override
     public RepresentationDescription basicGetRepresentationDescription() {
@@ -73,7 +72,7 @@ public class TreeNavigationDescriptionSpec extends TreeNavigationDescriptionImpl
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.impl.RepresentationNavigationDescriptionImpl#getRepresentationDescription()
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationNavigationDescriptionImpl#getRepresentationDescription()
      */
     @Override
     public RepresentationDescription getRepresentationDescription() {

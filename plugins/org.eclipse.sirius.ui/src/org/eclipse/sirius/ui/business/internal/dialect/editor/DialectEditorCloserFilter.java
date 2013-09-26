@@ -12,9 +12,8 @@ package org.eclipse.sirius.ui.business.internal.dialect.editor;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.transaction.NotificationFilter;
-
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * A {@link NotificationFilter} to be notifier of deletion of the current
@@ -39,7 +38,7 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
 
     @Override
     public boolean matches(Notification notification) {
-        return notification.getNotifier() == dRepresentation && notification.getFeature() == SiriusPackage.Literals.DSEMANTIC_DECORATOR__TARGET
+        return notification.getNotifier() == dRepresentation && notification.getFeature() == ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET
                 && notification.getEventType() == Notification.REMOVE;
     }
 }

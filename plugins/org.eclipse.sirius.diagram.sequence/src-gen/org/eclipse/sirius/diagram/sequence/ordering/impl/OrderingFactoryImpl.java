@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.ordering.CompoundEventEndSpec;
 import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.ordering.SingleEventEndSpec;
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
@@ -40,7 +39,7 @@ public class OrderingFactoryImpl extends EFactoryImpl implements OrderingFactory
      */
     public static OrderingFactory init() {
         try {
-            OrderingFactory theOrderingFactory = (OrderingFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/sirius/diagram/sequence/ordering/2.0.0");
+            OrderingFactory theOrderingFactory = (OrderingFactory) EPackage.Registry.INSTANCE.getEFactory(OrderingPackage.eNS_URI);
             if (theOrderingFactory != null) {
                 return theOrderingFactory;
             }

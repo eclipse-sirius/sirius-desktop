@@ -24,7 +24,7 @@ import com.google.common.collect.Iterables;
 import org.eclipse.sirius.business.internal.movida.dependencies.Relation;
 import org.eclipse.sirius.business.internal.movida.dependencies.TransitiveClosure;
 import org.eclipse.sirius.business.internal.movida.dependencies.UnionRelation;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Exposes the various relations which can exist between Siriuss are
@@ -43,7 +43,7 @@ public class SiriusRelations {
          * {@inheritDoc}
          */
         public Set<URI> apply(URI from) {
-            Sirius vp = registry.getSirius(from);
+            Viewpoint vp = registry.getSirius(from);
             if (vp != null) {
                 EList<URI> declared = getDependencies(vp);
                 return ImmutableSet.copyOf(Iterables.filter(declared, Predicates.notNull()));
@@ -51,7 +51,7 @@ public class SiriusRelations {
             return Collections.emptySet();
         }
 
-        protected abstract EList<URI> getDependencies(Sirius vp);
+        protected abstract EList<URI> getDependencies(Viewpoint vp);
     }
 
     /**
@@ -61,21 +61,21 @@ public class SiriusRelations {
 
     private final Relation<URI> reuse = new AbstractSiriusDependency() {
         @Override
-        protected EList<URI> getDependencies(Sirius vp) {
+        protected EList<URI> getDependencies(Viewpoint vp) {
             return vp.getReuses();
         }
     };
 
     private final Relation<URI> customize = new AbstractSiriusDependency() {
         @Override
-        protected EList<URI> getDependencies(Sirius vp) {
+        protected EList<URI> getDependencies(Viewpoint vp) {
             return vp.getCustomizes();
         }
     };
 
     private final Relation<URI> conflicts = new AbstractSiriusDependency() {
         @Override
-        protected EList<URI> getDependencies(Sirius vp) {
+        protected EList<URI> getDependencies(Viewpoint vp) {
             return vp.getConflicts();
         }
     };

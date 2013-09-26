@@ -11,9 +11,8 @@
 package org.eclipse.sirius.business.internal.migration;
 
 import org.osgi.framework.Version;
-
-import org.eclipse.sirius.DAnalysis;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 
 /**
  * This migration participant updates the version attribute to the last

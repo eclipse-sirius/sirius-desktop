@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.LabelPosition;
-import org.eclipse.sirius.ResizeKind;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.style.NodeStyleDescription;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.LabelPosition;
+import org.eclipse.sirius.viewpoint.ResizeKind;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
 
 /**
  * Queries for DNodes.

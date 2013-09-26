@@ -73,10 +73,10 @@ import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelection;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * A wizard page to select viewpoints.
@@ -101,7 +101,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
     /**
      * The list of selected viewpoints
      */
-    private List<Sirius> viewpoints;
+    private List<Viewpoint> viewpoints;
 
     /**
      * List of file extensions used to compute the available viewpoints.
@@ -196,7 +196,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
      * 
      * @return the list of selected viewpoints
      */
-    public List<Sirius> getSiriuss() {
+    public List<Viewpoint> getSiriuss() {
         return viewpoints;
     }
 
@@ -222,8 +222,8 @@ public class SiriussSelectionWizardPage extends WizardPage {
             // Search the viewpoints to activate by their name
             for (int i = 0; i < tableViewer.getTable().getItemCount(); i++) {
                 Object object = tableViewer.getElementAt(i);
-                if (object instanceof Sirius && viewpointsNamesToActivateByDefault.contains(((Sirius) object).getName())) {
-                    viewpoints.add((Sirius) object);
+                if (object instanceof Viewpoint && viewpointsNamesToActivateByDefault.contains(((Viewpoint) object).getName())) {
+                    viewpoints.add((Viewpoint) object);
                 }
             }
             if (!viewpoints.isEmpty() && tableViewer instanceof CheckboxTableViewer) {
@@ -254,13 +254,13 @@ public class SiriussSelectionWizardPage extends WizardPage {
 
     }
 
-    private Collection<Sirius> getAvailableSiriuss() {
+    private Collection<Viewpoint> getAvailableSiriuss() {
 
         SiriusRegistry registry = SiriusRegistry.getInstance();
 
-        return Collections2.filter(registry.getSiriuss(), new Predicate<Sirius>() {
+        return Collections2.filter(registry.getSiriuss(), new Predicate<Viewpoint>() {
 
-            public boolean apply(Sirius viewpoint) {
+            public boolean apply(Viewpoint viewpoint) {
                 for (final String ext : fileExtensions) {
                     if (new SiriusQuery(viewpoint).handlesSemanticModelExtension(ext))
                         return true;
@@ -301,7 +301,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
         viewer.addCheckStateListener(new ICheckStateListener() {
             public void checkStateChanged(final CheckStateChangedEvent event) {
                 if (event.getChecked()) {
-                    viewpoints.add((Sirius) event.getElement());
+                    viewpoints.add((Viewpoint) event.getElement());
                 } else {
                     viewpoints.remove(event.getElement());
                 }
@@ -315,8 +315,8 @@ public class SiriussSelectionWizardPage extends WizardPage {
                 ISelection selection = event.getSelection();
                 if (selection instanceof IStructuredSelection) {
                     Object firstElement = ((IStructuredSelection) selection).getFirstElement();
-                    if (firstElement instanceof Sirius) {
-                        setBrowserInput((Sirius) firstElement);
+                    if (firstElement instanceof Viewpoint) {
+                        setBrowserInput((Viewpoint) firstElement);
                     }
                 }
             }
@@ -325,8 +325,8 @@ public class SiriussSelectionWizardPage extends WizardPage {
         viewer.setSorter(new ViewerSorter() {
             @Override
             public int compare(Viewer viewer, Object e1, Object e2) {
-                final String e1label = new IdentifiedElementQuery((Sirius) e1).getLabel();
-                final String e2label = new IdentifiedElementQuery((Sirius) e2).getLabel();
+                final String e1label = new IdentifiedElementQuery((Viewpoint) e1).getLabel();
+                final String e2label = new IdentifiedElementQuery((Viewpoint) e2).getLabel();
                 return e1label.compareTo(e2label);
             }
         });
@@ -339,7 +339,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
      * @param viewpoint
      *            the viewpoint to document
      */
-    protected void setBrowserInput(final Sirius viewpoint) {
+    protected void setBrowserInput(final Viewpoint viewpoint) {
 
         /* browser may be null if its creation fail */
         if (browser != null) {
@@ -357,7 +357,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
      * The following code (HTML handling ) and methods could move to another
      * class.
      */
-    private boolean containsHTMLDocumentation(Sirius viewpoint) {
+    private boolean containsHTMLDocumentation(Viewpoint viewpoint) {
         if (viewpoint != null) {
             final String doc = viewpoint.getEndUserDocumentation();
             if (!StringUtil.isEmpty(doc))
@@ -366,7 +366,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
         return false;
     }
 
-    private String getContentWhenHtml(Sirius viewpoint) {
+    private String getContentWhenHtml(Viewpoint viewpoint) {
 
         final String document = viewpoint.getEndUserDocumentation();
 
@@ -390,7 +390,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
         }
     }
 
-    private String rewriteURLs(Sirius viewpoint, String document, Set<String> urls) {
+    private String rewriteURLs(Viewpoint viewpoint, String document, Set<String> urls) {
 
         String newDocument = document;
 
@@ -406,7 +406,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
         return newDocument;
     }
 
-    private String rewriteURL(Sirius viewpoint, String url) {
+    private String rewriteURL(Viewpoint viewpoint, String url) {
         final URI uri = viewpoint.eResource().getURI();
         String pluginId = uri.segment(1);
 
@@ -441,7 +441,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
         return rewrittenURL;
     }
 
-    private String getContentWhenNoHtml(Sirius viewpoint) {
+    private String getContentWhenNoHtml(Viewpoint viewpoint) {
         StringBuilder content = new StringBuilder();
         return begin(content).head(content).body(content, viewpoint).end(content);
     }
@@ -458,7 +458,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
         return this;
     }
 
-    private SiriussSelectionWizardPage body(StringBuilder content, Sirius viewpoint) {
+    private SiriussSelectionWizardPage body(StringBuilder content, Viewpoint viewpoint) {
         content.append("<body>");
 
         if (viewpoint == null) {
@@ -517,8 +517,8 @@ public class SiriussSelectionWizardPage extends WizardPage {
         public Image getColumnImage(Object element, int columnIndex) {
             Image image = null;
             if (columnIndex == 0) {
-                if (element instanceof Sirius) {
-                    final Sirius vp = (Sirius) element;
+                if (element instanceof Viewpoint) {
+                    final Viewpoint vp = (Viewpoint) element;
                     if (vp.getIcon() != null && vp.getIcon().length() > 0) {
                         final ImageDescriptor desc = SiriusEditPlugin.Implementation.findImageDescriptor(vp.getIcon());
                         if (desc != null) {
@@ -542,7 +542,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
             return new DecorationOverlayIcon(baseImage, decoratorDescriptor, IDecoration.BOTTOM_LEFT);
         }
 
-        private Image getEnhancedImage(final Image image, final Sirius viewpoint) {
+        private Image getEnhancedImage(final Image image, final Viewpoint viewpoint) {
             if (SiriusRegistry.getInstance().isFromPlugin(viewpoint) && image != null) {
                 return SiriusEditPlugin.getPlugin().getImage(getOverlayedDescriptor(image, "icons/full/ovr16/plugin_ovr.gif"));
             }

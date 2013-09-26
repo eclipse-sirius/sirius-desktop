@@ -11,8 +11,7 @@
 package org.eclipse.sirius.tree;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -21,8 +20,8 @@ import org.eclipse.sirius.DSemanticDecorator;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.DTreeItemContainer#getOwnedTreeItems
- * <em>Owned Tree Items</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.DTreeItemContainer#getOwnedTreeItems <em>
+ * Owned Tree Items</em>}</li>
  * </ul>
  * </p>
  * 

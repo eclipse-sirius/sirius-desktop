@@ -52,11 +52,6 @@ import com.google.common.collect.Lists;
 import org.eclipse.sirius.common.tools.api.util.AllContents;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
@@ -64,6 +59,11 @@ import org.eclipse.sirius.diagram.internal.providers.SiriusMarkerNavigationProvi
 import org.eclipse.sirius.diagram.internal.providers.SiriusValidationProvider;
 import org.eclipse.sirius.diagram.tools.internal.marker.SiriusMarkerNavigationProviderSpec;
 import org.eclipse.sirius.tools.api.validation.constraint.RuleWrappingStatus;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * @was-generated
@@ -185,7 +185,7 @@ public class ValidateAction extends Action {
 
                     createMarkers(target, runEMFValidator(semanticElement), diagramEditPart);
 
-                    for (final EObject representationElement : AllContents.of((DSemanticDecorator) view.getElement(), SiriusPackage.eINSTANCE.getDRepresentationElement())) {
+                    for (final EObject representationElement : AllContents.of((DSemanticDecorator) view.getElement(), ViewpointPackage.eINSTANCE.getDRepresentationElement())) {
                         elementsToValidate.addAll(((DRepresentationElement) representationElement).getSemanticElements());
                     }
 

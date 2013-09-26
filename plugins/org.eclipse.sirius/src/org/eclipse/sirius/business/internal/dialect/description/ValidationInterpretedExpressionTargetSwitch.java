@@ -21,18 +21,18 @@ import com.google.common.collect.Sets;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.description.validation.RuleAudit;
-import org.eclipse.sirius.description.validation.SemanticValidationRule;
-import org.eclipse.sirius.description.validation.ValidationFix;
-import org.eclipse.sirius.description.validation.ValidationPackage;
-import org.eclipse.sirius.description.validation.ValidationRule;
-import org.eclipse.sirius.description.validation.ViewValidationRule;
-import org.eclipse.sirius.description.validation.util.ValidationSwitch;
+import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
+import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.util.ValidationSwitch;
 
 /**
  * A switch that will return the Target Types associated to a given element
  * (part of the
- * {@link org.eclipse.sirius.description.validation.ValidationPackage}) and
+ * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationPackage}) and
  * feature corresponding to an Interpreted Expression. For example, for a
  * NodeMapping :
  * <p>
@@ -85,7 +85,7 @@ public class ValidationInterpretedExpressionTargetSwitch extends ValidationSwitc
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.util.ToolSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
+     * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
      */
     @Override
     public Option<Collection<String>> doSwitch(EObject theEObject) {
@@ -101,7 +101,7 @@ public class ValidationInterpretedExpressionTargetSwitch extends ValidationSwitc
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.validation.util.ValidationSwitch#caseRuleAudit(org.eclipse.sirius.description.validation.RuleAudit)
+     * @see org.eclipse.sirius.viewpoint.description.validation.util.ValidationSwitch#caseRuleAudit(org.eclipse.sirius.viewpoint.description.validation.RuleAudit)
      */
     @Override
     public Option<Collection<String>> caseRuleAudit(RuleAudit object) {
@@ -128,7 +128,7 @@ public class ValidationInterpretedExpressionTargetSwitch extends ValidationSwitc
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.validation.util.ValidationSwitch#caseSemanticValidationRule(org.eclipse.sirius.description.validation.SemanticValidationRule)
+     * @see org.eclipse.sirius.viewpoint.description.validation.util.ValidationSwitch#caseSemanticValidationRule(org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule)
      */
     @Override
     public Option<Collection<String>> caseSemanticValidationRule(SemanticValidationRule object) {
@@ -149,7 +149,7 @@ public class ValidationInterpretedExpressionTargetSwitch extends ValidationSwitc
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.validation.util.ValidationSwitch#caseViewValidationRule(org.eclipse.sirius.description.validation.ViewValidationRule)
+     * @see org.eclipse.sirius.viewpoint.description.validation.util.ValidationSwitch#caseViewValidationRule(org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule)
      */
     @Override
     public Option<Collection<String>> caseViewValidationRule(ViewValidationRule object) {
@@ -171,7 +171,7 @@ public class ValidationInterpretedExpressionTargetSwitch extends ValidationSwitc
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.validation.util.ValidationSwitch#caseValidationFix(org.eclipse.sirius.description.validation.ValidationFix)
+     * @see org.eclipse.sirius.viewpoint.description.validation.util.ValidationSwitch#caseValidationFix(org.eclipse.sirius.viewpoint.description.validation.ValidationFix)
      */
     @Override
     public Option<Collection<String>> caseValidationFix(ValidationFix object) {

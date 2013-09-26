@@ -4,19 +4,10 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.ui;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: org.eclipse.sirius.provider.SiriusEditPlugin$Implementation
+Bundle-Activator: org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Export-Package: org.eclipse.sirius.description.audit.provider,
- org.eclipse.sirius.description.concern.provider,
- org.eclipse.sirius.description.contribution.provider,
- org.eclipse.sirius.description.filter.provider,
- org.eclipse.sirius.description.provider,
- org.eclipse.sirius.description.style.provider,
- org.eclipse.sirius.description.tool.provider,
- org.eclipse.sirius.description.validation.provider,
- org.eclipse.sirius.provider,
- org.eclipse.sirius.ui.business.api.action,
+Export-Package: org.eclipse.sirius.ui.business.api.action,
  org.eclipse.sirius.ui.business.api.control,
  org.eclipse.sirius.ui.business.api.delete,
  org.eclipse.sirius.ui.business.api.descriptor,
@@ -94,9 +85,21 @@ Export-Package: org.eclipse.sirius.description.audit.provider,
  org.eclipse.sirius.ui.tools.internal.views.sessionview;x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.views.sessionview.extension;x-internal:=true,
  org.eclipse.sirius.ui.tools.internal.wizards;x-internal:=true,
- org.eclipse.sirius.ui.tools.internal.wizards.pages;x-internal:=true
+ org.eclipse.sirius.ui.tools.internal.wizards.pages;x-internal:=true,
+ org.eclipse.sirius.viewpoint.description.audit.provider,
+ org.eclipse.sirius.viewpoint.description.concern.provider,
+ org.eclipse.sirius.viewpoint.description.contribution.provider,
+ org.eclipse.sirius.viewpoint.description.filter.provider,
+ org.eclipse.sirius.viewpoint.description.provider,
+ org.eclipse.sirius.viewpoint.description.style.provider,
+ org.eclipse.sirius.viewpoint.description.tool.provider,
+ org.eclipse.sirius.viewpoint.description.validation.provider,
+ org.eclipse.sirius.viewpoint.provider
 Require-Bundle: com.google.guava;bundle-version="[11.0.0,12.0.0)",
+ org.eclipse.core.runtime,
  org.eclipse.sirius;visibility:=reexport,
+ org.eclipse.emf.edit;visibility:=reexport,
+ org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.sirius.common,
  org.eclipse.sirius.common.ui,
  org.eclipse.sirius.ecore.extender,

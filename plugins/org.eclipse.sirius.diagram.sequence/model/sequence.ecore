@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="sequence"
-    nsURI="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" nsPrefix="sequence">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="sequence" nsURI="http://www.eclipse.org/sirius/diagram/sequence/2.0.0"
+    nsPrefix="sequence">
   <eClassifiers xsi:type="ecore:EClass" name="SequenceDDiagram" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DSemanticDiagram">
     <eStructuralFeatures xsi:type="ecore:EReference" name="semanticOrdering" eType="#//ordering/EventEndsOrdering"
         transient="true" containment="true"/>

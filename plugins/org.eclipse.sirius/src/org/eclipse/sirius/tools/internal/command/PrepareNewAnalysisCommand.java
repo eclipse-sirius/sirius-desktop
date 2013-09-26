@@ -13,10 +13,9 @@ package org.eclipse.sirius.tools.internal.command;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import org.eclipse.sirius.DAnalysis;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 
 /**
  * Specific command to prepare the given analysis. It will be added to the

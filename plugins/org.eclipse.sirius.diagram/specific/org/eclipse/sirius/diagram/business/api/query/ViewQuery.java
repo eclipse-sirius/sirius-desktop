@@ -29,10 +29,6 @@ import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.RGB;
-
-import org.eclipse.sirius.DStylizable;
-import org.eclipse.sirius.LabelPosition;
-import org.eclipse.sirius.NodeStyle;
 import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeNameEditPart;
@@ -43,6 +39,9 @@ import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListNameEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.NotationViewIDs;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.LabelPosition;
+import org.eclipse.sirius.viewpoint.NodeStyle;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link View} as a

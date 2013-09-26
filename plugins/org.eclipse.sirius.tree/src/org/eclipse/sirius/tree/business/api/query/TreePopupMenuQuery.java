@@ -14,10 +14,10 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.description.tool.MenuItemDescription;
-import org.eclipse.sirius.description.tool.MenuItemDescriptionReference;
-import org.eclipse.sirius.description.tool.MenuItemOrRef;
 import org.eclipse.sirius.tree.description.TreePopupMenu;
+import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
+import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReference;
+import org.eclipse.sirius.viewpoint.description.tool.MenuItemOrRef;
 
 /**
  * 

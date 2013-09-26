@@ -28,15 +28,15 @@ import com.google.common.collect.Lists;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
@@ -95,7 +95,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     /**
      * {@inheritDoc}
      */
-    public void updateRepresentationsExtendedBy(Session session, Sirius viewpoint, boolean activated) {
+    public void updateRepresentationsExtendedBy(Session session, Viewpoint viewpoint, boolean activated) {
         // No support for representation extension by default.
     }
 
@@ -198,9 +198,9 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     /**
      * {@inheritDoc}
      */
-    public Collection<RepresentationDescription> getAvailableRepresentationDescriptions(Collection<Sirius> vps, EObject semantic) {
+    public Collection<RepresentationDescription> getAvailableRepresentationDescriptions(Collection<Viewpoint> vps, EObject semantic) {
         final Collection<RepresentationDescription> result = Lists.newArrayList();
-        for (Sirius vp : vps) {
+        for (Viewpoint vp : vps) {
             Iterables.addAll(result, getAvailableRepresentationDescriptions(vp, semantic));
         }
         return result;
@@ -243,7 +243,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
      * @return the {@link RepresentationDescription}s defined in the specified
      *         viewpoint which can apply to the semantic element.
      */
-    protected Iterable<RepresentationDescription> getAvailableRepresentationDescriptions(Sirius vp, final EObject semantic) {
+    protected Iterable<RepresentationDescription> getAvailableRepresentationDescriptions(Viewpoint vp, final EObject semantic) {
         Iterable<RepresentationDescription> candidates = new SiriusQuery(vp).getAllRepresentationDescriptions();
         return Iterables.filter(candidates, new Predicate<RepresentationDescription>() {
             public boolean apply(RepresentationDescription input) {
@@ -321,35 +321,35 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     /**
      * Create a new {@link Representation} for the specified semantic element
      * and all its children for all {@link RepresentationDescription} of the
-     * specified type of the specified {@link Sirius}.
+     * specified type of the specified {@link Viewpoint}.
      * 
      * @param semantic
      *            the specified semantic element
      * @param vp
-     *            the specified {@link Sirius}
+     *            the specified {@link Viewpoint}
      * @param representationDescriptionType
      *            the specified {@link RepresentationDescription} type
      */
-    protected void initRepresentations(EObject semantic, Sirius vp, Class<? extends RepresentationDescription> representationDescriptionType) {
+    protected void initRepresentations(EObject semantic, Viewpoint vp, Class<? extends RepresentationDescription> representationDescriptionType) {
         initRepresentations(semantic, vp, representationDescriptionType, new NullProgressMonitor());
     }
 
     /**
      * Create a new {@link Representation} for the specified semantic element
      * and all its children for all {@link RepresentationDescription} of the
-     * specified type of the specified {@link Sirius}.
+     * specified type of the specified {@link Viewpoint}.
      * 
      * @param semantic
      *            the specified semantic element
      * @param vp
-     *            the specified {@link Sirius}
+     *            the specified {@link Viewpoint}
      * @param representationDescriptionType
      *            the specified {@link RepresentationDescription} type
      * @param monitor
      *            a {@link IProgressMonitor} to show progression of
      *            representations initialization
      */
-    protected void initRepresentations(EObject semantic, Sirius vp, Class<? extends RepresentationDescription> representationDescriptionType, IProgressMonitor monitor) {
+    protected void initRepresentations(EObject semantic, Viewpoint vp, Class<? extends RepresentationDescription> representationDescriptionType, IProgressMonitor monitor) {
         Collection<? extends RepresentationDescription> descriptions = collectRepresentationDescriptions(vp, representationDescriptionType);
         initRepresentations(descriptions, semantic, monitor);
     }
@@ -371,7 +371,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
      *         viewpoint of the given Representation Description type (e.g.
      *         DiagramDescription.class)
      */
-    private <T extends RepresentationDescription> Collection<T> collectRepresentationDescriptions(final Sirius viewpoint, Class<T> expectedRepresentationDescriptionType) {
+    private <T extends RepresentationDescription> Collection<T> collectRepresentationDescriptions(final Viewpoint viewpoint, Class<T> expectedRepresentationDescriptionType) {
         final Collection<T> descriptions = new ArrayList<T>();
         for (final RepresentationDescription representationDescription : new SiriusQuery(viewpoint).getAllRepresentationDescriptions()) {
             if (expectedRepresentationDescriptionType.isAssignableFrom(representationDescription.getClass())) {

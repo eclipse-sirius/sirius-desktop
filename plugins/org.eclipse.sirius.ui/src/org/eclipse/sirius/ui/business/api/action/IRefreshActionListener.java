@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.api.action;
 
-import org.eclipse.sirius.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * A listener that will be notified any time a user executes a Refresh action.

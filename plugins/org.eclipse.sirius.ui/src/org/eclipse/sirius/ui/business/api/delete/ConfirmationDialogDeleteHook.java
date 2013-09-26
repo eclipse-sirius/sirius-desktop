@@ -18,9 +18,8 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.delete.IDeleteHook;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * A example delete hook to confirm deletion.

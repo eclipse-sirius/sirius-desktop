@@ -13,16 +13,15 @@ package org.eclipse.sirius.business.internal.metamodel.spec;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.Style;
 import org.eclipse.sirius.business.internal.metamodel.operations.DDiagramElementSpecOperations;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.impl.DNodeListElementImpl;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.impl.DNodeListElementImpl;
 
 /**
  * Implementation of DNodeListElementImpl.java.
@@ -38,7 +37,7 @@ public class DNodeListElementSpec extends DNodeListElementImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DDiagramElementImpl#getParentDiagram()
+     * @see org.eclipse.sirius.viewpoint.impl.DDiagramElementImpl#getParentDiagram()
      */
     @Override
     public DDiagram getParentDiagram() {
@@ -65,7 +64,7 @@ public class DNodeListElementSpec extends DNodeListElementImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DNodeListElementImpl#validate()
+     * @see org.eclipse.sirius.viewpoint.impl.DNodeListElementImpl#validate()
      */
     @Override
     public boolean validate() {
@@ -89,7 +88,7 @@ public class DNodeListElementSpec extends DNodeListElementImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DNodeListElementImpl#refresh()
+     * @see org.eclipse.sirius.viewpoint.impl.DNodeListElementImpl#refresh()
      */
     @Override
     public void refresh() {
@@ -101,7 +100,7 @@ public class DNodeListElementSpec extends DNodeListElementImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DNodeListElementImpl#getStyle()
+     * @see org.eclipse.sirius.viewpoint.impl.DNodeListElementImpl#getStyle()
      */
     @Override
     public Style getStyle() {
@@ -111,7 +110,7 @@ public class DNodeListElementSpec extends DNodeListElementImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DNodeListElementImpl#isFold(java.util.Map)
+     * @see org.eclipse.sirius.viewpoint.impl.DNodeListElementImpl#isFold(java.util.Map)
      */
     @Override
     public boolean isFold(final Map alreadyManagedElements) {

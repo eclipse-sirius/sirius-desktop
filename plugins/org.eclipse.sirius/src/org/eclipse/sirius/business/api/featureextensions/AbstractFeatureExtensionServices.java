@@ -18,11 +18,11 @@ import org.eclipse.emf.ecore.EObject;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DFeatureExtension;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.description.FeatureExtensionDescription;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.DFeatureExtension;
+import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Base implementation to subclass.
@@ -48,10 +48,10 @@ public abstract class AbstractFeatureExtensionServices implements FeatureExtensi
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.featureextensions.FeatureExtensionServices#getFeatureExtensionDescriptions(org.eclipse.sirius.description.Sirius,
+     * @see org.eclipse.sirius.business.api.featureextensions.FeatureExtensionServices#getFeatureExtensionDescriptions(org.eclipse.sirius.viewpoint.description.Viewpoint,
      *      java.lang.Class)
      */
-    public <T extends FeatureExtensionDescription> List<T> getFeatureExtensionDescriptions(final Sirius viewpoint, final Class<T> clazz) {
+    public <T extends FeatureExtensionDescription> List<T> getFeatureExtensionDescriptions(final Viewpoint viewpoint, final Class<T> clazz) {
         if (getFeatureExtensionDescriptionClass().isAssignableFrom(clazz)) {
             final List<? super FeatureExtensionDescription> descs = Lists.newArrayList();
             for (FeatureExtensionDescription desc : viewpoint.getOwnedFeatureExtensions()) {
@@ -87,7 +87,7 @@ public abstract class AbstractFeatureExtensionServices implements FeatureExtensi
      * @see org.eclipse.sirius.business.api.featureextensions.FeatureExtensionServices#saveFeatureExtensionData(java.lang.String,
      *      org.eclipse.sirius.business.api.session.Session,
      *      org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.sirius.DFeatureExtension)
+     *      org.eclipse.sirius.viewpoint.DFeatureExtension)
      */
     public void saveFeatureExtensionData(final String id, final Session session, final EObject associatedInstance, final DFeatureExtension data) {
         session.getServices().putCustomData(CustomDataConstants.DFEATUREEXTENSION, associatedInstance, data);

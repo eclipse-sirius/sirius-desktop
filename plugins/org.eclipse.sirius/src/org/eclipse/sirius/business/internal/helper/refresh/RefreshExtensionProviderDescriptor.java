@@ -12,9 +12,8 @@ package org.eclipse.sirius.business.internal.helper.refresh;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.refresh.IRefreshExtensionProvider;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Descriptor of a {@link IRefreshExtensionProvider}.

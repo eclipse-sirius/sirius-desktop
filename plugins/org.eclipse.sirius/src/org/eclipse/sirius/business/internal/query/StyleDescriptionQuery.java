@@ -20,17 +20,16 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.business.internal.metamodel.helper.BestStyleDescriptionKey;
-import org.eclipse.sirius.description.Customization;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.EStructuralFeatureCustomization;
-import org.eclipse.sirius.description.Layer;
-import org.eclipse.sirius.description.VSMElementCustomization;
-import org.eclipse.sirius.description.VSMElementCustomizationReuse;
-import org.eclipse.sirius.description.style.StyleDescription;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.Customization;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
+import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
+import org.eclipse.sirius.viewpoint.description.VSMElementCustomizationReuse;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
  * A Query for {@link StyleDescriptionQuery}.

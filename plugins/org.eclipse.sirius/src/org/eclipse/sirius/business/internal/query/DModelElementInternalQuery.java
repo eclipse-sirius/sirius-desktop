@@ -11,9 +11,8 @@
 package org.eclipse.sirius.business.internal.query;
 
 import org.eclipse.emf.common.util.BasicEList;
-
-import org.eclipse.sirius.description.DAnnotation;
-import org.eclipse.sirius.description.DModelElement;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
+import org.eclipse.sirius.viewpoint.description.DModelElement;
 
 /**
  * Query defining all queries for DModelElement.

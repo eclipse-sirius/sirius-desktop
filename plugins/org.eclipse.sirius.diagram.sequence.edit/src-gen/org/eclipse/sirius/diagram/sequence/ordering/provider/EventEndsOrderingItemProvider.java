@@ -24,7 +24,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-
 import org.eclipse.sirius.diagram.sequence.description.provider.SequenceEditPlugin;
 import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
 

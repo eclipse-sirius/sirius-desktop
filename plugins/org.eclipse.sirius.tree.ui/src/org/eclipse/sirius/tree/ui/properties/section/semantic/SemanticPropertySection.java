@@ -19,14 +19,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
 import org.eclipse.ui.views.properties.IPropertySource;
-
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.ui.properties.propertysource.TreeCompositeEObjectPropertySource;
 import org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection;
 import org.eclipse.sirius.ui.tools.api.properties.AbstractCompositeEObjectPropertySource;
 import org.eclipse.sirius.ui.tools.api.properties.AbstractEObjectPropertySource;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**

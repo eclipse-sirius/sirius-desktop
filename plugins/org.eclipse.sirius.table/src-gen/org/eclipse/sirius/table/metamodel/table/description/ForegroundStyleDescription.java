@@ -11,9 +11,8 @@
 package org.eclipse.sirius.table.metamodel.table.description;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.FontFormat;
-import org.eclipse.sirius.description.ColorDescription;
+import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -44,7 +43,7 @@ public interface ForegroundStyleDescription extends EObject {
      * 
      * @generated
      */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * Returns the value of the '<em><b>Label Size</b></em>' attribute. The
@@ -76,12 +75,12 @@ public interface ForegroundStyleDescription extends EObject {
     /**
      * Returns the value of the '<em><b>Label Format</b></em>' attribute. The
      * default value is <code>"normal"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.FontFormat}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The font format. <!--
-     * end-model-doc -->
+     * enumeration {@link org.eclipse.sirius.viewpoint.FontFormat}. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * font format. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Label Format</em>' attribute.
-     * @see org.eclipse.sirius.FontFormat
+     * @see org.eclipse.sirius.viewpoint.FontFormat
      * @see #setLabelFormat(FontFormat)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getForegroundStyleDescription_LabelFormat()
      * @model default="normal"
@@ -97,7 +96,7 @@ public interface ForegroundStyleDescription extends EObject {
      * 
      * @param value
      *            the new value of the '<em>Label Format</em>' attribute.
-     * @see org.eclipse.sirius.FontFormat
+     * @see org.eclipse.sirius.viewpoint.FontFormat
      * @see #getLabelFormat()
      * @generated
      */

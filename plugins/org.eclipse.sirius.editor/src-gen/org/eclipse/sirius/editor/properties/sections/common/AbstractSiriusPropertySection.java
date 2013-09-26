@@ -26,19 +26,18 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.editor.editorPlugin.IAdapterFactoryProvider;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
+import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
+import org.eclipse.sirius.editor.tools.internal.property.section.AbstractSiriusPropertySectionHelper;
+import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
+import org.eclipse.sirius.viewpoint.description.DiagramImportDescription;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.contentoutline.ContentOutline;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
-
-import org.eclipse.sirius.description.DiagramImportDescription;
-import org.eclipse.sirius.editor.editorPlugin.IAdapterFactoryProvider;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
-import org.eclipse.sirius.editor.properties.SiriusPropertySheetPage;
-import org.eclipse.sirius.editor.tools.internal.property.section.AbstractSiriusPropertySectionHelper;
-import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
 
 // End of user code imports
 
@@ -50,7 +49,7 @@ public abstract class AbstractSiriusPropertySection extends AbstractPropertySect
     public final static int LABEL_WIDTH = 292;
 
     /** The property sheet page for this section. */
-    protected SiriusPropertySheetPage propertySheetPage;
+    protected ViewpointPropertySheetPage propertySheetPage;
 
     /**
      * Current selected object or first object in the selection when multiple
@@ -75,7 +74,7 @@ public abstract class AbstractSiriusPropertySection extends AbstractPropertySect
      * @see org.eclipse.ui.views.properties.tabbed.ISection#createControls(org.eclipse.swt.widgets.Composite,
      *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
      */
-    public void createControls(Composite parent, SiriusPropertySheetPage aTabbedPropertySheetPage) {
+    public void createControls(Composite parent, ViewpointPropertySheetPage aTabbedPropertySheetPage) {
         super.createControls(parent, aTabbedPropertySheetPage);
         this.propertySheetPage = aTabbedPropertySheetPage;
 

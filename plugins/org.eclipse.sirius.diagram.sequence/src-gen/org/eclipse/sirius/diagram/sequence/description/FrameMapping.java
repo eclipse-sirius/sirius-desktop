@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description;
 
-import org.eclipse.sirius.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -46,7 +46,8 @@ public interface FrameMapping extends ContainerMapping, DelimitedEventMapping {
      *         attribute.
      * @see #setCoveredLifelinesExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getFrameMapping_CoveredLifelinesExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='the list of semantic EObjects representing the lifelines which are semantically covered by the frame.'"
      * @generated
@@ -79,7 +80,8 @@ public interface FrameMapping extends ContainerMapping, DelimitedEventMapping {
      * @return the value of the '<em>Center Label Expression</em>' attribute.
      * @see #setCenterLabelExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getFrameMapping_CenterLabelExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='the text to show in the center of the IU'"
      * @generated

@@ -17,12 +17,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
-import org.eclipse.sirius.DAnalysisSessionEObject;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.resource.LoadEMFResource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Tester for object to drag in a drag'n drop operation.

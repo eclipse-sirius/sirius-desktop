@@ -19,7 +19,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * Refresh a {@link org.eclipse.sirius.DDiagramElement}.
+ * Refresh a {@link org.eclipse.sirius.viewpoint.DDiagramElement}.
  * 
  * @author cbrun
  */

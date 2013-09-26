@@ -19,9 +19,9 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Refresh representations command. Launch the refresh for all kind of

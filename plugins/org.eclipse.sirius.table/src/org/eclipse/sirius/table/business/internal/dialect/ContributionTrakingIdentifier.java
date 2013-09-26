@@ -12,12 +12,11 @@ package org.eclipse.sirius.table.business.internal.dialect;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.viewpoint.description.contribution.ContributionPoint;
 
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
-
-import org.eclipse.sirius.description.contribution.ContributionPoint;
-import org.eclipse.sirius.table.metamodel.table.DTable;
+import com.google.common.base.Supplier;
 
 /**
  * A function which identifies elements from a representation's effective
@@ -27,22 +26,28 @@ import org.eclipse.sirius.table.metamodel.table.DTable;
  * @author pierre-charles.david@obeo.fr
  */
 public class ContributionTrakingIdentifier implements Function<EObject, Object> {
-    private final DTable table;
-
     private final Function<EObject, String> pathFunction;
+
+    private Supplier<EObject> edSupplier;
+
+    private Supplier<Iterable<ContributionPoint>> cpSupplier;
 
     /**
      * Constructor.
      * 
-     * @param table
-     *            the representation for which we must identify the effective
-     *            description's elements.
+     * @param edSupplier
+     *            a supplier for the effective representations description to
+     *            use.
+     * @param cpSupplier
+     *            a supplier for the contribution points to use.
+     * 
      * @param pathFunction
      *            the function to use to get the intrinsic identifiers of the
      *            elements.
      */
-    public ContributionTrakingIdentifier(DTable table, Function<EObject, String> pathFunction) {
-        this.table = Preconditions.checkNotNull(table);
+    public ContributionTrakingIdentifier(Supplier<EObject> edSupplier, Supplier<Iterable<ContributionPoint>> cpSupplier, Function<EObject, String> pathFunction) {
+        this.edSupplier = Preconditions.checkNotNull(edSupplier);
+        this.cpSupplier = Preconditions.checkNotNull(cpSupplier);
         this.pathFunction = Preconditions.checkNotNull(pathFunction);
     }
 
@@ -52,7 +57,7 @@ public class ContributionTrakingIdentifier implements Function<EObject, Object> 
     public Object apply(EObject from) {
         String currentURI = pathFunction.apply(from);
         if (isInContributionScope(from)) {
-            ContributionPoint cp = findMostSpecificContributionPoint(from, table.getEffectiveDescription(), table.getContributionPoints());
+            ContributionPoint cp = findMostSpecificContributionPoint(from, edSupplier.get(), cpSupplier.get());
             if (cp != null) {
                 String parentURI = pathFunction.apply(cp.getContributed());
                 String relativeURI = currentURI.replace(parentURI, "");
@@ -66,7 +71,7 @@ public class ContributionTrakingIdentifier implements Function<EObject, Object> 
     }
 
     private boolean isInContributionScope(EObject from) {
-        EObject scopeRoot = table.getEffectiveDescription();
+        EObject scopeRoot = edSupplier.get();
         return scopeRoot != null && (from == scopeRoot || EcoreUtil.isAncestor(scopeRoot, from));
     }
 

@@ -12,7 +12,7 @@ package org.eclipse.sirius.business.api.componentization;
 
 import java.util.Collection;
 
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * A listener to know {@link DiagramDescriptionMappingsManager} recompute
@@ -27,7 +27,7 @@ public interface DiagramDescriptionMappingsManagerListener {
      * This method is called when mappings have been computed.
      * @param enabledSiriuss 
      */
-    void mappingsComputed(Collection<Sirius> enabledSiriuss);
+    void mappingsComputed(Collection<Viewpoint> enabledSiriuss);
 
     /**
      * This method is called when the description mappings manager will be

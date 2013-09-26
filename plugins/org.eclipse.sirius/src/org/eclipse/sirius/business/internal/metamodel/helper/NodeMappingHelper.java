@@ -17,7 +17,6 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -26,24 +25,24 @@ import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeListElement;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.NodeStyle;
-import org.eclipse.sirius.ResizeKind;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.internal.metamodel.description.extensions.INodeMappingExt;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.style.NodeStyleDescription;
-import org.eclipse.sirius.description.style.StyleDescription;
-import org.eclipse.sirius.description.style.StylePackage;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeListElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.NodeStyle;
+import org.eclipse.sirius.viewpoint.ResizeKind;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 /**
  * Utility class to factor customizations for ContainerMapping and related.
@@ -151,7 +150,7 @@ public final class NodeMappingHelper {
      * @return the node created.
      */
     public DNode createNode(INodeMappingExt self, EObject modelElement, EObject container, DDiagram diagram) {
-        final DNode newNode = SiriusFactory.eINSTANCE.createDNode();
+        final DNode newNode = ViewpointFactory.eINSTANCE.createDNode();
 
         // getting the right style description : default or conditional
         final NodeStyleDescription style = (NodeStyleDescription) new MappingHelper(interpreter).getBestStyleDescription(self, modelElement, newNode, container, diagram);
@@ -284,7 +283,7 @@ public final class NodeMappingHelper {
      */
     public DNodeListElement createListElement(NodeMapping self, EObject modelElement, DDiagram diagram) {
 
-        final DNodeListElement newNode = SiriusFactory.eINSTANCE.createDNodeListElement();
+        final DNodeListElement newNode = ViewpointFactory.eINSTANCE.createDNodeListElement();
 
         // getting the right style description : default or conditional
         final NodeStyleDescription style = (NodeStyleDescription) new MappingHelper(interpreter).getBestStyleDescription(self, modelElement, newNode, null, diagram);

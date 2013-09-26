@@ -21,20 +21,20 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DNode;
 import org.eclipse.sirius.business.api.query.DiagramDescriptionQuery;
 import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.business.api.query.DiagramExtensionDescriptionQuery;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.DiagramExtensionDescription;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Class dedicated to tools applicability test. Should not be used directly but
@@ -123,8 +123,8 @@ public class AbstractNodeMappingApplicabilityTester {
             }
             if (eContainerValue instanceof DiagramExtensionDescription) {
                 DiagramExtensionDescription diagramExtensionDescription = (DiagramExtensionDescription) eContainerValue;
-                Collection<Sirius> viewpoints = new ArrayList<Sirius>();
-                viewpoints.add((Sirius) selfOrSuper.eContainer());
+                Collection<Viewpoint> viewpoints = new ArrayList<Viewpoint>();
+                viewpoints.add((Viewpoint) selfOrSuper.eContainer());
                 DiagramDescription diagramDescription = ComponentizationHelper.getDiagramDescription(diagramExtensionDescription, viewpoints);
                 if (selfOrSuper.equals(diagramDescription)) {
                     if (checkValidSubMappingsAreSubtypeOf(diagramExtensionDescription, mappingsToCreate)) {

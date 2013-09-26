@@ -11,9 +11,8 @@
 package org.eclipse.sirius.diagram.ui.tools.api.layout;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * An interface for all the SiriusLayoutDataManager for mapping key (

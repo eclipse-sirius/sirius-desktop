@@ -23,16 +23,16 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DragAndDropTarget;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.business.internal.metamodel.helper.MappingsListVisitor;
 import org.eclipse.sirius.business.internal.sync.visitor.DiagramElementsHierarchyVisitor;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DragAndDropTarget;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
  * Update mappings based on activated layers and mappings extension.
@@ -107,7 +107,7 @@ public class MappingsUpdater {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.business.internal.metamodel.helper.MappingsListVisitor#visit(org.eclipse.sirius.description.DiagramElementMapping,
+         * @see org.eclipse.sirius.business.internal.metamodel.helper.MappingsListVisitor#visit(org.eclipse.sirius.viewpoint.description.DiagramElementMapping,
          *      java.util.Set)
          */
         public Set<AbstractDNodeCandidate> visit(final DiagramElementMapping pMapping, final Set<AbstractDNodeCandidate> candidateFilter) {

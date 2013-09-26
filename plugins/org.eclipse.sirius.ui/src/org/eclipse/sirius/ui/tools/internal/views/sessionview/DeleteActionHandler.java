@@ -23,9 +23,9 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.ui.tools.internal.views.common.action.DeleteRepresentationAction;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItemImpl;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * An handler which redirect to the appropriate delete action depending on the

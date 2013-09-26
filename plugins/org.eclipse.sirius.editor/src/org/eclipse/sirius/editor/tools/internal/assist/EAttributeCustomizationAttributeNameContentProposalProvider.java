@@ -26,15 +26,14 @@ import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.jface.fieldassist.IContentProposalListener2;
 import org.eclipse.jface.fieldassist.IContentProposalProvider;
 import org.eclipse.jface.fieldassist.TextContentAdapter;
+import org.eclipse.sirius.editor.properties.sections.common.ModelViewBinding;
+import org.eclipse.sirius.editor.properties.sections.description.eattributecustomization.EAttributeCustomizationAttributeNamePropertySection;
+import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.keys.IBindingService;
 import org.eclipse.ui.texteditor.ITextEditorActionDefinitionIds;
-
-import org.eclipse.sirius.description.EAttributeCustomization;
-import org.eclipse.sirius.description.style.StyleDescription;
-import org.eclipse.sirius.editor.properties.sections.common.ModelViewBinding;
-import org.eclipse.sirius.editor.properties.sections.description.eattributecustomization.EAttributeCustomizationAttributeNamePropertySection;
 
 /**
  * A {@link IContentProposalProvider} for

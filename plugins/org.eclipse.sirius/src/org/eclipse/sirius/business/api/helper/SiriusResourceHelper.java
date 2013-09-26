@@ -25,12 +25,12 @@ import com.google.common.base.Objects;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DView;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * An helper uses to manage the Sirius resource (between the
@@ -87,8 +87,8 @@ public final class SiriusResourceHelper {
      * @param semanticElement
      *            One of the semantic element of the session
      */
-    public static void createViews(final Session session, final List<Sirius> registrySiriuss, final ResourceSet editingDomainResourceSet, final EObject semanticElement) {
-        for (Sirius registrySirius : registrySiriuss) {
+    public static void createViews(final Session session, final List<Viewpoint> registrySiriuss, final ResourceSet editingDomainResourceSet, final EObject semanticElement) {
+        for (Viewpoint registrySirius : registrySiriuss) {
             // Get the resource for this viewpoint in the resourceSet of the
             // editingDomain
             final Resource editingDomainResource = editingDomainResourceSet.getResource(registrySirius.eResource().getURI(), true);
@@ -96,7 +96,7 @@ public final class SiriusResourceHelper {
                 editingDomainResource.load(Collections.EMPTY_MAP);
                 // Search the corresponding viewpoint in the resource of
                 // the editingDomain resourceSet
-                final Sirius editingDomainSirius = SiriusUtil.findSirius(editingDomainResource, registrySirius.getName());
+                final Viewpoint editingDomainSirius = SiriusUtil.findSirius(editingDomainResource, registrySirius.getName());
                 if (editingDomainSirius != null) {
                     session.createView(editingDomainSirius, Collections.singleton(semanticElement));
                 }
@@ -121,8 +121,8 @@ public final class SiriusResourceHelper {
      * @return The corresponding viewpoint (in the resourceSet of the
      *         editingDomain)
      */
-    public static Sirius getCorrespondingSirius(final Session session, final Sirius registrySirius) {
-        Sirius editingDomainSirius = null;
+    public static Viewpoint getCorrespondingSirius(final Session session, final Viewpoint registrySirius) {
+        Viewpoint editingDomainSirius = null;
 
         /*
          * Search the corresponding viewpoint in the resources of the
@@ -183,10 +183,10 @@ public final class SiriusResourceHelper {
      *            A viewpoint from the editingDomainResourceSet
      * @return true if a view for this viewpoint exists, false otherwise
      */
-    public static boolean isViewExistForSirius(final Session session, final Sirius editingDomainSirius) {
+    public static boolean isViewExistForSirius(final Session session, final Viewpoint editingDomainSirius) {
         DAnalysis mainDAnalysis = (DAnalysis) session.getSessionResource().getContents().get(0);
         for (DView view : mainDAnalysis.getOwnedViews()) {
-            if (view.getSirius() != null && view.getSirius().equals(editingDomainSirius)) {
+            if (view.getViewpoint() != null && view.getViewpoint().equals(editingDomainSirius)) {
                 return true;
             }
         }
@@ -209,14 +209,14 @@ public final class SiriusResourceHelper {
      * @return a Sirius instance from the session's editing domain with the
      *         specified logical URI, if it could be found or loaded.
      */
-    public static Option<Sirius> getCorrespondingSirius(Session session, URI uri, boolean loadOnDemand) {
+    public static Option<Viewpoint> getCorrespondingSirius(Session session, URI uri, boolean loadOnDemand) {
         SiriusRegistry registry = (SiriusRegistry) org.eclipse.sirius.business.api.componentization.SiriusRegistry.getInstance();
         Option<URI> providerURI = registry.getProvider(uri);
         if (providerURI.some()) {
             TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
             Resource editingDomainResource = domain.getResourceSet().getResource(providerURI.get(), loadOnDemand);
             if (editingDomainResource != null) {
-                for (Sirius vp : registry.getSiriusResourceHandler().collectSiriusDefinitions(editingDomainResource)) {
+                for (Viewpoint vp : registry.getSiriusResourceHandler().collectSiriusDefinitions(editingDomainResource)) {
                     Option<URI> vpURI = new SiriusQuery(vp).getSiriusURI();
                     if (vpURI.some() && Objects.equal(vpURI.get(), uri)) {
                         return Options.newSome(vp);

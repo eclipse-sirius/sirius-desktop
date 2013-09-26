@@ -28,7 +28,7 @@ import org.xml.sax.SAXException;
 
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A parser to collect shortly some informations in representations file.

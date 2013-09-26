@@ -15,12 +15,11 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
 import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
-import org.eclipse.sirius.impl.DSemanticDiagramImpl;
+import org.eclipse.sirius.viewpoint.impl.DSemanticDiagramImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

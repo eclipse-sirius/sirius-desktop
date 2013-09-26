@@ -21,6 +21,11 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractEditorDialogWithListPropertySection;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
@@ -31,12 +36,6 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.UnmodifiableIterator;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractEditorDialogWithListPropertySection;
 
 // End of user code imports
 
@@ -106,7 +105,8 @@ public class ContainerDropDescriptionContainersPropertySection extends AbstractE
      */
     @Override
     protected List getChoiceOfValues() {
-        UnmodifiableIterator<org.eclipse.sirius.description.DragAndDropTargetDescription> filter = Iterators.filter(eObject.eResource().getResourceSet().getAllContents(), DragAndDropTargetDescription.class);
+        UnmodifiableIterator<org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription> filter = Iterators.filter(eObject.eResource().getResourceSet().getAllContents(),
+                DragAndDropTargetDescription.class);
         return Lists.newArrayList(filter);
     }
 

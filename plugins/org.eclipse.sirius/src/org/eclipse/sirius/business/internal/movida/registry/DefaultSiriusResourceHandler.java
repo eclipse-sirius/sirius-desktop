@@ -22,8 +22,8 @@ import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.business.api.componentization.SiriusResourceHandler;
 import org.eclipse.sirius.business.api.query.FileQuery;
-import org.eclipse.sirius.description.Group;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * The default implementation of {@link SiriusResourceHandler} for
@@ -42,10 +42,10 @@ public class DefaultSiriusResourceHandler implements SiriusResourceHandler {
     /**
      * {@inheritDoc}
      */
-    public Set<Sirius> collectSiriusDefinitions(Resource res) {
-        Set<Sirius> viewpoints = Sets.newHashSet();
+    public Set<Viewpoint> collectSiriusDefinitions(Resource res) {
+        Set<Viewpoint> viewpoints = Sets.newHashSet();
         for (Group group : Iterables.filter(res.getContents(), Group.class)) {
-            for (Sirius viewpoint : group.getOwnedSiriuss()) {
+            for (Viewpoint viewpoint : group.getOwnedViewpoints()) {
                 viewpoints.add(viewpoint);
             }
         }

@@ -14,8 +14,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.sirius.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains

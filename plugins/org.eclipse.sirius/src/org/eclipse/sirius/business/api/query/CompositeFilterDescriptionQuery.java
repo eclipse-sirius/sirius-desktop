@@ -19,11 +19,11 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.filter.CompositeFilterDescription;
-import org.eclipse.sirius.description.filter.Filter;
-import org.eclipse.sirius.description.filter.FilterKind;
-import org.eclipse.sirius.description.filter.MappingFilter;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.filter.CompositeFilterDescription;
+import org.eclipse.sirius.viewpoint.description.filter.Filter;
+import org.eclipse.sirius.viewpoint.description.filter.FilterKind;
+import org.eclipse.sirius.viewpoint.description.filter.MappingFilter;
 
 /**
  * A class aggregating all the queries (read-only!) having a

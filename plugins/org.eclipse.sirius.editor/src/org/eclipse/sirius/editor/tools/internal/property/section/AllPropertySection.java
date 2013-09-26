@@ -23,6 +23,17 @@ import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractSiriusPropertySection;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIManager;
+import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.concern.provider.ConcernItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.filter.provider.FilterItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.style.provider.StyleItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
@@ -32,18 +43,6 @@ import org.eclipse.ui.views.properties.IPropertySourceProvider;
 import org.eclipse.ui.views.properties.PropertySheetEntry;
 import org.eclipse.ui.views.properties.PropertySheetPage;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.eclipse.sirius.description.audit.provider.AuditItemProviderAdapterFactory;
-import org.eclipse.sirius.description.concern.provider.ConcernItemProviderAdapterFactory;
-import org.eclipse.sirius.description.filter.provider.FilterItemProviderAdapterFactory;
-import org.eclipse.sirius.description.provider.DescriptionItemProviderAdapterFactory;
-import org.eclipse.sirius.description.style.provider.StyleItemProviderAdapterFactory;
-import org.eclipse.sirius.description.tool.provider.ToolItemProviderAdapterFactory;
-import org.eclipse.sirius.description.validation.provider.ValidationItemProviderAdapterFactory;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractSiriusPropertySection;
-import org.eclipse.sirius.provider.SiriusItemProviderAdapterFactory;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIManager;
 
 /**
  * A property section which displays the EMF properties view.
@@ -74,7 +73,7 @@ public class AllPropertySection extends AbstractSiriusPropertySection implements
         factories.add(FeatureExtensionsUIManager.INSTANCE.createAdapterFactory());
         // End of user code put your specific adapter factories
         factories.add(new ResourceItemProviderAdapterFactory());
-        factories.add(new SiriusItemProviderAdapterFactory());
+        factories.add(new ViewpointItemProviderAdapterFactory());
         factories.add(new DescriptionItemProviderAdapterFactory());
         factories.add(new StyleItemProviderAdapterFactory());
         factories.add(new ToolItemProviderAdapterFactory());
@@ -161,7 +160,8 @@ public class AllPropertySection extends AbstractSiriusPropertySection implements
     }
 
     /**
-     * Override to use all vertical space.<BR> {@inheritDoc}
+     * Override to use all vertical space.<BR>
+     * {@inheritDoc}
      * 
      * @see org.eclipse.ui.views.properties.tabbed.AbstractPropertySection#shouldUseExtraSpace()
      */

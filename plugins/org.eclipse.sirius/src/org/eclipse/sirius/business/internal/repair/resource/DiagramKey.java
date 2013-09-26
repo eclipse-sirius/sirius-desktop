@@ -12,8 +12,7 @@ package org.eclipse.sirius.business.internal.repair.resource;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * Represents a key for diagram.

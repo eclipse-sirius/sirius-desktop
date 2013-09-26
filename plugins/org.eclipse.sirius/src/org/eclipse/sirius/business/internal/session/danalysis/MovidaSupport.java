@@ -27,15 +27,15 @@ import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DView;
 import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
 import org.eclipse.sirius.business.internal.movida.VSMResolver;
 import org.eclipse.sirius.business.internal.movida.SiriusResourceOperations;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Helper class to extract Movida-related code from {@link DAnalysisSessionImpl}
@@ -51,9 +51,9 @@ final class MovidaSupport {
         this.session = session;
     }
     
-    void updatePhysicalVSMResourceURIs(Collection<Sirius> selectedSiriuss) {
-        Set<URI> selected = Sets.newHashSet(Iterables.filter(Iterables.transform(selectedSiriuss, new Function<Sirius, URI>() {
-            public URI apply(Sirius from) {
+    void updatePhysicalVSMResourceURIs(Collection<Viewpoint> selectedSiriuss) {
+        Set<URI> selected = Sets.newHashSet(Iterables.filter(Iterables.transform(selectedSiriuss, new Function<Viewpoint, URI>() {
+            public URI apply(Viewpoint from) {
                 return new SiriusQuery(from).getSiriusURI().get();
             }
         }), Predicates.notNull()));
@@ -62,8 +62,8 @@ final class MovidaSupport {
 
     void registryChanged(final org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry registry, Set<URI> removed, Set<URI> added, Set<URI> changed) {
         TransactionalEditingDomain transactionalEditingDomain = session.getTransactionalEditingDomain();
-        Set<URI> selected = Sets.newHashSet(Iterables.transform(session.getSelectedSiriuss(false), new Function<Sirius, URI>() {
-            public URI apply(Sirius from) {
+        Set<URI> selected = Sets.newHashSet(Iterables.transform(session.getSelectedSiriuss(false), new Function<Viewpoint, URI>() {
+            public URI apply(Viewpoint from) {
                 return new SiriusQuery(from).getSiriusURI().get();
             }
         }));
@@ -117,7 +117,7 @@ final class MovidaSupport {
         ted.getCommandStack().execute(new RecordingCommand(ted) {
             @Override
             protected void doExecute() {
-                for (final Sirius viewpoint : session.getSelectedSiriuss(false)) {
+                for (final Viewpoint viewpoint : session.getSelectedSiriuss(false)) {
                     Option<URI> uri = new SiriusQuery(viewpoint).getSiriusURI();
                     if (uri.some() && unavailable.contains(uri.get())) {
                         session.unselectSirius(viewpoint);

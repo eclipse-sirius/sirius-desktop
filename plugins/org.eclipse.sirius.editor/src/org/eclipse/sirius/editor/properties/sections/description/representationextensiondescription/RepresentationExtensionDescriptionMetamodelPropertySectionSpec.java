@@ -11,19 +11,18 @@
 package org.eclipse.sirius.editor.properties.sections.description.representationextensiondescription;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.FormAttachment;
-import org.eclipse.swt.layout.FormData;
-import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractSiriusPropertySection;
 import org.eclipse.sirius.editor.properties.sections.description.representationdescription.AddFromFilesystemButtonListener;
 import org.eclipse.sirius.editor.properties.sections.description.representationdescription.AddFromRegistryButtonListener;
 import org.eclipse.sirius.editor.properties.sections.description.representationdescription.AddFromWorkspaceButtonListener;
 import org.eclipse.sirius.editor.properties.sections.description.representationdescription.RemoveMetamodelsSelectionButtonListener;
 import org.eclipse.sirius.editor.properties.sections.description.representationdescription.RepresentationDescriptionMetamodelPropertySectionSpec;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 
 /**
  * A {@link AbstractSiriusPropertySection} for the metamodels tab.

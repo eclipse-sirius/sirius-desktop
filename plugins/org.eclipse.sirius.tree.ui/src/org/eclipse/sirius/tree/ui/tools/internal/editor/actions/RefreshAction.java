@@ -31,7 +31,6 @@ import org.eclipse.ui.PlatformUI;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tree.DTreeElement;
@@ -39,6 +38,7 @@ import org.eclipse.sirius.tree.business.internal.helper.RefreshTreeElementTask;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewerManager;
 import org.eclipse.sirius.ui.business.api.action.RefreshActionListenerRegistry;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * This action refresh the entire tree or the tree items elements selected.

@@ -19,9 +19,9 @@ import org.eclipse.gmf.runtime.notation.View;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * @was-generated

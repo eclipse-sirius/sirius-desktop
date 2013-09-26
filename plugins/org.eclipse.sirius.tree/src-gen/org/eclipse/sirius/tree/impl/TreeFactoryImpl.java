@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeElementSynchronizer;
@@ -42,7 +41,7 @@ public class TreeFactoryImpl extends EFactoryImpl implements TreeFactory {
      */
     public static TreeFactory init() {
         try {
-            TreeFactory theTreeFactory = (TreeFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/sirius/tree/1.0.0");
+            TreeFactory theTreeFactory = (TreeFactory) EPackage.Registry.INSTANCE.getEFactory(TreePackage.eNS_URI);
             if (theTreeFactory != null) {
                 return theTreeFactory;
             }

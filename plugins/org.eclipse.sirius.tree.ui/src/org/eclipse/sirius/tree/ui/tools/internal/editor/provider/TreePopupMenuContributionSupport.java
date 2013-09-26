@@ -29,15 +29,8 @@ import com.google.common.collect.Iterators;
 
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.description.tool.CreateInstance;
-import org.eclipse.sirius.description.tool.ExternalJavaAction;
-import org.eclipse.sirius.description.tool.ExternalJavaActionCall;
-import org.eclipse.sirius.description.tool.MenuItemDescription;
-import org.eclipse.sirius.description.tool.OperationAction;
-import org.eclipse.sirius.description.tool.ToolPackage;
 import org.eclipse.sirius.tools.api.ui.ExternalJavaActionProvider;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.sirius.tree.DTreeItem;
@@ -46,11 +39,18 @@ import org.eclipse.sirius.tree.business.api.query.TreePopupMenuQuery;
 import org.eclipse.sirius.tree.description.TreePopupMenu;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewerManager;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
+import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
+import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
+import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescription;
+import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 
 /**
  * A Class that will populate a {@link DTreeItem}'s contextual menu using all
- * the {@link org.eclipse.sirius.description.tool.PopupMenu}s defined with its associate
+ * the {@link org.eclipse.sirius.viewpoint.description.tool.PopupMenu}s defined with its associate
  * {@link org.eclipse.sirius.tree.description.TreeItemMapping}.
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>

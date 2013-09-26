@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.BasicMessageMappingSpec;
 import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.CombinedFragmentMappingSpec;
 import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.CreationMessageMappingSpec;
@@ -62,7 +61,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      */
     public static DescriptionFactory init() {
         try {
-            DescriptionFactory theDescriptionFactory = (DescriptionFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0");
+            DescriptionFactory theDescriptionFactory = (DescriptionFactory) EPackage.Registry.INSTANCE.getEFactory(DescriptionPackage.eNS_URI);
             if (theDescriptionFactory != null) {
                 return theDescriptionFactory;
             }

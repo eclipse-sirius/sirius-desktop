@@ -18,12 +18,12 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.description.tool.RepresentationNavigationDescription;
 import org.eclipse.sirius.table.metamodel.table.description.CreateLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 import org.eclipse.sirius.table.metamodel.table.description.impl.CrossTableDescriptionImpl;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 
 /**
  * Specialization of the default implementation for

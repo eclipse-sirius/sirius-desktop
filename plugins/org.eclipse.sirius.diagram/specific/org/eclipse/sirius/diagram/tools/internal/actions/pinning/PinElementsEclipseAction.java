@@ -13,13 +13,12 @@ package org.eclipse.sirius.diagram.tools.internal.actions.pinning;
 import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
-
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.tools.internal.commands.emf.PinElementsCommand;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Eclipse action to pin elements.

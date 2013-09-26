@@ -53,7 +53,6 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.common.ui.tools.api.view.IExpandSelectionTarget;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerTabExtension;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
@@ -64,6 +63,7 @@ import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.tab.Mo
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.tab.ModelExplorerTabRegistryListener;
 import org.eclipse.sirius.ui.tools.internal.views.sessionview.DeleteActionHandler;
 import org.eclipse.sirius.ui.tools.internal.views.sessionview.RenameActionHandler;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * An Eclipse view to see the viewpoint resource set content.

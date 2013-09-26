@@ -11,7 +11,6 @@
 package org.eclipse.sirius.table.metamodel.table;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.table.business.api.refresh.DTableSynchronizer;
 
 /**

@@ -65,17 +65,16 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
-
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * @was-generated
@@ -216,7 +215,7 @@ public class SiriusDiagramEditorUtil {
      * @was-generated
      */
     private static DDiagram createInitialModel() {
-        return SiriusFactory.eINSTANCE.createDDiagram();
+        return ViewpointFactory.eINSTANCE.createDDiagram();
     }
 
     /**
@@ -317,7 +316,7 @@ public class SiriusDiagramEditorUtil {
         }
 
         final EPackage rootPackage = (EPackage) EcoreUtil.getRootContainer(targetElement.eClass());
-        if (rootPackage == null || (!rootPackage.getNsURI().equals(NotationPackage.eINSTANCE.getNsURI()) && !rootPackage.getNsURI().equals(SiriusPackage.eINSTANCE.getNsURI()))) {
+        if (rootPackage == null || (!rootPackage.getNsURI().equals(NotationPackage.eINSTANCE.getNsURI()) && !rootPackage.getNsURI().equals(ViewpointPackage.eINSTANCE.getNsURI()))) {
             ECrossReferenceAdapter eCrossReferenceAdapter = null;
             if (targetElement instanceof DSemanticDecorator) {
                 EObject semanticTarget = ((DSemanticDecorator) targetElement).getTarget();

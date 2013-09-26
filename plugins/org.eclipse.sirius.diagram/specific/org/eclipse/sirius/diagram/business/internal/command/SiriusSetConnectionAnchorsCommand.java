@@ -32,12 +32,12 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DNode;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
-import org.eclipse.sirius.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.description.tool.ReconnectionKind;
 
 /**
  * A custom SetConnectionAnchorsCommand used when edge reconnection is applied

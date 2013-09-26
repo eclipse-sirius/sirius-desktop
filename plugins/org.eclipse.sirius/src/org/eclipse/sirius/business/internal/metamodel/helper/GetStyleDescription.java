@@ -11,13 +11,12 @@
 package org.eclipse.sirius.business.internal.metamodel.helper;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.SiriusPlugin;
-import org.eclipse.sirius.description.ConditionalContainerStyleDescription;
-import org.eclipse.sirius.description.ConditionalEdgeStyleDescription;
-import org.eclipse.sirius.description.ConditionalNodeStyleDescription;
-import org.eclipse.sirius.description.style.StyleDescription;
-import org.eclipse.sirius.description.util.DescriptionSwitch;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.ConditionalContainerStyleDescription;
+import org.eclipse.sirius.viewpoint.description.ConditionalEdgeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.ConditionalNodeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
+import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 
 /**
  * Switch to get the style description owned by a conditional style.
@@ -29,7 +28,7 @@ public class GetStyleDescription extends DescriptionSwitch<StyleDescription> {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseConditionalContainerStyleDescription(org.eclipse.sirius.description.ConditionalContainerStyleDescription)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseConditionalContainerStyleDescription(org.eclipse.sirius.viewpoint.description.ConditionalContainerStyleDescription)
      */
     @Override
     public StyleDescription caseConditionalContainerStyleDescription(final ConditionalContainerStyleDescription object) {
@@ -39,7 +38,7 @@ public class GetStyleDescription extends DescriptionSwitch<StyleDescription> {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseConditionalEdgeStyleDescription(org.eclipse.sirius.description.ConditionalEdgeStyleDescription)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseConditionalEdgeStyleDescription(org.eclipse.sirius.viewpoint.description.ConditionalEdgeStyleDescription)
      */
     @Override
     public StyleDescription caseConditionalEdgeStyleDescription(final ConditionalEdgeStyleDescription object) {

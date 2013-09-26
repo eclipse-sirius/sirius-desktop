@@ -11,9 +11,8 @@
 package org.eclipse.sirius.business.api.query;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * A class aggregating all the queries (read-only!) having a
@@ -41,12 +40,12 @@ public class RepresentationDescriptionQuery {
      * 
      * @return the Sirius defining the representation description.
      */
-    public Sirius getParentSirius() {
+    public Viewpoint getParentSirius() {
         EObject current = vp;
         while (current != null) {
             current = current.eContainer();
-            if (current instanceof Sirius) {
-                return (Sirius) current;
+            if (current instanceof Viewpoint) {
+                return (Viewpoint) current;
             }
         }
         return null;

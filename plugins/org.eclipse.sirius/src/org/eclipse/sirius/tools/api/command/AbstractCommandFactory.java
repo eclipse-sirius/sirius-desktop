@@ -16,21 +16,20 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.RemoveDanglingReferencesTask;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.description.tool.ToolPackage;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
@@ -87,8 +86,8 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tools.api.command.ICommandFactory#buildCreateRepresentationFromDescription(org.eclipse.sirius.description.tool.RepresentationCreationDescription,
-     *      org.eclipse.sirius.DRepresentationElement, java.lang.String)
+     * @see org.eclipse.sirius.tools.api.command.ICommandFactory#buildCreateRepresentationFromDescription(org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription,
+     *      org.eclipse.sirius.viewpoint.DRepresentationElement, java.lang.String)
      */
     public CreateRepresentationCommand buildCreateRepresentationFromDescription(final RepresentationCreationDescription desc, final DRepresentationElement element, final String newDiagramName) {
         final Session session = SessionManager.INSTANCE.getSession(element.getTarget());
@@ -121,7 +120,7 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
      *            the tool.
      * @param monitor
      *            The progress monitor
-     * @see org.eclipse.sirius.description.tool.ToolDescription#isForceRefresh()
+     * @see org.eclipse.sirius.viewpoint.description.tool.ToolDescription#isForceRefresh()
      */
     protected void addRefreshTask(final DSemanticDecorator semanticDecorator, final DCommand result, final AbstractToolDescription toolDescription, final IProgressMonitor monitor) {
         if (semanticDecorator != null) {
@@ -172,7 +171,7 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
      *            the command.
      * @param toolDescription
      *            the tool.
-     * @see org.eclipse.sirius.description.tool.ToolDescription#isForceRefresh()
+     * @see org.eclipse.sirius.viewpoint.description.tool.ToolDescription#isForceRefresh()
      */
     protected void addRefreshTask(final DSemanticDecorator semanticDecorator, final DCommand result, final AbstractToolDescription toolDescription) {
         addRefreshTask(semanticDecorator, result, toolDescription, new NullProgressMonitor());

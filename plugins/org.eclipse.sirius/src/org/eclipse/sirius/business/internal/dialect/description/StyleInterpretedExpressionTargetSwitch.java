@@ -20,16 +20,16 @@ import com.google.common.collect.Sets;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationElementMapping;
-import org.eclipse.sirius.description.style.BasicLabelStyleDescription;
-import org.eclipse.sirius.description.style.GaugeSectionDescription;
-import org.eclipse.sirius.description.style.StyleDescription;
-import org.eclipse.sirius.description.style.util.StyleSwitch;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.GaugeSectionDescription;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.util.StyleSwitch;
 
 /**
  * A switch that will return the Target Types associated to a given element
- * (part of the {@link org.eclipse.sirius.description.style.StylePackage})
+ * (part of the {@link org.eclipse.sirius.viewpoint.description.style.StylePackage})
  * and feature corresponding to an Interpreted Expression. For example, for a
  * NodeMapping :
  * <p>
@@ -81,7 +81,7 @@ public class StyleInterpretedExpressionTargetSwitch extends StyleSwitch<Option<C
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.style.util.StyleSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
+     * @see org.eclipse.sirius.viewpoint.description.style.util.StyleSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
      */
     @Override
     public Option<Collection<String>> doSwitch(EObject theEObject) {
@@ -136,7 +136,7 @@ public class StyleInterpretedExpressionTargetSwitch extends StyleSwitch<Option<C
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.style.util.StyleSwitch#caseStyleDescription(org.eclipse.sirius.description.style.StyleDescription)
+     * @see org.eclipse.sirius.viewpoint.description.style.util.StyleSwitch#caseStyleDescription(org.eclipse.sirius.viewpoint.description.style.StyleDescription)
      */
     @Override
     public Option<Collection<String>> caseStyleDescription(StyleDescription object) {
@@ -149,7 +149,7 @@ public class StyleInterpretedExpressionTargetSwitch extends StyleSwitch<Option<C
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.style.util.StyleSwitch#caseBasicLabelStyleDescription(org.eclipse.sirius.description.style.BasicLabelStyleDescription)
+     * @see org.eclipse.sirius.viewpoint.description.style.util.StyleSwitch#caseBasicLabelStyleDescription(org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription)
      */
     @Override
     public Option<Collection<String>> caseBasicLabelStyleDescription(BasicLabelStyleDescription object) {

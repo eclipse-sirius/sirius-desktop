@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.template;
 
-import org.eclipse.sirius.EdgeArrows;
-import org.eclipse.sirius.LineStyle;
-import org.eclipse.sirius.description.ColorDescription;
+import org.eclipse.sirius.viewpoint.EdgeArrows;
+import org.eclipse.sirius.viewpoint.LineStyle;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -72,12 +72,13 @@ public interface TMessageStyle extends TTransformer {
 
     /**
      * Returns the value of the '<em><b>Line Style</b></em>' attribute. The
-     * literals are from the enumeration {@link org.eclipse.sirius.LineStyle}
-     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The style of the line. <!-- end-model-doc -->
+     * literals are from the enumeration
+     * {@link org.eclipse.sirius.viewpoint.LineStyle} . <!-- begin-user-doc -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> The style of the line.
+     * <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Line Style</em>' attribute.
-     * @see org.eclipse.sirius.LineStyle
+     * @see org.eclipse.sirius.viewpoint.LineStyle
      * @see #setLineStyle(LineStyle)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTMessageStyle_LineStyle()
      * @model
@@ -93,7 +94,7 @@ public interface TMessageStyle extends TTransformer {
      * 
      * @param value
      *            the new value of the '<em>Line Style</em>' attribute.
-     * @see org.eclipse.sirius.LineStyle
+     * @see org.eclipse.sirius.viewpoint.LineStyle
      * @see #getLineStyle()
      * @generated
      */
@@ -102,12 +103,12 @@ public interface TMessageStyle extends TTransformer {
     /**
      * Returns the value of the '<em><b>Source Arrow</b></em>' attribute. The
      * default value is <code>"NoDecoration"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.EdgeArrows}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The source decoration.
-     * <!-- end-model-doc -->
+     * enumeration {@link org.eclipse.sirius.viewpoint.EdgeArrows}. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * source decoration. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Source Arrow</em>' attribute.
-     * @see org.eclipse.sirius.EdgeArrows
+     * @see org.eclipse.sirius.viewpoint.EdgeArrows
      * @see #setSourceArrow(EdgeArrows)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTMessageStyle_SourceArrow()
      * @model default="NoDecoration" required="true"
@@ -123,7 +124,7 @@ public interface TMessageStyle extends TTransformer {
      * 
      * @param value
      *            the new value of the '<em>Source Arrow</em>' attribute.
-     * @see org.eclipse.sirius.EdgeArrows
+     * @see org.eclipse.sirius.viewpoint.EdgeArrows
      * @see #getSourceArrow()
      * @generated
      */
@@ -132,12 +133,12 @@ public interface TMessageStyle extends TTransformer {
     /**
      * Returns the value of the '<em><b>Target Arrow</b></em>' attribute. The
      * default value is <code>"InputArrow"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.EdgeArrows}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The target decoration.
-     * <!-- end-model-doc -->
+     * enumeration {@link org.eclipse.sirius.viewpoint.EdgeArrows}. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * target decoration. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Target Arrow</em>' attribute.
-     * @see org.eclipse.sirius.EdgeArrows
+     * @see org.eclipse.sirius.viewpoint.EdgeArrows
      * @see #setTargetArrow(EdgeArrows)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTMessageStyle_TargetArrow()
      * @model default="InputArrow" required="true"
@@ -153,7 +154,7 @@ public interface TMessageStyle extends TTransformer {
      * 
      * @param value
      *            the new value of the '<em>Target Arrow</em>' attribute.
-     * @see org.eclipse.sirius.EdgeArrows
+     * @see org.eclipse.sirius.viewpoint.EdgeArrows
      * @see #getTargetArrow()
      * @generated
      */

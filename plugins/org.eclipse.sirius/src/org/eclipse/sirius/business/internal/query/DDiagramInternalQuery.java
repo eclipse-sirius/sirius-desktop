@@ -14,17 +14,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DNodeList;
-import org.eclipse.sirius.DNodeListElement;
-import org.eclipse.sirius.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.description.filter.FilterDescription;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.viewpoint.DNodeListElement;
+import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
+import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DDiagram} as
@@ -241,7 +241,7 @@ public class DDiagramInternalQuery {
         }
         return result;
         // return new EcoreEList.UnmodifiableEList(eInternalContainer(),
-        // SiriusPackage.eINSTANCE.getSirius_Containers(), result.size(),
+        // ViewpointPackage.eINSTANCE.getSirius_Containers(), result.size(),
         // result.toArray());
     }
 }

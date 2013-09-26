@@ -11,9 +11,8 @@
 package org.eclipse.sirius.diagram.business.internal.dialect.identifier;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.DEdge;
+import org.eclipse.sirius.viewpoint.DEdge;
 import org.eclipse.sirius.business.api.dialect.identifier.AbstractRepresentationElementIdentifier;
 
 /**

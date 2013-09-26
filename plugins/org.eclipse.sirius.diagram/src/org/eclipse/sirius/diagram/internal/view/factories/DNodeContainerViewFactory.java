@@ -33,17 +33,17 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DNodeContainer;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.description.style.SizeComputationContainerStyleDescription;
-import org.eclipse.sirius.description.style.StyleDescription;
 import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerNameEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
  * @was-generated

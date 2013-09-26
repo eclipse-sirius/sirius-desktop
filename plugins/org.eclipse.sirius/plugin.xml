@@ -33,28 +33,76 @@
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.eclipse.org/sirius/1.1.0" 
-       class = "org.eclipse.sirius.SiriusPackage"
+       class = "org.eclipse.sirius.viewpoint.SiriusPackage"
        genModel = "model/viewpoint.genmodel" /> 
   </extension>
     
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated viewpoint -->
+      <package
+            uri="http://www.eclipse.org/sirius/1.1.0"
+            class="org.eclipse.sirius.viewpoint.ViewpointPackage"
+            genModel="model/viewpoint.genmodel"/>
+   </extension>
+
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.eclipse.org/sirius/description/1.1.0" 
-       class = "org.eclipse.sirius.description.DescriptionPackage"
+       class = "org.eclipse.sirius.viewpoint.description.DescriptionPackage"
        genModel = "model/viewpoint.genmodel" /> 
   </extension>
   
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.eclipse.org/sirius/description/style/1.1.0" 
-       class = "org.eclipse.sirius.description.style.StylePackage"
+       class = "org.eclipse.sirius.viewpoint.description.style.StylePackage"
        genModel = "model/viewpoint.genmodel" /> 
   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated viewpoint -->
+      <package
+            uri="http://www.eclipse.org/sirius/description/tool/1.1.0"
+            class="org.eclipse.sirius.viewpoint.description.tool.ToolPackage"
+            genModel="model/viewpoint.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated viewpoint -->
+      <package
+            uri="http://www.eclipse.org/sirius/description/filter/1.1.0"
+            class="org.eclipse.sirius.viewpoint.description.filter.FilterPackage"
+            genModel="model/viewpoint.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated viewpoint -->
+      <package
+            uri="http://www.eclipse.org/sirius/description/validation/1.1.0"
+            class="org.eclipse.sirius.viewpoint.description.validation.ValidationPackage"
+            genModel="model/viewpoint.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated viewpoint -->
+      <package
+            uri="http://www.eclipse.org/sirius/description/audit/1.1.0"
+            class="org.eclipse.sirius.viewpoint.description.audit.AuditPackage"
+            genModel="model/viewpoint.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated viewpoint -->
+      <package
+            uri="http://www.eclipse.org/sirius/description/concern/1.1.0"
+            class="org.eclipse.sirius.viewpoint.description.concern.ConcernPackage"
+            genModel="model/viewpoint.genmodel"/>
+   </extension>
   
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.eclipse.org/sirius/description/contribution/1.0.0" 
-       class = "org.eclipse.sirius.description.contribution.ContributionPackage"
+       class = "org.eclipse.sirius.viewpoint.description.contribution.ContributionPackage"
        genModel = "model/contribution.genmodel" /> 
   </extension>
   
@@ -70,17 +118,17 @@
   <extension
         point="org.eclipse.core.runtime.adapters">
      <factory
-           adaptableType="org.eclipse.sirius.DNode"
+           adaptableType="org.eclipse.sirius.viewpoint.DNode"
            class="org.eclipse.sirius.business.internal.helper.information.ViewNodeAdapterFactory">
         <adapter
-              type="org.eclipse.sirius.description.InformationSection">
+              type="org.eclipse.sirius.viewpoint.description.InformationSection">
         </adapter>
      </factory>
      <factory
-           adaptableType="org.eclipse.sirius.DSemanticDecorator"
+           adaptableType="org.eclipse.sirius.viewpoint.DSemanticDecorator"
            class="org.eclipse.sirius.business.internal.helper.information.DecorateSemanticElementAdapterFactory">
         <adapter
-              type="org.eclipse.sirius.description.InformationSection">
+              type="org.eclipse.sirius.viewpoint.description.InformationSection">
         </adapter>
      </factory>
   </extension>
@@ -464,7 +512,7 @@
    <extension
          point="org.eclipse.emf.ecore.extension_parser">
       <parser
-            class="org.eclipse.sirius.description.util.DescriptionResourceFactoryImpl"
+            class="org.eclipse.sirius.viewpoint.description.util.DescriptionResourceFactoryImpl"
             type="odesign">
       </parser>
    </extension>
@@ -495,4 +543,12 @@
             kind="VSM">
       </participant>
    </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated contribution -->
+      <package
+            uri="http://www.eclipse.org/sirius/description/contribution/1.0.0"
+            class="org.eclipse.sirius.description.contribution.ContributionPackage"
+            genModel="model/contribution.genmodel"/>
+   </extension>
+
 </plugin>

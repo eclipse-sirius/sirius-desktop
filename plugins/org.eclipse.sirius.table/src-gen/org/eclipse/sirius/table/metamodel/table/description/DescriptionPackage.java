@@ -14,8 +14,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.sirius.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -38,7 +37,7 @@ public interface DescriptionPackage extends EPackage {
      * 
      * @generated
      */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -88,7 +87,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__DOCUMENTATION;
+    int TABLE_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>End User Documentation</b></em>'
@@ -97,7 +96,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__END_USER_DOCUMENTATION = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__END_USER_DOCUMENTATION;
+    int TABLE_DESCRIPTION__END_USER_DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__END_USER_DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -106,7 +105,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__NAME = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__NAME;
+    int TABLE_DESCRIPTION__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -115,7 +114,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__LABEL = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__LABEL;
+    int TABLE_DESCRIPTION__LABEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__LABEL;
 
     /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
@@ -124,7 +123,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__TITLE_EXPRESSION = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__TITLE_EXPRESSION;
+    int TABLE_DESCRIPTION__TITLE_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__TITLE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Initialisation</b></em>' attribute. <!--
@@ -133,7 +132,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__INITIALISATION = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__INITIALISATION;
+    int TABLE_DESCRIPTION__INITIALISATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__INITIALISATION;
 
     /**
      * The feature id for the '<em><b>Metamodel</b></em>' reference list. <!--
@@ -142,7 +141,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__METAMODEL = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__METAMODEL;
+    int TABLE_DESCRIPTION__METAMODEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__METAMODEL;
 
     /**
      * The feature id for the '<em><b>Show On Startup</b></em>' attribute. <!--
@@ -151,7 +150,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__SHOW_ON_STARTUP = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__SHOW_ON_STARTUP;
+    int TABLE_DESCRIPTION__SHOW_ON_STARTUP = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION__SHOW_ON_STARTUP;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -160,7 +159,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__PRECONDITION_EXPRESSION = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 0;
+    int TABLE_DESCRIPTION__PRECONDITION_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -169,7 +168,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__DOMAIN_CLASS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 1;
+    int TABLE_DESCRIPTION__DOMAIN_CLASS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '
@@ -179,7 +178,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 2;
+    int TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '
@@ -189,7 +188,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__REUSED_REPRESENTATION_CREATION_DESCRIPTIONS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 3;
+    int TABLE_DESCRIPTION__REUSED_REPRESENTATION_CREATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '
@@ -199,7 +198,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__ALL_REPRESENTATION_CREATION_DESCRIPTIONS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 4;
+    int TABLE_DESCRIPTION__ALL_REPRESENTATION_CREATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '
@@ -209,7 +208,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 5;
+    int TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '
@@ -219,7 +218,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__REUSED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 6;
+    int TABLE_DESCRIPTION__REUSED_REPRESENTATION_NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '
@@ -229,7 +228,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__ALL_REPRESENTATION_NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 7;
+    int TABLE_DESCRIPTION__ALL_REPRESENTATION_NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Owned Line Mappings</b></em>' containment
@@ -238,7 +237,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 8;
+    int TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Reused Line Mappings</b></em>' reference
@@ -247,7 +246,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__REUSED_LINE_MAPPINGS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 9;
+    int TABLE_DESCRIPTION__REUSED_LINE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>All Line Mappings</b></em>' reference
@@ -256,7 +255,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__ALL_LINE_MAPPINGS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 10;
+    int TABLE_DESCRIPTION__ALL_LINE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>Owned Create Line</b></em>' containment
@@ -265,7 +264,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__OWNED_CREATE_LINE = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 11;
+    int TABLE_DESCRIPTION__OWNED_CREATE_LINE = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>Reused Create Line</b></em>' reference
@@ -274,7 +273,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__REUSED_CREATE_LINE = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 12;
+    int TABLE_DESCRIPTION__REUSED_CREATE_LINE = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 12;
 
     /**
      * The feature id for the '<em><b>All Create Line</b></em>' reference list.
@@ -283,7 +282,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__ALL_CREATE_LINE = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 13;
+    int TABLE_DESCRIPTION__ALL_CREATE_LINE = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 13;
 
     /**
      * The feature id for the '<em><b>Initial Header Column Width</b></em>'
@@ -292,7 +291,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__INITIAL_HEADER_COLUMN_WIDTH = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 14;
+    int TABLE_DESCRIPTION__INITIAL_HEADER_COLUMN_WIDTH = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 14;
 
     /**
      * The feature id for the '<em><b>Imported Elements</b></em>' containment
@@ -301,7 +300,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION__IMPORTED_ELEMENTS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 15;
+    int TABLE_DESCRIPTION__IMPORTED_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 15;
 
     /**
      * The number of structural features of the '<em>Table Description</em>'
@@ -310,7 +309,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 16;
+    int TABLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_DESCRIPTION_FEATURE_COUNT + 16;
 
     /**
      * The meta object id for the '
@@ -547,22 +546,13 @@ public interface DescriptionPackage extends EPackage {
     int EDITION_TABLE_DESCRIPTION__IMPORTED_ELEMENTS = TABLE_DESCRIPTION__IMPORTED_ELEMENTS;
 
     /**
-     * The feature id for the '<em><b>Contributions</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int EDITION_TABLE_DESCRIPTION__CONTRIBUTIONS = TABLE_DESCRIPTION_FEATURE_COUNT + 0;
-
-    /**
      * The feature id for the '<em><b>Owned Column Mappings</b></em>'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS = TABLE_DESCRIPTION_FEATURE_COUNT + 1;
+    int EDITION_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS = TABLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Reused Column Mappings</b></em>' reference
@@ -571,7 +561,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__REUSED_COLUMN_MAPPINGS = TABLE_DESCRIPTION_FEATURE_COUNT + 2;
+    int EDITION_TABLE_DESCRIPTION__REUSED_COLUMN_MAPPINGS = TABLE_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>All Column Mappings</b></em>' reference
@@ -580,7 +570,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION__ALL_COLUMN_MAPPINGS = TABLE_DESCRIPTION_FEATURE_COUNT + 3;
+    int EDITION_TABLE_DESCRIPTION__ALL_COLUMN_MAPPINGS = TABLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '
@@ -590,119 +580,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDITION_TABLE_DESCRIPTION_FEATURE_COUNT = TABLE_DESCRIPTION_FEATURE_COUNT + 4;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableExtensionDescriptionImpl
-     * <em>Edition Table Extension Description</em>}' class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableExtensionDescriptionImpl
-     * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getEditionTableExtensionDescription()
-     * @generated
-     */
-    int EDITION_TABLE_EXTENSION_DESCRIPTION = 2;
-
-    /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int EDITION_TABLE_EXTENSION_DESCRIPTION__NAME = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_EXTENSION_DESCRIPTION__NAME;
-
-    /**
-     * The feature id for the '<em><b>Sirius URI</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int EDITION_TABLE_EXTENSION_DESCRIPTION__VIEWPOINT_URI = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_EXTENSION_DESCRIPTION__VIEWPOINT_URI;
-
-    /**
-     * The feature id for the '<em><b>Representation Name</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int EDITION_TABLE_EXTENSION_DESCRIPTION__REPRESENTATION_NAME = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_EXTENSION_DESCRIPTION__REPRESENTATION_NAME;
-
-    /**
-     * The feature id for the '<em><b>Metamodel</b></em>' reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int EDITION_TABLE_EXTENSION_DESCRIPTION__METAMODEL = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_EXTENSION_DESCRIPTION__METAMODEL;
-
-    /**
-     * The feature id for the '<em><b>Contributions</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int EDITION_TABLE_EXTENSION_DESCRIPTION__CONTRIBUTIONS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_EXTENSION_DESCRIPTION_FEATURE_COUNT + 0;
-
-    /**
-     * The feature id for the '<em><b>Owned Line Mappings</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int EDITION_TABLE_EXTENSION_DESCRIPTION__OWNED_LINE_MAPPINGS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_EXTENSION_DESCRIPTION_FEATURE_COUNT + 1;
-
-    /**
-     * The feature id for the '<em><b>Owned Column Mappings</b></em>'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int EDITION_TABLE_EXTENSION_DESCRIPTION__OWNED_COLUMN_MAPPINGS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_EXTENSION_DESCRIPTION_FEATURE_COUNT + 2;
-
-    /**
-     * The feature id for the '<em><b>Owned Tools</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int EDITION_TABLE_EXTENSION_DESCRIPTION__OWNED_TOOLS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_EXTENSION_DESCRIPTION_FEATURE_COUNT + 3;
-
-    /**
-     * The feature id for the '<em><b>Precondition Expression</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int EDITION_TABLE_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_EXTENSION_DESCRIPTION_FEATURE_COUNT + 4;
-
-    /**
-     * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int EDITION_TABLE_EXTENSION_DESCRIPTION__DOMAIN_CLASS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_EXTENSION_DESCRIPTION_FEATURE_COUNT + 5;
-
-    /**
-     * The number of structural features of the '
-     * <em>Edition Table Extension Description</em>' class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int EDITION_TABLE_EXTENSION_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_EXTENSION_DESCRIPTION_FEATURE_COUNT + 6;
+    int EDITION_TABLE_DESCRIPTION_FEATURE_COUNT = TABLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -714,7 +592,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCrossTableDescription()
      * @generated
      */
-    int CROSS_TABLE_DESCRIPTION = 3;
+    int CROSS_TABLE_DESCRIPTION = 2;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -985,7 +863,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableMapping()
      * @generated
      */
-    int TABLE_MAPPING = 4;
+    int TABLE_MAPPING = 3;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -994,7 +872,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_MAPPING__NAME = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__NAME;
+    int TABLE_MAPPING__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -1003,7 +881,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_MAPPING__LABEL = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__LABEL;
+    int TABLE_MAPPING__LABEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -1012,7 +890,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__DETAIL_DESCRIPTIONS;
+    int TABLE_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -1021,7 +899,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int TABLE_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -1030,7 +908,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING_FEATURE_COUNT + 0;
+    int TABLE_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Table Mapping</em>' class.
@@ -1039,7 +917,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TABLE_MAPPING_FEATURE_COUNT = org.eclipse.sirius.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING_FEATURE_COUNT + 1;
+    int TABLE_MAPPING_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -1051,7 +929,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getLineMapping()
      * @generated
      */
-    int LINE_MAPPING = 5;
+    int LINE_MAPPING = 4;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1234,7 +1112,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getColumnMapping()
      * @generated
      */
-    int COLUMN_MAPPING = 6;
+    int COLUMN_MAPPING = 5;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1318,7 +1196,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getElementColumnMapping()
      * @generated
      */
-    int ELEMENT_COLUMN_MAPPING = 7;
+    int ELEMENT_COLUMN_MAPPING = 6;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1474,7 +1352,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getFeatureColumnMapping()
      * @generated
      */
-    int FEATURE_COLUMN_MAPPING = 8;
+    int FEATURE_COLUMN_MAPPING = 7;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1639,7 +1517,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCellUpdater()
      * @generated
      */
-    int CELL_UPDATER = 9;
+    int CELL_UPDATER = 8;
 
     /**
      * The feature id for the '<em><b>Direct Edit</b></em>' containment
@@ -1678,7 +1556,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getStyleUpdater()
      * @generated
      */
-    int STYLE_UPDATER = 10;
+    int STYLE_UPDATER = 9;
 
     /**
      * The feature id for the '<em><b>Default Foreground</b></em>' containment
@@ -1735,7 +1613,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getIntersectionMapping()
      * @generated
      */
-    int INTERSECTION_MAPPING = 11;
+    int INTERSECTION_MAPPING = 10;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1945,7 +1823,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableTool()
      * @generated
      */
-    int TABLE_TOOL = 12;
+    int TABLE_TOOL = 11;
 
     /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
@@ -1984,7 +1862,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getLabelEditTool()
      * @generated
      */
-    int LABEL_EDIT_TOOL = 13;
+    int LABEL_EDIT_TOOL = 12;
 
     /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
@@ -2032,7 +1910,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateTool()
      * @generated
      */
-    int CREATE_TOOL = 14;
+    int CREATE_TOOL = 13;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -2125,7 +2003,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateColumnTool()
      * @generated
      */
-    int CREATE_COLUMN_TOOL = 15;
+    int CREATE_COLUMN_TOOL = 14;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -2227,7 +2105,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateCrossColumnTool()
      * @generated
      */
-    int CREATE_CROSS_COLUMN_TOOL = 16;
+    int CREATE_CROSS_COLUMN_TOOL = 15;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -2330,7 +2208,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateLineTool()
      * @generated
      */
-    int CREATE_LINE_TOOL = 17;
+    int CREATE_LINE_TOOL = 16;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -2432,7 +2310,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCreateCellTool()
      * @generated
      */
-    int CREATE_CELL_TOOL = 18;
+    int CREATE_CELL_TOOL = 17;
 
     /**
      * The feature id for the '<em><b>Variables</b></em>' containment reference
@@ -2543,7 +2421,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getDeleteTool()
      * @generated
      */
-    int DELETE_TOOL = 19;
+    int DELETE_TOOL = 18;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -2636,7 +2514,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getDeleteColumnTool()
      * @generated
      */
-    int DELETE_COLUMN_TOOL = 20;
+    int DELETE_COLUMN_TOOL = 19;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -2738,7 +2616,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getDeleteLineTool()
      * @generated
      */
-    int DELETE_LINE_TOOL = 21;
+    int DELETE_LINE_TOOL = 20;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -2840,7 +2718,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getForegroundStyleDescription()
      * @generated
      */
-    int FOREGROUND_STYLE_DESCRIPTION = 22;
+    int FOREGROUND_STYLE_DESCRIPTION = 21;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -2889,7 +2767,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getBackgroundStyleDescription()
      * @generated
      */
-    int BACKGROUND_STYLE_DESCRIPTION = 23;
+    int BACKGROUND_STYLE_DESCRIPTION = 22;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
@@ -2920,7 +2798,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getForegroundConditionalStyle()
      * @generated
      */
-    int FOREGROUND_CONDITIONAL_STYLE = 24;
+    int FOREGROUND_CONDITIONAL_STYLE = 23;
 
     /**
      * The feature id for the '<em><b>Predicate Expression</b></em>' attribute.
@@ -2960,7 +2838,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getBackgroundConditionalStyle()
      * @generated
      */
-    int BACKGROUND_CONDITIONAL_STYLE = 25;
+    int BACKGROUND_CONDITIONAL_STYLE = 24;
 
     /**
      * The feature id for the '<em><b>Predicate Expression</b></em>' attribute.
@@ -3000,7 +2878,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableVariable()
      * @generated
      */
-    int TABLE_VARIABLE = 26;
+    int TABLE_VARIABLE = 25;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -3048,7 +2926,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableCreationDescription()
      * @generated
      */
-    int TABLE_CREATION_DESCRIPTION = 27;
+    int TABLE_CREATION_DESCRIPTION = 26;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -3187,7 +3065,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getTableNavigationDescription()
      * @generated
      */
-    int TABLE_NAVIGATION_DESCRIPTION = 28;
+    int TABLE_NAVIGATION_DESCRIPTION = 27;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -3602,86 +3480,6 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      */
     EReference getEditionTableDescription_AllColumnMappings();
-
-    /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription
-     * <em>Edition Table Extension Description</em>}'. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @return the meta object for class '
-     *         <em>Edition Table Extension Description</em>'.
-     * @see org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription
-     * @generated
-     */
-    EClass getEditionTableExtensionDescription();
-
-    /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription#getOwnedLineMappings
-     * <em>Owned Line Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     * 
-     * @return the meta object for the containment reference list '
-     *         <em>Owned Line Mappings</em>'.
-     * @see org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription#getOwnedLineMappings()
-     * @see #getEditionTableExtensionDescription()
-     * @generated
-     */
-    EReference getEditionTableExtensionDescription_OwnedLineMappings();
-
-    /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription#getOwnedColumnMappings
-     * <em>Owned Column Mappings</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for the containment reference list '
-     *         <em>Owned Column Mappings</em>'.
-     * @see org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription#getOwnedColumnMappings()
-     * @see #getEditionTableExtensionDescription()
-     * @generated
-     */
-    EReference getEditionTableExtensionDescription_OwnedColumnMappings();
-
-    /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription#getOwnedTools
-     * <em>Owned Tools</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the containment reference list '
-     *         <em>Owned Tools</em>'.
-     * @see org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription#getOwnedTools()
-     * @see #getEditionTableExtensionDescription()
-     * @generated
-     */
-    EReference getEditionTableExtensionDescription_OwnedTools();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription#getPreconditionExpression
-     * <em>Precondition Expression</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for the attribute '
-     *         <em>Precondition Expression</em>'.
-     * @see org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription#getPreconditionExpression()
-     * @see #getEditionTableExtensionDescription()
-     * @generated
-     */
-    EAttribute getEditionTableExtensionDescription_PreconditionExpression();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription#getDomainClass
-     * <em>Domain Class</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Domain Class</em>'.
-     * @see org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription#getDomainClass()
-     * @see #getEditionTableExtensionDescription()
-     * @generated
-     */
-    EAttribute getEditionTableExtensionDescription_DomainClass();
 
     /**
      * Returns the meta object for class '
@@ -4965,62 +4763,6 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EReference EDITION_TABLE_DESCRIPTION__ALL_COLUMN_MAPPINGS = eINSTANCE.getEditionTableDescription_AllColumnMappings();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableExtensionDescriptionImpl
-         * <em>Edition Table Extension Description</em>}' class. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.table.metamodel.table.description.impl.EditionTableExtensionDescriptionImpl
-         * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getEditionTableExtensionDescription()
-         * @generated
-         */
-        EClass EDITION_TABLE_EXTENSION_DESCRIPTION = eINSTANCE.getEditionTableExtensionDescription();
-
-        /**
-         * The meta object literal for the '<em><b>Owned Line Mappings</b></em>'
-         * containment reference list feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference EDITION_TABLE_EXTENSION_DESCRIPTION__OWNED_LINE_MAPPINGS = eINSTANCE.getEditionTableExtensionDescription_OwnedLineMappings();
-
-        /**
-         * The meta object literal for the '
-         * <em><b>Owned Column Mappings</b></em>' containment reference list
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference EDITION_TABLE_EXTENSION_DESCRIPTION__OWNED_COLUMN_MAPPINGS = eINSTANCE.getEditionTableExtensionDescription_OwnedColumnMappings();
-
-        /**
-         * The meta object literal for the '<em><b>Owned Tools</b></em>'
-         * containment reference list feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference EDITION_TABLE_EXTENSION_DESCRIPTION__OWNED_TOOLS = eINSTANCE.getEditionTableExtensionDescription_OwnedTools();
-
-        /**
-         * The meta object literal for the '
-         * <em><b>Precondition Expression</b></em>' attribute feature. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute EDITION_TABLE_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION = eINSTANCE.getEditionTableExtensionDescription_PreconditionExpression();
-
-        /**
-         * The meta object literal for the '<em><b>Domain Class</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute EDITION_TABLE_EXTENSION_DESCRIPTION__DOMAIN_CLASS = eINSTANCE.getEditionTableExtensionDescription_DomainClass();
 
         /**
          * The meta object literal for the '

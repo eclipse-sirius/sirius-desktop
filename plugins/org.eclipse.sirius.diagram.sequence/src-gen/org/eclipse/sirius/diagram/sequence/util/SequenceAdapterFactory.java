@@ -14,19 +14,18 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DContainer;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DRefreshable;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.DValidable;
-import org.eclipse.sirius.DragAndDropTarget;
-import org.eclipse.sirius.description.DModelElement;
-import org.eclipse.sirius.description.DocumentedElement;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
+import org.eclipse.sirius.viewpoint.DContainer;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DRefreshable;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.DValidable;
+import org.eclipse.sirius.viewpoint.DragAndDropTarget;
+import org.eclipse.sirius.viewpoint.description.DModelElement;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
@@ -177,14 +176,14 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.DocumentedElement
+     * {@link org.eclipse.sirius.viewpoint.description.DocumentedElement
      * <em>Documented Element</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.description.DocumentedElement
+     * @see org.eclipse.sirius.viewpoint.description.DocumentedElement
      * @generated
      */
     public Adapter createDocumentedElementAdapter() {
@@ -193,13 +192,13 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.DRefreshable <em>DRefreshable</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * {@link org.eclipse.sirius.viewpoint.DRefreshable <em>DRefreshable</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that
+     * we can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.DRefreshable
+     * @see org.eclipse.sirius.viewpoint.DRefreshable
      * @generated
      */
     public Adapter createDRefreshableAdapter() {
@@ -208,14 +207,14 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.DModelElement
+     * {@link org.eclipse.sirius.viewpoint.description.DModelElement
      * <em>DModel Element</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.description.DModelElement
+     * @see org.eclipse.sirius.viewpoint.description.DModelElement
      * @generated
      */
     public Adapter createDModelElementAdapter() {
@@ -224,13 +223,14 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.DRepresentation <em>DRepresentation</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.DRepresentation
+     * <em>DRepresentation</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.DRepresentation
+     * @see org.eclipse.sirius.viewpoint.DRepresentation
      * @generated
      */
     public Adapter createDRepresentationAdapter() {
@@ -239,14 +239,14 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.DragAndDropTarget
+     * {@link org.eclipse.sirius.viewpoint.DragAndDropTarget
      * <em>Drag And Drop Target</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.DragAndDropTarget
+     * @see org.eclipse.sirius.viewpoint.DragAndDropTarget
      * @generated
      */
     public Adapter createDragAndDropTargetAdapter() {
@@ -255,13 +255,13 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.DValidable <em>DValidable</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * {@link org.eclipse.sirius.viewpoint.DValidable <em>DValidable</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that
+     * we can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.DValidable
+     * @see org.eclipse.sirius.viewpoint.DValidable
      * @generated
      */
     public Adapter createDValidableAdapter() {
@@ -270,13 +270,13 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.DContainer <em>DContainer</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * {@link org.eclipse.sirius.viewpoint.DContainer <em>DContainer</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that
+     * we can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.DContainer
+     * @see org.eclipse.sirius.viewpoint.DContainer
      * @generated
      */
     public Adapter createDContainerAdapter() {
@@ -285,13 +285,13 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.DDiagram <em>DDiagram</em>}'. <!--
+     * {@link org.eclipse.sirius.viewpoint.DDiagram <em>DDiagram</em>}'. <!--
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.DDiagram
+     * @see org.eclipse.sirius.viewpoint.DDiagram
      * @generated
      */
     public Adapter createDDiagramAdapter() {
@@ -300,14 +300,14 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.DSemanticDecorator
+     * {@link org.eclipse.sirius.viewpoint.DSemanticDecorator
      * <em>DSemantic Decorator</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.DSemanticDecorator
+     * @see org.eclipse.sirius.viewpoint.DSemanticDecorator
      * @generated
      */
     public Adapter createDSemanticDecoratorAdapter() {
@@ -316,13 +316,14 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.DSemanticDiagram <em>DSemantic Diagram</em>}
-     * '. <!-- begin-user-doc --> This default implementation returns null so
-     * that we can easily ignore cases; it's useful to ignore a case when
-     * inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.DSemanticDiagram
+     * <em>DSemantic Diagram</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.DSemanticDiagram
+     * @see org.eclipse.sirius.viewpoint.DSemanticDiagram
      * @generated
      */
     public Adapter createDSemanticDiagramAdapter() {

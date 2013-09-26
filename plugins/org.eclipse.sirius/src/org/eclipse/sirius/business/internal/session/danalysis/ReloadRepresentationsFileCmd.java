@@ -13,11 +13,10 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DAnalysisSessionEObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 
 /**
  * Specific command to reload an analysis.

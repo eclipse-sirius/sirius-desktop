@@ -16,9 +16,8 @@ import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.diagram.tools.internal.editor.header.DiagramHeaderComposite;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * A ResourceSet listener to refresh the diagram header after changes on :
@@ -46,12 +45,12 @@ public class DiagramHeaderPostCommitListener extends ResourceSetListenerImpl {
      */
     public DiagramHeaderPostCommitListener(TransactionalEditingDomain domain, DiagramHeaderComposite diagramHeader) {
         super(NotificationFilter.NOT_TOUCH.and(NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getNode_LayoutConstraint())
-                .or(NotificationFilter.createFeatureFilter(SiriusPackage.eINSTANCE.getBundledImage_Color()))
-                .or(NotificationFilter.createFeatureFilter(SiriusPackage.eINSTANCE.getDot_BackgroundColor()))
-                .or(NotificationFilter.createFeatureFilter(SiriusPackage.eINSTANCE.getEllipse_Color())).or(NotificationFilter.createFeatureFilter(SiriusPackage.eINSTANCE.getLozenge_Color()))
-                .or(NotificationFilter.createFeatureFilter(SiriusPackage.eINSTANCE.getNote_Color())).or(NotificationFilter.createFeatureFilter(SiriusPackage.eINSTANCE.getSquare_Color()))
-                .or(NotificationFilter.createFeatureFilter(SiriusPackage.eINSTANCE.getBasicLabelStyle_LabelColor()))
-                .or(NotificationFilter.createFeatureFilter(SiriusPackage.eINSTANCE.getDRepresentationElement_Name()))
+                .or(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getBundledImage_Color()))
+                .or(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getDot_BackgroundColor()))
+                .or(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getEllipse_Color())).or(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getLozenge_Color()))
+                .or(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getNote_Color())).or(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getSquare_Color()))
+                .or(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getBasicLabelStyle_LabelColor()))
+                .or(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getDRepresentationElement_Name()))
                 .or(NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getLocation_X()).or(NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getSize_Width())))));
         this.diagramHeader = diagramHeader;
         domain.addResourceSetListener(this);

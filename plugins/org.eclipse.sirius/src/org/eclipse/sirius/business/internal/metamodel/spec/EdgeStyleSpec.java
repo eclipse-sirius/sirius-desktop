@@ -11,10 +11,10 @@
 package org.eclipse.sirius.business.internal.metamodel.spec;
 
 import org.eclipse.sirius.business.internal.metamodel.operations.StyleSpecOperations;
-import org.eclipse.sirius.impl.EdgeStyleImpl;
+import org.eclipse.sirius.viewpoint.impl.EdgeStyleImpl;
 
 /**
- * Implementation of {@link org.eclipse.sirius.EdgeStyle}.
+ * Implementation of {@link org.eclipse.sirius.viewpoint.EdgeStyle}.
  * 
  * @author ymortier, mchauvin, cbrun.
  */
@@ -23,7 +23,7 @@ public class EdgeStyleSpec extends EdgeStyleImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.EdgeStyleImpl#refresh()
+     * @see org.eclipse.sirius.viewpoint.impl.EdgeStyleImpl#refresh()
      */
     @Override
     public void refresh() {

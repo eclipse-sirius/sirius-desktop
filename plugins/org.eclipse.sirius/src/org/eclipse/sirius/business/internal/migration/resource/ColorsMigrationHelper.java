@@ -30,17 +30,17 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.color.RGBValuesProvider;
-import org.eclipse.sirius.description.DescriptionFactory;
-import org.eclipse.sirius.description.Group;
-import org.eclipse.sirius.description.SystemColor;
-import org.eclipse.sirius.description.SystemColors;
-import org.eclipse.sirius.description.UserColor;
-import org.eclipse.sirius.description.UserColorsPalette;
-import org.eclipse.sirius.description.UserFixedColor;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.SystemColor;
+import org.eclipse.sirius.viewpoint.description.SystemColors;
+import org.eclipse.sirius.viewpoint.description.UserColor;
+import org.eclipse.sirius.viewpoint.description.UserColorsPalette;
+import org.eclipse.sirius.viewpoint.description.UserFixedColor;
 
 /**
  * Class encapsulating all the logic for migrating models considering the 1.0.0
@@ -116,7 +116,7 @@ public class ColorsMigrationHelper {
                 final String colorName = getColorName(oldValue);
                 if (isStandardColor(colorName)) {
                     final SystemColor systemColorDescription = EnvironmentSystemColorFactory.getDefault().getSystemColorDescription(colorName);
-                    if (copyEObject.eClass().getEPackage() == SiriusPackage.eINSTANCE) {
+                    if (copyEObject.eClass().getEPackage() == ViewpointPackage.eINSTANCE) {
                         final RGBValues values = new RGBValuesProvider().getRGBValues(systemColorDescription);
                         copyEObject.eSet(matchingAttr, values);
                     } else {

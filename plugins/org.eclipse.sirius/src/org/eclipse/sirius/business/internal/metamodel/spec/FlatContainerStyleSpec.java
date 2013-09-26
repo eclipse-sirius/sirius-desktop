@@ -12,10 +12,10 @@ package org.eclipse.sirius.business.internal.metamodel.spec;
 
 import org.eclipse.sirius.business.internal.metamodel.operations.BorderedStyleSpecOperation;
 import org.eclipse.sirius.business.internal.metamodel.operations.StyleSpecOperations;
-import org.eclipse.sirius.impl.FlatContainerStyleImpl;
+import org.eclipse.sirius.viewpoint.impl.FlatContainerStyleImpl;
 
 /**
- * Implementation of {@link org.eclipse.sirius.FlatContainerStyle}.
+ * Implementation of {@link org.eclipse.sirius.viewpoint.FlatContainerStyle}.
  * 
  * @author ymortier
  */
@@ -24,7 +24,7 @@ public class FlatContainerStyleSpec extends FlatContainerStyleImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.ContainerStyleImpl#refresh()
+     * @see org.eclipse.sirius.viewpoint.impl.ContainerStyleImpl#refresh()
      */
     @Override
     public void refresh() {

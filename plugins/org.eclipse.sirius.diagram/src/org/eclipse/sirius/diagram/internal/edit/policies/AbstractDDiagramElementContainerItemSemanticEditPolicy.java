@@ -18,14 +18,13 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientRelationshipRequest;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.diagram.graphical.edit.part.specific.BracketEdgeEditPart;
 import org.eclipse.sirius.diagram.internal.edit.commands.DEdgeCreateCommand;
 import org.eclipse.sirius.diagram.internal.edit.commands.DEdgeReorientCommand;
 import org.eclipse.sirius.diagram.internal.edit.commands.DNode4CreateCommand;
 import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Abstract policy to put common ex generated code for
@@ -41,7 +40,7 @@ public abstract class AbstractDDiagramElementContainerItemSemanticEditPolicy ext
     protected Command getCreateCommand(CreateElementRequest req) {
         if (SiriusElementTypes.DNode_3012 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(SiriusPackage.eINSTANCE.getAbstractDNode_OwnedBorderedNodes());
+                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getAbstractDNode_OwnedBorderedNodes());
             }
             return getGEFWrapper(new DNode4CreateCommand(req));
         }

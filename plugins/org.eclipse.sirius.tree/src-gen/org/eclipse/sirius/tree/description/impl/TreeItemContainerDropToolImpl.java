@@ -20,18 +20,17 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.sirius.description.tool.ContainerViewVariable;
-import org.eclipse.sirius.description.tool.DropContainerVariable;
-import org.eclipse.sirius.description.tool.ElementDropVariable;
-import org.eclipse.sirius.description.tool.ModelOperation;
-import org.eclipse.sirius.description.tool.impl.MappingBasedToolDescriptionImpl;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.PrecedingSiblingsVariables;
 import org.eclipse.sirius.tree.description.TreeDragSource;
 import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;
 import org.eclipse.sirius.tree.description.TreeItemTool;
 import org.eclipse.sirius.tree.description.TreeVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
+import org.eclipse.sirius.viewpoint.description.tool.DropContainerVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
+import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescriptionImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

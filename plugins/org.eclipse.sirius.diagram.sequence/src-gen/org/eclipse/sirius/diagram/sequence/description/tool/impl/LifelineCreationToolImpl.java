@@ -11,10 +11,9 @@
 package org.eclipse.sirius.diagram.sequence.description.tool.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.sirius.description.tool.impl.ContainerCreationDescriptionImpl;
 import org.eclipse.sirius.diagram.sequence.description.tool.LifelineCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.impl.ContainerCreationDescriptionImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

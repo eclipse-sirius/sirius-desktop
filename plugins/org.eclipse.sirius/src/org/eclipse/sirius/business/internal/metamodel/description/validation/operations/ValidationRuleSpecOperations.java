@@ -13,14 +13,13 @@ package org.eclipse.sirius.business.internal.metamodel.description.validation.op
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.description.validation.RuleAudit;
-import org.eclipse.sirius.description.validation.ValidationPackage;
-import org.eclipse.sirius.description.validation.ValidationRule;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
  * Implementation of ValidationRuleImpl.java.

@@ -24,10 +24,9 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.eclipse.sirius.LineStyle;
 import org.eclipse.sirius.diagram.sequence.template.TMessageStyle;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
+import org.eclipse.sirius.viewpoint.LineStyle;
 
 /**
  * This is the item provider adapter for a

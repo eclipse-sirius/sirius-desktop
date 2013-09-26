@@ -19,6 +19,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractSiriusPropertySection;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
@@ -31,12 +36,6 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.properties.SiriusPropertySheetPage;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractSiriusPropertySection;
 
 /**
  * A {@link AbstractSiriusPropertySection} for the metamodels tab.
@@ -90,8 +89,8 @@ public class RepresentationDescriptionMetamodelPropertySectionSpec extends Abstr
     public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
         super.createControls(parent, aTabbedPropertySheetPage);
 
-        if (aTabbedPropertySheetPage instanceof SiriusPropertySheetPage)
-            super.createControls(parent, (SiriusPropertySheetPage) aTabbedPropertySheetPage);
+        if (aTabbedPropertySheetPage instanceof ViewpointPropertySheetPage)
+            super.createControls(parent, (ViewpointPropertySheetPage) aTabbedPropertySheetPage);
         else
             super.createControls(parent, aTabbedPropertySheetPage);
         composite = getWidgetFactory().createFlatFormComposite(parent);

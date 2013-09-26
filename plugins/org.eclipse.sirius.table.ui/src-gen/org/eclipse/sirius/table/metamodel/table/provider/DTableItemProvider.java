@@ -26,15 +26,12 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.description.contribution.ContributionFactory;
-import org.eclipse.sirius.provider.DRepresentationItemProvider;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
-import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.provider.DRepresentationItemProvider;
 
 /**
  * This is the item provider adapter for a
@@ -50,7 +47,7 @@ public class DTableItemProvider extends DRepresentationItemProvider implements I
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * This constructs an instance from a factory and a notifier. <!--
@@ -89,7 +86,7 @@ public class DTableItemProvider extends DRepresentationItemProvider implements I
     protected void addTargetPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_DSemanticDecorator_target_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DSemanticDecorator_target_feature", "_UI_DSemanticDecorator_type"),
-                SiriusPackage.Literals.DSEMANTIC_DECORATOR__TARGET, true, false, true, null, null, null));
+                ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET, true, false, true, null, null, null));
     }
 
     /**
@@ -131,8 +128,6 @@ public class DTableItemProvider extends DRepresentationItemProvider implements I
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(TablePackage.Literals.LINE_CONTAINER__LINES);
-            childrenFeatures.add(SiriusPackage.Literals.EXTENSIBLE_REPRESENTATION__EFFECTIVE_DESCRIPTION);
-            childrenFeatures.add(SiriusPackage.Literals.EXTENSIBLE_REPRESENTATION__CONTRIBUTION_POINTS);
             childrenFeatures.add(TablePackage.Literals.DTABLE__COLUMNS);
         }
         return childrenFeatures;
@@ -192,8 +187,6 @@ public class DTableItemProvider extends DRepresentationItemProvider implements I
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case TablePackage.DTABLE__LINES:
-        case TablePackage.DTABLE__EFFECTIVE_DESCRIPTION:
-        case TablePackage.DTABLE__CONTRIBUTION_POINTS:
         case TablePackage.DTABLE__COLUMNS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
@@ -213,18 +206,6 @@ public class DTableItemProvider extends DRepresentationItemProvider implements I
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(TablePackage.Literals.LINE_CONTAINER__LINES, TableFactory.eINSTANCE.createDLine()));
-
-        newChildDescriptors.add(createChildParameter(SiriusPackage.Literals.EXTENSIBLE_REPRESENTATION__EFFECTIVE_DESCRIPTION, DescriptionFactory.eINSTANCE.createEditionTableDescription()));
-
-        newChildDescriptors.add(createChildParameter(SiriusPackage.Literals.EXTENSIBLE_REPRESENTATION__EFFECTIVE_DESCRIPTION, DescriptionFactory.eINSTANCE.createCrossTableDescription()));
-
-        newChildDescriptors.add(createChildParameter(SiriusPackage.Literals.EXTENSIBLE_REPRESENTATION__EFFECTIVE_DESCRIPTION,
-                org.eclipse.sirius.description.DescriptionFactory.eINSTANCE.createDiagramDescription()));
-
-        newChildDescriptors.add(createChildParameter(SiriusPackage.Literals.EXTENSIBLE_REPRESENTATION__EFFECTIVE_DESCRIPTION,
-                org.eclipse.sirius.description.DescriptionFactory.eINSTANCE.createDiagramImportDescription()));
-
-        newChildDescriptors.add(createChildParameter(SiriusPackage.Literals.EXTENSIBLE_REPRESENTATION__CONTRIBUTION_POINTS, ContributionFactory.eINSTANCE.createContributionPoint()));
 
         newChildDescriptors.add(createChildParameter(TablePackage.Literals.DTABLE__COLUMNS, TableFactory.eINSTANCE.createDTargetColumn()));
 

@@ -11,9 +11,8 @@
 package org.eclipse.sirius.diagram.ui.tools.api.layout.ordering;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * This class orders a list of {@link DSemanticDecorator}s that represent an
@@ -56,8 +55,8 @@ public abstract class AbstractEdgeDecorateSemanticElementOrdering extends Abstra
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.AbstractViewEdgeOrdering#compare(org.eclipse.sirius.DEdge,
-     *      org.eclipse.sirius.DEdge)
+     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.AbstractViewEdgeOrdering#compare(org.eclipse.sirius.viewpoint.DEdge,
+     *      org.eclipse.sirius.viewpoint.DEdge)
      */
     @Override
     public int compare(final DEdge vp1, final DEdge vp2) {
@@ -69,7 +68,7 @@ public abstract class AbstractEdgeDecorateSemanticElementOrdering extends Abstra
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.AbstractViewEdgeOrdering#isAbleToManageViewEdge(org.eclipse.sirius.DEdge)
+     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.AbstractViewEdgeOrdering#isAbleToManageViewEdge(org.eclipse.sirius.viewpoint.DEdge)
      */
     @Override
     public final boolean isAbleToManageViewEdge(final DEdge viewEdge) {

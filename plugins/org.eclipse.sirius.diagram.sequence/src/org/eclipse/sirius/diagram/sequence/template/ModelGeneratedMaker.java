@@ -14,8 +14,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.description.DocumentedElement;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 
 /**
  * Class responsible for identifying generated model elements from a an output

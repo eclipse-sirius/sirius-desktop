@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="table"
-    nsURI="http://www.eclipse.org/sirius/table/1.1.0" nsPrefix="table">
-  <eClassifiers xsi:type="ecore:EClass" name="DTable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DRepresentation #//LineContainer #//DTableElementUpdater ../../org.eclipse.sirius/model/viewpoint.ecore#//ExtensibleRepresentation">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="table" nsURI="http://www.eclipse.org/sirius/table/1.1.0" nsPrefix="table">
+  <eClassifiers xsi:type="ecore:EClass" name="DTable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DRepresentation #//LineContainer #//DTableElementUpdater">
     <eStructuralFeatures xsi:type="ecore:EReference" name="columns" upperBound="-1"
         eType="#//DColumn" containment="true" eOpposite="#//DColumn/table"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="headerColumnWidth" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
@@ -248,7 +246,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="importedElements" upperBound="-1"
           eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="EditionTableDescription" eSuperTypes="#//description/TableDescription ../../org.eclipse.sirius/model/contribution.ecore#//ContributionProvider">
+    <eClassifiers xsi:type="ecore:EClass" name="EditionTableDescription" eSuperTypes="#//description/TableDescription">
       <eStructuralFeatures xsi:type="ecore:EReference" name="ownedColumnMappings"
           lowerBound="1" upperBound="-1" eType="#//description/FeatureColumnMapping"
           containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
@@ -257,29 +255,6 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="allColumnMappings" lowerBound="1"
           upperBound="-1" eType="#//description/FeatureColumnMapping" changeable="false"
           volatile="true" transient="true" derived="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="EditionTableExtensionDescription"
-        eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/RepresentationExtensionDescription ../../org.eclipse.sirius/model/contribution.ecore#//ContributionProvider">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedLineMappings" lowerBound="1"
-          upperBound="-1" eType="#//description/LineMapping" containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedColumnMappings"
-          lowerBound="1" upperBound="-1" eType="#//description/FeatureColumnMapping"
-          containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTools" upperBound="-1"
-          eType="#//description/TableTool" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="preconditionExpression"
-          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"
-          defaultValueLiteral="">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The precondition (Acceleo Expression)."/>
-        </eAnnotations>
-        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
-          <details key="returnType" value="boolean"/>
-        </eAnnotations>
-        <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" lowerBound="1"
-          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="CrossTableDescription" eSuperTypes="#//description/TableDescription">
       <eStructuralFeatures xsi:type="ecore:EReference" name="ownedColumnMappings"

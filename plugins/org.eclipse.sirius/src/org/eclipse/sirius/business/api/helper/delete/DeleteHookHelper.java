@@ -21,21 +21,20 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IStatus;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.delete.IDeleteHook;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.internal.helper.delete.DeleteHookDescriptorRegistry;
 import org.eclipse.sirius.business.internal.helper.delete.IDeleteHookDescriptor;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.tool.DeleteElementDescription;
-import org.eclipse.sirius.description.tool.DeleteHook;
-import org.eclipse.sirius.description.tool.DeleteHookParameter;
-import org.eclipse.sirius.description.tool.ToolPackage;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
+import org.eclipse.sirius.viewpoint.description.tool.DeleteHook;
+import org.eclipse.sirius.viewpoint.description.tool.DeleteHookParameter;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * .

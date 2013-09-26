@@ -49,13 +49,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.EdgeTarget;
 import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
-import org.eclipse.sirius.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.graphical.edit.policies.AirDestroyElementRequest;
 import org.eclipse.sirius.diagram.internal.edit.helpers.SiriusBaseEditHelper;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
@@ -65,6 +59,11 @@ import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.tools.internal.graphical.edit.policies.DeleteHelper;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 

@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.helper.concern;
 
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.description.concern.ConcernDescription;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.concern.ConcernDescription;
 
 /**
  * This class is used whenever we need to use concerns.

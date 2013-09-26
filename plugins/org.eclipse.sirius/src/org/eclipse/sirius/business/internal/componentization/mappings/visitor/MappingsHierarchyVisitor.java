@@ -13,9 +13,9 @@ package org.eclipse.sirius.business.internal.componentization.mappings.visitor;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
 
 /**
  * A visitor pattern to retrieve mappings children.

@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.description;
 
-import org.eclipse.sirius.description.ColorDescription;
-import org.eclipse.sirius.description.style.LabelStyleDescription;
-import org.eclipse.sirius.description.style.StyleDescription;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
+import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

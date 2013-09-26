@@ -11,14 +11,6 @@
 package org.eclipse.sirius.tree.business.internal.metamodel;
 
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.description.tool.ContainerViewVariable;
-import org.eclipse.sirius.description.tool.DropContainerVariable;
-import org.eclipse.sirius.description.tool.ElementDropVariable;
-import org.eclipse.sirius.description.tool.ElementSelectVariable;
-import org.eclipse.sirius.description.tool.InitialOperation;
-import org.eclipse.sirius.description.tool.ModelOperation;
-import org.eclipse.sirius.description.tool.NameVariable;
-import org.eclipse.sirius.description.tool.ToolFactory;
 import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
 import org.eclipse.sirius.tree.description.PrecedingSiblingsVariables;
@@ -32,6 +24,14 @@ import org.eclipse.sirius.tree.description.TreeNavigationDescription;
 import org.eclipse.sirius.tree.description.TreeVariable;
 import org.eclipse.sirius.tree.description.util.DescriptionSwitch;
 import org.eclipse.sirius.tree.tools.api.interpreter.IInterpreterSiriusTreeVariables;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
+import org.eclipse.sirius.viewpoint.description.tool.DropContainerVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ElementSelectVariable;
+import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
+import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
+import org.eclipse.sirius.viewpoint.description.tool.NameVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
  * This processing switch will add the needed variable description in the tree

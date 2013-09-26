@@ -15,9 +15,9 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.internal.metamodel.helper.BestStyleDescriptionKey;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.VSMElementCustomization;
-import org.eclipse.sirius.description.style.StyleDescription;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
  * Query for {@link VSMElementCustomization}.

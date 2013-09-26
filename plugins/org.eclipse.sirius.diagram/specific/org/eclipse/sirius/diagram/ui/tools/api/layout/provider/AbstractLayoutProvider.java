@@ -43,9 +43,9 @@ import com.google.common.collect.Iterables;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * An abstract layout provider.

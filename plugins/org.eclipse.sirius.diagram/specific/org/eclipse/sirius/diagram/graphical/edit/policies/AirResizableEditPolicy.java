@@ -53,11 +53,6 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.LabelPosition;
-import org.eclipse.sirius.NodeStyle;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.business.api.query.ConnectionQuery;
 import org.eclipse.sirius.diagram.business.internal.operation.ShiftDirectBorderedNodesOperation;
@@ -70,6 +65,11 @@ import org.eclipse.sirius.diagram.tools.internal.ui.NoCopyDragEditPartsTrackerEx
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.LabelPosition;
+import org.eclipse.sirius.viewpoint.NodeStyle;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
  * The specific edit policy to redefine auto size.

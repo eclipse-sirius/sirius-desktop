@@ -13,11 +13,10 @@ package org.eclipse.sirius.ui.tools.internal.actions.session;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.Action;
 import org.eclipse.ui.PlatformUI;
-
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelection;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * An actions opening a dialog allowing to change the {@link SiriusSelection}

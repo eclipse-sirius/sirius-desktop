@@ -14,8 +14,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -92,7 +91,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE__DOCUMENTATION = SiriusPackage.DREPRESENTATION__DOCUMENTATION;
+    int DTREE__DOCUMENTATION = ViewpointPackage.DREPRESENTATION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>EAnnotations</b></em>' containment
@@ -101,7 +100,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE__EANNOTATIONS = SiriusPackage.DREPRESENTATION__EANNOTATIONS;
+    int DTREE__EANNOTATIONS = ViewpointPackage.DREPRESENTATION__EANNOTATIONS;
 
     /**
      * The feature id for the '<em><b>Owned Representation Elements</b></em>'
@@ -110,7 +109,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE__OWNED_REPRESENTATION_ELEMENTS = SiriusPackage.DREPRESENTATION__OWNED_REPRESENTATION_ELEMENTS;
+    int DTREE__OWNED_REPRESENTATION_ELEMENTS = ViewpointPackage.DREPRESENTATION__OWNED_REPRESENTATION_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Representation Elements</b></em>'
@@ -119,7 +118,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE__REPRESENTATION_ELEMENTS = SiriusPackage.DREPRESENTATION__REPRESENTATION_ELEMENTS;
+    int DTREE__REPRESENTATION_ELEMENTS = ViewpointPackage.DREPRESENTATION__REPRESENTATION_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -128,7 +127,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE__NAME = SiriusPackage.DREPRESENTATION__NAME;
+    int DTREE__NAME = ViewpointPackage.DREPRESENTATION__NAME;
 
     /**
      * The feature id for the '<em><b>Owned Annotation Entries</b></em>'
@@ -137,7 +136,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE__OWNED_ANNOTATION_ENTRIES = SiriusPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES;
+    int DTREE__OWNED_ANNOTATION_ENTRIES = ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -146,7 +145,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE__TARGET = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 0;
+    int DTREE__TARGET = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Owned Tree Items</b></em>' containment
@@ -155,7 +154,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE__OWNED_TREE_ITEMS = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 1;
+    int DTREE__OWNED_TREE_ITEMS = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
@@ -164,7 +163,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE__SEMANTIC_ELEMENTS = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 2;
+    int DTREE__SEMANTIC_ELEMENTS = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
@@ -173,7 +172,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE__DESCRIPTION = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 3;
+    int DTREE__DESCRIPTION = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '<em>DTree</em>' class. <!--
@@ -182,7 +181,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE_FEATURE_COUNT = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 4;
+    int DTREE_FEATURE_COUNT = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -224,7 +223,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE_ELEMENT__TARGET = SiriusPackage.DREPRESENTATION_ELEMENT__TARGET;
+    int DTREE_ELEMENT__TARGET = ViewpointPackage.DREPRESENTATION_ELEMENT__TARGET;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -233,7 +232,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE_ELEMENT__NAME = SiriusPackage.DREPRESENTATION_ELEMENT__NAME;
+    int DTREE_ELEMENT__NAME = ViewpointPackage.DREPRESENTATION_ELEMENT__NAME;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
@@ -242,7 +241,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE_ELEMENT__SEMANTIC_ELEMENTS = SiriusPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS;
+    int DTREE_ELEMENT__SEMANTIC_ELEMENTS = ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Tree Element Mapping</b></em>' reference.
@@ -251,7 +250,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE_ELEMENT__TREE_ELEMENT_MAPPING = SiriusPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 0;
+    int DTREE_ELEMENT__TREE_ELEMENT_MAPPING = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>DTree Element</em>' class.
@@ -260,7 +259,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE_ELEMENT_FEATURE_COUNT = SiriusPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 1;
+    int DTREE_ELEMENT_FEATURE_COUNT = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -269,7 +268,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE_ITEM_CONTAINER__TARGET = SiriusPackage.DSEMANTIC_DECORATOR__TARGET;
+    int DTREE_ITEM_CONTAINER__TARGET = ViewpointPackage.DSEMANTIC_DECORATOR__TARGET;
 
     /**
      * The feature id for the '<em><b>Owned Tree Items</b></em>' containment
@@ -278,7 +277,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE_ITEM_CONTAINER__OWNED_TREE_ITEMS = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 0;
+    int DTREE_ITEM_CONTAINER__OWNED_TREE_ITEMS = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>DTree Item Container</em>'
@@ -287,12 +286,12 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTREE_ITEM_CONTAINER_FEATURE_COUNT = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 1;
+    int DTREE_ITEM_CONTAINER_FEATURE_COUNT = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.tree.impl.DTreeItemImpl <em>DTree Item</em>}
-     * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.impl.DTreeItemImpl <em>DTree Item</em>}'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.sirius.tree.impl.DTreeItemImpl
      * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTreeItem()
@@ -427,7 +426,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_STYLE__CUSTOM_FEATURES = SiriusPackage.STYLE__CUSTOM_FEATURES;
+    int TREE_ITEM_STYLE__CUSTOM_FEATURES = ViewpointPackage.STYLE__CUSTOM_FEATURES;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
@@ -436,7 +435,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_STYLE__DESCRIPTION = SiriusPackage.STYLE__DESCRIPTION;
+    int TREE_ITEM_STYLE__DESCRIPTION = ViewpointPackage.STYLE__DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -445,7 +444,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_STYLE__LABEL_SIZE = SiriusPackage.STYLE_FEATURE_COUNT + 0;
+    int TREE_ITEM_STYLE__LABEL_SIZE = ViewpointPackage.STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Label Format</b></em>' attribute. <!--
@@ -454,7 +453,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_STYLE__LABEL_FORMAT = SiriusPackage.STYLE_FEATURE_COUNT + 1;
+    int TREE_ITEM_STYLE__LABEL_FORMAT = ViewpointPackage.STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Show Icon</b></em>' attribute. <!--
@@ -463,7 +462,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_STYLE__SHOW_ICON = SiriusPackage.STYLE_FEATURE_COUNT + 2;
+    int TREE_ITEM_STYLE__SHOW_ICON = ViewpointPackage.STYLE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Label Color</b></em>' containment
@@ -472,7 +471,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_STYLE__LABEL_COLOR = SiriusPackage.STYLE_FEATURE_COUNT + 3;
+    int TREE_ITEM_STYLE__LABEL_COLOR = ViewpointPackage.STYLE_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
@@ -481,7 +480,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_STYLE__ICON_PATH = SiriusPackage.STYLE_FEATURE_COUNT + 4;
+    int TREE_ITEM_STYLE__ICON_PATH = ViewpointPackage.STYLE_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -490,7 +489,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_STYLE__LABEL_ALIGNMENT = SiriusPackage.STYLE_FEATURE_COUNT + 5;
+    int TREE_ITEM_STYLE__LABEL_ALIGNMENT = ViewpointPackage.STYLE_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Background Color</b></em>' containment
@@ -499,7 +498,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_STYLE__BACKGROUND_COLOR = SiriusPackage.STYLE_FEATURE_COUNT + 6;
+    int TREE_ITEM_STYLE__BACKGROUND_COLOR = ViewpointPackage.STYLE_FEATURE_COUNT + 6;
 
     /**
      * The number of structural features of the '<em>Item Style</em>' class.
@@ -508,7 +507,7 @@ public interface TreePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int TREE_ITEM_STYLE_FEATURE_COUNT = SiriusPackage.STYLE_FEATURE_COUNT + 7;
+    int TREE_ITEM_STYLE_FEATURE_COUNT = ViewpointPackage.STYLE_FEATURE_COUNT + 7;
 
     /**
      * The meta object id for the '
@@ -559,9 +558,8 @@ public interface TreePackage extends EPackage {
     EReference getDTreeItemContainer_OwnedTreeItems();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.tree.DTree <em>DTree</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns the meta object for class '{@link org.eclipse.sirius.tree.DTree
+     * <em>DTree</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>DTree</em>'.
      * @see org.eclipse.sirius.tree.DTree
@@ -585,8 +583,8 @@ public interface TreePackage extends EPackage {
 
     /**
      * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.tree.DTree#getDescription
-     * <em>Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.DTree#getDescription <em>Description</em>}
+     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference '<em>Description</em>'.
      * @see org.eclipse.sirius.tree.DTree#getDescription()
@@ -645,8 +643,8 @@ public interface TreePackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.tree.DTreeItem#isExpanded <em>Expanded</em>}
-     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.DTreeItem#isExpanded <em>Expanded</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Expanded</em>'.
      * @see org.eclipse.sirius.tree.DTreeItem#isExpanded()
@@ -682,8 +680,8 @@ public interface TreePackage extends EPackage {
 
     /**
      * Returns the meta object for the container reference '
-     * {@link org.eclipse.sirius.tree.DTreeItem#getContainer
-     * <em>Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.DTreeItem#getContainer <em>Container</em>}
+     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the container reference '<em>Container</em>'.
      * @see org.eclipse.sirius.tree.DTreeItem#getContainer()
@@ -706,8 +704,8 @@ public interface TreePackage extends EPackage {
 
     /**
      * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.tree.DTreeItem#getUpdater <em>Updater</em>}
-     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.DTreeItem#getUpdater <em>Updater</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference '<em>Updater</em>'.
      * @see org.eclipse.sirius.tree.DTreeItem#getUpdater()
@@ -718,8 +716,8 @@ public interface TreePackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.tree.TreeItemStyle <em>Item Style</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.TreeItemStyle <em>Item Style</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Item Style</em>'.
      * @see org.eclipse.sirius.tree.TreeItemStyle
@@ -799,8 +797,8 @@ public interface TreePackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.tree.impl.DTreeImpl <em>DTree</em>}'
-         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * {@link org.eclipse.sirius.tree.impl.DTreeImpl <em>DTree</em>}' class.
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @see org.eclipse.sirius.tree.impl.DTreeImpl
          * @see org.eclipse.sirius.tree.impl.TreePackageImpl#getDTree()

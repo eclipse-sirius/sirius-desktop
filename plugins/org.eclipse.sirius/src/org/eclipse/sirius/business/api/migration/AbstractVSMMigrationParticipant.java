@@ -13,8 +13,7 @@ package org.eclipse.sirius.business.api.migration;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.osgi.framework.Version;
-
-import org.eclipse.sirius.description.Group;
+import org.eclipse.sirius.viewpoint.description.Group;
 
 /**
  * <p>

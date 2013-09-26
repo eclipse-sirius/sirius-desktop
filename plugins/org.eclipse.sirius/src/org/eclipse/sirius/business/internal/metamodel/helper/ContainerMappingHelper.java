@@ -28,25 +28,25 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.ContainerStyle;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.ContainerMappingQuery;
 import org.eclipse.sirius.business.internal.metamodel.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.style.ContainerStyleDescription;
-import org.eclipse.sirius.description.style.StylePackage;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.viewpoint.ContainerStyle;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.style.ContainerStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 /**
  * Utility class to factor customizations for ContainerMapping and related.
@@ -213,11 +213,11 @@ public final class ContainerMappingHelper {
 
         DDiagramElementContainer newContainer = null;
         if (new ContainerMappingQuery(self).isListContainer()) {
-            newContainer = SiriusFactory.eINSTANCE.createDNodeList();
+            newContainer = ViewpointFactory.eINSTANCE.createDNodeList();
         } else {
             // Other behaviors : ContainerLayout.FreeForm/VerticalStack
-            newContainer = SiriusFactory.eINSTANCE.createDNodeContainer();
-            DNodeContainer nodeContainer = SiriusFactory.eINSTANCE.createDNodeContainer();
+            newContainer = ViewpointFactory.eINSTANCE.createDNodeContainer();
+            DNodeContainer nodeContainer = ViewpointFactory.eINSTANCE.createDNodeContainer();
             nodeContainer.setChildrenPresentation(self.getChildrenPresentation());
             newContainer = nodeContainer;
         }

@@ -15,14 +15,13 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.editpolicies.ResizableEditPolicy;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DNode;
 import org.eclipse.sirius.diagram.edit.internal.part.AbstractDiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramBorderNodeEditPartOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.StateSelectionEditPolicy;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DNode;
 
 /**
  * Special edit part for States. Implemented as bordered nodes, either directly
@@ -54,7 +53,7 @@ public class StateEditPart extends ExecutionEditPart {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart#createBorderItemLocator(org.eclipse.draw2d.IFigure,
-     *      org.eclipse.sirius.DDiagramElement)
+     *      org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     @Override
     public IBorderItemLocator createBorderItemLocator(final IFigure figure, final DDiagramElement vpElementBorderItem) {

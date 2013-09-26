@@ -14,9 +14,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.SystemColor;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.SystemColor;
 
 /**
  * A helper for Color management.

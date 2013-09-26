@@ -26,35 +26,35 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.query.MappingBasedToolDescriptionQuery;
-import org.eclipse.sirius.description.PasteTargetDescription;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationElementMapping;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.AcceleoVariable;
-import org.eclipse.sirius.description.tool.BehaviorTool;
-import org.eclipse.sirius.description.tool.Case;
-import org.eclipse.sirius.description.tool.ChangeContext;
-import org.eclipse.sirius.description.tool.CreateInstance;
-import org.eclipse.sirius.description.tool.DeleteHookParameter;
-import org.eclipse.sirius.description.tool.EdgeCreationDescription;
-import org.eclipse.sirius.description.tool.ExternalJavaAction;
-import org.eclipse.sirius.description.tool.ExternalJavaActionCall;
-import org.eclipse.sirius.description.tool.ExternalJavaActionParameter;
-import org.eclipse.sirius.description.tool.MappingBasedToolDescription;
-import org.eclipse.sirius.description.tool.ModelOperation;
-import org.eclipse.sirius.description.tool.OperationAction;
-import org.eclipse.sirius.description.tool.PaneBasedSelectionWizardDescription;
-import org.eclipse.sirius.description.tool.PasteDescription;
-import org.eclipse.sirius.description.tool.PopupMenu;
-import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.description.tool.RepresentationNavigationDescription;
-import org.eclipse.sirius.description.tool.RequestDescription;
-import org.eclipse.sirius.description.tool.SelectModelElementVariable;
-import org.eclipse.sirius.description.tool.SelectionWizardDescription;
-import org.eclipse.sirius.description.tool.ToolDescription;
-import org.eclipse.sirius.description.tool.ToolFilterDescription;
-import org.eclipse.sirius.description.tool.ToolPackage;
-import org.eclipse.sirius.description.tool.util.ToolSwitch;
+import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
+import org.eclipse.sirius.viewpoint.description.tool.BehaviorTool;
+import org.eclipse.sirius.viewpoint.description.tool.Case;
+import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
+import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
+import org.eclipse.sirius.viewpoint.description.tool.DeleteHookParameter;
+import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
+import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
+import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter;
+import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
+import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
+import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
+import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
+import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RequestDescription;
+import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
+import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch;
 
 /**
  * A switch that will return the Target Types associated to a given element
@@ -112,7 +112,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.util.ToolSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
+     * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
      */
     @Override
     public Option<Collection<String>> doSwitch(EObject theEObject) {
@@ -190,7 +190,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.util.ToolSwitch#caseMappingBasedToolDescription(org.eclipse.sirius.description.tool.MappingBasedToolDescription)
+     * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseMappingBasedToolDescription(org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription)
      */
     @Override
     public Option<Collection<String>> caseMappingBasedToolDescription(MappingBasedToolDescription tool) {
@@ -369,7 +369,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.util.ToolSwitch#casePaneBasedSelectionWizardDescription(org.eclipse.sirius.description.tool.PaneBasedSelectionWizardDescription)
+     * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#casePaneBasedSelectionWizardDescription(org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription)
      */
     @Override
     public Option<Collection<String>> casePaneBasedSelectionWizardDescription(PaneBasedSelectionWizardDescription toolDescription) {
@@ -469,7 +469,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.util.ToolSwitch#caseRepresentationCreationDescription(org.eclipse.sirius.description.tool.RepresentationCreationDescription)
+     * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseRepresentationCreationDescription(org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription)
      */
     @Override
     public Option<Collection<String>> caseRepresentationCreationDescription(RepresentationCreationDescription toolDescription) {
@@ -499,7 +499,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.util.ToolSwitch#caseRepresentationNavigationDescription(org.eclipse.sirius.description.tool.RepresentationNavigationDescription)
+     * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseRepresentationNavigationDescription(org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription)
      */
     @Override
     public Option<Collection<String>> caseRepresentationNavigationDescription(RepresentationNavigationDescription toolDescription) {
@@ -570,7 +570,7 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.util.ToolSwitch#caseChangeContext(org.eclipse.sirius.description.tool.ChangeContext)
+     * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseChangeContext(org.eclipse.sirius.viewpoint.description.tool.ChangeContext)
      */
     @Override
     public Option<Collection<String>> caseChangeContext(ChangeContext object) {

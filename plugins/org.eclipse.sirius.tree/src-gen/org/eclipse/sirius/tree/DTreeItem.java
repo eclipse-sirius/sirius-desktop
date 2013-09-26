@@ -21,14 +21,13 @@ import org.eclipse.sirius.tree.description.TreeItemUpdater;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.DTreeItem#isExpanded <em>Expanded</em>}
- * </li>
+ * <li>{@link org.eclipse.sirius.tree.DTreeItem#isExpanded <em>Expanded</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.DTreeItem#getOwnedStyle <em>Owned Style
  * </em>}</li>
  * <li>{@link org.eclipse.sirius.tree.DTreeItem#getActualMapping <em>Actual
  * Mapping</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.DTreeItem#getContainer <em>Container
- * </em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.DTreeItem#getContainer <em>Container</em>}
+ * </li>
  * <li>{@link org.eclipse.sirius.tree.DTreeItem#getStyleUpdater <em>Style
  * Updater</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.DTreeItem#getUpdater <em>Updater</em>}</li>
@@ -59,8 +58,8 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement, DTreeElemen
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.tree.DTreeItem#isExpanded <em>Expanded</em>}
-     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.DTreeItem#isExpanded <em>Expanded</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Expanded</em>' attribute.
@@ -152,9 +151,8 @@ public interface DTreeItem extends DTreeItemContainer, DTreeElement, DTreeElemen
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.tree.DTreeItem#getContainer
-     * <em>Container</em>}' container reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * {@link org.eclipse.sirius.tree.DTreeItem#getContainer <em>Container</em>}
+     * ' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Container</em>' container reference.

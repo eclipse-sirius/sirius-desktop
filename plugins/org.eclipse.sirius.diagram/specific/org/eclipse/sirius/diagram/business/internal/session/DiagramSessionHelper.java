@@ -13,10 +13,9 @@ package org.eclipse.sirius.diagram.business.internal.session;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Helper to manage sessions with GMF diagram.

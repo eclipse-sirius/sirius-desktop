@@ -23,10 +23,10 @@ import org.eclipse.sirius.common.tools.api.util.AllContents;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.internal.contribution.IncrementalModelContributor;
 import org.eclipse.sirius.business.internal.contribution.ReferenceResolver;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.description.contribution.Contribution;
-import org.eclipse.sirius.description.contribution.ContributionProvider;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.contribution.Contribution;
+import org.eclipse.sirius.viewpoint.description.contribution.ContributionProvider;
 
 /**
  * Customization of the generic IncrementalModelContributor for computing
@@ -63,7 +63,7 @@ public final class TableModelContributor extends IncrementalModelContributor {
     protected List<Contribution> findAllContributions(EObject targetModel, Iterable<EObject> sources) {
         this.contributionFinder = new TableContributionsFinder((TableDescription) targetModel) {
             @Override
-            protected String getSiriusURI(Sirius vp) {
+            protected String getSiriusURI(Viewpoint vp) {
                 return TableModelContributor.this.getSiriusURI(vp);
             }
         };

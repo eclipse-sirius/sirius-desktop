@@ -12,7 +12,6 @@ package org.eclipse.sirius.editor.tools.internal.property.filter;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.IFilter;
-
 import org.eclipse.sirius.editor.tools.internal.editor.EditorCustomizationManager;
 
 /**

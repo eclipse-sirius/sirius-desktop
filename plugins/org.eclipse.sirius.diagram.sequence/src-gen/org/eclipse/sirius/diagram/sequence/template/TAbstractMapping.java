@@ -71,8 +71,7 @@ public interface TAbstractMapping extends TTransformer {
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTAbstractMapping_DomainClass()
-     * @model dataType="org.eclipse.sirius.description.TypeName"
-     *        required="true"
+     * @model dataType="org.eclipse.sirius.description.TypeName" required="true"
      * @generated
      */
     String getDomainClass();

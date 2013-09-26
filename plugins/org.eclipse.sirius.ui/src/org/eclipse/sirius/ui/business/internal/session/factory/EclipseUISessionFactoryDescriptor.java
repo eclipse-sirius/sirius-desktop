@@ -15,9 +15,8 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ui.business.api.session.factory.UISessionFactory;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * {@link UISessionFactoryDescriptor} for Eclipse contributions.

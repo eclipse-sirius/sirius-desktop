@@ -15,9 +15,8 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.ConnectorStyle;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Routing;
-
-import org.eclipse.sirius.EdgeRouting;
-import org.eclipse.sirius.EdgeStyle;
+import org.eclipse.sirius.viewpoint.EdgeRouting;
+import org.eclipse.sirius.viewpoint.EdgeStyle;
 
 /**
  * Specific command to update GMF style.

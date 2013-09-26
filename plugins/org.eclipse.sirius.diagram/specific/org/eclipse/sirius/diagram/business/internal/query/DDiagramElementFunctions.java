@@ -12,7 +12,7 @@ package org.eclipse.sirius.diagram.business.internal.query;
 
 import com.google.common.base.Predicate;
 
-import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Functions which take a {@link DDiagramElement} as input.

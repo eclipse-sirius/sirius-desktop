@@ -11,12 +11,6 @@
 package org.eclipse.sirius.table.business.internal.metamodel;
 
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.description.tool.ContainerViewVariable;
-import org.eclipse.sirius.description.tool.ElementSelectVariable;
-import org.eclipse.sirius.description.tool.InitialOperation;
-import org.eclipse.sirius.description.tool.ModelOperation;
-import org.eclipse.sirius.description.tool.NameVariable;
-import org.eclipse.sirius.description.tool.ToolFactory;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.CreateTool;
@@ -29,6 +23,12 @@ import org.eclipse.sirius.table.metamodel.table.description.TableTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
 import org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ElementSelectVariable;
+import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
+import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
+import org.eclipse.sirius.viewpoint.description.tool.NameVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
  * This processing switch will add the needed variable description in the table

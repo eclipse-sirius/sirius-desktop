@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.DNavigationLink;
+import org.eclipse.sirius.viewpoint.DNavigationLink;
 
 /**
  * This class allows to run many callback when an editor is opened.
@@ -30,7 +29,7 @@ public class DelegatingCallBack implements CallBack {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.internal.actions.CallBack#postOpeningRun(org.eclipse.sirius.DNavigationLink,
+     * @see org.eclipse.sirius.diagram.tools.internal.actions.CallBack#postOpeningRun(org.eclipse.sirius.viewpoint.DNavigationLink,
      *      org.eclipse.ui.IEditorPart)
      */
     public void postOpeningRun(final DNavigationLink link, final IEditorPart editor) {

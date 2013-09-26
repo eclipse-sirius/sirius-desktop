@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.api.command;
 
-import org.eclipse.sirius.DRepresentationElement;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
-import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 
 /**
  * The generic command factory to inherit for each dialect command factory.

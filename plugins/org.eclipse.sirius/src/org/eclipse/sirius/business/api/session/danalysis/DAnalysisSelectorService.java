@@ -16,7 +16,7 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
-import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Service to get analysis selectors.

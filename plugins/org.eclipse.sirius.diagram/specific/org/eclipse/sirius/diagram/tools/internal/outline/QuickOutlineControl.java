@@ -51,15 +51,15 @@ import org.eclipse.ui.dialogs.PatternFilter;
 import com.google.common.base.Predicates;
 
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.tools.internal.providers.FilteredTreeContentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineLabelProvider;
-import org.eclipse.sirius.provider.SiriusItemProviderAdapterFactory;
 import org.eclipse.sirius.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 
 /**
  * This will be used to display the quick outline to the user.
@@ -442,7 +442,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
     protected AdapterFactory getAdapterFactory() {
         if (adapterFactory == null) {
             java.util.List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
-            factories.add(new SiriusItemProviderAdapterFactory());
+            factories.add(new ViewpointItemProviderAdapterFactory());
             factories.add(new ResourceItemProviderAdapterFactory());
             factories.add(new EcoreItemProviderAdapterFactory());
             factories.add(new ReflectiveItemProviderAdapterFactory());

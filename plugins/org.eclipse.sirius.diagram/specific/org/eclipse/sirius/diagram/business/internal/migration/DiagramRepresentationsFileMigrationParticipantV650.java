@@ -36,17 +36,17 @@ import com.google.common.collect.Maps;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DView;
-import org.eclipse.sirius.ResizeKind;
 import org.eclipse.sirius.business.api.helper.SiriusHelper;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
-import org.eclipse.sirius.description.style.NodeStyleDescription;
-import org.eclipse.sirius.description.style.StyleDescription;
 import org.eclipse.sirius.diagram.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.tools.internal.util.GMFNotationUtilities;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.ResizeKind;
+import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
  * The migration code of Sirius 6.5.0.
@@ -146,7 +146,7 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
      *            The analysis to migrate.
      * @param diagrams
      *            list of GMF Diagram to move from the root of the resource to
-     *            the concerned {@link org.eclipse.sirius.DDiagram}.
+     *            the concerned {@link org.eclipse.sirius.viewpoint.DDiagram}.
      */
     public void moveGMFDiagramsFromRoot(DAnalysis dAnalysis, List<Diagram> diagrams) {
         for (Diagram diagram : diagrams) {

@@ -17,7 +17,7 @@ import java.util.List;
 import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Represents viewpoint folder item in session view.
@@ -55,7 +55,7 @@ public class SiriussFolderItemImpl extends AbstractFolderItem implements org.ecl
      */
     public Collection<?> getChildren() {
         final List<SiriusItemImpl> all = Lists.newArrayList();
-        for (final Sirius viewpoint : session.getSelectedSiriuss(false)) {
+        for (final Viewpoint viewpoint : session.getSelectedSiriuss(false)) {
             all.add(new SiriusItemImpl(session, viewpoint, this));
         }
         Collections.sort(all);

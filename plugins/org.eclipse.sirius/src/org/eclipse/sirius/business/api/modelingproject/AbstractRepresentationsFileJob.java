@@ -11,8 +11,7 @@
 package org.eclipse.sirius.business.api.modelingproject;
 
 import org.eclipse.core.resources.WorkspaceJob;
-
-import org.eclipse.sirius.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A specific Sirius job for the representationsFile jobs (to add a specific

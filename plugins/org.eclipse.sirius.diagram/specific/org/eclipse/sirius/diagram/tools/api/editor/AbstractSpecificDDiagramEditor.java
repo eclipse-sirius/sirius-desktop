@@ -26,11 +26,7 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDiagram;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.diagram.business.internal.command.CreateAndStoreGMFDiagramCommand;
@@ -38,6 +34,9 @@ import org.eclipse.sirius.diagram.business.internal.dialect.DiagramDialectArrang
 import org.eclipse.sirius.diagram.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.ui.business.api.editor.SpecificEditor;
 import org.eclipse.sirius.ui.business.api.editor.SpecificEditorInputTranformer;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 
 /**
  * A specific editor you may extend, which includes a session. The session

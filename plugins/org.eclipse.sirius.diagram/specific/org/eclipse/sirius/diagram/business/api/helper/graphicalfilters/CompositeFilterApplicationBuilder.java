@@ -18,16 +18,16 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.AppliedCompositeFilters;
-import org.eclipse.sirius.CollapseFilter;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.SiriusFactory;
 import org.eclipse.sirius.business.api.diagramtype.ICollapseUpdater;
 import org.eclipse.sirius.business.api.helper.filter.FilterService;
 import org.eclipse.sirius.business.api.query.CompositeFilterDescriptionQuery;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.description.filter.CompositeFilterDescription;
+import org.eclipse.sirius.viewpoint.AppliedCompositeFilters;
+import org.eclipse.sirius.viewpoint.CollapseFilter;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.description.filter.CompositeFilterDescription;
 
 /**
  * Helper to handle CollapseFilter and AppliedCompositeFilters.
@@ -107,7 +107,7 @@ public class CompositeFilterApplicationBuilder {
 
     private void createFilterApplication(DDiagramElement element, List<CompositeFilterDescription> appliedFilters) {
         if (element != null && appliedFilters != null && !appliedFilters.isEmpty()) {
-            AppliedCompositeFilters filterApplication = SiriusFactory.eINSTANCE.createAppliedCompositeFilters();
+            AppliedCompositeFilters filterApplication = ViewpointFactory.eINSTANCE.createAppliedCompositeFilters();
             filterApplication.getCompositeFilterDescriptions().addAll(appliedFilters);
             element.getGraphicalFilters().add(filterApplication);
         }

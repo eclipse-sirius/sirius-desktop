@@ -26,10 +26,10 @@ import org.eclipse.ui.actions.ActionFactory;
 
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerTabExtension;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.ModelExplorerView;
 import org.eclipse.sirius.ui.tools.internal.views.sessionview.DeleteActionHandler;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * TODO MCH comment here.

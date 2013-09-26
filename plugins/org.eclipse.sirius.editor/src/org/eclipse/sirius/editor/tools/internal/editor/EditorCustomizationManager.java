@@ -15,10 +15,9 @@ import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EModelElement;
-
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.editor.tools.api.editor.EditorCustomization;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Manager responsible to retrieve all the customization from the other

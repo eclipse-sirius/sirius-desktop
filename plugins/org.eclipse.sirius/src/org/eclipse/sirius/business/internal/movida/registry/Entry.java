@@ -28,7 +28,7 @@ import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
 import org.eclipse.sirius.business.api.query.SiriusURIQuery;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Represents Sirius definition known to the registry, with all the
@@ -50,7 +50,7 @@ public class Entry {
      * The concrete Sirius which implements the logical Sirius URI
      * identifying this entry.
      */
-    private final Sirius viewpoint;
+    private final Viewpoint viewpoint;
 
     /**
      * The entries representing the Siriuss we declares a conflict with.
@@ -88,7 +88,7 @@ public class Entry {
      * @param viewpoint
      *            the Sirius this entry represents.
      */
-    public Entry(Sirius viewpoint) {
+    public Entry(Viewpoint viewpoint) {
         this.viewpoint = Preconditions.checkNotNull(viewpoint);
         Preconditions.checkState(viewpoint.eResource() != null);
         Option<URI> id = new SiriusQuery(this.viewpoint).getSiriusURI();
@@ -115,7 +115,7 @@ public class Entry {
      * 
      * @return the concrete Sirius instance implementing this entry.
      */
-    public Sirius getSirius() {
+    public Viewpoint getSirius() {
         return viewpoint;
     }
 

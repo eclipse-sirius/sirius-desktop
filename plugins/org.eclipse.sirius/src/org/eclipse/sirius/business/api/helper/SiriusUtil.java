@@ -24,24 +24,24 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationContainer;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DView;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.DiagramExtensionDescription;
-import org.eclipse.sirius.description.Group;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Useful operations to manipulate a DDiagram model.
@@ -240,7 +240,7 @@ public final class SiriusUtil {
     public static boolean isFromSirius(final Object ep) {
         if (ep != null) {
             final String packageName = ep.getClass().getPackage().getName();
-            return packageName.contains(SiriusPackage.eNAME) || packageName.contains("oo45oo");
+            return packageName.contains(ViewpointPackage.eNAME) || packageName.contains("oo45oo");
         }
         return false;
     }
@@ -273,11 +273,11 @@ public final class SiriusUtil {
      *            The viewpoint name to search
      * @return the found viewpoint or <code>null</code> if no viewpoint is found
      */
-    public static Sirius findSirius(final Resource resource, final String viewpointName) {
+    public static Viewpoint findSirius(final Resource resource, final String viewpointName) {
         if (resource.getContents() != null && !resource.getContents().isEmpty()) {
-            Iterator<Sirius> it = getSiriuss(resource);
+            Iterator<Viewpoint> it = getSiriuss(resource);
             while (it.hasNext()) {
-                Sirius editingDomainSirius = it.next();
+                Viewpoint editingDomainSirius = it.next();
                 if ((viewpointName == null && editingDomainSirius.getName() == null) || (viewpointName != null && viewpointName.equals(editingDomainSirius.getName()))) {
                     return editingDomainSirius;
                 }
@@ -338,15 +338,15 @@ public final class SiriusUtil {
 
     }
 
-    private static Iterator<Sirius> getSiriuss(final Resource resource) {
+    private static Iterator<Viewpoint> getSiriuss(final Resource resource) {
         if (DESCRIPTION_MODEL_EXTENSION.equals(resource.getURI().fileExtension())) {
-            Collection<Sirius> result = Lists.newArrayList();
+            Collection<Viewpoint> result = Lists.newArrayList();
             for (Group group : Iterables.filter(resource.getContents(), Group.class)) {
-                result.addAll(group.getOwnedSiriuss());
+                result.addAll(group.getOwnedViewpoints());
             }
             return result.iterator();
         } else {
-            return Iterators.filter(resource.getAllContents(), Sirius.class);
+            return Iterators.filter(resource.getAllContents(), Viewpoint.class);
         }
     }
 

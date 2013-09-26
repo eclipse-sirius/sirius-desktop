@@ -27,10 +27,7 @@ import org.eclipse.gef.requests.ReconnectRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewRequest;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.EdgeTarget;
-import org.eclipse.sirius.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData;
 import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
 import org.eclipse.sirius.diagram.internal.edit.parts.NoteEditPart;
@@ -53,6 +50,8 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 
 /**
  * This edit policy is overridden to use our own connection router. This way
@@ -206,8 +205,8 @@ public class SequenceSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNodeEd
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.diagram.graphical.edit.policies.SiriusGraphicalNodeEditPolicy#buildCreateEdgeCommand(org.eclipse.gef.requests.CreateConnectionRequest,
-     *      org.eclipse.sirius.EdgeTarget, org.eclipse.sirius.EdgeTarget,
-     *      org.eclipse.sirius.description.tool.EdgeCreationDescription,
+     *      org.eclipse.sirius.viewpoint.EdgeTarget, org.eclipse.sirius.viewpoint.EdgeTarget,
+     *      org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription,
      *      org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider,
      *      org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData)
      */

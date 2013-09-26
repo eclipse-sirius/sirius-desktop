@@ -16,13 +16,12 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.swt.graphics.Image;
-
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DNode;
 import org.eclipse.sirius.diagram.business.internal.query.StyleConfigurationQuery;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DNode;
 
 /**
  * A safe style configuration to preserve the integrity of designer.
@@ -52,7 +51,7 @@ public class SafeStyleConfiguration implements StyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#adaptNodeLabel(org.eclipse.sirius.DNode,
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#adaptNodeLabel(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel)
      */
     public void adaptNodeLabel(final DNode node, final SiriusWrapLabel nodeLabel) {
@@ -67,7 +66,7 @@ public class SafeStyleConfiguration implements StyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#adaptViewNodeSizeWithLabel(org.eclipse.sirius.DNode,
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#adaptViewNodeSizeWithLabel(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel,
      *      int)
      */
@@ -83,7 +82,7 @@ public class SafeStyleConfiguration implements StyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#fitToText(org.eclipse.sirius.DNode,
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#fitToText(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel,
      *      org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure)
      */
@@ -127,7 +126,7 @@ public class SafeStyleConfiguration implements StyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getLabelIcon(org.eclipse.sirius.DDiagramElement)
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getLabelIcon(org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public Image getLabelIcon(DDiagramElement vpElement, IGraphicalEditPart editPart) {
         try {
@@ -141,7 +140,7 @@ public class SafeStyleConfiguration implements StyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getNameBorderItemLocator(org.eclipse.sirius.DNode,
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getNameBorderItemLocator(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.draw2d.IFigure)
      */
     public IBorderItemLocator getNameBorderItemLocator(DNode node, IFigure mainFigure) {

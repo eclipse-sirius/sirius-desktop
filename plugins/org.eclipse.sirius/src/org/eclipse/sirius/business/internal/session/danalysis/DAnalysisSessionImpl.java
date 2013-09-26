@@ -74,16 +74,6 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationContainer;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DView;
-import org.eclipse.sirius.MetaModelExtension;
-import org.eclipse.sirius.SyncStatus;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
 import org.eclipse.sirius.business.api.componentization.SiriusRegistryListener2;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
@@ -122,9 +112,6 @@ import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 import org.eclipse.sirius.business.internal.session.ReloadingPolicyImpl;
 import org.eclipse.sirius.business.internal.session.RepresentationNameListener;
 import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
-import org.eclipse.sirius.description.MetamodelExtensionSetting;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.impl.DAnalysisSessionEObjectImpl;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
@@ -132,6 +119,19 @@ import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
 import org.eclipse.sirius.tools.internal.interpreter.ODesignGenericInterpreter;
 import org.eclipse.sirius.tools.internal.resource.ResourceSetUtil;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.MetaModelExtension;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.SyncStatus;
+import org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -520,7 +520,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     private void setFilesPropertyToIntepreters() {
         // Calculate paths of the activated representation description files
         final List<String> filePaths = new ArrayList<String>();
-        for (final Sirius vp : getSelectedSiriussSpecificToGeneric()) {
+        for (final Viewpoint vp : getSelectedSiriussSpecificToGeneric()) {
             if (vp.eResource() != null) {
                 filePaths.add(vp.eResource().getURI().toPlatformString(true));
             }
@@ -555,20 +555,20 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * {@inheritDoc}
      */
-    public Collection<Sirius> getSelectedSiriuss() {
+    public Collection<Viewpoint> getSelectedSiriuss() {
         return getSelectedSiriuss(true);
     }
 
     /**
      * {@inheritDoc}
      */
-    public Collection<Sirius> getSelectedSiriuss(boolean includeReferencedAnalysis) {
-        final SortedSet<Sirius> result = new TreeSet<Sirius>(new SiriusRegistry.SiriusComparator());
+    public Collection<Viewpoint> getSelectedSiriuss(boolean includeReferencedAnalysis) {
+        final SortedSet<Viewpoint> result = new TreeSet<Viewpoint>(new SiriusRegistry.SiriusComparator());
         if (includeReferencedAnalysis) {
             if (!super.isBlocked()) {
                 final Collection<DView> selectedViews = getSelectedViews();
                 for (final DView view : selectedViews) {
-                    final Sirius viewpoint = view.getSirius();
+                    final Viewpoint viewpoint = view.getViewpoint();
                     if (viewpoint != null) {
                         result.add(viewpoint);
                     }
@@ -577,7 +577,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         } else {
             if (!super.isBlocked()) {
                 for (final DView dView : mainDAnalysis.getSelectedViews()) {
-                    Sirius viewpoint = dView.getSirius();
+                    Viewpoint viewpoint = dView.getViewpoint();
                     if (viewpoint != null && !viewpoint.eIsProxy()) {
                         result.add(viewpoint);
                     }
@@ -593,15 +593,15 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * @return a collection of selected viewpoints for this session.
      */
     @Deprecated
-    public Collection<Sirius> getSelectedSiriussSpecificToGeneric() {
+    public Collection<Viewpoint> getSelectedSiriussSpecificToGeneric() {
         // Sort the selected viewpoints by alphabetic order
-        final SortedSet<Sirius> viewpoints = new TreeSet<Sirius>(new SiriusRegistry.SiriusComparator());
+        final SortedSet<Viewpoint> viewpoints = new TreeSet<Viewpoint>(new SiriusRegistry.SiriusComparator());
         viewpoints.addAll(getSelectedSiriuss(false));
         // Then orders specific to generic
-        final List<Sirius> orderedSiriuss = new ArrayList<Sirius>(viewpoints.size());
-        for (final Sirius viewpoint : viewpoints) {
+        final List<Viewpoint> orderedSiriuss = new ArrayList<Viewpoint>(viewpoints.size());
+        for (final Viewpoint viewpoint : viewpoints) {
             int insertPosition = orderedSiriuss.size();
-            for (final Sirius viewpoint2 : orderedSiriuss) {
+            for (final Viewpoint viewpoint2 : orderedSiriuss) {
                 if (ComponentizationHelper.isExtendedBy(viewpoint, viewpoint2)) {
                     insertPosition = orderedSiriuss.indexOf(viewpoint2);
                 } else if (ComponentizationHelper.isExtendedBy(viewpoint2, viewpoint)) {
@@ -1043,14 +1043,14 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Unselect this specified {@link Sirius} on this {@link Session}.
+     * Unselect this specified {@link Viewpoint} on this {@link Session}.
      * 
      * @param viewpoint
-     *            the {@link Sirius} to unselect on this {@link Session}
+     *            the {@link Viewpoint} to unselect on this {@link Session}
      */
-    void unselectSirius(Sirius viewpoint) {
+    void unselectSirius(Viewpoint viewpoint) {
         for (DView selectedDView : mainDAnalysis.getSelectedViews()) {
-            if (EqualityHelper.areEquals(selectedDView.getSirius(), viewpoint)) {
+            if (EqualityHelper.areEquals(selectedDView.getViewpoint(), viewpoint)) {
                 removeSelectedView(selectedDView);
                 break;
             }
@@ -1095,28 +1095,28 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * {@inheritDoc}
      */
-    public void createView(final Sirius viewpoint, final Collection<EObject> semantics) {
+    public void createView(final Viewpoint viewpoint, final Collection<EObject> semantics) {
         createView(viewpoint, semantics, true, new NullProgressMonitor());
     }
 
     /**
      * {@inheritDoc}
      */
-    public void createView(Sirius viewpoint, Collection<EObject> semantics, IProgressMonitor monitor) {
+    public void createView(Viewpoint viewpoint, Collection<EObject> semantics, IProgressMonitor monitor) {
         createView(viewpoint, semantics, true, monitor);
     }
 
     /**
      * {@inheritDoc}
      */
-    public void createView(Sirius viewpoint, Collection<EObject> semantics, boolean createNewRepresentations) {
+    public void createView(Viewpoint viewpoint, Collection<EObject> semantics, boolean createNewRepresentations) {
         createView(viewpoint, semantics, createNewRepresentations, new NullProgressMonitor());
     }
 
     /**
      * {@inheritDoc}
      */
-    public void createView(final Sirius viewpoint, final Collection<EObject> semantics, final boolean createNewRepresentations, IProgressMonitor monitor) {
+    public void createView(final Viewpoint viewpoint, final Collection<EObject> semantics, final boolean createNewRepresentations, IProgressMonitor monitor) {
         try {
             monitor.beginTask("View creation for Sirius : " + viewpoint.getName(), 3 + 10 * semantics.size());
             Set<DView> intializedDViews = new LinkedHashSet<DView>();
@@ -1127,11 +1127,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                     DView dView = null;
                     // Otherwise create a new one
                     if (firstOrphanDView == null) {
-                        dView = SiriusFactory.eINSTANCE.createDRepresentationContainer();
+                        dView = ViewpointFactory.eINSTANCE.createDRepresentationContainer();
                     } else {
                         dView = firstOrphanDView;
                     }
-                    dView.setSirius(viewpoint);
+                    dView.setViewpoint(viewpoint);
                     dAnalysis.getOwnedViews().add(dView);
                     dAnalysis.getSelectedViews().add(dView);
 
@@ -1160,7 +1160,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                         final ModelAccessor accessor = getModelAccessor();
                         if (extensionSetting.getExtensionGroup() != null && accessor.eInstanceOf(extensionSetting.getExtensionGroup(), "ExtensionGroup")) {
                             final EObject group = extensionSetting.getExtensionGroup();
-                            final MetaModelExtension extension = SiriusFactory.eINSTANCE.createMetaModelExtension();
+                            final MetaModelExtension extension = ViewpointFactory.eINSTANCE.createMetaModelExtension();
                             extension.setExtensionGroup(group);
                             dRepresentationContainer.setOwnedExtensions(extension);
                         }
@@ -1178,10 +1178,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
     }
 
-    private boolean hasAlreadyDViewForSirius(DAnalysis dAnalysis, Sirius viewpoint) {
+    private boolean hasAlreadyDViewForSirius(DAnalysis dAnalysis, Viewpoint viewpoint) {
         boolean hasAlreadyDViewForSirius = false;
         for (DView ownedDView : dAnalysis.getOwnedViews()) {
-            if (ownedDView.getSirius() != null && EqualityHelper.areEquals(ownedDView.getSirius(), viewpoint)) {
+            if (ownedDView.getViewpoint() != null && EqualityHelper.areEquals(ownedDView.getViewpoint(), viewpoint)) {
                 hasAlreadyDViewForSirius = true;
                 break;
             }
@@ -1191,31 +1191,31 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     private void updateSelectedSiriussData(IProgressMonitor monitor) {
         try {
-            Set<Sirius> selectedSiriuss = Sets.newLinkedHashSet();
-            for (Sirius viewpoint : getSelectedSiriuss(false)) {
+            Set<Viewpoint> selectedSiriuss = Sets.newLinkedHashSet();
+            for (Viewpoint viewpoint : getSelectedSiriuss(false)) {
                 if (viewpoint.eResource() != null) {
                     selectedSiriuss.add(SiriusResourceHelper.getCorrespondingSirius(this, viewpoint));
                 } else {
                     selectedSiriuss.add(viewpoint);
                 }
             }
-            SetView<Sirius> difference = Sets.difference(Sets.newHashSet(getActivatedSiriuss()), Sets.newHashSet(selectedSiriuss));
+            SetView<Viewpoint> difference = Sets.difference(Sets.newHashSet(getActivatedViewpoints()), Sets.newHashSet(selectedSiriuss));
             monitor.beginTask("Update selected Siriuss data", selectedSiriuss.size() + difference.size() + 1);
             // FIXME : it is useful?
-            for (Sirius viewpoint : selectedSiriuss) {
+            for (Viewpoint viewpoint : selectedSiriuss) {
                 if (viewpoint.eResource() != null) {
                     registerResourceInCrossReferencer(viewpoint.eResource());
                 }
                 monitor.worked(1);
             }
-            for (Sirius viewpoint : difference) {
+            for (Viewpoint viewpoint : difference) {
                 if (viewpoint.eResource() != null) {
                     unregisterResourceInCrossReferencer(viewpoint.eResource());
                 }
                 monitor.worked(1);
             }
-            super.getActivatedSiriuss().addAll(selectedSiriuss);
-            super.getActivatedSiriuss().retainAll(selectedSiriuss);
+            super.getActivatedViewpoints().addAll(selectedSiriuss);
+            super.getActivatedViewpoints().retainAll(selectedSiriuss);
             if (Movida.isEnabled()) {
                 movidaSupport.updatePhysicalVSMResourceURIs(selectedSiriuss);
             }
@@ -1354,9 +1354,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      *         <code>null</code> if no view is found.
      */
     private DView findViewForRepresentation(final DRepresentation representation, final DAnalysis analysis) {
-        final Sirius vp = getSirius(representation);
+        final Viewpoint vp = getSirius(representation);
         for (final DView view : analysis.getOwnedViews()) {
-            if (view.getSirius() != null && EqualityHelper.areEquals(view.getSirius(), vp)) {
+            if (view.getViewpoint() != null && EqualityHelper.areEquals(view.getViewpoint(), vp)) {
                 return view;
             }
         }
@@ -1370,8 +1370,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      *            the representation.
      * @return the viewpoint of the given representation.
      */
-    private Sirius getSirius(final DRepresentation representation) {
-        return ((DView) representation.eContainer()).getSirius();
+    private Viewpoint getSirius(final DRepresentation representation) {
+        return ((DView) representation.eContainer()).getViewpoint();
     }
 
     /**
@@ -1460,7 +1460,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         final DView view = this.findViewForRepresentation(representation, analysis);
         if (view != null && view.getReferencedRepresentations().contains(representation)) {
             final IPermissionAuthority authority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(view);
-            if (authority.canEditFeature(view, SiriusPackage.eINSTANCE.getDView_ReferencedRepresentations().getName())) {
+            if (authority.canEditFeature(view, ViewpointPackage.eINSTANCE.getDView_ReferencedRepresentations().getName())) {
                 view.getReferencedRepresentations().remove(representation);
             } else {
                 throw new LockedInstanceException(view);

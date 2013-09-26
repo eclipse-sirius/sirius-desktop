@@ -19,14 +19,13 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.DEdge;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.InverseRelativeNodePositionOperation;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.SequenceMessageLabelLocator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
+import org.eclipse.sirius.viewpoint.DEdge;
 
 /**
  * The edit part for sequence message labels.

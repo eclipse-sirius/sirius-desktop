@@ -31,16 +31,16 @@ import org.eclipse.swt.widgets.Display;
 import com.google.common.base.Objects;
 
 import org.eclipse.sirius.common.ui.tools.api.util.SWTResourceLRUCache;
-import org.eclipse.sirius.BasicLabelStyle;
-import org.eclipse.sirius.FontFormat;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.description.DescriptionFactory;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.FixedColor;
-import org.eclipse.sirius.description.SystemColor;
-import org.eclipse.sirius.description.SystemColors;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
+import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.FixedColor;
+import org.eclipse.sirius.viewpoint.description.SystemColor;
+import org.eclipse.sirius.viewpoint.description.SystemColors;
 
 /**
  * Take care of computing colors, font or size from integer values. Avoid memory
@@ -281,7 +281,7 @@ public class VisualBindingManager {
      * @return the equivalent RGBValues model element.
      */
     public RGBValues createRGBvalues(RGB rgb) {
-        final RGBValues result = SiriusFactory.eINSTANCE.createRGBValues();
+        final RGBValues result = ViewpointFactory.eINSTANCE.createRGBValues();
         result.setRed(rgb.red);
         result.setGreen(rgb.green);
         result.setBlue(rgb.blue);

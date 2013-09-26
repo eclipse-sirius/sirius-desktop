@@ -21,8 +21,8 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.EdgeRouting;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.EdgeRouting;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link Edge} as a

@@ -43,6 +43,9 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
+import org.eclipse.sirius.viewpoint.description.contribution.ContributionFactory;
+import org.eclipse.sirius.viewpoint.description.contribution.ContributionPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -61,10 +64,6 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
-
-import org.eclipse.sirius.description.contribution.ContributionFactory;
-import org.eclipse.sirius.description.contribution.ContributionPackage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 
 /**
  * This is a simple wizard for creating a new model file.
@@ -419,8 +418,8 @@ public class ContributionModelWizard extends Wizard implements INewWizard {
         newFileCreationPage = new ContributionModelWizardNewFileCreationPage("Whatever", selection);
         newFileCreationPage.setTitle(SiriusEditorPlugin.INSTANCE.getString("_UI_ContributionModelWizard_label"));
         newFileCreationPage.setDescription(SiriusEditorPlugin.INSTANCE.getString("_UI_ContributionModelWizard_description"));
-        newFileCreationPage.setFileName(SiriusEditorPlugin.INSTANCE.getString("_UI_SiriusEditorFilenameDefaultBase") + "."
-                + SiriusEditorPlugin.INSTANCE.getString("_UI_SiriusEditorFilenameExtension"));
+        newFileCreationPage
+                .setFileName(SiriusEditorPlugin.INSTANCE.getString("_UI_SiriusEditorFilenameDefaultBase") + "." + SiriusEditorPlugin.INSTANCE.getString("_UI_SiriusEditorFilenameExtension"));
         addPage(newFileCreationPage);
 
         // Try and get the resource selection to determine a current directory

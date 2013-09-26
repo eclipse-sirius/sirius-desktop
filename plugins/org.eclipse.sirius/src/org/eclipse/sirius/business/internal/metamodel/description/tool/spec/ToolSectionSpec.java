@@ -15,11 +15,10 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreEList;
-
-import org.eclipse.sirius.description.tool.PopupMenu;
-import org.eclipse.sirius.description.tool.ToolEntry;
-import org.eclipse.sirius.description.tool.ToolPackage;
-import org.eclipse.sirius.description.tool.impl.ToolSectionImpl;
+import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
+import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.impl.ToolSectionImpl;
 
 /**
  * Implementation of ToolSection.
@@ -33,7 +32,7 @@ public class ToolSectionSpec extends ToolSectionImpl {
      * {@inheritDoc}
      * 
      * @Override
-     * @see org.eclipse.sirius.description.tool.impl.ToolSectionImpl#getPopupMenus()
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolSectionImpl#getPopupMenus()
      */
     @Override
     public EList<PopupMenu> getPopupMenus() {

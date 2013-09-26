@@ -25,11 +25,10 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.eclipse.sirius.description.provider.ContainerMappingItemProvider;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.OperandMapping;
+import org.eclipse.sirius.viewpoint.description.provider.ContainerMappingItemProvider;
 
 /**
  * This is the item provider adapter for a
@@ -148,43 +147,43 @@ public class OperandMappingItemProvider extends ContainerMappingItemProvider imp
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createInstanceRoleMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createExecutionMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createStateMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createEndOfLifeMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createObservationPointMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createInstanceRoleMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createExecutionMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createStateMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createEndOfLifeMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createObservationPointMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createInteractionUseMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createCombinedFragmentMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createOperandMapping()));
     }
 
@@ -199,8 +198,8 @@ public class OperandMappingItemProvider extends ContainerMappingItemProvider imp
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == org.eclipse.sirius.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS
-                || childFeature == org.eclipse.sirius.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
+        boolean qualify = childFeature == org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS
+                || childFeature == org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
 
         if (qualify) {
             return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
@@ -220,8 +219,8 @@ public class OperandMappingItemProvider extends ContainerMappingItemProvider imp
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == org.eclipse.sirius.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS
-                || childFeature == org.eclipse.sirius.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
+        boolean qualify = childFeature == org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS
+                || childFeature == org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
 
         if (qualify) {
             return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeaturePrefixText(childFeature), getTypeText(owner) });

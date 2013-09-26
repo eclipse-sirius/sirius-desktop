@@ -14,20 +14,6 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.BasicLabelStyle;
-import org.eclipse.sirius.Customizable;
-import org.eclipse.sirius.DLabelled;
-import org.eclipse.sirius.DMappingBased;
-import org.eclipse.sirius.DRefreshable;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DStylizable;
-import org.eclipse.sirius.LabelStyle;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.description.DModelElement;
-import org.eclipse.sirius.description.DocumentedElement;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeElementSynchronizer;
@@ -36,6 +22,19 @@ import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.TreeItemStyle;
 import org.eclipse.sirius.tree.TreePackage;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
+import org.eclipse.sirius.viewpoint.Customizable;
+import org.eclipse.sirius.viewpoint.DLabelled;
+import org.eclipse.sirius.viewpoint.DMappingBased;
+import org.eclipse.sirius.viewpoint.DRefreshable;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.LabelStyle;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.DModelElement;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
@@ -291,9 +290,9 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.tree.TreeItemStyle <em>Item Style</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
+     * {@link org.eclipse.sirius.tree.TreeItemStyle <em>Item Style</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
@@ -322,14 +321,14 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.DocumentedElement
+     * {@link org.eclipse.sirius.viewpoint.description.DocumentedElement
      * <em>Documented Element</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.description.DocumentedElement
+     * @see org.eclipse.sirius.viewpoint.description.DocumentedElement
      * @generated
      */
     public Adapter createDocumentedElementAdapter() {
@@ -338,13 +337,13 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.DRefreshable <em>DRefreshable</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * {@link org.eclipse.sirius.viewpoint.DRefreshable <em>DRefreshable</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that
+     * we can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.DRefreshable
+     * @see org.eclipse.sirius.viewpoint.DRefreshable
      * @generated
      */
     public Adapter createDRefreshableAdapter() {
@@ -353,14 +352,14 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.description.DModelElement
+     * {@link org.eclipse.sirius.viewpoint.description.DModelElement
      * <em>DModel Element</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.description.DModelElement
+     * @see org.eclipse.sirius.viewpoint.description.DModelElement
      * @generated
      */
     public Adapter createDModelElementAdapter() {
@@ -369,13 +368,14 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.DRepresentation <em>DRepresentation</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.DRepresentation
+     * <em>DRepresentation</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.DRepresentation
+     * @see org.eclipse.sirius.viewpoint.DRepresentation
      * @generated
      */
     public Adapter createDRepresentationAdapter() {
@@ -384,14 +384,14 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.DSemanticDecorator
+     * {@link org.eclipse.sirius.viewpoint.DSemanticDecorator
      * <em>DSemantic Decorator</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.DSemanticDecorator
+     * @see org.eclipse.sirius.viewpoint.DSemanticDecorator
      * @generated
      */
     public Adapter createDSemanticDecoratorAdapter() {
@@ -400,13 +400,13 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.DLabelled <em>DLabelled</em>}'. <!--
+     * {@link org.eclipse.sirius.viewpoint.DLabelled <em>DLabelled</em>}'. <!--
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.DLabelled
+     * @see org.eclipse.sirius.viewpoint.DLabelled
      * @generated
      */
     public Adapter createDLabelledAdapter() {
@@ -415,13 +415,14 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.DMappingBased <em>DMapping Based</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.DMappingBased
+     * <em>DMapping Based</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.DMappingBased
+     * @see org.eclipse.sirius.viewpoint.DMappingBased
      * @generated
      */
     public Adapter createDMappingBasedAdapter() {
@@ -430,13 +431,13 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.DStylizable <em>DStylizable</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * {@link org.eclipse.sirius.viewpoint.DStylizable <em>DStylizable</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that
+     * we can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.DStylizable
+     * @see org.eclipse.sirius.viewpoint.DStylizable
      * @generated
      */
     public Adapter createDStylizableAdapter() {
@@ -445,14 +446,14 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.DRepresentationElement
+     * {@link org.eclipse.sirius.viewpoint.DRepresentationElement
      * <em>DRepresentation Element</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.DRepresentationElement
+     * @see org.eclipse.sirius.viewpoint.DRepresentationElement
      * @generated
      */
     public Adapter createDRepresentationElementAdapter() {
@@ -461,13 +462,13 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.Customizable <em>Customizable</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * {@link org.eclipse.sirius.viewpoint.Customizable <em>Customizable</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that
+     * we can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.Customizable
+     * @see org.eclipse.sirius.viewpoint.Customizable
      * @generated
      */
     public Adapter createCustomizableAdapter() {
@@ -476,13 +477,13 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.Style <em>Style</em>}'. <!-- begin-user-doc
-     * --> This default implementation returns null so that we can easily ignore
-     * cases; it's useful to ignore a case when inheritance will catch all the
-     * cases anyway. <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.Style <em>Style</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.Style
+     * @see org.eclipse.sirius.viewpoint.Style
      * @generated
      */
     public Adapter createStyleAdapter() {
@@ -491,13 +492,14 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.BasicLabelStyle <em>Basic Label Style</em>}
-     * '. <!-- begin-user-doc --> This default implementation returns null so
-     * that we can easily ignore cases; it's useful to ignore a case when
-     * inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle
+     * <em>Basic Label Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.BasicLabelStyle
+     * @see org.eclipse.sirius.viewpoint.BasicLabelStyle
      * @generated
      */
     public Adapter createBasicLabelStyleAdapter() {
@@ -506,13 +508,13 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.LabelStyle <em>Label Style</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * {@link org.eclipse.sirius.viewpoint.LabelStyle <em>Label Style</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that
+     * we can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.LabelStyle
+     * @see org.eclipse.sirius.viewpoint.LabelStyle
      * @generated
      */
     public Adapter createLabelStyleAdapter() {

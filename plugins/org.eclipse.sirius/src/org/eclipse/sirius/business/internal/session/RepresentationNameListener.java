@@ -19,9 +19,9 @@ import com.google.common.collect.Iterables;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 
@@ -70,6 +70,6 @@ public class RepresentationNameListener extends ResourceSetListenerImpl {
     }
 
     private boolean isRepresentationNameChange(Notification notif) {
-        return notif.getNotifier() instanceof DRepresentation && notif.getFeatureID(DRepresentation.class) == SiriusPackage.DREPRESENTATION__NAME;
+        return notif.getNotifier() instanceof DRepresentation && notif.getFeatureID(DRepresentation.class) == ViewpointPackage.DREPRESENTATION__NAME;
     }
 }

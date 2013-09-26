@@ -15,20 +15,19 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
-
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.ResizeKind;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.BorderItemLocatorProvider;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.DefaultBorderItemLocatorProvider;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.ResizeKind;
 
 /**
  * A
  * {@link org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration}
- * for {@link org.eclipse.sirius.BundledImage} square.
+ * for {@link org.eclipse.sirius.viewpoint.BundledImage} square.
  * 
  * @author ymortier
  */
@@ -54,7 +53,7 @@ class SquareStyleConfiguration extends SimpleStyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration#adaptNodeLabel(org.eclipse.sirius.DNode,
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration#adaptNodeLabel(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel)
      */
     @Override
@@ -74,7 +73,7 @@ class SquareStyleConfiguration extends SimpleStyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration#adaptViewNodeSizeWithLabel(org.eclipse.sirius.DNode,
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration#adaptViewNodeSizeWithLabel(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel,
      *      int)
      */

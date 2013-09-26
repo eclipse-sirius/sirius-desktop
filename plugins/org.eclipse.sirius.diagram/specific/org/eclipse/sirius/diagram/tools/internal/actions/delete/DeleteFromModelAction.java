@@ -17,7 +17,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * Delete a {@link org.eclipse.sirius.DDiagramElement}.
+ * Delete a {@link org.eclipse.sirius.viewpoint.DDiagramElement}.
  * 
  * @author cnotot
  * 

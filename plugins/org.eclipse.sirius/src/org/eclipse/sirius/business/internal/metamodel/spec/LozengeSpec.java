@@ -12,10 +12,10 @@ package org.eclipse.sirius.business.internal.metamodel.spec;
 
 import org.eclipse.sirius.business.internal.metamodel.operations.BorderedStyleSpecOperation;
 import org.eclipse.sirius.business.internal.metamodel.operations.StyleSpecOperations;
-import org.eclipse.sirius.impl.LozengeImpl;
+import org.eclipse.sirius.viewpoint.impl.LozengeImpl;
 
 /**
- * Implementation of {@link org.eclipse.sirius.Ellipse}.
+ * Implementation of {@link org.eclipse.sirius.viewpoint.Ellipse}.
  * 
  * @author mporhel
  */
@@ -24,7 +24,7 @@ public class LozengeSpec extends LozengeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.NodeStyleImpl#refresh()
+     * @see org.eclipse.sirius.viewpoint.impl.NodeStyleImpl#refresh()
      */
     @Override
     public void refresh() {

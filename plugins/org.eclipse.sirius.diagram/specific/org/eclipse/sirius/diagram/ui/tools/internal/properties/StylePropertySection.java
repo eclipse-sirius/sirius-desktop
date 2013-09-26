@@ -25,19 +25,18 @@ import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.ui.views.properties.IPropertySource;
-
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DStylizable;
-import org.eclipse.sirius.EdgeRouting;
-import org.eclipse.sirius.EdgeStyle;
-import org.eclipse.sirius.FontFormat;
-import org.eclipse.sirius.LabelStyle;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.EdgeRouting;
+import org.eclipse.sirius.viewpoint.EdgeStyle;
+import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.LabelStyle;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.Style;
 
 /**
  * Properties section that shows the properties of a style of a DiagramElement.
@@ -248,7 +247,7 @@ public class StylePropertySection extends SemanticPropertySection {
                 for (Object notationStyle : view.getStyles()) {
                     if (notationStyle instanceof FontStyle) {
                         final FontStyle fontStyle = (FontStyle) notationStyle;
-                        if (value instanceof FontFormat && propertyId.equals(SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName())) {
+                        if (value instanceof FontFormat && propertyId.equals(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName())) {
                             if (FontFormat.BOLD_LITERAL == value) {
                                 fontStyle.setBold(true);
                                 fontStyle.setItalic(false);
@@ -262,12 +261,12 @@ public class StylePropertySection extends SemanticPropertySection {
                                 fontStyle.setBold(false);
                                 fontStyle.setItalic(false);
                             }
-                        } else if (value instanceof Integer && propertyId.equals(SiriusPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName())) {
+                        } else if (value instanceof Integer && propertyId.equals(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName())) {
                             fontStyle.setFontHeight((Integer) value);
                         }
                     } else if (notationStyle instanceof ConnectorStyle) {
                         ConnectorStyle connectorStyle = (ConnectorStyle) notationStyle;
-                        if (value instanceof EdgeRouting && propertyId.equals(SiriusPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName())) {
+                        if (value instanceof EdgeRouting && propertyId.equals(ViewpointPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName())) {
                             if (EdgeRouting.MANHATTAN_LITERAL == value) {
                                 connectorStyle.setRouting(Routing.RECTILINEAR_LITERAL);
                             } else if (EdgeRouting.STRAIGHT_LITERAL == value) {

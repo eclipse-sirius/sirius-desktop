@@ -33,9 +33,9 @@ import com.google.common.collect.Maps;
 import org.eclipse.sirius.common.tools.api.util.AllContents;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.description.contribution.Contribution;
-import org.eclipse.sirius.description.contribution.FeatureContribution;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.contribution.Contribution;
+import org.eclipse.sirius.viewpoint.description.contribution.FeatureContribution;
 
 /**
  * Similar to a {@link ModelContributor}, but successive operations with
@@ -58,7 +58,7 @@ public class IncrementalModelContributor extends ModelContributor {
 
     private Copier currentCopier;
 
-    private Map<Sirius, String> viewpointUris;
+    private Map<Viewpoint, String> viewpointUris;
 
     private List<EStructuralFeature> targetsWithEOpposites;
 
@@ -106,10 +106,10 @@ public class IncrementalModelContributor extends ModelContributor {
         }
 
         viewpointUris = Maps.newHashMap();
-        for (Sirius originalVP : Iterables.filter(currentCopier.keySet(), Sirius.class)) {
+        for (Viewpoint originalVP : Iterables.filter(currentCopier.keySet(), Viewpoint.class)) {
             Option<URI> uri = new SiriusQuery(originalVP).getSiriusURI();
             if (uri.some()) {
-                viewpointUris.put((Sirius) currentCopier.get(originalVP), uri.get().toString());
+                viewpointUris.put((Viewpoint) currentCopier.get(originalVP), uri.get().toString());
             }
         }
 
@@ -184,7 +184,7 @@ public class IncrementalModelContributor extends ModelContributor {
      * @return the logical URI of the Sirius, as retrived from the original
      *         instance which lives in a VSM.
      */
-    protected String getSiriusURI(Sirius copiedSirius) {
+    protected String getSiriusURI(Viewpoint copiedSirius) {
         return viewpointUris.get(copiedSirius);
     }
 

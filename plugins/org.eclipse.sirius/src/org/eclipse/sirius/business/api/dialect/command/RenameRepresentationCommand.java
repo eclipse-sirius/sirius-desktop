@@ -12,8 +12,7 @@ package org.eclipse.sirius.business.api.dialect.command;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import org.eclipse.sirius.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * Specific command to rename the given representation.

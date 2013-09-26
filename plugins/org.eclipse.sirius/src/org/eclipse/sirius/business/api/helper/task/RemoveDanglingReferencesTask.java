@@ -22,13 +22,12 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A task which remove dangling references.

@@ -56,7 +56,6 @@ import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener2;
 import org.eclipse.sirius.business.api.session.SessionStatus;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
@@ -66,6 +65,7 @@ import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonContentProvider;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.RepresentationDescriptionWithoutRepresentationCommonFilter;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * An Eclipse view to see the viewpoint resource set content.
@@ -378,18 +378,18 @@ public class DesignerSessionView extends ViewPart implements SessionManagerListe
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointDeselected(org.eclipse.sirius.description.Sirius)
+     * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointDeselected(org.eclipse.sirius.viewpoint.description.Viewpoint)
      */
-    public void viewpointDeselected(final Sirius deselectedSirius) {
+    public void viewpointDeselected(final Viewpoint deselectedSirius) {
         // does nothing.
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointSelected(org.eclipse.sirius.description.Sirius)
+     * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointSelected(org.eclipse.sirius.viewpoint.description.Viewpoint)
      */
-    public void viewpointSelected(final Sirius selectedSirius) {
+    public void viewpointSelected(final Viewpoint selectedSirius) {
         // does nothing.
     }
 

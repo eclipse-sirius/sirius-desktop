@@ -13,7 +13,6 @@ package org.eclipse.sirius.editor.tools.internal.menu;
 import java.util.Collection;
 
 import org.eclipse.emf.edit.command.CommandParameter;
-
 import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
 
 /**

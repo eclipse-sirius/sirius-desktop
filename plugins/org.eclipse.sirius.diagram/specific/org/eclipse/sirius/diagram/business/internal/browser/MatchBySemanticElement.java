@@ -15,7 +15,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 
 import com.google.common.base.Predicate;
 
-import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * A specific predicate to match edit part by the semantic element they should

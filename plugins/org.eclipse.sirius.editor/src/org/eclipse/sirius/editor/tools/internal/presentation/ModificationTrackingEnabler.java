@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 /**
- * Makes sure modification tracking is enabled for all resources added to
- * the target resource set.
+ * Makes sure modification tracking is enabled for all resources added to the
+ * target resource set.
  * 
  * @author pierre-charles.david@obeo.fr
  */

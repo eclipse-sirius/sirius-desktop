@@ -18,28 +18,28 @@ import com.google.common.collect.Iterables;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.AppliedCompositeFilters;
-import org.eclipse.sirius.BasicLabelStyle;
-import org.eclipse.sirius.CollapseFilter;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeListElement;
-import org.eclipse.sirius.FoldingFilter;
-import org.eclipse.sirius.FoldingPointFilter;
-import org.eclipse.sirius.HideFilter;
-import org.eclipse.sirius.HideLabelFilter;
-import org.eclipse.sirius.IndirectlyCollapseFilter;
-import org.eclipse.sirius.LabelPosition;
-import org.eclipse.sirius.NodeStyle;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.RepresentationElementMapping;
-import org.eclipse.sirius.description.style.EdgeStyleDescription;
-import org.eclipse.sirius.description.style.LabelStyleDescription;
-import org.eclipse.sirius.description.style.StyleDescription;
-import org.eclipse.sirius.util.SiriusSwitch;
+import org.eclipse.sirius.viewpoint.AppliedCompositeFilters;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
+import org.eclipse.sirius.viewpoint.CollapseFilter;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeListElement;
+import org.eclipse.sirius.viewpoint.FoldingFilter;
+import org.eclipse.sirius.viewpoint.FoldingPointFilter;
+import org.eclipse.sirius.viewpoint.HideFilter;
+import org.eclipse.sirius.viewpoint.HideLabelFilter;
+import org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter;
+import org.eclipse.sirius.viewpoint.LabelPosition;
+import org.eclipse.sirius.viewpoint.NodeStyle;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.style.EdgeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
+import org.eclipse.sirius.viewpoint.util.ViewpointSwitch;
 
 /**
  * A class aggregating all the queries (read-only!) having a
@@ -300,7 +300,7 @@ public class DDiagramElementQuery {
      * 
      * @author mporhel
      */
-    private static class ActualMappingGetter extends SiriusSwitch<Option<? extends RepresentationElementMapping>> {
+    private static class ActualMappingGetter extends ViewpointSwitch<Option<? extends RepresentationElementMapping>> {
         @Override
         public Option<? extends RepresentationElementMapping> defaultCase(EObject object) {
             return Options.newNone();

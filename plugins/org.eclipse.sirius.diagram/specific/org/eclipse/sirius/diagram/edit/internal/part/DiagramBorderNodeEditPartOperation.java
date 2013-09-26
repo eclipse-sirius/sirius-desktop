@@ -34,14 +34,6 @@ import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.BorderedStyle;
-import org.eclipse.sirius.CollapseFilter;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.LabelPosition;
-import org.eclipse.sirius.NodeStyle;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.business.api.query.DNodeQuery;
 import org.eclipse.sirius.diagram.edit.api.part.DiagramNameEditPartOperation;
@@ -53,6 +45,13 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ITransparentFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ICollapseMode;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.BorderedStyle;
+import org.eclipse.sirius.viewpoint.CollapseFilter;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.LabelPosition;
+import org.eclipse.sirius.viewpoint.NodeStyle;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Common operations for nodes that are on the border of other nodes.
@@ -148,7 +147,7 @@ public final class DiagramBorderNodeEditPartOperation {
      *            the notification.
      */
     public static void handleNotificationEvent(final IDiagramBorderNodeEditPart self, final Notification notification) {
-        if (SiriusPackage.eINSTANCE.getDDiagramElement_GraphicalFilters().equals(notification.getFeature())) {
+        if (ViewpointPackage.eINSTANCE.getDDiagramElement_GraphicalFilters().equals(notification.getFeature())) {
             if (notification.getNewValue() instanceof CollapseFilter && notification.getOldValue() == null) {
                 DiagramBorderNodeEditPartOperation.updateCollapseMode(self, notification.getNotifier());
             } else if (notification.getOldValue() instanceof CollapseFilter && notification.getNewValue() == null) {

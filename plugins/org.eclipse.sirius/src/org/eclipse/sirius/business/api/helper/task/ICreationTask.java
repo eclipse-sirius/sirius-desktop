@@ -13,9 +13,8 @@ package org.eclipse.sirius.business.api.helper.task;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DRepresentationElement;
 import org.eclipse.sirius.business.internal.helper.task.IModificationTask;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 /**
  * An interface to implement for task which create semantic elements.

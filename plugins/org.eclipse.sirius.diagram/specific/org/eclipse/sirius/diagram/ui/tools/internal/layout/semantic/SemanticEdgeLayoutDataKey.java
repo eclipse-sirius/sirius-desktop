@@ -16,7 +16,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.layout.EdgeLayoutDataKey;
 
 /**
  * Kind of key use to store the layout data corresponding to a semantic element
- * represented by a {@link org.eclipse.sirius.DEdge}. The key is the URI of
+ * represented by a {@link org.eclipse.sirius.viewpoint.DEdge}. The key is the URI of
  * the semantic element.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>

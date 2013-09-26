@@ -14,8 +14,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.SequenceFactory;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
@@ -27,6 +25,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.impl.OrderingPackageImpl;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 import org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -94,7 +93,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
         isInited = true;
 
         // Initialize simple dependencies
-        SiriusPackage.eINSTANCE.eClass();
+        ViewpointPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl ? EPackage.Registry.INSTANCE
@@ -227,7 +226,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
         OrderingPackage theOrderingPackage = (OrderingPackage) EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI);
         TemplatePackage theTemplatePackage = (TemplatePackage) EPackage.Registry.INSTANCE.getEPackage(TemplatePackage.eNS_URI);
-        SiriusPackage theSiriusPackage = (SiriusPackage) EPackage.Registry.INSTANCE.getEPackage(SiriusPackage.eNS_URI);
+        ViewpointPackage theViewpointPackage = (ViewpointPackage) EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
 
         // Add subpackages
         getESubpackages().add(theDescriptionPackage);
@@ -239,7 +238,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
         // Set bounds for type parameters
 
         // Add supertypes to classes
-        sequenceDDiagramEClass.getESuperTypes().add(theSiriusPackage.getDSemanticDiagram());
+        sequenceDDiagramEClass.getESuperTypes().add(theViewpointPackage.getDSemanticDiagram());
 
         // Initialize classes and features; add operations and parameters
         initEClass(sequenceDDiagramEClass, SequenceDDiagram.class, "SequenceDDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

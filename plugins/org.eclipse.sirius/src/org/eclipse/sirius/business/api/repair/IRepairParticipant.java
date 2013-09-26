@@ -13,9 +13,8 @@ package org.eclipse.sirius.business.api.repair;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import org.eclipse.sirius.DView;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.viewpoint.DView;
 
 /**
  * Repair Participant to contribute to repair process.
@@ -71,7 +70,7 @@ public interface IRepairParticipant {
 
     /**
      * Save the sate of the model's
-     * {@link org.eclipse.sirius.DRepresentationElement}.
+     * {@link org.eclipse.sirius.viewpoint.DRepresentationElement}.
      * 
      * @param view
      *            The view model which state is to be saved.

@@ -1,10 +1,9 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -21,6 +20,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -34,12 +34,10 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
-import org.eclipse.sirius.editor.properties.SiriusPropertySheetPage;
-
 /**
  * An abstract implementation of a section displaying a check box.
  */
-public abstract class AbstractCheckBoxPropertySection extends AbstractSiriusPropertySection {
+public abstract class AbstractCheckBoxPropertySection extends AbstractViewpointPropertySection {
     /** Check box control of the section. */
     protected Button checkbox;
 
@@ -54,8 +52,8 @@ public abstract class AbstractCheckBoxPropertySection extends AbstractSiriusProp
      *      org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage)
      */
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
-        if (tabbedPropertySheetPage instanceof SiriusPropertySheetPage)
-            super.createControls(parent, (SiriusPropertySheetPage) tabbedPropertySheetPage);
+        if (tabbedPropertySheetPage instanceof ViewpointPropertySheetPage)
+            super.createControls(parent, (ViewpointPropertySheetPage) tabbedPropertySheetPage);
         else
             super.createControls(parent, tabbedPropertySheetPage);
         composite = getWidgetFactory().createFlatFormComposite(parent);
@@ -94,7 +92,7 @@ public abstract class AbstractCheckBoxPropertySection extends AbstractSiriusProp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractSiriusPropertySection#setInput(org.eclipse.ui.IWorkbenchPart,
+     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection#setInput(org.eclipse.ui.IWorkbenchPart,
      *      org.eclipse.jface.viewers.ISelection)
      */
     @Override

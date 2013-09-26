@@ -15,16 +15,15 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.sirius.BasicLabelStyle;
-import org.eclipse.sirius.FontFormat;
-import org.eclipse.sirius.LabelAlignment;
-import org.eclipse.sirius.LabelStyle;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.impl.StyleImpl;
 import org.eclipse.sirius.tree.TreeItemStyle;
 import org.eclipse.sirius.tree.TreePackage;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
+import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.LabelAlignment;
+import org.eclipse.sirius.viewpoint.LabelStyle;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.impl.StyleImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -32,21 +31,19 @@ import org.eclipse.sirius.tree.TreePackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelSize
- * <em>Label Size</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelFormat
- * <em>Label Format</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#isShowIcon <em>
- * Show Icon</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelColor
- * <em>Label Color</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelSize <em>
+ * Label Size</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelFormat <em>
+ * Label Format</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#isShowIcon <em>Show
+ * Icon</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelColor <em>
+ * Label Color</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getIconPath <em>
  * Icon Path</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelAlignment
+ * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelAlignment
  * <em>Label Alignment</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getBackgroundColor
+ * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getBackgroundColor
  * <em>Background Color</em>}</li>
  * </ul>
  * </p>
@@ -563,15 +560,15 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
         if (baseClass == BasicLabelStyle.class) {
             switch (derivedFeatureID) {
             case TreePackage.TREE_ITEM_STYLE__LABEL_SIZE:
-                return SiriusPackage.BASIC_LABEL_STYLE__LABEL_SIZE;
+                return ViewpointPackage.BASIC_LABEL_STYLE__LABEL_SIZE;
             case TreePackage.TREE_ITEM_STYLE__LABEL_FORMAT:
-                return SiriusPackage.BASIC_LABEL_STYLE__LABEL_FORMAT;
+                return ViewpointPackage.BASIC_LABEL_STYLE__LABEL_FORMAT;
             case TreePackage.TREE_ITEM_STYLE__SHOW_ICON:
-                return SiriusPackage.BASIC_LABEL_STYLE__SHOW_ICON;
+                return ViewpointPackage.BASIC_LABEL_STYLE__SHOW_ICON;
             case TreePackage.TREE_ITEM_STYLE__LABEL_COLOR:
-                return SiriusPackage.BASIC_LABEL_STYLE__LABEL_COLOR;
+                return ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR;
             case TreePackage.TREE_ITEM_STYLE__ICON_PATH:
-                return SiriusPackage.BASIC_LABEL_STYLE__ICON_PATH;
+                return ViewpointPackage.BASIC_LABEL_STYLE__ICON_PATH;
             default:
                 return -1;
             }
@@ -579,7 +576,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
         if (baseClass == LabelStyle.class) {
             switch (derivedFeatureID) {
             case TreePackage.TREE_ITEM_STYLE__LABEL_ALIGNMENT:
-                return SiriusPackage.LABEL_STYLE__LABEL_ALIGNMENT;
+                return ViewpointPackage.LABEL_STYLE__LABEL_ALIGNMENT;
             default:
                 return -1;
             }
@@ -596,15 +593,15 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == BasicLabelStyle.class) {
             switch (baseFeatureID) {
-            case SiriusPackage.BASIC_LABEL_STYLE__LABEL_SIZE:
+            case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_SIZE:
                 return TreePackage.TREE_ITEM_STYLE__LABEL_SIZE;
-            case SiriusPackage.BASIC_LABEL_STYLE__LABEL_FORMAT:
+            case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_FORMAT:
                 return TreePackage.TREE_ITEM_STYLE__LABEL_FORMAT;
-            case SiriusPackage.BASIC_LABEL_STYLE__SHOW_ICON:
+            case ViewpointPackage.BASIC_LABEL_STYLE__SHOW_ICON:
                 return TreePackage.TREE_ITEM_STYLE__SHOW_ICON;
-            case SiriusPackage.BASIC_LABEL_STYLE__LABEL_COLOR:
+            case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR:
                 return TreePackage.TREE_ITEM_STYLE__LABEL_COLOR;
-            case SiriusPackage.BASIC_LABEL_STYLE__ICON_PATH:
+            case ViewpointPackage.BASIC_LABEL_STYLE__ICON_PATH:
                 return TreePackage.TREE_ITEM_STYLE__ICON_PATH;
             default:
                 return -1;
@@ -612,7 +609,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
         }
         if (baseClass == LabelStyle.class) {
             switch (baseFeatureID) {
-            case SiriusPackage.LABEL_STYLE__LABEL_ALIGNMENT:
+            case ViewpointPackage.LABEL_STYLE__LABEL_ALIGNMENT:
                 return TreePackage.TREE_ITEM_STYLE__LABEL_ALIGNMENT;
             default:
                 return -1;

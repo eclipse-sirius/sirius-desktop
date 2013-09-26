@@ -12,13 +12,12 @@ package org.eclipse.sirius.business.internal.helper.refresh;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.EdgeTarget;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 
 /**
  * This class is a filter criteria for edges.

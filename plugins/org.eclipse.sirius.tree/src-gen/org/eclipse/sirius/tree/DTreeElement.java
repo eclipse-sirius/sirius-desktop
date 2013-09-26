@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree;
 
-import org.eclipse.sirius.DRepresentationElement;
 import org.eclipse.sirius.tree.description.TreeMapping;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

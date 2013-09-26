@@ -18,8 +18,8 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
 
 /**
- * Reveal (un-hide) a {@link org.eclipse.sirius.DDiagramElement} from a
- * {@link org.eclipse.sirius.DDiagram}.
+ * Reveal (un-hide) a {@link org.eclipse.sirius.viewpoint.DDiagramElement} from a
+ * {@link org.eclipse.sirius.viewpoint.DDiagram}.
  * 
  * @author dlecan
  * @deprecated since 2.5,

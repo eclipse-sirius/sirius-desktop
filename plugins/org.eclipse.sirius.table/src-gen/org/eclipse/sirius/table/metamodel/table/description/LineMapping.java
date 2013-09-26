@@ -59,13 +59,13 @@ public interface LineMapping extends TableMapping, StyleUpdater {
      * 
      * @generated
      */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * Returns the value of the '<em><b>Owned Sub Lines</b></em>' containment
      * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}
-     * . <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Owned Sub Lines</em>' containment reference
      * list isn't clear, there really should be more of a description here...
@@ -83,8 +83,8 @@ public interface LineMapping extends TableMapping, StyleUpdater {
     /**
      * Returns the value of the '<em><b>Reused Sub Lines</b></em>' reference
      * list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}
-     * . It is bidirectional and its opposite is '
+     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}.
+     * It is bidirectional and its opposite is '
      * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedInMappings
      * <em>Reused In Mappings</em>}'. <!-- begin-user-doc -->
      * <p>
@@ -113,8 +113,7 @@ public interface LineMapping extends TableMapping, StyleUpdater {
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_DomainClass()
-     * @model dataType="org.eclipse.sirius.description.TypeName"
-     *        required="true"
+     * @model dataType="org.eclipse.sirius.description.TypeName" required="true"
      * @generated
      */
     String getDomainClass();
@@ -196,7 +195,8 @@ public interface LineMapping extends TableMapping, StyleUpdater {
      *         attribute.
      * @see #setSemanticCandidatesExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_SemanticCandidatesExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
@@ -231,7 +231,8 @@ public interface LineMapping extends TableMapping, StyleUpdater {
      * @return the value of the '<em>Header Label Expression</em>' attribute.
      * @see #setHeaderLabelExpression(String)
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getLineMapping_HeaderLabelExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'"
      * @generated
@@ -255,8 +256,8 @@ public interface LineMapping extends TableMapping, StyleUpdater {
     /**
      * Returns the value of the '<em><b>All Sub Lines</b></em>' reference list.
      * The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}
-     * . <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>All Sub Lines</em>' reference list isn't
      * clear, there really should be more of a description here...
@@ -273,8 +274,8 @@ public interface LineMapping extends TableMapping, StyleUpdater {
     /**
      * Returns the value of the '<em><b>Reused In Mappings</b></em>' reference
      * list. The list contents are of type
-     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}
-     * . It is bidirectional and its opposite is '
+     * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping}.
+     * It is bidirectional and its opposite is '
      * {@link org.eclipse.sirius.table.metamodel.table.description.LineMapping#getReusedSubLines
      * <em>Reused Sub Lines</em>}'. <!-- begin-user-doc -->
      * <p>

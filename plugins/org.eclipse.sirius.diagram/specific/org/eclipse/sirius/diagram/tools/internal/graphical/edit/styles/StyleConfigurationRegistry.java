@@ -25,25 +25,24 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.BundledImage;
-import org.eclipse.sirius.BundledImageShape;
-import org.eclipse.sirius.Square;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.WorkspaceImage;
 import org.eclipse.sirius.business.api.session.SessionManagerListener2;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.description.style.StyleDescription;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationProvider;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SafeStyleConfiguration;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.viewpoint.BundledImage;
+import org.eclipse.sirius.viewpoint.BundledImageShape;
+import org.eclipse.sirius.viewpoint.Square;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.WorkspaceImage;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
  * Registry of configurations.
@@ -115,8 +114,8 @@ public final class StyleConfigurationRegistry extends SessionManagerListener2.St
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry#getStyleConfiguration(org.eclipse.sirius.description.DiagramElementMapping,
-     *      org.eclipse.sirius.Style)
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry#getStyleConfiguration(org.eclipse.sirius.viewpoint.description.DiagramElementMapping,
+     *      org.eclipse.sirius.viewpoint.Style)
      */
     public StyleConfiguration getStyleConfiguration(final DiagramElementMapping vpElementMapping, final Style style) {
         StyleConfiguration result = new SimpleStyleConfiguration();
@@ -298,10 +297,10 @@ public final class StyleConfigurationRegistry extends SessionManagerListener2.St
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointDeselected(org.eclipse.sirius.description.Sirius)
+     * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointDeselected(org.eclipse.sirius.viewpoint.description.Viewpoint)
      */
     @Override
-    public void viewpointDeselected(final Sirius deselectedSirius) {
+    public void viewpointDeselected(final Viewpoint deselectedSirius) {
         final Set<StyleWrapper> styleWrappersToDelete = new HashSet<StyleWrapper>();
         for (StyleWrapper wrapper : styleToConfig.keySet()) {
             if (EcoreUtil.isAncestor(deselectedSirius, wrapper.getVpElementMapping())) {

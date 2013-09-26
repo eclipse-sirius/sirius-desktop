@@ -16,9 +16,8 @@ import java.util.Map;
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.FigureUtilities;
 import org.eclipse.swt.graphics.Color;
-
-import org.eclipse.sirius.RGBValues;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.RGBValues;
 
 /**
  * Manage the color in complement to {@link VisualBindingManager} with use of

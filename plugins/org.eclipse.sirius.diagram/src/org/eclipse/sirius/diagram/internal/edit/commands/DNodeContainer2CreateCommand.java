@@ -15,8 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.emf.type.core.commands.CreateElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * @was-generated
@@ -45,6 +44,6 @@ public class DNodeContainer2CreateCommand extends CreateElementCommand {
      * @was-generated
      */
     protected EClass getEClassToEdit() {
-        return SiriusPackage.eINSTANCE.getDNodeContainer();
+        return ViewpointPackage.eINSTANCE.getDNodeContainer();
     }
 }

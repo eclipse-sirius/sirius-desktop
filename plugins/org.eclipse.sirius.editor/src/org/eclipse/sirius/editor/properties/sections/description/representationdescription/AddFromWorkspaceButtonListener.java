@@ -15,12 +15,11 @@ import java.util.List;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.sirius.common.ui.tools.api.resource.WorkspaceResourceDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Shell;
-
-import org.eclipse.sirius.common.ui.tools.api.resource.WorkspaceResourceDialog;
 
 /**
  * A {@link SelectionAdapter} to open a {@link WorkspaceResourceDialog} for

@@ -11,8 +11,7 @@
 package org.eclipse.sirius.table.ui.tools.internal.properties.propertysource;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.description.ColorDescription;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
  * A specific PropertySource for the

@@ -35,9 +35,9 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.modelingproject.manager.AttachSemanticResourcesJob;
 import org.eclipse.sirius.business.internal.modelingproject.manager.DetachSemanticResourcesJob;
 import org.eclipse.sirius.business.internal.modelingproject.manager.InitializeModelingProjectJob;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.ModelingProjectFileQuery;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * A workspace resource listener to automatically add files loadable as emf

@@ -37,12 +37,6 @@ import org.eclipse.ui.IWorkbenchPage;
 
 import com.google.common.collect.Iterables;
 
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.EdgeStyle;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.WorkspaceImage;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
@@ -51,6 +45,12 @@ import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.tools.internal.commands.ResetStylePropertiesToDefaultValuesCommand;
 import org.eclipse.sirius.diagram.tools.internal.commands.UpdateGMFEdgeStyleCommand;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.EdgeStyle;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.WorkspaceImage;
 
 /**
  * This action reset the style properties to their default values as defined in

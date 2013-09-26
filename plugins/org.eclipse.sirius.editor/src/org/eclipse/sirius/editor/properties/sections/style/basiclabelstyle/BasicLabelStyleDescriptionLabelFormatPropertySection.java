@@ -23,6 +23,12 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxGroupPropertySection;
+import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
@@ -31,13 +37,6 @@ import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.eclipse.sirius.FontFormat;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.description.style.BasicLabelStyleDescription;
-import org.eclipse.sirius.description.style.StylePackage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxGroupPropertySection;
 
 /**
  * A section for the font label.
@@ -179,7 +178,7 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySection extends Abstra
     }
 
     protected EEnum getFeatures() {
-        return SiriusPackage.eINSTANCE.getFontFormat();
+        return ViewpointPackage.eINSTANCE.getFontFormat();
 
     }
 
@@ -261,7 +260,7 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySection extends Abstra
 
     protected EAttribute getAttribute() {
         EAttribute attribute = null;
-        for (EAttribute eAttribute : SiriusPackage.eINSTANCE.getBasicLabelStyle().getEAllAttributes()) {
+        for (EAttribute eAttribute : ViewpointPackage.eINSTANCE.getBasicLabelStyle().getEAllAttributes()) {
             if (eAttribute.getEType().equals(getFeatures())) {
                 attribute = eAttribute;
                 break;

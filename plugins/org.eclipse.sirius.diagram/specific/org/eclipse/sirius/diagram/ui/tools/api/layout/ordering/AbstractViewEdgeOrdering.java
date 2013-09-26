@@ -11,9 +11,8 @@
 package org.eclipse.sirius.diagram.ui.tools.api.layout.ordering;
 
 import org.eclipse.gmf.runtime.notation.Edge;
-
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.EdgeTarget;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
 
 /**
  * This class orders a list of {@link DEdge}s.

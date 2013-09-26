@@ -63,13 +63,13 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.graphical.figures.SiriusLayoutHelper;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
 
 /**
  * Manage the LayoutData during node creation or drag'n'drop.
@@ -383,7 +383,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getData(org.eclipse.sirius.AbstractDNode)
+     * @see org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager#getData(org.eclipse.sirius.viewpoint.AbstractDNode)
      */
     public LayoutData getData(final AbstractDNode node) {
         return getData(node, false);

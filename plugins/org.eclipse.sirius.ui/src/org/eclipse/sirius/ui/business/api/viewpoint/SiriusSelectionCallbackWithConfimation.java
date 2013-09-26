@@ -24,11 +24,11 @@ import com.google.common.collect.Sets;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Asks the user for confirmation when de-selecting a viewpoint if there are
@@ -49,7 +49,7 @@ public class SiriusSelectionCallbackWithConfimation extends SiriusSelectionCallb
      * {@inheritDoc}
      */
     @Override
-    public void deselectSirius(Sirius deselectedSirius, Session session) {
+    public void deselectSirius(Viewpoint deselectedSirius, Session session) {
         IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
         Collection<IEditorPart> openedEditors = Sets.newHashSet();
         if (editingSession != null) {
@@ -63,7 +63,7 @@ public class SiriusSelectionCallbackWithConfimation extends SiriusSelectionCallb
         }
     }
 
-    private boolean userConfirmsDeselection(Sirius deselectedSirius, Collection<IEditorPart> openedEditors) {
+    private boolean userConfirmsDeselection(Viewpoint deselectedSirius, Collection<IEditorPart> openedEditors) {
         StringBuilder builder = new StringBuilder();
         for (IEditorPart iEditorPart : openedEditors) {
             builder.append(iEditorPart.getTitle());
@@ -79,7 +79,7 @@ public class SiriusSelectionCallbackWithConfimation extends SiriusSelectionCallb
         return confirmation.get();
     }
 
-    private Collection<IEditorPart> getConcernedEditors(Sirius viewpoint, Collection<? extends IEditorPart> editors) {
+    private Collection<IEditorPart> getConcernedEditors(Viewpoint viewpoint, Collection<? extends IEditorPart> editors) {
         Collection<IEditorPart> result = Sets.newHashSet();
         for (RepresentationDescription representationDescription : new SiriusQuery(viewpoint).getAllRepresentationDescriptions()) {
             for (IEditorPart editor : editors) {

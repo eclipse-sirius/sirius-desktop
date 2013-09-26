@@ -12,8 +12,8 @@ package org.eclipse.sirius.diagram.business.api.view.refresh;
 
 /**
  * A canonical synchronizer is in charge of applying changes made on
- * {@link org.eclipse.sirius.DDiagramElement} or
- * {@link org.eclipse.sirius.DSemanticDiagram} to the GMF annotation model.
+ * {@link org.eclipse.sirius.viewpoint.DDiagramElement} or
+ * {@link org.eclipse.sirius.viewpoint.DSemanticDiagram} to the GMF annotation model.
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 

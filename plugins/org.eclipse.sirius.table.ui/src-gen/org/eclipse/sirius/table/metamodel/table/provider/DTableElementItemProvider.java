@@ -23,15 +23,14 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-import org.eclipse.sirius.provider.DRepresentationElementItemProvider;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
+import org.eclipse.sirius.viewpoint.provider.DRepresentationElementItemProvider;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.table.metamodel.table.DTableElement} object.
- * <!-- begin-user-doc --> <!-- end-user-doc -->
+ * {@link org.eclipse.sirius.table.metamodel.table.DTableElement} object. <!--
+ * begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
@@ -42,7 +41,7 @@ public class DTableElementItemProvider extends DRepresentationElementItemProvide
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * This constructs an instance from a factory and a notifier. <!--

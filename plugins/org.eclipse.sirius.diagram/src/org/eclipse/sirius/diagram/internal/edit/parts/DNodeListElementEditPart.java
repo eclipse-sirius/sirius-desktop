@@ -31,10 +31,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.LabelAlignment;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.diagram.business.internal.edit.helpers.LabelAlignmentHelper;
 import org.eclipse.sirius.diagram.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
@@ -49,6 +45,9 @@ import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.LabelAlignment;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * @was-generated
@@ -199,7 +198,7 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
         }
 
         Object feature = notification.getFeature();
-        if (SiriusPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle() == feature) {
+        if (ViewpointPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle() == feature) {
             refreshVisuals();
         }
         super.handleNotificationEvent(notification);

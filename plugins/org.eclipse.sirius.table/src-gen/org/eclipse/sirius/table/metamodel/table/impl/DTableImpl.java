@@ -19,16 +19,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.ExtensibleRepresentation;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.contribution.ContributionPoint;
-import org.eclipse.sirius.impl.DRepresentationImpl;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
@@ -37,6 +29,9 @@ import org.eclipse.sirius.table.metamodel.table.DTableElementUpdater;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -47,15 +42,8 @@ import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableImpl#getTarget
  * <em>Target</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableImpl#getLines
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DTableImpl#getLines
  * <em>Lines</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableImpl#getEffectiveDescription
- * <em>Effective Description</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableImpl#getContributionPoints
- * <em>Contribution Points</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableImpl#getColumns
  * <em>Columns</em>}</li>
@@ -76,7 +64,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
@@ -97,28 +85,6 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
      * @ordered
      */
     protected EList<DLine> lines;
-
-    /**
-     * The cached value of the '{@link #getEffectiveDescription()
-     * <em>Effective Description</em>}' containment reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getEffectiveDescription()
-     * @generated
-     * @ordered
-     */
-    protected RepresentationDescription effectiveDescription;
-
-    /**
-     * The cached value of the '{@link #getContributionPoints()
-     * <em>Contribution Points</em>}' containment reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getContributionPoints()
-     * @generated
-     * @ordered
-     */
-    protected EList<ContributionPoint> contributionPoints;
 
     /**
      * The cached value of the '{@link #getColumns() <em>Columns</em>}'
@@ -286,88 +252,6 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
      * 
      * @generated
      */
-    public RepresentationDescription getEffectiveDescription() {
-        if (effectiveDescription != null && effectiveDescription.eIsProxy()) {
-            InternalEObject oldEffectiveDescription = (InternalEObject) effectiveDescription;
-            effectiveDescription = (RepresentationDescription) eResolveProxy(oldEffectiveDescription);
-            if (effectiveDescription != oldEffectiveDescription) {
-                InternalEObject newEffectiveDescription = (InternalEObject) effectiveDescription;
-                NotificationChain msgs = oldEffectiveDescription.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TablePackage.DTABLE__EFFECTIVE_DESCRIPTION, null, null);
-                if (newEffectiveDescription.eInternalContainer() == null) {
-                    msgs = newEffectiveDescription.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TablePackage.DTABLE__EFFECTIVE_DESCRIPTION, null, msgs);
-                }
-                if (msgs != null)
-                    msgs.dispatch();
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, TablePackage.DTABLE__EFFECTIVE_DESCRIPTION, oldEffectiveDescription, effectiveDescription));
-            }
-        }
-        return effectiveDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public RepresentationDescription basicGetEffectiveDescription() {
-        return effectiveDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NotificationChain basicSetEffectiveDescription(RepresentationDescription newEffectiveDescription, NotificationChain msgs) {
-        RepresentationDescription oldEffectiveDescription = effectiveDescription;
-        effectiveDescription = newEffectiveDescription;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE__EFFECTIVE_DESCRIPTION, oldEffectiveDescription, newEffectiveDescription);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
-        }
-        return msgs;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setEffectiveDescription(RepresentationDescription newEffectiveDescription) {
-        if (newEffectiveDescription != effectiveDescription) {
-            NotificationChain msgs = null;
-            if (effectiveDescription != null)
-                msgs = ((InternalEObject) effectiveDescription).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TablePackage.DTABLE__EFFECTIVE_DESCRIPTION, null, msgs);
-            if (newEffectiveDescription != null)
-                msgs = ((InternalEObject) newEffectiveDescription).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TablePackage.DTABLE__EFFECTIVE_DESCRIPTION, null, msgs);
-            msgs = basicSetEffectiveDescription(newEffectiveDescription, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE__EFFECTIVE_DESCRIPTION, newEffectiveDescription, newEffectiveDescription));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EList<ContributionPoint> getContributionPoints() {
-        if (contributionPoints == null) {
-            contributionPoints = new EObjectContainmentEList.Resolving<ContributionPoint>(ContributionPoint.class, this, TablePackage.DTABLE__CONTRIBUTION_POINTS);
-        }
-        return contributionPoints;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public int getHeaderColumnWidth() {
         return headerColumnWidth;
     }
@@ -433,10 +317,6 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
         switch (featureID) {
         case TablePackage.DTABLE__LINES:
             return ((InternalEList<?>) getLines()).basicRemove(otherEnd, msgs);
-        case TablePackage.DTABLE__EFFECTIVE_DESCRIPTION:
-            return basicSetEffectiveDescription(null, msgs);
-        case TablePackage.DTABLE__CONTRIBUTION_POINTS:
-            return ((InternalEList<?>) getContributionPoints()).basicRemove(otherEnd, msgs);
         case TablePackage.DTABLE__COLUMNS:
             return ((InternalEList<?>) getColumns()).basicRemove(otherEnd, msgs);
         }
@@ -457,12 +337,6 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
             return basicGetTarget();
         case TablePackage.DTABLE__LINES:
             return getLines();
-        case TablePackage.DTABLE__EFFECTIVE_DESCRIPTION:
-            if (resolve)
-                return getEffectiveDescription();
-            return basicGetEffectiveDescription();
-        case TablePackage.DTABLE__CONTRIBUTION_POINTS:
-            return getContributionPoints();
         case TablePackage.DTABLE__COLUMNS:
             return getColumns();
         case TablePackage.DTABLE__HEADER_COLUMN_WIDTH:
@@ -490,13 +364,6 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
         case TablePackage.DTABLE__LINES:
             getLines().clear();
             getLines().addAll((Collection<? extends DLine>) newValue);
-            return;
-        case TablePackage.DTABLE__EFFECTIVE_DESCRIPTION:
-            setEffectiveDescription((RepresentationDescription) newValue);
-            return;
-        case TablePackage.DTABLE__CONTRIBUTION_POINTS:
-            getContributionPoints().clear();
-            getContributionPoints().addAll((Collection<? extends ContributionPoint>) newValue);
             return;
         case TablePackage.DTABLE__COLUMNS:
             getColumns().clear();
@@ -526,12 +393,6 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
         case TablePackage.DTABLE__LINES:
             getLines().clear();
             return;
-        case TablePackage.DTABLE__EFFECTIVE_DESCRIPTION:
-            setEffectiveDescription((RepresentationDescription) null);
-            return;
-        case TablePackage.DTABLE__CONTRIBUTION_POINTS:
-            getContributionPoints().clear();
-            return;
         case TablePackage.DTABLE__COLUMNS:
             getColumns().clear();
             return;
@@ -557,10 +418,6 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
             return target != null;
         case TablePackage.DTABLE__LINES:
             return lines != null && !lines.isEmpty();
-        case TablePackage.DTABLE__EFFECTIVE_DESCRIPTION:
-            return effectiveDescription != null;
-        case TablePackage.DTABLE__CONTRIBUTION_POINTS:
-            return contributionPoints != null && !contributionPoints.isEmpty();
         case TablePackage.DTABLE__COLUMNS:
             return columns != null && !columns.isEmpty();
         case TablePackage.DTABLE__HEADER_COLUMN_WIDTH:
@@ -581,7 +438,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
         if (baseClass == DSemanticDecorator.class) {
             switch (derivedFeatureID) {
             case TablePackage.DTABLE__TARGET:
-                return SiriusPackage.DSEMANTIC_DECORATOR__TARGET;
+                return ViewpointPackage.DSEMANTIC_DECORATOR__TARGET;
             default:
                 return -1;
             }
@@ -600,16 +457,6 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
                 return -1;
             }
         }
-        if (baseClass == ExtensibleRepresentation.class) {
-            switch (derivedFeatureID) {
-            case TablePackage.DTABLE__EFFECTIVE_DESCRIPTION:
-                return SiriusPackage.EXTENSIBLE_REPRESENTATION__EFFECTIVE_DESCRIPTION;
-            case TablePackage.DTABLE__CONTRIBUTION_POINTS:
-                return SiriusPackage.EXTENSIBLE_REPRESENTATION__CONTRIBUTION_POINTS;
-            default:
-                return -1;
-            }
-        }
         return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
     }
 
@@ -622,7 +469,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == DSemanticDecorator.class) {
             switch (baseFeatureID) {
-            case SiriusPackage.DSEMANTIC_DECORATOR__TARGET:
+            case ViewpointPackage.DSEMANTIC_DECORATOR__TARGET:
                 return TablePackage.DTABLE__TARGET;
             default:
                 return -1;
@@ -638,16 +485,6 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
         }
         if (baseClass == DTableElementUpdater.class) {
             switch (baseFeatureID) {
-            default:
-                return -1;
-            }
-        }
-        if (baseClass == ExtensibleRepresentation.class) {
-            switch (baseFeatureID) {
-            case SiriusPackage.EXTENSIBLE_REPRESENTATION__EFFECTIVE_DESCRIPTION:
-                return TablePackage.DTABLE__EFFECTIVE_DESCRIPTION;
-            case SiriusPackage.EXTENSIBLE_REPRESENTATION__CONTRIBUTION_POINTS:
-                return TablePackage.DTABLE__CONTRIBUTION_POINTS;
             default:
                 return -1;
             }

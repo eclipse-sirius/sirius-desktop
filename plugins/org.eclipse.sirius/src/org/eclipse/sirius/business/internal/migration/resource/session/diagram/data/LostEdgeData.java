@@ -10,12 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.migration.resource.session.diagram.data;
 
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.EdgeTarget;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
  * Class to handle lost edge data.

@@ -26,16 +26,16 @@ import com.google.common.collect.Iterables;
 
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.ImageProvider;
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.description.AdditionalLayer;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.Layer;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.LayersActivationAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.layers.LayersActivationAdapter;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.AdditionalLayer;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.Layer;
 
 /**
  * Contribute a menu to tab bar to activate and deactivate layers.
@@ -80,7 +80,7 @@ public class LayersContribution extends AbstractMenuContributionItem {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.AbstractTabbarContribution#setDiagram(org.eclipse.sirius.DDiagram)
+     * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.AbstractTabbarContribution#setDiagram(org.eclipse.sirius.viewpoint.DDiagram)
      */
     @Override
     protected void setDiagram(DDiagram diagram) {

@@ -19,9 +19,8 @@ import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
-
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * A DiagramLayoutData is the <i>root</i> of an LayoutDataHint.

@@ -13,9 +13,8 @@ package org.eclipse.sirius.editor.wizards;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.IWorkbench;
-
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
+import org.eclipse.ui.IWorkbench;
 
 /**
  * This is a simple wizard for creating a new model file.

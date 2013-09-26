@@ -19,13 +19,12 @@ import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.type.core.commands.CreateElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.EdgeTarget;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.diagram.internal.edit.policies.SiriusBaseItemSemanticEditPolicy;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * @was-generated
@@ -55,7 +54,7 @@ public class DEdgeCreateCommand extends CreateElementCommand {
         this.source = source;
         this.target = target;
         if (request.getContainmentFeature() == null) {
-            setContainmentFeature(SiriusPackage.eINSTANCE.getDDiagram_OwnedDiagramElements());
+            setContainmentFeature(ViewpointPackage.eINSTANCE.getDDiagram_OwnedDiagramElements());
         }
 
         // Find container element for the new link.
@@ -98,7 +97,7 @@ public class DEdgeCreateCommand extends CreateElementCommand {
      */
     protected EObject doDefaultElementCreation() {
         // org.eclipse.sirius.DEdge newElement = (org.eclipse.sirius.DEdge) super.doDefaultElementCreation();
-        DEdge newElement = SiriusFactory.eINSTANCE.createDEdge();
+        DEdge newElement = ViewpointFactory.eINSTANCE.createDEdge();
         getContainer().getOwnedDiagramElements().add(newElement);
         newElement.setSourceNode(getSource());
         newElement.setTargetNode(getTarget());
@@ -109,7 +108,7 @@ public class DEdgeCreateCommand extends CreateElementCommand {
      * @was-generated
      */
     protected EClass getEClassToEdit() {
-        return SiriusPackage.eINSTANCE.getDDiagram();
+        return ViewpointPackage.eINSTANCE.getDDiagram();
     }
 
     /**

@@ -25,11 +25,10 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A {@link Job} to detach semantic resource removed to a modeling project.

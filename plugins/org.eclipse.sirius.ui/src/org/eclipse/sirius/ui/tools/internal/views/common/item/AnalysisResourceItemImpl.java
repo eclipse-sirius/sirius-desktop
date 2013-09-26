@@ -23,8 +23,8 @@ import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Resource item wrapper class.
@@ -153,7 +153,7 @@ public class AnalysisResourceItemImpl implements org.eclipse.sirius.ui.tools.api
     public Collection<?> getChildren() {
         final List<SiriusItemImpl> all = Lists.newArrayList();
         if (resource != null) {
-            for (final Sirius viewpoint : session.getSelectedSiriuss(false)) {
+            for (final Viewpoint viewpoint : session.getSelectedSiriuss(false)) {
                 all.add(new SiriusItemImpl(session, viewpoint, resource, linkChildrenToParentMode ? parent : this));
             }
             Collections.sort(all);

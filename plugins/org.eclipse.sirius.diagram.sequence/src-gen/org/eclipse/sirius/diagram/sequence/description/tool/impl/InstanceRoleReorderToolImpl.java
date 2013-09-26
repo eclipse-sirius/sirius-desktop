@@ -19,13 +19,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
-import org.eclipse.sirius.description.tool.ElementVariable;
-import org.eclipse.sirius.description.tool.InitialOperation;
-import org.eclipse.sirius.description.tool.impl.AbstractToolDescriptionImpl;
 import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.ElementVariable;
+import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
+import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

@@ -18,13 +18,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.EdgeTarget;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
@@ -32,20 +26,25 @@ import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.internal.helper.task.operations.SetValueTask;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.tool.AbstractVariable;
-import org.eclipse.sirius.description.tool.ReconnectEdgeDescription;
-import org.eclipse.sirius.description.tool.ReconnectionKind;
-import org.eclipse.sirius.description.tool.SetObject;
-import org.eclipse.sirius.description.tool.SubVariable;
-import org.eclipse.sirius.description.tool.ToolFactory;
-import org.eclipse.sirius.description.tool.impl.ElementSelectVariableImpl;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tools.internal.command.reconnect.ReconnectSourceNodeCommand;
 import org.eclipse.sirius.tools.internal.command.reconnect.SetEdgeActualMappingCommand;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ReconnectionKind;
+import org.eclipse.sirius.viewpoint.description.tool.SetObject;
+import org.eclipse.sirius.viewpoint.description.tool.SubVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
+import org.eclipse.sirius.viewpoint.description.tool.impl.ElementSelectVariableImpl;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 
@@ -269,7 +268,7 @@ public class ReconnectionCommandBuilder extends AbstractCommandBuilder {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.description.tool.impl.AbstractVariableImpl#getName()
+         * @see org.eclipse.sirius.viewpoint.description.tool.impl.AbstractVariableImpl#getName()
          */
         @Override
         public String getName() {

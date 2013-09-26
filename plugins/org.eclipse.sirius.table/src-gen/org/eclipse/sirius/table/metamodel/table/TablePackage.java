@@ -14,8 +14,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains
@@ -38,7 +37,7 @@ public interface TablePackage extends EPackage {
      * 
      * @generated
      */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -87,7 +86,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE__DOCUMENTATION = SiriusPackage.DREPRESENTATION__DOCUMENTATION;
+    int DTABLE__DOCUMENTATION = ViewpointPackage.DREPRESENTATION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>EAnnotations</b></em>' containment
@@ -96,7 +95,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE__EANNOTATIONS = SiriusPackage.DREPRESENTATION__EANNOTATIONS;
+    int DTABLE__EANNOTATIONS = ViewpointPackage.DREPRESENTATION__EANNOTATIONS;
 
     /**
      * The feature id for the '<em><b>Owned Representation Elements</b></em>'
@@ -105,7 +104,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE__OWNED_REPRESENTATION_ELEMENTS = SiriusPackage.DREPRESENTATION__OWNED_REPRESENTATION_ELEMENTS;
+    int DTABLE__OWNED_REPRESENTATION_ELEMENTS = ViewpointPackage.DREPRESENTATION__OWNED_REPRESENTATION_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Representation Elements</b></em>'
@@ -114,7 +113,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE__REPRESENTATION_ELEMENTS = SiriusPackage.DREPRESENTATION__REPRESENTATION_ELEMENTS;
+    int DTABLE__REPRESENTATION_ELEMENTS = ViewpointPackage.DREPRESENTATION__REPRESENTATION_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -123,7 +122,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE__NAME = SiriusPackage.DREPRESENTATION__NAME;
+    int DTABLE__NAME = ViewpointPackage.DREPRESENTATION__NAME;
 
     /**
      * The feature id for the '<em><b>Owned Annotation Entries</b></em>'
@@ -132,7 +131,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE__OWNED_ANNOTATION_ENTRIES = SiriusPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES;
+    int DTABLE__OWNED_ANNOTATION_ENTRIES = ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -141,7 +140,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE__TARGET = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 0;
+    int DTABLE__TARGET = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Lines</b></em>' containment reference
@@ -150,25 +149,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE__LINES = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 1;
-
-    /**
-     * The feature id for the '<em><b>Effective Description</b></em>'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DTABLE__EFFECTIVE_DESCRIPTION = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 2;
-
-    /**
-     * The feature id for the '<em><b>Contribution Points</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DTABLE__CONTRIBUTION_POINTS = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 3;
+    int DTABLE__LINES = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Columns</b></em>' containment reference
@@ -177,7 +158,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE__COLUMNS = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 4;
+    int DTABLE__COLUMNS = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Header Column Width</b></em>' attribute.
@@ -186,7 +167,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE__HEADER_COLUMN_WIDTH = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 5;
+    int DTABLE__HEADER_COLUMN_WIDTH = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!--
@@ -195,7 +176,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE__DESCRIPTION = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 6;
+    int DTABLE__DESCRIPTION = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 4;
 
     /**
      * The number of structural features of the '<em>DTable</em>' class. <!--
@@ -204,7 +185,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE_FEATURE_COUNT = SiriusPackage.DREPRESENTATION_FEATURE_COUNT + 7;
+    int DTABLE_FEATURE_COUNT = ViewpointPackage.DREPRESENTATION_FEATURE_COUNT + 5;
 
     /**
      * The meta object id for the '
@@ -246,7 +227,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE_ELEMENT__TARGET = SiriusPackage.DREPRESENTATION_ELEMENT__TARGET;
+    int DTABLE_ELEMENT__TARGET = ViewpointPackage.DREPRESENTATION_ELEMENT__TARGET;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -255,7 +236,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE_ELEMENT__NAME = SiriusPackage.DREPRESENTATION_ELEMENT__NAME;
+    int DTABLE_ELEMENT__NAME = ViewpointPackage.DREPRESENTATION_ELEMENT__NAME;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
@@ -264,7 +245,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE_ELEMENT__SEMANTIC_ELEMENTS = SiriusPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS;
+    int DTABLE_ELEMENT__SEMANTIC_ELEMENTS = ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Table Element Mapping</b></em>' reference.
@@ -273,7 +254,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE_ELEMENT__TABLE_ELEMENT_MAPPING = SiriusPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 0;
+    int DTABLE_ELEMENT__TABLE_ELEMENT_MAPPING = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>DTable Element</em>' class.
@@ -282,7 +263,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE_ELEMENT_FEATURE_COUNT = SiriusPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 1;
+    int DTABLE_ELEMENT_FEATURE_COUNT = ViewpointPackage.DREPRESENTATION_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -303,7 +284,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_CONTAINER__TARGET = SiriusPackage.DSEMANTIC_DECORATOR__TARGET;
+    int LINE_CONTAINER__TARGET = ViewpointPackage.DSEMANTIC_DECORATOR__TARGET;
 
     /**
      * The feature id for the '<em><b>Lines</b></em>' containment reference
@@ -312,7 +293,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_CONTAINER__LINES = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 0;
+    int LINE_CONTAINER__LINES = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '<em>Line Container</em>' class.
@@ -321,7 +302,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LINE_CONTAINER_FEATURE_COUNT = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 1;
+    int LINE_CONTAINER_FEATURE_COUNT = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -478,7 +459,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCELL__TARGET = SiriusPackage.DSEMANTIC_DECORATOR__TARGET;
+    int DCELL__TARGET = ViewpointPackage.DSEMANTIC_DECORATOR__TARGET;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -487,7 +468,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCELL__NAME = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 0;
+    int DCELL__NAME = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
@@ -496,7 +477,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCELL__SEMANTIC_ELEMENTS = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 1;
+    int DCELL__SEMANTIC_ELEMENTS = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Table Element Mapping</b></em>' reference.
@@ -505,7 +486,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCELL__TABLE_ELEMENT_MAPPING = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 2;
+    int DCELL__TABLE_ELEMENT_MAPPING = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -514,7 +495,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCELL__LABEL = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 3;
+    int DCELL__LABEL = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Line</b></em>' container reference. <!--
@@ -523,7 +504,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCELL__LINE = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 4;
+    int DCELL__LINE = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Column</b></em>' reference. <!--
@@ -532,7 +513,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCELL__COLUMN = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 5;
+    int DCELL__COLUMN = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Current Style</b></em>' containment
@@ -541,7 +522,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCELL__CURRENT_STYLE = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 6;
+    int DCELL__CURRENT_STYLE = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Updater</b></em>' reference. <!--
@@ -550,7 +531,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCELL__UPDATER = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 7;
+    int DCELL__UPDATER = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Intersection Mapping</b></em>' reference.
@@ -559,7 +540,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCELL__INTERSECTION_MAPPING = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 8;
+    int DCELL__INTERSECTION_MAPPING = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 8;
 
     /**
      * The number of structural features of the '<em>DCell</em>' class. <!--
@@ -568,7 +549,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DCELL_FEATURE_COUNT = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 9;
+    int DCELL_FEATURE_COUNT = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 9;
 
     /**
      * The meta object id for the '
@@ -885,7 +866,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTARGET_COLUMN__TARGET = SiriusPackage.DSEMANTIC_DECORATOR__TARGET;
+    int DTARGET_COLUMN__TARGET = ViewpointPackage.DSEMANTIC_DECORATOR__TARGET;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -894,7 +875,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTARGET_COLUMN__NAME = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 0;
+    int DTARGET_COLUMN__NAME = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' reference
@@ -903,7 +884,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTARGET_COLUMN__SEMANTIC_ELEMENTS = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 1;
+    int DTARGET_COLUMN__SEMANTIC_ELEMENTS = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Table Element Mapping</b></em>' reference.
@@ -912,7 +893,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTARGET_COLUMN__TABLE_ELEMENT_MAPPING = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 2;
+    int DTARGET_COLUMN__TABLE_ELEMENT_MAPPING = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -921,7 +902,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTARGET_COLUMN__LABEL = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 3;
+    int DTARGET_COLUMN__LABEL = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Cells</b></em>' reference list. <!--
@@ -930,7 +911,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTARGET_COLUMN__CELLS = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 4;
+    int DTARGET_COLUMN__CELLS = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Origin Mapping</b></em>' reference. <!--
@@ -939,7 +920,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTARGET_COLUMN__ORIGIN_MAPPING = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 5;
+    int DTARGET_COLUMN__ORIGIN_MAPPING = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Table</b></em>' container reference. <!--
@@ -948,7 +929,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTARGET_COLUMN__TABLE = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 6;
+    int DTARGET_COLUMN__TABLE = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Ordered Cells</b></em>' reference list.
@@ -957,7 +938,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTARGET_COLUMN__ORDERED_CELLS = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 7;
+    int DTARGET_COLUMN__ORDERED_CELLS = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Visible</b></em>' attribute. <!--
@@ -966,7 +947,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTARGET_COLUMN__VISIBLE = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 8;
+    int DTARGET_COLUMN__VISIBLE = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
@@ -975,7 +956,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTARGET_COLUMN__WIDTH = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 9;
+    int DTARGET_COLUMN__WIDTH = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Current Style</b></em>' containment
@@ -984,7 +965,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTARGET_COLUMN__CURRENT_STYLE = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 10;
+    int DTARGET_COLUMN__CURRENT_STYLE = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 10;
 
     /**
      * The number of structural features of the '<em>DTarget Column</em>' class.
@@ -993,7 +974,7 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTARGET_COLUMN_FEATURE_COUNT = SiriusPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 11;
+    int DTARGET_COLUMN_FEATURE_COUNT = ViewpointPackage.DSEMANTIC_DECORATOR_FEATURE_COUNT + 11;
 
     /**
      * The meta object id for the '
@@ -1157,8 +1138,8 @@ public interface TablePackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.DTable
-     * <em>DTable</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.table.metamodel.table.DTable <em>DTable</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>DTable</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DTable
@@ -1267,8 +1248,8 @@ public interface TablePackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.DLine <em>DLine</em>}
-     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.table.metamodel.table.DLine <em>DLine</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>DLine</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DLine
@@ -1376,8 +1357,8 @@ public interface TablePackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.DCell <em>DCell</em>}
-     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.table.metamodel.table.DCell <em>DCell</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>DCell</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DCell
@@ -1501,8 +1482,8 @@ public interface TablePackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.table.metamodel.table.DColumn
-     * <em>DColumn</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.table.metamodel.table.DColumn <em>DColumn</em>}
+     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>DColumn</em>'.
      * @see org.eclipse.sirius.table.metamodel.table.DColumn

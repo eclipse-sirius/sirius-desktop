@@ -13,10 +13,9 @@ package org.eclipse.sirius.editor.tools.internal.presentation;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.RepresentationTemplate;
 import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 
 /**
  * Class responsible for triggering the representation templates updates when

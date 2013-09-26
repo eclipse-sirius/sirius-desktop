@@ -12,10 +12,9 @@ package org.eclipse.sirius.diagram.ui.tools.internal.layout.diagram;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.NodeLayoutDataKey;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * Kind of key use to store the layout data corresponding to an

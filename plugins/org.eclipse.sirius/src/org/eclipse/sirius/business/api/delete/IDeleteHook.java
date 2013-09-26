@@ -14,8 +14,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IStatus;
-
-import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Extension of delete hook extension point should implements this interface.

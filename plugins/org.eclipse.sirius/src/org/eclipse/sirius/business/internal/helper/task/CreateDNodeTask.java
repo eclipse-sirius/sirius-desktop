@@ -16,15 +16,7 @@ import java.util.Collections;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.ArrangeConstraint;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.DragAndDropTarget;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
@@ -35,16 +27,23 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.experimental.sync.AbstractDNodeCandidate;
 import org.eclipse.sirius.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.refresh.BestMappingGetter;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.ArrangeConstraint;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.DragAndDropTarget;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
- * This task create {@link org.eclipse.sirius.DNode} and/or
- * {@link org.eclipse.sirius.DNodeListElement}.
+ * This task create {@link org.eclipse.sirius.viewpoint.DNode} and/or
+ * {@link org.eclipse.sirius.viewpoint.DNodeListElement}.
  * 
  * @author mchauvin
  * @author cbrun

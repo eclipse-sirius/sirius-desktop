@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.api.graphical.edit.styles;
 
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
  * A provider of style configuration.

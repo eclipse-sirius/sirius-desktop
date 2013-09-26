@@ -14,11 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.NodeLayoutData;
@@ -27,6 +22,10 @@ import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.AdvancedSiriusLayoutDataManager;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * SiriusLayoutDataManager drives by the semantic elements (EObject). Use for
@@ -118,7 +117,7 @@ public class SiriusLayoutDataManagerForSemanticElements extends AbstractSiriusLa
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#createKey(org.eclipse.sirius.DSemanticDecorator)
+     * @see org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager#createKey(org.eclipse.sirius.viewpoint.DSemanticDecorator)
      */
     public LayoutDataKey createKey(final DSemanticDecorator semanticDecorator) {
         LayoutDataKey result = null;

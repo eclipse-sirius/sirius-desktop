@@ -16,13 +16,12 @@ import java.util.Map;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Stateless services.
@@ -40,7 +39,7 @@ public interface DialectServices {
      *            the selected semantic element.
      * @return a collection of all the applicable descriptions.
      */
-    Collection<RepresentationDescription> getAvailableRepresentationDescriptions(Collection<Sirius> vps, EObject semantic);
+    Collection<RepresentationDescription> getAvailableRepresentationDescriptions(Collection<Viewpoint> vps, EObject semantic);
 
     /**
      * Create a new representation using the representation description and keep
@@ -192,10 +191,10 @@ public interface DialectServices {
      * @param semantic
      *            the semantic element
      * @deprecated use
-     *             {@link DialectServices#initRepresentations(Sirius, EObject, IProgressMonitor)}
+     *             {@link DialectServices#initRepresentations(Viewpoint, EObject, IProgressMonitor)}
      *             instead
      */
-    void initRepresentations(Sirius vp, EObject semantic);
+    void initRepresentations(Viewpoint vp, EObject semantic);
 
     /**
      * Init all the representations of a the viewpoint.
@@ -208,7 +207,7 @@ public interface DialectServices {
      *            a {@link IProgressMonitor} to show progression of
      *            representations initialization
      */
-    void initRepresentations(Sirius vp, EObject semantic, IProgressMonitor monitor);
+    void initRepresentations(Viewpoint vp, EObject semantic, IProgressMonitor monitor);
 
     /**
      * Tell whether the dialect is able to create an identifier.
@@ -244,7 +243,7 @@ public interface DialectServices {
      *            <code>false</code> if it has to be deactivated.
      * @since 2.5
      */
-    void updateRepresentationsExtendedBy(Session session, Sirius viewpoint, boolean activated);
+    void updateRepresentationsExtendedBy(Session session, Viewpoint viewpoint, boolean activated);
 
     /**
      * Creates an {@link IInterpretedExpressionQuery} that will query
@@ -256,7 +255,7 @@ public interface DialectServices {
      *            description)
      * @param feature
      *            the feature to consider (for example
-     *            {@link org.eclipse.sirius.description.DescriptionPackage#eINSTANCE
+     *            {@link org.eclipse.sirius.viewpoint.description.DescriptionPackage#eINSTANCE
      *            #getDiagramElementMapping_SemanticCandidatesExpression()}.
      * @return an {@link IInterpretedExpressionQuery} that will query
      *         representation descriptions to determine useful informations

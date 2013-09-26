@@ -21,24 +21,23 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
-
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramExtensionDescription;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.Layer;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.ToolEntry;
-import org.eclipse.sirius.description.tool.ToolGroup;
-import org.eclipse.sirius.description.tool.ToolGroupExtension;
-import org.eclipse.sirius.description.tool.ToolSection;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
+import org.eclipse.sirius.viewpoint.description.tool.ToolGroup;
+import org.eclipse.sirius.viewpoint.description.tool.ToolGroupExtension;
+import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
 
 /**
  * This class handles componentization for diagram elements. This class will
@@ -49,8 +48,8 @@ import org.eclipse.sirius.description.tool.ToolSection;
 public class DiagramComponentizationManager  {
 
 
-    private static boolean isInSelectedSirius(final Collection<Sirius> selectedSiriuss, final DiagramDescription diagramDescription) {
-        for (final Sirius viewpoint : selectedSiriuss) {
+    private static boolean isInSelectedSirius(final Collection<Viewpoint> selectedSiriuss, final DiagramDescription diagramDescription) {
+        for (final Viewpoint viewpoint : selectedSiriuss) {
             for (final RepresentationDescription representationDescription : new SiriusQuery(viewpoint).getAllRepresentationDescriptions()) {
                 if (EqualityHelper.areEquals(diagramDescription, representationDescription)) {
                     return true;
@@ -73,7 +72,7 @@ public class DiagramComponentizationManager  {
      *            the diagram description
      * @return all the available layers
      */
-    public EList<Layer> getAllLayers(final Collection<Sirius> enabledSiriuss, final DiagramDescription diagramDescription) {
+    public EList<Layer> getAllLayers(final Collection<Viewpoint> enabledSiriuss, final DiagramDescription diagramDescription) {
         final Collection<Layer> layers = new ArrayList<Layer>(diagramDescription.getAllLayers());
 
         if (enabledSiriuss != null) {
@@ -94,7 +93,7 @@ public class DiagramComponentizationManager  {
      *            the diagram description
      * @return all the available edge mappings
      */
-    public EList<EdgeMapping> getAllEdgeMappings(final Collection<Sirius> enabledSiriuss, final DiagramDescription diagramDescription) {
+    public EList<EdgeMapping> getAllEdgeMappings(final Collection<Viewpoint> enabledSiriuss, final DiagramDescription diagramDescription) {
         final Collection<EdgeMapping> edgeMappings = new ArrayList<EdgeMapping>(diagramDescription.getAllEdgeMappings());
         if (enabledSiriuss != null) {
             for (final Layer layer : ComponentizationHelper.getContributedLayers(diagramDescription, enabledSiriuss)) {
@@ -114,7 +113,7 @@ public class DiagramComponentizationManager  {
      *            the diagram description
      * @return all the available node mappings
      */
-    public EList<NodeMapping> getAllNodeMappings(final Collection<Sirius> enabledSiriuss, final DiagramDescription diagramDescription) {
+    public EList<NodeMapping> getAllNodeMappings(final Collection<Viewpoint> enabledSiriuss, final DiagramDescription diagramDescription) {
         final Collection<NodeMapping> nodeMappings = new ArrayList<NodeMapping>(diagramDescription.getAllNodeMappings());
         if (enabledSiriuss != null) {
             for (final Layer layer : ComponentizationHelper.getContributedLayers(diagramDescription, enabledSiriuss)) {
@@ -135,7 +134,7 @@ public class DiagramComponentizationManager  {
      *            the diagram description
      * @return all the available container mappings
      */
-    public EList<ContainerMapping> getAllContainerMappings(final Collection<Sirius> enabledSiriuss, final DiagramDescription diagramDescription) {
+    public EList<ContainerMapping> getAllContainerMappings(final Collection<Viewpoint> enabledSiriuss, final DiagramDescription diagramDescription) {
         final Collection<ContainerMapping> containerMappings = new ArrayList<ContainerMapping>(diagramDescription.getAllContainerMappings());
         if (enabledSiriuss != null) {
             for (final Layer layer : ComponentizationHelper.getContributedLayers(diagramDescription, enabledSiriuss)) {
@@ -155,7 +154,7 @@ public class DiagramComponentizationManager  {
      *            the diagram description
      * @return all the available sections
      */
-    public EList<ToolSection> getRootPaletteSections(final Collection<Sirius> enabledSiriuss, final DiagramDescription diagramDescription) {
+    public EList<ToolSection> getRootPaletteSections(final Collection<Viewpoint> enabledSiriuss, final DiagramDescription diagramDescription) {
         final Map<String, ToolSection> nameToSection = new LinkedHashMap<String, ToolSection>();
         for (final Layer layer : getAllLayers(enabledSiriuss, diagramDescription)) {
             for (ToolSection currentSection : layer.getToolSections()) {
@@ -177,7 +176,7 @@ public class DiagramComponentizationManager  {
      *            the diagram description
      * @return all the available tools
      */
-    public EList<AbstractToolDescription> getAllTools(final Collection<Sirius> enabledSiriuss, final DiagramDescription diagramDescription) {
+    public EList<AbstractToolDescription> getAllTools(final Collection<Viewpoint> enabledSiriuss, final DiagramDescription diagramDescription) {
         final Collection<AbstractToolDescription> tools = new ArrayList<AbstractToolDescription>(diagramDescription.getAllTools());
         if (enabledSiriuss != null) {
             for (final Layer layer : ComponentizationHelper.getContributedLayers(diagramDescription, enabledSiriuss)) {
@@ -197,7 +196,7 @@ public class DiagramComponentizationManager  {
      *            the section
      * @return all the available tools
      */
-    public EList<ToolEntry> getToolEntries(final Collection<Sirius> enabledSiriuss, final ToolSection section) {
+    public EList<ToolEntry> getToolEntries(final Collection<Viewpoint> enabledSiriuss, final ToolSection section) {
         return getAllToolEntries(enabledSiriuss, section, false);
     }
 
@@ -211,11 +210,11 @@ public class DiagramComponentizationManager  {
      *            the section
      * @return all the available tools
      */
-    public EList<ToolEntry> getAllToolEntries(final Collection<Sirius> enabledSiriuss, final ToolSection section) {
+    public EList<ToolEntry> getAllToolEntries(final Collection<Viewpoint> enabledSiriuss, final ToolSection section) {
         return getAllToolEntries(enabledSiriuss, section, true);
     }
 
-    private EList<ToolEntry> getAllToolEntries(final Collection<Sirius> enabledSiriuss, final ToolSection section, boolean recursive) {
+    private EList<ToolEntry> getAllToolEntries(final Collection<Viewpoint> enabledSiriuss, final ToolSection section, boolean recursive) {
         final EList<ToolEntry> toolEntries = new BasicEList<ToolEntry>();
 
         final EObject container = section.eContainer();
@@ -253,7 +252,7 @@ public class DiagramComponentizationManager  {
         return entries;
     }
 
-    private DiagramDescription getDiagramDescription(final Collection<Sirius> enabledSiriuss, final Layer layer) {
+    private DiagramDescription getDiagramDescription(final Collection<Viewpoint> enabledSiriuss, final Layer layer) {
         DiagramDescription diagramDescription = null;
         final EObject layerContainer = layer.eContainer();
         if (layerContainer instanceof DiagramDescription) {
@@ -273,7 +272,7 @@ public class DiagramComponentizationManager  {
      *            the group of tools
      * @return the available tools
      */
-    public EList<AbstractToolDescription> getTools(final Collection<Sirius> enabledSiriuss, final ToolGroup toolGroup) {
+    public EList<AbstractToolDescription> getTools(final Collection<Viewpoint> enabledSiriuss, final ToolGroup toolGroup) {
 
         final DiagramDescription diagramDescription = getDiagramDescription(toolGroup);
         final EList<AbstractToolDescription> tools = new BasicEList<AbstractToolDescription>();

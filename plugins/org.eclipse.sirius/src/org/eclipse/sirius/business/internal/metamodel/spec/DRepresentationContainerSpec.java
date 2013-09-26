@@ -19,15 +19,14 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
-
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.impl.DRepresentationContainerImpl;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.impl.DRepresentationContainerImpl;
 
 /**
  * Implementation of {@link DRepresentationContainerSpec}.
@@ -39,13 +38,13 @@ public class DRepresentationContainerSpec extends DRepresentationContainerImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DViewImpl#getAllRepresentations()
+     * @see org.eclipse.sirius.viewpoint.impl.DViewImpl#getAllRepresentations()
      */
     @Override
     public EList<DRepresentation> getAllRepresentations() {
         final Collection<DRepresentation> result = new ArrayList<DRepresentation>(getOwnedRepresentations());
         result.addAll(getReferencedRepresentations());
-        return new EcoreEList.UnmodifiableEList<DRepresentation>(eInternalContainer(), SiriusPackage.eINSTANCE.getDView_AllRepresentations(), result.size(), result.toArray());
+        return new EcoreEList.UnmodifiableEList<DRepresentation>(eInternalContainer(), ViewpointPackage.eINSTANCE.getDView_AllRepresentations(), result.size(), result.toArray());
     }
 
     /**
@@ -90,7 +89,7 @@ public class DRepresentationContainerSpec extends DRepresentationContainerImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DRepresentationContainerImpl#getModels()
+     * @see org.eclipse.sirius.viewpoint.impl.DRepresentationContainerImpl#getModels()
      */
     @Override
     public EList<EObject> getModels() {
@@ -100,7 +99,7 @@ public class DRepresentationContainerSpec extends DRepresentationContainerImpl {
                 models.add(getModel(((DSemanticDecorator) representation).getTarget()));
             }
         }
-        return new EcoreEList.UnmodifiableEList<EObject>(eInternalContainer(), SiriusPackage.eINSTANCE.getDRepresentationContainer_Models(), models.size(), models.toArray());
+        return new EcoreEList.UnmodifiableEList<EObject>(eInternalContainer(), ViewpointPackage.eINSTANCE.getDRepresentationContainer_Models(), models.size(), models.toArray());
     }
 
     private EObject getModel(final EObject target) {

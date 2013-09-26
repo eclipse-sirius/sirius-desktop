@@ -20,16 +20,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.LabelPosition;
-import org.eclipse.sirius.ResizeKind;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.ConditionalEdgeStyleDescription;
-import org.eclipse.sirius.description.ConditionalNodeStyleDescription;
-import org.eclipse.sirius.description.FoldingStyle;
-import org.eclipse.sirius.description.style.EdgeStyleDescription;
-import org.eclipse.sirius.description.style.NodeStyleDescription;
-import org.eclipse.sirius.description.style.SquareDescription;
-import org.eclipse.sirius.description.style.StylePackage;
 import org.eclipse.sirius.diagram.sequence.description.BasicMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.CreationMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
@@ -41,6 +31,16 @@ import org.eclipse.sirius.diagram.sequence.description.MessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
+import org.eclipse.sirius.viewpoint.LabelPosition;
+import org.eclipse.sirius.viewpoint.ResizeKind;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.ConditionalEdgeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.ConditionalNodeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.FoldingStyle;
+import org.eclipse.sirius.viewpoint.description.style.EdgeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.SquareDescription;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 /**
  * Class responsible for refreshing the computed representations based on the
@@ -360,7 +360,7 @@ public class TemplateToDiagramDescriptionTransformer {
         }
 
         public ConditionalEdgeStyleDescription apply(TConditionalMessageStyle from) {
-            ConditionalEdgeStyleDescription to = getOrCreate(from, org.eclipse.sirius.description.DescriptionPackage.eINSTANCE.getConditionalEdgeStyleDescription());
+            ConditionalEdgeStyleDescription to = getOrCreate(from, org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getConditionalEdgeStyleDescription());
             to.setPredicateExpression(from.getPredicateExpression());
             if (from.getStyle() != null) {
                 to.setStyle(messageStyleToEdgeStyle.apply(from.getStyle()));
@@ -400,7 +400,7 @@ public class TemplateToDiagramDescriptionTransformer {
         }
 
         public ConditionalNodeStyleDescription apply(TConditionalLifelineStyle from) {
-            ConditionalNodeStyleDescription to = getOrCreate(from, org.eclipse.sirius.description.DescriptionPackage.eINSTANCE.getConditionalNodeStyleDescription());
+            ConditionalNodeStyleDescription to = getOrCreate(from, org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getConditionalNodeStyleDescription());
             to.setPredicateExpression(from.getPredicateExpression());
             if (from.getStyle() != null) {
                 to.setStyle(lifelineStyleToNodeStyle.apply(from.getStyle()));
@@ -445,7 +445,7 @@ public class TemplateToDiagramDescriptionTransformer {
         }
 
         public ConditionalNodeStyleDescription apply(TConditionalExecutionStyle from) {
-            ConditionalNodeStyleDescription to = getOrCreate(from, org.eclipse.sirius.description.DescriptionPackage.eINSTANCE.getConditionalNodeStyleDescription());
+            ConditionalNodeStyleDescription to = getOrCreate(from, org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getConditionalNodeStyleDescription());
             to.setPredicateExpression(from.getPredicateExpression());
             if (from.getStyle() != null) {
                 to.setStyle(executionStyleToNodeStyle.apply(from.getStyle()));
@@ -524,20 +524,20 @@ public class TemplateToDiagramDescriptionTransformer {
      */
     public boolean isOverriding(EObject eObj, EStructuralFeature feature) {
         Collection<EStructuralFeature> overriden = Sets.newLinkedHashSet();
-        overriden.add(org.eclipse.sirius.description.DescriptionPackage.eINSTANCE.getIdentifiedElement_Name());
-        overriden.add(org.eclipse.sirius.description.DescriptionPackage.eINSTANCE.getDiagramDescription_DomainClass());
-        overriden.add(org.eclipse.sirius.description.DescriptionPackage.eINSTANCE.getDiagramDescription_NodeMappings());
-        overriden.add(org.eclipse.sirius.description.DescriptionPackage.eINSTANCE.getAbstractNodeMapping_DomainClass());
-        overriden.add(org.eclipse.sirius.description.DescriptionPackage.eINSTANCE.getEdgeMapping_DomainClass());
-        overriden.add(org.eclipse.sirius.description.DescriptionPackage.eINSTANCE.getEdgeMapping_SourceMapping());
-        overriden.add(org.eclipse.sirius.description.DescriptionPackage.eINSTANCE.getEdgeMapping_TargetMapping());
-        overriden.add(org.eclipse.sirius.description.DescriptionPackage.eINSTANCE.getEdgeMapping_SourceFinderExpression());
-        overriden.add(org.eclipse.sirius.description.DescriptionPackage.eINSTANCE.getEdgeMapping_TargetFinderExpression());
-        overriden.add(org.eclipse.sirius.description.DescriptionPackage.eINSTANCE.getEdgeMapping_UseDomainElement());
+        overriden.add(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getIdentifiedElement_Name());
+        overriden.add(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getDiagramDescription_DomainClass());
+        overriden.add(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getDiagramDescription_NodeMappings());
+        overriden.add(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getAbstractNodeMapping_DomainClass());
+        overriden.add(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getEdgeMapping_DomainClass());
+        overriden.add(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getEdgeMapping_SourceMapping());
+        overriden.add(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getEdgeMapping_TargetMapping());
+        overriden.add(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getEdgeMapping_SourceFinderExpression());
+        overriden.add(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getEdgeMapping_TargetFinderExpression());
+        overriden.add(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getEdgeMapping_UseDomainElement());
         overriden.add(StylePackage.eINSTANCE.getBasicLabelStyleDescription_LabelExpression());
         overriden.add(StylePackage.eINSTANCE.getBasicLabelStyleDescription_ShowIcon());
-        overriden.add(org.eclipse.sirius.description.DescriptionPackage.eINSTANCE.getDiagramElementMapping_SemanticCandidatesExpression());
-        overriden.add(org.eclipse.sirius.description.DescriptionPackage.eINSTANCE.getDiagramElementMapping_CreateElements());
+        overriden.add(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getDiagramElementMapping_SemanticCandidatesExpression());
+        overriden.add(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getDiagramElementMapping_CreateElements());
         overriden.add(DescriptionPackage.eINSTANCE.getSequenceDiagramDescription_EndsOrdering());
         overriden.add(DescriptionPackage.eINSTANCE.getDelimitedEventMapping_FinishingEndFinderExpression());
         overriden.add(DescriptionPackage.eINSTANCE.getDelimitedEventMapping_StartingEndFinderExpression());

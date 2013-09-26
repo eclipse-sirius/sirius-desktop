@@ -24,12 +24,12 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.description.CompositeLayout;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.Layout;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramElementContainerEditPart;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.CompositeLayout;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.Layout;
 
 /**
  * Class capturing the diagram layout customization made in a viewpoint

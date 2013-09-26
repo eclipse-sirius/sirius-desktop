@@ -15,20 +15,19 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.ContainerStyle;
-import org.eclipse.sirius.DMappingBased;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
 import org.eclipse.sirius.business.internal.metamodel.helper.StyleHelper;
-import org.eclipse.sirius.description.AbstractMappingImport;
-import org.eclipse.sirius.description.ContainerMapping;
-import org.eclipse.sirius.description.ContainerMappingImport;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.tool.DeleteElementDescription;
-import org.eclipse.sirius.description.tool.DirectEditLabel;
+import org.eclipse.sirius.viewpoint.ContainerStyle;
+import org.eclipse.sirius.viewpoint.DMappingBased;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.description.ContainerMappingImport;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
+import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
 
 /**
  * Implementation of the ontainerMappingImport interface. This class is more or
@@ -94,7 +93,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.internal.metamodel.description.spec.ContainerMappingSpec#isFrom(org.eclipse.sirius.DMappingBased)
+     * @see org.eclipse.sirius.business.internal.metamodel.description.spec.ContainerMappingSpec#isFrom(org.eclipse.sirius.viewpoint.DMappingBased)
      */
     @Override
     public boolean isFrom(final DMappingBased element) {
@@ -104,7 +103,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.internal.metamodel.description.spec.ContainerMappingSpec#addDoneNode(org.eclipse.sirius.DSemanticDecorator)
+     * @see org.eclipse.sirius.business.internal.metamodel.description.spec.ContainerMappingSpec#addDoneNode(org.eclipse.sirius.viewpoint.DSemanticDecorator)
      */
     @Override
     public void addDoneNode(final DSemanticDecorator node) {
@@ -137,7 +136,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.AbstractNodeMappingImpl#getDomainClass()
+     * @see org.eclipse.sirius.viewpoint.description.impl.AbstractNodeMappingImpl#getDomainClass()
      */
     @Override
     public String getDomainClass() {
@@ -153,7 +152,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramElementMappingImpl#getDeletionDescription()
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramElementMappingImpl#getDeletionDescription()
      */
     @Override
     public DeleteElementDescription getDeletionDescription() {
@@ -174,7 +173,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramElementMappingImpl#getLabelDirectEdit()
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramElementMappingImpl#getLabelDirectEdit()
      */
     @Override
     public DirectEditLabel getLabelDirectEdit() {
@@ -196,7 +195,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramElementMappingImpl#getPreconditionExpression()
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramElementMappingImpl#getPreconditionExpression()
      */
     @Override
     public String getPreconditionExpression() {
@@ -209,7 +208,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramElementMappingImpl#getSemanticCandidatesExpression()
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramElementMappingImpl#getSemanticCandidatesExpression()
      */
     @Override
     public String getSemanticCandidatesExpression() {
@@ -222,7 +221,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.DiagramElementMappingImpl#isCreateElements()
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramElementMappingImpl#isCreateElements()
      */
     @Override
     public boolean isCreateElements() {
@@ -240,7 +239,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.ContainerMappingImpl#eStaticClass()
+     * @see org.eclipse.sirius.viewpoint.description.impl.ContainerMappingImpl#eStaticClass()
      */
     @Override
     protected EClass eStaticClass() {
@@ -250,7 +249,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.AbstractMappingImport#isHideSubMappings()
+     * @see org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isHideSubMappings()
      */
     public boolean isHideSubMappings() {
         return hideSubMappings;
@@ -259,7 +258,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.AbstractMappingImport#setHideSubMappings(boolean)
+     * @see org.eclipse.sirius.viewpoint.description.AbstractMappingImport#setHideSubMappings(boolean)
      */
     public void setHideSubMappings(final boolean newHideSubMappings) {
         final boolean oldHideSubMappings = hideSubMappings;
@@ -272,7 +271,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.AbstractMappingImport#isInheritsAncestorFilters()
+     * @see org.eclipse.sirius.viewpoint.description.AbstractMappingImport#isInheritsAncestorFilters()
      */
     public boolean isInheritsAncestorFilters() {
         return inheritsAncestorFilters;
@@ -281,7 +280,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.AbstractMappingImport#setInheritsAncestorFilters(boolean)
+     * @see org.eclipse.sirius.viewpoint.description.AbstractMappingImport#setInheritsAncestorFilters(boolean)
      */
     public void setInheritsAncestorFilters(boolean newInheritsAncestorFilters) {
         boolean oldInheritsAncestorFilters = inheritsAncestorFilters;
@@ -294,7 +293,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.ContainerMappingImport#getImportedMapping()
+     * @see org.eclipse.sirius.viewpoint.description.ContainerMappingImport#getImportedMapping()
      */
     public ContainerMapping getImportedMapping() {
         if (importedMapping != null && importedMapping.eIsProxy()) {
@@ -321,7 +320,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.ContainerMappingImport#setImportedMapping(org.eclipse.sirius.description.ContainerMapping)
+     * @see org.eclipse.sirius.viewpoint.description.ContainerMappingImport#setImportedMapping(org.eclipse.sirius.viewpoint.description.ContainerMapping)
      */
     public void setImportedMapping(final ContainerMapping newImportedMapping) {
         final ContainerMapping oldImportedMapping = importedMapping;
@@ -334,7 +333,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.ContainerMappingImpl#eGet(int,
+     * @see org.eclipse.sirius.viewpoint.description.impl.ContainerMappingImpl#eGet(int,
      *      boolean, boolean)
      */
     @Override
@@ -368,7 +367,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
      * {@inheritDoc} CHECKSTYLE:OFF because this code is copied from generated
      * code
      * 
-     * @see org.eclipse.sirius.description.impl.ContainerMappingImpl#eSet(int,
+     * @see org.eclipse.sirius.viewpoint.description.impl.ContainerMappingImpl#eSet(int,
      *      java.lang.Object)
      */
     @Override
@@ -394,7 +393,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.ContainerMappingImpl#eUnset(int)
+     * @see org.eclipse.sirius.viewpoint.description.impl.ContainerMappingImpl#eUnset(int)
      */
     @Override
     public void eUnset(final int featureID) {
@@ -414,7 +413,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.ContainerMappingImpl#eIsSet(int)
+     * @see org.eclipse.sirius.viewpoint.description.impl.ContainerMappingImpl#eIsSet(int)
      */
     @Override
     public boolean eIsSet(final int featureID) {
@@ -439,7 +438,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.ContainerMappingImpl#eBaseStructuralFeatureID(int,
+     * @see org.eclipse.sirius.viewpoint.description.impl.ContainerMappingImpl#eBaseStructuralFeatureID(int,
      *      java.lang.Class)
      */
     @Override
@@ -465,7 +464,7 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.ContainerMappingImpl#eDerivedStructuralFeatureID(int,
+     * @see org.eclipse.sirius.viewpoint.description.impl.ContainerMappingImpl#eDerivedStructuralFeatureID(int,
      *      java.lang.Class)
      */
     @Override

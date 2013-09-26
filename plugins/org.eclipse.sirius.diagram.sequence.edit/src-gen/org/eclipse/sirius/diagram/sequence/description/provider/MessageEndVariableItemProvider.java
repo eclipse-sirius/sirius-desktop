@@ -22,9 +22,8 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-import org.eclipse.sirius.description.tool.provider.AbstractVariableItemProvider;
 import org.eclipse.sirius.diagram.sequence.description.MessageEndVariable;
+import org.eclipse.sirius.viewpoint.description.tool.provider.AbstractVariableItemProvider;
 
 /**
  * This is the item provider adapter for a

@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import com.google.common.base.Function;
 
-import org.eclipse.sirius.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 /**
  * Helper functions to use Sirius elements with Google Collections.

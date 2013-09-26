@@ -12,10 +12,10 @@ package org.eclipse.sirius.business.internal.metamodel.spec;
 
 import org.eclipse.sirius.business.internal.metamodel.operations.BorderedStyleSpecOperation;
 import org.eclipse.sirius.business.internal.metamodel.operations.StyleSpecOperations;
-import org.eclipse.sirius.impl.DotImpl;
+import org.eclipse.sirius.viewpoint.impl.DotImpl;
 
 /**
- * Implementation of {@link org.eclipse.sirius.Dot}.
+ * Implementation of {@link org.eclipse.sirius.viewpoint.Dot}.
  * 
  * @author cbrun, mchauvin, ymortier
  */
@@ -24,7 +24,7 @@ public class DotSpec extends DotImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.NodeStyleImpl#refresh()
+     * @see org.eclipse.sirius.viewpoint.impl.NodeStyleImpl#refresh()
      */
     @Override
     public void refresh() {

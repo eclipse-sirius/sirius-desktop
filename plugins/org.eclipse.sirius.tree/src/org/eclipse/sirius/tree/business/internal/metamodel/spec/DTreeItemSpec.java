@@ -16,15 +16,14 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
-import org.eclipse.sirius.description.RepresentationElementMapping;
 import org.eclipse.sirius.tree.DTreeElementSynchronizer;
 import org.eclipse.sirius.tree.description.StyleUpdater;
 import org.eclipse.sirius.tree.description.TreeItemUpdater;
 import org.eclipse.sirius.tree.description.TreeMapping;
 import org.eclipse.sirius.tree.impl.DTreeItemImpl;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
  * Implementation of DTreeItem.

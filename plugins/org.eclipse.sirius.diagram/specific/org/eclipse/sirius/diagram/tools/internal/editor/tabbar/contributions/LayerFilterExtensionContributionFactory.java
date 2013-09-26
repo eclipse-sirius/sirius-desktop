@@ -13,14 +13,13 @@ package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions;
 import org.eclipse.jface.action.ContributionItem;
 import org.eclipse.ui.menus.IContributionRoot;
 import org.eclipse.ui.services.IServiceLocator;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.description.DiagramDescription;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.FiltersContributionItem;
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.LayersContribution;
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramTabbarExpression;
 import org.eclipse.sirius.diagram.ui.tools.api.action.ConcernComboContributionItem;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
 
 /**
  * 

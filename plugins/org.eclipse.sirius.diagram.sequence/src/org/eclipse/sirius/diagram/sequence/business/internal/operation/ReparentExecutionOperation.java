@@ -16,11 +16,11 @@ import org.eclipse.gmf.runtime.notation.View;
 
 import com.google.common.base.Preconditions;
 
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DNode;
 import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DNode;
 
 /**
  * Update the structure of DNodes and GMF Nodes to reflect that an execution has

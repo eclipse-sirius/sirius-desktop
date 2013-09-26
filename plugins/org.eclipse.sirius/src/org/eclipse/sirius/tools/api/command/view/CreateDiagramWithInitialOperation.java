@@ -13,7 +13,6 @@ package org.eclipse.sirius.tools.api.command.view;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -22,10 +21,10 @@ import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.DiagramDescription;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
 
 /**
  * This class create a diagram with an initial operation.
@@ -51,7 +50,7 @@ public class CreateDiagramWithInitialOperation extends AbstractCommandTask {
      *            the diagram description.
      * @param semanticElement
      *            semantic element on which the user requested the creation of
-     *            the {@link org.eclipse.sirius.DDiagram}.
+     *            the {@link org.eclipse.sirius.viewpoint.DDiagram}.
      * @param uiCallBack
      *            the ui callback used to ask for the detail name.
      * @deprecated use
@@ -69,7 +68,7 @@ public class CreateDiagramWithInitialOperation extends AbstractCommandTask {
      *            the diagram description.
      * @param semanticElement
      *            semantic element on which the user requested the creation of
-     *            the {@link org.eclipse.sirius.DDiagram}.
+     *            the {@link org.eclipse.sirius.viewpoint.DDiagram}.
      * @param uiCallBack
      *            the ui callback used to ask for the detail name.
      * @param monitor

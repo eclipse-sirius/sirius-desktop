@@ -22,18 +22,17 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-
-import org.eclipse.sirius.DFile;
-import org.eclipse.sirius.DFolder;
-import org.eclipse.sirius.DModel;
-import org.eclipse.sirius.DProject;
-import org.eclipse.sirius.DResource;
-import org.eclipse.sirius.DResourceContainer;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.SiriusFactory;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.resource.DraggedObjectTester;
 import org.eclipse.sirius.business.internal.session.SessionTransientAttachment;
+import org.eclipse.sirius.viewpoint.DFile;
+import org.eclipse.sirius.viewpoint.DFolder;
+import org.eclipse.sirius.viewpoint.DModel;
+import org.eclipse.sirius.viewpoint.DProject;
+import org.eclipse.sirius.viewpoint.DResource;
+import org.eclipse.sirius.viewpoint.DResourceContainer;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 
 /**
  * Support for drag and drop of files from a view to a diagram.
@@ -128,7 +127,7 @@ public class WorkspaceDragAndDropSupport {
     }
 
     private DModel createDModel(final IFile file) {
-        final DModel model = SiriusFactory.eINSTANCE.createDModel();
+        final DModel model = ViewpointFactory.eINSTANCE.createDModel();
         model.setName(file.getName());
         model.setPath(convertPathToString(file));
         return model;
@@ -152,21 +151,21 @@ public class WorkspaceDragAndDropSupport {
     }
 
     private DFile createDFile(final IFile file) {
-        final DFile dFile = SiriusFactory.eINSTANCE.createDFile();
+        final DFile dFile = ViewpointFactory.eINSTANCE.createDFile();
         dFile.setName(file.getName());
         dFile.setPath(convertPathToString(file));
         return dFile;
     }
 
     private DFolder createDFolder(final IFolder folder) {
-        final DFolder dFolder = SiriusFactory.eINSTANCE.createDFolder();
+        final DFolder dFolder = ViewpointFactory.eINSTANCE.createDFolder();
         dFolder.setName(folder.getName());
         dFolder.setPath(convertPathToString(folder));
         return dFolder;
     }
 
     private DProject createDProject(final IProject project) {
-        final DProject dProject = SiriusFactory.eINSTANCE.createDProject();
+        final DProject dProject = ViewpointFactory.eINSTANCE.createDProject();
         dProject.setName(project.getName());
         dProject.setPath(convertPathToString(project));
         return dProject;

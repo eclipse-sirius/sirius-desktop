@@ -12,10 +12,10 @@ package org.eclipse.sirius.business.internal.metamodel.spec;
 
 import org.eclipse.sirius.business.internal.metamodel.operations.BorderedStyleSpecOperation;
 import org.eclipse.sirius.business.internal.metamodel.operations.StyleSpecOperations;
-import org.eclipse.sirius.impl.CustomStyleImpl;
+import org.eclipse.sirius.viewpoint.impl.CustomStyleImpl;
 
 /**
- * Implementation of {@link org.eclipse.sirius.CustomStyle}.
+ * Implementation of {@link org.eclipse.sirius.viewpoint.CustomStyle}.
  * 
  * @author ymortier, cbrun, mchauvin.
  */

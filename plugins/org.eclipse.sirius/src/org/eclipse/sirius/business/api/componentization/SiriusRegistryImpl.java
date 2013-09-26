@@ -53,18 +53,18 @@ import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.description.Component;
-import org.eclipse.sirius.description.Group;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tools.internal.uri.SiriusProtocolException;
 import org.eclipse.sirius.tools.internal.uri.SiriusProtocolParser;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.Component;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 
 public class SiriusRegistryImpl extends SiriusRegistry {
@@ -72,9 +72,9 @@ public class SiriusRegistryImpl extends SiriusRegistry {
 
     private ResourceSet resourceSet;
 
-    private Set<Sirius> viewpointsFromPlugin;
+    private Set<Viewpoint> viewpointsFromPlugin;
 
-    private Set<Sirius> viewpointsFromWorkspace;
+    private Set<Viewpoint> viewpointsFromWorkspace;
 
     private Set<SiriusRegistryFilter> filters;
 
@@ -115,8 +115,8 @@ public class SiriusRegistryImpl extends SiriusRegistry {
                 return result;
             }
 
-            public Collection<Sirius> collect(EObject root) {
-                return Lists.newArrayList(Iterators.filter(root.eAllContents(), Sirius.class));
+            public Collection<Viewpoint> collect(EObject root) {
+                return Lists.newArrayList(Iterators.filter(root.eAllContents(), Viewpoint.class));
             }
         });
         prepareFoundCache();
@@ -142,8 +142,8 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      *            the initial size.
      */
     public void init(final int size) {
-        this.viewpointsFromPlugin = new HashSet<Sirius>(size);
-        this.viewpointsFromWorkspace = new HashSet<Sirius>(size);
+        this.viewpointsFromPlugin = new HashSet<Viewpoint>(size);
+        this.viewpointsFromWorkspace = new HashSet<Viewpoint>(size);
         this.resourceSet = new ResourceSetImpl();
 
         crossReferencer = new ECrossReferenceAdapter();
@@ -167,7 +167,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      *             found
      * @since 2.7
      */
-    public Sirius getSirius(final URI viewpointUri) throws SiriusProtocolException {
+    public Viewpoint getSirius(final URI viewpointUri) throws SiriusProtocolException {
         return SiriusProtocolParser.getSirius(viewpointUri);
     }
 
@@ -317,16 +317,16 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      *            the platform file path ("pluginname/rep1/rep2/file.odesign)
      * @return the added Siriuss;
      */
-    public Set<Sirius> registerFromPlugin(final String modelerModelResourcePath) {
+    public Set<Viewpoint> registerFromPlugin(final String modelerModelResourcePath) {
 
-        final Set<Sirius> addedSirius = new HashSet<Sirius>();
+        final Set<Viewpoint> addedSirius = new HashSet<Viewpoint>();
 
         try {
             final URI fileURI = URI.createPlatformPluginURI(modelerModelResourcePath, true);
             final EObject root = load(fileURI, resourceSet);
             Option<SiriusFileCollector> collector = getCollectorFromURI(fileURI);
             if (collector.some() && collector.get().isValid(root)) {
-                for (final Sirius viewpoint : collector.get().collect(root)) {
+                for (final Viewpoint viewpoint : collector.get().collect(root)) {
                     viewpointsFromPlugin.add(viewpoint);
                     mapToSiriusProtocol(viewpoint);
                     addedSirius.add(viewpoint);
@@ -379,8 +379,8 @@ public class SiriusRegistryImpl extends SiriusRegistry {
     public <T extends Component> void registerFromWorkspace(final Set<T> components) {
         viewpointsFromWorkspace.clear();
         for (final Component c : components) {
-            if (c instanceof Sirius) {
-                Sirius viewpoint = (Sirius) c;
+            if (c instanceof Viewpoint) {
+                Viewpoint viewpoint = (Viewpoint) c;
                 viewpointsFromWorkspace.add(viewpoint);
                 mapToSiriusProtocol(viewpoint);
             }
@@ -389,13 +389,13 @@ public class SiriusRegistryImpl extends SiriusRegistry {
     }
 
     /**
-     * Dispose a {@link Sirius}. This method should be called on
+     * Dispose a {@link Viewpoint}. This method should be called on
      * {@link org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)}
      * 
      * @param viewpoint
      *            the viewpoint to dispose
      */
-    public void disposeFromPlugin(final Sirius viewpoint) {
+    public void disposeFromPlugin(final Viewpoint viewpoint) {
         viewpointsFromPlugin.remove(viewpoint);
 
         // remap the viewpoint uri to another viewpoint with same
@@ -408,21 +408,21 @@ public class SiriusRegistryImpl extends SiriusRegistry {
             final String pluginName = viewpoint.eResource().getURI().segment(1);
 
             if (vpName != null && pluginName != null) {
-                Iterable<Sirius> sameNameAndPluginSiriuss = Iterables.filter(viewpointsFromPlugin, new Predicate<Sirius>() {
+                Iterable<Viewpoint> sameNameAndPluginSiriuss = Iterables.filter(viewpointsFromPlugin, new Predicate<Viewpoint>() {
 
-                    public boolean apply(final Sirius input) {
+                    public boolean apply(final Viewpoint input) {
                         return vpName.equals(input.getName()) && pluginName.equals(input.eResource().getURI().segment(1));
                     }
                 });
 
-                for (Sirius sameNameAndPluginSirius : sameNameAndPluginSiriuss) {
+                for (Viewpoint sameNameAndPluginSirius : sameNameAndPluginSiriuss) {
                     mapToSiriusProtocol(sameNameAndPluginSirius);
                     break;
                 }
             }
         }
 
-        for (final Sirius viewpointFromPlugin : viewpointsFromPlugin) {
+        for (final Viewpoint viewpointFromPlugin : viewpointsFromPlugin) {
             if (viewpointFromPlugin.eResource().equals(viewpoint.eResource())) {
                 return;
             }
@@ -442,18 +442,18 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      * 
      * @return the viewpoints registered
      */
-    public Set<Sirius> getSiriuss() {
-        final Set<Sirius> all = new HashSet<Sirius>(this.viewpointsFromPlugin.size() + this.viewpointsFromWorkspace.size());
+    public Set<Viewpoint> getSiriuss() {
+        final Set<Viewpoint> all = new HashSet<Viewpoint>(this.viewpointsFromPlugin.size() + this.viewpointsFromWorkspace.size());
         all.addAll(this.viewpointsFromWorkspace);
         all.addAll(this.viewpointsFromPlugin);
 
         if (filters != null) {
-            final Set<Sirius> toRemove = new LinkedHashSet<Sirius>();
+            final Set<Viewpoint> toRemove = new LinkedHashSet<Viewpoint>();
             for (final SiriusRegistryFilter filter : filters) {
                 /*
                  * Filter viewpoints from workspace
                  */
-                for (final Sirius viewpoint : this.viewpointsFromWorkspace) {
+                for (final Viewpoint viewpoint : this.viewpointsFromWorkspace) {
                     if (filter.filter(viewpoint)) {
                         toRemove.add(viewpoint);
                     }
@@ -461,7 +461,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
                 /*
                  * Filter viewpoints from plug-in
                  */
-                for (final Sirius viewpoint : this.viewpointsFromPlugin) {
+                for (final Viewpoint viewpoint : this.viewpointsFromPlugin) {
                     if (filter.filter(viewpoint)) {
                         toRemove.add(viewpoint);
                     }
@@ -485,7 +485,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      *         <code>null</code> if it could not be found.
      * @since 2.3
      */
-    public Sirius getSirius(final RepresentationDescription description) {
+    public Viewpoint getSirius(final RepresentationDescription description) {
         return new RepresentationDescriptionQuery(description).getParentSirius();
     }
 
@@ -497,7 +497,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      * @return <code>true</code> if the plug-in comes from plug-in false if it
      *         comes from workspace.
      */
-    public boolean isFromPlugin(final Sirius viewpoint) {
+    public boolean isFromPlugin(final Viewpoint viewpoint) {
         if (viewpointsFromPlugin != null) {
             return viewpointsFromPlugin.contains(viewpoint);
         }
@@ -536,7 +536,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
          */
         final List<IFile> files = collectFilesContainingSiriuss();
         final Iterator<IFile> fileIt = files.iterator();
-        final Set<Sirius> viewpoints = new HashSet<Sirius>();
+        final Set<Viewpoint> viewpoints = new HashSet<Viewpoint>();
         final Set<Resource> resourcesToResolve = new HashSet<Resource>();
         while (fileIt.hasNext()) {
             final IFile file = fileIt.next();
@@ -580,13 +580,13 @@ public class SiriusRegistryImpl extends SiriusRegistry {
         return EclipseUtil.getFilesFromWorkspace(null, "." + SiriusUtil.DESCRIPTION_MODEL_EXTENSION);
     }
 
-    private void mapToSiriusProtocol(Collection<Sirius> viewpoints) {
-        for (Sirius viewpoint : viewpoints) {
+    private void mapToSiriusProtocol(Collection<Viewpoint> viewpoints) {
+        for (Viewpoint viewpoint : viewpoints) {
             mapToSiriusProtocol(viewpoint);
         }
     }
 
-    private void mapToSiriusProtocol(Sirius viewpoint) {
+    private void mapToSiriusProtocol(Viewpoint viewpoint) {
         final Resource resource = viewpoint.eResource();
         if (resource != null && resource.getURI() != null) {
             URI uri = EcoreUtil.getURI(viewpoint);
@@ -812,8 +812,8 @@ public class SiriusRegistryImpl extends SiriusRegistry {
             Option<SiriusFileCollector> collector = getCollectorFromIFile(file);
 
             if (collector.some() && collector.get().isValid(descRoot)) {
-                for (final Sirius toRemove : collector.get().collect(descRoot)) {
-                    for (final Sirius loadedSirius : new ArrayList<Sirius>(this.viewpointsFromWorkspace)) {
+                for (final Viewpoint toRemove : collector.get().collect(descRoot)) {
+                    for (final Viewpoint loadedSirius : new ArrayList<Viewpoint>(this.viewpointsFromWorkspace)) {
                         if (EqualityHelper.areEquals(toRemove, loadedSirius)) {
                             removeFromWorkspaceAndUpdateURiMapping(toRemove);
                         }
@@ -829,7 +829,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      * Removes all viewpoints from workspace that are not persisted in a file.
      */
     private void removeSiriussNotPersistedInAFile() {
-        for (final Sirius viewpoint : new ArrayList<Sirius>(this.viewpointsFromWorkspace)) {
+        for (final Viewpoint viewpoint : new ArrayList<Viewpoint>(this.viewpointsFromWorkspace)) {
             if (viewpoint.eResource() == null) {
                 removeFromWorkspaceAndUpdateURiMapping(viewpoint);
             } else {
@@ -844,7 +844,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
 
     private void reloadFile(final IFile odesignFile) {
         /* Removes all viewpoints. */
-        for (final Sirius viewpoint : new ArrayList<Sirius>(this.viewpointsFromWorkspace)) {
+        for (final Viewpoint viewpoint : new ArrayList<Viewpoint>(this.viewpointsFromWorkspace)) {
             final Resource resource = viewpoint.eResource();
             if (resource != null && resource.getURI().toPlatformString(true).equals(odesignFile.getFullPath().toString())) {
                 /* Removes this viewpoint */
@@ -894,11 +894,11 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      * 
      * @param viewpoint
      */
-    private void removeFromWorkspaceAndUpdateURiMapping(Sirius viewpoint) {
+    private void removeFromWorkspaceAndUpdateURiMapping(Viewpoint viewpoint) {
         this.viewpointsFromWorkspace.remove(viewpoint);
         URI viewpointUri = SiriusProtocolParser.buildSiriusUri(EcoreUtil.getURI(viewpoint));
 
-        for (Sirius vp : this.viewpointsFromPlugin) {
+        for (Viewpoint vp : this.viewpointsFromPlugin) {
             if (StringUtil.equals(vp.getName(), viewpoint.getName())) {
                 URI vpURI = SiriusProtocolParser.buildSiriusUri(EcoreUtil.getURI(vp));
                 if (vpURI != null && viewpointUri != null && StringUtil.equals(vpURI.toString(), viewpointUri.toString())) {

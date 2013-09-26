@@ -30,8 +30,6 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
@@ -42,6 +40,8 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEd
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Helper class with utilities to deal with GMF edit parts.
@@ -232,7 +232,7 @@ public final class EditPartsHelper {
     }
 
     private static boolean isDiagramElementTargetReference(Setting setting) {
-        EReference targetReference = SiriusPackage.eINSTANCE.getDSemanticDecorator_Target();
+        EReference targetReference = ViewpointPackage.eINSTANCE.getDSemanticDecorator_Target();
         return setting.getEObject() instanceof DDiagramElement && setting.getEStructuralFeature().equals(targetReference);
     }
 

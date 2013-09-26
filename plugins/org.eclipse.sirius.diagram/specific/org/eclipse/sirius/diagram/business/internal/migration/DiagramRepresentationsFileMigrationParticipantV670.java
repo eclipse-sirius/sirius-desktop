@@ -32,19 +32,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.CollapseFilter;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DNodeList;
-import org.eclipse.sirius.GraphicalFilter;
-import org.eclipse.sirius.IndirectlyCollapseFilter;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNode2EditPart;
@@ -60,6 +48,18 @@ import org.eclipse.sirius.diagram.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.internal.refresh.borderednode.CanonicalDBorderItemLocator;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IBorderItemOffsets;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.CollapseFilter;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.viewpoint.GraphicalFilter;
+import org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
  * The migration code of Sirius 6.7.0.
@@ -268,7 +268,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
             }
         }
         for (DDiagramElement indirectlyCollaspedDDE : indirectlyCollaspedDDEs) {
-            IndirectlyCollapseFilter indirectlyCollapseFilter = SiriusFactory.eINSTANCE.createIndirectlyCollapseFilter();
+            IndirectlyCollapseFilter indirectlyCollapseFilter = ViewpointFactory.eINSTANCE.createIndirectlyCollapseFilter();
             indirectlyCollaspedDDE.getGraphicalFilters().add(indirectlyCollapseFilter);
         }
     }
@@ -277,7 +277,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
      * Predicate that checks that :
      * <UL>
      * <LI>The Diagram input reference a DDiagram,</LI>
-     * <LI>and this DDiagram is defined by the SiriusPackage,</LI>
+     * <LI>and this DDiagram is defined by the ViewpointPackage,</LI>
      * <LI>and its description is defined by the DescriptionPackage,</LI>
      * </UL>
      */
@@ -287,10 +287,10 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
             if (input.getElement() instanceof DDiagram) {
                 DDiagram diag = (DDiagram) input.getElement();
                 EPackage diagPackage = diag.eClass().getEPackage();
-                apply = SiriusPackage.eINSTANCE.equals(diagPackage);
+                apply = ViewpointPackage.eINSTANCE.equals(diagPackage);
                 if (apply && diag.getDescription() != null) {
                     EPackage descriptionPackage = diag.getDescription().eClass().getEPackage();
-                    apply = DescriptionPackage.eINSTANCE.equals(descriptionPackage) && SiriusPackage.eINSTANCE.equals(diagPackage);
+                    apply = DescriptionPackage.eINSTANCE.equals(descriptionPackage) && ViewpointPackage.eINSTANCE.equals(diagPackage);
                 }
             }
             return apply;

@@ -13,29 +13,28 @@ package org.eclipse.sirius.editor.properties.filters.description.representatione
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.editor.properties.filters.common.SiriusPropertyFilter;
+import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 // End of user code specific imports
 
 /**
  * A filter for the viewpointURI property section.
  */
-public class RepresentationExtensionDescriptionSiriusURIFilter extends SiriusPropertyFilter {
+public class RepresentationExtensionDescriptionSiriusURIFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}
      */
     protected EStructuralFeature getFeature() {
-        return DescriptionPackage.eINSTANCE.getRepresentationExtensionDescription_SiriusURI();
+        return DescriptionPackage.eINSTANCE.getRepresentationExtensionDescription_ViewpointURI();
     }
 
     /**
      * {@inheritDoc}
      */
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.description.RepresentationExtensionDescription;
+        return arg0 instanceof org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
     }
 
     // Start of user code user methods

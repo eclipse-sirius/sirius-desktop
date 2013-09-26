@@ -23,14 +23,14 @@ import org.eclipse.swt.widgets.Label;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DSemanticDiagram;
 import org.eclipse.sirius.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.description.tool.BehaviorTool;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ActivateBehaviorToolsCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.DeactivateBehaviorToolsCommand;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.description.tool.BehaviorTool;
 
 /**
  * Sections that allows the user to choose activated filters.

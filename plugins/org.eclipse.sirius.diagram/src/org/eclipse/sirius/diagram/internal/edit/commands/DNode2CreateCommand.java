@@ -19,8 +19,7 @@ import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.type.core.commands.CreateElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * @was-generated
@@ -49,7 +48,7 @@ public class DNode2CreateCommand extends CreateElementCommand {
      * @was-generated
      */
     protected EClass getEClassToEdit() {
-        return SiriusPackage.eINSTANCE.getAbstractDNode();
+        return ViewpointPackage.eINSTANCE.getAbstractDNode();
     }
 
     protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {

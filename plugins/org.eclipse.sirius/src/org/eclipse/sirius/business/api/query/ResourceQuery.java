@@ -19,8 +19,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Queries on EMF Resources.
@@ -86,7 +86,7 @@ public class ResourceQuery {
      * <UL>
      * <LI>resource with aird extension, or</LI>
      * <LI>resource of kind {@link AirdResource}, or</LI>
-     * <LI>resource with {@link org.eclipse.sirius.DAnalysis} as content.</LI>
+     * <LI>resource with {@link org.eclipse.sirius.viewpoint.DAnalysis} as content.</LI>
      * </UL>
      * 
      * @return true if this resource is a representations resource, false
@@ -103,7 +103,7 @@ public class ResourceQuery {
         isRepresentationsResource = isRepresentationsResource && new FileQuery(resource.getURI().fileExtension()).isSessionResourceFile();
         isRepresentationsResource = isRepresentationsResource || resource instanceof AirdResource;
         if (!isRepresentationsResource && resource.getContents() != null && resource.getContents().size() == 1) {
-            isRepresentationsResource = resource.getContents().get(0).eClass().equals(SiriusPackage.eINSTANCE.getDAnalysis());
+            isRepresentationsResource = resource.getContents().get(0).eClass().equals(ViewpointPackage.eINSTANCE.getDAnalysis());
         }
         return isRepresentationsResource;
     }

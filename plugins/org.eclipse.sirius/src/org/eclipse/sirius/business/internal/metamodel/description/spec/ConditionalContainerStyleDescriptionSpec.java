@@ -11,9 +11,8 @@
 package org.eclipse.sirius.business.internal.metamodel.description.spec;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.business.internal.metamodel.description.operations.ConditionalStyleSpecOperations;
-import org.eclipse.sirius.description.impl.ConditionalContainerStyleDescriptionImpl;
+import org.eclipse.sirius.viewpoint.description.impl.ConditionalContainerStyleDescriptionImpl;
 
 /**
  * Implementation of ConditionalContainerStyleDescription.
@@ -25,7 +24,7 @@ public class ConditionalContainerStyleDescriptionSpec extends ConditionalContain
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.ConditionalStyleDescriptionImpl#checkPredicate(org.eclipse.emf.ecore.EObject,
+     * @see org.eclipse.sirius.viewpoint.description.impl.ConditionalStyleDescriptionImpl#checkPredicate(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
      */
     @Override

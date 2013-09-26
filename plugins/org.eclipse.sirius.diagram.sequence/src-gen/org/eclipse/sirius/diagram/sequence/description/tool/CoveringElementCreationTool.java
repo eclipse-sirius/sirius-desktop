@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.sequence.description.tool;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.diagram.sequence.description.CoveredLifelinesVariable;
 
 /**

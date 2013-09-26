@@ -15,8 +15,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 
 import com.google.common.collect.Iterables;
 
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * {@link DDiagram} helpers.

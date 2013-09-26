@@ -44,7 +44,8 @@ public interface DelimitedEventMapping extends EventMapping {
      *         attribute.
      * @see #setStartingEndFinderExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getDelimitedEventMapping_StartingEndFinderExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      * @generated
@@ -79,7 +80,8 @@ public interface DelimitedEventMapping extends EventMapping {
      *         attribute.
      * @see #setFinishingEndFinderExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getDelimitedEventMapping_FinishingEndFinderExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      * @generated

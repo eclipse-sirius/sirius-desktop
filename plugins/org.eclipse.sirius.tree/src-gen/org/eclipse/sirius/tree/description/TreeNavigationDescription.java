@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.description;
 
-import org.eclipse.sirius.description.tool.RepresentationNavigationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

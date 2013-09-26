@@ -16,9 +16,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.description.style.StylePackage;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl;
@@ -47,6 +44,8 @@ import org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping;
 import org.eclipse.sirius.diagram.sequence.template.TTransformer;
 import org.eclipse.sirius.diagram.sequence.template.TemplateFactory;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -233,7 +232,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
         isInited = true;
 
         // Initialize simple dependencies
-        SiriusPackage.eINSTANCE.eClass();
+        ViewpointPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
         SequencePackageImpl theSequencePackage = (SequencePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(SequencePackage.eNS_URI) instanceof SequencePackageImpl ? EPackage.Registry.INSTANCE
@@ -1011,10 +1010,10 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
         // Obtain other dependent packages
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
-        org.eclipse.sirius.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.description.DescriptionPackage) EPackage.Registry.INSTANCE
-                .getEPackage(org.eclipse.sirius.description.DescriptionPackage.eNS_URI);
+        org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eNS_URI);
         StylePackage theStylePackage = (StylePackage) EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI);
-        SiriusPackage theSiriusPackage = (SiriusPackage) EPackage.Registry.INSTANCE.getEPackage(SiriusPackage.eNS_URI);
+        ViewpointPackage theViewpointPackage = (ViewpointPackage) EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
 
         // Create type parameters
 
@@ -1133,11 +1132,11 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
         initEClass(tMessageStyleEClass, TMessageStyle.class, "TMessageStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getTMessageStyle_StrokeColor(), theDescriptionPackage_1.getColorDescription(), null, "strokeColor", null, 1, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getTMessageStyle_LineStyle(), theSiriusPackage.getLineStyle(), "lineStyle", null, 0, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+        initEAttribute(getTMessageStyle_LineStyle(), theViewpointPackage.getLineStyle(), "lineStyle", null, 0, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
                 !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getTMessageStyle_SourceArrow(), theSiriusPackage.getEdgeArrows(), "sourceArrow", "NoDecoration", 1, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+        initEAttribute(getTMessageStyle_SourceArrow(), theViewpointPackage.getEdgeArrows(), "sourceArrow", "NoDecoration", 1, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getTMessageStyle_TargetArrow(), theSiriusPackage.getEdgeArrows(), "targetArrow", "InputArrow", 1, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+        initEAttribute(getTMessageStyle_TargetArrow(), theViewpointPackage.getEdgeArrows(), "targetArrow", "InputArrow", 1, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getTMessageStyle_LabelExpression(), theDescriptionPackage_1.getInterpretedExpression(), "labelExpression", "<%name%>", 0, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

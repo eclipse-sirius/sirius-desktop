@@ -18,12 +18,11 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.resource.LoadEMFResource;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.description.tool.SelectModelElementVariable;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 
 /**
  * This will return default values for the UI-dependent tools.
@@ -61,7 +60,7 @@ public class NoUICallback implements UICallBack {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.tools.api.command.ui.UICallBack#askForVariableValues(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.sirius.description.tool.SelectModelElementVariable)
+     *      org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable)
      */
     public Collection<EObject> askForVariableValues(final EObject model, final SelectModelElementVariable variable) throws InterruptedException {
         return Collections.emptyList();

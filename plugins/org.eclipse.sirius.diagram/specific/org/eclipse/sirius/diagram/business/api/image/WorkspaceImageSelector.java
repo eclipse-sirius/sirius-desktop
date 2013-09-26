@@ -13,9 +13,8 @@ package org.eclipse.sirius.diagram.business.api.image;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.BasicLabelStyle;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.SelectDiagramElementBackgroundImageDialog;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 
 /**
  * A default {@link ImageSelector} to get Image from the workspace.

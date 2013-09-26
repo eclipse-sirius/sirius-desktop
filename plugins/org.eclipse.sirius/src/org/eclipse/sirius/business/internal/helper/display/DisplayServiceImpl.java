@@ -21,12 +21,6 @@ import com.google.common.collect.Iterables;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.listener.Notification;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.GraphicalFilter;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.helper.display.DisplayService;
@@ -35,6 +29,12 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.GraphicalFilter;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Default implementation of {@link DisplayService}.
@@ -86,8 +86,8 @@ public final class DisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#isDisplayed(org.eclipse.sirius.DDiagram,
-     *      org.eclipse.sirius.DDiagramElement)
+     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#isDisplayed(org.eclipse.sirius.viewpoint.DDiagram,
+     *      org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public boolean isDisplayed(final DDiagram diagram, final DDiagramElement element) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.IS_VISIBLE_KEY);
@@ -146,8 +146,8 @@ public final class DisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeVisibility(org.eclipse.sirius.DDiagram,
-     *      org.eclipse.sirius.DDiagramElement)
+     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeVisibility(org.eclipse.sirius.viewpoint.DDiagram,
+     *      org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public boolean computeVisibility(DiagramMappingsManager session, final DDiagram diagram, final DDiagramElement element) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_VISIBILITY_KEY);
@@ -159,8 +159,8 @@ public final class DisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeLabelVisibility(org.eclipse.sirius.DDiagram,
-     *      org.eclipse.sirius.DDiagramElement)
+     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeLabelVisibility(org.eclipse.sirius.viewpoint.DDiagram,
+     *      org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public boolean computeLabelVisibility(DDiagram diagram, DDiagramElement element) {
         return !(new DDiagramElementQuery(element).isLabelHidden());
@@ -224,7 +224,7 @@ public final class DisplayServiceImpl implements DisplayService {
     private boolean isFold(final DDiagramElement element) {
         return Iterables.any(element.getGraphicalFilters(), new Predicate<GraphicalFilter>() {
             public boolean apply(GraphicalFilter input) {
-                return SiriusPackage.eINSTANCE.getFoldingFilter().isInstance(input) || SiriusPackage.eINSTANCE.getFoldingPointFilter().isInstance(input);
+                return ViewpointPackage.eINSTANCE.getFoldingFilter().isInstance(input) || ViewpointPackage.eINSTANCE.getFoldingPointFilter().isInstance(input);
             }
         });
     }

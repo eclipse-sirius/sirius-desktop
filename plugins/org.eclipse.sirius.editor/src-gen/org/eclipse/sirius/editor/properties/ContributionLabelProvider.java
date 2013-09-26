@@ -19,10 +19,9 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 
 /**
  * Label provider of the tabbed property sheet page.
@@ -101,8 +100,7 @@ public class ContributionLabelProvider extends LabelProvider {
      */
     private AdapterFactoryLabelProvider getAdapterFactoryLabelProvider() {
         if (adapterFactoryLabelProvider == null) {
-            adapterFactoryLabelProvider = new AdapterFactoryLabelProvider(
-                    ((SiriusEditor) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor()).getAdapterFactory());
+            adapterFactoryLabelProvider = new AdapterFactoryLabelProvider(((SiriusEditor) PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor()).getAdapterFactory());
         }
         return adapterFactoryLabelProvider;
     }

@@ -26,20 +26,19 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Image;
-
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DMappingBased;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DNodeContainer;
-import org.eclipse.sirius.DNodeList;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.graphical.edit.policies.LabelDeletionEditPolicy;
 import org.eclipse.sirius.diagram.graphical.edit.policies.LabelSemanticEditPolicy;
 import org.eclipse.sirius.diagram.graphical.edit.policies.ToolBasedLabelDirectEditPolicy;
 import org.eclipse.sirius.diagram.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DMappingBased;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DNodeList;
 
 /**
  * Basic implementation of edit part that can have a label.
@@ -257,12 +256,12 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
 
     /**
      * Indicates if the given {@link DDiagramElement}'s parent
-     * {@link org.eclipse.sirius.DDiagram} is in Layouting Mode.
+     * {@link org.eclipse.sirius.viewpoint.DDiagram} is in Layouting Mode.
      * 
      * @param element
      *            the element to test
      * @return true if the given {@link DDiagramElement}'s parent
-     *         {@link org.eclipse.sirius.DDiagram} is in Layouting Mode,
+     *         {@link org.eclipse.sirius.viewpoint.DDiagram} is in Layouting Mode,
      *         false otherwise
      */
     private boolean isInLayoutingModeDiagram(DDiagramElement element) {

@@ -25,10 +25,9 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.eclipse.sirius.description.provider.EdgeMappingItemProvider;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.MessageMapping;
+import org.eclipse.sirius.viewpoint.description.provider.EdgeMappingItemProvider;
 
 /**
  * This is the item provider adapter for a

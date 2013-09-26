@@ -34,19 +34,18 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.concern.provider.ConcernItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.filter.provider.FilterItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.description.audit.provider.AuditItemProviderAdapterFactory;
-import org.eclipse.sirius.description.concern.provider.ConcernItemProviderAdapterFactory;
-import org.eclipse.sirius.description.filter.provider.FilterItemProviderAdapterFactory;
-import org.eclipse.sirius.description.provider.DescriptionItemProviderAdapterFactory;
-import org.eclipse.sirius.description.tool.provider.ToolItemProviderAdapterFactory;
-import org.eclipse.sirius.description.validation.provider.ValidationItemProviderAdapterFactory;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
-import org.eclipse.sirius.provider.SiriusItemProviderAdapterFactory;
 
 /**
  * This is the central singleton for the Table edit plugin. <!-- begin-user-doc
@@ -60,7 +59,7 @@ public final class TableUIPlugin extends EMFPlugin {
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
@@ -91,7 +90,7 @@ public final class TableUIPlugin extends EMFPlugin {
      * @generated
      */
     public TableUIPlugin() {
-        super(new ResourceLocator[] { SiriusEditPlugin.INSTANCE, EcoreEditPlugin.INSTANCE, });
+        super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE, SiriusEditPlugin.INSTANCE, });
     }
 
     /**
@@ -163,7 +162,7 @@ public final class TableUIPlugin extends EMFPlugin {
          * @not-generated
          */
         protected void fillItemProviderFactories(List<AdapterFactory> factories) {
-            factories.add(new SiriusItemProviderAdapterFactory());
+            factories.add(new ViewpointItemProviderAdapterFactory());
             factories.add(new DescriptionItemProviderAdapterFactory());
             factories.add(new ToolItemProviderAdapterFactory());
             factories.add(new FilterItemProviderAdapterFactory());

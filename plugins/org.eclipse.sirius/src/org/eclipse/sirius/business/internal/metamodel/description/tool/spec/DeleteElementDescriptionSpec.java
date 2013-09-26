@@ -20,10 +20,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.tool.impl.DeleteElementDescriptionImpl;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.tool.impl.DeleteElementDescriptionImpl;
 
 /**
  * Implementation of DeleteElementDescription.
@@ -36,7 +35,7 @@ public class DeleteElementDescriptionSpec extends DeleteElementDescriptionImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.tool.impl.DeleteElementDescriptionImpl#getMappings()
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.DeleteElementDescriptionImpl#getMappings()
      */
     @Override
     public EList<DiagramElementMapping> getMappings() {

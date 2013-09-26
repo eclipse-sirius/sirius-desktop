@@ -11,10 +11,9 @@
 package org.eclipse.sirius.tree.description;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.description.tool.RepresentationNavigationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -58,8 +57,7 @@ public interface TreeDescription extends RepresentationDescription, TreeItemMapp
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeDescription_DomainClass()
-     * @model dataType="org.eclipse.sirius.description.TypeName"
-     *        required="true"
+     * @model dataType="org.eclipse.sirius.description.TypeName" required="true"
      * @generated
      */
     String getDomainClass();
@@ -130,7 +128,7 @@ public interface TreeDescription extends RepresentationDescription, TreeItemMapp
      * Returns the value of the '
      * <em><b>Owned Representation Creation Descriptions</b></em>' containment
      * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.description.tool.RepresentationCreationDescription}
+     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All tools of the section. <!-- end-model-doc -->
      * 
@@ -147,7 +145,7 @@ public interface TreeDescription extends RepresentationDescription, TreeItemMapp
      * Returns the value of the '
      * <em><b>Owned Representation Navigation Descriptions</b></em>' containment
      * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.description.tool.RepresentationNavigationDescription}
+     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All navigation tools. <!-- end-model-doc -->
      * 

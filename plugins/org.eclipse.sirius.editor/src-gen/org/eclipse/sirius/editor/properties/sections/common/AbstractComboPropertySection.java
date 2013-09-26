@@ -23,6 +23,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CCombo;
 import org.eclipse.swt.custom.CLabel;
@@ -40,12 +41,10 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
-import org.eclipse.sirius.editor.properties.SiriusPropertySheetPage;
-
 /**
  * An abstract implementation of a section with a combo box.
  */
-public abstract class AbstractComboPropertySection extends AbstractSiriusPropertySection {
+public abstract class AbstractComboPropertySection extends AbstractViewpointPropertySection {
     /** The combo control for the section. */
     protected CCombo combo;
 
@@ -64,8 +63,8 @@ public abstract class AbstractComboPropertySection extends AbstractSiriusPropert
      */
     public void createControls(Composite parent, TabbedPropertySheetPage aTabbedPropertySheetPage) {
 
-        if (aTabbedPropertySheetPage instanceof SiriusPropertySheetPage)
-            super.createControls(parent, (SiriusPropertySheetPage) aTabbedPropertySheetPage);
+        if (aTabbedPropertySheetPage instanceof ViewpointPropertySheetPage)
+            super.createControls(parent, (ViewpointPropertySheetPage) aTabbedPropertySheetPage);
         else
             super.createControls(parent, aTabbedPropertySheetPage);
         super.createControls(parent, aTabbedPropertySheetPage);
@@ -129,7 +128,7 @@ public abstract class AbstractComboPropertySection extends AbstractSiriusPropert
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractSiriusPropertySection#setInput(org.eclipse.ui.IWorkbenchPart,
+     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection#setInput(org.eclipse.ui.IWorkbenchPart,
      *      org.eclipse.jface.viewers.ISelection)
      */
     @Override

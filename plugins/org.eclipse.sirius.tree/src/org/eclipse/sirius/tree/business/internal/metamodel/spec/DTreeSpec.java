@@ -22,15 +22,15 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.internal.query.DModelElementInternalQuery;
-import org.eclipse.sirius.description.DAnnotation;
 import org.eclipse.sirius.tree.DTreeElementSynchronizer;
 import org.eclipse.sirius.tree.DTreeElementUpdater;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.impl.DTreeImpl;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DAnnotation;
 
 /**
  * Implementation od DTree.
@@ -43,7 +43,7 @@ public class DTreeSpec extends DTreeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DRepresentationImpl#refresh()
+     * @see org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#refresh()
      */
     @Override
     public void refresh() {
@@ -53,24 +53,24 @@ public class DTreeSpec extends DTreeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DRepresentationImpl#getOwnedRepresentationElements()
+     * @see org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getOwnedRepresentationElements()
      */
     @Override
     public EList<DRepresentationElement> getOwnedRepresentationElements() {
         EList<DTreeItem> result = getOwnedTreeItems();
-        final EReference feature = SiriusPackage.eINSTANCE.getDRepresentation_OwnedRepresentationElements();
+        final EReference feature = ViewpointPackage.eINSTANCE.getDRepresentation_OwnedRepresentationElements();
         return new EcoreEList.UnmodifiableEList<DRepresentationElement>(eInternalContainer(), feature, result.size(), result.toArray());
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DRepresentationImpl#getRepresentationElements()
+     * @see org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getRepresentationElements()
      */
     @Override
     public EList<DRepresentationElement> getRepresentationElements() {
         List<DRepresentationElement> result = Lists.newArrayList(Iterators.filter(eAllContents(), DRepresentationElement.class));
-        final EReference feature = SiriusPackage.eINSTANCE.getDRepresentation_RepresentationElements();
+        final EReference feature = ViewpointPackage.eINSTANCE.getDRepresentation_RepresentationElements();
         return new EcoreEList.UnmodifiableEList<DRepresentationElement>(eInternalContainer(), feature, result.size(), result.toArray());
     }
 
@@ -93,7 +93,7 @@ public class DTreeSpec extends DTreeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DRepresentationImpl#getDAnnotation(String)
+     * @see org.eclipse.sirius.viewpoint.impl.DRepresentationImpl#getDAnnotation(String)
      */
     @Override
     public DAnnotation getDAnnotation(String source) {

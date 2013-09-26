@@ -52,7 +52,8 @@ public interface TMessageMapping extends TAbstractMapping {
      *         attribute.
      * @see #setSendingEndFinderExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTMessageMapping_SendingEndFinderExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      * @generated
@@ -87,7 +88,8 @@ public interface TMessageMapping extends TAbstractMapping {
      *         attribute.
      * @see #setReceivingEndFinderExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTMessageMapping_ReceivingEndFinderExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      * @generated

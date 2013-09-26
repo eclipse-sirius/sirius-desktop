@@ -21,12 +21,11 @@ import org.eclipse.emf.ecore.presentation.EcoreActionBarContributor.ExtendedLoad
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableContext;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 
 /**
  * A {@link SelectionAdapter} to open a {@link RegisteredPackageDialog} for

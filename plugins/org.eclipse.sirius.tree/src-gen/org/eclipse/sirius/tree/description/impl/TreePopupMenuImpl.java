@@ -18,11 +18,10 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.sirius.description.tool.MenuItemOrRef;
-import org.eclipse.sirius.description.tool.impl.AbstractToolDescriptionImpl;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreePopupMenu;
+import org.eclipse.sirius.viewpoint.description.tool.MenuItemOrRef;
+import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptionImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

@@ -22,10 +22,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.impl.DRepresentationImpl;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElementSynchronizer;
 import org.eclipse.sirius.tree.DTreeElementUpdater;
@@ -33,6 +29,9 @@ import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.description.TreeDescription;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -40,10 +39,9 @@ import org.eclipse.sirius.tree.description.TreeDescription;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeImpl#getTarget <em>Target
- * </em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.DTreeImpl#getOwnedTreeItems <em>
- * Owned Tree Items</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeImpl#getTarget <em>Target</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.DTreeImpl#getOwnedTreeItems <em>Owned
+ * Tree Items</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.impl.DTreeImpl#getSemanticElements <em>
  * Semantic Elements</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.impl.DTreeImpl#getDescription <em>
@@ -371,7 +369,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
         if (baseClass == DSemanticDecorator.class) {
             switch (derivedFeatureID) {
             case TreePackage.DTREE__TARGET:
-                return SiriusPackage.DSEMANTIC_DECORATOR__TARGET;
+                return ViewpointPackage.DSEMANTIC_DECORATOR__TARGET;
             default:
                 return -1;
             }
@@ -402,7 +400,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == DSemanticDecorator.class) {
             switch (baseFeatureID) {
-            case SiriusPackage.DSEMANTIC_DECORATOR__TARGET:
+            case ViewpointPackage.DSEMANTIC_DECORATOR__TARGET:
                 return TreePackage.DTREE__TARGET;
             default:
                 return -1;

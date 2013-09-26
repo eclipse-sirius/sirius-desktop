@@ -18,18 +18,17 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.business.api.helper.display.DisplayMode;
 import org.eclipse.sirius.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.business.api.query.CompositeFilterDescriptionQuery;
-import org.eclipse.sirius.description.filter.CompositeFilterDescription;
-import org.eclipse.sirius.description.filter.Filter;
-import org.eclipse.sirius.description.filter.FilterDescription;
-import org.eclipse.sirius.description.filter.FilterKind;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.description.filter.CompositeFilterDescription;
+import org.eclipse.sirius.viewpoint.description.filter.Filter;
+import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
+import org.eclipse.sirius.viewpoint.description.filter.FilterKind;
 
 /**
  * This class is used whenever we need to filter elements (hide/show considering

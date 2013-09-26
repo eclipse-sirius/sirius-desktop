@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
-import org.eclipse.sirius.ContainerLayout;
-import org.eclipse.sirius.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.ContainerLayout;
+import org.eclipse.sirius.viewpoint.description.ContainerMapping;
 
 /**
  * A class aggregating all the queries (read-only!) having a ContainerMapping as

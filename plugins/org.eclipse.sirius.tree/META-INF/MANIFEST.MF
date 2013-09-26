@@ -29,9 +29,13 @@ Export-Package: org.eclipse.sirius.tree,
  org.eclipse.sirius.tree.tools.api.interpreter,
  org.eclipse.sirius.tree.tools.internal.command;x-internal:=true,
  org.eclipse.sirius.tree.util
-Require-Bundle: org.eclipse.sirius;visibility:=reexport,
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.sirius;visibility:=reexport,
  org.eclipse.sirius.common,
  org.eclipse.sirius.synchronizer;visibility:=reexport,
  org.eclipse.sirius.ecore.extender;bundle-version="0.1.0",
  org.eclipse.emf.transaction,
  com.google.guava;bundle-version="[11.0.0,12.0.0)"
+Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy

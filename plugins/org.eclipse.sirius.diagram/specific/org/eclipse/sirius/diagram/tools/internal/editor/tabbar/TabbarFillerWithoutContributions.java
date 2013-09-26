@@ -21,9 +21,6 @@ import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.IWorkbenchPage;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.description.DiagramDescription;
 import org.eclipse.sirius.diagram.part.SiriusDiagramActionBarContributor;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.tools.internal.actions.SelectHiddenElementsAction;
@@ -37,6 +34,8 @@ import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarCol
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarSelectMenuManager;
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.SiriusTabbarExtensionContributionFactory.TabbarActionContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.api.action.ConcernComboContributionItem;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
 
 /**
  * Directly fill the tabbar. This filler does not allows extension and does not

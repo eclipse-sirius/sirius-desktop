@@ -13,13 +13,12 @@ package org.eclipse.sirius.diagram.business.api.query;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
-import org.eclipse.sirius.description.AnnotationEntry;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 
 /**
  * A class aggregating all the graphical queries (read-only!) having a

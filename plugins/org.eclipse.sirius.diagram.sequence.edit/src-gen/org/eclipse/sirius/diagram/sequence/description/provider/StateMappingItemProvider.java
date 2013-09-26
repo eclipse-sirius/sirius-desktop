@@ -26,16 +26,15 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.eclipse.sirius.description.provider.NodeMappingItemProvider;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.StateMapping;
+import org.eclipse.sirius.viewpoint.description.provider.NodeMappingItemProvider;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.sequence.description.StateMapping}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
+ * {@link org.eclipse.sirius.diagram.sequence.description.StateMapping} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
@@ -149,19 +148,19 @@ public class StateMappingItemProvider extends NodeMappingItemProvider implements
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createInstanceRoleMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createExecutionMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createStateMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createEndOfLifeMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createObservationPointMapping()));
     }
 
@@ -188,7 +187,7 @@ public class StateMappingItemProvider extends NodeMappingItemProvider implements
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == org.eclipse.sirius.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS;
+        boolean qualify = childFeature == org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS;
         qualify = qualify && childObject instanceof EObject && DescriptionPackage.eINSTANCE.equals(((EObject) childObject).eClass().getEPackage());
 
         if (qualify) {

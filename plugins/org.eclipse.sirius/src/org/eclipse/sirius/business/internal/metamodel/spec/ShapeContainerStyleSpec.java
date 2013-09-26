@@ -11,10 +11,10 @@
 package org.eclipse.sirius.business.internal.metamodel.spec;
 
 import org.eclipse.sirius.business.internal.metamodel.operations.StyleSpecOperations;
-import org.eclipse.sirius.impl.ShapeContainerStyleImpl;
+import org.eclipse.sirius.viewpoint.impl.ShapeContainerStyleImpl;
 
 /**
- * Implementation of {@link org.eclipse.sirius.ShapeContainerStyle}.
+ * Implementation of {@link org.eclipse.sirius.viewpoint.ShapeContainerStyle}.
  * 
  * @author ymortier
  */
@@ -23,7 +23,7 @@ public class ShapeContainerStyleSpec extends ShapeContainerStyleImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.ContainerStyleImpl#refresh()
+     * @see org.eclipse.sirius.viewpoint.impl.ContainerStyleImpl#refresh()
      */
     @Override
     public void refresh() {

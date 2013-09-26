@@ -19,20 +19,19 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
-
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DSemanticDiagram;
 import org.eclipse.sirius.business.api.helper.concern.ConcernService;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
-import org.eclipse.sirius.description.concern.ConcernDescription;
-import org.eclipse.sirius.description.filter.CompositeFilterDescription;
-import org.eclipse.sirius.description.filter.Filter;
-import org.eclipse.sirius.description.filter.FilterDescription;
-import org.eclipse.sirius.description.filter.VariableFilter;
 import org.eclipse.sirius.diagram.tools.internal.filter.FilterTools;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.description.concern.ConcernDescription;
+import org.eclipse.sirius.viewpoint.description.filter.CompositeFilterDescription;
+import org.eclipse.sirius.viewpoint.description.filter.Filter;
+import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
+import org.eclipse.sirius.viewpoint.description.filter.VariableFilter;
 
 /**
  * Change filter activation.

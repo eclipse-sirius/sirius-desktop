@@ -29,18 +29,17 @@ import org.eclipse.gmf.runtime.emf.type.core.ElementTypeRegistry;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Image;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.ContainerCreationDescription;
-import org.eclipse.sirius.description.tool.NodeCreationDescription;
-import org.eclipse.sirius.description.tool.PaneBasedSelectionWizardDescription;
-import org.eclipse.sirius.description.tool.SelectionWizardDescription;
-import org.eclipse.sirius.description.tool.ToolDescription;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
+import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * A {@link PopupBarEditPolicy} with less memory for the array list which store
@@ -74,7 +73,7 @@ public class SiriusPopupBarEditPolicy extends PopupBarEditPolicy {
 
     /**
      * Tests whether popups are enabled for the current diagram according to its
-     * {@link org.eclipse.sirius.description.DiagramDescription}.
+     * {@link org.eclipse.sirius.viewpoint.description.DiagramDescription}.
      * 
      * @see import
      *      org.eclipse.sirius.description.DiagramDescription#isEnablePopupBars
@@ -182,21 +181,21 @@ public class SiriusPopupBarEditPolicy extends PopupBarEditPolicy {
         EClass klass = null;
 
         if (desc instanceof NodeCreationDescription) {
-            klass = SiriusPackage.eINSTANCE.getDNode();
+            klass = ViewpointPackage.eINSTANCE.getDNode();
         } else if (desc instanceof ContainerCreationDescription) {
-            klass = SiriusPackage.eINSTANCE.getDContainer();
+            klass = ViewpointPackage.eINSTANCE.getDContainer();
         } else if (desc instanceof SelectionWizardDescription || desc instanceof PaneBasedSelectionWizardDescription) {
             /*
              * return a fake class as element type is not used by popup bar
              * descriptor
              */
-            klass = SiriusPackage.eINSTANCE.getDNode();
+            klass = ViewpointPackage.eINSTANCE.getDNode();
         } else if (desc instanceof ToolDescription) {
             /*
              * return a fake class as element type is not used by popup bar
              * descriptor
              */
-            klass = SiriusPackage.eINSTANCE.getDNode();
+            klass = ViewpointPackage.eINSTANCE.getDNode();
         }
 
         if (klass != null) {

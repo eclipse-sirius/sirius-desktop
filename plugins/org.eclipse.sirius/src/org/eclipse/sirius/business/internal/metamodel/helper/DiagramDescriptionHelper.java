@@ -15,10 +15,9 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.Layer;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
  * Helper class to factor specialized behavior for diagram descriptions.

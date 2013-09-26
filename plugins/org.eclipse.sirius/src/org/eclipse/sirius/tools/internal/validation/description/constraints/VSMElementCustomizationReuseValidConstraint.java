@@ -13,13 +13,12 @@ package org.eclipse.sirius.tools.internal.validation.description.constraints;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
-
 import org.eclipse.sirius.business.internal.query.EAttributeCustomizationQuery;
 import org.eclipse.sirius.business.internal.query.EReferenceCustomizationQuery;
-import org.eclipse.sirius.description.EAttributeCustomization;
-import org.eclipse.sirius.description.EReferenceCustomization;
-import org.eclipse.sirius.description.EStructuralFeatureCustomization;
-import org.eclipse.sirius.description.VSMElementCustomizationReuse;
+import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
+import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
+import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
+import org.eclipse.sirius.viewpoint.description.VSMElementCustomizationReuse;
 
 /**
  * A

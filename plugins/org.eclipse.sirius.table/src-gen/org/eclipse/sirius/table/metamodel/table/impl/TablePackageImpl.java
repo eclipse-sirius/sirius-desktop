@@ -17,8 +17,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DCellStyle;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
@@ -35,6 +33,7 @@ import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -48,7 +47,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -185,7 +184,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
         isInited = true;
 
         // Initialize simple dependencies
-        SiriusPackage.eINSTANCE.eClass();
+        ViewpointPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl ? EPackage.Registry.INSTANCE
@@ -755,7 +754,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
 
         // Obtain other dependent packages
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
-        SiriusPackage theSiriusPackage = (SiriusPackage) EPackage.Registry.INSTANCE.getEPackage(SiriusPackage.eNS_URI);
+        ViewpointPackage theViewpointPackage = (ViewpointPackage) EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
         // Add subpackages
@@ -766,21 +765,20 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
         // Set bounds for type parameters
 
         // Add supertypes to classes
-        dTableEClass.getESuperTypes().add(theSiriusPackage.getDRepresentation());
+        dTableEClass.getESuperTypes().add(theViewpointPackage.getDRepresentation());
         dTableEClass.getESuperTypes().add(this.getLineContainer());
         dTableEClass.getESuperTypes().add(this.getDTableElementUpdater());
-        dTableEClass.getESuperTypes().add(theSiriusPackage.getExtensibleRepresentation());
-        dTableElementEClass.getESuperTypes().add(theSiriusPackage.getDRepresentationElement());
-        lineContainerEClass.getESuperTypes().add(theSiriusPackage.getDSemanticDecorator());
+        dTableElementEClass.getESuperTypes().add(theViewpointPackage.getDRepresentationElement());
+        lineContainerEClass.getESuperTypes().add(theViewpointPackage.getDSemanticDecorator());
         dLineEClass.getESuperTypes().add(this.getLineContainer());
         dLineEClass.getESuperTypes().add(this.getDTableElement());
         dLineEClass.getESuperTypes().add(this.getDTableElementUpdater());
-        dCellEClass.getESuperTypes().add(theSiriusPackage.getDSemanticDecorator());
+        dCellEClass.getESuperTypes().add(theViewpointPackage.getDSemanticDecorator());
         dCellEClass.getESuperTypes().add(this.getDTableElement());
         dCellEClass.getESuperTypes().add(this.getDTableElementUpdater());
         dCellStyleEClass.getESuperTypes().add(this.getDTableElementStyle());
         dColumnEClass.getESuperTypes().add(this.getDTableElement());
-        dTargetColumnEClass.getESuperTypes().add(theSiriusPackage.getDSemanticDecorator());
+        dTargetColumnEClass.getESuperTypes().add(theViewpointPackage.getDSemanticDecorator());
         dTargetColumnEClass.getESuperTypes().add(this.getDColumn());
         dTargetColumnEClass.getESuperTypes().add(this.getDTableElementUpdater());
         dFeatureColumnEClass.getESuperTypes().add(this.getDColumn());
@@ -885,11 +883,11 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
         initEClass(dTableElementStyleEClass, DTableElementStyle.class, "DTableElementStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDTableElementStyle_LabelSize(), theEcorePackage.getEInt(), "labelSize", "8", 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
                 !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDTableElementStyle_LabelFormat(), theSiriusPackage.getFontFormat(), "labelFormat", "normal", 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+        initEAttribute(getDTableElementStyle_LabelFormat(), theViewpointPackage.getFontFormat(), "labelFormat", "normal", 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDTableElementStyle_ForegroundColor(), theSiriusPackage.getRGBValues(), null, "foregroundColor", null, 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
+        initEReference(getDTableElementStyle_ForegroundColor(), theViewpointPackage.getRGBValues(), null, "foregroundColor", null, 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDTableElementStyle_BackgroundColor(), theSiriusPackage.getRGBValues(), null, "backgroundColor", null, 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
+        initEReference(getDTableElementStyle_BackgroundColor(), theViewpointPackage.getRGBValues(), null, "backgroundColor", null, 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDTableElementStyle_DefaultForegroundStyle(), theEcorePackage.getEBoolean(), "defaultForegroundStyle", "false", 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -62,15 +62,15 @@ import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.internal.providers.FilteredTreeContentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineLabelProvider;
-import org.eclipse.sirius.provider.SiriusItemProviderAdapterFactory;
 import org.eclipse.sirius.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 
 /**
  * A dialog box which allows the user to edit a boolean property/flag of a
@@ -819,7 +819,7 @@ public class DiagramElementsSelectionDialog {
      */
     private AdapterFactory getAdapterFactory() {
         List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
-        factories.add(new SiriusItemProviderAdapterFactory());
+        factories.add(new ViewpointItemProviderAdapterFactory());
         factories.add(new ResourceItemProviderAdapterFactory());
         factories.add(new EcoreItemProviderAdapterFactory());
         factories.add(new ReflectiveItemProviderAdapterFactory());

@@ -14,7 +14,7 @@ import java.util.Set;
 
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * A registry listing all the listeners that will be notified any time a user

@@ -18,10 +18,10 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.business.api.tool.ToolFilterDescriptionListener;
-import org.eclipse.sirius.description.tool.ToolFilterDescription;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 
 /**
  * Manager the listeners for tool filter.

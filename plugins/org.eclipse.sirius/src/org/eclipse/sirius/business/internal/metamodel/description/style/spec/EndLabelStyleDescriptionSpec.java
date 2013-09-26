@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.metamodel.description.style.spec;
 
-import org.eclipse.sirius.description.style.StylePackage;
-import org.eclipse.sirius.description.style.impl.EndLabelStyleDescriptionImpl;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
+import org.eclipse.sirius.viewpoint.description.style.impl.EndLabelStyleDescriptionImpl;
 
 /**
  * A specific class to override the default labelExpression.

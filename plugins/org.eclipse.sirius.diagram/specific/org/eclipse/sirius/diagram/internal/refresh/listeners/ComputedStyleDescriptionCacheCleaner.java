@@ -27,15 +27,15 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.ComputedStyleDescriptionRegistry;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.Style;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.internal.metamodel.helper.BestStyleDescriptionRegistry;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.style.StyleDescription;
+import org.eclipse.sirius.viewpoint.ComputedStyleDescriptionRegistry;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
  * Computed {@link StyleDescription} cache cleaner of a {@link DDiagram}.
@@ -88,7 +88,7 @@ public class ComputedStyleDescriptionCacheCleaner extends ResourceSetListenerImp
             CompoundCommand compoundCommand = new CompoundCommand();
             for (StyleDescription orphanedComputedStyleDescription : orphanedComputedStyleDescriptions) {
                 Command removeOrphanedComputedStyleDescriptionCmd = RemoveCommand.create(getTarget(), orphanedComputedStyleDescription.eContainer(),
-                        SiriusPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, orphanedComputedStyleDescription);
+                        ViewpointPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS, orphanedComputedStyleDescription);
                 compoundCommand.append(removeOrphanedComputedStyleDescriptionCmd);
             }
             ComputedStyleDescriptionRegistry computedStyleDescriptionRegistry = BestStyleDescriptionRegistry.getComputedStyleDescriptionRegistry(dDiagram, false);
@@ -152,7 +152,7 @@ public class ComputedStyleDescriptionCacheCleaner extends ResourceSetListenerImp
             }
             if (removedStyle != null && removedStyle.getDescription() != null) {
                 StyleDescription styleDescription = removedStyle.getDescription();
-                if (styleDescription.eContainingFeature() == SiriusPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS && concernCurrentDDiagram(notification)) {
+                if (styleDescription.eContainingFeature() == ViewpointPackage.Literals.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS && concernCurrentDDiagram(notification)) {
                     orphanedComputedStyleDescriptions.add(removedStyle.getDescription());
                 }
             }

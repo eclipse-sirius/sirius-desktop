@@ -34,7 +34,7 @@ import com.google.common.collect.Sets;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.componentization.SiriusResourceHandler;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * The masking policy keeps track of which of the loaded resources are masked
@@ -173,7 +173,7 @@ public class MaskingPolicy {
         Preconditions.checkState(loaded.isLoaded(), "The resource is not loaded: " + loaded);
 
         MaskingChange change = new MaskingChange();
-        for (Sirius viewpoint : resourceHandler.collectSiriusDefinitions(loaded)) {
+        for (Viewpoint viewpoint : resourceHandler.collectSiriusDefinitions(loaded)) {
             Option<URI> uri = new SiriusQuery(viewpoint).getSiriusURI();
             Preconditions.checkState(uri.some(), "Could not identify logical Sirius URI for Sirius " + viewpoint);
             SiriusImplementation vi = new SiriusImplementation(uri.get(), loaded);

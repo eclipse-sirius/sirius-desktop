@@ -58,7 +58,8 @@ public interface TExecutionMapping extends TAbstractMapping, TMessageExtremity {
      *         attribute.
      * @see #setStartingEndFinderExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTExecutionMapping_StartingEndFinderExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      * @generated
@@ -93,7 +94,8 @@ public interface TExecutionMapping extends TAbstractMapping, TMessageExtremity {
      *         attribute.
      * @see #setFinishingEndFinderExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTExecutionMapping_FinishingEndFinderExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      * @generated
@@ -147,8 +149,8 @@ public interface TExecutionMapping extends TAbstractMapping, TMessageExtremity {
     /**
      * Returns the value of the '<em><b>Execution Mappings</b></em>' containment
      * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping}
-     * . <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping}.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Execution Mappings</em>' containment reference
      * list isn't clear, there really should be more of a description here...

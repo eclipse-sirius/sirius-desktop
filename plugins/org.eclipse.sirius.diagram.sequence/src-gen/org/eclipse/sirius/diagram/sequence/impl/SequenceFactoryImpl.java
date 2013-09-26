@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.SequenceFactory;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
@@ -39,7 +38,7 @@ public class SequenceFactoryImpl extends EFactoryImpl implements SequenceFactory
      */
     public static SequenceFactory init() {
         try {
-            SequenceFactory theSequenceFactory = (SequenceFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/sirius/diagram/sequence/2.0.0");
+            SequenceFactory theSequenceFactory = (SequenceFactory) EPackage.Registry.INSTANCE.getEFactory(SequencePackage.eNS_URI);
             if (theSequenceFactory != null) {
                 return theSequenceFactory;
             }

@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.description;
 
-import org.eclipse.sirius.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -42,7 +42,8 @@ public interface TreeMapping extends RepresentationElementMapping {
      * @return the value of the '<em>Semantic Elements</em>' attribute.
      * @see #setSemanticElements(String)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeMapping_SemanticElements()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=

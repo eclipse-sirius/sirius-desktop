@@ -11,11 +11,10 @@
 package org.eclipse.sirius.tree.business.internal.color;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.description.style.LabelStyleDescription;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
 import org.eclipse.sirius.tree.description.TreeItemStyleDescription;
 import org.eclipse.sirius.tree.description.util.DescriptionSwitch;
+import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
 
 /**
  * Class responsible for setting default color values on style descriptions.
@@ -42,7 +41,7 @@ public class DefaultColorStyleDescription extends DescriptionSwitch<EObject> {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.tree.description.util.DescriptionSwitch#caseLabelStyleDescription(org.eclipse.sirius.description.style.LabelStyleDescription)
+     * @see org.eclipse.sirius.tree.description.util.DescriptionSwitch#caseLabelStyleDescription(org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription)
      */
     @Override
     public EObject caseLabelStyleDescription(final LabelStyleDescription object) {

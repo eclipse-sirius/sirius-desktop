@@ -22,7 +22,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.business.api.componentization.SiriusResourceHandler;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * A {@link SiriusResourceHandler} which handles all the resources handled by
@@ -75,7 +75,7 @@ public class CompositeSiriusResourceHandler implements SiriusResourceHandler {
     /**
      * {@inheritDoc}
      */
-    public synchronized Set<Sirius> collectSiriusDefinitions(Resource res) {
+    public synchronized Set<Viewpoint> collectSiriusDefinitions(Resource res) {
         final URI uri = res.getURI();
         for (SiriusResourceHandler handler : handlers) {
             if (handler.handles(uri)) {

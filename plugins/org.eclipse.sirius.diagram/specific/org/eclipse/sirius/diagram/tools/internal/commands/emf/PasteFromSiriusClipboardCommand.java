@@ -22,8 +22,8 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.diagram.tools.internal.clipboard.SiriusClipboardManager;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * A command to paste from viewpoint clipboard into a new container.

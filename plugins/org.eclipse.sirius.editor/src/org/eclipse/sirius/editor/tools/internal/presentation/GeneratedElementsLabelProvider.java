@@ -14,10 +14,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.DecoratingLabelProvider;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Display;
-
-import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
 
 /**
  * Label provider highlighting generated model elements with a specific color.
@@ -50,7 +49,7 @@ public class GeneratedElementsLabelProvider extends DecoratingLabelProvider {
             if (RepresentationTemplateEditManager.INSTANCE.isGenerated((EObject) element)) {
                 return generated;
             }
-        } 
+        }
         return super.getForeground(element);
     }
 

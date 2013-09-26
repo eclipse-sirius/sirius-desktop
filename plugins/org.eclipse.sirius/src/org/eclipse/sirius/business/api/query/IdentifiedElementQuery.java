@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
-import org.eclipse.sirius.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 /**
  * A class aggregating all the queries (read-only!) having a IdentifiedElement

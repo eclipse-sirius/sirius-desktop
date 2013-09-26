@@ -15,11 +15,10 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.sirius.description.impl.ConditionalStyleDescriptionImpl;
 import org.eclipse.sirius.tree.description.ConditionalTreeItemStyleDescription;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeItemStyleDescription;
+import org.eclipse.sirius.viewpoint.description.impl.ConditionalStyleDescriptionImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

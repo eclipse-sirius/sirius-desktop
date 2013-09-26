@@ -12,9 +12,8 @@ package org.eclipse.sirius.business.internal.repair.commands;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.IdentityCommand;
-
-import org.eclipse.sirius.DView;
 import org.eclipse.sirius.business.api.repair.IRepairParticipant;
+import org.eclipse.sirius.viewpoint.DView;
 
 /**
  * SaveModelElementStateRecordingCommand.

@@ -19,11 +19,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.context.impl.DomainPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.operation.WizardEditingOperation;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.action.AbstractExternalJavaAction;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.eef.util.VPDecoratorHelper;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * An External Java Action which opens an EEF wizard/dialog on the selected object, if one is available.

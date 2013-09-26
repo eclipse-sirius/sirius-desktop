@@ -27,7 +27,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.sirius.diagram.sequence.template.util.TemplateAdapterFactory;
 
 /**
@@ -142,8 +141,8 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.sequence.template.TLifelineStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -192,8 +191,8 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.sequence.template.TTransformer}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.sequence.template.TTransformer}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -217,8 +216,8 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.sequence.template.TExecutionMapping}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -292,8 +291,8 @@ public class TemplateItemProviderAdapterFactory extends TemplateAdapterFactory i
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.sequence.template.TMessageStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */

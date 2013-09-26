@@ -29,18 +29,8 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Image;
-
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.BasicLabelStyle;
-import org.eclipse.sirius.BorderedStyle;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.EdgeStyle;
-import org.eclipse.sirius.LabelStyle;
-import org.eclipse.sirius.ResizeKind;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeNameEditPart;
@@ -49,6 +39,15 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.GaugeCompositeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
+import org.eclipse.sirius.viewpoint.BorderedStyle;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.EdgeStyle;
+import org.eclipse.sirius.viewpoint.LabelStyle;
+import org.eclipse.sirius.viewpoint.ResizeKind;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A simple configuration. Do nothing.
@@ -60,7 +59,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#adaptNodeLabel(org.eclipse.sirius.DNode,
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#adaptNodeLabel(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel)
      */
     public void adaptNodeLabel(final DNode node, final SiriusWrapLabel nodeLabel) {
@@ -84,7 +83,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#adaptViewNodeSizeWithLabel(org.eclipse.sirius.DNode,
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#adaptViewNodeSizeWithLabel(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel,
      *      int)
      */
@@ -116,7 +115,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getNameBorderItemLocator(org.eclipse.sirius.DNode,
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getNameBorderItemLocator(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.draw2d.IFigure)
      */
     public IBorderItemLocator getNameBorderItemLocator(final DNode node, final IFigure mainFigure) {
@@ -128,7 +127,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getLabelIcon(org.eclipse.sirius.DDiagramElement)
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getLabelIcon(org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public Image getLabelIcon(final DDiagramElement vpElement, IGraphicalEditPart editPart) {
         Image icon = null;
@@ -229,7 +228,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#fitToText(org.eclipse.sirius.DNode,
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#fitToText(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel,
      *      org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure)
      */

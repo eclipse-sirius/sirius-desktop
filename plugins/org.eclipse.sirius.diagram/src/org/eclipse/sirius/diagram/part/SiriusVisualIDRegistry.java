@@ -15,12 +15,6 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.BracketEdgeStyle;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.diagram.graphical.edit.part.specific.BracketEdgeEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.BundledImageEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.CustomStyleEditPart;
@@ -54,6 +48,11 @@ import org.eclipse.sirius.diagram.internal.edit.parts.NotationViewIDs;
 import org.eclipse.sirius.diagram.internal.edit.parts.NoteEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.SquareEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.WorkspaceImageEditPart;
+import org.eclipse.sirius.viewpoint.BracketEdgeStyle;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.Style;
 
 /**
  * This registry is used to determine which type of visual object should be
@@ -126,7 +125,7 @@ public class SiriusVisualIDRegistry {
         if (domainElement == null) {
             return -1;
         }
-        if (SiriusPackage.eINSTANCE.getDDiagram().isSuperTypeOf(domainElement.eClass()) && isDiagram((DDiagram) domainElement)) {
+        if (ViewpointPackage.eINSTANCE.getDDiagram().isSuperTypeOf(domainElement.eClass()) && isDiagram((DDiagram) domainElement)) {
             return DDiagramEditPart.VISUAL_ID;
         }
         return -1;
@@ -155,187 +154,187 @@ public class SiriusVisualIDRegistry {
         }
         switch (containerVisualID) {
         case DNodeEditPart.VISUAL_ID:
-            if (SiriusPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
                 return DNode2EditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getDot().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDot().isSuperTypeOf(domainElement.eClass())) {
                 return DotEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getSquare().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getSquare().isSuperTypeOf(domainElement.eClass())) {
                 return SquareEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getEllipse().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getEllipse().isSuperTypeOf(domainElement.eClass())) {
                 return EllipseEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getLozenge().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getLozenge().isSuperTypeOf(domainElement.eClass())) {
                 return LozengeEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getBundledImage().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getBundledImage().isSuperTypeOf(domainElement.eClass())) {
                 return BundledImageEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getNote().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getNote().isSuperTypeOf(domainElement.eClass())) {
                 return NoteEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getWorkspaceImage().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getWorkspaceImage().isSuperTypeOf(domainElement.eClass())) {
                 return WorkspaceImageEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getGaugeCompositeStyle().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getGaugeCompositeStyle().isSuperTypeOf(domainElement.eClass())) {
                 return GaugeCompositeEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getCustomStyle().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getCustomStyle().isSuperTypeOf(domainElement.eClass())) {
                 return CustomStyleEditPart.VISUAL_ID;
             }
             break;
         case DNodeContainerEditPart.VISUAL_ID:
-            if (SiriusPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
                 return DNode4EditPart.VISUAL_ID;
             }
             break;
         case DNodeListEditPart.VISUAL_ID:
-            if (SiriusPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
                 return DNode4EditPart.VISUAL_ID;
             }
             break;
         case DNode2EditPart.VISUAL_ID:
-            if (SiriusPackage.eINSTANCE.getBundledImage().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getBundledImage().isSuperTypeOf(domainElement.eClass())) {
                 return BundledImageEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getDot().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDot().isSuperTypeOf(domainElement.eClass())) {
                 return DotEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getGaugeCompositeStyle().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getGaugeCompositeStyle().isSuperTypeOf(domainElement.eClass())) {
                 return GaugeCompositeEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getSquare().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getSquare().isSuperTypeOf(domainElement.eClass())) {
                 return SquareEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getEllipse().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getEllipse().isSuperTypeOf(domainElement.eClass())) {
                 return EllipseEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getLozenge().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getLozenge().isSuperTypeOf(domainElement.eClass())) {
                 return LozengeEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getWorkspaceImage().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getWorkspaceImage().isSuperTypeOf(domainElement.eClass())) {
                 return WorkspaceImageEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
                 return DNode2EditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getCustomStyle().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getCustomStyle().isSuperTypeOf(domainElement.eClass())) {
                 return CustomStyleEditPart.VISUAL_ID;
             }
             break;
         case DNode3EditPart.VISUAL_ID:
-            if (SiriusPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
                 return DNode2EditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getDot().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDot().isSuperTypeOf(domainElement.eClass())) {
                 return DotEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getSquare().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getSquare().isSuperTypeOf(domainElement.eClass())) {
                 return SquareEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getEllipse().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getEllipse().isSuperTypeOf(domainElement.eClass())) {
                 return EllipseEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getLozenge().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getLozenge().isSuperTypeOf(domainElement.eClass())) {
                 return LozengeEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getBundledImage().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getBundledImage().isSuperTypeOf(domainElement.eClass())) {
                 return BundledImageEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getNote().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getNote().isSuperTypeOf(domainElement.eClass())) {
                 return NoteEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getWorkspaceImage().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getWorkspaceImage().isSuperTypeOf(domainElement.eClass())) {
                 return WorkspaceImageEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getGaugeCompositeStyle().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getGaugeCompositeStyle().isSuperTypeOf(domainElement.eClass())) {
                 return GaugeCompositeEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getCustomStyle().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getCustomStyle().isSuperTypeOf(domainElement.eClass())) {
                 return CustomStyleEditPart.VISUAL_ID;
             }
             break;
         case DNodeContainer2EditPart.VISUAL_ID:
-            if (SiriusPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
                 return DNode4EditPart.VISUAL_ID;
             }
             break;
         case DNodeList2EditPart.VISUAL_ID:
-            if (SiriusPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
                 return DNode4EditPart.VISUAL_ID;
             }
             break;
         case DNode4EditPart.VISUAL_ID:
-            if (SiriusPackage.eINSTANCE.getBundledImage().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getBundledImage().isSuperTypeOf(domainElement.eClass())) {
                 return BundledImageEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getDot().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDot().isSuperTypeOf(domainElement.eClass())) {
                 return DotEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getGaugeCompositeStyle().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getGaugeCompositeStyle().isSuperTypeOf(domainElement.eClass())) {
                 return GaugeCompositeEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getSquare().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getSquare().isSuperTypeOf(domainElement.eClass())) {
                 return SquareEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getEllipse().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getEllipse().isSuperTypeOf(domainElement.eClass())) {
                 return EllipseEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getLozenge().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getLozenge().isSuperTypeOf(domainElement.eClass())) {
                 return LozengeEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getWorkspaceImage().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getWorkspaceImage().isSuperTypeOf(domainElement.eClass())) {
                 return WorkspaceImageEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
                 return DNode4EditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getCustomStyle().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getCustomStyle().isSuperTypeOf(domainElement.eClass())) {
                 return CustomStyleEditPart.VISUAL_ID;
             }
             break;
         case DNodeContainerViewNodeContainerCompartmentEditPart.VISUAL_ID:
-            if (SiriusPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
                 return DNode3EditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getDNodeContainer().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNodeContainer().isSuperTypeOf(domainElement.eClass())) {
                 return DNodeContainer2EditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getDNodeList().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNodeList().isSuperTypeOf(domainElement.eClass())) {
                 return DNodeList2EditPart.VISUAL_ID;
             }
             break;
         case DNodeContainerViewNodeContainerCompartment2EditPart.VISUAL_ID:
-            if (SiriusPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
                 return DNode3EditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getDNodeContainer().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNodeContainer().isSuperTypeOf(domainElement.eClass())) {
                 return DNodeContainer2EditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getDNodeList().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNodeList().isSuperTypeOf(domainElement.eClass())) {
                 return DNodeList2EditPart.VISUAL_ID;
             }
             break;
         case DNodeListViewNodeListCompartmentEditPart.VISUAL_ID:
-            if (SiriusPackage.eINSTANCE.getDNodeListElement().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNodeListElement().isSuperTypeOf(domainElement.eClass())) {
                 return DNodeListElementEditPart.VISUAL_ID;
             }
             break;
         case DNodeListViewNodeListCompartment2EditPart.VISUAL_ID:
-            if (SiriusPackage.eINSTANCE.getDNodeListElement().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNodeListElement().isSuperTypeOf(domainElement.eClass())) {
                 return DNodeListElementEditPart.VISUAL_ID;
             }
             break;
         case DDiagramEditPart.VISUAL_ID:
-            if (SiriusPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNode().isSuperTypeOf(domainElement.eClass())) {
                 return DNodeEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getDNodeContainer().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNodeContainer().isSuperTypeOf(domainElement.eClass())) {
                 return DNodeContainerEditPart.VISUAL_ID;
             }
-            if (SiriusPackage.eINSTANCE.getDNodeList().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDNodeList().isSuperTypeOf(domainElement.eClass())) {
                 return DNodeListEditPart.VISUAL_ID;
             }
             break;
@@ -594,7 +593,7 @@ public class SiriusVisualIDRegistry {
     public static int getLinkWithClassVisualID(EObject domainElement) {
         int visualID = -1;
         if (domainElement != null) {
-            if (SiriusPackage.eINSTANCE.getDEdge().isSuperTypeOf(domainElement.eClass())) {
+            if (ViewpointPackage.eINSTANCE.getDEdge().isSuperTypeOf(domainElement.eClass())) {
                 DEdge dEdge = (DEdge) domainElement;
                 Style style = dEdge.getStyle();
                 if (style instanceof BracketEdgeStyle) {

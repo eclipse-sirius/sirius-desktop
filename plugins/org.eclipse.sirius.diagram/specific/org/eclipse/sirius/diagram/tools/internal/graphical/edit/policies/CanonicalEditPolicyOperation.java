@@ -11,8 +11,7 @@
 package org.eclipse.sirius.diagram.tools.internal.graphical.edit.policies;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Provides basic canonical edit policy operations.

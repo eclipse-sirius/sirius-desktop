@@ -27,7 +27,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.eclipse.sirius.tree.description.util.DescriptionAdapterFactory;
 
 /**
@@ -183,8 +182,8 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.tree.description.TreeItemDragTool}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.description.TreeItemDragTool} instances.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -317,8 +316,8 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.tree.description.TreeCreationDescription}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.description.TreeCreationDescription}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -358,8 +357,8 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.tree.description.TreeMapping} instances.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.description.TreeMapping} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -383,8 +382,8 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.tree.description.StyleUpdater} instances.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.description.StyleUpdater} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -408,8 +407,8 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.tree.description.TreeVariable} instances.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.description.TreeVariable} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -467,8 +466,8 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.tree.description.PrecedingSiblingsVariables}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.description.PrecedingSiblingsVariables}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -483,8 +482,8 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.tree.description.TreePopupMenu} instances.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.tree.description.TreePopupMenu} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */

@@ -60,11 +60,11 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.ui.tools.api.util.IObjectActionDelegateWrapper;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.DNode;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineContentProvider;
 import org.eclipse.sirius.ui.business.api.provider.DEdgeLabelItemProvider;
 import org.eclipse.sirius.ui.business.api.provider.DNodeLabelItemProvider;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DNode;
 
 /**
  * <p>

@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.actions.repair;
 
-import org.eclipse.sirius.AbstractDNode;
 import org.eclipse.sirius.diagram.tools.api.migration.DiagramCrossReferencer;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
 
 /**
  * Diagram element state for {@link AbstractDNode}.

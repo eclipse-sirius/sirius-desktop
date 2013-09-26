@@ -14,9 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.command.IdentityCommand;
-
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 
 /**
  * Default constructor.

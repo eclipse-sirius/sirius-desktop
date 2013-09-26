@@ -16,11 +16,11 @@ import org.eclipse.emf.ecore.EObject;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.DragAndDropTarget;
 import org.eclipse.sirius.business.api.query.AbstractNodeMappingQuery;
-import org.eclipse.sirius.description.AbstractNodeMapping;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.DragAndDropTarget;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
 
 /**
  * An helper for node.

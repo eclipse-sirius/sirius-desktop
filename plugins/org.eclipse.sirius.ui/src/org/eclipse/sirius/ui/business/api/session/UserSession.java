@@ -32,19 +32,19 @@ import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelectionCallback;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeSiriusSelectionCommand;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * An API to manipulate user session easily.
@@ -223,9 +223,9 @@ public class UserSession {
         try {
             PlatformUI.getWorkbench().getProgressService().busyCursorWhile(new IRunnableWithProgress() {
                 public void run(IProgressMonitor monitor) {
-                    Set<Sirius> viewpoints = Sets.newLinkedHashSet();
+                    Set<Viewpoint> viewpoints = Sets.newLinkedHashSet();
                     for (final String viewpointName : viewpointNames) {
-                        Sirius viewpoint = findSiriusByName(viewpointName);
+                        Viewpoint viewpoint = findSiriusByName(viewpointName);
                         viewpoints.add(viewpoint);
                     }
                     selectSiriuss(viewpoints, onlyThisSiriuss);
@@ -239,22 +239,22 @@ public class UserSession {
         return this;
     }
 
-    private void selectSiriuss(final Collection<Sirius> viewpoints, boolean deselectOtherSiriuss) {
+    private void selectSiriuss(final Collection<Viewpoint> viewpoints, boolean deselectOtherSiriuss) {
 
-        Collection<Sirius> selectedSiriuss = session.getSelectedSiriuss(false);
+        Collection<Viewpoint> selectedSiriuss = session.getSelectedSiriuss(false);
 
-        Set<Sirius> viewpointsToDeselect = Sets.newHashSet();
-        Set<Sirius> viewpointsToSelect = Sets.newHashSet();
+        Set<Viewpoint> viewpointsToDeselect = Sets.newHashSet();
+        Set<Viewpoint> viewpointsToSelect = Sets.newHashSet();
 
-        for (final Sirius viewpoint : viewpoints) {
-            final Sirius vp = SiriusResourceHelper.getCorrespondingSirius(session, viewpoint);
+        for (final Viewpoint viewpoint : viewpoints) {
+            final Viewpoint vp = SiriusResourceHelper.getCorrespondingSirius(session, viewpoint);
             if (!selectedSiriuss.contains(vp)) {
                 viewpointsToSelect.add(vp);
             }
         }
 
         if (deselectOtherSiriuss) {
-            for (final Sirius candidate : selectedSiriuss) {
+            for (final Viewpoint candidate : selectedSiriuss) {
                 if (!viewpointsToSelect.contains(candidate)) {
                     viewpointsToDeselect.add(candidate);
                 }
@@ -287,8 +287,8 @@ public class UserSession {
         return null;
     }
 
-    private Sirius findSiriusByName(String vpName) {
-        for (Sirius candidate : SiriusRegistry.getInstance().getSiriuss()) {
+    private Viewpoint findSiriusByName(String vpName) {
+        for (Viewpoint candidate : SiriusRegistry.getInstance().getSiriuss()) {
             if (vpName.equals(candidate.getName())) {
                 return candidate;
             }

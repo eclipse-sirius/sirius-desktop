@@ -32,11 +32,10 @@ import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
 import org.eclipse.gmf.runtime.gef.ui.internal.editpolicies.GraphicalEditPolicyEx;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.DDiagramElementContainer;
-import org.eclipse.sirius.DNavigable;
-import org.eclipse.sirius.DNode;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditor;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
+import org.eclipse.sirius.viewpoint.DNavigable;
+import org.eclipse.sirius.viewpoint.DNode;
 
 /**
  * 

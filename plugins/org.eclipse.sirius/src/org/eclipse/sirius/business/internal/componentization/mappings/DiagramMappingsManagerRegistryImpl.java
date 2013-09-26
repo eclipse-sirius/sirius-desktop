@@ -18,11 +18,6 @@ import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
@@ -32,9 +27,13 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramExtensionDescription;
-import org.eclipse.sirius.description.Layer;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.Layer;
 
 /**
  * Registry of diagram mappings.
@@ -87,7 +86,7 @@ public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implem
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.business.api.componentization.DiagramMappingsRegistry#getDiagramMappingsManager(org.eclipse.sirius.business.api.session.Session,
-     *      org.eclipse.sirius.DDiagram)
+     *      org.eclipse.sirius.viewpoint.DDiagram)
      */
     public DiagramMappingsManager getDiagramMappingsManager(final Session session, final DDiagram diagram) {
         if (diagram == null) {
@@ -122,7 +121,7 @@ public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implem
         final Object notifier = msg.getNotifier();
         if (notifier instanceof DDiagram) {
             final int featureID = msg.getFeatureID(DDiagram.class);
-            if (featureID == SiriusPackage.DDIAGRAM__ACTIVATED_LAYERS) {
+            if (featureID == ViewpointPackage.DDIAGRAM__ACTIVATED_LAYERS) {
 
                 switch (msg.getEventType()) {
                 case Notification.ADD:

@@ -45,17 +45,17 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.business.internal.navigation.MappingDefinitionFinder;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
- * Delete a {@link org.eclipse.sirius.DDiagramElement}.
+ * Delete a {@link org.eclipse.sirius.viewpoint.DDiagramElement}.
  * 
  * @author cbrun
  * 

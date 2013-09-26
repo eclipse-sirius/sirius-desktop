@@ -25,18 +25,17 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.EObjectCollectionWrapper;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.description.tool.AbstractVariable;
-import org.eclipse.sirius.description.tool.AcceleoVariable;
-import org.eclipse.sirius.description.tool.SelectModelElementVariable;
-import org.eclipse.sirius.description.tool.SubVariable;
-import org.eclipse.sirius.description.tool.ToolPackage;
-import org.eclipse.sirius.description.tool.VariableContainer;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
+import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
+import org.eclipse.sirius.viewpoint.description.tool.SubVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 
 /**
  * Initializes variables of the acceleo interpreter.

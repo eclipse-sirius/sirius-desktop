@@ -21,10 +21,9 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin;
 import org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIStatusCodes;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramCommandStack;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramEditDomain;
-
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.diagram.tools.internal.commands.WrappingCommandIgnoringAffectedFiles;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * The diagram command stack.

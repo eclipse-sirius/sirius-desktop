@@ -31,8 +31,6 @@ import org.eclipse.ui.PlatformUI;
 import com.google.common.collect.Iterables;
 
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DCell;
@@ -47,6 +45,8 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.DTableTreeViewer;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.ui.tools.internal.util.ItemSearcher;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * This class is an EMF Adapter which listen change in the model to update a
@@ -480,9 +480,9 @@ public class DTableContentAdapter extends ResourceSetListenerImpl {
         final int featureID = n.getFeatureID(RGBValues.class);
 
         switch (featureID) {
-        case SiriusPackage.RGB_VALUES__BLUE:
-        case SiriusPackage.RGB_VALUES__RED:
-        case SiriusPackage.RGB_VALUES__GREEN:
+        case ViewpointPackage.RGB_VALUES__BLUE:
+        case ViewpointPackage.RGB_VALUES__RED:
+        case ViewpointPackage.RGB_VALUES__GREEN:
             final DCell containerCell = TableHelper.getCell(notifier);
             if (containerCell != null && containerCell.getLine() != null) {
                 DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.UPDATE_SWT_LINE_KEY);

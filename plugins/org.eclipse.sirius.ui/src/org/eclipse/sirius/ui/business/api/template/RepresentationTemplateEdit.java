@@ -12,8 +12,7 @@ package org.eclipse.sirius.ui.business.api.template;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.sirius.description.RepresentationTemplate;
+import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 
 /**
  * You should implement this interface to provide edit support for a given

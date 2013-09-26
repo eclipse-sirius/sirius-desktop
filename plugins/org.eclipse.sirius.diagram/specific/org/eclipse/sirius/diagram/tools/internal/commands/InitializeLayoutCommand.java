@@ -18,9 +18,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.DRepresentation;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * Specific command to initialize layout after diagram creation from diagram

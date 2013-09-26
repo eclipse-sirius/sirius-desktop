@@ -27,12 +27,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
-
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.dialect.command.MoveRepresentationCommand;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.Session;
@@ -40,6 +35,10 @@ import org.eclipse.sirius.tools.internal.command.PrepareNewAnalysisCommand;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SessionResourceCreationWizardPage;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * This wizard ask the user for which viewpoints he wants to externalize and
@@ -159,7 +158,7 @@ public class ExtractRepresentationsWizard extends Wizard {
      * @return
      */
     private DAnalysis prepareNewAnalysis() {
-        final DAnalysis slaveAnalysis = SiriusFactory.eINSTANCE.createDAnalysis();
+        final DAnalysis slaveAnalysis = ViewpointFactory.eINSTANCE.createDAnalysis();
         domain.getCommandStack().execute(new PrepareNewAnalysisCommand(domain, pickedResource, slaveAnalysis, session));
         return slaveAnalysis;
     }

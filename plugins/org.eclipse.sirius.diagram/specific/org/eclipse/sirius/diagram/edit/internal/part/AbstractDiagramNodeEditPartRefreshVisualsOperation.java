@@ -27,12 +27,6 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
-
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.LabelPosition;
-import org.eclipse.sirius.LabelStyle;
-import org.eclipse.sirius.NodeStyle;
-import org.eclipse.sirius.WorkspaceImage;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramBorderNodeEditPart;
@@ -48,6 +42,11 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.ui.tools.api.dialogs.ImageFileFormat;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.LabelPosition;
+import org.eclipse.sirius.viewpoint.LabelStyle;
+import org.eclipse.sirius.viewpoint.NodeStyle;
+import org.eclipse.sirius.viewpoint.WorkspaceImage;
 
 /**
  * Class which handles the refresh on visuals.

@@ -26,12 +26,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryService;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.business.internal.movida.Movida;
@@ -39,6 +35,9 @@ import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry;
 import org.eclipse.sirius.business.internal.movida.registry.SiriusURIConverter;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.tools.internal.resource.ResourceSetUtil;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Default implementation of a session factory.
@@ -164,7 +163,7 @@ public final class SessionFactoryImpl implements SessionFactory {
         try {
             monitor.beginTask("Session creation", 2);
             Resource sessionModelResource = new ResourceSetImpl().createResource(sessionResourceURI);
-            DAnalysis analysis = SiriusFactory.eINSTANCE.createDAnalysis();
+            DAnalysis analysis = ViewpointFactory.eINSTANCE.createDAnalysis();
             sessionModelResource.getContents().add(analysis);
             try {
                 sessionModelResource.save(Collections.emptyMap());

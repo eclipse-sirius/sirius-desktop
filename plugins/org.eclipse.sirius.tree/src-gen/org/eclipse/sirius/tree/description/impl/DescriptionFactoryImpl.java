@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.sirius.tree.business.internal.color.DefaultColorStyleDescription;
 import org.eclipse.sirius.tree.business.internal.metamodel.spec.TreeCreationDescriptionSpec;
 import org.eclipse.sirius.tree.business.internal.metamodel.spec.TreeItemDeletionToolSpec;
@@ -58,7 +57,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      */
     public static DescriptionFactory init() {
         try {
-            DescriptionFactory theDescriptionFactory = (DescriptionFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/sirius/tree/description/1.0.0");
+            DescriptionFactory theDescriptionFactory = (DescriptionFactory) EPackage.Registry.INSTANCE.getEFactory(DescriptionPackage.eNS_URI);
             if (theDescriptionFactory != null) {
                 return theDescriptionFactory;
             }

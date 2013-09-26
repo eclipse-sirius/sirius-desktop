@@ -41,12 +41,7 @@ import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.DSemanticDecorator;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.RepresentationDescription;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
@@ -61,6 +56,11 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIServices;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 /**
  * Implementation of the UI services for the tree dialect.
@@ -72,7 +72,7 @@ public class TreeDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.DRepresentation)
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.DRepresentation)
      */
     public boolean canHandle(DRepresentation representation) {
         return representation instanceof DTree;
@@ -91,7 +91,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#openEditor(org.eclipse.sirius.business.api.session.Session,
-     *      org.eclipse.sirius.DRepresentation)
+     *      org.eclipse.sirius.viewpoint.DRepresentation)
      */
     public IEditorPart openEditor(Session session, DRepresentation representation) {
         return openEditor(session, representation, new NullProgressMonitor());
@@ -137,7 +137,7 @@ public class TreeDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getEditorName(org.eclipse.sirius.DRepresentation)
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#getEditorName(org.eclipse.sirius.viewpoint.DRepresentation)
      */
     public String getEditorName(DRepresentation representation) {
         String editorName = representation.getName();
@@ -168,7 +168,7 @@ public class TreeDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationManagedByEditor(org.eclipse.sirius.DRepresentation,
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationManagedByEditor(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.ui.IEditorPart)
      */
     public boolean isRepresentationManagedByEditor(DRepresentation representation, IEditorPart editorPart) {
@@ -183,7 +183,7 @@ public class TreeDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationDescriptionManagedByEditor(org.eclipse.sirius.description.RepresentationDescription,
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#isRepresentationDescriptionManagedByEditor(org.eclipse.sirius.viewpoint.description.RepresentationDescription,
      *      org.eclipse.ui.IEditorPart)
      */
     public boolean isRepresentationDescriptionManagedByEditor(RepresentationDescription representationDescription, IEditorPart editorPart) {
@@ -219,7 +219,7 @@ public class TreeDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#export(org.eclipse.sirius.DRepresentation,
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#export(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.sirius.business.api.session.Session,
      *      org.eclipse.core.runtime.IPath,
      *      org.eclipse.sirius.ui.business.api.dialect.ExportFormat,

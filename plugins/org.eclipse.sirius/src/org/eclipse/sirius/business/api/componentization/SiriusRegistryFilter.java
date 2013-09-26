@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.componentization;
 
-import org.eclipse.sirius.description.RepresentationExtensionDescription;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * This interface specifies a filter to register if you need to filter the
@@ -30,7 +30,7 @@ public interface SiriusRegistryFilter {
      *            the viewpoint to test
      * @return return true if the viewpoint should be filtered, false otherwise)
      */
-    boolean filter(Sirius viewpoint);
+    boolean filter(Viewpoint viewpoint);
 
     /**
      * Check if a representation description extension must be filtered.

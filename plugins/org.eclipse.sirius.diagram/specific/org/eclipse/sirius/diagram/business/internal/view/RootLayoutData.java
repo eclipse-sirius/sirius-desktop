@@ -20,12 +20,11 @@ import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart;
 import org.eclipse.gmf.runtime.notation.Node;
-
-import org.eclipse.sirius.AbstractDNode;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DEdge;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.util.EditPartTools;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DEdge;
 
 /**
  * A RootLayoutData is the <i>root</i> of an LayoutDataHint.
@@ -93,10 +92,10 @@ public class RootLayoutData extends LayoutData {
 
     /**
      * Default constructor from a parent
-     * {@link org.eclipse.sirius.DDiagramElement}/{@link DDiagram}.
+     * {@link org.eclipse.sirius.viewpoint.DDiagramElement}/{@link DDiagram}.
      * 
      * @param adaptObject
-     *            The parent {@link org.eclipse.sirius.DDiagramElement}/
+     *            The parent {@link org.eclipse.sirius.viewpoint.DDiagramElement}/
      *            {@link DDiagram}
      * @param location
      *            Location in the parent

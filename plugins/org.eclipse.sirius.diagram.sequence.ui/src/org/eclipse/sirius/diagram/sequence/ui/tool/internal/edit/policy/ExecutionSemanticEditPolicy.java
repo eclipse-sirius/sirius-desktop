@@ -37,11 +37,6 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 
 import com.google.common.collect.Iterables;
 
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.style.NodeStyleDescription;
-import org.eclipse.sirius.description.style.SquareDescription;
-import org.eclipse.sirius.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.diagram.internal.edit.policies.DNode2ItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
@@ -65,6 +60,11 @@ import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.SquareDescription;
+import org.eclipse.sirius.viewpoint.description.style.WorkspaceImageDescription;
 
 /**
  * A specialized semantic edit policy for sequence diagram elements.

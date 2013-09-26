@@ -22,6 +22,12 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxGroupPropertySection;
+import org.eclipse.sirius.viewpoint.ResizeKind;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
@@ -30,13 +36,6 @@ import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
-import org.eclipse.sirius.ResizeKind;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.description.style.NodeStyleDescription;
-import org.eclipse.sirius.description.style.StylePackage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxGroupPropertySection;
 
 /**
  * A section for the resizeKind property of a NodeStyleDescription object.
@@ -234,7 +233,7 @@ public class NodeStyleDescriptionResizeKindPropertySectionSpec extends AbstractC
 
     protected EAttribute getAttribute() {
         EAttribute attribute = null;
-        for (EAttribute eAttribute : SiriusPackage.eINSTANCE.getNodeStyle().getEAllAttributes()) {
+        for (EAttribute eAttribute : ViewpointPackage.eINSTANCE.getNodeStyle().getEAllAttributes()) {
             if (eAttribute.getEType().equals(getFeatures())) {
                 attribute = eAttribute;
                 break;
@@ -282,6 +281,6 @@ public class NodeStyleDescriptionResizeKindPropertySectionSpec extends AbstractC
     }
 
     protected EEnum getFeatures() {
-        return SiriusPackage.eINSTANCE.getResizeKind();
+        return ViewpointPackage.eINSTANCE.getResizeKind();
     }
 }

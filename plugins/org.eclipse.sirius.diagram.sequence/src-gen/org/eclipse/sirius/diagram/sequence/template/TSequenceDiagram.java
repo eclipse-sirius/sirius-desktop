@@ -11,8 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.template;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.sirius.description.RepresentationTemplate;
+import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -118,8 +117,7 @@ public interface TSequenceDiagram extends RepresentationTemplate, TTransformer {
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSequenceDiagram_DomainClass()
-     * @model dataType="org.eclipse.sirius.description.TypeName"
-     *        required="true"
+     * @model dataType="org.eclipse.sirius.description.TypeName" required="true"
      * @generated
      */
     String getDomainClass();

@@ -14,7 +14,7 @@ Export-Package: org.eclipse.sirius.table.business.api.helper,
  org.eclipse.sirius.table.business.internal.dialect;x-internal:=true,
  org.eclipse.sirius.table.business.internal.dialect.description;x-internal:=true,
  org.eclipse.sirius.table.business.internal.helper.task;x-internal:=true,
- org.eclipse.sirius.table.business.internal.metamodel;x-friend:="org.eclipse.sirius.table.metamodel.table.description.provider";x-internal:=true,
+ org.eclipse.sirius.table.business.internal.metamodel;x-internal:=true;x-friend:=org.eclipse.sirius.table.metamodel.table.description.provider,
  org.eclipse.sirius.table.business.internal.metamodel.description.spec;x-internal:=true,
  org.eclipse.sirius.table.business.internal.metamodel.description.spec.util;x-internal:=true,
  org.eclipse.sirius.table.business.internal.metamodel.operations;x-internal:=true,
@@ -33,12 +33,15 @@ Export-Package: org.eclipse.sirius.table.business.api.helper,
  org.eclipse.sirius.table.tools.internal.command;x-internal:=true,
  org.eclipse.sirius.table.tools.internal.export;x-internal:=true,
  org.eclipse.sirius.table.tools.internal.export.csv;x-internal:=true
-Require-Bundle: org.eclipse.sirius;visibility:=reexport,
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.sirius;visibility:=reexport,
  org.eclipse.sirius.ecore.extender,
  org.eclipse.sirius.common,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.transaction,
  org.eclipse.jface,
  com.google.guava;bundle-version="[11.0.0,12.0.0)"
+Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.sirius.table.tools.internal.TablePlugin

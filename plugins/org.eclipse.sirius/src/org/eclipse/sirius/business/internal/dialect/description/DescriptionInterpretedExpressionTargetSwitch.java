@@ -23,19 +23,19 @@ import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
-import org.eclipse.sirius.description.ColorDescription;
-import org.eclipse.sirius.description.ColorStep;
-import org.eclipse.sirius.description.ConditionalStyleDescription;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.DiagramExtensionDescription;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.EdgeMappingImport;
-import org.eclipse.sirius.description.IEdgeMapping;
-import org.eclipse.sirius.description.InterpolatedColor;
-import org.eclipse.sirius.description.OrderedTreeLayout;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationElementMapping;
-import org.eclipse.sirius.description.util.DescriptionSwitch;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
+import org.eclipse.sirius.viewpoint.description.ColorStep;
+import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
+import org.eclipse.sirius.viewpoint.description.IEdgeMapping;
+import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
+import org.eclipse.sirius.viewpoint.description.OrderedTreeLayout;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 
 /**
  * A switch that will return the Target Types associated to a given element
@@ -95,7 +95,7 @@ public class DescriptionInterpretedExpressionTargetSwitch extends DescriptionSwi
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
      */
     @Override
     public Option<Collection<String>> doSwitch(EObject theEObject) {
@@ -180,7 +180,7 @@ public class DescriptionInterpretedExpressionTargetSwitch extends DescriptionSwi
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseConditionalStyleDescription(org.eclipse.sirius.description.ConditionalStyleDescription)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseConditionalStyleDescription(org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription)
      */
     @Override
     public Option<Collection<String>> caseConditionalStyleDescription(ConditionalStyleDescription styleDescription) {
@@ -200,7 +200,7 @@ public class DescriptionInterpretedExpressionTargetSwitch extends DescriptionSwi
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseOrderedTreeLayout(org.eclipse.sirius.description.OrderedTreeLayout)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseOrderedTreeLayout(org.eclipse.sirius.viewpoint.description.OrderedTreeLayout)
      */
     @Override
     public Option<Collection<String>> caseOrderedTreeLayout(OrderedTreeLayout layout) {

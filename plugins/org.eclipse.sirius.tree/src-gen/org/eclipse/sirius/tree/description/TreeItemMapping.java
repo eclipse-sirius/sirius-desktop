@@ -34,18 +34,15 @@ import org.eclipse.emf.common.util.EList;
  * <li>
  * {@link org.eclipse.sirius.tree.description.TreeItemMapping#getAllSubMappings
  * <em>All Sub Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreeItemMapping#getSpecialize
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getSpecialize
  * <em>Specialize</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDelete
- * <em>Delete</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getCreate
- * <em>Create</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreeItemMapping#getDndTools
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDelete <em>
+ * Delete</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getCreate <em>
+ * Create</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getDndTools
  * <em>Dnd Tools</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.tree.description.TreeItemMapping#getPopupMenus
+ * <li>{@link org.eclipse.sirius.tree.description.TreeItemMapping#getPopupMenus
  * <em>Popup Menus</em>}</li>
  * </ul>
  * </p>
@@ -67,8 +64,7 @@ public interface TreeItemMapping extends TreeMapping, StyleUpdater, TreeItemUpda
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemMapping_DomainClass()
-     * @model dataType="org.eclipse.sirius.description.TypeName"
-     *        required="true"
+     * @model dataType="org.eclipse.sirius.description.TypeName" required="true"
      * @generated
      */
     String getDomainClass();

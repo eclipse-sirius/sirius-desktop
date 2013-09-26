@@ -19,12 +19,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
-import org.eclipse.sirius.description.tool.EditMaskVariables;
-import org.eclipse.sirius.description.tool.ElementDropVariable;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeItemEditionTool;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
+import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
+import org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

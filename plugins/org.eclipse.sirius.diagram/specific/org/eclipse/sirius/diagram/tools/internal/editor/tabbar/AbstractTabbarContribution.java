@@ -11,11 +11,10 @@
 package org.eclipse.sirius.diagram.tools.internal.editor.tabbar;
 
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DSemanticDiagram;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 
 /**
  * Default class to extends for providing new contribution.

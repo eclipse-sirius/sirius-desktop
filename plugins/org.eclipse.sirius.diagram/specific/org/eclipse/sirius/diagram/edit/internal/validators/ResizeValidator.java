@@ -17,10 +17,9 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-
-import org.eclipse.sirius.DNode;
 import org.eclipse.sirius.business.api.query.DNodeQuery;
 import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
+import org.eclipse.sirius.viewpoint.DNode;
 
 /**
  * A validator for a {@link ChangeBoundsRequest} which ask resize of a

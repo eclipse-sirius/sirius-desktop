@@ -14,9 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DEdge;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.helper.display.DisplayService;
@@ -24,6 +21,9 @@ import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
 
 /**
  * Implementation of {@link DisplayService} to use for creation of elements. It
@@ -63,8 +63,8 @@ public final class CreationDisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#isDisplayed(org.eclipse.sirius.DDiagram,
-     *      org.eclipse.sirius.DDiagramElement)
+     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#isDisplayed(org.eclipse.sirius.viewpoint.DDiagram,
+     *      org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public boolean isDisplayed(final DDiagram diagram, final DDiagramElement element) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.IS_VISIBLE_KEY);
@@ -106,8 +106,8 @@ public final class CreationDisplayServiceImpl implements DisplayService {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeVisibility(org.eclipse.sirius.business.api.session.Session,
-     *      org.eclipse.sirius.DDiagram,
-     *      org.eclipse.sirius.DDiagramElement)
+     *      org.eclipse.sirius.viewpoint.DDiagram,
+     *      org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public boolean computeVisibility(DiagramMappingsManager session, final DDiagram diagram, final DDiagramElement element) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.IS_VISIBLE_KEY);
@@ -119,8 +119,8 @@ public final class CreationDisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeLabelVisibility(org.eclipse.sirius.DDiagram,
-     *      org.eclipse.sirius.DDiagramElement)
+     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeLabelVisibility(org.eclipse.sirius.viewpoint.DDiagram,
+     *      org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     public boolean computeLabelVisibility(DDiagram diagram, DDiagramElement element) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.IS_VISIBLE_KEY);

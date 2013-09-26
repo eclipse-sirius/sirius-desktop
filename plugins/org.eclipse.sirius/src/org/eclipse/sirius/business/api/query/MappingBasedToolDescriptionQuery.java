@@ -14,16 +14,16 @@ import java.util.Collection;
 
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.description.RepresentationElementMapping;
-import org.eclipse.sirius.description.tool.ContainerCreationDescription;
-import org.eclipse.sirius.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.description.tool.DeleteElementDescription;
-import org.eclipse.sirius.description.tool.DirectEditLabel;
-import org.eclipse.sirius.description.tool.DoubleClickDescription;
-import org.eclipse.sirius.description.tool.EdgeCreationDescription;
-import org.eclipse.sirius.description.tool.MappingBasedToolDescription;
-import org.eclipse.sirius.description.tool.NodeCreationDescription;
-import org.eclipse.sirius.description.tool.ReconnectEdgeDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
+import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
+import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
+import org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription;
+import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
 
 /**
  * /** A class aggregating all the queries (read-only!) having a

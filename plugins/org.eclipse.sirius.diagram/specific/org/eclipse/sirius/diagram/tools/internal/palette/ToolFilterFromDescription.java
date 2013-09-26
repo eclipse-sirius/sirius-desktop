@@ -12,10 +12,10 @@ package org.eclipse.sirius.diagram.tools.internal.palette;
 
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.ToolFilterDescription;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 
 /**
  * Create tool filter from a tool filter description.
@@ -47,8 +47,8 @@ public class ToolFilterFromDescription implements ToolFilter {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter#filter(org.eclipse.sirius.DDiagram,
-     *      org.eclipse.sirius.description.tool.AbstractToolDescription)
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter#filter(org.eclipse.sirius.viewpoint.DDiagram,
+     *      org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription)
      */
     public boolean filter(DDiagram diagram, AbstractToolDescription tool) {
         if (tool == toolDescription) {

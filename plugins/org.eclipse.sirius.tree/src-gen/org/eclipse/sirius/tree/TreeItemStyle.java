@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree;
 
-import org.eclipse.sirius.LabelStyle;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.Style;
+import org.eclipse.sirius.viewpoint.LabelStyle;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.Style;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

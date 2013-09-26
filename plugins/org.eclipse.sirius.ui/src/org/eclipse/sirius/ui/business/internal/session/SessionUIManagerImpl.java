@@ -25,15 +25,14 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPathEditorInput;
 import org.eclipse.ui.part.FileEditorInput;
-
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener2;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.business.api.session.factory.UISessionFactory;
 import org.eclipse.sirius.ui.business.internal.session.factory.UISessionFactoryService;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Default session ui manager implementation.
@@ -219,20 +218,20 @@ public final class SessionUIManagerImpl extends SessionManagerListener2.Stub imp
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointDeselected(org.eclipse.sirius.description.Sirius)
+     * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointDeselected(org.eclipse.sirius.viewpoint.description.Viewpoint)
      */
     @Override
-    public void viewpointDeselected(final Sirius deselectedSirius) {
+    public void viewpointDeselected(final Viewpoint deselectedSirius) {
         // does nothing.
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointSelected(org.eclipse.sirius.description.Sirius)
+     * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointSelected(org.eclipse.sirius.viewpoint.description.Viewpoint)
      */
     @Override
-    public void viewpointSelected(final Sirius selectedSirius) {
+    public void viewpointSelected(final Viewpoint selectedSirius) {
         // does nothing.
     }
 

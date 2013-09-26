@@ -14,8 +14,7 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Represents a type of resource which can contain Sirius definitions, and
@@ -44,5 +43,5 @@ public interface SiriusResourceHandler {
      *            the resource in which to look for Siriuss.
      * @return all the Sirius definitions inside the resource.
      */
-    Set<Sirius> collectSiriusDefinitions(Resource res);
+    Set<Viewpoint> collectSiriusDefinitions(Resource res);
 }

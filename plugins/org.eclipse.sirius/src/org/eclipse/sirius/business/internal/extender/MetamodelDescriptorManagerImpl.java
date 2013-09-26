@@ -16,11 +16,11 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorManager;
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Implementation for the manager.
@@ -57,9 +57,9 @@ public class MetamodelDescriptorManagerImpl implements MetamodelDescriptorManage
      * 
      * {@inheritDoc}
      */
-    public Collection<MetamodelDescriptor> provides(final Collection<Sirius> enabledSiriuss) {
+    public Collection<MetamodelDescriptor> provides(final Collection<Viewpoint> enabledSiriuss) {
         final Collection<MetamodelDescriptor> result = new HashSet<MetamodelDescriptor>();
-        for (Sirius vp : enabledSiriuss) {
+        for (Viewpoint vp : enabledSiriuss) {
             for (MetamodelDescriptorProvider provider : providers) {
                 final Collection<MetamodelDescriptor> provided = provider.provides(vp);
                 if (provided != null) {

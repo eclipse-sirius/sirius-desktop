@@ -15,11 +15,10 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.description.Layer;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.Layer;
 
 /**
  * An adapter to listen layer activation change.
@@ -86,7 +85,7 @@ public class LayersActivationAdapter extends AdapterImpl {
         final Object notifier = msg.getNotifier();
         if (notifier instanceof DDiagram) {
             final int featureID = msg.getFeatureID(DDiagram.class);
-            if (featureID == SiriusPackage.DDIAGRAM__ACTIVATED_LAYERS) {
+            if (featureID == ViewpointPackage.DDIAGRAM__ACTIVATED_LAYERS) {
 
                 switch (msg.getEventType()) {
 

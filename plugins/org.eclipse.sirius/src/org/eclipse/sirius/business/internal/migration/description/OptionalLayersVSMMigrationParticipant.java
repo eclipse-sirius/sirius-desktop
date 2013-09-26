@@ -15,11 +15,10 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.osgi.framework.Version;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.business.api.migration.AbstractVSMMigrationParticipant;
-import org.eclipse.sirius.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
  * The VSM migration participant for the migration from OptionalLayer to

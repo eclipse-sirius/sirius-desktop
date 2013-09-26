@@ -19,10 +19,9 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ICellModifier;
 import org.eclipse.swt.widgets.Item;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.tools.internal.handler.ChangeFilterActivation;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
 
 /**
  * The cell modifier.

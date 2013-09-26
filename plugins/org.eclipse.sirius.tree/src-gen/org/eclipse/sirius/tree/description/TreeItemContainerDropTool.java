@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.description;
 
-import org.eclipse.sirius.description.tool.ContainerViewVariable;
-import org.eclipse.sirius.description.tool.DropContainerVariable;
-import org.eclipse.sirius.description.tool.ElementDropVariable;
-import org.eclipse.sirius.description.tool.MappingBasedToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
+import org.eclipse.sirius.viewpoint.description.tool.DropContainerVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable;
+import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

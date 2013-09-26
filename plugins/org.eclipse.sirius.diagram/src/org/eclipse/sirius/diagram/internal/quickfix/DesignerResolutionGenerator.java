@@ -17,8 +17,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.ui.IMarkerResolution;
 import org.eclipse.ui.IMarkerResolutionGenerator;
-
-import org.eclipse.sirius.description.validation.ValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
  * Marker resolution generator looking in .odesign files whether a user defined

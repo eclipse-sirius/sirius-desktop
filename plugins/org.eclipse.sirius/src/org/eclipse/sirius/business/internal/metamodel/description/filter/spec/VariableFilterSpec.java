@@ -21,14 +21,14 @@ import com.google.common.collect.Multimap;
 
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.FilterVariableValue;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.description.filter.FilterPackage;
-import org.eclipse.sirius.description.filter.impl.VariableFilterImpl;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.FilterVariableValue;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.filter.FilterPackage;
+import org.eclipse.sirius.viewpoint.description.filter.impl.VariableFilterImpl;
 
 /**
  * Customizations for the implementation of <code>VariableFilter</code>.
@@ -45,7 +45,7 @@ public class VariableFilterSpec extends VariableFilterImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.filter.impl.FilterImpl#isVisible(org.eclipse.sirius.DDiagramElement)
+     * @see org.eclipse.sirius.viewpoint.description.filter.impl.FilterImpl#isVisible(org.eclipse.sirius.viewpoint.DDiagramElement)
      */
     @Override
     public boolean isVisible(final DDiagramElement element) {
@@ -107,7 +107,7 @@ public class VariableFilterSpec extends VariableFilterImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.filter.impl.VariableFilterImpl#setFilterContext(java.util.Map)
+     * @see org.eclipse.sirius.viewpoint.description.filter.impl.VariableFilterImpl#setFilterContext(java.util.Map)
      */
     @Override
     public void setFilterContext(final Map<?, ?> variablesMap) {

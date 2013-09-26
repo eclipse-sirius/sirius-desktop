@@ -22,16 +22,16 @@ import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.BasicLabelStyle;
-import org.eclipse.sirius.Customizable;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
-import org.eclipse.sirius.description.ColorDescription;
-import org.eclipse.sirius.description.style.BasicLabelStyleDescription;
-import org.eclipse.sirius.description.style.StyleDescription;
-import org.eclipse.sirius.description.style.StylePackage;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
+import org.eclipse.sirius.viewpoint.Customizable;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
+import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 /**
  * Class responsible to reflectively update a style color using the given
@@ -54,20 +54,20 @@ public class DiagramStyleColorUpdater extends AbstractColorUpdater {
      */
     public DiagramStyleColorUpdater() {
         descToStyleForColorFeatures = HashBiMap.create();
-        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getBorderedStyleDescription_BorderColor(), SiriusPackage.eINSTANCE.getBorderedStyle_BorderColor());
-        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getBasicLabelStyleDescription_LabelColor(), SiriusPackage.eINSTANCE.getBasicLabelStyle_LabelColor());
-        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getBundledImageDescription_Color(), SiriusPackage.eINSTANCE.getBundledImage_Color());
-        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getDotDescription_BackgroundColor(), SiriusPackage.eINSTANCE.getDot_BackgroundColor());
-        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getEdgeStyleDescription_StrokeColor(), SiriusPackage.eINSTANCE.getEdgeStyle_StrokeColor());
-        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getEllipseNodeDescription_Color(), SiriusPackage.eINSTANCE.getEllipse_Color());
-        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getFlatContainerStyleDescription_BackgroundColor(), SiriusPackage.eINSTANCE.getFlatContainerStyle_BackgroundColor());
-        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getFlatContainerStyleDescription_ForegroundColor(), SiriusPackage.eINSTANCE.getFlatContainerStyle_ForegroundColor());
-        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getGaugeSectionDescription_BackgroundColor(), SiriusPackage.eINSTANCE.getGaugeSection_BackgroundColor());
-        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getGaugeSectionDescription_ForegroundColor(), SiriusPackage.eINSTANCE.getGaugeSection_ForegroundColor());
-        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getLozengeNodeDescription_Color(), SiriusPackage.eINSTANCE.getLozenge_Color());
-        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getNoteDescription_Color(), SiriusPackage.eINSTANCE.getNote_Color());
-        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getSquareDescription_Color(), SiriusPackage.eINSTANCE.getSquare_Color());
-        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getShapeContainerStyleDescription_BackgroundColor(), SiriusPackage.eINSTANCE.getShapeContainerStyle_BackgroundColor());
+        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getBorderedStyleDescription_BorderColor(), ViewpointPackage.eINSTANCE.getBorderedStyle_BorderColor());
+        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getBasicLabelStyleDescription_LabelColor(), ViewpointPackage.eINSTANCE.getBasicLabelStyle_LabelColor());
+        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getBundledImageDescription_Color(), ViewpointPackage.eINSTANCE.getBundledImage_Color());
+        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getDotDescription_BackgroundColor(), ViewpointPackage.eINSTANCE.getDot_BackgroundColor());
+        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getEdgeStyleDescription_StrokeColor(), ViewpointPackage.eINSTANCE.getEdgeStyle_StrokeColor());
+        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getEllipseNodeDescription_Color(), ViewpointPackage.eINSTANCE.getEllipse_Color());
+        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getFlatContainerStyleDescription_BackgroundColor(), ViewpointPackage.eINSTANCE.getFlatContainerStyle_BackgroundColor());
+        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getFlatContainerStyleDescription_ForegroundColor(), ViewpointPackage.eINSTANCE.getFlatContainerStyle_ForegroundColor());
+        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getGaugeSectionDescription_BackgroundColor(), ViewpointPackage.eINSTANCE.getGaugeSection_BackgroundColor());
+        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getGaugeSectionDescription_ForegroundColor(), ViewpointPackage.eINSTANCE.getGaugeSection_ForegroundColor());
+        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getLozengeNodeDescription_Color(), ViewpointPackage.eINSTANCE.getLozenge_Color());
+        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getNoteDescription_Color(), ViewpointPackage.eINSTANCE.getNote_Color());
+        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getSquareDescription_Color(), ViewpointPackage.eINSTANCE.getSquare_Color());
+        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getShapeContainerStyleDescription_BackgroundColor(), ViewpointPackage.eINSTANCE.getShapeContainerStyle_BackgroundColor());
     }
 
     /**

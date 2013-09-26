@@ -22,10 +22,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.dialect.Dialect;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.RepresentationNotification;
@@ -34,11 +31,13 @@ import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressio
 import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.movida.Movida;
-import org.eclipse.sirius.description.DescriptionFactory;
-import org.eclipse.sirius.description.DiagramExtensionDescription;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationExtensionDescription;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Class able to manage a set of dialects to provides the usual dialect services
@@ -73,7 +72,7 @@ public class DialectManagerImpl implements DialectManager {
      * 
      * {@inheritDoc}
      */
-    public Collection<RepresentationDescription> getAvailableRepresentationDescriptions(final Collection<Sirius> vp, final EObject semantic) {
+    public Collection<RepresentationDescription> getAvailableRepresentationDescriptions(final Collection<Viewpoint> vp, final EObject semantic) {
         final Collection<RepresentationDescription> descs = new ArrayList<RepresentationDescription>();
         for (final Dialect dialect : dialects.values()) {
             descs.addAll(dialect.getServices().getAvailableRepresentationDescriptions(vp, semantic));
@@ -156,7 +155,7 @@ public class DialectManagerImpl implements DialectManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#copyRepresentation(org.eclipse.sirius.DRepresentation,
+     * @see org.eclipse.sirius.business.api.dialect.DialectServices#copyRepresentation(org.eclipse.sirius.viewpoint.DRepresentation,
      *      java.lang.String,
      *      org.eclipse.sirius.business.api.session.Session,
      *      org.eclipse.core.runtime.IProgressMonitor)
@@ -264,7 +263,7 @@ public class DialectManagerImpl implements DialectManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#getRepresentations(org.eclipse.sirius.description.RepresentationDescription,
+     * @see org.eclipse.sirius.business.api.dialect.DialectServices#getRepresentations(org.eclipse.sirius.viewpoint.description.RepresentationDescription,
      *      org.eclipse.sirius.business.api.session.Session)
      */
     public Collection<DRepresentation> getRepresentations(final RepresentationDescription representationDescription, final Session session) {
@@ -291,7 +290,7 @@ public class DialectManagerImpl implements DialectManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#deleteRepresentation(org.eclipse.sirius.DRepresentation,
+     * @see org.eclipse.sirius.business.api.dialect.DialectServices#deleteRepresentation(org.eclipse.sirius.viewpoint.DRepresentation,
      *      org.eclipse.sirius.business.api.session.Session)
      */
     public boolean deleteRepresentation(final DRepresentation representation, final Session session) {
@@ -318,7 +317,7 @@ public class DialectManagerImpl implements DialectManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#getDescription(org.eclipse.sirius.DRepresentation)
+     * @see org.eclipse.sirius.business.api.dialect.DialectServices#getDescription(org.eclipse.sirius.viewpoint.DRepresentation)
      */
     public RepresentationDescription getDescription(final DRepresentation representation) {
         RepresentationDescription result = null;
@@ -332,14 +331,14 @@ public class DialectManagerImpl implements DialectManager {
     /**
      * {@inheritDoc}
      */
-    public void initRepresentations(Sirius vp, EObject semantic) {
+    public void initRepresentations(Viewpoint vp, EObject semantic) {
         initRepresentations(vp, semantic, new NullProgressMonitor());
     }
 
     /**
      * {@inheritDoc}
      */
-    public void initRepresentations(final Sirius vp, final EObject semantic, IProgressMonitor monitor) {
+    public void initRepresentations(final Viewpoint vp, final EObject semantic, IProgressMonitor monitor) {
         for (final Dialect dialect : dialects.values()) {
             dialect.getServices().initRepresentations(vp, semantic, monitor);
         }
@@ -397,9 +396,9 @@ public class DialectManagerImpl implements DialectManager {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#updateRepresentationsExtendedBy(Session,
-     *      Sirius, boolean)
+     *      Viewpoint, boolean)
      */
-    public void updateRepresentationsExtendedBy(final Session session, final Sirius viewpoint, final boolean activated) {
+    public void updateRepresentationsExtendedBy(final Session session, final Viewpoint viewpoint, final boolean activated) {
         for (final Dialect dialect : dialects.values()) {
             dialect.getServices().updateRepresentationsExtendedBy(session, viewpoint, activated);
         }
@@ -435,7 +434,7 @@ public class DialectManagerImpl implements DialectManager {
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.description.RepresentationDescription)
+     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
      */
     public boolean handles(RepresentationDescription representationDescription) {
         for (Dialect dialect : dialects.values()) {

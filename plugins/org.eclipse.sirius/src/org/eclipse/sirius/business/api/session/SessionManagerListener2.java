@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.session;
 
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Listener for SessionManager easier to leverage.
@@ -71,17 +71,17 @@ public interface SessionManagerListener2 extends SessionManagerListener {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointDeselected(org.eclipse.sirius.description.Sirius)
+         * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointDeselected(org.eclipse.sirius.viewpoint.description.Viewpoint)
          */
-        public void viewpointDeselected(final Sirius deselectedSirius) {
+        public void viewpointDeselected(final Viewpoint deselectedSirius) {
         }
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointSelected(org.eclipse.sirius.description.Sirius)
+         * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointSelected(org.eclipse.sirius.viewpoint.description.Viewpoint)
          */
-        public void viewpointSelected(final Sirius selectedSirius) {
+        public void viewpointSelected(final Viewpoint selectedSirius) {
         }
 
     }

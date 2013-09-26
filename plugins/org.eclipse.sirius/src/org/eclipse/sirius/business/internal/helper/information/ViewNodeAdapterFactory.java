@@ -14,12 +14,11 @@ import java.util.Iterator;
 
 import org.eclipse.core.runtime.IAdapterFactory;
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.SiriusPlugin;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.InformationSection;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.InformationSection;
 
 /**
  * Adapter factory for the Information View.

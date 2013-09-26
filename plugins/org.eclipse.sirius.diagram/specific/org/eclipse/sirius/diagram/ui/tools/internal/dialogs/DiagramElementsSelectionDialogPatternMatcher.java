@@ -14,8 +14,8 @@ import org.eclipse.gmf.runtime.common.core.util.StringMatcher;
 
 import com.google.common.base.Predicate;
 
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * <p>

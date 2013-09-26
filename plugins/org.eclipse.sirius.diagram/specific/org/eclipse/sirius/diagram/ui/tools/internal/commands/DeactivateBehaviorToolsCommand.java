@@ -14,10 +14,9 @@ import java.util.Collection;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.business.api.helper.concern.ConcernService;
-import org.eclipse.sirius.description.tool.BehaviorTool;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.description.tool.BehaviorTool;
 
 /**
  * Specific command to update activated behaviors.

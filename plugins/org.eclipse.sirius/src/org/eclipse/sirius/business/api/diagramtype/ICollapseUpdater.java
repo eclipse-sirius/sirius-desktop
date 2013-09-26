@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.diagramtype;
 
-import org.eclipse.sirius.CollapseFilter;
-import org.eclipse.sirius.DDiagramElement;
+import org.eclipse.sirius.viewpoint.CollapseFilter;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * A {@link ICollapseUpdater} has the responsibility to update the graphical
  * filter ({@link CollapseFilter} or
- * {@link org.eclipse.sirius.IndirectlyCollapseFilter}) and the bounds of the
+ * {@link org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter}) and the bounds of the
  * GMF Node corresponding to this {@link DDiagramElement} according to the
  * collapse changes.
  * 
@@ -26,7 +26,7 @@ public interface ICollapseUpdater {
 
     /**
      * Update the graphical filter ({@link CollapseFilter} or
-     * {@link org.eclipse.sirius.IndirectlyCollapseFilter}) of
+     * {@link org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter}) of
      * <code>element</code> and update bounds of the GMF Node according to the
      * collapse changes.
      * 
@@ -37,7 +37,7 @@ public interface ICollapseUpdater {
      *            filters of kind <code>kindOfFilter</code> must be removed.
      * @param kindOfFilter
      *            the kind of filter to add or remove ( {@link CollapseFilter}
-     *            or {@link org.eclipse.sirius.IndirectlyCollapseFilter}
+     *            or {@link org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter}
      */
     void synchronizeCollapseFiltersAndGMFBounds(DDiagramElement element, boolean add, Class<? extends CollapseFilter> kindOfFilter);
 }

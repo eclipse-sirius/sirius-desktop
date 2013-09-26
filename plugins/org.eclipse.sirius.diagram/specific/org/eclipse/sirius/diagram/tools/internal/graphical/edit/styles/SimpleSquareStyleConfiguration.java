@@ -11,10 +11,9 @@
 package org.eclipse.sirius.diagram.tools.internal.graphical.edit.styles;
 
 import org.eclipse.draw2d.geometry.Insets;
-
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.Square;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.Square;
 
 /**
  * The style configuration for the simple square.
@@ -26,7 +25,7 @@ public class SimpleSquareStyleConfiguration extends SimpleStyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration#getBorderDimension(org.eclipse.sirius.DNode)
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration#getBorderDimension(org.eclipse.sirius.viewpoint.DNode)
      */
     @Override
     public Insets getBorderDimension(final DNode node) {

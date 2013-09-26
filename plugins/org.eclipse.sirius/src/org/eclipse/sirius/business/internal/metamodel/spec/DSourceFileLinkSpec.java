@@ -13,8 +13,7 @@ package org.eclipse.sirius.business.internal.metamodel.spec;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
-
-import org.eclipse.sirius.impl.DSourceFileLinkImpl;
+import org.eclipse.sirius.viewpoint.impl.DSourceFileLinkImpl;
 
 /**
  * Implementation of DSourceFileLinkImpl.java.
@@ -26,7 +25,7 @@ public class DSourceFileLinkSpec extends DSourceFileLinkImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DSourceFileLinkImpl#isAvailable()
+     * @see org.eclipse.sirius.viewpoint.impl.DSourceFileLinkImpl#isAvailable()
      */
     @Override
     public boolean isAvailable() {

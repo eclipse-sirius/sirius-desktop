@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.refresh;
 
-import org.eclipse.sirius.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * Provides extensions of the refresh mechanism.

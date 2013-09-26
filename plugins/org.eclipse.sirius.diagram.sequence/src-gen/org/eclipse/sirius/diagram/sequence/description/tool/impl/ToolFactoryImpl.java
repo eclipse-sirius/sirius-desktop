@@ -15,10 +15,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.eclipse.sirius.description.tool.InitEdgeCreationOperation;
-import org.eclipse.sirius.description.tool.InitialNodeCreationOperation;
-import org.eclipse.sirius.description.tool.InitialOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.tool.MessageCreationToolSpec;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
@@ -34,6 +30,9 @@ import org.eclipse.sirius.diagram.sequence.description.tool.SequenceDiagramToolD
 import org.eclipse.sirius.diagram.sequence.description.tool.StateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;
+import org.eclipse.sirius.viewpoint.description.tool.InitialNodeCreationOperation;
+import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
@@ -50,7 +49,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      */
     public static ToolFactory init() {
         try {
-            ToolFactory theToolFactory = (ToolFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0");
+            ToolFactory theToolFactory = (ToolFactory) EPackage.Registry.INSTANCE.getEFactory(ToolPackage.eNS_URI);
             if (theToolFactory != null) {
                 return theToolFactory;
             }
@@ -124,7 +123,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      */
     public InstanceRoleCreationTool createInstanceRoleCreationTool() {
         InstanceRoleCreationToolImpl instanceRoleCreationTool = new InstanceRoleCreationToolImpl();
-        final InitialNodeCreationOperation initialOperation = org.eclipse.sirius.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
+        final InitialNodeCreationOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
         instanceRoleCreationTool.setInitialOperation(initialOperation);
         return instanceRoleCreationTool;
     }
@@ -146,7 +145,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      */
     public MessageCreationTool createMessageCreationTool() {
         MessageCreationToolImpl messageCreationTool = new MessageCreationToolSpec();
-        final InitEdgeCreationOperation initialOperation = org.eclipse.sirius.description.tool.ToolFactory.eINSTANCE.createInitEdgeCreationOperation();
+        final InitEdgeCreationOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitEdgeCreationOperation();
         messageCreationTool.setInitialOperation(initialOperation);
         return messageCreationTool;
     }
@@ -158,7 +157,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      */
     public ExecutionCreationTool createExecutionCreationTool() {
         ExecutionCreationToolImpl executionCreationTool = new ExecutionCreationToolImpl();
-        final InitialNodeCreationOperation initialOperation = org.eclipse.sirius.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
+        final InitialNodeCreationOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
         executionCreationTool.setInitialOperation(initialOperation);
         return executionCreationTool;
     }
@@ -170,7 +169,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      */
     public StateCreationTool createStateCreationTool() {
         StateCreationToolImpl stateCreationTool = new StateCreationToolImpl();
-        final InitialNodeCreationOperation initialOperation = org.eclipse.sirius.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
+        final InitialNodeCreationOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
         stateCreationTool.setInitialOperation(initialOperation);
         return stateCreationTool;
     }
@@ -182,7 +181,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      */
     public ReorderTool createReorderTool() {
         ReorderToolImpl reorderTool = new ReorderToolImpl();
-        InitialOperation initialOperation = org.eclipse.sirius.description.tool.ToolFactory.eINSTANCE.createInitialOperation();
+        InitialOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation();
         reorderTool.setOnEventMovedOperation(initialOperation);
         return reorderTool;
     }
@@ -194,7 +193,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      */
     public InstanceRoleReorderTool createInstanceRoleReorderTool() {
         InstanceRoleReorderToolImpl instanceRoleReorderTool = new InstanceRoleReorderToolImpl();
-        InitialOperation initialOperation = org.eclipse.sirius.description.tool.ToolFactory.eINSTANCE.createInitialOperation();
+        InitialOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation();
         instanceRoleReorderTool.setInstanceRoleMoved(initialOperation);
         return instanceRoleReorderTool;
     }
@@ -216,7 +215,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      */
     public InteractionUseCreationTool createInteractionUseCreationTool() {
         InteractionUseCreationToolImpl interactionUseCreationTool = new InteractionUseCreationToolImpl();
-        InitialNodeCreationOperation initalOperation = org.eclipse.sirius.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
+        InitialNodeCreationOperation initalOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
         interactionUseCreationTool.setInitialOperation(initalOperation);
         return interactionUseCreationTool;
     }
@@ -228,7 +227,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      */
     public CombinedFragmentCreationTool createCombinedFragmentCreationTool() {
         CombinedFragmentCreationToolImpl combinedFragmentCreationTool = new CombinedFragmentCreationToolImpl();
-        InitialNodeCreationOperation initialOperation = org.eclipse.sirius.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
+        InitialNodeCreationOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
         combinedFragmentCreationTool.setInitialOperation(initialOperation);
         return combinedFragmentCreationTool;
     }
@@ -240,7 +239,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      */
     public OperandCreationTool createOperandCreationTool() {
         OperandCreationToolImpl operandCreationTool = new OperandCreationToolImpl();
-        InitialNodeCreationOperation initialOperation = org.eclipse.sirius.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
+        InitialNodeCreationOperation initialOperation = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialNodeCreationOperation();
         operandCreationTool.setInitialOperation(initialOperation);
         return operandCreationTool;
     }

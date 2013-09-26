@@ -38,17 +38,16 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.importer.ecore.EcoreImporter;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionCreationOperation;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelectionCallback;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeSiriusSelectionCommand;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.ecore.design.service.EcoreSamplePlugin;
 
 /**
@@ -70,7 +69,7 @@ public class EcoreModelingProjectCreationOperation extends WorkspaceModifyOperat
 
     private String representationsResourceName;
 
-    private Set<Sirius> selectedSiriuss;
+    private Set<Viewpoint> selectedSiriuss;
 
     private IFile ecoreModel;
 
@@ -84,11 +83,11 @@ public class EcoreModelingProjectCreationOperation extends WorkspaceModifyOperat
      * @param representationsResourceName
      *            the name of the representations resource
      * @param selectedSiriuss
-     *            the set of {@link Sirius} to have selected on this created
+     *            the set of {@link Viewpoint} to have selected on this created
      *            Modeling Project
      */
     public EcoreModelingProjectCreationOperation(IProject project, EObject rootObject, String ecoreResourceName, String genModelResourceName, String representationsResourceName,
-            Set<Sirius> selectedSiriuss) {
+            Set<Viewpoint> selectedSiriuss) {
         super();
         this.project = project;
         this.rootObject = rootObject;
@@ -150,7 +149,7 @@ public class EcoreModelingProjectCreationOperation extends WorkspaceModifyOperat
         monitor.subTask("prepare ecore modeling project..."); //$NON-NLS-1$
         CompoundCommand cc = new CompoundCommand("Prepare Ecore Modeling Project"); //$NON-NLS-1$ 
         cc.append(new AddSemanticResourceCommand(session, URI.createPlatformResourceURI(ecorePath, true), new SubProgressMonitor(monitor, 1)));
-        cc.append(new ChangeSiriusSelectionCommand(session, new SiriusSelectionCallback(), selectedSiriuss, Collections.<Sirius> emptySet(), new SubProgressMonitor(monitor, 1)));
+        cc.append(new ChangeSiriusSelectionCommand(session, new SiriusSelectionCallback(), selectedSiriuss, Collections.<Viewpoint> emptySet(), new SubProgressMonitor(monitor, 1)));
 
         monitor.subTask("link the created models..."); //$NON-NLS-1$ 
         session.getTransactionalEditingDomain().getCommandStack().execute(cc);

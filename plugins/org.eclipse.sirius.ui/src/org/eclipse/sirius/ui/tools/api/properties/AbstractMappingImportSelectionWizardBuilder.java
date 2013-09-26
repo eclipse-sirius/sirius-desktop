@@ -18,17 +18,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
-import org.eclipse.sirius.description.AbstractMappingImport;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.Group;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * A class which is able to build the items tree to select mappings to import.
@@ -46,7 +45,7 @@ public abstract class AbstractMappingImportSelectionWizardBuilder {
 
     private Collection<AbstractNodeMapping> importers;
 
-    private Collection<Sirius> availableSiriuss;
+    private Collection<Viewpoint> availableSiriuss;
 
     /**
      * Create a new instance of selection wizard .
@@ -56,7 +55,7 @@ public abstract class AbstractMappingImportSelectionWizardBuilder {
      * @param availableSiriuss
      *            the available viewpoints
      */
-    public AbstractMappingImportSelectionWizardBuilder(final AbstractNodeMapping nodeMapping, final Collection<Sirius> availableSiriuss) {
+    public AbstractMappingImportSelectionWizardBuilder(final AbstractNodeMapping nodeMapping, final Collection<Viewpoint> availableSiriuss) {
         this.currentMapping = nodeMapping;
         this.availableSiriuss = availableSiriuss;
     }
@@ -72,7 +71,7 @@ public abstract class AbstractMappingImportSelectionWizardBuilder {
 
         final TreeItemWrapper root = new TreeItemWrapper(null, null);
 
-        for (Sirius viewpoint : availableSiriuss) {
+        for (Viewpoint viewpoint : availableSiriuss) {
             addSiriusItems(viewpoint, root);
         }
         return root;
@@ -86,15 +85,15 @@ public abstract class AbstractMappingImportSelectionWizardBuilder {
      *            the eObject to used to retrieve the resource set
      * @return all the available viewpoints
      */
-    public static Collection<Sirius> getAvailableSiriussInResourceSet(final EObject eObject) {
+    public static Collection<Viewpoint> getAvailableSiriussInResourceSet(final EObject eObject) {
         final Resource eResource = eObject.eResource();
         if (eResource != null) {
             final ResourceSet resourceSet = eResource.getResourceSet();
-            final Collection<Sirius> viewpoints = new HashSet<Sirius>();
+            final Collection<Viewpoint> viewpoints = new HashSet<Viewpoint>();
             for (final Resource resource : resourceSet.getResources()) {
                 if (!resource.getContents().isEmpty() && resource.getContents().get(0) instanceof Group) {
                     final Group group = (Group) resource.getContents().get(0);
-                    viewpoints.addAll(group.getOwnedSiriuss());
+                    viewpoints.addAll(group.getOwnedViewpoints());
                 }
             }
             return viewpoints;
@@ -106,7 +105,7 @@ public abstract class AbstractMappingImportSelectionWizardBuilder {
         importers = new HashSet<AbstractNodeMapping>();
 
         importers.add(currentMapping);
-        for (Sirius viewpoint : SiriusRegistry.getInstance().getSiriuss()) {
+        for (Viewpoint viewpoint : SiriusRegistry.getInstance().getSiriuss()) {
             for (RepresentationDescription representationDescription : new SiriusQuery(viewpoint).getAllRepresentationDescriptions()) {
                 if (representationDescription instanceof DiagramDescription) {
                     final DiagramDescription desc = (DiagramDescription) representationDescription;
@@ -138,7 +137,7 @@ public abstract class AbstractMappingImportSelectionWizardBuilder {
         return false;
     }
 
-    private void addSiriusItems(final Sirius viewpoint, final TreeItemWrapper root) {
+    private void addSiriusItems(final Viewpoint viewpoint, final TreeItemWrapper root) {
         final TreeItemWrapper viewpointItem = new TreeItemWrapper(viewpoint, root);
         for (RepresentationDescription represenationDescription : new SiriusQuery(viewpoint).getAllRepresentationDescriptions()) {
             if (represenationDescription instanceof DiagramDescription) {

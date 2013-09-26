@@ -12,13 +12,12 @@ package org.eclipse.sirius.diagram.business.internal.sync;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.description.DiagramDescription;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
 
 /**
  * A wrapper because the original class should be here.

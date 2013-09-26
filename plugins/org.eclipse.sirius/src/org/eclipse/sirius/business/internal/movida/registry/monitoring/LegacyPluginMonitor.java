@@ -25,7 +25,7 @@ import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.componentization.ISiriusComponent;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
 import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * A monitor which provides compatibility with the legacy APIs used for
@@ -71,7 +71,7 @@ public class LegacyPluginMonitor extends AbstractSiriusResourceMonitor {
      *            the platform file path ("pluginname/rep1/rep2/file.odesign)
      * @return the added Siriuss;
      */
-    public Set<Sirius> registerFromPlugin(String modelerModelResourcePath) {
+    public Set<Viewpoint> registerFromPlugin(String modelerModelResourcePath) {
         try {
             final URI uri = URI.createPlatformPluginURI(modelerModelResourcePath, true);
             // if (SiriusURIQuery.isValidSiriusURI(uri)) {
@@ -83,27 +83,27 @@ public class LegacyPluginMonitor extends AbstractSiriusResourceMonitor {
         return Collections.emptySet();
     }
 
-    private Set<Sirius> registerFromPlugin(final URI uri) {
+    private Set<Viewpoint> registerFromPlugin(final URI uri) {
         if (knownURIs.contains(uri)) {
             notifyResourcesEvents(Collections.<URI> emptySet(), Collections.<URI> emptySet(), Collections.singleton(uri));
         } else {
             notifyResourcesEvents(Collections.<URI> emptySet(), Collections.singleton(uri), Collections.<URI> emptySet());
         }
-        return ImmutableSet.copyOf(Iterables.filter(registry.getSiriuss(), new Predicate<Sirius>() {
-            public boolean apply(Sirius input) {
+        return ImmutableSet.copyOf(Iterables.filter(registry.getSiriuss(), new Predicate<Viewpoint>() {
+            public boolean apply(Viewpoint input) {
                 return input.eResource() != null && input.eResource().getURI().equals(uri);
             }
         }));
     }
 
     /**
-     * Dispose a {@link Sirius}. This method should be called on
+     * Dispose a {@link Viewpoint}. This method should be called on
      * {@link org.eclipse.core.runtime.Plugin#stop(org.osgi.framework.BundleContext)}
      * 
      * @param viewpoint
      *            the viewpoint to dispose
      */
-    public void disposeFromPlugin(Sirius viewpoint) {
+    public void disposeFromPlugin(Viewpoint viewpoint) {
         if (viewpoint != null) {
             Option<URI> uri = new SiriusQuery(viewpoint).getSiriusURI();
             if (uri.some()) {

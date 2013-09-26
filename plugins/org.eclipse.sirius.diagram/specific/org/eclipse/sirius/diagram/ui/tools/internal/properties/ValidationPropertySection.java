@@ -22,9 +22,9 @@ import org.eclipse.swt.widgets.Label;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.description.validation.ValidationRule;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ActivateRulesCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.DeactivateRulesCommand;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
  * This Property section shows currently activated validation rules and helps in

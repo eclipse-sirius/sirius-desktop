@@ -1,10 +1,9 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -28,7 +27,7 @@ import org.osgi.framework.BundleContext;
 // End of user code imports
 
 /**
- * This is the central singleton for the Sirius editor plugin.
+ * This is the central singleton for the Viewpoint editor plugin.
  */
 public final class SiriusEditorPlugin extends EMFPlugin {
     /**

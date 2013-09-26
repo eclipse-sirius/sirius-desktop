@@ -27,10 +27,10 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.EdgeTarget;
-import org.eclipse.sirius.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.util.NotationPredicate;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
  * Represents the LostMEssageEnd marker which can appear at at the end of a

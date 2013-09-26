@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description;
 
-import org.eclipse.sirius.description.tool.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

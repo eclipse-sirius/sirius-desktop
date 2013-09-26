@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeItemDeletionTool;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
@@ -63,7 +62,7 @@ public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeIt
     public TreeItemMapping getMapping() {
         if (eContainerFeatureID() != DescriptionPackage.TREE_ITEM_DELETION_TOOL__MAPPING)
             return null;
-        return (TreeItemMapping) eContainer();
+        return (TreeItemMapping) eInternalContainer();
     }
 
     /**

@@ -12,7 +12,7 @@ package org.eclipse.sirius.tools.api.command.ui;
 
 import java.util.Collection;
 
-import org.eclipse.sirius.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * This interface define filters saying whether a {@link DRepresentation} should

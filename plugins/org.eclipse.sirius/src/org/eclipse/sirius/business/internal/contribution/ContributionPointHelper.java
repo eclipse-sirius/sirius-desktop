@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.EObject;
 
 import com.google.common.base.Objects;
 
-import org.eclipse.sirius.description.contribution.ContributionFactory;
-import org.eclipse.sirius.description.contribution.ContributionPoint;
+import org.eclipse.sirius.viewpoint.description.contribution.ContributionFactory;
+import org.eclipse.sirius.viewpoint.description.contribution.ContributionPoint;
 
 /**
  * Helper class to deal with {@link ContributionPoint}s.

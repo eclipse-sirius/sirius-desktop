@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.refresh;
 
-import org.eclipse.sirius.DDiagram;
 import org.eclipse.sirius.business.api.refresh.IRefreshExtension;
 import org.eclipse.sirius.business.api.refresh.IRefreshExtensionProvider;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
+import org.eclipse.sirius.viewpoint.DDiagram;
 
 public class SequenceRefreshExtensionProvider implements IRefreshExtensionProvider {
 

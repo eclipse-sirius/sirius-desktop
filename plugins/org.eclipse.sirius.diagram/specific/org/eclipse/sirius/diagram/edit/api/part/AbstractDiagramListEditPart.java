@@ -37,7 +37,6 @@ import org.eclipse.gmf.runtime.notation.View;
 
 import com.google.common.collect.Iterables;
 
-import org.eclipse.sirius.DNodeList;
 import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramContainerEditPartOperation;
@@ -48,6 +47,7 @@ import org.eclipse.sirius.diagram.tools.internal.ui.NoCopyDragEditPartsTrackerEx
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.viewpoint.DNodeList;
 
 /**
  * The default implementation of lists.

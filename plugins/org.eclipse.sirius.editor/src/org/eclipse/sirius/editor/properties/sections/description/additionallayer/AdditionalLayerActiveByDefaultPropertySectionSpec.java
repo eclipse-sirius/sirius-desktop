@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.properties.sections.description.additionallayer;
 
-import org.eclipse.sirius.description.AdditionalLayer;
+import org.eclipse.sirius.viewpoint.description.AdditionalLayer;
 
 /**
  * A specific implementation of

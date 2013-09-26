@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.internal.menu.child;
 
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.audit.AuditPackage;
-import org.eclipse.sirius.description.tool.ToolPackage;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuilder;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.audit.AuditPackage;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * The extensions menu.

@@ -15,8 +15,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.sirius.description.tool.impl.ContainerCreationDescriptionImpl;
 import org.eclipse.sirius.diagram.sequence.description.CoveredLifelinesVariable;
 import org.eclipse.sirius.diagram.sequence.description.MessageEndVariable;
 import org.eclipse.sirius.diagram.sequence.description.tool.CoveringElementCreationTool;
@@ -24,6 +22,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreati
 import org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.SequenceDiagramToolDescription;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.impl.ContainerCreationDescriptionImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

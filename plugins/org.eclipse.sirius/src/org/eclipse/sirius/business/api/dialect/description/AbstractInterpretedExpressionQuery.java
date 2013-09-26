@@ -33,15 +33,15 @@ import org.eclipse.sirius.common.tools.api.util.AllContents;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
-import org.eclipse.sirius.description.JavaExtension;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.AbstractVariable;
-import org.eclipse.sirius.description.tool.CreateInstance;
-import org.eclipse.sirius.description.tool.EditMaskVariables;
-import org.eclipse.sirius.description.tool.ToolPackage;
-import org.eclipse.sirius.description.tool.VariableContainer;
+import org.eclipse.sirius.viewpoint.description.JavaExtension;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
+import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
+import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 
 /**
  * Query allowing to get the target domain classes and available packages for a
@@ -211,11 +211,11 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
             if (target != null) {
                 EObject vp = target;
                 // We get the corresponding Sirius
-                while (vp != null && !(vp instanceof Sirius)) {
+                while (vp != null && !(vp instanceof Viewpoint)) {
                     vp = vp.eContainer();
                 }
                 if (vp != null) {
-                    for (JavaExtension dep : ((Sirius) vp).getOwnedJavaExtensions()) {
+                    for (JavaExtension dep : ((Viewpoint) vp).getOwnedJavaExtensions()) {
                         if (!StringUtil.isEmpty(dep.getQualifiedClassName())) {
                             dependencies.add(dep.getQualifiedClassName());
                         }

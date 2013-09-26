@@ -13,10 +13,10 @@ package org.eclipse.sirius.diagram.business.internal.query;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
-import org.eclipse.sirius.DEdge;
-import org.eclipse.sirius.EdgeTarget;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.description.FoldingStyle;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.description.FoldingStyle;
 
 /**
  * Queries relative to a {@link EdgeTarget}.

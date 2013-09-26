@@ -21,24 +21,24 @@ import com.google.common.collect.Sets;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.ColorStep;
-import org.eclipse.sirius.description.ComputedColor;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.DiagramImportDescription;
-import org.eclipse.sirius.description.EAttributeCustomization;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.InterpolatedColor;
-import org.eclipse.sirius.description.MappingBasedDecoration;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationElementMapping;
-import org.eclipse.sirius.description.RepresentationExtensionDescription;
-import org.eclipse.sirius.description.SelectionDescription;
-import org.eclipse.sirius.description.SemanticBasedDecoration;
-import org.eclipse.sirius.description.VSMElementCustomization;
-import org.eclipse.sirius.description.util.DescriptionSwitch;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.ColorStep;
+import org.eclipse.sirius.viewpoint.description.ComputedColor;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramImportDescription;
+import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
+import org.eclipse.sirius.viewpoint.description.MappingBasedDecoration;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.SelectionDescription;
+import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
+import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
+import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 
 /**
  * A switch that will return the Target Types associated to a given element
@@ -100,7 +100,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
      */
     @Override
     public Option<Collection<String>> doSwitch(EObject theEObject) {
@@ -163,7 +163,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseDiagramDescription(org.eclipse.sirius.description.DiagramDescription)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseDiagramDescription(org.eclipse.sirius.viewpoint.description.DiagramDescription)
      */
     @Override
     public Option<Collection<String>> caseDiagramDescription(DiagramDescription diagramDescription) {
@@ -277,7 +277,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseAbstractNodeMapping(org.eclipse.sirius.description.AbstractNodeMapping)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseAbstractNodeMapping(org.eclipse.sirius.viewpoint.description.AbstractNodeMapping)
      */
     @Override
     public Option<Collection<String>> caseAbstractNodeMapping(AbstractNodeMapping object) {
@@ -303,7 +303,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseEdgeMapping(org.eclipse.sirius.description.EdgeMapping)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseEdgeMapping(org.eclipse.sirius.viewpoint.description.EdgeMapping)
      */
     @Override
     public Option<Collection<String>> caseEdgeMapping(EdgeMapping edgeMapping) {
@@ -360,7 +360,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseSelectionDescription(org.eclipse.sirius.description.SelectionDescription)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseSelectionDescription(org.eclipse.sirius.viewpoint.description.SelectionDescription)
      */
     @Override
     public Option<Collection<String>> caseSelectionDescription(SelectionDescription selectionDescription) {
@@ -382,7 +382,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseInterpolatedColor(org.eclipse.sirius.description.InterpolatedColor)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseInterpolatedColor(org.eclipse.sirius.viewpoint.description.InterpolatedColor)
      */
     @Override
     public Option<Collection<String>> caseInterpolatedColor(InterpolatedColor object) {
@@ -403,7 +403,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseColorStep(org.eclipse.sirius.description.ColorStep)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseColorStep(org.eclipse.sirius.viewpoint.description.ColorStep)
      */
     @Override
     public Option<Collection<String>> caseColorStep(ColorStep object) {
@@ -422,7 +422,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.util.DescriptionSwitch#caseComputedColor(org.eclipse.sirius.description.ComputedColor)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseComputedColor(org.eclipse.sirius.viewpoint.description.ComputedColor)
      */
     @Override
     public Option<Collection<String>> caseComputedColor(ComputedColor object) {

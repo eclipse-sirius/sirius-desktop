@@ -31,13 +31,13 @@ import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.SiriusQuery;
 import org.eclipse.sirius.business.internal.contribution.ReuseHelper;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationExtensionDescription;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.description.contribution.Contribution;
-import org.eclipse.sirius.description.contribution.ContributionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.contribution.Contribution;
+import org.eclipse.sirius.viewpoint.description.contribution.ContributionPackage;
 
 /**
  * Helper to find all the contributions which should be applied to produce the
@@ -107,13 +107,13 @@ public class TableContributionsFinder implements Function<Iterable<EObject>, Ite
     private boolean isExtending(RepresentationExtensionDescription extension, RepresentationDescription extended) {
         String targetSiriusURI = getTargetSiriusURI(extended);
         String targetRepresentationName = extended.getName();
-        return Objects.equal(extension.getSiriusURI(), targetSiriusURI) && Objects.equal(extension.getRepresentationName(), targetRepresentationName);
+        return Objects.equal(extension.getViewpointURI(), targetSiriusURI) && Objects.equal(extension.getRepresentationName(), targetRepresentationName);
     }
 
     private String getTargetSiriusURI(RepresentationDescription target) {
-        Option<EObject> parentVp = new EObjectQuery(target).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getSirius());
+        Option<EObject> parentVp = new EObjectQuery(target).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getViewpoint());
         if (parentVp.some()) {
-            Sirius vp = (Sirius) parentVp.get();
+            Viewpoint vp = (Viewpoint) parentVp.get();
             String uri = getSiriusURI(vp);
             if (uri != null) {
                 return uri;
@@ -129,7 +129,7 @@ public class TableContributionsFinder implements Function<Iterable<EObject>, Ite
      *            the viewpoint to get the URI from
      * @return the viewpoint URI associated to the given Sirius
      */
-    protected String getSiriusURI(Sirius vp) {
+    protected String getSiriusURI(Viewpoint vp) {
         Option<URI> uri = new SiriusQuery(vp).getSiriusURI();
         if (uri.some()) {
             return uri.get().toString();

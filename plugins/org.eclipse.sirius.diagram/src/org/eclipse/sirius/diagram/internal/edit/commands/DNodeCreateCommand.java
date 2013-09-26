@@ -20,8 +20,7 @@ import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.type.core.commands.CreateElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.SiriusPackage;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * @was-generated
@@ -52,7 +51,7 @@ public class DNodeCreateCommand extends CreateElementCommand {
      * @was-generated
      */
     protected EClass getEClassToEdit() {
-        return SiriusPackage.eINSTANCE.getDDiagram();
+        return ViewpointPackage.eINSTANCE.getDDiagram();
     }
 
     /**

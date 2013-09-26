@@ -14,13 +14,13 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
-import org.eclipse.sirius.description.AbstractNodeMapping;
-import org.eclipse.sirius.description.DiagramDescription;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.Layout;
-import org.eclipse.sirius.description.OrderedTreeLayout;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrdering;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrderingProvider;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.Layout;
+import org.eclipse.sirius.viewpoint.description.OrderedTreeLayout;
 
 /**
  * A tree ordered view ordering {@link ViewOrdering} provider.
@@ -36,7 +36,7 @@ public class OrderedTreeViewOrderingProvider implements ViewOrderingProvider {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.ViewOrderingProvider#getViewOrdering(org.eclipse.sirius.description.DiagramElementMapping)
+     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.ViewOrderingProvider#getViewOrdering(org.eclipse.sirius.viewpoint.description.DiagramElementMapping)
      */
     public ViewOrdering getViewOrdering(final DiagramElementMapping mapping) {
 
@@ -60,7 +60,7 @@ public class OrderedTreeViewOrderingProvider implements ViewOrderingProvider {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.ViewOrderingProvider#provides(org.eclipse.sirius.description.DiagramElementMapping)
+     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.ViewOrderingProvider#provides(org.eclipse.sirius.viewpoint.description.DiagramElementMapping)
      */
     public boolean provides(final DiagramElementMapping mapping) {
         if (mapping instanceof AbstractNodeMapping) {

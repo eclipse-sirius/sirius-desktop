@@ -1,10 +1,9 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
@@ -13,8 +12,7 @@ package org.eclipse.sirius.tree.editor.properties.filters.description.treeitemst
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.sirius.editor.properties.filters.common.SiriusPropertyFilter;
+import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 
 // End of user code specific imports
@@ -22,7 +20,7 @@ import org.eclipse.sirius.tree.description.DescriptionPackage;
 /**
  * A filter for the backgroundColor property section.
  */
-public class TreeItemStyleDescriptionBackgroundColorFilter extends SiriusPropertyFilter {
+public class TreeItemStyleDescriptionBackgroundColorFilter extends ViewpointPropertyFilter {
 
     /**
      * {@inheritDoc}

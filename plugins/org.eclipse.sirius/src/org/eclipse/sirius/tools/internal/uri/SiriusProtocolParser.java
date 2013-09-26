@@ -15,10 +15,9 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
-import org.eclipse.sirius.description.Sirius;
-import org.eclipse.sirius.description.util.DescriptionResourceFactoryImpl;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceFactoryImpl;
 
 /**
  * A protocol parser for viewpoints URI.
@@ -44,14 +43,14 @@ public class SiriusProtocolParser extends DescriptionResourceFactoryImpl {
      *             if the uri could not be parsed or the viewpoint could not be
      *             found
      */
-    public static Sirius getSirius(final URI uri) throws SiriusProtocolException {
+    public static Viewpoint getSirius(final URI uri) throws SiriusProtocolException {
         if (uri.segmentCount() == 2 && "viewpoint".equals(uri.scheme())) {
 
-            final Set<Sirius> viewpoints = SiriusRegistry.getInstance().getSiriuss();
+            final Set<Viewpoint> viewpoints = SiriusRegistry.getInstance().getSiriuss();
             final String pluginName = URI.decode(uri.segment(0));
             final String viewpointName = URI.decode(uri.lastSegment());
 
-            final Set<Sirius> vpWithGoodName = SiriusProtocolParser.filterByNameAndId(viewpoints, viewpointName, pluginName);
+            final Set<Viewpoint> vpWithGoodName = SiriusProtocolParser.filterByNameAndId(viewpoints, viewpointName, pluginName);
 
             if (!vpWithGoodName.isEmpty()) {
                 return vpWithGoodName.iterator().next();
@@ -62,9 +61,9 @@ public class SiriusProtocolParser extends DescriptionResourceFactoryImpl {
         throw new SiriusProtocolException("No viewpoint is corresponding to " + uri);
     }
 
-    private static Set<Sirius> filterByNameAndId(final Set<Sirius> viewpoints, final String viewpointName, final String pluginId) {
-        final Set<Sirius> filtered = new LinkedHashSet<Sirius>();
-        for (final Sirius viewpoint : viewpoints) {
+    private static Set<Viewpoint> filterByNameAndId(final Set<Viewpoint> viewpoints, final String viewpointName, final String pluginId) {
+        final Set<Viewpoint> filtered = new LinkedHashSet<Viewpoint>();
+        for (final Viewpoint viewpoint : viewpoints) {
             if (viewpointName.equals(viewpoint.getName())) {
                 if (SiriusProtocolParser.hasGoodPluginID(viewpoint, pluginId)) {
                     filtered.add(viewpoint);
@@ -74,7 +73,7 @@ public class SiriusProtocolParser extends DescriptionResourceFactoryImpl {
         return filtered;
     }
 
-    private static boolean hasGoodPluginID(final Sirius viewpoint, final String pluginId) {
+    private static boolean hasGoodPluginID(final Viewpoint viewpoint, final String pluginId) {
         final Resource resource = viewpoint.eResource();
         if (resource != null && resource.getURI() != null) {
             final URI vpURI = resource.getURI();

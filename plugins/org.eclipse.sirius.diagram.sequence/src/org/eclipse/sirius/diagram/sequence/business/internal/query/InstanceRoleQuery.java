@@ -13,9 +13,9 @@ package org.eclipse.sirius.diagram.sequence.business.internal.query;
 import com.google.common.base.Preconditions;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.RGBValues;
 import org.eclipse.sirius.business.api.diagramtype.HeaderData;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
+import org.eclipse.sirius.viewpoint.RGBValues;
 
 /**
  * General queries on {@link InstanceRole}s.

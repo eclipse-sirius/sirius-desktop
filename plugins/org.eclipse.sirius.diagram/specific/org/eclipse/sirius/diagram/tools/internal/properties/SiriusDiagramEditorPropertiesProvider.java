@@ -11,10 +11,9 @@
 package org.eclipse.sirius.diagram.tools.internal.properties;
 
 import org.eclipse.core.runtime.Platform;
-
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
 import org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Implementation ...

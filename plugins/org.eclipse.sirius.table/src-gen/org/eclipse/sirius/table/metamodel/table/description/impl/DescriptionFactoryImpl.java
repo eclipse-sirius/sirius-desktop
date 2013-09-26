@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.sirius.table.business.internal.color.DefaultColorStyleDescription;
 import org.eclipse.sirius.table.business.internal.metamodel.description.spec.CreateCellToolSpec;
 import org.eclipse.sirius.table.business.internal.metamodel.description.spec.CreateColumnToolSpec;
@@ -44,7 +43,6 @@ import org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
-import org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription;
 import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle;
@@ -70,7 +68,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
@@ -80,7 +78,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      */
     public static DescriptionFactory init() {
         try {
-            DescriptionFactory theDescriptionFactory = (DescriptionFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/sirius/table/description/1.1.0");
+            DescriptionFactory theDescriptionFactory = (DescriptionFactory) EPackage.Registry.INSTANCE.getEFactory(DescriptionPackage.eNS_URI);
             if (theDescriptionFactory != null) {
                 return theDescriptionFactory;
             }
@@ -110,8 +108,6 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
         switch (eClass.getClassifierID()) {
         case DescriptionPackage.EDITION_TABLE_DESCRIPTION:
             return createEditionTableDescription();
-        case DescriptionPackage.EDITION_TABLE_EXTENSION_DESCRIPTION:
-            return createEditionTableExtensionDescription();
         case DescriptionPackage.CROSS_TABLE_DESCRIPTION:
             return createCrossTableDescription();
         case DescriptionPackage.TABLE_MAPPING:
@@ -171,16 +167,6 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public EditionTableDescription createEditionTableDescription() {
         EditionTableDescriptionImpl editionTableDescription = new EditionTableDescriptionSpec();
         return editionTableDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EditionTableExtensionDescription createEditionTableExtensionDescription() {
-        EditionTableExtensionDescriptionImpl editionTableExtensionDescription = new EditionTableExtensionDescriptionImpl();
-        return editionTableExtensionDescription;
     }
 
     /**

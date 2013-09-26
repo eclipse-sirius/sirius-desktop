@@ -17,8 +17,6 @@ import org.eclipse.gmf.runtime.notation.Size;
 import com.google.common.collect.Iterables;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.CollapseFilter;
-import org.eclipse.sirius.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
@@ -27,6 +25,8 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.flag.Sequenc
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.horizontal.SequenceHorizontalLayout;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.observation.SequenceObservationLayout;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.vertical.SequenceVerticalLayout;
+import org.eclipse.sirius.viewpoint.CollapseFilter;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Computes the appropriate graphical locations of sequence events and lifelines

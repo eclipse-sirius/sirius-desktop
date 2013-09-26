@@ -11,7 +11,6 @@
 package org.eclipse.sirius.tree.description.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.PrecedingSiblingsVariables;
 

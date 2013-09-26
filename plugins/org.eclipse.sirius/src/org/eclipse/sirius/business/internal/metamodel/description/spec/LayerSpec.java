@@ -19,15 +19,14 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
-
 import org.eclipse.sirius.business.internal.metamodel.helper.ContentHelper;
-import org.eclipse.sirius.description.DescriptionPackage;
-import org.eclipse.sirius.description.EdgeMapping;
-import org.eclipse.sirius.description.impl.LayerImpl;
-import org.eclipse.sirius.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.description.tool.ToolEntry;
-import org.eclipse.sirius.description.tool.ToolGroup;
-import org.eclipse.sirius.description.tool.ToolSection;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.viewpoint.description.impl.LayerImpl;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
+import org.eclipse.sirius.viewpoint.description.tool.ToolGroup;
+import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
 
 /**
  * Specialization of Layer.
@@ -39,7 +38,7 @@ public class LayerSpec extends LayerImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.LayerImpl#getAllTools()
+     * @see org.eclipse.sirius.viewpoint.description.impl.LayerImpl#getAllTools()
      */
     @Override
     public EList<AbstractToolDescription> getAllTools() {
@@ -72,7 +71,7 @@ public class LayerSpec extends LayerImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.LayerImpl#getAllEdgeMappings()
+     * @see org.eclipse.sirius.viewpoint.description.impl.LayerImpl#getAllEdgeMappings()
      */
     @Override
     public EList<EdgeMapping> getAllEdgeMappings() {
@@ -82,7 +81,7 @@ public class LayerSpec extends LayerImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.description.impl.LayerImpl#getAllActivatedEdgeMappings()
+     * @see org.eclipse.sirius.viewpoint.description.impl.LayerImpl#getAllActivatedEdgeMappings()
      */
     @Override
     public EList<EdgeMapping> getAllActivatedEdgeMappings() {

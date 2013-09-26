@@ -18,13 +18,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.description.NodeMapping;
-import org.eclipse.sirius.description.RepresentationTemplate;
-import org.eclipse.sirius.description.Sirius;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractEObjectRefactoringAction;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractUndoRecordingCommand;
+import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.ui.IEditorPart;
 
 /**
  * Action changing a representation template to classical representations.
@@ -56,11 +55,11 @@ public class MaterializeTemplateRefactoring extends AbstractEObjectRefactoringAc
         setSelectionValid(false);
         if (selection.size() == 1) {
             final EObject elementToMove = selection.iterator().next();
-            if (elementToMove instanceof RepresentationTemplate && elementToMove.eContainer() instanceof Sirius) {
+            if (elementToMove instanceof RepresentationTemplate && elementToMove.eContainer() instanceof Viewpoint) {
                 setSelectionValid(true);
                 setTextIfDisable(MATERIALIZE_TEMPLATE_COMMAND_LABEL);
                 final RepresentationTemplate template = (RepresentationTemplate) elementToMove;
-                final Sirius containingSirius = (Sirius) template.eContainer();
+                final Viewpoint containingSirius = (Viewpoint) template.eContainer();
                 result = new AbstractUndoRecordingCommand(arg0.getResourceSet()) {
 
                     @Override

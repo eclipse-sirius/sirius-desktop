@@ -47,8 +47,8 @@ public class EllipseEditPart extends AbstractNotSelectableShapeNodeEditPart impl
      */
     protected void refreshVisuals() {
         super.refreshVisuals();
-        if (this.resolveSemanticElement() instanceof org.eclipse.sirius.Ellipse) {
-            org.eclipse.sirius.Ellipse ellipse = (org.eclipse.sirius.Ellipse) this.resolveSemanticElement();
+        if (this.resolveSemanticElement() instanceof org.eclipse.sirius.viewpoint.Ellipse) {
+            org.eclipse.sirius.viewpoint.Ellipse ellipse = (org.eclipse.sirius.viewpoint.Ellipse) this.resolveSemanticElement();
             int borderSize = ellipse.getBorderSize().intValue();
             this.getPrimaryShape().setLineWidth(borderSize);
             DiagramNodeEditPartOperation.refreshNodeLabelAlignment(this.getPrimaryShape(), ellipse);
@@ -61,7 +61,7 @@ public class EllipseEditPart extends AbstractNotSelectableShapeNodeEditPart impl
      */
     protected void refreshBackgroundColor() {
         if (getMetamodelType().isInstance(resolveSemanticElement())) {
-            org.eclipse.sirius.Ellipse ellipse = (org.eclipse.sirius.Ellipse) this.resolveSemanticElement();
+            org.eclipse.sirius.viewpoint.Ellipse ellipse = (org.eclipse.sirius.viewpoint.Ellipse) this.resolveSemanticElement();
             if (ellipse.getColor() != null) {
                 this.getPrimaryShape().setBackgroundColor(VisualBindingManager.getDefault().getColorFromRGBValues(ellipse.getColor()));
             }
@@ -74,7 +74,7 @@ public class EllipseEditPart extends AbstractNotSelectableShapeNodeEditPart impl
      */
     protected void refreshForegroundColor() {
         if (getMetamodelType().isInstance(resolveSemanticElement())) {
-            org.eclipse.sirius.Ellipse ellipse = (org.eclipse.sirius.Ellipse) this.resolveSemanticElement();
+            org.eclipse.sirius.viewpoint.Ellipse ellipse = (org.eclipse.sirius.viewpoint.Ellipse) this.resolveSemanticElement();
             if (ellipse.getBorderColor() != null) {
                 this.getPrimaryShape().setForegroundColor(VisualBindingManager.getDefault().getColorFromRGBValues(ellipse.getBorderColor()));
             }
@@ -224,6 +224,6 @@ public class EllipseEditPart extends AbstractNotSelectableShapeNodeEditPart impl
      * @not-generated
      */
     protected Class<?> getMetamodelType() {
-        return org.eclipse.sirius.Ellipse.class;
+        return org.eclipse.sirius.viewpoint.Ellipse.class;
     }
 }

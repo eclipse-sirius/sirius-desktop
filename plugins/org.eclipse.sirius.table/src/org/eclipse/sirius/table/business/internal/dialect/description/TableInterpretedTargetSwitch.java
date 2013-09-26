@@ -15,15 +15,9 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
-
+import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.RepresentationElementMapping;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription;
 import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
@@ -34,7 +28,6 @@ import org.eclipse.sirius.table.metamodel.table.description.CreateLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.DeleteColumnTool;
 import org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
-import org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription;
 import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle;
@@ -45,6 +38,11 @@ import org.eclipse.sirius.table.metamodel.table.description.TableCreationDescrip
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription;
 import org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element
@@ -186,22 +184,6 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
         switch (featureID) {
         case DescriptionPackage.TABLE_DESCRIPTION__PRECONDITION_EXPRESSION:
         case DescriptionPackage.TABLE_DESCRIPTION__TITLE_EXPRESSION:
-        case DO_NOT_CONSIDER_FEATURE:
-            target.add(object.getDomainClass());
-            result = Options.newSome(target);
-            break;
-        default:
-            break;
-        }
-        return result;
-    }
-
-    @Override
-    public Option<Collection<String>> caseEditionTableExtensionDescription(EditionTableExtensionDescription object) {
-        Option<Collection<String>> result = null;
-        Collection<String> target = Sets.newLinkedHashSet();
-        switch (featureID) {
-        case DescriptionPackage.EDITION_TABLE_EXTENSION_DESCRIPTION__PRECONDITION_EXPRESSION:
         case DO_NOT_CONSIDER_FEATURE:
             target.add(object.getDomainClass());
             result = Options.newSome(target);

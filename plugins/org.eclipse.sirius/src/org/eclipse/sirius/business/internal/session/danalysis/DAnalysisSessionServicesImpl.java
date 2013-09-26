@@ -25,15 +25,6 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DAnalysisCustomData;
-import org.eclipse.sirius.DFeatureExtension;
-import org.eclipse.sirius.DRepresentation;
-import org.eclipse.sirius.DRepresentationContainer;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DView;
-import org.eclipse.sirius.SiriusFactory;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusHelper;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
@@ -45,9 +36,18 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService;
 import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
-import org.eclipse.sirius.description.AnnotationEntry;
-import org.eclipse.sirius.description.RepresentationDescription;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DAnalysisCustomData;
+import org.eclipse.sirius.viewpoint.DFeatureExtension;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationContainer;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * The session services for DAnalysis.
@@ -294,7 +294,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
             // DAnalysisCustomData to the resource
             final Resource resource = associatedInstance.eResource();
             if (resource != null) {
-                DAnalysisCustomData customData = SiriusFactory.eINSTANCE.createDAnalysisCustomData();
+                DAnalysisCustomData customData = ViewpointFactory.eINSTANCE.createDAnalysisCustomData();
                 customData.setKey(key);
                 customData.setData(data);
                 resource.getContents().add(customData);
@@ -332,18 +332,18 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
 
     private void addRepresentationToContainer(final DRepresentation representation, final Resource res) {
         final EObject semanticRoot = res.getContents().iterator().next();
-        final Sirius viewpoint = new RepresentationDescriptionQuery(DialectManager.INSTANCE.getDescription(representation)).getParentSirius();
+        final Viewpoint viewpoint = new RepresentationDescriptionQuery(DialectManager.INSTANCE.getDescription(representation)).getParentSirius();
         DRepresentationContainer existingContainer = DAnalysisSessionHelper.findContainerForAddedRepresentation(semanticRoot, viewpoint, getAnalysisAndReferenced(), analysisSelector, representation);
 
         if (existingContainer == null) {
             existingContainer = DAnalysisSessionHelper.findFreeContainerForAddedRepresentation(viewpoint, semanticRoot, allAnalysis, analysisSelector, representation);
             if (existingContainer != null) {
-                existingContainer.setSirius(viewpoint);
+                existingContainer.setViewpoint(viewpoint);
             }
         }
         if (existingContainer == null) {
-            existingContainer = SiriusFactory.eINSTANCE.createDRepresentationContainer();
-            existingContainer.setSirius(viewpoint);
+            existingContainer = ViewpointFactory.eINSTANCE.createDRepresentationContainer();
+            existingContainer.setViewpoint(viewpoint);
             final DAnalysis analysis = DAnalysisSessionHelper.selectAnalysis(viewpoint, getAnalysisAndReferenced(), analysisSelector, representation);
             analysis.getOwnedViews().add(existingContainer);
         }

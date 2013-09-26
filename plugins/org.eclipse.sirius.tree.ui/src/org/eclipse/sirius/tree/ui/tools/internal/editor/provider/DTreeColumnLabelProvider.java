@@ -19,17 +19,16 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
-
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.BasicLabelStyle;
-import org.eclipse.sirius.FontFormat;
-import org.eclipse.sirius.RGBValues;
-import org.eclipse.sirius.SiriusPlugin;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.ui.tools.api.provider.DSemanticTargetBasedLabelProvider;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
+import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Label provider for all the tree item.

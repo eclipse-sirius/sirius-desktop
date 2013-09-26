@@ -23,15 +23,6 @@ import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.sirius.DLabelled;
-import org.eclipse.sirius.DMappingBased;
-import org.eclipse.sirius.DRefreshable;
-import org.eclipse.sirius.DRepresentationElement;
-import org.eclipse.sirius.DStylizable;
-import org.eclipse.sirius.Style;
-import org.eclipse.sirius.SiriusPackage;
-import org.eclipse.sirius.description.RepresentationElementMapping;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
@@ -42,6 +33,14 @@ import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
+import org.eclipse.sirius.viewpoint.DLabelled;
+import org.eclipse.sirius.viewpoint.DMappingBased;
+import org.eclipse.sirius.viewpoint.DRefreshable;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -49,8 +48,7 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DLineImpl#getName
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DLineImpl#getName
  * <em>Name</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DLineImpl#getSemanticElements
@@ -58,20 +56,17 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DLineImpl#getTableElementMapping
  * <em>Table Element Mapping</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DLineImpl#getLabel
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DLineImpl#getLabel
  * <em>Label</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DLineImpl#getOriginMapping
  * <em>Origin Mapping</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DLineImpl#isVisible
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DLineImpl#isVisible
  * <em>Visible</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DLineImpl#isCollapsed
  * <em>Collapsed</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DLineImpl#getCells
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.impl.DLineImpl#getCells
  * <em>Cells</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DLineImpl#getContainer
@@ -93,7 +88,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -410,7 +405,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
     public LineContainer getContainer() {
         if (eContainerFeatureID() != TablePackage.DLINE__CONTAINER)
             return null;
-        return (LineContainer) eContainer();
+        return (LineContainer) eInternalContainer();
     }
 
     /**
@@ -800,9 +795,9 @@ public class DLineImpl extends LineContainerImpl implements DLine {
         if (baseClass == DRepresentationElement.class) {
             switch (derivedFeatureID) {
             case TablePackage.DLINE__NAME:
-                return SiriusPackage.DREPRESENTATION_ELEMENT__NAME;
+                return ViewpointPackage.DREPRESENTATION_ELEMENT__NAME;
             case TablePackage.DLINE__SEMANTIC_ELEMENTS:
-                return SiriusPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS;
+                return ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS;
             default:
                 return -1;
             }
@@ -857,9 +852,9 @@ public class DLineImpl extends LineContainerImpl implements DLine {
         }
         if (baseClass == DRepresentationElement.class) {
             switch (baseFeatureID) {
-            case SiriusPackage.DREPRESENTATION_ELEMENT__NAME:
+            case ViewpointPackage.DREPRESENTATION_ELEMENT__NAME:
                 return TablePackage.DLINE__NAME;
-            case SiriusPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS:
+            case ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS:
                 return TablePackage.DLINE__SEMANTIC_ELEMENTS;
             default:
                 return -1;

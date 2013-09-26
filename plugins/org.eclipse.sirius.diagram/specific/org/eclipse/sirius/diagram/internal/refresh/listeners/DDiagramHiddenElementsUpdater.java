@@ -24,13 +24,12 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.HideFilter;
-import org.eclipse.sirius.HideLabelFilter;
-import org.eclipse.sirius.SiriusPackage;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.HideFilter;
+import org.eclipse.sirius.viewpoint.HideLabelFilter;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * A ResourceSet listener to handle hiddenElementLabels transient reference
@@ -55,7 +54,7 @@ public class DDiagramHiddenElementsUpdater extends ResourceSetListenerImpl {
      *            the {@link DDiagram} to update
      */
     public DDiagramHiddenElementsUpdater(TransactionalEditingDomain domain, DDiagram dDiagram) {
-        super(NotificationFilter.NOT_TOUCH.and(NotificationFilter.createFeatureFilter(SiriusPackage.eINSTANCE.getDDiagramElement_GraphicalFilters())));
+        super(NotificationFilter.NOT_TOUCH.and(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getDDiagramElement_GraphicalFilters())));
         domain.addResourceSetListener(this);
         this.dDiagram = dDiagram;
     }
@@ -89,11 +88,11 @@ public class DDiagramHiddenElementsUpdater extends ResourceSetListenerImpl {
 
         CompoundCommand compoundCommand = new CompoundCommand();
         if (!newElementsToHide.isEmpty()) {
-            Command hideDDiagramEltCmd = AddCommand.create(getTarget(), dDiagram, SiriusPackage.Literals.DDIAGRAM__HIDDEN_ELEMENTS, newElementsToHide);
+            Command hideDDiagramEltCmd = AddCommand.create(getTarget(), dDiagram, ViewpointPackage.Literals.DDIAGRAM__HIDDEN_ELEMENTS, newElementsToHide);
             compoundCommand.append(hideDDiagramEltCmd);
         }
         if (!newElementsToReveal.isEmpty()) {
-            Command revealDDiagramEltCmd = RemoveCommand.create(getTarget(), dDiagram, SiriusPackage.Literals.DDIAGRAM__HIDDEN_ELEMENTS, newElementsToReveal);
+            Command revealDDiagramEltCmd = RemoveCommand.create(getTarget(), dDiagram, ViewpointPackage.Literals.DDIAGRAM__HIDDEN_ELEMENTS, newElementsToReveal);
             compoundCommand.append(revealDDiagramEltCmd);
         }
         if (!compoundCommand.isEmpty()) {

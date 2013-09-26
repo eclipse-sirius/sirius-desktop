@@ -5,13 +5,14 @@
     editorDirectory="" modelPluginID="org.eclipse.sirius.table" modelName="Table"
     editPluginClass="org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin"
     testsDirectory="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
-    testsPluginID="org.eclipse.sirius.table.editor" runtimeVersion="2.3" usedGenPackages="../../org.eclipse.sirius/model/contribution.genmodel#//contribution platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint">
+    editPluginID="org.eclipse.sirius.table.ui" testsPluginID="org.eclipse.sirius.table.editor"
+    runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint">
   <genAnnotations source="http://www.eclipse.org/sirius/cdo/CDOGenModel">
     <details key="cdoNativeGenModels" value="org.eclipse.sirius.table.cdonative/model/table.genmodel"/>
   </genAnnotations>
   <foreignModel>table.ecore</foreignModel>
-  <genPackages prefix="Table" basePackage="org.eclipse.sirius.table.metamodel"
-      disposableProviderFactory="true" ecorePackage="table.ecore#/">
+  <genPackages prefix="Table" basePackage="org.eclipse.sirius.table.metamodel" disposableProviderFactory="true"
+      ecorePackage="table.ecore#/">
     <genClasses ecoreClass="table.ecore#//DTable">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//DTable/columns"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DTable/headerColumnWidth"/>
@@ -124,14 +125,6 @@
         <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference table.ecore#//description/EditionTableDescription/reusedColumnMappings"/>
         <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference table.ecore#//description/EditionTableDescription/allColumnMappings"/>
-      </genClasses>
-      <genClasses ecoreClass="table.ecore#//description/EditionTableExtensionDescription">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/EditionTableExtensionDescription/ownedLineMappings"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/EditionTableExtensionDescription/ownedColumnMappings"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference table.ecore#//description/EditionTableExtensionDescription/ownedTools"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//description/EditionTableExtensionDescription/preconditionExpression"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//description/EditionTableExtensionDescription/domainClass"/>
       </genClasses>
       <genClasses ecoreClass="table.ecore#//description/CrossTableDescription">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/CrossTableDescription/ownedColumnMappings"/>

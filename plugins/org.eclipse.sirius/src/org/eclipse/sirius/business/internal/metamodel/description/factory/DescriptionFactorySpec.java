@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.metamodel.description.factory;
 
-import org.eclipse.sirius.description.impl.DescriptionFactoryImpl;
+import org.eclipse.sirius.viewpoint.description.impl.DescriptionFactoryImpl;
 
 /**
- * A {@link org.eclipse.sirius.description.DescriptionFactory} meant to be
+ * A {@link org.eclipse.sirius.viewpoint.description.DescriptionFactory} meant to be
  * overridden by cdo-native plugins (see further explanations in
  * CDODescriptionFactorySpec).
  * 

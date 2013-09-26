@@ -16,20 +16,19 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
-import org.eclipse.sirius.DDiagram;
-import org.eclipse.sirius.DNode;
-import org.eclipse.sirius.DSemanticDecorator;
-import org.eclipse.sirius.DSemanticDiagram;
-import org.eclipse.sirius.Style;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
 import org.eclipse.sirius.business.internal.metamodel.operations.DDiagramElementSpecOperations;
-import org.eclipse.sirius.description.DiagramElementMapping;
-import org.eclipse.sirius.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.impl.DNodeImpl;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DNode;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
+import org.eclipse.sirius.viewpoint.impl.DNodeImpl;
 
 /**
  * Implementation of DNodeImpl.java.
@@ -41,7 +40,7 @@ public class DNodeSpec extends DNodeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DNodeImpl#getMapping()
+     * @see org.eclipse.sirius.viewpoint.impl.DNodeImpl#getMapping()
      */
     @Override
     public DiagramElementMapping getMapping() {
@@ -51,7 +50,7 @@ public class DNodeSpec extends DNodeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DNodeImpl#refresh()
+     * @see org.eclipse.sirius.viewpoint.impl.DNodeImpl#refresh()
      */
     @Override
     public void refresh() {
@@ -83,7 +82,7 @@ public class DNodeSpec extends DNodeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DNodeImpl#getStyle()
+     * @see org.eclipse.sirius.viewpoint.impl.DNodeImpl#getStyle()
      */
     @Override
     public Style getStyle() {
@@ -93,7 +92,7 @@ public class DNodeSpec extends DNodeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DDiagramElementImpl#getParentDiagram()
+     * @see org.eclipse.sirius.viewpoint.impl.DDiagramElementImpl#getParentDiagram()
      */
     @Override
     public DDiagram getParentDiagram() {
@@ -103,7 +102,7 @@ public class DNodeSpec extends DNodeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DNodeImpl#isFold(java.util.Map)
+     * @see org.eclipse.sirius.viewpoint.impl.DNodeImpl#isFold(java.util.Map)
      */
     @Override
     @Deprecated
@@ -114,7 +113,7 @@ public class DNodeSpec extends DNodeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DNodeImpl#validate()
+     * @see org.eclipse.sirius.viewpoint.impl.DNodeImpl#validate()
      */
     @Override
     public boolean validate() {
@@ -155,7 +154,7 @@ public class DNodeSpec extends DNodeImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.impl.DNodeImpl#getDragAndDropDescription()
+     * @see org.eclipse.sirius.viewpoint.impl.DNodeImpl#getDragAndDropDescription()
      */
     @Override
     public DragAndDropTargetDescription getDragAndDropDescription() {

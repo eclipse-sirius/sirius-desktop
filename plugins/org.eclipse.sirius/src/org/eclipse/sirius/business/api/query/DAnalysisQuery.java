@@ -19,10 +19,10 @@ import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.DAnalysis;
-import org.eclipse.sirius.DView;
-import org.eclipse.sirius.description.DAnnotationEntry;
-import org.eclipse.sirius.description.Sirius;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DAnalysis}
@@ -115,15 +115,15 @@ public class DAnalysisQuery {
     }
 
     /**
-     * Get selected {@link Sirius}s for the current {@link DAnalysis}.
+     * Get selected {@link Viewpoint}s for the current {@link DAnalysis}.
      * 
-     * @return selected {@link Sirius}s for the current {@link DAnalysis}
+     * @return selected {@link Viewpoint}s for the current {@link DAnalysis}
      */
-    public Collection<Sirius> getSelectedSiriuss() {
-        Collection<Sirius> selectedSiriuss = new ArrayList<Sirius>();
+    public Collection<Viewpoint> getSelectedSiriuss() {
+        Collection<Viewpoint> selectedSiriuss = new ArrayList<Viewpoint>();
         Collection<DView> selectedDViews = analysis.getSelectedViews();
         for (final DView dView : selectedDViews) {
-            final Sirius viewpoint = dView.getSirius();
+            final Viewpoint viewpoint = dView.getViewpoint();
             if (viewpoint != null) {
                 selectedSiriuss.add(viewpoint);
             }
@@ -141,7 +141,7 @@ public class DAnalysisQuery {
     public DView getFirstOrphanDView() {
         DView firstOrphanDView = null;
         for (final DView ownedDView : analysis.getOwnedViews()) {
-            if (ownedDView.getSirius() == null) {
+            if (ownedDView.getViewpoint() == null) {
                 firstOrphanDView = ownedDView;
                 break;
             }

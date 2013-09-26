@@ -25,13 +25,12 @@ import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget.Di
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.swt.graphics.Image;
-
-import org.eclipse.sirius.DDiagramElement;
-import org.eclipse.sirius.Decoration;
-import org.eclipse.sirius.description.DecorationDescription;
-import org.eclipse.sirius.description.Position;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.Decoration;
+import org.eclipse.sirius.viewpoint.description.DecorationDescription;
+import org.eclipse.sirius.viewpoint.description.Position;
 
 /**
  * 

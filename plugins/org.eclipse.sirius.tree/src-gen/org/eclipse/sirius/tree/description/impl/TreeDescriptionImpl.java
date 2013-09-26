@@ -22,18 +22,17 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.eclipse.sirius.description.EndUserDocumentedElement;
-import org.eclipse.sirius.description.IdentifiedElement;
-import org.eclipse.sirius.description.impl.DocumentedElementImpl;
-import org.eclipse.sirius.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.description.tool.RepresentationNavigationDescription;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;
 import org.eclipse.sirius.tree.description.TreeItemCreationTool;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.tree.description.TreeItemMappingContainer;
+import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -813,7 +812,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
         if (baseClass == EndUserDocumentedElement.class) {
             switch (derivedFeatureID) {
             case DescriptionPackage.TREE_DESCRIPTION__END_USER_DOCUMENTATION:
-                return org.eclipse.sirius.description.DescriptionPackage.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION;
+                return org.eclipse.sirius.viewpoint.description.DescriptionPackage.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION;
             default:
                 return -1;
             }
@@ -821,9 +820,9 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
         if (baseClass == IdentifiedElement.class) {
             switch (derivedFeatureID) {
             case DescriptionPackage.TREE_DESCRIPTION__NAME:
-                return org.eclipse.sirius.description.DescriptionPackage.IDENTIFIED_ELEMENT__NAME;
+                return org.eclipse.sirius.viewpoint.description.DescriptionPackage.IDENTIFIED_ELEMENT__NAME;
             case DescriptionPackage.TREE_DESCRIPTION__LABEL:
-                return org.eclipse.sirius.description.DescriptionPackage.IDENTIFIED_ELEMENT__LABEL;
+                return org.eclipse.sirius.viewpoint.description.DescriptionPackage.IDENTIFIED_ELEMENT__LABEL;
             default:
                 return -1;
             }
@@ -850,7 +849,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == EndUserDocumentedElement.class) {
             switch (baseFeatureID) {
-            case org.eclipse.sirius.description.DescriptionPackage.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION:
+            case org.eclipse.sirius.viewpoint.description.DescriptionPackage.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION:
                 return DescriptionPackage.TREE_DESCRIPTION__END_USER_DOCUMENTATION;
             default:
                 return -1;
@@ -858,9 +857,9 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
         }
         if (baseClass == IdentifiedElement.class) {
             switch (baseFeatureID) {
-            case org.eclipse.sirius.description.DescriptionPackage.IDENTIFIED_ELEMENT__NAME:
+            case org.eclipse.sirius.viewpoint.description.DescriptionPackage.IDENTIFIED_ELEMENT__NAME:
                 return DescriptionPackage.TREE_DESCRIPTION__NAME;
-            case org.eclipse.sirius.description.DescriptionPackage.IDENTIFIED_ELEMENT__LABEL:
+            case org.eclipse.sirius.viewpoint.description.DescriptionPackage.IDENTIFIED_ELEMENT__LABEL:
                 return DescriptionPackage.TREE_DESCRIPTION__LABEL;
             default:
                 return -1;
