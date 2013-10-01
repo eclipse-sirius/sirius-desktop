@@ -26,6 +26,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.DiagramDescription;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
 import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
+import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.GaugeSectionDescription;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
@@ -178,6 +179,22 @@ public class EStructuralFeatureCustomizationAppliedOnPropertySection extends Abs
             }
         }
         return isStyleDescriptionEltConformToEReferenceCustomization;
+    }
+    
+
+    @Override
+    public void refresh() {
+        super.refresh();
+        updateReadOnlyStatus();
+    }
+
+    @Override
+    protected boolean shouldBeReadOnly() {
+        boolean shouldBeReadOnly = super.shouldBeReadOnly();
+        if (!shouldBeReadOnly) {
+            return ((EStructuralFeatureCustomization) eObject).isApplyOnAll();
+        }
+        return shouldBeReadOnly;
     }
     // End of user code user operations
 }

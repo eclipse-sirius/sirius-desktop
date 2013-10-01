@@ -20,8 +20,8 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.business.internal.metamodel.helper.BestStyleDescriptionKey;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.description.Customization;
 import org.eclipse.sirius.viewpoint.description.DiagramDescription;
@@ -30,6 +30,8 @@ import org.eclipse.sirius.viewpoint.description.Layer;
 import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
 import org.eclipse.sirius.viewpoint.description.VSMElementCustomizationReuse;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
+
+import com.google.common.collect.Iterators;
 
 /**
  * A Query for {@link StyleDescriptionQuery}.
@@ -98,13 +100,21 @@ public class StyleDescriptionQuery {
         for (VSMElementCustomization vsmElementCustomization : vsmElementCustomizations) {
             List<EStructuralFeatureCustomization> featureCustomizations = vsmElementCustomization.getFeatureCustomizations();
             for (EStructuralFeatureCustomization featureCustomization : featureCustomizations) {
-                if (isAppliedOnOrOwnedContent(featureCustomization.getAppliedOn())) {
+
+                // If the feature customization is "apply on all" we do not
+                // check whether the current style description is specifically
+                // concerned by the "applied on" feature.
+                if (featureCustomization.isApplyOnAll() || isAppliedOnOrOwnedContent(featureCustomization.getAppliedOn())) {
                     Set<EObject> appliedOn = eStructuralFeatureCustomizationsAppliedOn.get(featureCustomization);
                     if (appliedOn == null) {
                         appliedOn = new LinkedHashSet<EObject>();
                         eStructuralFeatureCustomizationsAppliedOn.put(featureCustomization, appliedOn);
                     }
-                    appliedOn.addAll(featureCustomization.getAppliedOn());
+                    if (featureCustomization.isApplyOnAll()) {
+                        addStyleDescriptionAndAllSubStyles(appliedOn);
+                    } else {
+                        appliedOn.addAll(featureCustomization.getAppliedOn());
+                    }
                 }
             }
         }
@@ -122,6 +132,13 @@ public class StyleDescriptionQuery {
             }
         }
         return eStructuralFeatureCustomizationsAppliedOn;
+    }
+
+    private void addStyleDescriptionAndAllSubStyles(Set<EObject> appliedOn) {
+        appliedOn.add(this.styleDescription);
+        // TODO LRE: Review of VP-4135 (not sure of
+        // this.styleDescription.eAllContents()).
+        Iterators.addAll(appliedOn, this.styleDescription.eAllContents());
     }
 
     private boolean isAppliedOnOrOwnedContent(List<EObject> appliedOn) {

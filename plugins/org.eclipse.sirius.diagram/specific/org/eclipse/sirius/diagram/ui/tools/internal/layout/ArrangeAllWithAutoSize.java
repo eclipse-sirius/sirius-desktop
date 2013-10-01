@@ -33,11 +33,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.graph.VirtualNode;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramBorderNodeEditPart;
@@ -49,7 +44,7 @@ import org.eclipse.sirius.diagram.edit.api.part.IDiagramListEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.SquareEditPart;
 import org.eclipse.sirius.diagram.internal.operation.RegionContainerUpdateLayoutOperation;
-import org.eclipse.sirius.diagram.internal.view.factories.DNodeContainerViewFactory;
+import org.eclipse.sirius.diagram.internal.view.factories.AbstractContainerViewFactory;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
@@ -58,6 +53,10 @@ import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.AbstractComp
 import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
 import org.eclipse.sirius.viewpoint.DNodeContainer;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * This class capture all the needed changes to make to the arrange all behavior
@@ -98,7 +97,7 @@ public class ArrangeAllWithAutoSize {
 
     /**
      * Tests if the gmf view attached to this part contained the
-     * <code>{@link DNodeContainerViewFactory} JUST_CREATED</code> marker
+     * <code>{@link AbstractContainerViewFactory} JUST_CREATED</code> marker
      * adapter. The marker is added by the DNodeContainerViewFactory to
      * distinguish the views which have just been created to keep their default
      * dimension setted by the view factory. We removed this marker if it's
@@ -114,7 +113,7 @@ public class ArrangeAllWithAutoSize {
             Iterator<Adapter> iterator = view.eAdapters().iterator();
             while (iterator.hasNext()) {
                 Adapter adapter = iterator.next();
-                if (adapter.isAdapterForType(DNodeContainerViewFactory.class)) {
+                if (adapter.isAdapterForType(AbstractContainerViewFactory.class)) {
                     iterator.remove();
                     return true;
                 }

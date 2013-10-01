@@ -37,6 +37,7 @@ import org.eclipse.sirius.viewpoint.CenterLabelStyle;
 import org.eclipse.sirius.viewpoint.ContainerStyle;
 import org.eclipse.sirius.viewpoint.CustomStyle;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
 import org.eclipse.sirius.viewpoint.DEdge;
 import org.eclipse.sirius.viewpoint.DNode;
 import org.eclipse.sirius.viewpoint.DNodeContainer;
@@ -58,10 +59,10 @@ import org.eclipse.sirius.viewpoint.Lozenge;
 import org.eclipse.sirius.viewpoint.NodeStyle;
 import org.eclipse.sirius.viewpoint.Note;
 import org.eclipse.sirius.viewpoint.ShapeContainerStyle;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.Square;
 import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.WorkspaceImage;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.BeginLabelStyleDescription;
@@ -83,6 +84,7 @@ import org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription;
 import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.NoteDescription;
 import org.eclipse.sirius.viewpoint.description.style.ShapeContainerStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.SquareDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
@@ -103,6 +105,8 @@ public final class StyleHelper {
     // "3" is an arbitrary value extracted from this code and it doesn't seem to
     // be linked with any existing requirement.
     private static final Integer DEFAULT_SIZE = Integer.valueOf(3);
+    
+    private static final Integer AUTO_SIZE_CONTAINER = Integer.valueOf(-1);
 
     private IInterpreter interpreter;
 
@@ -754,6 +758,9 @@ public final class StyleHelper {
         }
 
         updateLabelStyleFeatures(description, style, previousStyle);
+        if (style.eContainer() instanceof DDiagramElementContainer) {
+            setComputedSize((DDiagramElementContainer) style.eContainer(), description);
+        }
     }
 
     private ShapeContainerStyle createShapeContainerStyle(final ShapeContainerStyleDescription description) {
@@ -789,6 +796,77 @@ public final class StyleHelper {
                 style.setShape(description.getShape());
             }
         }
+        
+        if (style.eContainer() instanceof DDiagramElementContainer) {
+            setComputedSize((DDiagramElementContainer) style.eContainer(), description);
+        }
+
+    }
+
+    private void setComputedSize(DDiagramElementContainer container, SizeComputationContainerStyleDescription style) {
+        if (style != null) {
+            Integer computedWidth = computeExpressions(container.getTarget(), style, StylePackage.eINSTANCE.getSizeComputationContainerStyleDescription_WidthComputationExpression());
+            Integer computedHeight = computeExpressions(container.getTarget(), style, StylePackage.eINSTANCE.getSizeComputationContainerStyleDescription_HeightComputationExpression());
+            safeSetComputedSize(container, computedWidth, computedHeight);
+        }
+    }
+
+    private void safeSetComputedSize(DDiagramElementContainer container, Integer computedWidth, Integer computedHeight) {
+        if (featureCanBeSet(computedWidth, container, ViewpointPackage.eINSTANCE.getDDiagramElementContainer_Width()) && !computedWidth.equals(container.getWidth())) {
+            container.setWidth(computedWidth);
+        }
+        if (featureCanBeSet(computedHeight, container, ViewpointPackage.eINSTANCE.getDDiagramElementContainer_Height()) && !computedHeight.equals(container.getHeight())) {
+            container.setHeight(computedHeight);
+        }
+
+    }
+    
+    /**
+     * To avoid abusive dirty because of the new "width" and "height" attributes
+     * on {@link DDiagramElementContainer}, we have to check whether the VSM
+     * width and height computation expression are different of the default
+     * value (-1) before to set them. By default, if the width or height
+     * features are unset, we keep the same auto-size behavior than before.
+     * 
+     * @param value
+     *            the value, already evaluated.
+     * @param container
+     *            the {@link DDiagramElementContainer} to set width and height.
+     * @param feature
+     *            the concerned feature (width or height).
+     * @return true if the feature can be set otherwise false.
+     */
+    private boolean featureCanBeSet(Integer value, DDiagramElementContainer container, EStructuralFeature feature) {
+        boolean returnValue = false;
+
+        // if the feature has already been set we can set it without verify if
+        // we have the VSM default value.
+        if (container.eIsSet(feature)) {
+            returnValue = true;
+        } else if (value.intValue() > 0) {
+            returnValue = true;
+
+        }
+        return returnValue;
+    }
+
+    private Integer computeExpressions(EObject target, SizeComputationContainerStyleDescription description, EStructuralFeature feature) {
+        Integer size = null;
+        Object expression = description.eGet(feature);
+        if (expression instanceof String && !StringUtil.isEmpty((String) expression) && !((String) expression).equals("-1")) {
+            try {
+                size = interpreter.evaluateInteger(target, (String) expression);
+                if (size == null) {
+                    size = AUTO_SIZE_CONTAINER;
+                }
+
+            } catch (EvaluationException e) {
+                // do nothing
+            }
+        } else {
+            size = AUTO_SIZE_CONTAINER;
+        }
+        return size;
 
     }
 

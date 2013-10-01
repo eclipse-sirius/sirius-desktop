@@ -34,7 +34,7 @@ import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 /**
  * @was-generated
  */
-public class DNodeListViewFactory extends AbstractDesignerNodeFactory {
+public class DNodeListViewFactory extends AbstractContainerViewFactory {
 
     /**
      * @was-generated
@@ -67,5 +67,6 @@ public class DNodeListViewFactory extends AbstractDesignerNodeFactory {
         }
         getViewService().createNode(eObjectAdapter, view, SiriusVisualIDRegistry.getType(DNodeListNameEditPart.VISUAL_ID), ViewUtil.APPEND, true, getPreferencesHint());
         getViewService().createNode(eObjectAdapter, view, SiriusVisualIDRegistry.getType(DNodeListViewNodeListCompartment2EditPart.VISUAL_ID), ViewUtil.APPEND, true, getPreferencesHint());
+        updateLayoutConstraint(view, semanticAdapter);
     }
 }

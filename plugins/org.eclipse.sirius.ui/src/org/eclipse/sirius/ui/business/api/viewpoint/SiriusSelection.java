@@ -21,6 +21,8 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -53,6 +55,22 @@ import org.eclipse.jface.window.ToolTip;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.IWizardContainer;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
+import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
+import org.eclipse.sirius.business.internal.movida.Movida;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
+import org.eclipse.sirius.ui.business.internal.commands.ChangeSiriusSelectionCommand;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
@@ -76,23 +94,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
-import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
-import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
-import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
-import org.eclipse.sirius.business.internal.movida.Movida;
-import org.eclipse.sirius.ui.business.internal.commands.ChangeSiriusSelectionCommand;
-import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * A class which to show swt widgets with available viewpoints.
@@ -426,13 +427,25 @@ public final class SiriusSelection {
         for (Viewpoint viewpoint : selected) {
             for (RepresentationExtensionDescription extension : new SiriusQuery(viewpoint).getAllRepresentationExtensionDescriptions()) {
                 String extended = extension.getViewpointURI();
-                if (!selectedURIs.contains(extended.trim())) {
+                Pattern pattern = Pattern.compile(extended);
+                if (!atLeastOneUriMatchesPattern(selectedURIs, pattern)) {
                     result.put(viewpoint.getName(), extended.trim().replaceFirst("^viewpoint:/[^/]+/", ""));
                 }
             }
         }
         return result;
     }
+
+    private static boolean atLeastOneUriMatchesPattern(Set<String> selectedURIs, Pattern pattern) {
+        for (String uriToMatch : selectedURIs) {
+            Matcher matcher = pattern.matcher(uriToMatch);
+            if (matcher.matches()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     private static void applyNewSiriusSelection(final SortedMap<Viewpoint, Boolean> originalMap, final SortedMap<Viewpoint, Boolean> newMap, final Session session,
             final boolean createNewRepresentations) {

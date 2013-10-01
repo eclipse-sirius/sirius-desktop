@@ -512,7 +512,7 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
             final DNodeContainer container = (DNodeContainer) eObj;
             if (container.getOwnedStyle() instanceof FlatContainerStyle && !new DDiagramElementContainerExperimentalQuery(container).isRegion()
                     && !new DNodeContainerExperimentalQuery(container).isRegionContainer()) {
-                ((DefaultSizeNodeFigure) result).setDefaultSize(150, 70);
+                ((DefaultSizeNodeFigure) result).setDefaultSize(LayoutUtils.DEFAULT_CONTAINER_DIMENSION);
             }
         }
 

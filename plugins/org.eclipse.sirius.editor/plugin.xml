@@ -1661,7 +1661,6 @@
                class="org.eclipse.sirius.editor.properties.sections.description.estructuralfeaturecustomization.EStructuralFeatureCustomizationApplyOnAllPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.description.estructuralfeaturecustomization.EStructuralFeatureCustomizationApplyOnAllFilter"
                id="description.section.eStructuralFeatureCustomization.ApplyOnAll"
-               afterSection="description.section.eStructuralFeatureCustomization.AppliedOn"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization"/>        
       </propertySection>
@@ -1669,6 +1668,7 @@
                class="org.eclipse.sirius.editor.properties.sections.description.estructuralfeaturecustomization.EStructuralFeatureCustomizationAppliedOnPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.description.estructuralfeaturecustomization.EStructuralFeatureCustomizationAppliedOnFilter"
                id="description.section.eStructuralFeatureCustomization.AppliedOn"
+               afterSection="description.section.eStructuralFeatureCustomization.ApplyOnAll"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization"/>        
       </propertySection>

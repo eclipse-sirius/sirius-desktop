@@ -12,6 +12,7 @@ package org.eclipse.sirius.tools.internal.uri;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.regex.PatternSyntaxException;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -91,15 +92,29 @@ public class SiriusProtocolParser extends DescriptionResourceFactoryImpl {
      * @param resourceSetURi
      *            the platform URI.
      * @param viewpointURI
-     *            a viewpoint:/ based URI
+     *            a viewpoint:/ based URI. Can be a regular expression that
+     *            potentially matches the given resourceSetURi.
      * @return true if the uri's are matching.
      */
-    public static boolean match(final URI resourceSetURi, final URI viewpointURI) {
+    public static boolean match(final URI resourceSetURi, final String viewpointURI) {
+        boolean result = false;
         if (resourceSetURi.isPlatform()) {
             final URI computedURI = SiriusProtocolParser.buildSiriusUri(resourceSetURi);
-            return computedURI != null && viewpointURI.toString().equals(computedURI.toString());
+            if (computedURI != null) {
+                if (URI.createURI(viewpointURI, false).toString().equals(computedURI.toString())) {
+                    // Simple case same URI
+                    result = true;
+                } else {
+                    try {
+                        result = URI.decode(computedURI.toString()).matches(viewpointURI);
+                    } catch (PatternSyntaxException e) {
+                        // Nothing to do, the regex is not valid so it
+                        // corresponds to nothing.
+                    }
+                }
+            }
         }
-        return false;
+        return result;
     }
 
     /**

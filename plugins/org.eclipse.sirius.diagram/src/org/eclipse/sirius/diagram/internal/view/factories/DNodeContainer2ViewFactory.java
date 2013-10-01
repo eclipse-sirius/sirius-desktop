@@ -19,19 +19,17 @@ import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerName2EditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
-import org.eclipse.sirius.diagram.internal.view.factories.AbstractDesignerNodeFactory;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+
+import com.google.common.collect.Lists;
 
 /**
  * @was-generated
  */
-public class DNodeContainer2ViewFactory extends AbstractDesignerNodeFactory {
+public class DNodeContainer2ViewFactory extends AbstractContainerViewFactory {
 
     /**
      * @was-generated
@@ -59,5 +57,6 @@ public class DNodeContainer2ViewFactory extends AbstractDesignerNodeFactory {
         getViewService().createNode(eObjectAdapter, view, SiriusVisualIDRegistry.getType(DNodeContainerName2EditPart.VISUAL_ID), ViewUtil.APPEND, true, getPreferencesHint());
         getViewService()
                 .createNode(eObjectAdapter, view, SiriusVisualIDRegistry.getType(DNodeContainerViewNodeContainerCompartment2EditPart.VISUAL_ID), ViewUtil.APPEND, true, getPreferencesHint());
+        updateLayoutConstraint(view, semanticAdapter);
     }
 }

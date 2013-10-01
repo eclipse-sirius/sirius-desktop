@@ -36,12 +36,9 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.edit.internal.part.AbstractDiagramNodeEditPartOperation;
@@ -57,10 +54,15 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClippingStrategy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
+import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
 import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.WorkspaceImage;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Basic implementation of top Level type of Diagram an List Containers.
@@ -77,6 +79,8 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
 
     /** The background image. */
     private IFigure backgroundFigure;
+
+    private Dimension intialDefaultSize;
 
     /**
      * Creates a new Container edit part.
@@ -107,6 +111,21 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         }
         super.handleNotificationEvent(notification);
         AbstractDiagramNodeEditPartOperation.handleNotificationEvent(this, notification);
+
+        handleDefaultSizeNotification(notification);
+    }
+
+    private void handleDefaultSizeNotification(Notification notification) {
+        if (!notification.isTouch()) {
+            Object feature = notification.getFeature();
+            if (feature.equals(ViewpointPackage.eINSTANCE.getDDiagramElementContainer_Width()) || feature.equals(ViewpointPackage.eINSTANCE.getDDiagramElementContainer_Height())) {
+                IFigure figure = getMainFigure();
+                if (figure instanceof DefaultSizeNodeFigure && !isRegion()) {
+                    setFigureDefaultSize((DefaultSizeNodeFigure) figure);
+                }
+            }
+        }
+
     }
 
     /**
@@ -225,6 +244,9 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
             Dimension d = new Dimension(100, 60);
             dsnf.setDefaultSize(d);
             dsnf.setMinimumSize(d);
+        } else if (figure instanceof DefaultSizeNodeFigure) {
+            setFigureDefaultSize((DefaultSizeNodeFigure) figure);
+
         }
 
         figure.setLayoutManager(new StackLayout());
@@ -243,6 +265,35 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         figure.add(primaryShape);
         contentPane = setupContentPane(primaryShape);
         return figure;
+    }
+
+    private void setFigureDefaultSize(DefaultSizeNodeFigure figure) {
+        if (intialDefaultSize == null) {
+            intialDefaultSize = figure.getDefaultSize().getCopy();
+        }
+        Object model = getModel();
+        if (model instanceof Node) {
+            EObject element = ((Node) model).getElement();
+            if (element instanceof DDiagramElementContainer) {
+                Integer dDiagramElementContainerWidth = ((DDiagramElementContainer) element).getWidth();
+                Integer dDiagramElementContainerHeight = ((DDiagramElementContainer) element).getHeight();
+
+                int widthToApplied = intialDefaultSize.width;
+                int heightToApplied = intialDefaultSize.height;
+
+                if (dDiagramElementContainerWidth != null && dDiagramElementContainerWidth > 0) {
+                    int tempWidthToApplied = dDiagramElementContainerWidth * LayoutUtils.SCALE;
+                    widthToApplied = tempWidthToApplied;
+                }
+                if (dDiagramElementContainerHeight != null && dDiagramElementContainerHeight > 0) {
+                    int tempHeightToApplied = dDiagramElementContainerHeight * LayoutUtils.SCALE;
+                    heightToApplied = tempHeightToApplied;
+                }
+                DefaultSizeNodeFigure dsnf = (DefaultSizeNodeFigure) figure;
+                Dimension d = new Dimension(widthToApplied, heightToApplied);
+                dsnf.setDefaultSize(d);
+            }
+        }
     }
 
     /**
@@ -418,8 +469,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     }
 
     /**
-     * See comments in
-     * {@link #getSourceConnectionAnchor(Request)}.
+     * See comments in {@link #getSourceConnectionAnchor(Request)}.
      * 
      * {@inheritDoc}
      * 

@@ -171,7 +171,7 @@ public class RepresentationExtensionsFinder {
         return result;
     }
 
-    private boolean appliesTo(RepresentationExtensionDescription ext, String targetSiriusURI, String targetRepresentationName) {
-        return targetSiriusURI.equals(ext.getViewpointURI()) && targetRepresentationName.equals(ext.getRepresentationName());
+    private boolean appliesTo(RepresentationExtensionDescription ext, String targetViewpointURI, String targetRepresentationName) {
+        return targetViewpointURI.matches(ext.getViewpointURI()) && targetRepresentationName.matches(ext.getRepresentationName());
     }
 }

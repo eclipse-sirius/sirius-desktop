@@ -42,15 +42,10 @@ import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizer;
@@ -58,7 +53,7 @@ import org.eclipse.sirius.diagram.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.business.internal.view.LayoutData;
 import org.eclipse.sirius.diagram.internal.providers.SiriusViewProvider;
 import org.eclipse.sirius.diagram.internal.refresh.borderednode.CanonicalDBorderItemLocator;
-import org.eclipse.sirius.diagram.internal.view.factories.DNodeContainerViewFactory;
+import org.eclipse.sirius.diagram.internal.view.factories.AbstractContainerViewFactory;
 import org.eclipse.sirius.diagram.internal.view.factories.ViewSizeHint;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.part.SiriusDiagramUpdater;
@@ -73,6 +68,10 @@ import org.eclipse.sirius.viewpoint.DNode;
 import org.eclipse.sirius.viewpoint.DNodeContainer;
 import org.eclipse.sirius.viewpoint.DNodeList;
 import org.eclipse.sirius.viewpoint.ResizeKind;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * Abstract class define common behavior between all
@@ -339,7 +338,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
         List<Adapter> adaptersToRemove = new ArrayList<Adapter>();
         while (iterator.hasNext()) {
             Adapter adapter = iterator.next();
-            if (adapter.isAdapterForType(DNodeContainerViewFactory.class)) {
+            if (adapter.isAdapterForType(AbstractContainerViewFactory.class)) {
                 adaptersToRemove.add(adapter);
             }
         }
