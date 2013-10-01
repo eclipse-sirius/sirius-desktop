@@ -79,4 +79,13 @@ public class VSMExtendedMetaData extends BasicExtendedMetaData {
         }
         return ePackage;
     }
+
+    @Override
+    public EPackage getPackage(String namespace) {
+        EPackage ePackage = VSMMigrationService.getInstance().getPackage(namespace, version);
+        if (ePackage != null) {
+            return ePackage;
+        }
+        return super.getPackage(namespace);
+    }
 }

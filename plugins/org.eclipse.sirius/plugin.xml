@@ -538,6 +538,10 @@
             kind="RepresentationsFile">
       </participant>
       <participant
+            class="org.eclipse.sirius.business.internal.migration.NsURIMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
+      <participant
             class="org.eclipse.sirius.business.internal.migration.description.DefaultVSMMigrationParticipant"
             kind="VSM">
       </participant>
@@ -551,6 +555,10 @@
       </participant>
       <participant
             class="org.eclipse.sirius.business.internal.migration.description.OptionalLayersVSMMigrationParticipant"
+            kind="VSM">
+      </participant>
+       <participant
+            class="org.eclipse.sirius.business.internal.migration.NsURIMigrationParticipant"
             kind="VSM">
       </participant>
    </extension>

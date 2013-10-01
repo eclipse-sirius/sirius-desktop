@@ -78,4 +78,13 @@ public class RepresentationsFileExtendedMetaData extends BasicExtendedMetaData {
         }
         return ePackage;
     }
+
+    @Override
+    public EPackage getPackage(String namespace) {
+        EPackage ePackage = RepresentationsFileMigrationService.getInstance().getPackage(namespace, version);
+        if (ePackage != null) {
+            return ePackage;
+        }
+        return super.getPackage(namespace);
+    }
 }

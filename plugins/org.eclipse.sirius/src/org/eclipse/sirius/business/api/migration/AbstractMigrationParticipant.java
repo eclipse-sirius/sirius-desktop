@@ -96,6 +96,13 @@ public abstract class AbstractMigrationParticipant implements IMigrationParticip
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public EPackage getPackage(String namespace, String loadedVersion) {
+        return null;
+    }
+
+    /**
      * Handle unknown feature of the specified {@link EObject}.
      * 
      * @param owner

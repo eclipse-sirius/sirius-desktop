@@ -251,4 +251,25 @@ public abstract class AbstractSiriusMigrationService {
     public boolean isMigrationNeeded(Version loadedVersion) {
         return getLastMigrationVersion().compareTo(loadedVersion) > 0;
     }
+
+    /**
+     * Return the EPackage to use for the given namespace found in the given
+     * version, by asking to the migration participants.
+     * 
+     * @param namespace
+     *            the nsURI of the package we are looking for.
+     * @param version
+     *            the version of current loading model
+     * @return an EPackage if some mapping exists, null otherwise.
+     */
+    public EPackage getPackage(String namespace, String version) {
+        EPackage returnedValue = null;
+        for (IMigrationParticipant contribution : delegatesParticipants) {
+            returnedValue = contribution.getPackage(namespace, version);
+            if (returnedValue != null) {
+                break;
+            }
+        }
+        return returnedValue;
+    }
 }

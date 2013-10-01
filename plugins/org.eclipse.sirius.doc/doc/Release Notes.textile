@@ -6,6 +6,10 @@ This document contains the release notes for all major releases of Sirius.
 
 h2. Changes from Viewpoint 6.9 to Sirius 0.9
 
+h3. Plug-ins version numbers.
+
+As of Sirius 0.9, and probably at least until Sirius 1.0 when the APIs will be more stable, all the bundles share the same version, which is also the version for the feature. If you used versioned dependencies to the old Viewpoint code (e.g. dependencies towards Viewpoint 6.8), you need to adjust the versions in your @MANIFEST.MF@  files in addition to the namespaces.
+
 h3. Major namespace changes
 
 In the context of the move as an official Eclipse project named Sirius, all the namespaces used in the code have changed.
@@ -57,14 +61,18 @@ All identifiers have changed to start with the @org.eclipse.sirius@ namespace pr
 
 h4. Java Packages Names
 
-h4. Plug-ins version numbers.
-
-As of Sirius 0.9, and probably at least until Sirius 1.0 when the APIs will be more stable, all the bundles share the same version, which is also the version for the feature. If you used versioned dependencies to the old Viewpoint code (e.g. dependencies towards Viewpoint 6.8), you need to adjust the versions in your @MANIFEST.MF@  files in addition to the namespaces.
-
 h4. Models namespace URIs
+
+All namespace URIs have also been changed from "http://www.obeo.fr/dsl/viewpoint*" to "http://www.eclipse.org/sirius/".
+
+If you have created VSM file (.odesign) or representations file (.aird) with Viewpoint, the changes of the namespace URIs will be automatically migrated during the loading of your VSM or your representations file. These new nsURIs will be stored physically in the file during the first save. If the file is not saved, the automatic migration will be replayed at the next opening.
 
 h3. Other API Changes
 
+h4. API Added
+
+* Add @IMigrationParticipant.getPackage()@ to return the EPackage to use for the given namespace. This change concerns our internal migration framework. This is useful to handle our namespace changes (from Viewpoint to Sirius).
+ 
 h4. API Removal
 
 * Removed @org.eclipse.sirius.common.tools.api.interpreter.IAcceleoInterpreterVariables@: This interface only defined a single constant, which refered to the syntax of an obsolete version of the Acceleo language.
@@ -85,6 +93,8 @@ void createView(Viewpoint viewpoint, Collection<EObject> semantics);
 void createView(Viewpoint viewpoint, Collection<EObject> semantics, boolean createNewRepresentations);
 void addSelectedView(DView view) throws IllegalArgumentException;
 void removeSelectedView(DView view);
+
+
 
 h3. User-Visible Changes
 

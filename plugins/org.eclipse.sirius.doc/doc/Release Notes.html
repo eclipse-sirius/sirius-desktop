@@ -20,6 +20,10 @@
 		</ol>
 		<p>This document contains the release notes for all major releases of Sirius.</p>
 		<h2 id="ChangesfromViewpoint6.9toSirius0.9">Changes from Viewpoint 6.9 to Sirius 0.9</h2>
+		<h3 id="Pluginsversionnumbers.">Plug-ins version numbers.</h3>
+		<p>As of Sirius 0.9, and probably at least until Sirius 1.0 when the APIs will be more stable, all the bundles share the same version, which is also the version for the feature. If you used versioned dependencies to the old Viewpoint code (e.g. dependencies towards Viewpoint 6.8), you need to adjust the versions in your 
+			<code>MANIFEST.MF</code>  files in addition to the namespaces.
+		</p>
 		<h3 id="Majornamespacechanges">Major namespace changes</h3>
 		<p>In the context of the move as an official Eclipse project named Sirius, all the namespaces used in the code have changed.</p>
 		<h4 id="Pluginandfeaturesidentifiers">Plug-in and features identifiers</h4>
@@ -187,12 +191,16 @@
 			</tr>
 		</table>
 		<h4 id="JavaPackagesNames">Java Packages Names</h4>
-		<h4 id="Pluginsversionnumbers.">Plug-ins version numbers.</h4>
-		<p>As of Sirius 0.9, and probably at least until Sirius 1.0 when the APIs will be more stable, all the bundles share the same version, which is also the version for the feature. If you used versioned dependencies to the old Viewpoint code (e.g. dependencies towards Viewpoint 6.8), you need to adjust the versions in your 
-			<code>MANIFEST.MF</code>  files in addition to the namespaces.
-		</p>
 		<h4 id="ModelsnamespaceURIs">Models namespace URIs</h4>
+		<p>All namespace URIs have also been changed from &#171;http://www.obeo.fr/dsl/viewpoint*&#187; to &#171;http://www.eclipse.org/sirius/&#187;.</p>
+		<p>If you have created VSM file (.odesign) or representations file (.aird) with Viewpoint, the changes of the namespace URIs will be automatically migrated during the loading of your VSM or your representations file. These new nsURIs will be stored physically in the file during the first save. If the file is not saved, the automatic migration will be replayed at the next opening.</p>
 		<h3 id="OtherAPIChanges">Other API Changes</h3>
+		<h4 id="APIAdded">API Added</h4>
+		<ul>
+			<li>Add 
+				<code>IMigrationParticipant.getPackage()</code> to return the EPackage to use for the given namespace. This change concerns our internal migration framework. This is useful to handle our namespace changes (from Viewpoint to Sirius).
+			</li>
+		</ul>
 		<h4 id="APIRemoval">API Removal</h4>
 		<ul>
 			<li>Removed 
@@ -223,6 +231,8 @@ void createView(Viewpoint viewpoint, Collection&lt;EObject&gt; semantics);
 void createView(Viewpoint viewpoint, Collection&lt;EObject&gt; semantics, boolean createNewRepresentations);
 void addSelectedView(DView view) throws IllegalArgumentException;
 void removeSelectedView(DView view);
+
+
 
 </pre>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>

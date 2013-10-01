@@ -14,7 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
 import org.eclipse.sirius.common.tools.api.util.Option;
@@ -122,5 +124,17 @@ public class DiagramRepresentationsFileMigrationParticipant extends AbstractRepr
         }
 
         return super.getType(ePackage, name, loadedVersion);
+    }
+
+    @Override
+    public Object getValue(EObject object, EStructuralFeature feature, Object value, String loadedVersion) {
+        if (Version.parseVersion(loadedVersion).compareTo(DiagramRepresentationsFileMigrationParticipantV700.MIGRATION_VERSION) < 0) {
+            DiagramRepresentationsFileMigrationParticipantV700 representationsFileMigrationParticipantV700 = new DiagramRepresentationsFileMigrationParticipantV700();
+            Object result = representationsFileMigrationParticipantV700.getValue(object, feature, value);
+            if (result != null) {
+                return result;
+            }
+        }
+        return super.getValue(object, feature, value, loadedVersion);
     }
 }

@@ -138,4 +138,14 @@ public interface IMigrationParticipant {
      */
     Option<String> getNewFragment(String uriFragment);
 
+    /**
+     * Return the EPackage to use for the given namespace.
+     * 
+     * @param namespace
+     *            the nsURI of the package we are looking for.
+     * @param loadedVersion
+     *            the version of current loading model
+     * @return an EPackage if some mapping exists, null otherwise.
+     */
+    EPackage getPackage(String namespace, String loadedVersion);
 }
