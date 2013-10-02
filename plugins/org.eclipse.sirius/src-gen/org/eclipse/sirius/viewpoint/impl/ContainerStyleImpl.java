@@ -334,7 +334,6 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * 
      * @generated
      */
-    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
