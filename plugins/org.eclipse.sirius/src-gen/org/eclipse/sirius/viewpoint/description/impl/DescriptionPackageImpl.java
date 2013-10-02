@@ -118,7 +118,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation";
+    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3969,8 +3969,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEClass(compositeLayoutEClass, CompositeLayout.class, "CompositeLayout", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getCompositeLayout_Padding(), theEcorePackage.getEInt(), "padding", "30", 1, 1, CompositeLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
                 IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getCompositeLayout_Direction(), this.getLayoutDirection(), "direction", "30", 1, 1, CompositeLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getCompositeLayout_Direction(), this.getLayoutDirection(), "direction", "topToBottom", 1, 1, CompositeLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(decorationDescriptionsSetEClass, DecorationDescriptionsSet.class, "DecorationDescriptionsSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getDecorationDescriptionsSet_DecorationDescriptions(), this.getDecorationDescription(), null, "decorationDescriptions", null, 0, -1, DecorationDescriptionsSet.class,

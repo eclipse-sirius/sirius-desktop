@@ -564,7 +564,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="arrangeConstraints" upperBound="-1"
-        eType="#//ArrangeConstraint" defaultValueLiteral=""/>
+        eType="#//ArrangeConstraint" defaultValueLiteral="KEEP_LOCATION"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DNode" eSuperTypes="#//AbstractDNode #//EdgeTarget #//DragAndDropTarget">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -820,7 +820,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="path" unique="false" upperBound="-1"
         eType="#//EdgeTarget"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="arrangeConstraints" upperBound="-1"
-        eType="#//ArrangeConstraint" defaultValueLiteral=""/>
+        eType="#//ArrangeConstraint" defaultValueLiteral="KEEP_LOCATION"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="beginLabel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         defaultValueLiteral="">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1356,7 +1356,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="analyses" upperBound="-1"
         eType="#//DAnalysis"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="synchronizationStatus"
-        lowerBound="1" eType="#//SyncStatus" defaultValueLiteral="0"/>
+        lowerBound="1" eType="#//SyncStatus" defaultValueLiteral="dirty"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="SyncStatus">
     <eLiterals name="dirty"/>
@@ -2457,7 +2457,7 @@
           eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"
           defaultValueLiteral="30"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" lowerBound="1"
-          eType="#//description/LayoutDirection" defaultValueLiteral="30"/>
+          eType="#//description/LayoutDirection" defaultValueLiteral="topToBottom"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="LayoutDirection">
       <eLiterals name="TopToBottom" literal="topToBottom"/>

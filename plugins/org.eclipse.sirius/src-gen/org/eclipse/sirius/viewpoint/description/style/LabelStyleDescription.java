@@ -37,7 +37,7 @@ public interface LabelStyleDescription extends BasicLabelStyleDescription {
      * 
      * @generated
      */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation";
+    String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
 
     /**
      * Returns the value of the '<em><b>Label Alignment</b></em>' attribute. The

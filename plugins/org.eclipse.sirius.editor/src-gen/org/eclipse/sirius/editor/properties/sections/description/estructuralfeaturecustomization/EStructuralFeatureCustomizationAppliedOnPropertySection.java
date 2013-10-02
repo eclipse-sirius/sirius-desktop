@@ -180,7 +180,6 @@ public class EStructuralFeatureCustomizationAppliedOnPropertySection extends Abs
         }
         return isStyleDescriptionEltConformToEReferenceCustomization;
     }
-    
 
     @Override
     public void refresh() {
