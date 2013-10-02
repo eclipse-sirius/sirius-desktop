@@ -27,11 +27,9 @@ import org.eclipse.emf.common.util.EList;
  * <li>
  * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getTargetTerminal
  * <em>Target Terminal</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getRouting
+ * <li>{@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getRouting
  * <em>Routing</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getPointList
+ * <li>{@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getPointList
  * <em>Point List</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData#getSourceRefPoint
@@ -59,13 +57,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface EdgeLayoutData extends AbstractLayoutData {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
-
     /**
      * Returns the value of the '<em><b>Source Terminal</b></em>' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
@@ -155,9 +146,9 @@ public interface EdgeLayoutData extends AbstractLayoutData {
     /**
      * Returns the value of the '<em><b>Point List</b></em>' containment
      * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.layoutdata.Point}. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> List of
-     * points by which the edge passes. <!-- end-model-doc -->
+     * {@link org.eclipse.sirius.diagram.layoutdata.Point}. <!-- begin-user-doc
+     * --> <!-- end-user-doc --> <!-- begin-model-doc --> List of points by
+     * which the edge passes. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Point List</em>' containment reference
      *         list.

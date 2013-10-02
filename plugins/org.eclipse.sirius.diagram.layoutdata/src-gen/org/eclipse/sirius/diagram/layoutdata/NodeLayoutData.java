@@ -21,18 +21,16 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getWidth
- * <em>Width</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getWidth <em>
+ * Width</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getHeight
  * <em>Height</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getChildren
+ * <li>{@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getChildren
  * <em>Children</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getOutgoingEdges
  * <em>Outgoing Edges</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getLocation
+ * <li>{@link org.eclipse.sirius.diagram.layoutdata.NodeLayoutData#getLocation
  * <em>Location</em>}</li>
  * </ul>
  * </p>
@@ -42,13 +40,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface NodeLayoutData extends AbstractLayoutData {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
-
     /**
      * Returns the value of the '<em><b>Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The

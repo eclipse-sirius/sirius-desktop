@@ -24,8 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getId
  * <em>Id</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getLabel
+ * <li>{@link org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData#getLabel
  * <em>Label</em>}</li>
  * </ul>
  * </p>
@@ -35,13 +34,6 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface AbstractLayoutData extends EObject {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
-
     /**
      * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->

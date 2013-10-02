@@ -40,13 +40,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  */
 public interface SquareDescription extends NodeStyleDescription {
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
-
-    /**
      * Returns the value of the '<em><b>Width</b></em>' attribute. The default
      * value is <code>"0"</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
      * <!-- begin-model-doc --> Return all nodes that have been created with the

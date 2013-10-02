@@ -21,13 +21,6 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface LayoutdataFactory extends EFactory {
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
-
-    /**
      * The singleton instance of the factory. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 

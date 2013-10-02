@@ -51,13 +51,6 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  */
 public class ValidationSetImpl extends DocumentedElementImpl implements ValidationSet {
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
-
-    /**
      * The cached value of the '{@link #getOwnedRules() <em>Owned Rules</em>}'
      * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

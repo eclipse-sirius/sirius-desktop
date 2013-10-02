@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage;
 import org.eclipse.sirius.diagram.layoutdata.NodeLayoutData;
@@ -39,13 +38,6 @@ import org.eclipse.sirius.diagram.layoutdata.NodeLayoutData;
  * @generated
  */
 public abstract class AbstractLayoutDataImpl extends EObjectImpl implements AbstractLayoutData {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
-
     /**
      * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->

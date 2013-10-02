@@ -32,13 +32,6 @@ import org.eclipse.emf.ecore.EReference;
  */
 public interface LayoutdataPackage extends EPackage {
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
-
-    /**
      * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -609,8 +602,8 @@ public interface LayoutdataPackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.layoutdata.Point <em>Point</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.diagram.layoutdata.Point <em>Point</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Point</em>'.
      * @see org.eclipse.sirius.diagram.layoutdata.Point

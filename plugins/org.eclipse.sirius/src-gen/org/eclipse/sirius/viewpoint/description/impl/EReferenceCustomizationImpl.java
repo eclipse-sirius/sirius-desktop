@@ -37,13 +37,6 @@ import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
  */
 public class EReferenceCustomizationImpl extends EStructuralFeatureCustomizationImpl implements EReferenceCustomization {
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
-
-    /**
      * The default value of the '{@link #getReferenceName()
      * <em>Reference Name</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->

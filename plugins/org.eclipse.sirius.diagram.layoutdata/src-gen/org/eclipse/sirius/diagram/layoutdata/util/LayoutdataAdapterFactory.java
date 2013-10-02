@@ -14,7 +14,6 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage;
@@ -30,13 +29,6 @@ import org.eclipse.sirius.diagram.layoutdata.Point;
  * @generated
  */
 public class LayoutdataAdapterFactory extends AdapterFactoryImpl {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
-
     /**
      * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -173,9 +165,9 @@ public class LayoutdataAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.layoutdata.Point <em>Point</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
+     * {@link org.eclipse.sirius.diagram.layoutdata.Point <em>Point</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.

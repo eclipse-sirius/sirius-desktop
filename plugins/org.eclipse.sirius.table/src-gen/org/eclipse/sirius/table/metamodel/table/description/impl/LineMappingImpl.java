@@ -83,13 +83,6 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  */
 public class LineMappingImpl extends TableMappingImpl implements LineMapping {
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public static final String copyright = "Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.\nAll rights reserved. This program and the accompanying materials\nare made available under the terms of the Eclipse Public License v1.0\nwhich accompanies this distribution, and is available at\nhttp://www.eclipse.org/legal/epl-v10.html\n\nContributors:\n   Obeo - initial API and implementation\n";
-
-    /**
      * The cached value of the '{@link #getDefaultForeground()
      * <em>Default Foreground</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->

@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
 import org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.LayoutdataFactory;
 import org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage;
@@ -30,13 +29,6 @@ import org.eclipse.sirius.diagram.layoutdata.Point;
  */
 public class LayoutdataFactoryImpl extends EFactoryImpl implements LayoutdataFactory {
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
-
-    /**
      * Creates the default factory implementation. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
@@ -44,7 +36,7 @@ public class LayoutdataFactoryImpl extends EFactoryImpl implements LayoutdataFac
      */
     public static LayoutdataFactory init() {
         try {
-            LayoutdataFactory theLayoutdataFactory = (LayoutdataFactory) EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/sirius/dsl/layoutdata/1.1.0");
+            LayoutdataFactory theLayoutdataFactory = (LayoutdataFactory) EPackage.Registry.INSTANCE.getEFactory(LayoutdataPackage.eNS_URI);
             if (theLayoutdataFactory != null) {
                 return theLayoutdataFactory;
             }

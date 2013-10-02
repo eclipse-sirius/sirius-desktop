@@ -14,7 +14,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage;
@@ -33,13 +32,6 @@ import org.eclipse.sirius.diagram.layoutdata.Point;
  * @generated
  */
 public class LayoutdataSwitch<T> {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
-
     /**
      * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

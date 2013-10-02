@@ -33,13 +33,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Point extends EObject {
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation\n";
-
-    /**
      * Returns the value of the '<em><b>X</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Represents the x coordinate. <!-- end-model-doc -->
