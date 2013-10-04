@@ -1,0 +1,43 @@
+target "sirius_luna"
+
+// Eclipse release
+location "http://download.eclipse.org/releases/luna" {
+	with source, requirements
+	com.ibm.icu;version="[50.1.1,51.0.0)"
+	org.eclipse.platform.feature.group;version="[4.4.0,4.5.0)"
+	org.eclipse.equinox.sdk.feature.group;version="[3.10.0.0,4.0.0)"
+	org.eclipse.sdk.feature.group;version="[4.4.0,4.5.0)"
+	org.eclipse.draw2d.sdk.feature.group;version="[3.10.0,4.0.0)"
+	org.eclipse.emf.feature.group;version="[2.10.0,3.0.0)"
+	org.eclipse.emf.sdk.feature.group;version="[2.10.0,3.0.0)"
+	org.eclipse.emf.edit.feature.group;version="[2.10.0,3.0.0)"
+	org.eclipse.emf.common.feature.group;version="[2.10.0,3.0.0)"
+	org.eclipse.emf.ecore.feature.group;version="[2.10.0,3.0.0)"
+	org.eclipse.emf.workspace.feature.group;version="[1.7.0,1.8.0)"
+	org.eclipse.emf.transaction.feature.group;version="[1.7.0,1.8.0)"
+	org.eclipse.emf.transaction.sdk.feature.group;version="[1.7.0,1.8.0)"
+	org.eclipse.emf.validation.sdk.feature.group;version="[1.7.0,1.8.0)"
+	org.eclipse.ocl.all.feature.group;version="[4.2.0,5.0.0)"
+	org.eclipse.ocl.core.sdk.feature.group;version="[4.2.0,5.0.0)"
+	org.eclipse.gef.feature.group;version="[3.10.0,4.0.0)"
+	org.eclipse.gef.sdk.feature.group;version="[3.10.0,4.0.0)"
+	org.eclipse.gmf.runtime.notation.sdk.feature.group;version="[1.7.0,1.8.0)"
+	org.eclipse.gmf.runtime.sdk.feature.group;version="[1.7.0,1.8.0)"
+	org.eclipse.xtext.sdk.feature.group;version="[2.5.0,2.6.0)"
+	com.google.guava;version="[11.0.2,12.0.0)"
+	org.eclipse.emf.compare.feature.group;version="[2.2.0, 3.0.0)"
+	org.eclipse.acceleo.feature.group;version="[3.4.2,4.0.0)"
+	org.eclipse.acceleo.ide.ui;version="[3.4.2,4.0.0)"
+}
+
+// EEF 2
+location "http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/" {
+	with source, requirements
+	org.eclipse.emf.eef.runtime;version="[1.0.0,2.0.0)"
+}
+
+// PaperClips
+location "http://download.eclipse.org/sirius/targetplatform/0.9.0/all/nebula/N201309241436" {
+	with source, requirements
+	org.eclipse.nebula.widgets.paperclips.feature.feature.group;version="[2.0.0,3.0.0)"
+}
