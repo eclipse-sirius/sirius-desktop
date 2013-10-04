@@ -2,23 +2,23 @@
 <?pde version="3.8"?><target name="sirius_kepler" sequenceNumber="0">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.platform.feature.group" version="4.3.0.v20130605-2000"/>
-<unit id="org.eclipse.equinox.sdk.feature.group" version="3.9.0.v20130604-2047"/>
-<unit id="org.eclipse.sdk.feature.group" version="4.3.0.v20130605-2000"/>
-<unit id="org.eclipse.draw2d.sdk.feature.group" version="3.9.0.201305060205"/>
-<unit id="org.eclipse.emf.feature.group" version="2.9.0.v20130610-0406"/>
-<unit id="org.eclipse.emf.sdk.feature.group" version="2.9.0.v20130610-0406"/>
-<unit id="org.eclipse.emf.edit.feature.group" version="2.9.0.v20130610-0406"/>
-<unit id="org.eclipse.emf.common.feature.group" version="2.9.0.v20130528-0742"/>
-<unit id="org.eclipse.emf.ecore.feature.group" version="2.9.0.v20130528-0742"/>
+<unit id="org.eclipse.platform.feature.group" version="4.3.1.v20130911-1000"/>
+<unit id="org.eclipse.equinox.sdk.feature.group" version="3.9.0.v20130828-0031"/>
+<unit id="org.eclipse.sdk.feature.group" version="4.3.1.v20130911-1000"/>
+<unit id="org.eclipse.draw2d.sdk.feature.group" version="3.9.1.201308190730"/>
+<unit id="org.eclipse.emf.feature.group" version="2.9.1.v20130902-0605"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.9.1.v20130902-0605"/>
+<unit id="org.eclipse.emf.edit.feature.group" version="2.9.0.v20130902-0605"/>
+<unit id="org.eclipse.emf.common.feature.group" version="2.9.1.v20130827-0309"/>
+<unit id="org.eclipse.emf.ecore.feature.group" version="2.9.1.v20130827-0309"/>
 <unit id="org.eclipse.emf.workspace.feature.group" version="1.7.0.201306111400"/>
 <unit id="org.eclipse.emf.transaction.feature.group" version="1.7.0.201306111400"/>
 <unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.7.0.201306111400"/>
 <unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.7.0.201306111341"/>
-<unit id="org.eclipse.ocl.all.feature.group" version="4.1.0.v20130610-1317"/>
-<unit id="org.eclipse.ocl.core.sdk.feature.group" version="4.1.0.v20130610-1317"/>
-<unit id="org.eclipse.gef.feature.group" version="3.9.0.201305060205"/>
-<unit id="org.eclipse.gef.sdk.feature.group" version="3.9.0.201305060205"/>
+<unit id="org.eclipse.ocl.all.feature.group" version="4.1.0.v20130909-1552"/>
+<unit id="org.eclipse.ocl.core.sdk.feature.group" version="4.1.0.v20130909-1552"/>
+<unit id="org.eclipse.gef.feature.group" version="3.9.1.201308190730"/>
+<unit id="org.eclipse.gef.sdk.feature.group" version="3.9.1.201308190730"/>
 <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="1.7.0.201306101425"/>
 <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.7.0.201306111432"/>
 <repository location="http://download.eclipse.org/releases/kepler"/>
