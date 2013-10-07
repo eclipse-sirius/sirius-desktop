@@ -165,5 +165,5 @@ Require-Bundle: org.eclipse.sirius.common,
  com.google.guava;bundle-version="[11.0.0,12.0.0)"
 Eclipse-LazyStart: true
 Bundle-Activator: org.eclipse.sirius.viewpoint.SiriusPlugin
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

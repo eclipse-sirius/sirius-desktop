@@ -30,5 +30,5 @@ Export-Package: org.eclipse.sirius.ecore.design.service,
  org.eclipse.sirius.ecore.design.wizard,
  org.eclipse.sirius.pim.ecore.design.action,
  org.eclipse.sirius.pim.ecore.design.editor
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

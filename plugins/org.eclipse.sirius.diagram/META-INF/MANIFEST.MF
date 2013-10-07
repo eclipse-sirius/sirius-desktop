@@ -187,5 +187,5 @@ Export-Package: org.eclipse.sirius.diagram,
  org.eclipse.sirius.diagram.ui.tools.internal.views.providers.filters;x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.views.providers.layers;x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline;x-internal:=true
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

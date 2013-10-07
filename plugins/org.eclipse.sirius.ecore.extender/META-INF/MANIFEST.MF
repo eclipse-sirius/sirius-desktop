@@ -21,6 +21,6 @@ Export-Package: org.eclipse.sirius.ecore.extender.business.api.accessor,
  org.eclipse.sirius.ecore.extender.tool.internal;x-internal:=true
 Bundle-Activator: org.eclipse.sirius.ecore.extender.business.internal.ExtenderPlugin
 Eclipse-LazyStart: true
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin

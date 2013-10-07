@@ -6,7 +6,7 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.sirius.diagram.layoutdata;uses:="org.eclipse.emf.ecore,org.eclipse.emf.common.util",
  org.eclipse.sirius.diagram.layoutdata.impl;uses:="org.eclipse.emf.ecore,  org.eclipse.emf.common.util,  org.eclipse.sirius.diagram.layoutdata,  org.eclipse.emf.ecore.impl,  org.eclipse.emf.common.notify",
  org.eclipse.sirius.diagram.layoutdata.tools.api.util;uses:="org.eclipse.sirius.diagram.layoutdata.tools.api.util.configuration,org.eclipse.sirius.diagram.layoutdata",

@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.synchronizer
 Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: %providerName
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Localization: plugin
 Export-Package: org.eclipse.sirius.synchronizer,
  org.eclipse.sirius.synchronizer.internal;x-internal:=true
