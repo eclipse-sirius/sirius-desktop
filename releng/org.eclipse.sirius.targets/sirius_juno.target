@@ -4,6 +4,7 @@
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="com.ibm.icu" version="4.4.2.v20110823"/>
 <unit id="org.eclipse.jdt" version="3.8.1.v201302041200"/>
+<unit id="org.eclipse.pde" version="3.8.0.v201302041200"/>
 <unit id="org.eclipse.platform" version="4.2.2.v201302041200"/>
 <unit id="org.eclipse.rcp" version="4.2.1.v201302041200"/>
 <unit id="org.eclipse.sdk" version="4.2.2.v201302041200"/>
@@ -24,7 +25,7 @@
 <repository location="http://download.eclipse.org/releases/juno"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.compare.feature.group" version="2.1.1.201309031318"/>
+<unit id="org.eclipse.emf.compare.feature.group" version="2.1.2.201310031412"/>
 <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
@@ -41,6 +42,7 @@
 <repository location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="com.google.guava" version="11.0.2.v201303041551"/>
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">

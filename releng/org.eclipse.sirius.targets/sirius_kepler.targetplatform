@@ -3,7 +3,7 @@ target "sirius_kepler"
 // Eclipse release
 location "http://download.eclipse.org/releases/kepler" {
 	with source, requirements
-	com.ibm.icu;version="[4.0.0,5.0.0)"
+	com.ibm.icu;version="[50.1.1,51.0.0)"
 	org.eclipse.platform.feature.group;version="[4.3.0,4.4.0)"
 	org.eclipse.equinox.sdk.feature.group;version="[3.9.0.0,4.0.0)"
 	org.eclipse.sdk.feature.group;version="[4.3.0,4.4.0)"
@@ -40,7 +40,6 @@ location "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/
 	org.eclipse.acceleo.runtime.feature.group;version="[3.0.0,4.0.0)"
 	org.eclipse.acceleo.sdk.feature.group;version="[3.0.0,4.0.0)"
 	org.eclipse.acceleo.ui.capabilities.feature.group;version="[3.0.0,4.0.0)"
-	org.eclipse.acceleo.^source.feature.group;version="[3.0.0,4.0.0)"
 }
 
 // EEF 2
@@ -52,7 +51,7 @@ location "http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/" {
 // Guava
 location "http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/" {
 	with source, requirements
-	com.google.guava.sdk.feature.feature.group;version="[11.0.1,12.0.0)"
+	com.google.guava;version="[11.0.2,12.0.0)"
 }
 
 // PaperClips

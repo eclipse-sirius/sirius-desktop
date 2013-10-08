@@ -5,6 +5,8 @@
 <unit id="com.ibm.icu" version="4.4.2.v20110823"/>
 <unit id="org.eclipse.platform.sdk" version="3.7.2.M20120208-0800"/>
 <unit id="org.eclipse.sdk.ide" version="3.7.2.M20120208-0800"/>
+<unit id="org.eclipse.draw2d.feature.group" version="3.7.2.v20110927-2020-4617w3122212803131"/>
+<unit id="org.eclipse.draw2d.sdk.feature.group" version="3.7.2.v20110927-2020-7A7I38yF6F19G9K5A7H558C58x42"/>
 <unit id="org.eclipse.emf.feature.group" version="2.7.2.v20120130-0943"/>
 <unit id="org.eclipse.emf.sdk.feature.group" version="2.7.2.v20120130-0943"/>
 <unit id="org.eclipse.emf.edit.feature.group" version="2.7.2.v20120130-0943"/>
@@ -20,7 +22,7 @@
 <repository location="http://download.eclipse.org/releases/indigo"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.compare.feature.group" version="2.1.1.201309031318"/>
+<unit id="org.eclipse.emf.compare.feature.group" version="2.1.2.201310031412"/>
 <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
@@ -37,6 +39,7 @@
 <repository location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="com.google.guava" version="11.0.2.v201303041551"/>
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">

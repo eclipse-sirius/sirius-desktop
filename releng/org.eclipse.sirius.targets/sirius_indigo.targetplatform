@@ -6,8 +6,8 @@ location "http://download.eclipse.org/releases/indigo" {
 	com.ibm.icu;version="[4.0.0,5.0.0)"
 	org.eclipse.platform.sdk;version="[3.7.0,3.8.0)"
 	org.eclipse.sdk.ide;version="[3.7.0,3.8.0)"
-	org.eclipse.draw2d.feature.group;version="[3.8.0,3.9.0)"
-	org.eclipse.draw2d.sdk.feature.group;version="[3.8.0,3.9.0)"
+	org.eclipse.draw2d.feature.group;version="[3.7.2,3.8.0)"
+	org.eclipse.draw2d.sdk.feature.group;version="[3.7.2,3.8.0)"
 	org.eclipse.emf.feature.group;version="[2.7.0,2.8.0)"
 	org.eclipse.emf.sdk.feature.group;version="[2.7.0,2.8.0)"
 	org.eclipse.emf.edit.feature.group;version="[2.7.0,2.8.0)"
@@ -37,7 +37,6 @@ location "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/
 	org.eclipse.acceleo.runtime.feature.group;version="[3.0.0,4.0.0)"
 	org.eclipse.acceleo.sdk.feature.group;version="[3.0.0,4.0.0)"
 	org.eclipse.acceleo.ui.capabilities.feature.group;version="[3.0.0,4.0.0)"
-	org.eclipse.acceleo.^source.feature.group;version="[3.0.0,4.0.0)"
 }
 
 // EEF 2
@@ -49,7 +48,7 @@ location "http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/" {
 // Guava
 location "http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/" {
 	with source, requirements
-	com.google.guava.sdk.feature.feature.group;version="[11.0.1,12.0.0)"
+	com.google.guava;version="[11.0.2,12.0.0)"
 }
 
 // PaperClips
