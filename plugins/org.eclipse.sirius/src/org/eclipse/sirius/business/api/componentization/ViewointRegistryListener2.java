@@ -10,23 +10,18 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.componentization;
 
-import org.eclipse.core.resources.IFile;
-
 /**
- * A listener interface to listen events in the SiriusRegistry.
+ * A listener interface to listen events in the ViewpointRegistry.
  * 
  * @author mchauvin
- * @since 2.0
+ * @since 2.3
  */
-@Deprecated
-public interface SiriusRegistryListener {
+public interface ViewointRegistryListener2 {
 
     /**
-     * Called when a modeler description file is reloaded.
-     * 
-     * @param file
-     *            the reloaded file
+     * Called when one or several modeler description files have been loaded or
+     * reloaded.
      */
-    void modelerDesciptionFileReloaded(final IFile file);
+    void modelerDesciptionFilesLoaded();
 
 }

@@ -67,7 +67,7 @@ public class BehaviorsPropertySection extends FiltersPropertySection {
             if (diagram instanceof DSemanticDiagram) {
                 session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) diagram).getTarget());
             }
-            final Iterator<?> iterTools = new DiagramComponentizationManager().getAllTools(session.getSelectedSiriuss(false), diagram.getDescription()).iterator();
+            final Iterator<?> iterTools = new DiagramComponentizationManager().getAllTools(session.getSelectedViewpoints(false), diagram.getDescription()).iterator();
             while (iterTools.hasNext()) {
                 final Object currentTool = iterTools.next();
                 if (currentTool instanceof BehaviorTool) {

@@ -21,7 +21,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Build the table of mappings for one diagram description. The build is launch
- * on all change on SiriusRegistry. It is independent of the current diagram.
+ * on all change on ViewpointRegistry. It is independent of the current diagram.
  * 
  * @author mchauvin
  * @since 2.2

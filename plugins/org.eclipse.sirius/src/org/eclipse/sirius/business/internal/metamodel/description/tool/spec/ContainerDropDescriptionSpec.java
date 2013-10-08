@@ -73,9 +73,9 @@ public class ContainerDropDescriptionSpec extends ContainerDropDescriptionImpl {
                 session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) diagram).getTarget());
             }
 
-            final Collection<DiagramElementMapping> allMappings = new LinkedList<DiagramElementMapping>(new DiagramComponentizationManager().getAllContainerMappings(session.getSelectedSiriuss(false), desc));
+            final Collection<DiagramElementMapping> allMappings = new LinkedList<DiagramElementMapping>(new DiagramComponentizationManager().getAllContainerMappings(session.getSelectedViewpoints(false), desc));
             allMappings.addAll(getAllMappingsWithSuperMappings(session, desc));
-            allMappings.addAll(new DiagramComponentizationManager().getAllEdgeMappings(session.getSelectedSiriuss(false), desc));
+            allMappings.addAll(new DiagramComponentizationManager().getAllEdgeMappings(session.getSelectedViewpoints(false), desc));
             iterCandidates = allMappings.iterator();
 
         } else if (targetContainer instanceof DDiagramElementContainer) {
@@ -171,7 +171,7 @@ public class ContainerDropDescriptionSpec extends ContainerDropDescriptionImpl {
 
     private Collection<DiagramElementMapping> getAllMappingsWithSuperMappings(final Session session, final DiagramDescription desc) {
         final Collection<DiagramElementMapping> result = new ArrayList<DiagramElementMapping>();
-        final Iterator<NodeMapping> it = new DiagramComponentizationManager().getAllNodeMappings(session.getSelectedSiriuss(false), desc).iterator();
+        final Iterator<NodeMapping> it = new DiagramComponentizationManager().getAllNodeMappings(session.getSelectedViewpoints(false), desc).iterator();
         while (it.hasNext()) {
             final NodeMapping nM = it.next();
             result.add(nM);

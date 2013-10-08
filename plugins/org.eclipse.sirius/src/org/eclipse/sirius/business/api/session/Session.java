@@ -327,11 +327,11 @@ public interface Session {
      * 
      * @deprecated as now the viewpoint selection is stored in the main session
      *             resource (i.e. {@link Session#getSessionResource()}), use
-     *             {@link Session#getSelectedSiriuss(false)} instead or
-     *             {@link Session#getSelectedSiriuss(true)} to keep the same
+     *             {@link Session#getSelectedViewpoints(false)} instead or
+     *             {@link Session#getSelectedViewpoints(true)} to keep the same
      *             viewpoint selection as before this deprecation
      */
-    Collection<Viewpoint> getSelectedSiriuss();
+    Collection<Viewpoint> getSelectedViewpoints();
 
     /**
      * Get current viewpoint selection.
@@ -344,7 +344,7 @@ public interface Session {
      *            on the main DAnalysis
      * @return current viewpoint selection
      */
-    Collection<Viewpoint> getSelectedSiriuss(boolean includeReferencedAnalysis);
+    Collection<Viewpoint> getSelectedViewpoints(boolean includeReferencedAnalysis);
 
     /**
      * Creates a view with the given viewpoint.

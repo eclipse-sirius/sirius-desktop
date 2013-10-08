@@ -44,7 +44,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
@@ -148,8 +148,8 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
      */
     private boolean isFromActiveSirius(final Session session, final DRepresentation representation) {
         final RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
-        final Viewpoint vp = SiriusRegistry.getInstance().getSirius(description);
-        return vp != null && session.getSelectedSiriuss(false).contains(vp);
+        final Viewpoint vp = ViewpointRegistry.getInstance().getViewpoint(description);
+        return vp != null && session.getSelectedViewpoints(false).contains(vp);
     }
 
     private void buildNavigableRepresentationsMenu(final IMenuManager navigate, final EObject designerObj, final Session session, final EditPart editpart, final TransactionalEditingDomain transDomain) {

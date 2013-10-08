@@ -18,7 +18,7 @@ import com.google.common.base.Preconditions;
 
 import org.eclipse.sirius.business.internal.movida.dependencies.DependencyTracker;
 import org.eclipse.sirius.business.internal.movida.dependencies.Relation;
-import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
 import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistryListener;
 
 /**
@@ -26,7 +26,7 @@ import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistryListen
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class SiriusDependenciesTracker extends DependencyTracker<URI> {
+public class ViewpointDependenciesTracker extends DependencyTracker<URI> {
     /**
      * Notifies the trackers of changes in the registry so that their
      * information is up to date.
@@ -37,20 +37,20 @@ public class SiriusDependenciesTracker extends DependencyTracker<URI> {
         /**
          * {@inheritDoc}
          */
-        public void registryChanged(SiriusRegistry reg, Set<URI> removed, Set<URI> added, Set<URI> changed) {
+        public void registryChanged(ViewpointRegistry reg, Set<URI> removed, Set<URI> added, Set<URI> changed) {
             for (URI r : removed) {
-                SiriusDependenciesTracker.this.remove(r);
+                ViewpointDependenciesTracker.this.remove(r);
             }
             for (URI a : added) {
-                SiriusDependenciesTracker.this.add(a);
+                ViewpointDependenciesTracker.this.add(a);
             }
             for (URI c : changed) {
-                SiriusDependenciesTracker.this.update(c);
+                ViewpointDependenciesTracker.this.update(c);
             }
         }
     }
 
-    private final SiriusRegistry registry;
+    private final ViewpointRegistry registry;
 
     private final TrackerUpdater updater;
 
@@ -60,7 +60,7 @@ public class SiriusDependenciesTracker extends DependencyTracker<URI> {
      * @param registry
      *            the registry to use to resolve Sirius URIs.
      */
-    public SiriusDependenciesTracker(SiriusRegistry registry) {
+    public ViewpointDependenciesTracker(ViewpointRegistry registry) {
         this(registry, Preconditions.checkNotNull(registry).getRelations().getTransitiveRequires());
     }
 
@@ -72,7 +72,7 @@ public class SiriusDependenciesTracker extends DependencyTracker<URI> {
      * @param relation
      *            the viewpoint relation to track.
      */
-    public SiriusDependenciesTracker(SiriusRegistry registry, Relation<URI> relation) {
+    public ViewpointDependenciesTracker(ViewpointRegistry registry, Relation<URI> relation) {
         super(Preconditions.checkNotNull(relation));
         this.registry = Preconditions.checkNotNull(registry);
         this.updater = new TrackerUpdater();

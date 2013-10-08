@@ -30,7 +30,7 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelection;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.ui.tools.api.actions.analysis.IAddModelDependencyWizard;
 import org.eclipse.sirius.ui.tools.internal.dialogs.SemanticResourceDialog;
 import org.eclipse.sirius.ui.tools.internal.operations.SemanticResourceAdditionOperation;
@@ -95,7 +95,7 @@ public class AddModelDependencyAction extends Action {
                     for (Object result : results) {
                         if (result instanceof Session) {
                             // We open a viewpoint selection dialog
-                            SiriusSelection.openSiriussSelectionDialog((Session) result);
+                            ViewpointSelection.openSiriussSelectionDialog((Session) result);
                         }
                     }
                 } catch (InvocationTargetException e) {

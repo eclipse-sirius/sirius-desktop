@@ -556,7 +556,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     /**
-     * @see org.eclipse.sirius.business.api.componentization.SiriusRegistryListener2#modelerDesciptionFilesLoaded()
+     * @see org.eclipse.sirius.business.api.componentization.ViewointRegistryListener2#modelerDesciptionFilesLoaded()
      */
     private void modelerDescriptionFilesLoaded() {
         if (isAutoRefresh()) {

@@ -22,7 +22,7 @@ import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappin
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
@@ -96,13 +96,13 @@ public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implem
             return diagramMappingsManagers.get(diagram);
         } else {
             final DiagramDescription desc = diagram.getDescription();
-            final DiagramDescriptionMappingsRegistry mappingsRegistry = SiriusRegistry.getInstance().getDiagramDescriptionMappingsRegistry();
+            final DiagramDescriptionMappingsRegistry mappingsRegistry = ViewpointRegistry.getInstance().getDiagramDescriptionMappingsRegistry();
             final DiagramDescriptionMappingsManager descManager = mappingsRegistry.getDiagramDescriptionMappingsManager(session, desc);
 
             final DiagramMappingsManager newManager = new DiagramMappingsManagerImpl(diagram, descManager);
             diagram.eAdapters().add(this);
             if (session != null) {
-                newManager.computeMappings(session.getSelectedSiriuss(false), false);
+                newManager.computeMappings(session.getSelectedViewpoints(false), false);
             } else {
                 newManager.computeMappings(null, false);
             }
@@ -145,7 +145,7 @@ public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implem
             }
             Session sess = SessionManager.INSTANCE.getSession(((DSemanticDiagram) diagram).getTarget());
             if (sess != null) {
-                manager.computeMappings(sess.getSelectedSiriuss(false), needToRecomputeDescMappings);
+                manager.computeMappings(sess.getSelectedViewpoints(false), needToRecomputeDescMappings);
             } else {
                 manager.computeMappings(null, needToRecomputeDescMappings);
             }

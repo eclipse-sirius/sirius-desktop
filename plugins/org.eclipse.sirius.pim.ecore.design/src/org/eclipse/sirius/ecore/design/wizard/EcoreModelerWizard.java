@@ -67,7 +67,7 @@ import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.ui.tools.api.wizards.page.SiriussSelectionWizardPage;
+import org.eclipse.sirius.ui.tools.api.wizards.page.ViewpointsSelectionWizardPage;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -87,7 +87,7 @@ public class EcoreModelerWizard extends EmptyProjectWizard {
 
     private EcoreModelSpecPage modelPage;
 
-    private SiriussSelectionWizardPage viewpointsSelectionWizardPage;
+    private ViewpointsSelectionWizardPage viewpointsSelectionWizardPage;
 
     /**
      * Constructor.
@@ -159,7 +159,7 @@ public class EcoreModelerWizard extends EmptyProjectWizard {
         modelPage.setTitle("Model settings"); //$NON-NLS-1$ 
         modelPage.setDescription("Define the model settings"); //$NON-NLS-1$ 
 
-        viewpointsSelectionWizardPage = new SiriussSelectionWizardPage(null, Lists.newArrayList(DESIGN_VIEWPOINT_NAME)) {
+        viewpointsSelectionWizardPage = new ViewpointsSelectionWizardPage(null, Lists.newArrayList(DESIGN_VIEWPOINT_NAME)) {
             @Override
             protected Collection<String> computeSemanticFileExtensions(Session session) {
                 Set<String> fileExtensions = new HashSet<String>();
@@ -187,7 +187,7 @@ public class EcoreModelerWizard extends EmptyProjectWizard {
 
         if (finished && project != null) {
             final EcoreModelingProjectCreationOperation ecoreModelingProjectCreationOperation = new EcoreModelingProjectCreationOperation(project, modelPage.getEPackage(),
-                    modelPage.getEcoreFileName(), modelPage.getGenModelFileName(), modelPage.getRepresentationFileName(), new LinkedHashSet<Viewpoint>(viewpointsSelectionWizardPage.getSiriuss()));
+                    modelPage.getEcoreFileName(), modelPage.getGenModelFileName(), modelPage.getRepresentationFileName(), new LinkedHashSet<Viewpoint>(viewpointsSelectionWizardPage.getViewpoints()));
             try {
                 getContainer().run(true, false, ecoreModelingProjectCreationOperation);
             } catch (InvocationTargetException e) {

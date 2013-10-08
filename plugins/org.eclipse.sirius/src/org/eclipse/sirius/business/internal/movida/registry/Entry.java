@@ -26,8 +26,8 @@ import com.google.common.collect.Sets;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
-import org.eclipse.sirius.business.api.query.SiriusURIQuery;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
+import org.eclipse.sirius.business.api.query.ViewpointURIQuery;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
@@ -91,7 +91,7 @@ public class Entry {
     public Entry(Viewpoint viewpoint) {
         this.viewpoint = Preconditions.checkNotNull(viewpoint);
         Preconditions.checkState(viewpoint.eResource() != null);
-        Option<URI> id = new SiriusQuery(this.viewpoint).getSiriusURI();
+        Option<URI> id = new ViewpointQuery(this.viewpoint).getViewpointURI();
         assert id.some();
         this.identifier = id.get();
         this.state = SiriusState.UNDEFINED;
@@ -181,7 +181,7 @@ public class Entry {
     private void fillDepdendencies(Set<URI> uris, List<URI> declared) {
         for (URI uri : declared) {
             try {
-                if (SiriusURIQuery.isValidSiriusURI(uri)) {
+                if (ViewpointURIQuery.isValidViewpointURI(uri)) {
                     uris.add(uri);
                 } else {
                     // TODO: the declared URI is syntactically valid as a URI,

@@ -30,7 +30,7 @@ import org.osgi.framework.BundleListener;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.business.api.componentization.SiriusResourceHandler;
+import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -90,7 +90,7 @@ public class PluginMonitor extends AbstractSiriusResourceMonitor {
      * The handler used to check if the declared resources are of a supported
      * type.
      */
-    private final SiriusResourceHandler resourceHandler;
+    private final ViewpointResourceHandler resourceHandler;
 
     /**
      * The listener used for dynamic bundle installation support.
@@ -106,7 +106,7 @@ public class PluginMonitor extends AbstractSiriusResourceMonitor {
      *            the handler used to check if the declared resources are of a
      *            supported type.
      */
-    public PluginMonitor(IExtensionRegistry extensionRegistry, SiriusResourceHandler resourceType) {
+    public PluginMonitor(IExtensionRegistry extensionRegistry, ViewpointResourceHandler resourceType) {
         this.extensionRegistry = Preconditions.checkNotNull(extensionRegistry);
         this.resourceHandler = Preconditions.checkNotNull(resourceType);
     }

@@ -30,7 +30,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
 
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -356,12 +356,12 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
             if (representation.eResource() != null) {
                 RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
                 if (description != null) {
-                    Viewpoint reprSirius = SiriusRegistry.getInstance().getSirius(description);
+                    Viewpoint reprSirius = ViewpointRegistry.getInstance().getViewpoint(description);
                     // representationDescription.eContainer() can be null in the
                     // case that the viewpoint has been renamed after the aird
                     // creation
                     if (reprSirius != null && !reprSirius.eIsProxy() && reprSirius.eResource() != null) {
-                        for (final Viewpoint viewpoint : session.getSelectedSiriuss(false)) {
+                        for (final Viewpoint viewpoint : session.getSelectedViewpoints(false)) {
                             if (EqualityHelper.areEquals(viewpoint, reprSirius)) {
                                 return true;
                             }

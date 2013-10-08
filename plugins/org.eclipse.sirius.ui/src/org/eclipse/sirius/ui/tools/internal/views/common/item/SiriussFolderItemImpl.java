@@ -55,7 +55,7 @@ public class SiriussFolderItemImpl extends AbstractFolderItem implements org.ecl
      */
     public Collection<?> getChildren() {
         final List<SiriusItemImpl> all = Lists.newArrayList();
-        for (final Viewpoint viewpoint : session.getSelectedSiriuss(false)) {
+        for (final Viewpoint viewpoint : session.getSelectedViewpoints(false)) {
             all.add(new SiriusItemImpl(session, viewpoint, this));
         }
         Collections.sort(all);

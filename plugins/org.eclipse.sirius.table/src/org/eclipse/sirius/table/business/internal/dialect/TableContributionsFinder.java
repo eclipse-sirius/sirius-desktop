@@ -29,7 +29,7 @@ import com.google.common.collect.Sets;
 import org.eclipse.sirius.common.tools.api.util.AllContents;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.internal.contribution.ReuseHelper;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -130,7 +130,7 @@ public class TableContributionsFinder implements Function<Iterable<EObject>, Ite
      * @return the viewpoint URI associated to the given Sirius
      */
     protected String getSiriusURI(Viewpoint vp) {
-        Option<URI> uri = new SiriusQuery(vp).getSiriusURI();
+        Option<URI> uri = new ViewpointQuery(vp).getViewpointURI();
         if (uri.some()) {
             return uri.get().toString();
         } else {

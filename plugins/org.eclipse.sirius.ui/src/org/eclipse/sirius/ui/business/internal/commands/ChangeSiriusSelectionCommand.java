@@ -23,7 +23,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
-import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelection.Callback;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection.Callback;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
@@ -126,13 +126,13 @@ public class ChangeSiriusSelectionCommand extends RecordingCommand {
                 monitor.worked(1);
                 for (final Viewpoint viewpoint : sorted) {
                     monitor.subTask("Select viewpoint : " + new IdentifiedElementQuery(viewpoint).getLabel());
-                    callback.selectSirius(viewpoint, session, createNewRepresentations, new SubProgressMonitor(monitor, 1));
+                    callback.selectViewpoint(viewpoint, session, createNewRepresentations, new SubProgressMonitor(monitor, 1));
                 }
             }
             if (newDeselectedSiriuss != null) {
                 for (final Viewpoint viewpoint : newDeselectedSiriuss) {
                     monitor.subTask("Deselect viewpoint : " + new IdentifiedElementQuery(viewpoint).getLabel());
-                    callback.deselectSirius(viewpoint, session, new SubProgressMonitor(monitor, 1));
+                    callback.deselectViewpoint(viewpoint, session, new SubProgressMonitor(monitor, 1));
                 }
             }
         } finally {

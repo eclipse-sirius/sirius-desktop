@@ -32,7 +32,7 @@ import com.google.common.collect.Maps;
 
 import org.eclipse.sirius.common.tools.api.util.AllContents;
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.contribution.Contribution;
 import org.eclipse.sirius.viewpoint.description.contribution.FeatureContribution;
@@ -107,7 +107,7 @@ public class IncrementalModelContributor extends ModelContributor {
 
         viewpointUris = Maps.newHashMap();
         for (Viewpoint originalVP : Iterables.filter(currentCopier.keySet(), Viewpoint.class)) {
-            Option<URI> uri = new SiriusQuery(originalVP).getSiriusURI();
+            Option<URI> uri = new ViewpointQuery(originalVP).getViewpointURI();
             if (uri.some()) {
                 viewpointUris.put((Viewpoint) currentCopier.get(originalVP), uri.get().toString());
             }

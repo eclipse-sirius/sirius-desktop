@@ -15,7 +15,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -36,7 +36,7 @@ public class EcoreIntrinsicMetamodelDescriptorProvider implements MetamodelDescr
     public Collection<MetamodelDescriptor> provides(final Viewpoint vp) {
         final Collection<MetamodelDescriptor> result = new ArrayList<MetamodelDescriptor>();
 
-        for (final RepresentationDescription desc : new SiriusQuery(vp).getAllRepresentationDescriptions()) {
+        for (final RepresentationDescription desc : new ViewpointQuery(vp).getAllRepresentationDescriptions()) {
             for (final EPackage pak : desc.getMetamodel()) {
                 result.add(getMetamodelDescriptor(pak));
             }

@@ -25,12 +25,12 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * Queries about Sirius URIs of the form
+ * Queries about viewpoint URIs of the form
  * <code>viewpoint:/pluginId/SiriusId</code>.
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class SiriusURIQuery {
+public class ViewpointURIQuery {
     /**
      * THe URI scheme used for Sirius URIs.
      */
@@ -45,11 +45,11 @@ public class SiriusURIQuery {
      * Constructor.
      * 
      * @param uri
-     *            the URI to query. Must be a {@link #isValidSiriusURI(URI)
+     *            the URI to query. Must be a {@link #isValidViewpointURI(URI)
      *            valid} Sirius URI.
      */
-    public SiriusURIQuery(URI uri) {
-        Preconditions.checkArgument(SiriusURIQuery.isValidSiriusURI(uri));
+    public ViewpointURIQuery(URI uri) {
+        Preconditions.checkArgument(ViewpointURIQuery.isValidViewpointURI(uri));
         this.uri = uri;
     }
 
@@ -60,9 +60,9 @@ public class SiriusURIQuery {
      *            the URI to test.
      * @return <code>true</code> of <code>uri</code> is a valid Sirius URI.
      */
-    public static boolean isValidSiriusURI(URI uri) {
-        boolean usesSiriusScheme = uri != null && SiriusURIQuery.VIEWPOINT_URI_SCHEME.equals(uri.scheme());
-        return usesSiriusScheme && uri.segmentCount() >= 2;
+    public static boolean isValidViewpointURI(URI uri) {
+        boolean usesViewpointScheme = uri != null && ViewpointURIQuery.VIEWPOINT_URI_SCHEME.equals(uri.scheme());
+        return usesViewpointScheme && uri.segmentCount() >= 2;
     }
 
     /**
@@ -74,10 +74,10 @@ public class SiriusURIQuery {
      * @param resourceSet
      *            a ResourceSet in which the concrete URI can be resolved into a
      *            VSM element.
-     * @return a logical Sirius URI equivalent to the concrete URI, if the
+     * @return a logical viewpoint URI equivalent to the concrete URI, if the
      *         conversion was successful.
      */
-    public static Option<URI> asSiriusURI(URI uri, ResourceSet resourceSet) {
+    public static Option<URI> asViewpointURI(URI uri, ResourceSet resourceSet) {
         Option<URI> result = Options.newNone();
         if (uri.isPlatform()) {
             EObject target = null;
@@ -95,14 +95,14 @@ public class SiriusURIQuery {
                 String pluginId = uri.segment(1);
                 if (target instanceof Viewpoint) {
                     String viewpointName = ((Viewpoint) target).getName();
-                    URI logicalSiriusUri = URI.createURI(SiriusURIQuery.VIEWPOINT_URI_SCHEME + ":/" + pluginId + "/" + viewpointName);
-                    result = Options.newSome(logicalSiriusUri);
+                    URI logicalViewpointUri = URI.createURI(ViewpointURIQuery.VIEWPOINT_URI_SCHEME + ":/" + pluginId + "/" + viewpointName);
+                    result = Options.newSome(logicalViewpointUri);
                 } else {
                     Option<EObject> viewpointContext = new EObjectQuery(target).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getViewpoint());
                     if (viewpointContext.some()) {
                         String viewpointName = ((Viewpoint) viewpointContext.get()).getName();
-                        URI logicalSiriusUri = URI.createURI(SiriusURIQuery.VIEWPOINT_URI_SCHEME + ":/" + pluginId + "/" + viewpointName);
-                        result = Options.newSome(logicalSiriusUri.appendFragment(uri.fragment()));
+                        URI logicalViewpointUri = URI.createURI(ViewpointURIQuery.VIEWPOINT_URI_SCHEME + ":/" + pluginId + "/" + viewpointName);
+                        result = Options.newSome(logicalViewpointUri.appendFragment(uri.fragment()));
                     }
                 }
             }
@@ -121,19 +121,19 @@ public class SiriusURIQuery {
     }
 
     /**
-     * Returns the name of the Sirius in which the element referenced by this
+     * Returns the name of the viewpoint in which the element referenced by this
      * URI is defined.
      * 
      * @return the Sirius name part of the URI.
      */
-    public String getSiriusName() {
+    public String getViewpointName() {
         return URI.decode(uri.segment(1));
     }
 
     /**
-     * Returns the Sirius URI denoting the Sirius itself.
+     * Returns the Viewpoint URI denoting the viewpoint itself.
      * 
-     * @return the URI of the Sirius
+     * @return the URI of the viewpoint
      */
     public URI getBaseURI() {
         return uri.trimFragment();

@@ -43,10 +43,10 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.business.api.logger.MarkerRuntimeLogger;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.internal.movida.DynamicVSMLoader;
 import org.eclipse.sirius.business.internal.movida.Movida;
-import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
 import org.eclipse.sirius.business.internal.movida.registry.SiriusURIConverter;
 import org.eclipse.sirius.business.internal.movida.registry.SiriusURIHandler;
 import org.eclipse.sirius.common.tools.api.util.Option;
@@ -112,7 +112,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         editingDomain.getResourceSet().eAdapters().add(new ModificationTrackingEnabler(editingDomain.getResourceSet()));
         vsmURIHandler = new SiriusURIHandler(editingDomain.getResourceSet());
         if (Movida.isEnabled()) {
-            SiriusRegistry registry = (SiriusRegistry) org.eclipse.sirius.business.api.componentization.SiriusRegistry.getInstance();
+            ViewpointRegistry registry = (ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance();
             editingDomain.getResourceSet().setURIConverter(new SiriusURIConverter(registry));
             loader = new DynamicVSMLoader(editingDomain.getResourceSet(), registry);
             loader.setErrorHandler(new Runnable() {
@@ -221,7 +221,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                  * resources loaded by dependency, but only the Siriuss (inside
                  * these resources) which the main VSM depend on.
                  */
-                final SiriusRegistry registry = (SiriusRegistry) org.eclipse.sirius.business.api.componentization.SiriusRegistry.getInstance();
+                final ViewpointRegistry registry = (ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance();
                 selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory) {
                     @Override
                     public Object[] getElements(Object object) {
@@ -241,15 +241,15 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                         }
                     }
 
-                    private Set<EObject> getRequiredSiriuss(final SiriusRegistry registry, ResourceSet resourceSet) {
+                    private Set<EObject> getRequiredSiriuss(final ViewpointRegistry registry, ResourceSet resourceSet) {
                         Set<EObject> viewpoints = Sets.newHashSet();
                         for (final URI uri : loader.getRequiredSiriuss()) {
                             Option<URI> provider = registry.getProvider(uri);
                             if (provider.some()) {
                                 Resource res = resourceSet.getResource(provider.get(), true);
-                                viewpoints.add(Iterables.find(registry.getSiriusResourceHandler().collectSiriusDefinitions(res), new Predicate<Viewpoint>() {
+                                viewpoints.add(Iterables.find(registry.getSiriusResourceHandler().collectViewpointDefinitions(res), new Predicate<Viewpoint>() {
                                     public boolean apply(Viewpoint input) {
-                                        Option<URI> inputURI = new SiriusQuery(input).getSiriusURI();
+                                        Option<URI> inputURI = new ViewpointQuery(input).getViewpointURI();
                                         return inputURI.some() && inputURI.get().equals(uri);
                                     }
                                 }));

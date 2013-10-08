@@ -46,21 +46,21 @@ import com.google.common.collect.Sets;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsRegistry;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistryFilter;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistryListener2;
-import org.eclipse.sirius.business.api.componentization.SiriusResourceHandler;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistryFilter;
+import org.eclipse.sirius.business.api.componentization.ViewointRegistryListener2;
+import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
-import org.eclipse.sirius.business.api.query.SiriusURIQuery;
-import org.eclipse.sirius.business.internal.movida.SiriusDependenciesTracker;
-import org.eclipse.sirius.business.internal.movida.SiriusResourceOperations;
+import org.eclipse.sirius.business.api.query.ViewpointURIQuery;
+import org.eclipse.sirius.business.internal.movida.ViewpointDependenciesTracker;
+import org.eclipse.sirius.business.internal.movida.ViewpointResourceOperations;
 import org.eclipse.sirius.business.internal.movida.dependencies.Relation;
 import org.eclipse.sirius.business.internal.movida.registry.MaskingPolicy.MaskingChange;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.CompositeResourceMonitor;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.LegacyPluginMonitor;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.PluginMonitor;
-import org.eclipse.sirius.business.internal.movida.registry.monitoring.SiriusResourceListener;
-import org.eclipse.sirius.business.internal.movida.registry.monitoring.SiriusResourceMonitor;
+import org.eclipse.sirius.business.internal.movida.registry.monitoring.ViewpointResourceListener;
+import org.eclipse.sirius.business.internal.movida.registry.monitoring.ViewpointResourceMonitor;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.WorkspaceMonitor;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Component;
@@ -72,7 +72,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class SiriusRegistry extends org.eclipse.sirius.business.api.componentization.SiriusRegistry implements SiriusResourceListener {
+public class ViewpointRegistry extends org.eclipse.sirius.business.api.componentization.ViewpointRegistry implements ViewpointResourceListener {
     private static final String UNABLE_TO_LOAD_THIS_FILE = "The viewpoint registry was not able to load this file ";
 
     /**
@@ -145,7 +145,7 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
     /**
      * The listeners which are notified of changes in the registry entries.
      */
-    private final CopyOnWriteArrayList<SiriusRegistryListener2> legacyListeners = new CopyOnWriteArrayList<SiriusRegistryListener2>();
+    private final CopyOnWriteArrayList<ViewointRegistryListener2> legacyListeners = new CopyOnWriteArrayList<ViewointRegistryListener2>();
 
     /**
      * A transient object used to store changes in the entries so that they are
@@ -157,14 +157,14 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
 
     private LegacyPluginMonitor legacyMonitor;
 
-    private CopyOnWriteArrayList<SiriusRegistryFilter> filters = new CopyOnWriteArrayList<SiriusRegistryFilter>();
+    private CopyOnWriteArrayList<ViewpointRegistryFilter> filters = new CopyOnWriteArrayList<ViewpointRegistryFilter>();
 
     private final DiagramDescriptionMappingsRegistry mappinsRegistry = DiagramDescriptionMappingsRegistry.INSTANCE;
 
     /**
      * Constructor.
      */
-    public SiriusRegistry() {
+    public ViewpointRegistry() {
         resourceSet.setURIConverter(new SiriusURIConverter(this));
         resourceSet.eAdapters().add(crossReferencer);
         monitors.setListener(this);
@@ -183,8 +183,8 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
                 Object handler;
                 try {
                     handler = element.createExecutableExtension("class");
-                    if (handler instanceof SiriusResourceHandler) {
-                        compositeResourceHandler.addResourceType((SiriusResourceHandler) handler);
+                    if (handler instanceof ViewpointResourceHandler) {
+                        compositeResourceHandler.addResourceType((ViewpointResourceHandler) handler);
                     }
                 } catch (CoreException e) {
                     reportWarning("Could not instantiate contributed Sirius Resource Type handler " + element.getAttribute("class"));
@@ -261,7 +261,7 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
             listener.registryChanged(this, removed, added, changed);
         }
 
-        for (SiriusRegistryListener2 legacyListener : legacyListeners) {
+        for (ViewointRegistryListener2 legacyListener : legacyListeners) {
             legacyListener.modelerDesciptionFilesLoaded();
         }
     }
@@ -269,7 +269,7 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
     /**
      * {@inheritDoc}
      */
-    public void resourceEvent(SiriusResourceMonitor origin, Set<URI> removed, Set<URI> added, Set<URI> changed) {
+    public void resourceEvent(ViewpointResourceMonitor origin, Set<URI> removed, Set<URI> added, Set<URI> changed) {
         /*
          * This method is the only one from which the content of the registry
          * changes.
@@ -305,7 +305,7 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
      * 
      * @return the Sirius resource handler used by this registry.
      */
-    public SiriusResourceHandler getSiriusResourceHandler() {
+    public ViewpointResourceHandler getSiriusResourceHandler() {
         return compositeResourceHandler;
     }
 
@@ -320,7 +320,7 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
      */
     Option<Entry> getEntry(URI viewpointURI) {
         Preconditions.checkNotNull(viewpointURI);
-        Preconditions.checkArgument(SiriusURIQuery.isValidSiriusURI(viewpointURI));
+        Preconditions.checkArgument(ViewpointURIQuery.isValidViewpointURI(viewpointURI));
         synchronized (this) {
             Entry entry = entries.get(viewpointURI);
             return Options.fromNullable(entry);
@@ -384,7 +384,7 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
             // Unload all masked resource so that other Sirius which
             // depend on them can get re-resolved onto the non-masked
             // version of their element, if any.
-            new SiriusResourceOperations(masked).unloadAndResetProxyURIs();
+            new ViewpointResourceOperations(masked).unloadAndResetProxyURIs();
         }
         for (Resource unmasked : change.unmasked) {
             ensureLoaded(unmasked);
@@ -510,7 +510,7 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
     private Set<Entry> createNewEntries(Resource vsm) {
         ensureLoaded(vsm);
         Set<Entry> newEntries = Sets.newHashSet();
-        for (Viewpoint viewpoint : compositeResourceHandler.collectSiriusDefinitions(vsm)) {
+        for (Viewpoint viewpoint : compositeResourceHandler.collectViewpointDefinitions(vsm)) {
             newEntries.add(new Entry(viewpoint));
         }
         return newEntries;
@@ -543,7 +543,7 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
 
         out.append("\n");
         out.append("Transitive dependencies:\n");
-        SiriusDependenciesTracker tracker = new SiriusDependenciesTracker(this);
+        ViewpointDependenciesTracker tracker = new ViewpointDependenciesTracker(this);
         for (URI uri : Sets.newHashSet(entries.keySet())) {
             if (uri.toString().startsWith("viewpoint:/t/")) {
                 tracker.add(uri);
@@ -561,22 +561,22 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
     // CHECKSTYLE:ON
 
     /**
-     * Returns a {@link SiriusRelations} which can be used to see various
+     * Returns a {@link ViewpointRelations} which can be used to see various
      * interesting relationships between the Siriuss in this registry as
      * Relations.
      * 
      * @return a view of various relationships between the Siriuss in this
      *         registry as Relations.
      */
-    public SiriusRelations getRelations() {
-        return new SiriusRelations(this);
+    public ViewpointRelations getRelations() {
+        return new ViewpointRelations(this);
     }
 
     /**
      * Returns a newly initialized tracker for the viewpoints in this registry
      * on the specified relation. The tracker will be automatically updated when
      * the content of the registry changes. It must be
-     * {@link SiriusDependenciesTracker#dispose() disposed} when not needed
+     * {@link ViewpointDependenciesTracker#dispose() disposed} when not needed
      * anymore.
      * 
      * @param vpRelation
@@ -584,8 +584,8 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
      * @return a tracker for the specified relation among the viewpoints in this
      *         registry.
      */
-    public SiriusDependenciesTracker createTrackerFor(Relation<URI> vpRelation) {
-        SiriusDependenciesTracker tracker = new SiriusDependenciesTracker(this, vpRelation);
+    public ViewpointDependenciesTracker createTrackerFor(Relation<URI> vpRelation) {
+        ViewpointDependenciesTracker tracker = new ViewpointDependenciesTracker(this, vpRelation);
         for (URI uri : entries.keySet()) {
             tracker.add(uri);
         }
@@ -613,7 +613,7 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
     /**
      * {@inheritDoc}
      */
-    public synchronized Set<Viewpoint> getSiriuss() {
+    public synchronized Set<Viewpoint> getViewpoints() {
         return ImmutableSet.copyOf(Iterables.transform(entries.values(), new Function<Entry, Viewpoint>() {
             public Viewpoint apply(Entry from) {
                 return from.getSirius();
@@ -663,14 +663,14 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
     /**
      * {@inheritDoc}
      */
-    public Viewpoint getSirius(RepresentationDescription description) {
+    public Viewpoint getViewpoint(RepresentationDescription description) {
         return new RepresentationDescriptionQuery(description).getParentSirius();
     }
 
     /**
      * {@inheritDoc}
      */
-    public Viewpoint getSirius(URI viewpointUri) {
+    public Viewpoint getViewpoint(URI viewpointUri) {
         if (entries.containsKey(viewpointUri)) {
             return (entries.get(viewpointUri)).getSirius();
         } else {
@@ -681,14 +681,14 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
     /**
      * {@inheritDoc}
      */
-    public boolean addListener(SiriusRegistryListener2 listener) {
+    public boolean addListener(ViewointRegistryListener2 listener) {
         return legacyListeners.addIfAbsent(listener);
     }
 
     /**
      * {@inheritDoc}
      */
-    public boolean removeListener(SiriusRegistryListener2 listener) {
+    public boolean removeListener(ViewointRegistryListener2 listener) {
         return legacyListeners.remove(listener);
     }
 
@@ -718,14 +718,14 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
     /**
      * {@inheritDoc}
      */
-    public boolean addFilter(SiriusRegistryFilter filter) {
+    public boolean addFilter(ViewpointRegistryFilter filter) {
         return this.filters.add(filter);
     }
 
     /**
      * {@inheritDoc}
      */
-    public boolean removeFilter(SiriusRegistryFilter filter) {
+    public boolean removeFilter(ViewpointRegistryFilter filter) {
         return this.filters.remove(filter);
     }
 
@@ -733,9 +733,9 @@ public class SiriusRegistry extends org.eclipse.sirius.business.api.componentiza
      * {@inheritDoc}
      */
     public void removeFilter(String id) {
-        Iterator<SiriusRegistryFilter> iter = filters.iterator();
+        Iterator<ViewpointRegistryFilter> iter = filters.iterator();
         while (iter.hasNext()) {
-            SiriusRegistryFilter filter = iter.next();
+            ViewpointRegistryFilter filter = iter.next();
             if (Objects.equal(id, filter.getId())) {
                 iter.remove();
             }

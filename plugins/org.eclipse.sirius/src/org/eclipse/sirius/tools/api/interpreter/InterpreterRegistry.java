@@ -171,7 +171,7 @@ public class InterpreterRegistry {
 
         final LinkedHashSet<String> allImports = new LinkedHashSet<String>();
         if (session != null) {
-            for (final Viewpoint vp : session.getSelectedSiriuss(false)) {
+            for (final Viewpoint vp : session.getSelectedViewpoints(false)) {
                 if (vp.eResource() != null) {
                     for (JavaExtension javaExtension : vp.getOwnedJavaExtensions()) {
                         allImports.add(javaExtension.getQualifiedClassName());

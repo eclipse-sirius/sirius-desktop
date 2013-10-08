@@ -49,5 +49,5 @@ public interface SiriusRegistryListener {
      *            receiver can assume the changes have already taken place in
      *            the registry.
      */
-    void registryChanged(SiriusRegistry registry, Set<URI> removed, Set<URI> added, Set<URI> changed);
+    void registryChanged(ViewpointRegistry registry, Set<URI> removed, Set<URI> added, Set<URI> changed);
 }

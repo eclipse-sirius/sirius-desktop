@@ -42,7 +42,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.preferences.DCorePreferences;
@@ -248,8 +248,8 @@ public final class SiriusEditPlugin extends EMFPlugin {
             reflectAllPreferencesOnCore();
             getPreferenceStore().addPropertyChangeListener(new IPropertyChangeListener() {
                 public void propertyChange(PropertyChangeEvent event) {
-                    DesignerPreferencesKeys key = null;
-                    for (DesignerPreferencesKeys currentKey : DesignerPreferencesKeys.values()) {
+                    SiriusPreferencesKeys key = null;
+                    for (SiriusPreferencesKeys currentKey : SiriusPreferencesKeys.values()) {
                         if (currentKey.name().equals(event.getProperty()))
                             key = currentKey;
                     }
@@ -272,7 +272,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
         }
 
         private void reflectAllPreferencesOnCore() {
-            for (DesignerPreferencesKeys key : DesignerPreferencesKeys.values()) {
+            for (SiriusPreferencesKeys key : SiriusPreferencesKeys.values()) {
                 reflectPreferencesOnCore(key);
             }
         }
@@ -290,7 +290,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
          * 
          * @param key
          */
-        private void reflectPreferencesOnCore(final DesignerPreferencesKeys key) {
+        private void reflectPreferencesOnCore(final SiriusPreferencesKeys key) {
             final IPreferenceStore uiPreferenceStore = this.getPreferenceStore();
             final IEclipsePreferences corePreferenceStore = new InstanceScope().getNode(SiriusPlugin.ID);
 

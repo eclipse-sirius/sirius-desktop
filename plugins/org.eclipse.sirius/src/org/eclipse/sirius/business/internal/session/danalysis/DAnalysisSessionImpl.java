@@ -74,8 +74,8 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistryListener2;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewointRegistryListener2;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorManager;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
@@ -146,7 +146,7 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.exception.Locke
  * @author cbrun
  */
 // CHECKSTYLE:OFF
-public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements Session, DAnalysisSession, ResourceSyncClient, SiriusRegistryListener, SiriusRegistryListener2 {
+public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements Session, DAnalysisSession, ResourceSyncClient, SiriusRegistryListener, ViewointRegistryListener2 {
 
     /** The {@link TransactionalEditingDomain} associated to this Session. */
     protected final TransactionalEditingDomain transactionalEditingDomain;
@@ -454,10 +454,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.OPEN_SESSION_KEY);
 
             if (Movida.isEnabled()) {
-                org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry) SiriusRegistry.getInstance();
+                org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry) ViewpointRegistry.getInstance();
                 registry.addListener((SiriusRegistryListener) this);
             } else {
-                SiriusRegistry.getInstance().addListener(this);
+                ViewpointRegistry.getInstance().addListener(this);
             }
             super.setOpen(true);
             notifyListeners(SessionListener.OPENED);
@@ -555,15 +555,15 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * {@inheritDoc}
      */
-    public Collection<Viewpoint> getSelectedSiriuss() {
-        return getSelectedSiriuss(true);
+    public Collection<Viewpoint> getSelectedViewpoints() {
+        return getSelectedViewpoints(true);
     }
 
     /**
      * {@inheritDoc}
      */
-    public Collection<Viewpoint> getSelectedSiriuss(boolean includeReferencedAnalysis) {
-        final SortedSet<Viewpoint> result = new TreeSet<Viewpoint>(new SiriusRegistry.SiriusComparator());
+    public Collection<Viewpoint> getSelectedViewpoints(boolean includeReferencedAnalysis) {
+        final SortedSet<Viewpoint> result = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
         if (includeReferencedAnalysis) {
             if (!super.isBlocked()) {
                 final Collection<DView> selectedViews = getSelectedViews();
@@ -595,8 +595,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     @Deprecated
     public Collection<Viewpoint> getSelectedSiriussSpecificToGeneric() {
         // Sort the selected viewpoints by alphabetic order
-        final SortedSet<Viewpoint> viewpoints = new TreeSet<Viewpoint>(new SiriusRegistry.SiriusComparator());
-        viewpoints.addAll(getSelectedSiriuss(false));
+        final SortedSet<Viewpoint> viewpoints = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
+        viewpoints.addAll(getSelectedViewpoints(false));
         // Then orders specific to generic
         final List<Viewpoint> orderedSiriuss = new ArrayList<Viewpoint>(viewpoints.size());
         for (final Viewpoint viewpoint : viewpoints) {
@@ -1192,9 +1192,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     private void updateSelectedSiriussData(IProgressMonitor monitor) {
         try {
             Set<Viewpoint> selectedSiriuss = Sets.newLinkedHashSet();
-            for (Viewpoint viewpoint : getSelectedSiriuss(false)) {
+            for (Viewpoint viewpoint : getSelectedViewpoints(false)) {
                 if (viewpoint.eResource() != null) {
-                    selectedSiriuss.add(SiriusResourceHelper.getCorrespondingSirius(this, viewpoint));
+                    selectedSiriuss.add(SiriusResourceHelper.getCorrespondingViewpoint(this, viewpoint));
                 } else {
                     selectedSiriuss.add(viewpoint);
                 }
@@ -1222,7 +1222,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             // tell the accessor and the interpreter which metamodels we know
             // of.
             final ModelAccessor accessor = getModelAccessor();
-            Collection<MetamodelDescriptor> metamodels = MetamodelDescriptorManager.INSTANCE.provides(this.getSelectedSiriuss(false));
+            Collection<MetamodelDescriptor> metamodels = MetamodelDescriptorManager.INSTANCE.provides(this.getSelectedViewpoints(false));
             if (accessor != null) {
                 accessor.activateMetamodels(metamodels);
             }
@@ -1902,10 +1902,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (!isOpen())
             return;
         if (Movida.isEnabled()) {
-            org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry) SiriusRegistry.getInstance();
+            org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry) ViewpointRegistry.getInstance();
             registry.removeListener((SiriusRegistryListener) this);
         } else {
-            SiriusRegistry.getInstance().removeListener(this);
+            ViewpointRegistry.getInstance().removeListener(this);
         }
         notifyListeners(SessionListener.CLOSING);
         // Disable resolution of proxy for all airdCrossReferenceAdapter of
@@ -2126,7 +2126,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * {@inheritDoc}
      */
-    public void registryChanged(final org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry registry, Set<URI> removed, Set<URI> added, Set<URI> changed) {
+    public void registryChanged(final org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry, Set<URI> removed, Set<URI> added, Set<URI> changed) {
         movidaSupport.registryChanged(registry, removed, added, changed);
     }
 

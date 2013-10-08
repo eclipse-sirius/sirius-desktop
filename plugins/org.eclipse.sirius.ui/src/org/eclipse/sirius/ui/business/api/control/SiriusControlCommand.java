@@ -25,7 +25,7 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -181,7 +181,7 @@ public class SiriusControlCommand extends ControlCommand {
      * representations to move).
      */
     private void createNewRepresentationsFileAndMoveRepresentations() {
-        boolean emptyAirdFragmentOnControl = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, DesignerPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), false, null);
+        boolean emptyAirdFragmentOnControl = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), false, null);
         if (representations.isEmpty() && !emptyAirdFragmentOnControl) {
             return;
         }
@@ -194,7 +194,7 @@ public class SiriusControlCommand extends ControlCommand {
             // viewpoint. This way, we will be able to open the empty aird
             // fragment with the viewpoints properly set
             DAnalysis newDAnalysis = getDAnalysis(newRepresentationsFile);
-            for (Viewpoint viewpoint : session.getSelectedSiriuss(false)) {
+            for (Viewpoint viewpoint : session.getSelectedViewpoints(false)) {
                 DRepresentationContainer createDRepresentationContainer = ViewpointFactory.eINSTANCE.createDRepresentationContainer();
                 createDRepresentationContainer.setViewpoint(viewpoint);
                 newDAnalysis.getOwnedViews().add(createDRepresentationContainer);

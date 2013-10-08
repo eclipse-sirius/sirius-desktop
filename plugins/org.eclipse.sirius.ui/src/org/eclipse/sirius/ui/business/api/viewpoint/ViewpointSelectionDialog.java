@@ -49,37 +49,37 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
 
-import org.eclipse.sirius.business.api.query.SiriusQuery;
-import org.eclipse.sirius.business.internal.movida.SiriusDependenciesTracker;
-import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
+import org.eclipse.sirius.business.internal.movida.ViewpointDependenciesTracker;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
- * A dialog box which allow end-users to select which Siriuss are enabled
+ * A dialog box which allow end-users to select which viewpoints are enabled
  * inside a session.
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class SiriusSelectionDialog extends TitleAreaDialog {
+public class ViewpointSelectionDialog extends TitleAreaDialog {
     /**
      * The possible states for an item in the selection dialog.
      */
     enum State {
         /**
-         * The item is checked, meaning the corresponding Sirius and all the
+         * The item is checked, meaning the corresponding viewpoints and all the
          * item's parent are part of the selection.
          */
         CHECKED,
         /**
          * The item is checked, but grayed out, meaning the corresponding
-         * Sirius is part of the selection, but the item's parent is not.
-         * This is possible if a Sirius appears as a sub-item of several
-         * other Siriuss.
+         * viewpoint is part of the selection, but the item's parent is not.
+         * This is possible if a viewpoint appears as a sub-item of several
+         * other viewpoints.
          */
         GRAY_CHECKED,
         /**
-         * The item is unchecked, meaning the corresponding Sirius is not
+         * The item is unchecked, meaning the corresponding viewpoints is not
          * part of the selection.
          */
         UNCHECKED,
@@ -103,24 +103,24 @@ public class SiriusSelectionDialog extends TitleAreaDialog {
             return viewpoint.getName();
         }
 
-        public URI getSiriusURI() {
-            return new SiriusQuery(this.viewpoint).getSiriusURI().get();
+        public URI getViewpointURI() {
+            return new ViewpointQuery(this.viewpoint).getViewpointURI().get();
         }
 
         private void addToSelection() {
-            selection.select(getSiriusURI());
+            selection.select(getViewpointURI());
         }
 
         private void removeFromSelection() {
-            selection.deselect(getSiriusURI());
+            selection.deselect(getViewpointURI());
         }
 
         private boolean isInSelection() {
-            return selection.getSelected().contains(getSiriusURI());
+            return selection.getSelected().contains(getViewpointURI());
         }
 
         /**
-         * Select the Sirius corresponding to this element and all the item's
+         * Select the viewpoint corresponding to this element and all the item's
          * parents' viewpoints.
          */
         public void onChecked() {
@@ -130,7 +130,7 @@ public class SiriusSelectionDialog extends TitleAreaDialog {
         }
 
         /**
-         * Deselect the Sirius.
+         * Deselect the viewpoint.
          */
         public void onUnchecked() {
             onUnchecked(this);
@@ -194,9 +194,9 @@ public class SiriusSelectionDialog extends TitleAreaDialog {
         }
 
         public void fillDescendants() {
-            URI uri = getSiriusURI();
+            URI uri = getViewpointURI();
             for (URI childURI : customizeTracker.getReverseDependencies(uri)) {
-                Item child = new Item(this, registry.getSirius(childURI));
+                Item child = new Item(this, registry.getViewpoint(childURI));
                 descendants.add(child);
                 child.fillDescendants();
             }
@@ -220,9 +220,9 @@ public class SiriusSelectionDialog extends TitleAreaDialog {
     // CHECKSTYLE:ON
 
     /**
-     * The content provider for the tree of Siriuss.
+     * The content provider for the tree of viewpoints.
      */
-    private final class SiriusSelectionContentProvider implements ITreeContentProvider {
+    private final class ViewpointSelectionContentProvider implements ITreeContentProvider {
         public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
             // Ignore.
         }
@@ -270,11 +270,11 @@ public class SiriusSelectionDialog extends TitleAreaDialog {
 
     private Label description;
 
-    private final SiriusRegistry registry;
+    private final ViewpointRegistry registry;
 
-    private final org.eclipse.sirius.business.internal.movida.SiriusSelection selection;
+    private final org.eclipse.sirius.business.internal.movida.ViewpointSelection selection;
 
-    private final SiriusDependenciesTracker customizeTracker;
+    private final ViewpointDependenciesTracker customizeTracker;
 
     private final List<Item> input;
 
@@ -286,14 +286,14 @@ public class SiriusSelectionDialog extends TitleAreaDialog {
      * @param parentShell
      *            the parent shell for the dialog box.
      * @param regsitry
-     *            the registry in which to look for available Siriuss.
+     *            the registry in which to look for available viewpoints.
      * @param selection
      *            the selection of viewpoints to edit.
      * @param fileExtensions
      *            the extensions of the semantic resources in the session to
      *            configure; used to restrict the set of viewpoints displayed.
      */
-    public SiriusSelectionDialog(Shell parentShell, SiriusRegistry regsitry, org.eclipse.sirius.business.internal.movida.SiriusSelection selection, Collection<String> fileExtensions) {
+    public ViewpointSelectionDialog(Shell parentShell, ViewpointRegistry regsitry, org.eclipse.sirius.business.internal.movida.ViewpointSelection selection, Collection<String> fileExtensions) {
         super(parentShell);
         // CHECKSTYLE:OFF really, checkstyle?
         setShellStyle(SWT.CLOSE | SWT.MAX | SWT.TITLE | SWT.BORDER | SWT.APPLICATION_MODAL | SWT.RESIZE);
@@ -310,14 +310,14 @@ public class SiriusSelectionDialog extends TitleAreaDialog {
                 boolean top = vp != null && vp.getCustomizes().isEmpty();
                 boolean matchesSemancitModel = Iterables.any(fileExtensions, new Predicate<String>() {
                     public boolean apply(String ext) {
-                        return new SiriusQuery(vp).handlesSemanticModelExtension(ext);
+                        return new ViewpointQuery(vp).handlesSemanticModelExtension(ext);
                     }
                 });
                 return top && matchesSemancitModel;
             }
         };
 
-        List<Item> roots = Lists.newArrayList(Iterables.transform(Iterables.filter(this.registry.getSiriuss(), isTopLevel), new Function<Viewpoint, Item>() {
+        List<Item> roots = Lists.newArrayList(Iterables.transform(Iterables.filter(this.registry.getViewpoints(), isTopLevel), new Function<Viewpoint, Item>() {
             public Item apply(Viewpoint from) {
                 return new Item(null, from);
             }
@@ -378,19 +378,19 @@ public class SiriusSelectionDialog extends TitleAreaDialog {
     }
 
     private void configureTreeViewer() {
-        tree.setContentProvider(new SiriusSelectionContentProvider());
+        tree.setContentProvider(new ViewpointSelectionContentProvider());
         tree.setLabelProvider(new CellLabelProvider() {
             @Override
             public void update(ViewerCell cell) {
                 Item item = (Item) cell.getElement();
                 cell.setText(item.getLabel());
-                cell.setImage(SiriusEditPlugin.getPlugin().getBundledImage("icons/full/obj16/Sirius.gif"));
+                cell.setImage(SiriusEditPlugin.getPlugin().getBundledImage("icons/full/obj16/Viewpoint.gif"));
             }
 
             @Override
             public String getToolTipText(Object element) {
                 Item item = (Item) element;
-                return item.getSiriusURI().toString();
+                return item.getViewpointURI().toString();
             }
         });
         tree.addCheckStateListener(new ICheckStateListener() {

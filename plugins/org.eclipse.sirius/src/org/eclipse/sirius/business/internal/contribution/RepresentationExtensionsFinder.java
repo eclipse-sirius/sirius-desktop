@@ -26,12 +26,12 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.internal.movida.registry.SiriusRelations;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRelations;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
@@ -112,13 +112,13 @@ public class RepresentationExtensionsFinder {
         Viewpoint mainVP = new RepresentationDescriptionQuery(mainRepresentationDescription).getParentSirius();
         if (mainVP != null) {
             BiMap<URI, Viewpoint> candidates = HashBiMap.create();
-            for (Viewpoint vp : session.getSelectedSiriuss(false)) {
-                Option<URI> uri = new SiriusQuery(vp).getSiriusURI();
+            for (Viewpoint vp : session.getSelectedViewpoints(false)) {
+                Option<URI> uri = new ViewpointQuery(vp).getViewpointURI();
                 if (uri.some()) {
                     candidates.put(uri.get(), vp);
                 }
             }
-            SiriusRelations relations = ((org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry) SiriusRegistry.getInstance()).getRelations();
+            ViewpointRelations relations = ((org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry) ViewpointRegistry.getInstance()).getRelations();
             /*
              * Seed the result with the representation's parent Sirius and
              * augment it with the viewpoints we reuse or are extended by until
@@ -135,7 +135,7 @@ public class RepresentationExtensionsFinder {
                     changed = changed || Iterables.addAll(result, Iterables.transform(relations.getReuse().apply(uri), Functions.forMap(candidates)));
                 }
                 // Add all the Siriuss which extend any of us.
-                for (Viewpoint v : session.getSelectedSiriuss(false)) {
+                for (Viewpoint v : session.getSelectedViewpoints(false)) {
                     URI extenderUri = candidates.inverse().get(v);
                     for (URI extendeeUri : relations.getCustomize().apply(extenderUri)) {
                         if (result.contains(candidates.get(extendeeUri))) {
@@ -151,7 +151,7 @@ public class RepresentationExtensionsFinder {
     private String getTargetSiriusURI() {
         Option<EObject> parentVp = new EObjectQuery(extensionTarget).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getViewpoint());
         if (parentVp.some()) {
-            Option<URI> viewpointURI = new SiriusQuery((Viewpoint) parentVp.get()).getSiriusURI();
+            Option<URI> viewpointURI = new ViewpointQuery((Viewpoint) parentVp.get()).getViewpointURI();
             if (viewpointURI.some()) {
                 return viewpointURI.get().toString();
             }

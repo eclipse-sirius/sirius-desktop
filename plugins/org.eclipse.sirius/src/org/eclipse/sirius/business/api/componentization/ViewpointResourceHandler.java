@@ -17,31 +17,31 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * Represents a type of resource which can contain Sirius definitions, and
+ * Represents a type of resource which can contain viewpoint definitions, and
  * thus should be monitored. The basic example is <code>*.odesign</code>
  * resources, but others can be contributed.
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public interface SiriusResourceHandler {
+public interface ViewpointResourceHandler {
     /**
      * Tests whether this collector can handle the specified resource, i.e. it
      * is able to detect viewpoint definitions contained inside the resource.
      * 
      * @param uri
-     *            the URI of a resource which may contain Sirius definitions.
-     * @return <code>true</code> if this handler is able to find Sirius
+     *            the URI of a resource which may contain viewpoint definitions.
+     * @return <code>true</code> if this handler is able to find viewpoint
      *         definitions (if there are any) inside the specified resource.
      */
     boolean handles(URI uri);
 
     /**
-     * Finds all the Sirius definitions inside the specified resource. The
+     * Finds all the viewpoint definitions inside the specified resource. The
      * resource must be loaded, but need not be resolved.
      * 
      * @param res
-     *            the resource in which to look for Siriuss.
-     * @return all the Sirius definitions inside the resource.
+     *            the resource in which to look for viewpoints.
+     * @return all the viewpoint definitions inside the resource.
      */
-    Set<Viewpoint> collectSiriusDefinitions(Resource res);
+    Set<Viewpoint> collectViewpointDefinitions(Resource res);
 }

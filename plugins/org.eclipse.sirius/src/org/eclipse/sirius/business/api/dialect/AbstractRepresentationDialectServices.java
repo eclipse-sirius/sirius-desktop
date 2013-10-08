@@ -30,7 +30,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
@@ -231,7 +231,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     }
 
     /**
-     * Return all RepresentationDescription available in the specified Sirius
+     * Return all RepresentationDescription available in the specified viewpoint
      * the user might use to create a new DRepresentation.
      * 
      * @param vp
@@ -244,7 +244,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
      *         viewpoint which can apply to the semantic element.
      */
     protected Iterable<RepresentationDescription> getAvailableRepresentationDescriptions(Viewpoint vp, final EObject semantic) {
-        Iterable<RepresentationDescription> candidates = new SiriusQuery(vp).getAllRepresentationDescriptions();
+        Iterable<RepresentationDescription> candidates = new ViewpointQuery(vp).getAllRepresentationDescriptions();
         return Iterables.filter(candidates, new Predicate<RepresentationDescription>() {
             public boolean apply(RepresentationDescription input) {
                 return canCreate(semantic, input);
@@ -373,7 +373,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
      */
     private <T extends RepresentationDescription> Collection<T> collectRepresentationDescriptions(final Viewpoint viewpoint, Class<T> expectedRepresentationDescriptionType) {
         final Collection<T> descriptions = new ArrayList<T>();
-        for (final RepresentationDescription representationDescription : new SiriusQuery(viewpoint).getAllRepresentationDescriptions()) {
+        for (final RepresentationDescription representationDescription : new ViewpointQuery(viewpoint).getAllRepresentationDescriptions()) {
             if (expectedRepresentationDescriptionType.isAssignableFrom(representationDescription.getClass())) {
                 if (representationDescription.isInitialisation()) {
                     descriptions.add((T) representationDescription);

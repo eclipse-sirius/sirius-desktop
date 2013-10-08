@@ -67,7 +67,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 
-public class SiriusRegistryImpl extends SiriusRegistry {
+public class ViewpointRegistryImpl extends ViewpointRegistry {
     private static final String UNABLE_TO_LOAD_THIS_FILE = "The viewpoint registry was not able to load this file ";
 
     private ResourceSet resourceSet;
@@ -76,11 +76,11 @@ public class SiriusRegistryImpl extends SiriusRegistry {
 
     private Set<Viewpoint> viewpointsFromWorkspace;
 
-    private Set<SiriusRegistryFilter> filters;
+    private Set<ViewpointRegistryFilter> filters;
 
-    private Set<SiriusRegistryListener> listeners;
+    private Set<ViewpointRegistryListener> listeners;
 
-    private Set<SiriusRegistryListener2> newListeners;
+    private Set<ViewointRegistryListener2> newListeners;
 
     private ECrossReferenceAdapter crossReferencer;
 
@@ -90,14 +90,14 @@ public class SiriusRegistryImpl extends SiriusRegistry {
 
     private final DiagramDescriptionMappingsRegistry mappingsRegistry = DiagramDescriptionMappingsRegistry.INSTANCE;
 
-    private Map<String, SiriusFileCollector> collectors;
+    private Map<String, ViewpointFileCollector> collectors;
 
     /**
      * Avoid instantiation.
      */
-    public SiriusRegistryImpl() {
+    public ViewpointRegistryImpl() {
         collectors = Maps.newHashMap();
-        collectors.put(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, new SiriusFileCollector() {
+        collectors.put(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, new ViewpointFileCollector() {
 
             public boolean isValid(final EObject descRoot) {
                 boolean result;
@@ -131,7 +131,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      *            the collector responsible for providing the viewpoints from a
      *            loaded model having the given file extension.
      */
-    public void addSiriusFileCollector(String fileExtension, SiriusFileCollector collector) {
+    public void addSiriusFileCollector(String fileExtension, ViewpointFileCollector collector) {
         this.collectors.put(fileExtension, collector);
     }
 
@@ -167,7 +167,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      *             found
      * @since 2.7
      */
-    public Viewpoint getSirius(final URI viewpointUri) throws SiriusProtocolException {
+    public Viewpoint getViewpoint(final URI viewpointUri) throws SiriusProtocolException {
         return SiriusProtocolParser.getSirius(viewpointUri);
     }
 
@@ -198,15 +198,15 @@ public class SiriusRegistryImpl extends SiriusRegistry {
     /**
      * Add a filter on the registry.
      * 
-     * @see SiriusRegistry#getSiriuss()
+     * @see ViewpointRegistry#getViewpoints()
      * @param filter
      *            the filter to add;
      * @return <code>true</code> if the filter was added, <code>false</code>
      *         otherwise.
      */
-    public boolean addFilter(final SiriusRegistryFilter filter) {
+    public boolean addFilter(final ViewpointRegistryFilter filter) {
         if (filters == null) {
-            filters = new HashSet<SiriusRegistryFilter>(4);
+            filters = new HashSet<ViewpointRegistryFilter>(4);
         }
         invalidateCache();
         return filters.add(filter);
@@ -219,7 +219,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      *            the filter to remove
      * @return <code>true</code> if removed, <code>false</code> otherwise.
      */
-    public boolean removeFilter(final SiriusRegistryFilter filter) {
+    public boolean removeFilter(final ViewpointRegistryFilter filter) {
         invalidateCache();
         if (filters != null) {
             return filters.remove(filter);
@@ -237,10 +237,10 @@ public class SiriusRegistryImpl extends SiriusRegistry {
 
         if (filters != null) {
             invalidateCache();
-            final HashSet<SiriusRegistryFilter> toRemove = new HashSet<SiriusRegistryFilter>(filters.size());
-            final Iterator<SiriusRegistryFilter> it = filters.iterator();
+            final HashSet<ViewpointRegistryFilter> toRemove = new HashSet<ViewpointRegistryFilter>(filters.size());
+            final Iterator<ViewpointRegistryFilter> it = filters.iterator();
             while (it.hasNext()) {
-                final SiriusRegistryFilter filter = it.next();
+                final ViewpointRegistryFilter filter = it.next();
                 if (filter.getId().equals(id)) {
                     toRemove.add(filter);
                 }
@@ -258,9 +258,9 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      *         otherwise.
      */
     @Deprecated
-    public boolean addListener(final SiriusRegistryListener listener) {
+    public boolean addListener(final ViewpointRegistryListener listener) {
         if (listeners == null) {
-            listeners = new HashSet<SiriusRegistryListener>(4);
+            listeners = new HashSet<ViewpointRegistryListener>(4);
         }
         return listeners.add(listener);
     }
@@ -273,9 +273,9 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      * @return <code>true</code> if the listener was added, <code>false</code>
      *         otherwise.
      */
-    public boolean addListener(final SiriusRegistryListener2 listener) {
+    public boolean addListener(final ViewointRegistryListener2 listener) {
         if (newListeners == null) {
-            newListeners = new HashSet<SiriusRegistryListener2>(4);
+            newListeners = new HashSet<ViewointRegistryListener2>(4);
         }
         return newListeners.add(listener);
     }
@@ -288,7 +288,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      * @return <code>true</code> if removed, <code>false</code> otherwise.
      */
     @Deprecated
-    public boolean removeListener(final SiriusRegistryListener listener) {
+    public boolean removeListener(final ViewpointRegistryListener listener) {
         if (listeners != null) {
             return listeners.remove(listener);
         }
@@ -302,7 +302,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      *            the listener to remove
      * @return <code>true</code> if removed, <code>false</code> otherwise.
      */
-    public boolean removeListener(final SiriusRegistryListener2 listener) {
+    public boolean removeListener(final ViewointRegistryListener2 listener) {
         if (newListeners != null) {
             return newListeners.remove(listener);
         }
@@ -324,7 +324,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
         try {
             final URI fileURI = URI.createPlatformPluginURI(modelerModelResourcePath, true);
             final EObject root = load(fileURI, resourceSet);
-            Option<SiriusFileCollector> collector = getCollectorFromURI(fileURI);
+            Option<ViewpointFileCollector> collector = getCollectorFromURI(fileURI);
             if (collector.some() && collector.get().isValid(root)) {
                 for (final Viewpoint viewpoint : collector.get().collect(root)) {
                     viewpointsFromPlugin.add(viewpoint);
@@ -351,16 +351,16 @@ public class SiriusRegistryImpl extends SiriusRegistry {
         return addedSirius;
     }
 
-    private Option<SiriusFileCollector> getCollectorFromURI(URI fileURI) {
-        Option<SiriusFileCollector> result = Options.newNone();
+    private Option<ViewpointFileCollector> getCollectorFromURI(URI fileURI) {
+        Option<ViewpointFileCollector> result = Options.newNone();
         if (!StringUtil.isEmpty(fileURI.fileExtension())) {
             result = Options.newSome(collectors.get(fileURI.fileExtension()));
         }
         return result;
     }
 
-    private Option<SiriusFileCollector> getCollectorFromIFile(IFile file) {
-        Option<SiriusFileCollector> result = Options.newNone();
+    private Option<ViewpointFileCollector> getCollectorFromIFile(IFile file) {
+        Option<ViewpointFileCollector> result = Options.newNone();
         if (!StringUtil.isEmpty(file.getFileExtension())) {
             result = Options.newSome(collectors.get(file.getFileExtension()));
         }
@@ -442,14 +442,14 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      * 
      * @return the viewpoints registered
      */
-    public Set<Viewpoint> getSiriuss() {
+    public Set<Viewpoint> getViewpoints() {
         final Set<Viewpoint> all = new HashSet<Viewpoint>(this.viewpointsFromPlugin.size() + this.viewpointsFromWorkspace.size());
         all.addAll(this.viewpointsFromWorkspace);
         all.addAll(this.viewpointsFromPlugin);
 
         if (filters != null) {
             final Set<Viewpoint> toRemove = new LinkedHashSet<Viewpoint>();
-            for (final SiriusRegistryFilter filter : filters) {
+            for (final ViewpointRegistryFilter filter : filters) {
                 /*
                  * Filter viewpoints from workspace
                  */
@@ -485,7 +485,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
      *         <code>null</code> if it could not be found.
      * @since 2.3
      */
-    public Viewpoint getSirius(final RepresentationDescription description) {
+    public Viewpoint getViewpoint(final RepresentationDescription description) {
         return new RepresentationDescriptionQuery(description).getParentSirius();
     }
 
@@ -543,7 +543,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
 
             EObject descRoot = load(file, resourceSet);
 
-            Option<SiriusFileCollector> collector = getCollectorFromIFile(file);
+            Option<ViewpointFileCollector> collector = getCollectorFromIFile(file);
 
             if (collector.some() && collector.get().isValid(descRoot)) {
                 viewpoints.addAll(collector.get().collect(descRoot));
@@ -675,7 +675,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
         if (shouldInvalidateCache) {
             invalidateCache();
             if (newListeners != null) {
-                for (final SiriusRegistryListener2 listener : newListeners) {
+                for (final ViewointRegistryListener2 listener : newListeners) {
                     listener.modelerDesciptionFilesLoaded();
                 }
             }
@@ -751,7 +751,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
 
         /* Add all viewpoints into the registry. */
         final EObject descRoot = load(file, resourceSet);
-        Option<SiriusFileCollector> collector = getCollectorFromIFile(file);
+        Option<ViewpointFileCollector> collector = getCollectorFromIFile(file);
         if (collector.some() && collector.get().isValid(descRoot)) {
             viewpointsFromWorkspace.addAll(collector.get().collect(descRoot));
             mapToSiriusProtocol(collector.get().collect(descRoot));
@@ -773,7 +773,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
         shouldInvalidateCache = true;
         reloadFile(file);
         if (listeners != null) {
-            for (final SiriusRegistryListener listener : listeners) {
+            for (final ViewpointRegistryListener listener : listeners) {
                 listener.modelerDesciptionFileReloaded(file);
             }
         }
@@ -789,7 +789,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
         shouldInvalidateCache = true;
         reloadFile(file);
         if (listeners != null) {
-            for (final SiriusRegistryListener listener : listeners) {
+            for (final ViewpointRegistryListener listener : listeners) {
                 listener.modelerDesciptionFileReloaded(file);
             }
         }
@@ -809,7 +809,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
         } else {
             /* remove affected viewpoints */
             final EObject descRoot = load(file, resourceSet);
-            Option<SiriusFileCollector> collector = getCollectorFromIFile(file);
+            Option<ViewpointFileCollector> collector = getCollectorFromIFile(file);
 
             if (collector.some() && collector.get().isValid(descRoot)) {
                 for (final Viewpoint toRemove : collector.get().collect(descRoot)) {
@@ -856,7 +856,7 @@ public class SiriusRegistryImpl extends SiriusRegistry {
 
         /* load new viewpoints. */
         final EObject descRoot = load(odesignFile, resourceSet);
-        Option<SiriusFileCollector> collector = getCollectorFromIFile(odesignFile);
+        Option<ViewpointFileCollector> collector = getCollectorFromIFile(odesignFile);
         if (collector.some() && collector.get().isValid(descRoot)) {
             viewpointsFromWorkspace.addAll(collector.get().collect(descRoot));
             mapToSiriusProtocol(collector.get().collect(descRoot));

@@ -27,11 +27,11 @@ import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.internal.movida.VSMResolver;
-import org.eclipse.sirius.business.internal.movida.SiriusResourceOperations;
+import org.eclipse.sirius.business.internal.movida.ViewpointResourceOperations;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
@@ -54,17 +54,17 @@ final class MovidaSupport {
     void updatePhysicalVSMResourceURIs(Collection<Viewpoint> selectedSiriuss) {
         Set<URI> selected = Sets.newHashSet(Iterables.filter(Iterables.transform(selectedSiriuss, new Function<Viewpoint, URI>() {
             public URI apply(Viewpoint from) {
-                return new SiriusQuery(from).getSiriusURI().get();
+                return new ViewpointQuery(from).getViewpointURI().get();
             }
         }), Predicates.notNull()));
-        vsmResources = new VSMResolver((org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry) SiriusRegistry.getInstance()).resolve(selected);
+        vsmResources = new VSMResolver((org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry) ViewpointRegistry.getInstance()).resolve(selected);
     }
 
-    void registryChanged(final org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry registry, Set<URI> removed, Set<URI> added, Set<URI> changed) {
+    void registryChanged(final org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry, Set<URI> removed, Set<URI> added, Set<URI> changed) {
         TransactionalEditingDomain transactionalEditingDomain = session.getTransactionalEditingDomain();
-        Set<URI> selected = Sets.newHashSet(Iterables.transform(session.getSelectedSiriuss(false), new Function<Viewpoint, URI>() {
+        Set<URI> selected = Sets.newHashSet(Iterables.transform(session.getSelectedViewpoints(false), new Function<Viewpoint, URI>() {
             public URI apply(Viewpoint from) {
-                return new SiriusQuery(from).getSiriusURI().get();
+                return new ViewpointQuery(from).getViewpointURI().get();
             }
         }));
         final SetView<URI> unavailable = Sets.intersection(selected, removed);
@@ -82,7 +82,7 @@ final class MovidaSupport {
             // The resource was loaded but is not required anymore.
             // Unload & remove.
             Resource vsm = transactionalEditingDomain.getResourceSet().getResource(uri, false);
-            new SiriusResourceOperations(vsm).unloadAndResetProxyURIs();
+            new ViewpointResourceOperations(vsm).unloadAndResetProxyURIs();
             transactionalEditingDomain.getResourceSet().getResources().remove(vsm);
         }
         for (URI uri : resourcesChanged) {
@@ -90,7 +90,7 @@ final class MovidaSupport {
             // has changed: unload it.
             Resource vsm = transactionalEditingDomain.getResourceSet().getResource(uri, false);
             if (vsm != null) {
-                new SiriusResourceOperations(vsm).unloadAndResetProxyURIs();
+                new ViewpointResourceOperations(vsm).unloadAndResetProxyURIs();
             }
         }
         for (URI uri : Sets.difference(resourcesRequired, resourcesLoaded)) {
@@ -117,8 +117,8 @@ final class MovidaSupport {
         ted.getCommandStack().execute(new RecordingCommand(ted) {
             @Override
             protected void doExecute() {
-                for (final Viewpoint viewpoint : session.getSelectedSiriuss(false)) {
-                    Option<URI> uri = new SiriusQuery(viewpoint).getSiriusURI();
+                for (final Viewpoint viewpoint : session.getSelectedViewpoints(false)) {
+                    Option<URI> uri = new ViewpointQuery(viewpoint).getViewpointURI();
                     if (uri.some() && unavailable.contains(uri.get())) {
                         session.unselectSirius(viewpoint);
                         DialectManager.INSTANCE.updateRepresentationsExtendedBy(session, viewpoint, false);

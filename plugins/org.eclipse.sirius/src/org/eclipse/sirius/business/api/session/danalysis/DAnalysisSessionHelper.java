@@ -30,8 +30,8 @@ import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
-import org.eclipse.sirius.business.internal.movida.SiriusSelection;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
+import org.eclipse.sirius.business.internal.movida.ViewpointSelection;
 import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -401,7 +401,7 @@ public final class DAnalysisSessionHelper {
     }
 
     /**
-     * Creates a {@link SiriusSelection} representing the set of currently
+     * Creates a {@link ViewpointSelection} representing the set of currently
      * selected/enabled viewpoints in the specified session.
      * 
      * @param registry
@@ -410,11 +410,11 @@ public final class DAnalysisSessionHelper {
      *            the session.
      * @return the set of currently selected viewpoints in the session.
      */
-    public static SiriusSelection getSiriusSelection(org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry registry, DAnalysisSession session) {
-        SiriusSelection selection = new SiriusSelection(registry);
-        Set<URI> selectedBefore = Sets.newHashSet(Iterables.transform(session.getSelectedSiriuss(false), new Function<Viewpoint, URI>() {
+    public static ViewpointSelection getSiriusSelection(org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry, DAnalysisSession session) {
+        ViewpointSelection selection = new ViewpointSelection(registry);
+        Set<URI> selectedBefore = Sets.newHashSet(Iterables.transform(session.getSelectedViewpoints(false), new Function<Viewpoint, URI>() {
             public URI apply(Viewpoint from) {
-                return new SiriusQuery(from).getSiriusURI().get();
+                return new ViewpointQuery(from).getViewpointURI().get();
             }
         }));
         selection.setSelected(selectedBefore);

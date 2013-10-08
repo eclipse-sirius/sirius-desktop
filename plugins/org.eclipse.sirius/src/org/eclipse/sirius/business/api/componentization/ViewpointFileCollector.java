@@ -16,14 +16,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * This interface represent the capability to extract Siriuss from a given
+ * This interface represent the capability to extract Viewpoints from a given
  * EObject.
  * 
  * @since 2.7
  * @author cbrun
  * 
  */
-public interface SiriusFileCollector {
+public interface ViewpointFileCollector {
     /**
      * return true if the given model is valid and the collector handles this
      * kind of model.

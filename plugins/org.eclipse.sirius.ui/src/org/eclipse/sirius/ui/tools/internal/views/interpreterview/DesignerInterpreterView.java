@@ -78,7 +78,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.business.api.interpreter.VariableContentProvider;
 import org.eclipse.sirius.common.ui.tools.api.contentassist.ContentInstanceProposalProvider;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.tools.api.views.interpreterview.InterpreterView;
@@ -276,7 +276,7 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
                         // Look for available odesign file paths, to be able to
                         // resolve available dependencies.
                         final List<String> filePaths = new ArrayList<String>();
-                        for (final Viewpoint vp : SiriusRegistry.getInstance().getSiriuss()) {
+                        for (final Viewpoint vp : ViewpointRegistry.getInstance().getViewpoints()) {
                             if (vp.eResource() != null) {
                                 filePaths.add(vp.eResource().getURI().toPlatformString(true));
                             }

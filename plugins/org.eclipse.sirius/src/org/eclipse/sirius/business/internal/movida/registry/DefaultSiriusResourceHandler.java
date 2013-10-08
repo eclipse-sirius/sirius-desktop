@@ -20,18 +20,18 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.business.api.componentization.SiriusResourceHandler;
+import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * The default implementation of {@link SiriusResourceHandler} for
+ * The default implementation of {@link ViewpointResourceHandler} for
  * <code>*.odesign</code> files.
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class DefaultSiriusResourceHandler implements SiriusResourceHandler {
+public class DefaultSiriusResourceHandler implements ViewpointResourceHandler {
     /**
      * {@inheritDoc}
      */
@@ -42,7 +42,7 @@ public class DefaultSiriusResourceHandler implements SiriusResourceHandler {
     /**
      * {@inheritDoc}
      */
-    public Set<Viewpoint> collectSiriusDefinitions(Resource res) {
+    public Set<Viewpoint> collectViewpointDefinitions(Resource res) {
         Set<Viewpoint> viewpoints = Sets.newHashSet();
         for (Group group : Iterables.filter(res.getContents(), Group.class)) {
             for (Viewpoint viewpoint : group.getOwnedViewpoints()) {

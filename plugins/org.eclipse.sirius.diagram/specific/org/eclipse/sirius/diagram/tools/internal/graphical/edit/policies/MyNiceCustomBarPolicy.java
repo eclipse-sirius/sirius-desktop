@@ -200,7 +200,7 @@ public class MyNiceCustomBarPolicy extends DiagramAssistantEditPolicy implements
         final DiagramDescription desc = dDiagram.getDescription();
 
         final Session session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) dDiagram).getTarget());
-        final Iterable<AdditionalLayer> additionalLayers = Iterables.filter(new DiagramComponentizationManager().getAllLayers(session.getSelectedSiriuss(false), desc), AdditionalLayer.class);
+        final Iterable<AdditionalLayer> additionalLayers = Iterables.filter(new DiagramComponentizationManager().getAllLayers(session.getSelectedViewpoints(false), desc), AdditionalLayer.class);
         for (final AdditionalLayer additionalLayer : additionalLayers) {
             if (additionalLayer.isOptional()) {
                 final boolean activated = EqualityHelper.contains(dDiagram.getActivatedLayers(), additionalLayer);

@@ -21,7 +21,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * 
  * @author mchauvin
  */
-public interface SiriusRegistryFilter {
+public interface ViewpointRegistryFilter {
 
     /**
      * Check if a viewpoint must be filtered.

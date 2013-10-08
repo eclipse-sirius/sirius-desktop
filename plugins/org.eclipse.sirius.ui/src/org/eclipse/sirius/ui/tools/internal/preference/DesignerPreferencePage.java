@@ -22,7 +22,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
@@ -79,7 +79,7 @@ public class DesignerPreferencePage extends FieldEditorPreferencePage implements
     private void addFilesFields(Composite parent) {
         Composite fileComposite = createGroup(parent, "Files");
 
-        emptyAirdFragmentOnControl = new BooleanFieldEditorWithHelp(DesignerPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), EMPTY_AIRD_ON_CONTROL_CHECKBOX_LABEL,
+        emptyAirdFragmentOnControl = new BooleanFieldEditorWithHelp(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), EMPTY_AIRD_ON_CONTROL_CHECKBOX_LABEL,
                 "Allow the creation of an empty aird fragment if there is no selected representation", new Composite(fileComposite, SWT.NONE));
         addField(emptyAirdFragmentOnControl);
 
@@ -95,7 +95,7 @@ public class DesignerPreferencePage extends FieldEditorPreferencePage implements
                 refreshComposite, SWT.NONE));
         addField(refreshOnRepresentationOpening);
 
-        autoRefresh = new BooleanFieldEditor(DesignerPreferencesKeys.PREF_AUTO_REFRESH.name(), "Automatic Refresh", new Composite(refreshComposite, SWT.NONE));
+        autoRefresh = new BooleanFieldEditor(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), "Automatic Refresh", new Composite(refreshComposite, SWT.NONE));
         addField(autoRefresh);
     }
 

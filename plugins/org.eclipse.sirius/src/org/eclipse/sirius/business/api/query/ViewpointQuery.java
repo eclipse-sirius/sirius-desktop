@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * @author cbrun
  * 
  */
-public class SiriusQuery {
+public class ViewpointQuery {
 
     private Viewpoint vp;
 
@@ -42,7 +42,7 @@ public class SiriusQuery {
      * @param vp
      *            the starting point.
      */
-    public SiriusQuery(Viewpoint vp) {
+    public ViewpointQuery(Viewpoint vp) {
         this.vp = vp;
     }
 
@@ -82,11 +82,11 @@ public class SiriusQuery {
      * 
      * @return the logical Sirius URI identifying this viewpoint.
      */
-    public Option<URI> getSiriusURI() {
+    public Option<URI> getViewpointURI() {
         if (vp.eResource() != null && vp.eResource().getURI().isPlatform()) {
             URI resourceURI = vp.eResource().getURI();
             String pluginId = resourceURI.segment(1);
-            String uri = SiriusURIQuery.VIEWPOINT_URI_SCHEME + ":/" + pluginId + "/" + vp.getName();
+            String uri = ViewpointURIQuery.VIEWPOINT_URI_SCHEME + ":/" + pluginId + "/" + vp.getName();
             return Options.newSome(URI.createURI(uri));
         }
         return Options.newNone();
@@ -103,8 +103,8 @@ public class SiriusQuery {
      */
     public boolean hasSameSiriusURI(Viewpoint other) {
         Preconditions.checkNotNull(other);
-        Option<URI> vpURI = getSiriusURI();
-        Option<URI> otherURI = new SiriusQuery(other).getSiriusURI();
+        Option<URI> vpURI = getViewpointURI();
+        Option<URI> otherURI = new ViewpointQuery(other).getViewpointURI();
         return vpURI.some() && otherURI.some() && vpURI.get().equals(otherURI.get());
     }
 

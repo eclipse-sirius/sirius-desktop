@@ -153,7 +153,7 @@ public class AnalysisResourceItemImpl implements org.eclipse.sirius.ui.tools.api
     public Collection<?> getChildren() {
         final List<SiriusItemImpl> all = Lists.newArrayList();
         if (resource != null) {
-            for (final Viewpoint viewpoint : session.getSelectedSiriuss(false)) {
+            for (final Viewpoint viewpoint : session.getSelectedViewpoints(false)) {
                 all.add(new SiriusItemImpl(session, viewpoint, resource, linkChildrenToParentMode ? parent : this));
             }
             Collections.sort(all);

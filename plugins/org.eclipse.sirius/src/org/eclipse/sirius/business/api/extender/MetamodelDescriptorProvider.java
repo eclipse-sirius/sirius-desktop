@@ -16,7 +16,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescript
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * Provider able to return a list of MetamodelDescriptor from Sirius's.
+ * Provider able to return a list of MetamodelDescriptor from viewpoints.
  * 
  * @author cbrun
  * 

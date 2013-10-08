@@ -17,7 +17,7 @@ import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.emf.ecore.EValidator;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.internal.helper.delete.DeleteHookDescriptorRegistryListener;
 import org.eclipse.sirius.business.internal.session.factory.SessionFactoryRegistryListener;
@@ -163,7 +163,7 @@ public final class SiriusPlugin extends Plugin {
         final IPreferencesService service = Platform.getPreferencesService();
         /* init the viewpoints registry with an initial size */
         final int initialSize = service.getInt(ID, DCorePreferences.VIEWPOINT_REGISTRY_INITIAL_SIZE, DCorePreferences.VIEWPOINT_REGISTRY_INITIAL_SIZE_DEFAULT_VALUE, null);
-        SiriusRegistry.getInstance().init(initialSize);
+        ViewpointRegistry.getInstance().init(initialSize);
     }
 
     /**
@@ -181,7 +181,7 @@ public final class SiriusPlugin extends Plugin {
         javaActionRegistryListener.dispose();
         javaActionRegistryListener = null;
 
-        SiriusRegistry.getInstance().dispose();
+        ViewpointRegistry.getInstance().dispose();
     }
 
     /**

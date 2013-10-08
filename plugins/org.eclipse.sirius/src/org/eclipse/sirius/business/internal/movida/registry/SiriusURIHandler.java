@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 import com.google.common.base.Preconditions;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.query.SiriusURIQuery;
+import org.eclipse.sirius.business.api.query.ViewpointURIQuery;
 import org.eclipse.sirius.business.internal.movida.Movida;
 
 /**
@@ -49,7 +49,7 @@ public class SiriusURIHandler extends URIHandlerImpl.PlatformSchemeAware {
             baseURI = resourceSet.getURIConverter().normalize(baseURI);
         }
         if (Movida.isEnabled()) {
-            Option<URI> viewpointURI = SiriusURIQuery.asSiriusURI(uri, resourceSet);
+            Option<URI> viewpointURI = ViewpointURIQuery.asViewpointURI(uri, resourceSet);
             if (viewpointURI.some()) {
                 return viewpointURI.get();
             }

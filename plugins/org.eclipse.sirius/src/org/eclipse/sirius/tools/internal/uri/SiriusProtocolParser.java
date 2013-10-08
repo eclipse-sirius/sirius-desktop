@@ -16,7 +16,7 @@ import java.util.regex.PatternSyntaxException;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceFactoryImpl;
 
@@ -47,7 +47,7 @@ public class SiriusProtocolParser extends DescriptionResourceFactoryImpl {
     public static Viewpoint getSirius(final URI uri) throws SiriusProtocolException {
         if (uri.segmentCount() == 2 && "viewpoint".equals(uri.scheme())) {
 
-            final Set<Viewpoint> viewpoints = SiriusRegistry.getInstance().getSiriuss();
+            final Set<Viewpoint> viewpoints = ViewpointRegistry.getInstance().getViewpoints();
             final String pluginName = URI.decode(uri.segment(0));
             final String viewpointName = URI.decode(uri.lastSegment());
 

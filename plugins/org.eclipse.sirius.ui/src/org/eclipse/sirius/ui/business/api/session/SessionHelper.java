@@ -119,7 +119,7 @@ public final class SessionHelper {
      */
     public static Collection<DRepresentation> findAllStartupCandidates(final Session session) {
         Collection<DRepresentation> candidates = new ArrayList<DRepresentation>();
-        Collection<Viewpoint> selectedSiriuss = session.getSelectedSiriuss(false);
+        Collection<Viewpoint> selectedSiriuss = session.getSelectedViewpoints(false);
 
         if (!selectedSiriuss.isEmpty()) {
             Map<RepresentationDescription, Boolean> alreadyCheckedDescriptions = Maps.newHashMap();

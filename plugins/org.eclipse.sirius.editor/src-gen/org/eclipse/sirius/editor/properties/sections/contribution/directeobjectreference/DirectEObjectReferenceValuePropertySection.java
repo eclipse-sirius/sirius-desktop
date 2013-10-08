@@ -29,8 +29,8 @@ import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
-import org.eclipse.sirius.business.api.componentization.SiriusResourceHandler;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.common.tools.api.util.AllContents;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
@@ -138,11 +138,11 @@ public class DirectEObjectReferenceValuePropertySection extends AbstractComboPro
         // Start of user code choice of values
         if (Movida.isEnabled()) {
             List<EObject> elementsInScope = Lists.newArrayList();
-            SiriusResourceHandler vrh = ((org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry) SiriusRegistry.getInstance()).getSiriusResourceHandler();
+            ViewpointResourceHandler vrh = ((org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry) ViewpointRegistry.getInstance()).getSiriusResourceHandler();
             ResourceSet rs = eObject.eResource().getResourceSet();
             for (Resource res : rs.getResources()) {
                 if (vrh.handles(res.getURI())) {
-                    for (Viewpoint vp : vrh.collectSiriusDefinitions(res)) {
+                    for (Viewpoint vp : vrh.collectViewpointDefinitions(res)) {
                         Iterables.addAll(elementsInScope, AllContents.of(vp, true));
                     }
                 }

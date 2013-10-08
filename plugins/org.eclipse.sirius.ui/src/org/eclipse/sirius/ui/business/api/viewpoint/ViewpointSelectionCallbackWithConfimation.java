@@ -22,7 +22,7 @@ import org.eclipse.ui.PlatformUI;
 import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * 
  * @author mchauvin
  */
-public class SiriusSelectionCallbackWithConfimation extends SiriusSelectionCallback {
+public class ViewpointSelectionCallbackWithConfimation extends ViewpointSelectionCallback {
     private static final String TITLE = "Confirmation dialog";
 
     private static final String QUESTION = "\nDisabling this viewpoint will close the concerned editors without saving. Continue?";
@@ -49,27 +49,27 @@ public class SiriusSelectionCallbackWithConfimation extends SiriusSelectionCallb
      * {@inheritDoc}
      */
     @Override
-    public void deselectSirius(Viewpoint deselectedSirius, Session session) {
+    public void deselectViewpoint(Viewpoint deselectedViewpoint, Session session) {
         IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
         Collection<IEditorPart> openedEditors = Sets.newHashSet();
         if (editingSession != null) {
-            openedEditors = getConcernedEditors(deselectedSirius, editingSession.getEditors());
+            openedEditors = getConcernedEditors(deselectedViewpoint, editingSession.getEditors());
         }
-        if (editingSession == null || openedEditors.isEmpty() || userConfirmsDeselection(deselectedSirius, openedEditors)) {
+        if (editingSession == null || openedEditors.isEmpty() || userConfirmsDeselection(deselectedViewpoint, openedEditors)) {
             for (IEditorPart iEditorPart : openedEditors) {
                 DialectUIManager.INSTANCE.closeEditor(iEditorPart, false);
             }
-            super.deselectSirius(deselectedSirius, session);
+            super.deselectViewpoint(deselectedViewpoint, session);
         }
     }
 
-    private boolean userConfirmsDeselection(Viewpoint deselectedSirius, Collection<IEditorPart> openedEditors) {
+    private boolean userConfirmsDeselection(Viewpoint deselectedViewpoint, Collection<IEditorPart> openedEditors) {
         StringBuilder builder = new StringBuilder();
         for (IEditorPart iEditorPart : openedEditors) {
             builder.append(iEditorPart.getTitle());
             builder.append(",\n");
         }
-        final String message = MessageFormat.format("The viewpoint {0} is used by these opened editors:\n\n{1}{2}", new IdentifiedElementQuery(deselectedSirius).getLabel(), builder, QUESTION);
+        final String message = MessageFormat.format("The viewpoint {0} is used by these opened editors:\n\n{1}{2}", new IdentifiedElementQuery(deselectedViewpoint).getLabel(), builder, QUESTION);
         final AtomicBoolean confirmation = new AtomicBoolean(false);
         Display.getDefault().syncExec(new Runnable() {
             public void run() {
@@ -81,7 +81,7 @@ public class SiriusSelectionCallbackWithConfimation extends SiriusSelectionCallb
 
     private Collection<IEditorPart> getConcernedEditors(Viewpoint viewpoint, Collection<? extends IEditorPart> editors) {
         Collection<IEditorPart> result = Sets.newHashSet();
-        for (RepresentationDescription representationDescription : new SiriusQuery(viewpoint).getAllRepresentationDescriptions()) {
+        for (RepresentationDescription representationDescription : new ViewpointQuery(viewpoint).getAllRepresentationDescriptions()) {
             for (IEditorPart editor : editors) {
                 if (DialectUIManager.INSTANCE.isRepresentationDescriptionManagedByEditor(representationDescription, editor)) {
                     result.add(editor);

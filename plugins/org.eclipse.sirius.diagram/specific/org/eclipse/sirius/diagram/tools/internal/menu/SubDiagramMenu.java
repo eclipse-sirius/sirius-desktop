@@ -31,7 +31,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -206,8 +206,8 @@ public class SubDiagramMenu implements IContributionItemProvider {
     }
 
     private boolean isFromActiveSirius(final Session session, final RepresentationDescription description) {
-        final Viewpoint vp = SiriusRegistry.getInstance().getSirius(description);
-        return vp != null && session.getSelectedSiriuss(false).contains(vp);
+        final Viewpoint vp = ViewpointRegistry.getInstance().getViewpoint(description);
+        return vp != null && session.getSelectedViewpoints(false).contains(vp);
     }
 
     private void createDetailsActions(final DEdge viewedge, final IMenuManager navigate, final TransactionalEditingDomain editingDomain, final IGraphicalEditPart curPart) {

@@ -14,7 +14,7 @@ import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -43,16 +43,16 @@ public class GenericPreferencesInitializer extends AbstractPreferenceInitializer
         uiPreferenceStore.setDefault(DesignerUIPreferencesKeys.PREF_DISPLAY_PERMISSION_ISSUES_THROUGH_DIALOG.name(), getValue("_Pref_DisplayPermissionIssuesThroughDialog"));
 
         final boolean autoRefreshDefValue = getValue("_Pref_AutoRefresh");
-        defaultCorePreferences.putBoolean(DesignerPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefreshDefValue);
-        uiPreferenceStore.setDefault(DesignerPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefreshDefValue);
+        defaultCorePreferences.putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefreshDefValue);
+        uiPreferenceStore.setDefault(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefreshDefValue);
 
         final boolean autoPinOnCreate = getValue("_Pref_AutoPinOnCreate");
-        defaultCorePreferences.putBoolean(DesignerPreferencesKeys.PREF_AUTO_PIN_ON_CREATE.name(), autoPinOnCreate);
-        uiPreferenceStore.setDefault(DesignerPreferencesKeys.PREF_AUTO_PIN_ON_CREATE.name(), autoPinOnCreate);
+        defaultCorePreferences.putBoolean(SiriusPreferencesKeys.PREF_AUTO_PIN_ON_CREATE.name(), autoPinOnCreate);
+        uiPreferenceStore.setDefault(SiriusPreferencesKeys.PREF_AUTO_PIN_ON_CREATE.name(), autoPinOnCreate);
 
         final boolean emptyAirdFragOnControl = getValue("_Pref_EmptyAirdFragmentOnControl");
-        defaultCorePreferences.putBoolean(DesignerPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), emptyAirdFragOnControl);
-        uiPreferenceStore.setDefault(DesignerPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), emptyAirdFragOnControl);
+        defaultCorePreferences.putBoolean(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), emptyAirdFragOnControl);
+        uiPreferenceStore.setDefault(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), emptyAirdFragOnControl);
 
     }
 

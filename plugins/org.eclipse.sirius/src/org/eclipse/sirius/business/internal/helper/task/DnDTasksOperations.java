@@ -343,7 +343,7 @@ public final class DnDTasksOperations {
         }
 
         /* create the mapping to edge targets map */
-        final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets = sync.computeMappingsToEdgeTargets(session.getSelectedSiriuss(false));
+        final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets = sync.computeMappingsToEdgeTargets(session.getSelectedViewpoints(false));
 
         /* get the candidate mappings */
         final List<EdgeMapping> candidateMappings = DnDTasksOperations.getCandidatesMappingsForCreatedDiagramElement(parentDiagram, createdDiagramElement);
@@ -467,7 +467,7 @@ public final class DnDTasksOperations {
         final DiagramDescription diagramDescription = diagram.getDescription();
         final Session session = SessionManager.INSTANCE.getSession(createdDiagramElement.getTarget());
 
-        final List<EdgeMapping> allEdgesMapping = new DiagramComponentizationManager().getAllEdgeMappings(session.getSelectedSiriuss(false), diagramDescription);
+        final List<EdgeMapping> allEdgesMapping = new DiagramComponentizationManager().getAllEdgeMappings(session.getSelectedViewpoints(false), diagramDescription);
         for (final EdgeMapping mapping : allEdgesMapping) {
             DMappingBasedQuery dMappingBasedQuery = new DMappingBasedQuery(createdDiagramElement);
             if (dMappingBasedQuery.isFromAnyMapping(mapping.getSourceMapping()) || dMappingBasedQuery.isFromAnyMapping(mapping.getTargetMapping())) {

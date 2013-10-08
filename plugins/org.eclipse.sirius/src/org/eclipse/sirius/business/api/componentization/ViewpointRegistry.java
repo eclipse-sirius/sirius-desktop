@@ -36,11 +36,11 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * 
  * @author mchauvin
  */
-public class SiriusRegistry implements IResourceChangeListener {
+public class ViewpointRegistry implements IResourceChangeListener {
 
-    private static final SiriusRegistry LEGACY_INSTANCE = new SiriusRegistryImpl();
+    private static final ViewpointRegistry LEGACY_INSTANCE = new ViewpointRegistryImpl();
 
-    private static final org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry MOVIDA_INSTANCE = new org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry();
+    private static final org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry MOVIDA_INSTANCE = new org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry();
 
     /**
      * Comparator for viewpoints, to use in UI to provide a standard and
@@ -49,7 +49,7 @@ public class SiriusRegistry implements IResourceChangeListener {
      * @author cbrun
      * @since 2.0
      */
-    public static final class SiriusComparator implements Comparator<Viewpoint>, Serializable {
+    public static final class ViewpointComparator implements Comparator<Viewpoint>, Serializable {
         /**
          * Generated SUID.
          */
@@ -69,15 +69,15 @@ public class SiriusRegistry implements IResourceChangeListener {
         public int compare(final Viewpoint vp1, final Viewpoint vp2) {
             int result = -1;
 
-            if (!SiriusRegistry.getInstance().isFromPlugin(vp1)) {
-                if (!SiriusRegistry.getInstance().isFromPlugin(vp2)) {
+            if (!ViewpointRegistry.getInstance().isFromPlugin(vp1)) {
+                if (!ViewpointRegistry.getInstance().isFromPlugin(vp2)) {
                     result = compareSameFrom(vp1, vp2);
                 } else {
                     // vp1 from workspace, vp2 from plugin
                     result = -1;
                 }
             } else {
-                if (!SiriusRegistry.getInstance().isFromPlugin(vp2)) {
+                if (!ViewpointRegistry.getInstance().isFromPlugin(vp2)) {
                     // vp1 from plugin and vp2 from workspace
                     result = 1;
                 } else {
@@ -118,9 +118,9 @@ public class SiriusRegistry implements IResourceChangeListener {
     /**
      * Returns the shared instance.
      * 
-     * @return the global Sirius registry.
+     * @return the global viewpoints registry.
      */
-    public static SiriusRegistry getInstance() {
+    public static ViewpointRegistry getInstance() {
         if (Movida.isEnabled()) {
             return MOVIDA_INSTANCE;
         } else {
@@ -143,7 +143,7 @@ public class SiriusRegistry implements IResourceChangeListener {
      * 
      * @return the viewpoints registered
      */
-    public Set<Viewpoint> getSiriuss() {
+    public Set<Viewpoint> getViewpoints() {
         throw new UnsupportedOperationException();
     }
 
@@ -196,11 +196,11 @@ public class SiriusRegistry implements IResourceChangeListener {
      * 
      * @param description
      *            the representation description.
-     * @return the Sirius which defines the representation description, or
+     * @return the viewpoint which defines the representation description, or
      *         <code>null</code> if it could not be found.
      * @since 2.3
      */
-    public Viewpoint getSirius(RepresentationDescription description) {
+    public Viewpoint getViewpoint(RepresentationDescription description) {
         throw new UnsupportedOperationException();
     }
 
@@ -212,7 +212,7 @@ public class SiriusRegistry implements IResourceChangeListener {
      * @return the viewpoint if found, throw an exception otherwise
      * @since 2.7
      */
-    public Viewpoint getSirius(URI viewpointUri) {
+    public Viewpoint getViewpoint(URI viewpointUri) {
         throw new UnsupportedOperationException();
     }
 
@@ -224,7 +224,7 @@ public class SiriusRegistry implements IResourceChangeListener {
      * @return <code>true</code> if the listener was added, <code>false</code>
      *         otherwise.
      */
-    public boolean addListener(SiriusRegistryListener2 listener) {
+    public boolean addListener(ViewointRegistryListener2 listener) {
         throw new UnsupportedOperationException();
     }
 
@@ -235,7 +235,7 @@ public class SiriusRegistry implements IResourceChangeListener {
      *            the listener to remove
      * @return <code>true</code> if removed, <code>false</code> otherwise.
      */
-    public boolean removeListener(SiriusRegistryListener2 listener) {
+    public boolean removeListener(ViewointRegistryListener2 listener) {
         throw new UnsupportedOperationException();
     }
 
@@ -245,7 +245,7 @@ public class SiriusRegistry implements IResourceChangeListener {
      * 
      * @param modelerModelResourcePath
      *            the platform file path ("pluginname/rep1/rep2/file.odesign)
-     * @return the added Siriuss;
+     * @return the added viewpoints;
      */
     public Set<Viewpoint> registerFromPlugin(String modelerModelResourcePath) {
         throw new UnsupportedOperationException();
@@ -265,13 +265,13 @@ public class SiriusRegistry implements IResourceChangeListener {
     /**
      * Add a filter on the registry.
      * 
-     * @see SiriusRegistry#getSiriuss()
+     * @see ViewpointRegistry#getViewpoints()
      * @param filter
      *            the filter to add;
      * @return <code>true</code> if the filter was added, <code>false</code>
      *         otherwise.
      */
-    public boolean addFilter(SiriusRegistryFilter filter) {
+    public boolean addFilter(ViewpointRegistryFilter filter) {
         throw new UnsupportedOperationException();
     }
 
@@ -282,7 +282,7 @@ public class SiriusRegistry implements IResourceChangeListener {
      *            the filter to remove
      * @return <code>true</code> if removed, <code>false</code> otherwise.
      */
-    public boolean removeFilter(SiriusRegistryFilter filter) {
+    public boolean removeFilter(ViewpointRegistryFilter filter) {
         throw new UnsupportedOperationException();
     }
 

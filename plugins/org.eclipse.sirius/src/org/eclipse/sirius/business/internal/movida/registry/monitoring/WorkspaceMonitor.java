@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.URI;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.business.api.componentization.SiriusResourceHandler;
+import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
 
 /**
  * Monitors VSMs in the Eclipse workspace.
@@ -50,7 +50,7 @@ public class WorkspaceMonitor extends AbstractSiriusResourceMonitor {
      * The handler used to check if the declared resources are of a supported
      * type.
      */
-    private final SiriusResourceHandler resourceHandler;
+    private final ViewpointResourceHandler resourceHandler;
 
     /**
      * The visitor used for initial discovery of all the VSMs existing in the
@@ -142,7 +142,7 @@ public class WorkspaceMonitor extends AbstractSiriusResourceMonitor {
      *            the handler used to check if the declared resources are of a
      *            supported type.
      */
-    public WorkspaceMonitor(IWorkspace workspace, SiriusResourceHandler resourceHandler) {
+    public WorkspaceMonitor(IWorkspace workspace, ViewpointResourceHandler resourceHandler) {
         this.workspace = Preconditions.checkNotNull(workspace);
         this.resourceHandler = Preconditions.checkNotNull(resourceHandler);
     }

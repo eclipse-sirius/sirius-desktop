@@ -78,7 +78,7 @@ public class ToolSectionQuery {
      */
     public EList<OperationAction> getOperationActions(final Session session) {
         final EList<OperationAction> result = new BasicEList<OperationAction>();
-        for (final ToolEntry tool : new DiagramComponentizationManager().getToolEntries(session.getSelectedSiriuss(false), toolSection)) {
+        for (final ToolEntry tool : new DiagramComponentizationManager().getToolEntries(session.getSelectedViewpoints(false), toolSection)) {
             if (tool instanceof OperationAction) {
                 result.add((OperationAction) tool);
             }
@@ -95,7 +95,7 @@ public class ToolSectionQuery {
      */
     public EList<ExternalJavaAction> getExternalJavaActions(final Session session) {
         final EList<ExternalJavaAction> result = new BasicEList<ExternalJavaAction>();
-        for (final ToolEntry tool : new DiagramComponentizationManager().getToolEntries(session.getSelectedSiriuss(false), toolSection)) {
+        for (final ToolEntry tool : new DiagramComponentizationManager().getToolEntries(session.getSelectedViewpoints(false), toolSection)) {
             if (tool instanceof ExternalJavaAction) {
                 result.add((ExternalJavaAction) tool);
             }

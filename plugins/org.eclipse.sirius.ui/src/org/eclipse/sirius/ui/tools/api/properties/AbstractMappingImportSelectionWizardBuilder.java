@@ -20,8 +20,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
 import org.eclipse.sirius.viewpoint.description.DiagramDescription;
@@ -105,8 +105,8 @@ public abstract class AbstractMappingImportSelectionWizardBuilder {
         importers = new HashSet<AbstractNodeMapping>();
 
         importers.add(currentMapping);
-        for (Viewpoint viewpoint : SiriusRegistry.getInstance().getSiriuss()) {
-            for (RepresentationDescription representationDescription : new SiriusQuery(viewpoint).getAllRepresentationDescriptions()) {
+        for (Viewpoint viewpoint : ViewpointRegistry.getInstance().getViewpoints()) {
+            for (RepresentationDescription representationDescription : new ViewpointQuery(viewpoint).getAllRepresentationDescriptions()) {
                 if (representationDescription instanceof DiagramDescription) {
                     final DiagramDescription desc = (DiagramDescription) representationDescription;
 
@@ -139,7 +139,7 @@ public abstract class AbstractMappingImportSelectionWizardBuilder {
 
     private void addSiriusItems(final Viewpoint viewpoint, final TreeItemWrapper root) {
         final TreeItemWrapper viewpointItem = new TreeItemWrapper(viewpoint, root);
-        for (RepresentationDescription represenationDescription : new SiriusQuery(viewpoint).getAllRepresentationDescriptions()) {
+        for (RepresentationDescription represenationDescription : new ViewpointQuery(viewpoint).getAllRepresentationDescriptions()) {
             if (represenationDescription instanceof DiagramDescription) {
                 addDiagramDescriptionItems((DiagramDescription) represenationDescription, viewpointItem);
             }

@@ -24,7 +24,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -220,7 +220,7 @@ public final class SiriusUtil {
                 diagramDescription = (DiagramDescription) parent;
                 break;
             } else if (parent instanceof DiagramExtensionDescription) {
-                diagramDescription = ComponentizationHelper.getDiagramDescription((DiagramExtensionDescription) parent, SiriusRegistry.getInstance().getSiriuss());
+                diagramDescription = ComponentizationHelper.getDiagramDescription((DiagramExtensionDescription) parent, ViewpointRegistry.getInstance().getViewpoints());
                 break;
             }
             parent = parent.eContainer();
@@ -240,7 +240,7 @@ public final class SiriusUtil {
     public static boolean isFromSirius(final Object ep) {
         if (ep != null) {
             final String packageName = ep.getClass().getPackage().getName();
-            return packageName.contains(ViewpointPackage.eNAME) || packageName.contains("oo45oo");
+            return packageName.contains(ViewpointPackage.eNAME);
         }
         return false;
     }
@@ -273,13 +273,13 @@ public final class SiriusUtil {
      *            The viewpoint name to search
      * @return the found viewpoint or <code>null</code> if no viewpoint is found
      */
-    public static Viewpoint findSirius(final Resource resource, final String viewpointName) {
+    public static Viewpoint findViewpoint(final Resource resource, final String viewpointName) {
         if (resource.getContents() != null && !resource.getContents().isEmpty()) {
-            Iterator<Viewpoint> it = getSiriuss(resource);
+            Iterator<Viewpoint> it = getViewpoints(resource);
             while (it.hasNext()) {
-                Viewpoint editingDomainSirius = it.next();
-                if ((viewpointName == null && editingDomainSirius.getName() == null) || (viewpointName != null && viewpointName.equals(editingDomainSirius.getName()))) {
-                    return editingDomainSirius;
+                Viewpoint editingDomainViewpoint = it.next();
+                if ((viewpointName == null && editingDomainViewpoint.getName() == null) || (viewpointName != null && viewpointName.equals(editingDomainViewpoint.getName()))) {
+                    return editingDomainViewpoint;
                 }
             }
         }
@@ -338,7 +338,7 @@ public final class SiriusUtil {
 
     }
 
-    private static Iterator<Viewpoint> getSiriuss(final Resource resource) {
+    private static Iterator<Viewpoint> getViewpoints(final Resource resource) {
         if (DESCRIPTION_MODEL_EXTENSION.equals(resource.getURI().fileExtension())) {
             Collection<Viewpoint> result = Lists.newArrayList();
             for (Group group : Iterables.filter(resource.getContents(), Group.class)) {

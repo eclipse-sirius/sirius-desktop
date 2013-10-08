@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
@@ -93,8 +93,8 @@ public final class LayerHelper {
         }
 
         /* add layers which reuse this mapping */
-        final EObject registryMappingInstance = SiriusRegistry.getInstance().find(mapping);
-        final Collection<Setting> settings = SiriusRegistry.getInstance().getCrossReferencer().getInverseReferences(registryMappingInstance);
+        final EObject registryMappingInstance = ViewpointRegistry.getInstance().find(mapping);
+        final Collection<Setting> settings = ViewpointRegistry.getInstance().getCrossReferencer().getInverseReferences(registryMappingInstance);
         for (final Setting setting : settings) {
             final EObject eReferencer = setting.getEObject();
             final EStructuralFeature eFeature = setting.getEStructuralFeature();
@@ -219,8 +219,8 @@ public final class LayerHelper {
                      * Check that mapping is not hidden by an importer mapping
                      */
 
-                    final EObject registryMappingInstance = SiriusRegistry.getInstance().find(mapping);
-                    final Collection<Setting> settings = SiriusRegistry.getInstance().getCrossReferencer().getInverseReferences(registryMappingInstance, true);
+                    final EObject registryMappingInstance = ViewpointRegistry.getInstance().find(mapping);
+                    final Collection<Setting> settings = ViewpointRegistry.getInstance().getCrossReferencer().getInverseReferences(registryMappingInstance, true);
 
                     if (!LayerHelper.hideSubMappingsInImporters(session, diagram, settings, mapping)) {
                         final EObject container = element.eContainer();
@@ -290,7 +290,7 @@ public final class LayerHelper {
                         break;
 
                     } else {
-                        final Collection<Setting> importerSettings = SiriusRegistry.getInstance().getCrossReferencer().getInverseReferences(importerMapping);
+                        final Collection<Setting> importerSettings = ViewpointRegistry.getInstance().getCrossReferencer().getInverseReferences(importerMapping);
                         if (LayerHelper.hideSubMappingsInImporters(session, diagram, importerSettings, importerMapping)) {
                             hide = true;
                             break;
@@ -336,8 +336,8 @@ public final class LayerHelper {
             for (final Layer layer : layers) {
                 if (EqualityHelper.contains(diagram.getActivatedLayers(), layer)) {
 
-                    final EObject registryMappingInstance = SiriusRegistry.getInstance().find(mapping);
-                    final Collection<Setting> settings = SiriusRegistry.getInstance().getCrossReferencer().getInverseReferences(registryMappingInstance);
+                    final EObject registryMappingInstance = ViewpointRegistry.getInstance().find(mapping);
+                    final Collection<Setting> settings = ViewpointRegistry.getInstance().getCrossReferencer().getInverseReferences(registryMappingInstance);
 
                     if (!LayerHelper.hideSubMappingsInImporters(session, diagram, settings, mapping)) {
                         visible = true;

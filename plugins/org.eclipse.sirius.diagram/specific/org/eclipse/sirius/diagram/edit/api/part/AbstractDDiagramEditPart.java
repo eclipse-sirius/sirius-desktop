@@ -439,9 +439,9 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
                     session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) dDiagram).getTarget());
                 }
 
-                allMappings.addAll(new DiagramComponentizationManager().getAllContainerMappings(session.getSelectedSiriuss(false), desc));
-                allMappings.addAll(new DiagramComponentizationManager().getAllNodeMappings(session.getSelectedSiriuss(false), desc));
-                allMappings.addAll(new DiagramComponentizationManager().getAllEdgeMappings(session.getSelectedSiriuss(false), desc));
+                allMappings.addAll(new DiagramComponentizationManager().getAllContainerMappings(session.getSelectedViewpoints(false), desc));
+                allMappings.addAll(new DiagramComponentizationManager().getAllNodeMappings(session.getSelectedViewpoints(false), desc));
+                allMappings.addAll(new DiagramComponentizationManager().getAllEdgeMappings(session.getSelectedViewpoints(false), desc));
                 final Iterator<DiagramElementMapping> iterAllMappings = allMappings.iterator();
                 while (iterAllMappings.hasNext()) {
                     final DiagramElementMapping diagramElementMapping = iterAllMappings.next();

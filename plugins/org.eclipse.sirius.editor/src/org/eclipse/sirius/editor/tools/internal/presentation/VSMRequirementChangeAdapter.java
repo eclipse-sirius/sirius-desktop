@@ -17,8 +17,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EContentAdapter;
-import org.eclipse.sirius.business.api.componentization.SiriusResourceHandler;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.internal.movida.DynamicVSMLoader;
 import org.eclipse.sirius.business.internal.movida.dependencies.Relation;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -53,9 +53,9 @@ public class VSMRequirementChangeAdapter extends EContentAdapter {
 
     public void install() {
         Relation<URI> requires = loader.getRegistry().getRelations().getRequires();
-        SiriusResourceHandler handler = loader.getRegistry().getSiriusResourceHandler();
-        for (Viewpoint vp : handler.collectSiriusDefinitions(resource)) {
-            for (URI required : requires.apply(new SiriusQuery(vp).getSiriusURI().get())) {
+        ViewpointResourceHandler handler = loader.getRegistry().getSiriusResourceHandler();
+        for (Viewpoint vp : handler.collectViewpointDefinitions(resource)) {
+            for (URI required : requires.apply(new ViewpointQuery(vp).getViewpointURI().get())) {
                 addRequirement(required, vp);
             }
         }
@@ -149,7 +149,7 @@ public class VSMRequirementChangeAdapter extends EContentAdapter {
     private void handleSiriussAdded(Iterable<Viewpoint> added) {
         Relation<URI> requires = loader.getRegistry().getRelations().getRequires();
         for (Viewpoint viewpoint : added) {
-            for (URI uri : requires.apply(new SiriusQuery(viewpoint).getSiriusURI().get())) {
+            for (URI uri : requires.apply(new ViewpointQuery(viewpoint).getViewpointURI().get())) {
                 addRequirement(uri, viewpoint);
             }
         }

@@ -26,8 +26,8 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.business.api.query.SiriusURIQuery;
-import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry;
+import org.eclipse.sirius.business.api.query.ViewpointURIQuery;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
@@ -36,18 +36,18 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class SiriusSelection {
+public class ViewpointSelection {
     private static final String INVALID_VIEWPOINT_URI = "Selection must contain only logical Sirius URIs";
 
     /**
      * The set of logical Sirius URIs which make up the selection itself.
      */
-    private final Set<URI> logicalSiriuss = Sets.newHashSet();
+    private final Set<URI> logicalViewpoints = Sets.newHashSet();
 
     /**
-     * The registry to use for Sirius informations.
+     * The registry to use for viewpoint informations.
      */
-    private final SiriusRegistry registry;
+    private final ViewpointRegistry registry;
 
     /**
      * True if the selection has changed since the last time validation was
@@ -65,15 +65,15 @@ public class SiriusSelection {
 
     private Set<URI> conflicts = Collections.emptySet();
 
-    private final Predicate<URI> isValidSiriusURI = new Predicate<URI>() {
+    private final Predicate<URI> isValidViewpointURI = new Predicate<URI>() {
         public boolean apply(URI input) {
-            return SiriusURIQuery.isValidSiriusURI(input);
+            return ViewpointURIQuery.isValidViewpointURI(input);
         }
     };
 
     private final Function<URI, Viewpoint> viewpointImplementation = new Function<URI, Viewpoint>() {
         public Viewpoint apply(URI from) {
-            return registry.getSirius(from);
+            return registry.getViewpoint(from);
         }
     };
 
@@ -81,9 +81,9 @@ public class SiriusSelection {
      * Constructor.
      * 
      * @param registry
-     *            the registry to use for Sirius informations.
+     *            the registry to use for viewpoint informations.
      */
-    public SiriusSelection(SiriusRegistry registry) {
+    public ViewpointSelection(ViewpointRegistry registry) {
         this.registry = Preconditions.checkNotNull(registry);
     }
 
@@ -93,55 +93,55 @@ public class SiriusSelection {
      * @return the current selection.
      */
     public Set<URI> getSelected() {
-        return ImmutableSet.copyOf(logicalSiriuss);
+        return ImmutableSet.copyOf(logicalViewpoints);
     }
 
     /**
-     * Sets the whole set of selected Siriuss at once.
+     * Sets the whole set of selected viewpoints at once.
      * 
      * @param selection
-     *            the logical URIs of all the Siriuss to put in the
+     *            the logical URIs of all the viewpoints to put in the
      *            selection.
      */
     public void setSelected(Set<URI> selection) {
-        Preconditions.checkArgument(Iterables.all(selection, isValidSiriusURI), INVALID_VIEWPOINT_URI);
-        logicalSiriuss.clear();
-        logicalSiriuss.addAll(selection);
+        Preconditions.checkArgument(Iterables.all(selection, isValidViewpointURI), INVALID_VIEWPOINT_URI);
+        logicalViewpoints.clear();
+        logicalViewpoints.addAll(selection);
         needsValidation = true;
     }
 
     /**
-     * Add a single Sirius to the selection.
+     * Add a single viewpoint to the selection.
      * 
      * @param viewpoint
-     *            the logical URI of the Sirius to add.
+     *            the logical URI of the viewpoint to add.
      */
     public void select(URI viewpoint) {
-        Preconditions.checkArgument(isValidSiriusURI.apply(viewpoint), INVALID_VIEWPOINT_URI);
-        boolean added = logicalSiriuss.add(viewpoint);
+        Preconditions.checkArgument(isValidViewpointURI.apply(viewpoint), INVALID_VIEWPOINT_URI);
+        boolean added = logicalViewpoints.add(viewpoint);
         if (added) {
             needsValidation = true;
         }
     }
 
     /**
-     * Remove a single Sirius from the selection.
+     * Remove a single viewpoint from the selection.
      * 
      * @param viewpoint
-     *            the logical URI of the Sirius to remove.
+     *            the logical URI of the viewpoint to remove.
      */
     public void deselect(URI viewpoint) {
-        Preconditions.checkArgument(isValidSiriusURI.apply(viewpoint), INVALID_VIEWPOINT_URI);
-        boolean removed = logicalSiriuss.remove(viewpoint);
+        Preconditions.checkArgument(isValidViewpointURI.apply(viewpoint), INVALID_VIEWPOINT_URI);
+        boolean removed = logicalViewpoints.remove(viewpoint);
         if (removed) {
             needsValidation = true;
         }
     }
 
     /**
-     * Check whether the current set of selected Sirius is consistent, i.e.
-     * all the requested Siriuss are available and there are no internal
-     * conflicts between any two pairs of Siriuss.
+     * Check whether the current set of selected viewpoints is consistent, i.e.
+     * all the requested viewpoints are available and there are no internal
+     * conflicts between any two pairs of viewpoints.
      * 
      * @return <code>true</code> if the current selection is consistent.
      */
@@ -157,18 +157,18 @@ public class SiriusSelection {
      * @return the URIs of the logical viewpoints which are selected but not
      *         available.
      */
-    public Set<URI> getUnavailableSiriuss() {
+    public Set<URI> getUnavailableViewpoints() {
         return ImmutableSet.copyOf(unavailable);
     }
 
     /**
      * Returns the set of logical URIs which are in the selection but are in
-     * conflict with at least one another selected Sirius.
+     * conflict with at least one another selected viewpoint.
      * 
      * @return the URIs of the logical viewpoints which are selected but for
      *         which there is a conflict.
      */
-    public Set<URI> getConflictingSiriuss() {
+    public Set<URI> getConflictingViewpoints() {
         return ImmutableSet.copyOf(conflicts);
     }
 
@@ -177,7 +177,7 @@ public class SiriusSelection {
      */
     public void validate() {
         if (needsValidation) {
-            isValid = allRequiredSiriussAreAvailable() && noConflictsBetweenRequiredSiriuss();
+            isValid = allRequiredViewpointAreAvailable() && noConflictsBetweenRequiredViewpoints();
             needsValidation = false;
         }
     }
@@ -191,7 +191,7 @@ public class SiriusSelection {
         validate();
         Function<URI, String> shortName = new Function<URI, String>() {
             public String apply(URI uri) {
-                return new SiriusURIQuery(uri).getSiriusName();
+                return new ViewpointURIQuery(uri).getViewpointName();
             }
         };
         // CHECKSTYLE:OFF
@@ -206,8 +206,8 @@ public class SiriusSelection {
         return sb.toString();
     }
 
-    private boolean allRequiredSiriussAreAvailable() {
-        unavailable = Sets.newHashSet(Iterables.filter(logicalSiriuss, new Predicate<URI>() {
+    private boolean allRequiredViewpointAreAvailable() {
+        unavailable = Sets.newHashSet(Iterables.filter(logicalViewpoints, new Predicate<URI>() {
             public boolean apply(URI input) {
                 return viewpointImplementation.apply(input) == null;
             }
@@ -215,15 +215,15 @@ public class SiriusSelection {
         return unavailable.isEmpty();
     }
 
-    private boolean noConflictsBetweenRequiredSiriuss() {
+    private boolean noConflictsBetweenRequiredViewpoints() {
         Set<URI> forbidden = Sets.newHashSet();
-        for (URI uri : logicalSiriuss) {
+        for (URI uri : logicalViewpoints) {
             Viewpoint vp = viewpointImplementation.apply(uri);
             if (vp != null) {
                 Iterables.addAll(forbidden, vp.getConflicts());
             }
         }
-        conflicts = Sets.intersection(logicalSiriuss, forbidden);
+        conflicts = Sets.intersection(logicalViewpoints, forbidden);
         return conflicts.isEmpty();
     }
 
@@ -232,8 +232,8 @@ public class SiriusSelection {
      */
     @Override
     public String toString() {
-        List<URI> uris = Lists.newArrayList(logicalSiriuss);
+        List<URI> uris = Lists.newArrayList(logicalViewpoints);
         Collections.sort(uris, Ordering.usingToString());
-        return "Sirius Selection: " + Joiner.on(", ").join(uris);
+        return "Viewpoint Selection: " + Joiner.on(", ").join(uris);
     }
 }

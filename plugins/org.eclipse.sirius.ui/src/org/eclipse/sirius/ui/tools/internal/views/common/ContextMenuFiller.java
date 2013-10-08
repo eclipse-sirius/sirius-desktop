@@ -369,7 +369,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
                 }
 
                 /* New representations menu */
-                final Collection<RepresentationDescription> descriptions = DialectManager.INSTANCE.getAvailableRepresentationDescriptions(session.getSelectedSiriuss(false), firstSelected);
+                final Collection<RepresentationDescription> descriptions = DialectManager.INSTANCE.getAvailableRepresentationDescriptions(session.getSelectedViewpoints(false), firstSelected);
                 if (descriptions.size() > 0) {
                     final MenuManager addNewRepresentation = new MenuManager(NEW_REPRESENTATION_MENU, NEW_REPRESENTATION_MENU_ID);
                     for (final RepresentationDescription representationDescription : descriptions) {

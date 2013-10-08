@@ -25,7 +25,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.TaskExecutor;
-import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
@@ -91,7 +91,7 @@ public class DeleteTreeElementsTask extends AbstractCommandTask {
 		 */
 		final List<ICommandTask> tasks = new ArrayList<ICommandTask>();
 		Set<DSemanticDecorator> vpElements = null;
-        final boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, DesignerPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
+        final boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
 		if (automaticRefresh) {
             vpElements = tableCommandFactory.getCommandTaskHelper().getDElementToClearFromSemanticElements(EcoreUtil.getRootContainer(this.tableElement),
 							completeCollection(this.cmd.getDeletedObjects()));

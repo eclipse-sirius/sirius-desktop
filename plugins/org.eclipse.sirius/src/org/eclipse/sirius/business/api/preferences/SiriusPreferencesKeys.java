@@ -15,7 +15,7 @@ package org.eclipse.sirius.business.api.preferences;
  * 
  * @author ymortier
  */
-public enum DesignerPreferencesKeys {
+public enum SiriusPreferencesKeys {
 
     /**
      * Says if the refresh should automatically be done or not.
@@ -36,7 +36,7 @@ public enum DesignerPreferencesKeys {
     PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL(boolean.class);
 
     /** The type of the preference. */
-    private Class<?> type;
+    private final Class<?> type;
 
     /**
      * Creates a new DesignerPreferencesKeys with the given type.
@@ -44,7 +44,7 @@ public enum DesignerPreferencesKeys {
      * @param type
      *            the type of the value of the preference.
      */
-    private DesignerPreferencesKeys(final Class<?> type) {
+    private SiriusPreferencesKeys(final Class<?> type) {
         this.type = type;
     }
 

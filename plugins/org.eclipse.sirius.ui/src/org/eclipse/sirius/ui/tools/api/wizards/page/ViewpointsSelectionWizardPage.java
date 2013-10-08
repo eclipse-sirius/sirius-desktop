@@ -69,11 +69,11 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelection;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -83,7 +83,7 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * 
  * @author mchauvin
  */
-public class SiriussSelectionWizardPage extends WizardPage {
+public class ViewpointsSelectionWizardPage extends WizardPage {
 
     /** The title of the page. */
     private static final String PAGE_TITLE = "Select viewpoints";
@@ -120,7 +120,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
      * @param session
      *            the session
      */
-    public SiriussSelectionWizardPage(final Session session) {
+    public ViewpointsSelectionWizardPage(final Session session) {
         super(PAGE_TITLE);
         this.setTitle(PAGE_TITLE);
         this.setMessage(PAGE_MESSAGE);
@@ -138,7 +138,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
      * @param viewpointsNamesToActivateByDefault
      *            list of viewpoints names to activate by default.
      */
-    public SiriussSelectionWizardPage(final Session session, List<String> viewpointsNamesToActivateByDefault) {
+    public ViewpointsSelectionWizardPage(final Session session, List<String> viewpointsNamesToActivateByDefault) {
         super(PAGE_TITLE);
         this.setTitle(PAGE_TITLE);
         this.setMessage(PAGE_MESSAGE);
@@ -179,11 +179,11 @@ public class SiriussSelectionWizardPage extends WizardPage {
         boolean complete = false;
 
         if (!viewpoints.isEmpty()) {
-            Multimap<String, String> missingDependencies = SiriusSelection.getMissingDependencies(Sets.newHashSet(viewpoints));
+            Multimap<String, String> missingDependencies = ViewpointSelection.getMissingDependencies(Sets.newHashSet(viewpoints));
             if (missingDependencies.isEmpty()) {
                 complete = true;
             } else {
-                errorMessage = SiriusSelection.getMissingDependenciesErrorMessage(missingDependencies);
+                errorMessage = ViewpointSelection.getMissingDependenciesErrorMessage(missingDependencies);
             }
         }
 
@@ -196,7 +196,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
      * 
      * @return the list of selected viewpoints
      */
-    public List<Viewpoint> getSiriuss() {
+    public List<Viewpoint> getViewpoints() {
         return viewpoints;
     }
 
@@ -213,7 +213,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
         pageComposite.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false));
 
         this.tableViewer = createTableViewer(pageComposite);
-        tableViewer.setInput(getAvailableSiriuss());
+        tableViewer.setInput(getAvailableViewpoints());
 
         this.browser = createBrowser(pageComposite);
         setBrowserInput(null);
@@ -254,15 +254,15 @@ public class SiriussSelectionWizardPage extends WizardPage {
 
     }
 
-    private Collection<Viewpoint> getAvailableSiriuss() {
+    private Collection<Viewpoint> getAvailableViewpoints() {
 
-        SiriusRegistry registry = SiriusRegistry.getInstance();
+        ViewpointRegistry registry = ViewpointRegistry.getInstance();
 
-        return Collections2.filter(registry.getSiriuss(), new Predicate<Viewpoint>() {
+        return Collections2.filter(registry.getViewpoints(), new Predicate<Viewpoint>() {
 
             public boolean apply(Viewpoint viewpoint) {
                 for (final String ext : fileExtensions) {
-                    if (new SiriusQuery(viewpoint).handlesSemanticModelExtension(ext))
+                    if (new ViewpointQuery(viewpoint).handlesSemanticModelExtension(ext))
                         return true;
                 }
                 return false;
@@ -296,7 +296,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
         objectColumn.setResizable(true);
 
         viewer.setContentProvider(new ArrayContentProvider());
-        viewer.setLabelProvider(new SiriussTableLabelProvider());
+        viewer.setLabelProvider(new ViewpointsTableLabelProvider());
 
         viewer.addCheckStateListener(new ICheckStateListener() {
             public void checkStateChanged(final CheckStateChangedEvent event) {
@@ -446,19 +446,19 @@ public class SiriussSelectionWizardPage extends WizardPage {
         return begin(content).head(content).body(content, viewpoint).end(content);
     }
 
-    private SiriussSelectionWizardPage begin(StringBuilder content) {
+    private ViewpointsSelectionWizardPage begin(StringBuilder content) {
         content.append("<html>");
         return this;
     }
 
-    private SiriussSelectionWizardPage head(StringBuilder content) {
+    private ViewpointsSelectionWizardPage head(StringBuilder content) {
         content.append("<head>");
         appendCss(content);
         content.append("</head>");
         return this;
     }
 
-    private SiriussSelectionWizardPage body(StringBuilder content, Viewpoint viewpoint) {
+    private ViewpointsSelectionWizardPage body(StringBuilder content, Viewpoint viewpoint) {
         content.append("<body>");
 
         if (viewpoint == null) {
@@ -504,9 +504,9 @@ public class SiriussSelectionWizardPage extends WizardPage {
      * 
      * @author mchauvin
      */
-    private class SiriussTableLabelProvider extends AdapterFactoryLabelProvider implements ITableLabelProvider {
+    private class ViewpointsTableLabelProvider extends AdapterFactoryLabelProvider implements ITableLabelProvider {
 
-        public SiriussTableLabelProvider() {
+        public ViewpointsTableLabelProvider() {
             super(ViewHelper.INSTANCE.createAdapterFactory());
         }
 
@@ -543,7 +543,7 @@ public class SiriussSelectionWizardPage extends WizardPage {
         }
 
         private Image getEnhancedImage(final Image image, final Viewpoint viewpoint) {
-            if (SiriusRegistry.getInstance().isFromPlugin(viewpoint) && image != null) {
+            if (ViewpointRegistry.getInstance().isFromPlugin(viewpoint) && image != null) {
                 return SiriusEditPlugin.getPlugin().getImage(getOverlayedDescriptor(image, "icons/full/ovr16/plugin_ovr.gif"));
             }
             return image;

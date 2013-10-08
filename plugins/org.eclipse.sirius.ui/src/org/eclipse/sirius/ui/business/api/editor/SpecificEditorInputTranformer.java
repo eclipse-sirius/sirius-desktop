@@ -37,7 +37,7 @@ import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
@@ -48,7 +48,7 @@ import org.eclipse.sirius.business.api.session.SessionCreationOperation;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.SessionSpecificEditorInput;
-import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelectionCallback;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeSiriusSelectionCommand;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDiagram;
@@ -112,7 +112,7 @@ public class SpecificEditorInputTranformer {
     }
 
     private Viewpoint getSirius(URI viewpointURI) {
-        return SiriusRegistry.getInstance().getSirius(viewpointURI);
+        return ViewpointRegistry.getInstance().getViewpoint(viewpointURI);
     }
 
     private RepresentationDescription getRepresentationDescription(final String wantedName) {
@@ -256,7 +256,7 @@ public class SpecificEditorInputTranformer {
      *         otherwise
      */
     private RepresentationDescription getRepresentationDescriptionInEditingDomain(final RepresentationDescription representationDescription, final EObject semanticModel) {
-        Collection<RepresentationDescription> representationDescriptions = DialectManager.INSTANCE.getAvailableRepresentationDescriptions(session.getSelectedSiriuss(false), semanticModel);
+        Collection<RepresentationDescription> representationDescriptions = DialectManager.INSTANCE.getAvailableRepresentationDescriptions(session.getSelectedViewpoints(false), semanticModel);
         for (final RepresentationDescription representationDescriptionInEditingDomain : representationDescriptions) {
             if (representationDescriptionInEditingDomain.getName().equals(representationDescription.getName())) {
                 return representationDescriptionInEditingDomain;
@@ -289,7 +289,7 @@ public class SpecificEditorInputTranformer {
      * Activate the viewpoint.
      * */
     private void activateSirius() {
-        final SiriusSelectionCallback selectionCallback = new SiriusSelectionCallback();
+        final ViewpointSelectionCallback selectionCallback = new ViewpointSelectionCallback();
         session.getTransactionalEditingDomain().getCommandStack()
                 .execute(new ChangeSiriusSelectionCommand(session, selectionCallback, Sets.newHashSet(viewpoint), Sets.<Viewpoint> newHashSet(), new NullProgressMonitor()) {
 

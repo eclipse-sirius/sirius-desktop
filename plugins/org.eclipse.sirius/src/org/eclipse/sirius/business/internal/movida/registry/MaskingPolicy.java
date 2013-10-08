@@ -32,8 +32,8 @@ import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.componentization.SiriusResourceHandler;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
@@ -136,7 +136,7 @@ public class MaskingPolicy {
     /**
      * The handler used to find Sirius instances inside loaded resources.
      */
-    private final SiriusResourceHandler resourceHandler;
+    private final ViewpointResourceHandler resourceHandler;
 
     /**
      * Constructor.
@@ -148,7 +148,7 @@ public class MaskingPolicy {
      *            the handler used to find Sirius instances inside loaded
      *            resources.
      */
-    public MaskingPolicy(Comparator<URI> comparator, SiriusResourceHandler resourceHandler) {
+    public MaskingPolicy(Comparator<URI> comparator, ViewpointResourceHandler resourceHandler) {
         this.viewpointComparator = Ordering.from(comparator).onResultOf(new Function<SiriusImplementation, URI>() {
             public URI apply(SiriusImplementation vp) {
                 // The ordering used for masking depends only on the resource's
@@ -173,8 +173,8 @@ public class MaskingPolicy {
         Preconditions.checkState(loaded.isLoaded(), "The resource is not loaded: " + loaded);
 
         MaskingChange change = new MaskingChange();
-        for (Viewpoint viewpoint : resourceHandler.collectSiriusDefinitions(loaded)) {
-            Option<URI> uri = new SiriusQuery(viewpoint).getSiriusURI();
+        for (Viewpoint viewpoint : resourceHandler.collectViewpointDefinitions(loaded)) {
+            Option<URI> uri = new ViewpointQuery(viewpoint).getViewpointURI();
             Preconditions.checkState(uri.some(), "Could not identify logical Sirius URI for Sirius " + viewpoint);
             SiriusImplementation vi = new SiriusImplementation(uri.get(), loaded);
             List<SiriusImplementation> implementations = viewpointImplementations.get(vi.logicalURI);

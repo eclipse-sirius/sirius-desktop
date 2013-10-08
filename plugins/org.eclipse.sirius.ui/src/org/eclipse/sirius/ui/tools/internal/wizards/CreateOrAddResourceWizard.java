@@ -42,7 +42,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelection;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.ui.tools.api.actions.analysis.IAddModelDependencyWizard;
 import org.eclipse.sirius.ui.tools.internal.dialogs.SemanticResourceDialog;
 import org.eclipse.sirius.ui.tools.internal.operations.SemanticResourceAdditionOperation;
@@ -300,7 +300,7 @@ public class CreateOrAddResourceWizard extends Wizard implements IAddModelDepend
                 for (Object result : results) {
                     if (result instanceof Session) {
                         // We open a viewpoint selection dialog
-                        SiriusSelection.openSiriussSelectionDialog((Session) result);
+                        ViewpointSelection.openSiriussSelectionDialog((Session) result);
                     }
                 }
             } catch (final InterruptedException e) {

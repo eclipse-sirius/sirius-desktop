@@ -29,7 +29,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
 
-import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry.RegistryChange;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry.RegistryChange;
 
 /**
  * Updates or re-computes the status of all the entries in the registry.

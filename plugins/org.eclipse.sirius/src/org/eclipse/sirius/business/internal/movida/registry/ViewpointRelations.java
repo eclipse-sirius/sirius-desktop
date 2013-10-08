@@ -27,23 +27,23 @@ import org.eclipse.sirius.business.internal.movida.dependencies.UnionRelation;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * Exposes the various relations which can exist between Siriuss are
+ * Exposes the various relations which can exist between viewpoints are
  * {@link Relation}s.
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class SiriusRelations {
+public class ViewpointRelations {
     /**
-     * Base class to handle declared Sirius dependencies as Relations.
+     * Base class to handle declared viewpoints dependencies as Relations.
      * 
      * @author pierre-charles.david@obeo.fr
      */
-    private abstract class AbstractSiriusDependency implements Relation<URI> {
+    private abstract class AbstractViewpointDependency implements Relation<URI> {
         /**
          * {@inheritDoc}
          */
         public Set<URI> apply(URI from) {
-            Viewpoint vp = registry.getSirius(from);
+            Viewpoint vp = registry.getViewpoint(from);
             if (vp != null) {
                 EList<URI> declared = getDependencies(vp);
                 return ImmutableSet.copyOf(Iterables.filter(declared, Predicates.notNull()));
@@ -57,23 +57,23 @@ public class SiriusRelations {
     /**
      * The registry to use to resolve the URIs used for declared dependencies.
      */
-    private final SiriusRegistry registry;
+    private final ViewpointRegistry registry;
 
-    private final Relation<URI> reuse = new AbstractSiriusDependency() {
+    private final Relation<URI> reuse = new AbstractViewpointDependency() {
         @Override
         protected EList<URI> getDependencies(Viewpoint vp) {
             return vp.getReuses();
         }
     };
 
-    private final Relation<URI> customize = new AbstractSiriusDependency() {
+    private final Relation<URI> customize = new AbstractViewpointDependency() {
         @Override
         protected EList<URI> getDependencies(Viewpoint vp) {
             return vp.getCustomizes();
         }
     };
 
-    private final Relation<URI> conflicts = new AbstractSiriusDependency() {
+    private final Relation<URI> conflicts = new AbstractViewpointDependency() {
         @Override
         protected EList<URI> getDependencies(Viewpoint vp) {
             return vp.getConflicts();
@@ -90,32 +90,32 @@ public class SiriusRelations {
      *            the registry to use to resolve the URIs used for declared
      *            dependencies.
      */
-    public SiriusRelations(SiriusRegistry registry) {
+    public ViewpointRelations(ViewpointRegistry registry) {
         this.registry = Preconditions.checkNotNull(registry);
     }
 
     /**
-     * Return a relation representing the direct reuse between Siriuss.
+     * Return a relation representing the direct reuse between viewpoints.
      * 
-     * @return a relation representing the direct reuse between Siriuss.
+     * @return a relation representing the direct reuse between viewpoints.
      */
     public Relation<URI> getReuse() {
         return reuse;
     }
 
     /**
-     * Return a relation representing the direct conflict between Siriuss.
+     * Return a relation representing the direct conflict between viewpoints.
      * 
-     * @return a relation representing the direct conflict between Siriuss.
+     * @return a relation representing the direct conflict between viewpoints.
      */
     public Relation<URI> getConflicts() {
         return conflicts;
     }
 
     /**
-     * Return a relation representing the transitive reuse between Siriuss.
+     * Return a relation representing the transitive reuse between viewpoints.
      * 
-     * @return a relation representing the transitive reuse between Siriuss.
+     * @return a relation representing the transitive reuse between viewpoints.
      */
     public Relation<URI> getTransitiveRequires() {
         return transitiveRequires;
@@ -123,10 +123,10 @@ public class SiriusRelations {
 
     /**
      * Return a relation representing the direct customization between
-     * Siriuss.
+     * viewpoints.
      * 
      * @return a relation representing the direct customization between
-     *         Siriuss.
+     *         viewpoints.
      */
     public Relation<URI> getCustomize() {
         return customize;
@@ -134,10 +134,10 @@ public class SiriusRelations {
 
     /**
      * Returns a relation representing the direct requirements between
-     * Siriuss.
+     * viewpoints.
      * 
      * @return a relation representing the direct requirements between
-     *         Siriuss.
+     *         viewpoints.
      */
     public Relation<URI> getRequires() {
         return new UnionRelation<URI>(customize, reuse);

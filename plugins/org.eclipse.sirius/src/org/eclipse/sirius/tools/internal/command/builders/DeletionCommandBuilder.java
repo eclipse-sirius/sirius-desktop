@@ -38,7 +38,7 @@ import org.eclipse.sirius.business.api.helper.task.RemoveDanglingReferencesTask;
 import org.eclipse.sirius.business.api.helper.task.RemoveSemanticDanglingReferenceTask;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
@@ -224,7 +224,7 @@ public class DeletionCommandBuilder extends AbstractCommandBuilder {
                 if (tool != null) {
                     addDeleteDiagramElementFromTool(result);
                     EObject rootContainer = null;
-                    final boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, DesignerPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
+                    final boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
                     if (automaticRefresh) {
                         result.getTasks().add(new RemoveDanglingReferencesTask(EcoreUtil.getRootContainer(((DSemanticDecorator) diagramElement).getTarget())));
                         addRefreshTask(diagramElement, result, tool);
@@ -356,7 +356,7 @@ public class DeletionCommandBuilder extends AbstractCommandBuilder {
             /*
              * and remove possible dangling references
              */
-            final boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, DesignerPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
+            final boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
             if (automaticRefresh) {
                 if (diagramElement.getTarget() != null) {
                     result.getTasks().add(new RemoveDanglingReferencesTask(EcoreUtil.getRootContainer(diagramElement.getTarget())));

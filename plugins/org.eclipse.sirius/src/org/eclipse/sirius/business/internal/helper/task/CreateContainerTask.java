@@ -22,7 +22,7 @@ import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.ICreationTask;
-import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.experimental.sync.AbstractDNodeCandidate;
@@ -121,7 +121,7 @@ public class CreateContainerTask extends AbstractCommandTask implements ICreatio
     }
 
     private boolean isAutoPinOnCreateEnabled() {
-        return Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, DesignerPreferencesKeys.PREF_AUTO_PIN_ON_CREATE.name(), false, null);
+        return Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_PIN_ON_CREATE.name(), false, null);
     }
 
     /**

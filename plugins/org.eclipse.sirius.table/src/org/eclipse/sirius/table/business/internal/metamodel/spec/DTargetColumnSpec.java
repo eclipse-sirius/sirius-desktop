@@ -19,7 +19,7 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
-import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.table.business.internal.metamodel.operations.DColumnOperations;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
@@ -69,7 +69,7 @@ public class DTargetColumnSpec extends DTargetColumnImpl {
                 @Override
                 public void notifyChanged(final Notification msg) {
                     if (msg.getEventType() != Notification.REMOVING_ADAPTER
-                            && !Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, DesignerPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null)) {
+                            && !Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null)) {
                         sync.refresh(DTargetColumnSpec.this);
                     }
                 }

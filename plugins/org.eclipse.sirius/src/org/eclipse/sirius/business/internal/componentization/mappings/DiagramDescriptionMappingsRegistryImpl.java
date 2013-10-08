@@ -100,7 +100,7 @@ public final class DiagramDescriptionMappingsRegistryImpl implements DiagramDesc
             final DiagramDescriptionMappingsManager newManager = new DiagramDescriptionMappingsManagerImpl(description);
             diagramDescriptionMappingsManagers.put(key, newManager);
             if (session != null) {
-                newManager.computeMappings(session.getSelectedSiriuss(false));
+                newManager.computeMappings(session.getSelectedViewpoints(false));
             } else {
                 newManager.computeMappings(null);
             }
@@ -119,7 +119,7 @@ public final class DiagramDescriptionMappingsRegistryImpl implements DiagramDesc
 
         for (final Entry<Key, DiagramDescriptionMappingsManager> manager : diagramDescriptionMappingsManagers.entrySet()) {
             if (manager.getKey().session != null) {
-                manager.getValue().computeMappings(manager.getKey().session.getSelectedSiriuss(false));
+                manager.getValue().computeMappings(manager.getKey().session.getSelectedViewpoints(false));
             } else {
                 manager.getValue().computeMappings(null);
             }

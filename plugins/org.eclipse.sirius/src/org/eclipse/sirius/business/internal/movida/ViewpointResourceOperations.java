@@ -23,15 +23,15 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 
-import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * Operations to manipulate Sirius Resources (VSMs).
+ * Operations to manipulate Viewpoints Resources (VSMs).
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class SiriusResourceOperations {
+public class ViewpointResourceOperations {
     /**
      * The Sirius resource to manipulate.
      */
@@ -41,14 +41,14 @@ public class SiriusResourceOperations {
      * Constructor.
      * 
      * @param resource
-     *            the Sirius resource to manipulate.
+     *            the viewpoint resource to manipulate.
      */
-    public SiriusResourceOperations(Resource resource) {
+    public ViewpointResourceOperations(Resource resource) {
         this.resource = Preconditions.checkNotNull(resource);
     }
 
     /**
-     * Unloads the resource, and reset all the proxy URIs for Sirius elements
+     * Unloads the resource, and reset all the proxy URIs for viewpoints elements
      * to the corresponding logical (instead of physical) URI, so that when
      * references to these elements are re-resolved later, they are resolved
      * taking the logical/physical mapping at that time.
@@ -77,7 +77,7 @@ public class SiriusResourceOperations {
         while (allContents.hasNext()) {
             EObject internal = allContents.next();
             if (internal instanceof Viewpoint) {
-                currentSiriusURI = new SiriusQuery((Viewpoint) internal).getSiriusURI().get();
+                currentSiriusURI = new ViewpointQuery((Viewpoint) internal).getViewpointURI().get();
             }
             if (currentSiriusURI != null) {
                 String fragment = internal.eResource().getURIFragment(internal);

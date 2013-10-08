@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.viewpoint.description.ContainerMapping;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -47,10 +47,9 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
  */
 public class DiagramComponentizationManager  {
 
-
-    private static boolean isInSelectedSirius(final Collection<Viewpoint> selectedSiriuss, final DiagramDescription diagramDescription) {
-        for (final Viewpoint viewpoint : selectedSiriuss) {
-            for (final RepresentationDescription representationDescription : new SiriusQuery(viewpoint).getAllRepresentationDescriptions()) {
+    private static boolean isInSelectedViewpoints(final Collection<Viewpoint> selectedViewpoints, final DiagramDescription diagramDescription) {
+        for (final Viewpoint viewpoint : selectedViewpoints) {
+            for (final RepresentationDescription representationDescription : new ViewpointQuery(viewpoint).getAllRepresentationDescriptions()) {
                 if (EqualityHelper.areEquals(diagramDescription, representationDescription)) {
                     return true;
                 }
@@ -66,20 +65,20 @@ public class DiagramComponentizationManager  {
     /**
      * Get all the layers of a diagram description.
      * 
-     * @param enabledSiriuss
-     *            the list of Siriuss to consider
+     * @param enabledViewpoints
+     *            the list of viewpoints to consider
      * @param diagramDescription
      *            the diagram description
      * @return all the available layers
      */
-    public EList<Layer> getAllLayers(final Collection<Viewpoint> enabledSiriuss, final DiagramDescription diagramDescription) {
+    public EList<Layer> getAllLayers(final Collection<Viewpoint> enabledViewpoints, final DiagramDescription diagramDescription) {
         final Collection<Layer> layers = new ArrayList<Layer>(diagramDescription.getAllLayers());
 
-        if (enabledSiriuss != null) {
-            if (!DiagramComponentizationManager.isInSelectedSirius(enabledSiriuss, diagramDescription)) {
+        if (enabledViewpoints != null) {
+            if (!DiagramComponentizationManager.isInSelectedViewpoints(enabledViewpoints, diagramDescription)) {
                 return wrapGetAllLayers(diagramDescription, Collections.<Layer> emptySet());
             }
-            layers.addAll(ComponentizationHelper.getContributedLayers(diagramDescription, enabledSiriuss));
+            layers.addAll(ComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints));
         }
         return wrapGetAllLayers(diagramDescription, layers);
     }
@@ -87,16 +86,16 @@ public class DiagramComponentizationManager  {
     /**
      * Get all the edge mappings available for a diagram description.
      * 
-     * @param enabledSiriuss
-     *            the list of Siriuss to consider
+     * @param enabledViewpoints
+     *            the list of viewpoint to consider
      * @param diagramDescription
      *            the diagram description
      * @return all the available edge mappings
      */
-    public EList<EdgeMapping> getAllEdgeMappings(final Collection<Viewpoint> enabledSiriuss, final DiagramDescription diagramDescription) {
+    public EList<EdgeMapping> getAllEdgeMappings(final Collection<Viewpoint> enabledViewpoints, final DiagramDescription diagramDescription) {
         final Collection<EdgeMapping> edgeMappings = new ArrayList<EdgeMapping>(diagramDescription.getAllEdgeMappings());
-        if (enabledSiriuss != null) {
-            for (final Layer layer : ComponentizationHelper.getContributedLayers(diagramDescription, enabledSiriuss)) {
+        if (enabledViewpoints != null) {
+            for (final Layer layer : ComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
                 edgeMappings.addAll(layer.getAllEdgeMappings());
             }
         }
@@ -107,16 +106,16 @@ public class DiagramComponentizationManager  {
     /**
      * Get all the node mappings available for a diagram description.
      * 
-     * @param enabledSiriuss
-     *            the list of Siriuss to consider
+     * @param enabledViewpoints
+     *            the list of viewpoints to consider
      * @param diagramDescription
      *            the diagram description
      * @return all the available node mappings
      */
-    public EList<NodeMapping> getAllNodeMappings(final Collection<Viewpoint> enabledSiriuss, final DiagramDescription diagramDescription) {
+    public EList<NodeMapping> getAllNodeMappings(final Collection<Viewpoint> enabledViewpoints, final DiagramDescription diagramDescription) {
         final Collection<NodeMapping> nodeMappings = new ArrayList<NodeMapping>(diagramDescription.getAllNodeMappings());
-        if (enabledSiriuss != null) {
-            for (final Layer layer : ComponentizationHelper.getContributedLayers(diagramDescription, enabledSiriuss)) {
+        if (enabledViewpoints != null) {
+            for (final Layer layer : ComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
                 nodeMappings.addAll(layer.getNodeMappings());
             }
         }
@@ -128,16 +127,16 @@ public class DiagramComponentizationManager  {
     /**
      * Get all the container mappings available for a diagram description.
      * 
-     * @param enabledSiriuss
-     *            the list of Siriuss to consider
+     * @param enabledViewpoints
+     *            the list of viewpoints to consider
      * @param diagramDescription
      *            the diagram description
      * @return all the available container mappings
      */
-    public EList<ContainerMapping> getAllContainerMappings(final Collection<Viewpoint> enabledSiriuss, final DiagramDescription diagramDescription) {
+    public EList<ContainerMapping> getAllContainerMappings(final Collection<Viewpoint> enabledViewpoints, final DiagramDescription diagramDescription) {
         final Collection<ContainerMapping> containerMappings = new ArrayList<ContainerMapping>(diagramDescription.getAllContainerMappings());
-        if (enabledSiriuss != null) {
-            for (final Layer layer : ComponentizationHelper.getContributedLayers(diagramDescription, enabledSiriuss)) {
+        if (enabledViewpoints != null) {
+            for (final Layer layer : ComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
                 containerMappings.addAll(layer.getContainerMappings());
             }
         }
@@ -148,15 +147,15 @@ public class DiagramComponentizationManager  {
     /**
      * Get all the sections available for a diagram description.
      * 
-     * @param enabledSiriuss
-     *            the list of Siriuss to consider
+     * @param enabledViewpoints
+     *            the list of viewpoints to consider
      * @param diagramDescription
      *            the diagram description
      * @return all the available sections
      */
-    public EList<ToolSection> getRootPaletteSections(final Collection<Viewpoint> enabledSiriuss, final DiagramDescription diagramDescription) {
+    public EList<ToolSection> getRootPaletteSections(final Collection<Viewpoint> enabledViewpoints, final DiagramDescription diagramDescription) {
         final Map<String, ToolSection> nameToSection = new LinkedHashMap<String, ToolSection>();
-        for (final Layer layer : getAllLayers(enabledSiriuss, diagramDescription)) {
+        for (final Layer layer : getAllLayers(enabledViewpoints, diagramDescription)) {
             for (ToolSection currentSection : layer.getToolSections()) {
                 if (!nameToSection.containsKey(currentSection.getName())) {
                     nameToSection.put(currentSection.getName(), currentSection);
@@ -170,16 +169,16 @@ public class DiagramComponentizationManager  {
      * Get all the tools available for a diagram description. The function will
      * check direct and indirect children.
      * 
-     * @param enabledSiriuss
+     * @param enabledViewpoints
      *            the viewpoints to consider.
      * @param diagramDescription
      *            the diagram description
      * @return all the available tools
      */
-    public EList<AbstractToolDescription> getAllTools(final Collection<Viewpoint> enabledSiriuss, final DiagramDescription diagramDescription) {
+    public EList<AbstractToolDescription> getAllTools(final Collection<Viewpoint> enabledViewpoints, final DiagramDescription diagramDescription) {
         final Collection<AbstractToolDescription> tools = new ArrayList<AbstractToolDescription>(diagramDescription.getAllTools());
-        if (enabledSiriuss != null) {
-            for (final Layer layer : ComponentizationHelper.getContributedLayers(diagramDescription, enabledSiriuss)) {
+        if (enabledViewpoints != null) {
+            for (final Layer layer : ComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
                 tools.addAll(layer.getAllTools());
             }
         }
@@ -190,41 +189,41 @@ public class DiagramComponentizationManager  {
     /**
      * Get the tool entries available for a section.
      * 
-     * @param enabledSiriuss
+     * @param enabledViewpoints
      *            the viewpoints to consider.
      * @param section
      *            the section
      * @return all the available tools
      */
-    public EList<ToolEntry> getToolEntries(final Collection<Viewpoint> enabledSiriuss, final ToolSection section) {
-        return getAllToolEntries(enabledSiriuss, section, false);
+    public EList<ToolEntry> getToolEntries(final Collection<Viewpoint> enabledViewpoints, final ToolSection section) {
+        return getAllToolEntries(enabledViewpoints, section, false);
     }
 
     /**
      * Get all the tool entries available for a section. The function will check
      * direct and indirect children.
      * 
-     * @param enabledSiriuss
+     * @param enabledViewpoints
      *            the viewpoints to consider.
      * @param section
      *            the section
      * @return all the available tools
      */
-    public EList<ToolEntry> getAllToolEntries(final Collection<Viewpoint> enabledSiriuss, final ToolSection section) {
-        return getAllToolEntries(enabledSiriuss, section, true);
+    public EList<ToolEntry> getAllToolEntries(final Collection<Viewpoint> enabledViewpoints, final ToolSection section) {
+        return getAllToolEntries(enabledViewpoints, section, true);
     }
 
-    private EList<ToolEntry> getAllToolEntries(final Collection<Viewpoint> enabledSiriuss, final ToolSection section, boolean recursive) {
+    private EList<ToolEntry> getAllToolEntries(final Collection<Viewpoint> enabledViewpoints, final ToolSection section, boolean recursive) {
         final EList<ToolEntry> toolEntries = new BasicEList<ToolEntry>();
 
         final EObject container = section.eContainer();
 
         if (container instanceof Layer) {
-            if (section.getName() != null && enabledSiriuss != null) {
+            if (section.getName() != null && enabledViewpoints != null) {
                 final Layer parentLayer = (Layer) container;
-                final DiagramDescription diagramDescription = getDiagramDescription(enabledSiriuss, parentLayer);
+                final DiagramDescription diagramDescription = getDiagramDescription(enabledViewpoints, parentLayer);
 
-                for (final Layer layer : getAllLayers(enabledSiriuss, diagramDescription)) {
+                for (final Layer layer : getAllLayers(enabledViewpoints, diagramDescription)) {
 
                     for (final ToolSection toolSection : layer.getToolSections()) {
 
@@ -252,13 +251,13 @@ public class DiagramComponentizationManager  {
         return entries;
     }
 
-    private DiagramDescription getDiagramDescription(final Collection<Viewpoint> enabledSiriuss, final Layer layer) {
+    private DiagramDescription getDiagramDescription(final Collection<Viewpoint> enabledViewpoints, final Layer layer) {
         DiagramDescription diagramDescription = null;
         final EObject layerContainer = layer.eContainer();
         if (layerContainer instanceof DiagramDescription) {
             diagramDescription = (DiagramDescription) layerContainer;
         } else if (layerContainer instanceof DiagramExtensionDescription) {
-            diagramDescription = ComponentizationHelper.getDiagramDescription((DiagramExtensionDescription) layerContainer, enabledSiriuss);
+            diagramDescription = ComponentizationHelper.getDiagramDescription((DiagramExtensionDescription) layerContainer, enabledViewpoints);
         }
         return diagramDescription;
     }
@@ -266,18 +265,18 @@ public class DiagramComponentizationManager  {
     /**
      * Get the tools available for a tool group.
      * 
-     * @param enabledSiriuss
+     * @param enabledViewpoints
      *            the viewpoints to consider.
      * @param toolGroup
      *            the group of tools
      * @return the available tools
      */
-    public EList<AbstractToolDescription> getTools(final Collection<Viewpoint> enabledSiriuss, final ToolGroup toolGroup) {
+    public EList<AbstractToolDescription> getTools(final Collection<Viewpoint> enabledViewpoints, final ToolGroup toolGroup) {
 
         final DiagramDescription diagramDescription = getDiagramDescription(toolGroup);
         final EList<AbstractToolDescription> tools = new BasicEList<AbstractToolDescription>();
         tools.addAll(toolGroup.getTools());
-        for (final Layer layer : getAllLayers(enabledSiriuss, diagramDescription)) {
+        for (final Layer layer : getAllLayers(enabledViewpoints, diagramDescription)) {
             tools.addAll(getToolsFromToolSection(layer.getToolSections(), toolGroup));
         }
         return tools;
@@ -307,7 +306,7 @@ public class DiagramComponentizationManager  {
         DiagramDescription diagramDescription;
 
         if (eObject instanceof DiagramExtensionDescription) {
-            diagramDescription = ComponentizationHelper.getDiagramDescription((DiagramExtensionDescription) eObject, SiriusRegistry.getInstance().getSiriuss());
+            diagramDescription = ComponentizationHelper.getDiagramDescription((DiagramExtensionDescription) eObject, ViewpointRegistry.getInstance().getViewpoints());
         } else {
             diagramDescription = (DiagramDescription) eObject;
         }

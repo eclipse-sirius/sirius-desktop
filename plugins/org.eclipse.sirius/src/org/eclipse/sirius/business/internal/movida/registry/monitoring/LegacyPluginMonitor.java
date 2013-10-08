@@ -23,8 +23,8 @@ import com.google.common.collect.Sets;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.componentization.ISiriusComponent;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
-import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistry;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * @author pierre-charles.david@obeo.fr
  */
 public class LegacyPluginMonitor extends AbstractSiriusResourceMonitor {
-    private final SiriusRegistry registry;
+    private final ViewpointRegistry registry;
 
     private final Set<URI> knownURIs = Sets.newHashSet();
 
@@ -44,7 +44,7 @@ public class LegacyPluginMonitor extends AbstractSiriusResourceMonitor {
      * @param registry
      *            the registry to which the VSMs are registered.
      */
-    public LegacyPluginMonitor(SiriusRegistry registry) {
+    public LegacyPluginMonitor(ViewpointRegistry registry) {
         this.registry = registry;
     }
 
@@ -89,7 +89,7 @@ public class LegacyPluginMonitor extends AbstractSiriusResourceMonitor {
         } else {
             notifyResourcesEvents(Collections.<URI> emptySet(), Collections.singleton(uri), Collections.<URI> emptySet());
         }
-        return ImmutableSet.copyOf(Iterables.filter(registry.getSiriuss(), new Predicate<Viewpoint>() {
+        return ImmutableSet.copyOf(Iterables.filter(registry.getViewpoints(), new Predicate<Viewpoint>() {
             public boolean apply(Viewpoint input) {
                 return input.eResource() != null && input.eResource().getURI().equals(uri);
             }
@@ -105,7 +105,7 @@ public class LegacyPluginMonitor extends AbstractSiriusResourceMonitor {
      */
     public void disposeFromPlugin(Viewpoint viewpoint) {
         if (viewpoint != null) {
-            Option<URI> uri = new SiriusQuery(viewpoint).getSiriusURI();
+            Option<URI> uri = new ViewpointQuery(viewpoint).getViewpointURI();
             if (uri.some()) {
                 notifyResourcesEvents(Collections.singleton(uri.get()), Collections.<URI> emptySet(), Collections.<URI> emptySet());
                 knownURIs.remove(uri.get());

@@ -32,14 +32,14 @@ import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelectionCallback;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeSiriusSelectionCommand;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -241,13 +241,13 @@ public class UserSession {
 
     private void selectSiriuss(final Collection<Viewpoint> viewpoints, boolean deselectOtherSiriuss) {
 
-        Collection<Viewpoint> selectedSiriuss = session.getSelectedSiriuss(false);
+        Collection<Viewpoint> selectedSiriuss = session.getSelectedViewpoints(false);
 
         Set<Viewpoint> viewpointsToDeselect = Sets.newHashSet();
         Set<Viewpoint> viewpointsToSelect = Sets.newHashSet();
 
         for (final Viewpoint viewpoint : viewpoints) {
-            final Viewpoint vp = SiriusResourceHelper.getCorrespondingSirius(session, viewpoint);
+            final Viewpoint vp = SiriusResourceHelper.getCorrespondingViewpoint(session, viewpoint);
             if (!selectedSiriuss.contains(vp)) {
                 viewpointsToSelect.add(vp);
             }
@@ -261,7 +261,7 @@ public class UserSession {
             }
         }
 
-        final SiriusSelectionCallback selectionCallback = new SiriusSelectionCallback();
+        final ViewpointSelectionCallback selectionCallback = new ViewpointSelectionCallback();
         final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
 
         final Command command = new ChangeSiriusSelectionCommand(session, selectionCallback, viewpointsToSelect, viewpointsToDeselect, new NullProgressMonitor());
@@ -288,7 +288,7 @@ public class UserSession {
     }
 
     private Viewpoint findSiriusByName(String vpName) {
-        for (Viewpoint candidate : SiriusRegistry.getInstance().getSiriuss()) {
+        for (Viewpoint candidate : ViewpointRegistry.getInstance().getViewpoints()) {
             if (vpName.equals(candidate.getName())) {
                 return candidate;
             }

@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 
-import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
@@ -88,7 +88,7 @@ public class DLineSpec extends DLineImpl {
                 @Override
                 public void notifyChanged(final Notification msg) {
                     if (msg.getEventType() != Notification.REMOVING_ADAPTER
-                            && !Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, DesignerPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null)) {
+                            && !Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null)) {
                         sync.refresh(DLineSpec.this);
                     }
                 }

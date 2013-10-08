@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.tools.internal.properties;
 
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
@@ -30,7 +30,7 @@ public class SiriusDiagramEditorPropertiesProvider implements IPropertiesProvide
     public boolean getProperty(final int key) throws IllegalArgumentException {
 
         if (IPropertiesProvider.KEY_AUTO_REFRESH == key) {
-            return Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, DesignerPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
+            return Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
         }
         throw IPropertiesProvider.EXCEPTION_PROPERTY_NOT_FOUND;
     }

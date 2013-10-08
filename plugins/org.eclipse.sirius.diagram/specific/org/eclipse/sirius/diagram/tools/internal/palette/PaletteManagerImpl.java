@@ -328,18 +328,18 @@ public class PaletteManagerImpl implements PaletteManager {
         final List<Layer> deactivatedLayers = PaletteManagerImpl.getDeactivatedLayers(dDiagram, session, description);
 
         // Update the filters
-        for (final ToolSection section : new DiagramComponentizationManager().getRootPaletteSections(session.getSelectedSiriuss(false), description)) {
-            updateFilters(session, new DiagramComponentizationManager().getAllToolEntries(session.getSelectedSiriuss(false), section));
+        for (final ToolSection section : new DiagramComponentizationManager().getRootPaletteSections(session.getSelectedViewpoints(false), description)) {
+            updateFilters(session, new DiagramComponentizationManager().getAllToolEntries(session.getSelectedViewpoints(false), section));
         }
 
-        for (final ToolSection section : new DiagramComponentizationManager().getRootPaletteSections(session.getSelectedSiriuss(false), description)) {
+        for (final ToolSection section : new DiagramComponentizationManager().getRootPaletteSections(session.getSelectedViewpoints(false), description)) {
             Option<SectionPaletteDrawer> paletteEntry = getPaletteEntry(paletteRoot, new IdentifiedElementQuery(section).getLabel(), SectionPaletteDrawer.class);
             if (!paletteEntry.some()) {
                 final PaletteContainer container = PaletteManagerImpl.createPaletteDrawner(section);
-                updateContainer(session, dDiagram, container, new DiagramComponentizationManager().getAllToolEntries(session.getSelectedSiriuss(false), section));
+                updateContainer(session, dDiagram, container, new DiagramComponentizationManager().getAllToolEntries(session.getSelectedViewpoints(false), section));
                 paletteRoot.add(container);
             } else {
-                updateContainer(session, dDiagram, paletteEntry.get(), new DiagramComponentizationManager().getAllToolEntries(session.getSelectedSiriuss(false), section));
+                updateContainer(session, dDiagram, paletteEntry.get(), new DiagramComponentizationManager().getAllToolEntries(session.getSelectedViewpoints(false), section));
             }
         }
 
@@ -611,7 +611,7 @@ public class PaletteManagerImpl implements PaletteManager {
     // all - activated = deactivated
     private static List<Layer> getDeactivatedLayers(final DDiagram dDiagram, final Session session, final DiagramDescription description) {
         // Copy of all layers
-        List<Layer> deactivatedLayers = Lists.newArrayList(new DiagramComponentizationManager().getAllLayers(session.getSelectedSiriuss(false), description));
+        List<Layer> deactivatedLayers = Lists.newArrayList(new DiagramComponentizationManager().getAllLayers(session.getSelectedViewpoints(false), description));
 
         // Use a copy of activated layers to avoid a potential
         // ConcurrentModificationException linked to async execution of this
@@ -709,7 +709,7 @@ public class PaletteManagerImpl implements PaletteManager {
                         /**/
                         listenersManager.addListenersForFilters(((AbstractToolDescription) toolEntry).getFilters());
                     } else if (toolEntry instanceof ToolGroup) {
-                        updateFilters(session, new DiagramComponentizationManager().getTools(session.getSelectedSiriuss(false), (ToolGroup) toolEntry));
+                        updateFilters(session, new DiagramComponentizationManager().getTools(session.getSelectedViewpoints(false), (ToolGroup) toolEntry));
                     }
                 }
             }
@@ -755,7 +755,7 @@ public class PaletteManagerImpl implements PaletteManager {
                     paletteStack = Options.newSome(new ToolGroupPaletteStack(((ToolGroup) toolEntry).getName()));
                     paletteWasCreated = true;
                 }
-                for (final AbstractToolDescription tool : new DiagramComponentizationManager().getTools(session.getSelectedSiriuss(false), (ToolGroup) toolEntry)) {
+                for (final AbstractToolDescription tool : new DiagramComponentizationManager().getTools(session.getSelectedViewpoints(false), (ToolGroup) toolEntry)) {
                     /*
                      * do not create a new entry for the tool if it should not
                      * be displayed

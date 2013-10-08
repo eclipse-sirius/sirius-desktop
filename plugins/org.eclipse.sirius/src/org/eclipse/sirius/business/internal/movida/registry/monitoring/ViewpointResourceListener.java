@@ -15,16 +15,16 @@ import java.util.Set;
 import org.eclipse.emf.common.util.URI;
 
 /**
- * A <code>SiriusResourceListener</code> can be notified of the appearance,
+ * A <code>ViewpointResourceListener</code> can be notified of the appearance,
  * disappearance and changes in resources which can potentially contain
- * Sirius definitions.
+ * viewpoint definitions.
  * <p>
  * Note: a resource move is modeled by a removal followed by an addition,
  * whether or not the resource's content changes during the move.
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public interface SiriusResourceListener {
+public interface ViewpointResourceListener {
     /**
      * Invoked when relevant changes in resources potentially containing VSMs
      * are detected.
@@ -32,7 +32,7 @@ public interface SiriusResourceListener {
      * All the different kinds of notifications are grouped in a single call to
      * this method so that logically consistent changes may be notified in a
      * single atomic notification, although this is not a strict requirement for
-     * {@link SiriusResourceMonitor}s.
+     * {@link ViewpointResourceMonitor}s.
      * <p>
      * Note that a given URI can not appear in more than one of the parameters:
      * the sets are mutually exclusive.
@@ -56,5 +56,5 @@ public interface SiriusResourceListener {
      *            accessible and (re)loading them will yield the updated
      *            content.
      */
-    void resourceEvent(SiriusResourceMonitor origin, Set<URI> removed, Set<URI> added, Set<URI> changed);
+    void resourceEvent(ViewpointResourceMonitor origin, Set<URI> removed, Set<URI> added, Set<URI> changed);
 }

@@ -150,7 +150,7 @@ public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint
         final ValidationRule firstFailingRule = null;
         final Session session = SessionManager.INSTANCE.getSession(semantic);
         if (session != null) {
-            final Iterator<Viewpoint> it = session.getSelectedSiriuss(false).iterator();
+            final Iterator<Viewpoint> it = session.getSelectedViewpoints(false).iterator();
             while (it.hasNext() && firstFailingRule == null) {
                 final Viewpoint vp = it.next();
                 if (vp.getValidationSet() != null) {

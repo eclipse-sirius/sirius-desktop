@@ -400,7 +400,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
     private Set<Viewpoint> collectSelectedSiriuss() {
         final Set<Viewpoint> result = new HashSet<Viewpoint>();
         for (final Session session : this.doGetSessions()) {
-            result.addAll(session.getSelectedSiriuss(false));
+            result.addAll(session.getSelectedViewpoints(false));
         }
         return result;
     }

@@ -44,7 +44,7 @@ import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperat
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.session.SessionHelper;
-import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelection;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SessionFileCreationWizardPage;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SessionKindSelectionWizardPage;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -186,7 +186,7 @@ public class NewSessionWizard extends Wizard implements INewWizard {
 
                 public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                     if (session != null && !semanticResourceURIs.isEmpty()) {
-                        SiriusSelection.openSiriussSelectionDialog(session);
+                        ViewpointSelection.openSiriussSelectionDialog(session);
                         SessionHelper.openStartupRepresentations(session, monitor);
                     }
                     IFile newReprepresentationsFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(sessionFileCreationPage.getURI().toPlatformString(true)));

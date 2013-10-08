@@ -183,7 +183,7 @@ public class SynchronizeInstanceRoleSemanticOrderingOperation extends AbstractMo
             List<AbstractToolDescription> allTools;
             Session session = SessionManager.INSTANCE.getSession(diagramElement);
             if (session != null) {
-                allTools = new DiagramComponentizationManager().getAllTools(session.getSelectedSiriuss(false), sequenceDiagram.getDescription());
+                allTools = new DiagramComponentizationManager().getAllTools(session.getSelectedViewpoints(false), sequenceDiagram.getDescription());
             } else {
                 allTools = sequenceDiagram.getDescription().getAllTools();
             }

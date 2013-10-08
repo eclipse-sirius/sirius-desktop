@@ -23,11 +23,11 @@ import com.google.common.collect.Sets;
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public abstract class AbstractSiriusResourceMonitor implements SiriusResourceMonitor {
+public abstract class AbstractSiriusResourceMonitor implements ViewpointResourceMonitor {
     /**
      * The listener to notify when we detect interesting events.
      */
-    protected SiriusResourceListener listener;
+    protected ViewpointResourceListener listener;
 
     /**
      * Whether or not we are actively monitoring.
@@ -37,7 +37,7 @@ public abstract class AbstractSiriusResourceMonitor implements SiriusResourceMon
     /**
      * {@inheritDoc}
      */
-    public synchronized void setListener(SiriusResourceListener listener) {
+    public synchronized void setListener(ViewpointResourceListener listener) {
         this.listener = listener;
     }
 

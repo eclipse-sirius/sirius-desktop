@@ -71,7 +71,7 @@ public class LayersContentProvider implements IStructuredContentProvider {
     public Object[] getElements(final Object inputElement) {
         if (inputElement instanceof DDiagram) {
             final DiagramDescription diagramDesc = ((DDiagram) inputElement).getDescription();
-            final Collection<Layer> allLayers = new DiagramComponentizationManager().getAllLayers(session.getSelectedSiriuss(false), diagramDesc);
+            final Collection<Layer> allLayers = new DiagramComponentizationManager().getAllLayers(session.getSelectedViewpoints(false), diagramDesc);
             final Collection<Layer> layers = new ArrayList<Layer>();
             for (final Layer layer : allLayers) {
                 if (layer != null && layer != diagramDesc.getDefaultLayer()) {

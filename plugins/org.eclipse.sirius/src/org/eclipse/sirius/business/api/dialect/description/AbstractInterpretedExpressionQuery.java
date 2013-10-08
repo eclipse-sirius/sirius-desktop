@@ -210,7 +210,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
 
             if (target != null) {
                 EObject vp = target;
-                // We get the corresponding Sirius
+                // We get the corresponding viewpoint
                 while (vp != null && !(vp instanceof Viewpoint)) {
                     vp = vp.eContainer();
                 }

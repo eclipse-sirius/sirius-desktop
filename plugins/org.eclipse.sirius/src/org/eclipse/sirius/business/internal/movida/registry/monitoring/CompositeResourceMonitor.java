@@ -27,11 +27,11 @@ import com.google.common.collect.Maps;
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class CompositeResourceMonitor extends AbstractSiriusResourceMonitor implements SiriusResourceListener, Comparator<URI> {
+public class CompositeResourceMonitor extends AbstractSiriusResourceMonitor implements ViewpointResourceListener, Comparator<URI> {
     /**
      * The aggregated monitors.
      */
-    private final List<SiriusResourceMonitor> monitors = Lists.newArrayList();
+    private final List<ViewpointResourceMonitor> monitors = Lists.newArrayList();
 
     /**
      * The names of the aggregated monitors, in the same order as in
@@ -43,7 +43,7 @@ public class CompositeResourceMonitor extends AbstractSiriusResourceMonitor impl
      * A map to keep track of which monitor detected each of the currently
      * active URIs;
      */
-    private final Map<URI, SiriusResourceMonitor> origins = Maps.newHashMap();
+    private final Map<URI, ViewpointResourceMonitor> origins = Maps.newHashMap();
 
     /**
      * Adds a new monitor to this composite.
@@ -58,7 +58,7 @@ public class CompositeResourceMonitor extends AbstractSiriusResourceMonitor impl
      *             already registered here, or if the specified name is already
      *             in use.
      */
-    public synchronized void addMonitor(String name, SiriusResourceMonitor monitor) throws IllegalStateException {
+    public synchronized void addMonitor(String name, ViewpointResourceMonitor monitor) throws IllegalStateException {
         Preconditions.checkState(!this.isRunning() && !monitor.isRunning(), "New monitors can not be added while running.");
         Preconditions.checkState(!monitors.contains(monitor), "The monitor is already registered in the composite.");
         Preconditions.checkState(!names.contains(name), "A monitor is already registered under the name " + name);
@@ -73,7 +73,7 @@ public class CompositeResourceMonitor extends AbstractSiriusResourceMonitor impl
      */
     public synchronized void start() {
         this.running = true;
-        for (SiriusResourceMonitor monitor : monitors) {
+        for (ViewpointResourceMonitor monitor : monitors) {
             monitor.start();
         }
     }
@@ -82,7 +82,7 @@ public class CompositeResourceMonitor extends AbstractSiriusResourceMonitor impl
      * {@inheritDoc}
      */
     public synchronized void stop() {
-        for (SiriusResourceMonitor monitor : monitors) {
+        for (ViewpointResourceMonitor monitor : monitors) {
             monitor.stop();
         }
         origins.clear();
@@ -115,7 +115,7 @@ public class CompositeResourceMonitor extends AbstractSiriusResourceMonitor impl
      * <p>
      * {@inheritDoc}
      */
-    public synchronized void resourceEvent(SiriusResourceMonitor origin, Set<URI> removed, Set<URI> added, Set<URI> changed) {
+    public synchronized void resourceEvent(ViewpointResourceMonitor origin, Set<URI> removed, Set<URI> added, Set<URI> changed) {
         if (this.listener != null) {
             for (URI a : Iterables.concat(added, changed)) {
                 origins.put(a, origin);
@@ -140,8 +140,8 @@ public class CompositeResourceMonitor extends AbstractSiriusResourceMonitor impl
      * {@inheritDoc}
      */
     public synchronized int compare(URI uri1, URI uri2) {
-        SiriusResourceMonitor src1 = origins.get(uri1);
-        SiriusResourceMonitor src2 = origins.get(uri2);
+        ViewpointResourceMonitor src1 = origins.get(uri1);
+        ViewpointResourceMonitor src2 = origins.get(uri2);
         if (src1 != null && src2 != null) {
             int index1 = monitors.indexOf(src1);
             int index2 = monitors.indexOf(src2);

@@ -284,7 +284,7 @@ public class DDiagramSynchronizer {
             result.add(mandatoryLayer);
         }
         result.addAll(Collections2.filter(this.description.getAdditionalLayers(), isActiveByDefault));
-        result.addAll(Collections2.filter(ComponentizationHelper.getContributedLayers(this.description, this.session.getSelectedSiriuss(false)), isActiveByDefault));
+        result.addAll(Collections2.filter(ComponentizationHelper.getContributedLayers(this.description, this.session.getSelectedViewpoints(false)), isActiveByDefault));
         return result;
     }
 
@@ -325,7 +325,7 @@ public class DDiagramSynchronizer {
             result.add(mandatoryLayer);
         }
         result.addAll(Collections2.filter(this.description.getAdditionalLayers(), isMandatory));
-        result.addAll(Collections2.filter(ComponentizationHelper.getContributedLayers(this.description, this.session.getSelectedSiriuss(false)), isMandatory));
+        result.addAll(Collections2.filter(ComponentizationHelper.getContributedLayers(this.description, this.session.getSelectedViewpoints(false)), isMandatory));
         return result;
     }
 

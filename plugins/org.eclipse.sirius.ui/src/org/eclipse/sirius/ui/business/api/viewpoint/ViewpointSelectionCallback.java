@@ -35,51 +35,51 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * 
  * @author mchauvin
  */
-public class SiriusSelectionCallback implements SiriusSelection.Callback {
+public class ViewpointSelectionCallback implements ViewpointSelection.Callback {
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelection.Callback#deselectSirius(org.eclipse.sirius.viewpoint.description.Viewpoint)
+     * @see org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection.Callback#deselectSirius(org.eclipse.sirius.viewpoint.description.Viewpoint)
      */
-    public void deselectSirius(final Viewpoint deselectedSirius, final Session session) {
-        deselectSirius(deselectedSirius, session, new NullProgressMonitor());
+    public void deselectViewpoint(final Viewpoint deselectedViewpoint, final Session session) {
+        deselectViewpoint(deselectedViewpoint, session, new NullProgressMonitor());
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelection.Callback#selectSirius(org.eclipse.sirius.viewpoint.description.Viewpoint)
+     * @see org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection.Callback#selectSirius(org.eclipse.sirius.viewpoint.description.Viewpoint)
      */
-    public void selectSirius(final Viewpoint viewpoint, final Session session) {
-        selectSirius(viewpoint, session, true, new NullProgressMonitor());
+    public void selectViewpoint(final Viewpoint viewpoint, final Session session) {
+        selectViewpoint(viewpoint, session, true, new NullProgressMonitor());
     }
 
     /**
      * {@inheritDoc}
      */
-    public void selectSirius(Viewpoint viewpoint, Session session, boolean createNewRepresentations) {
-        selectSirius(viewpoint, session, createNewRepresentations, new NullProgressMonitor());
+    public void selectViewpoint(Viewpoint viewpoint, Session session, boolean createNewRepresentations) {
+        selectViewpoint(viewpoint, session, createNewRepresentations, new NullProgressMonitor());
     }
 
     /**
      * {@inheritDoc}
      */
-    public void selectSirius(Viewpoint viewpoint, Session session, IProgressMonitor monitor) {
-        selectSirius(viewpoint, session, true, monitor);
+    public void selectViewpoint(Viewpoint viewpoint, Session session, IProgressMonitor monitor) {
+        selectViewpoint(viewpoint, session, true, monitor);
     }
 
     /**
      * {@inheritDoc}
      */
-    public void selectSirius(Viewpoint viewpoint, Session session, boolean createNewRepresentations, IProgressMonitor monitor) {
+    public void selectViewpoint(Viewpoint viewpoint, Session session, boolean createNewRepresentations, IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Sirius selection : " + viewpoint.getName(), 3);
+            monitor.beginTask("Viewpoint selection : " + viewpoint.getName(), 3);
             // Get the corresponding viewpoint in the resourceSet of the
             // editingDomain
-            final Viewpoint editingDomainSirius = SiriusResourceHelper.getCorrespondingSirius(session, viewpoint);
+            final Viewpoint editingDomainViewpoint = SiriusResourceHelper.getCorrespondingViewpoint(session, viewpoint);
             boolean newView = false;
-            if (editingDomainSirius != null && !SiriusResourceHelper.isViewExistForSirius(session, editingDomainSirius)) {
+            if (editingDomainViewpoint != null && !SiriusResourceHelper.isViewExistForSirius(session, editingDomainViewpoint)) {
                 if (!session.getSemanticResources().isEmpty()) {
                     /* get all the roots */
                     final List<EObject> roots = Lists.newArrayList();
@@ -92,8 +92,8 @@ public class SiriusSelectionCallback implements SiriusSelection.Callback {
                      * create view which try to init representations for each
                      * root
                      */
-                    session.createView(editingDomainSirius, roots, createNewRepresentations, new SubProgressMonitor(monitor, 1));
-                    DialectManager.INSTANCE.updateRepresentationsExtendedBy(session, editingDomainSirius, true);
+                    session.createView(editingDomainViewpoint, roots, createNewRepresentations, new SubProgressMonitor(monitor, 1));
+                    DialectManager.INSTANCE.updateRepresentationsExtendedBy(session, editingDomainViewpoint, true);
                     newView = true;
                 }
             }
@@ -105,16 +105,16 @@ public class SiriusSelectionCallback implements SiriusSelection.Callback {
                     // renamed) so we remove it from
                     // the session
                     session.removeSelectedView(view, new SubProgressMonitor(monitor, 1));
-                    DialectManager.INSTANCE.updateRepresentationsExtendedBy(session, editingDomainSirius, false);
+                    DialectManager.INSTANCE.updateRepresentationsExtendedBy(session, editingDomainViewpoint, false);
                 }
             }
             if (!newView) {
                 // Add the view to the selected list
                 for (final DView view : session.getOwnedViews()) {
                     if (view.getViewpoint() != null && EqualityHelper.areEquals(view.getViewpoint(), viewpoint)) {
-                        if (!session.getSelectedSiriuss(false).contains(view.getViewpoint())) {
+                        if (!session.getSelectedViewpoints(false).contains(view.getViewpoint())) {
                             session.addSelectedView(view, new SubProgressMonitor(monitor, 1));
-                            DialectManager.INSTANCE.updateRepresentationsExtendedBy(session, editingDomainSirius, true);
+                            DialectManager.INSTANCE.updateRepresentationsExtendedBy(session, editingDomainViewpoint, true);
                         }
                     }
                 }
@@ -127,14 +127,14 @@ public class SiriusSelectionCallback implements SiriusSelection.Callback {
     /**
      * {@inheritDoc}
      */
-    public void deselectSirius(Viewpoint deselectedSirius, Session session, IProgressMonitor monitor) {
+    public void deselectViewpoint(Viewpoint deselectedViewpoint, Session session, IProgressMonitor monitor) {
         try {
-            monitor.beginTask("Sirius deselection : " + deselectedSirius.getName(), 1);
+            monitor.beginTask("Viewpoint deselection : " + deselectedViewpoint.getName(), 1);
             for (final DView view : session.getSelectedViews()) {
-                if (view.getViewpoint() != null && EqualityHelper.areEquals(view.getViewpoint(), deselectedSirius)) {
+                if (view.getViewpoint() != null && EqualityHelper.areEquals(view.getViewpoint(), deselectedViewpoint)) {
                     session.removeSelectedView(view, new SubProgressMonitor(monitor, 1));
-                    final Viewpoint editingDomainSirius = SiriusResourceHelper.getCorrespondingSirius(session, deselectedSirius);
-                    DialectManager.INSTANCE.updateRepresentationsExtendedBy(session, editingDomainSirius, false);
+                    final Viewpoint editingDomainViewpoint = SiriusResourceHelper.getCorrespondingViewpoint(session, deselectedViewpoint);
+                    DialectManager.INSTANCE.updateRepresentationsExtendedBy(session, editingDomainViewpoint, false);
                 }
             }
         } finally {

@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.tools.internal.uri.SiriusProtocolParser;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.DiagramDescription;
@@ -134,7 +134,7 @@ public final class ComponentizationHelper {
         DiagramDescription diagramDescriptionFound = null;
         for (Iterator<Viewpoint> iterator = viewpoints.iterator(); iterator.hasNext() && diagramDescriptionFound == null; /* */) {
             Viewpoint viewpoint = iterator.next();
-            for (Iterator<RepresentationDescription> iterator2 = new SiriusQuery(viewpoint).getAllRepresentationDescriptions().iterator(); iterator2.hasNext() && diagramDescriptionFound == null; /* */) {
+            for (Iterator<RepresentationDescription> iterator2 = new ViewpointQuery(viewpoint).getAllRepresentationDescriptions().iterator(); iterator2.hasNext() && diagramDescriptionFound == null; /* */) {
                 RepresentationDescription representation = iterator2.next();
                 if (representation instanceof DiagramDescription) {
                     if (ComponentizationHelper.match(representation, diagramExtensionDescription)) {
@@ -143,7 +143,7 @@ public final class ComponentizationHelper {
                 }
             }
             if (diagramDescriptionFound == null) {
-                for (final RepresentationExtensionDescription representation : new SiriusQuery(viewpoint).getAllRepresentationExtensionDescriptions()) {
+                for (final RepresentationExtensionDescription representation : new ViewpointQuery(viewpoint).getAllRepresentationExtensionDescriptions()) {
                     if (representation instanceof DiagramExtensionDescription) {
                         final DiagramExtensionDescription diagramExtensionDescription2 = (DiagramExtensionDescription) representation;
                         if (ComponentizationHelper.match(diagramExtensionDescription2, diagramExtensionDescription)) {
@@ -213,7 +213,7 @@ public final class ComponentizationHelper {
     public static boolean isExtendedBy(final Viewpoint extensionSirius, final Viewpoint baseSirius) {
         boolean result = false;
         for (RepresentationExtensionDescription representationExtensionDescription : extensionSirius.getOwnedRepresentationExtensions()) {
-            for (RepresentationDescription representationDescription : new SiriusQuery(baseSirius).getAllRepresentationDescriptions()) {
+            for (RepresentationDescription representationDescription : new ViewpointQuery(baseSirius).getAllRepresentationDescriptions()) {
                 result = result || ComponentizationHelper.match(representationDescription, representationExtensionDescription);
             }
         }

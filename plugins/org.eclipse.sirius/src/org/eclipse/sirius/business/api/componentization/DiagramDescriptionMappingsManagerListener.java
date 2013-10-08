@@ -25,9 +25,9 @@ public interface DiagramDescriptionMappingsManagerListener {
 
     /**
      * This method is called when mappings have been computed.
-     * @param enabledSiriuss 
+     * @param enabledViewpoints 
      */
-    void mappingsComputed(Collection<Viewpoint> enabledSiriuss);
+    void mappingsComputed(Collection<Viewpoint> enabledViewpoints);
 
     /**
      * This method is called when the description mappings manager will be

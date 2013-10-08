@@ -15,11 +15,11 @@ import org.eclipse.jface.action.Action;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelection;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
- * An actions opening a dialog allowing to change the {@link SiriusSelection}
+ * An actions opening a dialog allowing to change the {@link ViewpointSelection}
  * .
  * 
  * @author alagarde
@@ -59,7 +59,7 @@ public class OpenSiriusSelectionAction extends Action {
         final Session session = SessionManager.INSTANCE.getExistingSession(sessionURI);
         PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
             public void run() {
-                SiriusSelection.openSiriussSelectionDialog(session);
+                ViewpointSelection.openSiriussSelectionDialog(session);
             }
         });
     }

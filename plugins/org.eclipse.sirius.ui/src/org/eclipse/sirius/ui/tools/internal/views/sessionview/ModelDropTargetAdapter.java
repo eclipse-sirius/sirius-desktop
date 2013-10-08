@@ -46,7 +46,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.SessionHelper;
-import org.eclipse.sirius.ui.business.api.viewpoint.SiriusSelection;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.ui.tools.internal.wizards.CreateSessionResourceWizard;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -190,7 +190,7 @@ public class ModelDropTargetAdapter extends ViewerDropAdapter {
                 session.open(new NullProgressMonitor());
                 monitor.done();
             }
-            SiriusSelection.openSiriussSelectionDialog(session);
+            ViewpointSelection.openSiriussSelectionDialog(session);
             monitor.worked(1);
             final Collection<DRepresentation> startupCandidates = SessionHelper.findAllStartupCandidates(session);
             String origin = null;
@@ -224,7 +224,7 @@ public class ModelDropTargetAdapter extends ViewerDropAdapter {
                 final Session session = wizard.getCreatedSession();
                 Command addSemanticResourceCmd = new AddSemanticResourceCommand(session, semanticModelURI, new NullProgressMonitor());
                 session.getTransactionalEditingDomain().getCommandStack().execute(addSemanticResourceCmd);
-                SiriusSelection.openSiriussSelectionDialog(session);
+                ViewpointSelection.openSiriussSelectionDialog(session);
                 final Collection<DRepresentation> startupCandidates = SessionHelper.findAllStartupCandidates(session);
                 String origin = null;
                 if (session.getSessionResource().getURI().segmentCount() > 1) {

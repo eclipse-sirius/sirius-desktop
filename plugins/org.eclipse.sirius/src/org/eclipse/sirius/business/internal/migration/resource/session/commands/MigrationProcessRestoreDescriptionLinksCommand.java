@@ -34,7 +34,7 @@ public class MigrationProcessRestoreDescriptionLinksCommand extends IdentityComm
     /**
      * This will hold a reference to all description files providing viewpoints
      * according to
-     * {@link org.eclipse.sirius.business.api.componentization.SiriusRegistry#getSiriuss()}
+     * {@link org.eclipse.sirius.business.api.componentization.ViewpointRegistry#getViewpoints()}
      * .
      */
     private Set<Resource> descriptionFiles;

@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
 import com.google.common.base.Preconditions;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.query.SiriusURIQuery;
+import org.eclipse.sirius.business.api.query.ViewpointURIQuery;
 
 /**
  * The converter used to normalize Sirius URIs into the URI of the concrete
@@ -25,7 +25,7 @@ import org.eclipse.sirius.business.api.query.SiriusURIQuery;
  * @author pierre-charles.david@obeo.fr
  */
 public final class SiriusURIConverter extends URIConverterImpl {
-    private final SiriusRegistry registry;
+    private final ViewpointRegistry registry;
 
     /**
      * Constructor.
@@ -34,7 +34,7 @@ public final class SiriusURIConverter extends URIConverterImpl {
      *            the registry used to translate logical Sirius URIs into
      *            physical URIs.
      */
-    public SiriusURIConverter(SiriusRegistry registry) {
+    public SiriusURIConverter(ViewpointRegistry registry) {
         this.registry = Preconditions.checkNotNull(registry);
     }
 
@@ -48,8 +48,8 @@ public final class SiriusURIConverter extends URIConverterImpl {
      */
     @Override
     public URI normalize(URI uri) {
-        if (SiriusURIQuery.isValidSiriusURI(uri)) {
-            SiriusURIQuery q = new SiriusURIQuery(uri);
+        if (ViewpointURIQuery.isValidViewpointURI(uri)) {
+            ViewpointURIQuery q = new ViewpointURIQuery(uri);
             Option<Entry> entry = registry.getEntry(q.getBaseURI());
             if (entry.some()) {
                 return entry.get().getResource().getURI();

@@ -21,8 +21,8 @@ import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.window.Window;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
-import org.eclipse.sirius.business.api.query.SiriusQuery;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -105,7 +105,7 @@ public class SiriusDependenciesSelectionDialog {
 
     private Option<Set<URI>> selectSiriuss(Shell shell, EAttribute attribute, String title, String message) {
         List<URI> available = getAvailableSiriussURIs();
-        available.remove(new SiriusQuery(viewpoint).getSiriusURI().get());
+        available.remove(new ViewpointQuery(viewpoint).getViewpointURI().get());
         Collections.sort(available, Ordering.usingToString());
 
         List<URI> selected = getSelectedSiriusURIs(viewpoint, attribute);
@@ -127,9 +127,9 @@ public class SiriusDependenciesSelectionDialog {
     }
 
     private List<URI> getAvailableSiriussURIs() {
-        return Lists.newArrayList(Iterables.filter(Iterables.transform(SiriusRegistry.getInstance().getSiriuss(), new Function<Viewpoint, URI>() {
+        return Lists.newArrayList(Iterables.filter(Iterables.transform(ViewpointRegistry.getInstance().getViewpoints(), new Function<Viewpoint, URI>() {
             public URI apply(Viewpoint from) {
-                Option<URI> uri = new SiriusQuery(from).getSiriusURI();
+                Option<URI> uri = new ViewpointQuery(from).getViewpointURI();
                 if (uri.some()) {
                     return uri.get();
                 } else {

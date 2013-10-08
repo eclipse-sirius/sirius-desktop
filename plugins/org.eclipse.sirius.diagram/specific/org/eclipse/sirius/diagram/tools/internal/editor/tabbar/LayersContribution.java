@@ -107,7 +107,7 @@ public class LayersContribution extends AbstractMenuContributionItem {
 
     private Collection<Layer> getLayers() {
         DiagramDescription diagramDesc = diagram.getDescription();
-        Collection<Layer> allLayers = new ArrayList<Layer>(new DiagramComponentizationManager().getAllLayers(session.getSelectedSiriuss(false), diagramDesc));
+        Collection<Layer> allLayers = new ArrayList<Layer>(new DiagramComponentizationManager().getAllLayers(session.getSelectedViewpoints(false), diagramDesc));
 
         allLayers.remove(diagramDesc.getDefaultLayer());
         Iterables.removeIf(allLayers, new Predicate<Layer>() {

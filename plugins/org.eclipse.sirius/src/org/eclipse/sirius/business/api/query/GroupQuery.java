@@ -72,7 +72,7 @@ public class GroupQuery {
         Iterator<Viewpoint> itSirius = group.getOwnedViewpoints().iterator();
         while (itSirius.hasNext()) {
             Viewpoint viewpoint = itSirius.next();
-            Iterator<RepresentationDescription> itRepresentationDescription = new SiriusQuery(viewpoint).getAllRepresentationDescriptions().iterator();
+            Iterator<RepresentationDescription> itRepresentationDescription = new ViewpointQuery(viewpoint).getAllRepresentationDescriptions().iterator();
             while (itRepresentationDescription.hasNext()) {
                 RepresentationDescription description = itRepresentationDescription.next();
                 if (description instanceof DiagramDescription && ((DiagramDescription) description).getName() != null) {

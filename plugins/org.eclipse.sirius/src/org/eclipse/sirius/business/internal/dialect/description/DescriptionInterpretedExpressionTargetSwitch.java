@@ -19,7 +19,7 @@ import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.business.api.componentization.SiriusRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
@@ -146,7 +146,7 @@ public class DescriptionInterpretedExpressionTargetSwitch extends DescriptionSwi
             container = container.eContainer();
         }
         if (container instanceof DiagramExtensionDescription) {
-            container = ComponentizationHelper.getDiagramDescription((DiagramExtensionDescription) container, SiriusRegistry.getInstance().getSiriuss());
+            container = ComponentizationHelper.getDiagramDescription((DiagramExtensionDescription) container, ViewpointRegistry.getInstance().getViewpoints());
         }
 
         if (container instanceof EdgeMappingImport) {

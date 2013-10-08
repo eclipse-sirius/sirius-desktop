@@ -214,7 +214,7 @@ public class RepresentationSelectionWizardPage extends WizardPage {
         public Object[] getChildren(final Object parentElement) {
             Object[] children = empty;
             if (parentElement instanceof Session) {
-                children = ((Session) parentElement).getSelectedSiriuss(false).toArray();
+                children = ((Session) parentElement).getSelectedViewpoints(false).toArray();
             } else if (parentElement instanceof Viewpoint) {
                 List<RepresentationDescription> reps = Lists.newArrayList(((Viewpoint) parentElement).getOwnedRepresentations());
                 Collections.sort(reps, new Comparator<RepresentationDescription>() {

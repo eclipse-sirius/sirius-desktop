@@ -17,7 +17,7 @@ package org.eclipse.sirius.business.internal.movida.registry.monitoring;
  * plug-ins).
  * <p>
  * When created, a monitor is initially inactive. It must be configured by
- * setting the {{@link #setListener(SiriusResourceListener) listener} to
+ * setting the {{@link #setListener(ViewpointResourceListener) listener} to
  * notify before it can be {{@link #start() started}.
  * <p>
  * Notifications may be sent to the listener synchronously right during the call
@@ -25,7 +25,7 @@ package org.eclipse.sirius.business.internal.movida.registry.monitoring;
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public interface SiriusResourceMonitor {
+public interface ViewpointResourceMonitor {
     /**
      * The listener to notify when a change is detected. May be
      * <code>null</code>, but any change detected while there is no valid
@@ -34,7 +34,7 @@ public interface SiriusResourceMonitor {
      * @param listener
      *            the listener to notify.
      */
-    void setListener(SiriusResourceListener listener);
+    void setListener(ViewpointResourceListener listener);
 
     /**
      * Starts the monitor if it is not already running. Does nothing if it was

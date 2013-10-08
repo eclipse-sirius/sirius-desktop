@@ -13,7 +13,7 @@ package org.eclipse.sirius.diagram.tools.internal.preferences;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences.IPreferenceChangeListener;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences.PreferenceChangeEvent;
 
-import org.eclipse.sirius.business.api.preferences.DesignerPreferencesKeys;
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
 
 /**
@@ -44,7 +44,7 @@ public class SiriusPreferenceChangeListener implements IPreferenceChangeListener
      * @see org.eclipse.core.runtime.Preferences.IPreferenceChangeListener#propertyChange(org.eclipse.core.runtime.Preferences.PreferenceChangeEvent)
      */
     public void preferenceChange(PreferenceChangeEvent event) {
-        if (DesignerPreferencesKeys.PREF_AUTO_REFRESH.name().equals(event.getKey()) && event.getNewValue() instanceof String && !event.getNewValue().equals(event.getOldValue())) {
+        if (SiriusPreferencesKeys.PREF_AUTO_REFRESH.name().equals(event.getKey()) && event.getNewValue() instanceof String && !event.getNewValue().equals(event.getOldValue())) {
             factory.setAutoRefreshDView(Boolean.parseBoolean((String) event.getNewValue()));
         }
     }

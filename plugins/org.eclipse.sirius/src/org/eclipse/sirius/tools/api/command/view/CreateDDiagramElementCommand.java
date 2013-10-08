@@ -125,7 +125,7 @@ public class CreateDDiagramElementCommand extends RecordingCommand {
             final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration = new HashMap<String, Collection<SemanticBasedDecoration>>();
 
             /* create the mapping to edge targets map */
-            final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets = elementSync.computeMappingsToEdgeTargets(session.getSelectedSiriuss(false));
+            final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets = elementSync.computeMappingsToEdgeTargets(session.getSelectedViewpoints(false));
             diagramSync.computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
             elementSync.createNewEdge(mappingManager, edgeCandidate, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration);
         }
