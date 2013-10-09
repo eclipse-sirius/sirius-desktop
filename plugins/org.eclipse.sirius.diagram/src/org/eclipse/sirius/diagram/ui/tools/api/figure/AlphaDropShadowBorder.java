@@ -100,7 +100,7 @@ public class AlphaDropShadowBorder extends AbstractBackground implements DropSha
             if (shape instanceof IRoundedCorner) {
                 int cWidth = ((IRoundedCorner) shape).getCornerWidth();
                 int cHeight = ((IRoundedCorner) shape).getCornerWidth();
-                Rectangle bounds = figure.getBounds().getCopy();
+                Rectangle bounds = shape.getBounds().getCopy();
                 bounds.translate(shift, shift);
                 graphics.fillRoundRectangle(bounds, cWidth, cHeight);
                 bounds.translate(shift, shift);
