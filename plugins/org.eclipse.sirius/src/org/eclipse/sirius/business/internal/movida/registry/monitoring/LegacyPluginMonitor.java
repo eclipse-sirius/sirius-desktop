@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class LegacyPluginMonitor extends AbstractSiriusResourceMonitor {
+public class LegacyPluginMonitor extends AbstractViewpointResourceMonitor {
     private final ViewpointRegistry registry;
 
     private final Set<URI> knownURIs = Sets.newHashSet();

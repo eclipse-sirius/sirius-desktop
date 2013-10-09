@@ -32,7 +32,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
-import org.eclipse.sirius.business.internal.movida.registry.SiriusURIConverter;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointURIConverter;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.tools.internal.resource.ResourceSetUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -86,7 +86,7 @@ public final class SessionFactoryImpl implements SessionFactory {
         final TransactionalEditingDomain transactionalEditingDomain = EditingDomainFactoryService.INSTANCE.getEditingDomainFactory().createEditingDomain(set);
         if (Movida.isEnabled()) {
             transactionalEditingDomain.getResourceSet().setURIConverter(
-                    new SiriusURIConverter((ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance()));
+                    new ViewpointURIConverter((ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance()));
         }
         boolean alreadyExistingResource = exists(sessionResourceURI, transactionalEditingDomain.getResourceSet());
         Session session = null;

@@ -78,8 +78,7 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * @since 2.0
  */
-@SuppressWarnings("restriction")
-public final class SiriusSpecificationProject {
+public final class ViewpointSpecificationProject {
 
     /** The extension use for viewpoint model. */
     public static final String VIEWPOINT_MODEL_EXTENSION = SiriusEditPlugin.getPlugin().getString("_UI_SiriusEditorFilenameExtension");
@@ -120,7 +119,7 @@ public final class SiriusSpecificationProject {
     /**
      * Default constructor.
      */
-    private SiriusSpecificationProject() {
+    private ViewpointSpecificationProject() {
 
     }
 
@@ -134,13 +133,13 @@ public final class SiriusSpecificationProject {
      * @return The new project.
      * @throws CoreException .
      */
-    public static IProject createNewSiriusSpecificationProject(final String projectName, final String modelName) throws CoreException {
+    public static IProject createNewViewpointSpecificationProject(final String projectName, final String modelName) throws CoreException {
         final IPath projectLocationPath = ResourcesPlugin.getWorkspace().getRoot().getLocation();
 
         final Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
         final ProgressMonitorDialog monitorDialog = new ProgressMonitorDialog(activeShell);
 
-        return SiriusSpecificationProject.createNewSiriusSpecificationProject(PlatformUI.getWorkbench(), projectName, projectLocationPath, modelName, INITIAL_OBJECT_NAME, ENCODING_DEFAULT,
+        return ViewpointSpecificationProject.createNewViewpointSpecificationProject(PlatformUI.getWorkbench(), projectName, projectLocationPath, modelName, INITIAL_OBJECT_NAME, ENCODING_DEFAULT,
                 monitorDialog);
     }
 
@@ -164,7 +163,7 @@ public final class SiriusSpecificationProject {
      * @return The new project.
      * @throws CoreException .
      */
-    public static IProject createNewSiriusSpecificationProject(final IWorkbench workbench, final String projectName, final IPath projectLocationPath, final String modelName,
+    public static IProject createNewViewpointSpecificationProject(final IWorkbench workbench, final String projectName, final IPath projectLocationPath, final String modelName,
             final String modelInitialObjectName, final String encoding, final IRunnableContext runnable) throws CoreException {
         final IWorkspaceRunnable create = new IWorkspaceRunnable() {
             public void run(final IProgressMonitor monitor) throws CoreException {
@@ -179,12 +178,12 @@ public final class SiriusSpecificationProject {
                     project.create(desc, monitor);
                     project.open(monitor);
 
-                    SiriusSpecificationProject.createFolder(project, monitor, "src"); //$NON-NLS-1$
-                    SiriusSpecificationProject.createFolder(project, monitor, "description");
+                    ViewpointSpecificationProject.createFolder(project, monitor, "src"); //$NON-NLS-1$
+                    ViewpointSpecificationProject.createFolder(project, monitor, "description");
 
                     IFile modelFile;
                     try {
-                        modelFile = SiriusSpecificationProject.createODesignFile(project, modelName, modelInitialObjectName, encoding, runnable);
+                        modelFile = ViewpointSpecificationProject.createODesignFile(project, modelName, modelInitialObjectName, encoding, runnable);
                     } catch (final IOException e) {
                         throw new RuntimeException(e);
                     } catch (final InvocationTargetException e) {
@@ -192,8 +191,8 @@ public final class SiriusSpecificationProject {
                     } catch (final InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-                    SiriusSpecificationProject.selectAndOpen(workbench, modelFile);
-                    SiriusSpecificationProject.convert(project, modelName, monitor);
+                    ViewpointSpecificationProject.selectAndOpen(workbench, modelFile);
+                    ViewpointSpecificationProject.convert(project, modelName, monitor);
                 }
                 if (!project.isOpen()) {
                     project.open(monitor);
@@ -244,7 +243,7 @@ public final class SiriusSpecificationProject {
      */
     protected static IFile createODesignFile(final IProject prj, final String modelName, final String modelInitialObjectName, final String encoding, final IRunnableContext runnable)
             throws IOException, InvocationTargetException, InterruptedException {
-        final IFile modelFile = SiriusSpecificationProject.getModelFile(prj, modelName);
+        final IFile modelFile = ViewpointSpecificationProject.getModelFile(prj, modelName);
         final WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
             @Override
             protected void execute(final IProgressMonitor progressMonitor) {
@@ -252,7 +251,7 @@ public final class SiriusSpecificationProject {
                     final ResourceSet resourceSet = new ResourceSetImpl();
                     final URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
                     final Resource resource = resourceSet.createResource(fileURI);
-                    final EObject rootObject = SiriusSpecificationProject.createInitialModel(modelInitialObjectName);
+                    final EObject rootObject = ViewpointSpecificationProject.createInitialModel(modelInitialObjectName);
                     if (rootObject != null) {
                         if (rootObject instanceof Group) {
                             ((Group) rootObject).setName(modelName.replaceAll("." + VIEWPOINT_MODEL_EXTENSION, ""));
@@ -292,7 +291,7 @@ public final class SiriusSpecificationProject {
         final IWorkbenchPart activePart = activePage.getActivePart();
         if (activePart instanceof ISetSelectionTarget) {
             final ISelection targetSelection = new StructuredSelection(modelFile);
-            SiriusSpecificationProject.getShell().getDisplay().asyncExec(new Runnable() {
+            ViewpointSpecificationProject.getShell().getDisplay().asyncExec(new Runnable() {
                 public void run() {
                     ((ISetSelectionTarget) activePart).selectReveal(targetSelection);
                 }
@@ -302,7 +301,7 @@ public final class SiriusSpecificationProject {
         try {
             activePage.openEditor(new FileEditorInput(modelFile), workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());
         } catch (final PartInitException exception) {
-            MessageDialog.openError(SiriusSpecificationProject.getShell(), SiriusEditPlugin.getPlugin().getString("_UI_OpenEditorError_label"), exception.getMessage());
+            MessageDialog.openError(ViewpointSpecificationProject.getShell(), SiriusEditPlugin.getPlugin().getString("_UI_OpenEditorError_label"), exception.getMessage());
         }
     }
 
@@ -344,12 +343,12 @@ public final class SiriusSpecificationProject {
         replacements.put("modelName", modelNameWithoutExtension); //$NON-NLS-1$
         replacements.put("packageName", packageName);
 
-        SiriusSpecificationProject.createFileFromTemplate(prj, "build.properties", "resources/build.properties", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$ 
-        SiriusSpecificationProject.createFileFromTemplate(prj, "src/" + packageName.replaceAll("\\.", "/") + "/Activator.java", "resources/Activator.java_", replacements, monitor);
-        SiriusSpecificationProject.createFileFromTemplate(prj, ".classpath", "resources/classpath.xml", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$ 
-        SiriusSpecificationProject.createFileFromTemplate(prj, "META-INF/MANIFEST.MF", "resources/MANIFEST.MF", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$ 
-        SiriusSpecificationProject.createFileFromTemplate(prj, ".project", "resources/project.xml", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$ 
-        SiriusSpecificationProject.createFileFromTemplate(prj, "plugin.xml", "resources/plugin.xml", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$
+        ViewpointSpecificationProject.createFileFromTemplate(prj, "build.properties", "resources/build.properties", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$ 
+        ViewpointSpecificationProject.createFileFromTemplate(prj, "src/" + packageName.replaceAll("\\.", "/") + "/Activator.java", "resources/Activator.java_", replacements, monitor);
+        ViewpointSpecificationProject.createFileFromTemplate(prj, ".classpath", "resources/classpath.xml", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$ 
+        ViewpointSpecificationProject.createFileFromTemplate(prj, "META-INF/MANIFEST.MF", "resources/MANIFEST.MF", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$ 
+        ViewpointSpecificationProject.createFileFromTemplate(prj, ".project", "resources/project.xml", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$ 
+        ViewpointSpecificationProject.createFileFromTemplate(prj, "plugin.xml", "resources/plugin.xml", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$
 
         addAcceleoNature(prj);
     }
@@ -398,9 +397,9 @@ public final class SiriusSpecificationProject {
      */
     private static void createFileFromTemplate(final IProject prj, final String newFilePath, final String templatePath, final Map<String, String> replacements, final IProgressMonitor monitor) {
         try {
-            final String templateContent = SiriusSpecificationProject.getTemplateFileContents(templatePath);
-            final String finalContent = SiriusSpecificationProject.applyReplacements(templateContent, replacements);
-            SiriusSpecificationProject.createFile(prj, new Path(newFilePath), finalContent, monitor);
+            final String templateContent = ViewpointSpecificationProject.getTemplateFileContents(templatePath);
+            final String finalContent = ViewpointSpecificationProject.applyReplacements(templateContent, replacements);
+            ViewpointSpecificationProject.createFile(prj, new Path(newFilePath), finalContent, monitor);
         } catch (final IOException e) {
             final IStatus status = new Status(IStatus.ERROR, SiriusEditPlugin.ID, IStatus.OK, e.getMessage(), e);
             SiriusEditPlugin.getPlugin().getLog().log(status);
@@ -469,7 +468,7 @@ public final class SiriusSpecificationProject {
      */
     private static void createFile(final IProject prj, final IPath projectRelativePath, final String content, final IProgressMonitor monitor) {
         try {
-            final IContainer container = SiriusSpecificationProject.createContainer(prj, projectRelativePath, monitor);
+            final IContainer container = ViewpointSpecificationProject.createContainer(prj, projectRelativePath, monitor);
             IFile file = container.getFile(new Path(projectRelativePath.lastSegment()));
             if (!file.exists() && file.getParent().exists()) {
                 final IResource[] members = file.getParent().members(IResource.FILE);

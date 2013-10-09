@@ -18,12 +18,12 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
 
 /**
- * A partial implementation of SiriusResourceMonitor to use as a starting
+ * A partial implementation of ViewpointResourceMonitor to use as a starting
  * point.
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public abstract class AbstractSiriusResourceMonitor implements ViewpointResourceMonitor {
+public abstract class AbstractViewpointResourceMonitor implements ViewpointResourceMonitor {
     /**
      * The listener to notify when we detect interesting events.
      */

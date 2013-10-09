@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * @author alagarde
  * 
  */
-public class OpenSiriusSelectionAction extends Action {
+public class OpenViewpointSelectionAction extends Action {
 
     private URI sessionURI;
 
@@ -35,7 +35,7 @@ public class OpenSiriusSelectionAction extends Action {
      * @param session
      *            the session on which viewpoint selection should be changed
      */
-    public OpenSiriusSelectionAction(Session session) {
+    public OpenViewpointSelectionAction(Session session) {
         this(session.getSessionResource().getURI());
     }
 
@@ -46,8 +46,8 @@ public class OpenSiriusSelectionAction extends Action {
      *            the {@link URI} of session on which viewpoint selection should
      *            be changed
      */
-    public OpenSiriusSelectionAction(URI sessionURI) {
-        super("Viewpoints Selection", SiriusEditPlugin.INSTANCE.getImageDescriptor("full/obj16/Sirius.gif"));
+    public OpenViewpointSelectionAction(URI sessionURI) {
+        super("Viewpoints Selection", SiriusEditPlugin.INSTANCE.getImageDescriptor("full/obj16/Viewpoint.gif"));
         this.sessionURI = sessionURI;
     }
 

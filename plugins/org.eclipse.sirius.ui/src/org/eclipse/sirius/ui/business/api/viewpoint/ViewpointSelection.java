@@ -67,7 +67,7 @@ import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
-import org.eclipse.sirius.ui.business.internal.commands.ChangeSiriusSelectionCommand;
+import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -380,7 +380,7 @@ public final class ViewpointSelection {
                     public void run(final IProgressMonitor monitor) {
                         try {
                             monitor.beginTask("Apply new viewpoints selection...", 1);
-                            Command command = new ChangeSiriusSelectionCommand(session, callback, newSelectedSiriuss, newDeselectedSiriuss, new SubProgressMonitor(monitor, 1));
+                            Command command = new ChangeViewpointSelectionCommand(session, callback, newSelectedSiriuss, newDeselectedSiriuss, new SubProgressMonitor(monitor, 1));
                             TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
                             domain.getCommandStack().execute(command);
                         } finally {
@@ -495,7 +495,7 @@ public final class ViewpointSelection {
             try {
                 IRunnableWithProgress runnable = new IRunnableWithProgress() {
                     public void run(final IProgressMonitor monitor) {
-                        Command command = new ChangeSiriusSelectionCommand(session, callback, newSelectedSiriuss, newDeselectedSiriuss, createNewRepresentations, monitor);
+                        Command command = new ChangeViewpointSelectionCommand(session, callback, newSelectedSiriuss, newDeselectedSiriuss, createNewRepresentations, monitor);
                         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
                         domain.getCommandStack().execute(command);
                     }

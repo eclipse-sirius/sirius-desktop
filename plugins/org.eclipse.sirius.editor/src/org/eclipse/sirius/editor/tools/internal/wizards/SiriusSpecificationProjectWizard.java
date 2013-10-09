@@ -26,7 +26,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
-import org.eclipse.sirius.ui.tools.api.project.SiriusSpecificationProject;
+import org.eclipse.sirius.ui.tools.api.project.ViewpointSpecificationProject;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -83,7 +83,7 @@ public class SiriusSpecificationProjectWizard extends Wizard implements INewWiza
     @Override
     public boolean performFinish() {
         try {
-            SiriusSpecificationProject.createNewSiriusSpecificationProject(workbench, newProjectPage.getProjectName(), newProjectPage.getLocationPath(), newOdesignPage.getModelName().getText(),
+            ViewpointSpecificationProject.createNewViewpointSpecificationProject(workbench, newProjectPage.getProjectName(), newProjectPage.getLocationPath(), newOdesignPage.getModelName().getText(),
                     newOdesignPage.getInitialObjectName(), newOdesignPage.getEncoding(), getContainer());
             return true;
         } catch (final CoreException e) {
@@ -164,7 +164,7 @@ public class SiriusSpecificationProjectWizard extends Wizard implements INewWiza
         }
 
         public String getInitialObjectName() {
-            return SiriusSpecificationProject.INITIAL_OBJECT_NAME;
+            return ViewpointSpecificationProject.INITIAL_OBJECT_NAME;
         }
 
         public void createControl(final Composite parent) {
@@ -188,7 +188,7 @@ public class SiriusSpecificationProjectWizard extends Wizard implements INewWiza
             modelNameLabel.setLayoutData(data);
 
             modelName = new Text(composite, SWT.LEFT | SWT.BORDER);
-            modelName.setText(SiriusEditorPlugin.getPlugin().getString("_UI_SiriusModelWizardName_default") + DOT + SiriusSpecificationProject.VIEWPOINT_MODEL_EXTENSION);
+            modelName.setText(SiriusEditorPlugin.getPlugin().getString("_UI_SiriusModelWizardName_default") + DOT + ViewpointSpecificationProject.VIEWPOINT_MODEL_EXTENSION);
 
             data = new GridData();
             data.horizontalAlignment = GridData.FILL;
@@ -222,8 +222,8 @@ public class SiriusSpecificationProjectWizard extends Wizard implements INewWiza
 
         protected boolean validatePage() {
             return /* getInitialObjectName() != null && */getEncodings().contains(encodingField.getText())
-                    && getModelName().getText().endsWith(DOT + SiriusSpecificationProject.VIEWPOINT_MODEL_EXTENSION)
-                    && (getModelName().getText().length() > (SiriusSpecificationProject.VIEWPOINT_MODEL_EXTENSION.length() + 1));
+                    && getModelName().getText().endsWith(DOT + ViewpointSpecificationProject.VIEWPOINT_MODEL_EXTENSION)
+                    && (getModelName().getText().length() > (ViewpointSpecificationProject.VIEWPOINT_MODEL_EXTENSION.length() + 1));
         }
 
         private Collection<String> getEncodings() {

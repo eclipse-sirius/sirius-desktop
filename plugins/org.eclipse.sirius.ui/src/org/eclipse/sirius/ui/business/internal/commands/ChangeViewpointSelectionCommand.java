@@ -31,15 +31,15 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * 
  * @author mporhel
  */
-public class ChangeSiriusSelectionCommand extends RecordingCommand {
+public class ChangeViewpointSelectionCommand extends RecordingCommand {
 
     private Session session;
 
     private final Callback callback;
 
-    private final Set<Viewpoint> newSelectedSiriuss;
+    private final Set<Viewpoint> newSelectedViewpoints;
 
-    private final Set<Viewpoint> newDeselectedSiriuss;
+    private final Set<Viewpoint> newDeselectedViewpoints;
 
     private boolean createNewRepresentations;
 
@@ -51,15 +51,15 @@ public class ChangeSiriusSelectionCommand extends RecordingCommand {
      * @param session
      *            the current session.
      * @param callback
-     *            the current SiriusSelection.Callback
-     * @param newSelectedSiriuss
+     *            the current ViewpointSelection.Callback
+     * @param newSelectedViewpoints
      *            the new selected viewpoints.
-     * @param newDeselectedSiriuss
+     * @param newDeselectedViewpoints
      *            the new deselected viewpoints.
      * @deprecated use the constructor with a {@link IProgressMonitor}
      */
-    public ChangeSiriusSelectionCommand(Session session, Callback callback, Set<Viewpoint> newSelectedSiriuss, Set<Viewpoint> newDeselectedSiriuss) {
-        this(session, callback, newSelectedSiriuss, newDeselectedSiriuss, new NullProgressMonitor());
+    public ChangeViewpointSelectionCommand(Session session, Callback callback, Set<Viewpoint> newSelectedViewpoints, Set<Viewpoint> newDeselectedViewpoints) {
+        this(session, callback, newSelectedViewpoints, newDeselectedViewpoints, new NullProgressMonitor());
     }
 
     /**
@@ -69,18 +69,18 @@ public class ChangeSiriusSelectionCommand extends RecordingCommand {
      *            the current session.
      * @param callback
      *            the current SiriusSelection.Callback
-     * @param newSelectedSiriuss
+     * @param newSelectedViewpoints
      *            the new selected viewpoints.
-     * @param newDeselectedSiriuss
+     * @param newDeselectedViewpoints
      *            the new deselected viewpoints.
      * @param monitor
      *            a {@link IProgressMonitor}
      */
-    public ChangeSiriusSelectionCommand(Session session, Callback callback, Set<Viewpoint> newSelectedSiriuss, Set<Viewpoint> newDeselectedSiriuss, IProgressMonitor monitor) {
+    public ChangeViewpointSelectionCommand(Session session, Callback callback, Set<Viewpoint> newSelectedViewpoints, Set<Viewpoint> newDeselectedViewpoints, IProgressMonitor monitor) {
         super(session.getTransactionalEditingDomain(), "Change viewpoint selection");
         this.callback = callback;
-        this.newSelectedSiriuss = newSelectedSiriuss;
-        this.newDeselectedSiriuss = newDeselectedSiriuss;
+        this.newSelectedViewpoints = newSelectedViewpoints;
+        this.newDeselectedViewpoints = newDeselectedViewpoints;
         this.session = session;
         this.monitor = monitor;
         this.createNewRepresentations = true;
@@ -93,9 +93,9 @@ public class ChangeSiriusSelectionCommand extends RecordingCommand {
      *            the current session.
      * @param callback
      *            the current SiriusSelection.Callback
-     * @param newSelectedSiriuss
+     * @param newSelectedViewpoints
      *            the new selected viewpoints.
-     * @param newDeselectedSiriuss
+     * @param newDeselectedViewpoints
      *            the new deselected viewpoints.
      * @param createNewRepresentations
      *            true to create new DRepresentation for
@@ -104,9 +104,9 @@ public class ChangeSiriusSelectionCommand extends RecordingCommand {
      * @param monitor
      *            a {@link IProgressMonitor}
      */
-    public ChangeSiriusSelectionCommand(Session session, Callback callback, Set<Viewpoint> newSelectedSiriuss, Set<Viewpoint> newDeselectedSiriuss, boolean createNewRepresentations,
+    public ChangeViewpointSelectionCommand(Session session, Callback callback, Set<Viewpoint> newSelectedViewpoints, Set<Viewpoint> newDeselectedViewpoints, boolean createNewRepresentations,
             IProgressMonitor monitor) {
-        this(session, callback, newSelectedSiriuss, newDeselectedSiriuss, monitor);
+        this(session, callback, newSelectedViewpoints, newDeselectedViewpoints, monitor);
         this.createNewRepresentations = createNewRepresentations;
     }
 
@@ -119,18 +119,18 @@ public class ChangeSiriusSelectionCommand extends RecordingCommand {
             return;
         }
         try {
-            int nbSiriussInChange = (newSelectedSiriuss != null ? newSelectedSiriuss.size() + 1 : 0) + (newDeselectedSiriuss != null ? newDeselectedSiriuss.size() : 0);
+            int nbSiriussInChange = (newSelectedViewpoints != null ? newSelectedViewpoints.size() + 1 : 0) + (newDeselectedViewpoints != null ? newDeselectedViewpoints.size() : 0);
             monitor.beginTask("Apply new viewpoints selection...", nbSiriussInChange);
-            if (newSelectedSiriuss != null) {
-                List<Viewpoint> sorted = sortByDependencies(newSelectedSiriuss);
+            if (newSelectedViewpoints != null) {
+                List<Viewpoint> sorted = sortByDependencies(newSelectedViewpoints);
                 monitor.worked(1);
                 for (final Viewpoint viewpoint : sorted) {
                     monitor.subTask("Select viewpoint : " + new IdentifiedElementQuery(viewpoint).getLabel());
                     callback.selectViewpoint(viewpoint, session, createNewRepresentations, new SubProgressMonitor(monitor, 1));
                 }
             }
-            if (newDeselectedSiriuss != null) {
-                for (final Viewpoint viewpoint : newDeselectedSiriuss) {
+            if (newDeselectedViewpoints != null) {
+                for (final Viewpoint viewpoint : newDeselectedViewpoints) {
                     monitor.subTask("Deselect viewpoint : " + new IdentifiedElementQuery(viewpoint).getLabel());
                     callback.deselectViewpoint(viewpoint, session, new SubProgressMonitor(monitor, 1));
                 }
@@ -148,20 +148,20 @@ public class ChangeSiriusSelectionCommand extends RecordingCommand {
         // Code taken from
         // DAnalysisSessionImpl#getSelectedSiriussSpecificToGeneric, except
         // that we want the opposite order
-        List<Viewpoint> orderedSiriuss = new ArrayList<Viewpoint>(viewpoints.size());
+        List<Viewpoint> orderedViewpoints = new ArrayList<Viewpoint>(viewpoints.size());
         for (Viewpoint viewpoint : viewpoints) {
-            int insertPosition = orderedSiriuss.size();
-            for (Viewpoint viewpoint2 : orderedSiriuss) {
+            int insertPosition = orderedViewpoints.size();
+            for (Viewpoint viewpoint2 : orderedViewpoints) {
                 if (ComponentizationHelper.isExtendedBy(viewpoint, viewpoint2)) {
-                    insertPosition = orderedSiriuss.indexOf(viewpoint2);
+                    insertPosition = orderedViewpoints.indexOf(viewpoint2);
                 } else if (ComponentizationHelper.isExtendedBy(viewpoint2, viewpoint)) {
-                    insertPosition = orderedSiriuss.indexOf(viewpoint2) + 1;
+                    insertPosition = orderedViewpoints.indexOf(viewpoint2) + 1;
                 }
             }
-            orderedSiriuss.add(insertPosition, viewpoint);
+            orderedViewpoints.add(insertPosition, viewpoint);
         }
-        Collections.reverse(orderedSiriuss);
-        return Collections.unmodifiableList(orderedSiriuss);
+        Collections.reverse(orderedViewpoints);
+        return Collections.unmodifiableList(orderedViewpoints);
     }
 
 }

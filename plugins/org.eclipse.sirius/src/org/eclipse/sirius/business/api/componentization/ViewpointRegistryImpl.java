@@ -58,8 +58,8 @@ import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.tools.internal.uri.SiriusProtocolException;
-import org.eclipse.sirius.tools.internal.uri.SiriusProtocolParser;
+import org.eclipse.sirius.tools.internal.uri.ViewpointProtocolException;
+import org.eclipse.sirius.tools.internal.uri.ViewpointProtocolParser;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Component;
 import org.eclipse.sirius.viewpoint.description.Group;
@@ -162,13 +162,13 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * @param viewpointUri
      *            the viewpoint uri. It should used viewpoint protocol.
      * @return the viewpoint if found, throw an exception otherwise
-     * @throws SiriusProtocolException
+     * @throws ViewpointProtocolException
      *             if the uri could not be parsed or the viewpoint could not be
      *             found
      * @since 2.7
      */
-    public Viewpoint getViewpoint(final URI viewpointUri) throws SiriusProtocolException {
-        return SiriusProtocolParser.getSirius(viewpointUri);
+    public Viewpoint getViewpoint(final URI viewpointUri) throws ViewpointProtocolException {
+        return ViewpointProtocolParser.getViewpoint(viewpointUri);
     }
 
     /**
@@ -400,7 +400,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
 
         // remap the viewpoint uri to another viewpoint with same
         // viewpointUri if exists
-        URI vpURI = SiriusProtocolParser.buildSiriusUri(EcoreUtil.getURI(viewpoint));
+        URI vpURI = ViewpointProtocolParser.buildViewpointUri(EcoreUtil.getURI(viewpoint));
         URI mappedURI = URIMappingRegistryImpl.INSTANCE.get(vpURI);
 
         if (mappedURI != null && mappedURI.isPlatformPlugin() && viewpoint.eResource() != null && mappedURI.toPlatformString(true).equals(viewpoint.eResource().getURI().toPlatformString(true))) {
@@ -590,7 +590,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         final Resource resource = viewpoint.eResource();
         if (resource != null && resource.getURI() != null) {
             URI uri = EcoreUtil.getURI(viewpoint);
-            URIMappingRegistryImpl.INSTANCE.put(SiriusProtocolParser.buildSiriusUri(uri), resource.getURI());
+            URIMappingRegistryImpl.INSTANCE.put(ViewpointProtocolParser.buildViewpointUri(uri), resource.getURI());
         }
     }
 
@@ -896,11 +896,11 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      */
     private void removeFromWorkspaceAndUpdateURiMapping(Viewpoint viewpoint) {
         this.viewpointsFromWorkspace.remove(viewpoint);
-        URI viewpointUri = SiriusProtocolParser.buildSiriusUri(EcoreUtil.getURI(viewpoint));
+        URI viewpointUri = ViewpointProtocolParser.buildViewpointUri(EcoreUtil.getURI(viewpoint));
 
         for (Viewpoint vp : this.viewpointsFromPlugin) {
             if (StringUtil.equals(vp.getName(), viewpoint.getName())) {
-                URI vpURI = SiriusProtocolParser.buildSiriusUri(EcoreUtil.getURI(vp));
+                URI vpURI = ViewpointProtocolParser.buildViewpointUri(EcoreUtil.getURI(vp));
                 if (vpURI != null && viewpointUri != null && StringUtil.equals(vpURI.toString(), viewpointUri.toString())) {
                     mapToSiriusProtocol(vp);
                     return;
@@ -909,7 +909,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         }
 
         // No found corresponding viewpoint in plugins, clean uri mapping
-        URIMappingRegistryImpl.INSTANCE.removeKey(SiriusProtocolParser.buildSiriusUri(viewpointUri));
+        URIMappingRegistryImpl.INSTANCE.removeKey(ViewpointProtocolParser.buildViewpointUri(viewpointUri));
     }
 
     /**

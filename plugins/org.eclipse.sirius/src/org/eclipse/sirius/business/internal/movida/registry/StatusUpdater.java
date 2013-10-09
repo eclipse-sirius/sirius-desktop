@@ -88,21 +88,21 @@ public class StatusUpdater {
     private void performSemanticValidation(Entry entry) {
         Diagnostic result = Diagnostician.INSTANCE.validate(entry.getSirius());
         if (result.getSeverity() > Diagnostic.WARNING) {
-            entry.setState(SiriusState.INVALID);
+            entry.setState(ViewpointState.INVALID);
         }
         entry.getDiagnostics().add(result);
     }
 
     private void resolveCrossResourcesReferences() {
         for (Entry entry : entries.values()) {
-            if (entry.getState() != SiriusState.INVALID) {
+            if (entry.getState() != ViewpointState.INVALID) {
                 try {
                     EcoreUtil.resolveAll(entry.getSirius());
-                    entry.setState(SiriusState.RESOLVED);
+                    entry.setState(ViewpointState.RESOLVED);
                     // CHECKSTYLE:OFF
                 } catch (RuntimeException e) {
                     // CHECKSTYLE:ON
-                    entry.setState(SiriusState.INVALID);
+                    entry.setState(ViewpointState.INVALID);
                 }
             }
         }
@@ -127,7 +127,7 @@ public class StatusUpdater {
         }));
         Set<URI> unavailable = Sets.difference(actualPhysical, availablePhysical);
         if (!unavailable.isEmpty()) {
-            entry.setState(SiriusState.INVALID);
+            entry.setState(ViewpointState.INVALID);
             Object[] data = Iterables.toArray(Iterables.transform(unavailable, Functions.toStringFunction()), String.class);
             addDiagnostic(entry, Diagnostic.ERROR, PHYSICAL_DEPENDENCY_UNAVAILABLE, "Sirius definition depends on resources not available.", data);
         }
@@ -142,7 +142,7 @@ public class StatusUpdater {
     private void checkLogicalDependenciesAvailable(Entry entry) {
         for (URI dependency : entry.getDeclaredDependencies()) {
             if (!entries.containsKey(dependency)) {
-                entry.setState(SiriusState.INVALID);
+                entry.setState(ViewpointState.INVALID);
                 addDiagnostic(entry, Diagnostic.ERROR, DECLARED_DEPENDENCY_UNAVAILABLE, "Invalid dependency declared to unavailable Sirius.", new Object[] { dependency });
             }
         }
@@ -167,7 +167,7 @@ public class StatusUpdater {
         Set<URI> actual = entry.getActualDependencies();
         SetView<URI> undeclared = Sets.difference(actual, declared);
         if (!undeclared.isEmpty()) {
-            entry.setState(SiriusState.INVALID);
+            entry.setState(ViewpointState.INVALID);
             Object[] data = Iterables.toArray(Iterables.transform(undeclared, Functions.toStringFunction()), String.class);
             addDiagnostic(entry, Diagnostic.ERROR, UNDECLARED_DEPENDENCY, "Sirius has undeclared dependencies to other resources.", data);
         }

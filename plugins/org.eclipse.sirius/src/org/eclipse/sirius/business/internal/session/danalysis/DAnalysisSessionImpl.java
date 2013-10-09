@@ -106,7 +106,7 @@ import org.eclipse.sirius.business.internal.helper.display.VisibilityPropagatorA
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.business.internal.migration.resource.ResourceFileExtensionPredicate;
 import org.eclipse.sirius.business.internal.movida.Movida;
-import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistryListener;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistryListener;
 import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
 import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 import org.eclipse.sirius.business.internal.session.ReloadingPolicyImpl;
@@ -146,7 +146,7 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.exception.Locke
  * @author cbrun
  */
 // CHECKSTYLE:OFF
-public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements Session, DAnalysisSession, ResourceSyncClient, SiriusRegistryListener, ViewointRegistryListener2 {
+public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements Session, DAnalysisSession, ResourceSyncClient, ViewpointRegistryListener, ViewointRegistryListener2 {
 
     /** The {@link TransactionalEditingDomain} associated to this Session. */
     protected final TransactionalEditingDomain transactionalEditingDomain;
@@ -455,7 +455,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
             if (Movida.isEnabled()) {
                 org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry) ViewpointRegistry.getInstance();
-                registry.addListener((SiriusRegistryListener) this);
+                registry.addListener((ViewpointRegistryListener) this);
             } else {
                 ViewpointRegistry.getInstance().addListener(this);
             }
@@ -1903,7 +1903,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             return;
         if (Movida.isEnabled()) {
             org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry) ViewpointRegistry.getInstance();
-            registry.removeListener((SiriusRegistryListener) this);
+            registry.removeListener((ViewpointRegistryListener) this);
         } else {
             ViewpointRegistry.getInstance().removeListener(this);
         }

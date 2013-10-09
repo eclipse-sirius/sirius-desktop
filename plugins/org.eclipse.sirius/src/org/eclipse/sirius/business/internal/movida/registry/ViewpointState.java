@@ -11,26 +11,26 @@
 package org.eclipse.sirius.business.internal.movida.registry;
 
 /**
- * The status of a Sirius definition.
+ * The status of a Viewpoint definition.
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public enum SiriusState {
+public enum ViewpointState {
     /**
-     * The Sirius has been identified, but its actual state has not been
+     * The Viewpoint has been identified, but its actual state has not been
      * determined yet.
      */
     UNDEFINED,
     /**
-     * The Sirius is present and loaded, but the model is not valid.
+     * The Viewpoint is present and loaded, but the model is not valid.
      */
     INVALID,
     /**
-     * The Sirius is present and valid, but some of its dependencies are not.
+     * The Viewpoint is present and valid, but some of its dependencies are not.
      */
     INSTALLED,
     /**
-     * The Sirius and all its dependencies are valid. It is ready to be used
+     * The Viewpoint and all its dependencies are valid. It is ready to be used
      * in a session, but is not actually enabled in any open sessions.
      */
     RESOLVED

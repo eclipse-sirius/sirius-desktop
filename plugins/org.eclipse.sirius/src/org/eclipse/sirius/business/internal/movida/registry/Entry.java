@@ -74,7 +74,7 @@ public class Entry {
      * If <code>null</code>, the entry is new and no status has been computed
      * yet.
      */
-    private SiriusState state;
+    private ViewpointState state;
 
     /**
      * Any diagnostics related to this entry, in particular errors and warnings
@@ -94,7 +94,7 @@ public class Entry {
         Option<URI> id = new ViewpointQuery(this.viewpoint).getViewpointURI();
         assert id.some();
         this.identifier = id.get();
-        this.state = SiriusState.UNDEFINED;
+        this.state = ViewpointState.UNDEFINED;
         fillDepdendencies(this.conflicts, viewpoint.getConflicts());
         fillDepdendencies(this.reused, viewpoint.getReuses());
         fillDepdendencies(this.customizes, viewpoint.getCustomizes());
@@ -135,7 +135,7 @@ public class Entry {
      * 
      * @return the current state of this entry.
      */
-    public SiriusState getState() {
+    public ViewpointState getState() {
         return state;
     }
 
@@ -145,7 +145,7 @@ public class Entry {
      * @param state
      *            the new state for this entry.
      */
-    public void setState(SiriusState state) {
+    public void setState(ViewpointState state) {
         this.state = Preconditions.checkNotNull(state);
     }
 

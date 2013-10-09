@@ -39,7 +39,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class PluginMonitor extends AbstractSiriusResourceMonitor {
+public class PluginMonitor extends AbstractViewpointResourceMonitor {
     /**
      * The identifier for the extension point used to register VSMs.
      */

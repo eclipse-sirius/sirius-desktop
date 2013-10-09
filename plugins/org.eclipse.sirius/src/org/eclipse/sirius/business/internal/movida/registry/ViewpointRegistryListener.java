@@ -15,12 +15,12 @@ import java.util.Set;
 import org.eclipse.emf.common.util.URI;
 
 /**
- * A <code>SiriusRegistryListener</code> can be notified when changes occur
- * in the set of visible Siriuss available from the registry.
+ * A <code>ViewpointRegistryListener</code> can be notified when changes occur
+ * in the set of visible viewpoints available from the registry.
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public interface SiriusRegistryListener {
+public interface ViewpointRegistryListener {
     /**
      * Indicates that the set of entries in the registry has changed.
      * <p>
@@ -34,15 +34,15 @@ public interface SiriusRegistryListener {
      * @param registry
      *            the registry whose entries changed.
      * @param removed
-     *            the logical URIs of the Sirius definitions which have
+     *            the logical URIs of the Viewpoint definitions which have
      *            disappeared. When this notification is received, the receiver
      *            must assume they are not accessible anymore.
      * @param added
-     *            the logical URIs of the new Sirius definitions which have
+     *            the logical URIs of the new Viewpoint definitions which have
      *            appeared. When this notification is received, the receiver can
      *            assume they are accessible.
      * @param changed
-     *            the logical URIs of the Sirius definition whose content or
+     *            the logical URIs of the Viewpoint definition whose content or
      *            state has changed. For an URI to be in this set, it must have
      *            been previously <code>added</code> and not yet
      *            <code>removed</code>. When this notification is received, the

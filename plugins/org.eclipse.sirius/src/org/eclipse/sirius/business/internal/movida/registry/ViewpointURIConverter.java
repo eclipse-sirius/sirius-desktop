@@ -19,29 +19,29 @@ import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.query.ViewpointURIQuery;
 
 /**
- * The converter used to normalize Sirius URIs into the URI of the concrete
+ * The converter used to normalize Viewpoint URIs into the URI of the concrete
  * resource their are currently provided by.
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public final class SiriusURIConverter extends URIConverterImpl {
+public final class ViewpointURIConverter extends URIConverterImpl {
     private final ViewpointRegistry registry;
 
     /**
      * Constructor.
      * 
      * @param registry
-     *            the registry used to translate logical Sirius URIs into
+     *            the registry used to translate logical viewpoint URIs into
      *            physical URIs.
      */
-    public SiriusURIConverter(ViewpointRegistry registry) {
+    public ViewpointURIConverter(ViewpointRegistry registry) {
         this.registry = Preconditions.checkNotNull(registry);
     }
 
     /**
-     * Normalizes logical <code>viewpoint:/pluginId/SiriusName</code> URIs
+     * Normalizes logical <code>viewpoint:/pluginId/ViewpointName</code> URIs
      * into the physical (platform) URI of the resource which currently provides
-     * this Sirius in the registry. Non Sirius URIs and Sirius URIs
+     * this Sirius in the registry. Non viewpoint URIs and viewpoint URIs
      * unknown to the registry are handled using the default behavior.
      * <p>
      * {@inheritDoc}

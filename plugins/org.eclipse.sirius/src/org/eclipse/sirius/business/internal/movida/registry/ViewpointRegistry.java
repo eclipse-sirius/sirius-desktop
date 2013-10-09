@@ -122,7 +122,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * The Sirius resource handler used by this registry.
      */
-    private final CompositeSiriusResourceHandler compositeResourceHandler = new CompositeSiriusResourceHandler();
+    private final CompositeViewpointResourceHandler compositeResourceHandler = new CompositeViewpointResourceHandler();
 
     /**
      * The helper used to compute which of the resources and viewpoints loaded
@@ -140,7 +140,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * The listeners which are notified of changes in the registry entries.
      */
-    private final CopyOnWriteArrayList<SiriusRegistryListener> listeners = new CopyOnWriteArrayList<SiriusRegistryListener>();
+    private final CopyOnWriteArrayList<ViewpointRegistryListener> listeners = new CopyOnWriteArrayList<ViewpointRegistryListener>();
 
     /**
      * The listeners which are notified of changes in the registry entries.
@@ -165,7 +165,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
      * Constructor.
      */
     public ViewpointRegistry() {
-        resourceSet.setURIConverter(new SiriusURIConverter(this));
+        resourceSet.setURIConverter(new ViewpointURIConverter(this));
         resourceSet.eAdapters().add(crossReferencer);
         monitors.setListener(this);
         legacyMonitor = new LegacyPluginMonitor(this);
@@ -176,7 +176,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     }
 
     private void configureResourceHandler() {
-        compositeResourceHandler.addResourceType(new DefaultSiriusResourceHandler());
+        compositeResourceHandler.addResourceType(new DefaultViewpointResourceHandler());
         IConfigurationElement[] elements = Platform.getExtensionRegistry().getConfigurationElementsFor(VIEWPOINT_RESOURCE_TYPE_EXTENSION_POINT);
         for (IConfigurationElement element : elements) {
             if ("handler".equals(element.getName())) {
@@ -234,7 +234,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
      * @param listener
      *            the listener to add.
      */
-    public void addListener(SiriusRegistryListener listener) {
+    public void addListener(ViewpointRegistryListener listener) {
         this.listeners.addIfAbsent(listener);
     }
 
@@ -246,7 +246,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
      * @param listener
      *            the listener to remove.
      */
-    public void removeListener(SiriusRegistryListener listener) {
+    public void removeListener(ViewpointRegistryListener listener) {
         this.listeners.remove(listener);
     }
 
@@ -257,7 +257,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
         ImmutableSet<URI> removed = ImmutableSet.copyOf(change.removed);
         ImmutableSet<URI> added = ImmutableSet.copyOf(change.added);
         ImmutableSet<URI> changed = ImmutableSet.copyOf(change.changed);
-        for (SiriusRegistryListener listener : this.listeners) {
+        for (ViewpointRegistryListener listener : this.listeners) {
             listener.registryChanged(this, removed, added, changed);
         }
 

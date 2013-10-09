@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
-import org.eclipse.sirius.tools.internal.uri.SiriusProtocolParser;
+import org.eclipse.sirius.tools.internal.uri.ViewpointProtocolParser;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.DiagramDescription;
 import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
@@ -189,7 +189,7 @@ public final class ComponentizationHelper {
         if (container != null) {
             String representationExtensionSiriusURI = representationExtensionDescription.getViewpointURI();
             if (URI.decode(EcoreUtil.getURI(container).toString()).equals(representationExtensionSiriusURI)
-                    || SiriusProtocolParser.match(EcoreUtil.getURI(container), representationExtensionSiriusURI)) {
+                    || ViewpointProtocolParser.match(EcoreUtil.getURI(container), representationExtensionSiriusURI)) {
                 if (descName.matches(representationExtensionDescription.getRepresentationName())) {
                     return true;
                 }

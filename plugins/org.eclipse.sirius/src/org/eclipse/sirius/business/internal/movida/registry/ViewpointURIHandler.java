@@ -26,7 +26,7 @@ import org.eclipse.sirius.business.internal.movida.Movida;
  * 
  * @author smonnier, pcdavid
  */
-public class SiriusURIHandler extends URIHandlerImpl.PlatformSchemeAware {
+public class ViewpointURIHandler extends URIHandlerImpl.PlatformSchemeAware {
     private final ResourceSet resourceSet;
 
     /**
@@ -36,7 +36,7 @@ public class SiriusURIHandler extends URIHandlerImpl.PlatformSchemeAware {
      *            the resource set to use for the conversion of physical URIs to
      *            logical <code>viewpoint:/</code> URIs on save..
      */
-    public SiriusURIHandler(ResourceSet resourceSet) {
+    public ViewpointURIHandler(ResourceSet resourceSet) {
         this.resourceSet = Preconditions.checkNotNull(resourceSet);
     }
 

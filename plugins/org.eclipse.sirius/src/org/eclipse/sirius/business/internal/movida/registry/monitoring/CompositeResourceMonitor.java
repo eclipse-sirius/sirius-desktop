@@ -27,7 +27,7 @@ import com.google.common.collect.Maps;
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class CompositeResourceMonitor extends AbstractSiriusResourceMonitor implements ViewpointResourceListener, Comparator<URI> {
+public class CompositeResourceMonitor extends AbstractViewpointResourceMonitor implements ViewpointResourceListener, Comparator<URI> {
     /**
      * The aggregated monitors.
      */

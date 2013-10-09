@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class CompositeSiriusResourceHandler implements ViewpointResourceHandler {
+public class CompositeViewpointResourceHandler implements ViewpointResourceHandler {
     private final List<ViewpointResourceHandler> handlers = Lists.newArrayList();
 
     /**

@@ -40,7 +40,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
-import org.eclipse.sirius.ui.business.internal.commands.ChangeSiriusSelectionCommand;
+import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -264,7 +264,7 @@ public class UserSession {
         final ViewpointSelectionCallback selectionCallback = new ViewpointSelectionCallback();
         final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
 
-        final Command command = new ChangeSiriusSelectionCommand(session, selectionCallback, viewpointsToSelect, viewpointsToDeselect, new NullProgressMonitor());
+        final Command command = new ChangeViewpointSelectionCommand(session, selectionCallback, viewpointsToSelect, viewpointsToDeselect, new NullProgressMonitor());
         domain.getCommandStack().execute(command);
     }
 

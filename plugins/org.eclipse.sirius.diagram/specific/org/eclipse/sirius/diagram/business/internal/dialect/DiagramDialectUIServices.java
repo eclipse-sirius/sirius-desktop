@@ -91,7 +91,7 @@ import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
-import org.eclipse.sirius.ui.business.internal.commands.ChangeSiriusSelectionCommand;
+import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
@@ -236,7 +236,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
         }
         neededSiriuss.removeAll(selectedSiriuss);
         if (!neededSiriuss.isEmpty()) {
-            Command changeSiriussSelectionCmd = new ChangeSiriusSelectionCommand(session, new ViewpointSelectionCallback(), neededSiriuss, Collections.<Viewpoint> emptySet(),
+            Command changeSiriussSelectionCmd = new ChangeViewpointSelectionCommand(session, new ViewpointSelectionCallback(), neededSiriuss, Collections.<Viewpoint> emptySet(),
                     new SubProgressMonitor(monitor, neededSiriuss.size()));
             session.getTransactionalEditingDomain().getCommandStack().execute(changeSiriussSelectionCmd);
             monitor.worked(1);

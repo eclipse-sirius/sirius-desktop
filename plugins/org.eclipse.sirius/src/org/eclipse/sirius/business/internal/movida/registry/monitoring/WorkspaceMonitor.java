@@ -35,7 +35,7 @@ import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class WorkspaceMonitor extends AbstractSiriusResourceMonitor {
+public class WorkspaceMonitor extends AbstractViewpointResourceMonitor {
     /**
      * The workspace to monitor.
      */

@@ -462,7 +462,7 @@
   <extension
         point="org.eclipse.emf.ecore.protocol_parser">
      <parser
-           class="org.eclipse.sirius.tools.internal.uri.SiriusProtocolParser"
+           class="org.eclipse.sirius.tools.internal.uri.ViewpointProtocolParser"
            protocolName="viewpoint">
      </parser>
   </extension>

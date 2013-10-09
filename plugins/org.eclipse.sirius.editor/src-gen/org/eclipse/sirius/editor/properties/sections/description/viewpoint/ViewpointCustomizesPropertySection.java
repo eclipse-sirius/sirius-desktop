@@ -22,7 +22,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
-import org.eclipse.sirius.editor.tools.internal.presentation.SiriusDependenciesSelectionDialog;
+import org.eclipse.sirius.editor.tools.internal.presentation.ViewpoitnDependenciesSelectionDialog;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
@@ -121,7 +121,7 @@ public class ViewpointCustomizesPropertySection extends AbstractTextPropertySect
             @Override
             public void widgetSelected(SelectionEvent e) {
                 if (eObject instanceof Viewpoint) {
-                    Option<Set<URI>> userChoice = new SiriusDependenciesSelectionDialog((Viewpoint) eObject).selectCustomizedSiriuss(composite.getShell());
+                    Option<Set<URI>> userChoice = new ViewpoitnDependenciesSelectionDialog((Viewpoint) eObject).selectCustomizedViewpoints(composite.getShell());
                     if (userChoice.some()) {
                         List<URI> value = Lists.newArrayList(userChoice.get());
                         EditingDomain editingDomain = ((IEditingDomainProvider) getPart()).getEditingDomain();

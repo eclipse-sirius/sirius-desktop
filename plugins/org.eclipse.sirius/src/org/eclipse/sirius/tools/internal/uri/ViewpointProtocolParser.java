@@ -25,12 +25,12 @@ import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceFactoryI
  * 
  * @author cbrun
  */
-public class SiriusProtocolParser extends DescriptionResourceFactoryImpl {
+public class ViewpointProtocolParser extends DescriptionResourceFactoryImpl {
     /**
      * {@inheritDoc}
      */
     public Resource createResource(final URI uri) {
-        SiriusProtocolParser.getSirius(uri);
+        ViewpointProtocolParser.getViewpoint(uri);
         return super.createResource(uri);
     }
 
@@ -40,33 +40,33 @@ public class SiriusProtocolParser extends DescriptionResourceFactoryImpl {
      * @param uri
      *            the viewpoint uri
      * @return the viewpoint if found, throw an exception otherwise
-     * @throws SiriusProtocolException
+     * @throws ViewpointProtocolException
      *             if the uri could not be parsed or the viewpoint could not be
      *             found
      */
-    public static Viewpoint getSirius(final URI uri) throws SiriusProtocolException {
+    public static Viewpoint getViewpoint(final URI uri) throws ViewpointProtocolException {
         if (uri.segmentCount() == 2 && "viewpoint".equals(uri.scheme())) {
 
             final Set<Viewpoint> viewpoints = ViewpointRegistry.getInstance().getViewpoints();
             final String pluginName = URI.decode(uri.segment(0));
             final String viewpointName = URI.decode(uri.lastSegment());
 
-            final Set<Viewpoint> vpWithGoodName = SiriusProtocolParser.filterByNameAndId(viewpoints, viewpointName, pluginName);
+            final Set<Viewpoint> vpWithGoodName = ViewpointProtocolParser.filterByNameAndId(viewpoints, viewpointName, pluginName);
 
             if (!vpWithGoodName.isEmpty()) {
                 return vpWithGoodName.iterator().next();
             }
         } else {
-            throw new SiriusProtocolException("URI " + uri + " is not valid.");
+            throw new ViewpointProtocolException("URI " + uri + " is not valid.");
         }
-        throw new SiriusProtocolException("No viewpoint is corresponding to " + uri);
+        throw new ViewpointProtocolException("No viewpoint is corresponding to " + uri);
     }
 
     private static Set<Viewpoint> filterByNameAndId(final Set<Viewpoint> viewpoints, final String viewpointName, final String pluginId) {
         final Set<Viewpoint> filtered = new LinkedHashSet<Viewpoint>();
         for (final Viewpoint viewpoint : viewpoints) {
             if (viewpointName.equals(viewpoint.getName())) {
-                if (SiriusProtocolParser.hasGoodPluginID(viewpoint, pluginId)) {
+                if (ViewpointProtocolParser.hasGoodPluginID(viewpoint, pluginId)) {
                     filtered.add(viewpoint);
                 }
             }
@@ -99,7 +99,7 @@ public class SiriusProtocolParser extends DescriptionResourceFactoryImpl {
     public static boolean match(final URI resourceSetURi, final String viewpointURI) {
         boolean result = false;
         if (resourceSetURi.isPlatform()) {
-            final URI computedURI = SiriusProtocolParser.buildSiriusUri(resourceSetURi);
+            final URI computedURI = ViewpointProtocolParser.buildViewpointUri(resourceSetURi);
             if (computedURI != null) {
                 if (URI.createURI(viewpointURI, false).toString().equals(computedURI.toString())) {
                     // Simple case same URI
@@ -124,18 +124,18 @@ public class SiriusProtocolParser extends DescriptionResourceFactoryImpl {
      *            the platform URI.
      * @return the uri converted to viewpoint protocol
      */
-    public static URI buildSiriusUri(final URI resourceSetURi) {
+    public static URI buildViewpointUri(final URI resourceSetURi) {
         URI result = null;
         if (resourceSetURi.isPlatform()) {
-            final String uriPluginID = SiriusProtocolParser.extractPluginID(resourceSetURi);
-            final String viewpointName = SiriusProtocolParser.extractSiriusName(resourceSetURi);
+            final String uriPluginID = ViewpointProtocolParser.extractPluginID(resourceSetURi);
+            final String viewpointName = ViewpointProtocolParser.extractViewpointName(resourceSetURi);
             final String computedURI = "viewpoint:/" + uriPluginID + "/" + viewpointName;
             result = URI.createURI(computedURI);
         }
         return result;
     }
 
-    private static String extractSiriusName(final URI resourceSetURi) {
+    private static String extractViewpointName(final URI resourceSetURi) {
         final String fragment = resourceSetURi.fragment();
         final String viewpointNameSeparator = "'";
         if (fragment.contains(viewpointNameSeparator)) {

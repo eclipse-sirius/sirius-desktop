@@ -17,7 +17,7 @@ package org.eclipse.sirius.tools.internal.uri;
  * @author cbrun
  * 
  */
-public class SiriusProtocolException extends RuntimeException {
+public class ViewpointProtocolException extends RuntimeException {
 
     /**
      * 
@@ -30,7 +30,7 @@ public class SiriusProtocolException extends RuntimeException {
      * @param string
      *            message.
      */
-    public SiriusProtocolException(final String string) {
+    public ViewpointProtocolException(final String string) {
         super(string);
     }
 

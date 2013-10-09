@@ -19,7 +19,7 @@ import com.google.common.base.Preconditions;
 import org.eclipse.sirius.business.internal.movida.dependencies.DependencyTracker;
 import org.eclipse.sirius.business.internal.movida.dependencies.Relation;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
-import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistryListener;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistryListener;
 
 /**
  * Tracks various kinds of dependencies between a set of Siriuss.
@@ -33,7 +33,7 @@ public class ViewpointDependenciesTracker extends DependencyTracker<URI> {
      * 
      * @author pierre-charles.david@obeo.fr
      */
-    private class TrackerUpdater implements SiriusRegistryListener {
+    private class TrackerUpdater implements ViewpointRegistryListener {
         /**
          * {@inheritDoc}
          */

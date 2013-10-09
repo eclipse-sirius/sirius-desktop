@@ -39,13 +39,13 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
 
 /**
- * A dialog box which allows a Sirius specifier to select a sub-set of the
- * available Siriuss to configure the <code>Sirius.reuses</code> and
- * <code>Sirius.customizes</code> references.
+ * A dialog box which allows a viewpoint specifier to select a sub-set of the
+ * available viewpoint to configure the <code>Viewpoint.reuses</code> and
+ * <code>Viewpoint.customizes</code> references.
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class SiriusDependenciesSelectionDialog {
+public class ViewpoitnDependenciesSelectionDialog {
     /**
      * The viewpoint to configure.
      */
@@ -57,54 +57,54 @@ public class SiriusDependenciesSelectionDialog {
      * @param viewpoint
      *            the viewpoint to configure.
      */
-    public SiriusDependenciesSelectionDialog(Viewpoint viewpoint) {
+    public ViewpoitnDependenciesSelectionDialog(Viewpoint viewpoint) {
         this.viewpoint = viewpoint;
     }
 
     /**
-     * Opens a dialog box allowing the user to select the list of Siriuss this
+     * Opens a dialog box allowing the user to select the list of Viewpoints this
      * element will reuse.
      * 
      * @param shell
      *            the shell to use to open the dialog box.
-     * @return the Sirius logical URIs of all the Siriuss selected for reuse by
+     * @return the Sirius logical URIs of all the Viewpoints selected for reuse by
      *         the end-user, or {@link Options#newNone()} if the user canceled
      *         the dialog.
      */
-    public Option<Set<URI>> selectReusedSiriuss(Shell shell) {
-        return selectSiriuss(shell, DescriptionPackage.eINSTANCE.getViewpoint_Reuses(), "Reused Siriuss", "Select the Siriuss from which this viewpoint will reuse elements:");
+    public Option<Set<URI>> selectReusedViewpoints(Shell shell) {
+        return selectViewpoints(shell, DescriptionPackage.eINSTANCE.getViewpoint_Reuses(), "Reused Viewpoints", "Select the viewpoints from which this viewpoint will reuse elements:");
     }
 
     /**
-     * Opens a dialog box allowing the user to select the list of Siriuss this
+     * Opens a dialog box allowing the user to select the list of Viewpoints this
      * element will customize.
      * 
      * @param shell
      *            the shell to use to open the dialog box.
-     * @return the Sirius logical URIs of all the Siriuss selected for
+     * @return the Sirius logical URIs of all the Viewpoints selected for
      *         customization by the end-user, or {@link Options#newNone()} if
      *         the user canceled the dialog.
      */
-    public Option<Set<URI>> selectCustomizedSiriuss(Shell shell) {
-        return selectSiriuss(shell, DescriptionPackage.eINSTANCE.getViewpoint_Customizes(), "Customized Siriuss", "Select the Siriuss this viewpoint will customize:");
+    public Option<Set<URI>> selectCustomizedViewpoints(Shell shell) {
+        return selectViewpoints(shell, DescriptionPackage.eINSTANCE.getViewpoint_Customizes(), "Customized Viewpoints", "Select the viewpoints this viewpoint will customize:");
     }
 
     /**
-     * Opens a dialog box allowing the user to select the list of Siriuss this
+     * Opens a dialog box allowing the user to select the list of Viewpoints this
      * element is in conflict with
      * 
      * @param shell
      *            the shell to use to open the dialog box.
-     * @return the Sirius logical URIs of all the Siriuss selected for conflict
+     * @return the Sirius logical URIs of all the Viewpoints selected for conflict
      *         by the end-user, or {@link Options#newNone()} if the user
      *         canceled the dialog.
      */
-    public Option<Set<URI>> selectConflictsSiriuss(Shell shell) {
-        return selectSiriuss(shell, DescriptionPackage.eINSTANCE.getViewpoint_Customizes(), "Conflicting Sirius", "Select the Siriuss this viewpoint is in conflict with:");
+    public Option<Set<URI>> selectConflictsViewpoints(Shell shell) {
+        return selectViewpoints(shell, DescriptionPackage.eINSTANCE.getViewpoint_Customizes(), "Conflicting Viewpoints", "Select the viewpoints this viewpoint is in conflict with:");
     }
 
-    private Option<Set<URI>> selectSiriuss(Shell shell, EAttribute attribute, String title, String message) {
-        List<URI> available = getAvailableSiriussURIs();
+    private Option<Set<URI>> selectViewpoints(Shell shell, EAttribute attribute, String title, String message) {
+        List<URI> available = getAvailableViewpointsURIs();
         available.remove(new ViewpointQuery(viewpoint).getViewpointURI().get());
         Collections.sort(available, Ordering.usingToString());
 
@@ -126,7 +126,7 @@ public class SiriusDependenciesSelectionDialog {
         return Lists.newArrayList(Iterables.filter((List<URI>) viewpoint.eGet(feature), Predicates.notNull()));
     }
 
-    private List<URI> getAvailableSiriussURIs() {
+    private List<URI> getAvailableViewpointsURIs() {
         return Lists.newArrayList(Iterables.filter(Iterables.transform(ViewpointRegistry.getInstance().getViewpoints(), new Function<Viewpoint, URI>() {
             public URI apply(Viewpoint from) {
                 Option<URI> uri = new ViewpointQuery(from).getViewpointURI();

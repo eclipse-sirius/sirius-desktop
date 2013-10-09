@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class DefaultSiriusResourceHandler implements ViewpointResourceHandler {
+public class DefaultViewpointResourceHandler implements ViewpointResourceHandler {
     /**
      * {@inheritDoc}
      */

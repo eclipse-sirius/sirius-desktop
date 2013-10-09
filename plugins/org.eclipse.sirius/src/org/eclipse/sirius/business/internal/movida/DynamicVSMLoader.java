@@ -25,7 +25,7 @@ import com.google.common.collect.Sets.SetView;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
-import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistryListener;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistryListener;
 
 /**
  * A VSM Reloader is responsible for keeping the VSM resources loaded in a
@@ -35,7 +35,7 @@ import org.eclipse.sirius.business.internal.movida.registry.SiriusRegistryListen
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class DynamicVSMLoader implements SiriusRegistryListener {
+public class DynamicVSMLoader implements ViewpointRegistryListener {
     /**
      * The registry to use for information about which logical viewpoints are
      * available, which concrete resources they map to, and when and how they

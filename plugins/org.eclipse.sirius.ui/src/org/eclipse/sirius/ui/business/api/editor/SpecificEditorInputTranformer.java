@@ -49,7 +49,7 @@ import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.SessionSpecificEditorInput;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
-import org.eclipse.sirius.ui.business.internal.commands.ChangeSiriusSelectionCommand;
+import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DView;
@@ -291,7 +291,7 @@ public class SpecificEditorInputTranformer {
     private void activateSirius() {
         final ViewpointSelectionCallback selectionCallback = new ViewpointSelectionCallback();
         session.getTransactionalEditingDomain().getCommandStack()
-                .execute(new ChangeSiriusSelectionCommand(session, selectionCallback, Sets.newHashSet(viewpoint), Sets.<Viewpoint> newHashSet(), new NullProgressMonitor()) {
+                .execute(new ChangeViewpointSelectionCommand(session, selectionCallback, Sets.newHashSet(viewpoint), Sets.<Viewpoint> newHashSet(), new NullProgressMonitor()) {
 
                     @Override
                     public boolean canUndo() {

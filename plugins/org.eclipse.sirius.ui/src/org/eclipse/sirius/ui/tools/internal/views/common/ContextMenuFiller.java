@@ -85,7 +85,7 @@ import org.eclipse.sirius.ui.tools.internal.actions.creation.CreateRepresentatio
 import org.eclipse.sirius.ui.tools.internal.actions.export.ExportRepresentationsAction;
 import org.eclipse.sirius.ui.tools.internal.actions.session.CloseSessionsAction;
 import org.eclipse.sirius.ui.tools.internal.actions.session.OpenRepresentationsAction;
-import org.eclipse.sirius.ui.tools.internal.actions.session.OpenSiriusSelectionAction;
+import org.eclipse.sirius.ui.tools.internal.actions.session.OpenViewpointSelectionAction;
 import org.eclipse.sirius.ui.tools.internal.views.ViewHelperImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.action.DeleteRepresentationAction;
 import org.eclipse.sirius.ui.tools.internal.views.common.action.RenameRepresentationAction;
@@ -580,7 +580,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
     }
 
     private Action buildSiriussSelectionDialogAction(final Session session) {
-        return new OpenSiriusSelectionAction(session.getSessionResource().getURI());
+        return new OpenViewpointSelectionAction(session.getSessionResource().getURI());
     }
 
     private Action buildCopyRepresentationsAction(final Collection<DRepresentation> selection, final Session session) {

@@ -47,8 +47,8 @@ import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.internal.movida.DynamicVSMLoader;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
-import org.eclipse.sirius.business.internal.movida.registry.SiriusURIConverter;
-import org.eclipse.sirius.business.internal.movida.registry.SiriusURIHandler;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointURIConverter;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointURIHandler;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.ui.tools.api.editor.IEObjectNavigable;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
@@ -78,7 +78,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
 
     private final RepresentationTemplateUpdateTrigger templateUpdateTrigger = new RepresentationTemplateUpdateTrigger();
 
-    private final SiriusURIHandler vsmURIHandler;
+    private final ViewpointURIHandler vsmURIHandler;
 
     private CommandStackListener cmdStackListener = new CommandStackListener() {
         public void commandStackChanged(EventObject event) {
@@ -110,10 +110,10 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         editingDomain.getCommandStack().addCommandStackListener(cmdStackListener);
         editingDomain.getResourceSet().eAdapters().add(new ECrossReferenceAdapter());
         editingDomain.getResourceSet().eAdapters().add(new ModificationTrackingEnabler(editingDomain.getResourceSet()));
-        vsmURIHandler = new SiriusURIHandler(editingDomain.getResourceSet());
+        vsmURIHandler = new ViewpointURIHandler(editingDomain.getResourceSet());
         if (Movida.isEnabled()) {
             ViewpointRegistry registry = (ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance();
-            editingDomain.getResourceSet().setURIConverter(new SiriusURIConverter(registry));
+            editingDomain.getResourceSet().setURIConverter(new ViewpointURIConverter(registry));
             loader = new DynamicVSMLoader(editingDomain.getResourceSet(), registry);
             loader.setErrorHandler(new Runnable() {
                 public void run() {
