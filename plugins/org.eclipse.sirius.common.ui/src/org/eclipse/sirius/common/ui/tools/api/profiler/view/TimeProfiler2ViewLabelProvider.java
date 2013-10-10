@@ -15,15 +15,15 @@ import java.util.Map;
 import org.eclipse.jface.viewers.IFontProvider;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.sirius.common.tools.api.profiler.TimeProfiler2.CompositeTask;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.common.ui.tools.api.util.ImageProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 
 import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.common.tools.api.profiler.TimeProfiler2.CompositeTask;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 
 /**
  * Label provider for the
@@ -73,10 +73,14 @@ public class TimeProfiler2ViewLabelProvider extends LabelProvider implements ITa
             final CompositeTask item = (CompositeTask) element;
             switch (columnIndex) {
             case CATEGORY_COL:
-                image = (Image) item.getProfilerTask().getCategoryImage();
+                if (item.getProfilerTask().getCategoryImage() != null) {
+                    image = ImageProvider.getImageFromPath(item.getProfilerTask().getCategoryImage());
+                }
                 break;
             case TASK_NAME_COL:
-                image = (Image) item.getProfilerTask().getTaskImage();
+                if (item.getProfilerTask().getTaskImage() != null) {
+                    image = ImageProvider.getImageFromPath(item.getProfilerTask().getTaskImage());
+                }
                 break;
             case TIME_COL_MS:
                 break;

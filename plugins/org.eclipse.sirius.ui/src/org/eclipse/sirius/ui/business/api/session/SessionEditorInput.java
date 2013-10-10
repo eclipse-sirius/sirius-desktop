@@ -17,11 +17,11 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.ui.IMemento;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.ui.IMemento;
 
 /**
  * Specific URI editor input providing the session data.
@@ -152,13 +152,20 @@ public class SessionEditorInput extends URIEditorInput {
      * @since 4.0.0
      */
     protected Session getSession(URI sessionModelURI) {
-        Session sessionFromURI = SessionManager.INSTANCE.getSession(sessionModelURI);
-        if (sessionFromURI != null) {
-            if (!sessionFromURI.isOpen()) {
-                sessionFromURI.open(new NullProgressMonitor());
+        Session sessionFromURI;
+        try {
+            sessionFromURI = SessionManager.INSTANCE.getSession(sessionModelURI);
+            if (sessionFromURI != null) {
+                if (!sessionFromURI.isOpen()) {
+                    sessionFromURI.open(new NullProgressMonitor());
+                }
+                IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(sessionFromURI);
+                uiSession.open();
             }
-            IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(sessionFromURI);
-            uiSession.open();
+        } catch (IllegalStateException e) {
+            sessionFromURI = null;
+            // Silent catch: can happen if failing to retrieve the session from
+            // its URI
         }
         return sessionFromURI;
     }
@@ -250,7 +257,10 @@ public class SessionEditorInput extends URIEditorInput {
         Object a = super.getAdapter(adapter);
         if (IFile.class == adapter && a == null) {
             if (EMFPlugin.IS_RESOURCES_BUNDLE_AVAILABLE) {
-                a = EclipseUtil.getAdatper(adapter, getSession().getSessionResource().getURI());
+                Session inputSession = getSession();
+                if (inputSession != null) {
+                    a = EclipseUtil.getAdatper(adapter, inputSession.getSessionResource().getURI());
+                }
             }
         }
         return a;

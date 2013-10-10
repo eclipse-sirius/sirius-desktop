@@ -993,7 +993,7 @@
       </genClasses>
       <genClasses image="false" ecoreClass="viewpoint.ecore#//description/IVSMElementCustomization"/>
       <genClasses ecoreClass="viewpoint.ecore#//description/VSMElementCustomization">
-        <genFeatures createChild="false" propertyCategory="" propertyDescription="A boolean expression to disable this customization, return false to disable it, true otherwise, true by default."
+        <genFeatures createChild="false" propertyCategory="" propertyDescription="Determine whether the style customization should be applied or not. If the predicate returns false, the customization is disabled. True by default."
             ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/VSMElementCustomization/predicateExpression"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/VSMElementCustomization/featureCustomizations"/>
       </genClasses>

@@ -13,6 +13,11 @@ package org.eclipse.sirius.ui.tools.internal.preference;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IntegerFieldEditor;
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
+import org.eclipse.sirius.common.ui.SiriusTransPlugin;
+import org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -20,11 +25,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
-import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
-import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
-import org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Page for viewpoint preferences.
@@ -114,15 +114,16 @@ public class DesignerPreferencePage extends FieldEditorPreferencePage implements
                 "This feature handles a new intermediary tree level if the children size is above the threshold.", new Composite(groupComposite, SWT.NONE));
 
         Composite groupTriggerComposite = new Composite(groupComposite, SWT.NONE);
-        groupTriggerComposite.setLayout(new GridLayout(2, false));
+        groupTriggerComposite.setLayout(new GridLayout(3, false));
         groupTriggerComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-        groupTrigger = new IntegerFieldEditor(CommonPreferencesConstants.PREF_GROUP_TRIGGER, "Threshold", groupTriggerComposite);
+        groupTrigger = new IntegerFieldEditorWithHelp(CommonPreferencesConstants.PREF_GROUP_TRIGGER, "Threshold",
+                "The threshold needs to be higher or equal to the group size (otherwise Threshold = Group size).", groupTriggerComposite);
         groupTrigger.setValidRange(0, Integer.MAX_VALUE);
 
         Composite groupSizeComposite = new Composite(groupComposite, SWT.NONE);
-        groupSizeComposite.setLayout(new GridLayout(2, false));
+        groupSizeComposite.setLayout(new GridLayout(3, false));
         groupSizeComposite.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-        groupSize = new IntegerFieldEditor(CommonPreferencesConstants.PREF_GROUP_SIZE, "Group size", groupSizeComposite);
+        groupSize = new IntegerFieldEditorWithHelp(CommonPreferencesConstants.PREF_GROUP_SIZE, "Group size", "Group size needs to be higher than zero.", groupSizeComposite);
         groupSize.setValidRange(0, Integer.MAX_VALUE);
         addField(groupEnable);
         addField(groupTrigger);

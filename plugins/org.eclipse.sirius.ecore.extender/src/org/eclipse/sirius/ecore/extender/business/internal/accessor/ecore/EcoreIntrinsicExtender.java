@@ -40,7 +40,6 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 
 /**
@@ -511,8 +510,9 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
      */
     @Override
     public void updateMetamodels(final Collection<? extends MetamodelDescriptor> metamodelDescriptors) {
-        @SuppressWarnings("unused")
-        Collection<Boolean> descriptorsToAdd = Lists.newArrayList(metamodelDescriptors.removeAll(lastDescriptors));
+        if (lastDescriptors != null) {
+            metamodelDescriptors.removeAll(lastDescriptors);
+        }
         final Iterator<? extends MetamodelDescriptor> it = metamodelDescriptors.iterator();
         while (it.hasNext()) {
             final Object obj = it.next();

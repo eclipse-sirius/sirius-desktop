@@ -12,10 +12,10 @@
 
 package org.eclipse.sirius.diagram.tools.internal.actions.delete;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
@@ -35,22 +35,17 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.EditCommandRequestWrapper;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.swt.SWT;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchPart;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
-
+import org.eclipse.sirius.business.api.helper.delete.DeleteHookHelper;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.helper.delete.DeleteHookHelper;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.part.SiriusDiagramActionBarContributor;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -58,8 +53,12 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
-import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.swt.SWT;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchPart;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 
 /**
  * Delete Action which can call hooks.
@@ -150,21 +149,15 @@ public class DeleteFromModelWithHookAction extends DeleteFromModelAction {
 
     private Collection<DSemanticDecorator> computeSelections() {
 
-        final Collection<DSemanticDecorator> diagramElements = new ArrayList<DSemanticDecorator>();
+        final Set<DSemanticDecorator> diagramElements = Sets.newLinkedHashSet();
         final List<?> operationSet = getOperationSet();
-        final Iterator<?> editParts = operationSet.iterator();
-
-        while (editParts.hasNext()) {
-            final EditPart editPart = (EditPart) editParts.next();
-            if (editPart instanceof IGraphicalEditPart) {
-                final IGraphicalEditPart gEditPart = (IGraphicalEditPart) editPart;
-                final View view = (View) gEditPart.getModel();
-                // Don't delete diagram from model only if it is the top most
-                // diagram
-                final EObject element = ViewUtil.resolveSemanticElement(view);
-                if (element instanceof DSemanticDecorator) {
-                    diagramElements.add((DSemanticDecorator) element);
-                }
+        for (IGraphicalEditPart gEditPart : Iterables.filter(operationSet, IGraphicalEditPart.class)) {
+            final View view = (View) gEditPart.getModel();
+            // Don't delete diagram from model only if it is the top most
+            // diagram
+            final EObject element = ViewUtil.resolveSemanticElement(view);
+            if (element instanceof DSemanticDecorator) {
+                diagramElements.add((DSemanticDecorator) element);
             }
         }
         return diagramElements;

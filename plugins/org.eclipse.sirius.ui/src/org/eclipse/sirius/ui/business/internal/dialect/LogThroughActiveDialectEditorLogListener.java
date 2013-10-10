@@ -15,18 +15,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.navigator.ICommonLabelProvider;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider;
@@ -34,7 +27,13 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.navigator.ICommonLabelProvider;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 
 /**
  * A {@link ILogListener} that reacts to specific exceptions by logging them
@@ -90,7 +89,9 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
             }
             // Step 3: if could not log through active dialect, and if exception
             // requires logging, opening a pop-up
-            if (!hasBeenLoggedThroughDialect) {
+            // Notice that we do not display such pop-ups while eclipse is
+            // starting (can be confusing for end-user)
+            if (!hasBeenLoggedThroughDialect && !PlatformUI.getWorkbench().isStarting()) {
                 if (shouldBeLoggedThroughPopup(exception)) {
                     if ((PlatformUI.getWorkbench() != null) && (PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null)) {
                         MessageDialog.openWarning(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Permission Issue", getErrorMessage(exception));

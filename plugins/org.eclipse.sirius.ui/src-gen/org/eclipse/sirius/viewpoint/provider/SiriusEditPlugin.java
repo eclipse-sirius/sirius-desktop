@@ -206,15 +206,15 @@ public final class SiriusEditPlugin extends EMFPlugin {
             resourceWizardRegistryListener = new IAddModelDependencyWizardRegistryListener();
             resourceWizardRegistryListener.init();
 
-            /* set ecore editor as default editor. */
-            PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("*.ecore", "org.eclipse.emf.ecore.presentation.EcoreEditorID");
-
             try {
                 SiriusTasks.initSiriusTasks();
             } catch (IllegalArgumentException e) {
                 final IStatus status = new Status(IStatus.ERROR, SiriusEditPlugin.ID, IStatus.OK, e.getMessage(), e);
                 SiriusEditPlugin.getPlugin().getLog().log(status);
             }
+
+            /* set ecore editor as default editor. */
+            PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("*.ecore", "org.eclipse.emf.ecore.presentation.EcoreEditorID");
 
             try {
                 // Just a call to load all plugins that provide a specific

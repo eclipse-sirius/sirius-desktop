@@ -23,11 +23,15 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
+import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.sirius.common.tools.internal.interpreter.IMonomorphicService;
 import org.eclipse.sirius.common.tools.internal.interpreter.IPolymorphicService;
 import org.eclipse.sirius.common.tools.internal.interpreter.IService;
 import org.eclipse.sirius.common.tools.internal.interpreter.ServiceInterpreter;
+import org.eclipse.sirius.common.tools.internal.interpreter.VariableInterpreter;
 
 import com.google.common.collect.Lists;
 
@@ -65,7 +69,13 @@ public class ServiceProposalProvider implements IProposalProvider {
             for (String dependency : context.getInterpreterContext().getDependencies()) {
                 serviceInterpreter.addImport(dependency);
             }
+            // Get service proposals
             proposals = getProposals(context.getContents(), context.getPosition(), serviceInterpreter.getServices());
+            // Add all variable proposals
+            ContentContext varContext = new ContentContext(context.getContents().replaceFirst(ServiceInterpreter.PREFIX, VariableInterpreter.PREFIX), context.getPosition()
+                    - ServiceInterpreter.PREFIX.length() + VariableInterpreter.PREFIX.length(), context.getInterpreterContext());
+            proposals.addAll(getVariableProposals(context.getContents(), varContext));
+
             // Reset the available services (in case of call for other VSM)
             serviceInterpreter.setProperty(IInterpreter.FILES, null);
 
@@ -90,7 +100,12 @@ public class ServiceProposalProvider implements IProposalProvider {
             proposals = Collections.singletonList(getNewEmtpyExpression());
         } else {
             ServiceInterpreter serviceInterpreter = (ServiceInterpreter) interpreter;
+            // Get service proposals
             proposals = getProposals(context.getTextSoFar(), context.getCursorPosition(), serviceInterpreter.getServices());
+            // Add all variable proposals
+            ContentInstanceContext varContext = new ContentInstanceContext(context.getCurrentSelected(), context.getTextSoFar().replaceFirst(ServiceInterpreter.PREFIX, VariableInterpreter.PREFIX),
+                    context.getCursorPosition() - ServiceInterpreter.PREFIX.length() + VariableInterpreter.PREFIX.length(), context.getEditingDomain());
+            proposals.addAll(getVariableProposals(context.getTextSoFar(), varContext));
         }
         return proposals;
     }
@@ -120,8 +135,15 @@ public class ServiceProposalProvider implements IProposalProvider {
         // returned.
         if (serviceNamePrefix.length() >= ServiceInterpreter.PREFIX.length()) {
             serviceNamePrefix = serviceNamePrefix.substring(ServiceInterpreter.PREFIX.length());
+
+            // Remove the receiver name (and the receiver separator) if any
+            Option<String> receiverVariableName = ServiceInterpreter.getReceiverVariableName(serviceNamePrefix);
+            if (receiverVariableName.some()) {
+                serviceNamePrefix = serviceNamePrefix.substring(receiverVariableName.get().length() + 1);
+            }
+
             for (String serviceName : services.keySet()) {
-                if (serviceName.startsWith(serviceNamePrefix) || isMatchingBeforeParameters(serviceName, serviceNamePrefix)) {
+                if (serviceName.startsWith(serviceNamePrefix)) {
                     IService service = services.get(serviceName);
                     if (service instanceof IPolymorphicService) {
                         addAllImplementations(proposals, (IPolymorphicService) service);
@@ -134,10 +156,44 @@ public class ServiceProposalProvider implements IProposalProvider {
         return proposals;
     }
 
-
-    private boolean isMatchingBeforeParameters(String serviceName, String serviceNamePrefix) {
-        String[] result = serviceNamePrefix.split("\\(");
-        return serviceName.equals(result[0]);
+    /**
+     * Compute all variable proposals by using VariableProposalProvider and add
+     * a "." to them before returning them.
+     * 
+     * @param writtenExpression
+     *            The complete expression with feature: prefix.
+     * @param context
+     *            Should be a {@link ContentInstanceContext} or
+     *            {@link ContentContext}.
+     */
+    private List<ContentProposal> getVariableProposals(String writtenExpression, Object context) {
+        if (!(context instanceof ContentContext) && !(context instanceof ContentInstanceContext)) {
+            throw new IllegalArgumentException("The context parameter should be a ContentContext or a ContentInstanceContext");
+        }
+        List<ContentProposal> proposals = new ArrayList<ContentProposal>();
+        Option<String> receiverVariableName = ServiceInterpreter.getReceiverVariableName(writtenExpression);
+        if (!receiverVariableName.some()) {
+            // If there is no "." in the expression, we also add all
+            // available variables by using the VariableProposalProvider
+            VariableInterpreter variableInterpreter = (VariableInterpreter) CompoundInterpreter.INSTANCE.getInterpreterForExpression(VariableInterpreter.PREFIX);
+            if (variableInterpreter != null) {
+                final List<IProposalProvider> proposalProviders = ProposalProviderRegistry.getProvidersFor(variableInterpreter);
+                for (IProposalProvider provider : proposalProviders) {
+                    List<ContentProposal> variableProposals = null;
+                    if (context instanceof ContentContext) {
+                        variableProposals = provider.getProposals(variableInterpreter, (ContentContext) context);
+                    } else if (context instanceof ContentInstanceContext) {
+                        variableProposals = provider.getProposals(variableInterpreter, (ContentInstanceContext) context);
+                    }
+                    // Add a "." to each proposal
+                    for (ContentProposal contentProposal : variableProposals) {
+                        proposals.add(new ContentProposal(contentProposal.getProposal() + ServiceInterpreter.RECEIVER_SEPARATOR, contentProposal.getProposal() + ServiceInterpreter.RECEIVER_SEPARATOR
+                                + ": " + contentProposal.getInformation(), contentProposal.getInformation(), contentProposal.getCursorPosition() + 1));
+                    }
+                }
+            }
+        }
+        return proposals;
     }
 
     private void addAllImplementations(List<ContentProposal> proposals, IPolymorphicService service) {

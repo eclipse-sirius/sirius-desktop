@@ -38,6 +38,10 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
+import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
+import org.eclipse.sirius.common.ui.tools.api.util.TreeItemWrapperContentProvider;
+import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -50,11 +54,6 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.TreeItem;
 
 import com.google.common.collect.Iterators;
-
-import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
-import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
-import org.eclipse.sirius.common.ui.tools.api.util.TreeItemWrapperContentProvider;
-import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 
 /**
  * A pane based wizard page to select an EObject.
@@ -126,7 +125,7 @@ public class EObjectPaneBasedSelectionWizardPage extends AbstractSelectionWizard
      */
     public void init(final Collection<? extends EObject> choiceOfValues, final Collection<? extends EObject> preSelectedValues) {
         this.treeObjects = convertToTree(choiceOfValues);
-        this.selectedEObjects.addAll(choiceOfValues);
+        this.selectedEObjects.addAll(preSelectedValues);
 
     }
 

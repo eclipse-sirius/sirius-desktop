@@ -48,7 +48,7 @@ public interface VSMElementCustomization extends IVSMElementCustomization {
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='A boolean result to enable if true or disable if false this customization, true by default.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean result. True to enable the customization, false to disabled it. True by default.'"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='ecore.EObject | the current view.' container='ecore.EObject | the semantic container.'"
      * @generated

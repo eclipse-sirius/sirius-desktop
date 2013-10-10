@@ -1757,7 +1757,7 @@
      <description>
        
        Interpreted expressions, requested return type and available variables:
-          - predicateExpression: A boolean result to enable if true or disable if false this customization, true by default.
+          - predicateExpression: a boolean result. True to enable the customization, false to disabled it. True by default.
                 . view: the current view.
                 . container: the semantic container.
 

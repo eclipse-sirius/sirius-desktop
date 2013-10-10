@@ -101,7 +101,7 @@ public class EStructuralFeatureCustomizationApplyOnAllPropertySection extends Ab
      */
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
-        checkbox.setToolTipText("If true, this customization will be applied on all style description.");
+        checkbox.setToolTipText("If true, this customization will be applied on all style descriptions.");
 
         CLabel help = getWidgetFactory().createCLabel(composite, "");
         FormData data = new FormData();
@@ -110,6 +110,6 @@ public class EStructuralFeatureCustomizationApplyOnAllPropertySection extends Ab
         help.setLayoutData(data);
         help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
-        help.setToolTipText("If true, this customization will be applied on all style description.");
+        help.setToolTipText("If true, this customization will be applied on all style descriptions.");
     }
 }

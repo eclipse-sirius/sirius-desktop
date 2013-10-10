@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.actions.delete;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.commands.Command;
@@ -20,9 +20,11 @@ import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.actions.PromptingDeleteAction;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.sirius.business.api.helper.delete.DeleteHookHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.ui.IWorkbenchPart;
+
+import com.google.common.collect.Sets;
 
 /**
  * Delete Action originating via keyboard using the 'Delete' hot/shortcut key.
@@ -75,7 +77,7 @@ public class DeleteWithHookAction extends PromptingDeleteAction {
 
     private Collection<DSemanticDecorator> computeSelections() {
 
-        final Collection<DSemanticDecorator> diagramElements = new ArrayList<DSemanticDecorator>();
+        final Set<DSemanticDecorator> diagramElements = Sets.newLinkedHashSet();
 
         for (final Object selectedObject : getSelectedObjects()) {
             if (selectedObject instanceof IGraphicalEditPart) {

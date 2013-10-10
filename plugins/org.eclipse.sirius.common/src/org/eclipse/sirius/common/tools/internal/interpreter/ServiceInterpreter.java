@@ -22,6 +22,13 @@ import java.util.regex.Pattern;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
 import org.osgi.framework.Bundle;
 
 import com.google.common.base.Function;
@@ -29,12 +36,6 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 
 /**
  * A specialized interpreter which can only directly invoke Java service
@@ -47,7 +48,10 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
     /** The Service interpreter prefix. */
     public static final String PREFIX = "service:";
 
-    private static final String RECEIVER_SEPARATOR = ".";
+    /**
+     * The character used to separate receiver and service.
+     */
+    public static final String RECEIVER_SEPARATOR = ".";
 
     private static final String EOBJECT_CLASS_NAME = EObject.class.getCanonicalName();
 
@@ -70,6 +74,22 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
     };
 
     /**
+     * Get the receiver variable name if any, none {@link Option} otherwise.
+     * 
+     * @param expression
+     *            The expression after the {@link ServiceInterpreter#PREFIX}.
+     * @return the receiver variable name if any, none Option otherwise.
+     */
+    public static Option<String> getReceiverVariableName(String expression) {
+        int indexOfServiceName = expression.indexOf(RECEIVER_SEPARATOR);
+        if (indexOfServiceName != -1) {
+            String receiverVariableName = expression.substring(0, indexOfServiceName);
+            return Options.newSome(receiverVariableName);
+        }
+        return Options.newNone();
+    }
+
+    /**
      * {@inheritDoc}
      */
     public IInterpreter createInterpreter() {
@@ -88,22 +108,21 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
         Object evaluation = null;
         if (target != null && expression != null && expression.startsWith(PREFIX)) {
             String serviceCall = expression.substring(PREFIX.length());
-            int indexOfServiceName = serviceCall.indexOf(RECEIVER_SEPARATOR);
-            int indexOfParenthesis = serviceCall.indexOf("(");
-            String serviceName = serviceCall;
+            Option<String> receiverVariableName = getReceiverVariableName(serviceCall);
             EObject receiver = target;
-            if (indexOfServiceName != -1) {
-                String receiverVariableName = serviceCall.substring(0, indexOfServiceName);
-                serviceCall = serviceCall.substring(indexOfServiceName + 1);
-                indexOfParenthesis = serviceCall.indexOf("(");
-                Object objectReceiver = evaluate(receiverVariableName);
+            String serviceName = serviceCall;
+            if (receiverVariableName.some()) {
+                serviceCall = serviceCall.substring(receiverVariableName.get().length() + 1);
+                Object objectReceiver = evaluateVariable(target, receiverVariableName.get().trim());
                 if (objectReceiver instanceof EObject) {
                     receiver = (EObject) objectReceiver;
                 } else {
-                    throw new EvaluationException("The receiver of the service call" + serviceName + ".");
+                    throw new EvaluationException("The receiver of the service call " + serviceCall + " is not an EObject.");
                 }
             }
+            int indexOfParenthesis = serviceCall.indexOf("(");
             serviceName = serviceCall.substring(0, indexOfParenthesis == -1 ? serviceCall.length() : indexOfParenthesis);
+
             Object[] parameters = new Object[] { receiver };
 
             if (indexOfParenthesis != -1) {
@@ -111,16 +130,12 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
                 parameters = new Object[values.length];
                 parameters[0] = receiver;
                 for (int i = 1; i < values.length; i++) {
-                    parameters[i] = evaluate(values[i]);
+                    parameters[i] = evaluateVariable(target, values[i].trim());
                 }
             }
             evaluation = callService(parameters, serviceName);
         }
         return evaluation;
-    }
-
-    private Object evaluate(String parameter) {
-        return getVariable(parameter.trim());
     }
 
     private Object callService(Object[] target, String serviceName) throws EvaluationException {

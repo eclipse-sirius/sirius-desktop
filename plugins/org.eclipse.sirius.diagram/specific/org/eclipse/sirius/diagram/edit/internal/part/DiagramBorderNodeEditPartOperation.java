@@ -250,37 +250,38 @@ public final class DiagramBorderNodeEditPartOperation {
                     }
                     self.getNodeLabel().revalidate();
                     self.setTooltipText(viewNode.getTooltipText());
-                    //
-                    // The border.
-                    if (viewNode.getStyle() instanceof BorderedStyle) {
-                        final BorderedStyle borderedStyle = (BorderedStyle) viewNode.getStyle();
-                        DiagramBorderNodeEditPartOperation.refreshBorderedStyle(styledFigure, borderedStyle);
-                    }
+                }
+                if (viewNode.getStyle() instanceof BorderedStyle) {
+                    BorderedStyle borderedStyle = (BorderedStyle) viewNode.getStyle();
+                    DiagramBorderNodeEditPartOperation.refreshBorderedStyle(styledFigure, borderedStyle);
                 }
             }
         }
     }
 
     private static void refreshBorderedStyle(final StyledFigure styledFigure, final BorderedStyle borderedStyle) {
-
-        LineBorder lineBorder = null;
-        if (styledFigure.getBorder() instanceof LineBorder) {
-            lineBorder = (LineBorder) styledFigure.getBorder();
-        } else {
-            lineBorder = new LineBorder();
-            styledFigure.setBorder(lineBorder);
-        }
-
-        if (styledFigure instanceof Shape) {
-            ((Shape) styledFigure).setLineWidth(0);
-        }
-        lineBorder.setWidth(borderedStyle.getBorderSize().intValue());
-        if (borderedStyle.getBorderColor() != null) {
-            lineBorder.setColor(VisualBindingManager.getDefault().getColorFromRGBValues(borderedStyle.getBorderColor()));
-        }
-
         if (borderedStyle.getBorderSize().intValue() == 0) {
             styledFigure.setBorder(null);
+        } else {
+            LineBorder lineBorder = null;
+            if (styledFigure.getBorder() instanceof LineBorder) {
+                lineBorder = (LineBorder) styledFigure.getBorder();
+            } else {
+                lineBorder = new LineBorder();
+                styledFigure.setBorder(lineBorder);
+            }
+
+            if (styledFigure instanceof Shape) {
+                ((Shape) styledFigure).setLineWidth(0);
+            }
+            lineBorder.setWidth(borderedStyle.getBorderSize().intValue());
+            if (borderedStyle.getBorderColor() != null) {
+                lineBorder.setColor(VisualBindingManager.getDefault().getColorFromRGBValues(borderedStyle.getBorderColor()));
+            }
+
+            if (borderedStyle.getBorderSize().intValue() == 0) {
+                styledFigure.setBorder(null);
+            }
         }
     }
 

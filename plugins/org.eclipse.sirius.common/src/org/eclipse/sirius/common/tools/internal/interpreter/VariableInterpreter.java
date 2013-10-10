@@ -15,15 +15,14 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.collect.Maps;
-
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.InterpreterStatusFactory;
+
+import com.google.common.collect.Maps;
 
 /**
  * A specialized interpreter which can only directly access variables (and
@@ -71,6 +70,25 @@ public class VariableInterpreter extends AbstractInterpreter implements org.ecli
         Object result = null;
         if (target != null && expression != null && expression.startsWith(PREFIX)) {
             String variableName = expression.trim().substring(PREFIX.length());
+            result = evaluateVariable(target, variableName);
+        }
+        return result;
+    }
+
+    /**
+     * Method to evaluate a variable.
+     * 
+     * @param target
+     *            the EObject instance to evaluate on.
+     * @param variableName
+     *            the name of the variable to evaluate.
+     * @return an object with the evaluation result.
+     * @throws EvaluationException
+     *             if the evaluation was not successful.
+     */
+    protected Object evaluateVariable(EObject target, String variableName) throws EvaluationException {
+        Object result = null;
+        if (target != null && variableName != null) {
             if (SELF_VARIABLE_NAME.equals(variableName)) {
                 result = target;
             } else if (variables.containsKey(variableName)) {

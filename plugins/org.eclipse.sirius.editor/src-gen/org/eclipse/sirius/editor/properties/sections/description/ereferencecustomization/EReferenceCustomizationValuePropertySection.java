@@ -14,7 +14,9 @@ package org.eclipse.sirius.editor.properties.sections.description.ereferencecust
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -22,16 +24,25 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.business.api.query.EClassQuery;
+import org.eclipse.sirius.business.api.query.EClassesQuery;
+import org.eclipse.sirius.business.api.query.EStructuralFeaturesQuery;
+import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 // End of user code imports
 
@@ -117,15 +128,40 @@ public class EReferenceCustomizationValuePropertySection extends AbstractComboPr
         // Start of user code choice of values
         if (eObject instanceof EReferenceCustomization) {
             EReferenceCustomization eReferenceCustomization = (EReferenceCustomization) eObject;
-            EClass commonType = new EClassQuery(null).getCommonType(eReferenceCustomization.getAppliedOn(), eReferenceCustomization.getReferenceName());
+            // Get the common type to all references that have the expected name
+            Option<EClass> commonType;
+            if (eReferenceCustomization.isApplyOnAll()) {
+                // We do not consider the appliedOn list but we compute them
+                // dynamically. All references with expected name in subclasses
+                // of StyleDescription (and its children) are considered.
+                Set<EStructuralFeature> features = new LinkedHashSet<EStructuralFeature>();
+                String referenceName = eReferenceCustomization.getReferenceName();
+                EClass styleDescription = StylePackage.eINSTANCE.getStyleDescription();
+                Iterator<EClass> it = Iterators.filter(StylePackage.eINSTANCE.eAllContents(), EClass.class);
+                while (it.hasNext()) {
+                    EClass metaModelEClass = it.next();
+                    if (styleDescription.isSuperTypeOf(metaModelEClass)) {
+                        // Search references in subTypes of StyleDescription
+                        // (and its children)
+                        features.addAll(new EClassQuery(metaModelEClass).getEStructuralFeatures(referenceName, new ArrayList<EClass>()));
+                    }
+                }
+                commonType = new EStructuralFeaturesQuery(Lists.newArrayList(features)).getCommonType();
+            } else {
+                // Get the EClass of appliedOn list.
+                List<EClass> appliedOnEClass = Lists.transform(eReferenceCustomization.getAppliedOn(), new Function<EObject, EClass>() {
+                    public EClass apply(EObject eObject) {
+                        return eObject.eClass();
+                    };
+                });
+                commonType = new EClassesQuery(appliedOnEClass).getCommonTypeForReference(eReferenceCustomization.getReferenceName());
+            }
             List<EObject> availableValues = new ArrayList<EObject>();
-            if (commonType != null) {
-                for (Object value : values) {
-                    if (value instanceof EObject) {
-                        EObject eObjectValue = (EObject) value;
-                        if (commonType.isSuperTypeOf(eObjectValue.eClass())) {
-                            availableValues.add(eObjectValue);
-                        }
+            if (commonType.some()) {
+                // Get all EObject that have this common type as eType.
+                for (EObject value : Iterables.filter(values, EObject.class)) {
+                    if (commonType.get().isSuperTypeOf(value.eClass())) {
+                        availableValues.add(value);
                     }
                 }
             }
@@ -154,6 +190,7 @@ public class EReferenceCustomizationValuePropertySection extends AbstractComboPr
 
         // End of user code create controls
     }
+
     // Start of user code user operations
 
     // End of user code user operations

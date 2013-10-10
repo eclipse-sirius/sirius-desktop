@@ -30,7 +30,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings xsi:type="description:ContainerMappingImport" name="Doc Class" childrenPresentation="List">
+        <containerMappings xsi:type="description:ContainerMappingImport" name="Doc Class" semanticCandidatesExpression="[eClassifiers->filter(ecore::EClass)/]" childrenPresentation="List">
           <reusedNodeMappings href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
           <reusedNodeMappings href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
           <conditionnalStyles predicateExpression="[eAnnotations.details->select(key = 'documentation')->size() = 0/]">

@@ -26,14 +26,14 @@ import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.color.RGBValuesProvider;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.business.internal.metamodel.helper.GetDefaultStyle;
-import org.eclipse.sirius.business.internal.metamodel.helper.StyleHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
+import org.eclipse.sirius.viewpoint.BeginLabelStyle;
 import org.eclipse.sirius.viewpoint.BorderedStyle;
 import org.eclipse.sirius.viewpoint.BundledImage;
+import org.eclipse.sirius.viewpoint.CenterLabelStyle;
 import org.eclipse.sirius.viewpoint.ContainerStyle;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
@@ -42,6 +42,7 @@ import org.eclipse.sirius.viewpoint.DNode;
 import org.eclipse.sirius.viewpoint.Dot;
 import org.eclipse.sirius.viewpoint.EdgeStyle;
 import org.eclipse.sirius.viewpoint.Ellipse;
+import org.eclipse.sirius.viewpoint.EndLabelStyle;
 import org.eclipse.sirius.viewpoint.FlatContainerStyle;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.LabelStyle;
@@ -50,12 +51,10 @@ import org.eclipse.sirius.viewpoint.NodeStyle;
 import org.eclipse.sirius.viewpoint.Note;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.ShapeContainerStyle;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.Square;
-import org.eclipse.sirius.viewpoint.WorkspaceImage;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
-import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.swt.graphics.RGB;
 
 /**
@@ -101,41 +100,59 @@ public class ViewPropertiesSynchronizer {
             }
 
             // Adapt GMF font according to Viewpoint font.
-            if (dDiagramElement.getStyle() instanceof LabelStyle) {
-                LabelStyle labelStyle = (LabelStyle) dDiagramElement.getStyle();
-                FontStyle fontStyle = (FontStyle) createOrFindStyle(view, NotationPackage.eINSTANCE.getFontStyle());
-                switch (labelStyle.getLabelFormat().getValue()) {
-                case FontFormat.BOLD:
-                    fontStyle.setBold(true);
-                    break;
-                case FontFormat.ITALIC:
-                    fontStyle.setItalic(true);
-                    break;
-                case FontFormat.BOLD_ITALIC:
-                    fontStyle.setBold(true);
-                    fontStyle.setItalic(true);
-                    break;
-                case FontFormat.NORMAL:
-                    fontStyle.setBold(false);
-                    fontStyle.setItalic(false);
-                    break;
-                default:
-                    break;
+            if (dDiagramElement.getStyle() instanceof BasicLabelStyle) {
+                BasicLabelStyle basicLabelStyle = (BasicLabelStyle) dDiagramElement.getStyle();
+                updateGMFFontStyle(view, basicLabelStyle);
+            } else if (dDiagramElement.getStyle() instanceof EdgeStyle) {
+                EdgeStyle edgeStyle = (EdgeStyle) dDiagramElement.getStyle();
+                BeginLabelStyle beginLabelStyle = edgeStyle.getBeginLabelStyle();
+                if (beginLabelStyle != null) {
+                    updateGMFFontStyle(view, beginLabelStyle);
                 }
-
-                fontStyle.setFontHeight(labelStyle.getLabelSize());
-                //
-                // Default font (Change the code here to insert new font in the
-                // case
-                // of Designer allows to change the default font).
-                if (fontStyle.getFontName() == null) {
-                    fontStyle.setFontName(DEFAULT_FONT_STYLE);
+                CenterLabelStyle centerLabelStyle = edgeStyle.getCenterLabelStyle();
+                if (centerLabelStyle != null) {
+                    updateGMFFontStyle(view, centerLabelStyle);
                 }
-                RGBValues labelColor = labelStyle.getLabelColor();
-                if (labelColor != null) {
-                    fontStyle.setFontColor(FigureUtilities.RGBToInteger(new RGB(labelColor.getRed(), labelColor.getGreen(), labelColor.getBlue())));
+                EndLabelStyle endLabelStyle = edgeStyle.getEndLabelStyle();
+                if (endLabelStyle != null) {
+                    updateGMFFontStyle(view, endLabelStyle);
                 }
             }
+        }
+    }
+
+    private void updateGMFFontStyle(View view, BasicLabelStyle basicLabelStyle) {
+        FontStyle fontStyle = (FontStyle) createOrFindStyle(view, NotationPackage.eINSTANCE.getFontStyle());
+        switch (basicLabelStyle.getLabelFormat().getValue()) {
+        case FontFormat.BOLD:
+            fontStyle.setBold(true);
+            break;
+        case FontFormat.ITALIC:
+            fontStyle.setItalic(true);
+            break;
+        case FontFormat.BOLD_ITALIC:
+            fontStyle.setBold(true);
+            fontStyle.setItalic(true);
+            break;
+        case FontFormat.NORMAL:
+            fontStyle.setBold(false);
+            fontStyle.setItalic(false);
+            break;
+        default:
+            break;
+        }
+
+        fontStyle.setFontHeight(basicLabelStyle.getLabelSize());
+        //
+        // Default font (Change the code here to insert new font in the
+        // case
+        // of Designer allows to change the default font).
+        if (fontStyle.getFontName() == null) {
+            fontStyle.setFontName(DEFAULT_FONT_STYLE);
+        }
+        RGBValues labelColor = basicLabelStyle.getLabelColor();
+        if (labelColor != null) {
+            fontStyle.setFontColor(FigureUtilities.RGBToInteger(new RGB(labelColor.getRed(), labelColor.getGreen(), labelColor.getBlue())));
         }
     }
 
@@ -224,12 +241,6 @@ public class ViewPropertiesSynchronizer {
         if (element instanceof DNode) {
             DNode dNode = (DNode) element;
             NodeStyle nodeStyle = dNode.getOwnedStyle();
-            if (nodeStyle instanceof WorkspaceImage && !nodeStyle.getCustomFeatures().isEmpty()) {
-                StyleDescription styleDescription = new GetDefaultStyle().doSwitch(dNode.getActualMapping());
-                NodeStyle originalStyle = (NodeStyle) new StyleHelper(interpreter).createStyle(styleDescription);
-                dNode.setOwnedStyle(originalStyle);
-                nodeStyle = dNode.getOwnedStyle();
-            }
             if (Properties.ID_FILLCOLOR.equals(propertyId)) {
                 setColor(nodeStyle, newColor);
             } else if (Properties.ID_LINECOLOR.equals(propertyId)) {
@@ -240,11 +251,6 @@ public class ViewPropertiesSynchronizer {
         } else if (element instanceof DDiagramElementContainer) {
             DDiagramElementContainer diagramElementContainer = (DDiagramElementContainer) element;
             ContainerStyle containerStyle = diagramElementContainer.getOwnedStyle();
-            if (containerStyle instanceof WorkspaceImage && !containerStyle.getCustomFeatures().isEmpty()) {
-                ContainerStyle originalStyle = (ContainerStyle) new StyleHelper(interpreter).createStyle(diagramElementContainer.getActualMapping().getStyle());
-                diagramElementContainer.setOwnedStyle(originalStyle);
-                containerStyle = diagramElementContainer.getOwnedStyle();
-            }
             if (Properties.ID_FILLCOLOR.equals(propertyId)) {
                 setColor(containerStyle, newColor);
             } else if (Properties.ID_LINECOLOR.equals(propertyId)) {

@@ -26,8 +26,6 @@ import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget.Direction;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.swt.graphics.Image;
-
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
@@ -35,6 +33,7 @@ import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListNameEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeNameEditPart;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * Abstract Sirius decorator.
@@ -255,8 +254,9 @@ public abstract class AbstractSiriusDecorator extends AbstractDecorator {
             // We only decorate DNodeListElementEditParts if the semantic
             // element is different from parent editpart
             EditPart parentEditPart = editPart.getParent();
-            if (parentEditPart.getModel() instanceof View && editPart.getModel() instanceof View) {
-                result = !(((View) parentEditPart.getModel()).getElement().equals(((View) editPart.getModel()).getElement()));
+            if (parentEditPart.getModel() instanceof View && editPart.getNotationView() != null) {
+                View parentView = (View) parentEditPart.getModel();
+                result = parentView.getElement() != null && !parentView.getElement().equals(editPart.getNotationView().getElement());
             }
         }
         return result;

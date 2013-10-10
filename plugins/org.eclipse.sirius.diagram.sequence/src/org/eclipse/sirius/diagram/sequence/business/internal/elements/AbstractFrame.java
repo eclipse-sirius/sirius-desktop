@@ -17,12 +17,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -30,7 +25,6 @@ import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.EventFinder;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.ParentOperandFinder;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
@@ -39,7 +33,11 @@ import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * Represents a frame container.
@@ -48,7 +46,7 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  */
 public abstract class AbstractFrame extends AbstractSequenceNode implements ISequenceEvent {
 
-    private static final ProfilerTask COVERAGE = new ProfilerTask("Sequence", "Compute interaction use coverage", SiriusEditPlugin.getPlugin().getBundledImage(SiriusTasks.IMAGES_VIEWPOINT));
+    private static final ProfilerTask COVERAGE = new ProfilerTask("Sequence", "Compute interaction use coverage", SiriusTasks.IMAGES_VIEWPOINT);
 
     /**
      * Constructor.

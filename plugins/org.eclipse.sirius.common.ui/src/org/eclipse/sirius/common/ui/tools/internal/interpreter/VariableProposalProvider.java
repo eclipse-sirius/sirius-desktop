@@ -114,7 +114,7 @@ public class VariableProposalProvider implements IProposalProvider {
                 String variableName = entry.getKey();
                 String variableType = entry.getValue();
                 if (variableName.startsWith(variableNamePrefix)) {
-                    proposals.add(new ContentProposal(variableName, variableName + ":" + variableType, variableType));
+                    proposals.add(new ContentProposal(variableName, variableName + ": " + variableType, variableType));
                 }
             }
         }

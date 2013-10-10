@@ -11,16 +11,15 @@
 package org.eclipse.sirius.business.api.query;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableList;
@@ -74,51 +73,43 @@ public class EClassQuery {
     }
 
     /**
-     * Get from a list of {@link EObject} having all a {@link EReference} named
-     * <code>referenceName</code>, the same or different ones, the common type
-     * {@link EClass} of the {@link EReference#getEType()}, null if no common
-     * type exists.
+     * Search structural features in <code>eClazz</code> and also in its
+     * children. For example GaugeSectionDescription is not a StyleDescription
+     * but we should searched in its references (also for EdgeStyleDescription
+     * with Begin, Center and EndLabelStyleDescription).
      * 
-     * @param eObjects
-     *            list of {@link EObject} for which get common type for the
-     *            specified referenceName
-     * @param referenceName
-     *            the name of the {@link EReference}
-     * @return a list of {@link EObject} having all a {@link EReference} named
-     *         <code>referenceName</code>, the same or different ones, the
-     *         common type {@link EClass} of the {@link EReference#getEType()},
-     *         null if no common type exists
+     * @param featureName
+     *            The name of the searched EStructuralFeature
+     * @param knownEClasses
+     *            Already treated EClass (to avoid infinite loop)
+     * @return All structural features that have the <code>featureName</code> as
+     *         name.
      */
-    public EClass getCommonType(List<EObject> eObjects, String referenceName) {
-        EClass commonType = null;
-        Set<EReference> eReferences = new LinkedHashSet<EReference>();
-        for (EObject eObject : eObjects) {
-            EStructuralFeature eStructuralFeature = eObject.eClass().getEStructuralFeature(referenceName);
-            if (eStructuralFeature instanceof EReference) {
-                eReferences.add((EReference) eStructuralFeature);
-            }
+    public Set<EStructuralFeature> getEStructuralFeatures(String featureName, List<EClass> knownEClasses) {
+        knownEClasses.add(eClass);
+        Set<EStructuralFeature> result = new LinkedHashSet<EStructuralFeature>();
+        // Search reference in this EClass,
+        EStructuralFeature eStructuralFeature = eClass.getEStructuralFeature(featureName);
+        if (eStructuralFeature instanceof EReference) {
+            result.add(eStructuralFeature);
         }
-        Iterator<EReference> eReferencesIterator = eReferences.iterator();
-        if (eReferencesIterator.hasNext()) {
-            EReference eReference = eReferencesIterator.next();
-            if (eReference.getEType() instanceof EClass) {
-                commonType = (EClass) eReference.getEType();
+        // and in all contents
+        Function<EReference, EClass> toEType = new Function<EReference, EClass>() {
+            public EClass apply(EReference reference) {
+                if (reference.getEType() instanceof EClass) {
+                    return (EClass) reference.getEType();
+                } else {
+                    return null;
+                }
             }
-            while (eReferencesIterator.hasNext()) {
-                EReference next = eReferencesIterator.next();
-                if (next.getEType() instanceof EClass) {
-                    EClass eType = (EClass) next.getEType();
-                    if (!eType.getEAllSuperTypes().contains(commonType)) {
-                        if (commonType.getEAllSuperTypes().contains(eType)) {
-                            commonType = eType;
-                        } else {
-                            commonType = null;
-                            break;
-                        }
-                    }
+        };
+        for (EClass subPartMetaModelEClass : Iterables.transform(eClass.getEAllContainments(), toEType)) {
+            if (subPartMetaModelEClass != null) {
+                if (!knownEClasses.contains(subPartMetaModelEClass)) {
+                    result.addAll(new EClassQuery(subPartMetaModelEClass).getEStructuralFeatures(featureName, knownEClasses));
                 }
             }
         }
-        return commonType;
+        return result;
     }
 }

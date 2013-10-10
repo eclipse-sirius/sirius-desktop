@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.ui.tools.api.profiler.view;
 
-import org.eclipse.swt.graphics.Image;
-
 import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
+import org.eclipse.sirius.common.ui.tools.api.util.ImageProvider;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * Entry of a {@link TimeProfilerView}.
@@ -91,7 +91,11 @@ public class TimeProfilerViewItem {
      * @return the image of the category.
      */
     public Image getCategoryImage() {
-        return (Image) this.task.getCategoryImage();
+        if (this.task.getCategoryImage() != null) {
+            return ImageProvider.getImageFromPath(this.task.getCategoryImage());
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -100,7 +104,11 @@ public class TimeProfilerViewItem {
      * @return the image of the task.
      */
     public Image getTaskImage() {
-        return (Image) this.task.getTaskImage();
+        if (this.task.getTaskImage() != null) {
+            return ImageProvider.getImageFromPath(this.task.getTaskImage());
+        } else {
+            return null;
+        }
     }
 
     /**

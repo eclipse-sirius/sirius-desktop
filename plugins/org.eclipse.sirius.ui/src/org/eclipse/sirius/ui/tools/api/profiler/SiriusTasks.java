@@ -56,204 +56,174 @@ public final class SiriusTasks {
     /**
      * Task singleton.
      */
-    public static final ProfilerTask CLEAN_DIAGRAM = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CLEAN_DIAGRAM_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask CLEAN_DIAGRAM = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CLEAN_DIAGRAM_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask UPDATING_DIAGRAM = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.UPDATING_DIAGRAM_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask UPDATING_DIAGRAM = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.UPDATING_DIAGRAM_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask EVALUATING_ACCELEO = new ProfilerTask(SiriusTasksKey.ACCELEO_CAT, SiriusTasksKey.EVALUATING_ACCELEO_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask EVALUATING_ACCELEO = new ProfilerTask(SiriusTasksKey.ACCELEO_CAT, SiriusTasksKey.EVALUATING_ACCELEO_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask EVALUATING_OCL = new ProfilerTask(SiriusTasksKey.EMF_CAT, SiriusTasksKey.EVALUATING_OCL_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask EVALUATING_OCL = new ProfilerTask(SiriusTasksKey.EMF_CAT, SiriusTasksKey.EVALUATING_OCL_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask CHECK_PRECONDITION = new ProfilerTask(SiriusTasksKey.ACCELEO_CAT, SiriusTasksKey.CHECK_PRECONDITION_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_ACCELEO_GIF));
+    public static final ProfilerTask CHECK_PRECONDITION = new ProfilerTask(SiriusTasksKey.ACCELEO_CAT, SiriusTasksKey.CHECK_PRECONDITION_KEY, getImagePath(IMAGES_ACCELEO_GIF));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask INITIALIZE_ACCELEO = new ProfilerTask(SiriusTasksKey.ACCELEO_CAT, SiriusTasksKey.INITIALIZE_ACCELEO_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_ACCELEO_GIF));
+    public static final ProfilerTask INITIALIZE_ACCELEO = new ProfilerTask(SiriusTasksKey.ACCELEO_CAT, SiriusTasksKey.INITIALIZE_ACCELEO_KEY, getImagePath(IMAGES_ACCELEO_GIF));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask UPDATE_ALL_EDGES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.UPDATE_ALL_EDGES_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask UPDATE_ALL_EDGES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.UPDATE_ALL_EDGES_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask UPDATE_ALL_CONTAINERS = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.UPDATE_ALL_CONTAINERS_KEY, SiriusEditPlugin.getPlugin()
-            .getBundledImage(IMAGES_VIEWPOINT));
+    public static final ProfilerTask UPDATE_ALL_CONTAINERS = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.UPDATE_ALL_CONTAINERS_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask UPDATE_ALL_NODES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.UPDATE_ALL_NODES_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask UPDATE_ALL_NODES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.UPDATE_ALL_NODES_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask CREATE_MISSING_NODES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CREATE_MISSING_NODES_KEY, SiriusEditPlugin.getPlugin()
-            .getBundledImage(IMAGES_VIEWPOINT));
+    public static final ProfilerTask CREATE_MISSING_NODES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CREATE_MISSING_NODES_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask IS_VISIBLE = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.IS_VISIBLE_KEY, SiriusEditPlugin.getPlugin().getBundledImage(IMAGES_VIEWPOINT));
+    public static final ProfilerTask IS_VISIBLE = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.IS_VISIBLE_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      * 
      * @since 2.4
      */
-    public static final ProfilerTask REFRESH_VISIBILITY = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.REFRESH_VISIBILITY_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask REFRESH_VISIBILITY = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.REFRESH_VISIBILITY_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask IS_COLLAPSED = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.IS_COLLAPSED_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask IS_COLLAPSED = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.IS_COLLAPSED_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask CREATE_MISSING_NODES_CONTAINER = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CREATE_MISSING_NODES_CONTAINER_KEY, SiriusEditPlugin
-            .getPlugin().getBundledImage(IMAGES_VIEWPOINT));
+    public static final ProfilerTask CREATE_MISSING_NODES_CONTAINER = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CREATE_MISSING_NODES_CONTAINER_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask CREATE_MISSING_EDGES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CREATE_MISSING_EDGES_KEY, SiriusEditPlugin.getPlugin()
-            .getBundledImage(IMAGES_VIEWPOINT));
+    public static final ProfilerTask CREATE_MISSING_EDGES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CREATE_MISSING_EDGES_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask CREATE_MISSING_CONTAINER = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CREATE_MISSING_CONTAINER_KEY, SiriusEditPlugin.getPlugin()
-            .getBundledImage(IMAGES_VIEWPOINT));
+    public static final ProfilerTask CREATE_MISSING_CONTAINER = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CREATE_MISSING_CONTAINER_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask REFRESH_DIAGRAM = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.REFRESH_DIAGRAM_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask REFRESH_DIAGRAM = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.REFRESH_DIAGRAM_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask CLEANING_NODES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CLEANING_NODES_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask CLEANING_NODES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CLEANING_NODES_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask CLEANING_REMOVEDANGLING = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CLEANING_REMOVEDANGLING_KEY, SiriusEditPlugin.getPlugin()
-            .getBundledImage(IMAGES_VIEWPOINT));
+    public static final ProfilerTask CLEANING_REMOVEDANGLING = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CLEANING_REMOVEDANGLING_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask CLEANING_EDGES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CLEANING_EDGES_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask CLEANING_EDGES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CLEANING_EDGES_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask VALIDATE_NODE = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.VALIDATE_NODE_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask VALIDATE_NODE = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.VALIDATE_NODE_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask VALIDATE_EDGE = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.VALIDATE_EDGE_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask VALIDATE_EDGE = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.VALIDATE_EDGE_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask GET_NODE_CANDIDATES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.GET_NODE_CANDIDATES_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask GET_NODE_CANDIDATES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.GET_NODE_CANDIDATES_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask GET_EDGE_CANDIDATES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.GET_EDGE_CANDIDATES_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask GET_EDGE_CANDIDATES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.GET_EDGE_CANDIDATES_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask INSTANCE_OF = new ProfilerTask(SiriusTasksKey.MM_EXTENSION_CAT, SiriusTasksKey.INSTANCE_OF_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            "/images/mmext.gif"));
+    public static final ProfilerTask INSTANCE_OF = new ProfilerTask(SiriusTasksKey.MM_EXTENSION_CAT, SiriusTasksKey.INSTANCE_OF_KEY, getImagePath("/images/mmext.gif"));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask GET_CONTAINER_CANDIDATES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.GET_CONTAINER_CANDIDATES_KEY, SiriusEditPlugin.getPlugin()
-            .getBundledImage(IMAGES_VIEWPOINT));
+    public static final ProfilerTask GET_CONTAINER_CANDIDATES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.GET_CONTAINER_CANDIDATES_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask IS_FOLD = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.IS_FOLD_KEY, SiriusEditPlugin.getPlugin().getBundledImage(IMAGES_VIEWPOINT));
+    public static final ProfilerTask IS_FOLD = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.IS_FOLD_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask CACHE_ACCESS = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CACHE_ACCESS_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask CACHE_ACCESS = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CACHE_ACCESS_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask VALIDATE_VIEWPOINT = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.VALIDATE_VIEWPOINT_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask VALIDATE_VIEWPOINT = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.VALIDATE_VIEWPOINT_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask REFRESH_GEF = new ProfilerTask(SiriusTasksKey.GEF_CAT, SiriusTasksKey.REFRESH_GEF_KEY, SiriusEditPlugin.getPlugin().getBundledImage(IMAGES_GEF_GIF));
+    public static final ProfilerTask REFRESH_GEF = new ProfilerTask(SiriusTasksKey.GEF_CAT, SiriusTasksKey.REFRESH_GEF_KEY, getImagePath(IMAGES_GEF_GIF));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask CANONICAL_REFRESH = new ProfilerTask(SiriusTasksKey.GMF_CAT, SiriusTasksKey.CANONICAL_REFRESH_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_GMF_GIF));
+    public static final ProfilerTask CANONICAL_REFRESH = new ProfilerTask(SiriusTasksKey.GMF_CAT, SiriusTasksKey.CANONICAL_REFRESH_KEY, getImagePath(IMAGES_GMF_GIF));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask LAUCNH_REFRESH_FROM_LISTENER = new ProfilerTask(SiriusTasksKey.GMF_CAT, SiriusTasksKey.LAUCNH_REFRESH_FROM_LISTENER_KEY, SiriusEditPlugin.getPlugin()
-            .getBundledImage(IMAGES_GMF_GIF));
+    public static final ProfilerTask LAUCNH_REFRESH_FROM_LISTENER = new ProfilerTask(SiriusTasksKey.GMF_CAT, SiriusTasksKey.LAUCNH_REFRESH_FROM_LISTENER_KEY, getImagePath(IMAGES_GMF_GIF));
 
     /**
      * Task singleton.
      */
-    public static final ProfilerTask LAUNCH_REFRESH_FROM_LAYER_CHANGE = new ProfilerTask(SiriusTasksKey.GMF_CAT, SiriusTasksKey.LAUNCH_REFRESH_FROM_LAYER_CHANGE_KEY, SiriusEditPlugin
-            .getPlugin().getBundledImage(IMAGES_GMF_GIF));
+    public static final ProfilerTask LAUNCH_REFRESH_FROM_LAYER_CHANGE = new ProfilerTask(SiriusTasksKey.GMF_CAT, SiriusTasksKey.LAUNCH_REFRESH_FROM_LAYER_CHANGE_KEY, getImagePath(IMAGES_GMF_GIF));
 
     /**
      * Task to check if a notation view is valid.
      */
-    public static final ProfilerTask IS_VIEW_VALID = new ProfilerTask(SiriusTasksKey.GMF_CAT, SiriusTasksKey.IS_VIEW_VALID_KEY, SiriusEditPlugin.getPlugin().getBundledImage(IMAGES_GMF_GIF));
+    public static final ProfilerTask IS_VIEW_VALID = new ProfilerTask(SiriusTasksKey.GMF_CAT, SiriusTasksKey.IS_VIEW_VALID_KEY, getImagePath(IMAGES_GMF_GIF));
 
     /**
      * Task EMF resolve all.
@@ -288,143 +258,131 @@ public final class SiriusTasks {
     /**
      * When cleaning diagram.
      */
-    public static final ProfilerTask CLEAN_ORPHANED_NODE = new ProfilerTask(SiriusTasksKey.GENERIC_MODELER_CAT, SiriusTasksKey.CLEAN_ORPHANED_NODE_KEY, SiriusEditPlugin.getPlugin()
-            .getBundledImage(IMAGES_MODELER));
+    public static final ProfilerTask CLEAN_ORPHANED_NODE = new ProfilerTask(SiriusTasksKey.GENERIC_MODELER_CAT, SiriusTasksKey.CLEAN_ORPHANED_NODE_KEY, getImagePath(IMAGES_MODELER));
 
     /**
      * When removing dangling reference.
      */
-    public static final ProfilerTask REMOVE_DANGLING_REFERENCE = new ProfilerTask(SiriusTasksKey.GENERIC_MODELER_CAT, SiriusTasksKey.REMOVE_DANGLING_REFERENCE_KEY, SiriusEditPlugin
-            .getPlugin().getBundledImage(IMAGES_MODELER));
+    public static final ProfilerTask REMOVE_DANGLING_REFERENCE = new ProfilerTask(SiriusTasksKey.GENERIC_MODELER_CAT, SiriusTasksKey.REMOVE_DANGLING_REFERENCE_KEY, getImagePath(IMAGES_MODELER));
 
     /**
      * When opening diagram.
      */
-    public static final ProfilerTask OPEN_DIAGRAM = new ProfilerTask(SiriusTasksKey.GENERIC_MODELER_CAT, SiriusTasksKey.OPEN_DIAGRAM_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_MODELER));
+    public static final ProfilerTask OPEN_DIAGRAM = new ProfilerTask(SiriusTasksKey.GENERIC_MODELER_CAT, SiriusTasksKey.OPEN_DIAGRAM_KEY, getImagePath(IMAGES_MODELER));
 
     /**
      * When opening session.
      */
-    public static final ProfilerTask OPEN_SESSION = new ProfilerTask(SiriusTasksKey.GENERIC_MODELER_CAT, SiriusTasksKey.OPEN_SESSION_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_MODELER));
+    public static final ProfilerTask OPEN_SESSION = new ProfilerTask(SiriusTasksKey.GENERIC_MODELER_CAT, SiriusTasksKey.OPEN_SESSION_KEY, getImagePath(IMAGES_MODELER));
 
     /**
      * The action that load the aird resource and open the session.
      */
-    public static final ProfilerTask OPEN_SESSION_ACTION = new ProfilerTask(SiriusTasksKey.GENERIC_MODELER_CAT, SiriusTasksKey.OPEN_SESSION_ACTION_KEY, SiriusEditPlugin.getPlugin()
-            .getBundledImage(IMAGES_MODELER));
+    public static final ProfilerTask OPEN_SESSION_ACTION = new ProfilerTask(SiriusTasksKey.GENERIC_MODELER_CAT, SiriusTasksKey.OPEN_SESSION_ACTION_KEY, getImagePath(IMAGES_MODELER));
 
     /**
      * Semantic refresh.
      */
-    public static final ProfilerTask SEMANTIC_REFRESH = new ProfilerTask(SiriusTasksKey.GENERIC_MODELER_CAT, SiriusTasksKey.SEMANTIC_REFRESH_KEY, SiriusEditPlugin.getPlugin()
-            .getBundledImage(IMAGES_MODELER));
+    public static final ProfilerTask SEMANTIC_REFRESH = new ProfilerTask(SiriusTasksKey.GENERIC_MODELER_CAT, SiriusTasksKey.SEMANTIC_REFRESH_KEY, getImagePath(IMAGES_MODELER));
 
     /**
      * Semantic refresh.
      */
-    public static final ProfilerTask SYNCHRONIZE_DIAGRAM = new ProfilerTask(SiriusTasksKey.GENERIC_MODELER_CAT, SiriusTasksKey.SYNCHRONIZE_DIAGRAM_KEY, SiriusEditPlugin.getPlugin()
-            .getBundledImage(IMAGES_MODELER));
+    public static final ProfilerTask SYNCHRONIZE_DIAGRAM = new ProfilerTask(SiriusTasksKey.GENERIC_MODELER_CAT, SiriusTasksKey.SYNCHRONIZE_DIAGRAM_KEY, getImagePath(IMAGES_MODELER));
 
     /**
      * When refreshing the table.
      */
-    public static final ProfilerTask REFRESH_TABLE = new ProfilerTask(SiriusTasksKey.TABLE_CAT, SiriusTasksKey.REFRESH_TABLE_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_VIEWPOINT));
+    public static final ProfilerTask REFRESH_TABLE = new ProfilerTask(SiriusTasksKey.TABLE_CAT, SiriusTasksKey.REFRESH_TABLE_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * When refreshing the tree.
      */
-    public static final ProfilerTask REFRESH_TREE = new ProfilerTask(SiriusTasksKey.TREE_CAT, SiriusTasksKey.REFRESH_TREE_KEY, SiriusEditPlugin.getPlugin().getBundledImage(IMAGES_VIEWPOINT));
+    public static final ProfilerTask REFRESH_TREE = new ProfilerTask(SiriusTasksKey.TREE_CAT, SiriusTasksKey.REFRESH_TREE_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * When creating the SWT.table.
      */
-    public static final ProfilerTask CREATE_TABLE = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.CREATE_TABLE_KEY, SiriusEditPlugin.getPlugin().getBundledImage(IMAGES_SWT));
+    public static final ProfilerTask CREATE_TABLE = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.CREATE_TABLE_KEY, getImagePath(IMAGES_SWT));
 
     /**
      * When refreshing the table.
      */
-    public static final ProfilerTask REFRESH_SWT_TABLE = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.REFRESH_SWT_TABLE_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_SWT));
+    public static final ProfilerTask REFRESH_SWT_TABLE = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.REFRESH_SWT_TABLE_KEY, getImagePath(IMAGES_SWT));
 
     /**
      * When refreshing a line of the table.
      */
-    public static final ProfilerTask REFRESH_SWT_LINE = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.REFRESH_SWT_LINE_KEY, SiriusEditPlugin.getPlugin().getBundledImage(IMAGES_SWT));
+    public static final ProfilerTask REFRESH_SWT_LINE = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.REFRESH_SWT_LINE_KEY, getImagePath(IMAGES_SWT));
 
     /**
      * When updating a line of the table.
      */
-    public static final ProfilerTask UPDATE_SWT_LINE = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.UPDATE_SWT_LINE_KEY, SiriusEditPlugin.getPlugin().getBundledImage(IMAGES_SWT));
+    public static final ProfilerTask UPDATE_SWT_LINE = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.UPDATE_SWT_LINE_KEY, getImagePath(IMAGES_SWT));
 
     /**
      * When collapsing or expanding a line of the table.
      */
-    public static final ProfilerTask CHANGE_SWT_LINE_COLAPSE_STATE = new ProfilerTask(SiriusTasksKey.SWT_CAT, "Change the collapse state of a line of the SWT table", SiriusEditPlugin
-            .getPlugin().getBundledImage(IMAGES_SWT));
+    public static final ProfilerTask CHANGE_SWT_LINE_COLAPSE_STATE = new ProfilerTask(SiriusTasksKey.SWT_CAT, "Change the collapse state of a line of the SWT table", getImagePath(IMAGES_SWT));
 
     /**
      * When refreshing a line of the table.
      */
-    public static final ProfilerTask ADD_SWT_COLUMN = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.ADD_SWT_COLUMN_KEY, SiriusEditPlugin.getPlugin().getBundledImage(IMAGES_SWT));
+    public static final ProfilerTask ADD_SWT_COLUMN = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.ADD_SWT_COLUMN_KEY, getImagePath(IMAGES_SWT));
 
     /**
      * When setting the name of a column.
      */
-    public static final ProfilerTask SET_COLUMN_NAME = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.SET_COLUMN_NAME_KEY, SiriusEditPlugin.getPlugin().getBundledImage(IMAGES_SWT));
+    public static final ProfilerTask SET_COLUMN_NAME = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.SET_COLUMN_NAME_KEY, getImagePath(IMAGES_SWT));
 
     /**
      * When refreshing the properties.
      */
-    public static final ProfilerTask REFRESH_PROPERTIES_VIEW = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.REFRESH_PROPERTIES_VIEW_KEY, SiriusEditPlugin.getPlugin()
-            .getBundledImage(IMAGES_SWT));
+    public static final ProfilerTask REFRESH_PROPERTIES_VIEW = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.REFRESH_PROPERTIES_VIEW_KEY, getImagePath(IMAGES_SWT));
 
     /**
      * When refreshing the properties.
      */
-    public static final ProfilerTask REFRESH_PROPERTIES_VIEW_SECTION = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.REFRESH_PROPERTIES_VIEW_SECTION_KEY, SiriusEditPlugin
-            .getPlugin().getBundledImage(IMAGES_SWT));
+    public static final ProfilerTask REFRESH_PROPERTIES_VIEW_SECTION = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.REFRESH_PROPERTIES_VIEW_SECTION_KEY, getImagePath(IMAGES_SWT));
 
     /**
      * When opening table.
      */
-    public static final ProfilerTask OPEN_TABLE = new ProfilerTask(SiriusTasksKey.TABLE_CAT, SiriusTasksKey.OPEN_TABLE_KEY, SiriusEditPlugin.getPlugin().getBundledImage(IMAGES_VIEWPOINT));
+    public static final ProfilerTask OPEN_TABLE = new ProfilerTask(SiriusTasksKey.TABLE_CAT, SiriusTasksKey.OPEN_TABLE_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * When opening tree.
      */
-    public static final ProfilerTask OPEN_TREE = new ProfilerTask(SiriusTasksKey.TREE_CAT, SiriusTasksKey.OPEN_TREE_KEY, SiriusEditPlugin.getPlugin().getBundledImage(IMAGES_VIEWPOINT));
+    public static final ProfilerTask OPEN_TREE = new ProfilerTask(SiriusTasksKey.TREE_CAT, SiriusTasksKey.OPEN_TREE_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * When showing or hiding a line of the table.
      */
-    public static final ProfilerTask CHANGE_SWT_LINE_VISIBLE_STATE = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.CHANGE_SWT_LINE_VISIBLE_STATE_KEY, SiriusEditPlugin.getPlugin()
-            .getBundledImage(IMAGES_SWT));
+    public static final ProfilerTask CHANGE_SWT_LINE_VISIBLE_STATE = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.CHANGE_SWT_LINE_VISIBLE_STATE_KEY, getImagePath(IMAGES_SWT));
 
     /**
      * When showing or hiding a line of the table.
      */
-    public static final ProfilerTask CHANGE_SWT_COLUMN_VISIBLE_STATE = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.CHANGE_SWT_COLUMN_VISIBLE_STATE_KEY, SiriusEditPlugin
-            .getPlugin().getBundledImage(IMAGES_SWT));
+    public static final ProfilerTask CHANGE_SWT_COLUMN_VISIBLE_STATE = new ProfilerTask(SiriusTasksKey.SWT_CAT, SiriusTasksKey.CHANGE_SWT_COLUMN_VISIBLE_STATE_KEY, getImagePath(IMAGES_SWT));
 
     /**
      * When showing or hiding a line of the table.
      */
-    public static final ProfilerTask REFRESH_LOST_ELEMENTS = new ProfilerTask(SiriusTasksKey.REPAIR_MIGRATE, SiriusTasksKey.REFRESH_LOST_ELEMENTS_KEY, SiriusEditPlugin.getPlugin()
-            .getBundledImage(IMAGES_VIEWPOINT));
+    public static final ProfilerTask REFRESH_LOST_ELEMENTS = new ProfilerTask(SiriusTasksKey.REPAIR_MIGRATE, SiriusTasksKey.REFRESH_LOST_ELEMENTS_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
      * When loading an aird file.
      */
-    public static final ProfilerTask LOAD_AIRD = new ProfilerTask(SiriusTasksKey.GENERIC_MODELER_CAT, SiriusTasksKey.LOAD_AIRD_KEY, SiriusEditPlugin.getPlugin().getBundledImage(
-            IMAGES_MODELER));
+    public static final ProfilerTask LOAD_AIRD = new ProfilerTask(SiriusTasksKey.GENERIC_MODELER_CAT, SiriusTasksKey.LOAD_AIRD_KEY, getImagePath(IMAGES_MODELER));
 
     /**
      * Avoid instanciation.
      */
     private SiriusTasks() {
+    }
+
+    private static String getImagePath(String key) {
+        return "/" + SiriusEditPlugin.ID + key;
     }
 
     // CHECKSTYLE:OFF

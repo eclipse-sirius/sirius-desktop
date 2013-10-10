@@ -27,11 +27,11 @@ public class ProfilerTask {
     /** The name. */
     private String name;
 
-    /** The image of the category. */
-    private Object categoryImage;
+    /** The image path of the category. */
+    private String categoryImage;
 
-    /** The image of the task. */
-    private Object taskImage;
+    /** The image path of the task. */
+    private String taskImage;
 
     /**
      * Create a new Task.
@@ -63,12 +63,12 @@ public class ProfilerTask {
      * @param name
      *            the name.
      * @param categoryImage
-     *            the image of the category.
+     *            the image path of the category.
      * @throws IllegalArgumentException
      *             if <code>category</code> or <code>name</code> is
      *             <code>null</code>.
      */
-    public ProfilerTask(final String category, final String name, final Object categoryImage) throws IllegalArgumentException {
+    public ProfilerTask(final String category, final String name, final String categoryImage) throws IllegalArgumentException {
         if (category == null) {
             throw new IllegalArgumentException(THE_CATEGORY_IS_NULL);
         }
@@ -88,14 +88,14 @@ public class ProfilerTask {
      * @param name
      *            the name.
      * @param categoryImage
-     *            the image of the category.
+     *            the image path of the category.
      * @param taskImage
-     *            the image of the task.
+     *            the image path of the task.
      * @throws IllegalArgumentException
      *             if <code>category</code> or <code>name</code> is
      *             <code>null</code>.
      */
-    public ProfilerTask(final String category, final String name, final Object categoryImage, final Object taskImage) throws IllegalArgumentException {
+    public ProfilerTask(final String category, final String name, final String categoryImage, final String taskImage) throws IllegalArgumentException {
         if (category == null) {
             throw new IllegalArgumentException(THE_CATEGORY_IS_NULL);
         }
@@ -147,20 +147,20 @@ public class ProfilerTask {
     }
 
     /**
-     * Return the image of the task.
+     * Return the image path of the task.
      * 
-     * @return the image of the task.
+     * @return the image path of the task.
      */
-    public Object getTaskImage() {
+    public String getTaskImage() {
         return taskImage;
     }
 
     /**
-     * Return the image of the category.
+     * Return the image path of the category.
      * 
-     * @return the image of the category.
+     * @return the image path of the category.
      */
-    public Object getCategoryImage() {
+    public String getCategoryImage() {
         return categoryImage;
     }
 

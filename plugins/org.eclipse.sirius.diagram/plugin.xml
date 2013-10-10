@@ -2016,5 +2016,9 @@
             class="org.eclipse.sirius.diagram.business.internal.migration.StyleCustomizationsRepresentationsFileMigrationParticipant"
             kind="RepresentationsFile">
       </participant>
+      <participant
+            class="fr.obeo.dsl.viewpoint.diagram.business.internal.migration.SetGMFViewsToNillMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
    </extension>
 </plugin>
