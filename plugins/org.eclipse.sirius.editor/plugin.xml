@@ -33,20 +33,20 @@
                class="org.eclipse.sirius.editor.properties.section.description.diagramelementmapping.DiagramElementMappingSynchronizationPropertySection"
                id="description.section.diagramElementMapping.Synchronization"
                tab="viewpoint.tab.advanced">
-        	<input type="org.eclipse.sirius.description.DiagramElementMapping"/>
+        	<input type="org.eclipse.sirius.viewpoint.description.DiagramElementMapping"/>
 		</propertySection>
 		<propertySection
                class="org.eclipse.sirius.editor.properties.sections.style.basiclabelstyle.BasicLabelStyleDescriptionLabelFormatPropertySection"
                id="style.section.basicLabelStyleDescription.LabelFormat"
                tab="viewpoint.tab.label">
-        	<input type="org.eclipse.sirius.description.style.BasicLabelStyleDescription"/>
+        	<input type="org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription"/>
 		</propertySection>
      <propertySection
                class="org.eclipse.sirius.editor.properties.sections.tool.directeditlabel.DirectEditLabelMappingPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.tool.directeditlabel.DirectEditLabelMappingFilter"
                id="tool.section.directEditLabel.Mapping"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.description.tool.DirectEditLabel"/>
+        <input type="org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel"/>
       </propertySection>
       <propertySection
                class="org.eclipse.sirius.editor.properties.sections.tool.directeditlabel.DirectEditLabelInputLabelExpressionPropertySection"
@@ -54,7 +54,7 @@
                id="tool.section.directEditLabel.InputLabelExpression"
                afterSection="tool.section.directEditLabel.Mapping"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.description.tool.DirectEditLabel"/>        
+        <input type="org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel"/>        
       </propertySection>
       <propertySection
                class="org.eclipse.sirius.editor.properties.sections.tool.representationnavigationdescription.RepresentationNavigationDescriptionMappingsPropertySection"
@@ -62,7 +62,7 @@
                id="tool.section.representationNavigationDescription.Mappings"
                afterSection="tool.section.representationNavigationDescription.RepresentationDescription"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.description.tool.RepresentationNavigationDescription"/>
+        <input type="org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription"/>
       </propertySection>
       <propertySection
                class="org.eclipse.sirius.editor.properties.sections.tool.representationcreationdescription.RepresentationCreationDescriptionMappingsPropertySection"
@@ -70,7 +70,7 @@
                id="tool.section.representationCreationDescription.Mappings"
                afterSection="tool.section.representationCreationDescription.RepresentationDescription"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.description.tool.RepresentationCreationDescription"/>
+        <input type="org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.tool.reconnectedgedescription.ReconnectEdgeDescriptionMappingsPropertySection"
@@ -78,14 +78,14 @@
                id="tool.section.reconnectEdgeDescription.Mappings"
                afterSection="tool.section.reconnectEdgeDescription.ReconnectionKind"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.description.tool.ReconnectEdgeDescription"/>
+        <input type="org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription"/>
       </propertySection>
       <propertySection
                class="org.eclipse.sirius.editor.properties.sections.tool.deleteelementdescription.DeleteElementDescriptionMappingsPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.tool.deleteelementdescription.DeleteElementDescriptionMappingsFilter"
                id="tool.section.deleteElementDescription.Mappings"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.description.tool.DeleteElementDescription"/>
+        <input type="org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription"/>
       </propertySection>
       <propertySection
                class="org.eclipse.sirius.editor.properties.sections.tool.containerdropdescription.ContainerDropDescriptionContainersPropertySection"
@@ -93,14 +93,14 @@
                id="tool.section.containerDropDescription.Containers"
                afterSection="tool.section.containerDropDescription.DragSource"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.description.tool.ContainerDropDescription"/>
+        <input type="org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription"/>
       </propertySection>
        <propertySection
                class="org.eclipse.sirius.editor.properties.sections.tool.pastedescription.PasteDescriptionContainersPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.tool.pastedescription.PasteDescriptionContainersFilter"
                id="tool.section.containerDropDescription.Containers"
                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.description.tool.PasteDescription"/>
+        <input type="org.eclipse.sirius.viewpoint.description.tool.PasteDescription"/>
       </propertySection>
     </propertySections>
   </extension>
@@ -2054,6 +2054,8 @@
                 tab="viewpoint.tab.behavior">
         <input type="org.eclipse.sirius.viewpoint.description.RepresentationElementMapping"/>        
       </propertySection>
+            <!--
+      We don't want this property section to appear, see the customized description.section.identifiedElement.Name section
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.identifiedelement.IdentifiedElementLabelPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.description.identifiedelement.IdentifiedElementLabelFilter"
@@ -2062,8 +2064,9 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.viewpoint.description.IdentifiedElement"/>        
       </propertySection>
+        -->
   	  <propertySection
-               class="org.eclipse.sirius.editor.properties.sections.description.identifiedelement.IdentifiedElementNamePropertySection"
+               class="org.eclipse.sirius.editor.properties.sections.description.identifiedelement.IdentifiedElementNamePropertySectionSpec"
                filter="org.eclipse.sirius.editor.properties.filters.description.identifiedelement.IdentifiedElementNameFilter"
                id="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
@@ -2303,7 +2306,7 @@
                id="viewpoint.section.rGBColor.ColorChooser"
                afterSection="description.section.fixedColor.Blue"
                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.description.UserFixedColor"/>
+        <input type="org.eclipse.sirius.viewpoint.description.UserFixedColor"/>
       </propertySection>
     </propertySections>
   </extension>
@@ -2373,7 +2376,7 @@
   <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension targetID="org.eclipse.sirius.ui.tools.perspective.design">
-         <newWizardShortcut id="org.eclipse.sirius..presentation.DescriptionModelWizardID"/>
+         <newWizardShortcut id="org.eclipse.sirius.presentation.DescriptionModelWizardID"/>
          <newWizardShortcut id="org.eclipse.sirius.ui.specificationproject.wizard"/>
       </perspectiveExtension>
   </extension>

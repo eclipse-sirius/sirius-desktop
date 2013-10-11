@@ -516,7 +516,7 @@
                        value="org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem">
                  </instanceof>
                  <instanceof
-                       value="org.eclipse.sirius.description.RepresentationDescription">
+                       value="org.eclipse.sirius.viewpoint.description.RepresentationDescription">
                  </instanceof>
                  <instanceof
                        value="org.eclipse.core.resources.IFile">
