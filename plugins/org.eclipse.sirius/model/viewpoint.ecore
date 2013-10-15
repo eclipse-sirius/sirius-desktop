@@ -2632,12 +2632,12 @@
     <eClassifiers xsi:type="ecore:EClass" name="VSMElementCustomizationReuse" eSuperTypes="#//description/IVSMElementCustomization">
       <eStructuralFeatures xsi:type="ecore:EReference" name="reuse" lowerBound="1"
           upperBound="-1" eType="#//description/EStructuralFeatureCustomization"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="appliedOn" upperBound="-1"
-          eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="EStructuralFeatureCustomization" abstract="true">
       <eStructuralFeatures xsi:type="ecore:EReference" name="appliedOn" lowerBound="1"
           upperBound="-1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EStructuralFeatureCustomization" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="appliedOn" upperBound="-1"
+          eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="applyOnAll" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="EAttributeCustomization" eSuperTypes="#//description/EStructuralFeatureCustomization">

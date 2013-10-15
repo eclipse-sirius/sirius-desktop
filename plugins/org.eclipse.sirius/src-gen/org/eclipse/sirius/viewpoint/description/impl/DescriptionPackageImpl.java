@@ -4041,11 +4041,11 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEClass(vsmElementCustomizationReuseEClass, VSMElementCustomizationReuse.class, "VSMElementCustomizationReuse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getVSMElementCustomizationReuse_Reuse(), this.getEStructuralFeatureCustomization(), null, "reuse", null, 1, -1, VSMElementCustomizationReuse.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getEStructuralFeatureCustomization_AppliedOn(), theEcorePackage.getEObject(), null, "appliedOn", null, 0, -1, EStructuralFeatureCustomization.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getVSMElementCustomizationReuse_AppliedOn(), theEcorePackage.getEObject(), null, "appliedOn", null, 1, -1, VSMElementCustomizationReuse.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(eStructuralFeatureCustomizationEClass, EStructuralFeatureCustomization.class, "EStructuralFeatureCustomization", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getEStructuralFeatureCustomization_AppliedOn(), theEcorePackage.getEObject(), null, "appliedOn", null, 1, -1, EStructuralFeatureCustomization.class, !IS_TRANSIENT,
+        initEReference(getEStructuralFeatureCustomization_AppliedOn(), theEcorePackage.getEObject(), null, "appliedOn", null, 0, -1, EStructuralFeatureCustomization.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getEStructuralFeatureCustomization_ApplyOnAll(), ecorePackage.getEBoolean(), "applyOnAll", null, 0, 1, EStructuralFeatureCustomization.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
