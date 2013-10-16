@@ -240,7 +240,7 @@ public final class SiriusUtil {
     public static boolean isFromSirius(final Object ep) {
         if (ep != null) {
             final String packageName = ep.getClass().getPackage().getName();
-            return packageName.contains(ViewpointPackage.eNAME);
+            return packageName.startsWith("org.eclipse.sirius");
         }
         return false;
     }
