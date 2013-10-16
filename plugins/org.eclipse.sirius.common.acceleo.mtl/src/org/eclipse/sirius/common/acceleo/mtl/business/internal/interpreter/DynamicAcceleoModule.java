@@ -29,6 +29,7 @@ import java.util.regex.Pattern;
 
 import org.eclipse.acceleo.common.IAcceleoConstants;
 import org.eclipse.acceleo.common.internal.utils.AcceleoPackageRegistry;
+import org.eclipse.acceleo.common.internal.utils.LazyEPackageDescriptor;
 import org.eclipse.acceleo.common.interpreter.CompilationResult;
 import org.eclipse.acceleo.common.interpreter.EvaluationResult;
 import org.eclipse.acceleo.engine.AcceleoEngineMessages;
@@ -757,7 +758,8 @@ public class DynamicAcceleoModule {
         resourceSet = new ResourceSetImpl();
         resourceSet.setPackageRegistry(AcceleoPackageRegistry.INSTANCE);
         for (EPackage pack : additionalEPackages) {
-            resourceSet.getPackageRegistry().put(pack.getNsURI(), pack);
+            LazyEPackageDescriptor lazyEPackageDescriptor = LazyEPackageDescriptor.create(pack, AcceleoPackageRegistry.INSTANCE);
+            resourceSet.getPackageRegistry().put(pack.getNsURI(), lazyEPackageDescriptor);
         }
     }
 

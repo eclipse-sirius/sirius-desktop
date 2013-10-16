@@ -1560,60 +1560,62 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * {@inheritDoc}
      */
     public void statusesChanged(Collection<ResourceStatusChange> changes) {
-        Multimap<ResourceStatus, Resource> newStatuses = getImpactingNewStatuses(changes);
-        boolean allResourcesSync = allResourcesAreInSync();
-        for (ResourceStatus newStatus : newStatuses.keySet()) {
-            switch (newStatus) {
-            case SYNC:
-                if (allResourcesSync) {
-                    notifyListeners(SessionListener.SYNC);
-                }
-                break;
-            case CHANGED:
-                notifyListeners(SessionListener.DIRTY);
-                break;
-            case EXTERNAL_CHANGED:
-            case CONFLICTING_CHANGED:
-            case CONFLICTING_DELETED:
-            case DELETED:
-                Collection<Resource> collection = newStatuses.get(newStatus);
-                for (Resource resource : collection) {
-                    try {
-                        /*
-                         * if the project was renamed, deleted or closed we
-                         * should not try to reload any thing, this does not
-                         * make sense
-                         */
-                        if (isInProjectDeletedRenamedOrClosed(resource)) {
-                            processAction(Action.CLOSE_SESSION, resource);
-                            return;
-                        }
-                        processActions(getReloadingPolicy().getActions(this, resource, newStatus), resource);
-
-                        // CHECKSTYLE:OFF
-                    } catch (final Exception e) {
-                        // CHECKSTYLE:ON
-                        SiriusPlugin.getDefault().error("Can't handle resource change : " + resource.getURI(), e);
-
+        if (isOpen()) {
+            Multimap<ResourceStatus, Resource> newStatuses = getImpactingNewStatuses(changes);
+            boolean allResourcesSync = allResourcesAreInSync();
+            for (ResourceStatus newStatus : newStatuses.keySet()) {
+                switch (newStatus) {
+                case SYNC:
+                    if (allResourcesSync) {
+                        notifyListeners(SessionListener.SYNC);
                     }
-                }
-                // Reload were launched, get global status.
-                allResourcesSync = allResourcesAreInSync();
-                if (allResourcesSync) {
-                    notifyListeners(SessionListener.SYNC);
-                } else {
+                    break;
+                case CHANGED:
                     notifyListeners(SessionListener.DIRTY);
-                }
-                break;
-            default:
-                break;
-            }
-        }
+                    break;
+                case EXTERNAL_CHANGED:
+                case CONFLICTING_CHANGED:
+                case CONFLICTING_DELETED:
+                case DELETED:
+                    Collection<Resource> collection = newStatuses.get(newStatus);
+                    for (Resource resource : collection) {
+                        try {
+                            /*
+                             * if the project was renamed, deleted or closed we
+                             * should not try to reload any thing, this does not
+                             * make sense
+                             */
+                            if (isInProjectDeletedRenamedOrClosed(resource)) {
+                                processAction(Action.CLOSE_SESSION, resource);
+                                return;
+                            }
+                            processActions(getReloadingPolicy().getActions(this, resource, newStatus), resource);
 
-        if (allResourcesSync) {
-            super.setSynchronizationStatus(SyncStatus.SYNC);
-        } else {
-            super.setSynchronizationStatus(SyncStatus.DIRTY);
+                            // CHECKSTYLE:OFF
+                        } catch (final Exception e) {
+                            // CHECKSTYLE:ON
+                            SiriusPlugin.getDefault().error("Can't handle resource change : " + resource.getURI(), e);
+
+                        }
+                    }
+                    // Reload were launched, get global status.
+                    allResourcesSync = allResourcesAreInSync();
+                    if (allResourcesSync) {
+                        notifyListeners(SessionListener.SYNC);
+                    } else {
+                        notifyListeners(SessionListener.DIRTY);
+                    }
+                    break;
+                default:
+                    break;
+                }
+            }
+
+            if (allResourcesSync) {
+                super.setSynchronizationStatus(SyncStatus.SYNC);
+            } else {
+                super.setSynchronizationStatus(SyncStatus.DIRTY);
+            }
         }
     }
 

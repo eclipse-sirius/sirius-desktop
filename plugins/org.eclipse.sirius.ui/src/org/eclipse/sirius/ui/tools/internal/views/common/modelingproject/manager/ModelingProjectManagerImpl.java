@@ -34,14 +34,6 @@ import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.resource.LoadEMFResource;
@@ -53,11 +45,18 @@ import org.eclipse.sirius.business.api.session.SessionManagerListener2;
 import org.eclipse.sirius.business.internal.modelingproject.manager.InitializeModelingProjectJob;
 import org.eclipse.sirius.business.internal.modelingproject.marker.ModelingMarker;
 import org.eclipse.sirius.business.internal.query.ModelingProjectQuery;
+import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
+import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.ModelingProjectFileQuery;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * A manager for modeling projects.
@@ -432,7 +431,10 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                     AddSemanticResourceCommand cmd = new AddSemanticResourceCommand(session, uri, new SubProgressMonitor(monitor, 1));
                     cc.append(cmd);
                 } else if (resource instanceof IContainer) {
-                    cc.append(getSemanticResourcesAdditionCommand((IContainer) resource, session, monitor));
+                    Command subCc = getSemanticResourcesAdditionCommand((IContainer) resource, session, monitor);
+                    if (subCc.canExecute()) {
+                        cc.append(subCc);
+                    }
                 }
             }
         }

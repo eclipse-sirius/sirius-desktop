@@ -17,39 +17,25 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.SubProgressMonitor;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
-import org.eclipse.gef.Request;
-import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.requests.GroupRequest;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IEditableEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.diagram.business.internal.dialect.DiagramDialectUIServices;
+import org.eclipse.sirius.diagram.tools.internal.graphical.edit.part.DDiagramHelper;
+import org.eclipse.sirius.ui.business.api.action.RefreshActionListenerRegistry;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.RetargetAction;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
-import org.eclipse.sirius.diagram.business.internal.dialect.DiagramDialectUIServices;
-import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
-import org.eclipse.sirius.diagram.tools.internal.graphical.edit.part.DDiagramHelper;
-import org.eclipse.sirius.ui.business.api.action.RefreshActionListenerRegistry;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * This action refresh the diagram.
@@ -103,48 +89,11 @@ public class RefreshDiagramAction extends RetargetAction {
                     RefreshActionListenerRegistry.INSTANCE.notifyRepresentationIsAboutToBeRefreshed(diagram);
                 }
             }
-            // In case the diagram is frozen we allows the refresh, then we
-            // enable the editMode, else the refreshRequest returns a null or
-            // unexecutable command and we disable the editMode
-            IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
-                public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-                    try {
-                        monitor.beginTask("Refresh diagram", minimizedSelection.size());
-                        for (final EditPart selectedPart : minimizedSelection) {
-                            if (selectedPart instanceof IEditableEditPart) {
-                                IEditableEditPart editableEditPart = (IEditableEditPart) selectedPart;
-                                editableEditPart.enableEditMode();
-                            }
-                            if (selectedPart instanceof IDDiagramEditPart) {
-                                IDDiagramEditPart dDiagramEditPart = (IDDiagramEditPart) selectedPart;
-                                Option<DDiagram> dDiagramOption = dDiagramEditPart.resolveDDiagram();
-                                if (dDiagramOption.some()) {
-                                    DDiagram dDiagram = dDiagramOption.get();
-                                    TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(dDiagram);
-                                    domain.getCommandStack().execute(new RefreshRepresentationsCommand(domain, new SubProgressMonitor(monitor, 1), dDiagram));
-                                }
-                            } else {
-                                final Request refreshRequest = new GroupRequest(RequestConstants.REQ_REFRESH_VIEWPOINT);
-                                Command refreshCmd = selectedPart.getCommand(refreshRequest);
-                                if (refreshCmd != null && refreshCmd.canExecute() && selectedPart instanceof IGraphicalEditPart) {
-                                    IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) selectedPart;
-                                    graphicalEditPart.getDiagramEditDomain().getDiagramCommandStack().execute(refreshCmd);
-                                } else if (selectedPart instanceof IEditableEditPart) {
-                                    IEditableEditPart editableEditPart = (IEditableEditPart) selectedPart;
-                                    editableEditPart.disableEditMode();
-                                }
-                            }
-                        }
-                    } finally {
-                        monitor.done();
-                    }
-                }
-            };
             final Shell activeShell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
             final ProgressMonitorDialog monitorDialog = new ProgressMonitorDialog(activeShell);
             try {
-                monitorDialog.run(true, false, runnable);
+                monitorDialog.run(true, false, new RefreshRunnableWithProgress(minimizedSelection));
             } catch (final InvocationTargetException e) {
                 MessageDialog.openError(activeShell, "Error", e.getTargetException().getMessage());
                 SiriusPlugin.getDefault().error("Error while refreshing diagram", e);
