@@ -27,6 +27,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
@@ -70,7 +71,7 @@ public class WorkspaceEPackageRegistry extends HashMap<String, Object> implement
      *            the workspace to listen to.
      */
     public void init(final IWorkspace ws) {
-        final List<IFile> files = EclipseUtil.getFilesFromWorkspace(null, ".ecore");
+        final List<IFile> files = EclipseUtil.getFilesFromWorkspace(null, "." + EcorePackage.eNAME);
         for (final IFile file : files) {
             newEcore(file);
         }
@@ -101,7 +102,6 @@ public class WorkspaceEPackageRegistry extends HashMap<String, Object> implement
         } catch (final CoreException e) {
             DslCommonPlugin.getDefault().error("Error while refresing the workspace EPackage registry", e);
         }
-
     }
 
     private void processDelta(final IResourceDelta resourceDelta) throws CoreException {
@@ -124,7 +124,6 @@ public class WorkspaceEPackageRegistry extends HashMap<String, Object> implement
         for (final IResourceDelta child : resourceDelta.getAffectedChildren()) {
             processDelta(child);
         }
-
     }
 
     private void deletedEcore(final IResource resource) {
@@ -135,29 +134,16 @@ public class WorkspaceEPackageRegistry extends HashMap<String, Object> implement
                 deleteEPackage(package1);
             }
         }
-
     }
 
     private void deleteEPackage(final EPackage package1) {
         if (containsKey(package1.getNsURI())) {
             remove(package1.getNsURI());
         }
-
     }
 
     private boolean deltaIsAboutEcorefile(final IResourceDelta resourceDelta) {
-        return resourceDelta.getResource().getFileExtension() != null && "ecore".equals(resourceDelta.getResource().getFileExtension()) /*
-                                                                                                                                         * &&
-                                                                                                                                         * resourceDelta
-                                                                                                                                         * .
-                                                                                                                                         * getFlags
-                                                                                                                                         * (
-                                                                                                                                         * )
-                                                                                                                                         * ==
-                                                                                                                                         * IResourceDelta
-                                                                                                                                         * .
-                                                                                                                                         * CONTENT
-                                                                                                                                         */;
+        return resourceDelta.getResource().getFileExtension() != null && EcorePackage.eNAME.equals(resourceDelta.getResource().getFileExtension());
     }
 
     private void newEcore(final IResource resource) {
@@ -168,7 +154,6 @@ public class WorkspaceEPackageRegistry extends HashMap<String, Object> implement
                 newEPackage(package1);
             }
         }
-
     }
 
     private Collection<EPackage> collectEPackages(final IFile file) {
@@ -193,20 +178,8 @@ public class WorkspaceEPackageRegistry extends HashMap<String, Object> implement
     }
 
     private void newEPackage(final EPackage ePackage) {
-        if (ePackage.getNsURI() != null) {
-            if (!containsAlreadyEPackage(ePackage)) {
-                put(ePackage.getNsURI(), ePackage);
-            }
-        } else {
-            // String message = null;
-            // if (ePackage.getName() != null) {
-            // message = "EPackage named " + ePackage.getName();
-            // } else {
-            // message = "A EPackage";
-            // }
-            // message += " in resource " + ePackage.eResource().getURI() +
-            // " has not its nsURI property set";
-            // DslCommonPlugin.getDefault().warning(message, null);
+        if (ePackage.getNsURI() != null && !containsAlreadyEPackage(ePackage)) {
+            put(ePackage.getNsURI(), ePackage);
         }
     }
 
@@ -221,26 +194,7 @@ public class WorkspaceEPackageRegistry extends HashMap<String, Object> implement
                 String ePackageURIFragment = ePackage.eResource().getURIFragment(ePackage);
                 if (alreadyRegistredEPackageURIFragment.equals(ePackageURIFragment)) {
                     containsAlreadyEPackage = true;
-                } else {
-                    // String message =
-                    // "There exists 2 EPackages with the same nsURI property ("
-                    // + ePackage.getNsURI() +
-                    // ") in the followings ecore resources : \n";
-                    // // CHECKSTYLE:OFF
-                    // message += "\t " +
-                    // ePackageResourceURI.appendFragment(ePackageURIFragment) +
-                    // "\n";
-                    // // CHECKSTYLE:ON
-                    // message += "\t " +
-                    // alreadyRegistredEPackageResourceURI.appendFragment(alreadyRegistredEPackageURIFragment)
-                    // + "\n";
-                    // DslCommonPlugin.getDefault().warning(message, null);
                 }
-            } else {
-                String message = "There exists 2 EPackages with the same nsURI property (" + ePackage.getNsURI() + ") in the followings ecore resources : \n";
-                message += "\t " + ePackageResourceURI + "\n";
-                message += "\t " + alreadyRegistredEPackageResourceURI + "\n";
-                // DslCommonPlugin.getDefault().warning(message, null);
             }
         }
         return containsAlreadyEPackage;
