@@ -259,13 +259,6 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
             size.width += borderDimension.left + borderDimension.right;
             size.height += borderDimension.top + borderDimension.bottom;
 
-            //
-            // Square ?
-            if (node.getHeight().intValue() == node.getWidth().intValue()) {
-                // size.width = Math.max(size.height, size.width);
-                // size.height = Math.max(size.height, size.width);
-            }
-
             return size;
         }
         return defaultSizeNodeFigure.getBounds().getSize().getCopy();
