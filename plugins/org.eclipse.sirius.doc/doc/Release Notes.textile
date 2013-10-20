@@ -3,3 +3,64 @@ h1. Release Notes for Sirius
 {toc:style=disc|minLevel=2|maxLevel=2}
 
 This document contains the release notes for all major releases of Sirius.
+
+h2. Changes from Viewpoint 6.9 to Sirius 0.9
+
+h3. Major namespace changes
+
+In the context of the move as an official Eclipse project named Sirius, all the namespaces used in the code have changed.
+
+h4. Plug-in and features identifiers
+
+All identifiers have changed to start with the @org.eclipse.sirius@ namespace prefix. The tables below give the mapping between the Viewpoint plug-in and features identifiers and their Sirius equivalent.
+
+|_. Viewpoint 6.x plug-in                     |_. Sirius 0.9 plug-in                      |
+| fr.obeo.dsl.common                          | org.eclipse.sirius.common                 |
+| fr.obeo.dsl.common.acceleo.mtl              | org.eclipse.sirius.common.acceleo.mtl     |
+| fr.obeo.dsl.common.acceleo.mtl.ide          | org.eclipse.sirius.common.acceleo.mtl.ide |
+| fr.obeo.dsl.common.ocl                      | org.eclipse.sirius.common.ocl             |
+| fr.obeo.dsl.common.ui                       | org.eclipse.sirius.common.ui              |
+| fr.obeo.dsl.common.xtext                    | org.eclipse.sirius.common.xtext           |
+| fr.obeo.dsl.viewpoint                       | org.eclipse.sirius                        |
+| fr.obeo.dsl.viewpoint.diagram               | org.eclipse.sirius.diagram                |
+| fr.obeo.dsl.viewpoint.diagram.layoutdata    | org.eclipse.sirius.layoutdata             |
+| fr.obeo.dsl.viewpoint.diagram.sequence      | org.eclipse.sirius.sequence               |
+| fr.obeo.dsl.viewpoint.diagram.sequence.edit | org.eclipse.sirius.sequence.edit          |
+| fr.obeo.dsl.viewpoint.diagram.sequence.ui   | org.eclipse.sirius.sequence.edit.ui       |
+| fr.obeo.dsl.viewpoint.doc                   | org.eclipse.sirius.doc                    |
+| fr.obeo.dsl.viewpoint.editor                | org.eclipse.sirius.editor                 |
+| fr.obeo.dsl.viewpoint.editor.sequence       | org.eclipse.sirius.editor.sequence        |
+| fr.obeo.dsl.viewpoint.editor.table          | org.eclipse.sirius.editor.table           |
+| fr.obeo.dsl.viewpoint.editor.tree           | org.eclipse.sirius.editor.tree            |
+| fr.obeo.dsl.viewpoint.eef.adapters          | org.eclipse.sirius.eef.adapters           |
+| fr.obeo.dsl.viewpoint.interpreter           | org.eclipse.sirius.interpreter            |
+| fr.obeo.dsl.viewpoint.table                 | org.eclipse.sirius.table                  |
+| fr.obeo.dsl.viewpoint.table.ui              | org.eclipse.sirius.table.ui               |
+| fr.obeo.dsl.viewpoint.tree                  | org.eclipse.sirius.tree                   |
+| fr.obeo.dsl.viewpoint.tree.ui               | org.eclipse.sirius.tree.ui                |
+| fr.obeo.dsl.viewpoint.ui                    | org.eclipse.sirius.ui                     |
+| fr.obeo.mda.ecore.extender                  | org.eclipse.sirius.ecore.extender         |
+| fr.obeo.mda.pim.ecore.design                | org.eclipse.sirius.pim.ecore.design       |
+| org.eclipselab.emf.synchronizer             | org.eclipse.sirius.synchronizer           |
+
+|_. Viewpoint 6.x feature                        |_. Sirius 0.9 feature                        |
+| fr.obeo.dsl.viewpoint.runtime                  | org.eclipse.sirius.runtime                  |
+| fr.obeo.dsl.viewpoint.runtime.acceleo          | org.eclipse.sirius.runtime.acceleo          |
+| fr.obeo.dsl.viewpoint.runtime.ide.eef          | org.eclipse.sirius.runtime.ide.eef          |
+| fr.obeo.dsl.viewpoint.runtime.ide.ui           | org.eclipse.sirius.runtime.ide.ui           |
+| fr.obeo.dsl.viewpoint.runtime.ide.ui.acceleo   | org.eclipse.sirius.runtime.ide.ui.acceleo   |
+| fr.obeo.dsl.viewpoint.runtime.ide.xtext        | org.eclipse.sirius.runtime.ide.xtext        |
+| fr.obeo.dsl.viewpoint.runtime.ocl              | org.eclipse.sirius.runtime.ocl              |
+| fr.obeo.dsl.viewpoint.specifier.ide.ui         | org.eclipse.sirius.specifier.ide.ui         |
+| fr.obeo.dsl.viewpoint.specifier.ide.ui.acceleo | org.eclipse.sirius.specifier.ide.ui.acceleo |
+| fr.obeo.dsl.viewpoint.doc.feature              | org.eclipse.sirius.doc.feature              |
+
+h4. Java Pacakges Names
+
+h4. Plug-ins version numbers.
+
+As of Sirius 0.9, and probably at least until Sirius 1.0 when the APIs will be more stable, all the bundles share the same version, which is also the version for the feature. If you used versioned dependencies to the old Viewpoint code (e.g. dependencies towards Viewpoint 6.8), you need to adjust the versions in your @MANIFEST.MF@  files in addition to the namespaces.
+
+h4. Models namespace URIs
+
+ 
