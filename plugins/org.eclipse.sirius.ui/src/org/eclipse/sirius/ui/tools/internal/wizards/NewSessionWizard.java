@@ -186,7 +186,7 @@ public class NewSessionWizard extends Wizard implements INewWizard {
 
                 public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                     if (session != null && !semanticResourceURIs.isEmpty()) {
-                        ViewpointSelection.openSiriussSelectionDialog(session);
+                        ViewpointSelection.openViewpointsSelectionDialog(session);
                         SessionHelper.openStartupRepresentations(session, monitor);
                     }
                     IFile newReprepresentationsFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(sessionFileCreationPage.getURI().toPlatformString(true)));

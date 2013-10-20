@@ -300,7 +300,7 @@ public class CreateOrAddResourceWizard extends Wizard implements IAddModelDepend
                 for (Object result : results) {
                     if (result instanceof Session) {
                         // We open a viewpoint selection dialog
-                        ViewpointSelection.openSiriussSelectionDialog((Session) result);
+                        ViewpointSelection.openViewpointsSelectionDialog((Session) result);
                     }
                 }
             } catch (final InterruptedException e) {

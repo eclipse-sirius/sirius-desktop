@@ -102,7 +102,7 @@ import com.google.common.collect.Sets;
  */
 public final class ViewpointSelection {
 
-    private static final String[] COLUMNS = { " ", "icon", "Sirius" };
+    private static final String[] COLUMNS = { " ", "icon", "Viewpoint" };
 
     /**
      * Avoid instantiation.
@@ -120,16 +120,16 @@ public final class ViewpointSelection {
      *         viewpoints before plug-in viewpoints, and otherwise by name.
      */
     public static Set<Viewpoint> getViewpoints(final String fileExtension) {
-        final Predicate<Viewpoint> isValidSirius = new Predicate<Viewpoint>() {
+        final Predicate<Viewpoint> isValidViewpoint = new Predicate<Viewpoint>() {
             public boolean apply(final Viewpoint viewpoint) {
                 return new ViewpointQuery(viewpoint).handlesSemanticModelExtension(fileExtension != null ? fileExtension : StringUtil.JOKER_STRING);
             }
         };
 
-        final Set<Viewpoint> allSiriuss = ViewpointRegistry.getInstance().getViewpoints();
-        final Set<Viewpoint> validSiriuss = new HashSet<Viewpoint>();
-        validSiriuss.addAll(Collections2.filter(allSiriuss, isValidSirius));
-        return validSiriuss;
+        final Set<Viewpoint> allViewpoints = ViewpointRegistry.getInstance().getViewpoints();
+        final Set<Viewpoint> validViewpoints = new HashSet<Viewpoint>();
+        validViewpoints.addAll(Collections2.filter(allViewpoints, isValidViewpoint));
+        return validViewpoints;
     }
 
     /**
@@ -139,12 +139,12 @@ public final class ViewpointSelection {
      *            The extensions of the semantic models
      * @return The list of corresponding viewpoints
      */
-    private static Set<Viewpoint> getSiriuss(final Collection<String> fileExtensions) {
-        final SortedSet<Viewpoint> validSiriuss = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
+    private static Set<Viewpoint> getViewpoints(final Collection<String> fileExtensions) {
+        final SortedSet<Viewpoint> validViewpoints = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
         for (final String extension : fileExtensions) {
-            validSiriuss.addAll(ViewpointSelection.getViewpoints(extension));
+            validViewpoints.addAll(ViewpointSelection.getViewpoints(extension));
         }
-        return validSiriuss;
+        return validViewpoints;
     }
 
     /**
@@ -188,10 +188,10 @@ public final class ViewpointSelection {
         final WizardPage page = new WizardPage("viewpointsSelection", "Viewpoint selection", null) {
 
             public void createControl(final Composite parent) {
-                setControl(ViewpointSelection.createSiriussTableControl(parent, this.getContainer(), viewpointsMap));
+                setControl(ViewpointSelection.createViewpointsTableControl(parent, this.getContainer(), viewpointsMap));
             }
 
-            private boolean isThereOneSelectedSirius() {
+            private boolean isThereOneSelectedViewpoint() {
                 return Maps.filterValues(viewpointsMap, new Predicate<Boolean>() {
                     public boolean apply(final Boolean input) {
                         return input.booleanValue();
@@ -201,15 +201,15 @@ public final class ViewpointSelection {
 
             @Override
             public boolean isPageComplete() {
-                return super.isPageComplete() && isThereOneSelectedSirius();
+                return super.isPageComplete() && isThereOneSelectedViewpoint();
             }
 
         };
         return page;
     }
 
-    private static Control createSiriussTableControl(final Composite parent, final IWizardContainer wizardContainer, final Map<Viewpoint, Boolean> viewpoints) {
-        return ViewpointSelection.createSiriussTableControl(parent, viewpoints.keySet(), new WizardSiriussTableLazyCellModifier(viewpoints, wizardContainer), new SiriussTableLabelProvider(
+    private static Control createViewpointsTableControl(final Composite parent, final IWizardContainer wizardContainer, final Map<Viewpoint, Boolean> viewpoints) {
+        return ViewpointSelection.createViewpointsTableControl(parent, viewpoints.keySet(), new WizardViewpointsTableLazyCellModifier(viewpoints, wizardContainer), new ViewpointsTableLabelProvider(
                 viewpoints));
     }
 
@@ -218,14 +218,14 @@ public final class ViewpointSelection {
      * 
      * @author mchauvin
      */
-    private static class WizardSiriussTableLazyCellModifier extends SiriussTableLazyCellModifier {
+    private static class WizardViewpointsTableLazyCellModifier extends ViewpointsTableLazyCellModifier {
 
         private final IWizardContainer wizardContainer;
 
         /**
          * Constructor.
          */
-        public WizardSiriussTableLazyCellModifier(final Map<Viewpoint, Boolean> viewpoints, final IWizardContainer wizardContainer) {
+        public WizardViewpointsTableLazyCellModifier(final Map<Viewpoint, Boolean> viewpoints, final IWizardContainer wizardContainer) {
             super(viewpoints);
             this.wizardContainer = wizardContainer;
         }
@@ -270,8 +270,8 @@ public final class ViewpointSelection {
      * @param session
      *            the session
      */
-    public static void openSiriussSelectionDialog(final Session session) {
-        openSiriussSelectionDialog(session, true);
+    public static void openViewpointsSelectionDialog(final Session session) {
+        openViewpointsSelectionDialog(session, true);
     }
 
     /**
@@ -284,33 +284,33 @@ public final class ViewpointSelection {
      *            RepresentationDescription having their initialization
      *            attribute at true for selected {@link Viewpoint}.
      */
-    public static void openSiriussSelectionDialog(final Session session, boolean createNewRepresentations) {
+    public static void openViewpointsSelectionDialog(final Session session, boolean createNewRepresentations) {
         if (Movida.isEnabled()) {
             session.getSemanticCrossReferencer();
             org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry) ViewpointRegistry
                     .getInstance();
-            org.eclipse.sirius.business.internal.movida.ViewpointSelection selection = DAnalysisSessionHelper.getSiriusSelection(registry, (DAnalysisSession) session);
+            org.eclipse.sirius.business.internal.movida.ViewpointSelection selection = DAnalysisSessionHelper.getViewpointSelection(registry, (DAnalysisSession) session);
             Set<URI> selectedBefore = selection.getSelected();
             ViewpointSelectionDialog vsd = new ViewpointSelectionDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), registry, selection, getSemanticFileExtensions(session));
             if (vsd.open() == Window.OK) {
-                applySiriusSelectionChange(session, selection, selectedBefore);
+                applyViewpointSelectionChange(session, selection, selectedBefore);
             }
         } else {
             session.getSemanticCrossReferencer();
-            final SortedMap<Viewpoint, Boolean> viewpointsMap = ViewpointSelection.getSiriussWithMonitor(session);
+            final SortedMap<Viewpoint, Boolean> viewpointsMap = ViewpointSelection.getViewpointsWithMonitor(session);
 
-            final SortedMap<Viewpoint, Boolean> copyOfSiriussMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
-            copyOfSiriussMap.putAll(viewpointsMap);
+            final SortedMap<Viewpoint, Boolean> copyOfViewpointsMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
+            copyOfViewpointsMap.putAll(viewpointsMap);
 
             final TitleAreaDialog dialog = new TitleAreaDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell()) {
                 @Override
                 protected Control createDialogArea(final Composite parent) {
-                    return ViewpointSelection.createSiriussTableControl(parent, copyOfSiriussMap);
+                    return ViewpointSelection.createViewpointsTableControl(parent, copyOfViewpointsMap);
                 }
 
                 @Override
                 protected void okPressed() {
-                    Multimap<String, String> missingDependencies = getMissingDependencies(Maps.filterValues(copyOfSiriussMap, Predicates.equalTo(Boolean.TRUE)).keySet());
+                    Multimap<String, String> missingDependencies = getMissingDependencies(Maps.filterValues(copyOfViewpointsMap, Predicates.equalTo(Boolean.TRUE)).keySet());
                     if (missingDependencies.isEmpty()) {
                         super.okPressed();
                     } else {
@@ -327,14 +327,14 @@ public final class ViewpointSelection {
             dialog.open();
 
             if (Window.OK == dialog.getReturnCode()) {
-                ViewpointSelection.applyNewSiriusSelection(viewpointsMap, copyOfSiriussMap, session, createNewRepresentations);
+                ViewpointSelection.applyNewViewpointSelection(viewpointsMap, copyOfViewpointsMap, session, createNewRepresentations);
             }
         }
     }
 
     /**
      * Compute the error message for the given missing dependencies which
-     * indicates the required Sirius ativation to complete the current
+     * indicates the required viewpoinst activation to complete the current
      * selection.
      * 
      * @param missingDependencies
@@ -343,7 +343,7 @@ public final class ViewpointSelection {
      *            contains for each selected viewpoint which has missing
      *            dependencies, an entry with the selected viewpoint's name as
      *            key and the list of the missing viewpoints' names as value.
-     * @return an error message which indicates the required Sirius ativation
+     * @return an error message which indicates the required viewpoint activation
      *         to complete the current selection.
      */
     public static String getMissingDependenciesErrorMessage(Multimap<String, String> missingDependencies) {
@@ -355,17 +355,17 @@ public final class ViewpointSelection {
                 }));
     }
 
-    private static void applySiriusSelectionChange(final Session session, org.eclipse.sirius.business.internal.movida.ViewpointSelection selection, Set<URI> selectedBefore) {
+    private static void applyViewpointSelectionChange(final Session session, org.eclipse.sirius.business.internal.movida.ViewpointSelection selection, Set<URI> selectedBefore) {
         Set<URI> selectedAfter = selection.getSelected();
         Set<URI> newSelected = Sets.difference(selectedAfter, selectedBefore);
         Set<URI> newDeselected = Sets.difference(selectedBefore, selectedAfter);
         final ViewpointSelection.Callback callback = new ViewpointSelectionCallbackWithConfimation();
-        final Set<Viewpoint> newSelectedSiriuss = Sets.newHashSet(Iterables.transform(newSelected, new Function<URI, Viewpoint>() {
+        final Set<Viewpoint> newSelectedViewpoints = Sets.newHashSet(Iterables.transform(newSelected, new Function<URI, Viewpoint>() {
             public Viewpoint apply(URI from) {
                 return SiriusResourceHelper.getCorrespondingViewpoint(session, from, true).get();
             }
         }));
-        final Set<Viewpoint> newDeselectedSiriuss = Sets.newHashSet(Iterables.transform(newDeselected, new Function<URI, Viewpoint>() {
+        final Set<Viewpoint> newDeselectedViewpoints = Sets.newHashSet(Iterables.transform(newDeselected, new Function<URI, Viewpoint>() {
             public Viewpoint apply(URI from) {
                 return SiriusResourceHelper.getCorrespondingViewpoint(session, from, true).get();
             }
@@ -380,7 +380,7 @@ public final class ViewpointSelection {
                     public void run(final IProgressMonitor monitor) {
                         try {
                             monitor.beginTask("Apply new viewpoints selection...", 1);
-                            Command command = new ChangeViewpointSelectionCommand(session, callback, newSelectedSiriuss, newDeselectedSiriuss, new SubProgressMonitor(monitor, 1));
+                            Command command = new ChangeViewpointSelectionCommand(session, callback, newSelectedViewpoints, newDeselectedViewpoints, new SubProgressMonitor(monitor, 1));
                             TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
                             domain.getCommandStack().execute(command);
                         } finally {
@@ -447,7 +447,7 @@ public final class ViewpointSelection {
     }
 
 
-    private static void applyNewSiriusSelection(final SortedMap<Viewpoint, Boolean> originalMap, final SortedMap<Viewpoint, Boolean> newMap, final Session session,
+    private static void applyNewViewpointSelection(final SortedMap<Viewpoint, Boolean> originalMap, final SortedMap<Viewpoint, Boolean> newMap, final Session session,
             final boolean createNewRepresentations) {
 
         // newMap is a copy of originalMap with modifications on values.
@@ -456,8 +456,8 @@ public final class ViewpointSelection {
             throw new IllegalArgumentException("Original and new lists of viewpoints should not be 'different'");
         }
 
-        final Set<Viewpoint> newSelectedSiriuss = Sets.newHashSet();
-        final Set<Viewpoint> newDeselectedSiriuss = Sets.newHashSet();
+        final Set<Viewpoint> newSelectedViewpoints = Sets.newHashSet();
+        final Set<Viewpoint> newDeselectedViewpoints = Sets.newHashSet();
 
         /*
          * newMap and originalMap are sorted with the same comparator and keys
@@ -479,10 +479,10 @@ public final class ViewpointSelection {
                 // true : has been selected
                 if (newEntry.getValue().booleanValue()) {
                     // We can use here originalEntry or newEntry indifferently
-                    newSelectedSiriuss.add(originalEntry.getKey());
+                    newSelectedViewpoints.add(originalEntry.getKey());
                 } else {
                     // We can use here originalEntry or newEntry indifferently
-                    newDeselectedSiriuss.add(originalEntry.getKey());
+                    newDeselectedViewpoints.add(originalEntry.getKey());
                 }
             }
         }
@@ -490,12 +490,12 @@ public final class ViewpointSelection {
         final ViewpointSelection.Callback callback = new ViewpointSelectionCallbackWithConfimation();
 
         // Only if there is something to do
-        if (!newSelectedSiriuss.isEmpty() || !newDeselectedSiriuss.isEmpty()) {
+        if (!newSelectedViewpoints.isEmpty() || !newDeselectedViewpoints.isEmpty()) {
 
             try {
                 IRunnableWithProgress runnable = new IRunnableWithProgress() {
                     public void run(final IProgressMonitor monitor) {
-                        Command command = new ChangeViewpointSelectionCommand(session, callback, newSelectedSiriuss, newDeselectedSiriuss, createNewRepresentations, monitor);
+                        Command command = new ChangeViewpointSelectionCommand(session, callback, newSelectedViewpoints, newDeselectedViewpoints, createNewRepresentations, monitor);
                         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
                         domain.getCommandStack().execute(command);
                     }
@@ -513,8 +513,8 @@ public final class ViewpointSelection {
         }
     }
 
-    private static SortedMap<Viewpoint, Boolean> getSiriussWithMonitor(final Session session) {
-        final SortedSet<Viewpoint> allSiriuss = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
+    private static SortedMap<Viewpoint, Boolean> getViewpointsWithMonitor(final Session session) {
+        final SortedSet<Viewpoint> allViewpoints = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
         final SortedMap<Viewpoint, Boolean> viewpointsMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
         final IProgressService ps = PlatformUI.getWorkbench().getProgressService();
         try {
@@ -525,19 +525,19 @@ public final class ViewpointSelection {
                     final Collection<String> semanticFileExtensions = ViewpointSelection.getSemanticFileExtensions(session);
                     pm.worked(1);
 
-                    final Set<Viewpoint> viewpoints = ViewpointSelection.getSiriuss(semanticFileExtensions);
+                    final Set<Viewpoint> viewpoints = ViewpointSelection.getViewpoints(semanticFileExtensions);
                     pm.worked(1);
 
-                    allSiriuss.addAll(viewpoints);
+                    allViewpoints.addAll(viewpoints);
                     pm.worked(1);
 
-                    Collection<Viewpoint> selectedSiriuss = session.getSelectedViewpoints(false);
+                    Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
 
-                    for (final Viewpoint viewpoint : allSiriuss) {
+                    for (final Viewpoint viewpoint : allViewpoints) {
                         boolean selected = false;
 
-                        for (Viewpoint selectedSirius : selectedSiriuss) {
-                            if (EqualityHelper.areEquals(selectedSirius, viewpoint)) {
+                        for (Viewpoint selectedViewpoint : selectedViewpoints) {
+                            if (EqualityHelper.areEquals(selectedViewpoint, viewpoint)) {
                                 selected = true;
                                 break;
                             }
@@ -560,37 +560,11 @@ public final class ViewpointSelection {
         }
     }
 
-    /**
-     * Create the main table control.
-     * 
-     * @param parent
-     *            the parent
-     * @param allSiriuss
-     *            the viewpoints
-     * @param session
-     *            the current session
-     * @return the created control.
-     */
-    private static Control createSiriussTableControl(final Composite parent, final SortedMap<Viewpoint, Boolean> viewpointsMap) {
-        return ViewpointSelection.createSiriussTableControl(parent, viewpointsMap.keySet(), new SiriussTableLazyCellModifier(viewpointsMap), new SiriussTableLabelProvider(viewpointsMap));
+    private static Control createViewpointsTableControl(final Composite parent, final SortedMap<Viewpoint, Boolean> viewpointsMap) {
+        return ViewpointSelection.createViewpointsTableControl(parent, viewpointsMap.keySet(), new ViewpointsTableLazyCellModifier(viewpointsMap), new ViewpointsTableLabelProvider(viewpointsMap));
     }
 
-    /**
-     * Create the main table control.
-     * 
-     * @param parent
-     *            the parent
-     * @param viewpoints
-     *            the viewpoints
-     * @param cellModifier
-     *            the cell modifier
-     * @param labelProvider
-     *            the label provider
-     * @param callback
-     *            the callback
-     * @return the created control.
-     */
-    private static Control createSiriussTableControl(final Composite parent, final Set<Viewpoint> viewpoints, final TableViewerAwareCellModifier cellModifier, final IBaseLabelProvider labelProvider) {
+    private static Control createViewpointsTableControl(final Composite parent, final Set<Viewpoint> viewpoints, final TableViewerAwareCellModifier cellModifier, final IBaseLabelProvider labelProvider) {
 
         final Composite control = SWTUtil.createCompositeBothFill(parent, 1, false);
         final TableViewer tableViewer = new TableViewer(control, SWT.BORDER | SWT.FULL_SELECTION);
@@ -611,24 +585,6 @@ public final class ViewpointSelection {
 
         table.setSize(new Point(table.getSize().x, 510));
 
-        // resize the last column
-        /*
-         * control.addControlListener(new ControlAdapter() { public void
-         * controlResized(ControlEvent e) { Rectangle area =
-         * control.getClientArea(); Point preferredSize =
-         * table.computeSize(SWT.DEFAULT, SWT.DEFAULT); int width = area.width -
-         * 2 table.getBorderWidth(); if (preferredSize.y > area.height +
-         * table.getHeaderHeight()) { // if a vertical scroll bar is required,
-         * substract its width Point vBarSize =
-         * table.getVerticalBar().getSize(); width -= vBarSize.x; } Point
-         * oldSize = table.getSize(); if (oldSize.x > area.width) { // make the
-         * last column smaller and then the table tc2.setWidth(width -
-         * tc0.getWidth() - tc1.getWidth()); table.setSize(area.width,
-         * area.height); } else { // make the table bigger and then teh last
-         * column table.setSize(area.width, area.height); tc2.setWidth(width -
-         * tc0.getWidth() - tc1.getWidth()); } } });
-         */
-
         // Can only changes the first column - the visible column
         final CellEditor[] editors = new CellEditor[3];
         editors[0] = new CheckboxCellEditor(table);
@@ -641,7 +597,7 @@ public final class ViewpointSelection {
         tableViewer.setCellEditors(editors);
         cellModifier.setViewer(tableViewer);
         tableViewer.setCellModifier(cellModifier);
-        tableViewer.setContentProvider(new SiriussTableContentProvider());
+        tableViewer.setContentProvider(new ViewpointsTableContentProvider());
         tableViewer.setLabelProvider(labelProvider);
         tableViewer.setComparator(new ViewerComparator());
 
@@ -694,7 +650,7 @@ public final class ViewpointSelection {
         /**
          * deselect a viewpoint.
          * 
-         * @param deselectedSirius
+         * @param deselectedViewpoint
          *            the deselected viewpoint
          * @param session
          *            the current session
@@ -702,7 +658,7 @@ public final class ViewpointSelection {
          *             {@link Callback#deselectViewpoint(Viewpoint, Session, IProgressMonitor)}
          *             instead
          */
-        void deselectViewpoint(Viewpoint deselectedSirius, Session session);
+        void deselectViewpoint(Viewpoint deselectedViewpoint, Session session);
 
         /**
          * Select a {@link Viewpoint}.
@@ -735,14 +691,14 @@ public final class ViewpointSelection {
         /**
          * deselect a viewpoint.
          * 
-         * @param deselectedSirius
+         * @param deselectedViewpoint
          *            the deselected viewpoint
          * @param session
          *            the current session
          * @param monitor
          *            a {@link IProgressMonitor} to show progression
          */
-        void deselectViewpoint(Viewpoint deselectedSirius, Session session, IProgressMonitor monitor);
+        void deselectViewpoint(Viewpoint deselectedViewpoint, Session session, IProgressMonitor monitor);
 
     }
 
@@ -751,7 +707,7 @@ public final class ViewpointSelection {
      * 
      * @author mchauvin
      */
-    private static final class SiriussTableLabelProvider extends ColumnLabelProvider {
+    private static final class ViewpointsTableLabelProvider extends ColumnLabelProvider {
 
         private final Map<Viewpoint, Boolean> viewpoints;
 
@@ -763,12 +719,12 @@ public final class ViewpointSelection {
          * @param viewpoints
          *            the viewpoints
          */
-        public SiriussTableLabelProvider(final Map<Viewpoint, Boolean> viewpoints) {
+        public ViewpointsTableLabelProvider(final Map<Viewpoint, Boolean> viewpoints) {
             super();
             this.viewpoints = viewpoints;
         }
 
-        private boolean findSirius(final Viewpoint vp) {
+        private boolean findViewpoint(final Viewpoint vp) {
             for (final Map.Entry<Viewpoint, Boolean> entry : viewpoints.entrySet()) {
                 if (EqualityHelper.areEquals(entry.getKey(), vp) && entry.getValue()) {
                     return true;
@@ -801,7 +757,7 @@ public final class ViewpointSelection {
                 if (element instanceof Viewpoint) {
                     final Viewpoint vp = (Viewpoint) element;
                     image = SiriusEditPlugin.getPlugin().getBundledImage("/icons/full/others/checkbox_inactive.gif");
-                    if (findSirius(vp)) {
+                    if (findViewpoint(vp)) {
                         image = SiriusEditPlugin.getPlugin().getBundledImage("/icons/full/others/checkbox_active.gif");
                     }
                 }
@@ -896,7 +852,7 @@ public final class ViewpointSelection {
      * 
      * @author mchauvin
      */
-    private static final class SiriussTableContentProvider implements IStructuredContentProvider {
+    private static final class ViewpointsTableContentProvider implements IStructuredContentProvider {
 
         /**
          * {@inheritDoc}
@@ -947,7 +903,7 @@ public final class ViewpointSelection {
      * 
      * @author mchauvin
      */
-    private abstract static class AbstractSiriussTableCellModifier implements TableViewerAwareCellModifier {
+    private abstract static class AbstractViewpointsTableCellModifier implements TableViewerAwareCellModifier {
 
         protected TableViewer tableViewer;
 
@@ -960,7 +916,7 @@ public final class ViewpointSelection {
          * @param viewpoints
          *            All viewpoints and there selection state.
          */
-        public AbstractSiriussTableCellModifier(final Map<Viewpoint, Boolean> viewpoints) {
+        public AbstractViewpointsTableCellModifier(final Map<Viewpoint, Boolean> viewpoints) {
             this.viewpoints = viewpoints;
         }
 
@@ -993,7 +949,7 @@ public final class ViewpointSelection {
      * 
      * @author mchauvin
      */
-    private static class SiriussTableLazyCellModifier extends AbstractSiriussTableCellModifier {
+    private static class ViewpointsTableLazyCellModifier extends AbstractViewpointsTableCellModifier {
 
         /**
          * Constructor.
@@ -1001,7 +957,7 @@ public final class ViewpointSelection {
          * @param viewpoints
          *            All viewpoints and there selection state.
          */
-        public SiriussTableLazyCellModifier(final Map<Viewpoint, Boolean> viewpoints) {
+        public ViewpointsTableLazyCellModifier(final Map<Viewpoint, Boolean> viewpoints) {
             super(viewpoints);
         }
 

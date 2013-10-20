@@ -410,7 +410,7 @@ public final class DAnalysisSessionHelper {
      *            the session.
      * @return the set of currently selected viewpoints in the session.
      */
-    public static ViewpointSelection getSiriusSelection(org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry, DAnalysisSession session) {
+    public static ViewpointSelection getViewpointSelection(org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry, DAnalysisSession session) {
         ViewpointSelection selection = new ViewpointSelection(registry);
         Set<URI> selectedBefore = Sets.newHashSet(Iterables.transform(session.getSelectedViewpoints(false), new Function<Viewpoint, URI>() {
             public URI apply(Viewpoint from) {

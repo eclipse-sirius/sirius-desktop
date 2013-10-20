@@ -31,13 +31,13 @@ import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * Represents a set of logical Siriuss, for example the ones requested by a
+ * Represents a set of logical Viewpoints, for example the ones requested by a
  * user, and provides validation on the consistency of the selection.
  * 
  * @author pierre-charles.david@obeo.fr
  */
 public class ViewpointSelection {
-    private static final String INVALID_VIEWPOINT_URI = "Selection must contain only logical Sirius URIs";
+    private static final String INVALID_VIEWPOINT_URI = "Selection must contain only logical Viewpoint URIs";
 
     /**
      * The set of logical Sirius URIs which make up the selection itself.

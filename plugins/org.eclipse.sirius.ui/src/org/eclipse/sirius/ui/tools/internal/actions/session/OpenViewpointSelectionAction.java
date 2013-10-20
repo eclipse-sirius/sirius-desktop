@@ -59,7 +59,7 @@ public class OpenViewpointSelectionAction extends Action {
         final Session session = SessionManager.INSTANCE.getExistingSession(sessionURI);
         PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
             public void run() {
-                ViewpointSelection.openSiriussSelectionDialog(session);
+                ViewpointSelection.openViewpointsSelectionDialog(session);
             }
         });
     }

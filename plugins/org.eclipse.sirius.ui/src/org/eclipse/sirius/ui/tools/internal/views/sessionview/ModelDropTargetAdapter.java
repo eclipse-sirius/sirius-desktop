@@ -190,7 +190,7 @@ public class ModelDropTargetAdapter extends ViewerDropAdapter {
                 session.open(new NullProgressMonitor());
                 monitor.done();
             }
-            ViewpointSelection.openSiriussSelectionDialog(session);
+            ViewpointSelection.openViewpointsSelectionDialog(session);
             monitor.worked(1);
             final Collection<DRepresentation> startupCandidates = SessionHelper.findAllStartupCandidates(session);
             String origin = null;
@@ -224,7 +224,7 @@ public class ModelDropTargetAdapter extends ViewerDropAdapter {
                 final Session session = wizard.getCreatedSession();
                 Command addSemanticResourceCmd = new AddSemanticResourceCommand(session, semanticModelURI, new NullProgressMonitor());
                 session.getTransactionalEditingDomain().getCommandStack().execute(addSemanticResourceCmd);
-                ViewpointSelection.openSiriussSelectionDialog(session);
+                ViewpointSelection.openViewpointsSelectionDialog(session);
                 final Collection<DRepresentation> startupCandidates = SessionHelper.findAllStartupCandidates(session);
                 String origin = null;
                 if (session.getSessionResource().getURI().segmentCount() > 1) {

@@ -95,7 +95,7 @@ public class AddModelDependencyAction extends Action {
                     for (Object result : results) {
                         if (result instanceof Session) {
                             // We open a viewpoint selection dialog
-                            ViewpointSelection.openSiriussSelectionDialog((Session) result);
+                            ViewpointSelection.openViewpointsSelectionDialog((Session) result);
                         }
                     }
                 } catch (InvocationTargetException e) {
