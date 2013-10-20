@@ -104,7 +104,7 @@ public class DynamicAcceleoModule {
      * and exists only to unlock specific situation without building a new
      * version.
      */
-    private static final String MAX_CACHE_SIZE_PROPERTY_KEY = "org.eclipse.sirius.common.acceleo.mtl.maxCacheSize"; //$NON-NLS-1$
+    private static final String MAX_CACHE_SIZE_PROPERTY_KEY = AcceleoMTLInterpreterPlugin.PLUGIN_ID + ".maxCacheSize"; //$NON-NLS-1$
 
     /**
      * The initial size of the caches (compiledModules and queries).

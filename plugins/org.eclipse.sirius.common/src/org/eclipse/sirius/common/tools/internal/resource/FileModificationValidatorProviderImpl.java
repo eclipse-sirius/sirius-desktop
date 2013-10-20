@@ -18,7 +18,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.EMFPlugin;
-
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.resource.FileModificationValidatorProvider;
 import org.eclipse.sirius.common.tools.api.resource.IFileModificationValidator;
 
@@ -30,7 +30,7 @@ import org.eclipse.sirius.common.tools.api.resource.IFileModificationValidator;
 public final class FileModificationValidatorProviderImpl implements FileModificationValidatorProvider {
 
     /** The extension point. */
-    private static final String VALIDATION_EXTENSION_POINT = "org.eclipse.sirius.common.fileModificationValidator";
+    private static final String VALIDATION_EXTENSION_POINT = DslCommonPlugin.PLUGIN_ID + ".fileModificationValidator";
 
     private Collection<FileModificationValidatorDescriptor> validationEditDescriptors = new HashSet<FileModificationValidatorDescriptor>();
 

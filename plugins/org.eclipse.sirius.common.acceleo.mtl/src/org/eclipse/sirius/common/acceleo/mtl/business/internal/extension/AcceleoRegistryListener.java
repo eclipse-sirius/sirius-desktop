@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IRegistryEventListener;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.sirius.common.acceleo.mtl.AcceleoMTLInterpreterPlugin;
 
 /**
  * This listener will allow us to be aware of contribution changes against the
@@ -24,7 +25,7 @@ import org.eclipse.core.runtime.Platform;
  */
 public final class AcceleoRegistryListener implements IRegistryEventListener {
     /** ID of the extension point to parse for import handlers. */
-    public static final String IMPORT_HANDLER_EXTENSION_POINT = "org.eclipse.sirius.common.acceleo.mtl.importhandler"; //$NON-NLS-1$
+    public static final String IMPORT_HANDLER_EXTENSION_POINT = AcceleoMTLInterpreterPlugin.PLUGIN_ID + ".importhandler"; //$NON-NLS-1$
 
     /** Name of the extension point's "importHandler" tag. */
     private static final String IMPORT_HANDLER_TAG = "importHandler"; //$NON-NLS-1$

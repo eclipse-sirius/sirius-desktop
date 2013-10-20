@@ -46,8 +46,8 @@ public final class FindMessages extends NLS {
 
     /** NLS String. */
     public static String abstractFindLabelDialogNoMatchingElementMessage;
-
-    private static final String BUNDLE_NAME = "org.eclipse.sirius.common.tools.api.find.findMessages"; //$NON-NLS-1$
+    
+    private static final String BUNDLE_NAME = FindMessages.class.getPackage().getName() + ".findMessages"; //$NON-NLS-1$
 
     static {
         // initialize resource bundle

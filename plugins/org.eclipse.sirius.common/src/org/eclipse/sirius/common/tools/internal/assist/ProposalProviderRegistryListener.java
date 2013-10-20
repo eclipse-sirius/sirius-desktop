@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IRegistryEventListener;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
 
 /**
  * This listener will allow us to be aware of contribution changes against the
@@ -24,7 +25,7 @@ import org.eclipse.core.runtime.Platform;
  */
 public final class ProposalProviderRegistryListener implements IRegistryEventListener {
     /** ID of the extension point to parse for proposal providers. */
-    public static final String PROPOSAL_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.common.proposalProvider"; //$NON-NLS-1$
+    public static final String PROPOSAL_PROVIDER_EXTENSION_POINT = DslCommonPlugin.PLUGIN_ID + ".proposalProvider"; //$NON-NLS-1$
 
     /** Name of the extension point's "proposalProvider" tag. */
     private static final String PROPOSAL_PROVIDER_TAG = "proposalProvider"; //$NON-NLS-1$
