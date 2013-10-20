@@ -63,4 +63,11 @@ As of Sirius 0.9, and probably at least until Sirius 1.0 when the APIs will be m
 
 h4. Models namespace URIs
 
+h3. Other API Changes
+
+h4. API Removal
+
+* Removed @org.eclipse.sirius.common.tools.api.interpreter.IAcceleoInterpreterVariables@: This interface only defined a single constant, which refered to the syntax of an obsolete version of the Acceleo language.
+* Removed @org.eclipse.sirius.common.tools.api.resource.IFileContributorExtension@: This interface only defined a few constants relative to an extension point which does not exist anymore.
+
  

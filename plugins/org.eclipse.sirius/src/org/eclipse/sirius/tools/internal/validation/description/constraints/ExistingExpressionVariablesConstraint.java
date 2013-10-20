@@ -20,7 +20,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
-import org.eclipse.sirius.common.tools.api.interpreter.IAcceleoInterpreterVariables;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
@@ -512,7 +511,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      * @return the validation status.
      */
     protected IStatus checkCreateInstanceReferenceName(final IValidationContext ctx, final CreateInstance createInstanceOp) {
-        if (createInstanceOp.getReferenceName() != null && createInstanceOp.getReferenceName().startsWith(IAcceleoInterpreterVariables.ACCELEO_EXPR_PREFIX)) {
+        if (createInstanceOp.getReferenceName() != null && createInstanceOp.getReferenceName().startsWith("<%")) {
             return this.checkVariables(ctx, createInstanceOp.getReferenceName(), getDeclaredVariables(createInstanceOp), createInstanceOp, ToolPackage.eINSTANCE.getCreateInstance_ReferenceName()
                     .getName());
         }
