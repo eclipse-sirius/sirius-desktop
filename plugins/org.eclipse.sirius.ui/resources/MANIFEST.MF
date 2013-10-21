@@ -1,6 +1,7 @@
 Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
 Bundle-Name: %pluginId
-Bundle-SymbolicName: %pluginId;singleton=true
+Bundle-SymbolicName: %pluginId;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-Activator: %packageName.Activator
 Require-Bundle: org.eclipse.ui,
