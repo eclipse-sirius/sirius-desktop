@@ -17,6 +17,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
+import com.google.common.base.Objects;
+
 /**
  * An helper to check EObject equality.
  * 
@@ -79,34 +81,29 @@ public final class EqualityHelper {
      *         <code>true</code>, otherwise if only one of them is null, return
      *         <code>false</code>
      */
-    public static boolean areEquals(final EObject eObj1, final EObject eObj2) {
-
-        if (eObj1 == eObj2 || (eObj1 != null && eObj1.equals(eObj2))) {
+    public static boolean areEquals(EObject eObj1, EObject eObj2) {
+        if (Objects.equal(eObj1, eObj2)) {
             return true;
         }
-
-        boolean equal = false;
-
-        if (eObj1 != null && eObj2 != null && eObj1.getClass() == eObj2.getClass()) {
-            final Resource res1 = eObj1.eResource();
-            final Resource res2 = eObj2.eResource();
+        boolean result = false;
+        if (sameType(eObj1, eObj2)) {
+            Resource res1 = eObj1.eResource();
+            Resource res2 = eObj2.eResource();
             if (res1 != null && res2 != null) {
-                final URI uriRes1 = res1.getURI();
-                final URI uriRes2 = res2.getURI();
+                URI uriRes1 = res1.getURI();
+                URI uriRes2 = res2.getURI();
                 if ((uriRes1.isPlatformPlugin() && uriRes2.isPlatformPlugin()) || (uriRes1.isPlatformResource() && uriRes2.isPlatformResource())) {
                     /*
-                     * return false if uris are not the same for performance,
-                     * because getURIFFragment cost is high.
+                     * Short-circuit costly getURIFragment() if the resources' URIS are not the same.
                      */
-                    if (!uriRes1.equals(uriRes2)) {
-                        equal = false;
-                    } else {
-                        equal = res1.getURIFragment(eObj1).equals(res2.getURIFragment(eObj2));
-                    }
+                    result = uriRes1.equals(uriRes2) && res1.getURIFragment(eObj1).equals(res2.getURIFragment(eObj2));
                 }
             }
         }
-        return equal;
+        return result;
     }
 
+    private static boolean sameType(EObject eObj1, EObject eObj2) {
+        return eObj1 != null && eObj2 != null && eObj1.getClass() == eObj2.getClass();
+    }
 }
