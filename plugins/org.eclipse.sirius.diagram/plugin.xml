@@ -1803,12 +1803,6 @@
            class="org.eclipse.sirius.diagram.business.internal.dialect.DiagramDialectUI">
      </dialectUI>
   </extension>
-  <extension
-        point="org.eclipse.sirius.reconciler">
-     <participant
-           class="org.eclipse.sirius.diagram.tools.internal.reconciler.DiagramReconcilerParticipant">
-     </participant>
-  </extension>
 
   <extension
         point="org.eclipse.sirius.dialect">

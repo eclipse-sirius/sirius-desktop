@@ -20,7 +20,6 @@
    <extension-point id="externalJavaAction" name="%ExtPoint.externalJavaAction" schema="schema/externalJavaAction.exsd"/>
    <extension-point id="sessionManagerListener" name="org.eclipse.sirius.sessionManagerListener" schema="schema/sessionManagerListener.exsd"/>
    <extension-point id="diagramTypeProvider" name="org.eclipse.sirius.diagramTypeProvider" schema="schema/diagramTypeProvider.exsd"/>
-   <extension-point id="reconciler" name="org.eclipse.sirius.reconciler" schema="schema/reconciler.exsd"/>
    <extension-point id="analysisSelectorProvider" name="org.eclipse.sirius.analysisSelectorProvider" schema="schema/analysisSelectorProvider.exsd"/>
    <extension-point id="runtimeLogger" name="org.eclipse.sirius.runtimeLogger" schema="schema/runtimeLogger.exsd"/>
    <extension-point id="deleteHook" name="org.eclipse.sirius.deleteHook" schema="schema/deleteHook.exsd"/>
