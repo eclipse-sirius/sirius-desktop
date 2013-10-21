@@ -36,7 +36,7 @@
                class="org.eclipse.sirius.eef.adapters.SiriusSemanticAdapter">
          <adapter type="org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter" />
       </factory>
-      <factory adaptableType="org.eclipse.sirius.DSemanticDecorator"
+      <factory adaptableType="org.eclipse.sirius.viewpoint.DSemanticDecorator"
                class="org.eclipse.sirius.eef.adapters.SiriusSemanticAdapter">
          <adapter type="org.eclipse.emf.eef.runtime.api.adapters.SemanticAdapter" />
       </factory>
