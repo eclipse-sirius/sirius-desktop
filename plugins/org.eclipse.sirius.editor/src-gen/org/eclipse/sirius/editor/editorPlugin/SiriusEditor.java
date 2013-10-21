@@ -842,7 +842,7 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
 
                 selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
                 selectionViewer.setInput(editingDomain.getResourceSet());
-                viewerPane.setTitle("Sirius Specification Editor", new AdapterFactoryLabelProvider(adapterFactory).getImage(DescriptionFactory.eINSTANCE.createViewpoint()));
+                viewerPane.setTitle(getString("_UI_SiriusEditor_label"), new AdapterFactoryLabelProvider(adapterFactory).getImage(DescriptionFactory.eINSTANCE.createViewpoint()));
 
                 new SelectionTreeTextEditor(editingDomain, selectionViewer.getTree(), adapterFactory);
 
