@@ -55,7 +55,7 @@ All identifiers have changed to start with the @org.eclipse.sirius@ namespace pr
 | fr.obeo.dsl.viewpoint.specifier.ide.ui.acceleo | org.eclipse.sirius.specifier.ide.ui.acceleo |
 | fr.obeo.dsl.viewpoint.doc.feature              | org.eclipse.sirius.doc.feature              |
 
-h4. Java Pacakges Names
+h4. Java Packages Names
 
 h4. Plug-ins version numbers.
 
