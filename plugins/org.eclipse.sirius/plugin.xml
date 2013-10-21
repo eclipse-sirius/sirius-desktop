@@ -213,8 +213,8 @@
                <target class="DDiagramElement"/>                                   
             </constraint>
             <constraint
-                  class="fr.obeo.dsl.viewpoint.tools.internal.validation.description.constraints.EmptyAppliedOnListConstraint"
-                  id="fr.obeo.dsl.viewpoint.tools.internal.validation.description.constraints.EmptyAppliedOnListConstraint"
+                  class="org.eclipse.sirius.tools.internal.validation.description.constraints.EmptyAppliedOnListConstraint"
+                  id="org.eclipse.sirius.tools.internal.validation.description.constraints.EmptyAppliedOnListConstraint"
                   isEnabledByDefault="true"
                   lang="Java"
                   mode="Batch"
