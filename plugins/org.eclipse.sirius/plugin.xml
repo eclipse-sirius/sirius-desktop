@@ -30,13 +30,6 @@
    <extension-point id="migrationParticipant" name="org.eclipse.sirius.migration" schema="schema/migrationParticipant.exsd"/>
    <extension-point id="repairParticipant" name="viewpoint.repair.repairParticipant" schema="schema/repairParticipant.exsd"/>
 
-  <extension point="org.eclipse.emf.ecore.generated_package">
-    <package 
-       uri = "http://www.eclipse.org/sirius/1.1.0" 
-       class = "org.eclipse.sirius.viewpoint.SiriusPackage"
-       genModel = "model/viewpoint.genmodel" /> 
-  </extension>
-    
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated viewpoint -->
       <package
