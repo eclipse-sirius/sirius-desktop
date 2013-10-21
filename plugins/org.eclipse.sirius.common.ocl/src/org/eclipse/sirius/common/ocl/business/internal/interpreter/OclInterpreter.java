@@ -75,8 +75,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#activateMetamodels(java.util.Collection)
      */
     public void activateMetamodels(Collection<MetamodelDescriptor> metamodels) {
         // Nothing to do
@@ -84,8 +82,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#addImport(java.lang.String)
      */
     public void addImport(final String dependency) {
         // ignore
@@ -93,8 +89,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#clearImports()
      */
     public void clearImports() {
         // ignore
@@ -102,8 +96,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#addVariableStatusListener(org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener)
      */
     public void addVariableStatusListener(final IVariableStatusListener newListener) {
         this.variablesListeners.add(newListener);
@@ -111,8 +103,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#removeVariableStatusListener(org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener)
      */
     public void removeVariableStatusListener(final IVariableStatusListener listener) {
         this.variablesListeners.remove(listener);
@@ -120,9 +110,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setVariable(java.lang.String,
-     *      java.lang.Object)
      */
     public void setVariable(final String name, final Object value) {
         this.variables.setVariable(name, value);
@@ -131,8 +118,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#unSetVariable(java.lang.String)
      */
     public void unSetVariable(final String name) {
         this.variables.unSetVariable(name);
@@ -141,8 +126,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#clearVariables()
      */
     public void clearVariables() {
         this.variables.clearVariables();
@@ -151,8 +134,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getVariable(java.lang.String)
      */
     public Object getVariable(final String name) {
         return this.variables.getVariable(name);
@@ -160,8 +141,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getVariables()
      */
     public Map<String, Object> getVariables() {
         return this.variables.getVariables();
@@ -178,8 +157,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#provides(java.lang.String)
      */
     public boolean provides(final String expression) {
         return expression != null && expression.startsWith(OclInterpreter.OCL_DISCRIMINANT);
@@ -187,9 +164,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setProperty(java.lang.Object,
-     *      java.lang.Object)
      */
     public void setProperty(final Object key, final Object value) {
         // ignore.
@@ -197,9 +171,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluate(org.eclipse.emf.ecore.EObject,
-     *      java.lang.String)
      */
     public Object evaluate(final EObject target, final String expression) throws EvaluationException {
         return internalEvaluate(target, expression);
@@ -207,9 +178,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluateBoolean(org.eclipse.emf.ecore.EObject,
-     *      java.lang.String)
      */
     public boolean evaluateBoolean(final EObject context, final String expression) throws EvaluationException {
         final Object value = evaluate(context, expression);
@@ -224,9 +192,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluateCollection(org.eclipse.emf.ecore.EObject,
-     *      java.lang.String)
      */
     public Collection<EObject> evaluateCollection(final EObject context, final String expression) throws EvaluationException {
         final Object value = evaluate(context, expression);
@@ -247,9 +212,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluateEObject(org.eclipse.emf.ecore.EObject,
-     *      java.lang.String)
      */
     public EObject evaluateEObject(final EObject context, final String expression) throws EvaluationException {
         final Object value = evaluate(context, expression);
@@ -261,9 +223,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluateInteger(org.eclipse.emf.ecore.EObject,
-     *      java.lang.String)
      */
     public Integer evaluateInteger(final EObject context, final String expression) throws EvaluationException {
         final Object value = evaluate(context, expression);
@@ -274,7 +233,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
             try {
                 result = new Integer((String) value);
             } catch (final NumberFormatException nfe) {
-                DslOclPlugin.getDefault().error("the value returned by the OCL evaluation is not a number", nfe);
+                DslOclPlugin.getDefault().error("The value returned by the OCL evaluation is not a number", nfe);
             }
         }
         return result;
@@ -282,9 +241,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#evaluateString(org.eclipse.emf.ecore.EObject,
-     *      java.lang.String)
      */
     public String evaluateString(final EObject context, final String expression) throws EvaluationException {
         final Object value = evaluate(context, expression);
@@ -308,7 +264,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     @SuppressWarnings({ "unchecked", "rawtypes" })
     private Object internalEvaluate(final EObject context, final String expression) throws EvaluationException {
         try {
-            final String exp = expression.substring("ocl:".length());
+            final String exp = expression.substring(OCL_DISCRIMINANT.length());
             if ("".equals(exp)) {
                 return null;
             }
@@ -344,7 +300,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     }
 
     /**
-     * this method might initialize a new helper.
+     * This method might initialize a new helper.
      * 
      * @return the interpreter ocl helper
      */
@@ -364,8 +320,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider#createInterpreter()
      */
     public IInterpreter createInterpreter() {
         return new OclInterpreter();
@@ -373,8 +327,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#dispose()
      */
     public void dispose() {
         this.variables.clearVariables();
@@ -383,8 +335,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#setModelAccessor(org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor)
      */
     public void setModelAccessor(final ModelAccessor modelAccessor) {
         // ignore
@@ -392,9 +342,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider#getProposals(org.eclipse.sirius.common.tools.api.interpreter.IInterpreter,
-     *      org.eclipse.sirius.common.tools.api.contentassist.ContentContext)
      */
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentContext context) {
         List<ContentProposal> computeCompletionEntry = OclCompletionEntry.computeCompletionEntry(context);
@@ -403,8 +350,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getPrefix()
      */
     public String getPrefix() {
         return OclInterpreter.OCL_DISCRIMINANT;
@@ -412,8 +357,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getNewEmtpyExpression()
      */
     public ContentProposal getNewEmtpyExpression() {
         return new ContentProposal(OclInterpreter.OCL_DISCRIMINANT, OclInterpreter.OCL_DISCRIMINANT, "New OCL expression.");
@@ -421,28 +364,20 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getVariablePrefix()
      */
     public String getVariablePrefix() {
-        // return null => no prefix
-        return null;
+        return null; // no prefix for variables
     }
 
     /**
-     * 
      * {@inheritDoc}
      */
     public void setCrossReferencer(final ECrossReferenceAdapter crossReferencer) {
         // no handling (AFAIK) of cross references for OCL
-
     }
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider#getProposals(org.eclipse.sirius.common.tools.api.interpreter.IInterpreter,
-     *      org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext)
      */
     public List<ContentProposal> getProposals(IInterpreter interpreter, ContentInstanceContext context) {
         // Make sure that context and cursor position are valid
@@ -472,8 +407,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getImports()
      */
     public Collection<String> getImports() {
         return Collections.<String> emptyList();
@@ -481,33 +414,22 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#removeImport(String)
      */
     public void removeImport(String dependency) {
         // empty
     }
 
     /**
-     * 
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#validateExpression(java.lang.String,
-     *      java.lang.String)
      */
     public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
-        // TODO
         return new LinkedHashSet<IInterpreterStatus>();
     }
 
     /**
-     * 
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#supportsValidation()
      */
     public boolean supportsValidation() {
-        // TODO
         return false;
     }
 }
