@@ -1970,7 +1970,7 @@
         <input type="org.eclipse.sirius.viewpoint.description.ContainerMapping"/>        
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.editor.properties.sections.description.containermapping.ContainerMappingChildrenPresentationPropertySection"
+               class="org.eclipse.sirius.editor.properties.section.description.containermapping.ContainerMappingChildrenPresentationPropertySectionSpec"
                filter="org.eclipse.sirius.editor.properties.filters.description.containermapping.ContainerMappingChildrenPresentationFilter"
                id="description.section.containerMapping.ChildrenPresentation"
                 tab="viewpoint.tab.general">
@@ -2365,7 +2365,7 @@
           finalPerspective="org.eclipse.sirius.ui.tools.perspective.design"
           icon="icons/full/obj16/SiriusSpecificationProject.gif"
           id="org.eclipse.sirius.ui.specificationproject.wizard"
-          name="Sirius Specification Project"
+          name="Viewpoint Specification Project"
           project="true">
        <description>
           %_UI_SiriusSpecificationProjectWizard_label
