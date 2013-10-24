@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -98,7 +99,7 @@ public final class SiriusResourceHelper {
                 // the editingDomain resourceSet
                 final Viewpoint editingDomainViewpoint = SiriusUtil.findViewpoint(editingDomainResource, registryViewpoint.getName());
                 if (editingDomainViewpoint != null) {
-                    session.createView(editingDomainViewpoint, Collections.singleton(semanticElement));
+                    session.createView(editingDomainViewpoint, Collections.singleton(semanticElement), new NullProgressMonitor());
                 }
             } catch (final IOException e1) {
                 /* do not log anything */

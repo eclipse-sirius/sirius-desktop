@@ -14,6 +14,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
@@ -98,7 +99,7 @@ public class CloseSessionsAction extends SelectionListenerAction {
             SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, "An error occured : ", e));
         }
         if (session.isOpen()) {
-            session.close();
+            session.close(new NullProgressMonitor());
         }
     }
 }

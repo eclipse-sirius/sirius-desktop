@@ -135,21 +135,23 @@ public class UserSession {
 
     /**
      * Save session.
+     * @param pm the progress monitor to use.
      * 
      * @return the saved user session instance
      */
-    public UserSession save() {
-        session.save();
+    public UserSession save(IProgressMonitor pm) {
+        session.save(pm);
         return this;
     }
 
     /**
      * Close session.
+     * @param pm the progress monitor to use.
      * 
      * @return the closed user session
      */
-    public UserSession close() {
-        session.close();
+    public UserSession close(IProgressMonitor pm) {
+        session.close(pm);
         return this;
     }
 

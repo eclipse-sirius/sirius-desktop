@@ -205,6 +205,24 @@
 				<code>org.eclipse.sirius.reconciler</code> extension point definition (which used to be defined in the 
 				<code>org.eclipse.sirius</code> plug-in): This extension point is not supported anymore (and has not been for a long time).
 			</li>
+			<li>Removed all the deprecated methods from 
+				<code>Session</code> and replaced the internal calls with the equivalent versions with 
+				<code>IProgressMonitors</code>. The removed methods are:
+			</li>
 		</ul>
+		<pre>void open();
+void addSemanticResource(Resource newResource, boolean addCrossReferencedResources);
+void addSemanticResource(URI semanticModelURI, boolean addCrossReferencedResources);
+void addSemanticResource(URI semanticModelURI, boolean addCrossReferencedResources, IProgressMonitor monitor);
+void removeSemanticResource(Resource resource, boolean removeCrossReferencedResources);
+void removeSemanticResource(Resource semanticResource);
+void save();
+void close();
+Collection&lt;Viewpoint&gt; getSelectedViewpoints();
+void createView(Viewpoint viewpoint, Collection&lt;EObject&gt; semantics);
+void createView(Viewpoint viewpoint, Collection&lt;EObject&gt; semantics, boolean createNewRepresentations);
+void addSelectedView(DView view) throws IllegalArgumentException;
+void removeSelectedView(DView view);
+</pre>
 	</body>
 </html>

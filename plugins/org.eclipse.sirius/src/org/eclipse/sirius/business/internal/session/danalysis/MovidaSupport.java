@@ -13,6 +13,7 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 import java.util.Collection;
 import java.util.Set;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -113,6 +114,7 @@ final class MovidaSupport {
     }
 
     void deselectMissingSiriuss(final SetView<URI> unavailable) {
+        final IProgressMonitor pm = new NullProgressMonitor();
         TransactionalEditingDomain ted = session.getTransactionalEditingDomain();
         ted.getCommandStack().execute(new RecordingCommand(ted) {
             @Override
@@ -120,7 +122,7 @@ final class MovidaSupport {
                 for (final Viewpoint viewpoint : session.getSelectedViewpoints(false)) {
                     Option<URI> uri = new ViewpointQuery(viewpoint).getViewpointURI();
                     if (uri.some() && unavailable.contains(uri.get())) {
-                        session.unselectSirius(viewpoint);
+                        session.unselectSirius(viewpoint, pm);
                         DialectManager.INSTANCE.updateRepresentationsExtendedBy(session, viewpoint, false);
                     }
                 }

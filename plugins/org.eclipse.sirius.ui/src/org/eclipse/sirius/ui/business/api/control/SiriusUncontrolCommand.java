@@ -244,7 +244,7 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
         if (ui != null) {
             ui.close();
         }
-        session.save();
+        session.save(new NullProgressMonitor());
         if (ui != null) {
             ui.open();
         }

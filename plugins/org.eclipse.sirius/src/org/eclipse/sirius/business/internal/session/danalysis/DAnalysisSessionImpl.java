@@ -381,13 +381,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * {@inheritDoc}
      */
-    public final void open() {
-        open(new NullProgressMonitor());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public void open(IProgressMonitor monitor) {
         try {
             monitor.beginTask("Open session", 33);
@@ -550,13 +543,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         Session session = SessionManager.INSTANCE.getSession(eObject);
         InterpreterRegistry.prepareImportsFromSession(this.interpreter, session);
         this.interpreter.setCrossReferencer(getSemanticCrossReferencer());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public Collection<Viewpoint> getSelectedViewpoints() {
-        return getSelectedViewpoints(true);
     }
 
     /**
@@ -737,24 +723,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public synchronized void addSemanticResource(final Resource newResource, final boolean addCrossReferencedResources) {
-        addSemanticResource(newResource, addCrossReferencedResources, new NullProgressMonitor());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void addSemanticResource(URI semanticModelURI, boolean addCrossReferencedResources) {
-        addSemanticResource(semanticModelURI, addCrossReferencedResources, new NullProgressMonitor());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public synchronized void addSemanticResource(final URI semanticModelURI, final boolean addCrossReferencedResources, IProgressMonitor monitor) {
+    private synchronized void addSemanticResource(final URI semanticModelURI, final boolean addCrossReferencedResources, IProgressMonitor monitor) {
 
         if (semanticModelURI != null) {
             if (new FileQuery(semanticModelURI.fileExtension()).isSessionResourceFile()) {
@@ -900,14 +869,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * 
-     * {@inheritDoc}
-     */
-    public final void save() {
-        save(new NullProgressMonitor());
-    }
-
-    /**
      * {@inheritDoc}
      */
     public final void save(IProgressMonitor monitor) {
@@ -982,13 +943,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * {@inheritDoc}
      */
-    public void addSelectedView(final DView view) throws IllegalArgumentException {
-        addSelectedView(view, new NullProgressMonitor());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public void addSelectedView(DView view, IProgressMonitor monitor) throws IllegalArgumentException {
         try {
             monitor.beginTask("View selection", 3);
@@ -1048,23 +1002,13 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * @param viewpoint
      *            the {@link Viewpoint} to unselect on this {@link Session}
      */
-    void unselectSirius(Viewpoint viewpoint) {
+    void unselectSirius(Viewpoint viewpoint, IProgressMonitor pm) {
         for (DView selectedDView : mainDAnalysis.getSelectedViews()) {
             if (EqualityHelper.areEquals(selectedDView.getViewpoint(), viewpoint)) {
-                removeSelectedView(selectedDView);
+                removeSelectedView(selectedDView, pm);
                 break;
             }
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void removeSelectedView(final DView view) {
-        mainDAnalysis.getSelectedViews().remove(view);
-        updateSelectedSiriussData(new NullProgressMonitor());
-        notifyListeners(SessionListener.SELECTED_VIEWS_CHANGE_KIND);
-        initInterpreter();
     }
 
     /**
@@ -1095,22 +1039,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * {@inheritDoc}
      */
-    public void createView(final Viewpoint viewpoint, final Collection<EObject> semantics) {
-        createView(viewpoint, semantics, true, new NullProgressMonitor());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public void createView(Viewpoint viewpoint, Collection<EObject> semantics, IProgressMonitor monitor) {
         createView(viewpoint, semantics, true, monitor);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void createView(Viewpoint viewpoint, Collection<EObject> semantics, boolean createNewRepresentations) {
-        createView(viewpoint, semantics, createNewRepresentations, new NullProgressMonitor());
     }
 
     /**
@@ -1406,6 +1336,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     public void moveRepresentation(final DAnalysis newContainer, final DRepresentation representation) {
         final IPermissionAuthority authority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(representation.eContainer());
+        IProgressMonitor pm = new NullProgressMonitor();
         if (!authority.canDeleteInstance(representation)) {
             throw new LockedInstanceException(representation);
         }
@@ -1419,7 +1350,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (receiver == null) {
             final IPermissionAuthority analysisAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(newContainer);
             if (analysisAuthority.canCreateIn(newContainer)) {
-                createView(getSirius(representation), Lists.newArrayList(semantic), false);
+                createView(getSirius(representation), Lists.newArrayList(semantic), false, pm);
                 receiver = findViewForRepresentation(representation, newContainer);
             } else {
                 throw new LockedInstanceException(newContainer);
@@ -1494,31 +1425,12 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * {@inheritDoc}
      */
-    public void removeSemanticResource(final Resource resource, final boolean removeCrossReferencedResources) {
-        final ResourceSet set = transactionalEditingDomain.getResourceSet();
-        if (removeCrossReferencedResources) {
-            removeSemanticResource(resource);
-        } else {
-            doRemoveSemanticResource(resource, set);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public void removeSemanticResource(Resource semanticResource, IProgressMonitor monitor) {
         ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
         for (final Resource res : collectAllReferencingResources(semanticResource)) {
             doRemoveSemanticResource(res, resourceSet);
         }
         doRemoveSemanticResource(semanticResource, resourceSet);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void removeSemanticResource(Resource semanticResource) {
-        removeSemanticResource(semanticResource, new NullProgressMonitor());
     }
 
     private void doRemoveSemanticResource(final Resource res, final ResourceSet set) {
@@ -1577,6 +1489,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 case CONFLICTING_CHANGED:
                 case CONFLICTING_DELETED:
                 case DELETED:
+                    IProgressMonitor pm = new NullProgressMonitor();
                     Collection<Resource> collection = newStatuses.get(newStatus);
                     for (Resource resource : collection) {
                         try {
@@ -1586,10 +1499,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                              * make sense
                              */
                             if (isInProjectDeletedRenamedOrClosed(resource)) {
-                                processAction(Action.CLOSE_SESSION, resource);
+                                processAction(Action.CLOSE_SESSION, resource, pm);
                                 return;
                             }
-                            processActions(getReloadingPolicy().getActions(this, resource, newStatus), resource);
+                            processActions(getReloadingPolicy().getActions(this, resource, newStatus), resource, pm);
 
                             // CHECKSTYLE:OFF
                         } catch (final Exception e) {
@@ -1668,23 +1581,23 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         return false;
     }
 
-    private void processActions(final List<Action> actions, final Resource resource) throws Exception {
+    private void processActions(final List<Action> actions, final Resource resource, IProgressMonitor pm) throws Exception {
         for (final Action action : actions) {
-            processAction(action, resource);
+            processAction(action, resource, pm);
         }
     }
 
-    private void processAction(final Action action, final Resource resource) throws Exception {
+    private void processAction(final Action action, final Resource resource, IProgressMonitor pm) throws Exception {
         switch (action) {
         case CLOSE_SESSION:
-            close();
+            close(pm);
             break;
         case RELOAD:
             if (isOpen())
                 reloadResource(resource);
             break;
         case REMOVE:
-            removeResourceFromSession(resource);
+            removeResourceFromSession(resource, pm);
             break;
         default:
             break;
@@ -1698,7 +1611,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * @param resource
      *            The resource to remove
      */
-    private void removeResourceFromSession(Resource resource) {
+    private void removeResourceFromSession(Resource resource, IProgressMonitor pm) {
         if (this.getSemanticResources().contains(resource)) {
             getTransactionalEditingDomain().getCommandStack().execute(new RemoveSemanticResourceCommand(this, resource, false, new NullProgressMonitor()));
         } else if (this.getAllSessionResources().contains(resource)) {
@@ -1712,7 +1625,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
         // delete session only if no more aird file is open
         if (this.getAllSessionResources().isEmpty()) {
-            this.close();
+            this.close(pm);
         }
     }
 
@@ -1886,13 +1799,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     public RefreshEditorsPrecommitListener getRefreshEditorsListener() {
         return refreshEditorsListeners;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public final void close() {
-        close(new NullProgressMonitor());
     }
 
     /**

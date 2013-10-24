@@ -39,13 +39,6 @@ public interface Session {
     String INVALID_SESSION = "INVALID SESSION";
 
     /**
-     * Open the session and add it to the {@link SessionManager}.
-     * 
-     * @deprecated use {@link Session#open(IProgressMonitor)} instead
-     */
-    void open();
-
-    /**
      * Open the session and add it to the {@link SessionManager}. Initialize a
      * Session from a Session Resource URI with its own EditingDomain. This
      * operation must be called after get a Session from
@@ -120,20 +113,6 @@ public interface Session {
     Set<Resource> getAllSessionResources();
 
     /**
-     * Add a new semantic resource in the session.
-     * 
-     * @param newResource
-     *            new resource.
-     * @param addCrossReferencedResources
-     *            true if any cross referenced resource should be added to,
-     *            false otherwise.
-     * @deprecated since 4.0.0 use
-     *             {@link Session#addSemanticResource(URI, IProgressMonitor)}
-     *             instead
-     */
-    void addSemanticResource(final Resource newResource, final boolean addCrossReferencedResources);
-
-    /**
      * Add a new semantic resource in the session. Must be called in a
      * {@link org.eclipse.emf.transaction.Transaction}, use
      * {@link org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand}
@@ -146,56 +125,6 @@ public interface Session {
      * @since 4.0
      */
     void createSemanticResource(final URI semanticModelURI);
-
-    /**
-     * Add a new semantic resource in the session. Must be called in a
-     * {@link org.eclipse.emf.transaction.Transaction}, use
-     * {@link org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand}
-     * to do it.
-     * 
-     * @param semanticModelURI
-     *            {@link URI} of a existing {@link Resource} representing a
-     *            semantic model to attach to this {@link Session}
-     * @param addCrossReferencedResources
-     *            indicates whether cross referenced resources should also be
-     *            added
-     * @deprecated as the addCrossReferencedResources parameter is useless use
-     *             {@link Session#addSemanticResource(URI, IProgressMonitor)},
-     *             indeed calling this operation with
-     *             addCrossReferencedResources at false will always load all
-     *             transitive resource dependencies. The only difference is that
-     *             calling with addCrossReferencedResources at false the
-     *             dependencies resources will not be visible in the Model
-     *             Explorer as semantic resources the first time.
-     * @since 4.0
-     */
-    void addSemanticResource(final URI semanticModelURI, final boolean addCrossReferencedResources);
-
-    /**
-     * Add a new semantic resource in the session. Must be called in a
-     * {@link org.eclipse.emf.transaction.Transaction}, use
-     * {@link org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand}
-     * to do it.
-     * 
-     * @param semanticModelURI
-     *            {@link URI} of a existing {@link Resource} representing a
-     *            semantic model to attach to this {@link Session}
-     * @param addCrossReferencedResources
-     *            indicates whether cross referenced resources should also be
-     *            added
-     * @param monitor
-     *            the Progress monitor to associate to this operation
-     * @deprecated as the addCrossReferencedResources parameter is useless use
-     *             {@link Session#addSemanticResource(URI, IProgressMonitor)},
-     *             indeed calling this operation with
-     *             addCrossReferencedResources at false will always load all
-     *             transitive resource dependencies. The only difference is that
-     *             calling with addCrossReferencedResources at false the
-     *             dependencies resources will not be visible in the Model
-     *             Explorer as semantic resources the first time.
-     * @since 4.0
-     */
-    void addSemanticResource(final URI semanticModelURI, final boolean addCrossReferencedResources, IProgressMonitor monitor);
 
     /**
      * Add a new semantic resource in the session. Must be called in a
@@ -220,33 +149,6 @@ public interface Session {
     Collection<Resource> getSemanticResources();
 
     /**
-     * Removed an existing semantic resource from the session.
-     * 
-     * @param resource
-     *            new resource.
-     * @param removeCrossReferencedResources
-     *            true if any cross referenced resource should be removed to,
-     *            false otherwise.
-     * 
-     * @deprecated as the removeCrossReferencedResources parameter is useless
-     *             use
-     *             {@link Session#removeSemanticResource(Resource, IProgressMonitor)}
-     *             instead.
-     */
-    void removeSemanticResource(final Resource resource, final boolean removeCrossReferencedResources);
-
-    /**
-     * Remove the specified semantic resource.
-     * 
-     * @param semanticResource
-     *            the specified semantic resource to remove
-     * @deprecated use
-     *             {@link Session#removeSemanticResource(Resource, IProgressMonitor)}
-     *             instead.
-     */
-    void removeSemanticResource(final Resource semanticResource);
-
-    /**
      * Remove the specified semantic resource.
      * 
      * @param semanticResource
@@ -256,13 +158,6 @@ public interface Session {
      *            resource removal
      */
     void removeSemanticResource(final Resource semanticResource, IProgressMonitor monitor);
-
-    /**
-     * Save the session data.
-     * 
-     * @deprecated use {@link Session#save(IProgressMonitor)} instead
-     */
-    void save();
 
     /**
      * Save the session data.
@@ -302,14 +197,6 @@ public interface Session {
      * Close the session, remove it from the {@link SessionManager}, dispose all
      * Session's resources and dispose the EditingDomain.
      * 
-     * @deprecated use {@link Session#close(IProgressMonitor)} instead
-     */
-    void close();
-
-    /**
-     * Close the session, remove it from the {@link SessionManager}, dispose all
-     * Session's resources and dispose the EditingDomain.
-     * 
      * @param monitor
      *            {@link IProgressMonitor} to indicate the progress of the
      *            Session closing
@@ -317,21 +204,6 @@ public interface Session {
      * @since 4.0
      */
     void close(IProgressMonitor monitor);
-
-    /**
-     * Get a collection of selected viewpoints for this session on all Session
-     * resources.
-     * 
-     * @return a collection of selected viewpoints for this session on all
-     *         Session resources.
-     * 
-     * @deprecated as now the viewpoint selection is stored in the main session
-     *             resource (i.e. {@link Session#getSessionResource()}), use
-     *             {@link Session#getSelectedViewpoints(false)} instead or
-     *             {@link Session#getSelectedViewpoints(true)} to keep the same
-     *             viewpoint selection as before this deprecation
-     */
-    Collection<Viewpoint> getSelectedViewpoints();
 
     /**
      * Get current viewpoint selection.
@@ -345,19 +217,6 @@ public interface Session {
      * @return current viewpoint selection
      */
     Collection<Viewpoint> getSelectedViewpoints(boolean includeReferencedAnalysis);
-
-    /**
-     * Creates a view with the given viewpoint.
-     * 
-     * @param viewpoint
-     *            the viewpoint.
-     * @param semantics
-     *            collection of semantic model root element
-     * @since 2.6
-     * @deprecated use
-     *             {@link Session#createView(Viewpoint, Collection, IProgressMonitor)}
-     */
-    void createView(Viewpoint viewpoint, Collection<EObject> semantics);
 
     /**
      * Creates a view with the given viewpoint.
@@ -385,39 +244,11 @@ public interface Session {
      *            true to create new DRepresentation for
      *            RepresentationDescription having their initialization
      *            attribute at true for selected {@link Viewpoint}s.
-     * @deprecated use
-     *             {@link Session#createView(Viewpoint, Collection, boolean, IProgressMonitor)}
-     */
-    void createView(Viewpoint viewpoint, Collection<EObject> semantics, boolean createNewRepresentations);
-
-    /**
-     * Creates a view with the given viewpoint specifying if we want create new
-     * DRepresentations.
-     * 
-     * @param viewpoint
-     *            the viewpoint.
-     * @param semantics
-     *            collection of semantic model root element
-     * @param createNewRepresentations
-     *            true to create new DRepresentation for
-     *            RepresentationDescription having their initialization
-     *            attribute at true for selected {@link Viewpoint}s.
      * @param monitor
      *            a {@link IProgressMonitor} to show progression of view
      *            creation
      */
     void createView(Viewpoint viewpoint, Collection<EObject> semantics, boolean createNewRepresentations, IProgressMonitor monitor);
-
-    /**
-     * Adds a selected view to this session.
-     * 
-     * @param view
-     *            the view to select.
-     * @throws IllegalArgumentException
-     *             if the view cannot be added to the selected views.
-     * @deprecated use {@link Session#addSelectedView(DView, IProgressMonitor)}
-     */
-    void addSelectedView(final DView view) throws IllegalArgumentException;
 
     /**
      * Adds a selected view to this session.
@@ -431,18 +262,6 @@ public interface Session {
      *             if the view cannot be added to the selected views.
      */
     void addSelectedView(final DView view, IProgressMonitor monitor) throws IllegalArgumentException;
-
-    /**
-     * Removes the given view from the selected views. if the given view is not
-     * selected the invocation has no effect.
-     * 
-     * @param view
-     *            the view to deselect.
-     * @deprecated use
-     *             {@link Session#removeSelectedView(DView, IProgressMonitor)}
-     *             instead
-     */
-    void removeSelectedView(final DView view);
 
     /**
      * Removes the given view from the selected views. if the given view is not

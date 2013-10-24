@@ -70,4 +70,18 @@ h4. API Removal
 * Removed @org.eclipse.sirius.common.tools.api.interpreter.IAcceleoInterpreterVariables@: This interface only defined a single constant, which refered to the syntax of an obsolete version of the Acceleo language.
 * Removed @org.eclipse.sirius.common.tools.api.resource.IFileContributorExtension@: This interface only defined a few constants relative to an extension point which does not exist anymore.
 * Removed the @org.eclipse.sirius.reconciler@ extension point definition (which used to be defined in the @org.eclipse.sirius@ plug-in): This extension point is not supported anymore (and has not been for a long time).
-
+* Removed all the deprecated methods from @Session@ and replaced the internal calls with the equivalent versions with @IProgressMonitors@. The removed methods are:
+pre.. 
+void open();
+void addSemanticResource(Resource newResource, boolean addCrossReferencedResources);
+void addSemanticResource(URI semanticModelURI, boolean addCrossReferencedResources);
+void addSemanticResource(URI semanticModelURI, boolean addCrossReferencedResources, IProgressMonitor monitor);
+void removeSemanticResource(Resource resource, boolean removeCrossReferencedResources);
+void removeSemanticResource(Resource semanticResource);
+void save();
+void close();
+Collection<Viewpoint> getSelectedViewpoints();
+void createView(Viewpoint viewpoint, Collection<EObject> semantics);
+void createView(Viewpoint viewpoint, Collection<EObject> semantics, boolean createNewRepresentations);
+void addSelectedView(DView view) throws IllegalArgumentException;
+void removeSelectedView(DView view);

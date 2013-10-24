@@ -20,6 +20,7 @@ import org.eclipse.core.commands.operations.IUndoableOperation;
 import org.eclipse.core.commands.operations.ObjectUndoContext;
 import org.eclipse.core.commands.operations.OperationHistoryEvent;
 import org.eclipse.core.commands.operations.OperationHistoryFactory;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
@@ -76,6 +77,7 @@ public class RestoreToLastSavePointListener implements ResourceSyncClient, IOper
      */
     public void returnToSyncState() {
         if (isAllowedToReturnToSyncState()) {
+            IProgressMonitor pm = new NullProgressMonitor();
             try {
                 IOperationHistory operationHistory = OperationHistoryFactory.getOperationHistory();
                 IUndoContext undoCtx;
@@ -97,10 +99,10 @@ public class RestoreToLastSavePointListener implements ResourceSyncClient, IOper
                         break;
                     }
                 }
-                session.save();
+                session.save(pm);
             } catch (ExecutionException e) {
                 // Session could not be reloaded, close it.
-                session.close();
+                session.close(pm);
                 String sessionLabel = SiriusEditPlugin.getPlugin().getUiCallback().getSessionNameToDisplayWhileSaving(session);
                 SiriusPlugin.getDefault().warning(sessionLabel + " were closed. An error occurs while attempting to cancel all modifications. No modification were saved.", e);
             }
