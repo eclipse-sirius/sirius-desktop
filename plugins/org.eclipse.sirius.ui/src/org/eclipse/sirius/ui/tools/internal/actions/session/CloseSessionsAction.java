@@ -20,16 +20,15 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ui.tools.internal.commands.CloseUISessionCommand;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.SelectionListenerAction;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.ui.tools.internal.commands.CloseUISessionCommand;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Action to close a list of sessions.
@@ -62,7 +61,8 @@ public class CloseSessionsAction extends SelectionListenerAction {
             for (Session concernedSession : Iterables.filter(selection.toList(), Session.class)) {
                 sessionsToCloseURI.add(concernedSession.getSessionResource().getURI());
             }
-            // This is a workaround to avoid the session to close to be stored in the
+            // This is a workaround to avoid the session to close to be stored
+            // in the
             // selection field by the super class (BaseSelectionListener) and
             // hence create a memory leak
             if (!selection.isEmpty()) {

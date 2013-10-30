@@ -16,7 +16,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.sirius.business.internal.session.SessionManagerImpl;
 
 /**
@@ -66,7 +65,7 @@ public interface SessionManager {
     /**
      * Remove an existing session.<BR>
      * This method should not be called by client. It must be automatically
-     * called by {@link Session#close()}.
+     * called by {@link Session#close(IProgressMonitor)}.
      * 
      * @param removedSession
      *            session to remove.

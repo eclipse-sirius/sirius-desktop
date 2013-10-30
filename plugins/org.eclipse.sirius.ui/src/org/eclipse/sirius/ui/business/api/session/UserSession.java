@@ -27,11 +27,6 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.PlatformUI;
-
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
@@ -45,6 +40,10 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
+
+import com.google.common.collect.Sets;
 
 /**
  * An API to manipulate user session easily.
@@ -135,7 +134,9 @@ public class UserSession {
 
     /**
      * Save session.
-     * @param pm the progress monitor to use.
+     * 
+     * @param pm
+     *            the progress monitor to use.
      * 
      * @return the saved user session instance
      */
@@ -146,7 +147,9 @@ public class UserSession {
 
     /**
      * Close session.
-     * @param pm the progress monitor to use.
+     * 
+     * @param pm
+     *            the progress monitor to use.
      * 
      * @return the closed user session
      */
