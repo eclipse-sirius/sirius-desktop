@@ -15,25 +15,25 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.swt.graphics.Image;
-
-import com.google.common.collect.Lists;
-
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.ui.tools.api.views.common.item.AnalysisResourceItem;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.swt.graphics.Image;
+
+import com.google.common.collect.Lists;
 
 /**
  * Resource item wrapper class.
  * 
  * @author mchauvin
  */
-public class AnalysisResourceItemImpl implements org.eclipse.sirius.ui.tools.api.views.common.item.AnalysisResourceItem {
+public class AnalysisResourceItemImpl implements AnalysisResourceItem {
 
-    private static final Image SESSION_IMAGE = SiriusEditPlugin.getPlugin().getBundledImage("icons/obj16/SiriusFile.gif");
+    private static final String SESSION_IMAGE = "icons/obj16/SiriusFile.gif";
 
     private final Session session;
 
@@ -76,7 +76,7 @@ public class AnalysisResourceItemImpl implements org.eclipse.sirius.ui.tools.api
      * @see org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator#getImage()
      */
     public Image getImage() {
-        return SESSION_IMAGE;
+        return SiriusEditPlugin.getPlugin().getBundledImage(SESSION_IMAGE);
     }
 
     /**
@@ -172,8 +172,8 @@ public class AnalysisResourceItemImpl implements org.eclipse.sirius.ui.tools.api
 
     /**
      * Allow to use this object as a children creator. It should not be added to
-     * a hierarchy. It will link created
-     * {@link org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem}s
+     * a hierarchy. It will link all created
+     * {@link org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem}
      * to its parent.
      * 
      * @param linkChildrenToParent
