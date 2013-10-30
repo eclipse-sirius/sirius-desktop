@@ -34,7 +34,13 @@ public interface CommonPreferencesConstants {
      * Defines the enable state of grouping content.
      */
     String PREF_GROUP_ENABLE = "GROUP_ENABLE";
-    
+
+    /**
+     * Says if the grouping strategy uses the containing feature instead of the
+     * basic hierarchy.
+     */
+    String PREF_GROUP_BY_CONTAINING_FEATURE = "GROUP_BY_CONTAINING_FEATURE";
+
     /**
      * Defines the size of children that triggers the group in sub block.
      */

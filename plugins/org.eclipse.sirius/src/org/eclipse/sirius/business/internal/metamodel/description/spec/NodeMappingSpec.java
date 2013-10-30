@@ -19,14 +19,14 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.BasicEList.UnmodifiableEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.internal.metamodel.description.extensions.INodeMappingExt;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
 import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.business.internal.metamodel.helper.NodeMappingHelper;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DMappingBased;
@@ -106,7 +106,7 @@ public class NodeMappingSpec extends NodeMappingImpl implements INodeMappingExt 
     @Override
     public NodeStyle getBestStyle(final EObject modelElement, final EObject viewVariable, final EObject containerVariable) {
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
-        return (NodeStyle) new MappingHelper(interpreter).getBestStyle(this, modelElement, viewVariable, containerVariable, new EObjectQuery(containerVariable).getParentDiagram().get());
+        return (NodeStyle) new MappingHelper(interpreter).getBestStyle(this, modelElement, viewVariable, containerVariable, new EObjectQuery(viewVariable).getParentDiagram().get());
     }
 
     /**

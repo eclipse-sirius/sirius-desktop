@@ -76,7 +76,7 @@ public final class MappingHelper {
      * @param viewVariable
      *            the view variable.
      * @param containerVariable
-     *            the container variable.
+     *            the semantic container variable.
      * @param parentDiagram
      *            the parent diagram of the edge
      * @return the best style to use.
@@ -100,7 +100,7 @@ public final class MappingHelper {
      * @param viewVariable
      *            the view variable.
      * @param containerVariable
-     *            the container variable.
+     *            the semantic container variable.
      * @param parentDiagram
      *            the parent diagram of the edge
      * @return the best style description to use for the given mapping.

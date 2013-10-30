@@ -27,11 +27,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Internal;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DEdge;
 import org.eclipse.sirius.viewpoint.DMappingBased;
@@ -118,7 +118,8 @@ public final class EdgeMappingImportWrapper extends EObjectImpl implements EdgeM
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.viewpoint.description.EdgeMapping#createEdge(org.eclipse.sirius.viewpoint.EdgeTarget,
-     *      org.eclipse.sirius.viewpoint.EdgeTarget, org.eclipse.emf.ecore.EObject)
+     *      org.eclipse.sirius.viewpoint.EdgeTarget,
+     *      org.eclipse.emf.ecore.EObject)
      */
     public DEdge createEdge(final EdgeTarget source, final EdgeTarget target, final EObject semanticTarget) {
         return createEdge(source, target, null, semanticTarget);
@@ -128,8 +129,8 @@ public final class EdgeMappingImportWrapper extends EObjectImpl implements EdgeM
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.viewpoint.description.EdgeMapping#createEdge(org.eclipse.sirius.viewpoint.EdgeTarget,
-     *      org.eclipse.sirius.viewpoint.EdgeTarget, org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EObject)
+     *      org.eclipse.sirius.viewpoint.EdgeTarget,
+     *      org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
      */
     public DEdge createEdge(final EdgeTarget source, final EdgeTarget target, final EObject container, final EObject semanticTarget) {
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticTarget);
@@ -144,7 +145,7 @@ public final class EdgeMappingImportWrapper extends EObjectImpl implements EdgeM
      */
     public EdgeStyle getBestStyle(final EObject modelElement, final EObject viewVariable, final EObject containerVariable) {
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
-        EdgeStyle result = (EdgeStyle) new MappingHelper(interpreter).getBestStyle(this, modelElement, viewVariable, containerVariable, new EObjectQuery(containerVariable).getParentDiagram().get());
+        EdgeStyle result = (EdgeStyle) new MappingHelper(interpreter).getBestStyle(this, modelElement, viewVariable, containerVariable, new EObjectQuery(viewVariable).getParentDiagram().get());
         if (result == null && edgeMappingImport.getImportedMapping() != null && edgeMappingImport.getImportedMapping() != this) {
             result = edgeMappingImport.getImportedMapping().getBestStyle(modelElement, viewVariable, containerVariable);
         }

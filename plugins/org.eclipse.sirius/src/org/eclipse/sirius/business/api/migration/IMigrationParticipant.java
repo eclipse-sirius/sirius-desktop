@@ -16,9 +16,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.osgi.framework.Version;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
+import org.osgi.framework.Version;
 
 /**
  * Interface to contribute to migration process.
@@ -135,10 +134,8 @@ public interface IMigrationParticipant {
      * 
      * @param uriFragment
      *            the current fragment.
-     * @param loadedVersion
-     *            the loaded version.
      * @return the optional new uri fragment (none if no changes).
      */
-    Option<String> getNewFragment(String uriFragment, String loadedVersion);
+    Option<String> getNewFragment(String uriFragment);
 
 }

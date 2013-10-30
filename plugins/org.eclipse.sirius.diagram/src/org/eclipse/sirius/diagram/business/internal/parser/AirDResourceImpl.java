@@ -20,15 +20,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResource;
-import org.osgi.framework.Version;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.query.AirDResouceQuery;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.business.api.session.resource.DResource;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 
 /**
@@ -51,8 +49,6 @@ public class AirDResourceImpl extends GMFResource implements DResource, AirdReso
     };
 
     private String loadedVersion;
-
-    private boolean migrationIsNeeded;
 
     /**
      * This constructor should be used only if the version is up to date. There
@@ -79,8 +75,6 @@ public class AirDResourceImpl extends GMFResource implements DResource, AirdReso
     public AirDResourceImpl(URI uri, String loadedVersion) {
         super(uri);
         this.loadedVersion = loadedVersion;
-        this.migrationIsNeeded = RepresentationsFileMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(loadedVersion));
-
     }
 
     /**
@@ -224,12 +218,11 @@ public class AirDResourceImpl extends GMFResource implements DResource, AirdReso
      */
     @Override
     public EObject getEObject(String uriFragment) {
-        if (migrationIsNeeded) {
-            Option<String> optionalRewrittenFragment = RepresentationsFileMigrationService.getInstance().getNewFragment(uriFragment, loadedVersion);
-            if (optionalRewrittenFragment.some()) {
-                return getEObject(optionalRewrittenFragment.get());
-            }
+        Option<String> optionalRewrittenFragment = RepresentationsFileMigrationService.getInstance().getNewFragment(uriFragment);
+        if (optionalRewrittenFragment.some()) {
+            return getEObject(optionalRewrittenFragment.get());
+        } else {
+            return super.getEObject(uriFragment);
         }
-        return super.getEObject(uriFragment);
     }
 }

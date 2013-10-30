@@ -19,6 +19,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.MarginBorder;
+import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.ConnectionEditPart;
@@ -40,9 +42,6 @@ import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.ISurfaceEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.collect.Iterables;
-
 import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.SelectionCommandAppender;
@@ -55,9 +54,10 @@ import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DNodeList;
 import org.eclipse.sirius.viewpoint.DNodeListElement;
-import org.eclipse.sirius.viewpoint.FlatContainerStyle;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
+
+import com.google.common.collect.Iterables;
 
 /**
  * <p>
@@ -174,6 +174,17 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
         ResizableCompartmentFigure result = (ResizableCompartmentFigure) super.createFigure();
         result.setTitleVisibility(false);
         result.setToolTip((IFigure) null);
+
+        // Now that the border size is taken into account to calculate border
+        // margin; reduce the scroll pane insets to retrieve the previous
+        // minimum/preferred size, scroll-bar visibility condition for one pixel
+        // borders.
+        IFigure contentPane = result.getContentPane();
+        if (contentPane != null && contentPane.getBorder() instanceof MarginBorder) {
+            Insets insets = contentPane.getBorder().getInsets(result);
+            Insets legacyBorderCompensation = new Insets(0, -1, -1, -1);
+            contentPane.setBorder(new MarginBorder(insets.getAdded(legacyBorderCompensation)));
+        }
         return result;
     }
 
@@ -308,32 +319,5 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
                 return SelectionCommandAppender.addSelectionCommand(command, this);
         }
         return super.getCommand(_request);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ResizableCompartmentEditPart#refreshVisuals()
-     */
-    protected void refreshVisuals() {
-        EObject eObj = resolveSemanticElement();
-        if (eObj instanceof DNodeList) {
-            DNodeList container = (DNodeList) eObj;
-            if (container.getOwnedStyle() != null && container.getOwnedStyle() instanceof FlatContainerStyle) {
-                FlatContainerStyle ownedStyle = (FlatContainerStyle) container.getOwnedStyle();
-
-                int borderSize = ownedStyle.getBorderSize().intValue();
-                if (borderSize == 0) {
-                    borderSize = 1;
-                }
-                if (getFigure() instanceof ResizableCompartmentFigure) {
-                    ResizableCompartmentFigure rcf = (ResizableCompartmentFigure) getFigure();
-                    if (rcf.getScrollPane() != null) {
-                       // rcf.getScrollPane().setBorder(new MarginBorder(borderSize, borderSize, borderSize, borderSize));
-                    }
-                }
-            }
-        }
-        super.refreshVisuals();
     }
 }

@@ -15,6 +15,7 @@ import java.io.File;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.IDialogSettings;
+import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.FocusListener;
@@ -31,8 +32,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
-
-import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 
 /**
  * Dialog used by the export one diagram to image files action to prompt the
@@ -172,7 +171,7 @@ public class ExportOneRepresentationAsImageDialog extends AbstractExportRepresen
         IPath path = new Path(folder);
         if (isExistingFolder(path) || path.getFileExtension() == null) {
             path = path.addTrailingSeparator();
-            path = path.append(fileName);
+            path = path.append(fileName.replaceAll("[/\\\\]", FILE_SEPARATOR_ALTERNATIVE));
             String extension = imageFormat.getName().toLowerCase();
             path = path.addFileExtension(extension);
             String newExtensionFilePath = path.toFile().getPath();

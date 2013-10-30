@@ -25,11 +25,11 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xml.type.AnyType;
-import org.osgi.framework.Version;
+import org.eclipse.sirius.business.api.migration.IMigrationParticipant;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.business.api.migration.IMigrationParticipant;
+import org.osgi.framework.Version;
 
 /**
  * Abstract migration service. Provides services to load and delegate to
@@ -46,8 +46,8 @@ public abstract class AbstractSiriusMigrationService {
     private List<IMigrationParticipant> delegatesParticipants = new ArrayList<IMigrationParticipant>();
 
     /**
-     * The last Sirius version where a migration participant is added
-     * (computed from the delegatesParticipants list).
+     * The last Sirius version where a migration participant is added (computed
+     * from the delegatesParticipants list).
      */
     private Version lastMigrationVersion;
 
@@ -135,14 +135,12 @@ public abstract class AbstractSiriusMigrationService {
      * 
      * @param uriFragment
      *            the current fragment.
-     * @param loadedVersion
-     *            the loaded version.
      * @return the optional new uri fragment (none if no changes).
      */
-    public Option<String> getNewFragment(String uriFragment, String loadedVersion) {
+    public Option<String> getNewFragment(String uriFragment) {
         Option<String> optionalNewFragment = Options.newNone();
         for (IMigrationParticipant contribution : delegatesParticipants) {
-            optionalNewFragment = contribution.getNewFragment(uriFragment, loadedVersion);
+            optionalNewFragment = contribution.getNewFragment(uriFragment);
             if (optionalNewFragment.some()) {
                 break;
             }
@@ -189,8 +187,7 @@ public abstract class AbstractSiriusMigrationService {
     // getAdditionnalContributions();
 
     /**
-     * Provides the last Sirius version where a migration participant is
-     * added.
+     * Provides the last Sirius version where a migration participant is added.
      * 
      * @return the version as a <code>major.minor.micro.qualifier</code> format.
      */
@@ -212,8 +209,8 @@ public abstract class AbstractSiriusMigrationService {
      * 
      * @param loadedVersion
      *            the version of current loading model.
-     * @return true if loaded version is less than the last Sirius version
-     *         with migration, false otherwise.
+     * @return true if loaded version is less than the last Sirius version with
+     *         migration, false otherwise.
      */
     public boolean isMigrationNeeded(Version loadedVersion) {
         return getLastMigrationVersion().compareTo(loadedVersion) > 0;

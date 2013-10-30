@@ -17,15 +17,6 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.base.Objects;
-import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -49,6 +40,14 @@ import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
+
+import com.google.common.base.Objects;
+import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * Refreshes the semantic ordering of a an element of a sequence diagram to
@@ -74,7 +73,7 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
 
     private ISequenceEvent event;
 
-    private Set<ISequenceEvent> selection = Sets.newHashSet();
+    private final Set<ISequenceEvent> selection = Sets.newLinkedHashSet();
 
     private final SequenceDDiagram sequenceDiagram;
 
@@ -82,7 +81,7 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
 
     private final Set<ISequenceEvent> reordered = Sets.newHashSet();
 
-    private final Set<ISequenceEvent> allElementsToReorder = Sets.newHashSet();
+    private final Set<ISequenceEvent> allElementsToReorder = Sets.newLinkedHashSet();
 
     /**
      * Constructor.
@@ -190,7 +189,6 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
             reordered.add(eventToUpdate);
 
             new RefreshSemanticOrderingsOperation(sequenceDiagram).execute();
-            // updateLinkedEventsSemanticPositions(eventToUpdate);
             updateSubEventsSemanticPositions(eventToUpdate);
         }
     }
@@ -205,14 +203,16 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
 
     private List<EventEnd> getCompoundEnds(ISequenceEvent eventToUpdate, List<EventEnd> ends) {
         List<ISequenceEvent> compoundEvents = EventEndHelper.getCompoundEvents(eventToUpdate);
-        Predicate<ISequenceEvent> isLogicallyInstantaneous = new Predicate<ISequenceEvent>() {
+        Predicate<ISequenceEvent> isLogicallyInstantaneousNonReorderedEvent = new Predicate<ISequenceEvent>() {
             public boolean apply(ISequenceEvent input) {
-                return input.isLogicallyInstantaneous();
+                return input.isLogicallyInstantaneous() && !reordered.contains(input);
             };
         };
-        return Lists.newArrayList(Iterables.filter(
-                Iterables.filter(Iterables.concat(Iterables.transform(Iterables.filter(compoundEvents, isLogicallyInstantaneous), EventEndHelper.EVENT_ENDS)),
-                        Predicates.instanceOf(SingleEventEnd.class)), Predicates.not(Predicates.in(ends))));
+        Iterable<ISequenceEvent> compoundEventsToReorder = Iterables.filter(compoundEvents, isLogicallyInstantaneousNonReorderedEvent);
+        Iterable<EventEnd> nonReorderedEndsOfCompoundEvents = Iterables.concat(Iterables.transform(compoundEventsToReorder, EventEndHelper.EVENT_ENDS));
+        Predicate<EventEnd> isCompoundEnd = Predicates.and(Predicates.instanceOf(SingleEventEnd.class), Predicates.not(Predicates.in(ends)));
+
+        return Lists.newArrayList(Iterables.filter(nonReorderedEndsOfCompoundEvents, isCompoundEnd));
     }
 
     private void updateSubEventsSemanticPositions(ISequenceEvent eventToUpdate) {
@@ -227,9 +227,21 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
             return;
         }
 
-        EventEnd startEventEnd = ends.get(0);
-        List<EObject> startSemanticEvents = EventEndHelper.getSemanticEvents(startEventEnd);
-        EventEnd endEventEnd = ends.get(1);
+        EventEnd startEventEnd = null;
+        EventEnd endEventEnd = null;
+        List<EObject> startSemanticEvents = Lists.newArrayList();
+
+        // The main event has been reordered, the order of its ends might have
+        // changed.
+        for (EventEnd ee : ends) {
+            SingleEventEnd see = EventEndHelper.getSingleEventEnd(ee, semanticElement);
+            if (see.isStart()) {
+                startEventEnd = ee;
+                startSemanticEvents = EventEndHelper.getSemanticEvents(startEventEnd);
+            } else {
+                endEventEnd = ee;
+            }
+        }
 
         for (EventEnd ee : compoundEnds) {
             List<EObject> eeSemElts = EventEndHelper.getSemanticEvents(ee);

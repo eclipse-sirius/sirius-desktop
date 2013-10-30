@@ -18,12 +18,13 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.edit.internal.part.PortLayoutHelper;
@@ -267,7 +268,7 @@ public class CanonicalDBorderItemLocator {
             if (!nodeQuery.isBorderedNode() && !viewQuery.isForNameEditPartOnBorder()) {
                 takeIntoAccount = false;
             }
-            if (borderItem.isVisible() && takeIntoAccount) {
+            if (isVisible(borderItem) && takeIntoAccount) {
                 LayoutConstraint borderItemLayoutConstraint = borderItem.getLayoutConstraint();
                 if (borderItemLayoutConstraint instanceof Bounds) {
                     Dimension extendedDimension = getExtendedDimension(borderItem);
@@ -285,6 +286,14 @@ public class CanonicalDBorderItemLocator {
             }
         }
         return Options.newNone();
+    }
+
+    private boolean isVisible(Node node) {
+        EObject element = node.getElement();
+        if (element instanceof DDiagramElement) {
+            return ((DDiagramElement) element).isVisible() && node.isVisible();
+        }
+        return node.isVisible();
     }
 
     private Dimension getExtendedDimension(Node node) {

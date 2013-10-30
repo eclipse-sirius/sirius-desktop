@@ -9,6 +9,7 @@
 package org.eclipse.sirius.diagram.tools.internal.actions.refresh;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -18,14 +19,17 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.requests.GroupRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IEditableEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramEditDomain;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.viewpoint.DDiagram;
 
@@ -59,15 +63,43 @@ public class RefreshRunnableWithProgress implements IRunnableWithProgress {
     public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
         try {
             monitor.beginTask("Refresh", editPartsToRefresh.size());
+            Collection<Command> commandsToExecute = new ArrayList<Command>();
             for (final EditPart editPartToRefresh : editPartsToRefresh) {
                 if (editPartToRefresh instanceof IDDiagramEditPart) {
                     refreshFromDiagramEditPart((IDDiagramEditPart) editPartToRefresh, monitor);
                 } else {
-                    refreshFromEditPart(editPartToRefresh, monitor);
+                    Option<Command> refreshEditPartCommand = refreshFromEditPart(editPartToRefresh, monitor);
+                    if (refreshEditPartCommand.some()) {
+                        commandsToExecute.add(refreshEditPartCommand.get());
+                    }
                 }
             }
+            // to avoid to execute one command per edit part, we execute them
+            // inside only one compound command
+            executeInCompoundCommand(commandsToExecute, monitor);
         } finally {
             monitor.done();
+        }
+    }
+
+    private IDiagramEditDomain getFirstEditingDomain() {
+        for (EditPart editPart : editPartsToRefresh) {
+            if (editPart instanceof IDiagramElementEditPart) {
+                return ((IDiagramElementEditPart) editPart).getDiagramEditDomain();
+            }
+        }
+        return null;
+    }
+
+    private void executeInCompoundCommand(Collection<Command> commandsToExecute, IProgressMonitor monitor) {
+        if (!commandsToExecute.isEmpty()) {
+            IDiagramEditDomain domain = getFirstEditingDomain();
+            CompoundCommand compoundCommand = new CompoundCommand("Refresh");
+            for (Command command : commandsToExecute) {
+                compoundCommand.add(command);
+            }
+            domain.getDiagramCommandStack().execute(compoundCommand);
+            monitor.worked(commandsToExecute.size());
         }
     }
 
@@ -91,16 +123,17 @@ public class RefreshRunnableWithProgress implements IRunnableWithProgress {
     }
 
     /**
-     * Refresh this editPart: enable editMode, get refresh command. If the
-     * refresh command is executable, launch it. Otherwise, restore the old
-     * editMode state if it is disabled before.
+     * Refresh this editPart: enable editMode, returns the refresh command if
+     * the refresh command is executable. Otherwise, restore the old editMode
+     * state if it is disabled before.
      * 
      * @param editPart
      *            The edit part to refresh.
      * @param progressMonitor
      *            Progress monitor to use.
+     * @return the optional command.
      */
-    private void refreshFromEditPart(EditPart editPart, IProgressMonitor progressMonitor) {
+    private Option<Command> refreshFromEditPart(EditPart editPart, IProgressMonitor progressMonitor) {
         Option<Boolean> oldEditModeState = Options.newNone();
         if (editPart instanceof IEditableEditPart) {
             // Keep the old editMode state for editPart and activate editMode.
@@ -112,12 +145,12 @@ public class RefreshRunnableWithProgress implements IRunnableWithProgress {
         final Request refreshRequest = new GroupRequest(RequestConstants.REQ_REFRESH_VIEWPOINT);
         Command refreshCmd = editPart.getCommand(refreshRequest);
         if (refreshCmd != null && refreshCmd.canExecute() && editPart instanceof IGraphicalEditPart) {
-            // Launch the refresh and stay it enableMode.
-            IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) editPart;
-            graphicalEditPart.getDiagramEditDomain().getDiagramCommandStack().execute(refreshCmd);
+            return Options.newSome(refreshCmd);
         } else if (editPart instanceof IEditableEditPart && oldEditModeState.get() && !oldEditModeState.some()) {
             // Restore the old editMode state (if disable)
+            progressMonitor.worked(1);
             ((IEditableEditPart) editPart).disableEditMode();
         }
+        return Options.newNone();
     }
 }

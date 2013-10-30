@@ -15,11 +15,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
 import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.NodeStyle;
@@ -128,14 +128,14 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
     @Override
     public NodeStyle getBestStyle(final EObject modelElement, final EObject viewVariable, final EObject containerVariable) {
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(containerVariable);
-        final NodeStyle result = (NodeStyle) new MappingHelper(interpreter).getBestStyle(this, modelElement, viewVariable, containerVariable, new EObjectQuery(containerVariable).getParentDiagram()
-                .get());
+        final NodeStyle result = (NodeStyle) new MappingHelper(interpreter).getBestStyle(this, modelElement, viewVariable, containerVariable, new EObjectQuery(viewVariable).getParentDiagram().get());
         if (result == null && getImportedMapping() != null && getImportedMapping() != this) {
             /*
              * Here if you are importing a node and if we did not used custom
              * styles, then we want to re-use it's styles.
              * 
-             * One of the main advantages to import a node is to redefined the style.
+             * One of the main advantages to import a node is to redefined the
+             * style.
              */
             return getImportedMapping().getBestStyle(modelElement, viewVariable, containerVariable);
         }

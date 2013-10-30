@@ -12,16 +12,13 @@ package org.eclipse.sirius.common.ui.tools.api.navigator;
 
 import java.util.Collection;
 
-import org.eclipse.swt.graphics.Image;
-
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.common.ui.tools.api.view.common.item.CommonItem;
 import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * An interface to surround a group of tree items.
- * 
- * @author hmarchadour
  * 
  */
 public class GroupingItem implements CommonItem, ItemDecorator {
@@ -41,7 +38,15 @@ public class GroupingItem implements CommonItem, ItemDecorator {
      */
     private Collection<Object> children;
 
+    /**
+     * The cached image
+     */
     private Image imageCache;
+
+    /**
+     * The label suffix
+     */
+    private String labelSuffix;
 
     /**
      * The constructor.
@@ -54,9 +59,26 @@ public class GroupingItem implements CommonItem, ItemDecorator {
      *            Children
      */
     public GroupingItem(int offset, Object parent, Collection<Object> children) {
+        this(offset, parent, children, "");
+    }
+
+    /**
+     * The constructor.
+     * 
+     * @param offset
+     *            The starting offset of this group
+     * @param parent
+     *            The parent
+     * @param children
+     *            Children
+     * @param labelSuffix
+     *            The label suffix to append
+     */
+    public GroupingItem(int offset, Object parent, Collection<Object> children, String labelSuffix) {
         fOffset = offset;
         this.parent = parent;
         this.children = children;
+        this.labelSuffix = labelSuffix;
     }
 
     /**
@@ -87,7 +109,7 @@ public class GroupingItem implements CommonItem, ItemDecorator {
         if (children != null && children.size() > 0) {
             childrenSize = children.size() - 1;
         }
-        return "[" + fOffset + ".." + (fOffset + childrenSize) + "]";
+        return "[" + fOffset + ".." + (fOffset + childrenSize) + "]" + labelSuffix;
     }
 
     /**

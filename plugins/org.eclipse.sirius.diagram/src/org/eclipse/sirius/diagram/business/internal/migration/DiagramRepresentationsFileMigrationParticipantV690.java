@@ -10,15 +10,19 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.migration;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.gmf.runtime.notation.ConnectorStyle;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Routing;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DEdge;
 import org.eclipse.sirius.viewpoint.EdgeRouting;
 import org.eclipse.sirius.viewpoint.EdgeStyle;
@@ -27,6 +31,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Iterators;
 
 /**
  * The migration code of Sirius 6.9.0.
@@ -98,6 +103,34 @@ public class DiagramRepresentationsFileMigrationParticipantV690 {
                     EdgeStyle edgeStyle = dEdge.getOwnedStyle();
                     edgeStyle.setRoutingStyle(EdgeRouting.MANHATTAN_LITERAL);
                     edgeStyle.getCustomFeatures().add(ViewpointPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName());
+                }
+            }
+        }
+    }
+
+    /**
+     * We detected some cases where a DDiagramElement visibility can be true but
+     * not its corresponding GMF Node. That was causing wrong conflicts
+     * detection by the CanonicalDBorderItemLocator. This migration sets the
+     * same GMF Node visibility than the DDiagramElement (if there is a
+     * difference only).
+     * 
+     * @param diagrams
+     *            list of GMF Diagram to migrate.
+     */
+    public void migrateVisibilityInconsistenciesBetweenGMFNodeAndDDiagramElement(List<Diagram> diagrams) {
+        for (Diagram diagram : diagrams) {
+            Iterator<Node> iterator = Iterators.filter(diagram.eAllContents(), Node.class);
+            while (iterator.hasNext()) {
+                Node node = iterator.next();
+
+                // if the element is not set, the getElement() implementation
+                // return eContainer.getElement().
+                if (node.isSetElement()) {
+                    EObject element = node.getElement();
+                    if (element instanceof DDiagramElement && (((DDiagramElement) element).isVisible() != node.isVisible())) {
+                        node.setVisible(((DDiagramElement) element).isVisible());
+                    }
                 }
             }
         }

@@ -1433,7 +1433,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         doRemoveSemanticResource(semanticResource, resourceSet);
     }
 
-    private void doRemoveSemanticResource(final Resource res, final ResourceSet set) {
+    protected void doRemoveSemanticResource(final Resource res, final ResourceSet set) {
         disableTrackingModification(res);
         if (res.getContents().size() > 0) {
             final EObject root = res.getContents().get(0);

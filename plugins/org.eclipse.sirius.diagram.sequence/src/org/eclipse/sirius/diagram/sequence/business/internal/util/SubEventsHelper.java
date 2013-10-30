@@ -17,16 +17,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
@@ -43,6 +33,15 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.State;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+
+import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.LinkedHashMultimap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Sets;
 
 /**
  * .
@@ -63,7 +62,7 @@ public final class SubEventsHelper {
 
     private Range parentRange;
 
-    private final Multimap<ISequenceEvent, Lifeline> coverage = HashMultimap.create();
+    private final Multimap<ISequenceEvent, Lifeline> coverage = LinkedHashMultimap.create();
 
     /**
      * Default constructor.
@@ -99,8 +98,8 @@ public final class SubEventsHelper {
     private List<ISequenceEvent> getValidSubEvents() {
         List<ISequenceEvent> childrenEvents = Lists.newArrayList();
 
-        Set<ISequenceEvent> localParents = Sets.newHashSet();
-        Set<Lifeline> coveredLifelines = Sets.newHashSet();
+        Set<ISequenceEvent> localParents = Sets.newLinkedHashSet();
+        Set<Lifeline> coveredLifelines = Sets.newLinkedHashSet();
         if (parentEvent instanceof AbstractNodeEvent || parentEvent instanceof Lifeline) {
             localParents.add(parentEvent);
             coveredLifelines.add(parentEvent.getLifeline().get());
@@ -126,7 +125,7 @@ public final class SubEventsHelper {
         }
 
         Option<Lifeline> lifeline = ise.getLifeline();
-        Collection<Lifeline> coveredLifelines = Lists.newArrayList();
+        Collection<Lifeline> coveredLifelines = Sets.newLinkedHashSet();
         if (lifeline.some()) {
             coveredLifelines.add(lifeline.get());
         } else if (ise instanceof Operand) {
@@ -149,7 +148,7 @@ public final class SubEventsHelper {
     }
 
     private Collection<ISequenceEvent> getCarryingParents(AbstractFrame frame, Set<Lifeline> coveredLifelines) {
-        Set<ISequenceEvent> coveredEvents = Sets.newHashSet();
+        Set<ISequenceEvent> coveredEvents = Sets.newLinkedHashSet();
         for (Lifeline lifeline : coveredLifelines) {
             EventFinder localParentFinder = new EventFinder(lifeline);
             localParentFinder.setReparent(true);
@@ -168,10 +167,10 @@ public final class SubEventsHelper {
      * @param localParents
      * @return
      */
-    private Set<ISequenceEvent> getNotationDirectChildrenInParentRange(Set<ISequenceEvent> localParents) {
+    private Set<ISequenceEvent> getNotationDirectChildrenInParentRange(Collection<ISequenceEvent> localParents) {
         Collection<View> childViews = Sets.newLinkedHashSet();
         Collection<View> parentConnections = Sets.newHashSet();
-        Set<ISequenceEvent> childrenEvents = Sets.newHashSet();
+        Set<ISequenceEvent> childrenEvents = Sets.newLinkedHashSet();
 
         for (ISequenceEvent ise : localParents) {
             View notationView = ise.getNotationView();
@@ -201,7 +200,7 @@ public final class SubEventsHelper {
             }
         }
 
-        return Sets.newHashSet(EventEndHelper.getIndependantEvents(parentEvent, childrenEvents));
+        return Sets.newLinkedHashSet(EventEndHelper.getIndependantEvents(parentEvent, childrenEvents));
     }
 
     private Set<ISequenceEvent> getFrameChildrenInParentRange(Set<Lifeline> coveredLifelines) {
@@ -220,7 +219,7 @@ public final class SubEventsHelper {
     }
 
     private Set<ISequenceEvent> getTopLevelEvents(Set<ISequenceEvent> events, Collection<ISequenceEvent> potentialParents, Set<Lifeline> coveredLifelines) {
-        HashSet<ISequenceEvent> topLevel = Sets.newHashSet();
+        HashSet<ISequenceEvent> topLevel = Sets.newLinkedHashSet();
         boolean parentFrames = Iterables.size(Iterables.filter(potentialParents, AbstractFrame.class)) != 0;
 
         for (ISequenceEvent event : events) {

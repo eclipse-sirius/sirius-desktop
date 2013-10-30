@@ -13,11 +13,11 @@ package org.eclipse.sirius.diagram.sequence.business.internal.metamodel.descript
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
 import org.eclipse.sirius.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.sequence.description.impl.DestructionMessageMappingImpl;
 import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DEdge;
@@ -37,7 +37,8 @@ public class DestructionMessageMappingSpec extends DestructionMessageMappingImpl
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.viewpoint.description.impl.EdgeMappingImpl#createEdge(org.eclipse.sirius.viewpoint.EdgeTarget,
-     *      org.eclipse.sirius.viewpoint.EdgeTarget, org.eclipse.emf.ecore.EObject)
+     *      org.eclipse.sirius.viewpoint.EdgeTarget,
+     *      org.eclipse.emf.ecore.EObject)
      */
     @Override
     public DEdge createEdge(final EdgeTarget source, final EdgeTarget target, final EObject semanticTarget) {
@@ -48,8 +49,8 @@ public class DestructionMessageMappingSpec extends DestructionMessageMappingImpl
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.viewpoint.description.impl.EdgeMappingImpl#createEdge(org.eclipse.sirius.viewpoint.EdgeTarget,
-     *      org.eclipse.sirius.viewpoint.EdgeTarget, org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EObject)
+     *      org.eclipse.sirius.viewpoint.EdgeTarget,
+     *      org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
      */
     @Override
     public DEdge createEdge(final EdgeTarget source, final EdgeTarget target, final EObject container, final EObject semanticTarget) {
@@ -66,7 +67,7 @@ public class DestructionMessageMappingSpec extends DestructionMessageMappingImpl
     @Override
     public EdgeStyle getBestStyle(final EObject modelElement, final EObject viewVariable, final EObject containerVariable) {
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
-        return (EdgeStyle) new MappingHelper(interpreter).getBestStyle(this, modelElement, viewVariable, containerVariable, new EObjectQuery(containerVariable).getParentDiagram().get());
+        return (EdgeStyle) new MappingHelper(interpreter).getBestStyle(this, modelElement, viewVariable, containerVariable, new EObjectQuery(viewVariable).getParentDiagram().get());
     }
 
     /**

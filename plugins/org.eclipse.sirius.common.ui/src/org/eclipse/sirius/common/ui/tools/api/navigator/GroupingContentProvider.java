@@ -10,16 +10,20 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.ui.tools.api.navigator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
+import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
+
+import com.google.common.collect.LinkedListMultimap;
+import com.google.common.collect.Lists;
 
 /**
  * An implementation of ITreeContentProvider that surround another
@@ -35,9 +39,9 @@ import org.eclipse.sirius.common.ui.SiriusTransPlugin;
  * For details about related preferences:
  * 
  * @see CommonPreferencesConstants.PREF_GROUP_ENABLE
+ * @see CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE
  * @see CommonPreferencesConstants.PREF_GROUP_SIZE
  * @see CommonPreferencesConstants.PREF_GROUP_TRIGGER
- * @author hmarchadour
  * 
  */
 public class GroupingContentProvider implements ITreeContentProvider {
@@ -73,6 +77,19 @@ public class GroupingContentProvider implements ITreeContentProvider {
      */
     public boolean isGroupEnabled() {
         return SiriusTransPlugin.getPlugin().getPreferenceStore().getBoolean(CommonPreferencesConstants.PREF_GROUP_ENABLE);
+    }
+
+    /**
+     * Group by containing feature getter. Check if the GroupByContainingFeature
+     * is enable. This value changes the implementation used for the group
+     * children. If it set at true, the grouping strategy use the containing
+     * feature instead of the basic hierarchy.
+     * 
+     * @see CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE
+     * @return true if the group is enable
+     */
+    public boolean isGroupByContainingFeature() {
+        return SiriusTransPlugin.getPlugin().getPreferenceStore().getBoolean(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE);
     }
 
     /**
@@ -175,8 +192,73 @@ public class GroupingContentProvider implements ITreeContentProvider {
      */
     protected Object[] groupChildren(Object parent, Object[] children) {
 
-        if (isGroupEnabled() && children.length > getTriggerSize()) {
+        Object[] result = children;
+        if (isGroupEnabled()) {
+            if (isGroupByContainingFeature()) {
+                result = groupChildrenByContainingFeature(parent, children);
+            } else {
+                result = defaultGroupChildren(parent, children);
+            }
+        }
+        return result;
+    }
 
+    private Object[] groupChildrenByContainingFeature(Object parent, Object[] children) {
+
+        LinkedListMultimap<Object, Object> childrenContainingMapping = LinkedListMultimap.create();
+        Object noContainingFeature = new Object();
+        for (Object child : children) {
+            Object containingFeature;
+            if (child instanceof EObject) {
+                containingFeature = ((EObject) child).eContainingFeature();
+            } else if (child instanceof TreeItemWrapper) {
+                Object wrappedObject = ((TreeItemWrapper) child).getWrappedObject();
+                if (wrappedObject instanceof EObject) {
+                    containingFeature = ((EObject) wrappedObject).eContainingFeature();
+                } else {
+                    containingFeature = noContainingFeature;
+                }
+            } else {
+                containingFeature = noContainingFeature;
+            }
+            childrenContainingMapping.put(containingFeature, child);
+        }
+
+        final int groupSize = getGroupSize();
+        List<Object> result = new ArrayList<Object>();
+        for (Object structuralFeature : childrenContainingMapping.keySet()) {
+            int currentOffset = 0;
+            List<Object> indexedChildren = childrenContainingMapping.get(structuralFeature);
+            if (indexedChildren.size() > getTriggerSize()) {
+                List<List<Object>> partition = Lists.partition(indexedChildren, groupSize);
+                if (partition.size() > 0) {
+                    if (partition.size() > 1) {
+                        for (List<Object> partItem : partition) {
+                            GroupingItem currentGroup;
+                            if (structuralFeature instanceof EStructuralFeature) {
+                                currentGroup = new GroupingItem(currentOffset, parent, new ArrayList<Object>(partItem), " " + ((EStructuralFeature) structuralFeature).getName());
+                            } else {
+                                currentGroup = new GroupingItem(currentOffset, parent, new ArrayList<Object>(partItem));
+                            }
+                            result.add(currentGroup);
+                            currentOffset = currentOffset + partItem.size();
+                        }
+                    } else {
+                        for (List<Object> partItem : partition) {
+                            result.addAll(partItem);
+                        }
+                    }
+                }
+            } else {
+                result.addAll(indexedChildren);
+            }
+        }
+        return result.toArray();
+
+    }
+
+    private Object[] defaultGroupChildren(Object parent, Object[] children) {
+        if (children.length > getTriggerSize()) {
             final int groupSize = getGroupSize();
             List<List<Object>> partition = Lists.partition(Arrays.asList(children), groupSize);
             Object[] result = new Object[partition.size()];

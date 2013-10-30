@@ -10,47 +10,32 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.actions.style;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
-import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.Disposable;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.ImagesPath;
+import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.tools.internal.commands.ResetStylePropertiesToDefaultValuesCommand;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramContainerEditPart;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.internal.commands.ResetStylePropertiesToDefaultValuesCommand;
-import org.eclipse.sirius.diagram.tools.internal.commands.UpdateGMFEdgeStyleCommand;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.EdgeStyle;
-import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.WorkspaceImage;
 
 /**
  * This action reset the style properties to their default values as defined in
@@ -132,57 +117,13 @@ public class ResetStylePropertiesToDefaultValuesAction extends Action implements
         if (activeEditor instanceof DDiagramEditor) {
             DDiagramEditor dDiagramEditor = (DDiagramEditor) activeEditor;
             DDiagram dDiagram = (DDiagram) dDiagramEditor.getRepresentation();
-            Map<IGraphicalEditPart, Style> oldStyles = getOldStyles();
             Map<View, DDiagramElement> customizedViews = getSelectedCustomizedViews();
             if (!customizedViews.isEmpty()) {
-                // Commands initialization
-                TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(dDiagram);
-                CompoundCommand cc = new CompoundCommand(ACTION_NAME);
-                Command command = new ResetStylePropertiesToDefaultValuesCommand(domain, dDiagram, customizedViews);
-                cc.append(command);
-                Collection<AbstractDiagramContainerEditPart> editPartToReinit = new ArrayList<AbstractDiagramContainerEditPart>();
-
-                // Further GMF update investigation
-                Set<Entry<IGraphicalEditPart, Style>> entrySet = oldStyles.entrySet();
-                for (Entry<IGraphicalEditPart, Style> entry : entrySet) {
-                    if (entry.getKey() instanceof AbstractDiagramContainerEditPart && (entry.getValue() instanceof WorkspaceImage)) {
-                        AbstractDiagramContainerEditPart graphicalEditPart = (AbstractDiagramContainerEditPart) entry.getKey();
-                        editPartToReinit.add(graphicalEditPart);
-                    } else if (entry.getKey().getModel() instanceof Edge) {
-                        Edge edge = (Edge) entry.getKey().getModel();
-                        final EObject element = edge.getElement();
-                        final EdgeStyle style = ((DEdge) element).getActualMapping().getBestStyle(((DEdge) element).getTarget(), element, element.eContainer());
-                        cc.append(new UpdateGMFEdgeStyleCommand(domain, edge, style));
-                    }
-                }
-
                 // Reset style processing
-                domain.getCommandStack().execute(cc);
-                for (AbstractDiagramContainerEditPart abstractDiagramContainerEditPart : editPartToReinit) {
-                    abstractDiagramContainerEditPart.reInitFigure();
-                }
+                TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(dDiagram);
+                domain.getCommandStack().execute(new ResetStylePropertiesToDefaultValuesCommand(domain, dDiagram, customizedViews));
             }
         }
-    }
-
-    private Map<IGraphicalEditPart, Style> getOldStyles() {
-        Map<IGraphicalEditPart, Style> oldStyles = new HashMap<IGraphicalEditPart, Style>();
-        if (selection instanceof StructuredSelection) {
-            StructuredSelection structuredSelection = (StructuredSelection) selection;
-            for (Object obj : structuredSelection.toList()) {
-                if (obj instanceof IGraphicalEditPart) {
-                    IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) obj;
-                    EObject semanticElement = graphicalEditPart.resolveSemanticElement();
-                    if (semanticElement instanceof DDiagramElement) {
-                        DDiagramElement dDiagramElement = (DDiagramElement) semanticElement;
-                        if (new DDiagramElementQuery(dDiagramElement).isCustomized()) {
-                            oldStyles.put(graphicalEditPart, dDiagramElement.getStyle());
-                        }
-                    }
-                }
-            }
-        }
-        return oldStyles;
     }
 
     private Map<View, DDiagramElement> getSelectedCustomizedViews() {

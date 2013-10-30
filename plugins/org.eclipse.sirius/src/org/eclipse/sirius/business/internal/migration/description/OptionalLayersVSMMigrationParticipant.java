@@ -14,11 +14,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.osgi.framework.Version;
+import org.eclipse.sirius.business.api.migration.AbstractVSMMigrationParticipant;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.business.api.migration.AbstractVSMMigrationParticipant;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.osgi.framework.Version;
 
 /**
  * The VSM migration participant for the migration from OptionalLayer to
@@ -59,14 +59,12 @@ public class OptionalLayersVSMMigrationParticipant extends AbstractVSMMigrationP
     }
 
     @Override
-    public Option<String> getNewFragment(String uriFragment, String loadedVersion) {
-        Version loadedVersion2 = Version.parseVersion(loadedVersion);
-        if (loadedVersion2.compareTo(MIGRATION_VERSION) < 0) {
-            if (uriFragment.contains("@optionalLayers")) {
-                String newUriFragment = uriFragment.replaceAll("@optionalLayers", "@additionalLayers");
-                return Options.newSome(newUriFragment);
-            }
+    public Option<String> getNewFragment(String uriFragment) {
+        if (uriFragment.contains("@optionalLayers")) {
+            String newUriFragment = uriFragment.replaceAll("@optionalLayers", "@additionalLayers");
+            return Options.newSome(newUriFragment);
+        } else {
+            return super.getNewFragment(uriFragment);
         }
-        return super.getNewFragment(uriFragment, loadedVersion);
     }
 }

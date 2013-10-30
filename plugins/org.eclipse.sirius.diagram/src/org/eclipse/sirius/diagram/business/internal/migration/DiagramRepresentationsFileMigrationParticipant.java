@@ -16,14 +16,14 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.gmf.runtime.notation.Diagram;
-import org.osgi.framework.Version;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
+import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
+import org.osgi.framework.Version;
 
 /**
  * Migration contribution for diagram part of representations file.
@@ -69,8 +69,10 @@ public class DiagramRepresentationsFileMigrationParticipant extends AbstractRepr
             }
         }
         if (loadedVersion.compareTo(DiagramRepresentationsFileMigrationParticipantV690.MIGRATION_VERSION) < 0) {
+            List<Diagram> diagrams = getGMFDiagrams(dAnalysis);
             DiagramRepresentationsFileMigrationParticipantV690 diagramRepresentationsFileMigrationParticipantV690 = new DiagramRepresentationsFileMigrationParticipantV690();
             diagramRepresentationsFileMigrationParticipantV690.migrateEdgeRoutingStyle(getGMFDiagrams(dAnalysis));
+            diagramRepresentationsFileMigrationParticipantV690.migrateVisibilityInconsistenciesBetweenGMFNodeAndDDiagramElement(diagrams);
         }
     }
 

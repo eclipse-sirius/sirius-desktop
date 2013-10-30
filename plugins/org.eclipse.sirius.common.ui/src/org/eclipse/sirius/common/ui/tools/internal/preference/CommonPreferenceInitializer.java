@@ -12,7 +12,6 @@ package org.eclipse.sirius.common.ui.tools.internal.preference;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
-
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 
@@ -35,6 +34,7 @@ public class CommonPreferenceInitializer extends AbstractPreferenceInitializer {
         preferenceStore.setDefault(CommonPreferencesConstants.PREF_TRACE_ON, false);
         preferenceStore.setDefault(CommonPreferencesConstants.PREF_DEFENSIVE_EDIT_VALIDATION, true);
         preferenceStore.setDefault(CommonPreferencesConstants.PREF_GROUP_ENABLE, true);
+        preferenceStore.setDefault(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE, false);
         preferenceStore.setDefault(CommonPreferencesConstants.PREF_GROUP_TRIGGER, 10000);
         preferenceStore.setDefault(CommonPreferencesConstants.PREF_GROUP_SIZE, 100);
     }

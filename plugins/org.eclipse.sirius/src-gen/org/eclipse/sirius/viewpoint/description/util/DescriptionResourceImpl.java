@@ -19,7 +19,6 @@ import org.eclipse.sirius.business.internal.migration.description.VSMMigrationSe
 import org.eclipse.sirius.business.internal.migration.description.VSMVersionSAXParser;
 import org.eclipse.sirius.business.internal.migration.description.VSMXMIHelper;
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.osgi.framework.Version;
 
 /**
  * <!-- begin-user-doc --> The <b>Resource </b> associated with the package.
@@ -31,8 +30,6 @@ import org.osgi.framework.Version;
 public class DescriptionResourceImpl extends XMIResourceImpl {
 
     private String loadedVersion;
-
-    private boolean migrationIsNeeded = false;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -54,8 +51,6 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
     public DescriptionResourceImpl(URI uri, String loadedVersion) {
         super(uri);
         this.loadedVersion = loadedVersion;
-        this.migrationIsNeeded = VSMMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(loadedVersion));
-
     }
 
     @Override
@@ -63,8 +58,6 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
         if (loadedVersion == null) {
             VSMVersionSAXParser parser = new VSMVersionSAXParser(this.getURI());
             loadedVersion = parser.getVersion(new NullProgressMonitor());
-            this.migrationIsNeeded = VSMMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(loadedVersion));
-
         }
         return new VSMXMIHelper(loadedVersion, this);
     }
@@ -75,14 +68,12 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
      */
     @Override
     public EObject getEObject(String uriFragment) {
-        if (migrationIsNeeded) {
-            Option<String> optionalRewrittenFragment = VSMMigrationService.getInstance().getNewFragment(uriFragment, loadedVersion);
-            if (optionalRewrittenFragment.some()) {
-                return getEObject(optionalRewrittenFragment.get());
-            }
+        Option<String> optionalRewrittenFragment = VSMMigrationService.getInstance().getNewFragment(uriFragment);
+        if (optionalRewrittenFragment.some()) {
+            return getEObject(optionalRewrittenFragment.get());
+        } else {
+            return super.getEObject(uriFragment);
         }
-        return super.getEObject(uriFragment);
-
     }
 
 } // DescriptionResourceImpl

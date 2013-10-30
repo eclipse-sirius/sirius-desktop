@@ -17,6 +17,12 @@ import java.util.Set;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
+import org.eclipse.sirius.diagram.sequence.util.Range;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
@@ -24,13 +30,6 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 
 /**
  * General queries on {@link ISequenceEvent}s.
@@ -276,7 +275,7 @@ public class ISequenceEventQuery {
      * @return the all moved elements.
      */
     public Set<ISequenceEvent> getAllSequenceEventToMoveWith() {
-        Set<ISequenceEvent> entryPoints = Sets.newHashSet();
+        Set<ISequenceEvent> entryPoints = Sets.newLinkedHashSet();
         return getAllSequenceEventToMoveWith(entryPoints);
     }
 
@@ -288,18 +287,18 @@ public class ISequenceEventQuery {
      * @return the all moved elements.
      */
     public Set<ISequenceEvent> getAllSequenceEventToMoveWith(Collection<ISequenceEvent> additionnalEntryPoints) {
-        Set<ISequenceEvent> entryPoints = Sets.newHashSet();
+        Set<ISequenceEvent> entryPoints = Sets.newLinkedHashSet();
         entryPoints.add(event);
         entryPoints.addAll(additionnalEntryPoints);
 
-        Set<ISequenceEvent> moved = Sets.newHashSet();
+        Set<ISequenceEvent> moved = Sets.newLinkedHashSet();
         for (ISequenceEvent ise : entryPoints) {
             populateMovedElements(ise, moved);
         }
         return moved;
     }
 
-    private void populateMovedElements(ISequenceEvent inspectedElement, Set<ISequenceEvent> moved) {
+    private void populateMovedElements(ISequenceEvent inspectedElement, Collection<ISequenceEvent> moved) {
         moved.add(inspectedElement);
         for (ISequenceEvent subEvent : Iterables.filter(inspectedElement.getEventsToMoveWith(), Predicates.not(Predicates.in(moved)))) {
             populateMovedElements(subEvent, moved);
