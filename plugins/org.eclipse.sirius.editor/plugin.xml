@@ -1299,7 +1299,7 @@
         <input type="org.eclipse.sirius.viewpoint.description.style.CustomStyleDescription"/>        
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.editor.properties.sections.style.nodestyledescription.NodeStyleDescriptionHideLabelByDefaultPropertySection"
+               class="org.eclipse.sirius.editor.properties.sections.style.nodestyledescription.NodeStyleDescriptionHideLabelByDefaultPropertySectionSpec"
                filter="org.eclipse.sirius.editor.properties.filters.style.nodestyledescription.NodeStyleDescriptionHideLabelByDefaultFilter"
                id="style.section.nodeStyleDescription.HideLabelByDefault"
                afterSection="style.section.nodeStyleDescription.LabelPosition"
@@ -1323,7 +1323,7 @@
         <input type="org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription"/>        
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.editor.properties.sections.style.nodestyledescription.NodeStyleDescriptionResizeKindPropertySection"
+               class="org.eclipse.sirius.editor.properties.sections.style.nodestyledescription.NodeStyleDescriptionResizeKindPropertySectionSpec"
                filter="org.eclipse.sirius.editor.properties.filters.style.nodestyledescription.NodeStyleDescriptionResizeKindFilter"
                id="style.section.nodeStyleDescription.ResizeKind"
                afterSection="style.section.basicLabelStyleDescription.LabelColor"
@@ -1703,7 +1703,7 @@
         <input type="org.eclipse.sirius.viewpoint.description.AdditionalLayer"/>        
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.editor.properties.sections.description.additionallayer.AdditionalLayerActiveByDefaultPropertySection"
+               class="org.eclipse.sirius.editor.properties.sections.description.additionallayer.AdditionalLayerActiveByDefaultPropertySectionSpec"
                filter="org.eclipse.sirius.editor.properties.filters.description.additionallayer.AdditionalLayerActiveByDefaultFilter"
                id="description.section.additionalLayer.ActiveByDefault"
                 tab="viewpoint.tab.general">
@@ -2166,11 +2166,11 @@
         <input type="org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription"/>        
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.editor.properties.sections.description.representationextensiondescription.RepresentationExtensionDescriptionMetamodelPropertySection"
+               class="org.eclipse.sirius.editor.properties.sections.description.representationextensiondescription.RepresentationExtensionDescriptionMetamodelPropertySectionSpec"
                filter="org.eclipse.sirius.editor.properties.filters.description.representationextensiondescription.RepresentationExtensionDescriptionMetamodelFilter"
                id="description.section.representationExtensionDescription.Metamodel"
                afterSection="description.section.representationExtensionDescription.RepresentationName"
-                tab="viewpoint.tab.advanced">
+                tab="viewpoint.tab.metamodels">
         <input type="org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription"/>        
       </propertySection>
   	  <propertySection
@@ -2212,7 +2212,7 @@
         <input type="org.eclipse.sirius.viewpoint.description.RepresentationDescription"/>        
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.editor.properties.sections.description.representationdescription.RepresentationDescriptionMetamodelPropertySection"
+               class="org.eclipse.sirius.editor.properties.sections.description.representationdescription.RepresentationDescriptionMetamodelPropertySectionSpec"
                filter="org.eclipse.sirius.editor.properties.filters.description.representationdescription.RepresentationDescriptionMetamodelFilter"
                id="description.section.representationDescription.Metamodel"
                afterSection="description.section.representationDescription.TitleExpression"
