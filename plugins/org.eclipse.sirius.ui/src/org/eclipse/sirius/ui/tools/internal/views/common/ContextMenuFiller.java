@@ -440,7 +440,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
 
                 /* Init viewpoints item. */
                 final Session session = selectedSessions.get(0);
-                addActionToMenu(menu, SESSION_MANAGEMENT_SEPARATOR, buildSiriussSelectionDialogAction(session));
+                addActionToMenu(menu, SESSION_MANAGEMENT_SEPARATOR, buildViewpointsSelectionDialogAction(session));
 
                 /* Add new representations. */
                 addActionToMenu(menu, SESSION_MANAGEMENT_SEPARATOR, buildCreateRepresentationAction(session));
@@ -475,7 +475,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
 
         if (session != null) {
             /* Select viewpoints. */
-            addActionToMenu(menu, SESSION_MANAGEMENT_SEPARATOR, buildSiriussSelectionDialogAction(session));
+            addActionToMenu(menu, SESSION_MANAGEMENT_SEPARATOR, buildViewpointsSelectionDialogAction(session));
 
             /* Add new representations. */
             addActionToMenu(menu, SESSION_MANAGEMENT_SEPARATOR, buildCreateRepresentationAction(session));
@@ -579,7 +579,7 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         };
     }
 
-    private Action buildSiriussSelectionDialogAction(final Session session) {
+    private Action buildViewpointsSelectionDialogAction(final Session session) {
         return new OpenViewpointSelectionAction(session.getSessionResource().getURI());
     }
 
