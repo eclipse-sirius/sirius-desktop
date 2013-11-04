@@ -27,7 +27,7 @@ import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection.Callback;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * Specific command to change viewpoint selection.
+ * Specific command to change viewpoints selection.
  * 
  * @author mporhel
  */
@@ -46,7 +46,7 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
     private IProgressMonitor monitor;
 
     /**
-     * Specific command to change viewpoint selection.
+     * Specific command to change viewpoints selection.
      * 
      * @param session
      *            the current session.
@@ -77,7 +77,7 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
      *            a {@link IProgressMonitor}
      */
     public ChangeViewpointSelectionCommand(Session session, Callback callback, Set<Viewpoint> newSelectedViewpoints, Set<Viewpoint> newDeselectedViewpoints, IProgressMonitor monitor) {
-        super(session.getTransactionalEditingDomain(), "Change viewpoint selection");
+        super(session.getTransactionalEditingDomain(), "Change viewpoints selection");
         this.callback = callback;
         this.newSelectedViewpoints = newSelectedViewpoints;
         this.newDeselectedViewpoints = newDeselectedViewpoints;
@@ -87,7 +87,7 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
     }
 
     /**
-     * Specific command to change viewpoint selection.
+     * Specific command to change viewpoints selection.
      * 
      * @param session
      *            the current session.

@@ -102,6 +102,12 @@ import com.google.common.collect.Sets;
  */
 public final class ViewpointSelection {
 
+    private static final String VIEWPOINT_SELECTION_SHELL_TITLE = "Viewpoints Selection";
+
+    private static final String VIEWPOINT_SELECTION_WIZARD_PAGE_TITLE = "Viewpoints selection";
+
+    private static final String VIEWPOINTS_SELECTION_WIZARD_PAGE_ID = "viewpointsSelection";
+
     private static final String[] COLUMNS = { " ", "icon", "Viewpoint" };
 
     /**
@@ -185,7 +191,7 @@ public final class ViewpointSelection {
             viewpointsMap.put(viewpoint, Boolean.FALSE);
         }
 
-        final WizardPage page = new WizardPage("viewpointsSelection", "Viewpoint selection", null) {
+        final WizardPage page = new WizardPage(VIEWPOINTS_SELECTION_WIZARD_PAGE_ID, VIEWPOINT_SELECTION_WIZARD_PAGE_TITLE, null) {
 
             public void createControl(final Composite parent) {
                 setControl(ViewpointSelection.createViewpointsTableControl(parent, this.getContainer(), viewpointsMap));
@@ -287,8 +293,7 @@ public final class ViewpointSelection {
     public static void openViewpointsSelectionDialog(final Session session, boolean createNewRepresentations) {
         if (Movida.isEnabled()) {
             session.getSemanticCrossReferencer();
-            org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry) ViewpointRegistry
-                    .getInstance();
+            org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry) ViewpointRegistry.getInstance();
             org.eclipse.sirius.business.internal.movida.ViewpointSelection selection = DAnalysisSessionHelper.getViewpointSelection(registry, (DAnalysisSession) session);
             Set<URI> selectedBefore = selection.getSelected();
             ViewpointSelectionDialog vsd = new ViewpointSelectionDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell(), registry, selection, getSemanticFileExtensions(session));
@@ -320,7 +325,7 @@ public final class ViewpointSelection {
                 }
             };
             dialog.create();
-            dialog.getShell().setText("Viewpoint Selection");
+            dialog.getShell().setText(VIEWPOINT_SELECTION_SHELL_TITLE);
             dialog.setTitle("Selected viewpoints");
             dialog.setMessage("Change viewpoints selection status (see tooltip for details about each viewpoint)");
             dialog.setBlockOnOpen(true);
@@ -343,8 +348,8 @@ public final class ViewpointSelection {
      *            contains for each selected viewpoint which has missing
      *            dependencies, an entry with the selected viewpoint's name as
      *            key and the list of the missing viewpoints' names as value.
-     * @return an error message which indicates the required viewpoint activation
-     *         to complete the current selection.
+     * @return an error message which indicates the required viewpoint
+     *         activation to complete the current selection.
      */
     public static String getMissingDependenciesErrorMessage(Multimap<String, String> missingDependencies) {
         return "The list of selected viewpoints is invalid; please fix the problems:\n" + "- "
@@ -406,7 +411,7 @@ public final class ViewpointSelection {
      * viewpoints enabled by the user.
      * 
      * @param selected
-     *            the viewpoint selection request by the user.
+     *            the viewpoints selection request by the user.
      * @return for each selected viewpoint which has missing dependencies, an
      *         entry with the selected viewpoint's name as key and the list of
      *         the missing viewpoints' names as key.
@@ -445,7 +450,6 @@ public final class ViewpointSelection {
         }
         return false;
     }
-
 
     private static void applyNewViewpointSelection(final SortedMap<Viewpoint, Boolean> originalMap, final SortedMap<Viewpoint, Boolean> newMap, final Session session,
             final boolean createNewRepresentations) {

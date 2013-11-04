@@ -12,11 +12,11 @@ package org.eclipse.sirius.ui.tools.internal.actions.session;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.Action;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * An actions opening a dialog allowing to change the {@link ViewpointSelection}
@@ -27,13 +27,15 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  */
 public class OpenViewpointSelectionAction extends Action {
 
+    private static final String VIEWPOINTS_SELECTION_ACTION_TEXT = "Viewpoints Selection";
+
     private URI sessionURI;
 
     /**
      * Constructor.
      * 
      * @param session
-     *            the session on which viewpoint selection should be changed
+     *            the session on which viewpoints selection should be changed
      */
     public OpenViewpointSelectionAction(Session session) {
         this(session.getSessionResource().getURI());
@@ -43,11 +45,11 @@ public class OpenViewpointSelectionAction extends Action {
      * Constructor.
      * 
      * @param sessionURI
-     *            the {@link URI} of session on which viewpoint selection should
-     *            be changed
+     *            the {@link URI} of session on which viewpoints selection
+     *            should be changed
      */
     public OpenViewpointSelectionAction(URI sessionURI) {
-        super("Viewpoints Selection", SiriusEditPlugin.INSTANCE.getImageDescriptor("full/obj16/Viewpoint.gif"));
+        super(VIEWPOINTS_SELECTION_ACTION_TEXT, SiriusEditPlugin.INSTANCE.getImageDescriptor("full/obj16/Viewpoint.gif"));
         this.sessionURI = sessionURI;
     }
 
