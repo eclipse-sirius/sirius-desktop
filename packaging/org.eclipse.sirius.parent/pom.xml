@@ -85,6 +85,7 @@
     <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
     <module>../../packaging/org.eclipse.sirius.runtime.ocl</module>
     <module>../../packaging/org.eclipse.sirius.runtime</module>
+    <module>../../packaging/org.eclipse.sirius.samples</module>
     <module>../../packaging/org.eclipse.sirius.specifier.ide.ui.acceleo</module>
     <module>../../packaging/org.eclipse.sirius.specifier.ide.ui</module>
 
