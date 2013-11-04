@@ -365,16 +365,16 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
     }
 
     /**
-     * Fires viewpoint selection deselection events.
+     * Fires viewpoints selection deselection events.
      * 
      * @param session
      */
     private void fireVPSelectionDeselectionEvents(Session session) {
-        final Set<Viewpoint> newSelectedSiriuss = this.collectSelectedSiriuss();
+        final Set<Viewpoint> newSelectedViewpoints = this.collectSelectedViewpoints();
 
         //
         // Selecting.
-        final Set<Viewpoint> selectingSiriuss = new HashSet<Viewpoint>(newSelectedSiriuss);
+        final Set<Viewpoint> selectingSiriuss = new HashSet<Viewpoint>(newSelectedViewpoints);
         selectingSiriuss.removeAll(this.selectedSiriuss);
         for (final Viewpoint viewpoint : selectingSiriuss) {
             fireSelectedSiriusEvent(viewpoint);
@@ -383,12 +383,12 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
         //
         // Deselecting.
         final Set<Viewpoint> deselectingSiriuss = new HashSet<Viewpoint>(this.selectedSiriuss);
-        deselectingSiriuss.removeAll(newSelectedSiriuss);
+        deselectingSiriuss.removeAll(newSelectedViewpoints);
         for (final Viewpoint viewpoint : deselectingSiriuss) {
             fireDeselectedSiriusEvent(viewpoint);
         }
 
-        this.selectedSiriuss = newSelectedSiriuss;
+        this.selectedSiriuss = newSelectedViewpoints;
 
     }
 
@@ -397,7 +397,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
      * 
      * @return all selected viewpoints.
      */
-    private Set<Viewpoint> collectSelectedSiriuss() {
+    private Set<Viewpoint> collectSelectedViewpoints() {
         final Set<Viewpoint> result = new HashSet<Viewpoint>();
         for (final Session session : this.doGetSessions()) {
             result.addAll(session.getSelectedViewpoints(false));
