@@ -22,7 +22,7 @@ import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistryListener;
 
 /**
- * Tracks various kinds of dependencies between a set of Siriuss.
+ * Tracks various kinds of dependencies between a set of Viewpoints.
  * 
  * @author pierre-charles.david@obeo.fr
  */

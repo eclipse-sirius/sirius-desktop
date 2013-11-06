@@ -119,16 +119,16 @@ public class DAnalysisQuery {
      * 
      * @return selected {@link Viewpoint}s for the current {@link DAnalysis}
      */
-    public Collection<Viewpoint> getSelectedSiriuss() {
-        Collection<Viewpoint> selectedSiriuss = new ArrayList<Viewpoint>();
+    public Collection<Viewpoint> getSelectedViewpoints() {
+        Collection<Viewpoint> selectedViewpoints = new ArrayList<Viewpoint>();
         Collection<DView> selectedDViews = analysis.getSelectedViews();
         for (final DView dView : selectedDViews) {
             final Viewpoint viewpoint = dView.getViewpoint();
             if (viewpoint != null) {
-                selectedSiriuss.add(viewpoint);
+                selectedViewpoints.add(viewpoint);
             }
         }
-        return selectedSiriuss;
+        return selectedViewpoints;
     }
 
     /**

@@ -1242,7 +1242,7 @@ public class DDiagramSynchronizer {
      * 
      * @param mappingManager
      *            the manager used to handle return the Mappings to consider
-     *            regarding the enablement of Siriuss.
+     *            regarding the enablement of Viewpoints.
      * @param mappingsToEdgeTargets
      *            edge target
      * @param mapping

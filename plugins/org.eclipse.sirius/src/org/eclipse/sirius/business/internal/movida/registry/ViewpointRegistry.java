@@ -393,10 +393,10 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
 
     private void updateEntries(MaskingChange change) {
         for (Resource masked : change.masked) {
-            unregisterSiriussFrom(masked);
+            unregisterViewpointsFrom(masked);
         }
         for (Resource unmasked : change.unmasked) {
-            registerSiriussFrom(unmasked);
+            registerViewpointsFrom(unmasked);
         }
     }
 
@@ -466,7 +466,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
      * 
      * @return the new entries added to the registry.
      */
-    private Set<Entry> registerSiriussFrom(Resource vsm) {
+    private Set<Entry> registerViewpointsFrom(Resource vsm) {
         Set<Entry> newEntries = createNewEntries(vsm);
         for (Entry entry : newEntries) {
             Preconditions.checkState(!entries.containsKey(entry.getLogicalURI()));
@@ -481,7 +481,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
      * 
      * @return the old entries removed from the registry.
      */
-    private Set<Entry> unregisterSiriussFrom(Resource vsm) {
+    private Set<Entry> unregisterViewpointsFrom(Resource vsm) {
         Set<Entry> unregistered = Sets.newHashSet();
         for (Entry entry : Lists.newArrayList(entries.values())) {
             if (Objects.equal(entry.getResource(), vsm)) {
@@ -562,10 +562,10 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
 
     /**
      * Returns a {@link ViewpointRelations} which can be used to see various
-     * interesting relationships between the Siriuss in this registry as
+     * interesting relationships between the Viewpoints in this registry as
      * Relations.
      * 
-     * @return a view of various relationships between the Siriuss in this
+     * @return a view of various relationships between the Viewpoints in this
      *         registry as Relations.
      */
     public ViewpointRelations getRelations() {

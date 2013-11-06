@@ -119,14 +119,14 @@ public final class SessionHelper {
      */
     public static Collection<DRepresentation> findAllStartupCandidates(final Session session) {
         Collection<DRepresentation> candidates = new ArrayList<DRepresentation>();
-        Collection<Viewpoint> selectedSiriuss = session.getSelectedViewpoints(false);
+        Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
 
-        if (!selectedSiriuss.isEmpty()) {
+        if (!selectedViewpoints.isEmpty()) {
             Map<RepresentationDescription, Boolean> alreadyCheckedDescriptions = Maps.newHashMap();
             Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
             for (DRepresentation repr : allRepresentations) {
                 RepresentationDescription description = DialectManager.INSTANCE.getDescription(repr);
-                if (description != null && checkStartupDescInSelectedVps(description, alreadyCheckedDescriptions, selectedSiriuss)) {
+                if (description != null && checkStartupDescInSelectedVps(description, alreadyCheckedDescriptions, selectedViewpoints)) {
                     candidates.add(repr);
                 }
             }

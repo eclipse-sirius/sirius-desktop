@@ -53,18 +53,18 @@ public class Entry {
     private final Viewpoint viewpoint;
 
     /**
-     * The entries representing the Siriuss we declares a conflict with.
+     * The entries representing the Viewpoints we declares a conflict with.
      */
     private final Set<URI> conflicts = Sets.newHashSet();
 
     /**
-     * The entries representing the Siriuss we declares a "reuses" relation
+     * The entries representing the Viewpoints we declares a "reuses" relation
      * with.
      */
     private final Set<URI> reused = Sets.newHashSet();
 
     /**
-     * The entries representing the Siriuss we declares a "extends" relation
+     * The entries representing the Viewpoints we declares a "extends" relation
      * with.
      */
     private final Set<URI> customizes = Sets.newHashSet();
@@ -160,8 +160,8 @@ public class Entry {
     }
 
     /**
-     * Returns the entries of all the Siriuss this one depends on in any way,
-     * i.e. all the Siriuss which must be present and valid for this one to
+     * Returns the entries of all the Viewpoints this one depends on in any way,
+     * i.e. all the Viewpoints which must be present and valid for this one to
      * be usable.
      * 
      * @return all the dependencies of the Sirius represented by this entry.

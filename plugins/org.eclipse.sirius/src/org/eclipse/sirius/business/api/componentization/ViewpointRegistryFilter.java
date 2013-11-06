@@ -15,7 +15,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * This interface specifies a filter to register if you need to filter the
- * accesible Siriuss.
+ * accesible Viewpoints.
  * 
  * This interface is intended to be implemented.
  * 

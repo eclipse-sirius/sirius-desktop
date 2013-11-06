@@ -57,9 +57,9 @@ public class MetamodelDescriptorManagerImpl implements MetamodelDescriptorManage
      * 
      * {@inheritDoc}
      */
-    public Collection<MetamodelDescriptor> provides(final Collection<Viewpoint> enabledSiriuss) {
+    public Collection<MetamodelDescriptor> provides(final Collection<Viewpoint> enabledViewpoints) {
         final Collection<MetamodelDescriptor> result = new HashSet<MetamodelDescriptor>();
-        for (Viewpoint vp : enabledSiriuss) {
+        for (Viewpoint vp : enabledViewpoints) {
             for (MetamodelDescriptorProvider provider : providers) {
                 final Collection<MetamodelDescriptor> provided = provider.provides(vp);
                 if (provided != null) {

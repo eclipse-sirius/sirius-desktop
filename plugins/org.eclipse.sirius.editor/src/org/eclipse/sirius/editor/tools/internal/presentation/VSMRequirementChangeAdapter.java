@@ -31,7 +31,7 @@ import com.google.common.collect.Multimap;
 
 /**
  * A content adapter for a whole VSM, which detects when the requirements
- * declared by the Siriuss it contain change.
+ * declared by the Viewpoints it contain change.
  * 
  * @author pierre-charles.david@obeo.fr
  */
@@ -41,7 +41,7 @@ public class VSMRequirementChangeAdapter extends EContentAdapter {
     private final DynamicVSMLoader loader;
 
     /**
-     * For each Sirius URI directly required, the set of Siriuss which require
+     * For each Sirius URI directly required, the set of Viewpoints which require
      * it.
      */
     private final Multimap<URI, Viewpoint> requirements = HashMultimap.create();
@@ -99,18 +99,18 @@ public class VSMRequirementChangeAdapter extends EContentAdapter {
             case Notification.ADD_MANY:
                 Object added = notification.getNewValue();
                 if (added instanceof List<?>) {
-                    handleSiriussAdded(Iterables.filter((List<?>) added, Viewpoint.class));
+                    handleViewpointsAdded(Iterables.filter((List<?>) added, Viewpoint.class));
                 } else if (added instanceof Viewpoint) {
-                    handleSiriussAdded(Collections.singleton((Viewpoint) added));
+                    handleViewpointsAdded(Collections.singleton((Viewpoint) added));
                 }
                 break;
             case Notification.REMOVE:
             case Notification.REMOVE_MANY:
                 Object removed = notification.getOldValue();
                 if (removed instanceof List<?>) {
-                    handleSiriussRemoved(Iterables.filter((List<?>) removed, Viewpoint.class));
+                    handleViewpointsRemoved(Iterables.filter((List<?>) removed, Viewpoint.class));
                 } else if (removed instanceof URI) {
-                    handleSiriussRemoved(Collections.singleton((Viewpoint) removed));
+                    handleViewpointsRemoved(Collections.singleton((Viewpoint) removed));
                 }
                 break;
             default:
@@ -146,7 +146,7 @@ public class VSMRequirementChangeAdapter extends EContentAdapter {
         }
     }
 
-    private void handleSiriussAdded(Iterable<Viewpoint> added) {
+    private void handleViewpointsAdded(Iterable<Viewpoint> added) {
         Relation<URI> requires = loader.getRegistry().getRelations().getRequires();
         for (Viewpoint viewpoint : added) {
             for (URI uri : requires.apply(new ViewpointQuery(viewpoint).getViewpointURI().get())) {
@@ -155,7 +155,7 @@ public class VSMRequirementChangeAdapter extends EContentAdapter {
         }
     }
 
-    private void handleSiriussRemoved(Iterable<Viewpoint> removed) {
+    private void handleViewpointsRemoved(Iterable<Viewpoint> removed) {
         for (Viewpoint viewpoint : removed) {
             for (URI uri : requirements.keySet()) {
                 removeRequirement(uri, viewpoint);

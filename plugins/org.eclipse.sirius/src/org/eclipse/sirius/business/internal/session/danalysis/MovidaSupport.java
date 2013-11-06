@@ -52,8 +52,8 @@ final class MovidaSupport {
         this.session = session;
     }
     
-    void updatePhysicalVSMResourceURIs(Collection<Viewpoint> selectedSiriuss) {
-        Set<URI> selected = Sets.newHashSet(Iterables.filter(Iterables.transform(selectedSiriuss, new Function<Viewpoint, URI>() {
+    void updatePhysicalVSMResourceURIs(Collection<Viewpoint> selectedViewpoints) {
+        Set<URI> selected = Sets.newHashSet(Iterables.filter(Iterables.transform(selectedViewpoints, new Function<Viewpoint, URI>() {
             public URI apply(Viewpoint from) {
                 return new ViewpointQuery(from).getViewpointURI().get();
             }
@@ -70,7 +70,7 @@ final class MovidaSupport {
         }));
         final SetView<URI> unavailable = Sets.intersection(selected, removed);
         if (!unavailable.isEmpty()) {
-            deselectMissingSiriuss(unavailable);
+            deselectMissingViewpoints(unavailable);
         }
         Set<URI> resourcesLoaded = vsmResources;
         Set<URI> resourcesRequired = new VSMResolver(registry).resolve(selected);
@@ -113,7 +113,7 @@ final class MovidaSupport {
         });
     }
 
-    void deselectMissingSiriuss(final SetView<URI> unavailable) {
+    void deselectMissingViewpoints(final SetView<URI> unavailable) {
         final IProgressMonitor pm = new NullProgressMonitor();
         TransactionalEditingDomain ted = session.getTransactionalEditingDomain();
         ted.getCommandStack().execute(new RecordingCommand(ted) {

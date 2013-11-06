@@ -56,7 +56,7 @@ public class StatusUpdater {
      * Constructor.
      * 
      * @param resourceSet
-     *            the resource set in which the Siriuss are loaded.
+     *            the resource set in which the Viewpoints are loaded.
      * @param entries
      *            the entries whose status should be updated.
      * @param change

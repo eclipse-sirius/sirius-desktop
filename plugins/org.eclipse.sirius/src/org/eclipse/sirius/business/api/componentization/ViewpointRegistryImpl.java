@@ -152,7 +152,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         final IWorkspace workspace = ResourcesPlugin.getWorkspace();
         workspace.addResourceChangeListener(this, IResourceChangeEvent.POST_CHANGE);
 
-        initSiriussFromPlugins();
+        initViewpointsFromPlugins();
         refreshComponentsFromWorkspace();
     }
 
@@ -315,7 +315,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * 
      * @param modelerModelResourcePath
      *            the platform file path ("pluginname/rep1/rep2/file.odesign)
-     * @return the added Siriuss;
+     * @return the added Viewpoints;
      */
     public Set<Viewpoint> registerFromPlugin(final String modelerModelResourcePath) {
 
@@ -408,14 +408,14 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
             final String pluginName = viewpoint.eResource().getURI().segment(1);
 
             if (vpName != null && pluginName != null) {
-                Iterable<Viewpoint> sameNameAndPluginSiriuss = Iterables.filter(viewpointsFromPlugin, new Predicate<Viewpoint>() {
+                Iterable<Viewpoint> sameNameAndPluginViewpoints = Iterables.filter(viewpointsFromPlugin, new Predicate<Viewpoint>() {
 
                     public boolean apply(final Viewpoint input) {
                         return vpName.equals(input.getName()) && pluginName.equals(input.eResource().getURI().segment(1));
                     }
                 });
 
-                for (Viewpoint sameNameAndPluginSirius : sameNameAndPluginSiriuss) {
+                for (Viewpoint sameNameAndPluginSirius : sameNameAndPluginViewpoints) {
                     mapToSiriusProtocol(sameNameAndPluginSirius);
                     break;
                 }
@@ -508,7 +508,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * Dispose the registry.
      */
     public void dispose() {
-        disposeSiriussFromPlugins();
+        disposeViewpointsFromPlugins();
         viewpointsFromWorkspace.clear();
         if (filters != null) {
             filters.clear();
@@ -521,7 +521,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     /**
      * Dispose the viewpoint from plug-ins from registry.
      */
-    protected void disposeSiriussFromPlugins() {
+    protected void disposeViewpointsFromPlugins() {
         viewpointsFromPlugin.clear();
         invalidateCache();
     }
@@ -534,7 +534,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         /*
          * Here we scan the workspaces to update the Sirius registry
          */
-        final List<IFile> files = collectFilesContainingSiriuss();
+        final List<IFile> files = collectFilesContainingViewpoints();
         final Iterator<IFile> fileIt = files.iterator();
         final Set<Viewpoint> viewpoints = new HashSet<Viewpoint>();
         final Set<Resource> resourcesToResolve = new HashSet<Resource>();
@@ -576,7 +576,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         this.registerFromWorkspace(components);
     }
 
-    private List<IFile> collectFilesContainingSiriuss() {
+    private List<IFile> collectFilesContainingViewpoints() {
         return EclipseUtil.getFilesFromWorkspace(null, "." + SiriusUtil.DESCRIPTION_MODEL_EXTENSION);
     }
 
@@ -654,7 +654,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * Should be called only at initialization or if user want to reload all
      * Sirius plug-ins (all diagrams should be closed) !.
      */
-    private void initSiriussFromPlugins() {
+    private void initViewpointsFromPlugins() {
         /* should be sufficient to load one class of each plug-in */
         EclipseUtil.getExtensionPlugins(ISiriusComponent.CLASS_TO_EXTEND, ISiriusComponent.ID, ISiriusComponent.CLASS_ATTRIBUTE);
         invalidateCache();
@@ -696,7 +696,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         final IResource resource = resourceDelta.getResource();
         if (resource.getType() == IResource.FILE) {
             final IFile file = (IFile) resourceDelta.getResource();
-            if (mightContainSiriuss(resource)) {
+            if (mightContainViewpoints(resource)) {
                 switch (resourceDelta.getKind()) {
                 case IResourceDelta.ADDED:
                     this.fileAdded(file);
@@ -731,7 +731,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         }
     }
 
-    private boolean mightContainSiriuss(final IResource resource) {
+    private boolean mightContainViewpoints(final IResource resource) {
         return (resource instanceof IFile) && getCollectorFromIFile((IFile) resource).some();
     }
 
@@ -804,7 +804,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     protected void fileRemoved(final IFile file) {
         shouldInvalidateCache = true;
         if (!file.exists()) {
-            removeSiriussNotPersistedInAFile();
+            removeViewpointsNotPersistedInAFile();
             unloadInExistingSessions(file, true);
         } else {
             /* remove affected viewpoints */
@@ -828,7 +828,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     /**
      * Removes all viewpoints from workspace that are not persisted in a file.
      */
-    private void removeSiriussNotPersistedInAFile() {
+    private void removeViewpointsNotPersistedInAFile() {
         for (final Viewpoint viewpoint : new ArrayList<Viewpoint>(this.viewpointsFromWorkspace)) {
             if (viewpoint.eResource() == null) {
                 removeFromWorkspaceAndUpdateURiMapping(viewpoint);

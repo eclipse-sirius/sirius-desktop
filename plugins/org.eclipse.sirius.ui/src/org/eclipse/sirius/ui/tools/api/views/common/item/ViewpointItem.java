@@ -16,6 +16,6 @@ package org.eclipse.sirius.ui.tools.api.views.common.item;
  * @author mchauvin
  * @since 2.4
  */
-public interface SiriusItem extends ItemWrapper {
+public interface ViewpointItem extends ItemWrapper {
 
 }

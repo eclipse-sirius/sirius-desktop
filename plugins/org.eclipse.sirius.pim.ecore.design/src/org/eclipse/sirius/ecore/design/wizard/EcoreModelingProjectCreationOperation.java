@@ -69,7 +69,7 @@ public class EcoreModelingProjectCreationOperation extends WorkspaceModifyOperat
 
     private String representationsResourceName;
 
-    private Set<Viewpoint> selectedSiriuss;
+    private Set<Viewpoint> selectedViewpoints;
 
     private IFile ecoreModel;
 
@@ -82,19 +82,19 @@ public class EcoreModelingProjectCreationOperation extends WorkspaceModifyOperat
      *            the root object of the semantic resource (i.e. the metamodel)
      * @param representationsResourceName
      *            the name of the representations resource
-     * @param selectedSiriuss
+     * @param selectedViewpoints
      *            the set of {@link Viewpoint} to have selected on this created
      *            Modeling Project
      */
     public EcoreModelingProjectCreationOperation(IProject project, EObject rootObject, String ecoreResourceName, String genModelResourceName, String representationsResourceName,
-            Set<Viewpoint> selectedSiriuss) {
+            Set<Viewpoint> selectedViewpoints) {
         super();
         this.project = project;
         this.rootObject = rootObject;
         this.ecoreResourceName = ecoreResourceName;
         this.genModelResourceName = genModelResourceName;
         this.representationsResourceName = representationsResourceName;
-        this.selectedSiriuss = selectedSiriuss;
+        this.selectedViewpoints = selectedViewpoints;
     }
 
     @Override
@@ -149,7 +149,7 @@ public class EcoreModelingProjectCreationOperation extends WorkspaceModifyOperat
         monitor.subTask("prepare ecore modeling project..."); //$NON-NLS-1$
         CompoundCommand cc = new CompoundCommand("Prepare Ecore Modeling Project"); //$NON-NLS-1$ 
         cc.append(new AddSemanticResourceCommand(session, URI.createPlatformResourceURI(ecorePath, true), new SubProgressMonitor(monitor, 1)));
-        cc.append(new ChangeViewpointSelectionCommand(session, new ViewpointSelectionCallback(), selectedSiriuss, Collections.<Viewpoint> emptySet(), new SubProgressMonitor(monitor, 1)));
+        cc.append(new ChangeViewpointSelectionCommand(session, new ViewpointSelectionCallback(), selectedViewpoints, Collections.<Viewpoint> emptySet(), new SubProgressMonitor(monitor, 1)));
 
         monitor.subTask("link the created models..."); //$NON-NLS-1$ 
         session.getTransactionalEditingDomain().getCommandStack().execute(cc);

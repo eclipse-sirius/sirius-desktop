@@ -59,13 +59,13 @@ public class DiagramDescriptionMappingsManagerImpl implements DiagramDescription
     /**
      * {@inheritDoc}
      */
-    public void computeMappings(Collection<Viewpoint> enabledSiriuss) {
-        nodeMappings = new DiagramComponentizationManager().getAllNodeMappings(enabledSiriuss, this.description);
-        edgeMappings = new DiagramComponentizationManager().getAllEdgeMappings(enabledSiriuss, this.description);
-        containerMappings = new DiagramComponentizationManager().getAllContainerMappings(enabledSiriuss, this.description);
+    public void computeMappings(Collection<Viewpoint> enabledViewpoints) {
+        nodeMappings = new DiagramComponentizationManager().getAllNodeMappings(enabledViewpoints, this.description);
+        edgeMappings = new DiagramComponentizationManager().getAllEdgeMappings(enabledViewpoints, this.description);
+        containerMappings = new DiagramComponentizationManager().getAllContainerMappings(enabledViewpoints, this.description);
 
         for (final DiagramDescriptionMappingsManagerListener listener : listeners) {
-            listener.mappingsComputed(enabledSiriuss);
+            listener.mappingsComputed(enabledViewpoints);
         }
     }
 

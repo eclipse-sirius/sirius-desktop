@@ -151,10 +151,10 @@ public class AnalysisResourceItemImpl implements AnalysisResourceItem {
      * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getChildren()
      */
     public Collection<?> getChildren() {
-        final List<SiriusItemImpl> all = Lists.newArrayList();
+        final List<ViewpointItemImpl> all = Lists.newArrayList();
         if (resource != null) {
             for (final Viewpoint viewpoint : session.getSelectedViewpoints(false)) {
-                all.add(new SiriusItemImpl(session, viewpoint, resource, linkChildrenToParentMode ? parent : this));
+                all.add(new ViewpointItemImpl(session, viewpoint, resource, linkChildrenToParentMode ? parent : this));
             }
             Collections.sort(all);
         }

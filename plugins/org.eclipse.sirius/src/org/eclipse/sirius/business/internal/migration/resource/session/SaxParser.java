@@ -433,9 +433,9 @@ public class SaxParser extends DefaultHandler {
 
     private String transformAttributeValue(final String attributeQName, final String value) {
         String result = value;
-        if (value.contains("ownedSiriussDescriptions")) {
+        if (value.contains("ownedViewpointsDescriptions")) {
             final String vp = findSiriusName(value);
-            result = value.replaceAll("\\Q/@ownedSiriussDescriptions[\\E", "/@ownedSiriuss[name='" + vp + "']/@ownedRepresentations[");
+            result = value.replaceAll("\\Q/@ownedViewpointsDescriptions[\\E", "/@ownedViewpoints[name='" + vp + "']/@ownedRepresentations[");
         }
         for (final StringCouple stringCouple : old2NewAttributes) {
             result = stringCouple.transform(result);
@@ -450,7 +450,7 @@ public class SaxParser extends DefaultHandler {
             descriptionName = descriptionName.replace(DOT + MigrationUtil.MODELER_DESCRIPTION_FILE_EXTENSION_V3, DOT + SiriusUtil.DESCRIPTION_MODEL_EXTENSION);
         }
 
-        final int startRepresentationName = value.indexOf("=", value.indexOf("ownedSiriussDescriptions"));
+        final int startRepresentationName = value.indexOf("=", value.indexOf("ownedViewpointsDescriptions"));
         final int endRepresentationName = value.indexOf("]", startRepresentationName);
         final String representationName = URI.decode(new String(value.substring(startRepresentationName + 2, endRepresentationName - 1)));
 

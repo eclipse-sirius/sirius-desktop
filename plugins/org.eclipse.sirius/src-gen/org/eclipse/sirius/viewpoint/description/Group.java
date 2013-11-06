@@ -74,7 +74,7 @@ public interface Group extends DModelElement, DocumentedElement {
      * {@link org.eclipse.sirius.viewpoint.description.Viewpoint}. <!--
      * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Owned Siriuss</em>' containment reference list
+     * If the meaning of the '<em>Owned Viewpoints</em>' containment reference list
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->

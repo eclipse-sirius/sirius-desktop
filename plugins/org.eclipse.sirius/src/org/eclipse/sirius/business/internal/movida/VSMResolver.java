@@ -29,7 +29,7 @@ import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
 
 /**
  * Resolves a set of logical Sirius URIs into the complete set of physical
- * VSM resources required to be loaded to provide all these Siriuss.
+ * VSM resources required to be loaded to provide all these Viewpoints.
  * 
  * @author pierre-charles.david@obeo.fr
  */

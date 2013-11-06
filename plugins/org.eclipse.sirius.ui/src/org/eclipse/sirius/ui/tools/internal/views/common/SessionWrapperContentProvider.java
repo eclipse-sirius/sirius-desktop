@@ -39,7 +39,7 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ControlledRoot;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ResourcesFolderItemImpl;
-import org.eclipse.sirius.ui.tools.internal.views.common.item.SiriussFolderItemImpl;
+import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointsFolderItemImpl;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -159,7 +159,7 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
             all.add(new ResourcesFolderItemImpl(session, session));
         }
 
-        all.add(new SiriussFolderItemImpl(session, session));
+        all.add(new ViewpointsFolderItemImpl(session, session));
         all.addAll(getSemanticResources(session));
         return all;
     }

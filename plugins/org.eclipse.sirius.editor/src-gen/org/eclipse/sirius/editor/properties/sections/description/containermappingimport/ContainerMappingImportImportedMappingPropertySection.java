@@ -174,7 +174,7 @@ public class ContainerMappingImportImportedMappingPropertySection extends Abstra
             @Override
             public void widgetSelected(final SelectionEvent e) {
                 final ContainerMappingImportSelectionWizardItemsBuilder builder = new ContainerMappingImportSelectionWizardItemsBuilder((ContainerMapping) eObject,
-                        AbstractMappingImportSelectionWizardBuilder.getAvailableSiriussInResourceSet(eObject));
+                        AbstractMappingImportSelectionWizardBuilder.getAvailableViewpointsInResourceSet(eObject));
                 final TreeItemWrapper input = builder.buildMappingInput();
 
                 final Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();

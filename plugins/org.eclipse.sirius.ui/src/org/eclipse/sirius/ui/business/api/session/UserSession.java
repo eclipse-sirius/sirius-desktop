@@ -188,7 +188,7 @@ public class UserSession {
      * @return the user session
      */
     public UserSession selectSirius(final String viewpointName) {
-        return selectSiriuss(Arrays.asList(new String[] { viewpointName }));
+        return selectViewpoints(Arrays.asList(new String[] { viewpointName }));
     }
 
     /**
@@ -199,7 +199,7 @@ public class UserSession {
      * @return the user session
      */
     public UserSession selectOnlySirius(final String viewpointName) {
-        return selectSiriuss(Arrays.asList(new String[] { viewpointName }), true);
+        return selectViewpoints(Arrays.asList(new String[] { viewpointName }), true);
     }
 
     /**
@@ -209,8 +209,8 @@ public class UserSession {
      *            name of viewpoints to select
      * @return the user session
      */
-    public UserSession selectSiriuss(final Iterable<String> viewpointNames) {
-        return selectSiriuss(viewpointNames, false);
+    public UserSession selectViewpoints(final Iterable<String> viewpointNames) {
+        return selectViewpoints(viewpointNames, false);
     }
 
     /**
@@ -220,11 +220,11 @@ public class UserSession {
      *            name of viewpoints to select
      * @return the user session
      */
-    public UserSession selectOnlySiriuss(final Iterable<String> viewpointNames) {
-        return selectSiriuss(viewpointNames, true);
+    public UserSession selectOnlyViewpoints(final Iterable<String> viewpointNames) {
+        return selectViewpoints(viewpointNames, true);
     }
 
-    private UserSession selectSiriuss(final Iterable<String> viewpointNames, final boolean onlyThisSiriuss) {
+    private UserSession selectViewpoints(final Iterable<String> viewpointNames, final boolean onlyThisViewpoints) {
         try {
             PlatformUI.getWorkbench().getProgressService().busyCursorWhile(new IRunnableWithProgress() {
                 public void run(IProgressMonitor monitor) {
@@ -233,7 +233,7 @@ public class UserSession {
                         Viewpoint viewpoint = findSiriusByName(viewpointName);
                         viewpoints.add(viewpoint);
                     }
-                    selectSiriuss(viewpoints, onlyThisSiriuss);
+                    selectViewpoints(viewpoints, onlyThisViewpoints);
                 }
             });
         } catch (InvocationTargetException e) {
@@ -244,22 +244,22 @@ public class UserSession {
         return this;
     }
 
-    private void selectSiriuss(final Collection<Viewpoint> viewpoints, boolean deselectOtherSiriuss) {
+    private void selectViewpoints(final Collection<Viewpoint> viewpoints, boolean deselectOtherViewpoints) {
 
-        Collection<Viewpoint> selectedSiriuss = session.getSelectedViewpoints(false);
+        Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
 
         Set<Viewpoint> viewpointsToDeselect = Sets.newHashSet();
         Set<Viewpoint> viewpointsToSelect = Sets.newHashSet();
 
         for (final Viewpoint viewpoint : viewpoints) {
             final Viewpoint vp = SiriusResourceHelper.getCorrespondingViewpoint(session, viewpoint);
-            if (!selectedSiriuss.contains(vp)) {
+            if (!selectedViewpoints.contains(vp)) {
                 viewpointsToSelect.add(vp);
             }
         }
 
-        if (deselectOtherSiriuss) {
-            for (final Viewpoint candidate : selectedSiriuss) {
+        if (deselectOtherViewpoints) {
+            for (final Viewpoint candidate : selectedViewpoints) {
                 if (!viewpointsToSelect.contains(candidate)) {
                     viewpointsToDeselect.add(candidate);
                 }

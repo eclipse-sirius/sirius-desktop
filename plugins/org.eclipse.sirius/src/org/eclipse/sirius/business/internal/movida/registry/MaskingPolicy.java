@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * The masking policy keeps track of which of the loaded resources are masked
- * and which actually contribute visible Sirius definitions. Only Siriuss
+ * and which actually contribute visible Sirius definitions. Only Viewpoints
  * defined in resources which are not masked are visible in the registry. It
  * must be notified by the registry each time a resource has been
  * {@link #resourceLoaded(Resource) loaded} or is about to be
@@ -69,7 +69,7 @@ public class MaskingPolicy {
     /**
      * A simple descriptor of the concrete implementation of a logical Sirius
      * by a specific resource. We use such an descriptor instead of referencing
-     * the Siriuss themselves so that the descriptors stay usable event when
+     * the Viewpoints themselves so that the descriptors stay usable event when
      * the Sirius's resource has been unloaded.
      */
     private static class SiriusImplementation {
@@ -118,7 +118,7 @@ public class MaskingPolicy {
     private Ordering<SiriusImplementation> viewpointComparator;
 
     /**
-     * All the Siriuss from all the loaded VSMs, whether they are visible or
+     * All the Viewpoints from all the loaded VSMs, whether they are visible or
      * not, organized by their Sirius URI. For each logical Sirius URI,
      * the providers are ordered using <code>viewpointComparator</code>, putting
      * the higher priority at the beginning.
@@ -126,9 +126,9 @@ public class MaskingPolicy {
     private final ListMultimap<URI, SiriusImplementation> viewpointImplementations = ArrayListMultimap.create();
 
     /**
-     * For each loaded resource A, gives the sum of the number of Siriuss
+     * For each loaded resource A, gives the sum of the number of Viewpoints
      * from another resource which masks an equivalent Sirius from the
-     * resource A. A resource (and all the Siriuss it defines) is visible if
+     * resource A. A resource (and all the Viewpoints it defines) is visible if
      * and only if this sum is 0.
      */
     private final Map<Resource, Integer> score = new MapMaker().makeComputingMap(Functions.constant(0));

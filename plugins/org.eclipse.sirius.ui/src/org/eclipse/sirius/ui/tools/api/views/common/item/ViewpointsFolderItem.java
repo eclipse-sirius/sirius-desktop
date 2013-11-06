@@ -19,6 +19,6 @@ import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
  * @author mchauvin
  * @since 2.4
  */
-public interface SiriussFolderItem extends CommonSessionItem, ItemDecorator {
+public interface ViewpointsFolderItem extends CommonSessionItem, ItemDecorator {
 
 }

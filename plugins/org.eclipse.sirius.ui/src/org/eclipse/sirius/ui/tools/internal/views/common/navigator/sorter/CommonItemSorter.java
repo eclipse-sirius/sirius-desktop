@@ -24,7 +24,7 @@ import org.eclipse.sirius.ui.tools.api.views.common.item.AnalysisResourceItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ProjectDependenciesItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ResourcesFolderItem;
-import org.eclipse.sirius.ui.tools.api.views.common.item.SiriussFolderItem;
+import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointsFolderItem;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -65,7 +65,7 @@ public class CommonItemSorter extends ViewerSorter {
             category = 1;
         } else if (element instanceof ResourcesFolderItem) {
             category = 2;
-        } else if (element instanceof SiriussFolderItem) {
+        } else if (element instanceof ViewpointsFolderItem) {
             category = 3;
         } else if (element instanceof AnalysisResourceItem) {
             category = 4;

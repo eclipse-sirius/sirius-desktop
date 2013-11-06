@@ -19,7 +19,7 @@ icons/full/decorator/outputFillClosedArrow.gif - org.eclipse.sirius.editor - org
 icons/full/hcomplete_task.gif - org.eclipse.emf.generic.editor - org.eclipse.emf.generic.editor/icons/complete_task.gif
 icons/full/help.gif - org.eclipse.m2m.atl.adt.editor - org.eclipse.m2m.atl.adt.editor/icons/condition.gif
 icons/full/obj16/ModelFile.gif - org.eclipse.emf.cdo.security.edit - org.eclipse.emf.cdo.security.edit/icons/full/obj16/ResourcePermission.gif
-icons/full/obj16/SiriusSpecificationProject.gif - org.eclipse.ui - org.eclipse.ui/icons/obj16/prj_obj.gif
+icons/full/obj16/ViewpointSpecificationProject.gif - org.eclipse.ui - org.eclipse.ui/icons/obj16/prj_obj.gif
 icons/full/obj16/file_odesign.gif - org.eclipse.sirius.editor - org.eclipse.sirius.editor/icons/full/obj16/file_odesign.gif
 icons/full/obj16/folder.gif - org.eclipse.e4.ui.workbench.swt - org.eclipse.e4.ui.workbench.swt/icons/full/obj16/fldr_obj.gif
 icons/full/wizban/NewModel.gif - org.eclipse.emf.eef.codegen.ecore - org.eclipse.emf.eef.codegen.ecore/templates/editor/NewModel.gif

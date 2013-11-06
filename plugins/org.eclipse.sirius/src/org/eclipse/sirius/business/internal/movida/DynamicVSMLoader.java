@@ -29,7 +29,7 @@ import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistryLis
 
 /**
  * A VSM Reloader is responsible for keeping the VSM resources loaded in a
- * resource set in sync with the logical Siriuss actually needed in the
+ * resource set in sync with the logical Viewpoints actually needed in the
  * resource set's context. It makes sure that all the VSMs required by the
  * context, and only them, are loaded and properly resolved.
  * 
@@ -49,12 +49,12 @@ public class DynamicVSMLoader implements ViewpointRegistryListener {
     private final ResourceSet resourceSet;
 
     /**
-     * The logical URIs of all the Siriuss which are explicitly required.
+     * The logical URIs of all the Viewpoints which are explicitly required.
      */
-    private final Set<URI> requiredSiriuss = Sets.newHashSet();
+    private final Set<URI> requiredViewpoints = Sets.newHashSet();
 
     /**
-     * The physical URIs of all the VSMs which provide the required Siriuss.
+     * The physical URIs of all the VSMs which provide the required Viewpoints.
      */
     private final Set<URI> requiredProviders = Sets.newHashSet();
 
@@ -86,12 +86,12 @@ public class DynamicVSMLoader implements ViewpointRegistryListener {
     }
 
     /**
-     * Returns the logical URIs of all the Siriuss required.
+     * Returns the logical URIs of all the Viewpoints required.
      * 
-     * @return the logical URIs of all the Siriuss required.
+     * @return the logical URIs of all the Viewpoints required.
      */
-    public Set<URI> getRequiredSiriuss() {
-        return requiredSiriuss;
+    public Set<URI> getRequiredViewpoints() {
+        return requiredViewpoints;
     }
 
     public synchronized void setErrorHandler(Runnable errorHandler) {
@@ -130,7 +130,7 @@ public class DynamicVSMLoader implements ViewpointRegistryListener {
         Preconditions.checkNotNull(viewpoint);
         Option<URI> provider = registry.getProvider(viewpoint);
         Preconditions.checkState(provider.some(), MessageFormat.format("The specified viewpoint {0} is not available.", viewpoint.toString()));
-        boolean added = this.requiredSiriuss.add(viewpoint);
+        boolean added = this.requiredViewpoints.add(viewpoint);
         if (added) {
             refresh();
         }
@@ -148,7 +148,7 @@ public class DynamicVSMLoader implements ViewpointRegistryListener {
      *            directly required.
      */
     public synchronized void unrequire(URI viewpoint) {
-        boolean removed = this.requiredSiriuss.remove(Preconditions.checkNotNull(viewpoint));
+        boolean removed = this.requiredViewpoints.remove(Preconditions.checkNotNull(viewpoint));
         if (removed) {
             refresh();
         }
@@ -166,7 +166,7 @@ public class DynamicVSMLoader implements ViewpointRegistryListener {
      */
     public synchronized void registryChanged(ViewpointRegistry reg, Set<URI> removed, Set<URI> added, Set<URI> changed) {
         assert reg == this.registry;
-        SetView<URI> absentRequirements = Sets.intersection(requiredSiriuss, removed);
+        SetView<URI> absentRequirements = Sets.intersection(requiredViewpoints, removed);
         if (!absentRequirements.isEmpty()) {
             if (errorHandler != null) {
                 errorHandler.run();
@@ -187,7 +187,7 @@ public class DynamicVSMLoader implements ViewpointRegistryListener {
 
     private Set<URI> computeRequiredProviders() {
         Set<URI> newProviders = Sets.newHashSet();
-        for (URI uri : requiredSiriuss) {
+        for (URI uri : requiredViewpoints) {
             Option<URI> provider = registry.getProvider(uri);
             assert provider.some();
             newProviders.add(provider.get());

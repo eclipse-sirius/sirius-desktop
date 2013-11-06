@@ -72,7 +72,7 @@ public final class ComponentizationHelper {
         Iterator<RepresentationExtensionDescription> it;
 
         /*
-         * We browse a first time, all the DIagramRepresentation in all Siriuss
+         * We browse a first time, all the DIagramRepresentation in all Viewpoints
          * to find contribution to the "diagramDescription"
          */
         for (final Viewpoint viewpoint : viewpoints) {
@@ -88,7 +88,7 @@ public final class ComponentizationHelper {
         }
 
         /*
-         * We browse all the DIagramRepresentation in all Siriuss to find
+         * We browse all the DIagramRepresentation in all Viewpoints to find
          * contribution to the DiagramRepresentation which already contribute.
          */
         while (!foundDiagramContributors.isEmpty()) {

@@ -6,7 +6,7 @@
          <meta.schema plugin="org.eclipse.sirius.movida" id="viewpointSpecificationModel" name="org.eclipse.sirius.viewpointSpecificationModel"/>
       </appinfo>
       <documentation>
-         Registers one or several Sirius Specification Models (VSMs) defined in a plugin.
+         Registers one or several Viewpoint Specification Models (VSMs) defined in a plugin.
       </documentation>
    </annotation>
 

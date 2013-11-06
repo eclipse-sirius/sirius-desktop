@@ -140,12 +140,12 @@ public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint
                     failingRules.addAll(getFaillingRulesFromCollection(objetTeste, validationSet.getAllRules().iterator()));
                 }
             }
-            failingRules.addAll(checkRulesFromActivatedSiriuss(objetTeste, diagram));
+            failingRules.addAll(checkRulesFromActivatedViewpoints(objetTeste, diagram));
         }
         return failingRules;
     }
 
-    private Collection<ValidationRule> checkRulesFromActivatedSiriuss(final DDiagramElement objetTeste, final DDiagram diagram) {
+    private Collection<ValidationRule> checkRulesFromActivatedViewpoints(final DDiagramElement objetTeste, final DDiagram diagram) {
         final EObject semantic = objetTeste.getTarget();
         final ValidationRule firstFailingRule = null;
         final Session session = SessionManager.INSTANCE.getSession(semantic);

@@ -212,7 +212,7 @@ public interface Session {
      *            if true, we walk through all DAnalysis to get selected
      *            {@link DView}, otherwise we consider only the main DAnalysis
      *            that of {@link Session#getSessionResource()}, specify false if
-     *            we are not sure because now the Siriuss selection is stored
+     *            we are not sure because now the Viewpoints selection is stored
      *            on the main DAnalysis
      * @return current viewpoint selection
      */

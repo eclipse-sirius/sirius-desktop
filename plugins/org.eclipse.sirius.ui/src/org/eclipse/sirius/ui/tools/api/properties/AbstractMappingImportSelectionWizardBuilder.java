@@ -45,19 +45,19 @@ public abstract class AbstractMappingImportSelectionWizardBuilder {
 
     private Collection<AbstractNodeMapping> importers;
 
-    private Collection<Viewpoint> availableSiriuss;
+    private Collection<Viewpoint> availableViewpoints;
 
     /**
      * Create a new instance of selection wizard .
      * 
      * @param nodeMapping
      *            the current nope mapping
-     * @param availableSiriuss
+     * @param availableViewpoints
      *            the available viewpoints
      */
-    public AbstractMappingImportSelectionWizardBuilder(final AbstractNodeMapping nodeMapping, final Collection<Viewpoint> availableSiriuss) {
+    public AbstractMappingImportSelectionWizardBuilder(final AbstractNodeMapping nodeMapping, final Collection<Viewpoint> availableViewpoints) {
         this.currentMapping = nodeMapping;
-        this.availableSiriuss = availableSiriuss;
+        this.availableViewpoints = availableViewpoints;
     }
 
     /**
@@ -71,7 +71,7 @@ public abstract class AbstractMappingImportSelectionWizardBuilder {
 
         final TreeItemWrapper root = new TreeItemWrapper(null, null);
 
-        for (Viewpoint viewpoint : availableSiriuss) {
+        for (Viewpoint viewpoint : availableViewpoints) {
             addSiriusItems(viewpoint, root);
         }
         return root;
@@ -85,7 +85,7 @@ public abstract class AbstractMappingImportSelectionWizardBuilder {
      *            the eObject to used to retrieve the resource set
      * @return all the available viewpoints
      */
-    public static Collection<Viewpoint> getAvailableSiriussInResourceSet(final EObject eObject) {
+    public static Collection<Viewpoint> getAvailableViewpointsInResourceSet(final EObject eObject) {
         final Resource eResource = eObject.eResource();
         if (eResource != null) {
             final ResourceSet resourceSet = eResource.getResourceSet();

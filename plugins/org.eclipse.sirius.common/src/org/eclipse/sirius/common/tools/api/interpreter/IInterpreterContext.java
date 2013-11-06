@@ -38,7 +38,7 @@ public interface IInterpreterContext {
      * "current" element to be validated. It can not be true, for example when
      * considering a PopupMenuContribution's precondition, that is only
      * evaluated with variables and the clicked element whose type can not be
-     * computed from Sirius Specification Model. The receiver will be typed
+     * computed from Viewpoint Specification Model. The receiver will be typed
      * as EObject.
      * 
      * @return true if the expression need all possibles type that can be held
@@ -50,7 +50,7 @@ public interface IInterpreterContext {
      * Returns the names of all possible types for the target of the expression
      * to evaluate.
      * 
-     * The types are computed from the Sirius Specification Model. If the
+     * The types are computed from the Viewpoint Specification Model. If the
      * resulting list is empty and the requiresTargetTypes() method return
      * false, the expected evaluation context type will be EObject.
      * 

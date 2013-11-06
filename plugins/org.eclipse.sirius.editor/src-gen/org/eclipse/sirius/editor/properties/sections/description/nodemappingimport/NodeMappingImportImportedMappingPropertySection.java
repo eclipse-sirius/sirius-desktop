@@ -175,7 +175,7 @@ public class NodeMappingImportImportedMappingPropertySection extends AbstractCom
             public void widgetSelected(final SelectionEvent e) {
 
                 final NodeMappingImportSelectionWizardItemsBuilder builder = new NodeMappingImportSelectionWizardItemsBuilder((NodeMapping) eObject, AbstractMappingImportSelectionWizardBuilder
-                        .getAvailableSiriussInResourceSet(eObject));
+                        .getAvailableViewpointsInResourceSet(eObject));
                 final TreeItemWrapper input = builder.buildMappingInput();
 
                 final Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();

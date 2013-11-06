@@ -190,7 +190,7 @@ public class DirectEObjectReferenceValuePropertySection extends AbstractComboPro
             public void widgetSelected(SelectionEvent e) {
                 if (eObject instanceof DirectEObjectReference) {
                     List<EObject> roots = Lists.newArrayList();
-                    roots.addAll(AbstractMappingImportSelectionWizardBuilder.getAvailableSiriussInResourceSet(eObject));
+                    roots.addAll(AbstractMappingImportSelectionWizardBuilder.getAvailableViewpointsInResourceSet(eObject));
                     AdapterFactory af = SiriusEditPlugin.getPlugin().getItemProvidersAdapterFactory();
                     TreeItemWrapper wrapper = buildWrapper(roots);
                     EObjectSelectionWizard wizard = new EObjectSelectionWizard("Selection", "Please select an object to reference", null, wrapper, af);

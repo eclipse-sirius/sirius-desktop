@@ -50,7 +50,7 @@ public interface DDiagramSet extends EObject {
      * @see #isSetDescription()
      * @see #unsetDescription()
      * @see #setDescription(DiagramDescription)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getSiriusSet_Description()
+     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewpointSet_Description()
      * @model unsettable="true"
      * @generated
      */

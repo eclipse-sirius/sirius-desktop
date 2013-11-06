@@ -36,11 +36,11 @@ public class ContainerMappingImportSelectionWizardItemsBuilder extends AbstractM
      * 
      * @param containerMapping
      *            a container mapping
-     * @param availableSiriuss
+     * @param availableViewpoints
      *            the available viewpoints
      */
-    public ContainerMappingImportSelectionWizardItemsBuilder(final ContainerMapping containerMapping, final Collection<Viewpoint> availableSiriuss) {
-        super(containerMapping, availableSiriuss);
+    public ContainerMappingImportSelectionWizardItemsBuilder(final ContainerMapping containerMapping, final Collection<Viewpoint> availableViewpoints) {
+        super(containerMapping, availableViewpoints);
     }
 
     /**

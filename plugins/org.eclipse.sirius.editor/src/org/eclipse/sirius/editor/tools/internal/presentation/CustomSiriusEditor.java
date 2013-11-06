@@ -71,7 +71,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
- * The advanced Sirius Specification Model (*.odesign) Editor, base on the
+ * The advanced Viewpoint Specification Model (*.odesign) Editor, base on the
  * standard EMF-generated editor, but with Sirius-specific customizations.
  */
 public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigable {
@@ -196,7 +196,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             if (Movida.isEnabled()) {
                 /*
                  * Customize the label provider to add the URI of the
-                 * corresponding resource for Siriuss loaded by dependency.
+                 * corresponding resource for Viewpoints loaded by dependency.
                  */
                 decoratingLabelProvider = new GeneratedElementsLabelProvider((ILabelProvider) selectionViewer.getLabelProvider(), validationDecorator) {
                     public String getText(Object element) {
@@ -218,7 +218,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             if (Movida.isEnabled()) {
                 /*
                  * Customize the content provider not to show the whole
-                 * resources loaded by dependency, but only the Siriuss (inside
+                 * resources loaded by dependency, but only the Viewpoints (inside
                  * these resources) which the main VSM depend on.
                  */
                 final ViewpointRegistry registry = (ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance();
@@ -226,7 +226,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                     @Override
                     public Object[] getElements(Object object) {
                         if (object instanceof ResourceSet) {
-                            Set<EObject> viewpoints = getRequiredSiriuss(registry, (ResourceSet) object);
+                            Set<EObject> viewpoints = getRequiredViewpoints(registry, (ResourceSet) object);
                             List<Object> elements = Lists.newArrayList();
                             Resource mainResource = ((ResourceSet) object).getResources().get(0);
                             elements.add(mainResource);
@@ -241,9 +241,9 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                         }
                     }
 
-                    private Set<EObject> getRequiredSiriuss(final ViewpointRegistry registry, ResourceSet resourceSet) {
+                    private Set<EObject> getRequiredViewpoints(final ViewpointRegistry registry, ResourceSet resourceSet) {
                         Set<EObject> viewpoints = Sets.newHashSet();
-                        for (final URI uri : loader.getRequiredSiriuss()) {
+                        for (final URI uri : loader.getRequiredViewpoints()) {
                             Option<URI> provider = registry.getProvider(uri);
                             if (provider.some()) {
                                 Resource res = resourceSet.getResource(provider.get(), true);

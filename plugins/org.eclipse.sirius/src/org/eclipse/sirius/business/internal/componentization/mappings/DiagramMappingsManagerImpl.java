@@ -324,8 +324,8 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * 
      * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManagerListener#mappingsComputed()
      */
-    public void mappingsComputed(Collection<Viewpoint> enabledSiriuss) {
-        computeMappings(enabledSiriuss, false);
+    public void mappingsComputed(Collection<Viewpoint> enabledViewpoints) {
+        computeMappings(enabledViewpoints, false);
     }
 
     /**

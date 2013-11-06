@@ -25,7 +25,7 @@ import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.ui.tools.api.views.common.item.SiriusItem;
+import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointItem;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -35,8 +35,8 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * 
  * @author mchauvin
  */
-public class SiriusItemImpl implements SiriusItem,
-		Comparable<SiriusItemImpl>, ItemDecorator, IAdaptable {
+public class ViewpointItemImpl implements ViewpointItem,
+		Comparable<ViewpointItemImpl>, ItemDecorator, IAdaptable {
 
 	private final Session session;
 
@@ -58,7 +58,7 @@ public class SiriusItemImpl implements SiriusItem,
 	 * @param parent
 	 *            Parent tree item
 	 */
-	public SiriusItemImpl(final Session session, final Viewpoint viewpoint,
+	public ViewpointItemImpl(final Session session, final Viewpoint viewpoint,
 			final Object parent) {
 		this.session = session;
 		this.viewpoint = viewpoint;
@@ -76,9 +76,9 @@ public class SiriusItemImpl implements SiriusItem,
 	 *            Sirius
 	 * @param parent
 	 *            Parent tree item
-	 * @see #SiriusItem(Session, Viewpoint, Object)
+	 * @see #ViewpointItem(Session, Viewpoint, Object)
 	 */
-	public SiriusItemImpl(final Session session, final Viewpoint viewpoint,
+	public ViewpointItemImpl(final Session session, final Viewpoint viewpoint,
 			final Resource resource, final Object parent) {
 		this(session, viewpoint, parent);
 		this.resource = resource;
@@ -92,7 +92,7 @@ public class SiriusItemImpl implements SiriusItem,
 	/**
 	 * {@inheritDoc}
 	 */
-	public int compareTo(final SiriusItemImpl o) {
+	public int compareTo(final ViewpointItemImpl o) {
 		if (viewpoint.getName() != null) {
 			return viewpoint.getName().compareTo(o.viewpoint.getName());
 		}
@@ -110,8 +110,8 @@ public class SiriusItemImpl implements SiriusItem,
 		if (this == obj) {
 			result = true;
 		} else {
-			if (obj instanceof SiriusItemImpl) {
-				final SiriusItemImpl objItem = (SiriusItemImpl) obj;
+			if (obj instanceof ViewpointItemImpl) {
+				final ViewpointItemImpl objItem = (ViewpointItemImpl) obj;
 				result = compareTo(objItem) == 0
 						&& objItem.parent.equals(parent);
 			}
@@ -158,7 +158,7 @@ public class SiriusItemImpl implements SiriusItem,
 		return resource;
 	}
 
-	protected boolean isSafeSirius() {
+	protected boolean isSafeViewpoint() {
 		return viewpoint.eResource() != null && !viewpoint.eIsProxy();
 	}
 
@@ -178,7 +178,7 @@ public class SiriusItemImpl implements SiriusItem,
 	 */
 	public Collection<?> getChildren() {
 		final List<RepresentationDescriptionItemImpl> all = new ArrayList<RepresentationDescriptionItemImpl>();
-		if (isSafeSirius()) {
+		if (isSafeViewpoint()) {
 			for (final RepresentationDescription representationDescription : new ViewpointQuery(
 					viewpoint).getAllRepresentationDescriptions()) {
 				if (isFilterForResource()) {
@@ -208,7 +208,7 @@ public class SiriusItemImpl implements SiriusItem,
 	}
 
 	public String getText() {
-		return isSafeSirius() ? new IdentifiedElementQuery(viewpoint)
+		return isSafeViewpoint() ? new IdentifiedElementQuery(viewpoint)
 				.getLabel() : "\"Not found\"";
 	}
 

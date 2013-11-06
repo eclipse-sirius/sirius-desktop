@@ -46,7 +46,7 @@ import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
  * 
  * @author smonnier, pcdavid
  */
-public class SiriusSpecificationProjectWizard extends Wizard implements INewWizard {
+public class ViewpointSpecificationProjectWizard extends Wizard implements INewWizard {
 
     /**
      * Wizard id.
@@ -101,7 +101,7 @@ public class SiriusSpecificationProjectWizard extends Wizard implements INewWiza
      */
     public void init(final IWorkbench wkbch, final IStructuredSelection sel) {
         this.workbench = wkbch;
-        setWindowTitle("New Sirius Specification Project");
+        setWindowTitle("New Viewpoint Specification Project");
         setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(SiriusEditorPlugin.INSTANCE.getImage("full/wizban/banner_viewpoint_specification_project.gif")));
     }
 
@@ -116,10 +116,10 @@ public class SiriusSpecificationProjectWizard extends Wizard implements INewWiza
      */
     @Override
     public void addPages() {
-        newProjectPage = new WizardNewProjectCreationPage(SiriusEditorPlugin.getPlugin().getString("_UI_SiriusSpecificationProjectWizard_label")); //$NON-NLS-1$
+        newProjectPage = new WizardNewProjectCreationPage(SiriusEditorPlugin.getPlugin().getString("_UI_ViewpointSpecificationProjectWizard_label")); //$NON-NLS-1$
         newProjectPage.setInitialProjectName(MODULE_NAME_PREFIX);
-        newProjectPage.setTitle(SiriusEditorPlugin.getPlugin().getString("_UI_SiriusSpecificationProjectWizard_label")); //$NON-NLS-1$
-        newProjectPage.setDescription(SiriusEditorPlugin.getPlugin().getString("_UI_SiriusSpecificationProjectWizard_description")); //$NON-NLS-1$        
+        newProjectPage.setTitle(SiriusEditorPlugin.getPlugin().getString("_UI_ViewpointSpecificationProjectWizard_label")); //$NON-NLS-1$
+        newProjectPage.setDescription(SiriusEditorPlugin.getPlugin().getString("_UI_ViewpointSpecificationProjectWizard_description")); //$NON-NLS-1$        
         project = ResourcesPlugin.getWorkspace().getRoot().getProject(newProjectPage.getProjectName());
         addPage(newProjectPage);
 

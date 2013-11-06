@@ -24,6 +24,12 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
+import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
+import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.CommonItemSorter;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -32,13 +38,6 @@ import org.eclipse.ui.dialogs.FilteredTree;
 import org.eclipse.ui.dialogs.PatternFilter;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
-import org.eclipse.sirius.ui.tools.internal.views.common.navigator.sorter.CommonItemSorter;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Page to select representations from an Aird.
@@ -141,28 +140,8 @@ public class RepresentationSelectionWizardPage extends WizardPage {
             }
         });
 
-        // Button button = new Button(pageComposite, SWT.PUSH);
-        // button.setText("Activate viewpoints");
-        // button.addSelectionListener(new SelectionAdapter() {
-        // @Override
-        // public void widgetSelected(final SelectionEvent event) {
-        // activateSiriusButtonPressed();
-        // }
-        // });
-        // button.setFont(parent.getFont());
-        // button.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-
         setControl(pageComposite);
     }
-
-    // protected void activateSiriusButtonPressed() {
-    // PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
-    // public void run() {
-    // SiriusSelection.openSiriussForSessionSelectionDialog(root);
-    // // todo virer la dialogue de aird selection
-    // }
-    // });
-    // }
 
     /**
      * Create the table viewer.

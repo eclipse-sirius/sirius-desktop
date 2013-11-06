@@ -52,18 +52,18 @@
   </topic>
   <topic href="doc/specifier/Sirius Specifier Manual.html" label="Sirius Specifier Manual">
     <anchor id="specifierStart"/>
-    <topic href="doc/specifier/general/Specifying_Siriuss.html" label="Siriuss">
-      <topic href="doc/specifier/general/Specifying_Siriuss.html#introduction" label="Introduction" />
-      <topic href="doc/specifier/general/Specifying_Siriuss.html#concepts" label="Philosophy and Concepts" />
-      <topic href="doc/specifier/general/Specifying_Siriuss.html#vsp" label="Sirius Specification Projects" />
-      <topic href="doc/specifier/general/Specifying_Siriuss.html#vsm" label="Sirius Specification Models">
-	<topic href="doc/specifier/general/Specifying_Siriuss.html#vsm_organization" label="Organization" />
-	<topic href="doc/specifier/general/Specifying_Siriuss.html#common_attributes" label="Common Attributes"/>
-	<topic href="doc/specifier/general/Specifying_Siriuss.html#type_names" label="Type Names"/>
-	<topic href="doc/specifier/general/Specifying_Siriuss.html#interpreted_expressions" label="Interpreted Expressions"/>
-	<topic href="doc/specifier/general/Specifying_Siriuss.html#model_operations" label="Model Operations"/>
-	<topic href="doc/specifier/general/Specifying_Siriuss.html#validation" label="VSM Validation"/>
-	<topic href="doc/specifier/general/Specifying_Siriuss.html#dynamic" label="Dynamic Development"/>
+    <topic href="doc/specifier/general/Specifying_Viewpoints.html" label="Viewpoints">
+      <topic href="doc/specifier/general/Specifying_Viewpoints.html#introduction" label="Introduction" />
+      <topic href="doc/specifier/general/Specifying_Viewpoints.html#concepts" label="Philosophy and Concepts" />
+      <topic href="doc/specifier/general/Specifying_Viewpoints.html#vsp" label="Viewpoint Specification Projects" />
+      <topic href="doc/specifier/general/Specifying_Viewpoints.html#vsm" label="Viewpoint Specification Models">
+	<topic href="doc/specifier/general/Specifying_Viewpoints.html#vsm_organization" label="Organization" />
+	<topic href="doc/specifier/general/Specifying_Viewpoints.html#common_attributes" label="Common Attributes"/>
+	<topic href="doc/specifier/general/Specifying_Viewpoints.html#type_names" label="Type Names"/>
+	<topic href="doc/specifier/general/Specifying_Viewpoints.html#interpreted_expressions" label="Interpreted Expressions"/>
+	<topic href="doc/specifier/general/Specifying_Viewpoints.html#model_operations" label="Model Operations"/>
+	<topic href="doc/specifier/general/Specifying_Viewpoints.html#validation" label="VSM Validation"/>
+	<topic href="doc/specifier/general/Specifying_Viewpoints.html#dynamic" label="Dynamic Development"/>
       </topic>
     </topic>
     <topic href="doc/specifier/diagrams/Diagrams.html" label="Diagrams">

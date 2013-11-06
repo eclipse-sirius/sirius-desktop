@@ -2724,4 +2724,4 @@ public class ViewpointSwitch<T> {
         return null;
     }
 
-} // SiriusSwitch
+} // Viewpointswitch

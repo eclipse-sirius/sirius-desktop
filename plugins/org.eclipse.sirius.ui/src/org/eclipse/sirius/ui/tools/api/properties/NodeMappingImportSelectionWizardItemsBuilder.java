@@ -38,11 +38,11 @@ public class NodeMappingImportSelectionWizardItemsBuilder extends AbstractMappin
      * 
      * @param nodeMapping
      *            .
-     * @param availableSiriuss
+     * @param availableViewpoints
      *            the available viewpoints
      */
-    public NodeMappingImportSelectionWizardItemsBuilder(final NodeMapping nodeMapping, final Collection<Viewpoint> availableSiriuss) {
-        super(nodeMapping, availableSiriuss);
+    public NodeMappingImportSelectionWizardItemsBuilder(final NodeMapping nodeMapping, final Collection<Viewpoint> availableViewpoints) {
+        super(nodeMapping, availableViewpoints);
     }
 
     /**

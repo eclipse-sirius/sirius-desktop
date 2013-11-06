@@ -54,7 +54,7 @@ public interface RepresentationTemplateEditManager {
      * Implementation should be fast as it will be called quite often.
      * 
      * @param vsmObject
-     *            any object from the Sirius Specification Model.
+     *            any object from the Viewpoint Specification Model.
      * @return true if the given object is automatically computed based on
      *         another.
      */

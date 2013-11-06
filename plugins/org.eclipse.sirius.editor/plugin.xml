@@ -2361,14 +2361,14 @@
     </wizard>
     <wizard
           category="org.eclipse.sirius.category"
-          class="org.eclipse.sirius.editor.tools.internal.wizards.SiriusSpecificationProjectWizard"
+          class="org.eclipse.sirius.editor.tools.internal.wizards.ViewpointSpecificationProjectWizard"
           finalPerspective="org.eclipse.sirius.ui.tools.perspective.design"
-          icon="icons/full/obj16/SiriusSpecificationProject.gif"
+          icon="icons/full/obj16/ViewpointSpecificationProject.gif"
           id="org.eclipse.sirius.ui.specificationproject.wizard"
           name="Viewpoint Specification Project"
           project="true">
        <description>
-          %_UI_SiriusSpecificationProjectWizard_label
+          %_UI_ViewpointSpecificationProjectWizard_label
        </description>
     </wizard>
   </extension>

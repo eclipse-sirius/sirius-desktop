@@ -177,7 +177,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         DTable table = (DTable) representation;
         Session session = SessionManager.INSTANCE.getSession(table.getTarget());
         IncrementalModelContributor imc = getModelContributor(session, table);
-        EObject result = imc.apply(table.getDescription(), new RepresentationExtensionsFinder(table.getDescription()).findAllRelevantSiriuss(session));
+        EObject result = imc.apply(table.getDescription(), new RepresentationExtensionsFinder(table.getDescription()).findAllRelevantViewpoints(session));
 //        if (table.getEffectiveDescription() == null) {
 //            table.setEffectiveDescription((TableDescription) result);
 //        }

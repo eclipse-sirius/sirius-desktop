@@ -98,15 +98,15 @@ public class RepresentationExtensionsFinder {
      * Returns the subset of the viewpoints currently selected in the session
      * which are relevant for the specified representation description. This
      * includes the representation description's parent Sirius, all the
-     * Siriuss it reuses, all the Siriuss which extend any of those, and
-     * recursively all the Siriuss those reuses or are extended by.
+     * Viewpoints it reuses, all the Viewpoints which extend any of those, and
+     * recursively all the Viewpoints those reuses or are extended by.
      * 
      * @param session
      *            the session in which the representation description is used.
-     * @return all the Siriuss which are relevant for the computation of the
+     * @return all the Viewpoints which are relevant for the computation of the
      *         effective representation description.
      */
-    public LinkedHashSet<Viewpoint> findAllRelevantSiriuss(Session session) {
+    public LinkedHashSet<Viewpoint> findAllRelevantViewpoints(Session session) {
         RepresentationDescription mainRepresentationDescription = extensionTarget;
         LinkedHashSet<Viewpoint> result = Sets.newLinkedHashSet();
         Viewpoint mainVP = new RepresentationDescriptionQuery(mainRepresentationDescription).getParentSirius();
@@ -123,18 +123,18 @@ public class RepresentationExtensionsFinder {
              * Seed the result with the representation's parent Sirius and
              * augment it with the viewpoints we reuse or are extended by until
              * we reach a fixpoint. Guaranteed to terminate as the set of
-             * Siriuss we can add is finite (at the most, all the selected
-             * Siriuss).
+             * Viewpoints we can add is finite (at the most, all the selected
+             * Viewpoints).
              */
             boolean changed = result.add(mainVP);
             while (changed) {
                 changed = false;
-                // Add all the Siriuss we reuse.
+                // Add all the Viewpoints we reuse.
                 for (Viewpoint v1 : Lists.newArrayList(result)) {
                     URI uri = candidates.inverse().get(v1);
                     changed = changed || Iterables.addAll(result, Iterables.transform(relations.getReuse().apply(uri), Functions.forMap(candidates)));
                 }
-                // Add all the Siriuss which extend any of us.
+                // Add all the Viewpoints which extend any of us.
                 for (Viewpoint v : session.getSelectedViewpoints(false)) {
                     URI extenderUri = candidates.inverse().get(v);
                     for (URI extendeeUri : relations.getCustomize().apply(extenderUri)) {

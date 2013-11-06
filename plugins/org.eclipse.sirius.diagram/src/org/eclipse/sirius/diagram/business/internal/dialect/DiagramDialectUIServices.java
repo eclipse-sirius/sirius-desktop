@@ -165,12 +165,12 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
                 // If the current DDiagram is shared on a CDO repository and
                 // some
-                // needed Siriuss are not activated (for example a
+                // needed Viewpoints are not activated (for example a
                 // contributed
                 // activated layer)
                 Set<Viewpoint> viewpointsActivated = null;
                 if (URIQuery.CDO_URI_SCHEME.equals(diag.eResource().getURI().scheme())) {
-                    viewpointsActivated = activateNeededSiriuss(session, diag, monitor);
+                    viewpointsActivated = activateNeededViewpoints(session, diag, monitor);
                 }
                 for (final EObject object : gmfDiags) {
                     final Diagram gmfDiag = (Diagram) object;
@@ -181,7 +181,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                     }
                 }
                 if (viewpointsActivated != null && !viewpointsActivated.isEmpty()) {
-                    informOfActivateNeededSiriuss(viewpointsActivated);
+                    informOfActivateNeededViewpoints(viewpointsActivated);
                 }
             }
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.OPEN_DIAGRAM_KEY);
@@ -221,30 +221,30 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return dialectEditor;
     }
 
-    private Set<Viewpoint> activateNeededSiriuss(Session session, DDiagram dDiagram, IProgressMonitor monitor) {
+    private Set<Viewpoint> activateNeededViewpoints(Session session, DDiagram dDiagram, IProgressMonitor monitor) {
         List<Layer> activatedLayers = dDiagram.getActivatedLayers();
-        Set<Viewpoint> neededSiriuss = new LinkedHashSet<Viewpoint>();
+        Set<Viewpoint> neededViewpoints = new LinkedHashSet<Viewpoint>();
         for (Layer activatedLayer : activatedLayers) {
             if (!activatedLayer.eIsProxy() && activatedLayer.eContainer() != null) {
                 Viewpoint viewpoint = (Viewpoint) activatedLayer.eContainer().eContainer();
-                neededSiriuss.add(viewpoint);
+                neededViewpoints.add(viewpoint);
             }
         }
-        Set<Viewpoint> selectedSiriuss = new LinkedHashSet<Viewpoint>();
+        Set<Viewpoint> selectedViewpoints = new LinkedHashSet<Viewpoint>();
         for (Viewpoint viewpoint : session.getSelectedViewpoints(false)) {
-            selectedSiriuss.add(SiriusResourceHelper.getCorrespondingViewpoint(session, viewpoint));
+            selectedViewpoints.add(SiriusResourceHelper.getCorrespondingViewpoint(session, viewpoint));
         }
-        neededSiriuss.removeAll(selectedSiriuss);
-        if (!neededSiriuss.isEmpty()) {
-            Command changeSiriussSelectionCmd = new ChangeViewpointSelectionCommand(session, new ViewpointSelectionCallback(), neededSiriuss, Collections.<Viewpoint> emptySet(),
-                    new SubProgressMonitor(monitor, neededSiriuss.size()));
-            session.getTransactionalEditingDomain().getCommandStack().execute(changeSiriussSelectionCmd);
+        neededViewpoints.removeAll(selectedViewpoints);
+        if (!neededViewpoints.isEmpty()) {
+            Command changeViewpointsSelectionCmd = new ChangeViewpointSelectionCommand(session, new ViewpointSelectionCallback(), neededViewpoints, Collections.<Viewpoint> emptySet(),
+                    new SubProgressMonitor(monitor, neededViewpoints.size()));
+            session.getTransactionalEditingDomain().getCommandStack().execute(changeViewpointsSelectionCmd);
             monitor.worked(1);
         }
-        return neededSiriuss;
+        return neededViewpoints;
     }
 
-    private void informOfActivateNeededSiriuss(Set<Viewpoint> viewpointsActivated) {
+    private void informOfActivateNeededViewpoints(Set<Viewpoint> viewpointsActivated) {
         Iterator<Viewpoint> iterator = viewpointsActivated.iterator();
         Viewpoint neededSirius = iterator.next();
         String viewpointsName = neededSirius.getName();
@@ -256,7 +256,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
         PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
 
             public void run() {
-                MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Siriuss selection", "The current diagram requires some viewpoints selected (" + description
+                MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Viewpoints selection", "The current diagram requires some viewpoints selected (" + description
                         + "), because some activated layers are contributed by these viewpoints");
             }
 

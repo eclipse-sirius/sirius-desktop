@@ -176,7 +176,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * Returns the value of the '<em><b>Sub Diagrams</b></em>' containment
      * reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.DDiagram}. <!-- begin-user-doc -->
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Siriuss that are owned by
+     * <!-- end-user-doc --> <!-- begin-model-doc --> Viewpoints that are owned by
      * this viewpoint. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Sub Diagrams</em>' containment reference

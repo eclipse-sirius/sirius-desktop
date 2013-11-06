@@ -69,7 +69,7 @@ public class LegacyPluginMonitor extends AbstractViewpointResourceMonitor {
      * 
      * @param modelerModelResourcePath
      *            the platform file path ("pluginname/rep1/rep2/file.odesign)
-     * @return the added Siriuss;
+     * @return the added Viewpoints;
      */
     public Set<Viewpoint> registerFromPlugin(String modelerModelResourcePath) {
         try {

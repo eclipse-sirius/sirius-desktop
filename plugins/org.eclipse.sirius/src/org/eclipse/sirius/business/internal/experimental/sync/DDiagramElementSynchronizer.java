@@ -138,7 +138,7 @@ public class DDiagramElementSynchronizer {
      * 
      * @param mappingManager
      *            the manager used to handle return the Mappings to consider
-     *            regarding the enablement of Siriuss.
+     *            regarding the enablement of Viewpoints.
      * @param candidate
      *            the node candidate, it contains the mapping and the semantic
      *            target.
@@ -155,7 +155,7 @@ public class DDiagramElementSynchronizer {
      * 
      * @param mappingManager
      *            the manager used to handle return the Mappings to consider
-     *            regarding the enablement of Siriuss.
+     *            regarding the enablement of Viewpoints.
      * @param candidate
      *            the node candidate, it contains the mapping and the semantic
      *            target.
@@ -288,7 +288,7 @@ public class DDiagramElementSynchronizer {
      * 
      * @param mappingManager
      *            the manager used to handle return the Mappings to consider
-     *            regarding the enablement of Siriuss.
+     *            regarding the enablement of Viewpoints.
      * @param candidate
      *            the edge candidate
      * @param mappingsToEdgeTargets

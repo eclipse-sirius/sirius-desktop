@@ -132,7 +132,7 @@ public interface SessionListener {
     int REPRESENTATION_FROZEN = 15;
 
     /**
-     * Value to notify that some Sirius Specification Model were updated. For
+     * Value to notify that some Viewpoint Specification Model were updated. For
      * example, a workspace .odesign file used in the current session was
      * modified or deleted.
      */

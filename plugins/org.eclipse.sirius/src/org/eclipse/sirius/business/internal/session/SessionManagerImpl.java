@@ -71,7 +71,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
      */
     private Set<SessionManagerListener> programmaticListeners = Sets.newLinkedHashSet();
 
-    private Set<Viewpoint> selectedSiriuss = new HashSet<Viewpoint>();
+    private Set<Viewpoint> selectedViewpoints = new HashSet<Viewpoint>();
 
     private final Map<Session, SessionListener> sessionsToListeners = Maps.newHashMap();
 
@@ -374,21 +374,21 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
 
         //
         // Selecting.
-        final Set<Viewpoint> selectingSiriuss = new HashSet<Viewpoint>(newSelectedViewpoints);
-        selectingSiriuss.removeAll(this.selectedSiriuss);
-        for (final Viewpoint viewpoint : selectingSiriuss) {
+        final Set<Viewpoint> selectingViewpoints = new HashSet<Viewpoint>(newSelectedViewpoints);
+        selectingViewpoints.removeAll(this.selectedViewpoints);
+        for (final Viewpoint viewpoint : selectingViewpoints) {
             fireSelectedSiriusEvent(viewpoint);
         }
 
         //
         // Deselecting.
-        final Set<Viewpoint> deselectingSiriuss = new HashSet<Viewpoint>(this.selectedSiriuss);
-        deselectingSiriuss.removeAll(newSelectedViewpoints);
-        for (final Viewpoint viewpoint : deselectingSiriuss) {
+        final Set<Viewpoint> deselectingViewpoints = new HashSet<Viewpoint>(this.selectedViewpoints);
+        deselectingViewpoints.removeAll(newSelectedViewpoints);
+        for (final Viewpoint viewpoint : deselectingViewpoints) {
             fireDeselectedSiriusEvent(viewpoint);
         }
 
-        this.selectedSiriuss = newSelectedViewpoints;
+        this.selectedViewpoints = newSelectedViewpoints;
 
     }
 

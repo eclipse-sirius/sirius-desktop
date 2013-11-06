@@ -68,7 +68,7 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
      * @param session
      *            the current session.
      * @param callback
-     *            the current SiriusSelection.Callback
+     *            the current Viewpointselection.Callback
      * @param newSelectedViewpoints
      *            the new selected viewpoints.
      * @param newDeselectedViewpoints
@@ -92,7 +92,7 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
      * @param session
      *            the current session.
      * @param callback
-     *            the current SiriusSelection.Callback
+     *            the current Viewpointselection.Callback
      * @param newSelectedViewpoints
      *            the new selected viewpoints.
      * @param newDeselectedViewpoints
@@ -119,8 +119,8 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
             return;
         }
         try {
-            int nbSiriussInChange = (newSelectedViewpoints != null ? newSelectedViewpoints.size() + 1 : 0) + (newDeselectedViewpoints != null ? newDeselectedViewpoints.size() : 0);
-            monitor.beginTask("Apply new viewpoints selection...", nbSiriussInChange);
+            int nbViewpointsInChange = (newSelectedViewpoints != null ? newSelectedViewpoints.size() + 1 : 0) + (newDeselectedViewpoints != null ? newDeselectedViewpoints.size() : 0);
+            monitor.beginTask("Apply new viewpoints selection...", nbViewpointsInChange);
             if (newSelectedViewpoints != null) {
                 List<Viewpoint> sorted = sortByDependencies(newSelectedViewpoints);
                 monitor.worked(1);
@@ -146,7 +146,7 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
      */
     private List<Viewpoint> sortByDependencies(Collection<Viewpoint> viewpoints) {
         // Code taken from
-        // DAnalysisSessionImpl#getSelectedSiriussSpecificToGeneric, except
+        // DAnalysisSessionImpl#getSelectedViewpointsSpecificToGeneric, except
         // that we want the opposite order
         List<Viewpoint> orderedViewpoints = new ArrayList<Viewpoint>(viewpoints.size());
         for (Viewpoint viewpoint : viewpoints) {

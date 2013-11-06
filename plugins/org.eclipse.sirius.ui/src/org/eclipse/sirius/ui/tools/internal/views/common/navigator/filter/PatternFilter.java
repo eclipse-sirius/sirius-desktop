@@ -39,7 +39,7 @@ import org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ProjectDependenciesItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ResourcesFolderItem;
-import org.eclipse.sirius.ui.tools.api.views.common.item.SiriussFolderItem;
+import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointsFolderItem;
 
 /**
  * A filter used in conjunction with <code>FilteredCommonTree</code>. In order
@@ -343,7 +343,7 @@ public class PatternFilter extends ViewerFilter {
      */
     public boolean isOnlySearchIn(Object element) {
         boolean result = element instanceof IWorkingSet || element instanceof IProject || element instanceof IFolder || element instanceof IFile;
-        result = result || element instanceof SiriussFolderItem || element instanceof ResourcesFolderItem || element instanceof ProjectDependenciesItem;
+        result = result || element instanceof ViewpointsFolderItem || element instanceof ResourcesFolderItem || element instanceof ProjectDependenciesItem;
         result = result || element instanceof GroupingItem;
         return result;
     }
