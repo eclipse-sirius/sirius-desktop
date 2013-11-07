@@ -197,19 +197,6 @@
                </message>               
                <target class="DDiagramElement"/>                                   
             </constraint>
-            <constraint
-                  class="org.eclipse.sirius.tools.internal.validation.description.constraints.EmptyAppliedOnListConstraint"
-                  id="org.eclipse.sirius.tools.internal.validation.description.constraints.EmptyAppliedOnListConstraint"
-                  isEnabledByDefault="true"
-                  lang="Java"
-                  mode="Batch"
-                  name="Empty appliedOn list validation"
-                  severity="ERROR"
-                  statusCode="1">
-               <message>
-                  {0}
-               </message>
-            </constraint>
          </constraints>
       </constraintProvider>      
   </extension>
@@ -409,6 +396,19 @@
                   lang="Java"
                   mode="Batch"
                   name="Representation extension description representation name validation"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+            </constraint>
+            <constraint
+                  class="org.eclipse.sirius.tools.internal.validation.description.constraints.EmptyAppliedOnListConstraint"
+                  id="org.eclipse.sirius.tools.internal.validation.description.constraints.EmptyAppliedOnListConstraint"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="Empty appliedOn list validation"
                   severity="ERROR"
                   statusCode="1">
                <message>
