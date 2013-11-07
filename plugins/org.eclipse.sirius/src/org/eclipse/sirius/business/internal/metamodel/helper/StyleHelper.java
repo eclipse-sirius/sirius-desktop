@@ -290,7 +290,7 @@ public final class StyleHelper {
                     SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE_DEFAULT_VALUE, null);
             if (isOverideEnabled) {
                 int routingStyle = service
-                        .getInt("fr.obeo.dsl.viewpoint.diagram", SiriusDiagramCorePreferences.PREF_LINE_STYLE, SiriusDiagramCorePreferences.PREF_LINE_STYLE_DEFAULT_VALUE, null);
+                        .getInt("org.eclipse.sirius.diagram", SiriusDiagramCorePreferences.PREF_LINE_STYLE, SiriusDiagramCorePreferences.PREF_LINE_STYLE_DEFAULT_VALUE, null);
                 overrideEdgeRouting = Options.newSome(EdgeRouting.get(routingStyle));
             }
             // If a previous style exists, we are not on a creation of an edge
