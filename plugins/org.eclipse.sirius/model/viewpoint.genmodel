@@ -7,9 +7,6 @@
     codeFormatting="true" testsDirectory="" importerID="org.eclipse.emf.importer.ecore"
     containmentProxies="true" complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.sirius.ui"
     testsPluginID="org.eclipse.sirius.editor" runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
-  <genAnnotations source="http://www.eclipse.org/sirius/cdo/CDOGenModel">
-    <details key="cdoNativeGenModels" value="fr.obeo.dsl.viewpoint.cdonative/model/viewpoint.genmodel"/>
-  </genAnnotations>
   <foreignModel>viewpoint.ecore</foreignModel>
   <genPackages prefix="Viewpoint" basePackage="org.eclipse.sirius" disposableProviderFactory="true"
       ecorePackage="viewpoint.ecore#/">

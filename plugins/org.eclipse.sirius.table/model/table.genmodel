@@ -7,9 +7,6 @@
     testsDirectory="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
     copyrightFields="false" editPluginID="org.eclipse.sirius.table.ui" testsPluginID="org.eclipse.sirius.table.editor"
     runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint">
-  <genAnnotations source="http://www.eclipse.org/sirius/cdo/CDOGenModel">
-    <details key="cdoNativeGenModels" value="org.eclipse.sirius.table.cdonative/model/table.genmodel"/>
-  </genAnnotations>
   <foreignModel>table.ecore</foreignModel>
   <genPackages prefix="Table" basePackage="org.eclipse.sirius.table.metamodel" disposableProviderFactory="true"
       ecorePackage="table.ecore#/">
