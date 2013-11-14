@@ -25,7 +25,7 @@ public class EcoreEntitiesReadOnlyEditor extends AbstractSpecificDDiagramEditor 
         return "Entities";
     }
 
-    public URI getSiriusURI() {
+    public URI getViewpointURI() {
         return URI.createURI("viewpoint:/org.eclipse.sirius.pim.ecore.design/Design");
     }
 

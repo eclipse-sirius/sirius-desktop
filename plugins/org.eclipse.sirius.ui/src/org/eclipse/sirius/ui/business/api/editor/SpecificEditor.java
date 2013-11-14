@@ -26,7 +26,7 @@ public interface SpecificEditor {
      * 
      * @return the viewpoint name
      */
-    URI getSiriusURI();
+    URI getViewpointURI();
 
     /**
      * The diagram description name to use to create the diagram.

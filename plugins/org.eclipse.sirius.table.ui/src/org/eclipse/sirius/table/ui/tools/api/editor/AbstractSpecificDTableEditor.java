@@ -47,7 +47,7 @@ public abstract class AbstractSpecificDTableEditor extends AbstractDTableEditor 
      */
     @Override
     public void init(final IEditorSite site, final IEditorInput input) throws PartInitException {
-        util.init(getSiriusURI(), getDiagramDescriptionName());
+        util.init(getViewpointURI(), getDiagramDescriptionName());
         super.init(site, util.transformInput(input, getSelection(site), isSessionStoredInWorkspace()));
     }
 
