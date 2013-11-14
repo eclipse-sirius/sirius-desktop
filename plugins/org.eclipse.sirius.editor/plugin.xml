@@ -1393,14 +1393,6 @@
         <input type="org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription"/>        
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.editor.properties.sections.style.basiclabelstyledescription.BasicLabelStyleDescriptionLabelFormatPropertySection"
-               filter="org.eclipse.sirius.editor.properties.filters.style.basiclabelstyledescription.BasicLabelStyleDescriptionLabelFormatFilter"
-               id="style.section.basicLabelStyleDescription.LabelFormat"
-               afterSection="style.section.basicLabelStyleDescription.LabelSize"
-                tab="viewpoint.tab.label">
-        <input type="org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription"/>        
-      </propertySection>
-  	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.style.basiclabelstyledescription.BasicLabelStyleDescriptionLabelSizePropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.style.basiclabelstyledescription.BasicLabelStyleDescriptionLabelSizeFilter"
                id="style.section.basicLabelStyleDescription.LabelSize"
