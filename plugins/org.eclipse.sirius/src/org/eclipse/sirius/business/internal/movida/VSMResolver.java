@@ -37,7 +37,7 @@ public class VSMResolver {
     /**
      * The registry to use for logical to physical URI resolution.
      */
-    private final ViewpointRegistry regsitry;
+    private final ViewpointRegistry registry;
 
     /**
      * Constructor.
@@ -46,7 +46,7 @@ public class VSMResolver {
      *            the registry to use for logical to physical URI resolution.
      */
     public VSMResolver(ViewpointRegistry regsitry) {
-        this.regsitry = Preconditions.checkNotNull(regsitry);
+        this.registry = Preconditions.checkNotNull(regsitry);
     }
 
     /**
@@ -68,7 +68,7 @@ public class VSMResolver {
         final Set<URI> missing = Sets.newHashSet();
         Iterable<URI> allPhysical = Iterables.transform(allLogical, new Function<URI, URI>() {
             public URI apply(URI from) {
-                Option<URI> provider = regsitry.getProvider(from);
+                Option<URI> provider = registry.getProvider(from);
                 if (provider.some()) {
                     return provider.get();
                 } else {
@@ -87,7 +87,7 @@ public class VSMResolver {
 
     private Set<URI> computeAllLogicalRequirements(Set<URI> logicalURIs) {
         Set<URI> allLogical = Sets.newHashSet();
-        Relation<URI> requires = regsitry.getRelations().getTransitiveRequires();
+        Relation<URI> requires = registry.getRelations().getTransitiveRequires();
         for (URI uri : logicalURIs) {
             allLogical.add(uri);
             allLogical.addAll(requires.apply(uri));
