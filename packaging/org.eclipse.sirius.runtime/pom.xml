@@ -39,6 +39,9 @@
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <reuseBrandingPlugin>false</reuseBrandingPlugin>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
