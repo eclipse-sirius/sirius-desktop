@@ -103,8 +103,16 @@
                class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.template.tmessagestyle.TMessageStyleLineStylePropertySection"
                id="template.section.tMessageStyle.LineStyle"
                filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.template.tmessagestyle.TMessageStyleLineStyleFilter"
-               afterSection="template.section.tMessageStyle.TargetArrow"
+               afterSection="template.section.tMessageStyle.StrokeColor"
                 tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.sequence.template.TMessageStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.template.tmessagestyle.TMessageStyleStrokeColorPropertySection"
+               id="template.section.tMessageStyle.StrokeColor"
+               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.template.tmessagestyle.TMessageStyleStrokeColorFilter"
+               afterSection="template.section.tMessageStyle.TargetArrow"
+                tab="viewpoint.tab.color">
         <input type="org.eclipse.sirius.diagram.sequence.template.TMessageStyle"/>
       </propertySection>
   	  <propertySection
@@ -119,15 +127,7 @@
                class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.template.tmessagestyle.TMessageStyleSourceArrowPropertySection"
                id="template.section.tMessageStyle.SourceArrow"
                filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.template.tmessagestyle.TMessageStyleSourceArrowFilter"
-               afterSection="template.section.tMessageStyle.StrokeColor"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.sequence.template.TMessageStyle"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.template.tmessagestyle.TMessageStyleStrokeColorPropertySection"
-               id="template.section.tMessageStyle.StrokeColor"
-               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.template.tmessagestyle.TMessageStyleStrokeColorFilter"
-                tab="viewpoint.tab.color">
         <input type="org.eclipse.sirius.diagram.sequence.template.TMessageStyle"/>
       </propertySection>
   	  <propertySection
@@ -206,18 +206,18 @@
         <input type="org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.template.tlifelinestyle.TLifelineStyleLifelineWidthComputationExpressionPropertySection"
-               id="template.section.tLifelineStyle.LifelineWidthComputationExpression"
-               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.template.tlifelinestyle.TLifelineStyleLifelineWidthComputationExpressionFilter"
-               afterSection="template.section.tLifelineStyle.LifelineColor"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.sequence.template.TLifelineStyle"/>
-      </propertySection>
-  	  <propertySection
                class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.template.tlifelinestyle.TLifelineStyleLifelineColorPropertySection"
                id="template.section.tLifelineStyle.LifelineColor"
                filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.template.tlifelinestyle.TLifelineStyleLifelineColorFilter"
+               afterSection="template.section.tLifelineStyle.LifelineWidthComputationExpression"
                 tab="viewpoint.tab.color">
+        <input type="org.eclipse.sirius.diagram.sequence.template.TLifelineStyle"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.template.tlifelinestyle.TLifelineStyleLifelineWidthComputationExpressionPropertySection"
+               id="template.section.tLifelineStyle.LifelineWidthComputationExpression"
+               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.template.tlifelinestyle.TLifelineStyleLifelineWidthComputationExpressionFilter"
+                tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.sequence.template.TLifelineStyle"/>
       </propertySection>
   	  <propertySection
@@ -246,7 +246,7 @@
                class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.template.tabstractmapping.TAbstractMappingSemanticCandidatesExpressionPropertySection"
                id="template.section.tAbstractMapping.SemanticCandidatesExpression"
                filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.template.tabstractmapping.TAbstractMappingSemanticCandidatesExpressionFilter"
-               afterSection="template.section.tAbstractMapping.DomainClass"
+               afterSection="template.section.tExecutionMapping.StartingEndFinderExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.sequence.template.TAbstractMapping"/>
       </propertySection>
@@ -264,13 +264,6 @@
                filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.template.tabstractmapping.TAbstractMappingNameFilter"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.sequence.template.TAbstractMapping"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.ordering.instancerolesordering.InstanceRolesOrderingSemanticInstanceRolesPropertySection"
-               id="ordering.section.instanceRolesOrdering.SemanticInstanceRoles"
-               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.ordering.instancerolesordering.InstanceRolesOrderingSemanticInstanceRolesFilter"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.ordering.compoundeventend.CompoundEventEndEventEndsPropertySection"
@@ -316,19 +309,28 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering"/>
       </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.tool.instancerolereordertool.InstanceRoleReorderToolMappingsPropertySection"
-               id="tool.section.instanceRoleReorderTool.Mappings"
-               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.tool.instancerolereordertool.InstanceRoleReorderToolMappingsFilter"
+      <propertySection
+               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.ordering.instancerolesordering.InstanceRolesOrderingSemanticInstanceRolesPropertySection"
+               id="ordering.section.instanceRolesOrdering.SemanticInstanceRoles"
+               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.ordering.instancerolesordering.InstanceRolesOrderingSemanticInstanceRolesFilter"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool"/>
+        <input type="org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.tool.reordertool.ReorderToolMappingsPropertySection"
                id="tool.section.reorderTool.Mappings"
                filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.tool.reordertool.ReorderToolMappingsFilter"
+               afterSection="description.section.identifiedElement.Label"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.tool.instancerolereordertool.InstanceRoleReorderToolMappingsPropertySection"
+               id="tool.section.instanceRoleReorderTool.Mappings"
+               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.tool.instancerolereordertool.InstanceRoleReorderToolMappingsFilter"
+               afterSection="description.section.identifiedElement.Label"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.description.framemapping.FrameMappingCenterLabelExpressionPropertySection"
@@ -339,36 +341,22 @@
         <input type="org.eclipse.sirius.diagram.sequence.description.FrameMapping"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.description.framemapping.FrameMappingCoveredLifelinesExpressionPropertySection"
-               id="description.section.frameMapping.CoveredLifelinesExpression"
-               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.description.framemapping.FrameMappingCoveredLifelinesExpressionFilter"
-               afterSection="description.section.delimitedEventMapping.FinishingEndFinderExpression"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.sequence.description.FrameMapping"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.description.returnmessagemapping.ReturnMessageMappingInvocationMessageFinderExpressionPropertySection"
-               id="description.section.returnMessageMapping.InvocationMessageFinderExpression"
-               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.description.returnmessagemapping.ReturnMessageMappingInvocationMessageFinderExpressionFilter"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.description.messagemapping.MessageMappingReceivingEndFinderExpressionPropertySection"
-               id="description.section.messageMapping.ReceivingEndFinderExpression"
-               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.description.messagemapping.MessageMappingReceivingEndFinderExpressionFilter"
-               afterSection="description.section.messageMapping.SendingEndFinderExpression"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.sequence.description.MessageMapping"/>
-      </propertySection>
-  	  <propertySection
                class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.description.messagemapping.MessageMappingSendingEndFinderExpressionPropertySection"
                id="description.section.messageMapping.SendingEndFinderExpression"
                filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.description.messagemapping.MessageMappingSendingEndFinderExpressionFilter"
+               afterSection="description.section.edgeMapping.TargetFinderExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.sequence.description.MessageMapping"/>
       </propertySection>
   	  <propertySection
+               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.description.delimitedeventmapping.DelimitedEventMappingStartingEndFinderExpressionPropertySection"
+               id="description.section.delimitedEventMapping.StartingEndFinderExpression"
+               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.description.delimitedeventmapping.DelimitedEventMappingStartingEndFinderExpressionFilter"
+               afterSection="description.section.abstractNodeMapping.DomainClass"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping"/>
+      </propertySection>
+	  <propertySection
                class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.description.delimitedeventmapping.DelimitedEventMappingFinishingEndFinderExpressionPropertySection"
                id="description.section.delimitedEventMapping.FinishingEndFinderExpression"
                filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.description.delimitedeventmapping.DelimitedEventMappingFinishingEndFinderExpressionFilter"
@@ -377,24 +365,42 @@
         <input type="org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.description.delimitedeventmapping.DelimitedEventMappingStartingEndFinderExpressionPropertySection"
-               id="description.section.delimitedEventMapping.StartingEndFinderExpression"
-               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.description.delimitedeventmapping.DelimitedEventMappingStartingEndFinderExpressionFilter"
+               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.description.messagemapping.MessageMappingReceivingEndFinderExpressionPropertySection"
+               id="description.section.messageMapping.ReceivingEndFinderExpression"
+               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.description.messagemapping.MessageMappingReceivingEndFinderExpressionFilter"
+               afterSection="description.section.messageMapping.SendingEndFinderExpression"              
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping"/>
+        <input type="org.eclipse.sirius.diagram.sequence.description.MessageMapping"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.description.sequencediagramdescription.SequenceDiagramDescriptionInstanceRolesOrderingPropertySection"
-               id="description.section.sequenceDiagramDescription.InstanceRolesOrdering"
-               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.description.sequencediagramdescription.SequenceDiagramDescriptionInstanceRolesOrderingFilter"
-               afterSection="description.section.sequenceDiagramDescription.EndsOrdering"
+               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.description.returnmessagemapping.ReturnMessageMappingInvocationMessageFinderExpressionPropertySection"
+               id="description.section.returnMessageMapping.InvocationMessageFinderExpression"
+               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.description.returnmessagemapping.ReturnMessageMappingInvocationMessageFinderExpressionFilter"
+               afterSection="description.section.messageMapping.ReceivingEndFinderExpression"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription"/>
-      </propertySection>
+        <input type="org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping"/>
+      </propertySection>  
+      <propertySection
+               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.description.framemapping.FrameMappingCoveredLifelinesExpressionPropertySection"
+               id="description.section.frameMapping.CoveredLifelinesExpression"
+               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.description.framemapping.FrameMappingCoveredLifelinesExpressionFilter"
+               afterSection="description.section.delimitedEventMapping.FinishingEndFinderExpression"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.sequence.description.FrameMapping"/>
+      </propertySection>  
   	  <propertySection
                class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.description.sequencediagramdescription.SequenceDiagramDescriptionEndsOrderingPropertySection"
                id="description.section.sequenceDiagramDescription.EndsOrdering"
                filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.description.sequencediagramdescription.SequenceDiagramDescriptionEndsOrderingFilter"
+               afterSection="description.section.representationDescription.Initialisation"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription"/>
+      </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.diagram.sequence.editor.properties.sections.description.sequencediagramdescription.SequenceDiagramDescriptionInstanceRolesOrderingPropertySection"
+               id="description.section.sequenceDiagramDescription.InstanceRolesOrdering"
+               filter="org.eclipse.sirius.diagram.sequence.editor.properties.filters.description.sequencediagramdescription.SequenceDiagramDescriptionInstanceRolesOrderingFilter"
+               afterSection="description.section.sequenceDiagramDescription.EndsOrdering"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription"/>
       </propertySection>

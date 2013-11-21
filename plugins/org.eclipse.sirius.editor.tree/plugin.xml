@@ -57,6 +57,7 @@
                class="org.eclipse.sirius.tree.editor.properties.sections.description.treenavigationdescription.TreeNavigationDescriptionTreeDescriptionPropertySection"
                id="description.section.treeNavigationDescription.TreeDescription"
                filter="org.eclipse.sirius.tree.editor.properties.filters.description.treenavigationdescription.TreeNavigationDescriptionTreeDescriptionFilter"
+               afterSection="tool.section.representationCreationDescription.Mappings"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.tree.description.TreeNavigationDescription"/>
       </propertySection>
@@ -64,6 +65,7 @@
                class="org.eclipse.sirius.tree.editor.properties.sections.description.treecreationdescription.TreeCreationDescriptionTreeDescriptionPropertySection"
                id="description.section.treeCreationDescription.TreeDescription"
                filter="org.eclipse.sirius.tree.editor.properties.filters.description.treecreationdescription.TreeCreationDescriptionTreeDescriptionFilter"
+               afterSection="tool.section.representationCreationDescription.Mappings"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.tree.description.TreeCreationDescription"/>
       </propertySection>
@@ -71,6 +73,7 @@
                class="org.eclipse.sirius.tree.editor.properties.sections.description.treeitemcreationtool.TreeItemCreationToolMappingPropertySection"
                id="description.section.treeItemCreationTool.Mapping"
                filter="org.eclipse.sirius.tree.editor.properties.filters.description.treeitemcreationtool.TreeItemCreationToolMappingFilter"
+               afterSection="description.section.identifiedElement.Label"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.tree.description.TreeItemCreationTool"/>
       </propertySection>
@@ -78,6 +81,7 @@
                class="org.eclipse.sirius.tree.editor.properties.sections.description.treeitemcontainerdroptool.TreeItemContainerDropToolDragSourcePropertySection"
                id="description.section.treeItemContainerDropTool.DragSource"
                filter="org.eclipse.sirius.tree.editor.properties.filters.description.treeitemcontainerdroptool.TreeItemContainerDropToolDragSourceFilter"
+               afterSection="description.section.identifiedElement.Label"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.tree.description.TreeItemContainerDropTool"/>
       </propertySection>
@@ -100,7 +104,7 @@
                class="org.eclipse.sirius.tree.editor.properties.sections.description.treeitemstyledescription.TreeItemStyleDescriptionBackgroundColorPropertySection"
                id="description.section.treeItemStyleDescription.BackgroundColor"
                filter="org.eclipse.sirius.tree.editor.properties.filters.description.treeitemstyledescription.TreeItemStyleDescriptionBackgroundColorFilter"
-               afterSection="style.section.basicLabelStyleDescription.LabelColor"
+               afterSection="style.section.labelStyleDescription.LabelColor"
                 tab="viewpoint.tab.color">
         <input type="org.eclipse.sirius.tree.description.TreeItemStyleDescription"/>
       </propertySection>
@@ -108,7 +112,7 @@
                class="org.eclipse.sirius.tree.editor.properties.sections.description.treeitemmapping.TreeItemMappingSpecializePropertySection"
                id="description.section.treeItemMapping.Specialize"
                filter="org.eclipse.sirius.tree.editor.properties.filters.description.treeitemmapping.TreeItemMappingSpecializeFilter"
-               afterSection="description.section.treeItemMapping.ReusedTreeItemMappings"
+               afterSection="description.section.treeItemMapping.SemanticCandidatesExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.tree.description.TreeItemMapping"/>
       </propertySection>
@@ -124,7 +128,7 @@
                class="org.eclipse.sirius.tree.editor.properties.sections.description.treeitemmapping.TreeItemMappingSemanticCandidatesExpressionPropertySection"
                id="description.section.treeItemMapping.SemanticCandidatesExpression"
                filter="org.eclipse.sirius.tree.editor.properties.filters.description.treeitemmapping.TreeItemMappingSemanticCandidatesExpressionFilter"
-               afterSection="description.section.treeItemMapping.PreconditionExpression"
+               afterSection="description.section.treeItemMapping.DomainClass"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.tree.description.TreeItemMapping"/>
       </propertySection>
@@ -132,7 +136,7 @@
                class="org.eclipse.sirius.tree.editor.properties.sections.description.treeitemmapping.TreeItemMappingPreconditionExpressionPropertySection"
                id="description.section.treeItemMapping.PreconditionExpression"
                filter="org.eclipse.sirius.tree.editor.properties.filters.description.treeitemmapping.TreeItemMappingPreconditionExpressionFilter"
-               afterSection="description.section.treeItemMapping.DomainClass"
+               afterSection="description.section.treeItemUpdater.CanEdit"
                 tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.tree.description.TreeItemMapping"/>
       </propertySection>
@@ -140,6 +144,7 @@
                class="org.eclipse.sirius.tree.editor.properties.sections.description.treeitemmapping.TreeItemMappingDomainClassPropertySection"
                id="description.section.treeItemMapping.DomainClass"
                filter="org.eclipse.sirius.tree.editor.properties.filters.description.treeitemmapping.TreeItemMappingDomainClassFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.tree.description.TreeItemMapping"/>
       </propertySection>
@@ -147,6 +152,7 @@
                class="org.eclipse.sirius.tree.editor.properties.sections.description.treemapping.TreeMappingSemanticElementsPropertySection"
                id="description.section.treeMapping.SemanticElements"
                filter="org.eclipse.sirius.tree.editor.properties.filters.description.treemapping.TreeMappingSemanticElementsFilter"
+               afterSection="description.section.treeDescription.PreconditionExpression"
                 tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.tree.description.TreeMapping"/>
       </propertySection>
