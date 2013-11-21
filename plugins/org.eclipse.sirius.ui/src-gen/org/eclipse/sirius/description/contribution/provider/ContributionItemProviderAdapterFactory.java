@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.viewpoint.description.contribution.provider;
+package org.eclipse.sirius.description.contribution.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,7 +27,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.sirius.viewpoint.description.contribution.util.ContributionAdapterFactory;
+import org.eclipse.sirius.description.contribution.util.ContributionAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support
@@ -40,13 +40,6 @@ import org.eclipse.sirius.viewpoint.description.contribution.util.ContributionAd
  * @generated
  */
 public class ContributionItemProviderAdapterFactory extends ContributionAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation";
-
     /**
      * This keeps track of the root adapter factory that delegates to this
      * adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -89,7 +82,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.IgnoreFeatureContribution}
+     * {@link org.eclipse.sirius.description.contribution.IgnoreFeatureContribution}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -98,7 +91,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.IgnoreFeatureContribution}
+     * {@link org.eclipse.sirius.description.contribution.IgnoreFeatureContribution}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -114,7 +107,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.SetFeatureContribution}
+     * {@link org.eclipse.sirius.description.contribution.SetFeatureContribution}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -123,7 +116,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.SetFeatureContribution}
+     * {@link org.eclipse.sirius.description.contribution.SetFeatureContribution}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -139,7 +132,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.AddFeatureContribution}
+     * {@link org.eclipse.sirius.description.contribution.AddFeatureContribution}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -148,7 +141,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.AddFeatureContribution}
+     * {@link org.eclipse.sirius.description.contribution.AddFeatureContribution}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -164,7 +157,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.RemoveFeatureContribution}
+     * {@link org.eclipse.sirius.description.contribution.RemoveFeatureContribution}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -173,7 +166,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.RemoveFeatureContribution}
+     * {@link org.eclipse.sirius.description.contribution.RemoveFeatureContribution}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -189,7 +182,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.ClearFeatureContribution}
+     * {@link org.eclipse.sirius.description.contribution.ClearFeatureContribution}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -198,7 +191,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.ClearFeatureContribution}
+     * {@link org.eclipse.sirius.description.contribution.ClearFeatureContribution}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -214,7 +207,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.ResetFeatureContribution}
+     * {@link org.eclipse.sirius.description.contribution.ResetFeatureContribution}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -223,7 +216,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.ResetFeatureContribution}
+     * {@link org.eclipse.sirius.description.contribution.ResetFeatureContribution}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -239,7 +232,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.DirectEObjectReference}
+     * {@link org.eclipse.sirius.description.contribution.DirectEObjectReference}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -248,7 +241,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.DirectEObjectReference}
+     * {@link org.eclipse.sirius.description.contribution.DirectEObjectReference}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -264,7 +257,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.ComputedEObjectReference}
+     * {@link org.eclipse.sirius.description.contribution.ComputedEObjectReference}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -273,7 +266,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.ComputedEObjectReference}
+     * {@link org.eclipse.sirius.description.contribution.ComputedEObjectReference}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -289,7 +282,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.Contribution}
+     * {@link org.eclipse.sirius.description.contribution.Contribution}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -298,8 +291,8 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.Contribution}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.contribution.Contribution}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -314,7 +307,7 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.ContributionPoint}
+     * {@link org.eclipse.sirius.description.contribution.ContributionPoint}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -323,8 +316,8 @@ public class ContributionItemProviderAdapterFactory extends ContributionAdapterF
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.contribution.ContributionPoint}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.description.contribution.ContributionPoint}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */

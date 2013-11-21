@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.viewpoint.description.contribution.provider;
+package org.eclipse.sirius.description.contribution.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -23,37 +23,28 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.viewpoint.description.contribution.ComputedEObjectReference;
-import org.eclipse.sirius.viewpoint.description.contribution.ContributionPackage;
+import org.eclipse.sirius.description.contribution.ContributionPackage;
+import org.eclipse.sirius.description.contribution.DirectEObjectReference;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.contribution.ComputedEObjectReference}
+ * {@link org.eclipse.sirius.description.contribution.DirectEObjectReference}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
-public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
+public class DirectEObjectReferenceItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
         IItemPropertySource {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation";
-
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    public ComputedEObjectReferenceItemProvider(AdapterFactory adapterFactory) {
+    public DirectEObjectReferenceItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -68,34 +59,32 @@ public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter im
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addValueExpressionPropertyDescriptor(object);
+            addValuePropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Value Expression feature. <!--
+     * This adds a property descriptor for the Value feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    protected void addValueExpressionPropertyDescriptor(Object object) {
+    protected void addValuePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ComputedEObjectReference_valueExpression_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ComputedEObjectReference_valueExpression_feature", "_UI_ComputedEObjectReference_type"),
-                ContributionPackage.Literals.COMPUTED_EOBJECT_REFERENCE__VALUE_EXPRESSION, true, false, true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
-                null));
+                getString("_UI_DirectEObjectReference_value_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DirectEObjectReference_value_feature", "_UI_DirectEObjectReference_type"),
+                ContributionPackage.Literals.DIRECT_EOBJECT_REFERENCE__VALUE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
-     * This returns ComputedEObjectReference.gif. <!-- begin-user-doc --> <!--
+     * This returns DirectEObjectReference.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ComputedEObjectReference"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/DirectEObjectReference"));
     }
 
     /**
@@ -106,16 +95,20 @@ public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter im
      */
     @Override
     public String getText(Object object) {
-        String result = getString("_UI_ComputedEObjectReference_type");
-        if (object instanceof ComputedEObjectReference) {
-            ComputedEObjectReference ref = (ComputedEObjectReference) object;
+        String result = getString("_UI_DirectEObjectReference_type");
+        if (object instanceof DirectEObjectReference) {
+            DirectEObjectReference ref = (DirectEObjectReference) object;
             if (ref.eContainer() != null && ref.eContainingFeature() == ContributionPackage.eINSTANCE.getContribution_Source()) {
                 result = "Source " + result;
             } else if (ref.eContainer() != null && ref.eContainingFeature() == ContributionPackage.eINSTANCE.getContribution_Target()) {
                 result = "Target " + result;
             }
-            if (!StringUtil.isEmpty(ref.getValueExpression())) {
-                result = result + " to: " + ref.getValueExpression();
+            if (ref.getValue() == null) {
+                result += " [unset]";
+            } else {
+                AdapterFactory ipaf = SiriusEditPlugin.getPlugin().getItemProvidersAdapterFactory();
+                result += " to: " + ((IItemLabelProvider) ipaf.adapt(ref.getValue(), IItemLabelProvider.class)).getText(ref.getValue());
+                result += " (" + ref.getValue().eClass().getName() + ")";
             }
         }
         return result;
@@ -133,8 +126,8 @@ public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter im
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(ComputedEObjectReference.class)) {
-        case ContributionPackage.COMPUTED_EOBJECT_REFERENCE__VALUE_EXPRESSION:
+        switch (notification.getFeatureID(DirectEObjectReference.class)) {
+        case ContributionPackage.DIRECT_EOBJECT_REFERENCE__VALUE:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

@@ -32,10 +32,10 @@ import com.google.common.collect.Maps;
 
 import org.eclipse.sirius.common.tools.api.util.AllContents;
 import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.description.contribution.Contribution;
+import org.eclipse.sirius.description.contribution.FeatureContribution;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.sirius.viewpoint.description.contribution.Contribution;
-import org.eclipse.sirius.viewpoint.description.contribution.FeatureContribution;
 
 /**
  * Similar to a {@link ModelContributor}, but successive operations with

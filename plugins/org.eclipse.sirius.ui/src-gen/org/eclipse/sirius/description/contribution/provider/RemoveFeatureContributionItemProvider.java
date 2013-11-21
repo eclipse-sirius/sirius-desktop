@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.viewpoint.description.contribution.provider;
+package org.eclipse.sirius.description.contribution.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -22,31 +22,24 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.sirius.viewpoint.description.contribution.ClearFeatureContribution;
+import org.eclipse.sirius.description.contribution.RemoveFeatureContribution;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.contribution.ClearFeatureContribution}
+ * {@link org.eclipse.sirius.description.contribution.RemoveFeatureContribution}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
-public class ClearFeatureContributionItemProvider extends FeatureContributionItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
+public class RemoveFeatureContributionItemProvider extends FeatureContributionItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
         IItemLabelProvider, IItemPropertySource {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation";
-
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    public ClearFeatureContributionItemProvider(AdapterFactory adapterFactory) {
+    public RemoveFeatureContributionItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -66,14 +59,14 @@ public class ClearFeatureContributionItemProvider extends FeatureContributionIte
     }
 
     /**
-     * This returns ClearFeatureContribution.gif. <!-- begin-user-doc --> <!--
+     * This returns RemoveFeatureContribution.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ClearFeatureContribution"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/RemoveFeatureContribution"));
     }
 
     /**
@@ -84,10 +77,10 @@ public class ClearFeatureContributionItemProvider extends FeatureContributionIte
      */
     @Override
     public String getText(Object object) {
-        String result = getString("_UI_ClearFeatureContribution_type");
-        if (object instanceof ClearFeatureContribution) {
-            ClearFeatureContribution cfc = (ClearFeatureContribution) object;
-            result += " target." + featureString(cfc.getTargetFeature());
+        String result = getString("_UI_RemoveFeatureContribution_type");
+        if (object instanceof RemoveFeatureContribution) {
+            RemoveFeatureContribution rfc = (RemoveFeatureContribution) object;
+            result += " target." + featureString(rfc.getTargetFeature()) + " -= source." + featureString(rfc.getSourceFeature());
         }
         return result;
     }

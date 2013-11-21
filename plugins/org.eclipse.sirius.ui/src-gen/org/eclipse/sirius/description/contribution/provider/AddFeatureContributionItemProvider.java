@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.viewpoint.description.contribution.provider;
+package org.eclipse.sirius.description.contribution.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -22,31 +22,24 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.sirius.viewpoint.description.contribution.SetFeatureContribution;
+import org.eclipse.sirius.description.contribution.AddFeatureContribution;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.contribution.SetFeatureContribution}
+ * {@link org.eclipse.sirius.description.contribution.AddFeatureContribution}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
-public class SetFeatureContributionItemProvider extends FeatureContributionItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
+public class AddFeatureContributionItemProvider extends FeatureContributionItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
         IItemLabelProvider, IItemPropertySource {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation";
-
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    public SetFeatureContributionItemProvider(AdapterFactory adapterFactory) {
+    public AddFeatureContributionItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -66,14 +59,14 @@ public class SetFeatureContributionItemProvider extends FeatureContributionItemP
     }
 
     /**
-     * This returns SetFeatureContribution.gif. <!-- begin-user-doc --> <!--
+     * This returns AddFeatureContribution.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/SetFeatureContribution"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/AddFeatureContribution"));
     }
 
     /**
@@ -84,10 +77,10 @@ public class SetFeatureContributionItemProvider extends FeatureContributionItemP
      */
     @Override
     public String getText(Object object) {
-        String result = getString("_UI_SetFeatureContribution_type");
-        if (object instanceof SetFeatureContribution) {
-            SetFeatureContribution sfc = (SetFeatureContribution) object;
-            result += " target." + featureString(sfc.getTargetFeature()) + " = source." + featureString(sfc.getSourceFeature());
+        String result = getString("_UI_AddFeatureContribution_type");
+        if (object instanceof AddFeatureContribution) {
+            AddFeatureContribution afc = (AddFeatureContribution) object;
+            result += " target." + featureString(afc.getTargetFeature()) + " += source." + featureString(afc.getSourceFeature());
         }
         return result;
     }

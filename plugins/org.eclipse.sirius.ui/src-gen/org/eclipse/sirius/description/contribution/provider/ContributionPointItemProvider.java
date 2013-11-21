@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.viewpoint.description.contribution.provider;
+package org.eclipse.sirius.description.contribution.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -23,35 +23,29 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.viewpoint.description.contribution.ContributionPackage;
-import org.eclipse.sirius.viewpoint.description.contribution.FeatureContribution;
+import org.eclipse.sirius.description.contribution.ContributionPackage;
+import org.eclipse.sirius.description.contribution.ContributionPoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.contribution.FeatureContribution}
- * object. <!-- begin-user-doc --> <!-- end-user-doc -->
+ * {@link org.eclipse.sirius.description.contribution.ContributionPoint} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
-public class FeatureContributionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
+public class ContributionPointItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
         IItemPropertySource {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation";
-
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    public FeatureContributionItemProvider(AdapterFactory adapterFactory) {
+    public ContributionPointItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -66,34 +60,45 @@ public class FeatureContributionItemProvider extends ItemProviderAdapter impleme
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addSourceFeaturePropertyDescriptor(object);
-            addTargetFeaturePropertyDescriptor(object);
+            addOriginPropertyDescriptor(object);
+            addContributedPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Source Feature feature. <!--
+     * This adds a property descriptor for the Origin feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    protected void addSourceFeaturePropertyDescriptor(Object object) {
+    protected void addOriginPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FeatureContribution_sourceFeature_feature"), getString("_UI_FeatureContribution_sourceFeature_description"),
-                ContributionPackage.Literals.FEATURE_CONTRIBUTION__SOURCE_FEATURE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ContributionPoint_origin_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ContributionPoint_origin_feature", "_UI_ContributionPoint_type"),
+                ContributionPackage.Literals.CONTRIBUTION_POINT__ORIGIN, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
-     * This adds a property descriptor for the Target Feature feature. <!--
+     * This adds a property descriptor for the Contributed feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    protected void addTargetFeaturePropertyDescriptor(Object object) {
+    protected void addContributedPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FeatureContribution_targetFeature_feature"), getString("_UI_FeatureContribution_targetFeature_description"),
-                ContributionPackage.Literals.FEATURE_CONTRIBUTION__TARGET_FEATURE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_ContributionPoint_contributed_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ContributionPoint_contributed_feature", "_UI_ContributionPoint_type"),
+                ContributionPackage.Literals.CONTRIBUTION_POINT__CONTRIBUTED, true, false, true, null, null, null));
+    }
+
+    /**
+     * This returns ContributionPoint.gif. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Object getImage(Object object) {
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContributionPoint"));
     }
 
     /**
@@ -104,7 +109,8 @@ public class FeatureContributionItemProvider extends ItemProviderAdapter impleme
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_FeatureContribution_type");
+        String label = ((ContributionPoint) object).getOrigin();
+        return label == null || label.length() == 0 ? getString("_UI_ContributionPoint_type") : getString("_UI_ContributionPoint_type") + " " + label;
     }
 
     /**
@@ -119,9 +125,8 @@ public class FeatureContributionItemProvider extends ItemProviderAdapter impleme
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(FeatureContribution.class)) {
-        case ContributionPackage.FEATURE_CONTRIBUTION__SOURCE_FEATURE:
-        case ContributionPackage.FEATURE_CONTRIBUTION__TARGET_FEATURE:
+        switch (notification.getFeatureID(ContributionPoint.class)) {
+        case ContributionPackage.CONTRIBUTION_POINT__ORIGIN:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

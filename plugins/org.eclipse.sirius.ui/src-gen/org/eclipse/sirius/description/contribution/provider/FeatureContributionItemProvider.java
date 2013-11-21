@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.viewpoint.description.contribution.provider;
+package org.eclipse.sirius.description.contribution.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,33 +25,26 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.viewpoint.description.contribution.ContributionPackage;
-import org.eclipse.sirius.viewpoint.description.contribution.DirectEObjectReference;
+import org.eclipse.sirius.description.contribution.ContributionPackage;
+import org.eclipse.sirius.description.contribution.FeatureContribution;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.contribution.DirectEObjectReference}
+ * {@link org.eclipse.sirius.description.contribution.FeatureContribution}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
-public class DirectEObjectReferenceItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
+public class FeatureContributionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
         IItemPropertySource {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation";
-
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    public DirectEObjectReferenceItemProvider(AdapterFactory adapterFactory) {
+    public FeatureContributionItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -66,59 +59,45 @@ public class DirectEObjectReferenceItemProvider extends ItemProviderAdapter impl
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addValuePropertyDescriptor(object);
+            addSourceFeaturePropertyDescriptor(object);
+            addTargetFeaturePropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Value feature. <!--
+     * This adds a property descriptor for the Source Feature feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    protected void addValuePropertyDescriptor(Object object) {
+    protected void addSourceFeaturePropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DirectEObjectReference_value_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DirectEObjectReference_value_feature", "_UI_DirectEObjectReference_type"),
-                ContributionPackage.Literals.DIRECT_EOBJECT_REFERENCE__VALUE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_FeatureContribution_sourceFeature_feature"), getString("_UI_FeatureContribution_sourceFeature_description"),
+                ContributionPackage.Literals.FEATURE_CONTRIBUTION__SOURCE_FEATURE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
-     * This returns DirectEObjectReference.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This adds a property descriptor for the Target Feature feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    @Override
-    public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DirectEObjectReference"));
+    protected void addTargetFeaturePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_FeatureContribution_targetFeature_feature"), getString("_UI_FeatureContribution_targetFeature_description"),
+                ContributionPackage.Literals.FEATURE_CONTRIBUTION__TARGET_FEATURE, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @not-generated
+     * @generated
      */
     @Override
     public String getText(Object object) {
-        String result = getString("_UI_DirectEObjectReference_type");
-        if (object instanceof DirectEObjectReference) {
-            DirectEObjectReference ref = (DirectEObjectReference) object;
-            if (ref.eContainer() != null && ref.eContainingFeature() == ContributionPackage.eINSTANCE.getContribution_Source()) {
-                result = "Source " + result;
-            } else if (ref.eContainer() != null && ref.eContainingFeature() == ContributionPackage.eINSTANCE.getContribution_Target()) {
-                result = "Target " + result;
-            }
-            if (ref.getValue() == null) {
-                result += " [unset]";
-            } else {
-                AdapterFactory ipaf = SiriusEditPlugin.getPlugin().getItemProvidersAdapterFactory();
-                result += " to: " + ((IItemLabelProvider) ipaf.adapt(ref.getValue(), IItemLabelProvider.class)).getText(ref.getValue());
-                result += " (" + ref.getValue().eClass().getName() + ")";
-            }
-        }
-        return result;
+        return getString("_UI_FeatureContribution_type");
     }
 
     /**
@@ -133,8 +112,9 @@ public class DirectEObjectReferenceItemProvider extends ItemProviderAdapter impl
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(DirectEObjectReference.class)) {
-        case ContributionPackage.DIRECT_EOBJECT_REFERENCE__VALUE:
+        switch (notification.getFeatureID(FeatureContribution.class)) {
+        case ContributionPackage.FEATURE_CONTRIBUTION__SOURCE_FEATURE:
+        case ContributionPackage.FEATURE_CONTRIBUTION__TARGET_FEATURE:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

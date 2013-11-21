@@ -25,11 +25,11 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.internal.movida.Movida;
+import org.eclipse.sirius.description.contribution.ContributionFactory;
+import org.eclipse.sirius.description.contribution.ContributionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
-import org.eclipse.sirius.viewpoint.description.contribution.ContributionFactory;
-import org.eclipse.sirius.viewpoint.description.contribution.ContributionPackage;
 
 /**
  * This is the item provider adapter for a

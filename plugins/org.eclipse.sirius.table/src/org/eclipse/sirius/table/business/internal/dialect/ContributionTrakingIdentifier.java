@@ -12,7 +12,7 @@ package org.eclipse.sirius.table.business.internal.dialect;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.viewpoint.description.contribution.ContributionPoint;
+import org.eclipse.sirius.description.contribution.ContributionPoint;
 
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;

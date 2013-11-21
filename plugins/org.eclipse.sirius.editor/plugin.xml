@@ -2282,14 +2282,14 @@
                filter="org.eclipse.sirius.editor.properties.filters.contribution.computedeobjectreference.ComputedEObjectReferenceValueExpressionFilter"
                id="contribution.section.computedEObjectReference.ValueExpression"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.contribution.ComputedEObjectReference"/>        
+        <input type="org.eclipse.sirius.description.contribution.ComputedEObjectReference"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.contribution.directeobjectreference.DirectEObjectReferenceValuePropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.contribution.directeobjectreference.DirectEObjectReferenceValueFilter"
                id="contribution.section.directEObjectReference.Value"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.contribution.DirectEObjectReference"/>        
+        <input type="org.eclipse.sirius.description.contribution.DirectEObjectReference"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.contribution.featurecontribution.FeatureContributionTargetFeaturePropertySection"
@@ -2297,21 +2297,21 @@
                id="contribution.section.featureContribution.TargetFeature"
                afterSection="contribution.section.featureContribution.SourceFeature"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.contribution.FeatureContribution"/>        
+        <input type="org.eclipse.sirius.description.contribution.FeatureContribution"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.contribution.featurecontribution.FeatureContributionSourceFeaturePropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.contribution.featurecontribution.FeatureContributionSourceFeatureFilter"
                id="contribution.section.featureContribution.SourceFeature"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.contribution.FeatureContribution"/>        
+        <input type="org.eclipse.sirius.description.contribution.FeatureContribution"/>        
       </propertySection>
       <propertySection
                class="org.eclipse.sirius.editor.properties.sections.contribution.contribution.ContributionDescriptionPropertySection"
                id="contribution.section.contribution.Description"
                filter="org.eclipse.sirius.editor.properties.filters.contribution.contribution.ContributionDescriptionFilter"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.contribution.Contribution"/>
+        <input type="org.eclipse.sirius.description.contribution.Contribution"/>
       </propertySection>
     </propertySections>
   </extension>

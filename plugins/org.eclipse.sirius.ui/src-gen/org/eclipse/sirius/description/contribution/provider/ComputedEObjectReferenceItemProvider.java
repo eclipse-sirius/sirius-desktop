@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.viewpoint.description.contribution.provider;
+package org.eclipse.sirius.description.contribution.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -26,33 +26,27 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.viewpoint.description.contribution.ContributionPackage;
-import org.eclipse.sirius.viewpoint.description.contribution.ContributionPoint;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.description.contribution.ComputedEObjectReference;
+import org.eclipse.sirius.description.contribution.ContributionPackage;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.contribution.ContributionPoint}
+ * {@link org.eclipse.sirius.description.contribution.ComputedEObjectReference}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
-public class ContributionPointItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
+public class ComputedEObjectReferenceItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
         IItemPropertySource {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation";
-
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    public ContributionPointItemProvider(AdapterFactory adapterFactory) {
+    public ComputedEObjectReferenceItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -67,57 +61,57 @@ public class ContributionPointItemProvider extends ItemProviderAdapter implement
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addOriginPropertyDescriptor(object);
-            addContributedPropertyDescriptor(object);
+            addValueExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Origin feature. <!--
+     * This adds a property descriptor for the Value Expression feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    protected void addOriginPropertyDescriptor(Object object) {
+    protected void addValueExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContributionPoint_origin_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ContributionPoint_origin_feature", "_UI_ContributionPoint_type"),
-                ContributionPackage.Literals.CONTRIBUTION_POINT__ORIGIN, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+                getString("_UI_ComputedEObjectReference_valueExpression_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_ComputedEObjectReference_valueExpression_feature", "_UI_ComputedEObjectReference_type"),
+                ContributionPackage.Literals.COMPUTED_EOBJECT_REFERENCE__VALUE_EXPRESSION, true, false, true, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
+                null));
     }
 
     /**
-     * This adds a property descriptor for the Contributed feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addContributedPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ContributionPoint_contributed_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ContributionPoint_contributed_feature", "_UI_ContributionPoint_type"),
-                ContributionPackage.Literals.CONTRIBUTION_POINT__CONTRIBUTED, true, false, true, null, null, null));
-    }
-
-    /**
-     * This returns ContributionPoint.gif. <!-- begin-user-doc --> <!--
+     * This returns ComputedEObjectReference.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ContributionPoint"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ComputedEObjectReference"));
     }
 
     /**
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((ContributionPoint) object).getOrigin();
-        return label == null || label.length() == 0 ? getString("_UI_ContributionPoint_type") : getString("_UI_ContributionPoint_type") + " " + label;
+        String result = getString("_UI_ComputedEObjectReference_type");
+        if (object instanceof ComputedEObjectReference) {
+            ComputedEObjectReference ref = (ComputedEObjectReference) object;
+            if (ref.eContainer() != null && ref.eContainingFeature() == ContributionPackage.eINSTANCE.getContribution_Source()) {
+                result = "Source " + result;
+            } else if (ref.eContainer() != null && ref.eContainingFeature() == ContributionPackage.eINSTANCE.getContribution_Target()) {
+                result = "Target " + result;
+            }
+            if (!StringUtil.isEmpty(ref.getValueExpression())) {
+                result = result + " to: " + ref.getValueExpression();
+            }
+        }
+        return result;
     }
 
     /**
@@ -132,8 +126,8 @@ public class ContributionPointItemProvider extends ItemProviderAdapter implement
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
 
-        switch (notification.getFeatureID(ContributionPoint.class)) {
-        case ContributionPackage.CONTRIBUTION_POINT__ORIGIN:
+        switch (notification.getFeatureID(ComputedEObjectReference.class)) {
+        case ContributionPackage.COMPUTED_EOBJECT_REFERENCE__VALUE_EXPRESSION:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

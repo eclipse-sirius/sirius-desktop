@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.viewpoint.description.contribution.provider;
+package org.eclipse.sirius.description.contribution.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -22,31 +22,24 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.sirius.viewpoint.description.contribution.IgnoreFeatureContribution;
+import org.eclipse.sirius.description.contribution.ResetFeatureContribution;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.contribution.IgnoreFeatureContribution}
+ * {@link org.eclipse.sirius.description.contribution.ResetFeatureContribution}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
-public class IgnoreFeatureContributionItemProvider extends FeatureContributionItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
+public class ResetFeatureContributionItemProvider extends FeatureContributionItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
         IItemLabelProvider, IItemPropertySource {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public static final String copyright = "Copyright (c) 2007-2013 THALES GLOBAL SERVICES\n All rights reserved.\n\n Contributors:\n     Obeo - Initial API and implementation";
-
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    public IgnoreFeatureContributionItemProvider(AdapterFactory adapterFactory) {
+    public ResetFeatureContributionItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -66,14 +59,14 @@ public class IgnoreFeatureContributionItemProvider extends FeatureContributionIt
     }
 
     /**
-     * This returns IgnoreFeatureContribution.gif. <!-- begin-user-doc --> <!--
+     * This returns ResetFeatureContribution.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/IgnoreFeatureContribution"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ResetFeatureContribution"));
     }
 
     /**
@@ -84,10 +77,10 @@ public class IgnoreFeatureContributionItemProvider extends FeatureContributionIt
      */
     @Override
     public String getText(Object object) {
-        String result = getString("_UI_IgnoreFeatureContribution_type");
-        if (object instanceof IgnoreFeatureContribution) {
-            IgnoreFeatureContribution ifc = (IgnoreFeatureContribution) object;
-            result += " " + featureString(ifc.getTargetFeature());
+        String result = getString("_UI_ResetFeatureContribution_type");
+        if (object instanceof ResetFeatureContribution) {
+            ResetFeatureContribution rfc = (ResetFeatureContribution) object;
+            result += " target." + featureString(rfc.getTargetFeature());
         }
         return result;
     }
