@@ -51,12 +51,6 @@ location "http://download.eclipse.org/tools/orbit/downloads/drops/S2013091415401
 	com.google.guava;version="[11.0.2,12.0.0)"
 }
 
-// PaperClips
-location "http://download.eclipse.org/sirius/targetplatform/0.9.0/all/nebula/N201309241436" {
-	with source, requirements
-	org.eclipse.nebula.widgets.paperclips.feature.feature.group;version="[2.0.0,3.0.0)"
-}
-
 // Xtext
 location "http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases" {
 	with source, requirements
