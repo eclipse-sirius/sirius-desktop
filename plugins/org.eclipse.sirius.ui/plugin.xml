@@ -112,62 +112,18 @@
   </extension>
 
 
-  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-    <factory
-       uri = "http://www.eclipse.org/sirius/description/1.1.0"
-       class = "org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory"
-       supportedTypes =
-         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-          org.eclipse.emf.edit.provider.ITreeItemContentProvider
-          org.eclipse.emf.edit.provider.IItemLabelProvider
-          org.eclipse.emf.edit.provider.IItemPropertySource" />
-              <factory
-       uri = "http://www.eclipse.org/sirius/description/tool/1.1.0"
-       class = "org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory"
-       supportedTypes =
-         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-          org.eclipse.emf.edit.provider.ITreeItemContentProvider
-          org.eclipse.emf.edit.provider.IItemLabelProvider
-          org.eclipse.emf.edit.provider.IItemPropertySource" />
-              <factory
-       uri = "http://www.eclipse.org/sirius/description/style/1.1.0"
-       class = "org.eclipse.sirius.viewpoint.description.style.provider.StyleItemProviderAdapterFactory"
-       supportedTypes =
-         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-          org.eclipse.emf.edit.provider.ITreeItemContentProvider
-          org.eclipse.emf.edit.provider.IItemLabelProvider
-          org.eclipse.emf.edit.provider.IItemPropertySource" />
-              <factory
-       uri = "http://www.eclipse.org/sirius/description/filter/1.1.0"
-       class = "org.eclipse.sirius.viewpoint.description.filter.provider.FilterItemProviderAdapterFactory"
-       supportedTypes =
-         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-          org.eclipse.emf.edit.provider.ITreeItemContentProvider
-          org.eclipse.emf.edit.provider.IItemLabelProvider
-          org.eclipse.emf.edit.provider.IItemPropertySource" />
-              <factory
-       uri = "http://www.eclipse.org/sirius/description/validation/1.1.0"
-       class = "org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory"
-       supportedTypes =
-         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-          org.eclipse.emf.edit.provider.ITreeItemContentProvider
-          org.eclipse.emf.edit.provider.IItemLabelProvider
-          org.eclipse.emf.edit.provider.IItemPropertySource" />
-              <factory
-       uri = "http://www.eclipse.org/sirius/description/audit/1.1.0"
-       class = "org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory"
-       supportedTypes =
-         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-          org.eclipse.emf.edit.provider.ITreeItemContentProvider
-          org.eclipse.emf.edit.provider.IItemLabelProvider
-          org.eclipse.emf.edit.provider.IItemPropertySource" />
-  </extension>
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated viewpoint -->
+      <factory
+            uri="http://www.eclipse.org/sirius/description/1.1.0"
+            class="org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated viewpoint -->
@@ -633,7 +589,7 @@
         </enablement>
      </commonWizard> 
     <commonFilter
-           description="Hides &quot;Representations per resource&quot; item in viewpoint legacy mode. This item displays linked aird files with their activated viewpoint and their available representations."
+           description="Hides &quot;Representations per resource&quot; item in viewpoint legacy mode. This item displays linked aird files with their activated viewpoints and their available representations."
            id="org.eclipse.sirius.ui.commonFilter.resourceFolderItem"
            name="Representations per resource">
         <filterExpression>
@@ -643,7 +599,7 @@
         </filterExpression>
      </commonFilter>
      <commonFilter
-           description="Hides &quot;Representations per category&quot; item in viewpoint legacy mode. This item displays activated viewpoints and their available representations."
+           description="Hides &quot;Representations per category&quot; item in viewpoint legacy mode. This item displays activated Viewpoints and their available representations."
            id="org.eclipse.sirius.ui.commonFilter.viewpointFolderItem"
            name="Representations per category">
         <filterExpression>

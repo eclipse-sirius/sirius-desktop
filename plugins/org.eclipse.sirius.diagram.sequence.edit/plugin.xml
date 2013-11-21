@@ -26,53 +26,18 @@
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
 
-  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-    <factory 
-       uri = "http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" 
-       class = "org.eclipse.sirius.diagram.sequence.description.provider.DescriptionItemProviderAdapterFactory" 
-       supportedTypes = 
-         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-          org.eclipse.emf.edit.provider.ITreeItemContentProvider
-          org.eclipse.emf.edit.provider.IItemLabelProvider
-          org.eclipse.emf.edit.provider.IItemPropertySource" />
-    <factory
-          uri="http://www.eclipse.org/sirius/diagram/sequence/2.0.0"
-          class="org.eclipse.sirius.diagram.sequence.provider.SequenceItemProviderAdapterFactory"
-          supportedTypes = 
-         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-          org.eclipse.emf.edit.provider.ITreeItemContentProvider
-          org.eclipse.emf.edit.provider.IItemLabelProvider
-          org.eclipse.emf.edit.provider.IItemPropertySource" />
-    <factory
-          class="org.eclipse.sirius.diagram.sequence.description.tool.provider.ToolItemProviderAdapterFactory"
-          uri="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0"     
-          supportedTypes = 
-         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-          org.eclipse.emf.edit.provider.ITreeItemContentProvider
-          org.eclipse.emf.edit.provider.IItemLabelProvider
-          org.eclipse.emf.edit.provider.IItemPropertySource" />
-    <factory
-          class="org.eclipse.sirius.diagram.sequence.template.provider.TemplateItemProviderAdapterFactory"
-          uri="http://www.eclipse.org/sirius/diagram/sequence/template/2.0.0"
-          supportedTypes = 
-         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-          org.eclipse.emf.edit.provider.ITreeItemContentProvider
-          org.eclipse.emf.edit.provider.IItemLabelProvider
-          org.eclipse.emf.edit.provider.IItemPropertySource" />
-    <factory
-          class="org.eclipse.sirius.diagram.sequence.ordering.provider.OrderingItemProviderAdapterFactory"
-          uri="http://www.eclipse.org/sirius/diagram/sequence/ordering/2.0.0"
-          supportedTypes = 
-         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-          org.eclipse.emf.edit.provider.ITreeItemContentProvider
-          org.eclipse.emf.edit.provider.IItemLabelProvider
-          org.eclipse.emf.edit.provider.IItemPropertySource" /> 
-    </extension>
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated sequence -->
+      <factory
+            uri="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0"
+            class="org.eclipse.sirius.diagram.sequence.description.provider.DescriptionItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated sequence -->

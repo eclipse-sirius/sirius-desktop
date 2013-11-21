@@ -14,6 +14,7 @@
 <plugin>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated table -->
       <factory
             uri="http://www.eclipse.org/sirius/table/1.1.0"
             class="org.eclipse.sirius.table.metamodel.table.provider.TableItemProviderAdapterFactory"
@@ -26,6 +27,7 @@
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated table -->
       <factory
             uri="http://www.eclipse.org/sirius/table/description/1.1.0"
             class="org.eclipse.sirius.table.metamodel.table.description.provider.DescriptionItemProviderAdapterFactory"
