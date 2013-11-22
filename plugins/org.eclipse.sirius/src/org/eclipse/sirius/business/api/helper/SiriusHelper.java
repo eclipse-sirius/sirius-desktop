@@ -15,14 +15,14 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.AbstractEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.GroupQuery;
+import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.viewpoint.AbstractDNode;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DDiagram;
@@ -150,10 +150,8 @@ public final class SiriusHelper {
      *            the element to Add
      */
     private static <T> void addUnique(EList<T> list, T elementToAdd) {
-        // TODO : when EMF 2.3 will no longer been used, always cast in
-        // AbstractEList.
-        if (list instanceof BasicEList) {
-            ((BasicEList<T>) list).addUnique(elementToAdd);
+        if (list instanceof AbstractEList) {
+            ((AbstractEList<T>) list).addUnique(elementToAdd);
         } else {
             list.add(elementToAdd);
         }
@@ -175,8 +173,8 @@ public final class SiriusHelper {
      *            the element to Add
      */
     private static <T> void addUnique(EList<T> list, int index, T elementToAdd) {
-        if (list instanceof BasicEList) {
-            ((BasicEList<T>) list).addUnique(index, elementToAdd);
+        if (list instanceof AbstractEList) {
+            ((AbstractEList<T>) list).addUnique(index, elementToAdd);
         } else {
             list.add(index, elementToAdd);
         }
