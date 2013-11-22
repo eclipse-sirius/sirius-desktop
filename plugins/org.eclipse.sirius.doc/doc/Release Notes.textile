@@ -85,3 +85,8 @@ void createView(Viewpoint viewpoint, Collection<EObject> semantics);
 void createView(Viewpoint viewpoint, Collection<EObject> semantics, boolean createNewRepresentations);
 void addSelectedView(DView view) throws IllegalArgumentException;
 void removeSelectedView(DView view);
+
+h3. User-Visible Changes
+
+* The ability to print table representations has been disabled for the 0.9 release due to an external dependency issue (see "bug #422223":https://bugs.eclipse.org/bugs/show_bug.cgi?id=422223 for the details). It should be re-introduced in 1.0.
+ 
