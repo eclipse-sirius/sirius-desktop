@@ -11,52 +11,52 @@
 		<p>This document explains how to Sirius sequence diagrams editors/modelers. Sequence diagrams share most  of the functionalities of normal diagrams, but they have some specificities and restrictions.</p>
 		<ol class="toc" style="list-style: disc;">
 			<li>
-				<a href="Sequence%20Diagrams.html#SequenceDiagramsEditors">Sequence Diagrams Editors</a>
+				<a href="#SequenceDiagramsEditors">Sequence Diagrams Editors</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="Sequence%20Diagrams.html#introduction">Introduction</a>
+						<a href="#introduction">Introduction</a>
 					</li>
 					<li>
-						<a href="Sequence%20Diagrams.html#semantics">Sequence Diagrams Semantics</a>
+						<a href="#semantics">Sequence Diagrams Semantics</a>
 					</li>
 					<li>
-						<a href="Sequence%20Diagrams.html#restrictions">Restrictions and Limitations</a>
+						<a href="#restrictions">Restrictions and Limitations</a>
 					</li>
 					<li>
-						<a href="Sequence%20Diagrams.html#layout">Automatic Layout</a>
+						<a href="#layout">Automatic Layout</a>
 					</li>
 					<li>
-						<a href="Sequence%20Diagrams.html#elements">Sequence Diagram Elements</a>
+						<a href="#elements">Sequence Diagram Elements</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="Sequence%20Diagrams.html#Lifelines">Life-lines</a>
+								<a href="#Lifelines">Life-lines</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#lifelines_header">Life-lines header</a>
+								<a href="#lifelines_header">Life-lines header</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#Executions">Executions</a>
+								<a href="#Executions">Executions</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#BasicMessages">Basic Messages</a>
+								<a href="#BasicMessages">Basic Messages</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#ComplexMessages">Complex Messages</a>
+								<a href="#ComplexMessages">Complex Messages</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#CreationandDestructionMessages">Creation and Destruction Messages</a>
+								<a href="#CreationandDestructionMessages">Creation and Destruction Messages</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#Lostandfoundmessages">Lost and found messages</a>
+								<a href="#Lostandfoundmessages">Lost and found messages</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#InteractionUsesandStates">Interaction Uses and States</a>
+								<a href="#InteractionUsesandStates">Interaction Uses and States</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#CombinedFragmentsandOperands">Combined Fragments and Operands</a>
+								<a href="#CombinedFragmentsandOperands">Combined Fragments and Operands</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#ConstraintsandObservationPoints">Constraints and Observation Points</a>
+								<a href="#ConstraintsandObservationPoints">Constraints and Observation Points</a>
 							</li>
 						</ol>
 					</li>
@@ -154,7 +154,7 @@
 		<p>Life-lines can be moved horizontally, but their vertical placement can not be controlled directly. It is determined automatically by Sirius using the following rules:</p>
 		<ol>
 			<li>Life-lines which are not explicitly created by a 
-				<a href="Sequence%20Diagrams.html#CreationandDestructionMessages">
+				<a href="#CreationandDestructionMessages">
 					<em>creation messages</em>
 				</a> are assumed to exist from the beginning of the sequence, and are all aligned at the top of the diagram. In the example, 
 				<code>a</code> and 
@@ -170,7 +170,7 @@
 		<p>The vertical size of life-lines can be controlled, following some rules:</p>
 		<ol>
 			<li>Life-lines which are not explicitly destroyed by a 
-				<a href="Sequence%20Diagrams.html#CreationandDestructionMessages">
+				<a href="#CreationandDestructionMessages">
 					<em>destruction message</em>
 				</a> are assumed to exist until (at least) the end of the sequence. They all finish at the same vertical position, which is always after the last event on the whole sequence. If life-lines have a node at their bottom (this depends on the configuration), these nodes can be dragged to resize all the life-lines which are not explicitly destroyed (as long as their new end position is after all events). In the example, dragging the grey circles at the bottom of 
 				<code>a</code> or 

@@ -10,28 +10,28 @@
 		<h1 id="WritingQueriesandInterpretedExpressions">Writing Queries and Interpreted Expressions</h1>
 		<ol class="toc" style="list-style: disc;">
 			<li>
-				<a href="Writing_Queries.html#WritingQueriesandInterpretedExpressions">Writing Queries and Interpreted Expressions</a>
+				<a href="#WritingQueriesandInterpretedExpressions">Writing Queries and Interpreted Expressions</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="Writing_Queries.html#introduction">Introduction</a>
+						<a href="#introduction">Introduction</a>
 					</li>
 					<li>
-						<a href="Writing_Queries.html#general">General Rules</a>
+						<a href="#general">General Rules</a>
 					</li>
 					<li>
-						<a href="Writing_Queries.html#specialized">Using the Specialized interpreters</a>
+						<a href="#specialized">Using the Specialized interpreters</a>
 					</li>
 					<li>
-						<a href="Writing_Queries.html#acceleo">Using Acceleo</a>
+						<a href="#acceleo">Using Acceleo</a>
 					</li>
 					<li>
-						<a href="Writing_Queries.html#ocl">Using Raw OCL</a>
+						<a href="#ocl">Using Raw OCL</a>
 					</li>
 					<li>
-						<a href="Writing_Queries.html#custom">Providing a Custom Language</a>
+						<a href="#custom">Providing a Custom Language</a>
 					</li>
 					<li>
-						<a href="Writing_Queries.html#service_methods">Writing Java Services</a>
+						<a href="#service_methods">Writing Java Services</a>
 					</li>
 				</ol>
 			</li>
@@ -43,7 +43,7 @@
 			<em>queries</em>), while others simply produce text (for example the expressions used for labels), but the principles stay the same.
 		</p>
 		<p>Sirius does not force the use of a specific language to write these queries. Currently, three different languages are provided by default, and if you have specific needs, you can extend the system and  
-			<a href="Writing_Queries.html#custom">provide your own</a>. You can use several different languages inside the same VSM (but only one in each expression).
+			<a href="#custom">provide your own</a>. You can use several different languages inside the same VSM (but only one in each expression).
 		</p>
 		<p>Whatever the language(s) you use, because they are all optional from Sirius&#8217;s point of view, make sure the Viewpoint Specification Project which contains your VSMs explicitly depends on the Sirius plug-in which provides supports for these languages. Otherwise when you modelers are deployed to end-users you can not be sure the proper support will be available. The 
 			<em>Viewpoint Specification Projects</em> which are created using the standard wizard are pre-configured to use Acceleo 3. See the sections below for each of the standard languages for the name of the Sirius support plug-ins to depend on if you use the language.
@@ -106,7 +106,7 @@
 				<code>nMinimize()</code> standard service on the legacy query language is not. Unfortunately, this information is not often documented in the query languages semantics, so some trial and error experimentation is required for now.
 			</li>
 			<li>At the service level, if you create your own 
-				<a href="Writing_Queries.html#service_methods">Java services</a>, make sure to use data structures which ensure a fixed iteration order, like 
+				<a href="#service_methods">Java services</a>, make sure to use data structures which ensure a fixed iteration order, like 
 				<code>LinkedHashSet</code> instead of 
 				<code>HashSet</code> for example.
 			</li>
@@ -150,7 +150,7 @@
 				<strong>
 					<code>service:</code>
 				</strong> This interpreter can be used to directly invoke a service method (i.e. a Java method that follows conventions for 
-				<a href="Writing_Queries.html#service_methods">service methods</a> ) on the current element. Currently this interpreters only supports services with no parameters, which correspond to Java methods with a single argument, the model element on which to invoke the service. For example, assuming the service class 
+				<a href="#service_methods">service methods</a> ) on the current element. Currently this interpreters only supports services with no parameters, which correspond to Java methods with a single argument, the model element on which to invoke the service. For example, assuming the service class 
 				<a href="#family_services">
 					<code>FamilyServices</code>
 				</a> has been correctly registered in the VSM, the expression 
@@ -182,7 +182,7 @@
 			<code>"prefix[someExpression/]suffix"</code>). Instead, you can use Acceleo&#8217;s string manipulation operations to obtain the same result: <code>[&#8249;prefix&#8250; + someExpression + &#8249;suffix&#8250;/]</code>). Related to this, auto-completion only works if you are inside a well-formed bracket (i.e. <code>[&lt;cursor&gt;/]</code>); if you have simply opened the bracket but not closed it (i.e. <code>[&lt;cursor&gt;</code>), completion will not be available.
 		</p>
 		<p>Acceleo expressions can transparently invoke methods from Java classes which follow the 
-			<a href="Writing_Queries.html#service_methods">service methods</a> conventions and have been properly declared in the VSM. Note that currently this only works if the Java service class is in the same project as the 
+			<a href="#service_methods">service methods</a> conventions and have been properly declared in the VSM. Note that currently this only works if the Java service class is in the same project as the 
 			<em>VSM</em>. You can also invoke Acceleo 
 			<em>queries</em> defined in 
 			<code>.mtl</code> files in your Viewpoint Specification Project. For this to work, your Viewpoint Specification Project should be an Acceleo Generator project. This is the default for projects created with the wizard. If you want to use queries from 

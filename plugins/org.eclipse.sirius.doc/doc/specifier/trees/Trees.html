@@ -10,27 +10,27 @@
 		<h1 id="SpecifyingTreeEditors">Specifying Tree Editors</h1>
 		<ol class="toc" style="list-style: disc;">
 			<li>
-				<a href="Trees.html#SpecifyingTreeEditors">Specifying Tree Editors</a>
+				<a href="#SpecifyingTreeEditors">Specifying Tree Editors</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="Trees.html#introduction">Introduction</a>
+						<a href="#introduction">Introduction</a>
 					</li>
 					<li>
-						<a href="Trees.html#tree_description">Tree Descriptions</a>
+						<a href="#tree_description">Tree Descriptions</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="Trees.html#tree_tools">Tree Tools</a>
+								<a href="#tree_tools">Tree Tools</a>
 							</li>
 						</ol>
 					</li>
 					<li>
-						<a href="Trees.html#mappings">Tree Item Mappings</a>
+						<a href="#mappings">Tree Item Mappings</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="Trees.html#item_style">Item Style</a>
+								<a href="#item_style">Item Style</a>
 							</li>
 							<li>
-								<a href="Trees.html#item_tools">Item Tools</a>
+								<a href="#item_tools">Item Tools</a>
 							</li>
 						</ol>
 					</li>
@@ -220,8 +220,8 @@
 		</p>
 		<p>Tree items are created lazily, only when the user expands a parent item. This means that if you define sub-mappings which use costly operations to create, the cost will only be paid when the user actually &#171;digs into&#187; the tree to the corresponding level of details. This also means that through reuse you can create trees of potentially infinite depth (as deep as the user chooses to expand them) without risking an infinite loop. Note however that once created tree items do not disappear if their parent is collapsed. They are only removed if the user explicitly deletes them.</p>
 		<p>The actual appearance of a tree item is defined by its 
-			<a href="Trees.html#item_style">style</a>, while its behavior is defined by the 
-			<a href="Trees.html#item_tools">tools</a> associated to it.
+			<a href="#item_style">style</a>, while its behavior is defined by the 
+			<a href="#item_tools">tools</a> associated to it.
 		</p>
 		<h3 id="item_style">Item Style</h3>
 		<p>An item&#8217;s appearance is controlled by one or more 

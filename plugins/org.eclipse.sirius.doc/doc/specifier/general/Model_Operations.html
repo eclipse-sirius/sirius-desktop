@@ -16,79 +16,79 @@
 		</p>
 		<ol class="toc" style="list-style: disc;">
 			<li>
-				<a href="Model_Operations.html#SpecifyingModelOperations">Specifying Model Operations</a>
+				<a href="#SpecifyingModelOperations">Specifying Model Operations</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="Model_Operations.html#introduction">Introduction</a>
+						<a href="#introduction">Introduction</a>
 					</li>
 					<li>
-						<a href="Model_Operations.html#flow">Flow Control Operations</a>
+						<a href="#flow">Flow Control Operations</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="Model_Operations.html#begin">Begin</a>
+								<a href="#begin">Begin</a>
 							</li>
 							<li>
-								<a href="Model_Operations.html#goto">Go To</a>
+								<a href="#goto">Go To</a>
 							</li>
 							<li>
-								<a href="Model_Operations.html#if">If</a>
+								<a href="#if">If</a>
 							</li>
 							<li>
-								<a href="Model_Operations.html#switch">Switch/Case</a>
+								<a href="#switch">Switch/Case</a>
 							</li>
 							<li>
-								<a href="Model_Operations.html#for">For</a>
+								<a href="#for">For</a>
 							</li>
 						</ol>
 					</li>
 					<li>
-						<a href="Model_Operations.html#model_change">Model Change Operations</a>
+						<a href="#model_change">Model Change Operations</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="Model_Operations.html#create_instance">Create Instance</a>
+								<a href="#create_instance">Create Instance</a>
 							</li>
 							<li>
-								<a href="Model_Operations.html#set">Set</a>
+								<a href="#set">Set</a>
 							</li>
 							<li>
-								<a href="Model_Operations.html#unset">Unset</a>
+								<a href="#unset">Unset</a>
 							</li>
 							<li>
-								<a href="Model_Operations.html#remove">Remove</a>
+								<a href="#remove">Remove</a>
 							</li>
 							<li>
-								<a href="Model_Operations.html#move">Move</a>
+								<a href="#move">Move</a>
 							</li>
 						</ol>
 					</li>
 					<li>
-						<a href="Model_Operations.html#representations">Representations Operations</a>
+						<a href="#representations">Representations Operations</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="Model_Operations.html#create_view">Create View</a>
+								<a href="#create_view">Create View</a>
 							</li>
 							<li>
-								<a href="Model_Operations.html#created_edge_view">Create Edge View</a>
+								<a href="#created_edge_view">Create Edge View</a>
 							</li>
 							<li>
-								<a href="Model_Operations.html#delete_view">Delete View</a>
+								<a href="#delete_view">Delete View</a>
 							</li>
 							<li>
-								<a href="Model_Operations.html#navigation">Navigation</a>
+								<a href="#navigation">Navigation</a>
 							</li>
 						</ol>
 					</li>
 					<li>
-						<a href="Model_Operations.html#extensions">Java Extensions</a>
+						<a href="#extensions">Java Extensions</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="Model_Operations.html#external_java_action">External Java Action</a>
+								<a href="#external_java_action">External Java Action</a>
 							</li>
 							<li>
-								<a href="Model_Operations.html#external_java_action_call">External Java Action Call</a>
+								<a href="#external_java_action_call">External Java Action Call</a>
 							</li>
 							<li>
-								<a href="Model_Operations.html#standard_java_actions">Standard Java Actions</a>
+								<a href="#standard_java_actions">Standard Java Actions</a>
 							</li>
 						</ol>
 					</li>
@@ -99,7 +99,7 @@
 		<h3 id="begin">Begin</h3>
 		<p>This element has no property. It only serves as an entry point to the specification of a tool&#8217;s behavior. Note that a 
 			<em>Begin</em> element can only contain a single operation. It is recommended to begin a tool&#8217;s specification by creating a no-op 
-			<a href="Model_Operations.html#goto">
+			<a href="#goto">
 				<em>Go To</em>
 			</a> operation directly inside the 
 			<em>Begin</em>, as a 
@@ -130,7 +130,7 @@
 		</p>
 		<p>
 			<em>Note:</em> &#171;else&#187; and &#171;else if&#187; constructs are not supported directly, but the same effect can be achieved using the 
-			<a href="Model_Operations.html#switch">
+			<a href="#switch">
 				<em>Switch</em>
 			</a> operation with the appropriate 
 			<em>Cases</em>.
@@ -255,7 +255,7 @@
 		<h3 id="created_edge_view">Create Edge View</h3>
 		<p>This operation is specific to diagrams. It can be used to explicitly create an edge view (graphical representation) of the current element, which is mostly useful when using unsynchronized diagrams and/or mappings.</p>
 		<p>It works similarly to the 
-			<a href="Model_Operations.html#create_view">
+			<a href="#create_view">
 				<em>Create View</em>
 			</a> operation, except that in addition to the 
 			<em>Container View Expression</em>, you must also provide a 

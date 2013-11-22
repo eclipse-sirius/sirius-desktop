@@ -10,77 +10,77 @@
 		<h1 id="SpecifyingSequenceDiagramEditors">Specifying Sequence Diagram Editors</h1>
 		<ol class="toc" style="list-style: disc;">
 			<li>
-				<a href="Sequence%20Diagrams.html#SpecifyingSequenceDiagramEditors">Specifying Sequence Diagram Editors</a>
+				<a href="#SpecifyingSequenceDiagramEditors">Specifying Sequence Diagram Editors</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="Sequence%20Diagrams.html#introduction">Introduction</a>
+						<a href="#introduction">Introduction</a>
 					</li>
 					<li>
-						<a href="Sequence%20Diagrams.html#semantics">Sequence Diagrams Semantics</a>
+						<a href="#semantics">Sequence Diagrams Semantics</a>
 					</li>
 					<li>
-						<a href="Sequence%20Diagrams.html#restrictions">Restrictions and Limitations</a>
+						<a href="#restrictions">Restrictions and Limitations</a>
 					</li>
 					<li>
-						<a href="Sequence%20Diagrams.html#prerequisites">Prerequisites</a>
+						<a href="#prerequisites">Prerequisites</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="Sequence%20Diagrams.html#Interaction">Interaction</a>
+								<a href="#Interaction">Interaction</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#LifelineandInstancerole">Lifeline and Instance role</a>
+								<a href="#LifelineandInstancerole">Lifeline and Instance role</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#Execution">Execution</a>
+								<a href="#Execution">Execution</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#Message">Message</a>
+								<a href="#Message">Message</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#SingleEventEndandCompoundEventEnd">SingleEventEnd and CompoundEventEnd</a>
+								<a href="#SingleEventEndandCompoundEventEnd">SingleEventEnd and CompoundEventEnd</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#Ordering">Ordering</a>
+								<a href="#Ordering">Ordering</a>
 							</li>
 						</ol>
 					</li>
 					<li>
-						<a href="Sequence%20Diagrams.html#sd_description">Sequence Diagram Description</a>
+						<a href="#sd_description">Sequence Diagram Description</a>
 					</li>
 					<li>
-						<a href="Sequence%20Diagrams.html#DefaultLayer">Default Layer</a>
+						<a href="#DefaultLayer">Default Layer</a>
 					</li>
 					<li>
-						<a href="Sequence%20Diagrams.html#mappings">Mappings</a>
+						<a href="#mappings">Mappings</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="Sequence%20Diagrams.html#InstanceRoleMapping">Instance Role Mapping</a>
+								<a href="#InstanceRoleMapping">Instance Role Mapping</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#ExecutionMappings">Execution Mappings</a>
+								<a href="#ExecutionMappings">Execution Mappings</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#BasicMessageMapping">Basic Message Mapping</a>
+								<a href="#BasicMessageMapping">Basic Message Mapping</a>
 							</li>
 						</ol>
 					</li>
 					<li>
-						<a href="Sequence%20Diagrams.html#tools">Tools</a>
+						<a href="#tools">Tools</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="Sequence%20Diagrams.html#JavaServices">Java Services</a>
+								<a href="#JavaServices">Java Services</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#CreationTools">Creation Tools</a>
+								<a href="#CreationTools">Creation Tools</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#eventReorderTool">Event Reorder Tool</a>
+								<a href="#eventReorderTool">Event Reorder Tool</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#instanceRoleReorderTool">Instance Role Reorder Tool</a>
+								<a href="#instanceRoleReorderTool">Instance Role Reorder Tool</a>
 							</li>
 							<li>
-								<a href="Sequence%20Diagrams.html#OtherTools">Other Tools</a>
+								<a href="#OtherTools">Other Tools</a>
 							</li>
 						</ol>
 					</li>
@@ -121,8 +121,8 @@
 		</ul>
 		<p>Most of the specific features and restrictions of sequence diagrams compared to other diagrams derive from this strong guarantee that at all time, the graphical (vertical) order of the elements you see on the diagram match exactly the semantic order of the events which exist in the underlying model and the horizontal order of the instance roles you see on the diagram match exactly the semantic order of the corresponding elements which exist in the underlying model.</p>
 		<p>From the specifier point of view, this means that sequence diagrams can only be defined on meta-models in which you can provide a total ordering of the events represented, and that you can reorder these elements in a predictable way (see the description of the 
-			<a href="Sequence%20Diagrams.html#eventReorderTool">Event Reorder Tool</a> and 
-			<a href="Sequence%20Diagrams.html#instanceRoleReorderTool">Instance Role Reorder Tool</a> for details).
+			<a href="#eventReorderTool">Event Reorder Tool</a> and 
+			<a href="#instanceRoleReorderTool">Instance Role Reorder Tool</a> for details).
 		</p>
 		<h2 id="restrictions">Restrictions and Limitations</h2>
 		<p>In order to guarantee the strong guarantee described above, some of the features present on normal diagrams are not supported, or even completely disabled on sequence diagrams. Basically, anything which would make it possible on a normal diagram to have meaningful semantic elements not visible on the diagram is forbidden. This would make it impossible for Sirius to keep consistent tracking of the &#171;position&#187; of these invisible elements relative to the ones which are visible.</p>

@@ -14,7 +14,7 @@
 
 	<path id="wikitext.classpath">
 		<fileset dir="${wikitext.standalone}">
-			<include name="org.eclipse.mylyn.wikitext.*core*.jar" />
+			<include name="org.eclipse.mylyn.wikitext.*core*_1.8.*.jar" />
 		</fileset>
 	</path>
 

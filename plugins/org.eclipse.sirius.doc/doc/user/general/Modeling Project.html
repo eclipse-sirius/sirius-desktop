@@ -11,84 +11,84 @@
 		<p>In this document you will learn how to create and manage Modeling Projects, which are used in Sirius to organize your models and their representations (diagrams, tables, etc.).</p>
 		<ol class="toc" style="list-style: disc;">
 			<li>
-				<a href="Modeling%20Project.html#ModelingProjectsandRepresentations">Modeling Projects and Representations</a>
+				<a href="#ModelingProjectsandRepresentations">Modeling Projects and Representations</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="Modeling%20Project.html#Introduction">Introduction</a>
+						<a href="#Introduction">Introduction</a>
 					</li>
 					<li>
-						<a href="Modeling%20Project.html#FormerUsers">Note to Users of Previous Versions</a>
+						<a href="#FormerUsers">Note to Users of Previous Versions</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="Modeling%20Project.html#Migration">Migration of Existing Representation Files</a>
+								<a href="#Migration">Migration of Existing Representation Files</a>
 							</li>
 							<li>
-								<a href="Modeling%20Project.html#UICHanges">User Interface Changes</a>
+								<a href="#UICHanges">User Interface Changes</a>
 							</li>
 						</ol>
 					</li>
 					<li>
-						<a href="Modeling%20Project.html#ModelingPerspective">The Modeling Perspective</a>
+						<a href="#ModelingPerspective">The Modeling Perspective</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="Modeling%20Project.html#ModelExplorer">The Model Explorer View</a>
+								<a href="#ModelExplorer">The Model Explorer View</a>
 							</li>
 						</ol>
 					</li>
 					<li>
-						<a href="Modeling%20Project.html#MP">Modeling Projects</a>
+						<a href="#MP">Modeling Projects</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="Modeling%20Project.html#MPCreation">Creating a New Modeling Project</a>
+								<a href="#MPCreation">Creating a New Modeling Project</a>
 							</li>
 							<li>
-								<a href="Modeling%20Project.html#MPConversion">Converting an Existing Project into a Modeling Project</a>
+								<a href="#MPConversion">Converting an Existing Project into a Modeling Project</a>
 							</li>
 							<li>
-								<a href="Modeling%20Project.html#MPConversionReverse">Removing the Modeling Nature from a Project</a>
+								<a href="#MPConversionReverse">Removing the Modeling Nature from a Project</a>
 							</li>
 							<li>
-								<a href="Modeling%20Project.html#ViewpointSelection">Selecting Which Viewpoints to Enable</a>
+								<a href="#ViewpointSelection">Selecting Which Viewpoints to Enable</a>
 							</li>
 							<li>
-								<a href="Modeling%20Project.html#ProjectDependencies">Project Dependencies</a>
+								<a href="#ProjectDependencies">Project Dependencies</a>
 							</li>
 							<li>
-								<a href="Modeling%20Project.html#ModelsInMP">Models in Modeling Projects</a>
+								<a href="#ModelsInMP">Models in Modeling Projects</a>
 							</li>
 							<li>
-								<a href="Modeling%20Project.html#ModelActions">Actions Available on Model Elements</a>
+								<a href="#ModelActions">Actions Available on Model Elements</a>
 							</li>
 							<li>
-								<a href="Modeling%20Project.html#AirdFiles">Representations Files</a>
+								<a href="#AirdFiles">Representations Files</a>
 							</li>
 							<li>
-								<a href="Modeling%20Project.html#AirdStructure">Structure of a _Representations File_</a>
+								<a href="#AirdStructure">Structure of a _Representations File_</a>
 							</li>
 							<li>
-								<a href="Modeling%20Project.html#repair">Repair action</a>
+								<a href="#repair">Repair action</a>
 							</li>
 							<li>
-								<a href="Modeling%20Project.html#MPConstraints">Constraints</a>
+								<a href="#MPConstraints">Constraints</a>
 							</li>
 							<li>
-								<a href="Modeling%20Project.html#Lifecycle">Modeling Project Lifecycle</a>
+								<a href="#Lifecycle">Modeling Project Lifecycle</a>
 							</li>
 						</ol>
 					</li>
 					<li>
-						<a href="Modeling%20Project.html#Representations">Representations</a>
+						<a href="#Representations">Representations</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="Modeling%20Project.html#ReprCreation">Creating a Representation</a>
+								<a href="#ReprCreation">Creating a Representation</a>
 							</li>
 							<li>
-								<a href="Modeling%20Project.html#ReprManagement">Managing Representations</a>
+								<a href="#ReprManagement">Managing Representations</a>
 							</li>
 						</ol>
 					</li>
 					<li>
-						<a href="Modeling%20Project.html#LegacyMode">Legacy Mode </a>
+						<a href="#LegacyMode">Legacy Mode </a>
 					</li>
 				</ol>
 			</li>
@@ -167,8 +167,8 @@
 		<p>The recommended way to use Sirius is now to use the new notion of 
 			<em>Modeling Project</em> described below. If you already have existing Sirius representation files (
 			<code>aird</code> files), a 
-			<a href="Modeling%20Project.html#MPConversion">conversion</a> is necessary. Modeling projects have some constraints on how the files are organized. If you do not want or can not convert your models to the new recommended way, a 
-			<a href="Modeling%20Project.html#LegacyMode">legacy mode</a> is provided which does not require any change to your projects organisation (beyond the files' migration). Note that the support for this legacy mode is not guaranteed to be maintained in all future versions of Sirius.
+			<a href="#MPConversion">conversion</a> is necessary. Modeling projects have some constraints on how the files are organized. If you do not want or can not convert your models to the new recommended way, a 
+			<a href="#LegacyMode">legacy mode</a> is provided which does not require any change to your projects organisation (beyond the files' migration). Note that the support for this legacy mode is not guaranteed to be maintained in all future versions of Sirius.
 		</p>
 		<h2 id="ModelingPerspective">The Modeling Perspective</h2>
 		<p>When you first start Sirius, it opens on the 
@@ -178,7 +178,7 @@
 		<p>The Modeling perspective provides the following views by default:</p>
 		<ul>
 			<li>A 
-				<a href="Modeling%20Project.html#ModelExplorer">
+				<a href="#ModelExplorer">
 					<em>Model Explorer</em>
 				</a>, which is the main UI to interact with your models. (For users of previous versions, this explorer includes directly all the features which were found in the &#171;Model Content&#187; view before).
 			</li>
@@ -194,7 +194,7 @@
 			</li>
 		</ul>
 		<p>This perspective also provides useful actions available by right-clicking in the view 
-			<a href="Modeling%20Project.html#ModelExplorer">
+			<a href="#ModelExplorer">
 				<em>Model Explorer</em>
 			</a>.
 		</p>
@@ -259,7 +259,7 @@
 			<strong>must be stored in 
 				<code>aird</code> files within modeling projects
 			</strong> (the only exception is the 
-			<a href="Modeling%20Project.html#LegacyMode">legacy mode</a> supported for compatibility with previous versions).
+			<a href="#LegacyMode">legacy mode</a> supported for compatibility with previous versions).
 		</p>
 		<p>Moreover, modeling projects provide 
 			<em>actions to manage viewpoints and representations</em>: viewpoints are associated to a modeling project, so the viewpoints that will be available for a given Modeling Project&#8217;s representations are the one attached to this project. Viewpoints selection is made by right-clicking on a Modeling Project and choosing 
@@ -268,7 +268,7 @@
 		<h3 id="MPCreation">Creating a New Modeling Project</h3>
 		<p>To create a new 
 			<em>Modeling Project</em>, simply right-click in the 
-			<a href="Modeling%20Project.html#ModelExplorer">Model Explorer</a> (or use the 
+			<a href="#ModelExplorer">Model Explorer</a> (or use the 
 			<em>File &gt; New...</em> menu) and select 
 			<em>New &gt; Modeling Project</em>.
 		</p> 
@@ -306,7 +306,7 @@
 			<em>Configure... &gt; Remove Modeling Project Nature</em> action on the context menu of the project.
 		</p>
 		<p>The action will simply remove the nature from the project itself, but will not remove or alter the representation files stored inside. You will still be able to use your representations using the 
-			<a href="Modeling%20Project.html#LegacyMode">legacy mode</a>.
+			<a href="#LegacyMode">legacy mode</a>.
 		</p>
 		<h3 id="ViewpointSelection">Selecting Which Viewpoints to Enable</h3>
 		<p>Each modeling project has a set of viewpoints which are 
@@ -357,7 +357,7 @@
 		<p>Any model available in a modeling project, whether physically located in the modeling project or just referenced by it (
 			<em>via</em> the 
 			<em>Project Dependencies</em>), will be expandable. This means that the content of any model used or referenced in a modeling project can be browse directly in the modeling project, in the view 
-			<a href="Modeling%20Project.html#ModelExplorer">Model Explorer</a>.
+			<a href="#ModelExplorer">Model Explorer</a>.
 		</p> 
 		<img border="0" src="images/models_content1.png"/>
 		<h3 id="ModelActions">Actions Available on Model Elements</h3>
@@ -464,7 +464,7 @@
 		<p>Representations are stored in 
 			<code>*.aird</code> files. An 
 			<code>*.aird</code> file is called a 
-			<a href="Modeling%20Project.html#AirdFiles">
+			<a href="#AirdFiles">
 				<strong>Representations File</strong>
 			</a>.
 			<br/>A representation can be a diagram, a table, a cross-table, a tree, etc.

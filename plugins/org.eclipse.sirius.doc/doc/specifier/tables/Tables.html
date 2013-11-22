@@ -10,36 +10,36 @@
 		<h1 id="SpecifyingTableEditors">Specifying Table Editors</h1>
 		<ol class="toc" style="list-style: disc;">
 			<li>
-				<a href="Tables.html#SpecifyingTableEditors">Specifying Table Editors</a>
+				<a href="#SpecifyingTableEditors">Specifying Table Editors</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="Tables.html#introduction">Introduction</a>
+						<a href="#introduction">Introduction</a>
 					</li>
 					<li>
-						<a href="Tables.html#edition_tables">Edition Tables</a>
+						<a href="#edition_tables">Edition Tables</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="Tables.html#table_tools">Table Tools</a>
+								<a href="#table_tools">Table Tools</a>
 							</li>
 							<li>
-								<a href="Tables.html#line_mappings">Line Mappings</a>
+								<a href="#line_mappings">Line Mappings</a>
 							</li>
 							<li>
-								<a href="Tables.html#feature_column_mapping">Feature Column Mappings</a>
+								<a href="#feature_column_mapping">Feature Column Mappings</a>
 							</li>
 						</ol>
 					</li>
 					<li>
-						<a href="Tables.html#cross_tables">Cross Tables</a>
+						<a href="#cross_tables">Cross Tables</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="Tables.html#cross_table_tools">Table Tools</a>
+								<a href="#cross_table_tools">Table Tools</a>
 							</li>
 							<li>
-								<a href="Tables.html#element_column_mapping">Element Column Mappings</a>
+								<a href="#element_column_mapping">Element Column Mappings</a>
 							</li>
 							<li>
-								<a href="Tables.html#intersection_mapping">Intersection Mappings</a>
+								<a href="#intersection_mapping">Intersection Mappings</a>
 							</li>
 						</ol>
 					</li>
@@ -57,8 +57,8 @@
 			</li>
 		</ul>
 		<p>Both kinds of table share a lot of elements. This document will focus on 
-			<a href="Tables.html#edition_tables">edition tables</a>, which are the most commonly used. The 
-			<a href="Tables.html#cross_tables">section on cross-tables</a> describes them by their differences with edition tables.
+			<a href="#edition_tables">edition tables</a>, which are the most commonly used. The 
+			<a href="#cross_tables">section on cross-tables</a> describes them by their differences with edition tables.
 		</p> 
 		<img border="0" src="./images/table_description_editor.png"/>
 <em>
@@ -227,7 +227,7 @@
 			<em>Feature Column Mapping</em> elements inside the 
 			<em>Table Description</em> element. They are named 
 			<em>Feature Column Mappings</em> because they normally represent a property (maybe computed) of the elements which are represented by the table&#8217;s lines, and also to distinguish them from the kind of columns which appear in 
-			<a href="Tables.html#cross_tables">cross tables</a>. 
+			<a href="#cross_tables">cross tables</a>. 
 		</p>
 		<p>A 
 			<em>Feature Column Mapping</em> is defined by its 
@@ -263,7 +263,7 @@
 		</p>
 		<h4 id="column_styles">Column Styles</h4>
 		<p>Columns can contain style definition which, if present, override the styles which may be present in the line mappings for the cells of this column. The style definition elements, including support for conditional styles, is the same as for style associated to line mappings. Refer to 
-			<a href="Tables.html#line_style">the corresponding section</a> for more details.
+			<a href="#line_style">the corresponding section</a> for more details.
 		</p>
 		<h4 id="column_tools">Column Tools</h4>
 		<p>Column can currently only define a 
@@ -278,23 +278,23 @@
 		</p>
 		<p>Cross tables are specified using a 
 			<em>Cross Table Description</em> element, which works exactly like 
-			<a href="Tables.html#edition_tables">
+			<a href="#edition_tables">
 				<em>Edition Table Description</em>
 			</a> elements. The differences appear in the type of elements they can contain.
 		</p>
 		<h3 id="cross_table_tools">Table Tools</h3>
 		<p>Cross tables can contain the same kinds of tools as edition tables (see 
-			<a href="Tables.html#table_tools">the corresponding section</a> for details). In addition, they can contain 
+			<a href="#table_tools">the corresponding section</a> for details). In addition, they can contain 
 			<em>Create Column Tools</em>, which behave exactly like 
 			<em>Create Line</em> tools, except that they apply to 
-			<a href="Tables.html#element_column_mapping">
+			<a href="#element_column_mapping">
 				<em>Element Column Mappings</em>
 			</a> (see below) and are used to create new columns in the table.
 		</p>
 		<h3 id="element_column_mapping">Element Column Mappings</h3>
 		<p>In cross tables, columns represent elements instead of elements' properties (as is the case for edition tables). The set of columns is defined by one or more 
 			<em>Element Column Mappings</em>. They are almost identical to 
-			<a href="Tables.html#line_mappings">line mappings</a>, except that:
+			<a href="#line_mappings">line mappings</a>, except that:
 		</p>
 		<ul>
 			<li>they can not be nested (there are no &#171;sub-columns&#187; like there are sub-lines), and thus can not &#171;reuse&#187; column mappings either;</li>
@@ -309,7 +309,7 @@
 			<em>Delete Column Tool</em>, which are specified and behave in a similar way than the 
 			<em>Create Line</em> and 
 			<em>Delete Line</em> 
-			<a href="Tables.html#line_tools">tools for line mappings</a>.
+			<a href="#line_tools">tools for line mappings</a>.
 		</p>
 		<p>They can also contain style definitions (including conditional style), which apply to all the cells in the column (unless overridden by the intersection mapping). For a given cell, the styles defined on the column mapping overrides the styles which are defined on the line mapping (if any).</p>
 		<h3 id="intersection_mapping">Intersection Mappings</h3>
