@@ -387,9 +387,9 @@ NOTE: in case a user customized a Node with a WorkspaceImage style (through the 
 
 h4(#routingStylePref). Customize edge routing style from preferences
 
-Since Viewpoint 6.9, you have the possibility to customize the routing style of all new edges from the preferences. In the preference page _Viewpoint/Viewpoint Diagram/Connections_, you can enable _user specific default values_ and select a default routing style for all new edges.
+You have the possibility to customize the routing style of all new edges from the preferences. In the preference page _Viewpoint/Viewpoint Diagram/Connections_, you can enable _user specific default values_ and select a default routing style for all new edges.
 
-!images/preferences_viewpoint_diagram_connections_VP6.9.png!
+!images/preferences_viewpoint_diagram_connections.png!
 
 For example:
 * The _user specific default values_ is enabled and the line style is set to _Rectilinear_.
