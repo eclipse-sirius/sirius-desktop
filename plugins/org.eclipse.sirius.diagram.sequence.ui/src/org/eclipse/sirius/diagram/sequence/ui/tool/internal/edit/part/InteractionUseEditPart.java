@@ -161,19 +161,6 @@ public class InteractionUseEditPart extends DNodeContainerEditPart implements IS
     private void refreshUsedInteractionLabel() {
         if (fExpressionLabelFigure != null) {
             fExpressionLabelFigure.setText(computeCenterLabelExpression());
-            // FIXME smonnier does not work on diagram opening
-            // ArrayList<AbstractDiagramNameEditPart> nameEditPartList =
-            // Lists.newArrayList(Iterables.filter(getChildren(),
-            // AbstractDiagramNameEditPart.class));
-            // if (nameEditPartList.size() == 1) {
-            // AbstractDiagramNameEditPart nameEditPart =
-            // nameEditPartList.get(0);
-            // if (nameEditPart.getFigure() instanceof WrapLabel) {
-            // WrapLabel titleBlock = (WrapLabel) nameEditPart.getFigure();
-            // fExpressionLabelFigure.setForegroundColor(titleBlock.getForegroundColor());
-            // fExpressionLabelFigure.setFont(titleBlock.getFont());
-            // }
-            // }
         }
     }
 
