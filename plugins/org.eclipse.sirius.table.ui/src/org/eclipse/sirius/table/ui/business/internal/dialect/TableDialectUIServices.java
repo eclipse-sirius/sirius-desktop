@@ -30,21 +30,9 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.table.business.internal.metamodel.TableToolVariables;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
@@ -72,6 +60,16 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * The table dialect ui services.
@@ -142,9 +140,6 @@ public class TableDialectUIServices implements DialectUIServices {
         final Collection<CommandParameter> newChilds = new ArrayList<CommandParameter>();
         newChilds.add(new CommandParameter(null, DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, DescriptionFactory.eINSTANCE.createEditionTableDescription()));
         newChilds.add(new CommandParameter(null, DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, DescriptionFactory.eINSTANCE.createCrossTableDescription()));
-        if (Movida.isEnabled()) {
-            //newChilds.add(new CommandParameter(null, DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATION_EXTENSIONS, DescriptionFactory.eINSTANCE.createEditionTableExtensionDescription()));
-        }
         return newChilds;
     }
 

@@ -29,8 +29,6 @@ icons/full/obj16/DLine.gif	-	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl1
 icons/full/obj16/DTable.gif	-	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif
 icons/full/obj16/DTargetColumn.gif - org.eclipse.ve.jfc - org.eclipse.ve.jfc/icons/elcl16/column_obj.gif
 icons/full/obj16/EditionTableDescription.gif	-	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif
-icons/full/obj16/EditionTableExtensionDescription -	org.eclipse.ve.swt	-	org.eclipse.ve.swt/icons/elcl16/table_obj.gif
-											  and - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/obj16/extension_obj.gif	
 icons/full/obj16/ElementColumnMapping.gif - org.eclipse.ve.jfc - org.eclipse.ve.jfc/icons/elcl16/column_obj.gif
 										and - org.eclipse.emf.mapping - org.eclipse.emf.mapping/icons/obj16/OneToOneMapping.gif
 icons/full/obj16/FeatureColumnMapping.gif - org.eclipse.ve.jfc - org.eclipse.ve.jfc/icons/elcl16/column_obj.gif

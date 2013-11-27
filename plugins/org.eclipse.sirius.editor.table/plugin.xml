@@ -282,30 +282,6 @@
         <input type="org.eclipse.sirius.table.metamodel.table.description.TableMapping"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.table.editor.properties.sections.description.editiontableextensiondescription.EditionTableExtensionDescriptionPreconditionExpressionPropertySection"
-               id="description.section.editionTableExtensionDescription.PreconditionExpression"
-               filter="org.eclipse.sirius.table.editor.properties.filters.description.editiontableextensiondescription.EditionTableExtensionDescriptionPreconditionExpressionFilter"
-               afterSection="description.section.editionTableExtensionDescription.OwnedTools"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.table.editor.properties.sections.description.editiontableextensiondescription.EditionTableExtensionDescriptionOwnedToolsPropertySection"
-               id="description.section.editionTableExtensionDescription.OwnedTools"
-               filter="org.eclipse.sirius.table.editor.properties.filters.description.editiontableextensiondescription.EditionTableExtensionDescriptionOwnedToolsFilter"
-               afterSection="description.section.representationExtensionDescription.Metamodel"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.table.editor.properties.sections.description.editiontableextensiondescription.EditionTableExtensionDescriptionDomainClassPropertySection"
-               id="description.section.editionTableExtensionDescription.DomainClass"
-               filter="org.eclipse.sirius.table.editor.properties.filters.description.editiontableextensiondescription.EditionTableExtensionDescriptionDomainClassFilter"
-               afterSection="description.section.representationExtensionDescription.RepresentationName"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.table.metamodel.table.description.EditionTableExtensionDescription"/>
-      </propertySection>
-  	  <propertySection
                class="org.eclipse.sirius.table.editor.properties.sections.description.tabledescription.TableDescriptionInitialHeaderColumnWidthPropertySection"
                id="description.section.tableDescription.InitialHeaderColumnWidth"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.tabledescription.TableDescriptionInitialHeaderColumnWidthFilter"
