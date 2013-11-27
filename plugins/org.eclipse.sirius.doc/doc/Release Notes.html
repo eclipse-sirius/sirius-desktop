@@ -194,6 +194,16 @@
 		<h4 id="ModelsnamespaceURIs">Models namespace URIs</h4>
 		<p>All namespace URIs have also been changed from &#171;http://www.obeo.fr/dsl/viewpoint*&#187; to &#171;http://www.eclipse.org/sirius/&#187;.</p>
 		<p>If you have created VSM file (.odesign) or representations file (.aird) with Viewpoint, the changes of the namespace URIs will be automatically migrated during the loading of your VSM or your representations file. These new nsURIs will be stored physically in the file during the first save. If the file is not saved, the automatic migration will be replayed at the next opening.</p>
+		<h3 id="NatureID">Nature ID </h3>
+		<p>The modeling project has a specific nature (
+			<code>org.eclipse.sirius.nature.modelingproject</code>). 
+			<br/>If you have modeling project created with Viewpoint, you must launch the action &#171;Configure/Convert to Modeling Project&#187; to replace old nature id (
+			<code>fr.obeo.dsl.viewpoint.nature.modelingproject</code>) by the new one.
+			<br/>If you have many modeling projects to &#171;migrate&#187;, you can easily make a script to replace 
+			<code>fr.obeo.dsl.viewpoint.nature.modelingproject</code> by 
+			<code>org.eclipse.sirius.nature.modelingproject</code> in all 
+			<code>.project</code> file of each modeling projects.
+		</p>
 		<h3 id="OtherAPIChanges">Other API Changes</h3>
 		<h4 id="APIAdded">API Added</h4>
 		<ul>
@@ -231,8 +241,6 @@ void createView(Viewpoint viewpoint, Collection&lt;EObject&gt; semantics);
 void createView(Viewpoint viewpoint, Collection&lt;EObject&gt; semantics, boolean createNewRepresentations);
 void addSelectedView(DView view) throws IllegalArgumentException;
 void removeSelectedView(DView view);
-
-
 
 </pre>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>

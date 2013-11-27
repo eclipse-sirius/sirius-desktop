@@ -65,6 +65,9 @@ import com.google.common.collect.Lists;
  */
 public class ModelingProjectManagerImpl implements ModelingProjectManager {
 
+    /** The old Viewpoint nature id. */
+    private static final String VIEWPOINT_MODELING_PROJECT_NATURE_ID = "fr.obeo.dsl.viewpoint.nature.modelingproject";
+
     private final SessionManagerListener2 sessionManagerListener = new SessionManagerListener2.Stub() {
         /**
          * {@inheritDoc}
@@ -335,12 +338,23 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
         try {
             monitor.beginTask("Add Modeling Project nature", 3);
             IProjectDescription description = project.getDescription();
-            // add the nature
+
             String[] natures = description.getNatureIds();
-            String[] newNatures = new String[natures.length + 1];
-            System.arraycopy(natures, 0, newNatures, 1, natures.length);
-            newNatures[0] = ModelingProject.NATURE_ID;
-            description.setNatureIds(newNatures);
+            if (description.hasNature(VIEWPOINT_MODELING_PROJECT_NATURE_ID)) {
+                // Replace the old Viewpoint nature
+                for (int i = 0; i < natures.length; i++) {
+                    if (VIEWPOINT_MODELING_PROJECT_NATURE_ID.equals(natures[i])) {
+                        natures[i] = ModelingProject.NATURE_ID;
+                    }
+                }
+                description.setNatureIds(natures);
+            } else {
+                // Add the nature
+                String[] newNatures = new String[natures.length + 1];
+                System.arraycopy(natures, 0, newNatures, 1, natures.length);
+                newNatures[0] = ModelingProject.NATURE_ID;
+                description.setNatureIds(newNatures);
+            }
             project.setDescription(description, new SubProgressMonitor(monitor, 1));
 
             // check project

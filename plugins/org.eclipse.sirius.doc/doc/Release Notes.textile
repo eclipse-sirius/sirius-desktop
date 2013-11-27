@@ -67,6 +67,12 @@ All namespace URIs have also been changed from "http://www.obeo.fr/dsl/viewpoint
 
 If you have created VSM file (.odesign) or representations file (.aird) with Viewpoint, the changes of the namespace URIs will be automatically migrated during the loading of your VSM or your representations file. These new nsURIs will be stored physically in the file during the first save. If the file is not saved, the automatic migration will be replayed at the next opening.
 
+h3. Nature ID 
+
+The modeling project has a specific nature (@org.eclipse.sirius.nature.modelingproject@). 
+If you have modeling project created with Viewpoint, you must launch the action "Configure/Convert to Modeling Project" to replace old nature id (@fr.obeo.dsl.viewpoint.nature.modelingproject@) by the new one.
+If you have many modeling projects to "migrate", you can easily make a script to replace @fr.obeo.dsl.viewpoint.nature.modelingproject@ by @org.eclipse.sirius.nature.modelingproject@ in all @.project@ file of each modeling projects.
+
 h3. Other API Changes
 
 h4. API Added
@@ -93,8 +99,6 @@ void createView(Viewpoint viewpoint, Collection<EObject> semantics);
 void createView(Viewpoint viewpoint, Collection<EObject> semantics, boolean createNewRepresentations);
 void addSelectedView(DView view) throws IllegalArgumentException;
 void removeSelectedView(DView view);
-
-
 
 h3. User-Visible Changes
 
