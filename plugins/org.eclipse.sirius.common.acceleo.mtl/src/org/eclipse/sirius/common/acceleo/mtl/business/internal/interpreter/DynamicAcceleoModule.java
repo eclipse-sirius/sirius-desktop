@@ -94,8 +94,14 @@ public class DynamicAcceleoModule {
 
     private static final String MODULE_SUFFIX = ")]" + LINE_SEPARATOR; //$NON-NLS-1$
 
+    /** First argument of the generated queries signatures. */
+    private static final String THIS_EOBJECT = "thisEObject"; //$NON-NLS-1$
+
+    /** The current context in Acceleo. */
+    private static final String SELF = "self"; //$NON-NLS-1$
+
     /** We'll use this as a query signature. */
-    private static final String DUMMY_QUERY = "[query public {0}(thisEObject : {1}{2}) : OclAny = {3}/]" + LINE_SEPARATOR; //$NON-NLS-1$
+    private static final String DUMMY_QUERY = "[query public {0}(" + THIS_EOBJECT + " : {1}{2}) : OclAny = {3}/]" + LINE_SEPARATOR; //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
      * The System property key to defined the max cache size used in the LRU
@@ -229,7 +235,7 @@ public class DynamicAcceleoModule {
      *            Name of the query for which we're creating this module.
      * @return The useable module signature for the given context.
      */
-    private static String buildModuleSignature(CompilationContext context, String queryName) {
+    private String buildModuleSignature(CompilationContext context, String queryName) {
         return MODULE_PREFIX + queryName + '(' + buildNsURIString(context) + MODULE_SUFFIX;
     }
 
@@ -242,8 +248,12 @@ public class DynamicAcceleoModule {
      * @return A String useable in a module signature composed of all accessible
      *         nsURIs.
      */
-    private static String buildNsURIString(CompilationContext context) {
-        final Set<String> metamodelURIs = context.getNsURIs();
+    private String buildNsURIString(CompilationContext context) {
+        final Set<String> metamodelURIs = Sets.newLinkedHashSet(context.getNsURIs());
+
+        for (EPackage additionalEPackage : additionalEPackages) {
+            metamodelURIs.add(additionalEPackage.getNsURI());
+        }
         if (metamodelURIs.isEmpty()) {
             // Use ecore as the default metamodel
             metamodelURIs.add(EcorePackage.eNS_URI);
@@ -592,7 +602,7 @@ public class DynamicAcceleoModule {
      *         context.
      */
     private Object getVariableValue(EvaluationContext context, String name) {
-        if ("self".equals(name)) { //$NON-NLS-1$
+        if (SELF.equals(name) || THIS_EOBJECT.equals(name)) {
             return context.getTargetEObject();
         }
 

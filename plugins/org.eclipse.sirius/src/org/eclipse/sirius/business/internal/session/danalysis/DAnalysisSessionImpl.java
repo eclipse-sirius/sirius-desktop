@@ -1862,11 +1862,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         interpreter = null;
         crossReferencer = null;
         visibilityPropagator = null;
-
         transactionalEditingDomain.removeResourceSetListener(representationNameListener);
         // TODO deinitialize model accessor, authority..
-        notifyListeners(SessionListener.CLOSED);
-        SessionManager.INSTANCE.remove(this);
         // dispose the SessionEventBroker
         if (broker != null) {
             broker.dispose();
@@ -1877,6 +1874,16 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         flushOperations();
         // Unload all referenced resources
         unloadResource();
+        if (disposeEditingDomainOnClose) {
+            // To remove remaining resource like environment:/viewpoint
+            for (Resource resource : new ArrayList<Resource>(resourceSet.getResources())) {
+                resource.unload();
+                resourceSet.getResources().remove(resource);
+            }
+        }
+        // Notify that the session is closed.
+        notifyListeners(SessionListener.CLOSED);
+        SessionManager.INSTANCE.remove(this);
         if (semanticResourcesUpdater != null) {
             semanticResourcesUpdater.dispose();
             semanticResourcesUpdater = null;
@@ -1893,11 +1900,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             ((LazyCrossReferencer) getSemanticCrossReferencer()).enableResolve();
         }
         if (disposeEditingDomainOnClose) {
-            // To remove remaining resource like environment:/viewpoint
-            for (Resource resource : new ArrayList<Resource>(resourceSet.getResources())) {
-                resource.unload();
-                resourceSet.getResources().remove(resource);
-            }
             transactionalEditingDomain.dispose();
             doDisposePermissionAuthority(resourceSet);
         }

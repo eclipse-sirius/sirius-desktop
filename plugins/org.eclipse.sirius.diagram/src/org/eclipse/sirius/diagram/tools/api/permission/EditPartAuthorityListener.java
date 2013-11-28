@@ -102,7 +102,7 @@ public class EditPartAuthorityListener implements IAuthorityListener {
     }
 
     private boolean shouldRefresh(EObject instance) {
-        boolean shouldRefresh = instance != null && part.resolveSemanticElement() instanceof DSemanticDecorator;
+        boolean shouldRefresh = instance != null && part.isActive() && part.resolveSemanticElement() instanceof DSemanticDecorator;
         boolean isConcerningEditPart = shouldRefresh && instance.equals(((DSemanticDecorator) part.resolveSemanticElement()).getTarget());
         boolean isConcerningDiagramEditPart = shouldRefresh && part.resolveSemanticElement() instanceof DDiagramElement && ((DDiagramElement) part.resolveSemanticElement()).getTarget() != null
                 && instance.equals(((DDiagramElement) part.resolveSemanticElement()).getParentDiagram());

@@ -39,7 +39,7 @@ public class LifelineNodeFigure extends SequenceNodeFigure {
     public LifelineNodeFigure(int width, int height, AnchorProvider anchorProvider) {
         super(width, height, anchorProvider);
 
-        OneLineMarginBorder oneLineBorder = new OneLineMarginBorder(PositionConstants.MIDDLE);
+        OneLineMarginBorder oneLineBorder = new OneLineMarginBorder(PositionConstants.CENTER);
         oneLineBorder.setStyle(Graphics.LINE_CUSTOM);
         oneLineBorder.setLineDash(LayoutConstants.LIFELINE_DASH_STYLE);
         setBorder(oneLineBorder);

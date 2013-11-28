@@ -15,7 +15,6 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
 import org.eclipse.sirius.viewpoint.BackgroundStyle;
@@ -55,7 +54,6 @@ public class OperandFigure extends GradientRoundedRectangle {
         OneLineMarginBorder oneLineBorder = new OneLineMarginBorder(PositionConstants.BOTTOM);
         oneLineBorder.setStyle(Graphics.LINE_CUSTOM);
         oneLineBorder.setLineDash(LayoutConstants.OPERAND_DASH_STYLE);
-        oneLineBorder.setMargin(IContainerLabelOffsets.LABEL_OFFSET - 1, 0, 0, 0);
 
         setBorder(oneLineBorder);
     }

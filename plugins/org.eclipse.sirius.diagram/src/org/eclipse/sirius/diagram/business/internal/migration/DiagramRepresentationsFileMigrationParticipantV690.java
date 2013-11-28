@@ -57,7 +57,7 @@ public class DiagramRepresentationsFileMigrationParticipantV690 {
      *         OptionalLayer.
      */
     public EClassifier getType(EPackage ePackage, String name) {
-        if (ePackage.getNsURI() != null && ePackage.getNsURI().equals(DescriptionPackage.eINSTANCE.getNsURI()) && name.equals("OptionalLayer")) {
+        if (ePackage != null && ePackage.getNsURI() != null && ePackage.getNsURI().equals(DescriptionPackage.eINSTANCE.getNsURI()) && name.equals("OptionalLayer")) {
             return DescriptionPackage.eINSTANCE.getAdditionalLayer();
         }
         return null;

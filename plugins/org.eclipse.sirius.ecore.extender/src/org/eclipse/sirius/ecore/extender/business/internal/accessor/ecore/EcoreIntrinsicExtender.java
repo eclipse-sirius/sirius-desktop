@@ -359,17 +359,9 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
     public Object eSet(final EObject instance, final String name, final Object value) {
         if (eValid(instance, name)) {
             final EStructuralFeature feature = instance.eClass().getEStructuralFeature(name);
-            // If feature is an EEnum, then we expect the new litteral's value
-            if (feature.getEType() instanceof EEnum) {
-                EEnumLiteral literal = null;
-                if (value instanceof Integer) {
-                    literal = ((EEnum) feature.getEType()).getEEnumLiteral((Integer) value);
-                } else if (value instanceof String) {
-                    literal = ((EEnum) feature.getEType()).getEEnumLiteral((String) value);
-                    if (literal == null) {
-                        literal = ((EEnum) feature.getEType()).getEEnumLiteralByLiteral((String) value);
-                    }
-                }
+            if (feature.getEType() instanceof EEnum && (value instanceof String || value instanceof Integer)) {
+                // Try to retrieve the expected literal.
+                EEnumLiteral literal = getEnumLiteral((EEnum) feature.getEType(), value);
                 if (literal != null) {
                     instance.eSet(feature, literal.getInstance());
                 }
@@ -385,6 +377,19 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         return null;
     }
 
+    private EEnumLiteral getEnumLiteral(final EEnum eenum, final Object value) {
+        EEnumLiteral literal = null;
+        if (value instanceof Integer) {
+            literal = eenum.getEEnumLiteral((Integer) value);
+        } else if (value instanceof String) {
+            literal = eenum.getEEnumLiteral((String) value);
+            if (literal == null) {
+                literal = eenum.getEEnumLiteralByLiteral((String) value);
+            }
+        }
+        return literal;
+    }
+        
     /**
      * {@inheritDoc}
      */

@@ -41,7 +41,7 @@ public class OptionalLayersVSMMigrationParticipant extends AbstractVSMMigrationP
     @Override
     public EClassifier getType(EPackage ePackage, String name, String loadedVersion) {
         if (Version.parseVersion(loadedVersion).compareTo(MIGRATION_VERSION) < 0) {
-            if (ePackage.getNsURI() != null && ePackage.getNsURI().equals(DescriptionPackage.eINSTANCE.getNsURI()) && name.equals("OptionalLayer")) {
+            if (ePackage != null && ePackage.getNsURI() != null && ePackage.getNsURI().equals(DescriptionPackage.eINSTANCE.getNsURI()) && name.equals("OptionalLayer")) {
                 return DescriptionPackage.eINSTANCE.getAdditionalLayer();
             }
         }

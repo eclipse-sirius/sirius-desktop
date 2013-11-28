@@ -82,7 +82,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappings>
-        <edgeMappings name="Bi-directional EC_EReference " semanticCandidatesExpression="[getEOppositeEReferences(eAllContents(ecore::EReference))/]" semanticElements="[eOpposite->including(self)->asSequence()->sortedBy(name)/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="[eType/]" sourceFinderExpression="[eContainer()/]" targetExpression="" domainClass="EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectBiDirectionnalEReference%20Source'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectBiDirectionnalEReference%20Source'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectBiDirectionnalEReference%20Target']">
+        <edgeMappings name="Bi-directional EC_EReference " semanticCandidatesExpression="[getEOppositeEReferences(eAllContents(ecore::EReference))/]" semanticElements="[eOpposite->including(self)->asSequence()->sortedBy(eContainer().eContainer(ENamedElement).name)/]" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="[eType/]" sourceFinderExpression="[eContainer()/]" targetExpression="" domainClass="EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectBiDirectionnalEReference%20Source'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectBiDirectionnalEReference%20Source'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectBiDirectionnalEReference%20Target']">
           <style targetArrow="NoDecoration" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="service:getEOppositeEReferenceName">
@@ -113,14 +113,14 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
           <conditionnalStyles predicateExpression="feature:interface">
-            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -128,7 +128,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="feature:abstract">
-            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
@@ -138,13 +138,13 @@
         </containerMappings>
         <containerMappings name="EC EEnum" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[eClassifiers->filter(ecore::EEnum)/]" doubleClickDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='ShowPropertiesView']" domainClass="EEnum" childrenPresentation="List">
           <subNodeMappings name="EC EEnumLiteral" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[eLiterals/]" doubleClickDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='ShowPropertiesView']" domainClass="EEnumLiteral">
-            <style xsi:type="style:BundledImageDescription" labelExpression="feature:name" labelAlignment="LEFT" sizeComputationExpression="1">
+            <style xsi:type="style:BundledImageDescription" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:name" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
@@ -152,7 +152,7 @@
           </style>
         </containerMappings>
         <containerMappings name="EC EDataType" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[eContents()->select(oclIsTypeOf(ecore::EDataType))/]" doubleClickDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='ShowPropertiesView']" domainClass="EDataType" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:name" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
@@ -160,7 +160,7 @@
           </style>
         </containerMappings>
         <containerMappings name="EC External EClass" semanticCandidatesExpression="[allRoots().eAllContents(EClass)->reject(c | eContents()->includes(c))/]" createElements="false" doubleClickDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='ShowPropertiesView']" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20attribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20operation']" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:name" tooltipExpression="[name + ' in ' + eResourceName()/]" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="[name + ' in ' + eResourceName()/]" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -575,7 +575,7 @@
       </defaultLayer>
       <optionalLayers endUserDocumentation="Add support for sub-packages." name="Package" activeByDefault="true">
         <containerMappings name="Design Package" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.2/@ownedTools[name='New%20Package%20Entities']" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[eContents(EPackage)/]" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@optionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@optionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EPackage%20into%20EPackage']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@optionalLayers[name='Package']/@containerMappings[name='Design%20Package'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType']">
-          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="feature:name" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
@@ -583,7 +583,7 @@
           </style>
         </containerMappings>
         <containerMappings name="Dropped Package" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.2/@ownedTools[name='New%20Package%20Entities']" createElements="false" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@optionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@optionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EPackage%20into%20EPackage']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@optionalLayers[name='Package']/@containerMappings[name='Design%20Package']">
-          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="feature:name" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
@@ -812,14 +812,14 @@
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:name" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
             <conditionnalStyles predicateExpression="feature:abstract">
-              <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+              <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
@@ -841,14 +841,14 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
           <conditionnalStyles predicateExpression="feature:interface">
-            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -856,7 +856,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="feature:abstract">
-            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
@@ -901,14 +901,14 @@
           </style>
         </edgeMappings>
         <containerMappings name="R Used by Classes" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[self.eInverse(ecore::EClass)->union(self.eInverse(ecore::EReference).eContainer()->asSet())->asOrderedSet()->asSequence()->excluding(self)/]" domainClass="EClass" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
           <conditionnalStyles predicateExpression="feature:interface">
-            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -916,7 +916,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="feature:abstract">
-            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
@@ -951,14 +951,14 @@
           </style>
         </edgeMappings>
         <containerMappings name="R Uses Classes" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="[self->filter(ecore::EClass).eAllStructuralFeatures->filter(ecore::EReference).eType->including(self->filter(ecore::EClass).eAllSuperTypes->asOrderedSet()->first())->asOrderedSet()->asSequence()->excluding(self)/]" domainClass="EClass" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
           <conditionnalStyles predicateExpression="feature:interface">
-            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -966,7 +966,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="feature:abstract">
-            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
@@ -1003,14 +1003,14 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
           <conditionnalStyles predicateExpression="feature:interface">
-            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -1018,7 +1018,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="feature:abstract">
-            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
@@ -1027,14 +1027,14 @@
           </conditionnalStyles>
         </containerMappings>
         <containerMappings name="H SuperTypes" semanticCandidatesExpression="[eAllSuperTypes/]" domainClass="EClass" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
           <conditionnalStyles predicateExpression="feature:interface">
-            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -1042,7 +1042,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="feature:abstract">
-            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" labelExpression="feature:name" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="[eContainer()->filter(ecore::ENamedElement).name + '.' + name/]" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
@@ -1065,7 +1065,7 @@
     <ownedRepresentationExtensions xsi:type="description:DiagramExtensionDescription" name="Entities" viewpointURI="viewpoint:/org.eclipse.sirius.pim.ecore.design/Design" representationName="Entities">
       <layers name="Size">
         <containerMappings xsi:type="description:ContainerMappingImport" name="Doc Class" semanticCandidatesExpression="feature:eAllContents" reusedNodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']" importedMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelFormat="italic" labelExpression="feature:name" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Size%20Based%20Color']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelFormat="italic" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Size%20Based%20Color']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>

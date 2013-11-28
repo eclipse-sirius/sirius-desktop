@@ -11,6 +11,7 @@
 package org.eclipse.sirius.business.internal.migration;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +24,8 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.FeatureMap;
+import org.eclipse.emf.ecore.util.FeatureMap.Entry;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.sirius.business.api.migration.IMigrationParticipant;
@@ -161,12 +164,45 @@ public abstract class AbstractSiriusMigrationService {
     /**
      * Clear the unknown elements of the resource.
      * 
+     * NOTE: does not remove proxies.
+     * 
      * @param resource
      *            the resource
      */
     private void removeUnknownData(XMLResource resource) {
         Map<EObject, AnyType> eObjectToExtensionMap = resource.getEObjectToExtensionMap();
-        eObjectToExtensionMap.clear();
+        Iterator<java.util.Map.Entry<EObject, AnyType>> eObjectToExtensionMapEntriesIterator = eObjectToExtensionMap.entrySet().iterator();
+        while (eObjectToExtensionMapEntriesIterator.hasNext()) {
+            Map.Entry<EObject, AnyType> entry = eObjectToExtensionMapEntriesIterator.next();
+            AnyType unknownData = entry.getValue();
+            FeatureMap mixedFeatureMap = unknownData.getMixed();
+            Iterator<Entry> mixedFeatureMapEntriesIterator = mixedFeatureMap.iterator();
+            while (mixedFeatureMapEntriesIterator.hasNext()) {
+                FeatureMap.Entry featureMapEntry = mixedFeatureMapEntriesIterator.next();
+                Object value = featureMapEntry.getValue();
+                if (value instanceof AnyType) {
+                    AnyType anyType = (AnyType) value;
+                    if (!anyType.eIsProxy()) {
+                        mixedFeatureMapEntriesIterator.remove();
+                    }
+                }
+            }
+            FeatureMap anyAttributeFeatureMap = unknownData.getAnyAttribute();
+            Iterator<Entry> anyAttributeFeatureMapEntriesIterator = anyAttributeFeatureMap.iterator();
+            while (anyAttributeFeatureMapEntriesIterator.hasNext()) {
+                FeatureMap.Entry featureMapEntry = anyAttributeFeatureMapEntriesIterator.next();
+                Object value = featureMapEntry.getValue();
+                if (value instanceof AnyType) {
+                    AnyType anyType = (AnyType) value;
+                    if (!anyType.eIsProxy()) {
+                        anyAttributeFeatureMapEntriesIterator.remove();
+                    }
+                }
+            }
+            if (mixedFeatureMap.isEmpty() && anyAttributeFeatureMap.isEmpty()) {
+                eObjectToExtensionMapEntriesIterator.remove();
+            }
+        }
     }
 
     /**

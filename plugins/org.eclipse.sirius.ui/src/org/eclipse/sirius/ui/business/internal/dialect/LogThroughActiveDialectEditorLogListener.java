@@ -36,14 +36,13 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
- * A {@link ILogListener} that reacts to specific exceptions by logging them
- * through the active {@link DialectEditor} (if any).
+ * A {@link ILogListener} that reacts to specific exceptions by logging them through the active {@link DialectEditor}
+ * (if any).
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
  */
 public final class LogThroughActiveDialectEditorLogListener implements ILogListener {
-
     /**
      * This log listener instance.
      */
@@ -55,32 +54,26 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
     private ICommonLabelProvider labelProvider;
 
     private LogThroughActiveDialectEditorLogListener() {
-
     }
 
     /**
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.core.runtime.ILogListener#logging(org.eclipse.core.runtime.IStatus,
-     *      java.lang.String)
+     * @see org.eclipse.core.runtime.ILogListener#logging(org.eclipse.core.runtime.IStatus, java.lang.String)
      */
     public void logging(IStatus status, String plugin) {
         boolean hasBeenLoggedThroughDialect = false;
-
         // Always consider final cause of exception
         final Throwable exception = getFinalCause(status);
-
         // Step 1: check preferences (should indicate that errors should be
         // logged through a pop-up)
         if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(DesignerUIPreferencesKeys.PREF_REACT_TO_PERMISSION_ISSUES_BY_GRAPHICAL_DISPLAY.name())) {
-
             // Step 2: logging this error using a through the dialect if
             // possible and required
             if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(DesignerUIPreferencesKeys.PREF_DISPLAY_PERMISSION_ISSUES_THROUGH_DIALOG.name())) {
                 IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
                 if ((activeEditor != null) && (activeEditor instanceof DialectEditor)) {
-
                     if (shouldBeLoggedThroughDialect((DialectEditor) activeEditor, exception)) {
                         ((DialectEditor) activeEditor).getDialogFactory().informUserOfEvent(IStatus.ERROR, getErrorMessage(exception));
                         hasBeenLoggedThroughDialect = true;
@@ -93,16 +86,11 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
             // starting (can be confusing for end-user)
             if (!hasBeenLoggedThroughDialect && !PlatformUI.getWorkbench().isStarting()) {
                 if (shouldBeLoggedThroughPopup(exception)) {
-                    if ((PlatformUI.getWorkbench() != null) && (PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null)) {
-                        MessageDialog.openWarning(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Permission Issue", getErrorMessage(exception));
-                    } else {
-                        Display.getDefault().asyncExec(new Runnable() {
-
-                            public void run() {
-                                MessageDialog.openWarning(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Permission Issue", getErrorMessage(exception));
-                            }
-                        });
-                    }
+                    Display.getDefault().asyncExec(new Runnable() {
+                        public void run() {
+                            MessageDialog.openWarning(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), "Permission Issue", getErrorMessage(exception));
+                        }
+                    });
                 }
             }
         }
@@ -117,20 +105,17 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
     }
 
     /**
-     * Indicates whether the given exception should be logged through the active
-     * dialect or not.
+     * Indicates whether the given exception should be logged through the active dialect or not.
      * 
      * @param exception
      *            the exception that is being logged in the error log
-     * @return true if the given exception should be logged through the active
-     *         dialect, false otherwise
+     * @return true if the given exception should be logged through the active dialect, false otherwise
      */
     private boolean shouldBeLoggedThroughDialect(DialectEditor editor, Throwable exception) {
         // We only log LockedInstance exceptions
         if (exception instanceof LockedInstanceException) {
             final EObject lockedElement = ((LockedInstanceException) exception).getLockedElement();
             final DRepresentation activeRepresentation = editor.getRepresentation();
-
             // we only log the exception in the current dialect editor if the
             // locked element is referenced by this representation
             boolean isConcerningObjectsOfCurrentEditor = false;
@@ -170,8 +155,7 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
      * 
      * @param exception
      *            the exception that is being logged in the error log
-     * @return true if the given exception should be logged through a pop-up,
-     *         false otherwise
+     * @return true if the given exception should be logged through a pop-up, false otherwise
      */
     private boolean shouldBeLoggedThroughPopup(Throwable exception) {
         // We only consider LockedInstanceException

@@ -368,8 +368,10 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                     // We are loading session(s)
                     OpenRepresentationsFileJob.waitOtherJobs();
                 }
-                // add semantic resources if already existing in the project
-                addSemanticResources(project, optionalModelingProject.get().getSession(), new SubProgressMonitor(monitor, 1));
+                if (optionalModelingProject.get().getSession() != null) {
+                    // add semantic resources if already existing in the project
+                    addSemanticResources(project, optionalModelingProject.get().getSession(), new SubProgressMonitor(monitor, 1));
+                }
             }
         } finally {
             monitor.done();

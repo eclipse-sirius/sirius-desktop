@@ -42,24 +42,17 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolE
 import org.eclipse.gmf.runtime.diagram.ui.services.palette.PaletteFactory;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.resource.ImageDescriptor;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.UnmodifiableIterator;
-
+import org.eclipse.sirius.business.api.componentization.DiagramComponentizationManager;
+import org.eclipse.sirius.business.api.helper.layers.LayerService;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.componentization.DiagramComponentizationManager;
-import org.eclipse.sirius.business.api.helper.layers.LayerService;
-import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter;
@@ -81,6 +74,13 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolGroup;
 import org.eclipse.sirius.viewpoint.description.tool.ToolGroupExtension;
 import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
+import org.eclipse.swt.widgets.Display;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.google.common.collect.UnmodifiableIterator;
 
 /**
  * Default implementation of palette manager.
@@ -88,7 +88,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
  * @author mchauvin
  */
 public class PaletteManagerImpl implements PaletteManager {
-
     private static final String SEVERAL_CANDIDATES_IN_PALETTE_FOUND = "Several {0}s with identical id '{1}' have been found in the palette. Please fix your VSM by whether set a different ID for these Palette entries or ensuring that they cannot be available in the same time.";
 
     /** The image provider. */
@@ -168,57 +167,54 @@ public class PaletteManagerImpl implements PaletteManager {
      * 
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager#update()
      */
-    public void update(final Diagram diagram, boolean clean) {
-        // final PaletteViewer viewer = editDomain.getPaletteViewer();
-        // if (viewer != null && diagram != null) {
-        // clearFilters(diagram);
-        // paletteRoot = viewer.getPaletteRoot();
-
+    public void update(final Diagram diagram, final boolean clean) {
         if (diagram != null) {
             initPaletteRoot();
-
-            // if (clean && !paletteRoot.getChildren().isEmpty()) {
-            // /* Removes children and avoid concurrent modification exception
-            // */
-            // PaletteContainer defaultTools =
-            // paletteRoot.getDefaultEntry().getParent();
-            // for (final PaletteEntry child :
-            // Lists.newArrayList(Iterables.filter(paletteRoot.getChildren(),
-            // PaletteEntry.class))) {
-            // if (child != defaultTools) {
-            // paletteRoot.remove(child);
-
-            if (paletteRoot != null) {
-                clearFilters(diagram);
-
-                if (clean && !paletteRoot.getChildren().isEmpty()) {
-                    /*
-                     * Removes children and avoid concurrent modification
-                     * exception
-                     */
-                    PaletteContainer defaultTools = paletteRoot.getDefaultEntry().getParent();
-                    for (final PaletteEntry child : Lists.newArrayList(Iterables.filter(paletteRoot.getChildren(), PaletteEntry.class))) {
-                        if (child != defaultTools) {
-                            paletteRoot.remove(child);
-                        }
+            if (Display.getCurrent() != null) {
+                updatePalette(diagram, clean);
+            } else {
+                // If test is not launched in UI Thread make the changes in UI
+                // thread
+                Display.getDefault().asyncExec(new Runnable() {
+                    public void run() {
+                        updatePalette(diagram, clean);
                     }
-                }
+                });
             }
-
-            /*
-             * Update the palette (according to filters, that are also updated
-             * during this method)
-             */
-            updatePalette(diagram);
-
-            paletteRoot = null;
         }
     }
 
     /**
-     * Set the palette root field with the palette root referenced in the
-     * palette viewer and if there is no palette viewer, use reflection to
-     * directly get the palette root of the edit domain (protected field).
+     * {@inheritDoc}
+     * 
+     * @see fr.obeo.dsl.viewpoint.diagram.tools.api.graphical.edit.palette.PaletteManager#update()
+     */
+    private void updatePalette(final Diagram diagram, boolean clean) {
+        initPaletteRoot();
+        if (paletteRoot != null) {
+            clearFilters(diagram);
+            if (clean && !paletteRoot.getChildren().isEmpty()) {
+                /*
+                 * Removes children and avoid concurrent modification exception
+                 */
+                PaletteContainer defaultTools = paletteRoot.getDefaultEntry().getParent();
+                for (final PaletteEntry child : Lists.newArrayList(Iterables.filter(paletteRoot.getChildren(), PaletteEntry.class))) {
+                    if (child != defaultTools) {
+                        paletteRoot.remove(child);
+                    }
+                }
+            }
+        }
+        /*
+         * Update the palette (according to filters, that are also updated during this method)
+         */
+        updatePalette(diagram);
+        paletteRoot = null;
+    }
+
+    /**
+     * Set the palette root field with the palette root referenced in the palette viewer and if there is no palette
+     * viewer, use reflection to directly get the palette root of the edit domain (protected field).
      */
     private void initPaletteRoot() {
         final PaletteViewer viewer = editDomain.getPaletteViewer();
@@ -226,7 +222,6 @@ public class PaletteManagerImpl implements PaletteManager {
             paletteRoot = viewer.getPaletteRoot();
         } else {
             paletteRoot = (PaletteRoot) ReflectionHelper.getFieldValueWithoutException(editDomain, "paletteRoot").get();
-
         }
     }
 
@@ -245,11 +240,9 @@ public class PaletteManagerImpl implements PaletteManager {
             if (dDiagram instanceof DSemanticDiagram) {
                 session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) dDiagram).getTarget());
             }
-
             // Step 1: we add the default tools contributed by the environment
             // in the same group as the default GEF tools
             addDefaultTools(diagram);
-
             // Step 2: Replace the ConnectionCreationTool for
             // DiagramPaletteFactory.TOOL_NOTEATTACHMENT (if needed)
             replaceNoteAttachmentCreationToolIfNeeded();
@@ -263,11 +256,9 @@ public class PaletteManagerImpl implements PaletteManager {
      * Update the palette.
      * 
      * @param dDiagram
-     *            The {@link DDiagram} representing by the editor which contains
-     *            the palette to update.
+     *            The {@link DDiagram} representing by the editor which contains the palette to update.
      * @param description
-     *            The {@link DiagramDescription} of the {@link DDiagram}. It
-     *            should not be a proxy.
+     *            The {@link DiagramDescription} of the {@link DDiagram}. It should not be a proxy.
      * @param session
      *            The {@session} containing the {@link DDiagram}.
      */
@@ -276,7 +267,6 @@ public class PaletteManagerImpl implements PaletteManager {
             updatePaletteForDiagramWithoutLayer(description, session, dDiagram);
         } else {
             updatePaletteForDiagramWithLayer(description, session, dDiagram);
-
         }
     }
 
@@ -284,11 +274,9 @@ public class PaletteManagerImpl implements PaletteManager {
      * Update the palette for a diagram that has no layer.
      * 
      * @param dDiagram
-     *            The {@link DDiagram} representing by the editor which contains
-     *            the palette to update.
+     *            The {@link DDiagram} representing by the editor which contains the palette to update.
      * @param description
-     *            The {@link DiagramDescription} of the {@link DDiagram}. It
-     *            should not be a proxy.
+     *            The {@link DiagramDescription} of the {@link DDiagram}. It should not be a proxy.
      * @param session
      *            The {@session} containing the {@link DDiagram}.
      */
@@ -302,7 +290,6 @@ public class PaletteManagerImpl implements PaletteManager {
             descGroup = Options.newSome(new PaletteGroup(name, name));
             paletteRoot.add(descGroup.get());
         }
-
         // Update the filters
         updateFilters(session, description.getAllTools());
         // Update the root of the palette
@@ -310,15 +297,12 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     /**
-     * Update the palette for a diagram that has layer(s), at least a default
-     * one.
+     * Update the palette for a diagram that has layer(s), at least a default one.
      * 
      * @param dDiagram
-     *            The {@link DDiagram} representing by the editor which contains
-     *            the palette to update.
+     *            The {@link DDiagram} representing by the editor which contains the palette to update.
      * @param description
-     *            The {@link DiagramDescription} of the {@link DDiagram}. It
-     *            should not be a proxy.
+     *            The {@link DiagramDescription} of the {@link DDiagram}. It should not be a proxy.
      * @param session
      *            The {@session} containing the {@link DDiagram}.
      */
@@ -326,12 +310,10 @@ public class PaletteManagerImpl implements PaletteManager {
         /* Get the list of activated layers */
         final List<Layer> activatedLayers = dDiagram.getActivatedLayers();
         final List<Layer> deactivatedLayers = PaletteManagerImpl.getDeactivatedLayers(dDiagram, session, description);
-
         // Update the filters
         for (final ToolSection section : new DiagramComponentizationManager().getRootPaletteSections(session.getSelectedViewpoints(false), description)) {
             updateFilters(session, new DiagramComponentizationManager().getAllToolEntries(session.getSelectedViewpoints(false), section));
         }
-
         for (final ToolSection section : new DiagramComponentizationManager().getRootPaletteSections(session.getSelectedViewpoints(false), description)) {
             Option<SectionPaletteDrawer> paletteEntry = getPaletteEntry(paletteRoot, new IdentifiedElementQuery(section).getLabel(), SectionPaletteDrawer.class);
             if (!paletteEntry.some()) {
@@ -342,21 +324,18 @@ public class PaletteManagerImpl implements PaletteManager {
                 updateContainer(session, dDiagram, paletteEntry.get(), new DiagramComponentizationManager().getAllToolEntries(session.getSelectedViewpoints(false), section));
             }
         }
-
         for (final Layer layer : Lists.newArrayList(deactivatedLayers)) {
             setLayerVisibility(layer, false);
         }
-
         for (final Layer layer : Lists.newArrayList(activatedLayers)) {
             setLayerVisibility(layer, true);
         }
     }
 
     /**
-     * Returns the palette entry contained in the given {@link PaletteContainer}
-     * with the given id, of the given type. If none found,
-     * {@link Options#newNone()} will be returned. If several found, we will log
-     * a warning and return only one of the candidates.
+     * Returns the palette entry contained in the given {@link PaletteContainer} with the given id, of the given type.
+     * If none found, {@link Options#newNone()} will be returned. If several found, we will log a warning and return
+     * only one of the candidates.
      * 
      * @param <T>
      *            the type of the searched palette entry
@@ -366,9 +345,8 @@ public class PaletteManagerImpl implements PaletteManager {
      *            the searched id
      * @param type
      *            the expected type
-     * @return {@link Options#newNone()} if no matching candidate is found, or
-     *         the found candidate (if several found, we will log a warning and
-     *         return only one of the candidates).
+     * @return {@link Options#newNone()} if no matching candidate is found, or the found candidate (if several found, we
+     *         will log a warning and return only one of the candidates).
      */
     private <T extends PaletteEntry> Option<T> getPaletteEntry(PaletteContainer container, final String id, Class<T> type) {
         Option<T> matchingPaletteEntry = Options.newNone();
@@ -391,8 +369,8 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     /**
-     * Replace if needed the GMF note attachment tool by a specific one (2
-     * clicks for link creation instead of one click with drag).
+     * Replace if needed the GMF note attachment tool by a specific one (2 clicks for link creation instead of one click
+     * with drag).
      */
     private void replaceNoteAttachmentCreationToolIfNeeded() {
         // Get the container of the Note Attachment Creation Tool
@@ -401,7 +379,6 @@ public class PaletteManagerImpl implements PaletteManager {
         if (notesContainer != null) {
             // Get the current noteAttachment tool
             CreationToolEntry noteAttachment = getNoteAttachementToolEntry(notesContainer);
-
             // If the current noteAttachement tool is not using the
             // SiriusDiagramPaletteFactory
             if (!(noteAttachment.getToolProperty(CreationTool.PROPERTY_CREATION_FACTORY) instanceof SiriusDiagramPaletteFactory)) {
@@ -432,8 +409,7 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     /**
-     * Search a palette container by its label in the children of the
-     * <code>container</code>.
+     * Search a palette container by its label in the children of the <code>container</code>.
      * 
      * @param container
      *            The container in which searched
@@ -493,7 +469,6 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     private void setLayerVisibility(final Layer layer, final boolean visibility) {
-
         final List<ToolSection> sections = layer.getToolSections();
         for (final SectionPaletteDrawer sectionDrawer : Iterables.filter(paletteRoot.getChildren(), SectionPaletteDrawer.class)) {
             setToolSectionsVisibility(layer, sectionDrawer, sections, visibility);
@@ -504,7 +479,6 @@ public class PaletteManagerImpl implements PaletteManager {
             } else if (visibility && !sectionDrawer.isEmptyOfContributors()) {
                 sectionDrawer.setVisible(true);
             }
-
         }
     }
 
@@ -528,15 +502,12 @@ public class PaletteManagerImpl implements PaletteManager {
     private static boolean isSectionNotEmpty(ToolSection toolSection) {
         boolean result = !toolSection.getOwnedTools().isEmpty();
         result = result || !toolSection.getReusedTools().isEmpty();
-
         Iterator<ToolSection> iterator = toolSection.getSubSections().iterator();
-
         // Do iteration only if previous tests lead to "false" result
         while (!result && iterator.hasNext()) {
             ToolSection subSection = iterator.next();
             result = PaletteManagerImpl.isSectionNotEmpty(subSection);
         }
-
         return result;
     }
 
@@ -545,10 +516,8 @@ public class PaletteManagerImpl implements PaletteManager {
         for (final PaletteEntry entry : (List<PaletteEntry>) drawner.getChildren()) {
             if (entry instanceof ToolGroupPaletteStack) {
                 final ToolGroupPaletteStack stack = (ToolGroupPaletteStack) entry;
-
                 PaletteManagerImpl.setPaletteStackVisibility(stack, layer, section.getOwnedTools(), visibility);
                 PaletteManagerImpl.setPaletteStackVisibility(stack, layer, section.getReusedTools(), visibility);
-
                 for (final ToolGroupExtension groupExtension : section.getGroupExtensions()) {
                     if (stack.getId().equals(PaletteManagerImpl.getToolEntryId(groupExtension.getGroup()))) {
                         if (visibility) {
@@ -556,14 +525,11 @@ public class PaletteManagerImpl implements PaletteManager {
                         } else {
                             stack.removeLayer(layer);
                         }
-
                         for (final PaletteEntry subEntry : (List<PaletteEntry>) stack.getChildren()) {
                             PaletteManagerImpl.setPaletteEntryVisibility(subEntry, groupExtension.getTools(), visibility);
                         }
-
                     }
                 }
-
                 if (!visibility && stack.isEmptyOfContributors()) {
                     stack.setVisible(false);
                 } else if (visibility && !stack.isEmptyOfContributors()) {
@@ -612,31 +578,25 @@ public class PaletteManagerImpl implements PaletteManager {
     private static List<Layer> getDeactivatedLayers(final DDiagram dDiagram, final Session session, final DiagramDescription description) {
         // Copy of all layers
         List<Layer> deactivatedLayers = Lists.newArrayList(new DiagramComponentizationManager().getAllLayers(session.getSelectedViewpoints(false), description));
-
         // Use a copy of activated layers to avoid a potential
         // ConcurrentModificationException linked to async execution of this
         // code during the activation of a Viewpoint.
         List<Layer> activatedLayers = Lists.newArrayList(dDiagram.getActivatedLayers());
-
         for (Layer layer : activatedLayers) {
             Iterator<Layer> iterator = deactivatedLayers.iterator();
-
             while (iterator.hasNext()) {
                 Layer allLayer = iterator.next();
-
                 // If layer is activated (= in list of activated layer)
                 if (EqualityHelper.areEquals(layer, allLayer)) {
                     iterator.remove();
                 }
             }
         }
-
         return deactivatedLayers;
     }
 
     /**
-     * Adds the default tools contributed by the environment in the same group
-     * as the default GEF tools.
+     * Adds the default tools contributed by the environment in the same group as the default GEF tools.
      */
     private void addDefaultTools(final Diagram diagram) {
         final PaletteContainer container = paletteRoot.getDefaultEntry().getParent();
@@ -663,7 +623,6 @@ public class PaletteManagerImpl implements PaletteManager {
     private static PaletteContainer createPaletteDrawner(final ToolSection section) {
         final String name = new IdentifiedElementQuery(section).getLabel();
         String iconPath = section.getIcon();
-
         final PaletteContainer paletteDrawner = new SectionPaletteDrawer(name);
         paletteDrawner.setId(PaletteManagerImpl.getToolSectionId(section));
         if (StringUtil.isEmpty(iconPath)) {
@@ -673,7 +632,6 @@ public class PaletteManagerImpl implements PaletteManager {
         if (descIcon != null) {
             paletteDrawner.setSmallIcon(descIcon);
         }
-
         return paletteDrawner;
     }
 
@@ -717,9 +675,8 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     /**
-     * Update the container with the list of tool. The tools are created only if
-     * needed (not already existing) and not filtered. If a tool exists and
-     * should be filtered, it is removed from the container.
+     * Update the container with the list of tool. The tools are created only if needed (not already existing) and not
+     * filtered. If a tool exists and should be filtered, it is removed from the container.
      * 
      * @param session
      *            the current session
@@ -732,12 +689,10 @@ public class PaletteManagerImpl implements PaletteManager {
      */
     protected void updateContainer(final Session session, final DDiagram diagram, final PaletteContainer container, final List<? extends ToolEntry> toolEntries) {
         for (final ToolEntry toolEntry : toolEntries) {
-
             if (toolEntry instanceof AbstractToolDescription) {
                 final AbstractToolDescription toolDescription = (AbstractToolDescription) toolEntry;
                 /*
-                 * do not create a new entry for the tool if it should not be
-                 * displayed
+                 * do not create a new entry for the tool if it should not be displayed
                  */
                 Option<PaletteEntry> paletteEntry = getPaletteEntry(container, new IdentifiedElementQuery(toolEntry).getLabel(), PaletteEntry.class);
                 if (!paletteEntry.some()) {
@@ -757,8 +712,7 @@ public class PaletteManagerImpl implements PaletteManager {
                 }
                 for (final AbstractToolDescription tool : new DiagramComponentizationManager().getTools(session.getSelectedViewpoints(false), (ToolGroup) toolEntry)) {
                     /*
-                     * do not create a new entry for the tool if it should not
-                     * be displayed
+                     * do not create a new entry for the tool if it should not be displayed
                      */
                     Option<PaletteEntry> paletteEntry = getPaletteEntry(paletteStack.get(), getToolEntryId(tool), PaletteEntry.class);
                     if (!isFiltered(diagram, tool)) {
@@ -797,8 +751,8 @@ public class PaletteManagerImpl implements PaletteManager {
      * @param toolEntry
      *            the tool to add.
      * @param existingPaletteEntry
-     *            the palette entry currently existing with the id of toolEntry,
-     *            or {@link Options#newNone()} if it does not currently exists
+     *            the palette entry currently existing with the id of toolEntry, or {@link Options#newNone()} if it does
+     *            not currently exists
      */
     protected void addElementToContainer(final PaletteContainer container, final ToolEntry toolEntry, final Option<PaletteEntry> existingPaletteEntry) {
         if (toolEntry instanceof ToolGroup) {
@@ -823,9 +777,7 @@ public class PaletteManagerImpl implements PaletteManager {
                 final ImageDescriptor imageEntry = paletteImageProvider.getImageDescriptor(toolDescription);
                 final String nameEntry = new IdentifiedElementQuery(toolDescription).getLabel();
                 final String descriptionEntry = toolDescription.getDocumentation();
-
                 final CreationFactory creationFactory = new PaletteToolBasedCreationFactory(toolDescription);
-
                 CreationToolEntry paletteEntry = null;
                 if (toolDescription instanceof EdgeCreationDescription) {
                     paletteEntry = new ConnectionCreationToolEntry(nameEntry, descriptionEntry, creationFactory, imageEntry, imageEntry);
@@ -834,7 +786,6 @@ public class PaletteManagerImpl implements PaletteManager {
                 } else if (requiresPaletteToolEntry(toolDescription)) {
                     paletteEntry = createPaletteToolEntry(nameEntry, descriptionEntry, creationFactory, imageEntry);
                 }
-
                 if (paletteEntry != null) {
                     paletteEntry.setId(PaletteManagerImpl.getToolEntryId(toolDescription));
                     container.add(paletteEntry);
@@ -870,7 +821,6 @@ public class PaletteManagerImpl implements PaletteManager {
         creationToolEntry.setLargeIcon(imageEntry);
         creationToolEntry.setToolProperty(CreationTool.PROPERTY_CREATION_FACTORY, creationFactory);
         creationToolEntry.setToolClass(CreationTool.class);
-
         return creationToolEntry;
     }
 
@@ -906,7 +856,6 @@ public class PaletteManagerImpl implements PaletteManager {
      * 
      */
     private static class PaletteToolBasedCreationFactory implements CreationFactory {
-
         private AbstractToolDescription toolDescription;
 
         /**
