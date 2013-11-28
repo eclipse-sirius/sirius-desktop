@@ -77,6 +77,11 @@ You can customize this feature with three preferences:
 * Increase/decrease the group size
   !images/groupItems_1.png!
   
+*Note:* We see that this feature need to be enabled and have a hierarchy context above the threshold to be triggered.
+In another hand, to keep a consistency, the threshold and group size value need to follow these rules:
+* The threshold needs to be higher or equal to the group size. Otherwise the threshold value will be ignored and the group size value will be used instead.
+* The group size value needs to be higher than zero.
+  
 When you update these preferences, you need to make a refresh (F5) on all resources already expanded to get an updated tree items.
 
 !images/groupItems_2.png!

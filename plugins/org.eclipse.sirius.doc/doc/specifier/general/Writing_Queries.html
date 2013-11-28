@@ -150,7 +150,7 @@
 				<strong>
 					<code>service:</code>
 				</strong> This interpreter can be used to directly invoke a service method (i.e. a Java method that follows conventions for 
-				<a href="#service_methods">service methods</a> ) on the current element. Currently this interpreters only supports services with no parameters, which correspond to Java methods with a single argument, the model element on which to invoke the service. For example, assuming the service class 
+				<a href="#service_methods">service methods</a> ) on the current element. For example, assuming the service class 
 				<a href="#family_services">
 					<code>FamilyServices</code>
 				</a> has been correctly registered in the VSM, the expression 
@@ -158,9 +158,24 @@
 				<code>getFamiliesContainingParents</code> on the current element if it is an instance of 
 				<code>Family</code>.
 				<ul>
-					<li>Intended limitation exists to be more efficient: The services should be in the same 
-						<strong>bundle</strong> as the VSM and should be deployed. If the services already exist in another bundle, you must declare a &#171;proxy&#187; in the bundle of the 
-						<em>VSM</em>.
+					<li>
+						<em>Note 1</em>: The service interpreter supports parameters, but only variables can be used as parameter (no literals or complex expressions), for example: 
+						<code>service:serviceName(view, diagram)</code>.
+					</li>
+					<li>
+						<em>Note 2</em>: You can use the service interpreter not only on the current context by using a variable name before calling the service, for example: 
+						<code>service:myVariableName.serviceName</code>.
+					</li>
+					<li>Intended limitations exist to be more efficient:
+						<ul>
+							<li>The services should be in the same 
+								<code>bundle</code> as the VSM and should be deployed. If the services already exist in another 
+								<code>bundle</code>, you must declare a &#171;proxy&#187; in the 
+								<code>bundle</code> of the 
+								<em>VSM</em>.
+							</li>
+							<li>If multiple services match the expression, the first one found is used. There is no real polymorphism management.</li>
+						</ul>
 					</li>
 					<li>
 						<em>Tips</em>: You could put your bundle in workspace and runtime to have completion enabled on the service interpreter. 

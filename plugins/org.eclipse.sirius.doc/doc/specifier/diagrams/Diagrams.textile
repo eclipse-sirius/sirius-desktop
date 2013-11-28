@@ -195,6 +195,10 @@ table(table table-striped table-condensed).
 |!images/styles/Container_Style_Gradient.png!|!images/styles/Container_Style_Parallelogram.png!|!images/styles/Container_Style_Image.png!|
 |_. Gradient|_. Parallelogram|_. Image|
 
+h5. Default Size
+
+You can specify the default size of _Gradient_ and _Parallelogram_ styles at creation time by specifying the width and height computation expressions available in the Advanced tab. This default size will also be used to determine the container minimum size when its bounds are _auto-sized_.
+
 Most of the properties used to configure the various styles are self-explanatory. See the "styles":#styling section below for a general discussion. You can also refer to the tool-tips available directly in the editor on the "question mark" icon of each property.
 
 h4(#container_tools). Container Tools
@@ -620,6 +624,9 @@ The _Representation Name_ is simply the identifier (_Id_ field) of the diagram t
 A _Diagram Extension_ can specify the _Metamodels_ of the semantic elements it represents if it supports types of elements which were not represented in the extended diagram. Inside a _Diagram Extension_, you can define "validation rules":#validation, "filters":#filters and additional "layers":#layers. When the extension is enabled (i.e. when both the viewpoint it is defined in and the one it extends are enabled), the elements defined in the extension will be merged (added) into the base diagram's definition as if they had been defined directly in the base diagram.
 
 The simplest use case of a diagram extension is to simply _augment_ the base diagram with new graphical elements, tools, filters and validation rules. However you can also use the notion of _Mapping Import_ to _modify_ the definition of some of the base diagram's mappings. _Mapping Imports_ are actually independent of diagram extensions, and can be used inside a normal diagram description as their semantic is defined in terms of layers activation, but their main use case is when using diagram extensions.
+
+You can use regular expression in _Viewpoint URI_ and _Representation Name_ fields. This allows to extend several diagrams with one single _Diagram Extension_. You should use regular expressions only to define a _Diagram Extension_ that contains only "style customization":#customization.
+These fields are considered as regular expressions if they contain at least one of these characters : "*", "[", "]", "(", ")" or "?".
 
 h3(#mapping_imports). Mapping Imports
 

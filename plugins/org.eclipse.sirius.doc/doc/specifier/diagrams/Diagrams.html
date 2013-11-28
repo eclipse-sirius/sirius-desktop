@@ -662,6 +662,12 @@
 				<th>Image</th>
 			</tr>
 		</table>
+		<h5 id="DefaultSize">Default Size</h5>
+		<p>You can specify the default size of 
+			<em>Gradient</em> and 
+			<em>Parallelogram</em> styles at creation time by specifying the width and height computation expressions available in the Advanced tab. This default size will also be used to determine the container minimum size when its bounds are 
+			<em>auto-sized</em>.
+		</p>
 		<p>Most of the properties used to configure the various styles are self-explanatory. See the 
 			<a href="#styling">styles</a> section below for a general discussion. You can also refer to the tool-tips available directly in the editor on the &#171;question mark&#187; icon of each property.
 		</p>
@@ -1568,6 +1574,14 @@
 			<em>Mapping Import</em> to 
 			<em>modify</em> the definition of some of the base diagram&#8217;s mappings. 
 			<em>Mapping Imports</em> are actually independent of diagram extensions, and can be used inside a normal diagram description as their semantic is defined in terms of layers activation, but their main use case is when using diagram extensions.
+		</p>
+		<p>You can use regular expression in 
+			<em>Viewpoint URI</em> and 
+			<em>Representation Name</em> fields. This allows to extend several diagrams with one single 
+			<em>Diagram Extension</em>. You should use regular expressions only to define a 
+			<em>Diagram Extension</em> that contains only 
+			<a href="#customization">style customization</a>.
+			<br/>These fields are considered as regular expressions if they contain at least one of these characters : &#171;*&#187;, &#171;[&#187;, &#171;]&#187;, &#171;(&#187;, &#171;)&#187; or &#171;?&#187;.
 		</p>
 		<h3 id="mapping_imports">Mapping Imports</h3>
 		<p>A mapping import is used to 

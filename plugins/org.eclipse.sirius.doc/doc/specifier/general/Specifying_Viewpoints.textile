@@ -135,3 +135,7 @@ Keep both your representations and the VSM that define them open at the same tim
 </div>
 
 Note that Sirius does its best to take into account any change in the VSM, even for existing and opened representations. Sometimes, if the changes are too complex or in some corner cases not yet supported, you may need to close and reopen your representation, or in extreme case delete it and create a new one, in order to take the VSM changes into account properly.
+
+h3(#migration). Migration from Previous Versions
+
+The _Viewpoint Specification Model_ can evolve between two versions of Sirius. The migration process is done automatically. That means all VSM are migrated at loading time without any action from the user.
