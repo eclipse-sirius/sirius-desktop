@@ -10,21 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter;
 
-import org.eclipse.sirius.common.acceleo.mtl.AcceleoMTLInterpreterPlugin;
-import org.eclipse.sirius.common.acceleo.mtl.business.api.ResourceFinder;
-import org.eclipse.sirius.common.acceleo.mtl.business.api.extension.AbstractImportHandler;
-import org.eclipse.sirius.common.acceleo.mtl.business.internal.extension.ImportHandlerRegistry;
-import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.DynamicAcceleoModule.QueryIdentifier;
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
-import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
-import org.eclipse.sirius.common.tools.api.interpreter.InterpreterStatusFactory;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.collect.Iterables;
@@ -85,6 +70,20 @@ import org.eclipse.ocl.ecore.EcoreEnvironment;
 import org.eclipse.ocl.ecore.EcoreEnvironmentFactory;
 import org.eclipse.ocl.expressions.ExpressionsPackage;
 import org.eclipse.ocl.util.Bag;
+import org.eclipse.sirius.common.acceleo.mtl.AcceleoMTLInterpreterPlugin;
+import org.eclipse.sirius.common.acceleo.mtl.business.api.ResourceFinder;
+import org.eclipse.sirius.common.acceleo.mtl.business.api.extension.AbstractImportHandler;
+import org.eclipse.sirius.common.acceleo.mtl.business.internal.extension.ImportHandlerRegistry;
+import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.DynamicAcceleoModule.QueryIdentifier;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
+import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
+import org.eclipse.sirius.common.tools.api.interpreter.InterpreterStatusFactory;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.osgi.framework.Bundle;
 
 /**
@@ -431,7 +430,10 @@ public class AcceleoMTLInterpreter implements IInterpreter {
         Set<EPackage> additionalEPackages = Sets.newLinkedHashSet();
         for (MetamodelDescriptor descriptor : metamodels) {
             if (descriptor instanceof EcoreMetamodelDescriptor) {
-                additionalEPackages.add(((EcoreMetamodelDescriptor) descriptor).resolve());
+                EPackage pkg = ((EcoreMetamodelDescriptor) descriptor).resolve();
+                if (pkg != null) {
+                    additionalEPackages.add(pkg);
+                }
             }
         }
         module.registerAdditionalEPackages(additionalEPackages);
