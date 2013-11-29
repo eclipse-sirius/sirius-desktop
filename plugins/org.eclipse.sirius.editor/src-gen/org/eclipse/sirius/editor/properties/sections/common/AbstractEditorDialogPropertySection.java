@@ -323,6 +323,6 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
      */
     protected void makeWrittable() {
         button.setEnabled(true);
-        text.setEnabled(false);
+        text.setEnabled(true);
     }
 }
