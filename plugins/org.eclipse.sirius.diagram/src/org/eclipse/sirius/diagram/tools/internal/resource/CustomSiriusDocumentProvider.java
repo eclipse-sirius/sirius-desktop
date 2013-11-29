@@ -37,23 +37,23 @@ import org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.operation.IRunnableContext;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.part.FileEditorInput;
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.resource.ResourceLoaderListener;
-import org.eclipse.sirius.common.tools.api.resource.ResourceTools;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.resource.ResourceLoaderListener;
+import org.eclipse.sirius.common.tools.api.resource.ResourceTools;
 import org.eclipse.sirius.diagram.part.Messages;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.part.FileEditorInput;
 
 /**
  * .
@@ -346,15 +346,19 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
                 URI inputURI = sessionEditorInput.getURI();
                 URI resourceURI = inputURI.trimFragment();
                 Resource resource = resourceSet.getResource(resourceURI, false);
-                String fragment = inputURI.fragment();
-                if (fragment != null) {
-                    EObject intputEObject = resource.getEObject(fragment);
-                    IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resourceSet);
-                    isModifiable = intputEObject != null && permissionAuthority.canEditInstance(intputEObject);
-                    if (isModifiable && intputEObject instanceof Diagram) {
-                        Diagram diagram = (Diagram) intputEObject;
-                        EObject diagramElt = diagram.getElement();
-                        isModifiable = permissionAuthority.canEditInstance(diagramElt);
+                if (resource == null) {
+                    SiriusDiagramEditorPlugin.getInstance().logError("No resource in resourceSet corresponding to " + resourceURI.toString());
+                } else {
+                    String fragment = inputURI.fragment();
+                    if (fragment != null) {
+                        EObject intputEObject = resource.getEObject(fragment);
+                        IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resourceSet);
+                        isModifiable = intputEObject != null && permissionAuthority.canEditInstance(intputEObject);
+                        if (isModifiable && intputEObject instanceof Diagram) {
+                            Diagram diagram = (Diagram) intputEObject;
+                            EObject diagramElt = diagram.getElement();
+                            isModifiable = permissionAuthority.canEditInstance(diagramElt);
+                        }
                     }
                 }
             }
