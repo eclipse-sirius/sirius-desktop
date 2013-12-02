@@ -11,10 +11,8 @@
 package org.eclipse.sirius.tools.internal.command;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
  * This class is the default provider for a EMFCommandFactory instance.
@@ -37,21 +35,4 @@ public class EMFCommandFactoryProvider implements IDiagramCommandFactoryProvider
         }
         return commandFactory;
     }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider#getCommandFactory(org.eclipse.emf.transaction.TransactionalEditingDomain)
-     * 
-     * @deprecated since 4.0.0 use getCommandFactory(TransactionalEditingDomain)
-     *             instead
-     */
-    @Deprecated
-    public IDiagramCommandFactory getCommandFactory(final ModelAccessor modelAccessor, final TransactionalEditingDomain editingDomain) {
-        if (commandFactory == null) {
-            commandFactory = new UndoRedoCapableEMFCommandFactory(modelAccessor, editingDomain);
-        }
-        return commandFactory;
-    }
-
 }

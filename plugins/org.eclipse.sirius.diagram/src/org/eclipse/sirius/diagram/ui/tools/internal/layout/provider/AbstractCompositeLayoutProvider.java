@@ -291,18 +291,6 @@ public abstract class AbstractCompositeLayoutProvider extends CompositeLayoutPro
      * 
      * @see org.eclipse.gmf.runtime.diagram.ui.providers.internal.DefaultProvider#build_edges(java.util.List,
      *      java.util.Map)
-     * @deprecated
-     */
-    @Override
-    protected EdgeList build_edges(final List selectedObjects, final Map editPartToNodeDict) {
-        return buildEdges(selectedObjects, editPartToNodeDict);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.providers.internal.DefaultProvider#build_edges(java.util.List,
-     *      java.util.Map)
      */
     @Override
     protected EdgeList buildEdges(final List selectedObjects, final Map editPartToNodeDict) {

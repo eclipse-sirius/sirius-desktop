@@ -21,21 +21,19 @@ import org.eclipse.core.resources.IWorkspaceRunnable;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.internal.session.danalysis.ResourceSaveDiagnose;
+import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
+import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
-import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.business.internal.session.danalysis.ResourceSaveDiagnose;
 
 /**
  * A policy implementing save operation.
@@ -92,21 +90,6 @@ public class SavingPolicyImpl implements SavingPolicy {
             SiriusPlugin.getDefault().error("Error saving resource", e);
         }
         return hasChangesToSave;
-    }
-
-    /**
-     * The specified options to save are merged with
-     * {@link Resource#OPTION_SAVE_ONLY_IF_CHANGED} having
-     * {@link Resource#OPTION_SAVE_ONLY_IF_CHANGED_FILE_BUFFER} as value to do a
-     * save only if serialization is different.
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.session.SavingPolicy#save(java.lang.Iterable,
-     *      java.util.Map)
-     */
-    public Collection<Resource> save(final Iterable<Resource> allResources, final Map<?, ?> options) {
-        return save(allResources, options, new NullProgressMonitor());
     }
 
     /**

@@ -13,12 +13,159 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
+						<a href="#ChangesinSirius1.0.0M4fromSirius0.9">Changes in Sirius 1.0.0M4 (from Sirius 0.9)</a>
+					</li>
+					<li>
 						<a href="#ChangesfromViewpoint6.9toSirius0.9">Changes from Viewpoint 6.9 to Sirius 0.9</a>
 					</li>
 				</ol>
 			</li>
 		</ol>
 		<p>This document contains the release notes for all major releases of Sirius.</p>
+		<h2 id="ChangesinSirius1.0.0M4fromSirius0.9">Changes in Sirius 1.0.0M4 (from Sirius 0.9)</h2>
+		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<h3 id="APIChanges">API Changes</h3>
+		<p>Sirius 1.0.0M4 includes a lots of API-breaking changes, as part of a global effort to improve the quality of the Sirius internals. In this milestone in particular, most of the APIs which were marked as deprecated in previous versions of Sirius (and before that of Viewpoint) have been either removed (if a replacement exists) or marked as non-deprecated (if no replacement exists yet).</p>
+		<h4 id="Changesinorg.eclipse.sirius.common">Changes in  
+			<code>org.eclipse.sirius.common</code>
+		</h4>
+		<ul>
+			<li>Two deprecated constructors have been removed in 
+				<code>FeatureEditorDialog</code>. Use the remaining constructor instead, which provides proper behaviour for both unique and non-unique features.
+			</li>
+			<li>The deprecated method 
+				<code>IEditingDomainFactory.createEditingDomain()</code> has been removed. Use the (inherited) 
+				<code>createEditingDomain(ResourceSet)</code> instead, which ensures correct behavior for all kinds of models (Xtext for example).
+			</li>
+			<li>The deprecated field 
+				<code>org.eclipse.sirius.common.tools.api.listener.Notification.FOLD</code> has been removed. It was never used by Sirius itself, so if your code tried to listen to this kind of notification it was never actually called and can be safely removed.
+			</li>
+			<li>The deprecated methods 
+				<code>getExtensionPlugins()</code> and 
+				<code>getElementsProvidedByPlugin</code> from 
+				<code>EcliseUtil</code> have been removed. If you need this kind of functionality, use the Eclipse APIs directly instead.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li>The deprecated method 
+				<code>DialectServices.initRepresentations(Viewpoint, EObject)</code> has been removed. Use the version which takes an additional 
+				<code>IProgressMonitor</code> instead. 
+			</li>
+			<li>The deprecated constructor in 
+				<code>CreateRepresentationCommand</code> has been removed. Use the alternative constructor which takes an additional 
+				<code>IProgressMonitor</code> instead.
+			</li>
+			<li>The two deprecated constructors in 
+				<code>RefreshRepresentationCommand</code> have been removed. Use the alternative constructors which take an additional 
+				<code>IProgressMonitor</code> instead.
+			</li>
+			<li>The deprecated method 
+				<code>DisplayService.computeVisibility(Session, DDiagram, DDiagramElement)</code> has been removed. Use the variant 
+				<code>computeVisibility()</code> which takes a 
+				<code>DiagramMappingsManager</code> instead of a 
+				<code>Session</code>.
+			</li>
+			<li>The following deprecated methods in 
+				<code>FilterService</code> have been removed:
+				<ul>
+					<li>
+						<code>activateCache()</code>: use 
+						<code>DisplayService.activateCache()</code> instead.
+					</li>
+					<li>
+						<code>deactivateCache()</code>: use 
+						<code>DisplayService.deactivateCache()</code> instead.
+					</li>
+					<li>
+						<code>activate()</code>: use 
+						<code>DisplayService.activate()</code> instead.
+					</li>
+					<li>
+						<code>deactivate()</code>: use 
+						<code>DisplayService.deactivate()</code> instead.
+					</li>
+					<li>
+						<code>isActivated()</code>: use 
+						<code>DisplayServiceManager.INSTANCE.getMode() == DisplayMode.NORMAL</code> instead.
+					</li>
+					<li>
+						<code>isCollapse()</code>: use 
+						<code>isCollapsed()</code> instead.
+					</li>
+					<li>
+						<code>isVisibleForFilters()</code>: use 
+						<code>getAppliedFilters()</code> instead.
+					</li>
+					<li>
+						<code>isVisible()</code>: use 
+						<code>DisplayService.isDisplayed()</code> instead.
+					</li>
+					<li>
+						<code>isFiltered()</code>, 
+						<code>isNotFiltered()</code>, 
+						<code>isVisibleForActivatedFilters(), @checkFilters()</code>: use 
+						<code>getAppliedFilters()</code> and 
+						<code>DDiagram.getActivatedFilters()</code> instead.
+					</li>
+				</ul>
+			</li>
+			<li>The deprecated methods 
+				<code>isDirectlyHidden()</code> and 
+				<code>isIndirectlyHidden()</code> in 
+				<code>HideFilterHelper</code> have been removed. Use the corresponding methods in 
+				<code>DDiagramElementQuery</code> instead.
+			</li>
+			<li>The deprecated method 
+				<code>SavingPolicy.save(Iterable, Map)</code> has been removed. Use the variant which takes an additional 
+				<code>IProgressMonitor</code> instead.
+			</li>
+			<li>The deprecated constructor 
+				<code>AbstractCommandFactory(TransactionalEditingDomain, ModelAccessor)</code> has been removed. Use the variant without the 
+				<code>ModelAccessor</code> argument instead.
+			</li>
+			<li>The deprecated constructor 
+				<code>CommandContext(EObject)</code> has been removed. Use the variant which takes an additional 
+				<code>DRepresentation</code> instead.
+			</li>
+			<li>The deprecated methods 
+				<code>activate(TransactionalEditingDomain)</code> and 
+				<code>deactivate(TransactionalEditingDomain)</code> in 
+				<code>IChangeListener</code> have been removed. Use the variants with no argument instead.
+			</li>
+			<li>The deprecated constructor 
+				<code>AddSemanticResourceCommand(Session, URI)</code> has been removed. Use the variant which takes an additional 
+				<code>IProgressMonitor</code> instead.
+			</li>
+			<li>The deprecated constructors of 
+				<code>RemoveSemanticResourceCommand</code> have been removed. Use the variants which takes an additional 
+				<code>IProgressMonitor</code> instead.
+			</li>
+			<li>The deprecated constructor in 
+				<code>CreateDiagramWithInitialOperation</code> has been removed. Use the variant which takes an additional 
+				<code>IProgressMonitor</code> instead.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in  
+			<code>org.eclipse.sirius.ui</code>
+		</h4>
+		<ul>
+			<li>All deprecated methods in 
+				<code>ModelingProjectManager</code> have been removed. Use the corresponding versions which take an additional 
+				<code>IProgressMonitor</code> parameter instead.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tree">Changes in 
+			<code>org.eclipse.sirius.tree</code>
+		</h4>
+		<ul>
+			<li>The deprecated method 
+				<code>DTreeUserInteraction.refreshContent()</code> has been removed. Use the variant which take an additional 
+				<code>IProgressMonitor</code> parameter instead.
+			</li>
+		</ul>
 		<h2 id="ChangesfromViewpoint6.9toSirius0.9">Changes from Viewpoint 6.9 to Sirius 0.9</h2>
 		<h3 id="Pluginsversionnumbers.">Plug-ins version numbers.</h3>
 		<p>As of Sirius 0.9, and probably at least until Sirius 1.0 when the APIs will be more stable, all the bundles share the same version, which is also the version for the feature. If you used versioned dependencies to the old Viewpoint code (e.g. dependencies towards Viewpoint 6.8), you need to adjust the versions in your 
@@ -243,7 +390,7 @@ void addSelectedView(DView view) throws IllegalArgumentException;
 void removeSelectedView(DView view);
 
 </pre>
-		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
 			<li>The ability to print table representations has been disabled for the 0.9 release due to an external dependency issue (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=422223">bug #422223</a> for the details). It should be re-introduced in 1.0.

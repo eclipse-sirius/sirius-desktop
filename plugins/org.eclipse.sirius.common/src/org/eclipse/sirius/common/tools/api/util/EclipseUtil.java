@@ -11,10 +11,7 @@
 package org.eclipse.sirius.common.tools.api.util;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -28,12 +25,11 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
 
 /**
  * This class is should contains useful static functions related to Eclipse
@@ -168,70 +164,6 @@ public final class EclipseUtil {
             return namedAttribute != null && (exceptedAttributeValue == null || exceptedAttributeValue.apply(namedAttribute));
         }
         return true;
-    }
-
-    /**
-     * Get the list of plug-ins which contribute to an extension ID.
-     * 
-     * @param extensionId
-     *            the extension point id
-     * @param attribute
-     *            the attribute of the configuration element
-     * @param pattern
-     *            pattern to match.
-     * 
-     * @return a Set of {@link IExtension} instances
-     */
-    @Deprecated
-    public static Set<?> getExtensionPlugins(final String extensionId, final String attribute, final String pattern) {
-        return EclipseUtil.retrieveInPlugins(extensionId, attribute, pattern, null);
-    }
-
-    /**
-     * return a set of table object containing for each an IExtension instance
-     * and the attribute value of elementAttribute.
-     * 
-     * @param extensionId
-     *            the extension point id
-     * @param attribute
-     *            the attribute of the configuration element
-     * @param pattern
-     *            pattern to match
-     * 
-     * @param elementAttributes
-     *            the attributes to get the value for (must be {@link String}
-     * @return a set of table object containing for each an IExtension instance
-     *         and the attribute value of elementAttribute
-     */
-    @Deprecated
-    public static Set<?> getElementsProvidedByPlugin(final String extensionId, final String attribute, final String pattern, final List<String> elementAttributes) {
-        return EclipseUtil.retrieveInPlugins(extensionId, attribute, pattern, elementAttributes);
-    }
-
-    @Deprecated
-    private static Set<?> retrieveInPlugins(final String extensionId, final String attribute, final String pattern, final List<String> elementAttributes) {
-        final IExtension[] extensions = EclipseUtil.getExtensions(extensionId);
-        final Set<Object> contributors = new HashSet<Object>(extensions.length);
-
-        for (final IExtension ext : extensions) {
-            final IConfigurationElement[] ce = ext.getConfigurationElements();
-            for (IConfigurationElement element : ce) {
-                if (element.getAttribute(attribute).matches(pattern)) {
-                    if (elementAttributes == null) {
-                        contributors.add(ext);
-                    } else {
-                        final List<String> values = new ArrayList<String>(elementAttributes.size());
-                        final Iterator<String> it = elementAttributes.iterator();
-                        while (it.hasNext()) {
-                            final String elementAttribute = it.next();
-                            values.add(element.getAttribute(elementAttribute));
-                        }
-                        contributors.add(new Object[] { ext.getContributor().getName(), values });
-                    }
-                }
-            }
-        }
-        return contributors;
     }
 
     /**

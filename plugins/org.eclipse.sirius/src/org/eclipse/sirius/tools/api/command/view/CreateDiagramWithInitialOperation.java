@@ -53,24 +53,6 @@ public class CreateDiagramWithInitialOperation extends AbstractCommandTask {
      *            the {@link org.eclipse.sirius.viewpoint.DDiagram}.
      * @param uiCallBack
      *            the ui callback used to ask for the detail name.
-     * @deprecated use
-     *             {@link CreateDiagramWithInitialOperation#CreateDiagramWithInitialOperation(DiagramDescription, EObject, UICallBack, IProgressMonitor)}
-     *             instead
-     */
-    public CreateDiagramWithInitialOperation(final DiagramDescription desc, final EObject semanticElement, final UICallBack uiCallBack) {
-        this(desc, semanticElement, uiCallBack, new NullProgressMonitor());
-    }
-
-    /**
-     * Creates the command.
-     * 
-     * @param desc
-     *            the diagram description.
-     * @param semanticElement
-     *            semantic element on which the user requested the creation of
-     *            the {@link org.eclipse.sirius.viewpoint.DDiagram}.
-     * @param uiCallBack
-     *            the ui callback used to ask for the detail name.
      * @param monitor
      *            a {@link IProgressMonitor} to show progression of
      *            representation initialization

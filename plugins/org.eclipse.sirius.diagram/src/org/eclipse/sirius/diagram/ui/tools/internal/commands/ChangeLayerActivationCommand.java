@@ -11,16 +11,15 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.sirius.common.tools.api.listener.Notification;
-import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.common.tools.api.listener.Notification;
+import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.description.Layer;
 
@@ -36,23 +35,6 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
     private Layer layer;
 
     private IProgressMonitor monitor;
-
-    /**
-     * Default Constructor.
-     * 
-     * @param domain
-     *            the editing domain.
-     * @param dDiagram
-     *            the {@link DDiagram} for which change the activated layers
-     * @param layer
-     *            the {@link Layer} concerned by this change
-     * @deprecated use
-     *             {@link ChangeLayerActivationCommand#ChangeLayerActivationCommand(TransactionalEditingDomain, DDiagram, Layer, IProgressMonitor)}
-     *             instead
-     */
-    public ChangeLayerActivationCommand(TransactionalEditingDomain domain, DDiagram dDiagram, Layer layer) {
-        this(domain, dDiagram, layer, new NullProgressMonitor());
-    }
 
     /**
      * Default Constructor.

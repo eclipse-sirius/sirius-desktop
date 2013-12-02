@@ -54,21 +54,6 @@ public class RemoveSemanticResourceCommand extends RecordingCommand {
     private IProgressMonitor monitor;
 
     /**
-     * Constructor.
-     * 
-     * @param session
-     *            contextual {@link Session}
-     * @param semanticResource
-     *            Resource
-     * @deprecated use {@link
-     *             RemoveSemanticResourceCommand(Session,Resource,boolean,
-     *             IProgressMonitor)} instead
-     */
-    public RemoveSemanticResourceCommand(Session session, Resource semanticResource) {
-        this(session, semanticResource, true, true);
-    }
-
-    /**
      * Default Constructor.
      * 
      * @param session
@@ -88,51 +73,6 @@ public class RemoveSemanticResourceCommand extends RecordingCommand {
         this.session = session;
         this.removeFromControlledResources = removeFromControlledResources;
         this.monitor = monitor;
-    }
-
-    /**
-     * Constructor.
-     * 
-     * @param session
-     *            contextual {@link Session}
-     * @param semanticResource
-     *            Resource
-     * @param removeCrossReferencedResources
-     *            true if any cross referenced resource should be removed to,
-     *            false otherwise.
-     * @param removeFromControlledResources
-     *            true if the given resource will removed from controlled
-     *            resources
-     * @deprecated use {@link
-     *             RemoveSemanticResourceCommand(Session,Resource,boolean)}
-     *             instead as the <code>removeCrossReferencedResources</code>
-     *             parameter is useless now, see
-     *             {@link Session#removeSemanticResource(Resource, boolean, IProgressMonitor)}
-     */
-    public RemoveSemanticResourceCommand(Session session, Resource semanticResource, boolean removeCrossReferencedResources, boolean removeFromControlledResources) {
-        super(session.getTransactionalEditingDomain(), "Remove model");
-        this.semanticResource = semanticResource;
-        this.session = session;
-        this.removeCrossReferencedResources = removeCrossReferencedResources;
-        this.removeFromControlledResources = removeFromControlledResources;
-    }
-
-    /**
-     * Constructor.
-     * 
-     * @param session
-     *            contextual {@link Session}
-     * @param semanticResource
-     *            Resource
-     * @param removeFromControlledResources
-     *            true if the given resource will removed from controlled
-     *            resources
-     * @deprecated use {@link
-     *             RemoveSemanticResourceCommand(Session,Resource,boolean,
-     *             IProgressMonitor)} instead
-     */
-    public RemoveSemanticResourceCommand(Session session, Resource semanticResource, boolean removeFromControlledResources) {
-        this(session, semanticResource, true, removeFromControlledResources);
     }
 
     /**

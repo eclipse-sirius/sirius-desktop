@@ -14,22 +14,20 @@ import java.util.Collection;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
-
-import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+
+import com.google.common.collect.Sets;
 
 /**
  * Create representation command.
@@ -54,23 +52,6 @@ public class CreateRepresentationCommand extends RecordingCommand {
     private RepresentationCreationDescription creationDescription;
 
     private IProgressMonitor monitor;
-
-    /**
-     * Construct a new instance.
-     * 
-     * @param session
-     *            the session
-     * @param description
-     *            the representation description
-     * @param eObject
-     *            the semantic element on which to create the representation
-     * @param name
-     *            the representation name
-     * @deprecated use the constructor with a {@link IProgressMonitor}
-     */
-    public CreateRepresentationCommand(Session session, RepresentationDescription description, EObject eObject, String name) {
-        this(session, description, eObject, name, new NullProgressMonitor());
-    }
 
     /**
      * Construct a new instance with {@link IProgressMonitor}.

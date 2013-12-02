@@ -151,7 +151,7 @@ public class LayersCellModifier implements ICellModifier {
                             public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                                 monitor.beginTask("Apply layer modifications...", 1);
                                 TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(dDiagram);
-                                Command changeActivatedLayersCmd = new ChangeLayerActivationCommand(domain, dDiagram, layer);
+                                Command changeActivatedLayersCmd = new ChangeLayerActivationCommand(domain, dDiagram, layer, monitor);
                                 domain.getCommandStack().execute(changeActivatedLayersCmd);
                                 monitor.done();
                             }

@@ -22,6 +22,9 @@ import org.eclipse.sirius.business.api.helper.task.RemoveDanglingReferencesTask;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -30,9 +33,6 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 
 /**
  * .
@@ -60,27 +60,6 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
     public AbstractCommandFactory(final TransactionalEditingDomain domain) {
         this.domain = domain;
         this.modelAccessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(domain.getResourceSet());
-    }
-
-    /**
-     * Construct a new instance.
-     * 
-     * @param domain
-     *            the editing domain
-     * @param accessor
-     *            the model accessor
-     * 
-     * @deprecated since 4.0.0 : because
-     *             {@link org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessorsRegistry}
-     *             allows to retrieve a ModelAccessor from its
-     *             TransactionalEditingDomain, then use
-     *             AbstractCommandFactory(final TransactionalEditingDomain)
-     *             constructor instead.
-     */
-    @Deprecated
-    public AbstractCommandFactory(final TransactionalEditingDomain domain, final ModelAccessor accessor) {
-        this.domain = domain;
-        this.modelAccessor = accessor;
     }
 
     /**

@@ -42,30 +42,6 @@ public final class HideFilterHelperImpl implements HideFilterHelper {
     /**
      * {@inheritDoc}
      * 
-     * @deprecated Use
-     *             {@link org.eclipse.sirius.business.api.query.DDiagramElementQuery#isHidden()}
-     */
-    @Deprecated
-    public boolean isDirectlyHidden(final DDiagramElement element) {
-        DDiagramElementQuery query = new DDiagramElementQuery(element);
-        return element != null && query.isHidden();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @deprecated Use
-     *             {@link org.eclipse.sirius.business.api.query.DDiagramElementQuery#isIndirectlyHidden()}
-     */
-    @Deprecated
-    public boolean isIndirectlyHidden(final DDiagramElement element) {
-        DDiagramElementQuery query = new DDiagramElementQuery(element);
-        return element != null && query.isIndirectlyHidden();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see HideFilterHelper#hide(DDiagramElement, boolean)
      */
     public void hide(final DDiagramElement element) {
@@ -91,6 +67,11 @@ public final class HideFilterHelperImpl implements HideFilterHelper {
         if (hidefilter instanceof HideFilter) {
             element.getGraphicalFilters().remove(hidefilter);
         }
+    }
+
+    private boolean isDirectlyHidden(final DDiagramElement element) {
+        DDiagramElementQuery query = new DDiagramElementQuery(element);
+        return element != null && query.isHidden();
     }
 
     /**

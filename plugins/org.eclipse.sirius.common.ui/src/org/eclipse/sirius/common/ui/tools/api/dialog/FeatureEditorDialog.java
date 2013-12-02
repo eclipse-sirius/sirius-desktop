@@ -107,31 +107,6 @@ public class FeatureEditorDialog extends Dialog {
         }
     }
 
-    /**
-     * @deprecated Use
-     *             {@link #FeatureEditorDialog(Shell, ILabelProvider, Object, EClassifier, List, String, List, boolean, boolean, boolean)}
-     *             , which provides proper behaviour for unique and non-unique
-     *             features. This form retains the old behaviour, where
-     *             specifying a list of choices enforces uniqueness.
-     */
-    @Deprecated
-    public FeatureEditorDialog(Shell parent, ILabelProvider labelProvider, Object object, EClassifier eClassifier, List<?> currentValues, String displayName, List<?> choiceOfValues,
-            boolean multiLine, boolean sortChoices) {
-        this(parent, labelProvider, object, eClassifier, currentValues, displayName, choiceOfValues, multiLine, sortChoices, choiceOfValues != null);
-    }
-
-    /**
-     * @deprecated Use
-     *             {@link #FeatureEditorDialog(Shell, ILabelProvider, Object, EClassifier, List, String, List, boolean, boolean, boolean)}
-     *             , which provides proper behaviour for unique and non-unique
-     *             features. This form retains the old behaviour, where
-     *             specifying a list of choices enforces uniqueness.
-     */
-    @Deprecated
-    public FeatureEditorDialog(Shell parent, ILabelProvider labelProvider, Object object, EClassifier eClassifier, List<?> currentValues, String displayName, List<?> choiceOfValues) {
-        this(parent, labelProvider, object, eClassifier, currentValues, displayName, choiceOfValues, false, false, choiceOfValues != null);
-    }
-
     public FeatureEditorDialog(Shell parent, ILabelProvider labelProvider, EObject eObject, EStructuralFeature eStructuralFeature, String displayName, List<?> choiceOfValues) {
         this(parent, labelProvider, eObject, eStructuralFeature.getEType(), (List<?>) eObject.eGet(eStructuralFeature), displayName, choiceOfValues, false, false, eStructuralFeature.isUnique());
     }

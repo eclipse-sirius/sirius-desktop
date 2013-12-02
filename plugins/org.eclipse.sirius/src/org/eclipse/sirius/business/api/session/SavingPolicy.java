@@ -23,21 +23,6 @@ import org.eclipse.emf.ecore.resource.Resource;
  * @since 0.9.0
  */
 public interface SavingPolicy {
-
-    /**
-     * Save the given resources with the provided options.
-     * 
-     * @param resourcesToSave
-     *            the resources to save
-     * @param options
-     *            the options to use for saving
-     * @return the list of saved resource
-     * @deprecated use
-     *             {@link SavingPolicy#save(Iterable, Map, IProgressMonitor)}
-     *             instead
-     */
-    Collection<Resource> save(final Iterable<Resource> resourcesToSave, final Map<?, ?> options);
-
     /**
      * Save the given resources with the provided options.
      * 
@@ -49,6 +34,5 @@ public interface SavingPolicy {
      *            a {@link IProgressMonitor} to show progression of the saving
      * @return the list of saved resource
      */
-    Collection<Resource> save(final Iterable<Resource> resourcesToSave, final Map<?, ?> options, IProgressMonitor monitor);
-
+    Collection<Resource> save(Iterable<Resource> resourcesToSave, Map<?, ?> options, IProgressMonitor monitor);
 }

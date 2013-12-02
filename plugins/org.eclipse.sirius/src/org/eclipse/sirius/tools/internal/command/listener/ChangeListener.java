@@ -14,13 +14,11 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.common.tools.api.util.SmartAdapter;
 import org.eclipse.sirius.tools.api.command.listener.IChangeListener;
 import org.eclipse.sirius.tools.api.command.listener.TriggerOperation;
+
+import com.google.common.collect.Sets;
 
 /**
  * A listener which record created, modified and deleted elements and which is
@@ -41,37 +39,6 @@ public final class ChangeListener extends SmartAdapter implements IChangeListene
 
     /** counter that tracs the recursive depth of the activate() method. */
     private int activateRecursiveCount;
-
-    /**
-     * Create a new instance.
-     */
-    public ChangeListener() {
-        super();
-    }
-
-    /**
-     * Activate this listener.
-     * 
-     * @deprecated
-     * 
-     * @param domain
-     *            the domain on which to listen
-     */
-    public void activate(TransactionalEditingDomain domain) {
-        activate();
-    }
-
-    /**
-     * Deactivate this listener.
-     * 
-     * @deprecated
-     * 
-     * @param domain
-     *            the domain on which we were listening
-     */
-    public void deactivate(TransactionalEditingDomain domain) {
-        deactivate();
-    }
 
     /**
      * Activate this listener.

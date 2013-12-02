@@ -13,6 +13,7 @@ package org.eclipse.sirius.ui.tools.internal.actions.analysis;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -81,7 +82,7 @@ public class RemoveSemanticResourceAction extends Action {
         final TransactionalEditingDomain transDomain = session.getTransactionalEditingDomain();
         CompoundCommand compoundCommand = new CompoundCommand();
         for (Resource semanticResourceToRemove : toRemove) {
-            compoundCommand.append(new RemoveSemanticResourceCommand(session, semanticResourceToRemove, true, false));
+            compoundCommand.append(new RemoveSemanticResourceCommand(session, semanticResourceToRemove, false, new NullProgressMonitor()));
         }
         transDomain.getCommandStack().execute(compoundCommand);
     }

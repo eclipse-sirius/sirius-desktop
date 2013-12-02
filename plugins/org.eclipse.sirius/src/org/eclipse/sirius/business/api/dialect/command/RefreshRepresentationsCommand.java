@@ -41,36 +41,6 @@ public class RefreshRepresentationsCommand extends RecordingCommand {
      * 
      * @param domain
      *            the editing domain.
-     * @param representationsToRefresh
-     *            the representations to refresh.
-     * @deprecated use
-     *             {@link RefreshRepresentationsCommand#RefreshRepresentationsCommand(TransactionalEditingDomain, IProgressMonitor, DRepresentation...)}
-     *             instead instead
-     */
-    public RefreshRepresentationsCommand(TransactionalEditingDomain domain, DRepresentation... representationsToRefresh) {
-        this(domain, null, representationsToRefresh);
-    }
-
-    /**
-     * Construct a new instance.
-     * 
-     * @param domain
-     *            the editing domain.
-     * @param representationsToRefresh
-     *            the representations to refresh.
-     * @deprecated use
-     *             {@link RefreshRepresentationsCommand#RefreshRepresentationsCommand(TransactionalEditingDomain, IProgressMonitor, Collection)}
-     *             instead
-     */
-    public RefreshRepresentationsCommand(TransactionalEditingDomain domain, Collection<DRepresentation> representationsToRefresh) {
-        this(domain, null, representationsToRefresh);
-    }
-
-    /**
-     * Construct a new instance.
-     * 
-     * @param domain
-     *            the editing domain.
      * @param monitor
      *            a progress monitor.
      * @param representationsToRefresh

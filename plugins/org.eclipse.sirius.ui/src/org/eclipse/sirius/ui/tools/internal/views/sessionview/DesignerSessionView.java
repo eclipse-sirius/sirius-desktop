@@ -353,6 +353,7 @@ public class DesignerSessionView extends ViewPart implements SessionManagerListe
      * 
      * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notifyUpdatedSession(org.eclipse.sirius.business.api.session.Session)
      */
+    @Deprecated
     public void notifyUpdatedSession(final Session updated) {
         // do nothing as this method is deprecated
     }

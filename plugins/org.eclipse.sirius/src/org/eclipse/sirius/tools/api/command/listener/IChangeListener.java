@@ -11,7 +11,6 @@
 package org.eclipse.sirius.tools.api.command.listener;
 
 import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 
 /**
  * A listener which record created, modified and deleted elements and which is
@@ -21,26 +20,6 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
  * 
  */
 public interface IChangeListener extends Adapter {
-    /**
-     * Activate this listener.
-     * 
-     * @deprecated
-     * 
-     * @param domain
-     *            the domain on which to listen
-     */
-    void activate(TransactionalEditingDomain domain);
-
-    /**
-     * Deactivate this listener.
-     * 
-     * @deprecated
-     * 
-     * @param domain
-     *            the domain on which we were listening
-     */
-    void deactivate(TransactionalEditingDomain domain);
-
     /**
      * Activate this listener.
      */

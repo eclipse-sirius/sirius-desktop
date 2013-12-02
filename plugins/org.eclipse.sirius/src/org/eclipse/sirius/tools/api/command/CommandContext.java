@@ -15,16 +15,15 @@ import java.util.List;
 import java.util.Stack;
 
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.tool.For;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+
+import com.google.common.collect.Lists;
 
 /**
  * This class keeps the trace of all contexts.
@@ -40,18 +39,6 @@ public class CommandContext {
     private EObject nextPushEObject;
 
     private DRepresentation representation;
-
-    /**
-     * Create a new {@link CommandContext}.
-     * 
-     * @param target
-     *            the first context.
-     * @deprecated
-     */
-    @Deprecated
-    public CommandContext(final EObject target) {
-        this(target, null);
-    }
 
     /**
      * Create a new {@link CommandContext}.

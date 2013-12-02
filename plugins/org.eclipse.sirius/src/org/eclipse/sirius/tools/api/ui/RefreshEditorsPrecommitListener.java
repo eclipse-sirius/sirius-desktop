@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -175,7 +176,7 @@ public class RefreshEditorsPrecommitListener extends ResourceSetListenerImpl imp
 
         if (!representationsToRefresh.isEmpty()) {
             CompoundCommand cc = new CompoundCommand();
-            cc.append(new RefreshRepresentationsCommand(transactionalEditingDomain, representationsToRefresh));
+            cc.append(new RefreshRepresentationsCommand(transactionalEditingDomain, new NullProgressMonitor(), representationsToRefresh));
 
             // Additionnal commands ?
             for (PostRefreshCommandFactory listener : postRefreshCommandFactories) {

@@ -13,20 +13,18 @@ package org.eclipse.sirius.tree.business.api.interaction;
 import java.util.Iterator;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
-import org.eclipse.sirius.synchronizer.SemanticPartitionInvalidator;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterators;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.synchronizer.SemanticPartitionInvalidator;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.query.TreeDescriptionQuery;
 import org.eclipse.sirius.tree.business.internal.dialect.common.tree.DTreeRefresh;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterators;
 
 /**
  * This class is responsible for providing an entry point to all the user
@@ -52,19 +50,6 @@ public class DTreeUserInteraction {
     public DTreeUserInteraction(DTree tree, GlobalContext ctx) {
         this.tree = tree;
         this.ctx = ctx;
-    }
-
-    /**
-     * Refreshes the content of the DTree.
-     * 
-     * @return this user interaction
-     * 
-     * @deprecated use
-     *             {@link DTreeUserInteraction#refreshContent(IProgressMonitor)}
-     *             instead
-     */
-    public DTreeUserInteraction refreshContent() {
-        return refreshContent(new NullProgressMonitor());
     }
 
     /**

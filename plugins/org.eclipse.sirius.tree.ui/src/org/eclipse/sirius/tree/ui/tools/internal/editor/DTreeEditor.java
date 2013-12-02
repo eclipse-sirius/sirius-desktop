@@ -356,7 +356,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
      * {@inheritDoc}
      * */
     protected void launchRefresh(boolean loading) {
-        getEditingDomain().getCommandStack().execute(new RefreshRepresentationsCommand(getEditingDomain(), getTreeModel()));
+        getEditingDomain().getCommandStack().execute(new RefreshRepresentationsCommand(getEditingDomain(), new NullProgressMonitor(), getTreeModel()));
         if (!loading) {
             getViewer().refresh();
         }

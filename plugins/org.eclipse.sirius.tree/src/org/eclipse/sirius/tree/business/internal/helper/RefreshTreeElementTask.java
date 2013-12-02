@@ -115,7 +115,7 @@ public class RefreshTreeElementTask extends AbstractCommandTask {
             while (it.hasNext()) {
                 final Object obj = it.next();
                 if (obj instanceof DTree) {
-                    editingDomain.getCommandStack().execute(new RefreshRepresentationsCommand(editingDomain, (DTree) obj));
+                    editingDomain.getCommandStack().execute(new RefreshRepresentationsCommand(editingDomain, monitor, (DTree) obj));
                 } else if (obj instanceof DTreeElement) {
                     editingDomain.getCommandStack().execute(new RefreshTreeElementCommand(editingDomain, (DTreeItem) obj, monitor));
                 }

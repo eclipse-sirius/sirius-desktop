@@ -13,13 +13,11 @@ package org.eclipse.sirius.business.internal.helper.display;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
-import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.helper.display.DisplayService;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
@@ -91,15 +89,6 @@ public final class CreationDisplayServiceImpl implements DisplayService {
      */
     public void deactivateCache() {
         cache = null;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public boolean computeVisibility(Session session, final DDiagram diagram, final DDiagramElement element) {
-        DiagramMappingsManager manager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, diagram);
-        final boolean result = doIsVisible(manager, diagram, element);
-        return result;
     }
 
     /**

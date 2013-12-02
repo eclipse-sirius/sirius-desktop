@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.FreeformLayer;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
@@ -211,7 +212,7 @@ public class MyNiceCustomBarPolicy extends DiagramAssistantEditPolicy implements
                         hideDiagramAssistant();
 
                         TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(dDiagram);
-                        Command changeActivatedLayersCmd = new ChangeLayerActivationCommand(domain, dDiagram, additionalLayer);
+                        Command changeActivatedLayersCmd = new ChangeLayerActivationCommand(domain, dDiagram, additionalLayer, new NullProgressMonitor());
                         domain.getCommandStack().execute(changeActivatedLayersCmd);
                     }
                 });

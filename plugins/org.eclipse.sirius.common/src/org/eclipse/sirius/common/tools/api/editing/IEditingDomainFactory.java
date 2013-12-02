@@ -10,9 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.editing;
 
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain.Factory;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 
 /**
@@ -32,15 +30,4 @@ public interface IEditingDomainFactory extends Factory {
 
     /** . */
     String EXTENSION_POINT_CLASS_ATTRIBUTE = "class";
-
-    /**
-     * Create a new the EditingDomain.
-     * 
-     * @return a newly created EditingDomain
-     * @deprecated to make sure you'll support any kind of models (Xtext one for
-     *             instances) you should use createEditingDomain(ResourceSet)
-     *             with the resourceSet returned by the ResourceSetFatory.
-     */
-    TransactionalEditingDomain createEditingDomain();
-
 }

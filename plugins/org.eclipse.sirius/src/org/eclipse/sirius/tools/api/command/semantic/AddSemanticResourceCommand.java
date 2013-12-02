@@ -51,22 +51,6 @@ public class AddSemanticResourceCommand extends RecordingCommand {
     private Collection<Session> result = Sets.newLinkedHashSet();
 
     /**
-     * Specific command to add semantic resources to the given session.
-     * 
-     * @param session
-     *            the session to update.
-     * @param semanticResourceURI
-     *            the {@link URI} of semantic model resource to add to the given
-     *            session.
-     * @deprecated use
-     *             {@link AddSemanticResourceCommand#AddSemanticResourceCommand(Session, URI, IProgressMonitor)}
-     *             instead
-     */
-    public AddSemanticResourceCommand(Session session, URI semanticResourceURI) {
-        this(session, semanticResourceURI, new NullProgressMonitor());
-    }
-
-    /**
      * Specific command to add semantic resources to the given sessions.
      * 
      * @param session

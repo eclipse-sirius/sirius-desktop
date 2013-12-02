@@ -26,10 +26,6 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
@@ -37,6 +33,11 @@ import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.tools.api.command.AbstractCommandFactory;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
@@ -94,8 +95,6 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescr
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 
 /**
  * A command factory that creates commands that can be undone.
@@ -114,24 +113,6 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
      */
     public UndoRedoCapableEMFCommandFactory(final TransactionalEditingDomain domain) {
         super(domain);
-        commandTaskHelper = new TaskHelper(modelAccessor, uiCallBack);
-    }
-
-    /**
-     * Create a new Factory. the autoRefresh is by default deactivated
-     * 
-     * @param modelAccesor
-     *            used for metamodel extensions.
-     * @param domain
-     *            current editing domain.
-     * 
-     * @deprecated since 4.0.0 use
-     *             UndoRedoCapableEMFCommandFactory(TransactionalEditingDomain)
-     *             instead
-     */
-    @Deprecated
-    public UndoRedoCapableEMFCommandFactory(final ModelAccessor modelAccesor, final TransactionalEditingDomain domain) {
-        super(domain, modelAccesor);
         commandTaskHelper = new TaskHelper(modelAccessor, uiCallBack);
     }
 

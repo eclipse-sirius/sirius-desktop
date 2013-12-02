@@ -25,7 +25,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
@@ -191,20 +190,6 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
     /**
      * {@inheritDoc}
      */
-    public IProject createNewModelingProject(final String projectName, boolean createAndOpenBlankRepresentationsFile) throws CoreException {
-        return createNewModelingProject(projectName, null, createAndOpenBlankRepresentationsFile, new NullProgressMonitor());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public IProject createNewModelingProject(final String projectName, final IPath projectLocationPath, final boolean createAndOpenBlankRepresentationsFile) throws CoreException {
-        return createNewModelingProject(projectName, null, createAndOpenBlankRepresentationsFile, new NullProgressMonitor());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public IProject createNewModelingProject(String projectName, boolean createAndOpenBlankRepresentationsFile, IProgressMonitor monitor) throws CoreException {
         return createNewModelingProject(projectName, null, createAndOpenBlankRepresentationsFile, monitor);
     }
@@ -254,13 +239,6 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
     /**
      * {@inheritDoc}
      */
-    public void convertToModelingProject(final IProject project) throws CoreException {
-        convertToModelingProject(project, new NullProgressMonitor());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public void convertToModelingProject(final IProject project, IProgressMonitor monitor) throws CoreException {
         final IWorkspaceRunnable create = new IWorkspaceRunnable() {
             public void run(final IProgressMonitor monitor) throws CoreException {
@@ -288,13 +266,6 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
     /**
      * {@inheritDoc}
      */
-    public void removeModelingNature(final IProject project) throws CoreException {
-        removeModelingNature(project, new NullProgressMonitor());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public void removeModelingNature(final IProject project, IProgressMonitor monitor) throws CoreException {
         final IWorkspaceRunnable create = new IWorkspaceRunnable() {
             public void run(final IProgressMonitor monitor) throws CoreException {
@@ -302,13 +273,6 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
             }
         };
         ResourcesPlugin.getWorkspace().run(create, monitor);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void createLocalRepresentationsFile(IProject project) throws CoreException {
-        createLocalRepresentationsFile(project, new NullProgressMonitor());
     }
 
     /**

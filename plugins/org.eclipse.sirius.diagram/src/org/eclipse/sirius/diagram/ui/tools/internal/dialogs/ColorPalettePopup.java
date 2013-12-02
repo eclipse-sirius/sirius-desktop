@@ -198,24 +198,6 @@ public class ColorPalettePopup {
     private boolean useDefaultColor;
 
     /**
-     * Creates a color palette popup above the specified shell.
-     * 
-     * @param parent
-     *            a Shell control which will be the parent of the new instance
-     *            (cannot be null)
-     * @param preferenceId
-     *            the preference id
-     * @param rowHeight
-     *            the row height
-     * @deprecated Use the other constructor. This one does not retrieve the
-     *             default value from the correct preference store.
-     */
-    @Deprecated
-    public ColorPalettePopup(Shell parent, String preferenceId, int rowHeight) {
-        this(parent, rowHeight);
-    }
-
-    /**
      * Creates a PopupList above the specified shell.
      * 
      * @param parent

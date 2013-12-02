@@ -190,19 +190,6 @@ public interface DialectServices {
      *            the viewpoint
      * @param semantic
      *            the semantic element
-     * @deprecated use
-     *             {@link DialectServices#initRepresentations(Viewpoint, EObject, IProgressMonitor)}
-     *             instead
-     */
-    void initRepresentations(Viewpoint vp, EObject semantic);
-
-    /**
-     * Init all the representations of a the viewpoint.
-     * 
-     * @param vp
-     *            the viewpoint
-     * @param semantic
-     *            the semantic element
      * @param monitor
      *            a {@link IProgressMonitor} to show progression of
      *            representations initialization

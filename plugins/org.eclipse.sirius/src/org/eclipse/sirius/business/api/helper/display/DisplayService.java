@@ -11,7 +11,6 @@
 package org.eclipse.sirius.business.api.helper.display;
 
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
 
@@ -55,22 +54,6 @@ public interface DisplayService {
      * @return true if the element is visible, false otherwise
      */
     boolean computeVisibility(DiagramMappingsManager session, final DDiagram diagram, final DDiagramElement element);
-    
-    /**
-     * Check if an element has to be displayed in the diagram.
-     * 
-     * This method is deprecated, instead of passing the session you should use the other method taking the DiagramMappingsManager as a parameter.
-     * @param session
-     *            the current session.
-     * @param diagram
-     *            the diagram
-     * @param element
-     *            the element
-     * @return true if the element is visible, false otherwise
-     * @since 0.9.0
-     */
-    @Deprecated
-    boolean computeVisibility(Session session, final DDiagram diagram, final DDiagramElement element);
 
     /**
 

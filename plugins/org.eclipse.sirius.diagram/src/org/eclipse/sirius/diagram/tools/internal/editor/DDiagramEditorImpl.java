@@ -25,6 +25,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
@@ -77,6 +78,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.text.AbstractInformationControlManager;
 import org.eclipse.jface.text.IDocument;
@@ -1258,7 +1260,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
                     command = compoundCommand;
                 } else {
-                    command = new RefreshRepresentationsCommand(getEditingDomain(), dDiagram);
+                    command = new RefreshRepresentationsCommand(getEditingDomain(), new NullProgressMonitor(), dDiagram);
                 }
                 getEditingDomain().getCommandStack().execute(command);
             }

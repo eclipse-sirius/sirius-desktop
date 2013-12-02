@@ -46,23 +46,6 @@ public class CreateTreeTask extends AbstractCommandTask {
      *            the tree description.
      * @param semanticElement
      *            semantic element on which the user requested the creation of
-     *            the {@link org.eclipse.sirius.tree.metamodel.tree.DTree} .
-     * @deprecated use
-     *             {@link CreateTreeTask#CreateTreeTask(TreeDescription, EObject, IProgressMonitor)}
-     *             instead
-     */
-    public CreateTreeTask(final TreeDescription desc, final EObject semanticElement) {
-        this.semanticElement = semanticElement;
-        this.description = desc;
-    }
-
-    /**
-     * Creates the command.
-     * 
-     * @param desc
-     *            the tree description.
-     * @param semanticElement
-     *            semantic element on which the user requested the creation of
      *            the {@link org.eclipse.sirius.tree.metamodel.tree.DTree}
      * @param monitor
      *            a {@link IProgressMonitor} to show progression of

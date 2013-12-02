@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
@@ -44,23 +43,6 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
     private boolean createNewRepresentations;
 
     private IProgressMonitor monitor;
-
-    /**
-     * Specific command to change viewpoints selection.
-     * 
-     * @param session
-     *            the current session.
-     * @param callback
-     *            the current ViewpointSelection.Callback
-     * @param newSelectedViewpoints
-     *            the new selected viewpoints.
-     * @param newDeselectedViewpoints
-     *            the new deselected viewpoints.
-     * @deprecated use the constructor with a {@link IProgressMonitor}
-     */
-    public ChangeViewpointSelectionCommand(Session session, Callback callback, Set<Viewpoint> newSelectedViewpoints, Set<Viewpoint> newDeselectedViewpoints) {
-        this(session, callback, newSelectedViewpoints, newDeselectedViewpoints, new NullProgressMonitor());
-    }
 
     /**
      * Specific command to change viewpoint selection.

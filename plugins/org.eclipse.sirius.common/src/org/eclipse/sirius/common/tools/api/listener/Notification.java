@@ -51,13 +51,4 @@ public interface Notification {
      * @since 0.9.0
      */
     int REFRESH_VISIBILITY_ON_DIAGRAM = 3;
-
-    /**
-     * Activate the visibility propagator for edge folding.
-     * 
-     * @since 0.9.0
-     */
-    @Deprecated
-    int FOLD = 4;
-
 }

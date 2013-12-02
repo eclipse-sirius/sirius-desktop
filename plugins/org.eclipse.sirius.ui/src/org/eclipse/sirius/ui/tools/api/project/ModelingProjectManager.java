@@ -46,7 +46,7 @@ public interface ModelingProjectManager {
      * @param representationsFileURI
      *            The URI of the representations file to open.
      */
-    void loadAndOpenRepresentationsFile(final URI representationsFileURI);
+    void loadAndOpenRepresentationsFile(URI representationsFileURI);
 
     /**
      * Load and open representations files.
@@ -54,7 +54,7 @@ public interface ModelingProjectManager {
      * @param representationsFilesURIs
      *            The URIs of the representations files to open.
      */
-    void loadAndOpenRepresentationsFiles(final List<URI> representationsFilesURIs);
+    void loadAndOpenRepresentationsFiles(List<URI> representationsFilesURIs);
 
     /**
      * Clear the cache for this representations file.
@@ -72,23 +72,6 @@ public interface ModelingProjectManager {
      * @param createAndOpenBlankRepresentationsFile
      *            true if a blank representations file must be created and open,
      *            false otherwise
-     * @return The new project
-     * @throws CoreException
-     *             in case of problem
-     * @deprecated use
-     *             {@link ModelingProjectManager#createNewModelingProject(String, boolean, IProgressMonitor)}
-     *             instead
-     */
-    IProject createNewModelingProject(final String projectName, boolean createAndOpenBlankRepresentationsFile) throws CoreException;
-
-    /**
-     * Create a new modeling project.
-     * 
-     * @param projectName
-     *            The project name
-     * @param createAndOpenBlankRepresentationsFile
-     *            true if a blank representations file must be created and open,
-     *            false otherwise
      * @param monitor
      *            a {@link IProgressMonitor} to show progression of Modeling
      *            Project creation
@@ -96,26 +79,7 @@ public interface ModelingProjectManager {
      * @throws CoreException
      *             in case of problem
      */
-    IProject createNewModelingProject(final String projectName, boolean createAndOpenBlankRepresentationsFile, IProgressMonitor monitor) throws CoreException;
-
-    /**
-     * Create a new modeling project.
-     * 
-     * @param projectName
-     *            The project name
-     * @param projectLocationPath
-     *            The project location path
-     * @param createAndOpenBlankRepresentationsFile
-     *            true if a blank representations file must be created and open,
-     *            false otherwise
-     * @return The new project
-     * @throws CoreException
-     *             in case of problem
-     * @deprecated use
-     *             {@link ModelingProjectManager#createNewModelingProject(String, IPath, boolean, IProgressMonitor)}
-     *             instead
-     */
-    IProject createNewModelingProject(final String projectName, final IPath projectLocationPath, final boolean createAndOpenBlankRepresentationsFile) throws CoreException;
+    IProject createNewModelingProject(String projectName, boolean createAndOpenBlankRepresentationsFile, IProgressMonitor monitor) throws CoreException;
 
     /**
      * Create a new modeling project.
@@ -134,20 +98,7 @@ public interface ModelingProjectManager {
      * @throws CoreException
      *             in case of problem
      */
-    IProject createNewModelingProject(final String projectName, final IPath projectLocationPath, final boolean createAndOpenBlankRepresentationsFile, IProgressMonitor monitor) throws CoreException;
-
-    /**
-     * Create a local representation.
-     * 
-     * @param project
-     *            the {@link IProject} to convert.
-     * @throws CoreException
-     *             in case of problem (2 aird and no main one for example).
-     * @deprecated use
-     *             {@link ModelingProjectManager#createLocalRepresentationsFile(IProject, IProgressMonitor)}
-     *             instead
-     */
-    void createLocalRepresentationsFile(IProject project) throws CoreException;
+    IProject createNewModelingProject(String projectName, IPath projectLocationPath, boolean createAndOpenBlankRepresentationsFile, IProgressMonitor monitor) throws CoreException;
 
     /**
      * Create a local representation.
@@ -163,22 +114,6 @@ public interface ModelingProjectManager {
     void createLocalRepresentationsFile(IProject project, IProgressMonitor monitor) throws CoreException;
 
     /**
-     * Convert an existing project to a modeling project : add a the modeling
-     * project nature, look for an existing main aird file or create it and then
-     * populate the semantic resources with existing models contained in the
-     * project.
-     * 
-     * @param project
-     *            IProject
-     * @throws CoreException
-     *             in case of problem
-     * @deprecated use
-     *             {@link ModelingProjectManager#convertToModelingProject(IProject, IProgressMonitor)}
-     *             instead
-     */
-    void convertToModelingProject(IProject project) throws CoreException;
-
-    /**
      * Convert an existing project to a modeling project : add the modeling
      * project nature, look for an existing main aird file or create it and then
      * populate the semantic resources with existing models contained in the
@@ -192,19 +127,6 @@ public interface ModelingProjectManager {
      *             in case of problem
      */
     void convertToModelingProject(IProject project, IProgressMonitor monitor) throws CoreException;
-
-    /**
-     * Convert an existing project to a modeling project.
-     * 
-     * @param project
-     *            IProject
-     * @throws CoreException
-     *             in case of problem
-     * @deprecated use
-     *             {@link ModelingProjectManager#removeModelingNature(IProject, IProgressMonitor)}
-     *             instead
-     */
-    void removeModelingNature(IProject project) throws CoreException;
 
     /**
      * Convert an existing project to a modeling project.
