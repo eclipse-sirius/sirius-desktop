@@ -138,4 +138,4 @@ Note that Sirius does its best to take into account any change in the VSM, even 
 
 h3(#migration). Migration from Previous Versions
 
-The _Viewpoint Specification Model_ can evolve between two versions of Sirius. The migration process is done automatically. That means all VSM are migrated at loading time without any action from the user.
+The _Viewpoint Specification Model_ can evolve between two versions of Sirius. The migration process is done automatically. That means all VSM are migrated at loading time without any action from the user. While a VSM is not saved, the automatic migration will be replayed at the next opening.

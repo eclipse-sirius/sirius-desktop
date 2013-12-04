@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,10 @@ import org.osgi.framework.Version;
  * 
  */
 public abstract class AbstractSiriusMigrationService {
+
+    // This migration way was introduced with 6.5.0.201208161001 version
+    // for both VSM and representations files.
+    private static final Version FIRST_VERSION = new Version("6.5.0.201208161001");
 
     /**
      * loaded delegates contributions.
@@ -229,10 +233,10 @@ public abstract class AbstractSiriusMigrationService {
      */
     public Version getLastMigrationVersion() {
         if (lastMigrationVersion == null) {
+            // Initialized here to do the initialization only once.
+            lastMigrationVersion = FIRST_VERSION;
             for (IMigrationParticipant contribution : delegatesParticipants) {
-                if (lastMigrationVersion == null) {
-                    lastMigrationVersion = contribution.getMigrationVersion();
-                } else if (lastMigrationVersion.compareTo(contribution.getMigrationVersion()) < 0) {
+                if (lastMigrationVersion.compareTo(contribution.getMigrationVersion()) < 0) {
                     lastMigrationVersion = contribution.getMigrationVersion();
                 }
             }

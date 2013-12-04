@@ -11,10 +11,14 @@
 package org.eclipse.sirius.business.internal.migration.description;
 
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.BasicResourceHandler;
+import org.osgi.framework.Version;
+
+import org.eclipse.sirius.viewpoint.description.Group;
 
 /**
  * VSM resource handler implementation.
@@ -24,22 +28,38 @@ import org.eclipse.emf.ecore.xmi.impl.BasicResourceHandler;
  */
 public class VSMResourceHandler extends BasicResourceHandler {
 
-    private String version;
+    private String loadedVersion;
 
     /**
      * Constructor.
      * 
-     * @param version
+     * @param loadedVersion
      *            the current version of the meta-model to migrate.
      */
-    public VSMResourceHandler(String version) {
-        this.version = version;
+    public VSMResourceHandler(String loadedVersion) {
+        this.loadedVersion = loadedVersion;
     }
 
     @Override
     public void postLoad(XMLResource resource, InputStream inputStream, Map<?, ?> options) {
-        VSMMigrationService.getInstance().postLoad(resource, version);
+        VSMMigrationService.getInstance().postLoad(resource, loadedVersion);
         super.postLoad(resource, inputStream, options);
     }
 
+    @Override
+    public void preSave(XMLResource resource, OutputStream outputStream, Map<?, ?> options) {
+        super.preSave(resource, outputStream, options);
+
+        if (!resource.getContents().isEmpty() && resource.getContents().get(0) instanceof Group) {
+            Group group = (Group) resource.getContents().get(0);
+            Version lastMigrationVersion = VSMMigrationService.getInstance().getLastMigrationVersion();
+          
+            boolean previousDeliver = group.eDeliver();
+            group.eSetDeliver(false);
+            
+            group.setVersion(lastMigrationVersion.toString());
+            
+            group.eSetDeliver(previousDeliver);
+        }
+    }
 }

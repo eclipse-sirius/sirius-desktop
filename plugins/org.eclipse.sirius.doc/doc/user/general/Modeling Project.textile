@@ -31,7 +31,7 @@ New users can skip this section safely. For users of previous version who have e
 
 h3(#Migration). Migration of Existing Representation Files
 
-Representation files are now automatically migrated when opened. This migration is transparent for the end-user.
+Representation files are now automatically migrated when opened. This migration is transparent for the end-user. While a representation file is not saved, the automatic migration will be replayed at the next opening.
 
 h3(#UICHanges). User Interface Changes
 

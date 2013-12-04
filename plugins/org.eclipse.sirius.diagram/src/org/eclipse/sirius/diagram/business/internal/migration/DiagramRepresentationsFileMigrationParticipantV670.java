@@ -25,13 +25,6 @@ import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
-import org.osgi.framework.Version;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.edit.internal.part.PortLayoutHelper;
@@ -60,6 +53,13 @@ import org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.osgi.framework.Version;
+
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * The migration code of Sirius 6.7.0.
@@ -268,8 +268,10 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
             }
         }
         for (DDiagramElement indirectlyCollaspedDDE : indirectlyCollaspedDDEs) {
-            IndirectlyCollapseFilter indirectlyCollapseFilter = ViewpointFactory.eINSTANCE.createIndirectlyCollapseFilter();
-            indirectlyCollaspedDDE.getGraphicalFilters().add(indirectlyCollapseFilter);
+            if (!Iterables.any(indirectlyCollaspedDDE.getGraphicalFilters(), Predicates.instanceOf(IndirectlyCollapseFilter.class))) {
+                IndirectlyCollapseFilter indirectlyCollapseFilter = ViewpointFactory.eINSTANCE.createIndirectlyCollapseFilter();
+                indirectlyCollaspedDDE.getGraphicalFilters().add(indirectlyCollapseFilter);
+            }
         }
     }
 
