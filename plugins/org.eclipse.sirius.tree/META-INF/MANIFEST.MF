@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.tree;singleton:=true
-Bundle-Version: 0.9.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
@@ -34,7 +34,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.sirius;visibility:=reexport,
  org.eclipse.sirius.common,
  org.eclipse.sirius.synchronizer;visibility:=reexport,
- org.eclipse.sirius.ecore.extender;bundle-version="0.9.0",
+ org.eclipse.sirius.ecore.extender;bundle-version="1.0.0",
  org.eclipse.emf.transaction,
  com.google.guava;bundle-version="[11.0.0,12.0.0)"
 Eclipse-LazyStart: true
