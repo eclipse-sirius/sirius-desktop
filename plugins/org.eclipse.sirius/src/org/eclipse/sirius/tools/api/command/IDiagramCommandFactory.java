@@ -49,7 +49,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
  * The command factory for diagram dialect.
  * 
  * @author mchauvin
- * @since 2.0
+ * @since 0.9.0
  */
 public interface IDiagramCommandFactory extends ICommandFactory {
     /**

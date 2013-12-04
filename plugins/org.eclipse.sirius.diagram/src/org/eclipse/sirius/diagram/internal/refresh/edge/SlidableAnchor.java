@@ -274,7 +274,7 @@ public class SlidableAnchor {
     /**
      * Returns the owner Figure on which this anchor's location is dependent.
      * 
-     * @since 2.0
+     * @since 0.9.0
      * @return Owner of this anchor
      */
     public View getOwner() {

@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.URI;
  * Editor able to reveal a given EObject.
  * 
  * @author cbrun
- * @since 2.0
+ * @since 0.9.0
  */
 public interface IEObjectNavigable {
     /**

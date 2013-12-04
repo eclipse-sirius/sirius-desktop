@@ -20,7 +20,7 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStat
  * A policy returning synchronization actions needed after a workspace change.
  * 
  * @author cbrun
- * @since 2.0
+ * @since 0.9.0
  */
 public interface ReloadingPolicy {
     /**

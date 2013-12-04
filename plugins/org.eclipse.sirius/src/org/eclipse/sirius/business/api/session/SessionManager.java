@@ -99,7 +99,7 @@ public interface SessionManager {
      * 
      * @param session
      *            the session in which rename occurs
-     * @since 2.13
+     * @since 0.9.0
      */
     void notifyRepresentationRenamed(Session session);
 
@@ -138,7 +138,7 @@ public interface SessionManager {
      *            a session Resource {@link URI}
      * @return the corresponding session if exist.
      * 
-     * @since 4.0
+     * @since 0.9.0
      * @deprecated use {@link SessionManager#getSession(URI, IProgressMonitor)}
      *             instead
      */
@@ -167,7 +167,7 @@ public interface SessionManager {
      *            a session Resource {@link URI}
      * @return the corresponding session if exist.
      * 
-     * @since 4.0
+     * @since 0.9.0
      */
     Session getExistingSession(URI sessionResourceURI);
 

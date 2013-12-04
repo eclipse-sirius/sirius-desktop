@@ -64,7 +64,7 @@ import com.google.common.collect.Sets;
  * Delete Action which can call hooks.
  * 
  * @author mchauvin
- * @since 2.1
+ * @since 0.9.0
  */
 public class DeleteFromModelWithHookAction extends DeleteFromModelAction {
     /** The associated key binding. */

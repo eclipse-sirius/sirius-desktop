@@ -30,7 +30,7 @@ public interface IEditingSession extends DeprecatedIEditingSession {
      * Get the wrapped {@link Session}.
      * 
      * @return the session.
-     * @since 2.8
+     * @since 0.9.0
      */
     Session getSession();
     
@@ -64,7 +64,7 @@ public interface IEditingSession extends DeprecatedIEditingSession {
      * Returns editors.
      * 
      * @return editors
-     * @since 2.4
+     * @since 0.9.0
      */
     Collection<DialectEditor> getEditors();
 
@@ -89,7 +89,7 @@ public interface IEditingSession extends DeprecatedIEditingSession {
      *            <code>true</code> to save the session contents if required
      *            (recommended), and <code>false</code> to discard any unsaved
      *            changes
-     * @since 2.1
+     * @since 0.9.0
      */
     void closeEditors(boolean save, DialectEditor... editors);
 
@@ -119,7 +119,7 @@ public interface IEditingSession extends DeprecatedIEditingSession {
      * <li>On closing all editors, only one must be saved</li>
      * </ol>
      * 
-     * @since 2.1
+     * @since 0.9.0
      * @param editor
      *            the editor that we closing
      * @return true if only one editor is opened for this session.
@@ -132,7 +132,7 @@ public interface IEditingSession extends DeprecatedIEditingSession {
      * 
      * @see org.eclipse.ui.ISaveablePart2#promptToSaveOnClose()
      * 
-     * @since 4.1
+     * @since 0.9.0
      * 
      * @return one of the standard return value for a save dialog
      *         {@link org.eclipse.ui.ISaveablePart2#YES},

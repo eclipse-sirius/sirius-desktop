@@ -96,7 +96,7 @@ public final class EclipseUtil {
      * @param <T>
      *            the class to implements for contributors
      * @return a List of clazz instance
-     * @since 2.1
+     * @since 0.9.0
      */
     public static <T> List<T> getExtensionPlugins(final Class<T> clazz, final String extensionId, final String executableAttribute, final String attributeName, final String exceptedAttributeValue) {
         return EclipseUtil.getExtensionPlugins(clazz, extensionId, executableAttribute, attributeName, Predicates.equalTo(exceptedAttributeValue));
@@ -119,7 +119,7 @@ public final class EclipseUtil {
      * @param <T>
      *            the class to implements for contributors
      * @return a List of clazz instance
-     * @since 3.3
+     * @since 0.9.0
      */
     public static <T> List<T> getExtensionPlugins(final Class<T> clazz, final String extensionId, final String executableAttribute, final String attributeName,
             final Predicate<String> attributeValuePredicate) {

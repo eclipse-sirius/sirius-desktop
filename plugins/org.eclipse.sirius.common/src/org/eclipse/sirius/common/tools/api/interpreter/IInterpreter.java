@@ -29,7 +29,7 @@ public interface IInterpreter {
     /**
      * Key for all workspace/plug-in representation description files.
      * 
-     * @since 2.0
+     * @since 0.9.0
      * */
     String FILES = "files";
 
@@ -50,7 +50,7 @@ public interface IInterpreter {
      * {@link IInterpreter#validateExpression(IInterpreterContext, String)}
      * method is able to return meaningful statuses).
      * 
-     * @since 3.2
+     * @since 0.9.0
      * @return true if this {@link IInterpreter} supports static validation of
      *         expressions, false otherwise
      */
@@ -61,7 +61,7 @@ public interface IInterpreter {
      * {@link IInterpreter#supportsValidation()} returns false this method will
      * always return an empty list.
      * 
-     * @since 3.2
+     * @since 0.9.0
      * @param context
      *            the {@link IInterpreterContext} to use for validating this
      *            expression
@@ -274,7 +274,7 @@ public interface IInterpreter {
      * Get the imports (qualified names) for this interpreter.
      * 
      * @return a collection of imports.
-     * @since 3.0
+     * @since 0.9.0
      */
     Collection<String> getImports();
 
@@ -283,7 +283,7 @@ public interface IInterpreter {
      * 
      * @param dependency
      *            the import to remove.
-     * @since 3.0
+     * @since 0.9.0
      */
     void removeImport(String dependency);
 

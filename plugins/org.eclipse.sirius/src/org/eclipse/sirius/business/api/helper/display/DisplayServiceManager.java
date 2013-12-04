@@ -35,7 +35,7 @@ public interface DisplayServiceManager {
      * @param mode
      *            the wanted mode
      * @return the requested display
-     * @since 2.4
+     * @since 0.9.0
      */
     DisplayService getDisplayService(DisplayMode mode);
 

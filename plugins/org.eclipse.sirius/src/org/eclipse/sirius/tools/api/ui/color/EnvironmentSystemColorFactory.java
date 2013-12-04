@@ -71,7 +71,7 @@ public final class EnvironmentSystemColorFactory {
      *            the maximum possible value (inclusive). Must be >= min.
      * @return the integer closes to <code>value</code> which is inside the
      *         inclusive interval <code>[min, max]</code>.
-     * @since 2.0
+     * @since 0.9.0
      */
     public static int clamp(final int value, final int min, final int max) {
         return Math.min(Math.max(value, min), max);

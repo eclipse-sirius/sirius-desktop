@@ -20,7 +20,7 @@ import org.eclipse.sirius.common.tools.DslCommonPlugin;
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  * 
- * @since 3.2
+ * @since 0.9.0
  */
 public interface IEditingDomainFactory extends Factory {
 

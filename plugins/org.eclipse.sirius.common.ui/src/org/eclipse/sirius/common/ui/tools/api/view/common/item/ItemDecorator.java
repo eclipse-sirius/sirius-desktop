@@ -16,7 +16,7 @@ import org.eclipse.swt.graphics.Image;
  * A interface to decorate objects.
  * 
  * @author mchauvin
- * @since 2.4
+ * @since 0.9.0
  */
 public interface ItemDecorator {
     /**

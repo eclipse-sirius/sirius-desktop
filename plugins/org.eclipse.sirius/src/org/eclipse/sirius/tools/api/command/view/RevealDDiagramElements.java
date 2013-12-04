@@ -21,7 +21,7 @@ import org.eclipse.sirius.viewpoint.DDiagramElement;
  * A simple command to reveal diagram elements.
  * 
  * @author Damien Lecan (damien.lecan@obeo.fr)
- * @since 2.3
+ * @since 0.9.0
  */
 public class RevealDDiagramElements extends RecordingCommand {
 

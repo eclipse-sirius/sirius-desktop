@@ -26,7 +26,7 @@ import org.eclipse.gef.tools.ConnectionEndpointTracker;
  * extended rather than using the final
  * 
  * @author Anthony Hunter
- * @since 3.4
+ * @since 0.9.0
  */
 public class ConnectionEndpointHandle extends ConnectionHandle {
 
@@ -111,7 +111,7 @@ public class ConnectionEndpointHandle extends ConnectionHandle {
      * @return the endPoint handle, which is is either
      *         {@link ConnectionLocator#SOURCE} or
      *         {@link ConnectionLocator#TARGET}.
-     * @since 3.5
+     * @since 0.9.0
      */
     public int getEndPoint() {
         return endPoint;

@@ -14,7 +14,7 @@ package org.eclipse.sirius.business.api.componentization;
  * A listener interface to listen events in the ViewpointRegistry.
  * 
  * @author mchauvin
- * @since 2.3
+ * @since 0.9.0
  */
 public interface ViewointRegistryListener2 {
 

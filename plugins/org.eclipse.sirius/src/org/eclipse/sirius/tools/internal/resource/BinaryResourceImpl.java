@@ -49,7 +49,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * change arbitrarily. It might not be wise to use this format for long term
  * persistence while the API is provisional.
  * 
- * @since 2.4
+ * @since 0.9.0
  */
 // CHECKSTYLE:OFF
 public class BinaryResourceImpl extends ResourceImpl {

@@ -29,14 +29,14 @@ public class HideDDiagramElement extends RecordingCommand {
     /**
      * Label for hide element.
      * 
-     * @since 2.2
+     * @since 0.9.0
      */
     public static final String HIDE_ELEMENT_LABEL = "Hide element";
 
     /**
      * Label for hide many elements.
      * 
-     * @since 2.2
+     * @since 0.9.0
      */
     public static final String HIDE_ELEMENTS_LABEL = "Hide elements";
 

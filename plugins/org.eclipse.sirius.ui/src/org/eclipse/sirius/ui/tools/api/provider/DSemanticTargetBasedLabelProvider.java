@@ -21,7 +21,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  * Label provider for lines.
  * 
  * @author dlecan
- * @since 2.1
+ * @since 0.9.0
  */
 public class DSemanticTargetBasedLabelProvider extends ColumnLabelProvider {
 

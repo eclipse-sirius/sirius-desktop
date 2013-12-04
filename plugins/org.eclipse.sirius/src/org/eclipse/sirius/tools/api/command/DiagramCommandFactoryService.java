@@ -17,7 +17,7 @@ import org.eclipse.sirius.tools.internal.command.EMFCommandFactoryProvider;
  * provider.
  * 
  * @author mchauvin
- * @since 2.0
+ * @since 0.9.0
  */
 public final class DiagramCommandFactoryService {
 

@@ -36,7 +36,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
      * The default value of the '{@link #getLabelAlignment()
      * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @see #getLabelAlignment()
      * @generated
      * @ordered
@@ -47,7 +47,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
      * The cached value of the '{@link #getLabelAlignment()
      * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @see #getLabelAlignment()
      * @generated
      * @ordered
@@ -76,7 +76,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
     /**
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      */
     public LabelAlignment getLabelAlignment() {
@@ -86,7 +86,7 @@ public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {
     /**
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      */
     public void setLabelAlignment(LabelAlignment newLabelAlignment) {

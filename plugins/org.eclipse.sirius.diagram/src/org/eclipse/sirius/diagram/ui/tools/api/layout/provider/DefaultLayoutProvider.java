@@ -139,7 +139,7 @@ public class DefaultLayoutProvider extends AbstractLayoutProvider {
      *            the key.
      * @param value
      *            the value to add.
-     * @since 2.0
+     * @since 0.9.0
      */
     protected static void addToMap(final Map<EditPart, List<EditPart>> map, final EditPart key, final EditPart value) {
         List<EditPart> values = map.get(key);

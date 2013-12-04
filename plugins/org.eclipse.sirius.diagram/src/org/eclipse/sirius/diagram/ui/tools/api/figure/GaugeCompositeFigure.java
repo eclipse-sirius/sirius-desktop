@@ -57,7 +57,7 @@ public class GaugeCompositeFigure extends AbstractTransparentNode implements Sty
      * 
      * @param alignment
      *            new alignment.
-     * @since 2.0
+     * @since 0.9.0
      */
     public void setAlignment(final AlignmentKind alignment) {
         this.alignment = alignment;

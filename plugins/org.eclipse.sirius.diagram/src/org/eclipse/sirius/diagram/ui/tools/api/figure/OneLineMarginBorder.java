@@ -164,7 +164,7 @@ public class OneLineMarginBorder extends OneLineBorder {
      * 
      * @param allsides
      *            Padding size for all sides of the border.
-     * @since 2.0
+     * @since 0.9.0
      */
     public void setMargin(int allsides) {
         setMargin(new Insets(allsides));

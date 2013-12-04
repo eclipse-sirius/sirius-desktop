@@ -25,7 +25,7 @@ import org.eclipse.sirius.tools.api.command.IUndoableCommand;
  * Wrap an EMF command into a GMF command.
  * 
  * @author mchauvin
- * @since 2.1
+ * @since 0.9.0
  */
 public class GMFCommandWrapper extends AbstractTransactionalCommand {
 

@@ -55,7 +55,7 @@ public interface SessionFactory {
      * @throws CoreException
      *             exception when session resource creation failed
      * 
-     * @since 4.0
+     * @since 0.9.0
      * @deprecated use
      *             {@link SessionFactory#createSession(URI, IProgressMonitor)}
      */
@@ -76,7 +76,7 @@ public interface SessionFactory {
      * @throws CoreException
      *             exception when session resource creation failed
      * 
-     * @since 4.0
+     * @since 0.9.0
      */
     Session createSession(URI sessionResourceURI, IProgressMonitor monitor) throws CoreException;
 
@@ -93,7 +93,7 @@ public interface SessionFactory {
      * @throws CoreException
      *             exception when session resource creation failed
      * 
-     * @since 4.0
+     * @since 0.9.0
      */
     Session createDefaultSession(URI sessionResourceURI) throws CoreException;
 }

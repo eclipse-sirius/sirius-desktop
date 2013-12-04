@@ -127,7 +127,7 @@ public class FilteredCommonTree extends Composite {
      * <strong>Note:</strong> This is only used if the new look is chosen.
      * </p>
      * 
-     * @since 3.5
+     * @since 0.9.0
      */
     protected Control clearButtonControl;
 
@@ -152,7 +152,7 @@ public class FilteredCommonTree extends Composite {
     /**
      * The parent composite of the filtered tree.
      * 
-     * @since 3.3
+     * @since 0.9.0
      */
     protected Composite parent;
 
@@ -169,7 +169,7 @@ public class FilteredCommonTree extends Composite {
     /**
      * The tree composite of this control.
      * 
-     * @since 3.3
+     * @since 0.9.0
      */
     protected Composite treeComposite;
 
@@ -193,7 +193,7 @@ public class FilteredCommonTree extends Composite {
     /**
      * Tells whether to use the pre 3.5 or the new look.
      * 
-     * @since 3.5
+     * @since 0.9.0
      */
     private boolean useNewLook;
 
@@ -227,7 +227,7 @@ public class FilteredCommonTree extends Composite {
      *            the style bits for the <code>Tree</code>
      * @param useNewLook
      *            <code>true</code> if the new 3.5 look should be used
-     * @since 3.5
+     * @since 0.9.0
      */
     public FilteredCommonTree(String viewerId, Composite parent, int treeStyle, boolean useNewLook) {
         super(parent, SWT.NONE);
@@ -252,7 +252,7 @@ public class FilteredCommonTree extends Composite {
      *            <code>true</code> if the new 3.5 look should be used
      * @see #init(int, PatternFilter)
      * 
-     * @since 3.5
+     * @since 0.9.0
      */
     protected FilteredCommonTree(String viewerId, Composite parent, boolean useNewLook) {
         super(parent, SWT.NONE);
@@ -284,7 +284,7 @@ public class FilteredCommonTree extends Composite {
      * @param treeStyle
      *            the style bits for the <code>Tree</code>
      * 
-     * @since 3.3
+     * @since 0.9.0
      */
     protected void init(int treeStyle) {
         showFilterControls = PlatformUI.getPreferenceStore().getBoolean(IWorkbenchPreferenceConstants.SHOW_FILTERED_TEXTS);
@@ -408,7 +408,7 @@ public class FilteredCommonTree extends Composite {
      *            SWT style bits used to create the tree viewer
      * @return the tree viewer
      * 
-     * @since 3.3
+     * @since 0.9.0
      */
     protected CommonViewer doCreateCommonViewer(Composite aParent, int style) {
         return new NotifyingCommonViewer(this.viewerId, aParent, style);
@@ -451,7 +451,7 @@ public class FilteredCommonTree extends Composite {
      * 
      * @return a workbench job that can be scheduled to refresh the tree
      * 
-     * @since 3.4
+     * @since 0.9.0
      */
     // CHECKSTYLE:OFF Original method
     protected WorkbenchJob doCreateRefreshJob() {
@@ -770,7 +770,7 @@ public class FilteredCommonTree extends Composite {
      *            the parent composite
      * @return the text widget
      * 
-     * @since 3.3
+     * @since 0.9.0
      */
     protected Text doCreateFilterText(Composite aParent) {
         if (!useNewLook || useNativeSearchField(aParent)) {
@@ -796,7 +796,7 @@ public class FilteredCommonTree extends Composite {
      * 
      * @return a time delay in milliseconds before the job should run
      * 
-     * @since 3.5
+     * @since 0.9.0
      */
     protected long getRefreshJobDelay() {
         return 200;
@@ -1091,7 +1091,7 @@ public class FilteredCommonTree extends Composite {
      * Custom tree viewer subclass that clears the caches in patternFilter on
      * any change to the tree. See bug 187200.
      * 
-     * @since 3.3
+     * @since 0.9.0
      * 
      */
     class NotifyingCommonViewer extends CommonViewer {

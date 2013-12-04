@@ -45,7 +45,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ReconnectionKind;
  * 
  * @author <a href="mailto:steve.monnier@obeo.fr">Steve Monnier</a>
  * 
- * @since 6.0
+ * @since 0.9.0
  */
 public class SiriusSetConnectionAnchorsCommand extends SetConnectionAnchorsCommand {
 

@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * Create representation command.
  * 
  * @author mchauvin
- * @since 2.5
+ * @since 0.9.0
  */
 public class CreateRepresentationCommand extends RecordingCommand {
 

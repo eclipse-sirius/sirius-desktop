@@ -21,7 +21,7 @@ import org.eclipse.sirius.viewpoint.DDiagramElement;
  * A simple command to reveal the label of diagram elements.
  * 
  * @author lredor
- * @since 2.10
+ * @since 0.9.0
  */
 public class RevealDDiagramElementsLabel extends RecordingCommand {
 

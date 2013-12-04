@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Tooltip Style Description</b></em>'.
  * 
- * @since 2.0 <!-- end-user-doc -->
+ * @since 0.9.0
  * 
  *        <p>
  *        The following features are supported:

@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * A context providing all informations required by {@link IInterpreter} to validate
  * statically an expression and compute completion proposals.
  * 
- * @since 3.2
+ * @since 0.9.0
  * @author alagarde
  */
 public interface IInterpreterContext {

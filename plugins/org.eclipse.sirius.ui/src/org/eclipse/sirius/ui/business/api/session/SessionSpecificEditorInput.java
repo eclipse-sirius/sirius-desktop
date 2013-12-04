@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * and representation description name.
  * 
  * @author mchauvin
- * @since 2.6
+ * @since 0.9.0
  */
 public class SessionSpecificEditorInput extends SessionEditorInput {
 

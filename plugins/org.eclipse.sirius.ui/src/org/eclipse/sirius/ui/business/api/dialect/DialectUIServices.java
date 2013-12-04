@@ -206,7 +206,7 @@ public interface DialectUIServices {
      * @param format
      *            the export format
      * @return <code>true</code> if it can, <code>false</code> otherwise
-     * @since 2.7
+     * @since 0.9.0
      */
     boolean canExport(ExportFormat format);
 

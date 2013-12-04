@@ -263,7 +263,7 @@ public abstract class AbstractBorderedDiagramElementEditPart extends AbstractBor
      * 
      * @param text
      *            the tooltip's text.
-     * @since 2.0
+     * @since 0.9.0
      */
     public void setTooltipText(final String text) {
         AbstractDiagramNodeEditPartOperation.setTooltipText(this, text);

@@ -39,7 +39,7 @@ import org.eclipse.sirius.viewpoint.DEdge;
  * are removed after a OperationHistoryEvent#DONE.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * @since 2.3
+ * @since 0.9.0
  */
 public interface SiriusLayoutDataManager {
     /**

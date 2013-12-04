@@ -485,7 +485,7 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
      * {@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription}
      * instances. <!-- begin-user-doc -->
      * 
-     * @since 2.0<!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      */
     protected TooltipStyleDescriptionItemProvider tooltipStyleDescriptionItemProvider;

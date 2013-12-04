@@ -17,7 +17,7 @@ import java.util.Collection;
  * modifications in {@link IChangeListener}.
  * 
  * @author mchauvin
- * @since 2.6
+ * @since 0.9.0
  */
 public interface TriggerOperation {
 

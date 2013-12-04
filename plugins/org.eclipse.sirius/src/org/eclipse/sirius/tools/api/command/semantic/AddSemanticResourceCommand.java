@@ -27,7 +27,7 @@ import org.eclipse.sirius.business.api.session.Session;
  * 
  * @author mporhel
  * 
- * @since 4.0
+ * @since 0.9.0
  */
 public class AddSemanticResourceCommand extends RecordingCommand {
 

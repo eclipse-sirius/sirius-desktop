@@ -83,7 +83,7 @@ public class CreateRepresentationFromRepresentationCreationDescription extends A
      *            current {@link org.eclipse.emf.edit.domain.EditingDomain}.
      * @param curPart
      *            editpart of the current {@link org.eclipse.sirius.viewpoint.DNode}.
-     * @since 2.0
+     * @since 0.9.0
      */
     public CreateRepresentationFromRepresentationCreationDescription(final RepresentationCreationDescription desc, final DRepresentationElement dNode, final TransactionalEditingDomain editingDomain,
             final IGraphicalEditPart curPart) {

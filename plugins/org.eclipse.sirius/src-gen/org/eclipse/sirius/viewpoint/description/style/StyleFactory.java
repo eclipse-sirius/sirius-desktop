@@ -179,7 +179,7 @@ public interface StyleFactory extends EFactory {
      * Returns a new object of class '<em>Tooltip Style Description</em>'. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @return a new object of class '<em>Tooltip Style Description</em>'.
      * @generated
      */

@@ -277,7 +277,7 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse {
      * Returns transparency value (belongs to [0, 100] interval).
      * 
      * @return transparency
-     * @since 1.2
+     * @since 0.9.0
      */
     public int getTransparency() {
         return transparency;
@@ -288,7 +288,7 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse {
      * 
      * @param transparency
      *            The transparency to set
-     * @since 1.2
+     * @since 0.9.0
      */
     public void setTransparency(int transparency) {
         if (transparency != this.transparency && transparency >= 0 && transparency <= 100) {
@@ -304,7 +304,7 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse {
      * 
      * @param g
      *            The Graphics used to paint
-     * @since 1.2
+     * @since 0.9.0
      */
     protected void applyTransparency(Graphics g) {
         g.setAlpha(255 - transparency * 255 / 100);

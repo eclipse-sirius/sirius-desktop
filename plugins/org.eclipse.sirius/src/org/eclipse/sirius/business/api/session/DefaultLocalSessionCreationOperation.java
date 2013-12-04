@@ -23,7 +23,7 @@ import org.eclipse.sirius.business.api.session.factory.SessionFactory;
  * 
  * @author edugueperoux
  * 
- * @since 4.0
+ * @since 0.9.0
  */
 public class DefaultLocalSessionCreationOperation implements SessionCreationOperation {
 

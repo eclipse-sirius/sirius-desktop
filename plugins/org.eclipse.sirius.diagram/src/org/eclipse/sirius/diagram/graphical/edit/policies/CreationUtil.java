@@ -93,7 +93,7 @@ public class CreationUtil {
      *            the location of the clicked point.
      * @param editPart
      *            the edit part
-     * @since 2.0
+     * @since 0.9.0
      */
     public CreationUtil(final CreateRequest request, final IDiagramCommandFactory commandFactory, final Point realLocation, final EditPart editPart) {
         this.realLocation = realLocation;
@@ -118,7 +118,7 @@ public class CreationUtil {
      *            default size must be used
      * @param editPart
      *            the edit part
-     * @since 2.0
+     * @since 0.9.0
      */
     public CreationUtil(final CreateRequest request, final IDiagramCommandFactory commandFactory, final Point realLocation, final Dimension realSize, final EditPart editPart) {
         this.realLocation = realLocation;

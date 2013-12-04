@@ -240,7 +240,7 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
      * This adds a property descriptor for the Show On Startup feature. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      */
     protected void addShowOnStartupPropertyDescriptor(Object object) {
@@ -391,7 +391,7 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
      * This adds a property descriptor for the Enable Popup Bars feature. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * 
      * @generated
      */

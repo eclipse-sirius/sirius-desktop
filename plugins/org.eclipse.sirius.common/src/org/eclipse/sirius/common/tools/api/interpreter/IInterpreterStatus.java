@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * Describes the result of an evaluation or a validation made by an
  * {@link IInterpreter}.
  * 
- * @since 3.2
+ * @since 0.9.0
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  */
 public interface IInterpreterStatus {

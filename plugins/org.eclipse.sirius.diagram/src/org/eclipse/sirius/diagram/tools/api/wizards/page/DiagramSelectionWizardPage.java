@@ -102,7 +102,7 @@ public class DiagramSelectionWizardPage extends WizardPage {
      * @param diagramSelectionFilter
      *            specific diagramSelectionFilter (the default
      *            diagramSelectionFilter display all the DDiagram instances).
-     * @since 2.1
+     * @since 0.9.0
      */
     public DiagramSelectionWizardPage(final DView root, final ViewerFilter diagramSelectionFilter) {
         super(PAGE_TITLE);

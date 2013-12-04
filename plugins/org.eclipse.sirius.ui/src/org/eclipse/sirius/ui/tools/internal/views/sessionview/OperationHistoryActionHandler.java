@@ -72,7 +72,7 @@ import org.eclipse.sirius.business.api.session.Session;
  * particular undo context are pruning the history when necessary.
  * </p>
  * 
- * @since 3.1
+ * @since 0.9.0
  * 
  * @author ibm
  */

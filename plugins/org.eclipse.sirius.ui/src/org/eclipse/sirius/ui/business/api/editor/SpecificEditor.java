@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.URI;
  * Specific editor.
  * 
  * @author mchauvin
- * @since 2.5
+ * @since 0.9.0
  */
 public interface SpecificEditor {
 

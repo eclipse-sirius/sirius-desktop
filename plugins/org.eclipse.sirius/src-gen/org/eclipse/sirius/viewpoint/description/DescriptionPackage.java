@@ -670,7 +670,7 @@ public interface DescriptionPackage extends EPackage {
      * The feature id for the '<em><b>Show On Startup</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -793,7 +793,7 @@ public interface DescriptionPackage extends EPackage {
      * The feature id for the '<em><b>Show On Startup</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1058,7 +1058,7 @@ public interface DescriptionPackage extends EPackage {
      * The feature id for the '<em><b>Show On Startup</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1320,7 +1320,7 @@ public interface DescriptionPackage extends EPackage {
      * The feature id for the '<em><b>Enable Popup Bars</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1402,7 +1402,7 @@ public interface DescriptionPackage extends EPackage {
      * The feature id for the '<em><b>Show On Startup</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1673,7 +1673,7 @@ public interface DescriptionPackage extends EPackage {
      * The feature id for the '<em><b>Enable Popup Bars</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -5633,7 +5633,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.viewpoint.description.RepresentationDescription#isShowOnStartup
      * <em>Show On Startup</em>}'. <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @return the meta object for the attribute '<em>Show On Startup</em>'.
      * @see org.eclipse.sirius.viewpoint.description.RepresentationDescription#isShowOnStartup()
      * @see #getRepresentationDescription()
@@ -6111,7 +6111,7 @@ public interface DescriptionPackage extends EPackage {
      * {@link org.eclipse.sirius.viewpoint.description.DiagramDescription#isEnablePopupBars
      * <em>Enable Popup Bars</em>}'. <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @return the meta object for the attribute '<em>Enable Popup Bars</em>'.
      * @see org.eclipse.sirius.viewpoint.description.DiagramDescription#isEnablePopupBars()
      * @see #getDiagramDescription()
@@ -8733,7 +8733,7 @@ public interface DescriptionPackage extends EPackage {
          * The meta object literal for the '<em><b>Show On Startup</b></em>'
          * attribute feature. <!-- begin-user-doc -->
          * 
-         * @since 2.0 <!-- end-user-doc -->
+         * @since 0.9.0
          * @generated
          */
         EAttribute REPRESENTATION_DESCRIPTION__SHOW_ON_STARTUP = eINSTANCE.getRepresentationDescription_ShowOnStartup();
@@ -9060,7 +9060,7 @@ public interface DescriptionPackage extends EPackage {
          * The meta object literal for the '<em><b>Enable Popup Bars</b></em>'
          * attribute feature. <!-- begin-user-doc -->
          * 
-         * @since 2.0 <!-- end-user-doc -->
+         * @since 0.9.0
          * @generated
          */
         EAttribute DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS = eINSTANCE.getDiagramDescription_EnablePopupBars();

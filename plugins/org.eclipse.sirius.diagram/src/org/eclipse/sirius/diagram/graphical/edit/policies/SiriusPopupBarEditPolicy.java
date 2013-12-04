@@ -46,7 +46,7 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * image to be disposed. A memory study showed that the array if often empty.
  * 
  * @author mchauvin, pcdavid
- * @since 2.0
+ * @since 0.9.0
  */
 public class SiriusPopupBarEditPolicy extends PopupBarEditPolicy {
     /**

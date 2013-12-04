@@ -30,7 +30,7 @@ import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressio
  * Provides facilities for creating {@link IInterpreterContext}s, using the
  * Sirius metamodel to get useful informations.
  * 
- * @since 4.0
+ * @since 0.9.0
  * @author alagarde
  * 
  */

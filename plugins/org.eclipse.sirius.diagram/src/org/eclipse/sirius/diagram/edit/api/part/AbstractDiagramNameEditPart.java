@@ -320,7 +320,7 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
      * 
      * @param text
      *            the tool-tip's text.
-     * @since 2.0
+     * @since 0.9.0
      */
     public void setTooltipText(final String text) {
         if (!StringUtil.isEmpty(text)) {

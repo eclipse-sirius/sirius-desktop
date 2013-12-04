@@ -17,7 +17,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
  * EMFCommandFactory.
  * 
  * @author Mariot Chauvin (mchauvin)
- * @since 2.0
+ * @since 0.9.0
  */
 public interface IDiagramCommandFactoryProvider {
 

@@ -174,7 +174,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
      * This adds a property descriptor for the Label Alignment feature. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      */
     protected void addLabelAlignmentPropertyDescriptor(Object object) {
@@ -212,7 +212,7 @@ public class NodeStyleDescriptionItemProvider extends ItemProviderAdapter implem
      * This adds a property descriptor for the Tooltip Expression feature. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * 
      * @generated
      */

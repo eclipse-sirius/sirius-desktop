@@ -14,7 +14,7 @@ package org.eclipse.sirius.ecore.extender.business.api.permission;
  * Enum to defined all possibles states of EObject according to locks.
  * 
  * @author edugueperoux
- * @since 1.1
+ * @since 0.9.0
  */
 public enum LockStatus {
 

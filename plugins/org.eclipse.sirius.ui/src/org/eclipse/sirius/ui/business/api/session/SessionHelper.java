@@ -56,7 +56,7 @@ public final class SessionHelper {
      * 
      * @param session
      *            the session for which to open the startup representations.
-     * @since 2.0
+     * @since 0.9.0
      * @deprecated use
      *             {@link SessionHelper#openStartupRepresentations(Session, IProgressMonitor)}
      *             instead
@@ -80,7 +80,7 @@ public final class SessionHelper {
      *            the session for which to open the startup representations.
      * @param monitor
      *            the monitor that displays the status.
-     * @since 4.0
+     * @since 0.9.0
      */
     public static void openStartupRepresentations(final Session session, final IProgressMonitor monitor) {
         try {

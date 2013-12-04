@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.URI;
  * Factory for the {@link SessionEditorInput}.
  * 
  * @author cbrun
- * @since 2.0
+ * @since 0.9.0
  */
 public class SessionEditorInputFactory extends URIEditorInputFactory {
     /**

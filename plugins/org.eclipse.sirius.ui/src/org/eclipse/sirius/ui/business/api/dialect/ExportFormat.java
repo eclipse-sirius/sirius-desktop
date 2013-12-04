@@ -16,7 +16,7 @@ import org.eclipse.sirius.ui.tools.api.dialogs.ImageFileFormat;
  * A class to store the format for representations export.
  * 
  * @author mchv
- * @since 2.7
+ * @since 0.9.0
  */
 public class ExportFormat {
 

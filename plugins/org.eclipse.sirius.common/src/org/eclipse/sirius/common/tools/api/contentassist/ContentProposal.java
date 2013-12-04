@@ -42,7 +42,7 @@ public class ContentProposal implements Comparable<ContentProposal> {
      * @param information
      *            the informations about the proposal.
      * 
-     * @since 3.2
+     * @since 0.9.0
      */
     public ContentProposal(final String proposal, final String display, final String information) {
         this.proposal = proposal;

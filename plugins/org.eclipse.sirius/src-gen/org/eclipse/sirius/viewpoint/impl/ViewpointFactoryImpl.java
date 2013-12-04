@@ -1221,7 +1221,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     /**
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      */
     public LabelAlignment createLabelAlignmentFromString(EDataType eDataType, String initialValue) {
@@ -1234,7 +1234,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     /**
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      */
     public String convertLabelAlignmentToString(EDataType eDataType, Object instanceValue) {

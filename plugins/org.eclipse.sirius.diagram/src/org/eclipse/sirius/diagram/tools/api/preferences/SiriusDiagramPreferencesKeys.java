@@ -34,7 +34,7 @@ public enum SiriusDiagramPreferencesKeys {
      * {@link org.eclipse.sirius.diagram.tools.internal.editor.DiagramDialectEditorDialogFactory}
      * for more details.
      * 
-     * @since 4.0
+     * @since 0.9.0
      */
     PREF_DIAGRAM_SHOULD_DISPLAY_MESSAGES_USING_POP_UPS(boolean.class),
 
@@ -80,7 +80,7 @@ public enum SiriusDiagramPreferencesKeys {
     /**
      * Creates a new DesignerPreferencesKeys with the given type.
      * 
-     * @since 4.0
+     * @since 0.9.0
      * @param type
      *            the type of the value of the preference.
      */

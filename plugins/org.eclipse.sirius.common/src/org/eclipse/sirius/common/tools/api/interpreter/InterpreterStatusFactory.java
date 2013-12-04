@@ -19,7 +19,7 @@ import org.eclipse.sirius.common.tools.internal.interpreter.InterpreterStatusImp
 /**
  * Default {@link IInterpreterStatus} factory.
  * 
- * @since 3.2
+ * @since 0.9.0
  * @author alagarde
  */
 public final class InterpreterStatusFactory {

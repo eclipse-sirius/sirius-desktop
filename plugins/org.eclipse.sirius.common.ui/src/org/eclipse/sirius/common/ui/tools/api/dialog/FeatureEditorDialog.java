@@ -84,7 +84,7 @@ public class FeatureEditorDialog extends Dialog {
     protected boolean unique;
 
     /**
-     * @since 2.6
+     * @since 0.9.0
      */
     public FeatureEditorDialog(Shell parent, ILabelProvider labelProvider, Object object, EClassifier eClassifier, List<?> currentValues, String displayName, List<?> choiceOfValues,
             boolean multiLine, boolean sortChoices, boolean unique) {

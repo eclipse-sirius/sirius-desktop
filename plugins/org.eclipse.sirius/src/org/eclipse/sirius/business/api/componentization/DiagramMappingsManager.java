@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * available mapping depends on the activated layers.
  * 
  * @author mchauvin
- * @since 2.2
+ * @since 0.9.0
  */
 public interface DiagramMappingsManager {
 

@@ -19,7 +19,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
  * The table editor.
  * 
  * @author mchauvin
- * @since 2.1
+ * @since 0.9.0
  */
 public interface DTableEditor extends DialectEditor {
     

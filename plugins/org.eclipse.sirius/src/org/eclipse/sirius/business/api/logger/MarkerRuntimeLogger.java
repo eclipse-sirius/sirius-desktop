@@ -14,7 +14,7 @@ package org.eclipse.sirius.business.api.logger;
  * Logger for runtime markers.
  * 
  * @author smonnier
- * @since 2.0
+ * @since 0.9.0
  * 
  */
 // CHECKSTYLE:OFF

@@ -816,7 +816,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
      * 
      * @return the list of all available prefixes. If there is none, the list
      *         will be empty.
-     * @since 3.2
+     * @since 0.9.0
      */
     public List<ContentProposal> getAllNewEmtpyExpressions() {
         List<ContentProposal> prefixes = Lists.newArrayList();
@@ -849,7 +849,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
      * @param expression
      *            the expression.
      * @return the prefix to use for variables
-     * @since 3.2
+     * @since 0.9.0
      */
     public String getVariablePrefix(final String expression) {
         final IInterpreter interpreter = getInterpreterForExpression(expression);

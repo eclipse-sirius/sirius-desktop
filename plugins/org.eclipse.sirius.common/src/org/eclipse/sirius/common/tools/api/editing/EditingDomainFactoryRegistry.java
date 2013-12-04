@@ -21,7 +21,7 @@ import java.util.Map;
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  * 
- * @since 3.2
+ * @since 0.9.0
  */
 public final class EditingDomainFactoryRegistry {
 

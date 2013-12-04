@@ -17,7 +17,7 @@ import org.eclipse.sirius.viewpoint.description.Layer;
  * Manage the palette and the associated filters.
  * 
  * @author mchauvin
- * @since 3.0
+ * @since 0.9.0
  * @noimplement This interface is not intended to be implemented by clients.
  */
 public interface PaletteManager {

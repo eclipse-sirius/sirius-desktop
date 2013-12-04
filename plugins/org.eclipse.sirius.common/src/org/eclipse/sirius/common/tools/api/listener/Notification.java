@@ -33,14 +33,14 @@ public interface Notification {
     /**
      * Activate or deactivate the visibility propagator.
      * 
-     * @since 2.2
+     * @since 0.9.0
      */
     int VISIBILITY = 2;
 
     /**
      * Activate or deactivate the visibility updater.
      * 
-     * @since 3.0
+     * @since 0.9.0
      */
     int VISIBILITY_UPDATE = 5;
 
@@ -48,14 +48,14 @@ public interface Notification {
      * Activate or deactivate the visibility propagator for refresh on all
      * diagram.
      * 
-     * @since 2.2
+     * @since 0.9.0
      */
     int REFRESH_VISIBILITY_ON_DIAGRAM = 3;
 
     /**
      * Activate the visibility propagator for edge folding.
      * 
-     * @since 2.2
+     * @since 0.9.0
      */
     @Deprecated
     int FOLD = 4;

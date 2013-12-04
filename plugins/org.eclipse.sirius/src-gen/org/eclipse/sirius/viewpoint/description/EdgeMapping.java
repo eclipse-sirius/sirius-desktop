@@ -80,7 +80,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * there really should be more of a description here...
      * </p>
      * 
-     * @since 2.0 <!-- end-user-doc --> <!-- begin-model-doc --> The mapping
+     * @since 0.9.0
      *        that creates EdgeTargets that are the sources of the ViewEdges
      *        that are created by this EdgeMapping. <!-- end-model-doc -->
      * 
@@ -100,7 +100,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * there really should be more of a description here...
      * </p>
      * 
-     * @since 2.0 <!-- end-user-doc --> <!-- begin-model-doc --> The mapping
+     * @since 0.9.0
      *        that creates EdgeTargets that are the targets of the ViewEdges
      *        that are created by this EdgeMapping. <!-- end-model-doc -->
      * 

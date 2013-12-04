@@ -26,7 +26,7 @@ import org.eclipse.ui.internal.WorkbenchMessages;
  * clients.
  * </p>
  * 
- * @since 3.1
+ * @since 0.9.0
  */
 public final class UndoActionHandler extends OperationHistoryActionHandler {
 

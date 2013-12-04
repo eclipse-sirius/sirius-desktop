@@ -83,7 +83,7 @@ public interface DDiagramElement extends DRepresentationElement, DValidable, DNa
      * there really should be more of a description here...
      * </p>
      * 
-     * @since 2.0 <!-- end-user-doc --> <!-- begin-model-doc --> The text to
+     * @since 0.9.0
      *        show in the element's tooltip. <!-- end-model-doc -->
      * @return the value of the '<em>Tooltip Text</em>' attribute.
      * @see #setTooltipText(String)
@@ -98,7 +98,7 @@ public interface DDiagramElement extends DRepresentationElement, DValidable, DNa
      * {@link org.eclipse.sirius.viewpoint.DDiagramElement#getTooltipText
      * <em>Tooltip Text</em>}' attribute. <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @param value
      *            the new value of the '<em>Tooltip Text</em>' attribute.
      * @see #getTooltipText()

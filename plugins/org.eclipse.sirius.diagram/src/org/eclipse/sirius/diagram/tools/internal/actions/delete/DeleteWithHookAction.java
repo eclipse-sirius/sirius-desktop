@@ -30,7 +30,7 @@ import com.google.common.collect.Sets;
  * Delete Action originating via keyboard using the 'Delete' hot/shortcut key.
  * 
  * @author mchauvin
- * @since 2.1
+ * @since 0.9.0
  */
 public class DeleteWithHookAction extends PromptingDeleteAction {
 

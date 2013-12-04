@@ -44,7 +44,7 @@ import com.google.common.collect.Sets;
  * semantic model and the corresponding Sirius representations. Also handles
  * session state and modification-tracking management.
  * 
- * @since 2.1
+ * @since 0.9.0
  * 
  * @author pcdavid
  * @deprecated use

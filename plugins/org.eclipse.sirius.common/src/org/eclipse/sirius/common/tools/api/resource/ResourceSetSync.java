@@ -61,7 +61,7 @@ import org.eclipse.sirius.common.tools.internal.resource.WorkspaceBackend;
  * takes care of updating the status in regard of the Eclipse Workspace events.
  * 
  * @author cbrun
- * @since 2.0
+ * @since 0.9.0
  */
 public final class ResourceSetSync extends ResourceSetListenerImpl implements ResourceSyncClient {
 

@@ -73,7 +73,7 @@ public interface DialectServices {
      * @param monitor
      *            to track progress.
      * @return the new representation .
-     * @since 2.0
+     * @since 0.9.0
      */
     DRepresentation copyRepresentation(DRepresentation representation, String name, Session session, IProgressMonitor monitor);
 
@@ -241,7 +241,7 @@ public interface DialectServices {
      * @param activated
      *            <code>true</code> if this viewpoint has to be activated,
      *            <code>false</code> if it has to be deactivated.
-     * @since 2.5
+     * @since 0.9.0
      */
     void updateRepresentationsExtendedBy(Session session, Viewpoint viewpoint, boolean activated);
 
@@ -260,7 +260,7 @@ public interface DialectServices {
      * @return an {@link IInterpretedExpressionQuery} that will query
      *         representation descriptions to determine useful informations
      *         (like the type to consider for Interpreted expressions)
-     * @since 4.0
+     * @since 0.9.0
      */
     IInterpretedExpressionQuery createInterpretedExpressionQuery(EObject target, EStructuralFeature feature);
 
@@ -272,7 +272,7 @@ public interface DialectServices {
      *            the representationDescription to test
      * @return true if the current dialect handles the given
      *         {@link RepresentationDescription}
-     * @since 4.0
+     * @since 0.9.0
      */
     boolean handles(RepresentationDescription representationDescription);
 }

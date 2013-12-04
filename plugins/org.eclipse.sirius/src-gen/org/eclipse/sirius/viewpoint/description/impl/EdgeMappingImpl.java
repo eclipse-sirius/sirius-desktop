@@ -348,7 +348,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     /**
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      */
     public EList<DiagramElementMapping> getSourceMapping() {
@@ -361,7 +361,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     /**
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      */
     public EList<DiagramElementMapping> getTargetMapping() {

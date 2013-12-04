@@ -15,7 +15,7 @@ package org.eclipse.sirius.common.tools.api.constant;
  * 
  * @author edugueperoux
  * 
- * @since 3.2
+ * @since 0.9.0
  */
 public interface CommonPreferencesConstants {
 

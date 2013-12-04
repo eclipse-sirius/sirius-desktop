@@ -48,7 +48,7 @@ public interface Session {
      * @param monitor
      *            {@link IProgressMonitor} used to indicate progress of the
      *            Session opening
-     * @since 4.0
+     * @since 0.9.0
      */
     void open(IProgressMonitor monitor);
 
@@ -64,7 +64,7 @@ public interface Session {
      * 
      * @return the {@link TransactionalEditingDomain} associated to this session
      * 
-     * @since 4.0
+     * @since 0.9.0
      */
     TransactionalEditingDomain getTransactionalEditingDomain();
 
@@ -87,7 +87,7 @@ public interface Session {
      * 
      * @return the main {@link Resource} associated to this {@link Session}
      * 
-     * @since 4.0
+     * @since 0.9.0
      */
     Resource getSessionResource();
 
@@ -98,7 +98,7 @@ public interface Session {
      * @return the referenced session {@link Resource} referenced directly or
      *         indirectly by the main {@link Resource} session
      * 
-     * @since 4.0
+     * @since 0.9.0
      */
     Set<Resource> getReferencedSessionResources();
 
@@ -108,7 +108,7 @@ public interface Session {
      * 
      * @return all the session resources in this session.
      * 
-     * @since 4.1
+     * @since 0.9.0
      */
     Set<Resource> getAllSessionResources();
 
@@ -122,7 +122,7 @@ public interface Session {
      *            {@link URI} of a existing {@link Resource} representing a
      *            semantic model to attach to this {@link Session}
      * 
-     * @since 4.0
+     * @since 0.9.0
      */
     void createSemanticResource(final URI semanticModelURI);
 
@@ -164,7 +164,7 @@ public interface Session {
      * 
      * @param monitor
      *            the Progress monitor to associate to this operation
-     * @since 4.0
+     * @since 0.9.0
      */
     void save(IProgressMonitor monitor);
 
@@ -189,7 +189,7 @@ public interface Session {
      *            the save options.
      * @param monitor
      *            the Progress monitor to associate to this operation
-     * @since 2.6
+     * @since 0.9.0
      */
     void save(Map<?, ?> options, IProgressMonitor monitor);
 
@@ -201,7 +201,7 @@ public interface Session {
      *            {@link IProgressMonitor} to indicate the progress of the
      *            Session closing
      * 
-     * @since 4.0
+     * @since 0.9.0
      */
     void close(IProgressMonitor monitor);
 
@@ -228,7 +228,7 @@ public interface Session {
      * @param monitor
      *            a {@link IProgressMonitor} to show progression of view
      *            creation
-     * @since 2.6
+     * @since 0.9.0
      */
     void createView(Viewpoint viewpoint, Collection<EObject> semantics, IProgressMonitor monitor);
 
@@ -330,7 +330,7 @@ public interface Session {
      * Return the current session status.
      * 
      * @return the value of the current status.
-     * @since 2.0
+     * @since 0.9.0
      */
     SessionStatus getStatus();
 
@@ -339,7 +339,7 @@ public interface Session {
      * 
      * @param reloadingPolicy
      *            the custom reloading policy the session should use.
-     * @since 2.6
+     * @since 0.9.0
      */
     void setReloadingPolicy(ReloadingPolicy reloadingPolicy);
 
@@ -347,7 +347,7 @@ public interface Session {
      * Get the reloading policy used by the session.
      * 
      * @return the reloading policy used by the session.
-     * @since 2.9
+     * @since 0.9.0
      */
     ReloadingPolicy getReloadingPolicy();
 
@@ -356,7 +356,7 @@ public interface Session {
      * 
      * @param savingPolicy
      *            the custom saving policy the session should use.
-     * @since 2.7
+     * @since 0.9.0
      */
     void setSavingPolicy(SavingPolicy savingPolicy);
 
@@ -366,7 +366,7 @@ public interface Session {
      * 
      * @return the session event broker suitable for identifying local or remote
      *         atomic changes.
-     * @since 3.0
+     * @since 0.9.0
      */
     SessionEventBroker getEventBroker();
 
@@ -376,7 +376,7 @@ public interface Session {
      * 
      * @return the PrecommitListener suitable for refresh all opened Sirius
      *         editors.
-     * @since 3.1
+     * @since 0.9.0
      */
     RefreshEditorsPrecommitListener getRefreshEditorsListener();
 }

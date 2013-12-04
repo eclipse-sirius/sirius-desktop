@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * {@link org.eclipse.sirius.business.internal.command.control.UncontrolCommand}
  * .
  * 
- * @since 2.1.0
+ * @since 0.9.0
  * 
  * @author pcdavid
  */

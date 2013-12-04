@@ -16,7 +16,7 @@ import org.eclipse.core.resources.IFile;
  * A listener interface to listen events in the ViewpointRegistry.
  * 
  * @author mchauvin
- * @since 2.0
+ * @since 0.9.0
  */
 @Deprecated
 public interface ViewpointRegistryListener {

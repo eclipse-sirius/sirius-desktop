@@ -864,7 +864,7 @@ public class StyleSwitch<T> {
      * <em>Tooltip Style Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null;
      * 
-     * @since 2.0 returning a non-null result will terminate the switch. <!--
+     * @since 0.9.0
      *        end-user-doc -->
      * @param object
      *            the target of the switch.

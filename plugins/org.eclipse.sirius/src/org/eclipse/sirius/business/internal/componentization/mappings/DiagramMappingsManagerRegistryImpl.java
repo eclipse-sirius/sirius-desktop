@@ -39,7 +39,7 @@ import org.eclipse.sirius.viewpoint.description.Layer;
  * Registry of diagram mappings.
  * 
  * @author mchauvin
- * @since 2.2
+ * @since 0.9.0
  */
 public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implements DiagramMappingsManagerRegistry {
 

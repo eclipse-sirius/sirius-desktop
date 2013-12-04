@@ -57,7 +57,7 @@ public interface DeprecatedIEditingSession {
      *            <code>true</code> to save the session contents if required
      *            (recommended), and <code>false</code> to discard any unsaved
      *            changes
-     * @since 2.1
+     * @since 0.9.0
      */
     @Deprecated
     void closeEditors(boolean save, IEditorPart... editors);

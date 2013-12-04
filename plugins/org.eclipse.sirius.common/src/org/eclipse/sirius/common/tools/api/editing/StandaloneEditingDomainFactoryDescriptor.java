@@ -18,7 +18,7 @@ package org.eclipse.sirius.common.tools.api.editing;
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  * 
- * @since 3.2
+ * @since 0.9.0
  */
 public class StandaloneEditingDomainFactoryDescriptor implements EditingDomainFactoryDescriptor {
 

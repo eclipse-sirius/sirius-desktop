@@ -24,7 +24,7 @@ import org.eclipse.sirius.table.tools.internal.export.csv.TableCsvHelper;
  * Helper to export table.
  * 
  * @author mchauvin
- * @since 2.3
+ * @since 0.9.0
  */
 public final class TableExportHelperImpl implements TableExportHelper {
 

@@ -114,7 +114,7 @@ public interface DAnalysisSession extends Session {
      *            the referenced analysis to remove (must not be
      *            <code>null</code> ).
      * 
-     * @since 2.1
+     * @since 0.9.0
      */
     void removeReferencedAnalysis(final DAnalysis analysis);
 
@@ -157,7 +157,7 @@ public interface DAnalysisSession extends Session {
      * 
      * @param options
      *            the save options.
-     * @since 2.6
+     * @since 0.9.0
      * @deprecated use
      *             {@link Session#save(Map, org.eclipse.core.runtime.IProgressMonitor)}
      *             instead

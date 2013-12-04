@@ -19,7 +19,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * This interface represent the capability to extract Viewpoints from a given
  * EObject.
  * 
- * @since 2.7
+ * @since 0.9.0
  * @author cbrun
  * 
  */

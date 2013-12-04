@@ -17,7 +17,7 @@ import org.eclipse.sirius.table.tools.internal.export.TableExportHelperImpl;
  * Helper to export table.
  * 
  * @author mchauvin
- * @since 2.3
+ * @since 0.9.0
  */
 public interface TableExportHelper {
 

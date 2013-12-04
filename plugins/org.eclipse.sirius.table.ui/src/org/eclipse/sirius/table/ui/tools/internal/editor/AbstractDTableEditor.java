@@ -607,7 +607,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
      *            the item from which obtain the path
      * @return {@link TreePath}
      * 
-     * @since 3.2
+     * @since 0.9.0
      */
     protected TreePath getTreePathFromItem(TreeItem item) {
         LinkedList<Object> segments = new LinkedList<Object>();

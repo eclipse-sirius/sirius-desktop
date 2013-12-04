@@ -17,7 +17,7 @@ package org.eclipse.sirius.diagram.business.api.view.refresh;
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
- * @since 4.0.0
+ * @since 0.9.0
  * @noimplement This interface is not intended to be implemented by clients,
  *              only used for internal implementation.
  */

@@ -308,7 +308,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -501,7 +501,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -511,7 +511,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -651,7 +651,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -661,7 +661,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -811,7 +811,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * 
      * @generated
      * @ordered
@@ -822,7 +822,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1109,7 +1109,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1119,7 +1119,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1275,7 +1275,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1285,7 +1285,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1443,7 +1443,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1453,7 +1453,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1600,7 +1600,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1610,7 +1610,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1747,7 +1747,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1757,7 +1757,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1904,7 +1904,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1914,7 +1914,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -2079,7 +2079,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -2089,7 +2089,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -2209,7 +2209,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -2219,7 +2219,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -2393,7 +2393,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -2403,7 +2403,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -2541,7 +2541,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -2551,7 +2551,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -2755,7 +2755,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.viewpoint.description.style.impl.TooltipStyleDescriptionImpl
      * <em>Tooltip Style Description</em>}' class. <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @see org.eclipse.sirius.viewpoint.description.style.impl.TooltipStyleDescriptionImpl
      * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getTooltipStyleDescription()
      * @generated
@@ -2766,7 +2766,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -2776,7 +2776,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Tooltip Style Description</em>' class. <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -3415,7 +3415,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription#getLabelAlignment
      * <em>Label Alignment</em>}'. <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @return the meta object for the attribute '<em>Label Alignment</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription#getLabelAlignment()
      * @see #getLabelStyleDescription()
@@ -4132,7 +4132,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription
      * <em>Tooltip Style Description</em>}'. <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @return the meta object for class '<em>Tooltip Style Description</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription
      * @generated
@@ -4144,7 +4144,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription#getTooltipExpression
      * <em>Tooltip Expression</em>}'. <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @return the meta object for the attribute '<em>Tooltip Expression</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription#getTooltipExpression()
      * @see #getTooltipStyleDescription()
@@ -4553,7 +4553,7 @@ public interface StylePackage extends EPackage {
          * The meta object literal for the '<em><b>Label Alignment</b></em>'
          * attribute feature. <!-- begin-user-doc -->
          * 
-         * @since 2.0 <!-- end-user-doc -->
+         * @since 0.9.0
          * @generated
          */
         EAttribute LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT = eINSTANCE.getLabelStyleDescription_LabelAlignment();
@@ -5086,7 +5086,7 @@ public interface StylePackage extends EPackage {
          * {@link org.eclipse.sirius.viewpoint.description.style.impl.TooltipStyleDescriptionImpl
          * <em>Tooltip Style Description</em>}' class. <!-- begin-user-doc -->
          * 
-         * @since 2.0 <!-- end-user-doc -->
+         * @since 0.9.0
          * @see org.eclipse.sirius.viewpoint.description.style.impl.TooltipStyleDescriptionImpl
          * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getTooltipStyleDescription()
          * @generated
@@ -5097,7 +5097,7 @@ public interface StylePackage extends EPackage {
          * The meta object literal for the '<em><b>Tooltip Expression</b></em>'
          * attribute feature. <!-- begin-user-doc -->
          * 
-         * @since 2.0 <!-- end-user-doc -->
+         * @since 0.9.0
          * @generated
          */
         EAttribute TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = eINSTANCE.getTooltipStyleDescription_TooltipExpression();

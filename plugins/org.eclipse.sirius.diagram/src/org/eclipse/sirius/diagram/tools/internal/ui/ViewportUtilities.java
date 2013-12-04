@@ -26,7 +26,7 @@ import org.eclipse.draw2d.Viewport;
  * @author Philip Ritzkopf
  * @author Alexander Nyssen
  * 
- * @since 3.6 Class cloned because it is not available for 3.5.
+ * @since 0.9.0
  */
 public final class ViewportUtilities {
 

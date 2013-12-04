@@ -62,7 +62,7 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * session.
  * 
  * @author mchauvin
- * @since 2.5
+ * @since 0.9.0
  */
 public class SpecificEditorInputTranformer {
 
@@ -187,7 +187,7 @@ public class SpecificEditorInputTranformer {
      *             if the semantic model path could not be loaded
      * @throws CoreException
      *             In case of session resource creation failed
-     * @since 2.6
+     * @since 0.9.0
      */
     public DRepresentation createSessionAndRepresentation(final IPath semanticModelPath, final String analysisFilenameURI) throws IOException, CoreException {
         final URI sessionModelURI = URI.createURI(analysisFilenameURI);

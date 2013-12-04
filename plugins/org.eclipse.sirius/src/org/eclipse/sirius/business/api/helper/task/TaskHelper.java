@@ -68,7 +68,7 @@ public class TaskHelper {
      * @param op
      *            the operation.
      * @return the created {@link ExecuteToolOperationTask}.
-     * @since 2.6
+     * @since 0.9.0
      */
     public ICommandTask buildTaskFromModelOperation(final DRepresentation representation, final EObject target, final ModelOperation op) {
         final ExecuteToolOperationTask task = new ExecuteToolOperationTask(modelAccessor, target, representation, op, uiCallback);

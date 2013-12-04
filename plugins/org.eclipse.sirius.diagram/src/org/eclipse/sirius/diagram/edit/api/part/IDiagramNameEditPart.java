@@ -34,7 +34,7 @@ public interface IDiagramNameEditPart extends IDiagramElementEditPart, ITextAwar
      * @param text
      *            the text to show in the tooltip. If <code>null</code> or the
      *            empty string, the element's tooltip is disabled.
-     * @since 2.0
+     * @since 0.9.0
      */
     void setTooltipText(String text);
 }

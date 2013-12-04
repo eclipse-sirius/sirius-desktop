@@ -51,7 +51,7 @@ import com.google.common.collect.Sets;
  * @provisional this class may be modified and renamed. API may change in future
  *              release without depreciation.
  * @author mchv
- * @since 3.0
+ * @since 0.9.0
  */
 public class UserSession {
 

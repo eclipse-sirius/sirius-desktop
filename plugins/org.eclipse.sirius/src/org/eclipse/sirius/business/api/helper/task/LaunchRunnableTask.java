@@ -14,7 +14,7 @@ package org.eclipse.sirius.business.api.helper.task;
  * A task to launch a runnable.
  * 
  * @author mchauvin
- * @since 2.6
+ * @since 0.9.0
  */
 public class LaunchRunnableTask extends AbstractCommandTask {
 

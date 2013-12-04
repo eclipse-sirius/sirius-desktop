@@ -17,7 +17,7 @@ import org.eclipse.sirius.viewpoint.DDiagramElement;
  * Helper to handle HideFilter.
  * 
  * @author mporhel
- * @since 2.4
+ * @since 0.9.0
  */
 public interface HideFilterHelper {
 

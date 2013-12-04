@@ -27,7 +27,7 @@ import org.eclipse.sirius.ui.business.api.editor.SpecificEditorInputTranformer;
  * closes the session.
  * 
  * @author mchauvin
- * @since 3.0
+ * @since 0.9.0
  */
 public abstract class AbstractSpecificDTableEditor extends AbstractDTableEditor implements SpecificEditor {
 

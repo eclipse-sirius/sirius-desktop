@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * {@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription}
  * object. <!-- begin-user-doc -->
  * 
- * @since 2.0<!-- end-user-doc -->
+ * @since 0.9.0
  * @generated
  */
 public class TooltipStyleDescriptionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,

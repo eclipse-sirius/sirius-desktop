@@ -43,7 +43,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
  * Basic class to extend for each dialect services implementation.
  * 
  * @author mchauvin
- * @since 2.0
+ * @since 0.9.0
  */
 public abstract class AbstractRepresentationDialectServices implements DialectServices {
 

@@ -19,7 +19,7 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescr
  * The generic command factory to inherit for each dialect command factory.
  * 
  * @author mchauvin
- * @since 2.0
+ * @since 0.9.0
  */
 public interface ICommandFactory {
 

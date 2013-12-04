@@ -603,7 +603,7 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway.
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription
      * @generated

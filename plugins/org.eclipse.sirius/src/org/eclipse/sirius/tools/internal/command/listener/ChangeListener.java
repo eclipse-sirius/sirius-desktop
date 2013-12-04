@@ -27,7 +27,7 @@ import org.eclipse.sirius.tools.api.command.listener.TriggerOperation;
  * able to launch a trigger operation with these elements as parameters.
  * 
  * @author mchauvin
- * @since 2.6
+ * @since 0.9.0
  */
 public final class ChangeListener extends SmartAdapter implements IChangeListener {
 

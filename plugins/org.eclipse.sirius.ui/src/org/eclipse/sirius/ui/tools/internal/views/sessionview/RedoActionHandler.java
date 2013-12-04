@@ -26,7 +26,7 @@ import org.eclipse.ui.internal.WorkbenchMessages;
  * clients.
  * </p>
  * 
- * @since 3.1
+ * @since 0.9.0
  * @author alex.lagarde@obeo.fr
  */
 public final class RedoActionHandler extends OperationHistoryActionHandler {

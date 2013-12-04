@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * and editors).
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * @since 2.2
+ * @since 0.9.0
  */
 public final class SiriusResourceHelper {
 

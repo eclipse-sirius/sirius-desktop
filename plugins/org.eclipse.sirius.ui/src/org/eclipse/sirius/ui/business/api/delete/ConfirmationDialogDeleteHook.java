@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  * A example delete hook to confirm deletion.
  * 
  * @author mchauvin
- * @since 2.1
+ * @since 0.9.0
  */
 public class ConfirmationDialogDeleteHook implements IDeleteHook {
     /**

@@ -66,7 +66,7 @@ public class LabelStyleItemProvider extends BasicLabelStyleItemProvider implemen
      * This adds a property descriptor for the Label Alignment feature. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      */
     protected void addLabelAlignmentPropertyDescriptor(Object object) {

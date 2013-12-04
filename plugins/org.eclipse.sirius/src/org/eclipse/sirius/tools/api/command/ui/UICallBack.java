@@ -137,7 +137,7 @@ public interface UICallBack {
      * @param domain
      *            the editing domain
      * @return the loaded resource, <code>null</code> if the loading fails.
-     * @since 2.9
+     * @since 0.9.0
      */
     Resource loadResource(final EditingDomain domain, final IFile file);
 
@@ -147,7 +147,7 @@ public interface UICallBack {
      * @param resource
      *            the externally changed resource.
      * @return <code>true</code> if the resource should be reloaded.
-     * @since 3.0
+     * @since 0.9.0
      */
     boolean shouldReload(final Resource resource);
 
@@ -158,7 +158,7 @@ public interface UICallBack {
      *            the externally deleted resource.
      * @return <code>true</code> if the resource should be removed from the
      *         session.
-     * @since 3.0
+     * @since 0.9.0
      */
     boolean shouldRemove(final Resource resource);
 
@@ -171,7 +171,7 @@ public interface UICallBack {
      * @param resource
      *            the externally deleted resource.
      * @return <code>true</code> if the session should be closed.
-     * @since 3.0
+     * @since 0.9.0
      */
     boolean shouldClose(final Session session, final Resource resource);
 

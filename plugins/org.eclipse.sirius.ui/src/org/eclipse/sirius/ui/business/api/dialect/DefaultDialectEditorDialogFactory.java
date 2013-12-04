@@ -17,7 +17,7 @@ import org.eclipse.swt.widgets.Shell;
  * Default dialog factory.
  * 
  * @author mchauvin
- * @since 2.5
+ * @since 0.9.0
  */
 public class DefaultDialectEditorDialogFactory implements DialectEditorDialogFactory {
 

@@ -20,7 +20,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
  * reference the same {@link EditingDomain} instance.
  * 
  * @author ldamus
- * @since 2.5
+ * @since 0.9.0
  */
 public final class EditingDomainUndoContext implements IUndoContext {
 

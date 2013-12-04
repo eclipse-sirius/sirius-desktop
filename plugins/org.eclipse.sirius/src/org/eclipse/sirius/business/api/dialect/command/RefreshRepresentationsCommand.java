@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  * representations and launch a compute visibility for the DDiagram.
  * 
  * @author lredor
- * @since 3.1
+ * @since 0.9.0
  */
 public class RefreshRepresentationsCommand extends RecordingCommand {
 

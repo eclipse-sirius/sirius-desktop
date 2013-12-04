@@ -30,7 +30,7 @@ import org.eclipse.sirius.business.internal.resource.parser.XMIModelFileSaxParse
  * Runnable to load an EMF resource.
  * 
  * @author mchauvin
- * @since 2.9
+ * @since 0.9.0
  */
 public class LoadEMFResource implements Runnable {
 

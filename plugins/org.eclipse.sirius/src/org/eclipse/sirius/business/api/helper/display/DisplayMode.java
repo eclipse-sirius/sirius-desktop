@@ -25,7 +25,7 @@ public enum DisplayMode {
      * Only the direct parent and connected elements are taken into account to
      * compute visibility.
      * 
-     * @since 2.4
+     * @since 0.9.0
      */
     CREATION,
     /**

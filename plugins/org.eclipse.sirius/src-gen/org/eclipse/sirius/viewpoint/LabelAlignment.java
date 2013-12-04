@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Label Alignment</b></em>', and utility methods for working with them.
  * 
- * @since 2.0 <!-- end-user-doc -->
+ * @since 0.9.0
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getLabelAlignment()
  * @model
  * @generated

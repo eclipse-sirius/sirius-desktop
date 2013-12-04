@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * on all change on ViewpointRegistry. It is independent of the current diagram.
  * 
  * @author mchauvin
- * @since 2.2
+ * @since 0.9.0
  */
 public interface DiagramDescriptionMappingsManager {
 

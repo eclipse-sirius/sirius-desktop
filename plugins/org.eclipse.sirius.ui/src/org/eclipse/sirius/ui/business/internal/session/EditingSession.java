@@ -260,7 +260,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     /**
      * {@inheritDoc}
      * 
-     * @since 2.1
+     * @since 0.9.0
      */
     public boolean needToBeSavedOnClose(final IEditorPart editor) {
         return needSaveOnCloseDetec.needToBeSavedOnClose(editor);
@@ -269,7 +269,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     /**
      * {@inheritDoc}
      * 
-     * @since 4.1
+     * @since 0.9.0
      */
     public int promptToSaveOnClose() {
         int choice = ISaveablePart2.DEFAULT;

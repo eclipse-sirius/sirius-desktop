@@ -42,7 +42,7 @@ public interface LabelStyleDescription extends BasicLabelStyleDescription {
      * there really should be more of a description here...
      * </p>
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @return the value of the '<em>Label Alignment</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.LabelAlignment
      * @see #setLabelAlignment(LabelAlignment)
@@ -57,7 +57,7 @@ public interface LabelStyleDescription extends BasicLabelStyleDescription {
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription#getLabelAlignment
      * <em>Label Alignment</em>}' attribute. <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @param value
      *            the new value of the '<em>Label Alignment</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.LabelAlignment

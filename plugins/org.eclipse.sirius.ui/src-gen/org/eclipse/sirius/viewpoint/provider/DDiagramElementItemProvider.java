@@ -83,7 +83,7 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
      * This adds a property descriptor for the Tooltip Text feature. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * 
      * @generated
      */

@@ -136,7 +136,7 @@ public class ModelAccessor {
      * @param name
      *            name of the type to check.
      * @return true if the given name corresponds to a known type.
-     * @since 4.4
+     * @since 0.9.0
      */
     public boolean eIsKnownType(final String name) {
         return extender.eIsKnownType(name);

@@ -67,7 +67,7 @@ public interface DisplayService {
      * @param element
      *            the element
      * @return true if the element is visible, false otherwise
-     * @since 2.4
+     * @since 0.9.0
      */
     @Deprecated
     boolean computeVisibility(Session session, final DDiagram diagram, final DDiagramElement element);
@@ -83,7 +83,7 @@ public interface DisplayService {
      * @param element
      *            the element
      * @return true if the label of element must be visible, false otherwise
-     * @since 2.13
+     * @since 0.9.0
      */
     boolean computeLabelVisibility(final DDiagram diagram, final DDiagramElement element);
 
@@ -92,7 +92,7 @@ public interface DisplayService {
      * 
      * @param diagram
      *            the given diagram.
-     * @since 2.4
+     * @since 0.9.0
      */
     void refreshAllElementsVisibility(final DDiagram diagram);
 

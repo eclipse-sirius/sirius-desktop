@@ -60,7 +60,7 @@ public class CommandContext {
      *            the first context.
      * @param representation
      *            the current representation
-     * @since 2.6
+     * @since 0.9.0
      */
     public CommandContext(final EObject target, final DRepresentation representation) {
         this.nextPushEObject = target;
@@ -71,7 +71,7 @@ public class CommandContext {
      * Get the current representation.
      * 
      * @return the representation currently edited
-     * @since 2.6
+     * @since 0.9.0
      */
     public DRepresentation getRepresentation() {
         return this.representation;

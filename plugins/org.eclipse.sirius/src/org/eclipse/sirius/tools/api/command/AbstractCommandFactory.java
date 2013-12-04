@@ -38,7 +38,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaCla
  * .
  * 
  * @author mchauvin
- * @since 2.5
+ * @since 0.9.0
  */
 public abstract class AbstractCommandFactory implements ICommandFactory {
 

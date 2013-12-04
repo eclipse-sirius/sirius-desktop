@@ -22,7 +22,7 @@ import org.eclipse.sirius.common.tools.internal.interpreter.InterpretedContextIm
 /**
  * Allows to create {@link IInterpreterContext}s.
  * 
- * @since 3.2
+ * @since 0.9.0
  * @author alagarde
  */
 public final class DefaultInterpreterContextFactory {

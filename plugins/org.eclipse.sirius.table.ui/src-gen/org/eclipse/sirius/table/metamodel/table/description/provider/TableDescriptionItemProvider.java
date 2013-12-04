@@ -148,7 +148,7 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
      * This adds a property descriptor for the Show On Startup feature. <!--
      * begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      */
     protected void addShowOnStartupPropertyDescriptor(Object object) {

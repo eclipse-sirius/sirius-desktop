@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  * A permission status listener to notify the editor about permission authority
  * in order to update its title image.
  * 
- * @since 4.1
+ * @since 0.9.0
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  */
 public class DRepresentationPermissionStatusListener implements IAuthorityListener {

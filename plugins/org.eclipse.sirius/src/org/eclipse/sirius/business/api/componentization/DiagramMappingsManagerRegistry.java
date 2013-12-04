@@ -18,7 +18,7 @@ import org.eclipse.sirius.viewpoint.DDiagram;
  * This class will move in diagram plug-in when refresh refactoring will occurs.
  * 
  * @author mchauvin
- * @since 2.2
+ * @since 0.9.0
  */
 public interface DiagramMappingsManagerRegistry {
 

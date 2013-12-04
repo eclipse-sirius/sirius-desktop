@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * .
  * 
  * @author mchauvin
- * @since 2.2
+ * @since 0.9.0
  */
 public class DeleteHookHelper {
 

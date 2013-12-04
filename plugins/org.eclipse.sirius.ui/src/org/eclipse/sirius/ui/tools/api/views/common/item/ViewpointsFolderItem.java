@@ -17,7 +17,7 @@ import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
  * A viewpoints folder item.
  * 
  * @author mchauvin
- * @since 2.4
+ * @since 0.9.0
  */
 public interface ViewpointsFolderItem extends CommonSessionItem, ItemDecorator {
 

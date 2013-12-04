@@ -54,7 +54,7 @@ public interface IAssistContentProvider extends IContentProposalProvider, IConte
      *            the element to consider.
      * @param feature
      *            the feature to consider.
-     * @since 4.0
+     * @since 0.9.0
      */
     void initContext(EObject element, EStructuralFeature feature);
 

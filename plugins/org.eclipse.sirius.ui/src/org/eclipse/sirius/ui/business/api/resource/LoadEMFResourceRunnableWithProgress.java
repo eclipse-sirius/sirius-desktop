@@ -24,7 +24,7 @@ import org.eclipse.sirius.business.api.resource.LoadEMFResource;
  * Runnable to load an EMF resource.
  * 
  * @author mchauvin
- * @since 2.6
+ * @since 0.9.0
  */
 public class LoadEMFResourceRunnableWithProgress implements IRunnableWithProgress {
 

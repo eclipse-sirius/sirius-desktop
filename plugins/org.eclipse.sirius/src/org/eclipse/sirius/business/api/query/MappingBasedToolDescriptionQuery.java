@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
  * /** A class aggregating all the queries (read-only!) having a
  * {@link MappingBasedToolDescription} as a starting point.
  * 
- * @since 4.0
+ * @since 0.9.0
  * @author alagarde
  * 
  */

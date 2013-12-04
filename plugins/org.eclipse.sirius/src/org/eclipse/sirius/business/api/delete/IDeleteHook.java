@@ -20,7 +20,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  * Extension of delete hook extension point should implements this interface.
  * 
  * @author mchauvin
- * @since 2.2
+ * @since 0.9.0
  */
 public interface IDeleteHook {
 

@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
  * 
  * @author cbrun
  * 
- * @since 2.0
+ * @since 0.9.0
  */
 public abstract class AbstractResourceSyncBackend {
 

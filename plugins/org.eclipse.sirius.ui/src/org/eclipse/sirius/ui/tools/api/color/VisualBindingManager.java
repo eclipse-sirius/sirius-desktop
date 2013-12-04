@@ -76,7 +76,7 @@ public class VisualBindingManager {
      * return the system palette.
      * 
      * @return the system palette.
-     * @since 2.0
+     * @since 0.9.0
      */
     public Map<String, RGB> getSystemPalette() {
         return systemPalette;
@@ -216,7 +216,7 @@ public class VisualBindingManager {
      * @param rgb
      *            the RGB values of the color to retrieve
      * @return a proper SWT {@link Color} with the specified RGB values.
-     * @since 2.0
+     * @since 0.9.0
      */
     public Color getColorFromRGB(final RGB rgb) {
         return getColorFromCache(rgb);
@@ -229,7 +229,7 @@ public class VisualBindingManager {
      * @param values
      *            the RGBValues of the color to retrieve
      * @return a proper SWT {@link Color} with the specified RGB values.
-     * @since 2.0
+     * @since 0.9.0
      */
     public Color getColorFromRGBValues(final RGBValues values) {
         if (values != null) {
@@ -309,7 +309,7 @@ public class VisualBindingManager {
      * @param blue
      *            current blue value.
      * @return a cached {@link Color} instance of the wanted color.
-     * @since 2.0
+     * @since 0.9.0
      */
     public Color getColorFromRGBValue(final int red, final int green, final int blue) {
         return getColorFromCache(new RGB(VisualBindingManager.clamp(red, 0, 255), VisualBindingManager.clamp(green, 0, 255), VisualBindingManager.clamp(blue, 0, 255)));
@@ -326,7 +326,7 @@ public class VisualBindingManager {
      *            the maximum possible value (inclusive). Must be >= min.
      * @return the integer closes to <code>value</code> which is inside the
      *         inclusive interval <code>[min, max]</code>.
-     * @since 2.0
+     * @since 0.9.0
      */
     public static int clamp(final int value, final int min, final int max) {
         return EnvironmentSystemColorFactory.clamp(value, min, max);
@@ -444,7 +444,7 @@ public class VisualBindingManager {
      *            the color to match
      * @return the entry in the default palette which is closest (in RGB
      *         color-space) to the specified color.
-     * @since 2.0
+     * @since 0.9.0
      */
     public SystemColors findClosestSystemColor(final FixedColor color) {
         int bestDistanceSoFar = Integer.MAX_VALUE;
@@ -470,7 +470,7 @@ public class VisualBindingManager {
      *            the color to match
      * @return the entry in the default palette which is closest (in RGB
      *         color-space) to the specified color.
-     * @since 2.0
+     * @since 0.9.0
      */
     public SystemColors findClosestStandardColor(final RGBValues values) {
         final SystemColor color = DescriptionFactory.eINSTANCE.createSystemColor();

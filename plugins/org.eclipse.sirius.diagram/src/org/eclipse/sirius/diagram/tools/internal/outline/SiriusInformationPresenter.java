@@ -207,7 +207,7 @@ public class SiriusInformationPresenter extends AbstractInformationControlManage
     /**
      * The document partitioning for this information presenter.
      * 
-     * @since 3.0
+     * @since 0.9.0
      */
     private String fPartitioning;
 
@@ -238,7 +238,7 @@ public class SiriusInformationPresenter extends AbstractInformationControlManage
      * @param partitioning
      *            the document partitioning to be used by this information
      *            presenter
-     * @since 3.0
+     * @since 0.9.0
      */
     public void setDocumentPartitioning(String partitioning) {
         Assert.isNotNull(partitioning);
@@ -249,7 +249,7 @@ public class SiriusInformationPresenter extends AbstractInformationControlManage
      * @seeorg.eclipse.jface.text.information.IInformationPresenterExtension#
      * getDocumentPartitioning()
      * 
-     * @since 3.0
+     * @since 0.9.0
      */
     public String getDocumentPartitioning() {
         return fPartitioning;

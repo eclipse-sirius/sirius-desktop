@@ -20,7 +20,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 /**
  * Query to checks LockStatus of DRepresentation.
  * 
- * @since 4.1
+ * @since 0.9.0
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class DRepresentationPermissionStatusQuery {

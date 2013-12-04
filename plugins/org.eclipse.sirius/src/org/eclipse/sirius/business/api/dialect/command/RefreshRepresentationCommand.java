@@ -21,7 +21,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
  * Create representation command.
  * 
  * @author mchauvin
- * @since 2.9
+ * @since 0.9.0
  * @deprecated since 3.1 (replace by {@link RefreshRepresentationsCommand}
  */
 @Deprecated

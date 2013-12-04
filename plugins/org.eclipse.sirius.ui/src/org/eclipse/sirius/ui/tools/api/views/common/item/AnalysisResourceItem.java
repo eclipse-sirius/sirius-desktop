@@ -14,7 +14,7 @@ package org.eclipse.sirius.ui.tools.api.views.common.item;
  * A resource item.
  * 
  * @author mchauvin
- * @since 2.4
+ * @since 0.9.0
  */
 public interface AnalysisResourceItem extends ItemWrapper {
 

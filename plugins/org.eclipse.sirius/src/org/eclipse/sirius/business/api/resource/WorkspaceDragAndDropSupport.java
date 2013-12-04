@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.ViewpointFactory;
  * Support for drag and drop of files from a view to a diagram.
  * 
  * @author mchauvin
- * @since 2.9
+ * @since 0.9.0
  */
 public class WorkspaceDragAndDropSupport {
 

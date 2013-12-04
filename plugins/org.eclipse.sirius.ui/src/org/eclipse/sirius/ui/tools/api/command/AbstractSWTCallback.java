@@ -67,7 +67,7 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * Implementation of the {@link UICallBack} interface using SWT.
  * 
  * @author mchauvin
- * @since 2.6
+ * @since 0.9.0
  */
 public abstract class AbstractSWTCallback implements UICallBack {
 

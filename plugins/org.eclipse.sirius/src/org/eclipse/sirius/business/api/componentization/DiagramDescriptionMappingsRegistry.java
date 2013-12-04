@@ -18,7 +18,7 @@ import org.eclipse.sirius.viewpoint.description.DiagramDescription;
  * A registry to access mappings available depending on viewpoint selection.
  * 
  * @author mchauvin
- * @since 2.2
+ * @since 0.9.0
  */
 public interface DiagramDescriptionMappingsRegistry {
 

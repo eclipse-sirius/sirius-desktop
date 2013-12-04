@@ -18,7 +18,7 @@ import org.eclipse.ui.IViewSite;
 /**
  * An extension that allows to provide a tab to the model explorer view.
  * 
- * @since 2.6
+ * @since 0.9.0
  * @author mporhel
  * 
  */

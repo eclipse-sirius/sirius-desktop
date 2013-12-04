@@ -146,7 +146,7 @@ public class RenameDialog extends SelectionStatusDialog {
      * 
      * @param value
      *            the value to set
-     * @since 2.0
+     * @since 0.9.0
      */
     public void setText(final String value) {
         if (text != null) {

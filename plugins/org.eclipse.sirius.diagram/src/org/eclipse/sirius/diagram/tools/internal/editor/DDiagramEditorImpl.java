@@ -216,7 +216,7 @@ import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
  * The diagram editor.
  * 
  * @author mchauvin
- * @since 2.1
+ * @since 0.9.0
  */
 public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramEditor, ISelectionListener, SessionListener {
 
@@ -1173,7 +1173,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * 
      * {@inheritDoc}
      * 
-     * @since 2.0
+     * @since 0.9.0
      */
     public void notify(final int changeKind) {
         DDiagramEditorSessionListenerDelegate dDiagramEditorSessionListenerDelegate = new DDiagramEditorSessionListenerDelegate(this, toolFilterWhenRepresentationIsLocked, changeKind);

@@ -24,7 +24,7 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
  * The diagram editor.
  * 
  * @author mchauvin
- * @since 2.2
+ * @since 0.9.0
  * @noimplement This interface is not intended to be implemented by clients.
  */
 public interface DDiagramEditor extends IAdaptable, DialectEditor {
@@ -45,7 +45,7 @@ public interface DDiagramEditor extends IAdaptable, DialectEditor {
      * return the editor's session.
      * 
      * @return the editor's session.
-     * @since 3.0
+     * @since 0.9.0
      */
     Session getSession();
 
@@ -53,7 +53,7 @@ public interface DDiagramEditor extends IAdaptable, DialectEditor {
      * Get the palette manager associated to this editor.
      * 
      * @return the palette, <code>null</code> if there is none
-     * @since 3.0
+     * @since 0.9.0
      */
     PaletteManager getPaletteManager();
 
@@ -61,7 +61,7 @@ public interface DDiagramEditor extends IAdaptable, DialectEditor {
      * Get the manager which handles contribution items to the tab bar.
      * 
      * @return the manager it there is one, <code>false</code> otherwise
-     * @since 3.0
+     * @since 0.9.0
      */
     IToolBarManager getTabBarManager();
 
@@ -69,7 +69,7 @@ public interface DDiagramEditor extends IAdaptable, DialectEditor {
      * Returns the command factory provider currently in use by this editor.
      * 
      * @return the command factory provider currently in use.
-     * @since 4.0
+     * @since 0.9.0
      */
     IDiagramCommandFactoryProvider getEmfCommandFactoryProvider();
 
@@ -78,7 +78,7 @@ public interface DDiagramEditor extends IAdaptable, DialectEditor {
      * 
      * @param emfCommandFactoryProvider
      *            the command factory provider to use.
-     * @since 4.0
+     * @since 0.9.0
      */
     void setEmfCommandFactoryProvider(IDiagramCommandFactoryProvider emfCommandFactoryProvider);
 

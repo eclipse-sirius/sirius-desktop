@@ -16,7 +16,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
  * Sirius variables strings (specific for table).
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * @since 2.2
+ * @since 0.9.0
  */
 public interface IInterpreterSiriusTableVariables extends IInterpreterSiriusVariables {
     /**

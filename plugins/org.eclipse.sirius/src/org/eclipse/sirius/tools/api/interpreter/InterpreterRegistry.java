@@ -46,7 +46,7 @@ public class InterpreterRegistry {
     /**
      * Error message when the interpreter could not be found.
      * 
-     * @since 2.1
+     * @since 0.9.0
      */
     public static final String ERROR_MSG_IMPOSSIBLE_TO_FIND_AN_INTERPRETER = "Impossible to find an interpreter";
 
@@ -164,7 +164,7 @@ public class InterpreterRegistry {
      *            the model requests interpreter to prepare.
      * @param session
      *            the current session
-     * @since 2.6
+     * @since 0.9.0
      */
     public static void prepareImportsFromSession(final IInterpreter inter, final Session session) {
         Collection<String> imports = inter.getImports();

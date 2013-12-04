@@ -126,7 +126,7 @@ public interface RepresentationDescription extends DocumentedElement, EndUserDoc
      * there really should be more of a description here...
      * </p>
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @return the value of the '<em>Show On Startup</em>' attribute.
      * @see #setShowOnStartup(boolean)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationDescription_ShowOnStartup()
@@ -140,7 +140,7 @@ public interface RepresentationDescription extends DocumentedElement, EndUserDoc
      * {@link org.eclipse.sirius.viewpoint.description.RepresentationDescription#isShowOnStartup
      * <em>Show On Startup</em>}' attribute. <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @param value
      *            the new value of the '<em>Show On Startup</em>' attribute.
      * @see #isShowOnStartup()

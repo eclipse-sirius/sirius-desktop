@@ -22,7 +22,7 @@ import org.eclipse.sirius.common.tools.api.util.Option;
  * informations (like the target domain classes and the available packages for
  * Interpreted expressions.
  * 
- * @since 4.0
+ * @since 0.9.0
  * @author alagarde
  * 
  */

@@ -280,7 +280,7 @@ public final class DAnalysisSessionHelper {
      * @param analysisSelector
      *            the selector
      * @return the free container if found or <code>null</code> otherwise.
-     * @since 2.6
+     * @since 0.9.0
      */
     public static DRepresentationContainer findFreeContainer(final Viewpoint viewpoint, final Collection<DAnalysis> analyses, final DAnalysisSelector analysisSelector) {
 

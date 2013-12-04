@@ -36,7 +36,7 @@ import org.eclipse.sirius.viewpoint.DEdge;
  * 
  * @author pcdavid
  * 
- * @since 4.0
+ * @since 0.9.0
  */
 public final class PinHelper {
 

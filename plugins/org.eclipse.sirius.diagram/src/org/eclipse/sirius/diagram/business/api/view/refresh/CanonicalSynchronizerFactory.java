@@ -19,7 +19,7 @@ import org.eclipse.sirius.diagram.internal.refresh.factory.CanonicalSynchronizer
  * 
  * @author edugueperoux
  * 
- * @since 4.0
+ * @since 0.9.0
  * @noimplement This interface is not intended to be implemented by clients,
  *              only used for internal implementation.
  */

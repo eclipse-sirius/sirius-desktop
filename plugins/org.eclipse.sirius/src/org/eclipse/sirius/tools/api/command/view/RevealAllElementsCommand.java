@@ -33,7 +33,7 @@ public class RevealAllElementsCommand extends RecordingCommand {
     /**
      * Label for hide element.
      * 
-     * @since 2.3
+     * @since 0.9.0
      */
     public static final String REVEAL_ALL_ELEMENTS_LABEL = "Reveal all elements";
 

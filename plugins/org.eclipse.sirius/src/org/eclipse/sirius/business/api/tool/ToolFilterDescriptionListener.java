@@ -36,7 +36,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
  * tool
  * 
  * @author mchauvin
- * @since 2.7
+ * @since 0.9.0
  */
 public class ToolFilterDescriptionListener extends DemultiplexingListener {
 

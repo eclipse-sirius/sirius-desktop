@@ -181,7 +181,7 @@ public final class ViewpointSelection {
      * @param viewpointsMap
      *            an empty map, which will be filled
      * @return the wizard page
-     * @since 2.0
+     * @since 0.9.0
      */
     public static WizardPage createWizardPage(final String fileExtension, final SortedMap<Viewpoint, Boolean> viewpointsMap) {
         final SortedSet<Viewpoint> viewpoints = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
@@ -257,7 +257,7 @@ public final class ViewpointSelection {
      * @param viewpointsMap
      *            an empty map which will be filled
      * @return the wizard page
-     * @since 2.0
+     * @since 0.9.0
      */
     public static WizardPage createWizardPage(final IFile semanticModel, final SortedMap<Viewpoint, Boolean> viewpointsMap) {
 

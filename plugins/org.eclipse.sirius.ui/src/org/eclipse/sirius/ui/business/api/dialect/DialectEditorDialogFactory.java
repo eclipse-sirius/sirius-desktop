@@ -16,7 +16,7 @@ import org.eclipse.swt.widgets.Shell;
  * Dialog factory for any editor.
  * 
  * @author mchauvin
- * @since 2.5
+ * @since 0.9.0
  */
 public interface DialectEditorDialogFactory {
 
@@ -38,7 +38,7 @@ public interface DialectEditorDialogFactory {
      *            {@link org.eclipse.core.runtime.IStatus#WARNING}).
      * @param message
      *            the message to show to the end-user
-     * @since 4.0
+     * @since 0.9.0
      */
     void informUserOfEvent(int severity, String message);
 

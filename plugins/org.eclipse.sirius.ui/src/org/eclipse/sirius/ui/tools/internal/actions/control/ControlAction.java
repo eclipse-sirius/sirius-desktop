@@ -55,7 +55,7 @@ import org.eclipse.sirius.ui.tools.internal.util.EMFCoreUtil;
  * to its containers' resource. It is implemented by creating a
  * {@link AddCommand} or {@link RemoveCommand}.
  * 
- * @since 2.2.0
+ * @since 0.9.0
  * 
  */
 // CHECKSTYLE:OFF

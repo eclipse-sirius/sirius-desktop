@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.filter.CompositeFilterDescriptio
  * Helper to handle CollapseFilter and AppliedCompositeFilters.
  * 
  * @author mporhel
- * @since 2.8
+ * @since 0.9.0
  */
 public class CompositeFilterApplicationBuilder {
 

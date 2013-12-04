@@ -14,7 +14,7 @@ package org.eclipse.sirius.business.api.session;
  * The synchronization status of a Session.
  * 
  * @author cbrun
- * @since 2.0
+ * @since 0.9.0
  * 
  */
 public enum SessionStatus {

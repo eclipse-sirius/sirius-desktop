@@ -40,7 +40,7 @@ public class SessionEditorInput extends URIEditorInput {
     /**
      * Default editor name
      * 
-     * @since 4.0
+     * @since 0.9.0
      */
     private static final String DEFAULT_EDITOR_NAME = "Representation";
 
@@ -73,7 +73,7 @@ public class SessionEditorInput extends URIEditorInput {
      * 
      * @param memento
      *            a bit of information kept by the platform.
-     * @since 2.0
+     * @since 0.9.0
      */
     public SessionEditorInput(final IMemento memento) {
         super(memento);
@@ -149,7 +149,7 @@ public class SessionEditorInput extends URIEditorInput {
      *            the Session Resource URI
      * @return the session if it can be found, <code>null</code> otherwise
      * 
-     * @since 4.0.0
+     * @since 0.9.0
      */
     protected Session getSession(URI sessionModelURI) {
         Session sessionFromURI;
@@ -193,7 +193,7 @@ public class SessionEditorInput extends URIEditorInput {
      *            a session Resource URI.
      * @return a new Sessioneditorinput.
      * 
-     * @since 2.0
+     * @since 0.9.0
      */
     public static SessionEditorInput create(final URI sessionResourceURI) {
         Session session;

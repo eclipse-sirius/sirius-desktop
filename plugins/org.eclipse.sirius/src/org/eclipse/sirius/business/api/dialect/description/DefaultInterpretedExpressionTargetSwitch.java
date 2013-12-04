@@ -30,7 +30,7 @@ import org.eclipse.sirius.business.internal.dialect.description.ValidationInterp
  * feature corresponding to an Interpreted Expression. This default switch will
  * treat all description elements expected representation-specific elements.
  * 
- * @since 4.0
+ * @since 0.9.0
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  */
 public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExpressionTargetSwitch {

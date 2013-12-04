@@ -45,7 +45,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDiagram;
  * closes the session.
  * 
  * @author mchauvin
- * @since 2.1
+ * @since 0.9.0
  */
 public abstract class AbstractSpecificDDiagramEditor extends DDiagramEditorImpl implements SpecificEditor {
 

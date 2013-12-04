@@ -14,7 +14,7 @@ package org.eclipse.sirius.common.tools.api.util;
  * Class which provides useful operations on file or file name.
  * 
  * @author mchauvin
- * @since 3.1
+ * @since 0.9.0
  */
 public final class FileUtil {
 

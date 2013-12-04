@@ -450,7 +450,7 @@ public class SiriusDiagramEditorPlugin extends AbstractUIPlugin {
     /**
      * @param transactionalEditingDomain
      * @not-generated
-     * @since 2.0
+     * @since 0.9.0
      */
     public CustomSiriusDocumentProvider getDocumentProvider(TransactionalEditingDomain transactionalEditingDomain) {
         return new CustomSiriusDocumentProvider(transactionalEditingDomain);

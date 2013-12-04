@@ -47,7 +47,7 @@ import org.eclipse.sirius.common.tools.api.resource.IFileModificationValidator;
  * 
  * @author cedric
  * 
- * @since 3.2
+ * @since 0.9.0
  */
 public class FileStatusPrecommitListener extends ResourceSetListenerImpl {
 

@@ -17,7 +17,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  * A filter allows one to hide tools in the palette.
  * 
  * @author mchauvin
- * @since 3.0
+ * @since 0.9.0
  */
 public interface ToolFilter {
 

@@ -41,7 +41,7 @@ import org.eclipse.sirius.business.internal.session.danalysis.ResourceSaveDiagno
  * A policy implementing save operation.
  * 
  * @author mchauvin
- * @since 2.7
+ * @since 0.9.0
  */
 public class SavingPolicyImpl implements SavingPolicy {
 

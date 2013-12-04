@@ -412,7 +412,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
     /**
      * Construct an empty Label.
      * 
-     * @since 2.0
+     * @since 0.9.0
      */
     public SiriusWrapLabel() {
         text = "";//$NON-NLS-1$
@@ -429,7 +429,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * 
      * @param s
      *            the label text
-     * @since 2.0
+     * @since 0.9.0
      */
     public SiriusWrapLabel(String s) {
         if (s != null) {
@@ -445,7 +445,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * 
      * @param i
      *            the label image
-     * @since 2.0
+     * @since 0.9.0
      */
     public SiriusWrapLabel(Image i) {
         text = "";//$NON-NLS-1$
@@ -460,7 +460,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      *            the label text
      * @param i
      *            the label image
-     * @since 2.0
+     * @since 0.9.0
      */
     public SiriusWrapLabel(String s, Image i) {
         if (s != null) {
@@ -545,7 +545,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * @param txtSize
      *            the precalculated size of the label's text
      * @return the label's size
-     * @since 2.0
+     * @since 0.9.0
      */
     protected Dimension calculateLabelSize(Dimension txtSize) {
         Dimension iconSize = getTotalIconSize();
@@ -648,7 +648,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * {@link #calculateTextSize(int, int)}.
      * 
      * @return the size of the label's text, taking into account truncation
-     * @since 2.0
+     * @since 0.9.0
      */
     protected Dimension calculateSubStringTextSize() {
         Font f = getFont();
@@ -666,7 +666,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * @param hHint
      *            a height hint
      * @return the size of the label's text, ignoring truncation
-     * @since 2.0
+     * @since 0.9.0
      */
     protected Dimension calculateTextSize(int wHint, int hHint) {
         Font f = getFont();
@@ -681,7 +681,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * Returns the Label's icon.
      * 
      * @return the label icon
-     * @since 2.0
+     * @since 0.9.0
      */
     public Image getIcon() {
         return getIcon(0);
@@ -714,7 +714,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * {@link PositionConstants#CENTER}.
      * 
      * @return the icon alignment
-     * @since 2.0
+     * @since 0.9.0
      */
     public int getIconAlignment() {
         return getAlignment(FLAG_ICON_ALIGN);
@@ -724,7 +724,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * Returns the bounds of the Label's icon.
      * 
      * @return the icon's bounds
-     * @since 2.0
+     * @since 0.9.0
      */
     public Rectangle getIconBounds() {
         return new Rectangle(getBounds().getLocation().translate(getIconLocation()), getTotalIconSize());
@@ -734,7 +734,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * Returns the location of the Label's icon relative to the Label.
      * 
      * @return the icon's location
-     * @since 2.0
+     * @since 0.9.0
      */
     protected Point getIconLocation() {
         if (iconLocation == null)
@@ -746,7 +746,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * Returns the gap in pixels between the Label's icon and its text.
      * 
      * @return the gap
-     * @since 2.0
+     * @since 0.9.0
      */
     public int getIconTextGap() {
         return getMapModeConstants().nDPtoLP_3;
@@ -808,7 +808,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * including an elipsis "..." if truncation is required.
      * 
      * @return the substring
-     * @since 2.0
+     * @since 0.9.0
      */
     public String getSubStringText() {
         if (subStringText != null)
@@ -926,7 +926,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * size.
      * 
      * @return the size of this label's text, taking into account truncation
-     * @since 2.0
+     * @since 0.9.0
      */
     protected Dimension getSubStringTextSize() {
         return calculateSubStringTextSize();
@@ -953,7 +953,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * with truncation considered.
      * 
      * @return the complete text of this label
-     * @since 2.0
+     * @since 0.9.0
      */
     public String getText() {
         return text;
@@ -985,7 +985,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * label's text is currently truncated.
      * 
      * @return the bounds of this label's complete text
-     * @since 2.0
+     * @since 0.9.0
      */
     public Rectangle getTextBounds() {
         return new Rectangle(getBounds().getLocation().translate(getTextLocation()), getTextSize());
@@ -995,7 +995,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * Returns the location of the label's text relative to the label.
      * 
      * @return the text location
-     * @since 2.0
+     * @since 0.9.0
      */
     protected Point getTextLocation() {
         if (textLocation != null)
@@ -1009,7 +1009,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * The default text placement is {@link PositionConstants#EAST}.
      * 
      * @return the text placement
-     * @since 2.0
+     * @since 0.9.0
      */
     public int getTextPlacement() {
         return getPlacement(FLAG_TEXT_PLACEMENT);
@@ -1027,7 +1027,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * @param hHint
      *            a height hint
      * @return the size of this label's complete text
-     * @since 2.0
+     * @since 0.9.0
      */
     protected Dimension getTextSize(int wHint, int hHint) {
         if (textSize == null || wHint != cachedTextSizeHint_width || hHint != cachedTextSizeHint_height) {
@@ -1066,7 +1066,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * is displaying an ellipsis, <code>false</code> otherwise.
      * 
      * @return <code>true</code> if the label's text is truncated
-     * @since 2.0
+     * @since 0.9.0
      */
     public boolean isTextTruncated() {
         return !getSubStringTextSize().equals(getTextSize());
@@ -1210,7 +1210,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * 
      * @param image
      *            the new label image
-     * @since 2.0
+     * @since 0.9.0
      */
     public void setIcon(Image image) {
         setIcon(image, 0);
@@ -1264,7 +1264,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * 
      * @param align
      *            the icon alignment
-     * @since 2.0
+     * @since 0.9.0
      */
     public void setIconAlignment(int align) {
         if (getIconAlignment() == align)
@@ -1342,7 +1342,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * 
      * @param s
      *            the new label text
-     * @since 2.0
+     * @since 0.9.0
      */
     public void setText(String s) {
         // "text" will never be null.
@@ -1364,7 +1364,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * 
      * @param align
      *            the text alignment
-     * @since 2.0
+     * @since 0.9.0
      */
     public void setTextAlignment(int align) {
         if (getTextAlignment() == align)
@@ -1382,7 +1382,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * 
      * @param where
      *            the text placement
-     * @since 2.0
+     * @since 0.9.0
      */
     public void setTextPlacement(int where) {
         if (getTextPlacement() == where)
@@ -1695,7 +1695,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
      * @param charAverageWidth
      *            int <b>mapped already to logical units</b>.
      * @return the largest substring that fits in the given width
-     * @since 2.0
+     * @since 0.9.0
      */
     private int getLargestSubstringConfinedTo(String s, Font f, int w, int fontHeight, int charAverageWidth) {
         float avg = charAverageWidth;

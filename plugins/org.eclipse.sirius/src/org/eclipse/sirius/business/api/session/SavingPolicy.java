@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.resource.Resource;
  * A policy implementing save operation.
  * 
  * @author mchauvin
- * @since 2.7
+ * @since 0.9.0
  */
 public interface SavingPolicy {
 

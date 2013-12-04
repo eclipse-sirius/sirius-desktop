@@ -60,7 +60,7 @@ import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
- * @since 4.0
+ * @since 0.9.0
  */
 public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer {
 

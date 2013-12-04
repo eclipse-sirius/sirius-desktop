@@ -47,7 +47,7 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
  * Query allowing to get the target domain classes and available packages for a
  * given Interpreted expression.
  * 
- * @since 4.0
+ * @since 0.9.0
  * @author alagarde
  * 
  */

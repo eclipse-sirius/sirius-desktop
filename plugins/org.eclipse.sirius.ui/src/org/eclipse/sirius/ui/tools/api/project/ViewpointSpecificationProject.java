@@ -76,7 +76,7 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * Manage viewpoint specification projects.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * @since 2.0
+ * @since 0.9.0
  */
 public final class ViewpointSpecificationProject {
 

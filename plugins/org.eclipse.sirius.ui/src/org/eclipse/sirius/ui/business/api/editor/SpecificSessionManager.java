@@ -26,7 +26,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
  * Manage the opening and closing of session cleanly for a specific editor.
  * 
  * @author mchauvin
- * @since 2.5
+ * @since 0.9.0
  */
 public class SpecificSessionManager {
 

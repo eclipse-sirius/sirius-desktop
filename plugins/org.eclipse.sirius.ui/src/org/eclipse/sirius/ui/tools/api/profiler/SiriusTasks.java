@@ -111,7 +111,7 @@ public final class SiriusTasks {
     /**
      * Task singleton.
      * 
-     * @since 2.4
+     * @since 0.9.0
      */
     public static final ProfilerTask REFRESH_VISIBILITY = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.REFRESH_VISIBILITY_KEY, getImagePath(IMAGES_VIEWPOINT));
 

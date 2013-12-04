@@ -47,7 +47,7 @@ public class ViewpointRegistry implements IResourceChangeListener {
      * predictable ordering for users.
      * 
      * @author cbrun
-     * @since 2.0
+     * @since 0.9.0
      */
     public static final class ViewpointComparator implements Comparator<Viewpoint>, Serializable {
         /**
@@ -163,7 +163,7 @@ public class ViewpointRegistry implements IResourceChangeListener {
      * Get the mappings registry to retrieve mappings.
      * 
      * @return the mappings registry
-     * @since 2.2
+     * @since 0.9.0
      */
     public DiagramDescriptionMappingsRegistry getDiagramDescriptionMappingsRegistry() {
         throw new UnsupportedOperationException();
@@ -198,7 +198,7 @@ public class ViewpointRegistry implements IResourceChangeListener {
      *            the representation description.
      * @return the viewpoint which defines the representation description, or
      *         <code>null</code> if it could not be found.
-     * @since 2.3
+     * @since 0.9.0
      */
     public Viewpoint getViewpoint(RepresentationDescription description) {
         throw new UnsupportedOperationException();
@@ -210,7 +210,7 @@ public class ViewpointRegistry implements IResourceChangeListener {
      * @param viewpointUri
      *            the viewpoint uri. It should used viewpoint protocol.
      * @return the viewpoint if found, throw an exception otherwise
-     * @since 2.7
+     * @since 0.9.0
      */
     public Viewpoint getViewpoint(URI viewpointUri) {
         throw new UnsupportedOperationException();

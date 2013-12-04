@@ -136,7 +136,7 @@ public final class SiriusTasksKey {
     /**
      * Task singleton.
      * 
-     * @since 2.4
+     * @since 0.9.0
      */
     public static final String REFRESH_VISIBILITY_KEY = "Display Service : check that the element has to be displayed";
 

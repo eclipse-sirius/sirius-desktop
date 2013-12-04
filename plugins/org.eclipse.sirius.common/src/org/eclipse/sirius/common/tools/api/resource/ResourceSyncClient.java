@@ -21,7 +21,7 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStat
  * A {@link ResourceSyncClient} gets notified when a resource status change.
  * 
  * @author cbrun
- * @since 2.0
+ * @since 0.9.0
  * 
  */
 public interface ResourceSyncClient {
@@ -45,7 +45,7 @@ public interface ResourceSyncClient {
      * @param changes
      *            the status changes which happened during either a single
      *            command execution, or a single workspace refresh operation.
-     * @since 3.3
+     * @since 0.9.0
      * 
      */
     void statusesChanged(Collection<ResourceStatusChange> changes);
@@ -54,7 +54,7 @@ public interface ResourceSyncClient {
      * A class encapsulating the even of a resource status change.
      * 
      * @author cbrun
-     * @since 3.3
+     * @since 0.9.0
      * 
      */
     class ResourceStatusChange {

@@ -59,7 +59,7 @@ public class ContentContext {
      * 
      * @return the interpreter context.
      * 
-     * @since 3.2
+     * @since 0.9.0
      */
     public IInterpreterContext getInterpreterContext() {
         return interpreterContext;

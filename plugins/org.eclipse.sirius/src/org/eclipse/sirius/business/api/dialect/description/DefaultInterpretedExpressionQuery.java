@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * given Interpreted expression. This default query will treat all description
  * elements expected representation-specific elements.
  * 
- * @since 4.0
+ * @since 0.9.0
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
  */

@@ -23,7 +23,7 @@ import java.util.Map;
  * <li>Add additional behavior according to the choice made by user.</li>
  * </ul>
  * 
- * @since 2.5
+ * @since 0.9.0
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
  */

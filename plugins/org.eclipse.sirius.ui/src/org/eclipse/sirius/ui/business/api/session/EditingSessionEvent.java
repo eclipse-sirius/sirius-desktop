@@ -14,7 +14,7 @@ package org.eclipse.sirius.ui.business.api.session;
  * Events for editing session.
  * 
  * @author mchauvin
- * @since 4.1
+ * @since 0.9.0
  */
 public enum EditingSessionEvent {
 

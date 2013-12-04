@@ -82,7 +82,7 @@ public interface IDiagramDescriptionProvider {
      * 
      *         representation descriptions to determine useful informations
      *         (like the type to consider for Interpreted expressions)
-     * @since 4.0
+     * @since 0.9.0
      */
     IInterpretedExpressionTargetSwitch createInterpretedExpressionSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch parentSwitch);
 
@@ -97,7 +97,7 @@ public interface IDiagramDescriptionProvider {
      *            the {@link EPackage} to test
      * @return true if the given ePackage is handled by this
      *         {@link IDiagramDescriptionProvider}, false otherwise
-     * @since 4.0
+     * @since 0.9.0
      */
     boolean handles(EPackage ePackage);
 
@@ -109,7 +109,7 @@ public interface IDiagramDescriptionProvider {
      *         activation of Layouting Mode on handled representations, false
      *         otherwise.
      * 
-     * @since 4.0
+     * @since 0.9.0
      */
     boolean allowsLayoutingModeActivation();
 
@@ -123,7 +123,7 @@ public interface IDiagramDescriptionProvider {
      * @return true if the given Diagram description provider allows the
      *         Pin/Unpin actions on handled representations, false otherwise.
      * 
-     * @since 4.2
+     * @since 0.9.0
      */
     Predicate<DDiagramElement> allowsPinUnpin();
 
@@ -137,7 +137,7 @@ public interface IDiagramDescriptionProvider {
      * @return true if the given Diagram description provider allows the
      *         Show/Hide actions on handled representations, false otherwise.
      * 
-     * @since 4.2
+     * @since 0.9.0
      */
     Predicate<DDiagramElement> allowsHideReveal();
 
@@ -152,7 +152,7 @@ public interface IDiagramDescriptionProvider {
      *         Copy/Paste Layout actions on handled representations, false
      *         otherwise.
      * 
-     * @since 4.2
+     * @since 0.9.0
      */
     Predicate<DSemanticDecorator> allowsCopyPasteLayout();
 

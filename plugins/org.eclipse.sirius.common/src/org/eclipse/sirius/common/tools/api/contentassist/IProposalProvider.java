@@ -50,7 +50,7 @@ public interface IProposalProvider {
      * interpreter.
      * 
      * @return the proposal if there is one or <code>null</code> if none.
-     * @since 3.2
+     * @since 0.9.0
      */
     ContentProposal getNewEmtpyExpression();
 

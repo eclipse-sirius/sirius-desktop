@@ -100,7 +100,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * The default value of the '{@link #getTooltipText() <em>Tooltip Text</em>}
      * ' attribute. <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @see #getTooltipText()
      * @generated
      * @ordered
@@ -111,7 +111,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * The cached value of the '{@link #getTooltipText() <em>Tooltip Text</em>}'
      * attribute. <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @see #getTooltipText()
      * @generated
      * @ordered
@@ -206,7 +206,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     /**
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      */
     public String getTooltipText() {
@@ -216,7 +216,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     /**
      * <!-- begin-user-doc -->
      * 
-     * @since 2.0 <!-- end-user-doc -->
+     * @since 0.9.0
      * @generated
      */
     public void setTooltipText(String newTooltipText) {

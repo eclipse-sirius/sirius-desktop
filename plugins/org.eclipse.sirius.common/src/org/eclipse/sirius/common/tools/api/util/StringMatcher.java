@@ -16,7 +16,7 @@ import java.util.Vector;
  * A string pattern matcher, supporting wildcard characters.
  * 
  * This class is cloned from org.eclipse.ui.internal.misc.StringMatcher
- * @since 2.6
+ * @since 0.9.0
  */
 //CHECKSTYLE:OFF
 @SuppressWarnings({ "rawtypes", "unchecked" })

@@ -34,7 +34,7 @@ import org.eclipse.sirius.common.tools.api.util.Option;
  * receiver is an EObject, there is no reference in the meta model to compute
  * the possible type.).
  * 
- * @since 4.0
+ * @since 0.9.0
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  */
 public interface IInterpretedExpressionTargetSwitch {
