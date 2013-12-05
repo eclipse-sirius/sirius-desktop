@@ -46,6 +46,10 @@
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.nebula.widgets.paperclips.feature.feature.group" version="2.0.0.201309241436"/>
+<repository location="http://download.eclipse.org/sirius/targetplatform/0.9.0/all/nebula/N201309241436"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.xtext.sdk.feature.group" version="2.4.3.v201309030823"/>
 <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases"/>
 </location>

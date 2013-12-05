@@ -12,15 +12,22 @@ package org.eclipse.sirius.table.ui.tools.internal.editor.provider;
 
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.IEditorActionBarContributor;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.IWorkbenchActionConstants;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.ActionFactory;
+import org.eclipse.ui.part.IPage;
+
 import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableCrossEditor;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorCreateLineMenuAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorCreateTargetColumnMenuAction;
+import org.eclipse.sirius.table.ui.tools.internal.editor.action.PrintAction;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
-import org.eclipse.ui.IEditorActionBarContributor;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IWorkbenchActionConstants;
 
 /**
  * This is a contributor for an DTable editor.
@@ -28,6 +35,70 @@ import org.eclipse.ui.IWorkbenchActionConstants;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class DTableActionBarContributor extends EditingDomainActionBarContributor {
+
+    /* ISharedImages.IMG_ETOOL_PRINT_EDIT only since 3.4 */
+    private static final String IMG_ETOOL_PRINT_EDIT = "IMG_ETOOL_PRINT_EDIT";
+
+    private PrintAction printAction;
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor#init(org.eclipse.ui.IActionBars)
+     */
+    @Override
+    public void init(final IActionBars actionBars) {
+        super.init(actionBars);
+        final ISharedImages sharedImages = PlatformUI.getWorkbench().getSharedImages();
+        printAction = new PrintAction();
+        printAction.setImageDescriptor(sharedImages.getImageDescriptor(IMG_ETOOL_PRINT_EDIT));
+        actionBars.setGlobalActionHandler(ActionFactory.PRINT.getId(), printAction);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor#shareGlobalActions(org.eclipse.ui.part.IPage,
+     *      org.eclipse.ui.IActionBars)
+     */
+    @Override
+    public void shareGlobalActions(final IPage page, final IActionBars actionBars) {
+        super.shareGlobalActions(page, actionBars);
+        actionBars.setGlobalActionHandler(ActionFactory.PRINT.getId(), printAction);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor#deactivate()
+     */
+    @Override
+    public void deactivate() {
+        super.deactivate();
+        printAction.setEditor(null);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor#activate()
+     */
+    @Override
+    public void activate() {
+        super.activate();
+        printAction.setEditor(activeEditor);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor#contributeToToolBar(org.eclipse.jface.action.IToolBarManager)
+     */
+    @Override
+    public void contributeToToolBar(final IToolBarManager toolBarManager) {
+        super.contributeToToolBar(toolBarManager);
+    }
+
     /**
      * {@inheritDoc}
      * 

@@ -8,6 +8,8 @@ h2. Changes in Sirius 1.0.0M4 (from Sirius 0.9)
 
 h3. User-Visible Changes
 
+* The ability to print table representations, which had been disabled for the 0.9 release, has been re-enabled.
+
 h3. API Changes
 
 Sirius 1.0.0M4 includes a lots of API-breaking changes, as part of a global effort to improve the quality of the Sirius internals. In this milestone in particular, most of the APIs which were marked as deprecated in previous versions of Sirius (and before that of Viewpoint) have been either removed (if a replacement exists) or marked as non-deprecated (if no replacement exists yet).
