@@ -16,5 +16,4 @@ h1. Sirius Documentation
 ** "Model Operations":specifier/general/Model_Operations.html
 ** "Defining Color Palettes":specifier/general/Colors.html
 ** "Writing Queries":specifier/general/Writing_Queries.html
-** "Feature Matrix":specifier/general/Feature_Matrix.html
 * "Glossary":Glossary.html
