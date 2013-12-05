@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<toc label="viewpoint-eef" link_to="../org.eclipse.sirius.doc/doc/toc.xml#moreDeveloperRefs" topic="doc/textile/viewpoint-eef.html">
+<toc label="viewpoint-eef" link_to="../org.eclipse.sirius.doc/doc/toc.xml#moreSpecifierRefs" topic="doc/textile/viewpoint-eef.html">
 	<topic href="doc/textile/viewpoint-eef.html" label="Using the Extended Editing Framework with Sirius">
 		<topic href="doc/textile/viewpoint-eef.html#EEFPropertiesviewsandwizardsgeneration" label="EEF Properties views and wizards generation">
 			<topic href="doc/textile/viewpoint-eef.html#InitializingandsettingupEEFmodels" label="Initializing and setting up EEF models"></topic>
