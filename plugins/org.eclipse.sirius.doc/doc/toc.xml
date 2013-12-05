@@ -130,7 +130,6 @@
       <topic href="doc/specifier/general/Writing_Queries.html#custom" label="Providing a Custom Language" />
       <topic href="doc/specifier/general/Writing_Queries.html#service_methods" label="Writing Java Services" />
     </topic>
-    <topic href="doc/specifier/general/Feature_Matrix.html" label="Feature Matrix" />
     <topic href="http://www.obeonetwork.com/group/obeo-designer/page/best-practices" label="Best Practices" />
     <anchor id="moreSpecifierRefs"/>
   </topic>
