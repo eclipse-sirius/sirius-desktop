@@ -51,7 +51,7 @@ Sirius provides several specialized interpreters to handle more efficiently some
 ** @feature:eContents@ returns the direct contents of the current element (or an empty collection if there is none). This is equivalent to <code>[self.eContents()/]</code>.
 ** @feature:eAllContents@ returns all the elements directly and indirectly contained inside the current element (or an empty collection if there is none). This is equivalent to <code>[self.eAllContents()/]</code>.
 ** @feature:eCrossReferences@ returns all the model elements which are directly referenced by the current element (or an empty collection if there is none). This is equivalent to <code>[self.eCrossReferences()/]</code>.
-* *@service:@* This interpreter can be used to directly invoke a service method (i.e. a Java method that follows conventions for "service methods":#service_methods ) on the current element. For example, assuming the service class "@FamilyServices@":#family_services has been correctly registered in the VSM, the expression @service:getFamiliesContainingParents@ (note the absence of parenthesis) will invoke the @getFamiliesContainingParents@ on the current element if it is an instance of @Family@.
+* *@service:@* This interpreter can be used to directly invoke a service method (i.e. a Java method that follows conventions for "service methods":#service_methods ) on the current element. For example, assuming the service class "@EcoreServices@":#ecore_services has been correctly registered in the VSM, the expression @service:getEClasses@ (note the absence of parenthesis) will invoke the @getEClasses@ on the current element if it is an instance of @EPackage@.
 ** _Note 1_: The service interpreter supports parameters, but only variables can be used as parameter (no literals or complex expressions), for example: @service:serviceName(view, diagram)@.
 ** _Note 2_: You can use the service interpreter not only on the current context by using a variable name before calling the service, for example: @service:myVariableName.serviceName@.
 ** Intended limitations exist to be more efficient:
@@ -120,12 +120,12 @@ A service is simply a public Java methods which follows some conventions:
 
 Here is an example of a Java service taken from the @com.obeodesigner.sample.family.design@ example (you can obtain the project's sources using _New... > Example... > Obeo Designer > Family Designer_):
 
-bc(#family_services). 
-public class FamilyServices {
-    public List<Family> getFamiliesContainingParents(Family currentFamily) {
-        List<Family> familiesContainingParents = new ArrayList<Family>();
+bc(#ecore_services). 
+public class EObjectServices {
+    public List<EClass> getEClasses(EPackage ePackage) {
+        List<EClass> eClasses = new ArrayList<EClass>();
         // The service code. 
-        return familiesContainingParents;
+        return eClasses;
     }
 }
 

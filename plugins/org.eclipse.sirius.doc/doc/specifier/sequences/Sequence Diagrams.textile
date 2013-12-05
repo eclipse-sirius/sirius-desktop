@@ -92,7 +92,6 @@ There are two kinds of @EventEnds@:
 Depending on how the meta-model is defined, the @MixEnd@ could be represented by:
 * one @SingleEventEnd@: This is the case in UML2, the @Execution Specification@ could be defined with a start/finish element of type @Execution Occurrence Specification@ or @Message Occurrence Specification@
 * two @SingleEventEnds@: one @SingleEventElement@ which points to the message and one @SingleEventElement@ which points to the execution.
-An example of MixEnd composed by two @SingleEventEnds@ is described in the __Interactions Modelers__ described in the @fr.obeo.sample.ecore.interactions@ plug-in.
 
   !images/event_ends.png!
 
