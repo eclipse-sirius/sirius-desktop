@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.action;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -18,14 +19,14 @@ import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -135,7 +136,7 @@ public class CreateRepresentationFromRepresentationCreationDescription extends A
 
             final Session session = SessionManager.INSTANCE.getSession(target.getTarget());
 
-            DialectUIManager.INSTANCE.openEditor(session, command.getCreatedRepresentation());
+            DialectUIManager.INSTANCE.openEditor(session, command.getCreatedRepresentation(), new NullProgressMonitor());
         } catch (final InterruptedException e) {
             // the user pressed "cancel", let's do nothing
         }

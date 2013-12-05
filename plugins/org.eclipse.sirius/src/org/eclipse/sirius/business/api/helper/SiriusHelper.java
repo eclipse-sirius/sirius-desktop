@@ -24,7 +24,6 @@ import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.GroupQuery;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DNode;
@@ -35,7 +34,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.ContainerMapping;
@@ -285,23 +283,6 @@ public final class SiriusHelper {
                 SiriusHelper.addUnique(((DNodeList) container).getOwnedElements(), insertionIndex, (DNodeListElement) newNode);
             }
         }
-    }
-
-    /**
-     * Create a dAnalysis.
-     * 
-     * @return a new dAnalysis
-     * 
-     * @deprecated since 4.0.0 the session root model element must be created
-     *             internally by a
-     *             {@link org.eclipse.sirius.business.api.session.factory.SessionFactory}
-     *             , in future move this in internal.
-     */
-    @Deprecated
-    public static DAnalysis createDAnalysis() {
-        final DAnalysis analysis = ViewpointFactory.eINSTANCE.createDAnalysis();
-
-        return analysis;
     }
 
     /**

@@ -20,11 +20,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -32,9 +27,7 @@ import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.regex.Pattern;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -147,57 +140,6 @@ public final class MigrationUtil {
             }
         }
         return resultMap;
-    }
-
-    /**
-     * Returns the contents of the file.
-     * 
-     * @param initialContent
-     *            the initial content
-     * @param file
-     *            the file
-     * @param monitor
-     *            the progress monitor
-     * @return the contents of the file.
-     * @deprecated Use {@link MigrationUtil#getContents(File, IProgressMonitor)}
-     *             instead : This new method used less memory to read the
-     *             content of the file.
-     */
-    public static String getContents(final String initialContent, final IFile file, final IProgressMonitor monitor) {
-        if (initialContent == null) {
-            monitor.subTask("Loading File");
-            StringBuilder contentBuilder = new StringBuilder();
-            FileChannel fileChannel = null;
-            FileInputStream fileInputStream = null;
-            try {
-                URL fileUrl = file.getLocationURI().toURL();
-                fileInputStream = new FileInputStream(URI.decode(fileUrl.getFile()));
-                fileChannel = fileInputStream.getChannel();
-                ByteBuffer buffer = ByteBuffer.allocate(8192); // Same value as
-                // Eclipse EFS.
-                while (fileChannel.read(buffer) != -1) {
-                    buffer.flip();
-                    contentBuilder.append(Charset.forName(UTF_8).decode(buffer));
-                    buffer.clear();
-                }
-            } catch (final MalformedURLException e) {
-                SiriusPlugin.getDefault().error(e.getMessage(), e);
-            } catch (final IOException e) {
-                SiriusPlugin.getDefault().error(e.getMessage(), e);
-            } finally {
-                try {
-                    if (fileChannel != null && fileChannel.isOpen()) {
-                        fileChannel.close();
-                        fileInputStream.close();
-                    }
-                } catch (IOException e) {
-                    SiriusPlugin.getDefault().error(e.getMessage(), e);
-                }
-            }
-            monitor.worked(1);
-            return contentBuilder.toString();
-        }
-        return initialContent;
     }
 
     /**

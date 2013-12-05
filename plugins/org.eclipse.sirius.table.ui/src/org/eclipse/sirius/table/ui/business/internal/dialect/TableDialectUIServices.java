@@ -16,7 +16,6 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.URI;
@@ -78,13 +77,8 @@ import com.google.common.collect.Sets;
  */
 public class TableDialectUIServices implements DialectUIServices {
     /**
-     * 
      * {@inheritDoc}
      */
-    public IEditorPart openEditor(final Session session, final DRepresentation representation) {
-        return openEditor(session, representation, new NullProgressMonitor());
-    }
-
     public IEditorPart openEditor(Session session, DRepresentation dRepresentation, IProgressMonitor monitor) {
         IEditorPart editorPart = null;
         try {

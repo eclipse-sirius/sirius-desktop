@@ -56,9 +56,7 @@ public interface DialectManager extends DialectServices {
      * 
      * @return <code>true</code> if the refresh should be done on representation
      *         opening.
-     * @deprecated will be removed in future version
      */
-    @Deprecated
     boolean isRefreshActivatedOnRepresentationOpening();
 
     /**
@@ -67,9 +65,7 @@ public interface DialectManager extends DialectServices {
      * @param activated
      *            <code>true</code> if the refresh should be done on
      *            representation opening.
-     * @deprecated will be removed in future version
      */
-    @Deprecated
     void setRefreshActivatedOnRepresentationOpening(final boolean activated);
 
 }

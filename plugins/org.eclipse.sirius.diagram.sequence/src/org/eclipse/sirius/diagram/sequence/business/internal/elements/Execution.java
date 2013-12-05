@@ -19,13 +19,6 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
@@ -42,6 +35,12 @@ import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.diagram.sequence.util.NotationPredicate;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
+
+import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * Represents an execution on a lifeline or another parent execution.
@@ -98,11 +97,11 @@ public class Execution extends AbstractNodeEvent {
     }
 
     /**
-     * Returns a predicate to check whether a Sirius DDiagramElement
-     * represents an execution.
+     * Returns a predicate to check whether a Sirius DDiagramElement represents
+     * an execution.
      * 
-     * @return a predicate to check whether a Sirius DDiagramElement
-     *         represents an execution.
+     * @return a predicate to check whether a Sirius DDiagramElement represents
+     *         an execution.
      */
     public static Predicate<DDiagramElement> viewpointElementPredicate() {
         return SiriusElementPredicate.INSTANCE;
@@ -406,9 +405,7 @@ public class Execution extends AbstractNodeEvent {
      * @param recurse
      *            investigate recursively if true
      * @return the list of linked {@link Execution} from executionEditPart
-     * @deprecated
      */
-    @Deprecated
     public List<Execution> findLinkedExecutions(boolean recurse) {
         List<Execution> impactedExecutions = Lists.newArrayList();
         findLinkedExecutions(impactedExecutions, this, recurse);

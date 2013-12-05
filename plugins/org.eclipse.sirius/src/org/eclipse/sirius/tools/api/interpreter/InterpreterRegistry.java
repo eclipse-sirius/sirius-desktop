@@ -12,28 +12,24 @@ package org.eclipse.sirius.tools.api.interpreter;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-
-import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import com.google.common.collect.Iterables;
 
 /**
  * This class registers all {@link AcceleoInterpreter} for each viewpoint
@@ -49,9 +45,6 @@ public class InterpreterRegistry {
      * @since 0.9.0
      */
     public static final String ERROR_MSG_IMPOSSIBLE_TO_FIND_AN_INTERPRETER = "Impossible to find an interpreter";
-
-    /** Map a TODO. */
-    private Map<String, IInterpreter> root2ExPackage = new HashMap<String, IInterpreter>();
 
     /**
      * Return the resource that contains the current specification.
@@ -126,39 +119,8 @@ public class InterpreterRegistry {
     }
 
     /**
-     * Dispose the registry. Clear the cache for the specified element.
-     * 
-     * @param modelElement
-     *            a model element.
-     * @deprecated this method is now useless because there is nothing to
-     *             dispose.
-     */
-    public void disposeInterpreterRegistry(final EObject modelElement) {
-        final String uri = getMapKeyFromResource(modelElement);
-        if (root2ExPackage.containsKey(uri)) {
-            root2ExPackage.remove(uri);
-        }
-    }
-
-    /**
-     * Prepare all imports of the specified model request interpreter and model
-     * element.
-     * 
-     * @param inter
-     *            the model requests interpreter to prepare.
-     * @param modelElement
-     *            a model element.
-     * @deprecated
-     * @see InterpreterRegistry#prepareImportsFromSession(IInterpreter, Session)
-     */
-    @Deprecated
-    public static void prepareImportsFromModelElement(final IInterpreter inter, final EObject modelElement) {
-        InterpreterRegistry.prepareImportsFromSession(inter, SessionManager.INSTANCE.getSession(modelElement));
-    }
-
-    /**
-     * Prepare all imports of the specified model request interpreter and model
-     * element.
+     * Prepare all imports of the specified model request interpreter and
+     * session.
      * 
      * @param inter
      *            the model requests interpreter to prepare.
@@ -188,15 +150,4 @@ public class InterpreterRegistry {
             }
         }
     }
-
-    /**
-     * Dispose all model requests interpreter.
-     * 
-     * @deprecated this method is now useless because there is nothing to
-     *             dispose.
-     */
-    public void dispose() {
-        root2ExPackage.clear();
-    }
-
 }

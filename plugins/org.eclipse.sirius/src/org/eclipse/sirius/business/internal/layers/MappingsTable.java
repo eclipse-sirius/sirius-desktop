@@ -17,10 +17,10 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.business.internal.componentization.mappings.table.CandidateMapping;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 import org.eclipse.sirius.viewpoint.description.ContainerMappingImport;
 import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
@@ -212,8 +212,8 @@ public class MappingsTable<T extends DiagramElementMapping> {
             list.add(0, (T) mappingNode.getMapping());
         }
 
-        while (current.getImporter() != null) {
-            current = current.getImporter();
+        while (current.getImporter().some()) {
+            current = current.getImporter().get();
             others = current.getOtherImporters();
             for (final MappingTableEntry mappingNode : others) {
                 list.add(0, (T) mappingNode.getMapping());
@@ -294,9 +294,9 @@ public class MappingsTable<T extends DiagramElementMapping> {
              * imported mapping entry was found => We take the last importer and
              * add the previous one as others
              */
-            final MappingTableEntry previousImporter = importedMappingExistingEntry.getImporter();
-            if (previousImporter != null) {
-                importedMappingExistingEntry.addOtherImporters(previousImporter);
+            final Option<MappingTableEntry> previousImporter = importedMappingExistingEntry.getImporter();
+            if (previousImporter.some()) {
+                importedMappingExistingEntry.addOtherImporters(previousImporter.get());
             }
             importedMappingExistingEntry.setImporter(entry);
         }

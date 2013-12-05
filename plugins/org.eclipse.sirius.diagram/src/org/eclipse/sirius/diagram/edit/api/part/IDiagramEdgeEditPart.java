@@ -59,14 +59,6 @@ public interface IDiagramEdgeEditPart extends IDiagramElementEditPart, INodeEdit
     void refreshLineStyle();
 
     /**
-     * Refreshes the path of the edge.
-     * 
-     * @deprecated
-     */
-    @Deprecated
-    void refreshPath();
-
-    /**
      * Returns the listener that listens the routing style of the connection.
      * 
      * @return the listener that listens the routing style of the connection.

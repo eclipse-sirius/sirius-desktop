@@ -240,20 +240,6 @@ public interface IMetamodelExtender {
      * 
      * @param objectToRemove
      *            object to delete.
-     * @return the deleted instance or null if it was not able to delete it.
-     * 
-     * @deprecated Use {@link #eDelete(EObject, ECrossReferenceAdapter)}
-     *             instead.
-     */
-    @Deprecated
-    EObject eDelete(EObject objectToRemove);
-
-    /**
-     * Remove the Object from its container and delete all the dangling
-     * references.
-     * 
-     * @param objectToRemove
-     *            object to delete.
      * @param xref
      *            the optional cross-referencer to use to locate all the
      *            dangling references.

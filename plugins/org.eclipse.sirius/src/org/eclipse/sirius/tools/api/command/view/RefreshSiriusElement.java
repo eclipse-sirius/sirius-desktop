@@ -15,13 +15,13 @@ import java.util.Iterator;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.common.tools.api.listener.Notification;
-import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.listener.Notification;
+import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilter;
 import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
@@ -66,9 +66,6 @@ public class RefreshSiriusElement extends RecordingCommand {
      *            the objects to refresh.
      * @param filters
      *            the filters.
-     * @deprecated use
-     *             {@link RefreshSiriusElement#RefreshSiriusElement(TransactionalEditingDomain, DRefreshable)}
-     *             instead
      */
     public RefreshSiriusElement(final TransactionalEditingDomain domain, final Collection<?> objectsToRefresh, final Collection<RefreshFilter> filters) {
         super(domain, "Refresh representation");
@@ -123,7 +120,8 @@ public class RefreshSiriusElement extends RecordingCommand {
     }
 
     /**
-     * Tells wether a {@link DRepresentation} is filtered by the filters or not.
+     * Tells whether a {@link DRepresentation} is filtered by the filters or
+     * not.
      * 
      * @param vp
      *            {@link DRepresentation} to test.
@@ -152,7 +150,8 @@ public class RefreshSiriusElement extends RecordingCommand {
         }
 
         if (diagram != null) {
-            NotificationUtil.sendNotification(diagram, org.eclipse.sirius.common.tools.api.listener.Notification.Kind.START, org.eclipse.sirius.common.tools.api.listener.Notification.VISIBILITY_UPDATE);
+            NotificationUtil.sendNotification(diagram, org.eclipse.sirius.common.tools.api.listener.Notification.Kind.START,
+                    org.eclipse.sirius.common.tools.api.listener.Notification.VISIBILITY_UPDATE);
         }
     }
 }

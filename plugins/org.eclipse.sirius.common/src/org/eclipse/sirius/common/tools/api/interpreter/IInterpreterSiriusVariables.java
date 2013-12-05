@@ -81,32 +81,13 @@ public interface IInterpreterSiriusVariables {
 
     /** "newViewContainer". */
     String CONTAINER_VIEW_NEW = "newViewContainer";
-    
+
     /** "copiedView". */
     String COPIED_VIEW = "copiedView";
-    
+
     /** "copiedElement". */
     String COPIED_ELEMENT = "copiedElement";
 
     /** "root" representation root element. */
     String ROOT = "root";
-
-    /**
-     * the line semantic element.
-     * 
-     * @deprecated since 2.3.0 : Use
-     *             IInterpreterSiriusTableVariables.LINE_SEMANTIC instead.
-     */
-    @Deprecated
-    String LINE_SEMANTIC = "lineSemantic";
-
-    /**
-     * The column semantic element.
-     * 
-     * @deprecated since 2.3.0 : Use
-     *             IInterpreterSiriusTableVariables.LINE_SEMANTIC instead.
-     */
-    @Deprecated
-    String COLUMN_SEMANTIC = "columnSemantic";
-
 }

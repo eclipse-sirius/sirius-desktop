@@ -171,8 +171,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * @param javaAction
      *            the java action to execute.
      * @return a command that is able to execute the operations of
-     *         {@link org.eclipse.sirius.description.tool.JavaActionMenuItem}
-     *         .
+     *         {@link org.eclipse.sirius.description.tool.JavaActionMenuItem} .
      */
     Command buildJavaActionFromTool(ExternalJavaAction tool, Collection<DSemanticDecorator> selectedViews, IExternalJavaAction javaAction);
 
@@ -441,20 +440,6 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      *            refreshed.
      */
     void setAutoRefreshDView(boolean autoRefreshDView);
-
-    /**
-     * Create a command that is able to create a diagram.
-     * 
-     * @param description
-     *            the tool that describes how to create the diagram.
-     * @param semanticElement
-     *            the element from which the diagram will be created.
-     * @return a command that is able to create a diagram.
-     * @deprecated use
-     *             {@link IDiagramCommandFactory#buildCreateDiagramFromDescription(DiagramDescription, EObject, IProgressMonitor)}
-     *             instead
-     */
-    DCommand buildCreateDiagramFromDescription(DiagramDescription description, EObject semanticElement);
 
     /**
      * Create a command that is able to create a diagram.

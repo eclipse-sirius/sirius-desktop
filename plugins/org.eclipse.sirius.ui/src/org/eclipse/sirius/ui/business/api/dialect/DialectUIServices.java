@@ -19,13 +19,13 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.ui.IEditorPart;
 
 /**
  * User-interface centric services for dialects.
@@ -84,22 +84,6 @@ public interface DialectUIServices {
      * @return the list of additional mappings provided by the dialect.
      */
     Collection<CommandParameter> provideAdditionalMappings(EObject object);
-
-    /**
-     * Open an editor for the given representation (if only you know about this
-     * kind of representation).
-     * 
-     * @param representation
-     *            representation to open.
-     * @param session
-     *            the current session.
-     * @return the opened editor.
-     * 
-     * @deprecated use
-     *             {@link DialectUIServices#openEditor(Session, DRepresentation, IProgressMonitor)}
-     *             instead
-     */
-    IEditorPart openEditor(Session session, DRepresentation representation);
 
     /**
      * Open an editor for the given representation (if only you know about this

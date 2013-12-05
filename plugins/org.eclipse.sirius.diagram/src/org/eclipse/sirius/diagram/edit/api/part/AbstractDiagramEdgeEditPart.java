@@ -39,9 +39,8 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnecti
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.ITreeConnection;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramEdgeEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
@@ -62,6 +61,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RequestDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * Implementation of the default behaviors of edges.
@@ -317,15 +317,6 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
      */
     public void refreshLineStyle() {
         DiagramEdgeEditPartOperation.refreshLineStyle(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramEdgeEditPart#refreshPath()
-     */
-    public void refreshPath() {
-        // Do nothing
     }
 
     /**

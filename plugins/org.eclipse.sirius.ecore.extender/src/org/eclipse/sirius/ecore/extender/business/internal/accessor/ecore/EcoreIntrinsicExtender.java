@@ -156,13 +156,6 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
     /**
      * {@inheritDoc}
      */
-    public EObject eDelete(final EObject objectToRemove) {
-        return eDelete(objectToRemove, null);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public EObject eDelete(final EObject objectToRemove, final ECrossReferenceAdapter xref) {
         return eDelete(objectToRemove, xref, null);
     }
@@ -389,7 +382,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         }
         return literal;
     }
-        
+
     /**
      * {@inheritDoc}
      */

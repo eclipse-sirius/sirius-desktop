@@ -16,12 +16,12 @@ import java.net.MalformedURLException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.internal.image.ImagesPath;
 import org.eclipse.sirius.viewpoint.ContainerStyle;
 import org.eclipse.sirius.viewpoint.WorkspaceImage;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * The {@link WorkspaceImageFigure} is useful to load images using a cache. The
@@ -101,9 +101,7 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
      *            the path is a "/project/file" path, if it's not found in the
      *            workspace, the class will look for the file in the plug-ins.
      * @return an image instance given the path.
-     * @deprecated
      */
-    @Deprecated
     public static Image flyWeightImage(final String path) {
         if (path != null) {
             final File imageFile = FileProvider.getDefault().getFile(new Path(path));
@@ -126,9 +124,7 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
      * @param desc
      *            the image descriptor
      * @return an image instance given the image descriptor.
-     * @deprecated
      */
-    @Deprecated
     public static Image flyWeightImage(final ImageDescriptor desc) {
         if (desc != null) {
             return SiriusDiagramEditorPlugin.getInstance().getImage(desc);
@@ -149,7 +145,6 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
      *            workspace, the class will look for the file in the plug-ins.
      * @return an image instance given the path.
      */
-    @Deprecated
     public static WorkspaceImageFigure createImageFigure(final String path) {
         final WorkspaceImageFigure fig = new WorkspaceImageFigure(WorkspaceImageFigure.flyWeightImage(path));
         return fig;
@@ -162,7 +157,6 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
      *            : an instance of {@link WorkspaceImage}.
      * @return the image figure built using the {@link WorkspaceImage} object.
      */
-    @Deprecated
     public static WorkspaceImageFigure createImageFigure(final WorkspaceImage wksImage) {
         final String path = wksImage.getWorkspacePath();
         return WorkspaceImageFigure.createImageFigure(path);

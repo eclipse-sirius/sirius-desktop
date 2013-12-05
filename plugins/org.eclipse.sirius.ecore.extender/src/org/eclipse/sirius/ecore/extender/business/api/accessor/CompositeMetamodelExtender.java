@@ -21,13 +21,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.sirius.ecore.extender.business.internal.common.ExtenderDescriptor;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.ecore.extender.business.internal.common.ExtenderDescriptor;
 
 /**
  * Aggregate more {@link IMetamodelExtender}'s using a priority system.
@@ -232,13 +231,6 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
             }
         }
         return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public EObject eDelete(final EObject objectToRemove) {
-        return eDelete(objectToRemove, null);
     }
 
     /**

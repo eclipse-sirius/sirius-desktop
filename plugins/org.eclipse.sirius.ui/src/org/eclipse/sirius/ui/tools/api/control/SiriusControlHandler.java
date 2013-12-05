@@ -24,7 +24,6 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.command.Command;
@@ -39,6 +38,15 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.sirius.business.api.control.SiriusControlCommand;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ui.tools.internal.util.EMFCoreUtil;
+import org.eclipse.sirius.ui.tools.internal.wizards.SelectRepresentationsWizard;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
@@ -49,21 +57,10 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.business.api.control.SiriusControlCommand;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.ui.tools.internal.util.EMFCoreUtil;
-import org.eclipse.sirius.ui.tools.internal.wizards.SelectRepresentationsWizard;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-
 /**
  * Implements the UI part of the "Control" operation. This class gathers the
  * required parameters from the user and the invokes the properly configured
- * {@link org.eclipse.sirius.business.internal.command.control.ControlCommand}
- * .
+ * {@link org.eclipse.sirius.business.internal.command.control.ControlCommand} .
  * 
  * @since 0.9.0
  * 
@@ -97,23 +94,6 @@ public class SiriusControlHandler extends AbstractHandler {
 
         }
         return null;
-    }
-
-    /**
-     * Performs the control operation on the specified semantic element, using
-     * the provided shell to interact with the end-user, gathering the required
-     * parameters.
-     * 
-     * @param shell
-     *            the shell to use to interact with the user.
-     * @param semanticRoot
-     *            the semantic element to control.
-     * @deprecated use
-     *             {@link SiriusControlHandler#performControl(Shell, EObject, IProgressMonitor)}
-     *             instead
-     */
-    public void performControl(final Shell shell, final EObject semanticRoot) {
-        performControl(shell, semanticRoot, new NullProgressMonitor());
     }
 
     /**

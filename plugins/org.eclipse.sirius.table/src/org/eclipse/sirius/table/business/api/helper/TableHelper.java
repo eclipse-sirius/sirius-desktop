@@ -20,9 +20,6 @@ import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import com.google.common.collect.Maps;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -50,6 +47,8 @@ import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.description.SystemColor;
+
+import com.google.common.collect.Maps;
 
 /**
  * Utility methods to handle Table models.
@@ -205,36 +204,6 @@ public final class TableHelper {
             Option<DCell> optionalCell = getCell(line, column);
             if (optionalCell.some()) {
                 result = optionalCell.get();
-            }
-        }
-        return result;
-    }
-
-    /**
-     * Get the {@link DCell} corresponding to the intersection of this line with
-     * the column which have the featureName.<BR>
-     * If there are two columns with the same feature names, the first is
-     * returned.
-     * 
-     * @param line
-     *            The line
-     * @param featureName
-     *            the featureName mapping of the column
-     * @return A {@link DCell}
-     * @deprecated The featureName is not necessarily unique among the columns
-     *             of a given table, and this methods only sees the first one.
-     *             Use {@link #getCell(DLine, DColumn)} instead.
-     */
-    public static DCell getCell(final DLine line, final String featureName) {
-        DCell result = null;
-        // Get the table of this line
-        final DTable table = TableHelper.getTable(line);
-        // Get the Column corresponding to the index
-        final DColumn column = TableHelper.getColumn(table, featureName);
-        // Search the corresponding cells
-        for (final DCell cell : line.getCells()) {
-            if (column.equals(cell.getColumn())) {
-                result = cell;
             }
         }
         return result;
@@ -519,17 +488,6 @@ public final class TableHelper {
             }
         }
         return Options.newNone();
-    }
-
-    /**
-     * Return The default background color for the cell of the table.
-     * 
-     * @return The default background color for the cell of the table
-     * @deprecated Use getCellDefaultFixedBackgroundColor() instead.
-     */
-    @Deprecated
-    public static SystemColor getCellDefaultBackgroundColor() {
-        return EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("white");
     }
 
     /**

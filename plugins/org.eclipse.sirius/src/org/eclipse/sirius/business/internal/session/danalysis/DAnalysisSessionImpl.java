@@ -878,13 +878,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * {@inheritDoc}
      */
-    public void save(Map<?, ?> options) {
-        save(options, new NullProgressMonitor());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public void save(Map<?, ?> options, IProgressMonitor monitor) {
         try {
             monitor.beginTask("Session saving", 3);

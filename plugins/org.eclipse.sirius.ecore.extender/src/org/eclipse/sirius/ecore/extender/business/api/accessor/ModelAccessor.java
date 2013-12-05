@@ -21,15 +21,14 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-
-import com.google.common.base.Predicate;
-
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.PermissionService;
+
+import com.google.common.base.Predicate;
 
 /**
  * This class is the common layer to access emf models. You may want to use it
@@ -396,29 +395,6 @@ public class ModelAccessor {
                     if (value != null) {
                         authority.notifyInstanceDeletion(objectToRemove);
                     }
-                }
-            }
-        }
-    }
-
-    /**
-     * Remove the Object from its container and delete all the dangling
-     * references.
-     * 
-     * @param objectToRemove
-     *            object to delete.
-     * @deprecated Use {@link #eDelete(EObject, ECrossReferenceAdapter)}
-     *             instead.
-     */
-    @Deprecated
-    public void eDelete(final EObject objectToRemove) {
-        if (authority.canDeleteInstance(objectToRemove)) {
-            final EObject container = extender.eContainer(objectToRemove);
-            if (container != null && authority.canEditInstance(container)) {
-                final String featureName = extender.eContainingFeatureName(objectToRemove);
-                final Object value = extender.eRemove(container, featureName, objectToRemove);
-                if (value != null) {
-                    authority.notifyInstanceDeletion(objectToRemove);
                 }
             }
         }

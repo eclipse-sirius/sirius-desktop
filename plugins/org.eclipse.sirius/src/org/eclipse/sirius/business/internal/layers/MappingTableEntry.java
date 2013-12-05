@@ -14,11 +14,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.Layer;
+
+import com.google.common.collect.Lists;
 
 /**
  * A mapping node is wrapper to a mapping with references to its importer and
@@ -158,17 +160,17 @@ public class MappingTableEntry {
     }
 
     /**
-     * Get the mappings node which imports this mapping.
+     * Get the first mappings node which imports this mapping, None
+     * {@link Option} if any.
      * 
-     * @return the {@link MappingTableEntry} instance which import this mapping
-     * @deprecated
+     * @return an optional {@link MappingTableEntry} instance which import this
+     *         mapping
      */
-    @Deprecated
-    public MappingTableEntry getImporter() {
+    public Option<MappingTableEntry> getImporter() {
         if (mappingImporters == null || mappingImporters.isEmpty()) {
-            return null;
+            return Options.newNone();
         }
-        return this.mappingImporters.get(0);
+        return Options.newSome(this.mappingImporters.get(0));
     }
 
     /**

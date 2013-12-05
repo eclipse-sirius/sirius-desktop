@@ -15,14 +15,8 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.jface.window.Window;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.PlatformUI;
-
-import com.google.common.collect.Maps;
-
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -31,6 +25,10 @@ import org.eclipse.sirius.ui.tools.internal.dialogs.RepresentationsSelectionDial
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
+
+import com.google.common.collect.Maps;
 
 /**
  * Utility class for clients wanting to start their own sessions.
@@ -41,28 +39,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 public final class SessionHelper {
 
     private SessionHelper() {
-    }
-
-    /**
-     * Open existing representations whose description has the
-     * <code>showOnStartup</code> flag.
-     * <p>
-     * If there is only one such representation, it is opened automatically. If
-     * there are several, a dialog box opens allowing the user to select which
-     * ones to open (including none).
-     * <p>
-     * No new representations are created. Only the existing ones are
-     * candidates.
-     * 
-     * @param session
-     *            the session for which to open the startup representations.
-     * @since 0.9.0
-     * @deprecated use
-     *             {@link SessionHelper#openStartupRepresentations(Session, IProgressMonitor)}
-     *             instead
-     */
-    public static void openStartupRepresentations(final Session session) {
-        openStartupRepresentations(session, new NullProgressMonitor());
     }
 
     /**

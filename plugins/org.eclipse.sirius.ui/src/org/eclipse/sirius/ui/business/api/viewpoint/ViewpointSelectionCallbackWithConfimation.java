@@ -14,13 +14,8 @@ import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.PlatformUI;
-
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -29,6 +24,11 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
+
+import com.google.common.collect.Sets;
 
 /**
  * Asks the user for confirmation when de-selecting a viewpoint if there are
@@ -49,7 +49,7 @@ public class ViewpointSelectionCallbackWithConfimation extends ViewpointSelectio
      * {@inheritDoc}
      */
     @Override
-    public void deselectViewpoint(Viewpoint deselectedViewpoint, Session session) {
+    public void deselectViewpoint(Viewpoint deselectedViewpoint, Session session, IProgressMonitor monitor) {
         IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
         Collection<IEditorPart> openedEditors = Sets.newHashSet();
         if (editingSession != null) {
@@ -59,7 +59,7 @@ public class ViewpointSelectionCallbackWithConfimation extends ViewpointSelectio
             for (IEditorPart iEditorPart : openedEditors) {
                 DialectUIManager.INSTANCE.closeEditor(iEditorPart, false);
             }
-            super.deselectViewpoint(deselectedViewpoint, session);
+            super.deselectViewpoint(deselectedViewpoint, session, monitor);
         }
     }
 

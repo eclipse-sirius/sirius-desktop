@@ -15,7 +15,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 
 /**
@@ -38,19 +37,6 @@ public class DefaultLocalSessionCreationOperation implements SessionCreationOper
     protected Session session;
 
     private IProgressMonitor monitor;
-
-    /**
-     * Constructor.
-     * 
-     * @param sessionResourceURI
-     *            the {@link URI} of the Resource {@link Session} model
-     * @deprecated use
-     *             {@link DefaultLocalSessionCreationOperation#DefaultLocalSessionCreationOperation(URI, IProgressMonitor)}
-     *             instead
-     */
-    public DefaultLocalSessionCreationOperation(URI sessionResourceURI) {
-        this(sessionResourceURI, new NullProgressMonitor());
-    }
 
     /**
      * Constructor.

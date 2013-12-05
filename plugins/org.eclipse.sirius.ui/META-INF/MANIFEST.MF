@@ -8,8 +8,7 @@ Bundle-Activator: org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin$Impleme
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.eclipse.sirius.ui.business.api.action,
- org.eclipse.sirius.ui.business.api.control,
- org.eclipse.sirius.ui.business.api.delete,
+  org.eclipse.sirius.ui.business.api.delete,
  org.eclipse.sirius.ui.business.api.descriptor,
  org.eclipse.sirius.ui.business.api.dialect,
  org.eclipse.sirius.ui.business.api.dialect.marker,

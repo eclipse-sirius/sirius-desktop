@@ -196,18 +196,6 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
     }
 
     /**
-     * 
-     * {@inheritDoc}
-     */
-    public void addResource(final Session session, final Resource newResource) {
-        if (doGetSessions().contains(session) && newResource.getURI() != null) {
-            notifyUpdatedSession(session, SessionListener.ABOUT_TO_BE_REPLACED);
-            session.addSemanticResource(newResource.getURI(), new NullProgressMonitor());
-            notifyUpdatedSession(session, SessionListener.REPLACED);
-        }
-    }
-
-    /**
      * {@inheritDoc}
      */
     public Session getSession(final EObject any) {
@@ -227,7 +215,8 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
                 if (attachment.some()) {
                     return attachment.get().getSession();
                 }
-                // TODO remove this try/catch once the offline mode will be supported
+                // TODO remove this try/catch once the offline mode will be
+                // supported
                 try {
                     final EObject root = EcoreUtil.getRootContainer(any);
                     final Resource res = root != null ? root.eResource() : null;
@@ -419,8 +408,8 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
 
     /**
      * @return an iterable over the listeners provide by the extension point
-     *         org.eclipse.sirius.sessionManagerListener and the listeners
-     *         added programmatically.
+     *         org.eclipse.sirius.sessionManagerListener and the listeners added
+     *         programmatically.
      */
     private synchronized Iterable<SessionManagerListener> getAllListeners() {
         return Iterables.concat(getExtensionPointListeners(), programmaticListeners);

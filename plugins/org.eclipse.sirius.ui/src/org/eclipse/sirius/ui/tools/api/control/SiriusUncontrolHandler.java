@@ -18,7 +18,6 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.command.Command;
@@ -28,12 +27,12 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.business.api.control.SiriusUncontrolCommand;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.handlers.HandlerUtil;
-import org.eclipse.sirius.business.api.control.SiriusUncontrolCommand;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Implements the UI part of the "Uncontrol" operation. This class gathers the
@@ -73,21 +72,6 @@ public class SiriusUncontrolHandler extends AbstractHandler {
 
         }
         return null;
-    }
-
-    /**
-     * Performs the uncontrol operation.
-     * 
-     * @param shell
-     *            the shell to use to interact with users.
-     * @param semanticRoot
-     *            the semantic root element to uncontrol.
-     * @deprecated use
-     *             {@link SiriusUncontrolHandler#performUncontrol(Shell, EObject, IProgressMonitor)}
-     *             instead
-     */
-    public void performUncontrol(final Shell shell, final EObject semanticRoot) {
-        performUncontrol(shell, semanticRoot, new NullProgressMonitor());
     }
 
     /**

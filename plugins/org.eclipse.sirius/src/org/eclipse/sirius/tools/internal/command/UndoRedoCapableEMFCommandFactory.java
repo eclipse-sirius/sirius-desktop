@@ -19,7 +19,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
@@ -231,7 +230,8 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildSelectionWizardCommandFromTool(org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription,
-     *      org.eclipse.sirius.viewpoint.DSemanticDecorator, java.util.Collection)
+     *      org.eclipse.sirius.viewpoint.DSemanticDecorator,
+     *      java.util.Collection)
      */
     public Command buildSelectionWizardCommandFromTool(final SelectionWizardDescription tool, final DSemanticDecorator containerView, final Collection<EObject> selectedElement) {
         final CommandBuilder builder = new SelectionWizardCommandBuilder(tool, containerView, selectedElement);
@@ -243,7 +243,8 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildPaneBasedSelectionWizardCommandFromTool(org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription,
-     *      org.eclipse.sirius.viewpoint.DSemanticDecorator, java.util.Collection)
+     *      org.eclipse.sirius.viewpoint.DSemanticDecorator,
+     *      java.util.Collection)
      */
     public Command buildPaneBasedSelectionWizardCommandFromTool(final PaneBasedSelectionWizardDescription tool, final DSemanticDecorator containerView, final Collection<EObject> selectedElement) {
         final CommandBuilder builder = new PaneBasedSelectionWizardCommandBuilder(tool, containerView, selectedElement);
@@ -352,7 +353,8 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactory#buildReconnectEdgeCommandFromTool(org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription,
-     *      org.eclipse.sirius.viewpoint.DEdge, org.eclipse.sirius.viewpoint.EdgeTarget,
+     *      org.eclipse.sirius.viewpoint.DEdge,
+     *      org.eclipse.sirius.viewpoint.EdgeTarget,
      *      org.eclipse.sirius.viewpoint.EdgeTarget)
      */
     public Command buildReconnectEdgeCommandFromTool(final ReconnectEdgeDescription tool, final DEdge edge, final EdgeTarget source, final EdgeTarget target) {
@@ -586,13 +588,6 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
      */
     public void setAutoRefreshDView(final boolean autoRefreshDView) {
         // TODO Feature not implemented.
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public DCommand buildCreateDiagramFromDescription(final DiagramDescription description, final EObject semanticElement) {
-        return buildCreateDiagramFromDescription(description, semanticElement, new NullProgressMonitor());
     }
 
     /**

@@ -154,7 +154,7 @@ public class SessionEditorInput extends URIEditorInput {
     protected Session getSession(URI sessionModelURI) {
         Session sessionFromURI;
         try {
-            sessionFromURI = SessionManager.INSTANCE.getSession(sessionModelURI);
+            sessionFromURI = SessionManager.INSTANCE.getSession(sessionModelURI, new NullProgressMonitor());
             if (sessionFromURI != null) {
                 if (!sessionFromURI.isOpen()) {
                     sessionFromURI.open(new NullProgressMonitor());
@@ -198,7 +198,7 @@ public class SessionEditorInput extends URIEditorInput {
     public static SessionEditorInput create(final URI sessionResourceURI) {
         Session session;
         try {
-            session = SessionFactory.INSTANCE.createSession(sessionResourceURI);
+            session = SessionFactory.INSTANCE.createSession(sessionResourceURI, new NullProgressMonitor());
         } catch (CoreException e) {
             return null;
         }

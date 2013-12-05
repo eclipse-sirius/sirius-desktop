@@ -15,7 +15,6 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
@@ -23,6 +22,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.ui.IEditorPart;
 
 public final class OpenRepresentationAction extends Action {
 
@@ -85,7 +85,7 @@ public final class OpenRepresentationAction extends Action {
         protected void doExecute() {
             final IEditingSession ui = SessionUIManager.INSTANCE.getUISession(session);
             DialectManager.INSTANCE.refresh(representation, new NullProgressMonitor());
-            final IEditorPart part = DialectUIManager.INSTANCE.openEditor(session, representation);
+            final IEditorPart part = DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
             if (part != null && ui != null) {
                 ui.attachEditor((DialectEditor) part);
             }

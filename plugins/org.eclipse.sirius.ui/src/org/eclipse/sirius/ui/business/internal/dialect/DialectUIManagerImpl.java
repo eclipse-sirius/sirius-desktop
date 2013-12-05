@@ -20,15 +20,13 @@ import java.util.Map;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUI;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -39,6 +37,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.ui.IEditorPart;
 
 /**
  * Class able to manage a set of dialects to provides the usual dialect services
@@ -81,14 +80,6 @@ public class DialectUIManagerImpl implements DialectUIManager {
      */
     public void enableDialectUI(final DialectUI dialect) {
         dialects.put(dialect.getName(), dialect);
-    }
-
-    /**
-     * 
-     * {@inheritDoc}
-     */
-    public IEditorPart openEditor(final Session session, final DRepresentation representation) {
-        return openEditor(session, representation, new NullProgressMonitor());
     }
 
     /**

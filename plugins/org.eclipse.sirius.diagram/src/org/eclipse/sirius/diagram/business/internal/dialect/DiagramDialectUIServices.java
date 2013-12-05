@@ -25,7 +25,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.command.Command;
@@ -55,20 +54,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
@@ -76,6 +61,8 @@ import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.business.internal.command.CreateAndStoreGMFDiagramCommand;
@@ -115,6 +102,17 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * The default diagram ui services.
@@ -129,14 +127,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
     public static final String REFRESH_DIAGRAM = "Refresh diagram";
 
     private static final String EXPORT_DIAGRAM_AS_IMAGE_ERROR_ON_CREATE_IMAGE = "The program was not able to create image file ";
-
-    /**
-     * 
-     * {@inheritDoc}
-     */
-    public IEditorPart openEditor(final Session session, final DRepresentation representation) {
-        return openEditor(session, representation, new NullProgressMonitor());
-    }
 
     /**
      * {@inheritDoc}

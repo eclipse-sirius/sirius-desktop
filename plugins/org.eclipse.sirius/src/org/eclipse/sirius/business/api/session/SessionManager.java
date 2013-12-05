@@ -73,20 +73,6 @@ public interface SessionManager {
     void remove(Session removedSession);
 
     /**
-     * Add a new resource in the session notifying all the manager listeners.
-     * 
-     * @param session
-     *            session in which we'll add the resource.
-     * @param newResource
-     *            resource to add.
-     * 
-     * @deprecated since 4.0 add
-     *             {@link Session#addSemanticResource(URI, org.eclipse.core.runtime.IProgressMonitor)}
-     *             instead to add semantic Resource.
-     */
-    void addResource(Session session, Resource newResource);
-
-    /**
      * Notify the session manager listeners of a Representation creation.
      * 
      * @param session
@@ -128,21 +114,6 @@ public interface SessionManager {
      * @return the corresponding session.
      */
     Session getSession(Resource semanticResource);
-
-    /**
-     * Return the {@link Session} whose Resource's URI correspond to
-     * sessionResourceURI. If the Resource has already been loaded returns the
-     * existing Session else try to load it.
-     * 
-     * @param sessionResourceURI
-     *            a session Resource {@link URI}
-     * @return the corresponding session if exist.
-     * 
-     * @since 0.9.0
-     * @deprecated use {@link SessionManager#getSession(URI, IProgressMonitor)}
-     *             instead
-     */
-    Session getSession(URI sessionResourceURI);
 
     /**
      * Return the {@link Session} whose Resource's URI correspond to

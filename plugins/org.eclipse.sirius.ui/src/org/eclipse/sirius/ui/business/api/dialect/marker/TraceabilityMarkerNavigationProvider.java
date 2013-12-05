@@ -17,6 +17,7 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
@@ -533,7 +534,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
 
                         public void run() {
                             // We create a new Dialect editor
-                            final IEditorPart editor = DialectUIManager.INSTANCE.openEditor(currentSession, selectedRepresentation);
+                            final IEditorPart editor = DialectUIManager.INSTANCE.openEditor(currentSession, selectedRepresentation, new NullProgressMonitor());
                             if (editor != null && uiSession != null) {
                                 // That we attach to the UI Session
                                 uiSession.attachEditor((DialectEditor) editor);

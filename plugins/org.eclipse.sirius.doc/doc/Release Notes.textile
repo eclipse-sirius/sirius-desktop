@@ -18,6 +18,7 @@ h4. Changes in  @org.eclipse.sirius.common@
 * The deprecated method @IEditingDomainFactory.createEditingDomain()@ has been removed. Use the (inherited) @createEditingDomain(ResourceSet)@ instead, which ensures correct behavior for all kinds of models (Xtext for example).
 * The deprecated field @org.eclipse.sirius.common.tools.api.listener.Notification.FOLD@ has been removed. It was never used by Sirius itself, so if your code tried to listen to this kind of notification it was never actually called and can be safely removed.
 * The deprecated methods @getExtensionPlugins()@ and @getElementsProvidedByPlugin@ from @EcliseUtil@ have been removed. If you need this kind of functionality, use the Eclipse APIs directly instead.
+* The deprecated fields @COLUMN_SEMANTIC@ and @LINE_SEMANTIC@ of @IInterpreterSiriusVariables@ have been removed. Use the constants of @org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables@ instead. 
 
 h4. Changes in @org.eclipse.sirius@
 
@@ -43,10 +44,43 @@ h4. Changes in @org.eclipse.sirius@
 * The deprecated constructor @AddSemanticResourceCommand(Session, URI)@ has been removed. Use the variant which takes an additional @IProgressMonitor@ instead.
 * The deprecated constructors of @RemoveSemanticResourceCommand@ have been removed. Use the variants which takes an additional @IProgressMonitor@ instead.
 * The deprecated constructor in @CreateDiagramWithInitialOperation@ has been removed. Use the variant which takes an additional @IProgressMonitor@ instead.
+* The deprecated method @SessionManager.addResource(Session, Resource)@ has been removed. Use the @Session.addSemanticResource(URI, IProgressMonitor)@ instead. In code, @mySessionManager.addResource(mySession, myResource)@ should be replaced by @mySession.addSemanticResource(myResource.getURI(), new NullProgressMonitor())@. Notice that this replacement has not the exact same behavior. The notifications @SessionListener.ABOUT_TO_BE_REPLACED@ and @SessionListener.REPLACED@ are not thrown with @addSemanticResource@ contrary to @addResource@. But this kind of notifications is more for reloading of resource.
+* The deprecated constructor of @DefaultLocalSessionCreationOperation@ have been removed. Use the variant which takes an additional @IProgressMonitor@ instead.
+* The deprecated method @SessionManager.getSession(URI)@ has been removed. Use the variant which takes an additional @IProgressMonitor@ instead.
+* The deprecated method @SessionFactory.createSession(URI)@ has been removed. Use the variant which takes an additional @IProgressMonitor@ instead.
+* Deprecated class @RefreshRepresentationCommand@ has been removed. Use the class @RefreshRepresentationsCommand@ instead.
+* Deprecated classes @RevealSiriusElement@ and  @RevealDDiagramElement@ have been removed. Use the class @RevealDDiagramElements@ instead.
+* The deprecated method @DAnalysisSession.save(Map<?, ?>)@ has been removed. Use the variant which takes an additional @IProgressMonitor@ instead.
+* The deprecated method @MappingTableEntry.getImporter()@ has been updated. It now returns an optional (@org.eclipse.sirius.common.tools.api.util.Option@) of @MappingTableEntry@.
+* The deprecated class @IEMFCommandFactory@ has been removed. It is not used in Sirius code anymore.
+* The deprecated method @IDiagramCommandFactory.buildCreateDiagramFromDescription(DiagramDescription, EObject)@ has been removed. Use the variant which takes an additional @IProgressMonitor@ instead.
+* The deprecated methods @dispose()@ and @disposeInterpreterRegistry(EObject)@ have been removed from @InterpreterRegistry@. They corresponded to dead code.
+* The deprecated method @InterpreterRegistry.prepareImportsFromModelElement(IInterpreter, EObject)@ has been removed. Use @InterpreterRegistry.prepareImportsFromSession(IInterpreter, Session)@ instead. To get @Session@ from @EObject@, you can use @SessionManager.INSTANCE.getSession(EObject)@.
+* The deprecated method @SiriusHelper.createDAnalysis()@ has been removed. Use @ViewpointFactory.eINSTANCE.createDAnalysis()@ instead.
+* The deprecated method @SessionFactory.createSession(DAnalysis)@ has been removed. It is not intended to be used, but it can be replaced by @SessionFactory.INSTANCE.createSession(analysis.eResource().getURI(), new NullProgressMonitor())@.
+
+h4. Changes in  @org.eclipse.sirius.diagram@
+
+* The deprecated methods @IDiagramEdgeEditPart.refreshPath()@ and @AbstractDiagramEdgeEditPart.refreshPath()@ have been removed. It is not called in Sirius code anymore
+
+h4. Changes in  @org.eclipse.sirius.ecore.extender@
+
+* The deprecated methods @IMetamodelExtender.eDelete(EObject)@, @CompositeMetamodelExtender.eDelete(EObject)@ and @ModelAccessor.eDelete(EObject)@ have been removed. Use the variants which takes an additional @ECrossReferenceAdapter@ instead. This @ECrossReferenceAdapter@ can be null.
 
 h4. Changes in  @org.eclipse.sirius.ui@
 
 * All deprecated methods in @ModelingProjectManager@ have been removed. Use the corresponding versions which take an additional @IProgressMonitor@ parameter instead.
+* All deprecated methods in @ViewpointSelection@ have been removed. Use the corresponding versions which take an additional @IProgressMonitor@ parameter instead.
+* Deprecated class @org.eclipse.sirius.ui.business.api.control.SiriusControlCommand@ has been removed. Use the class @org.eclipse.sirius.business.api.control.SiriusControlCommand@ instead (same constructor but with an additional @IProgressMonitor@ parameter).
+** Ditto for @SiriusUnControlCommand@
+* The deprecated method @DialectUIServices.openEditor(Session, DRepresentation)@ has been removed. Use the variant which takes an additional @IProgressMonitor@ instead.
+* The deprecated method @SessionHelper.openStartupRepresentations(Session)@ has been removed. Use the variant which takes an additional @IProgressMonitor@ instead.
+* The deprecated method @SiriusControlHandler.performControl(Shell, EObject)@ has been removed. Use the variant which takes an additional @IProgressMonitor@ instead.
+* The deprecated method @SiriusUncontrolHandler.performUncontrol(Shell, EObject)@ has been removed. Use the variant which takes an additional @IProgressMonitor@ instead.
+
+h4. Changes in @org.eclipse.sirius.table@
+
+* The deprecated method @TableHelper.getCell(DLine, String)@ has been removed. Use the variant which take a DLine and a DColumn as parameters.
 
 h4. Changes in @org.eclipse.sirius.tree@
 

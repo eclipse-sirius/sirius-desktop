@@ -13,19 +13,17 @@ package org.eclipse.sirius.ui.business.api.viewpoint;
 import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-
-import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import com.google.common.collect.Lists;
 
 /**
  * The callback for selection.
@@ -36,31 +34,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * @author mchauvin
  */
 public class ViewpointSelectionCallback implements ViewpointSelection.Callback {
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection.Callback#deselectSirius(org.eclipse.sirius.viewpoint.description.Viewpoint)
-     */
-    public void deselectViewpoint(final Viewpoint deselectedViewpoint, final Session session) {
-        deselectViewpoint(deselectedViewpoint, session, new NullProgressMonitor());
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection.Callback#selectSirius(org.eclipse.sirius.viewpoint.description.Viewpoint)
-     */
-    public void selectViewpoint(final Viewpoint viewpoint, final Session session) {
-        selectViewpoint(viewpoint, session, true, new NullProgressMonitor());
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void selectViewpoint(Viewpoint viewpoint, Session session, boolean createNewRepresentations) {
-        selectViewpoint(viewpoint, session, createNewRepresentations, new NullProgressMonitor());
-    }
 
     /**
      * {@inheritDoc}

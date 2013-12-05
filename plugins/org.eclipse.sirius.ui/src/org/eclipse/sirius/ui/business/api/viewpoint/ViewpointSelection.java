@@ -628,49 +628,6 @@ public final class ViewpointSelection {
          *            the {@link Viewpoint} to select
          * @param session
          *            the current session
-         * @deprecated use
-         *             {@link Callback#selectViewpoint(Viewpoint, Session, IProgressMonitor)}
-         *             instead
-         */
-        void selectViewpoint(Viewpoint viewpoint, Session session);
-
-        /**
-         * Select a {@link Viewpoint}.
-         * 
-         * @param viewpoint
-         *            the {@link Viewpoint} to select
-         * @param session
-         *            the current session
-         * @param createNewRepresentations
-         *            true to create new DRepresentation for
-         *            RepresentationDescription having their initialization
-         *            attribute at true for selected {@link Viewpoint}s.
-         * @deprecated use
-         *             {@link Callback#selectViewpoint(Viewpoint, Session, boolean,IProgressMonitor)}
-         *             instead
-         */
-        void selectViewpoint(Viewpoint viewpoint, Session session, boolean createNewRepresentations);
-
-        /**
-         * deselect a viewpoint.
-         * 
-         * @param deselectedViewpoint
-         *            the deselected viewpoint
-         * @param session
-         *            the current session
-         * @deprecated use
-         *             {@link Callback#deselectViewpoint(Viewpoint, Session, IProgressMonitor)}
-         *             instead
-         */
-        void deselectViewpoint(Viewpoint deselectedViewpoint, Session session);
-
-        /**
-         * Select a {@link Viewpoint}.
-         * 
-         * @param viewpoint
-         *            the {@link Viewpoint} to select
-         * @param session
-         *            the current session
          * @param monitor
          *            a {@link IProgressMonitor} to show progression
          */

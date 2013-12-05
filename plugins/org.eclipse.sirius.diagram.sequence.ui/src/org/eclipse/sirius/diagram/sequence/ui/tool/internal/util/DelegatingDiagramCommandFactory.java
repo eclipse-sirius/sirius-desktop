@@ -16,9 +16,6 @@ import java.util.Set;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.base.Preconditions;
-
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
@@ -52,6 +49,8 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescr
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
+
+import com.google.common.base.Preconditions;
 
 /**
  * An implementation of <code>IDiagramCommandFactory</code> which delegates to
@@ -93,13 +92,6 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
      */
     public org.eclipse.emf.common.command.Command buildCreateContainerCommandFromTool(DDiagramElementContainer nodeContainer, ContainerCreationDescription tool) {
         return baseFactory.buildCreateContainerCommandFromTool(nodeContainer, tool);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public DCommand buildCreateDiagramFromDescription(DiagramDescription description, EObject semanticElement) {
-        return baseFactory.buildCreateDiagramFromDescription(description, semanticElement);
     }
 
     /**

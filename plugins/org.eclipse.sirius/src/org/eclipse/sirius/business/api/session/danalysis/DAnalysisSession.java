@@ -11,7 +11,6 @@
 package org.eclipse.sirius.business.api.session.danalysis;
 
 import java.util.Collection;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -137,32 +136,6 @@ public interface DAnalysisSession extends Session {
      *            the uncontrolled resource
      */
     void notifyUnControlledModel(EObject uncontrolled, Resource resource);
-
-    /**
-     * Saves the session data using the specified options.
-     * 
-     * <p>
-     * Options are handled generically as feature-to-setting entries; the
-     * resource will ignore options it doesn't recognize. The options could even
-     * include things like an Eclipse progress monitor...
-     * </p>
-     * <p>
-     * An implementation typically uses the
-     * {@link org.eclipse.emf.ecore.resource.ResourceSet#getURIConverter URI
-     * converter} of the {@link #getResourceSet containing} resource set to
-     * {@link org.eclipse.emf.ecore.resource.URIConverter#createOutputStream
-     * create} an output stream, and then delegates to
-     * {@link #save(java.io.OutputStream, Map) save(OutputStream, Map)}.
-     * </p>
-     * 
-     * @param options
-     *            the save options.
-     * @since 0.9.0
-     * @deprecated use
-     *             {@link Session#save(Map, org.eclipse.core.runtime.IProgressMonitor)}
-     *             instead
-     */
-    void save(Map<?, ?> options);
 
     /**
      * Add adapters on the current analysis.
