@@ -52,9 +52,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * author Christian Vogt (cvogt) author Christian W. Damus (cdamus)
  * 
  * @author mchauvin (added for checktyle)
- * @deprecated will be deleted soon
  */
-@Deprecated
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public class CrossReferenceAdapter extends ECrossReferenceAdapter {
 

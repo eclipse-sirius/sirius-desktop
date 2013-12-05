@@ -13,14 +13,14 @@ package org.eclipse.sirius.table.business.internal.helper.task;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -46,26 +46,7 @@ public class CreateTableTask extends AbstractCommandTask {
      *            the table description.
      * @param semanticElement
      *            semantic element on which the user requested the creation of
-     *            the {@link org.eclipse.sirius.table.metamodel.table.DTable}
-     *            .
-     * @deprecated use
-     *             {@link CreateTableTask#CreateTableTask(TableDescription, EObject, IProgressMonitor)}
-     *             instead
-     */
-    public CreateTableTask(final TableDescription desc, final EObject semanticElement) {
-        this.semanticElement = semanticElement;
-        this.description = desc;
-    }
-
-    /**
-     * Creates the command.
-     * 
-     * @param desc
-     *            the table description.
-     * @param semanticElement
-     *            semantic element on which the user requested the creation of
-     *            the {@link org.eclipse.sirius.table.metamodel.table.DTable}
-     *            .
+     *            the {@link org.eclipse.sirius.table.metamodel.table.DTable} .
      * @param monitor
      *            a {@link IProgressMonitor} to show progression of
      *            {@link org.eclipse.sirius.table.metamodel.table.DTable}

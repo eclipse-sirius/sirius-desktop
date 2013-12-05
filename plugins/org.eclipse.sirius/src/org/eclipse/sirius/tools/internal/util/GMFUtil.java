@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * Useful operations linked to GMF.
  * 
  * @author mchauvin
- * @deprecated will be deleted soon
  */
 @Deprecated
 public final class GMFUtil {

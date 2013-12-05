@@ -13,14 +13,14 @@ package org.eclipse.sirius.tree.business.internal.refresh;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -49,8 +49,7 @@ public class CreateTreeTask extends AbstractCommandTask {
      *            the {@link org.eclipse.sirius.tree.metamodel.tree.DTree}
      * @param monitor
      *            a {@link IProgressMonitor} to show progression of
-     *            {@link org.eclipse.sirius.tree.metamodel.tree.DTree}
-     *            creation
+     *            {@link org.eclipse.sirius.tree.metamodel.tree.DTree} creation
      */
     public CreateTreeTask(final TreeDescription desc, final EObject semanticElement, IProgressMonitor monitor) {
         this.semanticElement = semanticElement;

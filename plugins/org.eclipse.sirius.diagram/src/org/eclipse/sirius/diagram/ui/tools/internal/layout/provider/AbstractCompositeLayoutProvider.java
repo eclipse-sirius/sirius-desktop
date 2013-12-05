@@ -53,12 +53,6 @@ import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutExtender;
@@ -68,6 +62,11 @@ import org.eclipse.sirius.diagram.ui.tools.internal.layout.ArrangeAllWithAutoSiz
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.AutoSizeAndRegionAwareGraphLayout;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.DiagramLayoutCustomization;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * Abstract base class to factor out the common code between
@@ -295,22 +294,6 @@ public abstract class AbstractCompositeLayoutProvider extends CompositeLayoutPro
     @Override
     protected EdgeList buildEdges(final List selectedObjects, final Map editPartToNodeDict) {
         return super.buildEdges(extender.filterEdges(selectedObjects, editPartToNodeDict), editPartToNodeDict);
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * org.eclipse.gmf.runtime.diagram.ui.providers.internal.DefaultProvider
-     * #build_nodes(java.util.List, java.util.Map,
-     * org.eclipse.draw2d.graph.Subgraph)
-     * 
-     * @deprecated
-     */
-    @Override
-    @Deprecated
-    protected NodeList build_nodes(List selectedObjects, Map editPartToNodeDict, Subgraph rootGraph) {
-        return buildNodes(selectedObjects, editPartToNodeDict, rootGraph);
     }
 
     @Override
