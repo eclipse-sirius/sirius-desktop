@@ -40,4 +40,4 @@ promote()
   fi
 }
 
-promote "packaging/org.eclipse.sirius.update" "org.eclipse.sirius/master/$PLATFORM"
+promote "packaging/org.eclipse.sirius.update" "org.eclipse.sirius/0.9/$PLATFORM"
