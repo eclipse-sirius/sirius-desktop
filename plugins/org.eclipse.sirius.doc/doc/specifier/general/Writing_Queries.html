@@ -151,12 +151,12 @@
 					<code>service:</code>
 				</strong> This interpreter can be used to directly invoke a service method (i.e. a Java method that follows conventions for 
 				<a href="#service_methods">service methods</a> ) on the current element. For example, assuming the service class 
-				<a href="#family_services">
-					<code>FamilyServices</code>
+				<a href="#ecore_services">
+					<code>EcoreServices</code>
 				</a> has been correctly registered in the VSM, the expression 
-				<code>service:getFamiliesContainingParents</code> (note the absence of parenthesis) will invoke the 
-				<code>getFamiliesContainingParents</code> on the current element if it is an instance of 
-				<code>Family</code>.
+				<code>service:getEClasses</code> (note the absence of parenthesis) will invoke the 
+				<code>getEClasses</code> on the current element if it is an instance of 
+				<code>EPackage</code>.
 				<ul>
 					<li>
 						<em>Note 1</em>: The service interpreter supports parameters, but only variables can be used as parameter (no literals or complex expressions), for example: 
@@ -290,11 +290,11 @@
 			<code>com.obeodesigner.sample.family.design</code> example (you can obtain the project&#8217;s sources using 
 			<em>New... &gt; Example... &gt; Obeo Designer &gt; Family Designer</em>):
 		</p>
-		<pre id="family_services"><code>public class FamilyServices {
-    public List&lt;Family&gt; getFamiliesContainingParents(Family currentFamily) {
-        List&lt;Family&gt; familiesContainingParents = new ArrayList&lt;Family&gt;();
+		<pre id="ecore_services"><code>public class EObjectServices {
+    public List&lt;EClass&gt; getEClasses(EPackage ePackage) {
+        List&lt;EClass&gt; eClasses = new ArrayList&lt;EClass&gt;();
         // The service code. 
-        return familiesContainingParents;
+        return eClasses;
     }
 }
 </code></pre>

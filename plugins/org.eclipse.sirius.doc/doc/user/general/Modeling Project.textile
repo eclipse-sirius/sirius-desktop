@@ -23,7 +23,7 @@ To use already existing modelers (assuming the plug-ins which provide them are i
 * a _viewpoint_ is a set of representation descriptions which provide a specific point of view on some kind of semantic model. For example we could have a _UML Structural_ viewpoint, which describes the sub-set of all the standard UML diagrams which deal only with structural aspects of UML models (as opposed to behavioral or requirements aspects). Viewpoints are defined in _Viewpoint Specification Models_ and packaged as Eclipse plug-ins. Once you install such a plug-in, the viewpoints it defines will be available to you (with all the representations they define) on all compatible semantic models.
 * a _modeling project_ is a special kind of project in your workspace which makes it easy to manipulate representation files and semantic models in a consistent way.
 
-The rest of this document explains how you can use the Sirius UI to create and manipulate representations of your semantic models. Each viewpoint and representation is specific. We will use the _Family_ example (see the "Getting Started":../../../../fr.obeo.dsl.designer.doc/html/Getting_Started_User.html section) for illustration purpose, but note that not all features may be available with all kinds of models and all viewpoints.
+The rest of this document explains how you can use the Sirius UI to create and manipulate representations of your semantic models. Each viewpoint and representation is specific. We will use the _Family_ example for illustration purpose, but note that not all features may be available with all kinds of models and all viewpoints.
 
 h2(#FormerUsers). Note to Users of Previous Versions
 
