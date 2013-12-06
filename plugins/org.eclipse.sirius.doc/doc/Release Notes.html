@@ -243,6 +243,28 @@ void addSelectedView(DView view) throws IllegalArgumentException;
 void removeSelectedView(DView view);
 
 </pre>
+		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<p>New variables are available for 
+			<code>sizeComputationExpression</code> to compute the size of edges on 
+			<code>EdgeStyleDescription</code> and 
+			<code>BracketEdgeStyleDescription</code>:
+		</p>
+		<ul>
+			<li>
+				<em>diagram</em>: the current 
+				<code>DDiagram</code>
+			</li>
+			<li>
+				<em>view</em>: the current 
+				<code>DEdge</code>
+			</li>
+			<li>
+				<em>sourceView</em>: the source view of the current edge.
+			</li>
+			<li>
+				<em>targetView</em>: the target view of the current edge.
+			</li>
+		</ul>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
 			<li>The ability to print table representations has been disabled for the 0.9 release due to an external dependency issue (see 

@@ -3287,7 +3287,12 @@
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
             <details key="returnType" value="an integer."/>
           </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
+            <details key="diagram" value="viewpoint.DDiagram | the current DSemanticDiagram."/>
+            <details key="view" value="viewpoint.DEdge | the current edge view for which the size is calculated."/>
+            <details key="sourceView" value="viewpoint.EdgeTarget | the source view of the current edge."/>
+            <details key="targetView" value="viewpoint.EdgeTarget | the target view of the current edge."/>
+          </eAnnotations>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="routingStyle" lowerBound="1"
             eType="#//EdgeRouting" defaultValueLiteral="straight">
@@ -3662,7 +3667,7 @@
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
             <details key="container" value="ecore.EObject | the semantic element of diagram."/>
             <details key="preSourceView" value="viewpoint.EdgeTarget | (edge only) the source view of the current potential edge."/>
-            <details key="preSource" value="viewpoint.EdgeTarget | (edge only) the semantic element of $preSourceView."/>
+            <details key="preSource" value="ecore.EObject | (edge only) the semantic element of $preSourceView."/>
             <details key="diagram" value="viewpoint.DDiagram | the diagram of the current potential edge"/>
           </eAnnotations>
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
