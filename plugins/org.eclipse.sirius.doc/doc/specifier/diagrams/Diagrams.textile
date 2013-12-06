@@ -40,6 +40,8 @@ The _Composite Layout_ enables one to specify the @padding@ between elements and
 
 The _Ordered Tree Layout_ enables one to lay out nodes as an ordered tree. The manner to retrieve children for each node should be specified.
 
+NOTE: these layout algorithms manage only nodes connected by edges, other nodes are layouted from left to right as usual.
+
 If you need to go beyond that, you can provide your own layout algorithm programmatically (see the "developer documentation":../../developer/Sirius20Developer%20Manual.html for details).
 
 h2(#layers_graphical_elements). Layers and Graphical Elements
