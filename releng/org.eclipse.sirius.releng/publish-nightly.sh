@@ -50,6 +50,9 @@ export SHORT_VERSION=$(echo "$VERSION" | sed -r -e 's/^([0-9]+\.[0-9]+)\..*$/\1/
 # syntax we want for our update-sites (e.g. 20131015-070707)
 export BUILD_TIMESTAMP=$(echo "$BUILD_ID" | sed -e 's/-//g' -e 's/_/-/')
 
+# The timestamp in the p2 composite repos used to implement redirects
+export P2_TIMESTAMP=$(date +"%s000")
+
 # The full version for this build, e.g. 0.9.0-N20131015-070707
 export FULL_VERSION="${VERSION}-${BUILD_TYPE_PREFIX}${BUILD_TIMESTAMP}"
 
@@ -72,17 +75,42 @@ cp -a "$WORKSPACE"/packaging/org.eclipse.sirius.update/target/repository/* "$TAR
 env > "$TARGET_DIR/build_env.txt"
 
 ######################################################################
-# Setup or update the symlinks to the build
+# Setup or update the redirects (implemented as composite repos)
 ######################################################################
 
 # First, a link for the $VERSION (e.g. "1.2.0/luna" => "1.2.0-NYYYYMMDD-HHMM/luna")
-mkdir -p "$TARGET_ROOT/$VERSION"
-rm -f    "$TARGET_ROOT/$VERSION/$PLATFORM"
-ln -s    "../../$FULL_VERSION/$PLATFORM" "$TARGET_ROOT/$VERSION/$PLATFORM"
+mkdir -p "$TARGET_ROOT/$VERSION/$PLATFORM"
+cat > "$TARGET_ROOT/$VERSION/$PLATFORM/compositeArtifacts.xml" <<EOF
+<?xml version='1.0' encoding='UTF-8'?>
+<?compositeArtifactRepository version='1.0.0'?>
+<repository name='&quot;Eclipse Sirius Test Site&quot;'
+    type='org.eclipse.equinox.internal.p2.artifact.repository.CompositeArtifactRepository' version='1.0.0'>
+  <properties size='1'>
+    <property name='p2.timestamp' value='$P2_TIMESTAMP'/>
+  </properties>
+  <children size='1'>
+    <child location='http://download.eclipse.org/sirius/updates/$BUILD_TYPE/$FULL_VERSION_PLATFORM'/>
+  </children>
+</repository>
+EOF
+
+cat > "$TARGET_ROOT/$VERSION/$PLATFORM/compositeContent.xml" <<EOF
+<?xml version='1.0' encoding='UTF-8'?>
+<?compositeMetadataRepository version='1.0.0'?>
+<repository name='&quot;Eclipse Sirius&quot;'
+    type='org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository' version='1.0.0'>
+  <properties size='1'>
+    <property name='p2.timestamp' value='$P2_TIMESTAMP'/>
+  </properties>
+  <children size='1'>
+    <child location='http://download.eclipse.org/sirius/updates/$BUILD_TYPE/$FULL_VERSION_PLATFORM'/>
+  </children>
+</repository>
+EOF
 
 # Also update the global "latest" links if we are building master
 if [ "master" = "$GIT_BRANCH" ]; then
-    mkdir -p "$TARGET_ROOT/latest"
-    rm -f    "$TARGET_ROOT/latest/$PLATFORM"
-    ln -s    "../../$FULL_VERSION/$PLATFORM" "$TARGET_ROOT/latest/$PLATFORM"
+    mkdir -p "$TARGET_ROOT/latest/$PLATFORM"
+    cp "$TARGET_ROOT/$VERSION/$PLATFORM/compositeArtifacts.xml" "$TARGET_ROOT/latest/$PLATFORM"
+    cp "$TARGET_ROOT/$VERSION/$PLATFORM/compositeContent.xml" "$TARGET_ROOT/latest/$PLATFORM"
 fi
