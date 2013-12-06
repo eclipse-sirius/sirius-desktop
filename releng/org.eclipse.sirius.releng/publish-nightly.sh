@@ -72,7 +72,7 @@ mkdir -p "$TARGET_DIR"
 # The actual publication of the p2 repo produced by the build
 cp -a "$WORKSPACE"/packaging/org.eclipse.sirius.update/target/repository/* "$TARGET_DIR"
 # Also publish a dump of the build environment, may be useful to debug
-env > "$TARGET_DIR/build_env.txt"
+env | sort > "$TARGET_DIR/build_env.txt"
 
 ######################################################################
 # Setup or update the redirects (implemented as composite repos)
