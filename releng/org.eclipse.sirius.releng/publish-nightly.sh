@@ -89,7 +89,7 @@ cat > "$TARGET_ROOT/$VERSION/$PLATFORM/compositeArtifacts.xml" <<EOF
     <property name='p2.timestamp' value='$P2_TIMESTAMP'/>
   </properties>
   <children size='1'>
-    <child location='http://download.eclipse.org/sirius/updates/$BUILD_TYPE/$FULL_VERSION_PLATFORM'/>
+    <child location='http://download.eclipse.org/sirius/updates/$BUILD_TYPE/$FULL_VERSION/$PLATFORM'/>
   </children>
 </repository>
 EOF
@@ -103,7 +103,7 @@ cat > "$TARGET_ROOT/$VERSION/$PLATFORM/compositeContent.xml" <<EOF
     <property name='p2.timestamp' value='$P2_TIMESTAMP'/>
   </properties>
   <children size='1'>
-    <child location='http://download.eclipse.org/sirius/updates/$BUILD_TYPE/$FULL_VERSION_PLATFORM'/>
+    <child location='http://download.eclipse.org/sirius/updates/$BUILD_TYPE/$FULL_VERSION/$PLATFORM'/>
   </children>
 </repository>
 EOF
