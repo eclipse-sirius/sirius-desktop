@@ -1076,7 +1076,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
-    public EReference getDiagramDescription_AllActivatedEdgeMappings() {
+    public EReference getDiagramDescription_AllNodeMappings() {
         return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(2);
     }
 
@@ -1085,7 +1085,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
-    public EReference getDiagramDescription_AllNodeMappings() {
+    public EReference getDiagramDescription_AllContainerMappings() {
         return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(3);
     }
 
@@ -1094,7 +1094,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
-    public EReference getDiagramDescription_AllContainerMappings() {
+    public EReference getDiagramDescription_ValidationSet() {
         return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(4);
     }
 
@@ -1103,7 +1103,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
-    public EReference getDiagramDescription_ValidationSet() {
+    public EReference getDiagramDescription_Concerns() {
         return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(5);
     }
 
@@ -1112,7 +1112,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
-    public EReference getDiagramDescription_Concerns() {
+    public EReference getDiagramDescription_InformationSections() {
         return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(6);
     }
 
@@ -1121,7 +1121,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
-    public EReference getDiagramDescription_InformationSections() {
+    public EReference getDiagramDescription_AllTools() {
         return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(7);
     }
 
@@ -1130,17 +1130,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
-    public EReference getDiagramDescription_AllTools() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(8);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EAttribute getDiagramDescription_DomainClass() {
-        return (EAttribute) diagramDescriptionEClass.getEStructuralFeatures().get(9);
+        return (EAttribute) diagramDescriptionEClass.getEStructuralFeatures().get(8);
     }
 
     /**
@@ -1149,7 +1140,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EAttribute getDiagramDescription_PreconditionExpression() {
-        return (EAttribute) diagramDescriptionEClass.getEStructuralFeatures().get(10);
+        return (EAttribute) diagramDescriptionEClass.getEStructuralFeatures().get(9);
     }
 
     /**
@@ -1158,7 +1149,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EReference getDiagramDescription_DefaultConcern() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(11);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(10);
     }
 
     /**
@@ -1167,7 +1158,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EAttribute getDiagramDescription_RootExpression() {
-        return (EAttribute) diagramDescriptionEClass.getEStructuralFeatures().get(12);
+        return (EAttribute) diagramDescriptionEClass.getEStructuralFeatures().get(11);
     }
 
     /**
@@ -1176,7 +1167,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EReference getDiagramDescription_Init() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(13);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(12);
     }
 
     /**
@@ -1185,7 +1176,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EReference getDiagramDescription_Layout() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(14);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(13);
     }
 
     /**
@@ -1194,7 +1185,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EReference getDiagramDescription_DiagramInitialisation() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(15);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(14);
     }
 
     /**
@@ -1203,7 +1194,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EReference getDiagramDescription_DefaultLayer() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(16);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(15);
     }
 
     /**
@@ -1212,7 +1203,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EReference getDiagramDescription_AdditionalLayers() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(17);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(16);
     }
 
     /**
@@ -1221,7 +1212,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EReference getDiagramDescription_AllLayers() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(18);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(17);
     }
 
     /**
@@ -1230,7 +1221,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EReference getDiagramDescription_AllActivatedTools() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(19);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(18);
     }
 
     /**
@@ -1239,7 +1230,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EReference getDiagramDescription_NodeMappings() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(20);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(19);
     }
 
     /**
@@ -1248,7 +1239,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EReference getDiagramDescription_EdgeMappings() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(21);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(20);
     }
 
     /**
@@ -1257,7 +1248,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EReference getDiagramDescription_EdgeMappingImports() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(22);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(21);
     }
 
     /**
@@ -1266,7 +1257,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EReference getDiagramDescription_ContainerMappings() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(23);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(22);
     }
 
     /**
@@ -1275,7 +1266,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EReference getDiagramDescription_ReusedMappings() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(24);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(23);
     }
 
     /**
@@ -1284,7 +1275,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EReference getDiagramDescription_ToolSection() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(25);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(24);
     }
 
     /**
@@ -1293,7 +1284,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EReference getDiagramDescription_ReusedTools() {
-        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(26);
+        return (EReference) diagramDescriptionEClass.getEStructuralFeatures().get(25);
     }
 
     /**
@@ -1302,7 +1293,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     public EAttribute getDiagramDescription_EnablePopupBars() {
-        return (EAttribute) diagramDescriptionEClass.getEStructuralFeatures().get(27);
+        return (EAttribute) diagramDescriptionEClass.getEStructuralFeatures().get(26);
     }
 
     /**
@@ -2327,17 +2318,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
-    public EReference getLayer_AllActivatedEdgeMappings() {
-        return (EReference) layerEClass.getEStructuralFeatures().get(11);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EReference getLayer_Customization() {
-        return (EReference) layerEClass.getEStructuralFeatures().get(12);
+        return (EReference) layerEClass.getEStructuralFeatures().get(11);
     }
 
     /**
@@ -3126,7 +3108,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         diagramDescriptionEClass = createEClass(DIAGRAM_DESCRIPTION);
         createEReference(diagramDescriptionEClass, DIAGRAM_DESCRIPTION__FILTERS);
         createEReference(diagramDescriptionEClass, DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS);
-        createEReference(diagramDescriptionEClass, DIAGRAM_DESCRIPTION__ALL_ACTIVATED_EDGE_MAPPINGS);
         createEReference(diagramDescriptionEClass, DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS);
         createEReference(diagramDescriptionEClass, DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS);
         createEReference(diagramDescriptionEClass, DIAGRAM_DESCRIPTION__VALIDATION_SET);
@@ -3297,7 +3278,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         createEReference(layerEClass, LAYER__DECORATION_DESCRIPTIONS_SET);
         createEAttribute(layerEClass, LAYER__ICON);
         createEReference(layerEClass, LAYER__ALL_EDGE_MAPPINGS);
-        createEReference(layerEClass, LAYER__ALL_ACTIVATED_EDGE_MAPPINGS);
         createEReference(layerEClass, LAYER__CUSTOMIZATION);
 
         additionalLayerEClass = createEClass(ADDITIONAL_LAYER);
@@ -3601,8 +3581,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         getDiagramDescription_Filters().getEKeys().add(this.getIdentifiedElement_Name());
         initEReference(getDiagramDescription_AllEdgeMappings(), this.getEdgeMapping(), null, "allEdgeMappings", null, 0, -1, DiagramDescription.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
                 !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-        initEReference(getDiagramDescription_AllActivatedEdgeMappings(), this.getEdgeMapping(), null, "allActivatedEdgeMappings", null, 0, -1, DiagramDescription.class, IS_TRANSIENT, IS_VOLATILE,
-                !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
         initEReference(getDiagramDescription_AllNodeMappings(), this.getNodeMapping(), null, "allNodeMappings", null, 0, -1, DiagramDescription.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
                 !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
         initEReference(getDiagramDescription_AllContainerMappings(), this.getContainerMapping(), null, "allContainerMappings", null, 0, -1, DiagramDescription.class, IS_TRANSIENT, IS_VOLATILE,
@@ -4015,8 +3993,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 IS_ORDERED);
         initEReference(getLayer_AllEdgeMappings(), this.getEdgeMapping(), null, "allEdgeMappings", null, 0, -1, Layer.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-        initEReference(getLayer_AllActivatedEdgeMappings(), this.getEdgeMapping(), null, "allActivatedEdgeMappings", null, 0, -1, Layer.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
         initEReference(getLayer_Customization(), this.getCustomization(), null, "customization", null, 0, 1, Layer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
                 !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

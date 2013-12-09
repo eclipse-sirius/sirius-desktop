@@ -89,9 +89,6 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * {@link org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl#getAllEdgeMappings
  * <em>All Edge Mappings</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl#getAllActivatedEdgeMappings
- * <em>All Activated Edge Mappings</em>}</li>
- * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl#getAllNodeMappings
  * <em>All Node Mappings</em>}</li>
  * <li>
@@ -820,23 +817,6 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
     public EList<EdgeMapping> getAllEdgeMappings() {
         // TODO: implement this method to return the 'All Edge Mappings'
         // reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
-        // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EList<EdgeMapping> getAllActivatedEdgeMappings() {
-        // TODO: implement this method to return the 'All Activated Edge
-        // Mappings' reference list
         // Ensure that you remove @generated or mark it @generated NOT
         // The list is expected to implement
         // org.eclipse.emf.ecore.util.InternalEList and
@@ -1685,8 +1665,6 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
             return getFilters();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS:
             return getAllEdgeMappings();
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_ACTIVATED_EDGE_MAPPINGS:
-            return getAllActivatedEdgeMappings();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS:
             return getAllNodeMappings();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS:
@@ -2017,8 +1995,6 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
             return filters != null && !filters.isEmpty();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS:
             return !getAllEdgeMappings().isEmpty();
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_ACTIVATED_EDGE_MAPPINGS:
-            return !getAllActivatedEdgeMappings().isEmpty();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS:
             return !getAllNodeMappings().isEmpty();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS:

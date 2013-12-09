@@ -78,7 +78,6 @@ public class LayerItemProvider extends DocumentedElementItemProvider implements 
             addReusedToolsPropertyDescriptor(object);
             addIconPropertyDescriptor(object);
             addAllEdgeMappingsPropertyDescriptor(object);
-            addAllActivatedEdgeMappingsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -177,18 +176,6 @@ public class LayerItemProvider extends DocumentedElementItemProvider implements 
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_Layer_allEdgeMappings_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Layer_allEdgeMappings_feature", "_UI_Layer_type"),
                 DescriptionPackage.Literals.LAYER__ALL_EDGE_MAPPINGS, false, false, false, null, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the All Activated Edge Mappings
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addAllActivatedEdgeMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_Layer_allActivatedEdgeMappings_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Layer_allActivatedEdgeMappings_feature", "_UI_Layer_type"),
-                DescriptionPackage.Literals.LAYER__ALL_ACTIVATED_EDGE_MAPPINGS, false, false, false, null, null, null));
     }
 
     /**

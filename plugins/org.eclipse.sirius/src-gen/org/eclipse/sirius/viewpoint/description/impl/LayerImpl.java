@@ -81,9 +81,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
  * {@link org.eclipse.sirius.viewpoint.description.impl.LayerImpl#getAllEdgeMappings
  * <em>All Edge Mappings</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.LayerImpl#getAllActivatedEdgeMappings
- * <em>All Activated Edge Mappings</em>}</li>
- * <li>
  * {@link org.eclipse.sirius.viewpoint.description.impl.LayerImpl#getCustomization
  * <em>Customization</em>}</li>
  * </ul>
@@ -568,23 +565,6 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
      * 
      * @generated
      */
-    public EList<EdgeMapping> getAllActivatedEdgeMappings() {
-        // TODO: implement this method to return the 'All Activated Edge
-        // Mappings' reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement
-        // org.eclipse.emf.ecore.util.InternalEList and
-        // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of
-        // org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public Customization getCustomization() {
         if (customization != null && customization.eIsProxy()) {
             InternalEObject oldCustomization = (InternalEObject) customization;
@@ -714,8 +694,6 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
             return getIcon();
         case DescriptionPackage.LAYER__ALL_EDGE_MAPPINGS:
             return getAllEdgeMappings();
-        case DescriptionPackage.LAYER__ALL_ACTIVATED_EDGE_MAPPINGS:
-            return getAllActivatedEdgeMappings();
         case DescriptionPackage.LAYER__CUSTOMIZATION:
             if (resolve)
                 return getCustomization();
@@ -870,8 +848,6 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
             return ICON_EDEFAULT == null ? icon != null : !ICON_EDEFAULT.equals(icon);
         case DescriptionPackage.LAYER__ALL_EDGE_MAPPINGS:
             return !getAllEdgeMappings().isEmpty();
-        case DescriptionPackage.LAYER__ALL_ACTIVATED_EDGE_MAPPINGS:
-            return !getAllActivatedEdgeMappings().isEmpty();
         case DescriptionPackage.LAYER__CUSTOMIZATION:
             return customization != null;
         }

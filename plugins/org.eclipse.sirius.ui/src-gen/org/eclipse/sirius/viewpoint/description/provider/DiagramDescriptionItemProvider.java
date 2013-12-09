@@ -79,7 +79,6 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
             addShowOnStartupPropertyDescriptor(object);
             addPasteDescriptionsPropertyDescriptor(object);
             addAllEdgeMappingsPropertyDescriptor(object);
-            addAllActivatedEdgeMappingsPropertyDescriptor(object);
             addAllNodeMappingsPropertyDescriptor(object);
             addAllContainerMappingsPropertyDescriptor(object);
             addAllToolsPropertyDescriptor(object);
@@ -120,19 +119,6 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
                 getString("_UI_DiagramDescription_allEdgeMappings_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allEdgeMappings_feature", "_UI_DiagramDescription_type"),
                 DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS, false, false, false, null, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the All Activated Edge Mappings
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addAllActivatedEdgeMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DiagramDescription_allActivatedEdgeMappings_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allActivatedEdgeMappings_feature", "_UI_DiagramDescription_type"),
-                DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_ACTIVATED_EDGE_MAPPINGS, false, false, false, null, null, null));
     }
 
     /**

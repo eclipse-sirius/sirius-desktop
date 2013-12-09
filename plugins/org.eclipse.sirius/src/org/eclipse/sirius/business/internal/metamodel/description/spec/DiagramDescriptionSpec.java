@@ -88,16 +88,6 @@ public class DiagramDescriptionSpec extends DiagramDescriptionImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl#getAllActivatedEdgeMappings()
-     */
-    @Override
-    public EList<EdgeMapping> getAllActivatedEdgeMappings() {
-        return ContentHelper.getAllActivatedEdgeMappings(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl#getAllContainerMappings()
      */
     @Override

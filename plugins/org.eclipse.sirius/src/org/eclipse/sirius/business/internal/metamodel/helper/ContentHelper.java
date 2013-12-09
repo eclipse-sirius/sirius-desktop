@@ -100,29 +100,6 @@ public final class ContentHelper {
     }
 
     /**
-     * Return all the activated edge mappings of this diagram, including :
-     * <UL>
-     * <LI></LI>
-     * <LI></LI>
-     * <LI></LI>
-     * <LI></LI>
-     * </UL>
-     * .
-     * 
-     * @param diagramDescription
-     *            The diagram description
-     * @return all the activated edge mappings
-     * @deprecated return nothing cause we can't find active mapping only with a
-     *             description
-     */
-    @Deprecated
-    public static EList<EdgeMapping> getAllActivatedEdgeMappings(final DiagramDescription diagramDescription) {
-        final Collection<EdgeMapping> result = new ArrayList<EdgeMapping>();
-        return new EcoreEList.UnmodifiableEList<EdgeMapping>((InternalEObject) diagramDescription, DescriptionPackage.eINSTANCE.getDiagramDescription_AllActivatedEdgeMappings(), result.size(),
-                result.toArray());
-    }
-
-    /**
      * Get all edge mappings (including wrap EdgeMappingImport) used in a
      * designer diagram description on one particular layer.
      * 
@@ -148,28 +125,6 @@ public final class ContentHelper {
             }
         }
         return new EcoreEList.UnmodifiableEList<EdgeMapping>((InternalEObject) layer, DescriptionPackage.eINSTANCE.getLayer_AllEdgeMappings(), result.size(), result.toArray());
-    }
-
-    /**
-     * Return all the activated edge mappings of this layer, including :
-     * <UL>
-     * <LI></LI>
-     * <LI></LI>
-     * <LI></LI>
-     * <LI></LI>
-     * </UL>
-     * .
-     * 
-     * @param layer
-     *            The layer description
-     * @return all the activated edge mappings
-     * @deprecated return nothing cause we can't find active mapping only with a
-     *             description
-     */
-    @Deprecated
-    public static EList<EdgeMapping> getAllActivatedEdgeMappings(final Layer layer) {
-        final Collection<EdgeMapping> result = new ArrayList<EdgeMapping>();
-        return new EcoreEList.UnmodifiableEList<EdgeMapping>((InternalEObject) layer, DescriptionPackage.eINSTANCE.getLayer_AllActivatedEdgeMappings(), result.size(), result.toArray());
     }
 
     /**

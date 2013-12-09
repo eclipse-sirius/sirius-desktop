@@ -38,9 +38,6 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * {@link org.eclipse.sirius.viewpoint.description.DiagramDescription#getAllEdgeMappings
  * <em>All Edge Mappings</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.DiagramDescription#getAllActivatedEdgeMappings
- * <em>All Activated Edge Mappings</em>}</li>
- * <li>
  * {@link org.eclipse.sirius.viewpoint.description.DiagramDescription#getAllNodeMappings
  * <em>All Node Mappings</em>}</li>
  * <li>
@@ -151,22 +148,6 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * @generated
      */
     EList<EdgeMapping> getAllEdgeMappings();
-
-    /**
-     * Returns the value of the '<em><b>All Activated Edge Mappings</b></em>'
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.EdgeMapping}. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
-     * edge mappings (including import edge ampping) of this simple mapping.
-     * <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>All Activated Edge Mappings</em>' reference
-     *         list.
-     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDiagramDescription_AllActivatedEdgeMappings()
-     * @model transient="true" changeable="false" volatile="true" derived="true"
-     * @generated
-     */
-    EList<EdgeMapping> getAllActivatedEdgeMappings();
 
     /**
      * Returns the value of the '<em><b>All Node Mappings</b></em>' reference

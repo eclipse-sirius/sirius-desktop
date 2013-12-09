@@ -62,6 +62,7 @@ h4. Changes in @org.eclipse.sirius@
 * The deprecated method @SessionFactory.createSession(DAnalysis)@ has been removed. It is not intended to be used, but it can be replaced by @SessionFactory.INSTANCE.createSession(analysis.eResource().getURI(), new NullProgressMonitor())@.
 * The method @buildDoExecuteDetailsOperation(DSemanticDecorator, RepresentationCreationDescription, String) has been pull up from @ITableCommandFactory@, @ITreeCommandFactory@ and @IDiagramCommandFactory@ to @ICommandFactory@.
 * The method @getUserInterfaceCallBack()@ has been pull up from @ITableCommandFactory@ and @ITreeCommandFactory@ to @ICommandFactory@. And @AbstractCommandFactory@ now implements this method.
+* The unused reference @allActivatedEdgeMappings@ from @Layer@ and @DiagramDescription@ has been removed from the viewpoint.ecore meta-model. This reference always returns empty list.
 
 h4. Changes in  @org.eclipse.sirius.diagram@
 

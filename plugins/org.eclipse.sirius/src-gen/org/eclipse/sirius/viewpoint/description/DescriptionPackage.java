@@ -1092,22 +1092,13 @@ public interface DescriptionPackage extends EPackage {
     int DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 10;
 
     /**
-     * The feature id for the '<em><b>All Activated Edge Mappings</b></em>'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DIAGRAM_DESCRIPTION__ALL_ACTIVATED_EDGE_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 11;
-
-    /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 12;
+    int DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>All Container Mappings</b></em>' reference
@@ -1116,7 +1107,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 13;
+    int DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 12;
 
     /**
      * The feature id for the '<em><b>Validation Set</b></em>' containment
@@ -1125,7 +1116,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__VALIDATION_SET = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 14;
+    int DIAGRAM_DESCRIPTION__VALIDATION_SET = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 13;
 
     /**
      * The feature id for the '<em><b>Concerns</b></em>' containment reference.
@@ -1134,7 +1125,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__CONCERNS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 15;
+    int DIAGRAM_DESCRIPTION__CONCERNS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 14;
 
     /**
      * The feature id for the '<em><b>Information Sections</b></em>' containment
@@ -1143,7 +1134,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__INFORMATION_SECTIONS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 16;
+    int DIAGRAM_DESCRIPTION__INFORMATION_SECTIONS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 15;
 
     /**
      * The feature id for the '<em><b>All Tools</b></em>' reference list. <!--
@@ -1152,7 +1143,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_TOOLS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 17;
+    int DIAGRAM_DESCRIPTION__ALL_TOOLS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 16;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -1161,7 +1152,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__DOMAIN_CLASS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 18;
+    int DIAGRAM_DESCRIPTION__DOMAIN_CLASS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 17;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -1170,7 +1161,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 19;
+    int DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 18;
 
     /**
      * The feature id for the '<em><b>Default Concern</b></em>' reference. <!--
@@ -1179,7 +1170,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__DEFAULT_CONCERN = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 20;
+    int DIAGRAM_DESCRIPTION__DEFAULT_CONCERN = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 19;
 
     /**
      * The feature id for the '<em><b>Root Expression</b></em>' attribute. <!--
@@ -1188,7 +1179,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ROOT_EXPRESSION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 21;
+    int DIAGRAM_DESCRIPTION__ROOT_EXPRESSION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 20;
 
     /**
      * The feature id for the '<em><b>Init</b></em>' reference. <!--
@@ -1197,7 +1188,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__INIT = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 22;
+    int DIAGRAM_DESCRIPTION__INIT = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 21;
 
     /**
      * The feature id for the '<em><b>Layout</b></em>' containment reference.
@@ -1206,7 +1197,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__LAYOUT = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 23;
+    int DIAGRAM_DESCRIPTION__LAYOUT = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 22;
 
     /**
      * The feature id for the '<em><b>Diagram Initialisation</b></em>'
@@ -1215,7 +1206,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 24;
+    int DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 23;
 
     /**
      * The feature id for the '<em><b>Default Layer</b></em>' containment
@@ -1224,7 +1215,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__DEFAULT_LAYER = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 25;
+    int DIAGRAM_DESCRIPTION__DEFAULT_LAYER = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 24;
 
     /**
      * The feature id for the '<em><b>Additional Layers</b></em>' containment
@@ -1233,7 +1224,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 26;
+    int DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 25;
 
     /**
      * The feature id for the '<em><b>All Layers</b></em>' reference list. <!--
@@ -1242,7 +1233,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_LAYERS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 27;
+    int DIAGRAM_DESCRIPTION__ALL_LAYERS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 26;
 
     /**
      * The feature id for the '<em><b>All Activated Tools</b></em>' reference
@@ -1251,7 +1242,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 28;
+    int DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 27;
 
     /**
      * The feature id for the '<em><b>Node Mappings</b></em>' containment
@@ -1260,7 +1251,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__NODE_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 29;
+    int DIAGRAM_DESCRIPTION__NODE_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 28;
 
     /**
      * The feature id for the '<em><b>Edge Mappings</b></em>' containment
@@ -1269,7 +1260,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__EDGE_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 30;
+    int DIAGRAM_DESCRIPTION__EDGE_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 29;
 
     /**
      * The feature id for the '<em><b>Edge Mapping Imports</b></em>' containment
@@ -1278,7 +1269,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 31;
+    int DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 30;
 
     /**
      * The feature id for the '<em><b>Container Mappings</b></em>' containment
@@ -1287,7 +1278,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 32;
+    int DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 31;
 
     /**
      * The feature id for the '<em><b>Reused Mappings</b></em>' reference list.
@@ -1296,7 +1287,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__REUSED_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 33;
+    int DIAGRAM_DESCRIPTION__REUSED_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 32;
 
     /**
      * The feature id for the '<em><b>Tool Section</b></em>' containment
@@ -1305,7 +1296,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__TOOL_SECTION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 34;
+    int DIAGRAM_DESCRIPTION__TOOL_SECTION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 33;
 
     /**
      * The feature id for the '<em><b>Reused Tools</b></em>' reference list.
@@ -1314,7 +1305,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__REUSED_TOOLS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 35;
+    int DIAGRAM_DESCRIPTION__REUSED_TOOLS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 34;
 
     /**
      * The feature id for the '<em><b>Enable Popup Bars</b></em>' attribute.
@@ -1324,7 +1315,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 36;
+    int DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 35;
 
     /**
      * The number of structural features of the '<em>Diagram Description</em>'
@@ -1333,7 +1324,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION_FEATURE_COUNT = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 37;
+    int DIAGRAM_DESCRIPTION_FEATURE_COUNT = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 36;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -1445,22 +1436,13 @@ public interface DescriptionPackage extends EPackage {
     int DIAGRAM_IMPORT_DESCRIPTION__ALL_EDGE_MAPPINGS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
-     * The feature id for the '<em><b>All Activated Edge Mappings</b></em>'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DIAGRAM_IMPORT_DESCRIPTION__ALL_ACTIVATED_EDGE_MAPPINGS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 4;
-
-    /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__ALL_NODE_MAPPINGS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 5;
+    int DIAGRAM_IMPORT_DESCRIPTION__ALL_NODE_MAPPINGS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>All Container Mappings</b></em>' reference
@@ -1469,7 +1451,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__ALL_CONTAINER_MAPPINGS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 6;
+    int DIAGRAM_IMPORT_DESCRIPTION__ALL_CONTAINER_MAPPINGS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Validation Set</b></em>' containment
@@ -1478,7 +1460,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__VALIDATION_SET = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 7;
+    int DIAGRAM_IMPORT_DESCRIPTION__VALIDATION_SET = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Concerns</b></em>' containment reference.
@@ -1487,7 +1469,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__CONCERNS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 8;
+    int DIAGRAM_IMPORT_DESCRIPTION__CONCERNS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Information Sections</b></em>' containment
@@ -1496,7 +1478,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__INFORMATION_SECTIONS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 9;
+    int DIAGRAM_IMPORT_DESCRIPTION__INFORMATION_SECTIONS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>All Tools</b></em>' reference list. <!--
@@ -1505,7 +1487,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__ALL_TOOLS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 10;
+    int DIAGRAM_IMPORT_DESCRIPTION__ALL_TOOLS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -1514,7 +1496,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__DOMAIN_CLASS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 11;
+    int DIAGRAM_IMPORT_DESCRIPTION__DOMAIN_CLASS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -1523,7 +1505,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__PRECONDITION_EXPRESSION = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 12;
+    int DIAGRAM_IMPORT_DESCRIPTION__PRECONDITION_EXPRESSION = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>Default Concern</b></em>' reference. <!--
@@ -1532,7 +1514,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__DEFAULT_CONCERN = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 13;
+    int DIAGRAM_IMPORT_DESCRIPTION__DEFAULT_CONCERN = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 12;
 
     /**
      * The feature id for the '<em><b>Root Expression</b></em>' attribute. <!--
@@ -1541,7 +1523,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__ROOT_EXPRESSION = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 14;
+    int DIAGRAM_IMPORT_DESCRIPTION__ROOT_EXPRESSION = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 13;
 
     /**
      * The feature id for the '<em><b>Init</b></em>' reference. <!--
@@ -1550,7 +1532,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__INIT = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 15;
+    int DIAGRAM_IMPORT_DESCRIPTION__INIT = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 14;
 
     /**
      * The feature id for the '<em><b>Layout</b></em>' containment reference.
@@ -1559,7 +1541,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__LAYOUT = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 16;
+    int DIAGRAM_IMPORT_DESCRIPTION__LAYOUT = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 15;
 
     /**
      * The feature id for the '<em><b>Diagram Initialisation</b></em>'
@@ -1568,7 +1550,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__DIAGRAM_INITIALISATION = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 17;
+    int DIAGRAM_IMPORT_DESCRIPTION__DIAGRAM_INITIALISATION = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 16;
 
     /**
      * The feature id for the '<em><b>Default Layer</b></em>' containment
@@ -1577,7 +1559,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__DEFAULT_LAYER = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 18;
+    int DIAGRAM_IMPORT_DESCRIPTION__DEFAULT_LAYER = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 17;
 
     /**
      * The feature id for the '<em><b>Additional Layers</b></em>' containment
@@ -1586,7 +1568,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__ADDITIONAL_LAYERS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 19;
+    int DIAGRAM_IMPORT_DESCRIPTION__ADDITIONAL_LAYERS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 18;
 
     /**
      * The feature id for the '<em><b>All Layers</b></em>' reference list. <!--
@@ -1595,7 +1577,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__ALL_LAYERS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 20;
+    int DIAGRAM_IMPORT_DESCRIPTION__ALL_LAYERS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 19;
 
     /**
      * The feature id for the '<em><b>All Activated Tools</b></em>' reference
@@ -1604,7 +1586,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__ALL_ACTIVATED_TOOLS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 21;
+    int DIAGRAM_IMPORT_DESCRIPTION__ALL_ACTIVATED_TOOLS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 20;
 
     /**
      * The feature id for the '<em><b>Node Mappings</b></em>' containment
@@ -1613,7 +1595,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__NODE_MAPPINGS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 22;
+    int DIAGRAM_IMPORT_DESCRIPTION__NODE_MAPPINGS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 21;
 
     /**
      * The feature id for the '<em><b>Edge Mappings</b></em>' containment
@@ -1622,7 +1604,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__EDGE_MAPPINGS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 23;
+    int DIAGRAM_IMPORT_DESCRIPTION__EDGE_MAPPINGS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 22;
 
     /**
      * The feature id for the '<em><b>Edge Mapping Imports</b></em>' containment
@@ -1631,7 +1613,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__EDGE_MAPPING_IMPORTS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 24;
+    int DIAGRAM_IMPORT_DESCRIPTION__EDGE_MAPPING_IMPORTS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 23;
 
     /**
      * The feature id for the '<em><b>Container Mappings</b></em>' containment
@@ -1640,7 +1622,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__CONTAINER_MAPPINGS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 25;
+    int DIAGRAM_IMPORT_DESCRIPTION__CONTAINER_MAPPINGS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 24;
 
     /**
      * The feature id for the '<em><b>Reused Mappings</b></em>' reference list.
@@ -1649,7 +1631,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__REUSED_MAPPINGS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 26;
+    int DIAGRAM_IMPORT_DESCRIPTION__REUSED_MAPPINGS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 25;
 
     /**
      * The feature id for the '<em><b>Tool Section</b></em>' containment
@@ -1658,7 +1640,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__TOOL_SECTION = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 27;
+    int DIAGRAM_IMPORT_DESCRIPTION__TOOL_SECTION = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 26;
 
     /**
      * The feature id for the '<em><b>Reused Tools</b></em>' reference list.
@@ -1667,7 +1649,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__REUSED_TOOLS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 28;
+    int DIAGRAM_IMPORT_DESCRIPTION__REUSED_TOOLS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 27;
 
     /**
      * The feature id for the '<em><b>Enable Popup Bars</b></em>' attribute.
@@ -1677,7 +1659,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__ENABLE_POPUP_BARS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 29;
+    int DIAGRAM_IMPORT_DESCRIPTION__ENABLE_POPUP_BARS = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 28;
 
     /**
      * The feature id for the '<em><b>Imported Diagram</b></em>' reference. <!--
@@ -1686,7 +1668,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION__IMPORTED_DIAGRAM = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 30;
+    int DIAGRAM_IMPORT_DESCRIPTION__IMPORTED_DIAGRAM = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 29;
 
     /**
      * The number of structural features of the '
@@ -1696,7 +1678,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_IMPORT_DESCRIPTION_FEATURE_COUNT = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 31;
+    int DIAGRAM_IMPORT_DESCRIPTION_FEATURE_COUNT = REPRESENTATION_IMPORT_DESCRIPTION_FEATURE_COUNT + 30;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -4117,22 +4099,13 @@ public interface DescriptionPackage extends EPackage {
     int LAYER__ALL_EDGE_MAPPINGS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 13;
 
     /**
-     * The feature id for the '<em><b>All Activated Edge Mappings</b></em>'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int LAYER__ALL_ACTIVATED_EDGE_MAPPINGS = DOCUMENTED_ELEMENT_FEATURE_COUNT + 14;
-
-    /**
      * The feature id for the '<em><b>Customization</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int LAYER__CUSTOMIZATION = DOCUMENTED_ELEMENT_FEATURE_COUNT + 15;
+    int LAYER__CUSTOMIZATION = DOCUMENTED_ELEMENT_FEATURE_COUNT + 14;
 
     /**
      * The number of structural features of the '<em>Layer</em>' class. <!--
@@ -4141,7 +4114,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LAYER_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 16;
+    int LAYER_FEATURE_COUNT = DOCUMENTED_ELEMENT_FEATURE_COUNT + 15;
 
     /**
      * The meta object id for the '
@@ -4289,15 +4262,6 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int ADDITIONAL_LAYER__ALL_EDGE_MAPPINGS = LAYER__ALL_EDGE_MAPPINGS;
-
-    /**
-     * The feature id for the '<em><b>All Activated Edge Mappings</b></em>'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int ADDITIONAL_LAYER__ALL_ACTIVATED_EDGE_MAPPINGS = LAYER__ALL_ACTIVATED_EDGE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Customization</b></em>' containment
@@ -5792,20 +5756,6 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      */
     EReference getDiagramDescription_AllEdgeMappings();
-
-    /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramDescription#getAllActivatedEdgeMappings
-     * <em>All Activated Edge Mappings</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for the reference list '
-     *         <em>All Activated Edge Mappings</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.DiagramDescription#getAllActivatedEdgeMappings()
-     * @see #getDiagramDescription()
-     * @generated
-     */
-    EReference getDiagramDescription_AllActivatedEdgeMappings();
 
     /**
      * Returns the meta object for the reference list '
@@ -7667,20 +7617,6 @@ public interface DescriptionPackage extends EPackage {
     EReference getLayer_AllEdgeMappings();
 
     /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.viewpoint.description.Layer#getAllActivatedEdgeMappings
-     * <em>All Activated Edge Mappings</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for the reference list '
-     *         <em>All Activated Edge Mappings</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.Layer#getAllActivatedEdgeMappings()
-     * @see #getLayer()
-     * @generated
-     */
-    EReference getLayer_AllActivatedEdgeMappings();
-
-    /**
      * Returns the meta object for the containment reference '
      * {@link org.eclipse.sirius.viewpoint.description.Layer#getCustomization
      * <em>Customization</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -8850,15 +8786,6 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EReference DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS = eINSTANCE.getDiagramDescription_AllEdgeMappings();
-
-        /**
-         * The meta object literal for the '
-         * <em><b>All Activated Edge Mappings</b></em>' reference list feature.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference DIAGRAM_DESCRIPTION__ALL_ACTIVATED_EDGE_MAPPINGS = eINSTANCE.getDiagramDescription_AllActivatedEdgeMappings();
 
         /**
          * The meta object literal for the '<em><b>All Node Mappings</b></em>'
@@ -10316,15 +10243,6 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EReference LAYER__ALL_EDGE_MAPPINGS = eINSTANCE.getLayer_AllEdgeMappings();
-
-        /**
-         * The meta object literal for the '
-         * <em><b>All Activated Edge Mappings</b></em>' reference list feature.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference LAYER__ALL_ACTIVATED_EDGE_MAPPINGS = eINSTANCE.getLayer_AllActivatedEdgeMappings();
 
         /**
          * The meta object literal for the '<em><b>Customization</b></em>'

@@ -181,15 +181,6 @@ public interface DescriptionPackage extends EPackage {
     int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS;
 
     /**
-     * The feature id for the '<em><b>All Activated Edge Mappings</b></em>'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_ACTIVATED_EDGE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_ACTIVATED_EDGE_MAPPINGS;
-
-    /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference
      * list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

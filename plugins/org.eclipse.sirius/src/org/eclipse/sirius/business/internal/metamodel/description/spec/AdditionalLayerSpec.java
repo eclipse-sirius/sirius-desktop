@@ -77,14 +77,4 @@ public class AdditionalLayerSpec extends AdditionalLayerImpl {
     public EList<EdgeMapping> getAllEdgeMappings() {
         return ContentHelper.getAllEdgeMappings(this);
     }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.impl.LayerImpl#getAllActivatedEdgeMappings()
-     */
-    @Override
-    public EList<EdgeMapping> getAllActivatedEdgeMappings() {
-        return ContentHelper.getAllActivatedEdgeMappings(this);
-    }
 }

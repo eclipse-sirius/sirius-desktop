@@ -46,9 +46,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
  * </em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.Layer#getAllEdgeMappings
  * <em>All Edge Mappings</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.Layer#getAllActivatedEdgeMappings
- * <em>All Activated Edge Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.description.Layer#getCustomization
  * <em>Customization</em>}</li>
  * </ul>
@@ -251,22 +248,6 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
      * @generated
      */
     EList<EdgeMapping> getAllEdgeMappings();
-
-    /**
-     * Returns the value of the '<em><b>All Activated Edge Mappings</b></em>'
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.EdgeMapping}. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
-     * edge mappings (including import edge ampping) of this simple mapping.
-     * <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>All Activated Edge Mappings</em>' reference
-     *         list.
-     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getLayer_AllActivatedEdgeMappings()
-     * @model transient="true" changeable="false" volatile="true" derived="true"
-     * @generated
-     */
-    EList<EdgeMapping> getAllActivatedEdgeMappings();
 
     /**
      * Returns the value of the '<em><b>Customization</b></em>' containment
