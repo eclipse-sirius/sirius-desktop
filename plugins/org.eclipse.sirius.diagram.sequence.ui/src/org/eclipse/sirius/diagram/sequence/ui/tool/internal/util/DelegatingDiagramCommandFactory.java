@@ -320,4 +320,12 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
         return baseFactory.buildPasteCommandFromTool(dContainer, droppedElement, tool);
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.tools.api.command.ICommandFactory#getUserInterfaceCallBack()
+     */
+    public UICallBack getUserInterfaceCallBack() {
+        return baseFactory.getUserInterfaceCallBack();
+    }
 }

@@ -12,6 +12,7 @@ package org.eclipse.sirius.table.tools.api.command;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
@@ -20,10 +21,6 @@ import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.description.CreateTool;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
-import org.eclipse.sirius.tools.api.command.ui.UICallBack;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
  * Describes the contract of the table command factory.
@@ -159,25 +156,4 @@ public interface ITableCommandFactory extends ICommandFactory {
      * @return a command able to clear the values of an instance feature
      */
     Command buildClearValue(final EObject instance, final String name);
-
-    /**
-     * Create a command that is able to execute the operations of a
-     * {@link RepresentationCreationDescription}.
-     * 
-     * @param target
-     *            the target element.
-     * @param desc
-     *            the operations.
-     * @param newRepresentationName
-     *            the name of the new Representation
-     * @return the created command.
-     */
-    Command buildDoExecuteDetailsOperation(DSemanticDecorator target, RepresentationCreationDescription desc, String newRepresentationName);
-
-    /**
-     * Return the UI call back to use.
-     * 
-     * @return the UI call back to use
-     */
-    UICallBack getUserInterfaceCallBack();
 }

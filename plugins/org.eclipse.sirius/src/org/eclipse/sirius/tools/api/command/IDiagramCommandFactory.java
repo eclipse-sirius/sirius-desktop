@@ -40,7 +40,6 @@ import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
-import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
@@ -310,20 +309,6 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      *         container.
      */
     Command buildCreateContainerCommandFromTool(DDiagramElementContainer nodeContainer, ContainerCreationDescription tool);
-
-    /**
-     * Create a command that is able to execute the operations of a
-     * {@link RepresentationCreationDescription}.
-     * 
-     * @param target
-     *            the target element.
-     * @param desc
-     *            the operations.
-     * @param newRepresentationName
-     *            the name of the new Representation
-     * @return the created command.
-     */
-    Command buildDoExecuteDetailsOperation(DSemanticDecorator target, RepresentationCreationDescription desc, String newRepresentationName);
 
     /**
      * Create a command to delete a viewpoint.

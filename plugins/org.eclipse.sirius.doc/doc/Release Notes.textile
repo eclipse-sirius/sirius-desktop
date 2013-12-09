@@ -60,6 +60,8 @@ h4. Changes in @org.eclipse.sirius@
 * The deprecated method @InterpreterRegistry.prepareImportsFromModelElement(IInterpreter, EObject)@ has been removed. Use @InterpreterRegistry.prepareImportsFromSession(IInterpreter, Session)@ instead. To get @Session@ from @EObject@, you can use @SessionManager.INSTANCE.getSession(EObject)@.
 * The deprecated method @SiriusHelper.createDAnalysis()@ has been removed. Use @ViewpointFactory.eINSTANCE.createDAnalysis()@ instead.
 * The deprecated method @SessionFactory.createSession(DAnalysis)@ has been removed. It is not intended to be used, but it can be replaced by @SessionFactory.INSTANCE.createSession(analysis.eResource().getURI(), new NullProgressMonitor())@.
+* The method @buildDoExecuteDetailsOperation(DSemanticDecorator, RepresentationCreationDescription, String) has been pull up from @ITableCommandFactory@, @ITreeCommandFactory@ and @IDiagramCommandFactory@ to @ICommandFactory@.
+* The method @getUserInterfaceCallBack()@ has been pull up from @ITableCommandFactory@ and @ITreeCommandFactory@ to @ICommandFactory@. And @AbstractCommandFactory@ now implements this method.
 
 h4. Changes in  @org.eclipse.sirius.diagram@
 
@@ -79,6 +81,7 @@ h4. Changes in  @org.eclipse.sirius.ui@
 * The deprecated method @SessionHelper.openStartupRepresentations(Session)@ has been removed. Use the variant which takes an additional @IProgressMonitor@ instead.
 * The deprecated method @SiriusControlHandler.performControl(Shell, EObject)@ has been removed. Use the variant which takes an additional @IProgressMonitor@ instead.
 * The deprecated method @SiriusUncontrolHandler.performUncontrol(Shell, EObject)@ has been removed. Use the variant which takes an additional @IProgressMonitor@ instead.
+* New class @AbstractCreateRepresentationFromRepresentationCreationDescription@: Generalization of all @CreateRepresentationFromRepresentationCreationDescription@ classes (iof plug-ins sirius.diagram, sirius.table.ui, sirius.tree.ui).
 
 h4. Changes in @org.eclipse.sirius.table@
 

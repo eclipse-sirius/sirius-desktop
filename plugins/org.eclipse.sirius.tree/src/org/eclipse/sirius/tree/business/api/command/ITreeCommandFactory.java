@@ -14,8 +14,8 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
-import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeItem;
@@ -23,11 +23,8 @@ import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;
 import org.eclipse.sirius.tree.description.TreeItemCreationTool;
 import org.eclipse.sirius.tree.description.TreeItemEditionTool;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
-import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
  * Describes the contract of the table command factory.
@@ -151,27 +148,6 @@ public interface ITreeCommandFactory extends ICommandFactory {
     // Command buildClearValue(final EObject instance, final String name);
 
     /**
-     * Create a command that is able to execute the operations of a
-     * {@link RepresentationCreationDescription}.
-     * 
-     * @param target
-     *            the target element.
-     * @param desc
-     *            the operations.
-     * @param newRepresentationName
-     *            the name of the new Representation
-     * @return the created command.
-     */
-    Command buildDoExecuteDetailsOperation(DSemanticDecorator target, RepresentationCreationDescription desc, String newRepresentationName);
-
-    /**
-     * Return the UI call back to use.
-     * 
-     * @return the UI call back to use
-     */
-    UICallBack getUserInterfaceCallBack();
-
-    /**
      * Build a direct edit label command using the corresponding tool
      * description.
      * 
@@ -233,8 +209,7 @@ public interface ITreeCommandFactory extends ICommandFactory {
      * @param javaAction
      *            the java action to execute.
      * @return a command that is able to execute the operations of
-     *         {@link org.eclipse.sirius.description.tool.JavaActionMenuItem}
-     *         .
+     *         {@link org.eclipse.sirius.description.tool.JavaActionMenuItem} .
      */
     Command buildJavaActionFromTool(ExternalJavaAction javaActionItem, DTreeItem selectedItem, IExternalJavaAction javaAction);
 }

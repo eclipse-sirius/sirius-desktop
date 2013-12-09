@@ -66,7 +66,8 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.tools.api.command.ICommandFactory#buildCreateRepresentationFromDescription(org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription,
-     *      org.eclipse.sirius.viewpoint.DRepresentationElement, java.lang.String)
+     *      org.eclipse.sirius.viewpoint.DRepresentationElement,
+     *      java.lang.String)
      */
     public CreateRepresentationCommand buildCreateRepresentationFromDescription(final RepresentationCreationDescription desc, final DRepresentationElement element, final String newDiagramName) {
         final Session session = SessionManager.INSTANCE.getSession(element.getTarget());
@@ -83,6 +84,15 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
      */
     public void setUserInterfaceCallBack(final UICallBack newCB) {
         this.uiCallBack = newCB;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.tools.api.command.ICommandFactory#getUserInterfaceCallBack()
+     */
+    public UICallBack getUserInterfaceCallBack() {
+        return this.uiCallBack;
     }
 
     /**

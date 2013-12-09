@@ -223,6 +223,19 @@
 				<code>SessionFactory.createSession(DAnalysis)</code> has been removed. It is not intended to be used, but it can be replaced by 
 				<code>SessionFactory.INSTANCE.createSession(analysis.eResource().getURI(), new NullProgressMonitor())</code>.
 			</li>
+			<li>The method 
+				<code>buildDoExecuteDetailsOperation(DSemanticDecorator, RepresentationCreationDescription, String) has been pull up from @ITableCommandFactory</code>, 
+				<code>ITreeCommandFactory</code> and 
+				<code>IDiagramCommandFactory</code> to 
+				<code>ICommandFactory</code>.
+			</li>
+			<li>The method 
+				<code>getUserInterfaceCallBack()</code> has been pull up from 
+				<code>ITableCommandFactory</code> and 
+				<code>ITreeCommandFactory</code> to 
+				<code>ICommandFactory</code>. And 
+				<code>AbstractCommandFactory</code> now implements this method.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in  
 			<code>org.eclipse.sirius.diagram</code>
@@ -282,6 +295,10 @@
 			<li>The deprecated method 
 				<code>SiriusUncontrolHandler.performUncontrol(Shell, EObject)</code> has been removed. Use the variant which takes an additional 
 				<code>IProgressMonitor</code> instead.
+			</li>
+			<li>New class 
+				<code>AbstractCreateRepresentationFromRepresentationCreationDescription</code>: Generalization of all 
+				<code>CreateRepresentationFromRepresentationCreationDescription</code> classes (iof plug-ins sirius.diagram, sirius.table.ui, sirius.tree.ui).
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.table">Changes in 

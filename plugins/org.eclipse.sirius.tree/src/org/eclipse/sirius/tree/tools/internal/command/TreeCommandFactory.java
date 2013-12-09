@@ -48,7 +48,6 @@ import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.InvalidPermissionCommand;
 import org.eclipse.sirius.tools.api.command.NoNullResourceCommand;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
-import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.command.view.JavaActionFromToolCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
@@ -99,15 +98,6 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
 
     private IPermissionAuthority getPermissionAuthority() {
         return modelAccessor.getPermissionAuthority();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tree.tools.api.command.ITreeCommandFactory#getUserInterfaceCallBack()
-     */
-    public UICallBack getUserInterfaceCallBack() {
-        return this.uiCallBack;
     }
 
     /**

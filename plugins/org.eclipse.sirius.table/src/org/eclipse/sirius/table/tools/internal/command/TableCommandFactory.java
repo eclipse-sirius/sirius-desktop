@@ -70,7 +70,6 @@ import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.InvalidPermissionCommand;
 import org.eclipse.sirius.tools.api.command.NoNullResourceCommand;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
-import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -446,15 +445,6 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
             }
         }
         return result;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#getUserInterfaceCallBack()
-     */
-    public UICallBack getUserInterfaceCallBack() {
-        return this.uiCallBack;
     }
 
     private Set<EObject> addSemanticElementsToDestroy(final DSemanticDecorator element, final Set<EObject> elementsToDestroy) {
