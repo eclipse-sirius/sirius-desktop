@@ -45,6 +45,12 @@
 				<code>getElementsProvidedByPlugin</code> from 
 				<code>EcliseUtil</code> have been removed. If you need this kind of functionality, use the Eclipse APIs directly instead.
 			</li>
+			<li>The deprecated fields 
+				<code>COLUMN_SEMANTIC</code> and 
+				<code>LINE_SEMANTIC</code> of 
+				<code>IInterpreterSiriusVariables</code> have been removed. Use the constants of 
+				<code>org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables</code> instead. 
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
 			<code>org.eclipse.sirius</code>
@@ -147,6 +153,94 @@
 				<code>CreateDiagramWithInitialOperation</code> has been removed. Use the variant which takes an additional 
 				<code>IProgressMonitor</code> instead.
 			</li>
+			<li>The deprecated method 
+				<code>SessionManager.addResource(Session, Resource)</code> has been removed. Use the 
+				<code>Session.addSemanticResource(URI, IProgressMonitor)</code> instead. In code, 
+				<code>mySessionManager.addResource(mySession, myResource)</code> should be replaced by 
+				<code>mySession.addSemanticResource(myResource.getURI(), new NullProgressMonitor())</code>. Notice that this replacement has not the exact same behavior. The notifications 
+				<code>SessionListener.ABOUT_TO_BE_REPLACED</code> and 
+				<code>SessionListener.REPLACED</code> are not thrown with 
+				<code>addSemanticResource</code> contrary to 
+				<code>addResource</code>. But this kind of notifications is more for reloading of resource.
+			</li>
+			<li>The deprecated constructor of 
+				<code>DefaultLocalSessionCreationOperation</code> have been removed. Use the variant which takes an additional 
+				<code>IProgressMonitor</code> instead.
+			</li>
+			<li>The deprecated method 
+				<code>SessionManager.getSession(URI)</code> has been removed. Use the variant which takes an additional 
+				<code>IProgressMonitor</code> instead.
+			</li>
+			<li>The deprecated method 
+				<code>SessionFactory.createSession(URI)</code> has been removed. Use the variant which takes an additional 
+				<code>IProgressMonitor</code> instead.
+			</li>
+			<li>Deprecated class 
+				<code>RefreshRepresentationCommand</code> has been removed. Use the class 
+				<code>RefreshRepresentationsCommand</code> instead.
+			</li>
+			<li>Deprecated classes 
+				<code>RevealSiriusElement</code> and  
+				<code>RevealDDiagramElement</code> have been removed. Use the class 
+				<code>RevealDDiagramElements</code> instead.
+			</li>
+			<li>The deprecated method 
+				<code>DAnalysisSession.save(Map&lt;?, ?&gt;)</code> has been removed. Use the variant which takes an additional 
+				<code>IProgressMonitor</code> instead.
+			</li>
+			<li>The deprecated method 
+				<code>MappingTableEntry.getImporter()</code> has been updated. It now returns an optional (
+				<code>org.eclipse.sirius.common.tools.api.util.Option</code>) of 
+				<code>MappingTableEntry</code>.
+			</li>
+			<li>The deprecated class 
+				<code>IEMFCommandFactory</code> has been removed. It is not used in Sirius code anymore.
+			</li>
+			<li>The deprecated method 
+				<code>IDiagramCommandFactory.buildCreateDiagramFromDescription(DiagramDescription, EObject)</code> has been removed. Use the variant which takes an additional 
+				<code>IProgressMonitor</code> instead.
+			</li>
+			<li>The deprecated methods 
+				<code>dispose()</code> and 
+				<code>disposeInterpreterRegistry(EObject)</code> have been removed from 
+				<code>InterpreterRegistry</code>. They corresponded to dead code.
+			</li>
+			<li>The deprecated method 
+				<code>InterpreterRegistry.prepareImportsFromModelElement(IInterpreter, EObject)</code> has been removed. Use 
+				<code>InterpreterRegistry.prepareImportsFromSession(IInterpreter, Session)</code> instead. To get 
+				<code>Session</code> from 
+				<code>EObject</code>, you can use 
+				<code>SessionManager.INSTANCE.getSession(EObject)</code>.
+			</li>
+			<li>The deprecated method 
+				<code>SiriusHelper.createDAnalysis()</code> has been removed. Use 
+				<code>ViewpointFactory.eINSTANCE.createDAnalysis()</code> instead.
+			</li>
+			<li>The deprecated method 
+				<code>SessionFactory.createSession(DAnalysis)</code> has been removed. It is not intended to be used, but it can be replaced by 
+				<code>SessionFactory.INSTANCE.createSession(analysis.eResource().getURI(), new NullProgressMonitor())</code>.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in  
+			<code>org.eclipse.sirius.diagram</code>
+		</h4>
+		<ul>
+			<li>The deprecated methods 
+				<code>IDiagramEdgeEditPart.refreshPath()</code> and 
+				<code>AbstractDiagramEdgeEditPart.refreshPath()</code> have been removed. It is not called in Sirius code anymore
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in  
+			<code>org.eclipse.sirius.ecore.extender</code>
+		</h4>
+		<ul>
+			<li>The deprecated methods 
+				<code>IMetamodelExtender.eDelete(EObject)</code>, 
+				<code>CompositeMetamodelExtender.eDelete(EObject)</code> and 
+				<code>ModelAccessor.eDelete(EObject)</code> have been removed. Use the variants which takes an additional 
+				<code>ECrossReferenceAdapter</code> instead. This 
+				<code>ECrossReferenceAdapter</code> can be null.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in  
 			<code>org.eclipse.sirius.ui</code>
@@ -155,6 +249,44 @@
 			<li>All deprecated methods in 
 				<code>ModelingProjectManager</code> have been removed. Use the corresponding versions which take an additional 
 				<code>IProgressMonitor</code> parameter instead.
+			</li>
+			<li>All deprecated methods in 
+				<code>ViewpointSelection</code> have been removed. Use the corresponding versions which take an additional 
+				<code>IProgressMonitor</code> parameter instead.
+			</li>
+			<li>Deprecated class 
+				<code>org.eclipse.sirius.ui.business.api.control.SiriusControlCommand</code> has been removed. Use the class 
+				<code>org.eclipse.sirius.business.api.control.SiriusControlCommand</code> instead (same constructor but with an additional 
+				<code>IProgressMonitor</code> parameter).
+				<ul>
+					<li>Ditto for 
+						<code>SiriusUnControlCommand</code>
+					</li>
+				</ul>
+			</li>
+			<li>The deprecated method 
+				<code>DialectUIServices.openEditor(Session, DRepresentation)</code> has been removed. Use the variant which takes an additional 
+				<code>IProgressMonitor</code> instead.
+			</li>
+			<li>The deprecated method 
+				<code>SessionHelper.openStartupRepresentations(Session)</code> has been removed. Use the variant which takes an additional 
+				<code>IProgressMonitor</code> instead.
+			</li>
+			<li>The deprecated method 
+				<code>SiriusControlHandler.performControl(Shell, EObject)</code> has been removed. Use the variant which takes an additional 
+				<code>IProgressMonitor</code> instead.
+			</li>
+			<li>The deprecated method 
+				<code>SiriusUncontrolHandler.performUncontrol(Shell, EObject)</code> has been removed. Use the variant which takes an additional 
+				<code>IProgressMonitor</code> instead.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.table">Changes in 
+			<code>org.eclipse.sirius.table</code>
+		</h4>
+		<ul>
+			<li>The deprecated method 
+				<code>TableHelper.getCell(DLine, String)</code> has been removed. Use the variant which take a DLine and a DColumn as parameters.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tree">Changes in 
