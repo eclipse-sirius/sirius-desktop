@@ -134,8 +134,8 @@ public interface DView extends DRefreshable {
      * Returns the value of the '<em><b>Referenced Representations</b></em>'
      * reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.DRepresentation}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> Viewpoints referenced but
-     * not contained in this analysis. <!-- end-model-doc -->
+     * --> <!-- end-user-doc --> <!-- begin-model-doc --> Viewpoints referenced
+     * but not contained in this analysis. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Referenced Representations</em>' reference
      *         list.

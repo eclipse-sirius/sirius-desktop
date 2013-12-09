@@ -146,8 +146,8 @@ public interface DAnalysisSessionEObject extends EObject {
      * {@link org.eclipse.sirius.viewpoint.description.Viewpoint}. <!--
      * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Activated Viewpoints</em>' reference list isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Activated Viewpoints</em>' reference list
+     * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * 
