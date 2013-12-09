@@ -67,7 +67,7 @@
     <module>../../plugins/org.eclipse.sirius.editor</module>
     <module>../../plugins/org.eclipse.sirius.eef.adapters</module>
     <module>../../plugins/org.eclipse.sirius.interpreter</module>
-    <module>../../plugins/org.eclipse.sirius.pim.ecore.design</module>
+    <module>../../plugins/org.eclipse.sirius.sample.ecore.design</module>
     <module>../../plugins/org.eclipse.sirius.synchronizer</module>
     <module>../../plugins/org.eclipse.sirius.table.ui</module>
     <module>../../plugins/org.eclipse.sirius.table</module>

@@ -17,7 +17,7 @@
             category="org.eclipse.emf.codegen.ecore.ui.wizardCategory"
             class="org.eclipse.sirius.ecore.design.wizard.EcoreModelerWizard"
             icon="icons/full/obj16/EcoreModelingProject.png"
-            id="org.eclipse.sirius.pim.ecore.design.wizard"
+            id="org.eclipse.sirius.sample.ecore.design.wizard"
             name="Ecore Modeling Project"
             project="true">
          <description>Create a new Modeling project to specify a domain model using the Ecore Language. 
@@ -30,27 +30,27 @@ The created project is a Java plug-in project with EMF dependencies and EMF mode
          point="org.eclipse.sirius.componentization">
       <component
             class="org.eclipse.sirius.ecore.design.service.EcoreSamplePlugin"
-            id="org.eclipse.sirius.pim.ecore.design"
+            id="org.eclipse.sirius.sample.ecore.design"
             name="Domain Model">
       </component>
    </extension>
    <extension
          point="org.eclipse.sirius.externalJavaAction">
       <javaActions
-            actionClass="org.eclipse.sirius.pim.ecore.design.action.CreateDynamicInstanceAction"
-            id="org.eclipse.sirius.pim.ecore.design.action.createDynamicInstanceActionID">
+            actionClass="org.eclipse.sirius.sample.ecore.design.action.CreateDynamicInstanceAction"
+            id="org.eclipse.sirius.sample.ecore.design.action.createDynamicInstanceActionID">
       </javaActions>
    </extension>
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.eclipse.sirius.pim.ecore.design.editor.EcoreEntitiesReadOnlyEditor"
+            class="org.eclipse.sirius.sample.ecore.design.editor.EcoreEntitiesReadOnlyEditor"
             contributorClass="org.eclipse.sirius.diagram.part.SiriusDiagramActionBarContributor"
             default="false"
             extensions="ecore"
             icon="icons/full/obj16/EcoreModelFile.gif"
-            id="org.eclipse.sirius.pim.ecore.design.editor.entities"
-            matchingStrategy="org.eclipse.sirius.pim.ecore.design.editor.EcoreEntitiesMatchingStrategy"
+            id="org.eclipse.sirius.sample.ecore.design.editor.entities"
+            matchingStrategy="org.eclipse.sirius.sample.ecore.design.editor.EcoreEntitiesMatchingStrategy"
             name="Sirius Ecore Editor">
       </editor>
    </extension>   
@@ -60,7 +60,7 @@ The created project is a Java plug-in project with EMF dependencies and EMF mode
     <!-- Extensions for the "Sirius" perspective -->
   <extension point="org.eclipse.ui.perspectiveExtensions">
     <perspectiveExtension targetID="org.eclipse.sirius.ui.tools.perspective.design">
-      <newWizardShortcut id="org.eclipse.sirius.pim.ecore.design.wizard" />
+      <newWizardShortcut id="org.eclipse.sirius.sample.ecore.design.wizard" />
     </perspectiveExtension>
   </extension>
   
@@ -69,7 +69,7 @@ The created project is a Java plug-in project with EMF dependencies and EMF mode
      <commonWizard
            menuGroupId="org.eclipse.sirius.category"
            type="new"
-           wizardId="org.eclipse.sirius.pim.ecore.design.wizard">
+           wizardId="org.eclipse.sirius.sample.ecore.design.wizard">
         <enablement>
            <with variable="activeWorkbenchWindow.activePerspective">
               <or>

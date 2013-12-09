@@ -178,7 +178,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" name="Abstract Class" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.pim.ecore.design/icons/full/obj16/AbstractClass.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" name="Abstract Class" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/AbstractClass.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -188,7 +188,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.pim.ecore.design/icons/full/obj16/Interface.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Interface.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -556,17 +556,17 @@
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open Entities User Guide Action" id="org.eclipse.sirius.ui.business.api.action.openHelpSection">
-                <parameters name="href" value="/org.eclipse.sirius.pim.ecore.design/doc/user-guide.html#design.entities"/>
+                <parameters name="href" value="/org.eclipse.sirius.sample.ecore.design/doc/user-guide.html#design.entities"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Dynamic">
-          <ownedTools xsi:type="tool:ToolDescription" name="Dynamic instance" precondition="[oclIsKindOf(ecore::EClass)/]" iconPath="/org.eclipse.sirius.pim.ecore.design/icons/full/obj16/DynamicInstance.gif">
+          <ownedTools xsi:type="tool:ToolDescription" name="Dynamic instance" precondition="[oclIsKindOf(ecore::EClass)/]" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/DynamicInstance.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Create dynamic instance of a specified EClass" id="org.eclipse.sirius.pim.ecore.design.action.createDynamicInstanceActionID">
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Create dynamic instance of a specified EClass" id="org.eclipse.sirius.sample.ecore.design.action.createDynamicInstanceActionID">
                 <parameters name="eClass" value="var:element"/>
               </firstModelOperations>
             </initialOperation>
@@ -670,11 +670,11 @@
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.ecore.design.service.DesignServices"/>
   </ownedViewpoints>
   <ownedViewpoints endUserDocumentation="Add support for archeypes-based modeling to the Entities modeler." name="Archetype" modelFileExtension="ecore">
-    <ownedRepresentationExtensions xsi:type="description:DiagramExtensionDescription" name="Entities With Archetypes" viewpointURI="viewpoint:/org.eclipse.sirius.pim.ecore.design/Design" representationName="Entities">
+    <ownedRepresentationExtensions xsi:type="description:DiagramExtensionDescription" name="Entities With Archetypes" viewpointURI="viewpoint:/org.eclipse.sirius.sample.ecore.design/Design" representationName="Entities">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <layers name="Archetypes" activeByDefault="true">
         <toolSections name="Archetype">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a moment or interval of time that we need to track for business or legal reasons? " name="MomentInterval" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.pim.ecore.design/icons/full/obj16/MomentInterval.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a moment or interval of time that we need to track for business or legal reasons? " name="MomentInterval" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/MomentInterval.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -692,7 +692,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a catalog-entry like description? " name="Description" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.pim.ecore.design/icons/full/obj16/Description.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a catalog-entry like description? " name="Description" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Description.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -710,7 +710,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a role being played by a party (person or organization), place or thing? " name="Role" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.pim.ecore.design/icons/full/obj16/Role.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a role being played by a party (person or organization), place or thing? " name="Role" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Role.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -728,7 +728,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Place/Thing" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.pim.ecore.design/icons/full/obj16/Thing.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Place/Thing" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Thing.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -796,7 +796,7 @@
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open Dependencies User Guide Action" id="org.eclipse.sirius.ui.business.api.action.openHelpSection">
-                <parameters name="href" value="/org.eclipse.sirius.pim.ecore.design/doc/user-guide.html#quality.dependencies"/>
+                <parameters name="href" value="/org.eclipse.sirius.sample.ecore.design/doc/user-guide.html#quality.dependencies"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -869,7 +869,7 @@
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open Relations User Guide Action" id="org.eclipse.sirius.ui.business.api.action.openHelpSection">
-                <parameters name="href" value="/org.eclipse.sirius.pim.ecore.design/doc/user-guide.html#quality.relations"/>
+                <parameters name="href" value="/org.eclipse.sirius.sample.ecore.design/doc/user-guide.html#quality.relations"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -1055,14 +1055,14 @@
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open Hierarchy User Guide Action" id="org.eclipse.sirius.ui.business.api.action.openHelpSection">
-                <parameters name="href" value="/org.eclipse.sirius.pim.ecore.design/doc/user-guide.html#quality.hierarchy"/>
+                <parameters name="href" value="/org.eclipse.sirius.sample.ecore.design/doc/user-guide.html#quality.hierarchy"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentationExtensions xsi:type="description:DiagramExtensionDescription" name="Entities" viewpointURI="viewpoint:/org.eclipse.sirius.pim.ecore.design/Design" representationName="Entities">
+    <ownedRepresentationExtensions xsi:type="description:DiagramExtensionDescription" name="Entities" viewpointURI="viewpoint:/org.eclipse.sirius.sample.ecore.design/Design" representationName="Entities">
       <layers name="Size">
         <containerMappings xsi:type="description:ContainerMappingImport" name="Doc Class" semanticCandidatesExpression="feature:eAllContents" reusedNodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']" importedMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" childrenPresentation="List">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelFormat="italic" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Size%20Based%20Color']">

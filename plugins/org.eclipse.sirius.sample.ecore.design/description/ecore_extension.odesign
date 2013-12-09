@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Ecore documentation extension" version="6.7.0.201302071200">
   <ownedViewpoints endUserDocumentation="Contributes a layer to manage documentation annotations in the Entities modeler." name="Documentation" modelFileExtension="ecore">
-    <ownedRepresentationExtensions xsi:type="description:DiagramExtensionDescription" name="Entities" viewpointURI="viewpoint:/org.eclipse.sirius.pim.ecore.design/Design" representationName="Entities">
+    <ownedRepresentationExtensions xsi:type="description:DiagramExtensionDescription" name="Entities" viewpointURI="viewpoint:/org.eclipse.sirius.sample.ecore.design/Design" representationName="Entities">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <layers endUserDocumentation="Add support for documentation annotations." name="Documentation">
         <nodeMappings name="EC Doc Annotation" labelDirectEdit="//@ownedViewpoints[name='Documentation']/@ownedRepresentationExtensions[name='Entities']/@layers[name='Documentation']/@toolSections.0/@ownedTools[name='Edit%20Detail']" semanticCandidatesExpression="[eContents(ecore::EModelElement).eAnnotations->union(eContents(ecore::EClass).eStructuralFeatures.eAnnotations)->union(self->filter(ecore::EModelElement).eAnnotations->asSequence()).details->select(key = 'documentation')/]" domainClass="EStringToStringMapEntry">
