@@ -56,8 +56,13 @@ public class DLineExpansionChecker implements Listener {
         control.getDisplay().addFilter(SWT.Resize, this);
     }
 
-    public void setDTableViewerManager(DTableViewerManager dTableViewerManager) {
-        this.dTableViewerManager = dTableViewerManager;
+    /**
+     * Sets the DTableViewerManager.
+     * 
+     * @param manager the table viewer manager.
+     */
+    public void setDTableViewerManager(DTableViewerManager manager) {
+        this.dTableViewerManager = manager;
         this.dTable = (DTable) this.dTableViewerManager.getEditor().getRepresentation();
     }
 

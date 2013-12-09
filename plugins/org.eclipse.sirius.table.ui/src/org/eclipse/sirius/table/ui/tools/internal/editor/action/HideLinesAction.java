@@ -56,8 +56,8 @@ public class HideLinesAction extends AbstractTransactionalTableAction {
     /**
      * Set the line on which the tool of this action applied.
      * 
-     * @param line
-     *            the line to set
+     * @param linesToHide
+     *            the line to set.
      */
     public void setLines(final Collection<DLine> linesToHide) {
         this.lines.clear();

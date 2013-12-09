@@ -348,17 +348,17 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
                 Resource resource = resourceSet.getResource(resourceURI, false);
                 if (resource == null) {
                     SiriusDiagramEditorPlugin.getInstance().logError("No resource in resourceSet corresponding to " + resourceURI.toString());
-                } else {
-                    String fragment = inputURI.fragment();
-                    if (fragment != null) {
-                        EObject intputEObject = resource.getEObject(fragment);
-                        IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resourceSet);
-                        isModifiable = intputEObject != null && permissionAuthority.canEditInstance(intputEObject);
-                        if (isModifiable && intputEObject instanceof Diagram) {
-                            Diagram diagram = (Diagram) intputEObject;
-                            EObject diagramElt = diagram.getElement();
-                            isModifiable = permissionAuthority.canEditInstance(diagramElt);
-                        }
+                    return isModifiable;
+                }
+                String fragment = inputURI.fragment();
+                if (fragment != null) {
+                    EObject intputEObject = resource.getEObject(fragment);
+                    IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resourceSet);
+                    isModifiable = intputEObject != null && permissionAuthority.canEditInstance(intputEObject);
+                    if (isModifiable && intputEObject instanceof Diagram) {
+                        Diagram diagram = (Diagram) intputEObject;
+                        EObject diagramElt = diagram.getElement();
+                        isModifiable = permissionAuthority.canEditInstance(diagramElt);
                     }
                 }
             }

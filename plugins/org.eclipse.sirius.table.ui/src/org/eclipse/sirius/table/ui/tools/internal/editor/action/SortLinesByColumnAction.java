@@ -57,8 +57,6 @@ public class SortLinesByColumnAction extends Action {
      * 
      * @param domain
      *            The transactional editing domain
-     * @param tableCommandFactory
-     *            The EMF command factory
      */
     public SortLinesByColumnAction(final TransactionalEditingDomain domain) {
         super(DEFAULT_NAME, DTableViewerManager.getImageRegistry().getDescriptor(DTableViewerManager.SORT_BY_COLUMN));

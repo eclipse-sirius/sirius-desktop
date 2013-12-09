@@ -34,12 +34,15 @@ import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
  */
-public class DTableEditorUtil {
+public final class DTableEditorUtil {
+    private DTableEditorUtil() {
+        // Prevents instanciation/
+    }
 
     /**
      * Adds a new column to the given viewer, at the given position.
      * 
-     * @param dTableViewerManager
+     * @param treeViewerManager
      *            the table viewer on which the new column should be added
      * @param position
      *            the position of the column
@@ -64,7 +67,7 @@ public class DTableEditorUtil {
      * Updates the viewer columns according to the given {@link DTable} :
      * creates, deletes and update columns width if needed.
      * 
-     * @param dTableTreeViewer
+     * @param treeViewerManager
      *            the table viewer to update
      * @param dTable
      *            the {@link DTable} reflecting the expected viewer state

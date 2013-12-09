@@ -185,11 +185,11 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                 }
 
                 private boolean isEnvironmentResource(final Object element) {
-                    return (element instanceof Resource && ((Resource) element).getURI() != null && "environment:/viewpoint".equals(((Resource) element).getURI().toString()));
+                    return element instanceof Resource && ((Resource) element).getURI() != null && "environment:/viewpoint".equals(((Resource) element).getURI().toString());
                 }
 
                 private boolean isMigrationAnnotation(final Object element) {
-                    return (element instanceof DAnnotation && ((DAnnotation) element).eContainer() instanceof Group);
+                    return element instanceof DAnnotation && ((DAnnotation) element).eContainer() instanceof Group;
                 }
             });
             validationDecorator = new ValidationDecoration();
@@ -216,48 +216,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             decoratingLabelProvider.setLabelDecorator(new SiriusInterpreterErrorDecorator(this.getURIFromInput(getEditorInput())));
 
             if (Movida.isEnabled()) {
-                /*
-                 * Customize the content provider not to show the whole
-                 * resources loaded by dependency, but only the Viewpoints (inside
-                 * these resources) which the main VSM depend on.
-                 */
-                final ViewpointRegistry registry = (ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance();
-                selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory) {
-                    @Override
-                    public Object[] getElements(Object object) {
-                        if (object instanceof ResourceSet) {
-                            Set<EObject> viewpoints = getRequiredViewpoints(registry, (ResourceSet) object);
-                            List<Object> elements = Lists.newArrayList();
-                            Resource mainResource = ((ResourceSet) object).getResources().get(0);
-                            elements.add(mainResource);
-                            for (Viewpoint additionalVP : Iterables.filter(viewpoints, Viewpoint.class)) {
-                                if (additionalVP.eResource() != null && additionalVP.eResource() != mainResource) {
-                                    elements.add(additionalVP);
-                                }
-                            }
-                            return elements.toArray();
-                        } else {
-                            return super.getElements(object);
-                        }
-                    }
-
-                    private Set<EObject> getRequiredViewpoints(final ViewpointRegistry registry, ResourceSet resourceSet) {
-                        Set<EObject> viewpoints = Sets.newHashSet();
-                        for (final URI uri : loader.getRequiredViewpoints()) {
-                            Option<URI> provider = registry.getProvider(uri);
-                            if (provider.some()) {
-                                Resource res = resourceSet.getResource(provider.get(), true);
-                                viewpoints.add(Iterables.find(registry.getSiriusResourceHandler().collectViewpointDefinitions(res), new Predicate<Viewpoint>() {
-                                    public boolean apply(Viewpoint input) {
-                                        Option<URI> inputURI = new ViewpointQuery(input).getViewpointURI();
-                                        return inputURI.some() && inputURI.get().equals(uri);
-                                    }
-                                }));
-                            }
-                        }
-                        return viewpoints;
-                    }
-                });
+                customizeContentProvider();
             }
 
             selectionViewer.setLabelProvider(decoratingLabelProvider);
@@ -265,15 +224,12 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
 
                 public void doubleClick(DoubleClickEvent event) {
                     ISelection selection = selectionViewer.getSelection();
-                    if (selection instanceof StructuredSelection) {
-                        Object selected = ((StructuredSelection) selection).getFirstElement();
-                        if (selected instanceof EObject) {
-                            EObject selectedEObject = (EObject) selected;
-                            if (RepresentationTemplateEditManager.INSTANCE.isGenerated(selectedEObject)) {
-                                EObject original = RepresentationTemplateEditManager.INSTANCE.getSourceElement(selectedEObject);
-                                if (original != null) {
-                                    setSelectionToViewer(Collections.singleton(editingDomain.getWrapper(original)));
-                                }
+                    if (selection instanceof StructuredSelection && ((StructuredSelection) selection).getFirstElement() instanceof EObject) {
+                        EObject selectedEObject = (EObject) ((StructuredSelection) selection).getFirstElement();
+                        if (RepresentationTemplateEditManager.INSTANCE.isGenerated(selectedEObject)) {
+                            EObject original = RepresentationTemplateEditManager.INSTANCE.getSourceElement(selectedEObject);
+                            if (original != null) {
+                                setSelectionToViewer(Collections.singleton(editingDomain.getWrapper(original)));
                             }
                         }
                     }
@@ -285,6 +241,51 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             tbm.update(true);
         }
         editingDomain.getResourceSet().eAdapters().add(templateUpdateTrigger);
+    }
+
+    /**
+     * Customize the content provider not to show the whole resources loaded by
+     * dependency, but only the Viewpoints (inside these resources) which the
+     * main VSM depend on.
+     */
+    private void customizeContentProvider() {
+        final ViewpointRegistry registry = (ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance();
+        selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory) {
+            @Override
+            public Object[] getElements(Object object) {
+                if (object instanceof ResourceSet) {
+                    Set<EObject> viewpoints = getRequiredViewpoints(registry, (ResourceSet) object);
+                    List<Object> elements = Lists.newArrayList();
+                    Resource mainResource = ((ResourceSet) object).getResources().get(0);
+                    elements.add(mainResource);
+                    for (Viewpoint additionalVP : Iterables.filter(viewpoints, Viewpoint.class)) {
+                        if (additionalVP.eResource() != null && additionalVP.eResource() != mainResource) {
+                            elements.add(additionalVP);
+                        }
+                    }
+                    return elements.toArray();
+                } else {
+                    return super.getElements(object);
+                }
+            }
+
+            private Set<EObject> getRequiredViewpoints(final ViewpointRegistry registry, ResourceSet resourceSet) {
+                Set<EObject> viewpoints = Sets.newHashSet();
+                for (final URI uri : loader.getRequiredViewpoints()) {
+                    Option<URI> provider = registry.getProvider(uri);
+                    if (provider.some()) {
+                        Resource res = resourceSet.getResource(provider.get(), true);
+                        viewpoints.add(Iterables.find(registry.getSiriusResourceHandler().collectViewpointDefinitions(res), new Predicate<Viewpoint>() {
+                            public boolean apply(Viewpoint input) {
+                                Option<URI> inputURI = new ViewpointQuery(input).getViewpointURI();
+                                return inputURI.some() && inputURI.get().equals(uri);
+                            }
+                        }));
+                    }
+                }
+                return viewpoints;
+            }
+        });
     }
 
     private ToolBarManager getToolBarManager() {
@@ -316,7 +317,9 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         Resource resource = null;
         try {
             resource = editingDomain.getResourceSet().getResource(resourceURI, true);
+            // CHECKSTYLE:OFF
         } catch (Exception e) {
+            // CHECKSTYLE:ON
             exception = e;
             resource = editingDomain.getResourceSet().getResource(resourceURI, false);
         }
@@ -335,23 +338,19 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
     }
 
     private URI getURIFromInput(IEditorInput input) {
+        final URI result;
         if (input == null) {
-            return null;
+            result = null;
+        } else if (input instanceof IFileEditorInput) {
+            result = URI.createPlatformResourceURI(((IFileEditorInput) getEditorInput()).getFile().getFullPath().toString(), false);
+        } else if (input instanceof URIEditorInput) {
+            result = ((URIEditorInput) input).getURI();
+        } else if (input instanceof IPathEditorInput) {
+            result = URI.createFileURI(((IPathEditorInput) input).getPath().toOSString());
+        } else {
+            result = (URI) input.getAdapter(URI.class);
         }
-        if (input instanceof IFileEditorInput) {
-            return URI.createPlatformResourceURI(((IFileEditorInput) getEditorInput()).getFile().getFullPath().toString(), false);
-        }
-        if (input instanceof URIEditorInput) {
-            return ((URIEditorInput) input).getURI();
-        }
-        if (input instanceof IPathEditorInput) {
-            return URI.createFileURI(((IPathEditorInput) input).getPath().toOSString());
-        }
-        URI uri = (URI) input.getAdapter(URI.class);
-        if (uri != null) {
-            return uri;
-        }
-        return null;
+        return result;
     }
 
     /**
@@ -395,7 +394,9 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                                 ((XMLResource) resource).getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER, vsmURIHandler);
                             }
                             resource.save(Collections.emptyMap());
+                            // CHECKSTYLE:OFF
                         } catch (Exception exception) {
+                            // CHECKSTYLE:ON
                             resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
                         }
                         first = false;
@@ -410,7 +411,9 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
 
             ((BasicCommandStack) editingDomain.getCommandStack()).saveIsDone();
             firePropertyChange(IEditorPart.PROP_DIRTY);
+            // CHECKSTYLE:OFF
         } catch (Exception exception) {
+            // CHECKSTYLE:ON
             SiriusEditorPlugin.INSTANCE.log(exception);
         }
         updateProblemIndication = true;

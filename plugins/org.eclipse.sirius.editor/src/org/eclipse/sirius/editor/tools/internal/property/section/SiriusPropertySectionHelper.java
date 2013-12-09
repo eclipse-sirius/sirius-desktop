@@ -14,6 +14,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.jface.viewers.TreePath;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.DiagramDescription;
 import org.eclipse.sirius.viewpoint.description.DiagramImportDescription;
 
@@ -23,7 +26,10 @@ import org.eclipse.sirius.viewpoint.description.DiagramImportDescription;
  * @author fbarbin
  * 
  */
-public class AbstractSiriusPropertySectionHelper {
+public final class SiriusPropertySectionHelper {
+    private SiriusPropertySectionHelper() {
+        // Prevent instanciation.
+    }
 
     /**
      * Check if the given eObject is a child of the diagram description.
@@ -36,19 +42,12 @@ public class AbstractSiriusPropertySectionHelper {
      *         otherwise false.
      */
     public static boolean isChildOfDiagramDescription(EObject eObject, DiagramDescription diagramDescription) {
-        EObject current = eObject;
-        while (current != null) {
-            if ((current instanceof DiagramDescription)) {
-                if (current.equals(diagramDescription)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                current = current.eContainer();
-            }
+        if (eObject.equals(diagramDescription)) {
+            return true;
+        } else {
+            Option<EObject> desc = new EObjectQuery(eObject).getFirstAncestorOfType(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION);
+            return desc.some() && desc.get().equals(diagramDescription);
         }
-        return false;
     }
 
     /**

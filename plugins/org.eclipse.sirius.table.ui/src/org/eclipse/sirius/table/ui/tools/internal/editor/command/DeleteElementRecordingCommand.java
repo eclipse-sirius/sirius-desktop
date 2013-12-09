@@ -28,7 +28,7 @@ public class DeleteElementRecordingCommand extends RecordingCommand {
     DTableElement elementToDelete;
 
     /**
-     * {@inheritDoc}
+     * Create a new DeleteElementRecordingCommand.
      * 
      * @param domain
      *            my domain

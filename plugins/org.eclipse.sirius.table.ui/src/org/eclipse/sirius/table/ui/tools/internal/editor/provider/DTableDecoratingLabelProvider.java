@@ -29,8 +29,13 @@ public class DTableDecoratingLabelProvider extends DTableColumnLabelProvider imp
     private ILabelDecorator decorator;
 
     /**
+     * Create a new DTableDecoratingLabelProvider.
+     * 
      * @param newColumn
+     *            the column to decorate.
+     * 
      * @param decorator
+     *            the decorator to use.
      */
     public DTableDecoratingLabelProvider(DColumn newColumn, ILabelDecorator decorator) {
         super(newColumn);

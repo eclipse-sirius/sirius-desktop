@@ -38,6 +38,9 @@ public class DColumnSorter extends DTableElementSorter<DColumn> {
         this.dLine = dLine;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected String getSortLabel(final DColumn column) {
         Option<DCell> optionalCell = TableHelper.getCell(dLine, column);
         if (optionalCell.some()) {

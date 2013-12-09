@@ -39,7 +39,7 @@ public class CreateColumnCommandFromToolCommand extends RecordingCommand {
     private CreateTool createTool;
 
     /**
-     * {@inheritDoc}
+     * Create a new CreateColumnCommandFromToolCommand.
      * 
      * @param domain
      *            my domain

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<fileset-config file-format-version="1.2.0" simple-config="true">
-    <local-check-config name="Viewpoint" location="/Viewpoint/dev/code/CheckstyleConfiguration.xml" type="project" description="">
-        <additional-data name="protect-config-file" value="false"/>
-    </local-check-config>
-    <fileset name="tous" enabled="true" check-config-name="Viewpoint" local="true">
-        <file-match-pattern match-pattern="." include-pattern="true"/>
-    </fileset>
-    <filter name="FilesFromPackage" enabled="true">
-        <filter-data value="src-gen"/>
-        <filter-data value="src/org/eclipse/sirius/ui/tools/internal/aird"/>
-    </filter>
+
+<fileset-config file-format-version="1.2.0" simple-config="true" sync-formatter="false">
+  <fileset name="all" enabled="true" check-config-name="Sirius Checks" local="false">
+    <file-match-pattern match-pattern="." include-pattern="true"/>
+  </fileset>
+  <filter name="FilesFromPackage" enabled="true">
+    <filter-data value="src-gen"/>
+  </filter>
 </fileset-config>

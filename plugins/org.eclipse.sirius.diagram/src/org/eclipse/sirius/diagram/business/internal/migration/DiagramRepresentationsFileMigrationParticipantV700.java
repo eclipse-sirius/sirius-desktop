@@ -12,14 +12,13 @@ package org.eclipse.sirius.diagram.business.internal.migration;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.osgi.framework.Version;
 
 /**
- * The migration code of Sirius 7.0.0:
+ * The migration code of Sirius 7.0.0.
  * <UL>
- * <LI>Change the {@link Diagram} type</LI>
+ * <LI>Change the {@code Diagram} type</LI>
  * </UL>
  * 
  * @author lredor
@@ -40,8 +39,6 @@ public class DiagramRepresentationsFileMigrationParticipantV700 {
      *            the feature to set value.
      * @param value
      *            the initial serialized value.
-     * @param loadedVersion
-     *            the loaded version of model to migrate.
      * @return a new value if has to be changed otherwise null.
      */
     public Object getValue(EObject object, EStructuralFeature feature, Object value) {

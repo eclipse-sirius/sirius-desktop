@@ -57,6 +57,9 @@ public class EReferenceCustomizationReferenceNameContentProposalProvider impleme
         this.eReferenceCustomization = eReferenceCustomization;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public IContentProposal[] getProposals(String contents, int position) {
         List<IContentProposal> proposals = new ArrayList<IContentProposal>();
         String incompleteText = contents.substring(0, position);

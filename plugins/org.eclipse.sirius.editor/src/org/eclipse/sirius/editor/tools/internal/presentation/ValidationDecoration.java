@@ -36,7 +36,7 @@ public class ValidationDecoration extends LabelDecorator {
     public static final ImageDescriptor ERROR_OVERLAY_DESC = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/validation/error_co.gif"); //$NON-NLS-1$;
 
     /**
-     * Image descriptor for warning overlay
+     * Image descriptor for warning overlay.
      */
     public static final ImageDescriptor WARNING_OVERLAY_DESC = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/validation/warning_co.gif"); //$NON-NLS-1$
 
@@ -150,7 +150,7 @@ public class ValidationDecoration extends LabelDecorator {
         return true;
     }
 
-    private void processDiagnostic(Diagnostic diagnostic, Map<Object, Integer> severityMap) {
+    private static void processDiagnostic(Diagnostic diagnostic, Map<Object, Integer> severityMap) {
         if (diagnostic.getChildren().size() == 0 && diagnostic.getCode() == 0) {
             Iterator<Object> it = severityMap.keySet().iterator();
             while (it.hasNext()) {
@@ -177,6 +177,12 @@ public class ValidationDecoration extends LabelDecorator {
         listeners.remove(listener);
     }
 
+    /**
+     * Sets the diagnostics for the validation.
+     * 
+     * @param diagnostic
+     *            the diagnostics.
+     */
     public void setDiagnostics(Diagnostic diagnostic) {
         Map<Object, Integer> oldSeverityMap = severityMap;
         processDiagnostic(diagnostic, severityMap);

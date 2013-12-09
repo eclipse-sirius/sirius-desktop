@@ -56,6 +56,9 @@ public class EAttributeCustomizationAttributeNameContentProposalProvider impleme
         this.eAttributeCustomization = eAttributeCustomization;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public IContentProposal[] getProposals(String contents, int position) {
         List<IContentProposal> proposals = new ArrayList<IContentProposal>();
         String incompleteText = contents.substring(0, position);

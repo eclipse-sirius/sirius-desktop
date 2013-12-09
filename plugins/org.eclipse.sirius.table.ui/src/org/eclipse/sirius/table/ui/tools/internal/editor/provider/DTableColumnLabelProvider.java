@@ -198,7 +198,7 @@ public class DTableColumnLabelProvider extends ColumnLabelProvider {
      * Get the cell.
      * 
      * @param element
-     * @param cell
+     *            the DLine or DCell in which to look.
      * @return an optional cell
      */
     protected Option<DCell> getDCell(final Object element) {

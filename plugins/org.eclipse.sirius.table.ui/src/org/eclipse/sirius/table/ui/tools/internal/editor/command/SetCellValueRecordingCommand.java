@@ -31,7 +31,7 @@ public class SetCellValueRecordingCommand extends RecordingCommand {
     private ITableCommandFactory tableCommandFactory;
 
     /**
-     * {@inheritDoc}
+     * Create a new SetCellValueRecordingCommand.
      * 
      * @param domain
      *            my domain

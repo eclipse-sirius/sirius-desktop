@@ -213,26 +213,7 @@ class TreeDescriptionBuilderFromEClass {
 
         Option<EAttribute> editableName = lookForEditableName(eClassToStartFrom);
         if (editableName.some()) {
-            EAttribute editableFeature = editableName.get();
-            TreeItemEditionTool editTool = DescriptionFactory.eINSTANCE.createTreeItemEditionTool();
-            editTool.setName(editableFeature.getName());
-            EditMaskVariables maskVar = ToolFactory.eINSTANCE.createEditMaskVariables();
-            maskVar.setMask("{0}");
-            editTool.setMask(maskVar);
-
-            SetValue setVal = ToolFactory.eINSTANCE.createSetValue();
-            setVal.setFeatureName(editableFeature.getName());
-            setVal.setValueExpression("<%$0%>");
-
-            ElementDropVariable elementVar = ToolFactory.eINSTANCE.createElementDropVariable();
-            elementVar.setName("element");
-            editTool.setElement(elementVar);
-
-            ElementDropVariable rootVar = ToolFactory.eINSTANCE.createElementDropVariable();
-            elementVar.setName("root");
-            editTool.setRoot(rootVar);
-            editTool.setFirstModelOperation(setVal);
-            map.setDirectEdit(editTool);
+            handleEditableName(map, editableName);
         }
 
         doneClasses.put(eClassToStartFrom, map);
@@ -302,6 +283,29 @@ class TreeDescriptionBuilderFromEClass {
         return map;
     }
 
+    protected void handleEditableName(TreeItemMapping map, Option<EAttribute> editableName) {
+        EAttribute editableFeature = editableName.get();
+        TreeItemEditionTool editTool = DescriptionFactory.eINSTANCE.createTreeItemEditionTool();
+        editTool.setName(editableFeature.getName());
+        EditMaskVariables maskVar = ToolFactory.eINSTANCE.createEditMaskVariables();
+        maskVar.setMask("{0}");
+        editTool.setMask(maskVar);
+
+        SetValue setVal = ToolFactory.eINSTANCE.createSetValue();
+        setVal.setFeatureName(editableFeature.getName());
+        setVal.setValueExpression("<%$0%>");
+
+        ElementDropVariable elementVar = ToolFactory.eINSTANCE.createElementDropVariable();
+        elementVar.setName("element");
+        editTool.setElement(elementVar);
+
+        ElementDropVariable rootVar = ToolFactory.eINSTANCE.createElementDropVariable();
+        elementVar.setName("root");
+        editTool.setRoot(rootVar);
+        editTool.setFirstModelOperation(setVal);
+        map.setDirectEdit(editTool);
+    }
+
     private String qualifiedName(EClass eClassToStartFrom) {
         return eClassToStartFrom.getEPackage().getName() + "." + eClassToStartFrom.getName();
     }
@@ -326,7 +330,7 @@ class TreeDescriptionBuilderFromEClass {
             Iterator<CreateInstance> itNewInstance = Iterators.filter(cur.eAllContents(), CreateInstance.class);
             while (itNewInstance.hasNext()) {
                 CreateInstance newInstance = itNewInstance.next();
-                if ((referenceName).equals(newInstance.getReferenceName())) {
+                if (referenceName.equals(newInstance.getReferenceName())) {
                     found = cur;
                 }
             }

@@ -35,7 +35,7 @@ import com.google.common.collect.Multimap;
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class VSMRequirementChangeAdapter extends EContentAdapter {
+class VSMRequirementChangeAdapter extends EContentAdapter {
     private final Resource resource;
 
     private final DynamicVSMLoader loader;

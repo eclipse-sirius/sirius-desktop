@@ -38,6 +38,9 @@ public class DLineSorter extends DTableElementSorter<DLine> {
         this.dColumn = dColumn;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     protected String getSortLabel(final DLine line) {
         String result = "";
         if (dColumn == null) {

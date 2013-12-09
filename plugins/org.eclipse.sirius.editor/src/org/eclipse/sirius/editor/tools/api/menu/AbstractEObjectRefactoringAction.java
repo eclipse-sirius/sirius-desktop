@@ -69,20 +69,11 @@ public abstract class AbstractEObjectRefactoringAction extends StaticSelectionCo
      */
     @Override
     public String getText() {
-        // If the Action is correctly associated to a command
         if (command != null) {
-            // If the selection is valid
-            if (isEnabled()) {
-                // We use the label associated to the command
-                return command.getLabel();
-            } else {
-                // Otherwise, as no valid command has been created, we use the
-                // default label associated to this action
-                return getTextIfDisable();
-            }
-
+            return isEnabled() ? command.getLabel() : getTextIfDisable();
+        } else {
+            return super.getText();
         }
-        return super.getText();
     }
 
     /**
@@ -132,9 +123,8 @@ public abstract class AbstractEObjectRefactoringAction extends StaticSelectionCo
      * </ul>
      * </p>
      * 
-     * @return
+     * @return <code>true</code> if the selection is valid.
      */
-    // see VP-1243
     public boolean isSelectionValid() {
         return this.isSelectionValid;
     }
@@ -143,11 +133,11 @@ public abstract class AbstractEObjectRefactoringAction extends StaticSelectionCo
      * Sets a value that indicates if the selection used to build the action is
      * valid.
      * 
-     * @param isSelectionValid
-     *            the new value
+     * @param valid
+     *            the new value.
      */
-    protected void setSelectionValid(boolean isSelectionValid) {
-        this.isSelectionValid = isSelectionValid;
+    protected void setSelectionValid(boolean valid) {
+        this.isSelectionValid = valid;
     }
 
     /**
@@ -166,12 +156,12 @@ public abstract class AbstractEObjectRefactoringAction extends StaticSelectionCo
      * but isn't enabled. This text should still explain the expected behavior
      * of this action.
      * 
-     * @param textIfDisable
+     * @param textForInvalidSelection
      *            the text associated to this Action if it has a valid selection
      *            but isn't enabled
      */
-    protected void setTextIfDisable(String textForUnvalidSelection) {
-        this.textIfDisable = textForUnvalidSelection;
+    protected void setTextIfDisable(String textForInvalidSelection) {
+        this.textIfDisable = textForInvalidSelection;
     }
 
     /**
@@ -198,23 +188,27 @@ public abstract class AbstractEObjectRefactoringAction extends StaticSelectionCo
      * @return the selectionProvider of the current Active Site
      */
     private static Option<ISelectionProvider> getActiveSiteSelectionProvider() {
-        Option<ISelectionProvider> result = Options.newNone();
+        Option<IWorkbenchPartSite> site = getSite();
+        if (site.some()) {
+            ISelectionProvider selectionProvider = site.get().getSelectionProvider();
+            if (selectionProvider != null) {
+                return Options.newSome(selectionProvider);
+            }
+        }
+        return Options.newNone();
+    }
+
+    private static Option<IWorkbenchPartSite> getSite() {
         IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
         if (activeWorkbenchWindow != null) {
             IWorkbenchPage activePage = activeWorkbenchWindow.getActivePage();
             if (activePage != null) {
                 IWorkbenchPart activePart = activePage.getActivePart();
                 if (activePart != null) {
-                    IWorkbenchPartSite site = activePart.getSite();
-                    if (site != null) {
-                        ISelectionProvider selectionProvider = site.getSelectionProvider();
-                        if (selectionProvider != null) {
-                            result = Options.newSome(selectionProvider);
-                        }
-                    }
+                    return Options.fromNullable(activePart.getSite());
                 }
             }
         }
-        return result;
+        return Options.newNone();
     }
 }

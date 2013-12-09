@@ -21,7 +21,7 @@ import org.eclipse.ui.IWorkbench;
 public class DescriptionModelWizardSpec extends DescriptionModelWizard {
 
     /**
-     * This just records the information.
+     * {@inheritDoc}
      */
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         this.workbench = workbench;

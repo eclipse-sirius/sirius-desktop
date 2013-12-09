@@ -43,7 +43,7 @@ public class CreateRepresentationFromRepresentationCreationDescription extends A
      * 
      * @param desc
      *            {@link RepresentationCreationDescription} to use.
-     * @param dNode
+     * @param target
      *            node on which the user requested the creation of a new
      *            representation.
      * @param editingDomain

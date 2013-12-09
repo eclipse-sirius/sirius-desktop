@@ -30,7 +30,7 @@ import org.eclipse.sirius.editor.editorPlugin.IAdapterFactoryProvider;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
-import org.eclipse.sirius.editor.tools.internal.property.section.AbstractSiriusPropertySectionHelper;
+import org.eclipse.sirius.editor.tools.internal.property.section.SiriusPropertySectionHelper;
 import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
 import org.eclipse.sirius.viewpoint.description.DiagramImportDescription;
 import org.eclipse.swt.graphics.Image;
@@ -134,10 +134,10 @@ public abstract class AbstractSiriusPropertySection extends AbstractPropertySect
         if (getFeature() != null) {
             readonly = RepresentationTemplateEditManager.INSTANCE.isOverriden(eObject, getFeature());
         }
-        DiagramImportDescription diagramImportDescription = AbstractSiriusPropertySectionHelper.getDiagramImportDescriptionInSelection(getSelection());
+        DiagramImportDescription diagramImportDescription = SiriusPropertySectionHelper.getDiagramImportDescriptionInSelection(getSelection());
 
         // if selected element is imported from a diagram description
-        if (diagramImportDescription != null && !AbstractSiriusPropertySectionHelper.isChildOfDiagramDescription(eObject, diagramImportDescription)) {
+        if (diagramImportDescription != null && !SiriusPropertySectionHelper.isChildOfDiagramDescription(eObject, diagramImportDescription)) {
             readonly = true;
         }
         // End of user code common readonly

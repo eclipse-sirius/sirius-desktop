@@ -40,7 +40,7 @@ public class CreateLineCommandFromToolRecordingCommand extends RecordingCommand 
     private CreateTool createTool;
 
     /**
-     * {@inheritDoc}
+     * Create a new CreateLineCommandFromToolRecordingCommand.
      * 
      * @param domain
      *            my domain

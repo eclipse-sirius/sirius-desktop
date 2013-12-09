@@ -131,25 +131,25 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
      */
     @Override
     protected boolean canEdit(final Object element) {
+        boolean result = false;
         if (element instanceof DLine) {
             final DLine line = (DLine) element;
             boolean canEdit = true;
             Option<DCell> optCell = TableHelper.getCell(line, featureColumn);
-            if (!optCell.some()) {
-                return false;
-            }
-            DCell cell = optCell.get();
-            if (cell.getUpdater() != null && cell.getUpdater().getCanEdit() != null && cell.getUpdater().getCanEdit().length() > 0) {
-                final IInterpreter interpreter = InterpreterUtil.getInterpreter(cell.getTarget());
-                try {
-                    canEdit = interpreter.evaluateBoolean(cell.getTarget(), cell.getUpdater().getCanEdit());
-                } catch (final EvaluationException e) {
-                    RuntimeLoggerManager.INSTANCE.error(cell.getUpdater(), DescriptionPackage.eINSTANCE.getCellUpdater_CanEdit(), e);
+            if (optCell.some()) {
+                DCell cell = optCell.get();
+                if (cell.getUpdater() != null && cell.getUpdater().getCanEdit() != null && cell.getUpdater().getCanEdit().length() > 0) {
+                    final IInterpreter interpreter = InterpreterUtil.getInterpreter(cell.getTarget());
+                    try {
+                        canEdit = interpreter.evaluateBoolean(cell.getTarget(), cell.getUpdater().getCanEdit());
+                    } catch (final EvaluationException e) {
+                        RuntimeLoggerManager.INSTANCE.error(cell.getUpdater(), DescriptionPackage.eINSTANCE.getCellUpdater_CanEdit(), e);
+                    }
                 }
+                result = canEdit && getAuthority().canEditFeature(cell.getTarget(), getFeatureName()) && getAuthority().canEditInstance(line);
             }
-            return canEdit && getAuthority().canEditFeature(cell.getTarget(), getFeatureName()) && getAuthority().canEditInstance(line);
         }
-        return false;
+        return result;
     }
 
     /**

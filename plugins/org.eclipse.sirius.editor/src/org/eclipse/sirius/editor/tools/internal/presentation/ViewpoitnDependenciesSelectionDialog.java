@@ -91,7 +91,7 @@ public class ViewpoitnDependenciesSelectionDialog {
 
     /**
      * Opens a dialog box allowing the user to select the list of Viewpoints this
-     * element is in conflict with
+     * element is in conflict with.
      * 
      * @param shell
      *            the shell to use to open the dialog box.
@@ -122,8 +122,8 @@ public class ViewpoitnDependenciesSelectionDialog {
     }
 
     @SuppressWarnings("unchecked")
-    private List<URI> getSelectedSiriusURIs(Viewpoint viewpoint, EStructuralFeature feature) {
-        return Lists.newArrayList(Iterables.filter((List<URI>) viewpoint.eGet(feature), Predicates.notNull()));
+    private List<URI> getSelectedSiriusURIs(Viewpoint vp, EStructuralFeature feature) {
+        return Lists.newArrayList(Iterables.filter((List<URI>) vp.eGet(feature), Predicates.notNull()));
     }
 
     private List<URI> getAvailableViewpointsURIs() {

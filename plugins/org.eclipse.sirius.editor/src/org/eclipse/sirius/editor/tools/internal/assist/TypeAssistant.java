@@ -78,10 +78,12 @@ public class TypeAssistant {
             } else if (value instanceof EPackage.Descriptor) {
                 try {
                     addProposals(proposals, ((EPackage.Descriptor) value).getEPackage(), incompleteName);
+                    // CHECKSTYLE:OFF
                 } catch (Exception e) {
                     // we don't really know what might go on from now, some
                     // other Eclipse tools might break the registry some time,
                     // we should just go on and ignore any issue.
+                    // CHECKSTYLE:ON
                 }
             }
         }
