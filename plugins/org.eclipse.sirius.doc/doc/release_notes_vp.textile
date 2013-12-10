@@ -1,0 +1,56 @@
+h1. Release Notes for Viewpoint
+
+h2(#vp6.10). Viewpoint 6.10
+
+Viewpoint 6.10 contains no API or feature changes compared to Viewpoint 6.9.
+
+h2(#vp6.9). Viewpoint 6.9
+
+h3. Changes Visible to End-Users
+
+* New notion for layers: Additional layers (formerly Optional layer) cannot be disabled by end-user if the specifier unchecked the "optional" option. In this case, the layers become mandatory. The end-user do not see the mandatory layers in the layer activation menu.
+* A new graphical wrapper have been provided to group huge hierarchy children in tree items. Several preferences allow to customize this feature in the viewpoint preference page.
+** We find this wrapper on the model explorer tree viewer and on viewpoint selection wizards that use a tree viewer.
+** On viewpoint selection wizards
+*** if the wrapper is disabled, we expand all children like in previous releases of viewpoint.
+*** if the wrapper is enabled and root items are not grouping items, we expand only the first level of children.
+*** if the wrapper is enabled and root items are grouping items, we not expand children.
+** For more graphical details about this feature, please refer to the "Modeling Project section":user/general/Modeling%20Project.html#ModelExplorer in the user documentation.
+* Until Viewpoint 6.2, the endÂ­-user had access to the Connections preference page (Viewpoint/Viewpoint Diagram/Connections). This page is provided by default by GMF but was unsuitable for Viewpoint use. Indeed, in Viewpoint the default routing style is defined in VSM. This preference page is available again. It has been adapted to Viewpoint (see "_Viewpoint User Manual/Diagrams/Features Overview/Style customizations/Customize edge routing style from preferences_":user/diagrams/Diagrams.html#routingStylePref for further details).
+
+h3. Changes Visible to Specifiers
+
+* Optional Layer has been renamed to Additional Layer.
+* A new attribute "Optional" is available to specified whether the additional layer can be disabled or not by end-user.
+* A new checkbox about @fr.obeo.dsl.viewpoint.description.EStructuralFeatureCustomization.applyOnAll@ under the @fr.obeo.dsl.viewpoint.description.EStructuralFeatureCustomization.appliedOn@ property section has been added. When this checkbox will be checked the @fr.obeo.dsl.viewpoint.description.EStructuralFeatureCustomization.appliedOn@ section will turn gray and disabled.
+* The fields ViewpointURI and representationName on Diagram Extension Description can be a regular expression as well.
+
+
+h3. Changes Visible to Developers
+
+* Changed APIs:
+** @fr.obeo.dsl.viewpoint.description.OptionalLayer@ type has been renamed to @fr.obeo.dsl.viewpoint.description.AdditionalLayer@
+** @fr.obeo.dsl.viewpoint.description.DiagramDescription.optionalLayers@ meta-model reference has been renamed to @fr.obeo.dsl.viewpoint.description.DiagramDescription.additionalLayers@
+** @fr.obeo.dsl.viewpoint.ui.tools.api.views.common.item.CommonItem.getSession()@ is now refactored in @fr.obeo.dsl.viewpoint.ui.tools.api.views.common.item.CommonSessionItem@.
+** @fr.obeo.dsl.viewpoint.ui.tools.api.views.common.item.CommonItem@ is now moved in @fr.obeo.dsl.common.ui.tools.api.view.common.item.CommonItem@.
+
+* New APIs:
+** @fr.obeo.dsl.viewpoint.description.AdditionalLayer.optional:Boolean@ meta-model attribute has been added.
+** Four new preferences to customize the new tree item group wrapper.
+**# @PREF_GROUP_ENABLE@:Boolean (default=true)
+**** has been added in @fr.obeo.dsl.common.tools.api.constant.CommonPreferencesConstants@ to say the tree item group wrapper is enable.
+**# @PREF_GROUP_BY_CONTAINING_FEATURE@:Boolean (default=false) 
+**** has been added in @fr.obeo.dsl.common.tools.api.constant.CommonPreferencesConstants@ to say if the grouping strategy uses the containing feature instead of the basic hierarchy.
+**** This preference cannot be directly edited by the final user. A developer can override this default value, for example in its own AbstractUIPlugin implementation, in the start() method : ViewPointTransPlugin.getPlugin().getPreferenceStore().setValue(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE, true)
+**# @PREF_GROUP_TRIGGER@:Integer (default=10000)
+**** has been added in @fr.obeo.dsl.common.tools.api.constant.CommonPreferencesConstants@ to define the size of children that triggers the group in sub block.
+**# @PREF_GROUP_SIZE@:Integer (default=100)
+**** has been added in @fr.obeo.dsl.common.tools.api.constant.CommonPreferencesConstants@ to define the size of elements contained in a group.
+** @fr.obeo.dsl.common.ui.tools.api.navigator.GroupingContentProvider@ a new content provider wrapper that delegates everything to the replaced content provider excepted if groups are expected.
+** @fr.obeo.dsl.common.ui.tools.api.navigator.GroupingItem@ a dedicated group tree item to provide an new ui render.
+** @fr.obeo.dsl.viewpoint.ui.tools.api.views.common.item.CommonSessionItem@ extends @fr.obeo.dsl.common.ui.tools.api.view.common.item.CommonItem@ and provide getSession().
+** @fr.obeo.dsl.viewpoint.diagram.business.api.view.ViewpointGMFHelper.getGmfEdge(DDiagramElement, ECrossReferenceAdapter)@ has been added in complementary of @getGmfEdge(DDiagramElement, Session)@. This method uses directly the parameter @ECrossReferenceAdapter@ (instead of @Session.getSemanticCrossReferencer()@) to retrieve the GMF edge corresponding to the DDiagramElement.
+** @fr.obeo.dsl.viewpoint.tools.api.preferences.ViewpointDiagramCorePreferences@ has been added. This interface declares constants corresponding to default routing styles. These constants are set via the UI preference page of @fr.obeo.dsl.viewpoint.diagram@ but declared here to allow access outside UI plug-in.
+** @fr.obeo.dsl.viewpoint.description.EStructuralFeatureCustomization.applyOnAll:Boolean@ meta-model attribute has been added.
+** @fr.obeo.dsl.viewpoint.ui.tools.api.dialogs.AbstractExportRepresentationsAsImagesDialog.FILE_SEPARATOR_ALTERNATIVE@ constant has been added. It defines the alternative character in _export diagram as image dialog_ when file separators are found in the representation name.
+** @fr.obeo.dsl.viewpoint.business.api.migration.IMigrationParticipant.getNewFragment(String)@ returns the new fragment if the corresponding reference has changed. This method is added in the migration framework to handle the rename of a reference. The abstract implementation, @fr.obeo.dsl.viewpoint.business.api.migration.AbstractMigrationParticipant@,  has also been changed.
