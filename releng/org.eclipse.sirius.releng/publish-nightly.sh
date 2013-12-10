@@ -78,39 +78,45 @@ env | sort > "$TARGET_DIR/build_env.txt"
 # Setup or update the redirects (implemented as composite repos)
 ######################################################################
 
-# First, a link for the $VERSION (e.g. "1.2.0/luna" => "1.2.0-NYYYYMMDD-HHMM/luna")
-mkdir -p "$TARGET_ROOT/$VERSION/$PLATFORM"
-cat > "$TARGET_ROOT/$VERSION/$PLATFORM/compositeArtifacts.xml" <<EOF
+# Create a p2 composite repo to setup a redirect
+create_redirect() {
+    FROM="$1"
+    TO="$2"
+
+    mkdir -p "$FROM"
+    cat > "$FROM/compositeArtifacts.xml" <<EOF
 <?xml version='1.0' encoding='UTF-8'?>
 <?compositeArtifactRepository version='1.0.0'?>
-<repository name='&quot;Eclipse Sirius Test Site&quot;'
-    type='org.eclipse.equinox.internal.p2.artifact.repository.CompositeArtifactRepository' version='1.0.0'>
+<repository name='Eclipse Sirius' type='org.eclipse.equinox.internal.p2.artifact.repository.CompositeArtifactRepository' version='1.0.0'>
   <properties size='1'>
     <property name='p2.timestamp' value='$P2_TIMESTAMP'/>
   </properties>
   <children size='1'>
-    <child location='http://download.eclipse.org/sirius/updates/$BUILD_TYPE/$FULL_VERSION/$PLATFORM'/>
+    <child location='http://download.eclipse.org/sirius/updates/$TO'/>
   </children>
 </repository>
 EOF
 
-cat > "$TARGET_ROOT/$VERSION/$PLATFORM/compositeContent.xml" <<EOF
+    cat > "$FROM/compositeContent.xml" <<EOF
 <?xml version='1.0' encoding='UTF-8'?>
 <?compositeMetadataRepository version='1.0.0'?>
-<repository name='&quot;Eclipse Sirius&quot;'
-    type='org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository' version='1.0.0'>
+<repository name='Eclipse Sirius' type='org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository' version='1.0.0'>
   <properties size='1'>
     <property name='p2.timestamp' value='$P2_TIMESTAMP'/>
   </properties>
   <children size='1'>
-    <child location='http://download.eclipse.org/sirius/updates/$BUILD_TYPE/$FULL_VERSION/$PLATFORM'/>
+    <child location='http://download.eclipse.org/sirius/updates/$TO'/>
   </children>
 </repository>
 EOF
+    
+}
 
+# First, a link for the $VERSION (e.g. "1.2.0/luna" => "1.2.0-NYYYYMMDD-HHMM/luna")
+create_redirect "$TARGET_ROOT/$VERSION/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM"
+# Also create a link for the $STREAM (e.g. "1.2.x/luna" => "1.2.0-NYYYYMMDD-HHMM/luna")
+create_redirect "$TARGET_ROOT/$STREAM/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM"
 # Also update the global "latest" links if we are building master
 if [ "master" = "$GIT_BRANCH" ]; then
-    mkdir -p "$TARGET_ROOT/latest/$PLATFORM"
-    cp "$TARGET_ROOT/$VERSION/$PLATFORM/compositeArtifacts.xml" "$TARGET_ROOT/latest/$PLATFORM"
-    cp "$TARGET_ROOT/$VERSION/$PLATFORM/compositeContent.xml" "$TARGET_ROOT/latest/$PLATFORM"
+    create_redirect "$TARGET_ROOT/latest/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM"
 fi
