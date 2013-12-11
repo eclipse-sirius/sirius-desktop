@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
- package org.eclipse.sirius.pim.ecore.design.editor;
+ package org.eclipse.sirius.sample.ecore.design.editor;
 
 import org.eclipse.ui.part.EditorActionBarContributor;
 

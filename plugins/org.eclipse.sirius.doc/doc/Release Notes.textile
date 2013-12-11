@@ -132,7 +132,7 @@ All identifiers have changed to start with the @org.eclipse.sirius@ namespace pr
 | fr.obeo.dsl.viewpoint.tree.ui               | org.eclipse.sirius.tree.ui                |
 | fr.obeo.dsl.viewpoint.ui                    | org.eclipse.sirius.ui                     |
 | fr.obeo.mda.ecore.extender                  | org.eclipse.sirius.ecore.extender         |
-| fr.obeo.mda.pim.ecore.design                | org.eclipse.sirius.pim.ecore.design       |
+| fr.obeo.mda.pim.ecore.design                | org.eclipse.sirius.sample.ecore.design       |
 | org.eclipselab.emf.synchronizer             | org.eclipse.sirius.synchronizer           |
 
 |_. Viewpoint 6.x feature                        |_. Sirius 0.9 feature                        |

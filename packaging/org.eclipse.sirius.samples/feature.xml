@@ -32,7 +32,7 @@
    </requires>
 
    <plugin
-         id="org.eclipse.sirius.pim.ecore.design"
+         id="org.eclipse.sirius.sample.ecore.design"
          download-size="0"
          install-size="0"
          version="0.0.0"

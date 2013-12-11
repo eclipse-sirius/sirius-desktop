@@ -26,7 +26,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  */
 public class EcoreSamplePlugin extends Plugin {
     /** The plug-in ID. */
-    public static final String PLUGIN_ID = "org.eclipse.sirius.pim.ecore.design"; //$NON-NLS-1$
+    public static final String PLUGIN_ID = "org.eclipse.sirius.sample.ecore.design"; //$NON-NLS-1$
 
     /** This plug-in's shared instance. */
     private static EcoreSamplePlugin plugin;

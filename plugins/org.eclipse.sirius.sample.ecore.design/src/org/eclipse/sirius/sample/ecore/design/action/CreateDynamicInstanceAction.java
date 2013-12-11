@@ -10,7 +10,7 @@
  *    IBM - Initial API and implementation for the parts taken
  *          from org.eclipse.emf.ecore.action.CreateDynamicInstanceAction
  *******************************************************************************/
-package org.eclipse.sirius.pim.ecore.design.action;
+package org.eclipse.sirius.sample.ecore.design.action;
 
 import java.util.Collection;
 import java.util.Map;

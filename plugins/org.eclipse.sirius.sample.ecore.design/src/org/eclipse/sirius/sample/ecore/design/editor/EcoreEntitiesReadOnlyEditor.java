@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.pim.ecore.design.editor;
+package org.eclipse.sirius.sample.ecore.design.editor;
 
 import org.eclipse.emf.common.util.URI;
 
@@ -26,7 +26,7 @@ public class EcoreEntitiesReadOnlyEditor extends AbstractSpecificDDiagramEditor 
     }
 
     public URI getViewpointURI() {
-        return URI.createURI("viewpoint:/org.eclipse.sirius.pim.ecore.design/Design");
+        return URI.createURI("viewpoint:/org.eclipse.sirius.sample.ecore.design/Design");
     }
 
     public boolean isSessionStoredInWorkspace() {
