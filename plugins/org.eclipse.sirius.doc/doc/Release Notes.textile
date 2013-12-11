@@ -188,6 +188,14 @@ void createView(Viewpoint viewpoint, Collection<EObject> semantics, boolean crea
 void addSelectedView(DView view) throws IllegalArgumentException;
 void removeSelectedView(DView view);
 
+h3. Specifier-Visible Changes
+
+New variables are available for @sizeComputationExpression@ to compute the size of edges on @EdgeStyleDescription@ and @BracketEdgeStyleDescription@:
+* _diagram_: the current @DDiagram@
+* _view_: the current @DEdge@
+* _sourceView_: the source view of the current edge.
+* _targetView_: the target view of the current edge.
+
 h3. User-Visible Changes
 
 * The ability to print table representations has been disabled for the 0.9 release due to an external dependency issue (see "bug #422223":https://bugs.eclipse.org/bugs/show_bug.cgi?id=422223 for the details). It should be re-introduced in 1.0.

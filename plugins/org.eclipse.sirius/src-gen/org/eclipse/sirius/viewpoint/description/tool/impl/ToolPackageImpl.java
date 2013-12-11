@@ -4106,8 +4106,8 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         addAnnotation(getNodeCreationDescription_Variable(), source, new String[] { "type", "ecore.EObject" });
         addAnnotation(getNodeCreationDescription_ViewVariable(), source, new String[] { "type", "viewpoint.DDiagramElementContainer" });
         addAnnotation(getEdgeCreationDescription_ConnectionStartPrecondition(), source, new String[] { "container", "ecore.EObject | the semantic element of diagram.", "preSourceView",
-                "viewpoint.EdgeTarget | (edge only) the source view of the current potential edge.", "preSource", "viewpoint.EdgeTarget | (edge only) the semantic element of $preSourceView.",
-                "diagram", "viewpoint.DDiagram | the diagram of the current potential edge" });
+                "viewpoint.EdgeTarget | (edge only) the source view of the current potential edge.", "preSource", "ecore.EObject | (edge only) the semantic element of $preSourceView.", "diagram",
+                "viewpoint.DDiagram | the diagram of the current potential edge" });
         addAnnotation(getDeleteHookParameter_Value(), source, new String[] {});
         addAnnotation(getPaneBasedSelectionWizardDescription_CandidatesExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DDiagram.", "containerView",
                 "viewpoint.DSemanticDecorator | the selected view.", "container", "ecore.EObject | the semantic element of containerView." });
