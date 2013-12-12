@@ -6,17 +6,17 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Require-Bundle: org.eclipse.ui.views.properties.tabbed,
- org.eclipse.core.runtime,
- org.eclipse.emf.ecore.editor,
- org.eclipse.emf.ecore.xmi,
- org.eclipse.sirius.ui,
- org.eclipse.sirius.common,
- org.eclipse.sirius.common.ui,
+Require-Bundle: org.eclipse.ui.views.properties.tabbed;bundle-version="3.5.300",
+ org.eclipse.core.runtime;bundle-version="3.8.0",
+ org.eclipse.emf.ecore.editor;bundle-version="2.8.0",
+ org.eclipse.emf.ecore.xmi;bundle-version="2.8.1",
+ org.eclipse.sirius.ui;bundle-version="1.0.0",
+ org.eclipse.sirius.common;bundle-version="1.0.0",
+ org.eclipse.sirius.common.ui;bundle-version="1.0.0",
  com.google.guava;bundle-version="[11.0.0,12.0.0)",
- org.eclipse.ui.workbench.texteditor,
- org.eclipse.emf.validation,
- org.eclipse.ui.navigator
+ org.eclipse.ui.workbench.texteditor;bundle-version="3.8.0",
+ org.eclipse.emf.validation;bundle-version="1.4.0",
+ org.eclipse.ui.navigator;bundle-version="3.5.200"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Eclipse-LazyStart: true
 Export-Package: org.eclipse.sirius.editor.assist.content,

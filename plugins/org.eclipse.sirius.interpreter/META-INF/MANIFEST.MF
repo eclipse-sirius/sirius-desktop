@@ -4,16 +4,16 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.interpreter;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.eclipse.sirius.common.acceleo.interpreter.Activator
-Require-Bundle: org.eclipse.core.runtime,
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
  org.eclipse.acceleo.ui.interpreter;bundle-version="3.2.1",
  org.eclipse.sirius.common;bundle-version="1.0.0",
- org.eclipse.sirius.common.acceleo.mtl.ide,
- org.eclipse.emf.ecore,
+ org.eclipse.sirius.common.acceleo.mtl.ide;bundle-version="1.0.0",
+ org.eclipse.emf.ecore;bundle-version="2.8.3",
  org.eclipse.sirius;bundle-version="1.0.0",
- org.eclipse.acceleo.ide.ui,
- org.eclipse.jface,
- org.eclipse.jface.text,
- org.eclipse.ui.editors
+ org.eclipse.acceleo.ide.ui;bundle-version="3.4.1",
+ org.eclipse.jface;bundle-version="3.8.0",
+ org.eclipse.jface.text;bundle-version="3.8.2",
+ org.eclipse.ui.editors;bundle-version="3.8.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: %providerName

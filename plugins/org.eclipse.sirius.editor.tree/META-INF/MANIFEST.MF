@@ -5,14 +5,14 @@ Bundle-SymbolicName: org.eclipse.sirius.editor.tree;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.eclipse.sirius.editor.tree.Activator
 Bundle-Vendor: %providerName
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.sirius.tree.ui,
- org.eclipse.sirius.editor,
- org.eclipse.ui.views.properties.tabbed,
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
+ org.eclipse.sirius.tree.ui;bundle-version="1.0.0",
+ org.eclipse.sirius.editor;bundle-version="1.0.0",
+ org.eclipse.ui.views.properties.tabbed;bundle-version="3.5.300",
  org.eclipse.emf.edit.ui;bundle-version="2.3.1",
- org.eclipse.sirius.common,
+ org.eclipse.sirius.common;bundle-version="1.0.0",
  com.google.guava;bundle-version="[11.0.0,12.0.0)",
- org.eclipse.ui.workbench.texteditor
+ org.eclipse.ui.workbench.texteditor;bundle-version="3.8.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
