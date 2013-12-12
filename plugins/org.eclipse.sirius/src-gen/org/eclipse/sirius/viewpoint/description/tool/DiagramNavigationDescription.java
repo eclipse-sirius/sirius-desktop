@@ -11,7 +11,7 @@
  */
 package org.eclipse.sirius.viewpoint.description.tool;
 
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

@@ -12,19 +12,19 @@ package org.eclipse.sirius.business.internal.metamodel.description.filter.spec;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.description.ContainerMappingImport;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.NodeMappingImport;
+import org.eclipse.sirius.diagram.description.filter.FilterPackage;
+import org.eclipse.sirius.diagram.description.filter.impl.MappingFilterImpl;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
-import org.eclipse.sirius.viewpoint.description.ContainerMappingImport;
-import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
-import org.eclipse.sirius.viewpoint.description.NodeMappingImport;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
-import org.eclipse.sirius.viewpoint.description.filter.FilterPackage;
-import org.eclipse.sirius.viewpoint.description.filter.impl.MappingFilterImpl;
 
 /**
  * Customizations for the implementation of <code>MappingFilter</code>.

@@ -20,7 +20,6 @@ import java.util.Map.Entry;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
@@ -35,9 +34,9 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableManager;
 import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
-import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 
 import com.google.common.collect.Sets;
 

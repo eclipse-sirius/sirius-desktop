@@ -12,9 +12,9 @@
 package org.eclipse.sirius.viewpoint.description.concern;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
-import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
 import org.eclipse.sirius.viewpoint.description.tool.BehaviorTool;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 

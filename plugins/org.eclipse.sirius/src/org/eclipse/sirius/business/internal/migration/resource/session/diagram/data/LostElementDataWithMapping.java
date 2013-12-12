@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.migration.resource.session.diagram.data;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**

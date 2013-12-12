@@ -35,6 +35,14 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.api.migration.resource.StringCouple;
+import org.eclipse.sirius.business.internal.migration.resource.MigrationUtil;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -42,14 +50,6 @@ import org.xml.sax.SAXParseException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
-import org.eclipse.sirius.business.api.migration.resource.StringCouple;
-import org.eclipse.sirius.business.internal.migration.resource.MigrationUtil;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.Group;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * A sax handler for migration preprocessing.

@@ -11,12 +11,12 @@
 package org.eclipse.sirius.business.internal.metamodel.helper;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
+import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
+import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
+import org.eclipse.sirius.diagram.description.util.DescriptionSwitch;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.ConditionalContainerStyleDescription;
-import org.eclipse.sirius.viewpoint.description.ConditionalEdgeStyleDescription;
-import org.eclipse.sirius.viewpoint.description.ConditionalNodeStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
-import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 
 /**
  * Switch to get the style description owned by a conditional style.

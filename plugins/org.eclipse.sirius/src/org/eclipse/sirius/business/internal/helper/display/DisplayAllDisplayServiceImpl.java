@@ -13,8 +13,8 @@ package org.eclipse.sirius.business.internal.helper.display;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.helper.display.DisplayService;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 
 /**
  * An implementation of {@link DisplayService} which return always true.

@@ -12,7 +12,6 @@ package org.eclipse.sirius.tools.api.command;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
 
 /**

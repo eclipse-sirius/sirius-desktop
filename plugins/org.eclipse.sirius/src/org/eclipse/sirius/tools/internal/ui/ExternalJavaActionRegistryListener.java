@@ -10,14 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.internal.ui;
 
-import org.eclipse.sirius.tools.api.ui.ExternalJavaActionProvider;
-
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IRegistryEventListener;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.sirius.tools.api.ui.ExternalJavaActionProvider;
 
 /**
  * Initially copied from

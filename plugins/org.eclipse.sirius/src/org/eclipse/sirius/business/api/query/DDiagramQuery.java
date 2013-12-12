@@ -13,17 +13,17 @@ package org.eclipse.sirius.business.api.query;
 import java.util.Collection;
 import java.util.Set;
 
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.business.internal.query.DDiagramInternalQuery;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+
+import com.google.common.collect.Sets;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DDiagram} as

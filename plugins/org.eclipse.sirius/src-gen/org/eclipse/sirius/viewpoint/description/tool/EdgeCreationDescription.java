@@ -13,9 +13,9 @@ package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -68,7 +68,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
     /**
      * Returns the value of the '<em><b>Edge Mappings</b></em>' reference list.
      * The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.EdgeMapping}. <!--
+     * {@link org.eclipse.sirius.diagram.description.EdgeMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
      * EdgeMappings used by this tool. <!-- end-model-doc -->
      * 
@@ -262,7 +262,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
     /**
      * Returns the value of the '<em><b>Extra Source Mappings</b></em>'
      * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping}.
+     * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping}.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All mappings that create views that are able to received a request to
      * manage this creation
@@ -279,7 +279,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
     /**
      * Returns the value of the '<em><b>Extra Target Mappings</b></em>'
      * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping}.
+     * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping}.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All mappings that create views that are able to received a request to
      * manage this creation

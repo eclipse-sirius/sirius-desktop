@@ -12,13 +12,9 @@ package org.eclipse.sirius.business.api.color;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
@@ -27,6 +23,9 @@ import org.eclipse.sirius.viewpoint.description.ComputedColor;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 
 /**
  * Class responsible to provide RGBValues from the color definitions.

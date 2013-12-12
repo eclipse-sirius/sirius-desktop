@@ -20,17 +20,18 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.util.DescriptionSwitch;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
@@ -55,7 +56,6 @@ import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SetValue;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch;
-import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 
 /**
  * This constraint validates that all expressions use.
@@ -229,7 +229,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      *            the viewpoint description.
      * @return the validation status.
      */
-    protected IStatus checkSiriusDescriptionPrecondition(final IValidationContext ctx, final DiagramDescription vpDescription) {
+    protected IStatus checkDiagramDescriptionPrecondition(final IValidationContext ctx, final DiagramDescription vpDescription) {
         // no vars for the precondition of a vp descrition.
         return this.checkVariables(ctx, vpDescription.getPreconditionExpression(), Collections.<String> emptySet(), vpDescription, DescriptionPackage.eINSTANCE
                 .getDiagramDescription_PreconditionExpression().getName());
@@ -246,7 +246,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      *            the mapping to check.
      * @return the validation status.
      */
-    protected IStatus checkSiriusElementMappingPrecondition(final IValidationContext ctx, final DiagramElementMapping vpeMapping) {
+    protected IStatus checkDiagramElementMappingPrecondition(final IValidationContext ctx, final DiagramElementMapping vpeMapping) {
         return this.checkVariables(ctx, vpeMapping.getPreconditionExpression(), VPE_MAPPING_PRECONDITION_VARIABLES, vpeMapping, DescriptionPackage.eINSTANCE
                 .getDiagramElementMapping_PreconditionExpression().getName());
     }
@@ -262,7 +262,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      *            the mapping to check.
      * @return the validation status.
      */
-    protected IStatus checkSiriusElementMappingSemanticCandidates(final IValidationContext ctx, final DiagramElementMapping vpeMapping) {
+    protected IStatus checkDiagramElementMappingSemanticCandidates(final IValidationContext ctx, final DiagramElementMapping vpeMapping) {
         return this.checkVariables(ctx, vpeMapping.getSemanticCandidatesExpression(), VPE_MAPPING_SEMANTIC_CANDIDATES_VARIABLES, vpeMapping, DescriptionPackage.eINSTANCE
                 .getDiagramElementMapping_SemanticCandidatesExpression().getName());
     }
@@ -278,7 +278,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      *            the mapping to check.
      * @return the validation status.
      */
-    protected IStatus checkSiriusElementMappingSemanticElements(final IValidationContext ctx, final DiagramElementMapping vpeMapping) {
+    protected IStatus checkDiagramElementMappingSemanticElements(final IValidationContext ctx, final DiagramElementMapping vpeMapping) {
         return this.checkVariables(ctx, vpeMapping.getSemanticElements(), Collections.<String> emptySet(), vpeMapping, DescriptionPackage.eINSTANCE.getDiagramElementMapping_SemanticElements()
                 .getName());
     }
@@ -448,8 +448,8 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      * @return the validation status.
      */
     protected IStatus checkConditionalStylePredicate(final IValidationContext ctx, final ConditionalStyleDescription conditionalStyle) {
-        return this.checkVariables(ctx, conditionalStyle.getPredicateExpression(), COND_STYLE_PREDICATE_VARIABLES, conditionalStyle, DescriptionPackage.eINSTANCE
-                .getConditionalStyleDescription_PredicateExpression().getName());
+        return this.checkVariables(ctx, conditionalStyle.getPredicateExpression(), COND_STYLE_PREDICATE_VARIABLES, conditionalStyle,
+                org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getConditionalStyleDescription_PredicateExpression().getName());
     }
 
     /**
@@ -496,8 +496,8 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      * @return the validation status.
      */
     protected IStatus checkSelectModelElementCandidates(final IValidationContext ctx, final SelectModelElementVariable selectModelElementVariableOp) {
-        return this.checkVariables(ctx, selectModelElementVariableOp.getCandidatesExpression(), Collections.<String> emptySet(), selectModelElementVariableOp, DescriptionPackage.eINSTANCE
-                .getSelectionDescription_CandidatesExpression().getName());
+        return this.checkVariables(ctx, selectModelElementVariableOp.getCandidatesExpression(), Collections.<String> emptySet(), selectModelElementVariableOp,
+                org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getSelectionDescription_CandidatesExpression().getName());
     }
 
     /**
@@ -722,13 +722,13 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseSiriusDescription(org.eclipse.sirius.viewpoint.description.DiagramDescription)
+         * @see DescriptionSwitch#caseDiagramDescription(DiagramDescription)
          */
-        public IStatus caseSiriusDescription(final DiagramDescription object) {
+        public IStatus caseDiagramDescription(final DiagramDescription object) {
             if (this.currentStatus.isOK()) {
                 final IStatus superStatus = super.caseDiagramDescription(object);
                 if (superStatus == null || superStatus.isOK()) {
-                    this.currentStatus = checkSiriusDescriptionPrecondition(ctx, object);
+                    this.currentStatus = checkDiagramDescriptionPrecondition(ctx, object);
                 } else {
                     this.currentStatus = superStatus;
                 }
@@ -739,18 +739,18 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseSiriusElementMapping(org.eclipse.sirius.viewpoint.description.DiagramElementMapping)
+         * @see DescriptionSwitch#caseDiagramElementMapping(DiagramElementMapping)
          */
-        public IStatus caseSiriusElementMapping(final DiagramElementMapping object) {
+        public IStatus caseDiagramElementMapping(final DiagramElementMapping object) {
             if (this.currentStatus.isOK()) {
                 final IStatus superStatus = super.caseDiagramElementMapping(object);
                 if (superStatus == null || superStatus.isOK()) {
-                    this.currentStatus = checkSiriusElementMappingPrecondition(ctx, object);
+                    this.currentStatus = checkDiagramElementMappingPrecondition(ctx, object);
                     if (this.currentStatus.isOK()) {
-                        this.currentStatus = checkSiriusElementMappingSemanticCandidates(ctx, object);
+                        this.currentStatus = checkDiagramElementMappingSemanticCandidates(ctx, object);
                     }
                     if (this.currentStatus.isOK()) {
-                        this.currentStatus = checkSiriusElementMappingSemanticElements(ctx, object);
+                        this.currentStatus = checkDiagramElementMappingSemanticElements(ctx, object);
                     }
                 } else {
                     this.currentStatus = superStatus;
@@ -762,7 +762,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseNodeMapping(org.eclipse.sirius.viewpoint.description.NodeMapping)
+         * @see DescriptionSwitch#caseNodeMapping(NodeMapping)
          */
         @Override
         public IStatus caseNodeMapping(final NodeMapping object) {
@@ -783,7 +783,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseContainerMapping(org.eclipse.sirius.viewpoint.description.ContainerMapping)
+         * @see DescriptionSwitch#caseContainerMapping(ContainerMapping)
          */
         @Override
         public IStatus caseContainerMapping(final ContainerMapping object) {
@@ -801,7 +801,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseEdgeMapping(org.eclipse.sirius.viewpoint.description.EdgeMapping)
+         * @see DescriptionSwitch#caseEdgeMapping(EdgeMapping)
          */
         @Override
         public IStatus caseEdgeMapping(final EdgeMapping object) {
@@ -834,7 +834,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseConditionalStyleDescription(org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription)
+         * @see DescriptionSwitch#caseConditionalStyleDescription(ConditionalStyleDescription)
          */
         @Override
         public IStatus caseConditionalStyleDescription(final ConditionalStyleDescription object) {
@@ -852,7 +852,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
+         * @see DescriptionSwitch#doSwitch(EObject)
          */
         @Override
         public IStatus doSwitch(final EObject theEObject) {

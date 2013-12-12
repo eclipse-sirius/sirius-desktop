@@ -18,10 +18,10 @@ import org.eclipse.sirius.business.api.helper.display.DisplayService;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
 
 /**
  * Implementation of {@link DisplayService} to use for creation of elements. It

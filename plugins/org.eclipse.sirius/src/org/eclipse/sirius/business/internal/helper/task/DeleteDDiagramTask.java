@@ -20,15 +20,15 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramLink;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
 import org.eclipse.sirius.tools.internal.util.GMFUtil;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramLink;
 import org.eclipse.sirius.viewpoint.DNavigable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
  * A task to delete a representation.

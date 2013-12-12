@@ -16,12 +16,11 @@ import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.helper.graphicalfilters.HideFilterHelper;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.business.api.helper.graphicalfilters.HideFilterHelper;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Command that is able to reveal all elements of a viewpoint.

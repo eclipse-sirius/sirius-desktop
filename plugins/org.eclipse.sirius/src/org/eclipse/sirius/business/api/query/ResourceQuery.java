@@ -15,12 +15,11 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.business.api.session.resource.AirdResource;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.business.api.session.resource.AirdResource;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Queries on EMF Resources.

@@ -12,12 +12,12 @@ package org.eclipse.sirius.business.api.query;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.viewpoint.BeginLabelStyle;
-import org.eclipse.sirius.viewpoint.CenterLabelStyle;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.EdgeStyle;
-import org.eclipse.sirius.viewpoint.EndLabelStyle;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.diagram.BeginLabelStyle;
+import org.eclipse.sirius.diagram.CenterLabelStyle;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.EndLabelStyle;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.description.style.EdgeStyleDescription;
 
 /**

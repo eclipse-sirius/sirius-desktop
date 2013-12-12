@@ -11,8 +11,8 @@
 package org.eclipse.sirius.business.internal.helper.task.operations;
 
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.tools.api.command.CommandContext;
 
 /**
  * A task to use an interpreted expression variable.

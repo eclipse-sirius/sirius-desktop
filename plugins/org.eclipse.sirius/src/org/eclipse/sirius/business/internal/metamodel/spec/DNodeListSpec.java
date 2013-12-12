@@ -18,23 +18,22 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreEList;
+import org.eclipse.sirius.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.impl.DNodeListImpl;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
-
-import org.eclipse.sirius.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
-import org.eclipse.sirius.viewpoint.impl.DNodeListImpl;
 
 /**
  * Implementation of {@link org.eclipse.sirius.viewpoint.DNodeList}.
@@ -51,7 +50,7 @@ public class DNodeListSpec extends DNodeListImpl {
     public EList<DDiagramElement> getElements() {
         final EList<DDiagramElement> result = new BasicEList<DDiagramElement>();
         result.addAll(getOwnedElements());
-        return new EcoreEList.UnmodifiableEList<DDiagramElement>(eInternalContainer(), ViewpointPackage.eINSTANCE.getDDiagramElementContainer_Elements(), result.size(), result.toArray());
+        return new EcoreEList.UnmodifiableEList<DDiagramElement>(eInternalContainer(), DiagramPackage.eINSTANCE.getDDiagramElementContainer_Elements(), result.size(), result.toArray());
     }
 
     /**
@@ -90,7 +89,7 @@ public class DNodeListSpec extends DNodeListImpl {
      */
     @Override
     public DDiagram getParentDiagram() {
-        return DDiagramElementContainerSpecOperations.getParentSirius(this);
+        return DDiagramElementContainerSpecOperations.getParentDiagram(this);
     }
 
     /**
@@ -105,7 +104,7 @@ public class DNodeListSpec extends DNodeListImpl {
         for (AbstractDNode dNode : Collections2.filter(result, Predicates.instanceOf(DNode.class))) {
             dNodeResult.add((DNode) dNode);
         }
-        return new EcoreEList.UnmodifiableEList<DNode>(eInternalContainer(), ViewpointPackage.eINSTANCE.getDDiagramElementContainer_Nodes(), dNodeResult.size(), dNodeResult.toArray());
+        return new EcoreEList.UnmodifiableEList<DNode>(eInternalContainer(), DiagramPackage.eINSTANCE.getDDiagramElementContainer_Nodes(), dNodeResult.size(), dNodeResult.toArray());
     }
 
     /**
@@ -116,7 +115,7 @@ public class DNodeListSpec extends DNodeListImpl {
     @Override
     public EList<DDiagramElementContainer> getContainers() {
         final Collection<DDiagramElementContainer> result = DDiagramElementContainerSpecOperations.getContainers(this);
-        return new EcoreEList.UnmodifiableEList<DDiagramElementContainer>(eInternalContainer(), ViewpointPackage.eINSTANCE.getDDiagram_Containers(), result.size(), result.toArray());
+        return new EcoreEList.UnmodifiableEList<DDiagramElementContainer>(eInternalContainer(), DiagramPackage.eINSTANCE.getDDiagram_Containers(), result.size(), result.toArray());
     }
 
     /**

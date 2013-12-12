@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.internal.migration.resource.MigrationUtil;
 

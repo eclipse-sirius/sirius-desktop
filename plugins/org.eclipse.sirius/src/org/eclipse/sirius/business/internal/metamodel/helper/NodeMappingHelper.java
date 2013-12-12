@@ -28,18 +28,18 @@ import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.ResizeKind;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeListElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.NodeStyle;
-import org.eclipse.sirius.viewpoint.ResizeKind;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
@@ -150,7 +150,7 @@ public final class NodeMappingHelper {
      * @return the node created.
      */
     public DNode createNode(INodeMappingExt self, EObject modelElement, EObject container, DDiagram diagram) {
-        final DNode newNode = ViewpointFactory.eINSTANCE.createDNode();
+        final DNode newNode = DiagramFactory.eINSTANCE.createDNode();
 
         // getting the right style description : default or conditional
         final NodeStyleDescription style = (NodeStyleDescription) new MappingHelper(interpreter).getBestStyleDescription(self, modelElement, newNode, container, diagram);
@@ -283,7 +283,7 @@ public final class NodeMappingHelper {
      */
     public DNodeListElement createListElement(NodeMapping self, EObject modelElement, DDiagram diagram) {
 
-        final DNodeListElement newNode = ViewpointFactory.eINSTANCE.createDNodeListElement();
+        final DNodeListElement newNode = DiagramFactory.eINSTANCE.createDNodeListElement();
 
         // getting the right style description : default or conditional
         final NodeStyleDescription style = (NodeStyleDescription) new MappingHelper(interpreter).getBestStyleDescription(self, modelElement, newNode, null, diagram);

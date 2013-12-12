@@ -22,32 +22,31 @@ import java.util.Set;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
-
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
+import org.eclipse.sirius.business.api.query.EdgeMappingQuery;
+import org.eclipse.sirius.business.api.refresh.MultipleCollection;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.CartesianProduct;
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
-import org.eclipse.sirius.business.api.query.EdgeMappingQuery;
-import org.eclipse.sirius.business.api.refresh.MultipleCollection;
-import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 
 /**
  * An helper class to handle edges specific operations.

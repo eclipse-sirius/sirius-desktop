@@ -22,11 +22,6 @@ import java.util.Set;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.collect.Iterators;
-
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.helper.display.DisplayMode;
@@ -45,33 +40,37 @@ import org.eclipse.sirius.business.internal.experimental.sync.DDiagramElementSyn
 import org.eclipse.sirius.business.internal.experimental.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.business.internal.experimental.sync.DEdgeCandidate;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.ArrangeConstraint;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.refresh.BestMappingGetter;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.ArrangeConstraint;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.MappingBasedDecoration;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.CreateEdgeView;
 import org.eclipse.sirius.viewpoint.description.tool.CreateView;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+
+import com.google.common.collect.Iterators;
 
 /**
  * Create a view according to a specific CreateView model element.

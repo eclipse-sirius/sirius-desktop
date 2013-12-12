@@ -33,12 +33,6 @@ import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
@@ -46,6 +40,11 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * A {@link ResourceSetListener} to update the

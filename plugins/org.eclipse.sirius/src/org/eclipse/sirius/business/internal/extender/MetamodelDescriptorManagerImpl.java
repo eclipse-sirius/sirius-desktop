@@ -15,9 +15,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
-import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorManager;
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;

@@ -39,7 +39,7 @@ public class NsURIMigrationParticipant extends AbstractMigrationParticipant {
             .put("http://www.obeo.fr/dsl/viewpoint/description/1.1.0", "http://www.eclipse.org/sirius/description/1.1.0")
             .put("http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0", "http://www.eclipse.org/sirius/description/style/1.1.0")
             .put("http://www.obeo.fr/dsl/viewpoint/description/tool/1.1.0", "http://www.eclipse.org/sirius/description/tool/1.1.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/description/filter/1.1.0", "http://www.eclipse.org/sirius/description/filter/1.1.0")
+            .put("http://www.obeo.fr/dsl/viewpoint/description/filter/1.1.0", "http://www.eclipse.org/sirius/diagram/description/filter/1.1.0")
             .put("http://www.obeo.fr/dsl/viewpoint/description/validation/1.1.0", "http://www.eclipse.org/sirius/description/validation/1.1.0")
             .put("http://www.obeo.fr/dsl/viewpoint/description/audit/1.1.0", "http://www.eclipse.org/sirius/description/audit/1.1.0")
             .put("http://www.obeo.fr/dsl/viewpoint/description/concern/1.1.0", "http://www.eclipse.org/sirius/description/concern/1.1.0")

@@ -12,9 +12,9 @@ package org.eclipse.sirius.business.internal.metamodel.description.tool.spec;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.tools.api.refresh.BestMappingGetter;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.description.tool.impl.EdgeCreationDescriptionImpl;
 
 /**

@@ -17,11 +17,11 @@ import java.util.List;
 
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager;
 import org.eclipse.sirius.business.internal.componentization.mappings.table.CandidateMappingManager;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.Layer;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 
 /**
  * The global mappings table to retrieve mappings information.

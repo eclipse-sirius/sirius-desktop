@@ -12,8 +12,8 @@ package org.eclipse.sirius.tools.internal.command.reconnect;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 
 /**
  * Specific command to set the actual mapping of an edge.

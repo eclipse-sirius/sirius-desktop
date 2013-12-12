@@ -12,7 +12,7 @@ package org.eclipse.sirius.business.internal.metamodel.description.spec;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.ConditionalStyleSpecOperations;
-import org.eclipse.sirius.viewpoint.description.impl.ConditionalEdgeStyleDescriptionImpl;
+import org.eclipse.sirius.diagram.description.impl.ConditionalEdgeStyleDescriptionImpl;
 
 /**
  * Implementation of ConditionalEdgeStyleDescription.

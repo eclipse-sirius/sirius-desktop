@@ -14,16 +14,15 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.business.internal.dialect.description.DescriptionInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.internal.dialect.description.FilterInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.internal.dialect.description.StyleInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.internal.dialect.description.ToolInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.internal.dialect.description.ValidationInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
+
+import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element and

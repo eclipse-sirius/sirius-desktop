@@ -11,13 +11,12 @@
 package org.eclipse.sirius.business.internal.helper.task.operations;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.tools.api.command.CommandContext;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.tools.api.command.CommandContext;
 
 /**
  * An operation specific implementation of ICommandTask.

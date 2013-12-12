@@ -14,8 +14,8 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.Layer;
 
 /**
  * A candidate mapping.

@@ -23,15 +23,14 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
+import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.internal.modelingproject.marker.ModelingMarker;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
-import org.eclipse.sirius.business.internal.modelingproject.marker.ModelingMarker;
 
 /**
  * A job to compute the main representations file of each modeling project of

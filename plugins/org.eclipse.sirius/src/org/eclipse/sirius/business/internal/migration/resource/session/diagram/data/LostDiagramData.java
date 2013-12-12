@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.migration.resource.session.diagram.data;
 
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**

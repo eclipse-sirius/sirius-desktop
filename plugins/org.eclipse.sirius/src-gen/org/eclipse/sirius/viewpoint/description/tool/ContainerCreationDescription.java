@@ -12,8 +12,8 @@
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -54,7 +54,7 @@ public interface ContainerCreationDescription extends MappingBasedToolDescriptio
     /**
      * Returns the value of the '<em><b>Container Mappings</b></em>' reference
      * list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.ContainerMapping}. <!--
+     * {@link org.eclipse.sirius.diagram.description.ContainerMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * ContainerMapping to use. <!-- end-model-doc -->
      * 
@@ -184,10 +184,10 @@ public interface ContainerCreationDescription extends MappingBasedToolDescriptio
     /**
      * Returns the value of the '<em><b>Extra Mappings</b></em>' reference list.
      * The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.AbstractNodeMapping}.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * All mappings that create views that are able to received a request to
-     * manage this creation
+     * {@link org.eclipse.sirius.diagram.description.AbstractNodeMapping}. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
+     * mappings that create views that are able to received a request to manage
+     * this creation
      * 
      * <!-- end-model-doc -->
      * 

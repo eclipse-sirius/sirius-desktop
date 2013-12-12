@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.migration.resource.session.diagram.data;
 
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**

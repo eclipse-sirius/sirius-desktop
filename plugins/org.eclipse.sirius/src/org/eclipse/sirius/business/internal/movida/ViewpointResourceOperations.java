@@ -18,13 +18,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.business.api.query.ViewpointQuery;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Operations to manipulate Viewpoints Resources (VSMs).

@@ -13,10 +13,10 @@ package org.eclipse.sirius.business.api.componentization;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
@@ -46,9 +46,11 @@ public interface DiagramDescriptionMappingsManager {
 
     /**
      * Compute available mappings for this diagram description based.
-     * @param collection 
+     * 
+     * @param viewpoints
+     *            collection of Viewpoints
      */
-    void computeMappings(Collection<Viewpoint> collection);
+    void computeMappings(Collection<Viewpoint> viewpoints);
 
     /**
      * Get available node mappings for the diagram description.

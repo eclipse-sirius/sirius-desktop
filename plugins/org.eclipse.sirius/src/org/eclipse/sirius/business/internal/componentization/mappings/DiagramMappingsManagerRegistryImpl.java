@@ -27,13 +27,13 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
+import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
-import org.eclipse.sirius.viewpoint.description.Layer;
 
 /**
  * Registry of diagram mappings.
@@ -121,7 +121,7 @@ public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implem
         final Object notifier = msg.getNotifier();
         if (notifier instanceof DDiagram) {
             final int featureID = msg.getFeatureID(DDiagram.class);
-            if (featureID == ViewpointPackage.DDIAGRAM__ACTIVATED_LAYERS) {
+            if (featureID == DiagramPackage.DDIAGRAM__ACTIVATED_LAYERS) {
 
                 switch (msg.getEventType()) {
                 case Notification.ADD:

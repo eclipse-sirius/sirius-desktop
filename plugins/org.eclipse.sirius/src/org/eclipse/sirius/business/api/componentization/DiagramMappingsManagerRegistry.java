@@ -12,7 +12,7 @@ package org.eclipse.sirius.business.api.componentization;
 
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.componentization.mappings.DiagramMappingsManagerRegistryImpl;
-import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.diagram.DDiagram;
 
 /**
  * This class will move in diagram plug-in when refresh refactoring will occurs.

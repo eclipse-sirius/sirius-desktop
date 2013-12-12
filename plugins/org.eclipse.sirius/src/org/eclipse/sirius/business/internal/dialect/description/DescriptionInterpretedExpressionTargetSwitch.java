@@ -14,28 +14,24 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
-import org.eclipse.sirius.viewpoint.description.ColorDescription;
-import org.eclipse.sirius.viewpoint.description.ColorStep;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.IEdgeMapping;
+import org.eclipse.sirius.diagram.description.OrderedTreeLayout;
+import org.eclipse.sirius.diagram.description.util.DescriptionSwitch;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
-import org.eclipse.sirius.viewpoint.description.IEdgeMapping;
-import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
-import org.eclipse.sirius.viewpoint.description.OrderedTreeLayout;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
-import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
+
+import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element
@@ -187,7 +183,7 @@ public class DescriptionInterpretedExpressionTargetSwitch extends DescriptionSwi
         Collection<String> target = Sets.newLinkedHashSet();
         Option<Collection<String>> result = Options.newSome(target);
         switch (featureID) {
-        case DescriptionPackage.CONDITIONAL_STYLE_DESCRIPTION__PREDICATE_EXPRESSION:
+        case org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONDITIONAL_STYLE_DESCRIPTION__PREDICATE_EXPRESSION:
             result = globalSwitch.doSwitch(getFirstRelevantContainer(styleDescription), false);
             break;
         default:
@@ -214,20 +210,5 @@ public class DescriptionInterpretedExpressionTargetSwitch extends DescriptionSwi
             break;
         }
         return result;
-    }
-
-    @Override
-    public Option<Collection<String>> caseColorDescription(ColorDescription object) {
-        return Options.newNone();
-    }
-
-    @Override
-    public Option<Collection<String>> caseColorStep(ColorStep object) {
-        return Options.newNone();
-    }
-
-    @Override
-    public Option<Collection<String>> caseInterpolatedColor(InterpolatedColor object) {
-        return Options.newNone();
     }
 }

@@ -21,11 +21,11 @@ import org.eclipse.sirius.business.api.componentization.DiagramComponentizationM
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManagerListener;
 import org.eclipse.sirius.business.api.helper.layers.LayerService;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**

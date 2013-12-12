@@ -41,16 +41,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Collections2;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.ListMultimap;
-import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
-import org.eclipse.sirius.common.tools.api.util.ResourceUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
@@ -71,25 +61,34 @@ import org.eclipse.sirius.business.internal.repair.commands.SaveModelElementStat
 import org.eclipse.sirius.business.internal.repair.resource.DiagramKey;
 import org.eclipse.sirius.business.internal.repair.resource.RepairRepresentationRefresher;
 import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
+import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
+import org.eclipse.sirius.common.tools.api.util.ResourceUtil;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramSet;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.FilterVariableValue;
+import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DDiagramSet;
-import org.eclipse.sirius.viewpoint.DEdge;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.FilterVariableValue;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
 import org.eclipse.sirius.viewpoint.description.tool.BehaviorTool;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Collections2;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Lists;
 
 /**
  * Repair process extract from

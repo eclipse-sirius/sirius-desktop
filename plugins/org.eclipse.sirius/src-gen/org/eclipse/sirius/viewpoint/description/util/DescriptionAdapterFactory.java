@@ -16,20 +16,12 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.AdditionalLayer;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.ColorStep;
 import org.eclipse.sirius.viewpoint.description.Component;
-import org.eclipse.sirius.viewpoint.description.CompositeLayout;
 import org.eclipse.sirius.viewpoint.description.ComputedColor;
-import org.eclipse.sirius.viewpoint.description.ConditionalContainerStyleDescription;
-import org.eclipse.sirius.viewpoint.description.ConditionalEdgeStyleDescription;
-import org.eclipse.sirius.viewpoint.description.ConditionalNodeStyleDescription;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMappingImport;
 import org.eclipse.sirius.viewpoint.description.Customization;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
@@ -37,34 +29,21 @@ import org.eclipse.sirius.viewpoint.description.DModelElement;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 import org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramImportDescription;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
 import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
 import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
 import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
 import org.eclipse.sirius.viewpoint.description.Environment;
 import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.Group;
-import org.eclipse.sirius.viewpoint.description.IEdgeMapping;
 import org.eclipse.sirius.viewpoint.description.IVSMElementCustomization;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
-import org.eclipse.sirius.viewpoint.description.Layer;
-import org.eclipse.sirius.viewpoint.description.Layout;
-import org.eclipse.sirius.viewpoint.description.MappingBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
-import org.eclipse.sirius.viewpoint.description.NodeMappingImport;
-import org.eclipse.sirius.viewpoint.description.OrderedTreeLayout;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
@@ -178,21 +157,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseDiagramDescription(DiagramDescription object) {
-            return createDiagramDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseDiagramImportDescription(DiagramImportDescription object) {
-            return createDiagramImportDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseDiagramExtensionDescription(DiagramExtensionDescription object) {
-            return createDiagramExtensionDescriptionAdapter();
-        }
-
-        @Override
         public Adapter caseMetamodelExtensionSetting(MetamodelExtensionSetting object) {
             return createMetamodelExtensionSettingAdapter();
         }
@@ -208,53 +172,8 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseDiagramElementMapping(DiagramElementMapping object) {
-            return createDiagramElementMappingAdapter();
-        }
-
-        @Override
-        public Adapter caseAbstractNodeMapping(AbstractNodeMapping object) {
-            return createAbstractNodeMappingAdapter();
-        }
-
-        @Override
-        public Adapter caseNodeMapping(NodeMapping object) {
-            return createNodeMappingAdapter();
-        }
-
-        @Override
-        public Adapter caseContainerMapping(ContainerMapping object) {
-            return createContainerMappingAdapter();
-        }
-
-        @Override
         public Adapter caseAbstractMappingImport(AbstractMappingImport object) {
             return createAbstractMappingImportAdapter();
-        }
-
-        @Override
-        public Adapter caseNodeMappingImport(NodeMappingImport object) {
-            return createNodeMappingImportAdapter();
-        }
-
-        @Override
-        public Adapter caseContainerMappingImport(ContainerMappingImport object) {
-            return createContainerMappingImportAdapter();
-        }
-
-        @Override
-        public Adapter caseEdgeMapping(EdgeMapping object) {
-            return createEdgeMappingAdapter();
-        }
-
-        @Override
-        public Adapter caseIEdgeMapping(IEdgeMapping object) {
-            return createIEdgeMappingAdapter();
-        }
-
-        @Override
-        public Adapter caseEdgeMappingImport(EdgeMappingImport object) {
-            return createEdgeMappingImportAdapter();
         }
 
         @Override
@@ -278,21 +197,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseConditionalNodeStyleDescription(ConditionalNodeStyleDescription object) {
-            return createConditionalNodeStyleDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseConditionalEdgeStyleDescription(ConditionalEdgeStyleDescription object) {
-            return createConditionalEdgeStyleDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseConditionalContainerStyleDescription(ConditionalContainerStyleDescription object) {
-            return createConditionalContainerStyleDescriptionAdapter();
-        }
-
-        @Override
         public Adapter caseDragAndDropTargetDescription(DragAndDropTargetDescription object) {
             return createDragAndDropTargetDescriptionAdapter();
         }
@@ -300,21 +204,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter casePasteTargetDescription(PasteTargetDescription object) {
             return createPasteTargetDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseLayout(Layout object) {
-            return createLayoutAdapter();
-        }
-
-        @Override
-        public Adapter caseOrderedTreeLayout(OrderedTreeLayout object) {
-            return createOrderedTreeLayoutAdapter();
-        }
-
-        @Override
-        public Adapter caseCompositeLayout(CompositeLayout object) {
-            return createCompositeLayoutAdapter();
         }
 
         @Override
@@ -328,23 +217,8 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseMappingBasedDecoration(MappingBasedDecoration object) {
-            return createMappingBasedDecorationAdapter();
-        }
-
-        @Override
         public Adapter caseSemanticBasedDecoration(SemanticBasedDecoration object) {
             return createSemanticBasedDecorationAdapter();
-        }
-
-        @Override
-        public Adapter caseLayer(Layer object) {
-            return createLayerAdapter();
-        }
-
-        @Override
-        public Adapter caseAdditionalLayer(AdditionalLayer object) {
-            return createAdditionalLayerAdapter();
         }
 
         @Override
@@ -611,54 +485,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramDescription
-     * <em>Diagram Description</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.DiagramDescription
-     * @generated
-     */
-    public Adapter createDiagramDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramImportDescription
-     * <em>Diagram Import Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.DiagramImportDescription
-     * @generated
-     */
-    public Adapter createDiagramImportDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription
-     * <em>Diagram Extension Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription
-     * @generated
-     */
-    public Adapter createDiagramExtensionDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting
      * <em>Metamodel Extension Setting</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
@@ -707,70 +533,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping
-     * <em>Diagram Element Mapping</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.DiagramElementMapping
-     * @generated
-     */
-    public Adapter createDiagramElementMappingAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.AbstractNodeMapping
-     * <em>Abstract Node Mapping</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.AbstractNodeMapping
-     * @generated
-     */
-    public Adapter createAbstractNodeMappingAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.NodeMapping
-     * <em>Node Mapping</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.NodeMapping
-     * @generated
-     */
-    public Adapter createNodeMappingAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.ContainerMapping
-     * <em>Container Mapping</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.ContainerMapping
-     * @generated
-     */
-    public Adapter createContainerMappingAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.viewpoint.description.AbstractMappingImport
      * <em>Abstract Mapping Import</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
@@ -782,86 +544,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createAbstractMappingImportAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.NodeMappingImport
-     * <em>Node Mapping Import</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.NodeMappingImport
-     * @generated
-     */
-    public Adapter createNodeMappingImportAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.ContainerMappingImport
-     * <em>Container Mapping Import</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.ContainerMappingImport
-     * @generated
-     */
-    public Adapter createContainerMappingImportAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.EdgeMapping
-     * <em>Edge Mapping</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.EdgeMapping
-     * @generated
-     */
-    public Adapter createEdgeMappingAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.IEdgeMapping
-     * <em>IEdge Mapping</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.IEdgeMapping
-     * @generated
-     */
-    public Adapter createIEdgeMappingAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.EdgeMappingImport
-     * <em>Edge Mapping Import</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.EdgeMappingImport
-     * @generated
-     */
-    public Adapter createEdgeMappingImportAdapter() {
         return null;
     }
 
@@ -931,54 +613,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.ConditionalNodeStyleDescription
-     * <em>Conditional Node Style Description</em>}'. <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore
-     * cases; it's useful to ignore a case when inheritance will catch all the
-     * cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.ConditionalNodeStyleDescription
-     * @generated
-     */
-    public Adapter createConditionalNodeStyleDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.ConditionalEdgeStyleDescription
-     * <em>Conditional Edge Style Description</em>}'. <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore
-     * cases; it's useful to ignore a case when inheritance will catch all the
-     * cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.ConditionalEdgeStyleDescription
-     * @generated
-     */
-    public Adapter createConditionalEdgeStyleDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.ConditionalContainerStyleDescription
-     * <em>Conditional Container Style Description</em>}'. <!-- begin-user-doc
-     * --> This default implementation returns null so that we can easily ignore
-     * cases; it's useful to ignore a case when inheritance will catch all the
-     * cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.ConditionalContainerStyleDescription
-     * @generated
-     */
-    public Adapter createConditionalContainerStyleDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription
      * <em>Drag And Drop Target Description</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
@@ -1006,53 +640,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createPasteTargetDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.Layout <em>Layout</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.Layout
-     * @generated
-     */
-    public Adapter createLayoutAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.OrderedTreeLayout
-     * <em>Ordered Tree Layout</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.OrderedTreeLayout
-     * @generated
-     */
-    public Adapter createOrderedTreeLayoutAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.CompositeLayout
-     * <em>Composite Layout</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.CompositeLayout
-     * @generated
-     */
-    public Adapter createCompositeLayoutAdapter() {
         return null;
     }
 
@@ -1090,22 +677,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.MappingBasedDecoration
-     * <em>Mapping Based Decoration</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.MappingBasedDecoration
-     * @generated
-     */
-    public Adapter createMappingBasedDecorationAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration
      * <em>Semantic Based Decoration</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
@@ -1117,37 +688,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createSemanticBasedDecorationAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.Layer <em>Layer</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.Layer
-     * @generated
-     */
-    public Adapter createLayerAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.AdditionalLayer
-     * <em>Additional Layer</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.AdditionalLayer
-     * @generated
-     */
-    public Adapter createAdditionalLayerAdapter() {
         return null;
     }
 

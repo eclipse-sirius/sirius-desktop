@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * <!-- begin-user-doc --> 
+ * <!-- begin-user-doc -->
  * <p>
  * A representation of the model object '<em><b>DView</b></em>'.
  * </p>

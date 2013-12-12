@@ -14,16 +14,15 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
+import org.eclipse.sirius.diagram.description.filter.Filter;
+import org.eclipse.sirius.diagram.description.filter.FilterKind;
+import org.eclipse.sirius.diagram.description.filter.MappingFilter;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.filter.CompositeFilterDescription;
-import org.eclipse.sirius.viewpoint.description.filter.Filter;
-import org.eclipse.sirius.viewpoint.description.filter.FilterKind;
-import org.eclipse.sirius.viewpoint.description.filter.MappingFilter;
 
 /**
  * A class aggregating all the queries (read-only!) having a

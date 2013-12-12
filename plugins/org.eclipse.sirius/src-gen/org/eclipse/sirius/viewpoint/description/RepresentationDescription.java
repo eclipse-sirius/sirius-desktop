@@ -134,7 +134,7 @@ public interface RepresentationDescription extends DocumentedElement, EndUserDoc
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.RepresentationDescription#isShowOnStartup
-     * <em>Show On Startup</em>}' attribute. <!-- begin-user-doc --> 
+     * <em>Show On Startup</em>}' attribute. <!-- begin-user-doc -->
      * 
      * @since 0.9.0 <!-- end-user-doc -->
      * @param value

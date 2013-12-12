@@ -11,8 +11,8 @@
  */
 package org.eclipse.sirius.viewpoint.description.style;
 
-import org.eclipse.sirius.viewpoint.LabelPosition;
-import org.eclipse.sirius.viewpoint.ResizeKind;
+import org.eclipse.sirius.diagram.LabelPosition;
+import org.eclipse.sirius.diagram.ResizeKind;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -99,7 +99,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * 
      * @param value
      *            the new value of the '<em>Label Position</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.LabelPosition
+     * @see org.eclipse.sirius.diagram.LabelPosition
      * @see #getLabelPosition()
      * @generated
      */
@@ -138,12 +138,12 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
     /**
      * Returns the value of the '<em><b>Resize Kind</b></em>' attribute. The
      * default value is <code>"NONE"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.viewpoint.ResizeKind}. <!--
+     * enumeration {@link org.eclipse.sirius.diagram.ResizeKind}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Define
      * the directions the user is able to resize. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Resize Kind</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.ResizeKind
+     * @see org.eclipse.sirius.diagram.ResizeKind
      * @see #setResizeKind(ResizeKind)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getNodeStyleDescription_ResizeKind()
      * @model default="NONE" required="true"
@@ -159,7 +159,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * 
      * @param value
      *            the new value of the '<em>Resize Kind</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.ResizeKind
+     * @see org.eclipse.sirius.diagram.ResizeKind
      * @see #getResizeKind()
      * @generated
      */

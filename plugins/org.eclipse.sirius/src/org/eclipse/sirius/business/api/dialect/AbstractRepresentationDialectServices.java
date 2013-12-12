@@ -20,24 +20,23 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Basic class to extend for each dialect services implementation.

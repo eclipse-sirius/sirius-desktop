@@ -12,20 +12,20 @@ package org.eclipse.sirius.business.internal.query;
 
 import java.util.Collection;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.business.api.query.DiagramDescriptionQuery;
 import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.Layer;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * A class aggregating all the queries (read-only!) having a paste target as a

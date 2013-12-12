@@ -16,10 +16,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.business.api.featureextensions.FeatureExtension;
 import org.eclipse.sirius.business.api.featureextensions.FeatureExtensionsManager;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;

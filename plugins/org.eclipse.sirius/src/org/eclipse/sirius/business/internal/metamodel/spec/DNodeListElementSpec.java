@@ -13,15 +13,15 @@ package org.eclipse.sirius.business.internal.metamodel.spec;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.business.internal.metamodel.operations.DDiagramElementSpecOperations;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.impl.DNodeListElementImpl;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.impl.DNodeListElementImpl;
 
 /**
  * Implementation of DNodeListElementImpl.java.

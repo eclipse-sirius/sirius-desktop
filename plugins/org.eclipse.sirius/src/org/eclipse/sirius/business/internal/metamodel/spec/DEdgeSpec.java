@@ -19,15 +19,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
-import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.EdgeMappingQuery;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
@@ -35,22 +26,30 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.business.internal.metamodel.operations.DDiagramElementSpecOperations;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.impl.DEdgeImpl;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
-import org.eclipse.sirius.viewpoint.impl.DEdgeImpl;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+
+import com.google.common.collect.Lists;
 
 /**
  * Implementation of DEdgeImpl.java.
@@ -285,7 +284,7 @@ public class DEdgeSpec extends DEdgeImpl {
     @Override
     public EList<EdgeTarget> getPath() {
         if (path == null) {
-            path = new EObjectResolvingEList<EdgeTarget>(EdgeTarget.class, this, ViewpointPackage.DEDGE__PATH) {
+            path = new EObjectResolvingEList<EdgeTarget>(EdgeTarget.class, this, DiagramPackage.DEDGE__PATH) {
                 /**
                  * {@inheritDoc}
                  */
@@ -304,7 +303,7 @@ public class DEdgeSpec extends DEdgeImpl {
      */
     @Override
     public void eNotify(Notification notification) {
-        if (notification.getEventType() == Notification.SET && notification.getFeatureID(DEdge.class) == ViewpointPackage.DEDGE__ACTUAL_MAPPING) {
+        if (notification.getEventType() == Notification.SET && notification.getFeatureID(DEdge.class) == DiagramPackage.DEDGE__ACTUAL_MAPPING) {
             if (notification.getOldValue() instanceof EdgeMappingImport && EdgeMappingImportWrapper.getWrapper((EdgeMappingImport) notification.getOldValue()) == notification.getNewValue()) {
                 // silently replace the EdgeMappingImport by its corresponding
                 // wrapper : occurs only once on the first refresh after load.

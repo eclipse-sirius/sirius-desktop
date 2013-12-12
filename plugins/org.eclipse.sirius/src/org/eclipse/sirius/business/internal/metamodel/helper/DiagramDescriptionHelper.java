@@ -15,8 +15,8 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**

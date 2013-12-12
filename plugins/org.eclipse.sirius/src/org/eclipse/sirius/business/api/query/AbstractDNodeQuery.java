@@ -11,8 +11,8 @@
 package org.eclipse.sirius.business.api.query;
 
 import org.eclipse.sirius.business.internal.experimental.sync.AbstractDNodeCandidate;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DiagramPackage;
 
 /**
  * A class aggregating all the queries (read-only!) having a
@@ -62,7 +62,7 @@ public class AbstractDNodeQuery {
      * @return true if the AbtractDNode is a bordered node, false otherwise
      */
     public boolean isBorderedNode() {
-        return ViewpointPackage.eINSTANCE.getAbstractDNode_OwnedBorderedNodes().equals(node.eContainingFeature());
+        return DiagramPackage.eINSTANCE.getAbstractDNode_OwnedBorderedNodes().equals(node.eContainingFeature());
     }
 
 }

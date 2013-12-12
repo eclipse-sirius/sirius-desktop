@@ -13,8 +13,8 @@ package org.eclipse.sirius.business.internal.metamodel.description.spec;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.MetaModelExtension;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.impl.MetamodelExtensionSettingImpl;
 
 /**

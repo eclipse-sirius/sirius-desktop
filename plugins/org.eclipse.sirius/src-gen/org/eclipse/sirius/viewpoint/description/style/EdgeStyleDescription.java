@@ -11,11 +11,11 @@
  */
 package org.eclipse.sirius.viewpoint.description.style;
 
-import org.eclipse.sirius.viewpoint.EdgeArrows;
-import org.eclipse.sirius.viewpoint.EdgeRouting;
-import org.eclipse.sirius.viewpoint.LineStyle;
+import org.eclipse.sirius.diagram.EdgeArrows;
+import org.eclipse.sirius.diagram.EdgeRouting;
+import org.eclipse.sirius.diagram.LineStyle;
+import org.eclipse.sirius.diagram.description.FoldingStyle;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
-import org.eclipse.sirius.viewpoint.description.FoldingStyle;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -93,12 +93,12 @@ public interface EdgeStyleDescription extends StyleDescription {
     /**
      * Returns the value of the '<em><b>Line Style</b></em>' attribute. The
      * literals are from the enumeration
-     * {@link org.eclipse.sirius.viewpoint.LineStyle}. <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.diagram.LineStyle}. <!-- begin-user-doc -->
      * <!-- end-user-doc --> <!-- begin-model-doc --> The style of the line.
      * <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Line Style</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.LineStyle
+     * @see org.eclipse.sirius.diagram.LineStyle
      * @see #setLineStyle(LineStyle)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEdgeStyleDescription_LineStyle()
      * @model
@@ -114,7 +114,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * 
      * @param value
      *            the new value of the '<em>Line Style</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.LineStyle
+     * @see org.eclipse.sirius.diagram.LineStyle
      * @see #getLineStyle()
      * @generated
      */
@@ -123,12 +123,12 @@ public interface EdgeStyleDescription extends StyleDescription {
     /**
      * Returns the value of the '<em><b>Source Arrow</b></em>' attribute. The
      * default value is <code>"NoDecoration"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.viewpoint.EdgeArrows}. <!--
+     * enumeration {@link org.eclipse.sirius.diagram.EdgeArrows}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * source decoration. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Source Arrow</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.EdgeArrows
+     * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see #setSourceArrow(EdgeArrows)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEdgeStyleDescription_SourceArrow()
      * @model default="NoDecoration" required="true"
@@ -144,7 +144,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * 
      * @param value
      *            the new value of the '<em>Source Arrow</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.EdgeArrows
+     * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see #getSourceArrow()
      * @generated
      */
@@ -153,12 +153,12 @@ public interface EdgeStyleDescription extends StyleDescription {
     /**
      * Returns the value of the '<em><b>Target Arrow</b></em>' attribute. The
      * default value is <code>"InputArrow"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.viewpoint.EdgeArrows}. <!--
+     * enumeration {@link org.eclipse.sirius.diagram.EdgeArrows}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * target decoration. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Target Arrow</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.EdgeArrows
+     * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see #setTargetArrow(EdgeArrows)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEdgeStyleDescription_TargetArrow()
      * @model default="InputArrow" required="true"
@@ -174,7 +174,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * 
      * @param value
      *            the new value of the '<em>Target Arrow</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.EdgeArrows
+     * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see #getTargetArrow()
      * @generated
      */
@@ -215,12 +215,12 @@ public interface EdgeStyleDescription extends StyleDescription {
     /**
      * Returns the value of the '<em><b>Routing Style</b></em>' attribute. The
      * default value is <code>"straight"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.viewpoint.EdgeRouting}. <!--
+     * enumeration {@link org.eclipse.sirius.diagram.EdgeRouting}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * routing style for your edge. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Routing Style</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.EdgeRouting
+     * @see org.eclipse.sirius.diagram.EdgeRouting
      * @see #setRoutingStyle(EdgeRouting)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEdgeStyleDescription_RoutingStyle()
      * @model default="straight" required="true"
@@ -236,7 +236,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * 
      * @param value
      *            the new value of the '<em>Routing Style</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.EdgeRouting
+     * @see org.eclipse.sirius.diagram.EdgeRouting
      * @see #getRoutingStyle()
      * @generated
      */
@@ -245,13 +245,13 @@ public interface EdgeStyleDescription extends StyleDescription {
     /**
      * Returns the value of the '<em><b>Folding Style</b></em>' attribute. The
      * literals are from the enumeration
-     * {@link org.eclipse.sirius.viewpoint.description.FoldingStyle}. <!--
+     * {@link org.eclipse.sirius.diagram.description.FoldingStyle}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> A
      * folding style allow to collapse the elements targeted by the edge. <!--
      * end-model-doc -->
      * 
      * @return the value of the '<em>Folding Style</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.description.FoldingStyle
+     * @see org.eclipse.sirius.diagram.description.FoldingStyle
      * @see #setFoldingStyle(FoldingStyle)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEdgeStyleDescription_FoldingStyle()
      * @model
@@ -267,7 +267,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * 
      * @param value
      *            the new value of the '<em>Folding Style</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.description.FoldingStyle
+     * @see org.eclipse.sirius.diagram.description.FoldingStyle
      * @see #getFoldingStyle()
      * @generated
      */

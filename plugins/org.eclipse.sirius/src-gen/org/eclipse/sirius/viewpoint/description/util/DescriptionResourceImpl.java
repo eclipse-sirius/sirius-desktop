@@ -30,8 +30,20 @@ import org.eclipse.sirius.common.tools.api.util.Option;
  */
 public class DescriptionResourceImpl extends XMIResourceImpl {
 
+    /**
+     * Creates an instance of the resource. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param uri
+     *            the URI of the new resource.
+     * @not-generated
+     */
+    protected DescriptionResourceImpl(URI uri) {
+        super(uri);
+    }
+
     private String loadedVersion;
-    
+
     /**
      * Creates an instance of the resource. <!-- begin-user-doc --> <!--
      * end-user-doc -->

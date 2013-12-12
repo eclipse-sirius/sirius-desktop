@@ -11,7 +11,7 @@
  */
 package org.eclipse.sirius.viewpoint.description.style;
 
-import org.eclipse.sirius.viewpoint.ContainerShape;
+import org.eclipse.sirius.diagram.ContainerShape;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
@@ -38,7 +38,7 @@ public interface ShapeContainerStyleDescription extends ContainerStyleDescriptio
     /**
      * Returns the value of the '<em><b>Shape</b></em>' attribute. The literals
      * are from the enumeration
-     * {@link org.eclipse.sirius.viewpoint.ContainerShape}. <!-- begin-user-doc
+     * {@link org.eclipse.sirius.diagram.ContainerShape}. <!-- begin-user-doc
      * -->
      * <p>
      * If the meaning of the '<em>Shape</em>' attribute isn't clear, there
@@ -47,7 +47,7 @@ public interface ShapeContainerStyleDescription extends ContainerStyleDescriptio
      * <!-- end-user-doc -->
      * 
      * @return the value of the '<em>Shape</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.ContainerShape
+     * @see org.eclipse.sirius.diagram.ContainerShape
      * @see #setShape(ContainerShape)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getShapeContainerStyleDescription_Shape()
      * @model required="true"
@@ -62,7 +62,7 @@ public interface ShapeContainerStyleDescription extends ContainerStyleDescriptio
      * 
      * @param value
      *            the new value of the '<em>Shape</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.ContainerShape
+     * @see org.eclipse.sirius.diagram.ContainerShape
      * @see #getShape()
      * @generated
      */

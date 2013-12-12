@@ -21,11 +21,11 @@ import javax.xml.parsers.SAXParserFactory;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
+import org.eclipse.sirius.business.internal.session.parser.SiriusSaxParserNormalAbortException;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-import org.eclipse.sirius.business.internal.session.parser.SiriusSaxParserNormalAbortException;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Parser to get the current version.

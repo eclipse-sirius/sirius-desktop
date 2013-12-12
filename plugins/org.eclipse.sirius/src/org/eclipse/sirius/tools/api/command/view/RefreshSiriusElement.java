@@ -22,9 +22,9 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.listener.Notification;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilter;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 

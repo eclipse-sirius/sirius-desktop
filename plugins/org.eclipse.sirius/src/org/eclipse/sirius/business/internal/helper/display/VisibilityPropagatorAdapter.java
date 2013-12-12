@@ -13,25 +13,24 @@ package org.eclipse.sirius.business.internal.helper.display;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.util.EContentAdapter;
-
-import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.common.tools.api.listener.NotificationReceiver;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
-import org.eclipse.sirius.viewpoint.DNodeList;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.listener.NotificationReceiver;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.viewpoint.DView;
+
+import com.google.common.collect.Iterables;
 
 /**
  * This class is an EMF Adapter which listen change in the model to update a
@@ -132,15 +131,15 @@ public class VisibilityPropagatorAdapter extends EContentAdapter implements Noti
             case Notification.SET:
             case Notification.UNSET:
 
-                if (notifier instanceof DSemanticDiagram && ViewpointPackage.eINSTANCE.getDDiagram_ActivatedFilters().equals(n.getFeature())) {
+                if (notifier instanceof DSemanticDiagram && DiagramPackage.eINSTANCE.getDDiagram_ActivatedFilters().equals(n.getFeature())) {
                     DisplayServiceManager.INSTANCE.getDisplayService().refreshAllElementsVisibility((DDiagram) notifier);
                 }
 
-                if (notifier instanceof DSemanticDiagram && ViewpointPackage.eINSTANCE.getDDiagram_ActivatedLayers().equals(n.getFeature())) {
+                if (notifier instanceof DSemanticDiagram && DiagramPackage.eINSTANCE.getDDiagram_ActivatedLayers().equals(n.getFeature())) {
                     DisplayServiceManager.INSTANCE.getDisplayService().refreshAllElementsVisibility((DDiagram) notifier);
                 }
 
-                if (notifier instanceof DDiagramElement && n.getFeatureID(DDiagramElement.class) == ViewpointPackage.DDIAGRAM_ELEMENT__VISIBLE) {
+                if (notifier instanceof DDiagramElement && n.getFeatureID(DDiagramElement.class) == DiagramPackage.DDIAGRAM_ELEMENT__VISIBLE) {
                     propagateElementVisibility((DDiagramElement) notifier, n);
                 }
 

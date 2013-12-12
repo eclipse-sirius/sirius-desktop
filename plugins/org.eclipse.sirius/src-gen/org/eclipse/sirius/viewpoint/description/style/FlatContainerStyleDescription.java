@@ -11,7 +11,7 @@
  */
 package org.eclipse.sirius.viewpoint.description.style;
 
-import org.eclipse.sirius.viewpoint.BackgroundStyle;
+import org.eclipse.sirius.diagram.BackgroundStyle;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
@@ -44,12 +44,12 @@ public interface FlatContainerStyleDescription extends ContainerStyleDescription
     /**
      * Returns the value of the '<em><b>Background Style</b></em>' attribute.
      * The literals are from the enumeration
-     * {@link org.eclipse.sirius.viewpoint.BackgroundStyle}. <!-- begin-user-doc
+     * {@link org.eclipse.sirius.diagram.BackgroundStyle}. <!-- begin-user-doc
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> The background style.
      * <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Background Style</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.BackgroundStyle
+     * @see org.eclipse.sirius.diagram.BackgroundStyle
      * @see #setBackgroundStyle(BackgroundStyle)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getFlatContainerStyleDescription_BackgroundStyle()
      * @model required="true"
@@ -65,7 +65,7 @@ public interface FlatContainerStyleDescription extends ContainerStyleDescription
      * 
      * @param value
      *            the new value of the '<em>Background Style</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.BackgroundStyle
+     * @see org.eclipse.sirius.diagram.BackgroundStyle
      * @see #getBackgroundStyle()
      * @generated
      */

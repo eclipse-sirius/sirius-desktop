@@ -25,12 +25,11 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
 import org.eclipse.sirius.business.api.query.ResourceQuery;
-import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 
 /**
  * A {@link ICommandTask} to remove dangling references between semantic

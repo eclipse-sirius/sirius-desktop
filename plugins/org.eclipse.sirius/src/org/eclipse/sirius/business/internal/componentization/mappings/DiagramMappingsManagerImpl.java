@@ -16,8 +16,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManagerListener;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
@@ -26,21 +24,23 @@ import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.business.internal.experimental.sync.AbstractDNodeCandidate;
 import org.eclipse.sirius.business.internal.layers.GlobalMappingsTable;
 import org.eclipse.sirius.business.internal.metamodel.helper.MappingsListVisitor;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
-import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.ContainerMappingImport;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMappingImport;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.Layer;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import com.google.common.collect.Sets;
 
 /**
  * A manager of mappings available for a given diagram depending of the

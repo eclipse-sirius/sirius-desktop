@@ -18,12 +18,12 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.IModificationTask;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.MoveElement;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 
 /**
  * A task operation to move element.

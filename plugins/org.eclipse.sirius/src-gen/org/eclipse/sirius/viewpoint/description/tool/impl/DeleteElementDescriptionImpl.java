@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
 import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DeleteHook;

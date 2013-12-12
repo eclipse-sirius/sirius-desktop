@@ -12,8 +12,8 @@
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -54,7 +54,7 @@ public interface NodeCreationDescription extends MappingBasedToolDescription {
     /**
      * Returns the value of the '<em><b>Node Mappings</b></em>' reference list.
      * The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.NodeMapping}. <!--
+     * {@link org.eclipse.sirius.diagram.description.NodeMapping}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Node
      * mappings used by this tool. <!-- end-model-doc -->
      * 
@@ -190,9 +190,9 @@ public interface NodeCreationDescription extends MappingBasedToolDescription {
     /**
      * Returns the value of the '<em><b>Extra Mappings</b></em>' reference list.
      * The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.AbstractNodeMapping}.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Add here any mapping in which you want to allow the tool execution. <!--
+     * {@link org.eclipse.sirius.diagram.description.AbstractNodeMapping}. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Add
+     * here any mapping in which you want to allow the tool execution. <!--
      * end-model-doc -->
      * 
      * @return the value of the '<em>Extra Mappings</em>' reference list.

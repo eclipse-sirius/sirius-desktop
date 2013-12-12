@@ -13,9 +13,9 @@ package org.eclipse.sirius.business.api.query;
 import java.util.Collection;
 
 import org.eclipse.sirius.business.internal.metamodel.helper.ContentHelper;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 
 /**
  * A class aggregating all the queries (read-only!) having a DiagramDescription

@@ -24,17 +24,17 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.business.api.helper.layers.LayerService;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
-import org.eclipse.sirius.viewpoint.description.Layer;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
-import org.eclipse.sirius.viewpoint.description.NodeMappingImport;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.NodeMappingImport;
 
 /**
  * TODOCBR comment.

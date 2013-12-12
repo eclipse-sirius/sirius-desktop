@@ -21,11 +21,11 @@ import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.business.internal.componentization.mappings.table.CandidateMapping;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.diagram.description.ContainerMappingImport;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
-import org.eclipse.sirius.viewpoint.description.ContainerMappingImport;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
-import org.eclipse.sirius.viewpoint.description.NodeMappingImport;
 
 /**
  * A table to store mappings inheritance paths.

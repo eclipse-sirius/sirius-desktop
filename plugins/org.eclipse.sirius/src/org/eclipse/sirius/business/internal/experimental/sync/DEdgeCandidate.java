@@ -11,15 +11,15 @@
 package org.eclipse.sirius.business.internal.experimental.sync;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
-import org.eclipse.sirius.viewpoint.description.IEdgeMapping;
+import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.IEdgeMapping;
 
 /**
  * This class represents a candidate for a DEdge, a candidate is a "possible"

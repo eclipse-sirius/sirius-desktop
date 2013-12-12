@@ -11,7 +11,7 @@
 package org.eclipse.sirius.business.api.helper.graphicalfilters;
 
 import org.eclipse.sirius.business.internal.metamodel.helper.HideFilterHelperImpl;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElement;
 
 /**
  * Helper to handle HideFilter.

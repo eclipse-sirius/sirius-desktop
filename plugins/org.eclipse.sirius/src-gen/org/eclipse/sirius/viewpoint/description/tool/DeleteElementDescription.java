@@ -12,7 +12,7 @@
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

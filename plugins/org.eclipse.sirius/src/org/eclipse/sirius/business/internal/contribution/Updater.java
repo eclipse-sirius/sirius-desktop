@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.common.tools.api.util.AllContents;
 
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
@@ -35,8 +36,6 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.AllContents;
 
 /**
  * An updater can modify a model in place to match the structure of a new

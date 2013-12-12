@@ -18,26 +18,26 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager;
+import org.eclipse.sirius.business.api.query.DiagramDescriptionMappingManagerQuery;
+import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.ContainerMappingImport;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.NodeMappingImport;
+import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
+
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager;
-import org.eclipse.sirius.business.api.query.DiagramDescriptionMappingManagerQuery;
-import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMappingImport;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
-import org.eclipse.sirius.viewpoint.description.Layer;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
-import org.eclipse.sirius.viewpoint.description.NodeMappingImport;
 
 /**
  * Manage the candidate mappings availability based on activated layers.

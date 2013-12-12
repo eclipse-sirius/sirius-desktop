@@ -18,13 +18,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.emf.validation.model.ConstraintStatus;
-import org.eclipse.sirius.viewpoint.description.ConditionalContainerStyleDescription;
-import org.eclipse.sirius.viewpoint.description.ConditionalEdgeStyleDescription;
-import org.eclipse.sirius.viewpoint.description.ConditionalNodeStyleDescription;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
+import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
+import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 
 /**

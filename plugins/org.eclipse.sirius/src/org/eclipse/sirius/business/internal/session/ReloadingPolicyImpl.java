@@ -13,14 +13,13 @@ package org.eclipse.sirius.business.internal.session;
 import java.util.List;
 
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.business.api.session.ReloadingPolicy;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
+import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
-import org.eclipse.sirius.business.api.session.ReloadingPolicy;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 
 /**
  * A policy returning synchronization actions needed after a workspace change.

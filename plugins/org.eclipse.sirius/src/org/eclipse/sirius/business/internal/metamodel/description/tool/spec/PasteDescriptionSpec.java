@@ -19,12 +19,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.tool.impl.PasteDescriptionImpl;
+
+import com.google.common.collect.Lists;
 
 /**
  * Implementation of PasteDescription.

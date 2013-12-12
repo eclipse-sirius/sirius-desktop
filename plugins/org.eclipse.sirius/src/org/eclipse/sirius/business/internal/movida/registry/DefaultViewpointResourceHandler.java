@@ -14,16 +14,15 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
+import org.eclipse.sirius.business.api.query.FileQuery;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
-import org.eclipse.sirius.business.api.query.FileQuery;
-import org.eclipse.sirius.viewpoint.description.Group;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * The default implementation of {@link ViewpointResourceHandler} for

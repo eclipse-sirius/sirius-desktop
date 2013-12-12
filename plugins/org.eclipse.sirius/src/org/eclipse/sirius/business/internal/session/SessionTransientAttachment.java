@@ -14,12 +14,11 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
-
-import com.google.common.collect.Iterators;
-
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.business.api.session.Session;
+
+import com.google.common.collect.Iterators;
 
 /**
  * This adapter might be used as a marker to retrieve a {@link Session} from any

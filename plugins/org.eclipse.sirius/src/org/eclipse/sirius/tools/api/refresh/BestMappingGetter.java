@@ -15,7 +15,6 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.query.AbstractNodeMappingQuery;
@@ -23,20 +22,21 @@ import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.EdgeMappingQuery;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DMappingBased;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
-import org.eclipse.sirius.viewpoint.DNodeList;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 
 /**
  * Get the best mapping according to a contextual diagram, its enabled layers

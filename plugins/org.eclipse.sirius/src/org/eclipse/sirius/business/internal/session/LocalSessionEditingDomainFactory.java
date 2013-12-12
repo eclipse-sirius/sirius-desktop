@@ -12,7 +12,6 @@ package org.eclipse.sirius.business.internal.session;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.WorkspaceEditingDomainFactory;
-
 import org.eclipse.sirius.common.tools.api.editing.FileStatusPrecommitListener;
 import org.eclipse.sirius.common.tools.api.editing.IEditingDomainFactory;
 

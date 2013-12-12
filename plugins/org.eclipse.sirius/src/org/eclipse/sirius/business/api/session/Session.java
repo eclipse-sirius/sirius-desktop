@@ -21,10 +21,10 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
  * A session is initiated by a user, provides the model data and means to store

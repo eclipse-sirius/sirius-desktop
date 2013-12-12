@@ -19,14 +19,16 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.description.filter.FilterPackage;
+import org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl;
+import org.eclipse.sirius.diagram.impl.DiagramPackageImpl;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.audit.AuditPackage;
 import org.eclipse.sirius.viewpoint.description.audit.impl.AuditPackageImpl;
 import org.eclipse.sirius.viewpoint.description.concern.ConcernPackage;
 import org.eclipse.sirius.viewpoint.description.concern.impl.ConcernPackageImpl;
-import org.eclipse.sirius.viewpoint.description.filter.FilterPackage;
-import org.eclipse.sirius.viewpoint.description.filter.impl.FilterPackageImpl;
 import org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl;
@@ -767,34 +769,43 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
                 .getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
         StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) instanceof StylePackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
-        FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
         ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
         AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
         ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) instanceof ConcernPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ConcernPackage.eNS_URI) : ConcernPackage.eINSTANCE);
+        DiagramPackageImpl theDiagramPackage = (DiagramPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) instanceof DiagramPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(DiagramPackage.eNS_URI) : DiagramPackage.eINSTANCE);
+        org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl theDescriptionPackage_1 = (org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl) (EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI) instanceof org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI) : org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE);
+        FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
 
         // Create package meta-data objects
         theToolPackage.createPackageContents();
         theViewpointPackage.createPackageContents();
         theDescriptionPackage.createPackageContents();
         theStylePackage.createPackageContents();
-        theFilterPackage.createPackageContents();
         theValidationPackage.createPackageContents();
         theAuditPackage.createPackageContents();
         theConcernPackage.createPackageContents();
+        theDiagramPackage.createPackageContents();
+        theDescriptionPackage_1.createPackageContents();
+        theFilterPackage.createPackageContents();
 
         // Initialize created meta-data
         theToolPackage.initializePackageContents();
         theViewpointPackage.initializePackageContents();
         theDescriptionPackage.initializePackageContents();
         theStylePackage.initializePackageContents();
-        theFilterPackage.initializePackageContents();
         theValidationPackage.initializePackageContents();
         theAuditPackage.initializePackageContents();
         theConcernPackage.initializePackageContents();
+        theDiagramPackage.initializePackageContents();
+        theDescriptionPackage_1.initializePackageContents();
+        theFilterPackage.initializePackageContents();
 
         // Mark meta-data to indicate it can't be changed
         theToolPackage.freeze();
@@ -3424,6 +3435,9 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         // Obtain other dependent packages
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+        org.eclipse.sirius.diagram.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.diagram.description.DescriptionPackage) EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI);
+        DiagramPackage theDiagramPackage = (DiagramPackage) EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI);
         ViewpointPackage theViewpointPackage = (ViewpointPackage) EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
 
         // Create type parameters
@@ -3568,7 +3582,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
                 IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(nodeCreationDescriptionEClass, NodeCreationDescription.class, "NodeCreationDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getNodeCreationDescription_NodeMappings(), theDescriptionPackage.getNodeMapping(), null, "nodeMappings", null, 1, -1, NodeCreationDescription.class, !IS_TRANSIENT,
+        initEReference(getNodeCreationDescription_NodeMappings(), theDescriptionPackage_1.getNodeMapping(), null, "nodeMappings", null, 1, -1, NodeCreationDescription.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getNodeCreationDescription_Variable(), this.getNodeCreationVariable(), null, "variable", null, 1, 1, NodeCreationDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3578,11 +3592,11 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
                 !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNodeCreationDescription_IconPath(), theEcorePackage.getEString(), "iconPath", "", 0, 1, NodeCreationDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getNodeCreationDescription_ExtraMappings(), theDescriptionPackage.getAbstractNodeMapping(), null, "extraMappings", null, 0, -1, NodeCreationDescription.class, !IS_TRANSIENT,
+        initEReference(getNodeCreationDescription_ExtraMappings(), theDescriptionPackage_1.getAbstractNodeMapping(), null, "extraMappings", null, 0, -1, NodeCreationDescription.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(edgeCreationDescriptionEClass, EdgeCreationDescription.class, "EdgeCreationDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getEdgeCreationDescription_EdgeMappings(), theDescriptionPackage.getEdgeMapping(), null, "edgeMappings", null, 1, -1, EdgeCreationDescription.class, !IS_TRANSIENT,
+        initEReference(getEdgeCreationDescription_EdgeMappings(), theDescriptionPackage_1.getEdgeMapping(), null, "edgeMappings", null, 1, -1, EdgeCreationDescription.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getEdgeCreationDescription_SourceVariable(), this.getSourceEdgeCreationVariable(), null, "sourceVariable", null, 1, 1, EdgeCreationDescription.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3596,20 +3610,20 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
                 !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getEdgeCreationDescription_IconPath(), theEcorePackage.getEString(), "iconPath", "", 0, 1, EdgeCreationDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getEdgeCreationDescription_ExtraSourceMappings(), theDescriptionPackage.getDiagramElementMapping(), null, "extraSourceMappings", null, 0, -1, EdgeCreationDescription.class,
+        initEReference(getEdgeCreationDescription_ExtraSourceMappings(), theDescriptionPackage_1.getDiagramElementMapping(), null, "extraSourceMappings", null, 0, -1, EdgeCreationDescription.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getEdgeCreationDescription_ExtraTargetMappings(), theDescriptionPackage.getDiagramElementMapping(), null, "extraTargetMappings", null, 0, -1, EdgeCreationDescription.class,
+        initEReference(getEdgeCreationDescription_ExtraTargetMappings(), theDescriptionPackage_1.getDiagramElementMapping(), null, "extraTargetMappings", null, 0, -1, EdgeCreationDescription.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getEdgeCreationDescription_ConnectionStartPrecondition(), theDescriptionPackage.getInterpretedExpression(), "connectionStartPrecondition", null, 0, 1,
                 EdgeCreationDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        EOperation op = addEOperation(edgeCreationDescriptionEClass, theDescriptionPackage.getEdgeMapping(), "getBestMapping", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theViewpointPackage.getEdgeTarget(), "source", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theViewpointPackage.getEdgeTarget(), "target", 0, 1, IS_UNIQUE, IS_ORDERED);
+        EOperation op = addEOperation(edgeCreationDescriptionEClass, theDescriptionPackage_1.getEdgeMapping(), "getBestMapping", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, theDiagramPackage.getEdgeTarget(), "source", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, theDiagramPackage.getEdgeTarget(), "target", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, theEcorePackage.getEObject(), "createdElements", 0, -1, IS_UNIQUE, IS_ORDERED);
 
         initEClass(containerCreationDescriptionEClass, ContainerCreationDescription.class, "ContainerCreationDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getContainerCreationDescription_ContainerMappings(), theDescriptionPackage.getContainerMapping(), null, "containerMappings", null, 1, -1, ContainerCreationDescription.class,
+        initEReference(getContainerCreationDescription_ContainerMappings(), theDescriptionPackage_1.getContainerMapping(), null, "containerMappings", null, 1, -1, ContainerCreationDescription.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getContainerCreationDescription_Variable(), this.getNodeCreationVariable(), null, "variable", null, 1, 1, ContainerCreationDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3619,11 +3633,11 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getContainerCreationDescription_IconPath(), theEcorePackage.getEString(), "iconPath", "", 0, 1, ContainerCreationDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getContainerCreationDescription_ExtraMappings(), theDescriptionPackage.getAbstractNodeMapping(), null, "extraMappings", null, 0, -1, ContainerCreationDescription.class,
+        initEReference(getContainerCreationDescription_ExtraMappings(), theDescriptionPackage_1.getAbstractNodeMapping(), null, "extraMappings", null, 0, -1, ContainerCreationDescription.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(containerDropDescriptionEClass, ContainerDropDescription.class, "ContainerDropDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getContainerDropDescription_Mappings(), theDescriptionPackage.getDiagramElementMapping(), null, "mappings", null, 0, -1, ContainerDropDescription.class, !IS_TRANSIENT,
+        initEReference(getContainerDropDescription_Mappings(), theDescriptionPackage_1.getDiagramElementMapping(), null, "mappings", null, 0, -1, ContainerDropDescription.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getContainerDropDescription_OldContainer(), this.getDropContainerVariable(), null, "oldContainer", null, 1, 1, ContainerDropDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3640,7 +3654,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         initEAttribute(getContainerDropDescription_MoveEdges(), ecorePackage.getEBoolean(), "moveEdges", null, 1, 1, ContainerDropDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        op = addEOperation(containerDropDescriptionEClass, theDescriptionPackage.getDiagramElementMapping(), "getBestMapping", 0, 1, IS_UNIQUE, IS_ORDERED);
+        op = addEOperation(containerDropDescriptionEClass, theDescriptionPackage_1.getDiagramElementMapping(), "getBestMapping", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, theViewpointPackage.getDragAndDropTarget(), "targetContainer", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, theEcorePackage.getEObject(), "droppedElement", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -3672,10 +3686,10 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         initEReference(getDeleteElementDescription_Hook(), this.getDeleteHook(), null, "hook", null, 0, 1, DeleteElementDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        addEOperation(deleteElementDescriptionEClass, theDescriptionPackage.getDiagramElementMapping(), "getMappings", 1, -1, IS_UNIQUE, IS_ORDERED);
+        addEOperation(deleteElementDescriptionEClass, theDescriptionPackage_1.getDiagramElementMapping(), "getMappings", 1, -1, IS_UNIQUE, IS_ORDERED);
 
         initEClass(doubleClickDescriptionEClass, DoubleClickDescription.class, "DoubleClickDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDoubleClickDescription_Mappings(), theDescriptionPackage.getDiagramElementMapping(), theDescriptionPackage.getDiagramElementMapping_DoubleClickDescription(), "mappings",
+        initEReference(getDoubleClickDescription_Mappings(), theDescriptionPackage_1.getDiagramElementMapping(), theDescriptionPackage_1.getDiagramElementMapping_DoubleClickDescription(), "mappings",
                 null, 1, -1, DoubleClickDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getDoubleClickDescription_Element(), this.getElementDoubleClickVariable(), null, "element", null, 1, 1, DoubleClickDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3714,7 +3728,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         initEReference(getReconnectEdgeDescription_EdgeView(), this.getElementSelectVariable(), null, "edgeView", null, 1, 1, ReconnectEdgeDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        addEOperation(reconnectEdgeDescriptionEClass, theDescriptionPackage.getEdgeMapping(), "getMappings", 1, -1, IS_UNIQUE, IS_ORDERED);
+        addEOperation(reconnectEdgeDescriptionEClass, theDescriptionPackage_1.getEdgeMapping(), "getMappings", 1, -1, IS_UNIQUE, IS_ORDERED);
 
         initEClass(requestDescriptionEClass, RequestDescription.class, "RequestDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getRequestDescription_Type(), theEcorePackage.getEString(), "type", null, 1, 1, RequestDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
@@ -3839,7 +3853,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         initEAttribute(getDirectEditLabel_InputLabelExpression(), theDescriptionPackage.getInterpretedExpression(), "inputLabelExpression", null, 0, 1, DirectEditLabel.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        addEOperation(directEditLabelEClass, theDescriptionPackage.getDiagramElementMapping(), "getMapping", 1, -1, IS_UNIQUE, IS_ORDERED);
+        addEOperation(directEditLabelEClass, theDescriptionPackage_1.getDiagramElementMapping(), "getMapping", 1, -1, IS_UNIQUE, IS_ORDERED);
 
         initEClass(behaviorToolEClass, BehaviorTool.class, "BehaviorTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getBehaviorTool_DomainClass(), theDescriptionPackage.getTypeName(), "domainClass", "EObject", 1, 1, BehaviorTool.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
@@ -3966,7 +3980,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
                 !IS_DERIVED, IS_ORDERED);
 
         initEClass(createViewEClass, CreateView.class, "CreateView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getCreateView_Mapping(), theDescriptionPackage.getDiagramElementMapping(), null, "mapping", null, 1, 1, CreateView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+        initEReference(getCreateView_Mapping(), theDescriptionPackage_1.getDiagramElementMapping(), null, "mapping", null, 1, 1, CreateView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getCreateView_ContainerViewExpression(), theDescriptionPackage.getInterpretedExpression(), "containerViewExpression", "", 1, 1, CreateView.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3988,7 +4002,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         initEClass(navigationEClass, Navigation.class, "Navigation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getNavigation_CreateIfNotExistent(), theEcorePackage.getEBoolean(), "createIfNotExistent", null, 0, 1, Navigation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getNavigation_DiagramDescription(), theDescriptionPackage.getDiagramDescription(), null, "diagramDescription", null, 1, 1, Navigation.class, !IS_TRANSIENT, !IS_VOLATILE,
+        initEReference(getNavigation_DiagramDescription(), theDescriptionPackage_1.getDiagramDescription(), null, "diagramDescription", null, 1, 1, Navigation.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(nameVariableEClass, NameVariable.class, "NameVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4000,12 +4014,12 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(diagramCreationDescriptionEClass, DiagramCreationDescription.class, "DiagramCreationDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDiagramCreationDescription_DiagramDescription(), theDescriptionPackage.getDiagramDescription(), null, "diagramDescription", null, 1, 1, DiagramCreationDescription.class,
+        initEReference(getDiagramCreationDescription_DiagramDescription(), theDescriptionPackage_1.getDiagramDescription(), null, "diagramDescription", null, 1, 1, DiagramCreationDescription.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(diagramNavigationDescriptionEClass, DiagramNavigationDescription.class, "DiagramNavigationDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDiagramNavigationDescription_DiagramDescription(), theDescriptionPackage.getDiagramDescription(), null, "diagramDescription", null, 1, 1, DiagramNavigationDescription.class,
-                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getDiagramNavigationDescription_DiagramDescription(), theDescriptionPackage_1.getDiagramDescription(), null, "diagramDescription", null, 1, 1,
+                DiagramNavigationDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(toolFilterDescriptionEClass, ToolFilterDescription.class, "ToolFilterDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getToolFilterDescription_Precondition(), theDescriptionPackage.getInterpretedExpression(), "precondition", null, 0, 1, ToolFilterDescription.class, !IS_TRANSIENT, !IS_VOLATILE,

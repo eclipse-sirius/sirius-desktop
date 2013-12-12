@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.helper.concern;
 
-import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.viewpoint.description.concern.ConcernDescription;
 
 /**

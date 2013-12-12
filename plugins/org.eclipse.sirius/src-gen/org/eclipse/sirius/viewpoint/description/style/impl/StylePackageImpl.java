@@ -17,14 +17,16 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.description.filter.FilterPackage;
+import org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl;
+import org.eclipse.sirius.diagram.impl.DiagramPackageImpl;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.audit.AuditPackage;
 import org.eclipse.sirius.viewpoint.description.audit.impl.AuditPackageImpl;
 import org.eclipse.sirius.viewpoint.description.concern.ConcernPackage;
 import org.eclipse.sirius.viewpoint.description.concern.impl.ConcernPackageImpl;
-import org.eclipse.sirius.viewpoint.description.filter.FilterPackage;
-import org.eclipse.sirius.viewpoint.description.filter.impl.FilterPackageImpl;
 import org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.BeginLabelStyleDescription;
@@ -325,34 +327,43 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
                 .getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
-        FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
         ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
         AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
         ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) instanceof ConcernPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ConcernPackage.eNS_URI) : ConcernPackage.eINSTANCE);
+        DiagramPackageImpl theDiagramPackage = (DiagramPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) instanceof DiagramPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(DiagramPackage.eNS_URI) : DiagramPackage.eINSTANCE);
+        org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl theDescriptionPackage_1 = (org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl) (EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI) instanceof org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI) : org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE);
+        FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
 
         // Create package meta-data objects
         theStylePackage.createPackageContents();
         theViewpointPackage.createPackageContents();
         theDescriptionPackage.createPackageContents();
         theToolPackage.createPackageContents();
-        theFilterPackage.createPackageContents();
         theValidationPackage.createPackageContents();
         theAuditPackage.createPackageContents();
         theConcernPackage.createPackageContents();
+        theDiagramPackage.createPackageContents();
+        theDescriptionPackage_1.createPackageContents();
+        theFilterPackage.createPackageContents();
 
         // Initialize created meta-data
         theStylePackage.initializePackageContents();
         theViewpointPackage.initializePackageContents();
         theDescriptionPackage.initializePackageContents();
         theToolPackage.initializePackageContents();
-        theFilterPackage.initializePackageContents();
         theValidationPackage.initializePackageContents();
         theAuditPackage.initializePackageContents();
         theConcernPackage.initializePackageContents();
+        theDiagramPackage.initializePackageContents();
+        theDescriptionPackage_1.initializePackageContents();
+        theFilterPackage.initializePackageContents();
 
         // Mark meta-data to indicate it can't be changed
         theStylePackage.freeze();
@@ -1368,6 +1379,9 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
         ViewpointPackage theViewpointPackage = (ViewpointPackage) EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
+        DiagramPackage theDiagramPackage = (DiagramPackage) EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI);
+        org.eclipse.sirius.diagram.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.diagram.description.DescriptionPackage) EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI);
 
         // Create type parameters
 
@@ -1455,11 +1469,11 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         initEClass(nodeStyleDescriptionEClass, NodeStyleDescription.class, "NodeStyleDescription", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getNodeStyleDescription_SizeComputationExpression(), theDescriptionPackage.getInterpretedExpression(), "sizeComputationExpression", "3", 0, 1, NodeStyleDescription.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getNodeStyleDescription_LabelPosition(), theViewpointPackage.getLabelPosition(), "labelPosition", "border", 0, 1, NodeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
+        initEAttribute(getNodeStyleDescription_LabelPosition(), theDiagramPackage.getLabelPosition(), "labelPosition", "border", 0, 1, NodeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getNodeStyleDescription_HideLabelByDefault(), ecorePackage.getEBoolean(), "hideLabelByDefault", "false", 0, 1, NodeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getNodeStyleDescription_ResizeKind(), theViewpointPackage.getResizeKind(), "resizeKind", "NONE", 1, 1, NodeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+        initEAttribute(getNodeStyleDescription_ResizeKind(), theDiagramPackage.getResizeKind(), "resizeKind", "NONE", 1, 1, NodeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(customStyleDescriptionEClass, CustomStyleDescription.class, "CustomStyleDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1491,7 +1505,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
                 EllipseNodeDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(bundledImageDescriptionEClass, BundledImageDescription.class, "BundledImageDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getBundledImageDescription_Shape(), theViewpointPackage.getBundledImageShape(), "shape", null, 1, 1, BundledImageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+        initEAttribute(getBundledImageDescription_Shape(), theDiagramPackage.getBundledImageShape(), "shape", null, 1, 1, BundledImageDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getBundledImageDescription_Color(), theDescriptionPackage.getColorDescription(), null, "color", null, 1, 1, BundledImageDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1507,7 +1521,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(gaugeCompositeStyleDescriptionEClass, GaugeCompositeStyleDescription.class, "GaugeCompositeStyleDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getGaugeCompositeStyleDescription_Alignment(), theViewpointPackage.getAlignmentKind(), "alignment", "SQUARE", 0, 1, GaugeCompositeStyleDescription.class, !IS_TRANSIENT,
+        initEAttribute(getGaugeCompositeStyleDescription_Alignment(), theDiagramPackage.getAlignmentKind(), "alignment", "SQUARE", 0, 1, GaugeCompositeStyleDescription.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getGaugeCompositeStyleDescription_Sections(), this.getGaugeSectionDescription(), null, "sections", null, 0, -1, GaugeCompositeStyleDescription.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1517,7 +1531,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(flatContainerStyleDescriptionEClass, FlatContainerStyleDescription.class, "FlatContainerStyleDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getFlatContainerStyleDescription_BackgroundStyle(), theViewpointPackage.getBackgroundStyle(), "backgroundStyle", null, 1, 1, FlatContainerStyleDescription.class, !IS_TRANSIENT,
+        initEAttribute(getFlatContainerStyleDescription_BackgroundStyle(), theDiagramPackage.getBackgroundStyle(), "backgroundStyle", null, 1, 1, FlatContainerStyleDescription.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getFlatContainerStyleDescription_BackgroundColor(), theDescriptionPackage.getColorDescription(), null, "backgroundColor", null, 1, 1, FlatContainerStyleDescription.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1527,7 +1541,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(shapeContainerStyleDescriptionEClass, ShapeContainerStyleDescription.class, "ShapeContainerStyleDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getShapeContainerStyleDescription_Shape(), theViewpointPackage.getContainerShape(), "shape", null, 1, 1, ShapeContainerStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
+        initEAttribute(getShapeContainerStyleDescription_Shape(), theDiagramPackage.getContainerShape(), "shape", null, 1, 1, ShapeContainerStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getShapeContainerStyleDescription_BackgroundColor(), theDescriptionPackage.getColorDescription(), null, "backgroundColor", null, 1, 1, ShapeContainerStyleDescription.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1539,17 +1553,17 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         initEClass(edgeStyleDescriptionEClass, EdgeStyleDescription.class, "EdgeStyleDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getEdgeStyleDescription_StrokeColor(), theDescriptionPackage.getColorDescription(), null, "strokeColor", null, 1, 1, EdgeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getEdgeStyleDescription_LineStyle(), theViewpointPackage.getLineStyle(), "lineStyle", null, 0, 1, EdgeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+        initEAttribute(getEdgeStyleDescription_LineStyle(), theDiagramPackage.getLineStyle(), "lineStyle", null, 0, 1, EdgeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getEdgeStyleDescription_SourceArrow(), theViewpointPackage.getEdgeArrows(), "sourceArrow", "NoDecoration", 1, 1, EdgeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
+        initEAttribute(getEdgeStyleDescription_SourceArrow(), theDiagramPackage.getEdgeArrows(), "sourceArrow", "NoDecoration", 1, 1, EdgeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getEdgeStyleDescription_TargetArrow(), theViewpointPackage.getEdgeArrows(), "targetArrow", "InputArrow", 1, 1, EdgeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
+        initEAttribute(getEdgeStyleDescription_TargetArrow(), theDiagramPackage.getEdgeArrows(), "targetArrow", "InputArrow", 1, 1, EdgeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getEdgeStyleDescription_SizeComputationExpression(), theDescriptionPackage.getInterpretedExpression(), "sizeComputationExpression", "<%eContents().nSize%>", 1, 1,
                 EdgeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getEdgeStyleDescription_RoutingStyle(), theViewpointPackage.getEdgeRouting(), "routingStyle", "straight", 1, 1, EdgeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
+        initEAttribute(getEdgeStyleDescription_RoutingStyle(), theDiagramPackage.getEdgeRouting(), "routingStyle", "straight", 1, 1, EdgeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getEdgeStyleDescription_FoldingStyle(), theDescriptionPackage.getFoldingStyle(), "foldingStyle", null, 0, 1, EdgeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
+        initEAttribute(getEdgeStyleDescription_FoldingStyle(), theDescriptionPackage_1.getFoldingStyle(), "foldingStyle", null, 0, 1, EdgeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getEdgeStyleDescription_BeginLabelStyleDescription(), this.getBeginLabelStyleDescription(), null, "beginLabelStyleDescription", null, 0, 1, EdgeStyleDescription.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

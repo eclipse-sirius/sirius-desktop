@@ -17,30 +17,30 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.helper.SiriusHelper;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.business.internal.helper.refresh.EdgeFilter;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.helper.SiriusHelper;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.business.internal.helper.refresh.EdgeFilter;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tools.api.validation.constraint.AbstractDDiagramConstraint;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeList;
-import org.eclipse.sirius.viewpoint.DNodeListElement;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 
 /**
  * Utility class to factor customizations for DSemanticDiagram and related.

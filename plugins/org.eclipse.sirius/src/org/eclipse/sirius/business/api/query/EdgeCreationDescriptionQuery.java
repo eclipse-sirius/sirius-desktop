@@ -13,12 +13,12 @@ package org.eclipse.sirius.business.api.query;
 import java.util.Collection;
 import java.util.Iterator;
 
-import com.google.common.collect.Lists;
-
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.DMappingBased;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
+
+import com.google.common.collect.Lists;
 
 /**
  * A class aggregating all the queries (read-only!) having a

@@ -20,23 +20,22 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
+import org.eclipse.sirius.business.internal.movida.VSMResolver;
+import org.eclipse.sirius.business.internal.movida.ViewpointResourceOperations;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.query.ViewpointQuery;
-import org.eclipse.sirius.business.internal.movida.VSMResolver;
-import org.eclipse.sirius.business.internal.movida.ViewpointResourceOperations;
-import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Helper class to extract Movida-related code from {@link DAnalysisSessionImpl}

@@ -11,11 +11,10 @@
 package org.eclipse.sirius.business.internal.experimental.sync;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.base.Predicate;
-
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
 
 /**
  * A predicate that validate that if the EdgeTarget of a DSemanticDecorator, its

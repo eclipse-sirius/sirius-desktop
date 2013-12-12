@@ -29,19 +29,19 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.diagram.ContainerStyle;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.viewpoint.ContainerStyle;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
@@ -212,11 +212,11 @@ public final class ContainerMappingHelper {
 
         DDiagramElementContainer newContainer = null;
         if (new ContainerMappingQuery(self).isListContainer()) {
-            newContainer = ViewpointFactory.eINSTANCE.createDNodeList();
+            newContainer = DiagramFactory.eINSTANCE.createDNodeList();
         } else {
             // Other behaviors : ContainerLayout.FreeForm/VerticalStack
-            newContainer = ViewpointFactory.eINSTANCE.createDNodeContainer();
-            DNodeContainer nodeContainer = ViewpointFactory.eINSTANCE.createDNodeContainer();
+            newContainer = DiagramFactory.eINSTANCE.createDNodeContainer();
+            DNodeContainer nodeContainer = DiagramFactory.eINSTANCE.createDNodeContainer();
             nodeContainer.setChildrenPresentation(self.getChildrenPresentation());
             newContainer = nodeContainer;
         }

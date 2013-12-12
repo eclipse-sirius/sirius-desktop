@@ -16,35 +16,34 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
 import org.eclipse.sirius.tools.api.ui.resource.ISiriusMessages;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * Utility class to factor customizations for DiagramElementMapping and related.

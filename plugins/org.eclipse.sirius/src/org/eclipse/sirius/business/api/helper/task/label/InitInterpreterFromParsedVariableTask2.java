@@ -13,8 +13,8 @@ package org.eclipse.sirius.business.api.helper.task.label;
 import java.text.MessageFormat;
 import java.text.ParseException;
 
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 
 /**
  * Task to init interpeter variables. This task is like

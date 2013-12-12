@@ -14,9 +14,9 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.SelectionDescription;
 

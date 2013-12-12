@@ -27,13 +27,12 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.session.SessionListener;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.business.api.session.SessionListener;
 
 /**
  * Pre-commit listener to handle controlled resources.

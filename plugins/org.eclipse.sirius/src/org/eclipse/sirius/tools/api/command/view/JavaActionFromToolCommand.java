@@ -18,9 +18,9 @@ import java.util.Map;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;

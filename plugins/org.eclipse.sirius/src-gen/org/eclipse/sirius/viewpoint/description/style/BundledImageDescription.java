@@ -11,7 +11,7 @@
  */
 package org.eclipse.sirius.viewpoint.description.style;
 
-import org.eclipse.sirius.viewpoint.BundledImageShape;
+import org.eclipse.sirius.diagram.BundledImageShape;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
@@ -41,12 +41,12 @@ public interface BundledImageDescription extends NodeStyleDescription {
     /**
      * Returns the value of the '<em><b>Shape</b></em>' attribute. The literals
      * are from the enumeration
-     * {@link org.eclipse.sirius.viewpoint.BundledImageShape}. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * shape to use. <!-- end-model-doc -->
+     * {@link org.eclipse.sirius.diagram.BundledImageShape}. <!-- begin-user-doc
+     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The shape to use. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Shape</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.BundledImageShape
+     * @see org.eclipse.sirius.diagram.BundledImageShape
      * @see #setShape(BundledImageShape)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getBundledImageDescription_Shape()
      * @model required="true"
@@ -61,20 +61,18 @@ public interface BundledImageDescription extends NodeStyleDescription {
      * 
      * @param value
      *            the new value of the '<em>Shape</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.BundledImageShape
+     * @see org.eclipse.sirius.diagram.BundledImageShape
      * @see #getShape()
      * @generated
      */
     void setShape(BundledImageShape value);
 
     /**
-     * Returns the value of the '<em><b>Color</b></em>' reference. The literals
-     * are from the enumeration {@link org.eclipse.sirius.BundledImageColor}.<!--
+     * Returns the value of the '<em><b>Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * color to use. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Color</em>' reference.
-     * @see org.eclipse.sirius.BundledImageColor
      * @see #setColor(ColorDescription)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getBundledImageDescription_Color()
      * @model required="true"

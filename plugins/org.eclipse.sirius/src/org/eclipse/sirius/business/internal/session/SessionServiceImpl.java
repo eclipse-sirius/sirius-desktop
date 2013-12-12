@@ -13,7 +13,6 @@ package org.eclipse.sirius.business.internal.session;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.business.api.session.SessionService;
 
 /**

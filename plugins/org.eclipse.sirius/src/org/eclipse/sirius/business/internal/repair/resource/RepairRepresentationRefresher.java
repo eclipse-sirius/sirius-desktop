@@ -24,11 +24,6 @@ import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.ListMultimap;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.migration.resource.session.commands.MigrationCommandExecutor;
@@ -37,15 +32,19 @@ import org.eclipse.sirius.business.internal.migration.resource.session.diagram.d
 import org.eclipse.sirius.business.internal.migration.resource.session.diagram.data.LostElementDataWithMapping;
 import org.eclipse.sirius.business.internal.migration.resource.session.diagram.data.LostNodeData;
 import org.eclipse.sirius.business.internal.repair.commands.RefreshAllElementsVisibilityCommand;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.ListMultimap;
 
 /**
  * Provides refresh representation action in repair context.

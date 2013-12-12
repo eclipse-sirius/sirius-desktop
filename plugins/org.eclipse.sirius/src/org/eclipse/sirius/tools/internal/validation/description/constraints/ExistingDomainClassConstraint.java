@@ -16,11 +16,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Validate that a DomainClass exist.

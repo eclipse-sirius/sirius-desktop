@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.description.tool.ElementSelectVariable;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;

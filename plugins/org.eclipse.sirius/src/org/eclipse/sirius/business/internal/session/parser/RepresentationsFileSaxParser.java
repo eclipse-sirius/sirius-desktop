@@ -24,11 +24,10 @@ import javax.xml.parsers.SAXParserFactory;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.xml.sax.SAXException;
 
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A parser to collect shortly some informations in representations file.

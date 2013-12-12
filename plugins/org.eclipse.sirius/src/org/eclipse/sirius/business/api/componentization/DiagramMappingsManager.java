@@ -14,16 +14,16 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.sirius.business.internal.metamodel.helper.MappingsListVisitor;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
-import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.Layer;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
@@ -205,8 +205,7 @@ public interface DiagramMappingsManager {
      * return all Layers which use this mapping if available.
      * 
      * @param mapping
-     *            any
-     *            {@link org.eclipse.sirius.viewpoint.description.AbstractNodeMapping}.
+     *            any {@link DiagramElementMapping} .
      * @return a containing Layer if available.
      */
     Collection<Layer> getActiveParentLayers(final DiagramElementMapping mapping);

@@ -15,14 +15,13 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import com.google.common.collect.Lists;
 
 /**
  * Base implementation to subclass.

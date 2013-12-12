@@ -16,7 +16,7 @@ import java.util.Set;
 
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager;
 import org.eclipse.sirius.business.internal.componentization.mappings.visitor.MappingsHierarchyVisitor;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 
 /**
  * A class aggregating all the queries (read-only!) having a

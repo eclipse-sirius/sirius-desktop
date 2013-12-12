@@ -16,7 +16,6 @@ import java.util.Collections;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
@@ -27,19 +26,20 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.experimental.sync.AbstractDNodeCandidate;
 import org.eclipse.sirius.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.ArrangeConstraint;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.refresh.BestMappingGetter;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.ArrangeConstraint;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
  * This task create {@link org.eclipse.sirius.viewpoint.DNode} and/or
@@ -108,19 +108,19 @@ public class CreateDNodeTask extends AbstractCommandTask implements ICreationTas
             BestMappingGetter bestMappingGetter = new BestMappingGetter(containerViewDSemanticDecorator, semanticElt);
             NodeMapping bestMapping = bestMappingGetter.getBestNodeMapping(tool.getNodeMappings());
             if (bestMapping != null) {
-                    AbstractDNodeCandidate abstractDNodeCandidate = new AbstractDNodeCandidate(bestMapping, semanticElt, containerView);
-                    AbstractDNode createdAbstractDNode = dDiagramElementSynchronizer.createNewNode(mappingManager, abstractDNodeCandidate,
-                            bestMapping.eContainingFeature() == DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS);
-                    if (createdAbstractDNode != null) {
-                        AbstractNodeMappingSpecOperations.createBorderingNodes(bestMapping, semanticElt, createdAbstractDNode, Collections.emptyList(), dSemanticDiagram);
-                        if (isAutoPinOnCreateEnabled()) {
-                            createdAbstractDNode.getArrangeConstraints().add(ArrangeConstraint.KEEP_LOCATION);
-                            createdAbstractDNode.getArrangeConstraints().add(ArrangeConstraint.KEEP_RATIO);
-                            createdAbstractDNode.getArrangeConstraints().add(ArrangeConstraint.KEEP_SIZE);
-                        }
-                        AbstractNodeMappingSpecOperations.setInitialVisibility(createdAbstractDNode, dSemanticDiagram, session);
-                        createdAbstractDNodes.add(createdAbstractDNode);
+                AbstractDNodeCandidate abstractDNodeCandidate = new AbstractDNodeCandidate(bestMapping, semanticElt, containerView);
+                AbstractDNode createdAbstractDNode = dDiagramElementSynchronizer.createNewNode(mappingManager, abstractDNodeCandidate,
+                        bestMapping.eContainingFeature() == DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS);
+                if (createdAbstractDNode != null) {
+                    AbstractNodeMappingSpecOperations.createBorderingNodes(bestMapping, semanticElt, createdAbstractDNode, Collections.emptyList(), dSemanticDiagram);
+                    if (isAutoPinOnCreateEnabled()) {
+                        createdAbstractDNode.getArrangeConstraints().add(ArrangeConstraint.KEEP_LOCATION);
+                        createdAbstractDNode.getArrangeConstraints().add(ArrangeConstraint.KEEP_RATIO);
+                        createdAbstractDNode.getArrangeConstraints().add(ArrangeConstraint.KEEP_SIZE);
                     }
+                    AbstractNodeMappingSpecOperations.setInitialVisibility(createdAbstractDNode, dSemanticDiagram, session);
+                    createdAbstractDNodes.add(createdAbstractDNode);
+                }
             }
         }
     }

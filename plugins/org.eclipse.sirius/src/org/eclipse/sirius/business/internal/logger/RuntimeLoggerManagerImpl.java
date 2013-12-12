@@ -16,12 +16,12 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.business.api.logger.RuntimeLogger;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Implementation of the Runtime Logger Manager.

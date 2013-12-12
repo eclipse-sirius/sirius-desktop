@@ -16,19 +16,19 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
 import org.eclipse.sirius.business.internal.metamodel.operations.DDiagramElementSpecOperations;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.impl.DNodeImpl;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DNode;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.viewpoint.impl.DNodeImpl;
 
 /**
  * Implementation of DNodeImpl.java.

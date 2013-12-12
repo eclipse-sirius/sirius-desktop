@@ -12,7 +12,7 @@
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -47,16 +47,16 @@ public interface DoubleClickDescription extends MappingBasedToolDescription {
     /**
      * Returns the value of the '<em><b>Mappings</b></em>' reference list. The
      * list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping}.
-     * It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping#getDoubleClickDescription
+     * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping}. It
+     * is bidirectional and its opposite is '
+     * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping#getDoubleClickDescription
      * <em>Double Click Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc --> <!-- begin-model-doc --> Mappings associated with this
      * deletion behavior. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Mappings</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getDoubleClickDescription_Mappings()
-     * @see org.eclipse.sirius.viewpoint.description.DiagramElementMapping#getDoubleClickDescription
+     * @see org.eclipse.sirius.diagram.description.DiagramElementMapping#getDoubleClickDescription
      * @model opposite="doubleClickDescription" required="true"
      * @generated
      */

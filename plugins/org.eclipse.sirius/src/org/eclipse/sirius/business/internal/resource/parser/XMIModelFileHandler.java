@@ -16,15 +16,14 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMLContentHandlerImpl.XMI;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 
 /**
  * An event handler to detect xmi model files.

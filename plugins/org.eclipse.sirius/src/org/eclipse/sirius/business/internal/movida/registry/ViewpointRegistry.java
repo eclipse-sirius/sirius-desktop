@@ -30,24 +30,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import com.google.common.base.Function;
-import com.google.common.base.Joiner;
-import com.google.common.base.Objects;
-import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsRegistry;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistryFilter;
 import org.eclipse.sirius.business.api.componentization.ViewointRegistryListener2;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistryFilter;
 import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
@@ -62,10 +47,24 @@ import org.eclipse.sirius.business.internal.movida.registry.monitoring.PluginMon
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.ViewpointResourceListener;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.ViewpointResourceMonitor;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.WorkspaceMonitor;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Component;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import com.google.common.base.Function;
+import com.google.common.base.Joiner;
+import com.google.common.base.Objects;
+import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
 
 /**
  * The registry of all canonical Sirius definitions known in the system.

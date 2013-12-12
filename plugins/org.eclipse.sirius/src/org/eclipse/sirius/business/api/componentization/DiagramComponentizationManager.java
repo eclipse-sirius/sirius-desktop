@@ -21,16 +21,16 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
-import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.Layer;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
@@ -45,7 +45,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
  * 
  * @author mchauvin
  */
-public class DiagramComponentizationManager  {
+public class DiagramComponentizationManager {
 
     private static boolean isInSelectedViewpoints(final Collection<Viewpoint> selectedViewpoints, final DiagramDescription diagramDescription) {
         for (final Viewpoint viewpoint : selectedViewpoints) {

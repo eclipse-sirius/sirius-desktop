@@ -12,7 +12,6 @@ package org.eclipse.sirius.business.api.query;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 
 /**

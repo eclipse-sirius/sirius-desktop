@@ -16,15 +16,14 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.DefaultInterpreterContextFactory;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
+
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 /**
  * Provides facilities for creating {@link IInterpreterContext}s, using the

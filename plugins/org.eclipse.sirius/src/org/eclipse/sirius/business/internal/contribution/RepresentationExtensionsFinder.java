@@ -16,6 +16,17 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRelations;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Functions;
 import com.google.common.base.Preconditions;
@@ -24,18 +35,6 @@ import com.google.common.collect.HashBiMap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.business.api.query.EObjectQuery;
-import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
-import org.eclipse.sirius.business.api.query.ViewpointQuery;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointRelations;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Locates all the representation extensions which apply to some representation

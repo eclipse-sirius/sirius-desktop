@@ -27,25 +27,24 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import com.google.common.primitives.Primitives;
-
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.ConditionalStyleSpecOperations;
 import org.eclipse.sirius.business.internal.query.EAttributeCustomizationQuery;
 import org.eclipse.sirius.business.internal.query.StyleDescriptionQuery;
-import org.eclipse.sirius.viewpoint.ComputedStyleDescriptionRegistry;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
 import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
 import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
+
+import com.google.common.primitives.Primitives;
 
 /**
  * A registry of {@link StyleDescription}. Its lifecycle must be valid only
@@ -239,7 +238,7 @@ public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKe
             annotationEntry = annotationEntries.iterator().next();
         }
         if (annotationEntry.getData() == null || !(annotationEntry.getData() instanceof ComputedStyleDescriptionRegistry)) {
-            computedStyleDescriptionRegistry = ViewpointFactory.eINSTANCE.createComputedStyleDescriptionRegistry();
+            computedStyleDescriptionRegistry = DiagramFactory.eINSTANCE.createComputedStyleDescriptionRegistry();
             annotationEntry.setData(computedStyleDescriptionRegistry);
         } else {
             computedStyleDescriptionRegistry = (ComputedStyleDescriptionRegistry) annotationEntry.getData();

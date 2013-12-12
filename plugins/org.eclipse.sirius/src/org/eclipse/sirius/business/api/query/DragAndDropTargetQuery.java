@@ -15,7 +15,7 @@ import java.util.Iterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 
 /**

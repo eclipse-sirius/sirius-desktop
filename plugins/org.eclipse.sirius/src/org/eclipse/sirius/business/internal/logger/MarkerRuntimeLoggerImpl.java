@@ -17,10 +17,10 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.business.api.logger.MarkerRuntimeLogger;
 import org.eclipse.sirius.business.api.logger.RuntimeLogger;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Default implementation of {@link MarkerRuntimeLogger}.

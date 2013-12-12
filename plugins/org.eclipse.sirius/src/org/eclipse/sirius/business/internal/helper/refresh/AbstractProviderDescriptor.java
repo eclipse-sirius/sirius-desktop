@@ -11,7 +11,6 @@
 package org.eclipse.sirius.business.internal.helper.refresh;
 
 import org.eclipse.core.runtime.IConfigurationElement;
-
 import org.eclipse.sirius.business.api.refresh.RefreshConstants;
 
 /**

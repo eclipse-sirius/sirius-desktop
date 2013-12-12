@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.api.preferences;
 
-import org.eclipse.sirius.viewpoint.EdgeRouting;
+import org.eclipse.sirius.diagram.EdgeRouting;
 
 /**
  * This interface declares constants corresponding to default routing style.

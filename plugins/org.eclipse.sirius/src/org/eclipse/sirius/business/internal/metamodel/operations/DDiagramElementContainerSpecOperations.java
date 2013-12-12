@@ -16,37 +16,36 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
-import org.eclipse.sirius.viewpoint.DNodeList;
-import org.eclipse.sirius.viewpoint.DNodeListElement;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.viewpoint.description.Layer;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * Implementation of DDiagramElementContainerImpl.java.
@@ -210,13 +209,13 @@ public final class DDiagramElementContainerSpecOperations {
     }
 
     /**
-     * Return the viewpoint of the specified container.
+     * Return the parent {@link DDiagram} of the specified container.
      * 
      * @param container
      *            the container.
-     * @return the viewpoint of the specified container.
+     * @return the parent {@link DDiagram} of the specified container.
      */
-    public static DDiagram getParentSirius(final DDiagramElementContainer container) {
+    public static DDiagram getParentDiagram(final DDiagramElementContainer container) {
         return DDiagramElementSpecOperations.getParentDiagram(container);
     }
 

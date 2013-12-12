@@ -21,17 +21,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import com.google.common.base.Objects;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import com.google.common.base.Objects;
 
 /**
  * An helper uses to manage the Sirius resource (between the

@@ -15,17 +15,17 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
 import org.eclipse.sirius.business.internal.metamodel.helper.StyleHelper;
-import org.eclipse.sirius.viewpoint.ContainerStyle;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.ContainerStyle;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.ContainerMappingImport;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMappingImport;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
 
@@ -442,15 +442,16 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
      *      java.lang.Class)
      */
     @Override
-    public int eBaseStructuralFeatureID(final int derivedFeatureID, @SuppressWarnings("rawtypes") final Class baseClass) {
+    public int eBaseStructuralFeatureID(final int derivedFeatureID, @SuppressWarnings("rawtypes")
+    final Class baseClass) {
         if (baseClass == AbstractMappingImport.class) {
             int result;
             switch (derivedFeatureID) {
             case DescriptionPackage.CONTAINER_MAPPING_IMPORT__HIDE_SUB_MAPPINGS:
-                result = DescriptionPackage.ABSTRACT_MAPPING_IMPORT__HIDE_SUB_MAPPINGS;
+                result = org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_MAPPING_IMPORT__HIDE_SUB_MAPPINGS;
                 break;
             case DescriptionPackage.CONTAINER_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS:
-                result = DescriptionPackage.ABSTRACT_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS;
+                result = org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS;
                 break;
             default:
                 result = -1;
@@ -468,14 +469,15 @@ public class ContainerMappingImportSpec extends ContainerMappingSpec implements 
      *      java.lang.Class)
      */
     @Override
-    public int eDerivedStructuralFeatureID(final int baseFeatureID, @SuppressWarnings("rawtypes") final Class baseClass) {
+    public int eDerivedStructuralFeatureID(final int baseFeatureID, @SuppressWarnings("rawtypes")
+    final Class baseClass) {
         if (baseClass == AbstractMappingImport.class) {
             int result;
             switch (baseFeatureID) {
-            case DescriptionPackage.ABSTRACT_MAPPING_IMPORT__HIDE_SUB_MAPPINGS:
+            case org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_MAPPING_IMPORT__HIDE_SUB_MAPPINGS:
                 result = DescriptionPackage.CONTAINER_MAPPING_IMPORT__HIDE_SUB_MAPPINGS;
                 break;
-            case DescriptionPackage.ABSTRACT_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS:
+            case org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS:
                 result = DescriptionPackage.CONTAINER_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS;
                 break;
             default:

@@ -32,19 +32,19 @@ import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.viewpoint.DMappingBased;
-import org.eclipse.sirius.viewpoint.EdgeStyle;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ConditionalEdgeStyleDescription;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
-import org.eclipse.sirius.viewpoint.description.IEdgeMapping;
 import org.eclipse.sirius.viewpoint.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
@@ -830,8 +830,8 @@ public final class EdgeMappingImportWrapper extends EObjectImpl implements EdgeM
      *         otherwise
      */
     private boolean isEdgeMappingImportFeature(final EStructuralFeature feature) {
-        return feature.equals(DescriptionPackage.eINSTANCE.getIdentifiedElement_Name()) || feature.equals(DescriptionPackage.eINSTANCE.getEdgeMappingImport_ImportedMapping())
-                || feature.equals(DescriptionPackage.eINSTANCE.getEdgeMappingImport_ConditionnalStyles());
+        return feature.equals(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getIdentifiedElement_Name())
+                || feature.equals(DescriptionPackage.eINSTANCE.getEdgeMappingImport_ImportedMapping()) || feature.equals(DescriptionPackage.eINSTANCE.getEdgeMappingImport_ConditionnalStyles());
     }
 
     /**

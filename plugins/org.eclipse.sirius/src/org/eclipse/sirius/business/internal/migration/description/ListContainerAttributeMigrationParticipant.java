@@ -12,10 +12,10 @@ package org.eclipse.sirius.business.internal.migration.description;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.osgi.framework.Version;
 import org.eclipse.sirius.business.api.migration.AbstractVSMMigrationParticipant;
-import org.eclipse.sirius.viewpoint.ContainerLayout;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.diagram.ContainerLayout;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.osgi.framework.Version;
 
 /**
  * Migration contribution to handle the listContainer attribute deletion.

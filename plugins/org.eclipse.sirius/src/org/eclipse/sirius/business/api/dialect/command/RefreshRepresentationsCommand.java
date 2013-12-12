@@ -16,12 +16,11 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+
+import com.google.common.collect.Lists;
 
 /**
  * Refresh representations command. Launch the refresh for all kind of

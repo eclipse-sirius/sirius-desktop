@@ -12,9 +12,8 @@ package org.eclipse.sirius.tools.internal.command.builders;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
-import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 
 /**
  * A generic command builder interface.

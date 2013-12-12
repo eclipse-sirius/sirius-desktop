@@ -16,26 +16,25 @@ import java.util.List;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
+import org.eclipse.sirius.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
+import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
+import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.ContainerMappingImport;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.NodeMappingImport;
+import org.eclipse.sirius.diagram.description.util.DescriptionSwitch;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.ConditionalContainerStyleDescription;
-import org.eclipse.sirius.viewpoint.description.ConditionalEdgeStyleDescription;
-import org.eclipse.sirius.viewpoint.description.ConditionalNodeStyleDescription;
-import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMappingImport;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
-import org.eclipse.sirius.viewpoint.description.NodeMappingImport;
-import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 
 /**
  * Switch to get the conditional styles of a mapping.

@@ -11,8 +11,8 @@
 package org.eclipse.sirius.business.internal.metamodel.operations;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 
 /**
  * Implementation of DDiagramElement.java.
@@ -33,7 +33,7 @@ public final class DDiagramElementSpecOperations {
      * 
      * @param elem
      *            the element.
-     * @return the parent viewpoint of the element.
+     * @return the parent {@link DDiagram} of the element.
      */
     public static DDiagram getParentDiagram(final DDiagramElement elem) {
         DDiagram result = null;

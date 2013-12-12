@@ -20,11 +20,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusHelper;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
@@ -36,6 +31,7 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService;
 import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisCustomData;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
@@ -43,11 +39,14 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * The session services for DAnalysis.

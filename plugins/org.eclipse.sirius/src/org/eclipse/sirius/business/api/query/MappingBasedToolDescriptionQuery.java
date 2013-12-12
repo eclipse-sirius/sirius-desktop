@@ -12,8 +12,6 @@ package org.eclipse.sirius.business.api.query;
 
 import java.util.Collection;
 
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
@@ -24,6 +22,8 @@ import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
+
+import com.google.common.collect.Sets;
 
 /**
  * /** A class aggregating all the queries (read-only!) having a

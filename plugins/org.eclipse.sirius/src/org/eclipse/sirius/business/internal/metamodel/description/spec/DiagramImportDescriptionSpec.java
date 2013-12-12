@@ -16,11 +16,11 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.sirius.viewpoint.description.AdditionalLayer;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramImportDescription;
-import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.diagram.description.AdditionalLayer;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramImportDescription;
+import org.eclipse.sirius.diagram.description.Layer;
 
 /**
  * Implementation of the DiagramImportDescription interface.
@@ -163,8 +163,7 @@ public class DiagramImportDescriptionSpec extends DiagramDescriptionSpec impleme
     /**
      * Add the case importedDiagram to the default eIsSet method.
      * 
-     * @see package
-     *      org.eclipse.sirius.description.impl.DiagramDescriptionImpl
+     * @see package org.eclipse.sirius.description.impl.DiagramDescriptionImpl
      *      #eIsSet()
      * 
      * @param featureID

@@ -17,10 +17,8 @@ import java.util.NoSuchElementException;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-
+import org.eclipse.sirius.business.api.refresh.MultipleCollection;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
@@ -28,27 +26,28 @@ import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.refresh.MultipleCollection;
-import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMappingImport;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMappingImport;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
-import org.eclipse.sirius.viewpoint.description.NodeMappingImport;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
+
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * A class aggregating all the queries (read-only!) having a
@@ -464,8 +463,8 @@ public class DiagramElementMappingQuery {
          * diagram.getDescription().getRootExpression(); if
          * (!StringUtil.isEmpty(rootContentExpression)) {
          * this.interpreter.setVariable
-         * (IAcceleoInterpreterSiriusVariables.VIEWPOINT, this.diagram); try
-         * { rootContent =
+         * (IAcceleoInterpreterSiriusVariables.VIEWPOINT, this.diagram); try {
+         * rootContent =
          * ENodeHelper.getAsEObject(ENodeHelper.evaluate(this.interpreter,
          * rootContent, rootContentExpression)); } catch (EvaluationException e)
          * {SiriusPlugin.getDefault().error(IAcceleoInterpreterMessages.

@@ -17,10 +17,9 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.sirius.business.api.session.Session;
 
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.business.api.session.Session;
 
 /**
  * Specific command to add semantic resources to the given sessions.

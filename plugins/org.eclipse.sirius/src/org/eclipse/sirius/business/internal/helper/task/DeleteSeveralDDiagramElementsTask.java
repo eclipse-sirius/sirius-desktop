@@ -27,15 +27,15 @@ import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.TaskExecutor;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.internal.command.builders.DeletionCommandBuilder;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
  * A task to delete several {@link DDiagramElement} instances.

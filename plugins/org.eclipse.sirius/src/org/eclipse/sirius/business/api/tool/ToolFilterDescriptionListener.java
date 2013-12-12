@@ -23,12 +23,12 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
  * A resource set listener for a tool description filter. When one or several

@@ -13,6 +13,8 @@ package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.DDiagramSet;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -37,7 +39,7 @@ public interface DRepresentationContainer extends DView {
     /**
      * Returns the value of the '<em><b>Diagram Set</b></em>' containment
      * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.DDiagramSet}. <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.diagram.DDiagramSet}. <!-- begin-user-doc -->
      * <!-- end-user-doc --> <!-- begin-model-doc --> Set of diagrams grouped by
      * DiagramDescription. <!-- end-model-doc -->
      * 
@@ -100,7 +102,6 @@ public interface DRepresentationContainer extends DView {
      * @model
      * @generated
      */
-    @Deprecated
     void addSemanticDiagram(DSemanticDiagram diagram);
 
 } // DRepresentationContainer

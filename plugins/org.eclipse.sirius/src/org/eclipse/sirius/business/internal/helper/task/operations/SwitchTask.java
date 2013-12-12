@@ -14,15 +14,12 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.collect.Collections2;
-import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.ModelOperationToTask;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -30,7 +27,9 @@ import org.eclipse.sirius.viewpoint.description.tool.Case;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.Switch;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+
+import com.google.common.collect.Collections2;
+import com.google.common.collect.Lists;
 
 /**
  * An Switch task.

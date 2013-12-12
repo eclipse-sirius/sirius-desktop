@@ -15,6 +15,9 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.sirius.business.api.query.ViewpointURIQuery;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
@@ -25,10 +28,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.business.api.query.ViewpointURIQuery;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Represents a set of logical Viewpoints, for example the ones requested by a

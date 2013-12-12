@@ -20,9 +20,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.sirius.viewpoint.DDiagramSet;
+import org.eclipse.sirius.diagram.DDiagramSet;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**

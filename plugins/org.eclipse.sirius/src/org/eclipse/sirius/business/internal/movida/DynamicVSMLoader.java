@@ -17,15 +17,14 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistryListener;
+import org.eclipse.sirius.common.tools.api.util.Option;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistryListener;
 
 /**
  * A VSM Reloader is responsible for keeping the VSM resources loaded in a

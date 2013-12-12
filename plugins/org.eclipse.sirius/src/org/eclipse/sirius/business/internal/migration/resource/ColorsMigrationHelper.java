@@ -24,12 +24,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.CrossReferencer;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-
 import org.eclipse.sirius.business.api.color.RGBValuesProvider;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -41,6 +35,11 @@ import org.eclipse.sirius.viewpoint.description.SystemColors;
 import org.eclipse.sirius.viewpoint.description.UserColor;
 import org.eclipse.sirius.viewpoint.description.UserColorsPalette;
 import org.eclipse.sirius.viewpoint.description.UserFixedColor;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 /**
  * Class encapsulating all the logic for migrating models considering the 1.0.0

@@ -12,7 +12,7 @@
 package org.eclipse.sirius.viewpoint.description.style;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.sirius.viewpoint.AlignmentKind;
+import org.eclipse.sirius.diagram.AlignmentKind;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -41,12 +41,12 @@ public interface GaugeCompositeStyleDescription extends NodeStyleDescription {
     /**
      * Returns the value of the '<em><b>Alignment</b></em>' attribute. The
      * default value is <code>"SQUARE"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.viewpoint.AlignmentKind}. <!--
+     * enumeration {@link org.eclipse.sirius.diagram.AlignmentKind}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * alignment of the gauges <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Alignment</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.AlignmentKind
+     * @see org.eclipse.sirius.diagram.AlignmentKind
      * @see #setAlignment(AlignmentKind)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getGaugeCompositeStyleDescription_Alignment()
      * @model default="SQUARE"
@@ -62,7 +62,7 @@ public interface GaugeCompositeStyleDescription extends NodeStyleDescription {
      * 
      * @param value
      *            the new value of the '<em>Alignment</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.AlignmentKind
+     * @see org.eclipse.sirius.diagram.AlignmentKind
      * @see #getAlignment()
      * @generated
      */

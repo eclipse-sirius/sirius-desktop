@@ -21,7 +21,7 @@ import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappin
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**

@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.logger;
 
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.business.internal.logger.RuntimeLoggerManagerImpl;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 
 /**
  * Interface to create a Runtime Logger Manager.

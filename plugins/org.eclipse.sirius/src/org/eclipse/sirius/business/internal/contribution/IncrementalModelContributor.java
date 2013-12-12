@@ -20,6 +20,12 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
+import org.eclipse.sirius.common.tools.api.util.AllContents;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.description.contribution.Contribution;
+import org.eclipse.sirius.description.contribution.FeatureContribution;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
@@ -29,13 +35,6 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.common.tools.api.util.AllContents;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.description.contribution.Contribution;
-import org.eclipse.sirius.description.contribution.FeatureContribution;
-import org.eclipse.sirius.business.api.query.ViewpointQuery;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Similar to a {@link ModelContributor}, but successive operations with

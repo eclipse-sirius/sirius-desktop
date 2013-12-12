@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.ContainerDropDescriptionSpec;
+import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.DeleteElementDescriptionSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.DiagramCreationDescriptionSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.DiagramNavigationDescriptionSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.DirectEditLabelSpec;
@@ -492,17 +493,36 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * @not-generated
      */
     public DeleteElementDescription createDeleteElementDescription() {
-        DeleteElementDescriptionImpl deleteElementDescription = new DeleteElementDescriptionImpl();
+        DeleteElementDescriptionImpl deleteElementDescription = new DeleteElementDescriptionSpec();
+        ElementDeleteVariable elementDeleteVariable = createElementDeleteVariable();
+        elementDeleteVariable.setName("element");
+        deleteElementDescription.setElement(elementDeleteVariable);
+        ContainerViewVariable containerViewVariable = createContainerViewVariable();
+        containerViewVariable.setName("containerView");
+        deleteElementDescription.setContainerView(containerViewVariable);
+        ElementDeleteVariable elementDeleteVariable2 = createElementDeleteVariable();
+        elementDeleteVariable2.setName("elementView");
+        deleteElementDescription.setElementView(elementDeleteVariable2);
+        InitialOperation init = createInitialOperation();
+        deleteElementDescription.setInitialOperation(init);
         return deleteElementDescription;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     public DoubleClickDescription createDoubleClickDescription() {
         DoubleClickDescriptionImpl doubleClickDescription = new DoubleClickDescriptionImpl();
+        ElementDoubleClickVariable elementDoubleClickVariable = createElementDoubleClickVariable();
+        elementDoubleClickVariable.setName("element");
+        doubleClickDescription.setElement(elementDoubleClickVariable);
+        ElementDoubleClickVariable elementViewDoubleClickVariable = createElementDoubleClickVariable();
+        elementViewDoubleClickVariable.setName("elementView");
+        doubleClickDescription.setElementView(elementViewDoubleClickVariable);
+        InitialOperation init = createInitialOperation();
+        doubleClickDescription.setInitialOperation(init);
         return doubleClickDescription;
     }
 
@@ -559,7 +579,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @not-generated
+     * @generated
      */
     public RequestDescription createRequestDescription() {
         RequestDescriptionImpl requestDescription = new RequestDescriptionImpl();

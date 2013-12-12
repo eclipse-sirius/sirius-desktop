@@ -17,12 +17,12 @@ import java.util.Iterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.IDeletionTask;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.CommandContext;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.DeleteView;
 import org.eclipse.sirius.viewpoint.description.tool.RemoveElement;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
  * This task remove an element and unset all the references an element may have

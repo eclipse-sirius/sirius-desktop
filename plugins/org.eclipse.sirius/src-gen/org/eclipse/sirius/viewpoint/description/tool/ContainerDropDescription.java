@@ -13,8 +13,8 @@ package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
 
 /**
@@ -62,7 +62,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
     /**
      * Returns the value of the '<em><b>Mappings</b></em>' reference list. The
      * list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping}.
+     * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping}.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All mapping that can create the target view. <!-- end-model-doc -->
      * 

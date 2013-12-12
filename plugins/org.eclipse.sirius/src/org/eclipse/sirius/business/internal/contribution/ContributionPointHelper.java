@@ -14,11 +14,10 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.base.Objects;
-
 import org.eclipse.sirius.description.contribution.ContributionFactory;
 import org.eclipse.sirius.description.contribution.ContributionPoint;
+
+import com.google.common.base.Objects;
 
 /**
  * Helper class to deal with {@link ContributionPoint}s.

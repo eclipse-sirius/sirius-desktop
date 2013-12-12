@@ -25,6 +25,9 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
+import org.eclipse.sirius.business.api.session.SessionEventBroker;
+import org.eclipse.sirius.common.tools.api.util.Option;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -33,10 +36,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
-import org.eclipse.sirius.business.api.session.SessionEventBroker;
 
 /**
  * This class keeps track of registered listeners and notify them when something

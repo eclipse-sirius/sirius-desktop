@@ -14,7 +14,7 @@ import java.util.Iterator;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;

@@ -12,7 +12,7 @@
 package org.eclipse.sirius.viewpoint.description.validation;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -38,7 +38,7 @@ public interface ViewValidationRule extends ValidationRule {
     /**
      * Returns the value of the '<em><b>Targets</b></em>' reference list. The
      * list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping}.
+     * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping}.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The mapping to validate. <!-- end-model-doc -->
      * 

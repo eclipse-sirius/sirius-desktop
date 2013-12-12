@@ -22,11 +22,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
+import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.tools.internal.uri.ViewpointProtocolParser;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
-import org.eclipse.sirius.viewpoint.description.Layer;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -72,8 +72,8 @@ public final class ComponentizationHelper {
         Iterator<RepresentationExtensionDescription> it;
 
         /*
-         * We browse a first time, all the DIagramRepresentation in all Viewpoints
-         * to find contribution to the "diagramDescription"
+         * We browse a first time, all the DIagramRepresentation in all
+         * Viewpoints to find contribution to the "diagramDescription"
          */
         for (final Viewpoint viewpoint : viewpoints) {
             for (final RepresentationExtensionDescription representationExtension : viewpoint.getOwnedRepresentationExtensions()) {

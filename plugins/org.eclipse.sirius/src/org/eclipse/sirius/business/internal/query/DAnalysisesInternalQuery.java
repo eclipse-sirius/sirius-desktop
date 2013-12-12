@@ -13,9 +13,9 @@ package org.eclipse.sirius.business.internal.query;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.viewpoint.DAnalysis;
+
+import com.google.common.collect.Sets;
 
 /**
  * A class defining all queries (read-only) having a collection of DAnalysis as

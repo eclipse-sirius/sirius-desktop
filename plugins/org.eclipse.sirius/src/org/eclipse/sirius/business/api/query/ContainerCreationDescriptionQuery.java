@@ -11,11 +11,11 @@
 package org.eclipse.sirius.business.api.query;
 
 import org.eclipse.sirius.business.internal.query.AbstractNodeMappingApplicabilityTester;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
 
 /**

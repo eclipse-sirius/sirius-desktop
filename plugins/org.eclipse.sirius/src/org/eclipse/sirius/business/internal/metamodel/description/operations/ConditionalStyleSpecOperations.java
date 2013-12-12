@@ -11,9 +11,9 @@
 package org.eclipse.sirius.business.internal.metamodel.description.operations;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;

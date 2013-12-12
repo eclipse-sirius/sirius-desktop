@@ -15,15 +15,14 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramImportDescription;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramImportDescription;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
+
+import com.google.common.collect.Lists;
 
 /**
  * A class aggregating all the queries (read-only!) having a DiagramDescription

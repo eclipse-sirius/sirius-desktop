@@ -16,13 +16,12 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * A {@link ViewpointResourceHandler} which handles all the resources handled by

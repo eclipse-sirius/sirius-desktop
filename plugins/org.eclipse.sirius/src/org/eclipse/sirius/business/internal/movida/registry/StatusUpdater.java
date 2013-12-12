@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry.RegistryChange;
 
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
@@ -28,8 +29,6 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
-
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry.RegistryChange;
 
 /**
  * Updates or re-computes the status of all the entries in the registry.

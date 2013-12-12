@@ -14,18 +14,17 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import com.google.common.collect.Sets;
-
+import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.GaugeSectionDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.util.StyleSwitch;
+
+import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element

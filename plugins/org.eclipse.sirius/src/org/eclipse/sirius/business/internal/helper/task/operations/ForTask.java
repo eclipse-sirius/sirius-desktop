@@ -23,14 +23,14 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.ExecuteToolOperationTask;
 import org.eclipse.sirius.business.internal.helper.task.IDeletionTask;
 import org.eclipse.sirius.business.internal.helper.task.IModificationTask;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.description.tool.For;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 
 /**
  * A task wich dynamic create subtask and execute them.

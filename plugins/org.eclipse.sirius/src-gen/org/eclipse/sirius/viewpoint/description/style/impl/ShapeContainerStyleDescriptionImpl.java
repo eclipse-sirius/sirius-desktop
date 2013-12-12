@@ -15,7 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.sirius.viewpoint.ContainerShape;
+import org.eclipse.sirius.diagram.ContainerShape;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.style.ShapeContainerStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription;

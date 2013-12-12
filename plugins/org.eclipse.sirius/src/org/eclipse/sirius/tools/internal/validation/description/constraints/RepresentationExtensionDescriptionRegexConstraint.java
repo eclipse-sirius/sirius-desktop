@@ -18,9 +18,9 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
-import org.eclipse.sirius.viewpoint.description.AdditionalLayer;
+import org.eclipse.sirius.diagram.description.AdditionalLayer;
+import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Customization;
-import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 
 import com.google.common.base.Predicates;

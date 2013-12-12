@@ -20,14 +20,14 @@ import org.eclipse.sirius.business.internal.metamodel.description.operations.Sir
 import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.NodeStyle;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
-import org.eclipse.sirius.viewpoint.description.NodeMappingImport;
 import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
 
@@ -420,10 +420,10 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
             int result;
             switch (derivedFeatureID) {
             case DescriptionPackage.NODE_MAPPING_IMPORT__HIDE_SUB_MAPPINGS:
-                result = DescriptionPackage.ABSTRACT_MAPPING_IMPORT__HIDE_SUB_MAPPINGS;
+                result = org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_MAPPING_IMPORT__HIDE_SUB_MAPPINGS;
                 break;
             case DescriptionPackage.NODE_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS:
-                result = DescriptionPackage.ABSTRACT_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS;
+                result = org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS;
                 break;
             default:
                 result = -1;
@@ -446,10 +446,10 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
         if (baseClass == AbstractMappingImport.class) {
             int result;
             switch (baseFeatureID) {
-            case DescriptionPackage.ABSTRACT_MAPPING_IMPORT__HIDE_SUB_MAPPINGS:
+            case org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_MAPPING_IMPORT__HIDE_SUB_MAPPINGS:
                 result = DescriptionPackage.NODE_MAPPING_IMPORT__HIDE_SUB_MAPPINGS;
                 break;
-            case DescriptionPackage.ABSTRACT_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS:
+            case org.eclipse.sirius.viewpoint.description.DescriptionPackage.ABSTRACT_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS:
                 result = DescriptionPackage.NODE_MAPPING_IMPORT__INHERITS_ANCESTOR_FILTERS;
                 break;
             default:

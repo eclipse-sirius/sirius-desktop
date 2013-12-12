@@ -12,7 +12,7 @@ package org.eclipse.sirius.business.internal.metamodel.spec;
 
 import org.eclipse.sirius.business.internal.metamodel.operations.BorderedStyleSpecOperation;
 import org.eclipse.sirius.business.internal.metamodel.operations.StyleSpecOperations;
-import org.eclipse.sirius.viewpoint.impl.SquareImpl;
+import org.eclipse.sirius.diagram.impl.SquareImpl;
 
 /**
  * Implementation of {@link org.eclipse.sirius.viewpoint.Square}.

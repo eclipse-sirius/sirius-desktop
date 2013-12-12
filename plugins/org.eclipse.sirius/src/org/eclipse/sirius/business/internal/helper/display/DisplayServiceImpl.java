@@ -14,13 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.listener.Notification;
-import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.helper.display.DisplayService;
@@ -28,13 +21,19 @@ import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.listener.Notification;
+import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.GraphicalFilter;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 
 /**
  * Default implementation of {@link DisplayService}.
@@ -132,7 +131,7 @@ public final class DisplayServiceImpl implements DisplayService {
             cache = null;
         }
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -141,7 +140,6 @@ public final class DisplayServiceImpl implements DisplayService {
         final boolean result = doIsVisible(manager, diagram, element);
         return result;
     }
-
 
     /**
      * {@inheritDoc}
@@ -224,7 +222,7 @@ public final class DisplayServiceImpl implements DisplayService {
     private boolean isFold(final DDiagramElement element) {
         return Iterables.any(element.getGraphicalFilters(), new Predicate<GraphicalFilter>() {
             public boolean apply(GraphicalFilter input) {
-                return ViewpointPackage.eINSTANCE.getFoldingFilter().isInstance(input) || ViewpointPackage.eINSTANCE.getFoldingPointFilter().isInstance(input);
+                return DiagramPackage.eINSTANCE.getFoldingFilter().isInstance(input) || DiagramPackage.eINSTANCE.getFoldingPointFilter().isInstance(input);
             }
         });
     }

@@ -24,16 +24,16 @@ import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
@@ -62,8 +62,7 @@ public final class SiriusUtil {
     }
 
     /**
-     * Check if the given {@link Resource} is a Sirius modeler
-     * description file.
+     * Check if the given {@link Resource} is a Sirius modeler description file.
      * 
      * @param resource
      *            the {@link Resource} instance

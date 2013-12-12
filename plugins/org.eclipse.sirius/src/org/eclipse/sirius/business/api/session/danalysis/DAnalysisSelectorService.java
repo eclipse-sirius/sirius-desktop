@@ -12,11 +12,11 @@ package org.eclipse.sirius.business.api.session.danalysis;
 
 import java.util.List;
 
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 
 /**
  * Service to get analysis selectors.

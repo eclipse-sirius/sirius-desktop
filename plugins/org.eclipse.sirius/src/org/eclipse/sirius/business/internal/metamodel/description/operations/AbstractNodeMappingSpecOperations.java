@@ -18,14 +18,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
-
-import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.business.api.helper.display.DisplayMode;
@@ -38,17 +30,24 @@ import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+
+import com.google.common.collect.Lists;
 
 /**
  * Implementation of AbstractNodeMappingImpl.java.

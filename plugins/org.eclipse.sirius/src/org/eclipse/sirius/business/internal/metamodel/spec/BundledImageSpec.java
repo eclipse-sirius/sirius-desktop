@@ -12,7 +12,7 @@ package org.eclipse.sirius.business.internal.metamodel.spec;
 
 import org.eclipse.sirius.business.internal.metamodel.operations.BorderedStyleSpecOperation;
 import org.eclipse.sirius.business.internal.metamodel.operations.StyleSpecOperations;
-import org.eclipse.sirius.viewpoint.impl.BundledImageImpl;
+import org.eclipse.sirius.diagram.impl.BundledImageImpl;
 
 /**
  * Implementation of {@link org.eclipse.sirius.viewpoint.BundledImage}.

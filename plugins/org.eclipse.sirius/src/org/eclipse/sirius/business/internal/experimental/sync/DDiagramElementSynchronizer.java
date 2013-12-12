@@ -23,18 +23,6 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import com.google.common.base.Objects;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager;
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.helper.SiriusHelper;
@@ -51,37 +39,46 @@ import org.eclipse.sirius.business.internal.metamodel.helper.DiagramElementMappi
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.business.internal.metamodel.helper.StyleHelper;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
-import org.eclipse.sirius.viewpoint.DNodeList;
-import org.eclipse.sirius.viewpoint.DNodeListElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.Decoration;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
-import org.eclipse.sirius.viewpoint.EdgeStyle;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.NodeStyle;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.WorkspaceImage;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.MappingBasedDecoration;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
@@ -95,7 +92,10 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.WorkspaceImageDescription;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+
+import com.google.common.base.Objects;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
 
 /**
  * This class is able to synchronize diagram elements and styles.
@@ -198,18 +198,18 @@ public class DDiagramElementSynchronizer {
             final NodeMapping mapping = (NodeMapping) candidate.getMapping();
             if (container instanceof DNodeList) {
                 if (!border) {
-                    final DNodeListElement newNode = ViewpointFactory.eINSTANCE.createDNodeListElement();
+                    final DNodeListElement newNode = DiagramFactory.eINSTANCE.createDNodeListElement();
                     newNode.setTarget(candidate.getSemantic());
                     newNode.setActualMapping(mapping);
                     result = newNode;
                 } else {
-                    final DNode newNode = ViewpointFactory.eINSTANCE.createDNode();
+                    final DNode newNode = DiagramFactory.eINSTANCE.createDNode();
                     newNode.setTarget(candidate.getSemantic());
                     newNode.setActualMapping(mapping);
                     result = newNode;
                 }
             } else {
-                final DNode newNode = ViewpointFactory.eINSTANCE.createDNode();
+                final DNode newNode = DiagramFactory.eINSTANCE.createDNode();
                 newNode.setTarget(candidate.getSemantic());
                 newNode.setActualMapping(mapping);
                 result = newNode;
@@ -220,10 +220,10 @@ public class DDiagramElementSynchronizer {
             final ContainerMapping mapping = (ContainerMapping) candidate.getMapping();
             DDiagramElementContainer newContainer = null;
             if (new ContainerMappingQuery(mapping).isListContainer()) {
-                newContainer = ViewpointFactory.eINSTANCE.createDNodeList();
+                newContainer = DiagramFactory.eINSTANCE.createDNodeList();
             } else {
                 // Other behaviors : ContainerLayout.FreeForm/VerticalStack
-                DNodeContainer nodeContainer = ViewpointFactory.eINSTANCE.createDNodeContainer();
+                DNodeContainer nodeContainer = DiagramFactory.eINSTANCE.createDNodeContainer();
                 nodeContainer.setChildrenPresentation(mapping.getChildrenPresentation());
                 newContainer = nodeContainer;
             }
@@ -332,7 +332,7 @@ public class DDiagramElementSynchronizer {
      * @return the newly created edge.
      */
     private DEdge createEdge(final DEdgeCandidate candidate) {
-        final DEdge newEdge = ViewpointFactory.eINSTANCE.createDEdge();
+        final DEdge newEdge = DiagramFactory.eINSTANCE.createDEdge();
         newEdge.setTarget(candidate.getSemantic());
         newEdge.setActualMapping(candidate.getMapping());
         newEdge.setSourceNode(candidate.getSourceView());
@@ -686,7 +686,7 @@ public class DDiagramElementSynchronizer {
         boolean isCustomizedWorkspaceImageWorkspacePath = false;
         if (style instanceof WorkspaceImage) {
             WorkspaceImage workspaceImage = (WorkspaceImage) style;
-            isCustomizedWorkspaceImageWorkspacePath = workspaceImage.getCustomFeatures().contains(ViewpointPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName());
+            isCustomizedWorkspaceImageWorkspacePath = workspaceImage.getCustomFeatures().contains(DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName());
         }
         return isCustomizedWorkspaceImageWorkspacePath;
     }
@@ -930,7 +930,8 @@ public class DDiagramElementSynchronizer {
                 try {
                     result = interpreter.evaluateBoolean(semantic, preconditionExpression);
                 } catch (final EvaluationException e) {
-                    RuntimeLoggerManager.INSTANCE.error(decorationDescription, DescriptionPackage.eINSTANCE.getDecorationDescription_PreconditionExpression(), e);
+                    RuntimeLoggerManager.INSTANCE.error(decorationDescription, org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getDecorationDescription_PreconditionExpression(),
+                            e);
                 }
                 this.interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER_VIEW);
                 this.interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER);

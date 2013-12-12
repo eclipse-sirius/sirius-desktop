@@ -10,9 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.helper.task;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Collections2;
-
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.operations.AbstractOperationTask;
@@ -28,6 +25,7 @@ import org.eclipse.sirius.business.internal.helper.task.operations.RemoveElement
 import org.eclipse.sirius.business.internal.helper.task.operations.SetValueTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.SwitchTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.UnsetTask;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
@@ -47,7 +45,9 @@ import org.eclipse.sirius.viewpoint.description.tool.SetObject;
 import org.eclipse.sirius.viewpoint.description.tool.SetValue;
 import org.eclipse.sirius.viewpoint.description.tool.Switch;
 import org.eclipse.sirius.viewpoint.description.tool.Unset;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Collections2;
 
 /**
  * Transform operation object to task.

@@ -15,7 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.sirius.viewpoint.BackgroundStyle;
+import org.eclipse.sirius.diagram.BackgroundStyle;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;

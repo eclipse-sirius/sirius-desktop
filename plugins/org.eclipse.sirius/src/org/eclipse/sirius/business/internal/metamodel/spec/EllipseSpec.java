@@ -12,7 +12,7 @@ package org.eclipse.sirius.business.internal.metamodel.spec;
 
 import org.eclipse.sirius.business.internal.metamodel.operations.BorderedStyleSpecOperation;
 import org.eclipse.sirius.business.internal.metamodel.operations.StyleSpecOperations;
-import org.eclipse.sirius.viewpoint.impl.EllipseImpl;
+import org.eclipse.sirius.diagram.impl.EllipseImpl;
 
 /**
  * Implementation of {@link org.eclipse.sirius.viewpoint.Ellipse}.

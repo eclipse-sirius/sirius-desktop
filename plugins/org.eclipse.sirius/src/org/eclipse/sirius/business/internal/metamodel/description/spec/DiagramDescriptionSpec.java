@@ -18,14 +18,14 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.business.internal.metamodel.helper.DiagramDescriptionHelper;
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.Layer;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
-import org.eclipse.sirius.viewpoint.description.impl.DiagramDescriptionImpl;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
@@ -40,7 +40,7 @@ public class DiagramDescriptionSpec extends DiagramDescriptionImpl {
     @Override
     public DSemanticDiagram createDiagram() {
         // Create a plain DSemanticDiagram by default.
-        return ViewpointFactory.eINSTANCE.createDSemanticDiagram();
+        return DiagramFactory.eINSTANCE.createDSemanticDiagram();
     }
 
     /**

@@ -21,7 +21,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.sirius.business.internal.helper.refresh.AbstractProviderDescriptor;
 import org.eclipse.sirius.business.internal.helper.refresh.RefreshExtensionProviderDescriptor;
-import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.diagram.DDiagram;
 
 /**
  * This class provides services to enable the extension of the refresh

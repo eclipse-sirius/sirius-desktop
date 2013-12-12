@@ -24,11 +24,10 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
 
 /**
  * Monitors VSMs in the Eclipse workspace.

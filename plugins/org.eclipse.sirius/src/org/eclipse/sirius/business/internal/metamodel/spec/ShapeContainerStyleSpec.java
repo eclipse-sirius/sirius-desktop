@@ -11,7 +11,7 @@
 package org.eclipse.sirius.business.internal.metamodel.spec;
 
 import org.eclipse.sirius.business.internal.metamodel.operations.StyleSpecOperations;
-import org.eclipse.sirius.viewpoint.impl.ShapeContainerStyleImpl;
+import org.eclipse.sirius.diagram.impl.ShapeContainerStyleImpl;
 
 /**
  * Implementation of {@link org.eclipse.sirius.viewpoint.ShapeContainerStyle}.

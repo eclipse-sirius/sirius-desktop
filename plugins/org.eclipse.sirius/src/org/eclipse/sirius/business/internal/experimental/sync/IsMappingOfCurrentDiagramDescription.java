@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.experimental.sync;
 
-import com.google.common.base.Predicate;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import com.google.common.base.Predicate;
 
 /**
  * {@link Predicate} to checks if a {@link DiagramElementMapping} is owned by a

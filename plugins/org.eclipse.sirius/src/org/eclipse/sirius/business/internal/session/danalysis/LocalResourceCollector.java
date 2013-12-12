@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 
 /**

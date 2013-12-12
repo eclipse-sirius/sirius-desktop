@@ -12,18 +12,18 @@ package org.eclipse.sirius.business.api.query;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.viewpoint.BundledImage;
-import org.eclipse.sirius.viewpoint.CustomStyle;
-import org.eclipse.sirius.viewpoint.Dot;
-import org.eclipse.sirius.viewpoint.Ellipse;
-import org.eclipse.sirius.viewpoint.GaugeCompositeStyle;
-import org.eclipse.sirius.viewpoint.Lozenge;
-import org.eclipse.sirius.viewpoint.NodeStyle;
-import org.eclipse.sirius.viewpoint.Note;
+import org.eclipse.sirius.diagram.BundledImage;
+import org.eclipse.sirius.diagram.CustomStyle;
+import org.eclipse.sirius.diagram.Dot;
+import org.eclipse.sirius.diagram.Ellipse;
+import org.eclipse.sirius.diagram.GaugeCompositeStyle;
+import org.eclipse.sirius.diagram.Lozenge;
+import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.Note;
+import org.eclipse.sirius.diagram.Square;
+import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.eclipse.sirius.diagram.util.DiagramSwitch;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.Square;
-import org.eclipse.sirius.viewpoint.WorkspaceImage;
-import org.eclipse.sirius.viewpoint.util.ViewpointSwitch;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link NodeStyle}
@@ -41,7 +41,7 @@ public class NodeStyleQuery {
      * 
      * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
      */
-    private static final class GetBackgroundColorForNodeStyleSwitch extends ViewpointSwitch<RGBValues> {
+    private static final class GetBackgroundColorForNodeStyleSwitch extends DiagramSwitch<RGBValues> {
 
         /**
          * Default constructor.

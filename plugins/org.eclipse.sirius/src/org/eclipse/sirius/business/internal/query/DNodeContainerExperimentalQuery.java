@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.query;
 
-import org.eclipse.sirius.viewpoint.ContainerLayout;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.diagram.ContainerLayout;
+import org.eclipse.sirius.diagram.DNodeContainer;
 
 /**
  * Queries for DNodeContainers.

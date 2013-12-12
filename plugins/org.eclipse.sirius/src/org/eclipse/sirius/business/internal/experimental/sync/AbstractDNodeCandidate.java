@@ -12,12 +12,12 @@ package org.eclipse.sirius.business.internal.experimental.sync;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMappingImport;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMappingImport;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.NodeMappingImport;
 
 /**
  * This class represents a candidate for a AbstractDNode, a candidate is a

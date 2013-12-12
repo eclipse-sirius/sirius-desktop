@@ -11,8 +11,8 @@
 package org.eclipse.sirius.business.internal.query;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DNodeContainer;
 
 /**
  * Queries for DDiagramElementContainer.

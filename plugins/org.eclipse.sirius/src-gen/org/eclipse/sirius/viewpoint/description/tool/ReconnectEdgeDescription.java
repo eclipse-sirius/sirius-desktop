@@ -12,7 +12,7 @@
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -62,9 +62,9 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * from the enumeration
      * {@link org.eclipse.sirius.viewpoint.description.tool.ReconnectionKind}.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The kind of reconnection : 
-     * SOURCE : the source of the ViewEdge can be reconnected but not the target. 
-     * TARGET : the target of the ViewEdge can be reconnected but not the source.
+     * The kind of reconnection : SOURCE : the source of the ViewEdge can be
+     * reconnected but not the target. TARGET : the target of the ViewEdge can
+     * be reconnected but not the source.
      * 
      * <!-- end-model-doc -->
      * 
@@ -287,12 +287,6 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
     void setEdgeView(ElementSelectVariable value);
 
     /**
-     * Returns the value of the '<em><b>Mappings</b></em>' reference list. The
-     * list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.EdgeMapping}. It is
-     * bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.viewpoint.description.EdgeMapping#getReconnections
-     * <em>Reconnections</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @model kind="operation" required="true"

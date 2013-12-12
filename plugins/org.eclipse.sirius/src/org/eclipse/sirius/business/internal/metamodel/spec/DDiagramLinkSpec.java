@@ -13,10 +13,10 @@ package org.eclipse.sirius.business.internal.metamodel.spec;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.impl.DDiagramLinkImpl;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.impl.DDiagramLinkImpl;
 
 /**
  * Implementation of DDiagramLinkImpl.java.
@@ -48,7 +48,7 @@ public class DDiagramLinkSpec extends DDiagramLinkImpl {
             }
         }
         if (eNotificationRequired()) {
-            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DDIAGRAM_LINK__NODE, oldNode, getNode()));
+            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM_LINK__NODE, oldNode, getNode()));
         }
     }
 

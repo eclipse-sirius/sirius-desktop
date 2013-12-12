@@ -16,13 +16,12 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
-import com.google.common.base.Preconditions;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import com.google.common.base.Preconditions;
 
 /**
  * Queries about viewpoint URIs of the form

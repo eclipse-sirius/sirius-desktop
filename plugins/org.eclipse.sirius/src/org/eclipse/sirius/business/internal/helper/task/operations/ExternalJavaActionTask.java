@@ -21,10 +21,6 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.TaskExecutor;
@@ -35,6 +31,7 @@ import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDDiagramElementTask;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDDiagramTask;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.listener.ChangeListenerFactory;
 import org.eclipse.sirius.tools.api.command.listener.IChangeListener;
@@ -50,7 +47,9 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Sets;
 
 /**
  * A task which call an external Java Action.

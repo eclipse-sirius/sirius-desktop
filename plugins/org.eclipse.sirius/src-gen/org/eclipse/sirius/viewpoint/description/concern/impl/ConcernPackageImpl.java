@@ -16,6 +16,10 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.description.filter.FilterPackage;
+import org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl;
+import org.eclipse.sirius.diagram.impl.DiagramPackageImpl;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.audit.AuditPackage;
@@ -24,8 +28,6 @@ import org.eclipse.sirius.viewpoint.description.concern.ConcernDescription;
 import org.eclipse.sirius.viewpoint.description.concern.ConcernFactory;
 import org.eclipse.sirius.viewpoint.description.concern.ConcernPackage;
 import org.eclipse.sirius.viewpoint.description.concern.ConcernSet;
-import org.eclipse.sirius.viewpoint.description.filter.FilterPackage;
-import org.eclipse.sirius.viewpoint.description.filter.impl.FilterPackageImpl;
 import org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl;
@@ -119,12 +121,17 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
                 .getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
-        FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
         ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
         AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
+        DiagramPackageImpl theDiagramPackage = (DiagramPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) instanceof DiagramPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(DiagramPackage.eNS_URI) : DiagramPackage.eINSTANCE);
+        org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl theDescriptionPackage_1 = (org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl) (EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI) instanceof org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI) : org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE);
+        FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
 
         // Create package meta-data objects
         theConcernPackage.createPackageContents();
@@ -132,9 +139,11 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
         theDescriptionPackage.createPackageContents();
         theStylePackage.createPackageContents();
         theToolPackage.createPackageContents();
-        theFilterPackage.createPackageContents();
         theValidationPackage.createPackageContents();
         theAuditPackage.createPackageContents();
+        theDiagramPackage.createPackageContents();
+        theDescriptionPackage_1.createPackageContents();
+        theFilterPackage.createPackageContents();
 
         // Initialize created meta-data
         theConcernPackage.initializePackageContents();
@@ -142,9 +151,11 @@ public class ConcernPackageImpl extends EPackageImpl implements ConcernPackage {
         theDescriptionPackage.initializePackageContents();
         theStylePackage.initializePackageContents();
         theToolPackage.initializePackageContents();
-        theFilterPackage.initializePackageContents();
         theValidationPackage.initializePackageContents();
         theAuditPackage.initializePackageContents();
+        theDiagramPackage.initializePackageContents();
+        theDescriptionPackage_1.initializePackageContents();
+        theFilterPackage.initializePackageContents();
 
         // Mark meta-data to indicate it can't be changed
         theConcernPackage.freeze();

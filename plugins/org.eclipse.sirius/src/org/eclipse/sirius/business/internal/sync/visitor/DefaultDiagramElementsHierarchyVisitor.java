@@ -12,14 +12,14 @@ package org.eclipse.sirius.business.internal.sync.visitor;
 
 import java.util.Collections;
 
-import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
-import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
+
+import com.google.common.collect.Iterables;
 
 /**
  * The default visitor to retrieve diagram elements children.

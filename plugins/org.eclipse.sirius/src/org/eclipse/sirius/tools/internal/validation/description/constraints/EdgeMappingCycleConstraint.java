@@ -18,11 +18,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 
 /**
  * Check that {@link EdgeMapping}s with an {@link EdgeMapping} as source or

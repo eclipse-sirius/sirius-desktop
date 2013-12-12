@@ -22,6 +22,8 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleEvent;
@@ -29,9 +31,6 @@ import org.osgi.framework.BundleListener;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Monitors VSMs installed in Eclipse plug-ins and registered through the

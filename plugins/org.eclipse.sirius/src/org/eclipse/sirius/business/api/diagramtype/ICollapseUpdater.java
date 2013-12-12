@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.diagramtype;
 
-import org.eclipse.sirius.viewpoint.CollapseFilter;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.diagram.CollapseFilter;
+import org.eclipse.sirius.diagram.DDiagramElement;
 
 /**
  * A {@link ICollapseUpdater} has the responsibility to update the graphical

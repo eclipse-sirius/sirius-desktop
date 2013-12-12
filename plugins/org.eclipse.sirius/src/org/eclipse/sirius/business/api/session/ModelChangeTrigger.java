@@ -14,7 +14,6 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 
 /**

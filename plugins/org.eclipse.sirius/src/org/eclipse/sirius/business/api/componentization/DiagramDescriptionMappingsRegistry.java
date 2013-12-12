@@ -12,7 +12,7 @@ package org.eclipse.sirius.business.api.componentization;
 
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.componentization.mappings.DiagramDescriptionMappingsRegistryImpl;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 
 /**
  * A registry to access mappings available depending on viewpoint selection.

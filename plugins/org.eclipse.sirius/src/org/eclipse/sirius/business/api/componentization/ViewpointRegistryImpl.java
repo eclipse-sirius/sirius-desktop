@@ -38,25 +38,17 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.resource.impl.URIMappingRegistryImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.MapMaker;
-import com.google.common.collect.Maps;
-
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
-import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tools.internal.uri.ViewpointProtocolException;
 import org.eclipse.sirius.tools.internal.uri.ViewpointProtocolParser;
@@ -65,7 +57,14 @@ import org.eclipse.sirius.viewpoint.description.Component;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.google.common.collect.MapMaker;
+import com.google.common.collect.Maps;
 
 public class ViewpointRegistryImpl extends ViewpointRegistry {
     private static final String UNABLE_TO_LOAD_THIS_FILE = "The viewpoint registry was not able to load this file ";

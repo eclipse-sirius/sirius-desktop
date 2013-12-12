@@ -12,11 +12,10 @@ package org.eclipse.sirius.business.internal.helper.task;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
-import com.google.common.base.Predicate;
-
 import org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+
+import com.google.common.base.Predicate;
 
 /**
  * A task to delete a DDiagramElement.

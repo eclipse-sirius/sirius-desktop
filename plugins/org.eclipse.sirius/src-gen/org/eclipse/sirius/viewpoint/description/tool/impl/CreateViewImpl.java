@@ -15,7 +15,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.CreateView;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 

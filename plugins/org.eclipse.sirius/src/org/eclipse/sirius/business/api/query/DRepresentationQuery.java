@@ -13,14 +13,13 @@ package org.eclipse.sirius.business.api.query;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
+
+import com.google.common.collect.Lists;
 
 /**
  * A class aggregating all the queries (read-only!) having a

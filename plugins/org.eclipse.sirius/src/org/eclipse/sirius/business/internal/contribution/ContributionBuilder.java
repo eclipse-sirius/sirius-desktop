@@ -16,15 +16,14 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import com.google.common.base.Preconditions;
-
 import org.eclipse.sirius.business.api.query.EStructuralFeatureQuery;
 import org.eclipse.sirius.description.contribution.ComputedEObjectReference;
 import org.eclipse.sirius.description.contribution.Contribution;
 import org.eclipse.sirius.description.contribution.ContributionFactory;
 import org.eclipse.sirius.description.contribution.DirectEObjectReference;
 import org.eclipse.sirius.description.contribution.FeatureContribution;
+
+import com.google.common.base.Preconditions;
 
 /**
  * Builder class to facilitate the creation of complex <code>Contribution</code>

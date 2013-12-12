@@ -12,7 +12,7 @@
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -129,13 +129,13 @@ public interface DirectEditLabel extends MappingBasedToolDescription {
     void setInputLabelExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Mapping</b></em>' reference list. The
+     * Returns the value of the '<em><b>Mapping</b></em> ' reference list. The
      * list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping}.
      * It is bidirectional and its opposite is '
      * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping#getLabelDirectEdit
-     * <em>Label Direct Edit</em>}'
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <em>Label Direct Edit</em>}' <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
      * 
      * @model kind="operation" required="true"
      * @generated

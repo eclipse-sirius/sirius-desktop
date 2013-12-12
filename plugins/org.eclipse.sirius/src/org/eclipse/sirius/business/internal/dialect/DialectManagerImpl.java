@@ -22,7 +22,6 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.business.api.dialect.Dialect;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.RepresentationNotification;
@@ -31,10 +30,11 @@ import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressio
 import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.movida.Movida;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+import org.eclipse.sirius.diagram.description.DescriptionFactory;
+import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
-import org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -156,8 +156,7 @@ public class DialectManagerImpl implements DialectManager {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#copyRepresentation(org.eclipse.sirius.viewpoint.DRepresentation,
-     *      java.lang.String,
-     *      org.eclipse.sirius.business.api.session.Session,
+     *      java.lang.String, org.eclipse.sirius.business.api.session.Session,
      *      org.eclipse.core.runtime.IProgressMonitor)
      */
     public DRepresentation copyRepresentation(final DRepresentation representation, final String name, final Session session, final IProgressMonitor monitor) {
@@ -464,7 +463,8 @@ public class DialectManagerImpl implements DialectManager {
             container = container.eContainer();
         }
 
-        // TODO create a new API handles(RepresentationExtensionDescription) in DialectManager
+        // TODO create a new API handles(RepresentationExtensionDescription) in
+        // DialectManager
         // handles(RepresentationExtensionDescription) in DialectManager
         if (container instanceof DiagramExtensionDescription) {
             container = DescriptionFactory.eINSTANCE.createDiagramDescription();

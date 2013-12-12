@@ -14,18 +14,17 @@ import java.util.Collections;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.sirius.business.api.componentization.ISiriusComponent;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.componentization.ISiriusComponent;
-import org.eclipse.sirius.business.api.query.ViewpointQuery;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * A monitor which provides compatibility with the legacy APIs used for

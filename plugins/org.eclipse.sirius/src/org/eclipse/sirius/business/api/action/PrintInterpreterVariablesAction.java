@@ -15,13 +15,12 @@ import java.util.Map;
 import java.util.SortedMap;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
-
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 
 /**
  * An action designed to help debugging VSMs by dumping on <code>stdout</code>

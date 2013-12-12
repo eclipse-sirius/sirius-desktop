@@ -20,19 +20,13 @@ import java.util.Set;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.internal.movida.ViewpointSelection;
 import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
+import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
@@ -40,6 +34,11 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 
 /**
  * Helper for {@link DAnalysisSession}.

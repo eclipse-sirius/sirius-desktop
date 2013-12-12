@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.helper.layers;
 
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 
 /**
  * A temporary service.

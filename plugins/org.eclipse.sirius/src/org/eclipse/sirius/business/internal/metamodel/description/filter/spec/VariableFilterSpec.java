@@ -15,20 +15,19 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.FilterVariableValue;
+import org.eclipse.sirius.diagram.description.filter.FilterPackage;
+import org.eclipse.sirius.diagram.description.filter.impl.VariableFilterImpl;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
-
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.FilterVariableValue;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.filter.FilterPackage;
-import org.eclipse.sirius.viewpoint.description.filter.impl.VariableFilterImpl;
 
 /**
  * Customizations for the implementation of <code>VariableFilter</code>.

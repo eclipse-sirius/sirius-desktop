@@ -19,14 +19,16 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.description.filter.FilterPackage;
+import org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl;
+import org.eclipse.sirius.diagram.impl.DiagramPackageImpl;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.audit.AuditPackage;
 import org.eclipse.sirius.viewpoint.description.audit.impl.AuditPackageImpl;
 import org.eclipse.sirius.viewpoint.description.concern.ConcernPackage;
 import org.eclipse.sirius.viewpoint.description.concern.impl.ConcernPackageImpl;
-import org.eclipse.sirius.viewpoint.description.filter.FilterPackage;
-import org.eclipse.sirius.viewpoint.description.filter.impl.FilterPackageImpl;
 import org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl;
@@ -161,12 +163,17 @@ public class ValidationPackageImpl extends EPackageImpl implements ValidationPac
                 .getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
-        FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
         AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
         ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) instanceof ConcernPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ConcernPackage.eNS_URI) : ConcernPackage.eINSTANCE);
+        DiagramPackageImpl theDiagramPackage = (DiagramPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) instanceof DiagramPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(DiagramPackage.eNS_URI) : DiagramPackage.eINSTANCE);
+        org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl theDescriptionPackage_1 = (org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl) (EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI) instanceof org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI) : org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE);
+        FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
 
         // Create package meta-data objects
         theValidationPackage.createPackageContents();
@@ -174,9 +181,11 @@ public class ValidationPackageImpl extends EPackageImpl implements ValidationPac
         theDescriptionPackage.createPackageContents();
         theStylePackage.createPackageContents();
         theToolPackage.createPackageContents();
-        theFilterPackage.createPackageContents();
         theAuditPackage.createPackageContents();
         theConcernPackage.createPackageContents();
+        theDiagramPackage.createPackageContents();
+        theDescriptionPackage_1.createPackageContents();
+        theFilterPackage.createPackageContents();
 
         // Initialize created meta-data
         theValidationPackage.initializePackageContents();
@@ -184,9 +193,11 @@ public class ValidationPackageImpl extends EPackageImpl implements ValidationPac
         theDescriptionPackage.initializePackageContents();
         theStylePackage.initializePackageContents();
         theToolPackage.initializePackageContents();
-        theFilterPackage.initializePackageContents();
         theAuditPackage.initializePackageContents();
         theConcernPackage.initializePackageContents();
+        theDiagramPackage.initializePackageContents();
+        theDescriptionPackage_1.initializePackageContents();
+        theFilterPackage.initializePackageContents();
 
         // Mark meta-data to indicate it can't be changed
         theValidationPackage.freeze();
@@ -461,6 +472,8 @@ public class ValidationPackageImpl extends EPackageImpl implements ValidationPac
         // Obtain other dependent packages
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+        org.eclipse.sirius.diagram.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.diagram.description.DescriptionPackage) EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI);
         ToolPackage theToolPackage = (ToolPackage) EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI);
 
         // Create type parameters
@@ -504,7 +517,7 @@ public class ValidationPackageImpl extends EPackageImpl implements ValidationPac
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(viewValidationRuleEClass, ViewValidationRule.class, "ViewValidationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getViewValidationRule_Targets(), theDescriptionPackage.getDiagramElementMapping(), null, "targets", null, 0, -1, ViewValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE,
+        initEReference(getViewValidationRule_Targets(), theDescriptionPackage_1.getDiagramElementMapping(), null, "targets", null, 0, -1, ViewValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(ruleAuditEClass, RuleAudit.class, "RuleAudit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

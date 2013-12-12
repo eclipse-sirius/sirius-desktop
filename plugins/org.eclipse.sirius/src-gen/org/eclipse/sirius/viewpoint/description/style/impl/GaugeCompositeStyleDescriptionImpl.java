@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.sirius.viewpoint.AlignmentKind;
+import org.eclipse.sirius.diagram.AlignmentKind;
 import org.eclipse.sirius.viewpoint.description.style.GaugeCompositeStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.GaugeSectionDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;

@@ -11,13 +11,13 @@
 package org.eclipse.sirius.business.internal.migration.resource.session.diagram.data;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**

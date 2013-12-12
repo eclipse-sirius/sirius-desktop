@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
-
 import org.eclipse.sirius.business.internal.resource.parser.XMIModelFileSaxParser;
 
 /**

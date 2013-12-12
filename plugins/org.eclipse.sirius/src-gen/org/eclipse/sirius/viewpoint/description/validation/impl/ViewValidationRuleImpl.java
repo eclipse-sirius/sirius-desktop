@@ -16,7 +16,7 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
 

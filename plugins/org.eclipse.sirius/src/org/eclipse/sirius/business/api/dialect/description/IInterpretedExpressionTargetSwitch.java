@@ -13,7 +13,6 @@ package org.eclipse.sirius.business.api.dialect.description;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 
 /**

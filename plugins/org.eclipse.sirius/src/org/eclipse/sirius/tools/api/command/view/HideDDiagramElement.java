@@ -17,7 +17,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElement;
 
 /**
  * Command that is able to hide elements.

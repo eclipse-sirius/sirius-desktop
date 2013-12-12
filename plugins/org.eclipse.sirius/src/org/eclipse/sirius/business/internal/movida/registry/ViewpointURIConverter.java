@@ -12,11 +12,10 @@ package org.eclipse.sirius.business.internal.movida.registry;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
+import org.eclipse.sirius.business.api.query.ViewpointURIQuery;
+import org.eclipse.sirius.common.tools.api.util.Option;
 
 import com.google.common.base.Preconditions;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.query.ViewpointURIQuery;
 
 /**
  * The converter used to normalize Viewpoint URIs into the URI of the concrete

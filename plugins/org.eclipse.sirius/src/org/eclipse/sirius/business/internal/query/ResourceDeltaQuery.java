@@ -13,10 +13,9 @@ package org.eclipse.sirius.business.internal.query;
 import org.eclipse.core.internal.resources.ProjectInfo;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResourceDelta;
-
+import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
-import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 
 /**
  * A class aggregating all the queries (read-only!) having a

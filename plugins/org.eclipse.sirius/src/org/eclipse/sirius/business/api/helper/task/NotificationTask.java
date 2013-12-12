@@ -11,7 +11,6 @@
 package org.eclipse.sirius.business.api.helper.task;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 
 /**

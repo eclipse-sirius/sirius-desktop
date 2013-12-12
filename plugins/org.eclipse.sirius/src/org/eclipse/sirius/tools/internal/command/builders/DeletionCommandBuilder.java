@@ -21,16 +21,6 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
@@ -45,22 +35,31 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDDiagramElementTask;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDDiagramTask;
 import org.eclipse.sirius.business.internal.helper.task.DeleteSeveralDDiagramElementsTask;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.NoNullResourceCommand;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * .

@@ -27,21 +27,21 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
 import org.eclipse.sirius.tools.api.ui.resource.ISiriusMessages;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.EdgeStyle;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
-import org.eclipse.sirius.viewpoint.description.IEdgeMapping;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
@@ -157,7 +157,7 @@ public final class EdgeMappingHelper {
         if (semanticTargetToUseForExpression == null) {
             semanticTargetToUseForExpression = getSemanticTarget(source);
         }
-        final DEdge newEdge = ViewpointFactory.eINSTANCE.createDEdge();
+        final DEdge newEdge = DiagramFactory.eINSTANCE.createDEdge();
         newEdge.setSourceNode(source);
         newEdge.setTargetNode(target);
         if (edgeMapping instanceof EdgeMappingImportWrapper) {

@@ -17,9 +17,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.ContainerMappingImport;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMappingImport;
 
 /**
  * Validates that the field SemanticCandidatesExpression is not empty when

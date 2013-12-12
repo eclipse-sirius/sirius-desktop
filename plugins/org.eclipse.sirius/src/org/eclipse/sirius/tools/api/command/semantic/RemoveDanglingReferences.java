@@ -24,11 +24,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil.CrossReferencer;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A command that is able to remove dangling reference.

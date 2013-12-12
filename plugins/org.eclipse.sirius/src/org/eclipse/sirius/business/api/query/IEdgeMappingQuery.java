@@ -10,12 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
+import org.eclipse.sirius.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMappingImport;
-import org.eclipse.sirius.viewpoint.description.IEdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.IEdgeMapping;
 
 /**
  * A class aggregating all the queries (read-only!) having a

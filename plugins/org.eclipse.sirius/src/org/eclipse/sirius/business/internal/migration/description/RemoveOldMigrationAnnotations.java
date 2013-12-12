@@ -12,10 +12,10 @@ package org.eclipse.sirius.business.internal.migration.description;
 
 import java.util.Iterator;
 
-import org.osgi.framework.Version;
 import org.eclipse.sirius.business.api.migration.AbstractVSMMigrationParticipant;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.Group;
+import org.osgi.framework.Version;
 
 /**
  * Remove the old migration tags used before the refactoring of the migration

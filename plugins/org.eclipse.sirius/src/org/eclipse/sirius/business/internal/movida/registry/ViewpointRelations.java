@@ -15,16 +15,15 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.sirius.business.internal.movida.dependencies.Relation;
+import org.eclipse.sirius.business.internal.movida.dependencies.TransitiveClosure;
+import org.eclipse.sirius.business.internal.movida.dependencies.UnionRelation;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.business.internal.movida.dependencies.Relation;
-import org.eclipse.sirius.business.internal.movida.dependencies.TransitiveClosure;
-import org.eclipse.sirius.business.internal.movida.dependencies.UnionRelation;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * Exposes the various relations which can exist between viewpoints are

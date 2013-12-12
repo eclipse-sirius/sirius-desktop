@@ -28,20 +28,19 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link EObject} as

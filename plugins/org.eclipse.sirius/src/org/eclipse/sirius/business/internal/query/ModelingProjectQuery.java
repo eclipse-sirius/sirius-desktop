@@ -22,13 +22,12 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.URI;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.common.tools.api.util.WorkspaceUtil;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.internal.session.parser.RepresentationsFileSaxParser;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.common.tools.api.util.WorkspaceUtil;
 
 /**
  * A class aggregating all the queries (read-only!) having a

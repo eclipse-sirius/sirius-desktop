@@ -17,6 +17,10 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Function;
 import com.google.common.base.Functions;
@@ -30,11 +34,6 @@ import com.google.common.collect.ListMultimap;
 import com.google.common.collect.MapMaker;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
-import org.eclipse.sirius.business.api.query.ViewpointQuery;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * The masking policy keeps track of which of the loaded resources are masked
