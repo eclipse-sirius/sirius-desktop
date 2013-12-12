@@ -29,7 +29,6 @@ import com.google.common.collect.Maps;
 
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.AllContents;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.description.contribution.ContributionPoint;
 import org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices;
@@ -62,6 +61,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ext.emf.AllContents;
 
 /**
  * Services for the table dialect.

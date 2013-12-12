@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.common.tools.api.util;
+package org.eclipse.sirius.ext.emf;
 
 import java.util.Iterator;
 

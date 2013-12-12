@@ -26,8 +26,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.sirius.common.tools.api.util.AllContents;
+import org.eclipse.sirius.ext.emf.AllContents;
 
 /**
  * Generic Ecore services usable from a VSM.

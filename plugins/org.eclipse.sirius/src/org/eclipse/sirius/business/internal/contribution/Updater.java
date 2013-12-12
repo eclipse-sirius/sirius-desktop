@@ -36,7 +36,7 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.common.tools.api.util.AllContents;
+import org.eclipse.sirius.ext.emf.AllContents;
 
 /**
  * An updater can modify a model in place to match the structure of a new

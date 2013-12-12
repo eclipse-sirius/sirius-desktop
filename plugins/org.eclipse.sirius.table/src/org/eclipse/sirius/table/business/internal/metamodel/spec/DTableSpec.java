@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 
 import com.google.common.collect.Iterables;
 
-import org.eclipse.sirius.common.tools.api.util.AllContents;
+import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.internal.query.DModelElementInternalQuery;
 import org.eclipse.sirius.table.metamodel.table.DLine;

@@ -32,3 +32,4 @@ Export-Package: org.eclipse.sirius.ecore.design.service,
  org.eclipse.sirius.sample.ecore.design.editor
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.sirius.ext.emf;version="1.0.0"
