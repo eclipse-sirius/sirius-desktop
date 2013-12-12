@@ -35,6 +35,13 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.internal.migration.resource.MigrationUtil;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -42,14 +49,8 @@ import org.xml.sax.SAXParseException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
-import org.eclipse.sirius.business.api.migration.resource.StringCouple;
-import org.eclipse.sirius.business.internal.migration.resource.MigrationUtil;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.Group;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
+
+import com.google.common.collect.Maps;
 
 /**
  * A sax handler for migration preprocessing.
@@ -99,14 +100,14 @@ public class SaxParser extends DefaultHandler {
     boolean originalStyle;
 
     /** The map of strings to replace in attribute (old -> new). */
-    private final List<StringCouple> old2NewAttributes = new LinkedList<StringCouple>();
+    private final Map<String, String> old2NewAttributes = Maps.newLinkedHashMap();
 
     {
-        old2NewAttributes.add(new StringCouple(Pattern.quote("&"), "&amp;"));
-        old2NewAttributes.add(new StringCouple(Pattern.quote("<"), "&lt;"));
-        old2NewAttributes.add(new StringCouple(Pattern.quote(QUOTE), "&quot;"));
-        old2NewAttributes.add(new StringCouple(Pattern.quote(DOT + MigrationUtil.MODELER_DESCRIPTION_FILE_EXTENSION_V3 + "#//"), ".odesign#//"));
-        old2NewAttributes.add(new StringCouple(Pattern.quote("/@visualAspect/"), SLASH));
+        old2NewAttributes.put(Pattern.quote("&"), "&amp;");
+        old2NewAttributes.put(Pattern.quote("<"), "&lt;");
+        old2NewAttributes.put(Pattern.quote(QUOTE), "&quot;");
+        old2NewAttributes.put(Pattern.quote(DOT + MigrationUtil.MODELER_DESCRIPTION_FILE_EXTENSION_V3 + "#//"), ".odesign#//");
+        old2NewAttributes.put(Pattern.quote("/@visualAspect/"), SLASH);
     }
 
     /** Maps URI and their prefixes. */
@@ -437,8 +438,8 @@ public class SaxParser extends DefaultHandler {
             final String vp = findSiriusName(value);
             result = value.replaceAll("\\Q/@ownedViewpointsDescriptions[\\E", "/@ownedViewpoints[name='" + vp + "']/@ownedRepresentations[");
         }
-        for (final StringCouple stringCouple : old2NewAttributes) {
-            result = stringCouple.transform(result);
+        for (Entry<String, String> replacement : old2NewAttributes.entrySet()) {
+            result = result.replaceAll(replacement.getKey(), replacement.getValue());
         }
         return result;
     }

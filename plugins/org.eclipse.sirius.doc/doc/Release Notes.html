@@ -13,6 +13,9 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
+						<a href="#sirius1.0M5">Changes in Sirius 1.0.0M5 (from Sirius 1.0M4)</a>
+					</li>
+					<li>
 						<a href="#sirius1.0M4">Changes in Sirius 1.0.0M4 (from Sirius 0.9)</a>
 					</li>
 					<li>
@@ -22,12 +25,23 @@
 			</li>
 		</ol>
 		<p>This document contains the release notes for all major releases of Sirius.</p>
-		<h2 id="sirius1.0M4">Changes in Sirius 1.0.0M4 (from Sirius 0.9)</h2>
+		<h2 id="sirius1.0M5">Changes in Sirius 1.0.0M5 (from Sirius 1.0M4)</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<h3 id="APIChanges">API Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li>The 
+				<code>org.eclipse.sirius.business.api.migration.resource.StringCouple</code> class has been removed.
+			</li>
+		</ul>
+		<h2 id="sirius1.0M4">Changes in Sirius 1.0.0M4 (from Sirius 0.9)</h2>
+		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
 			<li>The ability to print table representations, which had been disabled for the 0.9 release, has been re-enabled.</li>
 		</ul>
-		<h3 id="APIChanges">API Changes</h3>
+		<h3 id="APIChanges2">API Changes</h3>
 		<p>Sirius 1.0.0M4 includes a lots of API-breaking changes, as part of a global effort to improve the quality of the Sirius internals. In this milestone in particular, most of the APIs which were marked as deprecated in previous versions of Sirius (and before that of Viewpoint) have been either removed (if a replacement exists) or marked as non-deprecated (if no replacement exists yet).</p>
 		<h4 id="Changesinorg.eclipse.sirius.common">Changes in  
 			<code>org.eclipse.sirius.common</code>
@@ -55,7 +69,7 @@
 				<code>org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables</code> instead. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -621,7 +635,7 @@ void removeSelectedView(DView view);
 				<em>targetView</em>: the target view of the current edge.
 			</li>
 		</ul>
-		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
 		<ul>
 			<li>The ability to print table representations has been disabled for the 0.9 release due to an external dependency issue (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=422223">bug #422223</a> for the details). It should be re-introduced in 1.0.
