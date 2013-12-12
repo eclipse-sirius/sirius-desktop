@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.query;
+package org.eclipse.sirius.ext.emf;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;

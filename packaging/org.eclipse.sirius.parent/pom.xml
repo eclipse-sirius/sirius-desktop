@@ -49,6 +49,7 @@
   <modules>
     <!-- plugins -->
     <module>../../plugins/org.eclipse.sirius.ext.base</module>
+    <module>../../plugins/org.eclipse.sirius.ext.emf</module>
     <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl.ide</module>
     <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl</module>
     <module>../../plugins/org.eclipse.sirius.common.ocl</module>

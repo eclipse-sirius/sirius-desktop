@@ -23,7 +23,6 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 
-import org.eclipse.sirius.business.api.query.EStructuralFeatureQuery;
 import org.eclipse.sirius.description.contribution.AddFeatureContribution;
 import org.eclipse.sirius.description.contribution.ClearFeatureContribution;
 import org.eclipse.sirius.description.contribution.FeatureContribution;
@@ -32,6 +31,7 @@ import org.eclipse.sirius.description.contribution.RemoveFeatureContribution;
 import org.eclipse.sirius.description.contribution.ResetFeatureContribution;
 import org.eclipse.sirius.description.contribution.SetFeatureContribution;
 import org.eclipse.sirius.description.contribution.util.ContributionSwitch;
+import org.eclipse.sirius.ext.emf.EStructuralFeatureQuery;
 
 /**
  * A feature contribution can modify the value of a single feature in a target
