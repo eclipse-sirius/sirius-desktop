@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
 import java.util.Collection;
@@ -237,6 +238,76 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
      * 
      * @generated
      */
+    public ContainerViewVariable getViewVariable() {
+        if (viewVariable != null && viewVariable.eIsProxy()) {
+            InternalEObject oldViewVariable = (InternalEObject) viewVariable;
+            viewVariable = (ContainerViewVariable) eResolveProxy(oldViewVariable);
+            if (viewVariable != oldViewVariable) {
+                InternalEObject newViewVariable = (InternalEObject) viewVariable;
+                NotificationChain msgs = oldViewVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, null, null);
+                if (newViewVariable.eInternalContainer() == null) {
+                    msgs = newViewVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, null, msgs);
+                }
+                if (msgs != null)
+                    msgs.dispatch();
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, oldViewVariable, viewVariable));
+            }
+        }
+        return viewVariable;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public ContainerViewVariable basicGetViewVariable() {
+        return viewVariable;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public NotificationChain basicSetViewVariable(ContainerViewVariable newViewVariable, NotificationChain msgs) {
+        ContainerViewVariable oldViewVariable = viewVariable;
+        viewVariable = newViewVariable;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, oldViewVariable, newViewVariable);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setViewVariable(ContainerViewVariable newViewVariable) {
+        if (newViewVariable != viewVariable) {
+            NotificationChain msgs = null;
+            if (viewVariable != null)
+                msgs = ((InternalEObject) viewVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, null, msgs);
+            if (newViewVariable != null)
+                msgs = ((InternalEObject) newViewVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, null, msgs);
+            msgs = basicSetViewVariable(newViewVariable, msgs);
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, newViewVariable, newViewVariable));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public InitialNodeCreationOperation getInitialOperation() {
         if (initialOperation != null && initialOperation.eIsProxy()) {
             InternalEObject oldInitialOperation = (InternalEObject) initialOperation;
@@ -333,76 +404,6 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
             extraMappings = new EObjectResolvingEList<AbstractNodeMapping>(AbstractNodeMapping.class, this, ToolPackage.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS);
         }
         return extraMappings;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public ContainerViewVariable getViewVariable() {
-        if (viewVariable != null && viewVariable.eIsProxy()) {
-            InternalEObject oldViewVariable = (InternalEObject) viewVariable;
-            viewVariable = (ContainerViewVariable) eResolveProxy(oldViewVariable);
-            if (viewVariable != oldViewVariable) {
-                InternalEObject newViewVariable = (InternalEObject) viewVariable;
-                NotificationChain msgs = oldViewVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, null, null);
-                if (newViewVariable.eInternalContainer() == null) {
-                    msgs = newViewVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, null, msgs);
-                }
-                if (msgs != null)
-                    msgs.dispatch();
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, oldViewVariable, viewVariable));
-            }
-        }
-        return viewVariable;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public ContainerViewVariable basicGetViewVariable() {
-        return viewVariable;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NotificationChain basicSetViewVariable(ContainerViewVariable newViewVariable, NotificationChain msgs) {
-        ContainerViewVariable oldViewVariable = viewVariable;
-        viewVariable = newViewVariable;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, oldViewVariable, newViewVariable);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
-        }
-        return msgs;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setViewVariable(ContainerViewVariable newViewVariable) {
-        if (newViewVariable != viewVariable) {
-            NotificationChain msgs = null;
-            if (viewVariable != null)
-                msgs = ((InternalEObject) viewVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, null, msgs);
-            if (newViewVariable != null)
-                msgs = ((InternalEObject) newViewVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, null, msgs);
-            msgs = basicSetViewVariable(newViewVariable, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE, newViewVariable, newViewVariable));
     }
 
     /**

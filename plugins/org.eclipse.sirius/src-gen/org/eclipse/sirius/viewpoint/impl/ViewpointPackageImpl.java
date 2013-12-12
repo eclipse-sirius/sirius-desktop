@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.impl;
 
 import java.util.Map;
@@ -509,62 +510,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * 
      * @generated
      */
-    private EClass bracketEdgeStyleEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass customizableEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass computedStyleDescriptionRegistryEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass diagramElementMapping2ModelElementEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass modelElement2ViewVariableEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass viewVariable2ContainerVariableEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass containerVariable2StyleDescriptionEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EEnum containerLayoutEEnum = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     private EClass dAnalysisCustomDataEClass = null;
 
     /**
@@ -733,6 +678,62 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * 
      * @generated
      */
+    private EClass bracketEdgeStyleEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass customizableEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass computedStyleDescriptionRegistryEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass diagramElementMapping2ModelElementEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass modelElement2ViewVariableEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass viewVariable2ContainerVariableEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass containerVariable2StyleDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EEnum containerLayoutEEnum = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     private EEnum labelPositionEEnum = null;
 
     /**
@@ -837,7 +838,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.emf.ecore.EPackage.Registry
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#eNS_URI
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#eNS_URI
      * @see #init()
      * @generated
      */
@@ -857,7 +858,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * and for any others upon which it depends.
      * 
      * <p>
-     * This method is used to initialize {@link SiriusPackage#eINSTANCE} when
+     * This method is used to initialize {@link ViewpointPackage#eINSTANCE} when
      * that field is accessed. Clients should not invoke it directly. Instead,
      * they should simply access that field to obtain the package. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -938,6 +939,33 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * 
      * @generated
      */
+    public EReference getDAnalysis_ReferencedAnalysis() {
+        return (EReference) dAnalysisEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getDAnalysis_Models() {
+        return (EReference) dAnalysisEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getDAnalysis_EAnnotations() {
+        return (EReference) dAnalysisEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public EReference getDAnalysis_OwnedViews() {
         return (EReference) dAnalysisEClass.getEStructuralFeatures().get(3);
     }
@@ -967,33 +995,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      */
     public EAttribute getDAnalysis_Version() {
         return (EAttribute) dAnalysisEClass.getEStructuralFeatures().get(6);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDAnalysis_ReferencedAnalysis() {
-        return (EReference) dAnalysisEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDAnalysis_Models() {
-        return (EReference) dAnalysisEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDAnalysis_EAnnotations() {
-        return (EReference) dAnalysisEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -2756,177 +2757,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * 
      * @generated
      */
-    public EClass getBracketEdgeStyle() {
-        return bracketEdgeStyleEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getCustomizable() {
-        return customizableEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getCustomizable_CustomFeatures() {
-        return (EAttribute) customizableEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getComputedStyleDescriptionRegistry() {
-        return computedStyleDescriptionRegistryEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getComputedStyleDescriptionRegistry_ComputedStyleDescriptions() {
-        return (EReference) computedStyleDescriptionRegistryEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getComputedStyleDescriptionRegistry_Cache() {
-        return (EReference) computedStyleDescriptionRegistryEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getDiagramElementMapping2ModelElement() {
-        return diagramElementMapping2ModelElementEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDiagramElementMapping2ModelElement_Key() {
-        return (EReference) diagramElementMapping2ModelElementEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDiagramElementMapping2ModelElement_Value() {
-        return (EReference) diagramElementMapping2ModelElementEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getModelElement2ViewVariable() {
-        return modelElement2ViewVariableEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getModelElement2ViewVariable_Key() {
-        return (EReference) modelElement2ViewVariableEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getModelElement2ViewVariable_Value() {
-        return (EReference) modelElement2ViewVariableEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getViewVariable2ContainerVariable() {
-        return viewVariable2ContainerVariableEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getViewVariable2ContainerVariable_Key() {
-        return (EReference) viewVariable2ContainerVariableEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getViewVariable2ContainerVariable_Value() {
-        return (EReference) viewVariable2ContainerVariableEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getContainerVariable2StyleDescription() {
-        return containerVariable2StyleDescriptionEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getContainerVariable2StyleDescription_Key() {
-        return (EReference) containerVariable2StyleDescriptionEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getContainerVariable2StyleDescription_Value() {
-        return (EReference) containerVariable2StyleDescriptionEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EEnum getContainerLayout() {
-        return containerLayoutEEnum;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EClass getDAnalysisCustomData() {
         return dAnalysisCustomDataEClass;
     }
@@ -3442,6 +3272,177 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      */
     public EClass getEndLabelStyle() {
         return endLabelStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EClass getBracketEdgeStyle() {
+        return bracketEdgeStyleEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EClass getCustomizable() {
+        return customizableEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getCustomizable_CustomFeatures() {
+        return (EAttribute) customizableEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EClass getComputedStyleDescriptionRegistry() {
+        return computedStyleDescriptionRegistryEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getComputedStyleDescriptionRegistry_ComputedStyleDescriptions() {
+        return (EReference) computedStyleDescriptionRegistryEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getComputedStyleDescriptionRegistry_Cache() {
+        return (EReference) computedStyleDescriptionRegistryEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EClass getDiagramElementMapping2ModelElement() {
+        return diagramElementMapping2ModelElementEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getDiagramElementMapping2ModelElement_Key() {
+        return (EReference) diagramElementMapping2ModelElementEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getDiagramElementMapping2ModelElement_Value() {
+        return (EReference) diagramElementMapping2ModelElementEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EClass getModelElement2ViewVariable() {
+        return modelElement2ViewVariableEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getModelElement2ViewVariable_Key() {
+        return (EReference) modelElement2ViewVariableEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getModelElement2ViewVariable_Value() {
+        return (EReference) modelElement2ViewVariableEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EClass getViewVariable2ContainerVariable() {
+        return viewVariable2ContainerVariableEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getViewVariable2ContainerVariable_Key() {
+        return (EReference) viewVariable2ContainerVariableEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getViewVariable2ContainerVariable_Value() {
+        return (EReference) viewVariable2ContainerVariableEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EClass getContainerVariable2StyleDescription() {
+        return containerVariable2StyleDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getContainerVariable2StyleDescription_Key() {
+        return (EReference) containerVariable2StyleDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getContainerVariable2StyleDescription_Value() {
+        return (EReference) containerVariable2StyleDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EEnum getContainerLayout() {
+        return containerLayoutEEnum;
     }
 
     /**
@@ -4889,4 +4890,4 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         addAnnotation(edgeArrowsEEnum.getELiterals().get(10), source, new String[] { "imagePath", "icons/full/decorator/inputArrowWithFillDiamond.gif" });
     }
 
-} // SiriusPackageImpl
+} // ViewpointPackageImpl

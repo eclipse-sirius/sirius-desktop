@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -481,27 +482,6 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
      * 
      * @generated
      */
-    public String getSizeComputationExpression() {
-        return sizeComputationExpression;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setSizeComputationExpression(String newSizeComputationExpression) {
-        String oldSizeComputationExpression = sizeComputationExpression;
-        sizeComputationExpression = newSizeComputationExpression;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION, oldSizeComputationExpression, sizeComputationExpression));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public boolean isShowIcon() {
         return showIcon;
     }
@@ -537,27 +517,6 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
         labelExpression = newLabelExpression;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public LabelAlignment getLabelAlignment() {
-        return labelAlignment;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setLabelAlignment(LabelAlignment newLabelAlignment) {
-        LabelAlignment oldLabelAlignment = labelAlignment;
-        labelAlignment = newLabelAlignment == null ? LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT, oldLabelAlignment, labelAlignment));
     }
 
     /**
@@ -624,6 +583,27 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
      * 
      * @generated
      */
+    public LabelAlignment getLabelAlignment() {
+        return labelAlignment;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setLabelAlignment(LabelAlignment newLabelAlignment) {
+        LabelAlignment oldLabelAlignment = labelAlignment;
+        labelAlignment = newLabelAlignment == null ? LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT, oldLabelAlignment, labelAlignment));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public String getTooltipExpression() {
         return tooltipExpression;
     }
@@ -638,6 +618,27 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
         tooltipExpression = newTooltipExpression;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION, oldTooltipExpression, tooltipExpression));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public String getSizeComputationExpression() {
+        return sizeComputationExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setSizeComputationExpression(String newSizeComputationExpression) {
+        String oldSizeComputationExpression = sizeComputationExpression;
+        sizeComputationExpression = newSizeComputationExpression;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION, oldSizeComputationExpression, sizeComputationExpression));
     }
 
     /**

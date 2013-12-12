@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 import org.eclipse.emf.common.util.EList;
@@ -40,7 +41,6 @@ import org.eclipse.emf.ecore.EPackage;
  * @generated
  */
 public interface RepresentationDescription extends DocumentedElement, EndUserDocumentedElement, IdentifiedElement {
-
     /**
      * Returns the value of the '<em><b>Title Expression</b></em>' attribute.
      * The default value is <code>""</code>. <!-- begin-user-doc --> <!--
@@ -50,8 +50,8 @@ public interface RepresentationDescription extends DocumentedElement, EndUserDoc
      * @return the value of the '<em>Title Expression</em>' attribute.
      * @see #setTitleExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationDescription_TitleExpression()
-     * @model default=""
-     *        dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model default="" dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'"
      * @generated
@@ -73,14 +73,9 @@ public interface RepresentationDescription extends DocumentedElement, EndUserDoc
 
     /**
      * Returns the value of the '<em><b>Initialisation</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Initialisation</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Set to true if your want
-     * your representation to be automatically created when initializing a new
-     * session. <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Set to
+     * true if your want your representation to be automatically created when
+     * initializing a new session. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Initialisation</em>' attribute.
      * @see #setInitialisation(boolean)
@@ -126,7 +121,8 @@ public interface RepresentationDescription extends DocumentedElement, EndUserDoc
      * there really should be more of a description here...
      * </p>
      * 
-     * @since 0.9.0
+     * 
+     * @since 0.9.0 <!-- end-user-doc -->
      * @return the value of the '<em>Show On Startup</em>' attribute.
      * @see #setShowOnStartup(boolean)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationDescription_ShowOnStartup()
@@ -138,13 +134,14 @@ public interface RepresentationDescription extends DocumentedElement, EndUserDoc
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.description.RepresentationDescription#isShowOnStartup
-     * <em>Show On Startup</em>}' attribute. <!-- begin-user-doc -->
+     * <em>Show On Startup</em>}' attribute. <!-- begin-user-doc --> 
      * 
-     * @since 0.9.0
+     * @since 0.9.0 <!-- end-user-doc -->
      * @param value
      *            the new value of the '<em>Show On Startup</em>' attribute.
      * @see #isShowOnStartup()
      * @generated
      */
     void setShowOnStartup(boolean value);
+
 } // RepresentationDescription

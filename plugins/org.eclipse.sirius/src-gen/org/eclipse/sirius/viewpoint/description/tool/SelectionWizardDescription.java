@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.sirius.viewpoint.description.SelectionDescription;
@@ -48,38 +49,6 @@ import org.eclipse.sirius.viewpoint.description.SelectionDescription;
  * @generated
  */
 public interface SelectionWizardDescription extends AbstractToolDescription, SelectionDescription {
-    /**
-     * Returns the value of the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Initial Operation</em>' containment reference
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * 
-     * @return the value of the '<em>Initial Operation</em>' containment
-     *         reference.
-     * @see #setInitialOperation(InitialOperation)
-     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSelectionWizardDescription_InitialOperation()
-     * @model containment="true" resolveProxies="true" required="true"
-     * @generated
-     */
-    InitialOperation getInitialOperation();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getInitialOperation
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Initial Operation</em>' containment
-     *            reference.
-     * @see #getInitialOperation()
-     * @generated
-     */
-    void setInitialOperation(InitialOperation value);
-
     /**
      * Returns the value of the '<em><b>Element</b></em>' containment reference.
      * <!-- begin-user-doc -->
@@ -171,6 +140,38 @@ public interface SelectionWizardDescription extends AbstractToolDescription, Sel
      * @generated
      */
     void setContainer(SelectContainerVariable value);
+
+    /**
+     * Returns the value of the '<em><b>Initial Operation</b></em>' containment
+     * reference. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Initial Operation</em>' containment reference
+     * isn't clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Initial Operation</em>' containment
+     *         reference.
+     * @see #setInitialOperation(InitialOperation)
+     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSelectionWizardDescription_InitialOperation()
+     * @model containment="true" resolveProxies="true" required="true"
+     * @generated
+     */
+    InitialOperation getInitialOperation();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription#getInitialOperation
+     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Initial Operation</em>' containment
+     *            reference.
+     * @see #getInitialOperation()
+     * @generated
+     */
+    void setInitialOperation(InitialOperation value);
 
     /**
      * Returns the value of the '<em><b>Icon Path</b></em>' attribute. The

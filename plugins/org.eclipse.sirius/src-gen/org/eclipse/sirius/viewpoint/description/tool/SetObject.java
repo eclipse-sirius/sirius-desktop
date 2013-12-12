@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.ecore.EObject;
@@ -34,18 +35,13 @@ import org.eclipse.emf.ecore.EObject;
 public interface SetObject extends ContainerModelOperation {
     /**
      * Returns the value of the '<em><b>Feature Name</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Feature Name</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The name of the feature to
-     * set. <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * name of the feature to set. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Feature Name</em>' attribute.
      * @see #setFeatureName(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSetObject_FeatureName()
-     * @model dataType="org.eclipse.sirius.description.FeatureName"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.FeatureName"
      *        required="true"
      * @generated
      */
@@ -66,12 +62,9 @@ public interface SetObject extends ContainerModelOperation {
 
     /**
      * Returns the value of the '<em><b>Object</b></em>' reference. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Object</em>' reference isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> An
+     * instance to set, you might need to use "load resource" in the editor in
+     * order to be able to pick it. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Object</em>' reference.
      * @see #setObject(EObject)

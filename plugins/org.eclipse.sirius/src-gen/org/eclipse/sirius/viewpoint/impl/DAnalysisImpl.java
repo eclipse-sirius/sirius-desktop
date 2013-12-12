@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.impl;
 
 import java.util.Collection;
@@ -165,6 +166,42 @@ public class DAnalysisImpl extends EObjectImpl implements DAnalysis {
      * 
      * @generated
      */
+    public EList<DAnalysis> getReferencedAnalysis() {
+        if (referencedAnalysis == null) {
+            referencedAnalysis = new EObjectResolvingEList<DAnalysis>(DAnalysis.class, this, ViewpointPackage.DANALYSIS__REFERENCED_ANALYSIS);
+        }
+        return referencedAnalysis;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EList<EObject> getModels() {
+        if (models == null) {
+            models = new EObjectResolvingEList<EObject>(EObject.class, this, ViewpointPackage.DANALYSIS__MODELS);
+        }
+        return models;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EList<DAnnotationEntry> getEAnnotations() {
+        if (eAnnotations == null) {
+            eAnnotations = new EObjectContainmentEList<DAnnotationEntry>(DAnnotationEntry.class, this, ViewpointPackage.DANALYSIS__EANNOTATIONS);
+        }
+        return eAnnotations;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public EList<DView> getOwnedViews() {
         if (ownedViews == null) {
             ownedViews = new EObjectContainmentEList.Resolving<DView>(DView.class, this, ViewpointPackage.DANALYSIS__OWNED_VIEWS);
@@ -215,42 +252,6 @@ public class DAnalysisImpl extends EObjectImpl implements DAnalysis {
         version = newVersion;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DANALYSIS__VERSION, oldVersion, version));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EList<DAnalysis> getReferencedAnalysis() {
-        if (referencedAnalysis == null) {
-            referencedAnalysis = new EObjectResolvingEList<DAnalysis>(DAnalysis.class, this, ViewpointPackage.DANALYSIS__REFERENCED_ANALYSIS);
-        }
-        return referencedAnalysis;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EList<EObject> getModels() {
-        if (models == null) {
-            models = new EObjectResolvingEList<EObject>(EObject.class, this, ViewpointPackage.DANALYSIS__MODELS);
-        }
-        return models;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EList<DAnnotationEntry> getEAnnotations() {
-        if (eAnnotations == null) {
-            eAnnotations = new EObjectContainmentEList<DAnnotationEntry>(DAnnotationEntry.class, this, ViewpointPackage.DANALYSIS__EANNOTATIONS);
-        }
-        return eAnnotations;
     }
 
     /**

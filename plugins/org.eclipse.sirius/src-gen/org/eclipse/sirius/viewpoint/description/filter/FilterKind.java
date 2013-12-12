@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.filter;
 
 import java.util.Arrays;
@@ -35,6 +36,7 @@ public enum FilterKind implements Enumerator {
      * @ordered
      */
     HIDE_LITERAL(0, "HIDE", "HIDE"),
+
     /**
      * The '<em><b>COLLAPSE</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -44,6 +46,7 @@ public enum FilterKind implements Enumerator {
      * @ordered
      */
     COLLAPSE_LITERAL(1, "COLLAPSE", "COLLAPSE");
+
     /**
      * The '<em><b>HIDE</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
@@ -208,4 +211,5 @@ public enum FilterKind implements Enumerator {
     public String toString() {
         return literal;
     }
-}
+
+} // FilterKind

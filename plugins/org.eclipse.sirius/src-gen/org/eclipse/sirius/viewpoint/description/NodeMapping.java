@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 import org.eclipse.emf.common.util.EList;
@@ -43,16 +44,11 @@ import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
 public interface NodeMapping extends AbstractNodeMapping, DragAndDropTargetDescription {
     /**
      * Returns the value of the '<em><b>Style</b></em>' containment reference.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Style</em>' containment reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The style of the node.
-     * <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The style of the node. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Style</em>' containment reference.
-     * @see #setStyle(NodeStyle)
+     * @see #setStyle(NodeStyleDescription)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getNodeMapping_Style()
      * @model containment="true" resolveProxies="true"
      * @generated
@@ -76,20 +72,13 @@ public interface NodeMapping extends AbstractNodeMapping, DragAndDropTargetDescr
      * Returns the value of the '<em><b>Conditionnal Styles</b></em>'
      * containment reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.ConditionalNodeStyleDescription}
-     * . <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Conditionnal Styles</em>' containment
-     * reference list isn't clear, there really should be more of a description
-     * here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> All conditional styles.
-     * <!-- end-model-doc -->
+     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * All conditional styles. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Conditionnal Styles</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getNodeMapping_ConditionnalStyles()
-     * @model type="viewpoint.description.ConditionalNodeStyleDescription"
-     *        containment="true" resolveProxies="true"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<ConditionalNodeStyleDescription> getConditionnalStyles();
@@ -148,7 +137,7 @@ public interface NodeMapping extends AbstractNodeMapping, DragAndDropTargetDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Update a DNodeListElement.
+     * Update a ViewNodeListElement.
      * 
      * @param listElement
      *            The view node list element to update <!-- end-model-doc -->
@@ -166,7 +155,7 @@ public interface NodeMapping extends AbstractNodeMapping, DragAndDropTargetDescr
      *            The root element.
      * @param container
      *            The container element <!-- end-model-doc -->
-     * @model type="org.eclipse.emf.ecore.EObject"
+     * @model
      * @generated
      */
     @Deprecated
@@ -182,7 +171,7 @@ public interface NodeMapping extends AbstractNodeMapping, DragAndDropTargetDescr
      *            The container of the element.
      * @param containerView
      *            The view of the container. <!-- end-model-doc -->
-     * @model type="org.eclipse.emf.ecore.EObject"
+     * @model
      * @generated
      */
     @Deprecated

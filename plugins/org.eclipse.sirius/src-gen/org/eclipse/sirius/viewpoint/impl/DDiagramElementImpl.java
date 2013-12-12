@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.impl;
 
 import java.util.Collection;
@@ -35,7 +36,7 @@ import org.eclipse.sirius.viewpoint.description.Layer;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>View Point Element</b></em>'. <!-- end-user-doc -->
+ * <em><b>DDiagram Element</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -98,9 +99,9 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
 
     /**
      * The default value of the '{@link #getTooltipText() <em>Tooltip Text</em>}
-     * ' attribute. <!-- begin-user-doc -->
+     * ' attribute. <!-- begin-user-doc --> 
      * 
-     * @since 0.9.0
+     * @since 0.9.0 <!-- end-user-doc -->
      * @see #getTooltipText()
      * @generated
      * @ordered
@@ -111,7 +112,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * The cached value of the '{@link #getTooltipText() <em>Tooltip Text</em>}'
      * attribute. <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0 <!-- end-user-doc -->
      * @see #getTooltipText()
      * @generated
      * @ordered
@@ -164,7 +165,6 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * 
      * @generated
      */
-
     @Override
     protected EClass eStaticClass() {
         return ViewpointPackage.Literals.DDIAGRAM_ELEMENT;
@@ -206,7 +206,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     /**
      * <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
     public String getTooltipText() {
@@ -216,7 +216,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     /**
      * <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
     public void setTooltipText(String newTooltipText) {
@@ -253,7 +253,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated-not
+     * @generated
      */
     public DiagramElementMapping getDiagramElementMapping() {
         DiagramElementMapping diagramElementMapping = basicGetDiagramElementMapping();
@@ -263,7 +263,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated-not
+     * @not-generated
      */
     public DiagramElementMapping basicGetDiagramElementMapping() {
         return (DiagramElementMapping) getMapping();
@@ -337,7 +337,6 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * 
      * @generated
      */
-
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
@@ -366,7 +365,6 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * 
      * @generated
      */
-
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
@@ -402,7 +400,6 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * 
      * @generated
      */
-
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
@@ -433,7 +430,6 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * 
      * @generated
      */
-
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
@@ -508,7 +504,6 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * 
      * @generated
      */
-
     @Override
     public String toString() {
         if (eIsProxy())

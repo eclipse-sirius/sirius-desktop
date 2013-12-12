@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
@@ -15,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Functionnal DView</b></em>'. <!-- end-user-doc -->
+ * <em><b>DRepresentation Container</b></em>'. <!-- end-user-doc -->
  * 
  * <p>
  * The following features are supported:
@@ -44,9 +45,8 @@ public interface DRepresentationContainer extends DView {
      *         list.
      * @see #isSetDiagramSet()
      * @see #unsetDiagramSet()
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDRepresentationContainer_DiagramSet()
-     * @model type="org.eclipse.sirius.DDiagramSet" containment="true"
-     *        resolveProxies="true" unsettable="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentationContainer_DiagramSet()
+     * @model containment="true" resolveProxies="true" unsettable="true"
      * @generated
      */
     EList<DDiagramSet> getDiagramSet();
@@ -88,7 +88,7 @@ public interface DRepresentationContainer extends DView {
      * <!-- end-user-doc -->
      * 
      * @return the value of the '<em>Models</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDRepresentationContainer_Models()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentationContainer_Models()
      * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */

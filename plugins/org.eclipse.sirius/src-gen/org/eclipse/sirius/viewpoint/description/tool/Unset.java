@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 /**
@@ -33,18 +34,15 @@ package org.eclipse.sirius.viewpoint.description.tool;
 public interface Unset extends ContainerModelOperation {
     /**
      * Returns the value of the '<em><b>Feature Name</b></em>' attribute. The
-     * default value is <code>""</code>. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Feature Name</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Name of the feature to
-     * unset. <!-- end-model-doc -->
+     * default value is <code>""</code>. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> Name of the feature to unset.
+     * <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Feature Name</em>' attribute.
      * @see #setFeatureName(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getUnset_FeatureName()
-     * @model default="" dataType="org.eclipse.sirius.description.FeatureName"
+     * @model default=""
+     *        dataType="org.eclipse.sirius.viewpoint.description.FeatureName"
      *        required="true"
      * @generated
      */
@@ -65,18 +63,15 @@ public interface Unset extends ContainerModelOperation {
 
     /**
      * Returns the value of the '<em><b>Element Expression</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Element Expression</em>' attribute isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Expression returning the
-     * elements to unset from the feature. <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Expression returning the elements to unset from the feature. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Element Expression</em>' attribute.
      * @see #setElementExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getUnset_ElementExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      * @generated

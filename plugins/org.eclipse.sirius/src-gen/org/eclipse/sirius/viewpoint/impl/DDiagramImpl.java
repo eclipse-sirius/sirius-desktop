@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.impl;
 
 import java.util.Collection;
@@ -43,7 +44,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>View Point</b></em>'. <!-- end-user-doc -->
+ * <em><b>DDiagram</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -305,7 +306,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
-
     @Override
     protected EClass eStaticClass() {
         return ViewpointPackage.Literals.DDIAGRAM;
@@ -459,40 +459,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
         // org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
-
-    // LGO : This doesn't seem to be generated, yet it is never used. commented
-    // private void addViewNodes(DDiagramElementContainer elem, Collection
-    // result) {
-    // if (elem instanceof DNodeContainer) {
-    // DNodeContainer container = (DNodeContainer) elem;
-    // result.addAll(container.getOwnedBorderedViewNodes());
-    // Iterator it = container.getOwnedSiriusElements().iterator();
-    // while (it.hasNext()) {
-    // DDiagramElement subElem = (DDiagramElement) it.next();
-    // if (subElem instanceof DNode) {
-    // result.add(subElem);
-    // }
-    // if (subElem instanceof DDiagramElementContainer) {
-    // addViewNodes((DDiagramElementContainer) subElem, result);
-    // }
-    //
-    // }
-    // } else if (elem instanceof DNodeList) {
-    // DNodeList container = (DNodeList) elem;
-    // Iterator it = container.getOwnedElements().iterator();
-    // while (it.hasNext()) {
-    // DDiagramElement subElem = (DDiagramElement) it.next();
-    // if (subElem instanceof DNode) {
-    // result.add(subElem);
-    // }
-    // if (subElem instanceof DDiagramElementContainer) {
-    // addViewNodes((DDiagramElementContainer) subElem, result);
-    // }
-    // }
-    //
-    // }
-    //
-    // }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -758,20 +724,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DDIAGRAM__HEADER_HEIGHT, oldHeaderHeight, headerHeight));
     }
 
-    // LGO : This doesn't seem to be generated, yet it is never used. commented
-    // private void addSiriusElementContainers(DNodeContainer container,
-    // Collection result) {
-    // Iterator it = container.getOwnedSiriusElements().iterator();
-    // while (it.hasNext()) {
-    // DDiagramElement elem = (DDiagramElement) it.next();
-    // if (elem instanceof DDiagramElementContainer)
-    // result.add(elem);
-    // if (elem instanceof DNodeContainer) {
-    // addSiriusElementContainers((DNodeContainer) elem, result);
-    // }
-    // }
-    // }
-
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -854,7 +806,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
-
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -873,7 +824,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
-
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
@@ -932,7 +882,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
-
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
@@ -995,7 +944,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
-
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
@@ -1050,7 +998,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
-
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
@@ -1103,7 +1050,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
-
     @Override
     public String toString() {
         if (eIsProxy())

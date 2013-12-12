@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.filter;
 
 import org.eclipse.sirius.viewpoint.description.SelectionDescription;
@@ -32,12 +33,8 @@ import org.eclipse.sirius.viewpoint.description.SelectionDescription;
 public interface FilterVariable extends SelectionDescription {
     /**
      * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
-     * should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Name of
+     * the variable. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import java.util.Arrays;
@@ -22,7 +23,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * end-user-doc --> <!-- begin-model-doc --> Style of a connection. <!--
  * end-model-doc -->
  * 
- * @see org.eclipse.sirius.viewpoint.SiriusPackage#getLineStyle()
+ * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getLineStyle()
  * @model
  * @generated
  */
@@ -36,6 +37,7 @@ public enum LineStyle implements Enumerator {
      * @ordered
      */
     SOLID_LITERAL(0, "solid", "solid"),
+
     /**
      * The '<em><b>Dash</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -45,6 +47,7 @@ public enum LineStyle implements Enumerator {
      * @ordered
      */
     DASH_LITERAL(1, "dash", "dash"),
+
     /**
      * The '<em><b>Dot</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -54,6 +57,7 @@ public enum LineStyle implements Enumerator {
      * @ordered
      */
     DOT_LITERAL(2, "dot", "dot"),
+
     /**
      * The '<em><b>Dash dot</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -63,9 +67,14 @@ public enum LineStyle implements Enumerator {
      * @ordered
      */
     DASH_DOT_LITERAL(3, "dash_dot", "dash_dot");
+
     /**
-     * The '<em><b>Solid</b></em>' literal value. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The '<em><b>Solid</b></em>' literal value. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of '<em><b>Solid</b></em>' literal object isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
      * 
      * @see #SOLID_LITERAL
      * @model name="solid"
@@ -75,8 +84,12 @@ public enum LineStyle implements Enumerator {
     public static final int SOLID = 0;
 
     /**
-     * The '<em><b>Dash</b></em>' literal value. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The '<em><b>Dash</b></em>' literal value. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of '<em><b>Dash</b></em>' literal object isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
      * 
      * @see #DASH_LITERAL
      * @model name="dash"
@@ -86,8 +99,12 @@ public enum LineStyle implements Enumerator {
     public static final int DASH = 1;
 
     /**
-     * The '<em><b>Dot</b></em>' literal value. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The '<em><b>Dot</b></em>' literal value. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of '<em><b>Dot</b></em>' literal object isn't clear, there
+     * really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
      * 
      * @see #DOT_LITERAL
      * @model name="dot"
@@ -98,6 +115,10 @@ public enum LineStyle implements Enumerator {
 
     /**
      * The '<em><b>Dash dot</b></em>' literal value. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of '<em><b>Dash dot</b></em>' literal object isn't clear,
+     * there really should be more of a description here...
+     * </p>
      * <!-- end-user-doc -->
      * 
      * @see #DASH_DOT_LITERAL
@@ -245,4 +266,5 @@ public enum LineStyle implements Enumerator {
     public String toString() {
         return literal;
     }
-}
+
+} // LineStyle

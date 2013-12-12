@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
@@ -46,17 +47,12 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * Returns the value of the '<em><b>Owned Representation Elements</b></em>'
      * reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.DRepresentationElement}. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Owned Representation Elements</em>' reference
-     * list isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The directly contained
-     * representation elements <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * directly contained representation elements <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Owned Representation Elements</em>'
      *         reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDRepresentation_OwnedRepresentationElements()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation_OwnedRepresentationElements()
      * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */
@@ -72,7 +68,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * 
      * @return the value of the '<em>Representation Elements</em>' reference
      *         list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDRepresentation_RepresentationElements()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation_RepresentationElements()
      * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */
@@ -118,7 +114,7 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * 
      * @return the value of the '<em>Owned Annotation Entries</em>' containment
      *         reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDRepresentation_OwnedAnnotationEntries()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation_OwnedAnnotationEntries()
      * @model containment="true" resolveProxies="true"
      * @generated
      */

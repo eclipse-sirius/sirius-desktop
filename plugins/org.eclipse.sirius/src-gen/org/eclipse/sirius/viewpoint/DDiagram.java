@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
@@ -26,7 +27,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>View Point</b></em>'. <!-- end-user-doc -->
+ * <em><b>DDiagram</b></em>'. <!-- end-user-doc -->
  * 
  * <!-- begin-model-doc --> ViewPoint is the type of all diagrams in AIR. A
  * viewpoint is composed of nodes, containers and connections. It is owned by an
@@ -85,14 +86,13 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * Returns the value of the '<em><b>Owned Diagram Elements</b></em>'
      * containment reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.DDiagramElement}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The SiriusElements
-     * directly owned by this viewpoint. <!-- end-model-doc -->
+     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The DDiagramElements
+     * directly owned by this diagram. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Owned Diagram Elements</em>' containment
      *         reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDDiagram_OwnedDiagramElements()
-     * @model type="org.eclipse.sirius.DDiagramElement" containment="true"
-     *        resolveProxies="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagram_OwnedDiagramElements()
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<DDiagramElement> getOwnedDiagramElements();
@@ -105,7 +105,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * directly and indirectly owned by this diagram. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Diagram Elements</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDDiagram_DiagramElements()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagram_DiagramElements()
      * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */
@@ -113,17 +113,12 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
 
     /**
      * Returns the value of the '<em><b>Description</b></em>' reference. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Description</em>' reference isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The description of the
-     * viewpoint. It may be null. <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * description of the diagram. It may be null. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(DiagramDescription)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getSirius_Description()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagram_Description()
      * @model
      * @generated
      */
@@ -144,17 +139,13 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
 
     /**
      * Returns the value of the '<em><b>Info</b></em>' attribute. The default
-     * value is <code>""</code>. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Info</em>' attribute isn't clear, there really
-     * should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The information of the
-     * viewpoint. <!-- end-model-doc -->
+     * value is <code>""</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-model-doc --> The information of the diagram. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Info</em>' attribute.
      * @see #setInfo(String)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getSirius_Info()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagram_Info()
      * @model default=""
      * @generated
      */
@@ -176,14 +167,13 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * Returns the value of the '<em><b>Sub Diagrams</b></em>' containment
      * reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.DDiagram}. <!-- begin-user-doc -->
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Viewpoints that are owned
-     * by this viewpoint. <!-- end-model-doc -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> Diagrams that are owned by
+     * this diagram. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Sub Diagrams</em>' containment reference
      *         list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDDiagram_SubDiagrams()
-     * @model type="org.eclipse.sirius.DDiagram" containment="true"
-     *        resolveProxies="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagram_SubDiagrams()
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<DDiagram> getSubDiagrams();
@@ -191,18 +181,13 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
     /**
      * Returns the value of the '<em><b>Edges</b></em>' reference list. The list
      * contents are of type {@link org.eclipse.sirius.viewpoint.DEdge}. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Edges</em>' reference list isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> All edges of the
-     * viewpoint. It is a subset of ownedSiriusElements <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
+     * edges of the diagram. It is a subset of diagramElements <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Edges</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getSirius_Edges()
-     * @model type="viewpoint.DEdge" transient="true" changeable="false"
-     *        volatile="true" derived="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagram_Edges()
+     * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */
     EList<DEdge> getEdges();
@@ -210,18 +195,13 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
     /**
      * Returns the value of the '<em><b>Nodes</b></em>' reference list. The list
      * contents are of type {@link org.eclipse.sirius.viewpoint.DNode}. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Nodes</em>' reference list isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> All nodes of the
-     * viewpoint. It is a subset of ownedSiriusElements <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
+     * nodes of the diagram. It is a subset of diagramElements <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Nodes</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getSirius_Nodes()
-     * @model type="viewpoint.DNode" transient="true" changeable="false"
-     *        volatile="true" derived="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagram_Nodes()
+     * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */
     EList<DNode> getNodes();
@@ -231,13 +211,12 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.DNodeListElement}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
-     * nodes of the diagram. It is a subset of ownedDiagramElements <!--
+     * node list elements of the diagram. It is a subset of diagramElements <!--
      * end-model-doc -->
      * 
      * @return the value of the '<em>Node List Elements</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDDiagram_NodeListElements()
-     * @model type="org.eclipse.sirius.DNodeListElement" transient="true"
-     *        changeable="false" volatile="true" derived="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagram_NodeListElements()
+     * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */
     EList<DNodeListElement> getNodeListElements();
@@ -246,35 +225,25 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * Returns the value of the '<em><b>Containers</b></em>' reference list. The
      * list contents are of type
      * {@link org.eclipse.sirius.viewpoint.DDiagramElementContainer}. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Containers</em>' reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> All containers of the
-     * viewpoint. It is a subset of ownedSiriusElements <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
+     * containers of the diagram. It is a subset of diagramElements <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Containers</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getSirius_Containers()
-     * @model type="viewpoint.DDiagramElementContainer" transient="true"
-     *        changeable="false" volatile="true" derived="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagram_Containers()
+     * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */
     EList<DDiagramElementContainer> getContainers();
 
     /**
      * Returns the value of the '<em><b>Current Concern</b></em>' reference.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Current Concern</em>' reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The current selected
-     * concer. It may be null <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The current selected concer. It may be null <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Current Concern</em>' reference.
      * @see #setCurrentConcern(ConcernDescription)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getSirius_CurrentConcern()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagram_CurrentConcern()
      * @model
      * @generated
      */
@@ -297,17 +266,13 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * Returns the value of the '<em><b>Activated Filters</b></em>' reference
      * list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.filter.FilterDescription}
-     * . <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Activated Filters</em>' reference list isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Filters that are currently
-     * activated for this viewpoint. <!-- end-model-doc -->
+     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Filters that are currently activated for this viewpoint. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Activated Filters</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getSirius_ActivatedFilters()
-     * @model type="viewpoint.description.filter.FilterDescription"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagram_ActivatedFilters()
+     * @model
      * @generated
      */
     EList<FilterDescription> getActivatedFilters();
@@ -316,18 +281,12 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * Returns the value of the '<em><b>All Filters</b></em>' reference list.
      * The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.filter.FilterDescription}
-     * . <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>All Filters</em>' reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Filters that can be
-     * activated for this viewpoint. <!-- end-model-doc -->
+     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Filters that can be activated for this viewpoint. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>All Filters</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getSirius_AllFilters()
-     * @model type="viewpoint.description.filter.FilterDescription"
-     *        transient="true" changeable="false" volatile="true" derived="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagram_AllFilters()
+     * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */
     EList<FilterDescription> getAllFilters();
@@ -336,17 +295,13 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * Returns the value of the '<em><b>Activated Rules</b></em>' reference
      * list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule}
-     * . <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Activated Rules</em>' reference list isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Validation rules that are
-     * currently activated for this viewpoint. <!-- end-model-doc -->
+     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Validation rules that are currently activated for this viewpoint. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Activated Rules</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getSirius_ActivatedRules()
-     * @model type="viewpoint.description.validation.ValidationRule"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagram_ActivatedRules()
+     * @model
      * @generated
      */
     EList<ValidationRule> getActivatedRules();
@@ -355,17 +310,13 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * Returns the value of the '<em><b>Activate Behaviors</b></em>' reference
      * list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.tool.BehaviorTool}. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Activate Behaviors</em>' reference list isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Behaviors that are
-     * currently activated for this viewpoint. <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Behaviors that are currently activated for this viewpoint. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Activate Behaviors</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getSirius_ActivateBehaviors()
-     * @model type="viewpoint.description.tool.BehaviorTool"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagram_ActivateBehaviors()
+     * @model
      * @generated
      */
     EList<BehaviorTool> getActivateBehaviors();
@@ -455,17 +406,12 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * Returns the value of the '<em><b>Hidden Elements</b></em>' reference
      * list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.DDiagramElement}. <!-- begin-user-doc
-     * -->
-     * <p>
-     * If the meaning of the '<em>Hidden Elements</em>' reference list isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> List of DDiagramElement :
-     * Either the DDiagramElement is hidden or its label is hidden. <!--
-     * end-model-doc -->
+     * --> <!-- end-user-doc --> <!-- begin-model-doc --> List of
+     * DDiagramElement : Either the DDiagramElement is hidden or its label is
+     * hidden. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Hidden Elements</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDDiagram_HiddenElements()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagram_HiddenElements()
      * @model transient="true"
      * @generated
      */
@@ -512,7 +458,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * 
      * @return the value of the '<em>Header Height</em>' attribute.
      * @see #setHeaderHeight(int)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDDiagram_HeaderHeight()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagram_HeaderHeight()
      * @model default="1"
      * @generated
      */
@@ -550,7 +496,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * @param mapping
      *            The mapping that has created the returned ViewNodes <!--
      *            end-model-doc -->
-     * @model type="viewpoint.DNode"
+     * @model
      * @generated
      */
     EList<DNode> getNodesFromMapping(NodeMapping mapping);
@@ -563,7 +509,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * @param mapping
      *            The mapping that has created the returned ViewEdges <!--
      *            end-model-doc -->
-     * @model type="viewpoint.DEdge"
+     * @model
      * @generated
      */
     EList<DEdge> getEdgesFromMapping(EdgeMapping mapping);
@@ -575,8 +521,8 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * 
      * @param mapping
      *            The mapping that has created the returned
-     *            SiriusElementContainers <!-- end-model-doc -->
-     * @model type="viewpoint.DDiagramElementContainer"
+     *            ViewPointElementContainers <!-- end-model-doc -->
+     * @model
      * @generated
      */
     EList<DDiagramElementContainer> getContainersFromMapping(ContainerMapping mapping);
@@ -587,7 +533,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * has target and that are instances of the specified type. <!--
      * end-model-doc -->
      * 
-     * @model type="org.eclipse.sirius.DDiagramElement"
+     * @model
      * @generated
      */
     @Deprecated

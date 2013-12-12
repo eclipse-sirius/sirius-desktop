@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 import org.eclipse.emf.ecore.EObject;
@@ -133,9 +134,12 @@ public interface DecorationDescription extends EObject {
      * @return the value of the '<em>Precondition Expression</em>' attribute.
      * @see #setPreconditionExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDecorationDescription_PreconditionExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables containerView='viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.' container='ecore.EObject | the semantic element of the container view.' viewpoint='viewpoint.DDiagram | (deprecated) the current diagram.' diagram='viewpoint.DDiagram | the current diagram.'"
      * @generated
      */
     String getPreconditionExpression();

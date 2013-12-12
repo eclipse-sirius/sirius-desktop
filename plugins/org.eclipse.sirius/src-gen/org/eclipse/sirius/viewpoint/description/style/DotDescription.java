@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style;
 
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
@@ -65,15 +66,17 @@ public interface DotDescription extends NodeStyleDescription {
      * Returns the value of the '
      * <em><b>Stroke Size Computation Expression</b></em>' attribute. The
      * default value is <code>"2"</code>. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> The acceleo expression that
-     * allows to compute the size of a stroke. <!-- end-model-doc -->
+     * end-user-doc --> <!-- begin-model-doc --> An expression to compute the
+     * size of the stroke. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Stroke Size Computation Expression</em>'
      *         attribute.
      * @see #setStrokeSizeComputationExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getDotDescription_StrokeSizeComputationExpression()
-     * @model default="2"
-     *        dataType="org.eclipse.sirius.description.AcceleoExpression"
+     * @model default="2" dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      * @generated
      */
     String getStrokeSizeComputationExpression();

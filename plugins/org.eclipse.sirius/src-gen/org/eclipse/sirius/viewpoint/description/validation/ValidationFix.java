@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.validation;
 
 import org.eclipse.emf.ecore.EObject;
@@ -36,13 +37,8 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 public interface ValidationFix extends EObject {
     /**
      * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
-     * should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Name of the quick fix
-     * displayed to the user. <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Name of
+     * the quick fix displayed to the user. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 /**
@@ -77,6 +78,8 @@ public interface ToolDescription extends MappingBasedToolDescription {
      * @model containment="true" resolveProxies="true" required="true"
      *        annotation=
      *        "http://www.eclipse.org/emf/2002/GenModel documentedName='element'"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables type='ecore.EObject'"
      * @generated
      */
     ElementVariable getElement();
@@ -106,6 +109,8 @@ public interface ToolDescription extends MappingBasedToolDescription {
      * @model containment="true" resolveProxies="true" required="true"
      *        annotation=
      *        "http://www.eclipse.org/emf/2002/GenModel documentedName='elementView'"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables type='ecore.EObject'"
      * @generated
      */
     ElementViewVariable getElementView();

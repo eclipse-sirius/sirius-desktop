@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -621,17 +622,6 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
      * 
      * @generated
      */
-    public EList<EdgeMapping> getMappings() {
-        // TODO: implement this method
-        // Ensure that you remove @generated or mark it @generated NOT
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public ElementSelectVariable getEdgeView() {
         if (edgeView != null && edgeView.eIsProxy()) {
             InternalEObject oldEdgeView = (InternalEObject) edgeView;
@@ -695,6 +685,17 @@ public class ReconnectEdgeDescriptionImpl extends MappingBasedToolDescriptionImp
                 msgs.dispatch();
         } else if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.RECONNECT_EDGE_DESCRIPTION__EDGE_VIEW, newEdgeView, newEdgeView));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EList<EdgeMapping> getMappings() {
+        // TODO: implement this method
+        // Ensure that you remove @generated or mark it @generated NOT
+        throw new UnsupportedOperationException();
     }
 
     /**

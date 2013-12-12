@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 import org.eclipse.emf.common.util.EList;
@@ -270,7 +271,8 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDiagramDescription_DomainClass()
-     * @model dataType="org.eclipse.sirius.description.TypeName" required="true"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.TypeName"
+     *        required="true"
      * @generated
      */
     String getDomainClass();
@@ -297,7 +299,8 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * @return the value of the '<em>Precondition Expression</em>' attribute.
      * @see #setPreconditionExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDiagramDescription_PreconditionExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      * @generated

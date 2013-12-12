@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.filter;
 
 import java.util.Map;
@@ -61,15 +62,18 @@ public interface VariableFilter extends Filter {
 
     /**
      * Returns the value of the '<em><b>Semantic Condition Expression</b></em>'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
-     * begin-model-doc --> The condition to apply on the semantic element. <!--
-     * end-model-doc -->
+     * attribute. The default value is <code>""</code>. <!-- begin-user-doc -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> The condition to apply on
+     * the semantic element. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Semantic Condition Expression</em>'
      *         attribute.
      * @see #setSemanticConditionExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.filter.FilterPackage#getVariableFilter_SemanticConditionExpression()
-     * @model
+     * @model default="" dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      * @generated
      */
     String getSemanticConditionExpression();

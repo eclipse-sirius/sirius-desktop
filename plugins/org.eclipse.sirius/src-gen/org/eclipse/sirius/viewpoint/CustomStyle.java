@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 /**
@@ -37,7 +38,7 @@ public interface CustomStyle extends NodeStyle {
      * 
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getCustomStyle_Id()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getCustomStyle_Id()
      * @model
      * @generated
      */

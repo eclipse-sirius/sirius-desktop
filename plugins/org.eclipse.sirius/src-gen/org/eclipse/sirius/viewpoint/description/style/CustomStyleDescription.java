@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style;
 
 /**
@@ -30,12 +31,10 @@ package org.eclipse.sirius.viewpoint.description.style;
 public interface CustomStyleDescription extends NodeStyleDescription {
     /**
      * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Id</em>' attribute isn't clear, there really
-     * should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Set
+     * here an ID to identify your custom style. You'll then be able to provide
+     * your own figure implementation for every representation element having a
+     * style with this ID. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -308,7 +309,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -501,7 +502,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -511,7 +512,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -651,7 +652,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -661,7 +662,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -811,8 +812,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 0.9.0
-     * 
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -822,7 +822,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -899,126 +899,6 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int SQUARE_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.impl.BundledImageDescriptionImpl
-     * <em>Bundled Image Description</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.BundledImageDescriptionImpl
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getBundledImageDescription()
-     * @generated
-     */
-    int BUNDLED_IMAGE_DESCRIPTION = 12;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.impl.NoteDescriptionImpl
-     * <em>Note Description</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.NoteDescriptionImpl
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getNoteDescription()
-     * @generated
-     */
-    int NOTE_DESCRIPTION = 13;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.impl.DotDescriptionImpl
-     * <em>Dot Description</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.DotDescriptionImpl
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getDotDescription()
-     * @generated
-     */
-    int DOT_DESCRIPTION = 14;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.impl.GaugeCompositeStyleDescriptionImpl
-     * <em>Gauge Composite Style Description</em>}' class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.GaugeCompositeStyleDescriptionImpl
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getGaugeCompositeStyleDescription()
-     * @generated
-     */
-    int GAUGE_COMPOSITE_STYLE_DESCRIPTION = 15;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.impl.ContainerStyleDescriptionImpl
-     * <em>Container Style Description</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.ContainerStyleDescriptionImpl
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getContainerStyleDescription()
-     * @generated
-     */
-    int CONTAINER_STYLE_DESCRIPTION = 16;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.impl.FlatContainerStyleDescriptionImpl
-     * <em>Flat Container Style Description</em>}' class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.FlatContainerStyleDescriptionImpl
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getFlatContainerStyleDescription()
-     * @generated
-     */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION = 17;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.impl.ShapeContainerStyleDescriptionImpl
-     * <em>Shape Container Style Description</em>}' class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.ShapeContainerStyleDescriptionImpl
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getShapeContainerStyleDescription()
-     * @generated
-     */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION = 18;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.impl.WorkspaceImageDescriptionImpl
-     * <em>Workspace Image Description</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.WorkspaceImageDescriptionImpl
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getWorkspaceImageDescription()
-     * @generated
-     */
-    int WORKSPACE_IMAGE_DESCRIPTION = 19;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.impl.EdgeStyleDescriptionImpl
-     * <em>Edge Style Description</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.EdgeStyleDescriptionImpl
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getEdgeStyleDescription()
-     * @generated
-     */
-    int EDGE_STYLE_DESCRIPTION = 20;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.impl.EllipseNodeDescriptionImpl
-     * <em>Ellipse Node Description</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.EllipseNodeDescriptionImpl
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getEllipseNodeDescription()
-     * @generated
-     */
-    int ELLIPSE_NODE_DESCRIPTION = 11;
 
     /**
      * The meta object id for the '
@@ -1109,7 +989,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -1117,9 +997,8 @@ public interface StylePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1199,6 +1078,18 @@ public interface StylePackage extends EPackage {
     int LOZENGE_NODE_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.description.style.impl.EllipseNodeDescriptionImpl
+     * <em>Ellipse Node Description</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.EllipseNodeDescriptionImpl
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getEllipseNodeDescription()
+     * @generated
+     */
+    int ELLIPSE_NODE_DESCRIPTION = 11;
+
+    /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -1273,9 +1164,8 @@ public interface StylePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1283,9 +1173,8 @@ public interface StylePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1367,6 +1256,18 @@ public interface StylePackage extends EPackage {
     int ELLIPSE_NODE_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.description.style.impl.BundledImageDescriptionImpl
+     * <em>Bundled Image Description</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.BundledImageDescriptionImpl
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getBundledImageDescription()
+     * @generated
+     */
+    int BUNDLED_IMAGE_DESCRIPTION = 12;
+
+    /**
      * The feature id for the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -1441,9 +1342,8 @@ public interface StylePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1451,9 +1351,8 @@ public interface StylePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1505,7 +1404,7 @@ public interface StylePackage extends EPackage {
     int BUNDLED_IMAGE_DESCRIPTION__SHAPE = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Color</b></em>' attribute. <!--
+     * The feature id for the '<em><b>Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -1522,6 +1421,18 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int BUNDLED_IMAGE_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.description.style.impl.NoteDescriptionImpl
+     * <em>Note Description</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.NoteDescriptionImpl
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getNoteDescription()
+     * @generated
+     */
+    int NOTE_DESCRIPTION = 13;
 
     /**
      * The feature id for the '
@@ -1598,9 +1509,8 @@ public interface StylePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1608,9 +1518,8 @@ public interface StylePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @since 0.9.0
      * @generated
      * @ordered
      */
@@ -1653,7 +1562,7 @@ public interface StylePackage extends EPackage {
     int NOTE_DESCRIPTION__RESIZE_KIND = NODE_STYLE_DESCRIPTION__RESIZE_KIND;
 
     /**
-     * The feature id for the '<em><b>Color</b></em>' attribute. <!--
+     * The feature id for the '<em><b>Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -1669,6 +1578,18 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int NOTE_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.description.style.impl.DotDescriptionImpl
+     * <em>Dot Description</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.DotDescriptionImpl
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getDotDescription()
+     * @generated
+     */
+    int DOT_DESCRIPTION = 14;
 
     /**
      * The feature id for the '
@@ -1747,7 +1668,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -1757,7 +1678,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -1826,6 +1747,18 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int DOT_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.description.style.impl.GaugeCompositeStyleDescriptionImpl
+     * <em>Gauge Composite Style Description</em>}' class. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.GaugeCompositeStyleDescriptionImpl
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getGaugeCompositeStyleDescription()
+     * @generated
+     */
+    int GAUGE_COMPOSITE_STYLE_DESCRIPTION = 15;
 
     /**
      * The feature id for the '
@@ -1904,7 +1837,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -1914,7 +1847,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -1983,6 +1916,18 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int GAUGE_COMPOSITE_STYLE_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.description.style.impl.ContainerStyleDescriptionImpl
+     * <em>Container Style Description</em>}' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.ContainerStyleDescriptionImpl
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getContainerStyleDescription()
+     * @generated
+     */
+    int CONTAINER_STYLE_DESCRIPTION = 16;
 
     /**
      * The feature id for the '<em><b>Arc Width</b></em>' attribute. <!--
@@ -2079,7 +2024,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -2089,7 +2034,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -2113,6 +2058,18 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 11;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.description.style.impl.FlatContainerStyleDescriptionImpl
+     * <em>Flat Container Style Description</em>}' class. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.FlatContainerStyleDescriptionImpl
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getFlatContainerStyleDescription()
+     * @generated
+     */
+    int FLAT_CONTAINER_STYLE_DESCRIPTION = 17;
 
     /**
      * The feature id for the '<em><b>Arc Width</b></em>' attribute. <!--
@@ -2209,7 +2166,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -2219,7 +2176,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -2262,7 +2219,7 @@ public interface StylePackage extends EPackage {
     int FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_STYLE = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
+     * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -2271,7 +2228,7 @@ public interface StylePackage extends EPackage {
     int FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
-     * The feature id for the '<em><b>Foreground Color</b></em>' attribute. <!--
+     * The feature id for the '<em><b>Foreground Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -2297,6 +2254,18 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int FLAT_CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 6;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.description.style.impl.ShapeContainerStyleDescriptionImpl
+     * <em>Shape Container Style Description</em>}' class. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.ShapeContainerStyleDescriptionImpl
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getShapeContainerStyleDescription()
+     * @generated
+     */
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION = 18;
 
     /**
      * The feature id for the '<em><b>Arc Width</b></em>' attribute. <!--
@@ -2393,7 +2362,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -2403,7 +2372,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -2446,7 +2415,7 @@ public interface StylePackage extends EPackage {
     int SHAPE_CONTAINER_STYLE_DESCRIPTION__SHAPE = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
+     * The feature id for the '<em><b>Background Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -2463,6 +2432,18 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int SHAPE_CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.description.style.impl.WorkspaceImageDescriptionImpl
+     * <em>Workspace Image Description</em>}' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.WorkspaceImageDescriptionImpl
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getWorkspaceImageDescription()
+     * @generated
+     */
+    int WORKSPACE_IMAGE_DESCRIPTION = 19;
 
     /**
      * The feature id for the '
@@ -2541,7 +2522,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
      * begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -2551,7 +2532,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -2638,6 +2619,18 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int WORKSPACE_IMAGE_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.description.style.impl.EdgeStyleDescriptionImpl
+     * <em>Edge Style Description</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.EdgeStyleDescriptionImpl
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getEdgeStyleDescription()
+     * @generated
+     */
+    int EDGE_STYLE_DESCRIPTION = 20;
 
     /**
      * The feature id for the '<em><b>Stroke Color</b></em>' reference. <!--
@@ -2740,22 +2733,10 @@ public interface StylePackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.impl.BracketEdgeStyleDescriptionImpl
-     * <em>Bracket Edge Style Description</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.BracketEdgeStyleDescriptionImpl
-     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getBracketEdgeStyleDescription()
-     * @generated
-     */
-    int BRACKET_EDGE_STYLE_DESCRIPTION = 26;
-
-    /**
-     * The meta object id for the '
      * {@link org.eclipse.sirius.viewpoint.description.style.impl.TooltipStyleDescriptionImpl
      * <em>Tooltip Style Description</em>}' class. <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0 <!-- end-user-doc -->
      * @see org.eclipse.sirius.viewpoint.description.style.impl.TooltipStyleDescriptionImpl
      * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getTooltipStyleDescription()
      * @generated
@@ -2766,7 +2747,7 @@ public interface StylePackage extends EPackage {
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
      * <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -2776,7 +2757,7 @@ public interface StylePackage extends EPackage {
      * The number of structural features of the '
      * <em>Tooltip Style Description</em>' class. <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -3085,6 +3066,18 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int END_LABEL_STYLE_DESCRIPTION_FEATURE_COUNT = BASIC_LABEL_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.viewpoint.description.style.impl.BracketEdgeStyleDescriptionImpl
+     * <em>Bracket Edge Style Description</em>}' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.BracketEdgeStyleDescriptionImpl
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getBracketEdgeStyleDescription()
+     * @generated
+     */
+    int BRACKET_EDGE_STYLE_DESCRIPTION = 26;
 
     /**
      * The feature id for the '<em><b>Stroke Color</b></em>' reference. <!--
@@ -3415,7 +3408,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription#getLabelAlignment
      * <em>Label Alignment</em>}'. <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @return the meta object for the attribute '<em>Label Alignment</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription#getLabelAlignment()
      * @see #getLabelStyleDescription()
@@ -3648,6 +3641,110 @@ public interface StylePackage extends EPackage {
 
     /**
      * Returns the meta object for class '
+     * {@link org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription
+     * <em>Lozenge Node Description</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Lozenge Node Description</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription
+     * @generated
+     */
+    EClass getLozengeNodeDescription();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription#getWidthComputationExpression
+     * <em>Width Computation Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the attribute '
+     *         <em>Width Computation Expression</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription#getWidthComputationExpression()
+     * @see #getLozengeNodeDescription()
+     * @generated
+     */
+    EAttribute getLozengeNodeDescription_WidthComputationExpression();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription#getHeightComputationExpression
+     * <em>Height Computation Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the attribute '
+     *         <em>Height Computation Expression</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription#getHeightComputationExpression()
+     * @see #getLozengeNodeDescription()
+     * @generated
+     */
+    EAttribute getLozengeNodeDescription_HeightComputationExpression();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription#getColor
+     * <em>Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the reference '<em>Color</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription#getColor()
+     * @see #getLozengeNodeDescription()
+     * @generated
+     */
+    EReference getLozengeNodeDescription_Color();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription
+     * <em>Ellipse Node Description</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Ellipse Node Description</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription
+     * @generated
+     */
+    EClass getEllipseNodeDescription();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription#getColor
+     * <em>Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the reference '<em>Color</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription#getColor()
+     * @see #getEllipseNodeDescription()
+     * @generated
+     */
+    EReference getEllipseNodeDescription_Color();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription#getHorizontalDiameterComputationExpression
+     * <em>Horizontal Diameter Computation Expression</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '
+     *         <em>Horizontal Diameter Computation Expression</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription#getHorizontalDiameterComputationExpression()
+     * @see #getEllipseNodeDescription()
+     * @generated
+     */
+    EAttribute getEllipseNodeDescription_HorizontalDiameterComputationExpression();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription#getVerticalDiameterComputationExpression
+     * <em>Vertical Diameter Computation Expression</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '
+     *         <em>Vertical Diameter Computation Expression</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription#getVerticalDiameterComputationExpression()
+     * @see #getEllipseNodeDescription()
+     * @generated
+     */
+    EAttribute getEllipseNodeDescription_VerticalDiameterComputationExpression();
+
+    /**
+     * Returns the meta object for class '
      * {@link org.eclipse.sirius.viewpoint.description.style.BundledImageDescription
      * <em>Bundled Image Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -3821,19 +3918,6 @@ public interface StylePackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.description.style.FlatContainerStyleDescription#getBackgroundColor
-     * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     * 
-     * @return the meta object for the attribute '<em>Background Color</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.style.FlatContainerStyleDescription#getBackgroundColor()
-     * @see #getFlatContainerStyleDescription()
-     * @generated
-     */
-    EReference getFlatContainerStyleDescription_BackgroundColor();
-
-    /**
-     * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.viewpoint.description.style.FlatContainerStyleDescription#getBackgroundStyle
      * <em>Background Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
@@ -3846,12 +3930,25 @@ public interface StylePackage extends EPackage {
     EAttribute getFlatContainerStyleDescription_BackgroundStyle();
 
     /**
-     * Returns the meta object for the attribute '
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.viewpoint.description.style.FlatContainerStyleDescription#getBackgroundColor
+     * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @return the meta object for the reference '<em>Background Color</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.style.FlatContainerStyleDescription#getBackgroundColor()
+     * @see #getFlatContainerStyleDescription()
+     * @generated
+     */
+    EReference getFlatContainerStyleDescription_BackgroundColor();
+
+    /**
+     * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.viewpoint.description.style.FlatContainerStyleDescription#getForegroundColor
      * <em>Foreground Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      * 
-     * @return the meta object for the attribute '<em>Foreground Color</em>'.
+     * @return the meta object for the reference '<em>Foreground Color</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.FlatContainerStyleDescription#getForegroundColor()
      * @see #getFlatContainerStyleDescription()
      * @generated
@@ -3897,12 +3994,12 @@ public interface StylePackage extends EPackage {
     EAttribute getShapeContainerStyleDescription_Shape();
 
     /**
-     * Returns the meta object for the attribute '
+     * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.viewpoint.description.style.ShapeContainerStyleDescription#getBackgroundColor
      * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      * 
-     * @return the meta object for the attribute '<em>Background Color</em>'.
+     * @return the meta object for the reference '<em>Background Color</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.ShapeContainerStyleDescription#getBackgroundColor()
      * @see #getShapeContainerStyleDescription()
      * @generated
@@ -4075,64 +4172,10 @@ public interface StylePackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.viewpoint.description.style.BracketEdgeStyleDescription
-     * <em>Bracket Edge Style Description</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for class '
-     *         <em>Bracket Edge Style Description</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.style.BracketEdgeStyleDescription
-     * @generated
-     */
-    EClass getBracketEdgeStyleDescription();
-
-    /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription
-     * <em>Size Computation Container Style Description</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for class '
-     *         <em>Size Computation Container Style Description</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription
-     * @generated
-     */
-    EClass getSizeComputationContainerStyleDescription();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression
-     * <em>Width Computation Expression</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for the attribute '
-     *         <em>Width Computation Expression</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression()
-     * @see #getSizeComputationContainerStyleDescription()
-     * @generated
-     */
-    EAttribute getSizeComputationContainerStyleDescription_WidthComputationExpression();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression
-     * <em>Height Computation Expression</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for the attribute '
-     *         <em>Height Computation Expression</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression()
-     * @see #getSizeComputationContainerStyleDescription()
-     * @generated
-     */
-    EAttribute getSizeComputationContainerStyleDescription_HeightComputationExpression();
-
-    /**
-     * Returns the meta object for class '
      * {@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription
      * <em>Tooltip Style Description</em>}'. <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0 <!-- end-user-doc -->
      * @return the meta object for class '<em>Tooltip Style Description</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription
      * @generated
@@ -4144,7 +4187,7 @@ public interface StylePackage extends EPackage {
      * {@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription#getTooltipExpression
      * <em>Tooltip Expression</em>}'. <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0 <!-- end-user-doc -->
      * @return the meta object for the attribute '<em>Tooltip Expression</em>'.
      * @see org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription#getTooltipExpression()
      * @see #getTooltipStyleDescription()
@@ -4283,107 +4326,57 @@ public interface StylePackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription
-     * <em>Ellipse Node Description</em>}'. <!-- begin-user-doc --> <!--
+     * {@link org.eclipse.sirius.viewpoint.description.style.BracketEdgeStyleDescription
+     * <em>Bracket Edge Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
-     * @return the meta object for class '<em>Ellipse Node Description</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription
+     * @return the meta object for class '
+     *         <em>Bracket Edge Style Description</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.style.BracketEdgeStyleDescription
      * @generated
      */
-    EClass getEllipseNodeDescription();
-
-    /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription#getColor
-     * <em>Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the reference '<em>Color</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription#getColor()
-     * @see #getEllipseNodeDescription()
-     * @generated
-     */
-    EReference getEllipseNodeDescription_Color();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription#getHorizontalDiameterComputationExpression
-     * <em>Horizontal Diameter Computation Expression</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '
-     *         <em>Horizontal Diameter Computation Expression</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription#getHorizontalDiameterComputationExpression()
-     * @see #getEllipseNodeDescription()
-     * @generated
-     */
-    EAttribute getEllipseNodeDescription_HorizontalDiameterComputationExpression();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription#getVerticalDiameterComputationExpression
-     * <em>Vertical Diameter Computation Expression</em>}'. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '
-     *         <em>Vertical Diameter Computation Expression</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription#getVerticalDiameterComputationExpression()
-     * @see #getEllipseNodeDescription()
-     * @generated
-     */
-    EAttribute getEllipseNodeDescription_VerticalDiameterComputationExpression();
+    EClass getBracketEdgeStyleDescription();
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription
-     * <em>Lozenge Node Description</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription
+     * <em>Size Computation Container Style Description</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @return the meta object for class '<em>Lozenge Node Description</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription
+     * @return the meta object for class '
+     *         <em>Size Computation Container Style Description</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription
      * @generated
      */
-    EClass getLozengeNodeDescription();
+    EClass getSizeComputationContainerStyleDescription();
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription#getWidthComputationExpression
+     * {@link org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression
      * <em>Width Computation Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @return the meta object for the attribute '
      *         <em>Width Computation Expression</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription#getWidthComputationExpression()
-     * @see #getLozengeNodeDescription()
+     * @see org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression()
+     * @see #getSizeComputationContainerStyleDescription()
      * @generated
      */
-    EAttribute getLozengeNodeDescription_WidthComputationExpression();
+    EAttribute getSizeComputationContainerStyleDescription_WidthComputationExpression();
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription#getHeightComputationExpression
+     * {@link org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression
      * <em>Height Computation Expression</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @return the meta object for the attribute '
      *         <em>Height Computation Expression</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription#getHeightComputationExpression()
-     * @see #getLozengeNodeDescription()
+     * @see org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression()
+     * @see #getSizeComputationContainerStyleDescription()
      * @generated
      */
-    EAttribute getLozengeNodeDescription_HeightComputationExpression();
-
-    /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription#getColor
-     * <em>Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the reference '<em>Color</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription#getColor()
-     * @see #getLozengeNodeDescription()
-     * @generated
-     */
-    EReference getLozengeNodeDescription_Color();
+    EAttribute getSizeComputationContainerStyleDescription_HeightComputationExpression();
 
     /**
      * Returns the factory that creates the instances of the model. <!--
@@ -4551,9 +4544,8 @@ public interface StylePackage extends EPackage {
 
         /**
          * The meta object literal for the '<em><b>Label Alignment</b></em>'
-         * attribute feature. <!-- begin-user-doc -->
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
-         * @since 0.9.0
          * @generated
          */
         EAttribute LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT = eINSTANCE.getLabelStyleDescription_LabelAlignment();
@@ -4727,6 +4719,82 @@ public interface StylePackage extends EPackage {
 
         /**
          * The meta object literal for the '
+         * {@link org.eclipse.sirius.viewpoint.description.style.impl.LozengeNodeDescriptionImpl
+         * <em>Lozenge Node Description</em>}' class. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.viewpoint.description.style.impl.LozengeNodeDescriptionImpl
+         * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getLozengeNodeDescription()
+         * @generated
+         */
+        EClass LOZENGE_NODE_DESCRIPTION = eINSTANCE.getLozengeNodeDescription();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Width Computation Expression</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute LOZENGE_NODE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = eINSTANCE.getLozengeNodeDescription_WidthComputationExpression();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Height Computation Expression</b></em>' attribute feature.
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute LOZENGE_NODE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = eINSTANCE.getLozengeNodeDescription_HeightComputationExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Color</b></em>' reference
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference LOZENGE_NODE_DESCRIPTION__COLOR = eINSTANCE.getLozengeNodeDescription_Color();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.viewpoint.description.style.impl.EllipseNodeDescriptionImpl
+         * <em>Ellipse Node Description</em>}' class. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.viewpoint.description.style.impl.EllipseNodeDescriptionImpl
+         * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getEllipseNodeDescription()
+         * @generated
+         */
+        EClass ELLIPSE_NODE_DESCRIPTION = eINSTANCE.getEllipseNodeDescription();
+
+        /**
+         * The meta object literal for the '<em><b>Color</b></em>' reference
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference ELLIPSE_NODE_DESCRIPTION__COLOR = eINSTANCE.getEllipseNodeDescription_Color();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Horizontal Diameter Computation Expression</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute ELLIPSE_NODE_DESCRIPTION__HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION = eINSTANCE.getEllipseNodeDescription_HorizontalDiameterComputationExpression();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Vertical Diameter Computation Expression</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute ELLIPSE_NODE_DESCRIPTION__VERTICAL_DIAMETER_COMPUTATION_EXPRESSION = eINSTANCE.getEllipseNodeDescription_VerticalDiameterComputationExpression();
+
+        /**
+         * The meta object literal for the '
          * {@link org.eclipse.sirius.viewpoint.description.style.impl.BundledImageDescriptionImpl
          * <em>Bundled Image Description</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -4864,20 +4932,20 @@ public interface StylePackage extends EPackage {
         EClass FLAT_CONTAINER_STYLE_DESCRIPTION = eINSTANCE.getFlatContainerStyleDescription();
 
         /**
-         * The meta object literal for the '<em><b>Background Color</b></em>'
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = eINSTANCE.getFlatContainerStyleDescription_BackgroundColor();
-
-        /**
          * The meta object literal for the '<em><b>Background Style</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
         EAttribute FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_STYLE = eINSTANCE.getFlatContainerStyleDescription_BackgroundStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Background Color</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR = eINSTANCE.getFlatContainerStyleDescription_BackgroundColor();
 
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
@@ -5041,52 +5109,10 @@ public interface StylePackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.viewpoint.description.style.impl.BracketEdgeStyleDescriptionImpl
-         * <em>Bracket Edge Style Description</em>}' class. <!-- begin-user-doc
-         * --> <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.viewpoint.description.style.impl.BracketEdgeStyleDescriptionImpl
-         * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getBracketEdgeStyleDescription()
-         * @generated
-         */
-        EClass BRACKET_EDGE_STYLE_DESCRIPTION = eINSTANCE.getBracketEdgeStyleDescription();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.viewpoint.description.style.impl.SizeComputationContainerStyleDescriptionImpl
-         * <em>Size Computation Container Style Description</em>}' class. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.viewpoint.description.style.impl.SizeComputationContainerStyleDescriptionImpl
-         * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getSizeComputationContainerStyleDescription()
-         * @generated
-         */
-        EClass SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION = eINSTANCE.getSizeComputationContainerStyleDescription();
-
-        /**
-         * The meta object literal for the '
-         * <em><b>Width Computation Expression</b></em>' attribute feature. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = eINSTANCE.getSizeComputationContainerStyleDescription_WidthComputationExpression();
-
-        /**
-         * The meta object literal for the '
-         * <em><b>Height Computation Expression</b></em>' attribute feature.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = eINSTANCE.getSizeComputationContainerStyleDescription_HeightComputationExpression();
-
-        /**
-         * The meta object literal for the '
          * {@link org.eclipse.sirius.viewpoint.description.style.impl.TooltipStyleDescriptionImpl
          * <em>Tooltip Style Description</em>}' class. <!-- begin-user-doc -->
          * 
-         * @since 0.9.0
+         * @since 0.9.0 <!-- end-user-doc -->
          * @see org.eclipse.sirius.viewpoint.description.style.impl.TooltipStyleDescriptionImpl
          * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getTooltipStyleDescription()
          * @generated
@@ -5097,7 +5123,7 @@ public interface StylePackage extends EPackage {
          * The meta object literal for the '<em><b>Tooltip Expression</b></em>'
          * attribute feature. <!-- begin-user-doc -->
          * 
-         * @since 0.9.0
+         * @since 0.9.0 <!-- end-user-doc -->
          * @generated
          */
         EAttribute TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION = eINSTANCE.getTooltipStyleDescription_TooltipExpression();
@@ -5200,53 +5226,27 @@ public interface StylePackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.viewpoint.description.style.impl.EllipseNodeDescriptionImpl
-         * <em>Ellipse Node Description</em>}' class. <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
+         * {@link org.eclipse.sirius.viewpoint.description.style.impl.BracketEdgeStyleDescriptionImpl
+         * <em>Bracket Edge Style Description</em>}' class. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
          * 
-         * @see org.eclipse.sirius.viewpoint.description.style.impl.EllipseNodeDescriptionImpl
-         * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getEllipseNodeDescription()
+         * @see org.eclipse.sirius.viewpoint.description.style.impl.BracketEdgeStyleDescriptionImpl
+         * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getBracketEdgeStyleDescription()
          * @generated
          */
-        EClass ELLIPSE_NODE_DESCRIPTION = eINSTANCE.getEllipseNodeDescription();
-
-        /**
-         * The meta object literal for the '<em><b>Color</b></em>' reference
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference ELLIPSE_NODE_DESCRIPTION__COLOR = eINSTANCE.getEllipseNodeDescription_Color();
+        EClass BRACKET_EDGE_STYLE_DESCRIPTION = eINSTANCE.getBracketEdgeStyleDescription();
 
         /**
          * The meta object literal for the '
-         * <em><b>Horizontal Diameter Computation Expression</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * {@link org.eclipse.sirius.viewpoint.description.style.impl.SizeComputationContainerStyleDescriptionImpl
+         * <em>Size Computation Container Style Description</em>}' class. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          * 
+         * @see org.eclipse.sirius.viewpoint.description.style.impl.SizeComputationContainerStyleDescriptionImpl
+         * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getSizeComputationContainerStyleDescription()
          * @generated
          */
-        EAttribute ELLIPSE_NODE_DESCRIPTION__HORIZONTAL_DIAMETER_COMPUTATION_EXPRESSION = eINSTANCE.getEllipseNodeDescription_HorizontalDiameterComputationExpression();
-
-        /**
-         * The meta object literal for the '
-         * <em><b>Vertical Diameter Computation Expression</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute ELLIPSE_NODE_DESCRIPTION__VERTICAL_DIAMETER_COMPUTATION_EXPRESSION = eINSTANCE.getEllipseNodeDescription_VerticalDiameterComputationExpression();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.viewpoint.description.style.impl.LozengeNodeDescriptionImpl
-         * <em>Lozenge Node Description</em>}' class. <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.viewpoint.description.style.impl.LozengeNodeDescriptionImpl
-         * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getLozengeNodeDescription()
-         * @generated
-         */
-        EClass LOZENGE_NODE_DESCRIPTION = eINSTANCE.getLozengeNodeDescription();
+        EClass SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION = eINSTANCE.getSizeComputationContainerStyleDescription();
 
         /**
          * The meta object literal for the '
@@ -5255,7 +5255,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute LOZENGE_NODE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = eINSTANCE.getLozengeNodeDescription_WidthComputationExpression();
+        EAttribute SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = eINSTANCE.getSizeComputationContainerStyleDescription_WidthComputationExpression();
 
         /**
          * The meta object literal for the '
@@ -5264,15 +5264,7 @@ public interface StylePackage extends EPackage {
          * 
          * @generated
          */
-        EAttribute LOZENGE_NODE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = eINSTANCE.getLozengeNodeDescription_HeightComputationExpression();
-
-        /**
-         * The meta object literal for the '<em><b>Color</b></em>' reference
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference LOZENGE_NODE_DESCRIPTION__COLOR = eINSTANCE.getLozengeNodeDescription_Color();
+        EAttribute SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = eINSTANCE.getSizeComputationContainerStyleDescription_HeightComputationExpression();
 
     }
 

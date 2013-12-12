@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
@@ -41,12 +42,8 @@ import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 public interface CreateView extends ContainerModelOperation {
     /**
      * Returns the value of the '<em><b>Mapping</b></em>' reference. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Mapping</em>' reference isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Mapping
+     * to create a view from. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Mapping</em>' reference.
      * @see #setMapping(DiagramElementMapping)
@@ -107,15 +104,15 @@ public interface CreateView extends ContainerModelOperation {
 
     /**
      * Returns the value of the '<em><b>Variable Name</b></em>' attribute. The
-     * default value is <code>"instance"</code>. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> Once the instance is created, a
-     * new variable will be binded with the name given here and will be
-     * available to any contained operation. <!-- end-model-doc -->
+     * default value is <code>"createdView"</code>. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> Once the view is created, a new
+     * variable will be bound with the name given here and will be available to
+     * any contained operation. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Variable Name</em>' attribute.
      * @see #setVariableName(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getCreateView_VariableName()
-     * @model default="instance"
+     * @model default="createdView"
      * @generated
      */
     String getVariableName();

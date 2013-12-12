@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -143,6 +144,20 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * 
      * @generated
      */
+    private EClass lozengeNodeDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass ellipseNodeDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     private EClass bundledImageDescriptionEClass = null;
 
     /**
@@ -206,20 +221,6 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * 
      * @generated
      */
-    private EClass bracketEdgeStyleDescriptionEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass sizeComputationContainerStyleDescriptionEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     private EClass tooltipStyleDescriptionEClass = null;
 
     /**
@@ -255,14 +256,14 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * 
      * @generated
      */
-    private EClass ellipseNodeDescriptionEClass = null;
+    private EClass bracketEdgeStyleDescriptionEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    private EClass lozengeNodeDescriptionEClass = null;
+    private EClass sizeComputationContainerStyleDescriptionEClass = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -672,6 +673,78 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * 
      * @generated
      */
+    public EClass getLozengeNodeDescription() {
+        return lozengeNodeDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getLozengeNodeDescription_WidthComputationExpression() {
+        return (EAttribute) lozengeNodeDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getLozengeNodeDescription_HeightComputationExpression() {
+        return (EAttribute) lozengeNodeDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getLozengeNodeDescription_Color() {
+        return (EReference) lozengeNodeDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EClass getEllipseNodeDescription() {
+        return ellipseNodeDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getEllipseNodeDescription_Color() {
+        return (EReference) ellipseNodeDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getEllipseNodeDescription_HorizontalDiameterComputationExpression() {
+        return (EAttribute) ellipseNodeDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getEllipseNodeDescription_VerticalDiameterComputationExpression() {
+        return (EAttribute) ellipseNodeDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public EClass getBundledImageDescription() {
         return bundledImageDescriptionEClass;
     }
@@ -798,8 +871,8 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * 
      * @generated
      */
-    public EReference getFlatContainerStyleDescription_BackgroundColor() {
-        return (EReference) flatContainerStyleDescriptionEClass.getEStructuralFeatures().get(1);
+    public EAttribute getFlatContainerStyleDescription_BackgroundStyle() {
+        return (EAttribute) flatContainerStyleDescriptionEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -807,8 +880,8 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * 
      * @generated
      */
-    public EAttribute getFlatContainerStyleDescription_BackgroundStyle() {
-        return (EAttribute) flatContainerStyleDescriptionEClass.getEStructuralFeatures().get(0);
+    public EReference getFlatContainerStyleDescription_BackgroundColor() {
+        return (EReference) flatContainerStyleDescriptionEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -978,42 +1051,6 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * 
      * @generated
      */
-    public EClass getBracketEdgeStyleDescription() {
-        return bracketEdgeStyleDescriptionEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getSizeComputationContainerStyleDescription() {
-        return sizeComputationContainerStyleDescriptionEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getSizeComputationContainerStyleDescription_WidthComputationExpression() {
-        return (EAttribute) sizeComputationContainerStyleDescriptionEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getSizeComputationContainerStyleDescription_HeightComputationExpression() {
-        return (EAttribute) sizeComputationContainerStyleDescriptionEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EClass getTooltipStyleDescription() {
         return tooltipStyleDescriptionEClass;
     }
@@ -1122,8 +1159,8 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * 
      * @generated
      */
-    public EClass getEllipseNodeDescription() {
-        return ellipseNodeDescriptionEClass;
+    public EClass getBracketEdgeStyleDescription() {
+        return bracketEdgeStyleDescriptionEClass;
     }
 
     /**
@@ -1131,8 +1168,8 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * 
      * @generated
      */
-    public EReference getEllipseNodeDescription_Color() {
-        return (EReference) ellipseNodeDescriptionEClass.getEStructuralFeatures().get(0);
+    public EClass getSizeComputationContainerStyleDescription() {
+        return sizeComputationContainerStyleDescriptionEClass;
     }
 
     /**
@@ -1140,8 +1177,8 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * 
      * @generated
      */
-    public EAttribute getEllipseNodeDescription_HorizontalDiameterComputationExpression() {
-        return (EAttribute) ellipseNodeDescriptionEClass.getEStructuralFeatures().get(1);
+    public EAttribute getSizeComputationContainerStyleDescription_WidthComputationExpression() {
+        return (EAttribute) sizeComputationContainerStyleDescriptionEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -1149,44 +1186,8 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * 
      * @generated
      */
-    public EAttribute getEllipseNodeDescription_VerticalDiameterComputationExpression() {
-        return (EAttribute) ellipseNodeDescriptionEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getLozengeNodeDescription() {
-        return lozengeNodeDescriptionEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getLozengeNodeDescription_WidthComputationExpression() {
-        return (EAttribute) lozengeNodeDescriptionEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getLozengeNodeDescription_HeightComputationExpression() {
-        return (EAttribute) lozengeNodeDescriptionEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getLozengeNodeDescription_Color() {
-        return (EReference) lozengeNodeDescriptionEClass.getEStructuralFeatures().get(2);
+    public EAttribute getSizeComputationContainerStyleDescription_HeightComputationExpression() {
+        return (EAttribute) sizeComputationContainerStyleDescriptionEClass.getEStructuralFeatures().get(1);
     }
 
     /**

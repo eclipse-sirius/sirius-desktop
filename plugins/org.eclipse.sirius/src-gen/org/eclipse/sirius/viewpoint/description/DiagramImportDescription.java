@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 /**
@@ -30,13 +31,8 @@ package org.eclipse.sirius.viewpoint.description;
 public interface DiagramImportDescription extends RepresentationImportDescription, DiagramDescription {
     /**
      * Returns the value of the '<em><b>Imported Diagram</b></em>' reference.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Imported Diagram</em>' reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Diagram representation to
-     * import. <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Diagram representation to import. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Imported Diagram</em>' reference.
      * @see #setImportedDiagram(DiagramDescription)

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
@@ -58,7 +59,7 @@ public interface DAnalysisSessionEObject extends EObject {
      * 
      * @return the value of the '<em>Open</em>' attribute.
      * @see #setOpen(boolean)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDAnalysisSessionEObject_Open()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_Open()
      * @model required="true"
      * @generated
      */
@@ -87,7 +88,7 @@ public interface DAnalysisSessionEObject extends EObject {
      * 
      * @return the value of the '<em>Blocked</em>' attribute.
      * @see #setBlocked(boolean)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDAnalysisSessionEObject_Blocked()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_Blocked()
      * @model required="true"
      * @generated
      */
@@ -177,9 +178,9 @@ public interface DAnalysisSessionEObject extends EObject {
 
     /**
      * Returns the value of the '<em><b>Synchronization Status</b></em>'
-     * attribute. The default value is <code>"0"</code>. The literals are from
-     * the enumeration {@link org.eclipse.sirius.viewpoint.SyncStatus}. <!--
-     * begin-user-doc -->
+     * attribute. The default value is <code>"dirty"</code>. The literals are
+     * from the enumeration {@link org.eclipse.sirius.viewpoint.SyncStatus}.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Synchronization Status</em>' attribute isn't
      * clear, there really should be more of a description here...
@@ -189,8 +190,8 @@ public interface DAnalysisSessionEObject extends EObject {
      * @return the value of the '<em>Synchronization Status</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.SyncStatus
      * @see #setSynchronizationStatus(SyncStatus)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDAnalysisSessionEObject_SynchronizationStatus()
-     * @model default="0" required="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_SynchronizationStatus()
+     * @model default="dirty" required="true"
      * @generated
      */
     SyncStatus getSynchronizationStatus();

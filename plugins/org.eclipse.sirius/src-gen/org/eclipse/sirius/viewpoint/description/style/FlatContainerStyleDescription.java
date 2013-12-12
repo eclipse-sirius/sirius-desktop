@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style;
 
 import org.eclipse.sirius.viewpoint.BackgroundStyle;
@@ -41,35 +42,6 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  */
 public interface FlatContainerStyleDescription extends ContainerStyleDescription, SizeComputationContainerStyleDescription {
     /**
-     * Returns the value of the '<em><b>Background Color</b></em>' attribute.
-     * The default value is <code>"gray"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.DefaultColors}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The background color.
-     * <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>Background Color</em>' attribute.
-     * @see org.eclipse.sirius.DefaultColors
-     * @see #setBackgroundColor(DefaultColors)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getFlatContainerStyleDescription_BackgroundColor()
-     * @model default="gray"
-     * @generated
-     */
-    ColorDescription getBackgroundColor();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.style.FlatContainerStyleDescription#getBackgroundColor
-     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Background Color</em>' reference.
-     * @see #getBackgroundColor()
-     * @generated
-     */
-    void setBackgroundColor(ColorDescription value);
-
-    /**
      * Returns the value of the '<em><b>Background Style</b></em>' attribute.
      * The literals are from the enumeration
      * {@link org.eclipse.sirius.viewpoint.BackgroundStyle}. <!-- begin-user-doc
@@ -100,14 +72,35 @@ public interface FlatContainerStyleDescription extends ContainerStyleDescription
     void setBackgroundStyle(BackgroundStyle value);
 
     /**
+     * Returns the value of the '<em><b>Background Color</b></em>' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The color to use. <!-- end-model-doc -->
+     * 
+     * @return the value of the '<em>Background Color</em>' reference.
+     * @see #setBackgroundColor(ColorDescription)
+     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getFlatContainerStyleDescription_BackgroundColor()
+     * @model required="true"
+     * @generated
+     */
+    ColorDescription getBackgroundColor();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.viewpoint.description.style.FlatContainerStyleDescription#getBackgroundColor
+     * <em>Background Color</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Background Color</em>' reference.
+     * @see #getBackgroundColor()
+     * @generated
+     */
+    void setBackgroundColor(ColorDescription value);
+
+    /**
      * Returns the value of the '<em><b>Foreground Color</b></em>' reference.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Foreground Color</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The color to use. <!--
-     * end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The color to use. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Foreground Color</em>' reference.
      * @see #setForegroundColor(ColorDescription)

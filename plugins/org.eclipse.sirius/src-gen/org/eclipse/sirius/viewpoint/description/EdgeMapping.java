@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 import org.eclipse.emf.common.util.EList;
@@ -73,19 +74,16 @@ import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
  */
 public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, IEdgeMapping {
     /**
-     * Returns the value of the '<em><b>Source Mapping</b></em>' reference. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Source Mapping</em>' reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
+     * Returns the value of the '<em><b>Source Mapping</b></em>' reference list.
+     * The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping}.
+     * <!-- begin-user-doc --> 
+     * @since 0.9.0
+     * <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The mapping that creates EdgeTargets that are the sources of the
+     * ViewEdges that are created by this EdgeMapping. <!-- end-model-doc -->
      * 
-     * @since 0.9.0 that creates EdgeTargets that are the sources of the
-     *        ViewEdges that are created by this EdgeMapping. <!-- end-model-doc
-     *        -->
-     * 
-     * @return the value of the '<em>Source Mapping</em>' reference.
-     * @see #setSourceMapping(AbstractNodeMapping)
+     * @return the value of the '<em>Source Mapping</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEdgeMapping_SourceMapping()
      * @model required="true"
      * @generated
@@ -93,19 +91,16 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
     EList<DiagramElementMapping> getSourceMapping();
 
     /**
-     * Returns the value of the '<em><b>Target Mapping</b></em>' reference. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Target Mapping</em>' reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
+     * Returns the value of the '<em><b>Target Mapping</b></em>' reference list.
+     * The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping}.
+     * <!-- begin-user-doc --> 
+     * @since 0.9.0
+     * <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The mapping that creates EdgeTargets that are the targets of the
+     * ViewEdges that are created by this EdgeMapping. <!-- end-model-doc -->
      * 
-     * @since 0.9.0 that creates EdgeTargets that are the targets of the
-     *        ViewEdges that are created by this EdgeMapping. <!-- end-model-doc
-     *        -->
-     * 
-     * @return the value of the '<em>Target Mapping</em>' reference.
-     * @see #setTargetMapping(AbstractNodeMapping)
+     * @return the value of the '<em>Target Mapping</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEdgeMapping_TargetMapping()
      * @model required="true"
      * @generated
@@ -115,26 +110,25 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
     /**
      * Returns the value of the '<em><b>Target Finder Expression</b></em>'
      * attribute. The default value is <code>""</code>. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Target Finder Expression</em>' attribute isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The acceleo expression
-     * that is able to retrieve the targets of an edge. The context of the
-     * expression depends on the useDomainElement value. If useDomainElement is
-     * true, the expression will be evaluated with all objects that are
-     * instances of the type represented by the domainClass value. All this
-     * objects will depends on the semanticCandidatesExpression. By default all
-     * objects are the objects that are in the enclosing viewpoint's rootContent
-     * subtree. If the semanticCandidatesExpression is filled in then all the
-     * objects will be the objects of the returned list. <!-- end-model-doc -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> An expression to retrieve
+     * the targets of an edge. The context of the expression depends on the
+     * useDomainElement value. If useDomainElement is true, the expression will
+     * be evaluated with all objects that are instances of the type represented
+     * by the domainClass value. All this objects will depends on the
+     * semanticCandidatesExpression. By default all objects are the objects that
+     * are in the enclosing viewpoint's rootContent subtree. If the
+     * semanticCandidatesExpression is filled in then all the objects will be
+     * the objects of the returned list. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Target Finder Expression</em>' attribute.
      * @see #setTargetFinderExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEdgeMapping_TargetFinderExpression()
-     * @model default=""
-     *        dataType="org.eclipse.sirius.description.AcceleoExpression"
-     *        required="true"
+     * @model default="" dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        required="true" annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='viewpoint.DDiagram | the current DDiagram.' viewpoint='viewpoint.DDiagram | (deprecated) the current DDiagram.' viewPoint='viewpoint.DDiagram | (deprecated) the current DDiagram.'"
      * @generated
      */
     String getTargetFinderExpression();
@@ -155,23 +149,24 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * Returns the value of the '<em><b>Source Finder Expression</b></em>'
-     * attribute. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Source Finder Expression</em>' attribute isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The acceleo expression
-     * that is able to retrieve the sources of an edge. All this objects will
-     * depends on the semanticCandidatesExpression. By default all objects are
-     * the objects that are in the enclosing viewpoint's rootContent subtree. If
-     * the semanticCandidatesExpression is filled in then all the objects will
-     * be the objects of the returned list. This attribute is taking in account
-     * only if the useDomainElement is true. <!-- end-model-doc -->
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> An expression to retrieve the sources of an edge. All
+     * this objects will depends on the semanticCandidatesExpression. By default
+     * all objects are the objects that are in the enclosing viewpoint's
+     * rootContent subtree. If the semanticCandidatesExpression is filled in
+     * then all the objects will be the objects of the returned list. This
+     * attribute is taking in account only if the useDomainElement is true. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Source Finder Expression</em>' attribute.
      * @see #setSourceFinderExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEdgeMapping_SourceFinderExpression()
-     * @model dataType="org.eclipse.sirius.description.AcceleoExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='viewpoint.DDiagram | the current DDiagram.' viewpoint='viewpoint.DDiagram | (deprecated) the current DDiagram.' viewPoint='viewpoint.DDiagram | (deprecated) the current DDiagram.'"
      * @generated
      */
     String getSourceFinderExpression();
@@ -192,13 +187,8 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * Returns the value of the '<em><b>Style</b></em>' containment reference.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Style</em>' containment reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The style of the edge.
-     * <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The style of the edge. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Style</em>' containment reference.
      * @see #setStyle(EdgeStyleDescription)
@@ -225,34 +215,21 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * Returns the value of the '<em><b>Conditionnal Styles</b></em>'
      * containment reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.ConditionalEdgeStyleDescription}
-     * . <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Conditionnal Styles</em>' containment
-     * reference list isn't clear, there really should be more of a description
-     * here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> All conditional styles.
-     * <!-- end-model-doc -->
+     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * All conditional styles. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Conditionnal Styles</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEdgeMapping_ConditionnalStyles()
-     * @model 
-     *        type="org.eclipse.sirius.description.ConditionalEdgeStyleDescription"
-     *        containment="true" resolveProxies="true"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<ConditionalEdgeStyleDescription> getConditionnalStyles();
 
     /**
      * Returns the value of the '<em><b>Target Expression</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Target Expression</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The acceleo expression
-     * that computes the targeted semantic element of this edge. If this
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> An
+     * expression computing the targeted semantic element of this edge. If this
      * attribut is not filled in. Then the target element will be : - The target
      * element of the source node if useDomainElement is false. - The object
      * that is an instance of domainClass value if useDomainElement is true.
@@ -261,7 +238,12 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * @return the value of the '<em>Target Expression</em>' attribute.
      * @see #setTargetExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEdgeMapping_TargetExpression()
-     * @model dataType="org.eclipse.sirius.description.AcceleoExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='viewpoint.DDiagram | the current DDiagram.' viewpoint='viewpoint.DDiagram | (deprecated) the current DDiagram.' viewPoint='viewpoint.DDiagram | (deprecated) the current DDiagram.'"
      * @generated
      */
     String getTargetExpression();
@@ -281,19 +263,14 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
 
     /**
      * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Domain Class</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The type of the target
-     * elements that are represented by this edge. Useful only if
-     * useDomainElement is true. <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * type of the target elements that are represented by this edge. Useful
+     * only if useDomainElement is true. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEdgeMapping_DomainClass()
-     * @model dataType="org.eclipse.sirius.description.TypeName"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.TypeName"
      * @generated
      */
     String getDomainClass();
@@ -400,8 +377,8 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
      * {@link org.eclipse.sirius.viewpoint.description.AbstractNodeMapping}.
      * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Path Node Mapping</em>' reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Path Node Mapping</em>' reference list isn't
+     * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * 

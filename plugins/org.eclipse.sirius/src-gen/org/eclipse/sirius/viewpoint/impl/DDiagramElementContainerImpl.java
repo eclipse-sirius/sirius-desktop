@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.impl;
 
 import java.util.Collection;
@@ -41,7 +42,7 @@ import org.eclipse.sirius.viewpoint.description.NodeMapping;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>View Point Element Container</b></em>'. <!-- end-user-doc -->
+ * <em><b>DDiagram Element Container</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -255,122 +256,6 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
-    public EList<DEdge> getOutgoingEdges() {
-        if (outgoingEdges == null) {
-            outgoingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, ViewpointPackage.DDIAGRAM_ELEMENT_CONTAINER__OUTGOING_EDGES, ViewpointPackage.DEDGE__SOURCE_NODE);
-        }
-        return outgoingEdges;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EList<DEdge> getIncomingEdges() {
-        if (incomingEdges == null) {
-            incomingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, ViewpointPackage.DDIAGRAM_ELEMENT_CONTAINER__INCOMING_EDGES, ViewpointPackage.DEDGE__TARGET_NODE);
-        }
-        return incomingEdges;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public ContainerMapping getActualMapping() {
-        if (actualMapping != null && actualMapping.eIsProxy()) {
-            InternalEObject oldActualMapping = (InternalEObject) actualMapping;
-            actualMapping = (ContainerMapping) eResolveProxy(oldActualMapping);
-            if (actualMapping != oldActualMapping) {
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewpointPackage.DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING, oldActualMapping, actualMapping));
-            }
-        }
-        return actualMapping;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public ContainerMapping basicGetActualMapping() {
-        return actualMapping;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setActualMapping(ContainerMapping newActualMapping) {
-        ContainerMapping oldActualMapping = actualMapping;
-        actualMapping = newActualMapping;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING, oldActualMapping, actualMapping));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EList<ContainerMapping> getCandidatesMapping() {
-        if (candidatesMapping == null) {
-            candidatesMapping = new EObjectResolvingEList<ContainerMapping>(ContainerMapping.class, this, ViewpointPackage.DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING);
-        }
-        return candidatesMapping;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public Integer getWidth() {
-        return width;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setWidth(Integer newWidth) {
-        Integer oldWidth = width;
-        width = newWidth;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DDIAGRAM_ELEMENT_CONTAINER__WIDTH, oldWidth, width));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public Integer getHeight() {
-        return height;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setHeight(Integer newHeight) {
-        Integer oldHeight = height;
-        height = newHeight;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DDIAGRAM_ELEMENT_CONTAINER__HEIGHT, oldHeight, height));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EList<DNode> getOwnedBorderedNodes() {
         if (ownedBorderedNodes == null) {
             ownedBorderedNodes = new EObjectContainmentEList.Resolving<DNode>(DNode.class, this, ViewpointPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_BORDERED_NODES);
@@ -395,6 +280,30 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
+    public EList<DEdge> getOutgoingEdges() {
+        if (outgoingEdges == null) {
+            outgoingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, ViewpointPackage.DDIAGRAM_ELEMENT_CONTAINER__OUTGOING_EDGES, ViewpointPackage.DEDGE__SOURCE_NODE);
+        }
+        return outgoingEdges;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EList<DEdge> getIncomingEdges() {
+        if (incomingEdges == null) {
+            incomingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, ViewpointPackage.DDIAGRAM_ELEMENT_CONTAINER__INCOMING_EDGES, ViewpointPackage.DEDGE__TARGET_NODE);
+        }
+        return incomingEdges;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public EList<DNode> getNodes() {
         // TODO: implement this method to return the 'Nodes' reference list
         // Ensure that you remove @generated or mark it @generated NOT
@@ -405,40 +314,6 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
         // org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
-
-    // LGO : This doesn't seem to be generated, yet it is never used. commented
-    // private void addViewNodes(DDiagramElementContainer elem, Collection
-    // result) {
-    // if (elem instanceof DNodeContainer) {
-    // DNodeContainer container = (DNodeContainer) elem;
-    // result.addAll(container.getOwnedBorderedViewNodes());
-    // Iterator it = container.getOwnedSiriusElements().iterator();
-    // while (it.hasNext()) {
-    // DDiagramElement subElem = (DDiagramElement) it.next();
-    // if (subElem instanceof DNode) {
-    // result.add(subElem);
-    // }
-    // if (subElem instanceof DDiagramElementContainer) {
-    // addViewNodes((DDiagramElementContainer) subElem, result);
-    // }
-    //
-    // }
-    // } else if (elem instanceof DNodeList) {
-    // DNodeList container = (DNodeList) elem;
-    // Iterator it = container.getOwnedElements().iterator();
-    // while (it.hasNext()) {
-    // DDiagramElement subElem = (DDiagramElement) it.next();
-    // if (subElem instanceof DNode) {
-    // result.add(subElem);
-    // }
-    // if (subElem instanceof DDiagramElementContainer) {
-    // addViewNodes((DDiagramElementContainer) subElem, result);
-    // }
-    // }
-    //
-    // }
-    //
-    // }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -455,20 +330,6 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
         // org.eclipse.emf.ecore.util.EcoreEList should be used.
         throw new UnsupportedOperationException();
     }
-
-    // LGO : This doesn't seem to be generated, yet it is never used. commented
-    // private void addSiriusElementContainers(DNodeContainer container,
-    // Collection result) {
-    // Iterator it = container.getOwnedSiriusElements().iterator();
-    // while (it.hasNext()) {
-    // DDiagramElement elem = (DDiagramElement) it.next();
-    // if (elem instanceof DDiagramElementContainer)
-    // result.add(elem);
-    // if (elem instanceof DNodeContainer) {
-    // addSiriusElementContainers((DNodeContainer) elem, result);
-    // }
-    // }
-    // }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -604,6 +465,98 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
         originalStyle = newOriginalStyle;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE, oldOriginalStyle, originalStyle));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public ContainerMapping getActualMapping() {
+        if (actualMapping != null && actualMapping.eIsProxy()) {
+            InternalEObject oldActualMapping = (InternalEObject) actualMapping;
+            actualMapping = (ContainerMapping) eResolveProxy(oldActualMapping);
+            if (actualMapping != oldActualMapping) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewpointPackage.DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING, oldActualMapping, actualMapping));
+            }
+        }
+        return actualMapping;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public ContainerMapping basicGetActualMapping() {
+        return actualMapping;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setActualMapping(ContainerMapping newActualMapping) {
+        ContainerMapping oldActualMapping = actualMapping;
+        actualMapping = newActualMapping;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING, oldActualMapping, actualMapping));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EList<ContainerMapping> getCandidatesMapping() {
+        if (candidatesMapping == null) {
+            candidatesMapping = new EObjectResolvingEList<ContainerMapping>(ContainerMapping.class, this, ViewpointPackage.DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING);
+        }
+        return candidatesMapping;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public Integer getWidth() {
+        return width;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setWidth(Integer newWidth) {
+        Integer oldWidth = width;
+        width = newWidth;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DDIAGRAM_ELEMENT_CONTAINER__WIDTH, oldWidth, width));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public Integer getHeight() {
+        return height;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setHeight(Integer newHeight) {
+        Integer oldHeight = height;
+        height = newHeight;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DDIAGRAM_ELEMENT_CONTAINER__HEIGHT, oldHeight, height));
     }
 
     /**

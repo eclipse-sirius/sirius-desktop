@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style;
 
 import org.eclipse.sirius.viewpoint.BundledImageShape;
@@ -67,14 +68,14 @@ public interface BundledImageDescription extends NodeStyleDescription {
     void setShape(BundledImageShape value);
 
     /**
-     * Returns the value of the '<em><b>Color</b></em>' attribute. The literals
-     * are from the enumeration {@link org.eclipse.sirius.BundledImageColor}.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The color to use. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Color</b></em>' reference. The literals
+     * are from the enumeration {@link org.eclipse.sirius.BundledImageColor}.<!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * color to use. <!-- end-model-doc -->
      * 
-     * @return the value of the '<em>Color</em>' attribute.
+     * @return the value of the '<em>Color</em>' reference.
      * @see org.eclipse.sirius.BundledImageColor
-     * @see #setColor(BundledImageColor)
+     * @see #setColor(ColorDescription)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getBundledImageDescription_Color()
      * @model required="true"
      * @generated

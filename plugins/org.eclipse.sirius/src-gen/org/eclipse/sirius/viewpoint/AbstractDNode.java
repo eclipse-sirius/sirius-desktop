@@ -1,20 +1,21 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Abstract View Node</b></em>'. <!-- end-user-doc -->
+ * <em><b>Abstract DNode</b></em>'. <!-- end-user-doc -->
  * 
  * <p>
  * The following features are supported:
@@ -31,7 +32,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface AbstractDNode extends DDiagramElement {
-
     /**
      * Returns the value of the '<em><b>Owned Bordered Nodes</b></em>'
      * containment reference list. The list contents are of type
@@ -41,7 +41,7 @@ public interface AbstractDNode extends DDiagramElement {
      * 
      * @return the value of the '<em>Owned Bordered Nodes</em>' containment
      *         reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getAbstractDNode_OwnedBorderedNodes()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getAbstractDNode_OwnedBorderedNodes()
      * @model containment="true" resolveProxies="true"
      * @generated
      */
@@ -62,9 +62,10 @@ public interface AbstractDNode extends DDiagramElement {
      * 
      * @return the value of the '<em>Arrange Constraints</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.ArrangeConstraint
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getAbstractDNode_ArrangeConstraints()
-     * @model default=""
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getAbstractDNode_ArrangeConstraints()
+     * @model default="KEEP_LOCATION"
      * @generated
      */
     EList<ArrangeConstraint> getArrangeConstraints();
+
 } // AbstractDNode

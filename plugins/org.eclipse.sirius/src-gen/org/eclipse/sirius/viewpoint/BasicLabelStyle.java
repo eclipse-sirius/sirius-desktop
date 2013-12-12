@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 /**
@@ -45,7 +46,7 @@ public interface BasicLabelStyle extends Customizable {
      * 
      * @return the value of the '<em>Label Size</em>' attribute.
      * @see #setLabelSize(int)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getBasicLabelStyle_LabelSize()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getBasicLabelStyle_LabelSize()
      * @model default="8"
      * @generated
      */
@@ -74,7 +75,7 @@ public interface BasicLabelStyle extends Customizable {
      * @return the value of the '<em>Label Format</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.FontFormat
      * @see #setLabelFormat(FontFormat)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getBasicLabelStyle_LabelFormat()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getBasicLabelStyle_LabelFormat()
      * @model default="normal"
      * @generated
      */
@@ -102,7 +103,7 @@ public interface BasicLabelStyle extends Customizable {
      * 
      * @return the value of the '<em>Show Icon</em>' attribute.
      * @see #setShowIcon(boolean)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getBasicLabelStyle_ShowIcon()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getBasicLabelStyle_ShowIcon()
      * @model default="true"
      * @generated
      */
@@ -161,7 +162,7 @@ public interface BasicLabelStyle extends Customizable {
      * 
      * @return the value of the '<em>Icon Path</em>' attribute.
      * @see #setIconPath(String)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getBasicLabelStyle_IconPath()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getBasicLabelStyle_IconPath()
      * @model default=""
      * @generated
      */

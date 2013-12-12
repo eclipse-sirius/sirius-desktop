@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
 import org.eclipse.emf.ecore.EClass;
@@ -17,7 +18,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.ContainerDropDescriptionSpec;
-import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.DeleteElementDescriptionSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.DiagramCreationDescriptionSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.DiagramNavigationDescriptionSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.DirectEditLabelSpec;
@@ -350,11 +350,11 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * @not-generated
      */
     public ToolDescription createToolDescription() {
-        final ToolDescriptionImpl toolDescription = new ToolDescriptionImpl();
-        final ElementVariable elementVar = createElementVariable();
+        ToolDescriptionImpl toolDescription = new ToolDescriptionImpl();
+        ElementVariable elementVar = createElementVariable();
         elementVar.setName("element");
         toolDescription.setElement(elementVar);
-        final ElementViewVariable elementViewVar = createElementViewVariable();
+        ElementViewVariable elementViewVar = createElementViewVariable();
         elementViewVar.setName("elementView");
         toolDescription.setElementView(elementViewVar);
         toolDescription.setInitialOperation(this.createInitialOperation());
@@ -367,14 +367,14 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * @not-generated
      */
     public NodeCreationDescription createNodeCreationDescription() {
-        final NodeCreationDescriptionImpl nodeCreationDescription = new NodeCreationDescriptionImpl();
-        final NodeCreationVariable defaultVariable = createNodeCreationVariable();
+        NodeCreationDescriptionImpl nodeCreationDescription = new NodeCreationDescriptionImpl();
+        NodeCreationVariable defaultVariable = createNodeCreationVariable();
         defaultVariable.setName("container");
-        final ContainerViewVariable containerViewVariable = createContainerViewVariable();
+        ContainerViewVariable containerViewVariable = createContainerViewVariable();
         containerViewVariable.setName("containerView");
         nodeCreationDescription.setVariable(defaultVariable);
         nodeCreationDescription.setViewVariable(containerViewVariable);
-        final InitialNodeCreationOperation init = createInitialNodeCreationOperation();
+        InitialNodeCreationOperation init = createInitialNodeCreationOperation();
         nodeCreationDescription.setInitialOperation(init);
         return nodeCreationDescription;
     }
@@ -385,18 +385,18 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * @not-generated
      */
     public EdgeCreationDescription createEdgeCreationDescription() {
-        final EdgeCreationDescriptionImpl edgeCreationDescription = new EdgeCreationDescriptionSpec();
+        EdgeCreationDescriptionImpl edgeCreationDescription = new EdgeCreationDescriptionSpec();
 
-        final SourceEdgeCreationVariable sourceVariable = createSourceEdgeCreationVariable();
+        SourceEdgeCreationVariable sourceVariable = createSourceEdgeCreationVariable();
         sourceVariable.setName("source");
 
-        final TargetEdgeCreationVariable targetVariable = createTargetEdgeCreationVariable();
+        TargetEdgeCreationVariable targetVariable = createTargetEdgeCreationVariable();
         targetVariable.setName("target");
 
-        final SourceEdgeViewCreationVariable sourceEdgeViewVariable = createSourceEdgeViewCreationVariable();
+        SourceEdgeViewCreationVariable sourceEdgeViewVariable = createSourceEdgeViewCreationVariable();
         sourceEdgeViewVariable.setName("sourceView");
 
-        final TargetEdgeViewCreationVariable targetEdgeViewVariable = createTargetEdgeViewCreationVariable();
+        TargetEdgeViewCreationVariable targetEdgeViewVariable = createTargetEdgeViewCreationVariable();
         targetEdgeViewVariable.setName("targetView");
 
         edgeCreationDescription.setSourceVariable(sourceVariable);
@@ -404,7 +404,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
         edgeCreationDescription.setSourceViewVariable(sourceEdgeViewVariable);
         edgeCreationDescription.setTargetViewVariable(targetEdgeViewVariable);
 
-        final InitEdgeCreationOperation init = createInitEdgeCreationOperation();
+        InitEdgeCreationOperation init = createInitEdgeCreationOperation();
         edgeCreationDescription.setInitialOperation(init);
 
         return edgeCreationDescription;
@@ -416,14 +416,14 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * @not-generated
      */
     public ContainerCreationDescription createContainerCreationDescription() {
-        final ContainerCreationDescriptionImpl containerCreationDescription = new ContainerCreationDescriptionImpl();
-        final NodeCreationVariable defaultVariable = createNodeCreationVariable();
+        ContainerCreationDescriptionImpl containerCreationDescription = new ContainerCreationDescriptionImpl();
+        NodeCreationVariable defaultVariable = createNodeCreationVariable();
         defaultVariable.setName("container");
-        final ContainerViewVariable containerViewVariable = createContainerViewVariable();
+        ContainerViewVariable containerViewVariable = createContainerViewVariable();
         containerViewVariable.setName("containerView");
         containerCreationDescription.setVariable(defaultVariable);
         containerCreationDescription.setViewVariable(containerViewVariable);
-        final InitialNodeCreationOperation init = createInitialNodeCreationOperation();
+        InitialNodeCreationOperation init = createInitialNodeCreationOperation();
         containerCreationDescription.setInitialOperation(init);
         return containerCreationDescription;
     }
@@ -434,14 +434,14 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * @not-generated
      */
     public ContainerDropDescription createContainerDropDescription() {
-        final ContainerDropDescriptionImpl containerDropDescription = new ContainerDropDescriptionSpec();
-        final DropContainerVariable oldContainerVariable = createDropContainerVariable();
+        ContainerDropDescriptionImpl containerDropDescription = new ContainerDropDescriptionSpec();
+        DropContainerVariable oldContainerVariable = createDropContainerVariable();
         oldContainerVariable.setName("oldSemanticContainer");
-        final DropContainerVariable newContainerVariable = createDropContainerVariable();
+        DropContainerVariable newContainerVariable = createDropContainerVariable();
         newContainerVariable.setName("newSemanticContainer");
-        final ElementDropVariable elementDropVariable = createElementDropVariable();
+        ElementDropVariable elementDropVariable = createElementDropVariable();
         elementDropVariable.setName("element");
-        final ContainerViewVariable containerViewVariable = createContainerViewVariable();
+        ContainerViewVariable containerViewVariable = createContainerViewVariable();
         containerViewVariable.setName("newContainerView");
 
         containerDropDescription.setElement(elementDropVariable);
@@ -449,7 +449,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
         containerDropDescription.setNewViewContainer(containerViewVariable);
         containerDropDescription.setOldContainer(oldContainerVariable);
 
-        final InitialContainerDropOperation init = createInitialContainerDropOperation();
+        InitialContainerDropOperation init = createInitialContainerDropOperation();
         containerDropDescription.setInitialOperation(init);
 
         return containerDropDescription;
@@ -463,14 +463,14 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     public PasteDescription createPasteDescription() {
         PasteDescriptionImpl pasteDescription = new PasteDescriptionSpec();
 
-        final ContainerViewVariable newViewContainer = createContainerViewVariable();
+        ContainerViewVariable newViewContainer = createContainerViewVariable();
         newViewContainer.setName(IInterpreterSiriusVariables.CONTAINER_VIEW);
-        final DropContainerVariable newContainer = createDropContainerVariable();
+        DropContainerVariable newContainer = createDropContainerVariable();
         newContainer.setName(IInterpreterSiriusVariables.CONTAINER);
 
-        final ElementVariable copiedElement = createElementVariable();
+        ElementVariable copiedElement = createElementVariable();
         copiedElement.setName(IInterpreterSiriusVariables.COPIED_ELEMENT);
-        final ElementViewVariable copiedView = createElementViewVariable();
+        ElementViewVariable copiedView = createElementViewVariable();
         copiedView.setName(IInterpreterSiriusVariables.COPIED_VIEW);
 
         pasteDescription.setCopiedElement(copiedElement);
@@ -492,36 +492,17 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * @not-generated
      */
     public DeleteElementDescription createDeleteElementDescription() {
-        final DeleteElementDescriptionImpl deleteElementDescription = new DeleteElementDescriptionSpec();
-        final ElementDeleteVariable elementDeleteVariable = createElementDeleteVariable();
-        elementDeleteVariable.setName("element");
-        deleteElementDescription.setElement(elementDeleteVariable);
-        final ContainerViewVariable containerViewVariable = createContainerViewVariable();
-        containerViewVariable.setName("containerView");
-        deleteElementDescription.setContainerView(containerViewVariable);
-        final ElementDeleteVariable elementDeleteVariable2 = createElementDeleteVariable();
-        elementDeleteVariable2.setName("elementView");
-        deleteElementDescription.setElementView(elementDeleteVariable2);
-        final InitialOperation init = createInitialOperation();
-        deleteElementDescription.setInitialOperation(init);
+        DeleteElementDescriptionImpl deleteElementDescription = new DeleteElementDescriptionImpl();
         return deleteElementDescription;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @not-generated
+     * @generated
      */
     public DoubleClickDescription createDoubleClickDescription() {
         DoubleClickDescriptionImpl doubleClickDescription = new DoubleClickDescriptionImpl();
-        final ElementDoubleClickVariable elementDoubleClickVariable = createElementDoubleClickVariable();
-        elementDoubleClickVariable.setName("element");
-        doubleClickDescription.setElement(elementDoubleClickVariable);
-        final ElementDoubleClickVariable elementViewDoubleClickVariable = createElementDoubleClickVariable();
-        elementViewDoubleClickVariable.setName("elementView");
-        doubleClickDescription.setElementView(elementViewDoubleClickVariable);
-        InitialOperation init = createInitialOperation();
-        doubleClickDescription.setInitialOperation(init);
         return doubleClickDescription;
     }
 
@@ -551,26 +532,26 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * @not-generated
      */
     public ReconnectEdgeDescription createReconnectEdgeDescription() {
-        final ReconnectEdgeDescriptionImpl reconnectEdgeDescription = new ReconnectEdgeDescriptionSpec();
-        final ElementSelectVariable elementSelectVariable = createElementSelectVariable();
+        ReconnectEdgeDescriptionImpl reconnectEdgeDescription = new ReconnectEdgeDescriptionSpec();
+        ElementSelectVariable elementSelectVariable = createElementSelectVariable();
         elementSelectVariable.setName("element");
         reconnectEdgeDescription.setElement(elementSelectVariable);
-        final SourceEdgeCreationVariable sourceEdgeCreationVariable = createSourceEdgeCreationVariable();
+        SourceEdgeCreationVariable sourceEdgeCreationVariable = createSourceEdgeCreationVariable();
         sourceEdgeCreationVariable.setName("source");
         reconnectEdgeDescription.setSource(sourceEdgeCreationVariable);
-        final SourceEdgeViewCreationVariable sourceEdgeViewCreationVariable = createSourceEdgeViewCreationVariable();
+        SourceEdgeViewCreationVariable sourceEdgeViewCreationVariable = createSourceEdgeViewCreationVariable();
         sourceEdgeViewCreationVariable.setName("sourceView");
         reconnectEdgeDescription.setSourceView(sourceEdgeViewCreationVariable);
-        final TargetEdgeCreationVariable targetEdgeCreationVariable = createTargetEdgeCreationVariable();
+        TargetEdgeCreationVariable targetEdgeCreationVariable = createTargetEdgeCreationVariable();
         targetEdgeCreationVariable.setName("target");
         reconnectEdgeDescription.setTarget(targetEdgeCreationVariable);
-        final TargetEdgeViewCreationVariable targetEdgeViewCreationVariable = createTargetEdgeViewCreationVariable();
+        TargetEdgeViewCreationVariable targetEdgeViewCreationVariable = createTargetEdgeViewCreationVariable();
         targetEdgeViewCreationVariable.setName("targetView");
         reconnectEdgeDescription.setTargetView(targetEdgeViewCreationVariable);
-        final ElementSelectVariable edgeVariable = createElementSelectVariable();
+        ElementSelectVariable edgeVariable = createElementSelectVariable();
         edgeVariable.setName("edgeView");
         reconnectEdgeDescription.setEdgeView(edgeVariable);
-        final InitialOperation initialOperation = createInitialOperation();
+        InitialOperation initialOperation = createInitialOperation();
         reconnectEdgeDescription.setInitialOperation(initialOperation);
         return reconnectEdgeDescription;
     }
@@ -580,9 +561,116 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @not-generated
      */
+    public RequestDescription createRequestDescription() {
+        RequestDescriptionImpl requestDescription = new RequestDescriptionImpl();
+        return requestDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
+    public SelectionWizardDescription createSelectionWizardDescription() {
+        SelectionWizardDescriptionImpl selectionWizardDescription = new SelectionWizardDescriptionImpl();
+        ElementSelectVariable elementSelectVariable = this.createElementSelectVariable();
+        elementSelectVariable.setName("element");
+        ContainerViewVariable containerViewVariable = this.createContainerViewVariable();
+        containerViewVariable.setName("containerView");
+        SelectContainerVariable selectContainerVariable = this.createSelectContainerVariable();
+        selectContainerVariable.setName("container");
+        selectionWizardDescription.setElement(elementSelectVariable);
+        selectionWizardDescription.setContainer(selectContainerVariable);
+        selectionWizardDescription.setContainerView(containerViewVariable);
+        InitialOperation initialOperation = this.createInitialOperation();
+        selectionWizardDescription.setInitialOperation(initialOperation);
+        return selectionWizardDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
+    public PaneBasedSelectionWizardDescription createPaneBasedSelectionWizardDescription() {
+        PaneBasedSelectionWizardDescriptionImpl paneBasedSelectionWizardDescription = new PaneBasedSelectionWizardDescriptionImpl();
+        ElementSelectVariable elementSelectVariable = this.createElementSelectVariable();
+        elementSelectVariable.setName("element");
+        ContainerViewVariable containerViewVariable = this.createContainerViewVariable();
+        containerViewVariable.setName("containerView");
+        SelectContainerVariable selectContainerVariable = this.createSelectContainerVariable();
+        selectContainerVariable.setName("container");
+        paneBasedSelectionWizardDescription.setElement(elementSelectVariable);
+        paneBasedSelectionWizardDescription.setContainer(selectContainerVariable);
+        paneBasedSelectionWizardDescription.setContainerView(containerViewVariable);
+        InitialOperation initialOperation = this.createInitialOperation();
+        paneBasedSelectionWizardDescription.setInitialOperation(initialOperation);
+        return paneBasedSelectionWizardDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public MenuItemDescriptionReference createMenuItemDescriptionReference() {
+        MenuItemDescriptionReferenceImpl menuItemDescriptionReference = new MenuItemDescriptionReferenceImpl();
+        return menuItemDescriptionReference;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
+    public OperationAction createOperationAction() {
+        OperationActionImpl operationAction = new OperationActionImpl();
+        ContainerViewVariable containerViewVariable = this.createContainerViewVariable();
+        containerViewVariable.setName("views");
+        InitialOperation initalOperation = this.createInitialOperation();
+        operationAction.setView(containerViewVariable);
+        operationAction.setInitialOperation(initalOperation);
+        return operationAction;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public ExternalJavaAction createExternalJavaAction() {
+        ExternalJavaActionImpl externalJavaAction = new ExternalJavaActionImpl();
+        return externalJavaAction;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public ExternalJavaActionCall createExternalJavaActionCall() {
+        ExternalJavaActionCallImpl externalJavaActionCall = new ExternalJavaActionCallImpl();
+        return externalJavaActionCall;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public PopupMenu createPopupMenu() {
+        PopupMenuImpl popupMenu = new PopupMenuImpl();
+        return popupMenu;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
     public DirectEditLabel createDirectEditLabel() {
         DirectEditLabelImpl directEditLabel = new DirectEditLabelSpec();
-        final InitialOperation initialOperation = createInitialOperation();
+        InitialOperation initialOperation = createInitialOperation();
         directEditLabel.setInitialOperation(initialOperation);
         EditMaskVariables editMaskVariables = createEditMaskVariables();
         directEditLabel.setMask(editMaskVariables);
@@ -767,7 +855,7 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * @not-generated
      */
     public EditMaskVariables createEditMaskVariables() {
-        final EditMaskVariablesImpl editMaskVariables = new EditMaskVariablesImpl();
+        EditMaskVariablesImpl editMaskVariables = new EditMaskVariablesImpl();
         editMaskVariables.setMask("{0}");
         return editMaskVariables;
     }
@@ -917,52 +1005,9 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
-    public RequestDescription createRequestDescription() {
-        RequestDescriptionImpl requestDescription = new RequestDescriptionImpl();
-        return requestDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @not-generated
-     */
-    public SelectionWizardDescription createSelectionWizardDescription() {
-        final SelectionWizardDescriptionImpl selectionWizardDescription = new SelectionWizardDescriptionImpl();
-        final ElementSelectVariable elementSelectVariable = this.createElementSelectVariable();
-        elementSelectVariable.setName("element");
-        final ContainerViewVariable containerViewVariable = this.createContainerViewVariable();
-        containerViewVariable.setName("containerView");
-        final SelectContainerVariable selectContainerVariable = this.createSelectContainerVariable();
-        selectContainerVariable.setName("container");
-        selectionWizardDescription.setElement(elementSelectVariable);
-        selectionWizardDescription.setContainer(selectContainerVariable);
-        selectionWizardDescription.setContainerView(containerViewVariable);
-        final InitialOperation initialOperation = this.createInitialOperation();
-        selectionWizardDescription.setInitialOperation(initialOperation);
-        return selectionWizardDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @not-generated
-     */
-    public PaneBasedSelectionWizardDescription createPaneBasedSelectionWizardDescription() {
-        PaneBasedSelectionWizardDescriptionImpl paneBasedSelectionWizardDescription = new PaneBasedSelectionWizardDescriptionImpl();
-        final ElementSelectVariable elementSelectVariable = this.createElementSelectVariable();
-        elementSelectVariable.setName("element");
-        final ContainerViewVariable containerViewVariable = this.createContainerViewVariable();
-        containerViewVariable.setName("containerView");
-        final SelectContainerVariable selectContainerVariable = this.createSelectContainerVariable();
-        selectContainerVariable.setName("container");
-        paneBasedSelectionWizardDescription.setElement(elementSelectVariable);
-        paneBasedSelectionWizardDescription.setContainer(selectContainerVariable);
-        paneBasedSelectionWizardDescription.setContainerView(containerViewVariable);
-        final InitialOperation initialOperation = this.createInitialOperation();
-        paneBasedSelectionWizardDescription.setInitialOperation(initialOperation);
-        return paneBasedSelectionWizardDescription;
-
+    public If createIf() {
+        IfImpl if_ = new IfImpl();
+        return if_;
     }
 
     /**
@@ -970,9 +1015,39 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * 
      * @generated
      */
-    public MenuItemDescriptionReference createMenuItemDescriptionReference() {
-        MenuItemDescriptionReferenceImpl menuItemDescriptionReference = new MenuItemDescriptionReferenceImpl();
-        return menuItemDescriptionReference;
+    public DeleteView createDeleteView() {
+        DeleteViewImpl deleteView = new DeleteViewImpl();
+        return deleteView;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public Navigation createNavigation() {
+        NavigationImpl navigation = new NavigationImpl();
+        return navigation;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public NameVariable createNameVariable() {
+        NameVariableImpl nameVariable = new NameVariableImpl();
+        return nameVariable;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public ExternalJavaActionParameter createExternalJavaActionParameter() {
+        ExternalJavaActionParameterImpl externalJavaActionParameter = new ExternalJavaActionParameterImpl();
+        return externalJavaActionParameter;
     }
 
     /**
@@ -981,14 +1056,14 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      * @not-generated
      */
     public DiagramCreationDescription createDiagramCreationDescription() {
-        final DiagramCreationDescriptionImpl diagramCreationDescription = new DiagramCreationDescriptionSpec();
-        final ContainerViewVariable containerViewVariable = createContainerViewVariable();
+        DiagramCreationDescriptionImpl diagramCreationDescription = new DiagramCreationDescriptionSpec();
+        ContainerViewVariable containerViewVariable = createContainerViewVariable();
         containerViewVariable.setName("containerView");
         diagramCreationDescription.setContainerViewVariable(containerViewVariable);
-        final NameVariable diagramNameVariable = createNameVariable();
+        NameVariable diagramNameVariable = createNameVariable();
         diagramNameVariable.setName("diagramName");
         diagramCreationDescription.setRepresentationNameVariable(diagramNameVariable);
-        final InitialOperation init = createInitialOperation();
+        InitialOperation init = createInitialOperation();
         diagramCreationDescription.setInitialOperation(init);
         return diagramCreationDescription;
     }
@@ -1000,13 +1075,13 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
      */
     public DiagramNavigationDescription createDiagramNavigationDescription() {
         DiagramNavigationDescriptionImpl diagramNavigationDescription = new DiagramNavigationDescriptionSpec();
-        final ContainerViewVariable containerViewVariable = createContainerViewVariable();
+        ContainerViewVariable containerViewVariable = createContainerViewVariable();
         containerViewVariable.setName("containerView");
         diagramNavigationDescription.setContainerViewVariable(containerViewVariable);
-        final ElementSelectVariable containerVariable = createElementSelectVariable();
+        ElementSelectVariable containerVariable = createElementSelectVariable();
         containerVariable.setName("container");
         diagramNavigationDescription.setContainerVariable(containerVariable);
-        final NameVariable diagramNameVariable = createNameVariable();
+        NameVariable diagramNameVariable = createNameVariable();
         diagramNameVariable.setName("diagramName");
         diagramNavigationDescription.setRepresentationNameVariable(diagramNameVariable);
         return diagramNavigationDescription;
@@ -1055,119 +1130,11 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @not-generated
+     * @generated
      */
     public Switch createSwitch() {
         SwitchImpl switch_ = new SwitchImpl();
         return switch_;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @not-generated
-     */
-    public OperationAction createOperationAction() {
-        OperationActionImpl operationAction = new OperationActionImpl();
-        final ContainerViewVariable containerViewVariable = this.createContainerViewVariable();
-        containerViewVariable.setName("views");
-        final InitialOperation initalOperation = this.createInitialOperation();
-        operationAction.setView(containerViewVariable);
-        operationAction.setInitialOperation(initalOperation);
-        return operationAction;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public ExternalJavaAction createExternalJavaAction() {
-        ExternalJavaActionImpl externalJavaAction = new ExternalJavaActionImpl();
-        return externalJavaAction;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public ExternalJavaActionCall createExternalJavaActionCall() {
-        ExternalJavaActionCallImpl externalJavaActionCall = new ExternalJavaActionCallImpl();
-        return externalJavaActionCall;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public PopupMenu createPopupMenu() {
-        PopupMenuImpl popupMenu = new PopupMenuImpl();
-        return popupMenu;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @not-generated
-     */
-    public DiagramCreationDescription createSiriusDetailsDescription() {
-        final DiagramCreationDescriptionImpl viewPointDetailsDescription = new DiagramCreationDescriptionSpec();
-        final ContainerViewVariable containerViewVariable = createContainerViewVariable();
-        containerViewVariable.setName("containerView");
-        viewPointDetailsDescription.setContainerViewVariable(containerViewVariable);
-        return viewPointDetailsDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public If createIf() {
-        IfImpl if_ = new IfImpl();
-        return if_;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public DeleteView createDeleteView() {
-        DeleteViewImpl deleteView = new DeleteViewImpl();
-        return deleteView;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public Navigation createNavigation() {
-        NavigationImpl navigation = new NavigationImpl();
-        return navigation;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NameVariable createNameVariable() {
-        NameVariableImpl nameVariable = new NameVariableImpl();
-        return nameVariable;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public ExternalJavaActionParameter createExternalJavaActionParameter() {
-        ExternalJavaActionParameterImpl externalJavaActionParameter = new ExternalJavaActionParameterImpl();
-        return externalJavaActionParameter;
     }
 
     /**

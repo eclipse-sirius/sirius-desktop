@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 /**
@@ -63,7 +64,8 @@ public interface CompositeLayout extends Layout {
 
     /**
      * Returns the value of the '<em><b>Direction</b></em>' attribute. The
-     * default value is <code>"30"</code>. The literals are from the enumeration
+     * default value is <code>"topToBottom"</code>. The literals are from the
+     * enumeration
      * {@link org.eclipse.sirius.viewpoint.description.LayoutDirection}. <!--
      * begin-user-doc -->
      * <p>
@@ -76,7 +78,7 @@ public interface CompositeLayout extends Layout {
      * @see org.eclipse.sirius.viewpoint.description.LayoutDirection
      * @see #setDirection(LayoutDirection)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getCompositeLayout_Direction()
-     * @model default="30" required="true"
+     * @model default="topToBottom" required="true"
      * @generated
      */
     LayoutDirection getDirection();

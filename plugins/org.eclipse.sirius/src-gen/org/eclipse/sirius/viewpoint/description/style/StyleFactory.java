@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style;
 
 import org.eclipse.emf.ecore.EFactory;
@@ -92,6 +93,24 @@ public interface StyleFactory extends EFactory {
     SquareDescription createSquareDescription();
 
     /**
+     * Returns a new object of class '<em>Lozenge Node Description</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Lozenge Node Description</em>'.
+     * @generated
+     */
+    LozengeNodeDescription createLozengeNodeDescription();
+
+    /**
+     * Returns a new object of class '<em>Ellipse Node Description</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Ellipse Node Description</em>'.
+     * @generated
+     */
+    EllipseNodeDescription createEllipseNodeDescription();
+
+    /**
      * Returns a new object of class '<em>Bundled Image Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -167,19 +186,10 @@ public interface StyleFactory extends EFactory {
     EdgeStyleDescription createEdgeStyleDescription();
 
     /**
-     * Returns a new object of class '<em>Bracket Edge Style Description</em>'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>Bracket Edge Style Description</em>'.
-     * @generated
-     */
-    BracketEdgeStyleDescription createBracketEdgeStyleDescription();
-
-    /**
      * Returns a new object of class '<em>Tooltip Style Description</em>'. <!--
      * begin-user-doc -->
-     * 
-     * @since 0.9.0
+
+     * @since 0.9.0 <!-- end-user-doc -->
      * @return a new object of class '<em>Tooltip Style Description</em>'.
      * @generated
      */
@@ -222,22 +232,13 @@ public interface StyleFactory extends EFactory {
     EndLabelStyleDescription createEndLabelStyleDescription();
 
     /**
-     * Returns a new object of class '<em>Ellipse Node Description</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns a new object of class '<em>Bracket Edge Style Description</em>'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @return a new object of class '<em>Ellipse Node Description</em>'.
+     * @return a new object of class '<em>Bracket Edge Style Description</em>'.
      * @generated
      */
-    EllipseNodeDescription createEllipseNodeDescription();
-
-    /**
-     * Returns a new object of class '<em>Lozenge Node Description</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>Lozenge Node Description</em>'.
-     * @generated
-     */
-    LozengeNodeDescription createLozengeNodeDescription();
+    BracketEdgeStyleDescription createBracketEdgeStyleDescription();
 
     /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->

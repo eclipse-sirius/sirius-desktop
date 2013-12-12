@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import java.util.Arrays;
@@ -35,6 +36,7 @@ public enum DragSource implements Enumerator {
      * @ordered
      */
     DIAGRAM_LITERAL(1, "DIAGRAM", "DIAGRAM"),
+
     /**
      * The '<em><b>PROJECT EXPLORER</b></em>' literal object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -44,6 +46,7 @@ public enum DragSource implements Enumerator {
      * @ordered
      */
     PROJECT_EXPLORER_LITERAL(2, "PROJECT_EXPLORER", "PROJECT_EXPLORER"),
+
     /**
      * The '<em><b>BOTH</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -53,6 +56,7 @@ public enum DragSource implements Enumerator {
      * @ordered
      */
     BOTH_LITERAL(3, "BOTH", "BOTH");
+
     /**
      * The '<em><b>DIAGRAM</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
@@ -235,4 +239,5 @@ public enum DragSource implements Enumerator {
     public String toString() {
         return literal;
     }
-}
+
+} // DragSource

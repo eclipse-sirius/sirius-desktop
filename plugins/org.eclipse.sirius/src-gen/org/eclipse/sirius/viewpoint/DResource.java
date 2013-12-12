@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.ecore.EObject;
@@ -40,7 +41,7 @@ public interface DResource extends EObject {
      * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDResource_Name()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDResource_Name()
      * @model required="true"
      * @generated
      */
@@ -69,7 +70,7 @@ public interface DResource extends EObject {
      * 
      * @return the value of the '<em>Path</em>' attribute.
      * @see #setPath(String)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDResource_Path()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDResource_Path()
      * @model required="true"
      * @generated
      */

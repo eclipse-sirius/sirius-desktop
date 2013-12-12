@@ -1,20 +1,21 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>View Node Container</b></em>'. <!-- end-user-doc -->
+ * <em><b>DNode Container</b></em>'. <!-- end-user-doc -->
  * 
  * <!-- begin-model-doc --> A classic container. <!-- end-model-doc -->
  * 
@@ -44,9 +45,8 @@ public interface DNodeContainer extends DDiagramElementContainer {
      * 
      * @return the value of the '<em>Owned Diagram Elements</em>' containment
      *         reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDNodeContainer_OwnedDiagramElements()
-     * @model type="org.eclipse.sirius.DDiagramElement" containment="true"
-     *        resolveProxies="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDNodeContainer_OwnedDiagramElements()
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<DDiagramElement> getOwnedDiagramElements();

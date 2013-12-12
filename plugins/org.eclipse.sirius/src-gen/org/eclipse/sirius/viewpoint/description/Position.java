@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 import java.util.Arrays;
@@ -35,6 +36,7 @@ public enum Position implements Enumerator {
      * @ordered
      */
     NORTH_LITERAL(0, "NORTH", "NORTH"),
+
     /**
      * The '<em><b>WEST</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -44,6 +46,7 @@ public enum Position implements Enumerator {
      * @ordered
      */
     WEST_LITERAL(1, "WEST", "WEST"),
+
     /**
      * The '<em><b>SOUTH</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -53,6 +56,7 @@ public enum Position implements Enumerator {
      * @ordered
      */
     SOUTH_LITERAL(2, "SOUTH", "SOUTH"),
+
     /**
      * The '<em><b>EAST</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -62,6 +66,7 @@ public enum Position implements Enumerator {
      * @ordered
      */
     EAST_LITERAL(3, "EAST", "EAST"),
+
     /**
      * The '<em><b>NORTH WEST</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -71,6 +76,7 @@ public enum Position implements Enumerator {
      * @ordered
      */
     NORTH_WEST_LITERAL(4, "NORTH_WEST", "NORTH_WEST"),
+
     /**
      * The '<em><b>NORTH EAST</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -80,6 +86,7 @@ public enum Position implements Enumerator {
      * @ordered
      */
     NORTH_EAST_LITERAL(5, "NORTH_EAST", "NORTH_EAST"),
+
     /**
      * The '<em><b>SOUTH WEST</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -89,6 +96,7 @@ public enum Position implements Enumerator {
      * @ordered
      */
     SOUTH_WEST_LITERAL(6, "SOUTH_WEST", "SOUTH_WEST"),
+
     /**
      * The '<em><b>SOUTH EAST</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -98,6 +106,7 @@ public enum Position implements Enumerator {
      * @ordered
      */
     SOUTH_EAST_LITERAL(7, "SOUTH_EAST", "SOUTH_EAST"),
+
     /**
      * The '<em><b>CENTER</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -107,6 +116,7 @@ public enum Position implements Enumerator {
      * @ordered
      */
     CENTER_LITERAL(8, "CENTER", "CENTER");
+
     /**
      * The '<em><b>NORTH</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
@@ -391,4 +401,5 @@ public enum Position implements Enumerator {
     public String toString() {
         return literal;
     }
-}
+
+} // Position

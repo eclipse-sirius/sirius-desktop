@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
@@ -15,7 +16,7 @@ import org.eclipse.sirius.viewpoint.description.NodeMapping;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>View Node</b></em>'. <!-- end-user-doc -->
+ * <em><b>DNode</b></em>'. <!-- end-user-doc -->
  * 
  * <!-- begin-model-doc --> A node. <!-- end-model-doc -->
  * 
@@ -57,7 +58,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * 
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(Integer)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewNode_Width()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDNode_Width()
      * @model
      * @generated
      */
@@ -86,7 +87,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * 
      * @return the value of the '<em>Height</em>' attribute.
      * @see #setHeight(Integer)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewNode_Height()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDNode_Height()
      * @model
      * @generated
      */
@@ -106,17 +107,12 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
 
     /**
      * Returns the value of the '<em><b>Owned Style</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Owned Style</em>' containment reference isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The style of the node.
-     * <!-- end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The style of the node. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Owned Style</em>' containment reference.
      * @see #setOwnedStyle(NodeStyle)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewNode_OwnedStyle()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDNode_OwnedStyle()
      * @model containment="true" resolveProxies="true"
      * @generated
      */
@@ -137,67 +133,17 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
     void setOwnedStyle(NodeStyle value);
 
     /**
-     * Returns the value of the '<em><b>Origin Mapping</b></em>' reference. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Origin Mapping</em>' reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The mapping that has
-     * created this node. <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>Origin Mapping</em>' reference.
-     * @see #setActualMapping(NodeMapping)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewNode_OriginMapping()
-     * @model required="true"
-     * @generated
-     */
-    NodeMapping getActualMapping();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.DNode#getActualMapping
-     * <em>Actual Mapping</em>}' reference. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Actual Mapping</em>' reference.
-     * @see #getActualMapping()
-     * @generated
-     */
-    void setActualMapping(NodeMapping value);
-
-    /**
-     * Returns the value of the '<em><b>Candidates Mapping</b></em>' reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.NodeMapping}. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * candidates mapping of this node. <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>Candidates Mapping</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDNode_CandidatesMapping()
-     * @model type="org.eclipse.sirius.description.NodeMapping" required="true"
-     * @generated
-     */
-    EList<NodeMapping> getCandidatesMapping();
-
-    /**
      * Returns the value of the '<em><b>Label Position</b></em>' attribute. The
      * literals are from the enumeration
      * {@link org.eclipse.sirius.viewpoint.LabelPosition}. <!-- begin-user-doc
-     * -->
-     * <p>
-     * If the meaning of the '<em>Label Position</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The position of the label
-     * : BORDER : The label is around the node, on the border. NODE : the label
-     * is in the node. <!-- end-model-doc -->
+     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The position of the
+     * label : BORDER : The label is around the node, on the border. NODE : the
+     * label is in the node. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Label Position</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.LabelPosition
      * @see #setLabelPosition(LabelPosition)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewNode_LabelPosition()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDNode_LabelPosition()
      * @model
      * @generated
      */
@@ -223,17 +169,13 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * Returns the value of the '<em><b>Owned Details</b></em>' containment
      * reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.DDiagram}. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Owned Details</em>' containment reference list
-     * isn't clear, there really should be more of a description here...
-     * </p>
      * <!-- end-user-doc --> <!-- begin-model-doc --> Detailed viewpoints owned
      * by this node. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Owned Details</em>' containment reference
      *         list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewNode_OwnedDetails()
-     * @model type="viewpoint.DDiagram" containment="true" resolveProxies="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDNode_OwnedDetails()
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<DDiagram> getOwnedDetails();
@@ -248,7 +190,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * @return the value of the '<em>Resize Kind</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.ResizeKind
      * @see #setResizeKind(ResizeKind)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDNode_ResizeKind()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDNode_ResizeKind()
      * @model default="NONE"
      * @generated
      */
@@ -276,7 +218,7 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * 
      * @return the value of the '<em>Original Style</em>' reference.
      * @see #setOriginalStyle(Style)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewNode_OriginalStyle()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDNode_OriginalStyle()
      * @model
      * @generated
      */
@@ -294,5 +236,46 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * @generated
      */
     void setOriginalStyle(Style value);
+
+    /**
+     * Returns the value of the '<em><b>Actual Mapping</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * actual mapping of this node. <!-- end-model-doc -->
+     * 
+     * @return the value of the '<em>Actual Mapping</em>' reference.
+     * @see #setActualMapping(NodeMapping)
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDNode_ActualMapping()
+     * @model required="true"
+     * @generated
+     */
+    NodeMapping getActualMapping();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.viewpoint.DNode#getActualMapping
+     * <em>Actual Mapping</em>}' reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Actual Mapping</em>' reference.
+     * @see #getActualMapping()
+     * @generated
+     */
+    void setActualMapping(NodeMapping value);
+
+    /**
+     * Returns the value of the '<em><b>Candidates Mapping</b></em>' reference
+     * list. The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.NodeMapping}. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * candidates mapping of this node. <!-- end-model-doc -->
+     * 
+     * @return the value of the '<em>Candidates Mapping</em>' reference list.
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDNode_CandidatesMapping()
+     * @model annotation=
+     *        "http://www.eclipse.org/emf/2002/GenModel deprecated='This element should not be used'"
+     * @generated
+     */
+    EList<NodeMapping> getCandidatesMapping();
 
 } // DNode

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import java.util.Arrays;
@@ -22,7 +23,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- end-user-doc --> <!-- begin-model-doc --> Routing style of edges. <!--
  * end-model-doc -->
  * 
- * @see org.eclipse.sirius.viewpoint.SiriusPackage#getEdgeRouting()
+ * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getEdgeRouting()
  * @model
  * @generated
  */
@@ -36,6 +37,7 @@ public enum EdgeRouting implements Enumerator {
      * @ordered
      */
     STRAIGHT_LITERAL(0, "straight", "straight"),
+
     /**
      * The '<em><b>Manhattan</b></em>' literal object. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -45,6 +47,7 @@ public enum EdgeRouting implements Enumerator {
      * @ordered
      */
     MANHATTAN_LITERAL(1, "manhattan", "manhattan"),
+
     /**
      * The '<em><b>Tree</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -54,8 +57,13 @@ public enum EdgeRouting implements Enumerator {
      * @ordered
      */
     TREE_LITERAL(2, "tree", "tree");
+
     /**
      * The '<em><b>Straight</b></em>' literal value. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of '<em><b>Straight</b></em>' literal object isn't clear,
+     * there really should be more of a description here...
+     * </p>
      * <!-- end-user-doc -->
      * 
      * @see #STRAIGHT_LITERAL
@@ -67,6 +75,10 @@ public enum EdgeRouting implements Enumerator {
 
     /**
      * The '<em><b>Manhattan</b></em>' literal value. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of '<em><b>Manhattan</b></em>' literal object isn't clear,
+     * there really should be more of a description here...
+     * </p>
      * <!-- end-user-doc -->
      * 
      * @see #MANHATTAN_LITERAL
@@ -227,4 +239,5 @@ public enum EdgeRouting implements Enumerator {
     public String toString() {
         return literal;
     }
-}
+
+} // EdgeRouting

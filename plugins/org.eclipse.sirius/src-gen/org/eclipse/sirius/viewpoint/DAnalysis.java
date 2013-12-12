@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
@@ -43,6 +44,59 @@ import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
  */
 public interface DAnalysis extends EObject {
     /**
+     * Returns the value of the '<em><b>Referenced Analysis</b></em>' reference
+     * list. The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.DAnalysis}. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Referenced Analysis</em>' reference list isn't
+     * clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Referenced Analysis</em>' reference list.
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_ReferencedAnalysis()
+     * @model
+     * @generated
+     */
+    EList<DAnalysis> getReferencedAnalysis();
+
+    /**
+     * Returns the value of the '<em><b>Models</b></em>' reference list. The
+     * list contents are of type {@link org.eclipse.emf.ecore.EObject}. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Models</em>' reference list isn't clear, there
+     * really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Models</em>' reference list.
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_Models()
+     * @model
+     * @generated
+     */
+    EList<EObject> getModels();
+
+    /**
+     * Returns the value of the '<em><b>EAnnotations</b></em>' containment
+     * reference list. The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.DAnnotationEntry}. <!--
+     * begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>EAnnotations</em>' containment reference list
+     * isn't clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>EAnnotations</em>' containment reference
+     *         list.
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_EAnnotations()
+     * @model containment="true"
+     * @generated
+     */
+    EList<DAnnotationEntry> getEAnnotations();
+
+    /**
      * Returns the value of the '<em><b>Owned Views</b></em>' containment
      * reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.DView}. <!-- begin-user-doc -->
@@ -65,8 +119,8 @@ public interface DAnalysis extends EObject {
      * The list contents are of type {@link org.eclipse.sirius.viewpoint.DView}.
      * <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Current View</em>' reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Selected Views</em>' reference list isn't
+     * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * 
@@ -108,7 +162,7 @@ public interface DAnalysis extends EObject {
      * 
      * @return the value of the '<em>Version</em>' attribute.
      * @see #setVersion(String)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDAnalysis_Version()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_Version()
      * @model
      * @generated
      */
@@ -126,58 +180,5 @@ public interface DAnalysis extends EObject {
      * @generated
      */
     void setVersion(String value);
-
-    /**
-     * Returns the value of the '<em><b>Referenced Analysis</b></em>' reference
-     * list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.DAnalysis}. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Referenced Analysis</em>' reference list isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * 
-     * @return the value of the '<em>Referenced Analysis</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis_ReferencedAnalysis()
-     * @model
-     * @generated
-     */
-    EList<DAnalysis> getReferencedAnalysis();
-
-    /**
-     * Returns the value of the '<em><b>Models</b></em>' reference list. The
-     * list contents are of type {@link org.eclipse.emf.ecore.EObject}. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Models</em>' reference list isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * 
-     * @return the value of the '<em>Models</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDAnalysis_Models()
-     * @model
-     * @generated
-     */
-    EList<EObject> getModels();
-
-    /**
-     * Returns the value of the '<em><b>EAnnotations</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.DAnnotationEntry}. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>EAnnotations</em>' containment reference list
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * 
-     * @return the value of the '<em>EAnnotations</em>' containment reference
-     *         list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDAnalysis_EAnnotations()
-     * @model containment="true"
-     * @generated
-     */
-    EList<DAnnotationEntry> getEAnnotations();
 
 } // DAnalysis

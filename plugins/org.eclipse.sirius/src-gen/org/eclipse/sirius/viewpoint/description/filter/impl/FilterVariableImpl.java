@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.filter.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -220,48 +221,6 @@ public class FilterVariableImpl extends EObjectImpl implements FilterVariable {
      * 
      * @generated
      */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setName(String newName) {
-        String oldName = name;
-        name = newName;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.FILTER_VARIABLE__NAME, oldName, name));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public String getMessage() {
-        return message;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setMessage(String newMessage) {
-        String oldMessage = message;
-        message = newMessage;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.FILTER_VARIABLE__MESSAGE, oldMessage, message));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public String getCandidatesExpression() {
         return candidatesExpression;
     }
@@ -360,6 +319,48 @@ public class FilterVariableImpl extends EObjectImpl implements FilterVariable {
         childrenExpression = newChildrenExpression;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.FILTER_VARIABLE__CHILDREN_EXPRESSION, oldChildrenExpression, childrenExpression));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public String getMessage() {
+        return message;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setMessage(String newMessage) {
+        String oldMessage = message;
+        message = newMessage;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.FILTER_VARIABLE__MESSAGE, oldMessage, message));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setName(String newName) {
+        String oldName = name;
+        name = newName;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, FilterPackage.FILTER_VARIABLE__NAME, oldName, name));
     }
 
     /**

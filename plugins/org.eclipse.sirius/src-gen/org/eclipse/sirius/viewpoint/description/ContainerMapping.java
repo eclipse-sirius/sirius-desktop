@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 import org.eclipse.emf.common.util.EList;
@@ -15,9 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.ContainerLayout;
 import org.eclipse.sirius.viewpoint.ContainerStyle;
 import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.style.ContainerStyleDescription;
 
 /**
@@ -65,7 +64,6 @@ import org.eclipse.sirius.viewpoint.description.style.ContainerStyleDescription;
  * @generated
  */
 public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTargetDescription {
-
     /**
      * Returns the value of the '<em><b>Sub Node Mappings</b></em>' containment
      * reference list. The list contents are of type
@@ -80,8 +78,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * @return the value of the '<em>Sub Node Mappings</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getContainerMapping_SubNodeMappings()
-     * @model type="org.eclipse.sirius.description.NodeMapping"
-     *        containment="true" resolveProxies="true" keys="name"
+     * @model containment="true" resolveProxies="true" keys="name"
      * @generated
      */
     EList<NodeMapping> getSubNodeMappings();
@@ -99,8 +96,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * 
      * @return the value of the '<em>All Node Mappings</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getContainerMapping_AllNodeMappings()
-     * @model type="org.eclipse.sirius.description.NodeMapping" transient="true"
-     *        changeable="false" volatile="true" derived="true"
+     * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */
     EList<NodeMapping> getAllNodeMappings();
@@ -138,8 +134,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * @return the value of the '<em>Sub Container Mappings</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getContainerMapping_SubContainerMappings()
-     * @model type="org.eclipse.sirius.description.ContainerMapping"
-     *        containment="true" resolveProxies="true" keys="name"
+     * @model containment="true" resolveProxies="true" keys="name"
      * @generated
      */
     EList<ContainerMapping> getSubContainerMappings();
@@ -177,8 +172,7 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * @return the value of the '<em>All Container Mappings</em>' reference
      *         list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getContainerMapping_AllContainerMappings()
-     * @model type="org.eclipse.sirius.description.ContainerMapping"
-     *        transient="true" changeable="false" volatile="true" derived="true"
+     * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */
     EList<ContainerMapping> getAllContainerMappings();
@@ -236,13 +230,13 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
     /**
      * Returns the value of the '<em><b>Children Presentation</b></em>'
      * attribute. The default value is <code>"FreeForm"</code>. The literals are
-     * from the enumeration
-     * {@link org.eclipse.sirius.description.ContainerLayout}. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Set to
-     * List if you want a container acting like a list. <!-- end-model-doc -->
+     * from the enumeration {@link org.eclipse.sirius.viewpoint.ContainerLayout}
+     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Set to List if you want a container acting like a list. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Children Presentation</em>' attribute.
-     * @see org.eclipse.sirius.description.ContainerLayout
+     * @see org.eclipse.sirius.viewpoint.ContainerLayout
      * @see #setChildrenPresentation(ContainerLayout)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getContainerMapping_ChildrenPresentation()
      * @model default="FreeForm" required="true"
@@ -330,9 +324,11 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * 
      *            </p>
      *            <!-- end-user-doc -->
+     * 
      * @model
      * @generated
      */
     @Deprecated
     EList<EObject> getNodesCandidates(EObject semanticOrigin, EObject container, EObject containerView);
+
 } // ContainerMapping

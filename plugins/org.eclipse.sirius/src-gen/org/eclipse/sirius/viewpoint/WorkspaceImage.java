@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 /**
@@ -32,17 +33,12 @@ package org.eclipse.sirius.viewpoint;
 public interface WorkspaceImage extends NodeStyle, ContainerStyle {
     /**
      * Returns the value of the '<em><b>Workspace Path</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Workspace Path</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The path of the image to
-     * use. <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * path of the image to use. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Workspace Path</em>' attribute.
      * @see #setWorkspacePath(String)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getWorkspaceImage_WorkspacePath()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getWorkspaceImage_WorkspacePath()
      * @model required="true"
      * @generated
      */

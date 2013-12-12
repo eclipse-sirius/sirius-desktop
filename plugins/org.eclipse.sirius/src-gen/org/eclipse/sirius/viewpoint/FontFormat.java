@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import java.util.Arrays;
@@ -22,7 +23,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * end-user-doc --> <!-- begin-model-doc --> The format of the font. <!--
  * end-model-doc -->
  * 
- * @see org.eclipse.sirius.viewpoint.SiriusPackage#getFontFormat()
+ * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getFontFormat()
  * @model
  * @generated
  */
@@ -36,6 +37,7 @@ public enum FontFormat implements Enumerator {
      * @ordered
      */
     NORMAL_LITERAL(0, "normal", "normal"),
+
     /**
      * The '<em><b>Italic</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -45,6 +47,7 @@ public enum FontFormat implements Enumerator {
      * @ordered
      */
     ITALIC_LITERAL(1, "italic", "italic"),
+
     /**
      * The '<em><b>Bold</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -53,15 +56,18 @@ public enum FontFormat implements Enumerator {
      * @generated
      * @ordered
      */
-    BOLD_LITERAL(2, "bold", "bold"), /**
-     * The '<em><b>Bold italic</b></em>'
-     * literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+    BOLD_LITERAL(2, "bold", "bold"),
+
+    /**
+     * The '<em><b>Bold italic</b></em>' literal object. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * 
      * @see #BOLD_ITALIC
      * @generated
      * @ordered
      */
     BOLD_ITALIC_LITERAL(3, "bold_italic", "bold_italic");
+
     /**
      * The '<em><b>Normal</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
@@ -260,4 +266,5 @@ public enum FontFormat implements Enumerator {
     public String toString() {
         return literal;
     }
-}
+
+} // FontFormat

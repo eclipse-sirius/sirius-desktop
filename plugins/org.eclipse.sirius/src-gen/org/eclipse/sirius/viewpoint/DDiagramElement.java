@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import java.util.Map;
@@ -18,7 +19,7 @@ import org.eclipse.sirius.viewpoint.description.Layer;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>View Point Element</b></em>'. <!-- end-user-doc -->
+ * <em><b>DDiagram Element</b></em>'. <!-- end-user-doc -->
  * 
  * <p>
  * The following features are supported:
@@ -46,17 +47,13 @@ import org.eclipse.sirius.viewpoint.description.Layer;
 public interface DDiagramElement extends DRepresentationElement, DValidable, DNavigable {
     /**
      * Returns the value of the '<em><b>Visible</b></em>' attribute. The default
-     * value is <code>"true"</code>. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Visible</em>' attribute isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> True if the element is
-     * visible, false otherwise. <!-- end-model-doc -->
+     * value is <code>"true"</code>. <!-- begin-user-doc --> <!-- end-user-doc
+     * --> <!-- begin-model-doc --> True if the element is visible, false
+     * otherwise. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Visible</em>' attribute.
      * @see #setVisible(boolean)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getSiriusElement_Visible()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagramElement_Visible()
      * @model default="true"
      * @generated
      */
@@ -77,16 +74,12 @@ public interface DDiagramElement extends DRepresentationElement, DValidable, DNa
 
     /**
      * Returns the value of the '<em><b>Tooltip Text</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Tooltip Text</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * text to show in the element's tooltip. <!-- end-model-doc -->
      * 
-     * @since 0.9.0 show in the element's tooltip. <!-- end-model-doc -->
      * @return the value of the '<em>Tooltip Text</em>' attribute.
      * @see #setTooltipText(String)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDDiagramElement_TooltipText()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagramElement_TooltipText()
      * @model
      * @generated
      */
@@ -97,7 +90,7 @@ public interface DDiagramElement extends DRepresentationElement, DValidable, DNa
      * {@link org.eclipse.sirius.viewpoint.DDiagramElement#getTooltipText
      * <em>Tooltip Text</em>}' attribute. <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0 <!--end-user-doc -->
      * @param value
      *            the new value of the '<em>Tooltip Text</em>' attribute.
      * @see #getTooltipText()
@@ -147,7 +140,7 @@ public interface DDiagramElement extends DRepresentationElement, DValidable, DNa
      * begin-model-doc --> The mapping of the element. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Diagram Element Mapping</em>' reference.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDDiagramElement_DiagramElementMapping()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagramElement_DiagramElementMapping()
      * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */
@@ -162,7 +155,7 @@ public interface DDiagramElement extends DRepresentationElement, DValidable, DNa
      * 
      * @return the value of the '<em>Graphical Filters</em>' containment
      *         reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDDiagramElement_GraphicalFilters()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDDiagramElement_GraphicalFilters()
      * @model containment="true" resolveProxies="true"
      * @generated
      */
@@ -170,7 +163,7 @@ public interface DDiagramElement extends DRepresentationElement, DValidable, DNa
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Return the parent of this SiriusElement. <!-- end-model-doc -->
+     * Return the parent of this ViewPointElement. <!-- end-model-doc -->
      * 
      * @model kind="operation"
      * @generated

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
@@ -62,35 +63,28 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * Returns the value of the '<em><b>Mappings</b></em>' reference list. The
      * list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping}.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Mappings</em>' reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> All mapping that can
-     * create the target view. <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * All mapping that can create the target view. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Mappings</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerDropDescription_Mappings()
-     * @model type="viewpoint.description.DiagramElementMapping" required="true"
+     * @model
      * @generated
      */
     EList<DiagramElementMapping> getMappings();
 
     /**
      * Returns the value of the '<em><b>Old Container</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Old Container</em>' containment reference
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The semantic element of
-     * the old container view. <!-- end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The semantic element of the old container view. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Old Container</em>' containment reference.
      * @see #setOldContainer(DropContainerVariable)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerDropDescription_OldContainer()
      * @model containment="true" resolveProxies="true" required="true"
+     *        annotation=
+     *        "http://www.eclipse.org/emf/2002/GenModel documentedName='oldSemanticElement'"
      * @generated
      */
     DropContainerVariable getOldContainer();
@@ -111,18 +105,16 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
 
     /**
      * Returns the value of the '<em><b>New Container</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>New Container</em>' reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The semantic element of
-     * the new container view. <!-- end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The semantic element of the new container view. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>New Container</em>' containment reference.
      * @see #setNewContainer(DropContainerVariable)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerDropDescription_NewContainer()
      * @model containment="true" resolveProxies="true" required="true"
+     *        annotation=
+     *        "http://www.eclipse.org/emf/2002/GenModel documentedName='newSemanticContainer'"
      * @generated
      */
     DropContainerVariable getNewContainer();
@@ -143,13 +135,8 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
 
     /**
      * Returns the value of the '<em><b>Element</b></em>' containment reference.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Element</em>' containment reference isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The semantic element that
-     * is dragged and dropped. <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The semantic element that is dragged and dropped. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Element</em>' containment reference.
      * @see #setElement(ElementDropVariable)
@@ -174,19 +161,17 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
 
     /**
      * Returns the value of the '<em><b>New View Container</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>New View Container</em>' containment reference
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The new view container
-     * (instance of DDiagram or DDiagramElement). <!-- end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The new view container (instance of ViewPoint or
+     * ViewPointElement). <!-- end-model-doc -->
      * 
      * @return the value of the '<em>New View Container</em>' containment
      *         reference.
      * @see #setNewViewContainer(ContainerViewVariable)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerDropDescription_NewViewContainer()
      * @model containment="true" resolveProxies="true" required="true"
+     *        annotation=
+     *        "http://www.eclipse.org/emf/2002/GenModel documentedName='newContainerView'"
      * @generated
      */
     ContainerViewVariable getNewViewContainer();
@@ -207,13 +192,8 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
 
     /**
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Initial Operation</em>' containment reference
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The first operation. <!--
-     * end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The first operation. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
@@ -242,12 +222,8 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * Returns the value of the '<em><b>Drag Source</b></em>' attribute. The
      * literals are from the enumeration
      * {@link org.eclipse.sirius.viewpoint.description.tool.DragSource}. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Drag Source</em>' attribute isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Authorized sources of the drag. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Drag Source</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.description.tool.DragSource
@@ -274,14 +250,9 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
 
     /**
      * Returns the value of the '<em><b>Move Edges</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Move Edges</em>' attribute isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Set to true if you want to
-     * automatically move the edges associated with a node. <!-- end-model-doc
-     * -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Set to
+     * true if you want to automatically move the edges associated with a node.
+     * <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Move Edges</em>' attribute.
      * @see #setMoveEdges(boolean)

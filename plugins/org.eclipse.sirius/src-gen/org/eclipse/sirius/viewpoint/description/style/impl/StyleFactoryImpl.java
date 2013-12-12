@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style.impl;
 
 import org.eclipse.emf.ecore.EClass;
@@ -219,6 +220,28 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      * 
      * @not-generated
      */
+    public LozengeNodeDescription createLozengeNodeDescription() {
+        LozengeNodeDescriptionImpl lozengeNodeDescription = new LozengeNodeDescriptionImpl();
+        new DefaultColorStyleDescription().setDefaultColors(lozengeNodeDescription);
+        return lozengeNodeDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
+    public EllipseNodeDescription createEllipseNodeDescription() {
+        EllipseNodeDescriptionImpl ellipseNodeDescription = new EllipseNodeDescriptionImpl();
+        new DefaultColorStyleDescription().setDefaultColors(ellipseNodeDescription);
+        return ellipseNodeDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
     public BundledImageDescription createBundledImageDescription() {
         BundledImageDescriptionImpl bundledImageDescription = new BundledImageDescriptionImpl();
         new DefaultColorStyleDescription().setDefaultColors(bundledImageDescription);
@@ -305,17 +328,6 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @not-generated
-     */
-    public BracketEdgeStyleDescription createBracketEdgeStyleDescription() {
-        BracketEdgeStyleDescriptionImpl bracketEdgeStyleDescription = new BracketEdgeStyleDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(bracketEdgeStyleDescription);
-        return bracketEdgeStyleDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public TooltipStyleDescription createTooltipStyleDescription() {
@@ -372,21 +384,10 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      * 
      * @not-generated
      */
-    public EllipseNodeDescription createEllipseNodeDescription() {
-        EllipseNodeDescriptionImpl ellipseNodeDescription = new EllipseNodeDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(ellipseNodeDescription);
-        return ellipseNodeDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @not-generated
-     */
-    public LozengeNodeDescription createLozengeNodeDescription() {
-        LozengeNodeDescriptionImpl lozengeNodeDescription = new LozengeNodeDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(lozengeNodeDescription);
-        return lozengeNodeDescription;
+    public BracketEdgeStyleDescription createBracketEdgeStyleDescription() {
+        BracketEdgeStyleDescriptionImpl bracketEdgeStyleDescription = new BracketEdgeStyleDescriptionImpl();
+        new DefaultColorStyleDescription().setDefaultColors(bracketEdgeStyleDescription);
+        return bracketEdgeStyleDescription;
     }
 
     /**

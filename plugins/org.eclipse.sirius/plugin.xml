@@ -90,7 +90,7 @@
             class="org.eclipse.sirius.viewpoint.description.concern.ConcernPackage"
             genModel="model/viewpoint.genmodel"/>
    </extension>
-  
+
   <extension
         point="org.eclipse.emf.ecore.protocol_parser">
      <parser
@@ -99,25 +99,6 @@
      </parser>
   </extension>
   
-  
-  <extension
-        point="org.eclipse.core.runtime.adapters">
-     <factory
-           adaptableType="org.eclipse.sirius.viewpoint.DNode"
-           class="org.eclipse.sirius.business.internal.helper.information.ViewNodeAdapterFactory">
-        <adapter
-              type="org.eclipse.sirius.viewpoint.description.InformationSection">
-        </adapter>
-     </factory>
-     <factory
-           adaptableType="org.eclipse.sirius.viewpoint.DSemanticDecorator"
-           class="org.eclipse.sirius.business.internal.helper.information.DecorateSemanticElementAdapterFactory">
-        <adapter
-              type="org.eclipse.sirius.viewpoint.description.InformationSection">
-        </adapter>
-     </factory>
-  </extension>
-
   <extension
         point="org.eclipse.core.contenttype.contentTypes">
      <file-association

@@ -1,20 +1,21 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * <!-- begin-user-doc -->
+ * <!-- begin-user-doc --> 
  * <p>
  * A representation of the model object '<em><b>DView</b></em>'.
  * </p>
@@ -60,27 +61,23 @@ public interface DView extends DRefreshable {
      * 
      * @return the value of the '<em>Owned Representations</em>' containment
      *         reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDView_OwnedRepresentations()
-     * @model type="org.eclipse.sirius.DRepresentation" containment="true"
-     *        resolveProxies="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_OwnedRepresentations()
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<DRepresentation> getOwnedRepresentations();
 
     /**
      * Returns the value of the '<em><b>Owned Extensions</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * Return the Meta model extension that is applied on this {@link DView}.
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The Meta Model extension
-     * for this analysis. It may be null. <!-- end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The Meta Model extension for this analysis. It may be
+     * null. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Owned Extensions</em>' containment
      *         reference.
      * @see #setOwnedExtensions(MetaModelExtension)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getAnalysis_OwnedExtensions()
-     * @model containment="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_OwnedExtensions()
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     MetaModelExtension getOwnedExtensions();
@@ -107,9 +104,8 @@ public interface DView extends DRefreshable {
      * analysis <!-- end-model-doc -->
      * 
      * @return the value of the '<em>All Representations</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDView_AllRepresentations()
-     * @model type="org.eclipse.sirius.DRepresentation" transient="true"
-     *        changeable="false" volatile="true" derived="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_AllRepresentations()
+     * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */
     EList<DRepresentation> getAllRepresentations();
@@ -123,9 +119,8 @@ public interface DView extends DRefreshable {
      * 
      * @return the value of the '<em>Hidden Representations</em>' containment
      *         reference list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDView_HiddenRepresentations()
-     * @model type="org.eclipse.sirius.DRepresentation" containment="true"
-     *        resolveProxies="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_HiddenRepresentations()
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<DRepresentation> getHiddenRepresentations();
@@ -134,13 +129,13 @@ public interface DView extends DRefreshable {
      * Returns the value of the '<em><b>Referenced Representations</b></em>'
      * reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.DRepresentation}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> Viewpoints referenced
+     * --> <!-- end-user-doc --> <!-- begin-model-doc --> ViewPoints referenced
      * but not contained in this analysis. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Referenced Representations</em>' reference
      *         list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDView_ReferencedRepresentations()
-     * @model type="org.eclipse.sirius.DRepresentation"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_ReferencedRepresentations()
+     * @model
      * @generated
      */
     EList<DRepresentation> getReferencedRepresentations();
@@ -156,7 +151,7 @@ public interface DView extends DRefreshable {
      * 
      * @return the value of the '<em>Initialized</em>' attribute.
      * @see #setInitialized(boolean)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDView_Initialized()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView_Initialized()
      * @model required="true"
      * @generated
      */

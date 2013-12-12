@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style;
 
 import org.eclipse.sirius.viewpoint.ContainerShape;
@@ -68,17 +69,14 @@ public interface ShapeContainerStyleDescription extends ContainerStyleDescriptio
     void setShape(ContainerShape value);
 
     /**
-     * Returns the value of the '<em><b>Background Color</b></em>' attribute.
-     * The default value is <code>"gray"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.DefaultColors}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The background color.
-     * <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Background Color</b></em>' reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The color to use. <!-- end-model-doc -->
      * 
-     * @return the value of the '<em>Background Color</em>' attribute.
-     * @see org.eclipse.sirius.DefaultColors
-     * @see #setBackgroundColor(DefaultColors)
+     * @return the value of the '<em>Background Color</em>' reference.
+     * @see #setBackgroundColor(ColorDescription)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getShapeContainerStyleDescription_BackgroundColor()
-     * @model default="gray" required="true"
+     * @model required="true"
      * @generated
      */
     ColorDescription getBackgroundColor();

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 /**
@@ -40,16 +41,12 @@ package org.eclipse.sirius.viewpoint;
 public interface GaugeSection extends Customizable {
     /**
      * Returns the value of the '<em><b>Min</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Min</em>' attribute isn't clear, there really
-     * should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The min
+     * value of the gauge. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Min</em>' attribute.
      * @see #setMin(Integer)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getGaugeSection_Min()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getGaugeSection_Min()
      * @model
      * @generated
      */
@@ -69,16 +66,12 @@ public interface GaugeSection extends Customizable {
 
     /**
      * Returns the value of the '<em><b>Max</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Max</em>' attribute isn't clear, there really
-     * should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The max
+     * value of the gauge. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Max</em>' attribute.
      * @see #setMax(Integer)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getGaugeSection_Max()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getGaugeSection_Max()
      * @model
      * @generated
      */
@@ -98,16 +91,12 @@ public interface GaugeSection extends Customizable {
 
     /**
      * Returns the value of the '<em><b>Value</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Value</em>' attribute isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * current value. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(Integer)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getGaugeSection_Value()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getGaugeSection_Value()
      * @model
      * @generated
      */
@@ -127,16 +116,12 @@ public interface GaugeSection extends Customizable {
 
     /**
      * Returns the value of the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Label</em>' attribute isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * label of the gauge. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Label</em>' attribute.
      * @see #setLabel(String)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getGaugeSection_Label()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getGaugeSection_Label()
      * @model
      * @generated
      */
@@ -162,7 +147,7 @@ public interface GaugeSection extends Customizable {
      * @return the value of the '<em>Background Color</em>' containment
      *         reference.
      * @see #setBackgroundColor(RGBValues)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getGaugeSection_BackgroundColor()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getGaugeSection_BackgroundColor()
      * @model containment="true" resolveProxies="true"
      * @generated
      */
@@ -190,7 +175,7 @@ public interface GaugeSection extends Customizable {
      * @return the value of the '<em>Foreground Color</em>' containment
      *         reference.
      * @see #setForegroundColor(RGBValues)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getGaugeSection_ForegroundColor()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getGaugeSection_ForegroundColor()
      * @model containment="true" resolveProxies="true"
      * @generated
      */

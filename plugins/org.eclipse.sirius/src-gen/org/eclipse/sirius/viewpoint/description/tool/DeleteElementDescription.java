@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
@@ -47,37 +48,10 @@ import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
  */
 public interface DeleteElementDescription extends MappingBasedToolDescription {
     /**
-     * Returns the value of the '<em><b>Mappings</b></em>' reference list. The
-     * list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping}.
-     * It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping#getDeletionDescription
-     * <em>Deletion Description</em>}'. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Mappings</em>' reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The mapping that create
-     * elements that are deleted by this tool. <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>Mappings</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getDeleteElementDescription_Mappings()
-     * @see org.eclipse.sirius.viewpoint.description.DiagramElementMapping#getDeletionDescription
-     * @model type="viewpoint.description.DiagramElementMapping"
-     *        opposite="deletionDescription" required="true"
-     * @generated
-     */
-    EList<DiagramElementMapping> getMappings();
-
-    /**
      * Returns the value of the '<em><b>Element</b></em>' containment reference.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Element</em>' containment reference isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The semantic element of
-     * the DDiagramElement to delete. <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The semantic element of the ViewPointElement to delete. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Element</em>' containment reference.
      * @see #setElement(ElementDeleteVariable)
@@ -104,8 +78,8 @@ public interface DeleteElementDescription extends MappingBasedToolDescription {
      * Returns the value of the '<em><b>Element View</b></em>' containment
      * reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Element View</em>' reference isn't clear,
-     * there really should be more of a description here...
+     * If the meaning of the '<em>Element View</em>' containment reference isn't
+     * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * 
@@ -133,13 +107,9 @@ public interface DeleteElementDescription extends MappingBasedToolDescription {
 
     /**
      * Returns the value of the '<em><b>Container View</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Container View</em>' containment reference
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The view that contains the
-     * DDiagramElement to delete. <!-- end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The view that contains the ViewPointElement to
+     * delete. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Container View</em>' containment reference.
      * @see #setContainerView(ContainerViewVariable)
@@ -165,13 +135,8 @@ public interface DeleteElementDescription extends MappingBasedToolDescription {
 
     /**
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Initial Operation</em>' containment reference
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The first operation. <!--
-     * end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The first operation. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
@@ -225,5 +190,13 @@ public interface DeleteElementDescription extends MappingBasedToolDescription {
      * @generated
      */
     void setHook(DeleteHook value);
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @model kind="operation" required="true"
+     * @generated
+     */
+    EList<DiagramElementMapping> getMappings();
 
 } // DeleteElementDescription

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.ecore.EObject;
@@ -41,7 +42,7 @@ public interface RGBValues extends EObject {
      * 
      * @return the value of the '<em>Red</em>' attribute.
      * @see #setRed(int)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getRGBValues_Red()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getRGBValues_Red()
      * @model required="true"
      * @generated
      */
@@ -70,7 +71,7 @@ public interface RGBValues extends EObject {
      * 
      * @return the value of the '<em>Green</em>' attribute.
      * @see #setGreen(int)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getRGBValues_Green()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getRGBValues_Green()
      * @model required="true"
      * @generated
      */
@@ -99,7 +100,7 @@ public interface RGBValues extends EObject {
      * 
      * @return the value of the '<em>Blue</em>' attribute.
      * @see #setBlue(int)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getRGBValues_Blue()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getRGBValues_Blue()
      * @model required="true"
      * @generated
      */

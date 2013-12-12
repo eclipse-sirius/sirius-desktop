@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style;
 
 import org.eclipse.sirius.viewpoint.EdgeArrows;
@@ -64,12 +65,12 @@ import org.eclipse.sirius.viewpoint.description.FoldingStyle;
  */
 public interface EdgeStyleDescription extends StyleDescription {
     /**
-     * Returns the value of the '<em><b>Stroke Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
-     * begin-model-doc --> The color of the edge. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Stroke Color</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * color of the edge. <!-- end-model-doc -->
      * 
-     * @return the value of the '<em>Stroke Color</em>' containment reference.
-     * @see #setStrokeColor(ColorMapping)
+     * @return the value of the '<em>Stroke Color</em>' reference.
+     * @see #setStrokeColor(ColorDescription)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEdgeStyleDescription_StrokeColor()
      * @model required="true"
      * @generated
@@ -92,7 +93,7 @@ public interface EdgeStyleDescription extends StyleDescription {
     /**
      * Returns the value of the '<em><b>Line Style</b></em>' attribute. The
      * literals are from the enumeration
-     * {@link org.eclipse.sirius.viewpoint.LineStyle} . <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.LineStyle}. <!-- begin-user-doc -->
      * <!-- end-user-doc --> <!-- begin-model-doc --> The style of the line.
      * <!-- end-model-doc -->
      * 
@@ -151,7 +152,7 @@ public interface EdgeStyleDescription extends StyleDescription {
 
     /**
      * Returns the value of the '<em><b>Target Arrow</b></em>' attribute. The
-     * default value is <code>"OutputArrow"</code>. The literals are from the
+     * default value is <code>"InputArrow"</code>. The literals are from the
      * enumeration {@link org.eclipse.sirius.viewpoint.EdgeArrows}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * target decoration. <!-- end-model-doc -->
@@ -160,7 +161,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * @see org.eclipse.sirius.viewpoint.EdgeArrows
      * @see #setTargetArrow(EdgeArrows)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEdgeStyleDescription_TargetArrow()
-     * @model default="OutputArrow" required="true"
+     * @model default="InputArrow" required="true"
      * @generated
      */
     EdgeArrows getTargetArrow();
@@ -182,16 +183,17 @@ public interface EdgeStyleDescription extends StyleDescription {
     /**
      * Returns the value of the '<em><b>Size Computation Expression</b></em>'
      * attribute. The default value is <code>"<%eContents().nSize%>"</code>.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The acceleo expression that computes the width of the link. <!--
-     * end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> An
+     * expression to compute the thickness of the link. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Size Computation Expression</em>'
      *         attribute.
      * @see #setSizeComputationExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEdgeStyleDescription_SizeComputationExpression()
-     * @model default="<%eContents().nSize%>"
-     *        dataType="org.eclipse.sirius.description.AcceleoExpression"
+     * @model default="<%eContents().nSize%>" dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        required="true" annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      * @generated
      */
     String getSizeComputationExpression();
@@ -215,7 +217,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * default value is <code>"straight"</code>. The literals are from the
      * enumeration {@link org.eclipse.sirius.viewpoint.EdgeRouting}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * routing style. <!-- end-model-doc -->
+     * routing style for your edge. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Routing Style</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.EdgeRouting
@@ -244,12 +246,9 @@ public interface EdgeStyleDescription extends StyleDescription {
      * Returns the value of the '<em><b>Folding Style</b></em>' attribute. The
      * literals are from the enumeration
      * {@link org.eclipse.sirius.viewpoint.description.FoldingStyle}. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Folding Style</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> A
+     * folding style allow to collapse the elements targeted by the edge. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Folding Style</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.description.FoldingStyle

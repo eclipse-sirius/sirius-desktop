@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style.util;
 
 import java.util.List;
@@ -674,6 +675,40 @@ public class StyleSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
+     * <em>Lozenge Node Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Lozenge Node Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseLozengeNodeDescription(LozengeNodeDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Ellipse Node Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Ellipse Node Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseEllipseNodeDescription(EllipseNodeDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
      * <em>Bundled Image Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
@@ -827,44 +862,11 @@ public class StyleSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Bracket Edge Style Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Bracket Edge Style Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseBracketEdgeStyleDescription(BracketEdgeStyleDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Size Computation Container Style Description</em>'. <!--
-     * begin-user-doc --> This implementation returns null; returning a non-null
-     * result will terminate the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Size Computation Container Style Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseSizeComputationContainerStyleDescription(SizeComputationContainerStyleDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
      * <em>Tooltip Style Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null;
+     * implementation returns null; returning a non-null result will terminate
+     * the switch.
      * 
-     * @since 0.9.0 end-user-doc -->
+     * @since 0.9.0 <!-- end-user-doc -->
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
@@ -946,35 +948,35 @@ public class StyleSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Ellipse Node Description</em>'. <!-- begin-user-doc --> This
+     * <em>Bracket Edge Style Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
      * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
-     *         <em>Ellipse Node Description</em>'.
+     *         <em>Bracket Edge Style Description</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseEllipseNodeDescription(EllipseNodeDescription object) {
+    public T caseBracketEdgeStyleDescription(BracketEdgeStyleDescription object) {
         return null;
     }
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Lozenge Node Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
+     * <em>Size Computation Container Style Description</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null
+     * result will terminate the switch. <!-- end-user-doc -->
      * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
-     *         <em>Lozenge Node Description</em>'.
+     *         <em>Size Computation Container Style Description</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseLozengeNodeDescription(LozengeNodeDescription object) {
+    public T caseSizeComputationContainerStyleDescription(SizeComputationContainerStyleDescription object) {
         return null;
     }
 

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 /**
@@ -19,9 +20,6 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * The following features are supported:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription#getInitialOperation
- * <em>Initial Operation</em>}</li>
- * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription#getElement
  * <em>Element</em>}</li>
  * <li>
@@ -30,6 +28,9 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription#getContainer
  * <em>Container</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription#getInitialOperation
+ * <em>Initial Operation</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription#getIconPath
  * <em>Icon Path</em>}</li>
@@ -71,38 +72,6 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * @generated
  */
 public interface PaneBasedSelectionWizardDescription extends AbstractToolDescription {
-    /**
-     * Returns the value of the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Initial Operation</em>' containment reference
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * 
-     * @return the value of the '<em>Initial Operation</em>' containment
-     *         reference.
-     * @see #setInitialOperation(InitialOperation)
-     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getPaneBasedSelectionWizardDescription_InitialOperation()
-     * @model containment="true" resolveProxies="true" required="true"
-     * @generated
-     */
-    InitialOperation getInitialOperation();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription#getInitialOperation
-     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Initial Operation</em>' containment
-     *            reference.
-     * @see #getInitialOperation()
-     * @generated
-     */
-    void setInitialOperation(InitialOperation value);
-
     /**
      * Returns the value of the '<em><b>Element</b></em>' containment reference.
      * <!-- begin-user-doc -->
@@ -194,6 +163,38 @@ public interface PaneBasedSelectionWizardDescription extends AbstractToolDescrip
      * @generated
      */
     void setContainer(SelectContainerVariable value);
+
+    /**
+     * Returns the value of the '<em><b>Initial Operation</b></em>' containment
+     * reference. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Initial Operation</em>' containment reference
+     * isn't clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Initial Operation</em>' containment
+     *         reference.
+     * @see #setInitialOperation(InitialOperation)
+     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getPaneBasedSelectionWizardDescription_InitialOperation()
+     * @model containment="true" resolveProxies="true" required="true"
+     * @generated
+     */
+    InitialOperation getInitialOperation();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription#getInitialOperation
+     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Initial Operation</em>' containment
+     *            reference.
+     * @see #getInitialOperation()
+     * @generated
+     */
+    void setInitialOperation(InitialOperation value);
 
     /**
      * Returns the value of the '<em><b>Icon Path</b></em>' attribute. The
@@ -526,11 +527,12 @@ public interface PaneBasedSelectionWizardDescription extends AbstractToolDescrip
      *         attribute.
      * @see #setPreSelectedCandidatesExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getPaneBasedSelectionWizardDescription_PreSelectedCandidatesExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='the current DDiagram.' containerView='the selected view.' container='the semantic element of $containerView.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='viewpoint.DDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the selected view.' container='ecore.EObject | the semantic element of containerView.'"
      * @generated
      */
     String getPreSelectedCandidatesExpression();

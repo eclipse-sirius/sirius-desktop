@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
@@ -56,8 +57,8 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * @return the value of the '<em>Title Expression</em>' attribute.
      * @see #setTitleExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getRepresentationCreationDescription_TitleExpression()
-     * @model default=""
-     *        dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model default="" dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'"
      * @generated
@@ -86,7 +87,8 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * @return the value of the '<em>Browse Expression</em>' attribute.
      * @see #setBrowseExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getRepresentationCreationDescription_BrowseExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
      * @generated
@@ -156,23 +158,11 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
     void setInitialOperation(InitialOperation value);
 
     /**
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Mappings</em>' reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * 
-     * @model kind="operation" required="true"
-     * @generated
-     */
-    EList<RepresentationElementMapping> getMappings();
-
-    /**
      * Returns the value of the '<em><b>Container View Variable</b></em>'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
      * begin-model-doc --> The variable containerView that represents the
-     * clickedView (instance of Sirius or SiriusElement). <!-- end-model-doc -->
+     * clickedView (instance of ViewPoint or ViewPointElement). <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Container View Variable</em>' containment
      *         reference.
@@ -229,5 +219,13 @@ public interface RepresentationCreationDescription extends AbstractToolDescripti
      * @generated
      */
     void setRepresentationNameVariable(NameVariable value);
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @model kind="operation" required="true"
+     * @generated
+     */
+    EList<RepresentationElementMapping> getMappings();
 
 } // RepresentationCreationDescription

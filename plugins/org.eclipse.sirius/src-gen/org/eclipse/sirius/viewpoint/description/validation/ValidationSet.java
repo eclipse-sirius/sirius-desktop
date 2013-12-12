@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.validation;
 
 import org.eclipse.emf.common.util.EList;
@@ -46,32 +47,21 @@ public interface ValidationSet extends DocumentedElement {
      * Returns the value of the '<em><b>Owned Rules</b></em>' containment
      * reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule}
-     * . <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Owned Rules</em>' containment reference list
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The validation rules owned
-     * by this set. <!-- end-model-doc -->
+     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The validation rules owned by this set. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Owned Rules</em>' containment reference
      *         list.
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationSet_OwnedRules()
-     * @model type="org.eclipse.sirius.description.validation.ValidationRule"
-     *        containment="true" resolveProxies="true"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<ValidationRule> getOwnedRules();
 
     /**
      * Returns the value of the '<em><b>Name</b></em>' attribute. The default
-     * value is <code>""</code>. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Name</em>' attribute isn't clear, there really
-     * should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The name of the set. <!--
-     * end-model-doc -->
+     * value is <code>""</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-model-doc --> The name of the set. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
@@ -97,17 +87,12 @@ public interface ValidationSet extends DocumentedElement {
      * Returns the value of the '<em><b>Reused Rules</b></em>' reference list.
      * The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule}
-     * . <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Reused Rules</em>' reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The validations rules that
-     * are reused by this set. <!-- end-model-doc -->
+     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The validations rules that are reused by this set. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Reused Rules</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationSet_ReusedRules()
-     * @model type="org.eclipse.sirius.description.validation.ValidationRule"
+     * @model
      * @generated
      */
     EList<ValidationRule> getReusedRules();
@@ -116,18 +101,12 @@ public interface ValidationSet extends DocumentedElement {
      * Returns the value of the '<em><b>All Rules</b></em>' reference list. The
      * list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule}
-     * . <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>All Rules</em>' reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> All rules of the set. <!--
-     * end-model-doc -->
+     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * All rules of the set. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>All Rules</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationSet_AllRules()
-     * @model type="org.eclipse.sirius.description.validation.ValidationRule"
-     *        transient="true" changeable="false" volatile="true" derived="true"
+     * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */
     EList<ValidationRule> getAllRules();

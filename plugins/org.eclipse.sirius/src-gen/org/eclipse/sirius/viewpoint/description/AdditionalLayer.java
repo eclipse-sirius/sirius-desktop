@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 /**
@@ -62,8 +63,8 @@ public interface AdditionalLayer extends Layer {
     void setActiveByDefault(boolean value);
 
     /**
-     * Returns the value of the '<em><b>Optional</b></em>' attribute. <!--
-     * begin-user-doc -->
+     * Returns the value of the '<em><b>Optional</b></em>' attribute. The
+     * default value is <code>"true"</code>. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Optional</em>' attribute isn't clear, there
      * really should be more of a description here...
@@ -73,7 +74,7 @@ public interface AdditionalLayer extends Layer {
      * @return the value of the '<em>Optional</em>' attribute.
      * @see #setOptional(boolean)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAdditionalLayer_Optional()
-     * @model
+     * @model default="true"
      * @generated
      */
     boolean isOptional();

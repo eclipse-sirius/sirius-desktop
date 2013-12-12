@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 /**
@@ -32,7 +33,6 @@ package org.eclipse.sirius.viewpoint;
  * @generated
  */
 public interface Dot extends NodeStyle {
-
     /**
      * Returns the value of the '<em><b>Background Color</b></em>' containment
      * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
@@ -41,7 +41,7 @@ public interface Dot extends NodeStyle {
      * @return the value of the '<em>Background Color</em>' containment
      *         reference.
      * @see #setBackgroundColor(RGBValues)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDot_BackgroundColor()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDot_BackgroundColor()
      * @model containment="true" resolveProxies="true"
      * @generated
      */
@@ -64,20 +64,18 @@ public interface Dot extends NodeStyle {
     /**
      * Returns the value of the '
      * <em><b>Stroke Size Computation Expression</b></em>' attribute. The
-     * default value is <code>"2"</code>. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Stroke Size Computation Expression</em>'
-     * attribute isn't clear, there really should be more of a description
-     * here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The acceleo expression
-     * that allows to compute the size of a stroke. <!-- end-model-doc -->
+     * default value is <code>"2"</code>. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> An expression computing the
+     * size of a stroke. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Stroke Size Computation Expression</em>'
      *         attribute.
      * @see #setStrokeSizeComputationExpression(String)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDot_StrokeSizeComputationExpression()
-     * @model default="2"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDot_StrokeSizeComputationExpression()
+     * @model default="2" dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      * @generated
      */
     String getStrokeSizeComputationExpression();
@@ -95,4 +93,5 @@ public interface Dot extends NodeStyle {
      * @generated
      */
     void setStrokeSizeComputationExpression(String value);
+
 } // Dot

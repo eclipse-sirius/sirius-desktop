@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
@@ -47,12 +48,14 @@ public interface AbstractToolDescription extends ToolEntry {
      * @return the value of the '<em>Precondition</em>' attribute.
      * @see #setPrecondition(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getAbstractToolDescription_Precondition()
-     * @model default=""
-     *        dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model default="" dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation
      *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables container='ecore.EObject | the container.'"
      * @generated
      */
     String getPrecondition();

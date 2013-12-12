@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import java.util.Arrays;
@@ -22,7 +23,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- end-user-doc --> <!-- begin-model-doc --> Position of the label. <!--
  * end-model-doc -->
  * 
- * @see org.eclipse.sirius.viewpoint.SiriusPackage#getLabelPosition()
+ * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getLabelPosition()
  * @model
  * @generated
  */
@@ -36,6 +37,7 @@ public enum LabelPosition implements Enumerator {
      * @ordered
      */
     BORDER_LITERAL(0, "border", "border"),
+
     /**
      * The '<em><b>Node</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -45,14 +47,11 @@ public enum LabelPosition implements Enumerator {
      * @ordered
      */
     NODE_LITERAL(1, "node", "node");
+
     /**
-     * The '<em><b>Border</b></em>' literal value. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of '<em><b>Border</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The label is on border.
-     * <!-- end-model-doc -->
+     * The '<em><b>Border</b></em>' literal value. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> The label is on border. <!--
+     * end-model-doc -->
      * 
      * @see #BORDER_LITERAL
      * @model name="border"
@@ -62,13 +61,9 @@ public enum LabelPosition implements Enumerator {
     public static final int BORDER = 0;
 
     /**
-     * The '<em><b>Node</b></em>' literal value. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of '<em><b>Node</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The label is on the node.
-     * <!-- end-model-doc -->
+     * The '<em><b>Node</b></em>' literal value. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> The label is on the node. <!--
+     * end-model-doc -->
      * 
      * @see #NODE_LITERAL
      * @model name="node"
@@ -211,4 +206,5 @@ public enum LabelPosition implements Enumerator {
     public String toString() {
         return literal;
     }
-}
+
+} // LabelPosition

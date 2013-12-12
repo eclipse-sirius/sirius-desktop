@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 /**
@@ -43,7 +44,7 @@ public interface EAttributeCustomization extends EStructuralFeatureCustomization
      * @return the value of the '<em>Attribute Name</em>' attribute.
      * @see #setAttributeName(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEAttributeCustomization_AttributeName()
-     * @model
+     * @model required="true"
      * @generated
      */
     String getAttributeName();
@@ -73,7 +74,12 @@ public interface EAttributeCustomization extends EStructuralFeatureCustomization
      * @return the value of the '<em>Value</em>' attribute.
      * @see #setValue(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getEAttributeCustomization_Value()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='A java Object to affect as new value of a EAttribute, for example a java primitive.'"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables view='ecore.EObject | the current view.' container='ecore.EObject | the semantic container.'"
      * @generated
      */
     String getValue();

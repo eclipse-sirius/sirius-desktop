@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.sirius.viewpoint.description.FoldingStyle;
@@ -48,20 +49,14 @@ import org.eclipse.sirius.viewpoint.description.FoldingStyle;
  * @generated
  */
 public interface EdgeStyle extends Style {
-
     /**
      * Returns the value of the '<em><b>Stroke Color</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Stroke Color</em>' containment reference isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The color of the edge.
-     * <!-- end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The color of the edge. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Stroke Color</em>' containment reference.
-     * @see #setStrokeColor(ColorMapping)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getEdgeStyle_StrokeColor()
+     * @see #setStrokeColor(RGBValues)
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getEdgeStyle_StrokeColor()
      * @model containment="true" resolveProxies="true"
      * @generated
      */
@@ -84,18 +79,14 @@ public interface EdgeStyle extends Style {
     /**
      * Returns the value of the '<em><b>Line Style</b></em>' attribute. The
      * literals are from the enumeration
-     * {@link org.eclipse.sirius.viewpoint.LineStyle} . <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Line Style</em>' attribute isn't clear, there
-     * really should be more of a description here...
-     * </p>
+     * {@link org.eclipse.sirius.viewpoint.LineStyle}. <!-- begin-user-doc -->
      * <!-- end-user-doc --> <!-- begin-model-doc --> The style of the line.
      * <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Line Style</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.LineStyle
      * @see #setLineStyle(LineStyle)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getEdgeStyle_LineStyle()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getEdgeStyle_LineStyle()
      * @model
      * @generated
      */
@@ -125,7 +116,7 @@ public interface EdgeStyle extends Style {
      * @return the value of the '<em>Source Arrow</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.EdgeArrows
      * @see #setSourceArrow(EdgeArrows)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getEdgeStyle_SourceArrow()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getEdgeStyle_SourceArrow()
      * @model default="NoDecoration" required="true"
      * @generated
      */
@@ -147,7 +138,7 @@ public interface EdgeStyle extends Style {
 
     /**
      * Returns the value of the '<em><b>Target Arrow</b></em>' attribute. The
-     * default value is <code>"OutputArrow"</code>. The literals are from the
+     * default value is <code>"InputArrow"</code>. The literals are from the
      * enumeration {@link org.eclipse.sirius.viewpoint.EdgeArrows}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * target decoration. <!-- end-model-doc -->
@@ -155,8 +146,8 @@ public interface EdgeStyle extends Style {
      * @return the value of the '<em>Target Arrow</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.EdgeArrows
      * @see #setTargetArrow(EdgeArrows)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getEdgeStyle_TargetArrow()
-     * @model default="OutputArrow" required="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getEdgeStyle_TargetArrow()
+     * @model default="InputArrow" required="true"
      * @generated
      */
     EdgeArrows getTargetArrow();
@@ -244,7 +235,7 @@ public interface EdgeStyle extends Style {
      * @return the value of the '<em>Routing Style</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.EdgeRouting
      * @see #setRoutingStyle(EdgeRouting)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getEdgeStyle_RoutingStyle()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getEdgeStyle_RoutingStyle()
      * @model default="straight" required="true"
      * @generated
      */
@@ -359,4 +350,5 @@ public interface EdgeStyle extends Style {
      * @generated
      */
     void setEndLabelStyle(EndLabelStyle value);
+
 } // EdgeStyle

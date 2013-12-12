@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 /**
@@ -36,18 +37,14 @@ package org.eclipse.sirius.viewpoint.description.tool;
 public interface SetValue extends ContainerModelOperation {
     /**
      * Returns the value of the '<em><b>Feature Name</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Feature Name</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The name of the feature to
-     * set. <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * name of the feature to set. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Feature Name</em>' attribute.
      * @see #setFeatureName(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSetValue_FeatureName()
-     * @model dataType="viewpoint.description.ReferenceName" required="true"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.FeatureName"
+     *        required="true"
      * @generated
      */
     String getFeatureName();
@@ -67,18 +64,18 @@ public interface SetValue extends ContainerModelOperation {
 
     /**
      * Returns the value of the '<em><b>Value Expression</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Value Expression</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The value of the feature.
-     * <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> An
+     * expression computing the value to set. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Value Expression</em>' attribute.
      * @see #setValueExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSetValue_ValueExpression()
-     * @model dataType="viewpoint.description.AcceleoExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation
+     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='any type supported by the feature.'"
      * @generated
      */
     String getValueExpression();

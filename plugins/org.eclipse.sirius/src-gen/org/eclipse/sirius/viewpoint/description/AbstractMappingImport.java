@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 import org.eclipse.emf.ecore.EObject;
@@ -35,14 +36,10 @@ import org.eclipse.emf.ecore.EObject;
 public interface AbstractMappingImport extends EObject {
     /**
      * Returns the value of the '<em><b>Hide Sub Mappings</b></em>' attribute.
-     * The default value is <code>"false"</code>. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Hide Sub Mappings</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Set to true if you don't
-     * want to inherit the sub mappings of the imported mapping. <!--
-     * end-model-doc -->
+     * The default value is <code>"false"</code>. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> Set to true if you don't want
+     * to inherit the sub mappings of the imported mapping. <!-- end-model-doc
+     * -->
      * 
      * @return the value of the '<em>Hide Sub Mappings</em>' attribute.
      * @see #setHideSubMappings(boolean)

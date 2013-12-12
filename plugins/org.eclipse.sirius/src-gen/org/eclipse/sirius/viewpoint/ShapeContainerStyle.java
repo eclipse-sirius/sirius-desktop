@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 /**
@@ -64,17 +65,19 @@ public interface ShapeContainerStyle extends ContainerStyle {
     void setShape(ContainerShape value);
 
     /**
-     * Returns the value of the '<em><b>Background Color</b></em>' attribute.
-     * The default value is <code>"gray"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.DefaultColors}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The background color.
-     * <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Background Color</b></em>' containment
+     * reference. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Background Color</em>' containment reference
+     * isn't clear, there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
      * 
-     * @return the value of the '<em>Background Color</em>' attribute.
-     * @see org.eclipse.sirius.DefaultColors
-     * @see #setBackgroundColor(DefaultColors)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getShapeContainerStyle_BackgroundColor()
-     * @model default="gray" required="true"
+     * @return the value of the '<em>Background Color</em>' containment
+     *         reference.
+     * @see #setBackgroundColor(RGBValues)
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getShapeContainerStyle_BackgroundColor()
+     * @model containment="true" resolveProxies="true" required="true"
      * @generated
      */
     RGBValues getBackgroundColor();

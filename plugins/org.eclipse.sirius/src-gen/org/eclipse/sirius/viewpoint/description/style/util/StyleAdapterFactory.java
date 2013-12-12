@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style.util;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -93,7 +94,7 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * The switch the delegates to the <code>createXXX</code> methods. <!--
+     * The switch that delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -421,6 +422,38 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription
+     * <em>Lozenge Node Description</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription
+     * @generated
+     */
+    public Adapter createLozengeNodeDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription
+     * <em>Ellipse Node Description</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription
+     * @generated
+     */
+    public Adapter createEllipseNodeDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.viewpoint.description.style.BundledImageDescription
      * <em>Bundled Image Description</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
@@ -565,45 +598,13 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.style.BracketEdgeStyleDescription
-     * <em>Bracket Edge Style Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.style.BracketEdgeStyleDescription
-     * @generated
-     */
-    public Adapter createBracketEdgeStyleDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription
-     * <em>Size Computation Container Style Description</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription
-     * @generated
-     */
-    public Adapter createSizeComputationContainerStyleDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription
      * <em>Tooltip Style Description</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway.
      * 
-     * @since 0.9.0
+     * @since 0.9.0 <!-- end-user-doc -->
      * @return the new adapter.
      * @see org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription
      * @generated
@@ -678,33 +679,33 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription
-     * <em>Ellipse Node Description</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.description.style.BracketEdgeStyleDescription
+     * <em>Bracket Edge Style Description</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription
+     * @see org.eclipse.sirius.viewpoint.description.style.BracketEdgeStyleDescription
      * @generated
      */
-    public Adapter createEllipseNodeDescriptionAdapter() {
+    public Adapter createBracketEdgeStyleDescriptionAdapter() {
         return null;
     }
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription
-     * <em>Lozenge Node Description</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription
+     * <em>Size Computation Container Style Description</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription
+     * @see org.eclipse.sirius.viewpoint.description.style.SizeComputationContainerStyleDescription
      * @generated
      */
-    public Adapter createLozengeNodeDescriptionAdapter() {
+    public Adapter createSizeComputationContainerStyleDescriptionAdapter() {
         return null;
     }
 

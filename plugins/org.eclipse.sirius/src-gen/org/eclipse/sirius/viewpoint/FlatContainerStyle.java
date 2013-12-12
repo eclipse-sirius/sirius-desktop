@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 /**
@@ -35,36 +36,6 @@ package org.eclipse.sirius.viewpoint;
  */
 public interface FlatContainerStyle extends ContainerStyle {
     /**
-     * Returns the value of the '<em><b>Background Color</b></em>' attribute.
-     * The default value is <code>"gray"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.DefaultColors}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The background color.
-     * <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>Background Color</em>' attribute.
-     * @see org.eclipse.sirius.DefaultColors
-     * @see #setBackgroundColor(DefaultColors)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getFlatContainerStyle_BackgroundColor()
-     * @model default="gray"
-     * @generated
-     */
-    RGBValues getBackgroundColor();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.FlatContainerStyle#getBackgroundColor
-     * <em>Background Color</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Background Color</em>' containment
-     *            reference.
-     * @see #getBackgroundColor()
-     * @generated
-     */
-    void setBackgroundColor(RGBValues value);
-
-    /**
      * Returns the value of the '<em><b>Background Style</b></em>' attribute.
      * The literals are from the enumeration
      * {@link org.eclipse.sirius.viewpoint.BackgroundStyle}. <!-- begin-user-doc
@@ -74,7 +45,7 @@ public interface FlatContainerStyle extends ContainerStyle {
      * @return the value of the '<em>Background Style</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.BackgroundStyle
      * @see #setBackgroundStyle(BackgroundStyle)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getFlatContainerStyle_BackgroundStyle()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getFlatContainerStyle_BackgroundStyle()
      * @model required="true"
      * @generated
      */
@@ -95,14 +66,37 @@ public interface FlatContainerStyle extends ContainerStyle {
     void setBackgroundStyle(BackgroundStyle value);
 
     /**
+     * Returns the value of the '<em><b>Background Color</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The background color. <!-- end-model-doc -->
+     * 
+     * @return the value of the '<em>Background Color</em>' containment
+     *         reference.
+     * @see #setBackgroundColor(RGBValues)
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getFlatContainerStyle_BackgroundColor()
+     * @model containment="true" resolveProxies="true"
+     * @generated
+     */
+    RGBValues getBackgroundColor();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.viewpoint.FlatContainerStyle#getBackgroundColor
+     * <em>Background Color</em>}' containment reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Background Color</em>' containment
+     *            reference.
+     * @see #getBackgroundColor()
+     * @generated
+     */
+    void setBackgroundColor(RGBValues value);
+
+    /**
      * Returns the value of the '<em><b>Foreground Color</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Foreground Color</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The foreground color. <!--
-     * end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The foreground color. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Foreground Color</em>' containment
      *         reference.

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
@@ -35,14 +36,9 @@ import org.eclipse.emf.common.util.EList;
 public interface ExternalJavaAction extends MenuItemDescription, ContainerModelOperation {
     /**
      * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Id</em>' attribute isn't clear, there really
-     * should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Identifier for your
-     * External Java Action provided through extension points. <!--
-     * end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Identifier for your External Java Action provided through extension
+     * points. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)

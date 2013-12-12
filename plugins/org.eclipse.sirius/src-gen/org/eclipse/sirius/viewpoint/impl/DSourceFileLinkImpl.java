@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.impl;
 
 import org.eclipse.core.resources.IFile;
@@ -21,7 +22,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Source File Link</b></em>'. <!-- end-user-doc -->
+ * <em><b>DSource File Link</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -115,7 +116,6 @@ public class DSourceFileLinkImpl extends DNavigationLinkImpl implements DSourceF
      * 
      * @generated
      */
-
     @Override
     protected EClass eStaticClass() {
         return ViewpointPackage.Literals.DSOURCE_FILE_LINK;
@@ -189,7 +189,6 @@ public class DSourceFileLinkImpl extends DNavigationLinkImpl implements DSourceF
      * 
      * @generated
      */
-
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
@@ -208,7 +207,6 @@ public class DSourceFileLinkImpl extends DNavigationLinkImpl implements DSourceF
      * 
      * @generated
      */
-
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -230,7 +228,6 @@ public class DSourceFileLinkImpl extends DNavigationLinkImpl implements DSourceF
      * 
      * @generated
      */
-
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
@@ -252,7 +249,6 @@ public class DSourceFileLinkImpl extends DNavigationLinkImpl implements DSourceF
      * 
      * @generated
      */
-
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
@@ -271,7 +267,6 @@ public class DSourceFileLinkImpl extends DNavigationLinkImpl implements DSourceF
      * 
      * @generated
      */
-
     @Override
     public String toString() {
         if (eIsProxy())
@@ -298,4 +293,5 @@ public class DSourceFileLinkImpl extends DNavigationLinkImpl implements DSourceF
         }
         return false;
     }
+
 } // DSourceFileLinkImpl

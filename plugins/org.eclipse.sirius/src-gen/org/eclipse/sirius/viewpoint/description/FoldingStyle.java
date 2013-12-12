@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 import java.util.Arrays;
@@ -35,6 +36,7 @@ public enum FoldingStyle implements Enumerator {
      * @ordered
      */
     NONE_LITERAL(0, "NONE", "NONE"),
+
     /**
      * The '<em><b>SOURCE</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -44,6 +46,7 @@ public enum FoldingStyle implements Enumerator {
      * @ordered
      */
     SOURCE_LITERAL(1, "SOURCE", "SOURCE"),
+
     /**
      * The '<em><b>TARGET</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -53,6 +56,7 @@ public enum FoldingStyle implements Enumerator {
      * @ordered
      */
     TARGET_LITERAL(2, "TARGET", "TARGET");
+
     /**
      * The '<em><b>NONE</b></em>' literal value. <!-- begin-user-doc -->
      * <p>
@@ -234,4 +238,5 @@ public enum FoldingStyle implements Enumerator {
     public String toString() {
         return literal;
     }
-}
+
+} // FoldingStyle

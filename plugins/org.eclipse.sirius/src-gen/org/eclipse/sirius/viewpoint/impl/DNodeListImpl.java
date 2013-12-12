@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.impl;
 
 import java.util.Collection;
@@ -26,7 +27,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>View Node List</b></em>'. <!-- end-user-doc -->
+ * <em><b>DNode List</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -85,7 +86,6 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
      * 
      * @generated
      */
-
     @Override
     protected EClass eStaticClass() {
         return ViewpointPackage.Literals.DNODE_LIST;
@@ -129,7 +129,6 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
      * 
      * @generated
      */
-
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -144,7 +143,6 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
      * 
      * @generated
      */
-
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
@@ -161,7 +159,6 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
      * 
      * @generated
      */
-
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
@@ -182,7 +179,6 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
      * 
      * @generated
      */
-
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
@@ -201,7 +197,6 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
      * 
      * @generated
      */
-
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
@@ -218,7 +213,6 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
      * 
      * @generated
      */
-
     @Override
     public String toString() {
         if (eIsProxy())

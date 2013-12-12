@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.util;
 
 import java.util.Map;
@@ -139,7 +140,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
      * @return whether this factory is applicable for the type of the object.
      * @generated
      */
-
     @Override
     public boolean isFactoryForType(Object object) {
         if (object == modelPackage) {
@@ -152,7 +152,7 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
     }
 
     /**
-     * The switch the delegates to the <code>createXXX</code> methods. <!--
+     * The switch that delegates to the <code>createXXX</code> methods. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -598,7 +598,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
      * @return the adapter for the <code>target</code>.
      * @generated
      */
-
     @Override
     public Adapter createAdapter(Notifier target) {
         return modelSwitch.doSwitch((EObject) target);
@@ -1227,6 +1226,21 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.GaugeSection <em>Gauge Section</em>}
+     * '. <!-- begin-user-doc --> This default implementation returns null so
+     * that we can easily ignore cases; it's useful to ignore a case when
+     * inheritance will catch all the cases anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.GaugeSection
+     * @generated
+     */
+    public Adapter createGaugeSectionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.viewpoint.ContainerStyle
      * <em>Container Style</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
@@ -1290,6 +1304,36 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.Ellipse <em>Ellipse</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.Ellipse
+     * @generated
+     */
+    public Adapter createEllipseAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.Lozenge <em>Lozenge</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.Lozenge
+     * @generated
+     */
+    public Adapter createLozengeAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.viewpoint.BundledImage <em>Bundled Image</em>}
      * '. <!-- begin-user-doc --> This default implementation returns null so
      * that we can easily ignore cases; it's useful to ignore a case when
@@ -1336,21 +1380,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.GaugeSection <em>Gauge Section</em>}
-     * '. <!-- begin-user-doc --> This default implementation returns null so
-     * that we can easily ignore cases; it's useful to ignore a case when
-     * inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.GaugeSection
-     * @generated
-     */
-    public Adapter createGaugeSectionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.viewpoint.EdgeTarget <em>Edge Target</em>}'.
      * <!-- begin-user-doc --> This default implementation returns null so that
      * we can easily ignore cases; it's useful to ignore a case when inheritance
@@ -1376,113 +1405,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createEdgeStyleAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.BracketEdgeStyle
-     * <em>Bracket Edge Style</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.BracketEdgeStyle
-     * @generated
-     */
-    public Adapter createBracketEdgeStyleAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.Customizable <em>Customizable</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.Customizable
-     * @generated
-     */
-    public Adapter createCustomizableAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.ComputedStyleDescriptionRegistry
-     * <em>Computed Style Description Registry</em>}'. <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore
-     * cases; it's useful to ignore a case when inheritance will catch all the
-     * cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.ComputedStyleDescriptionRegistry
-     * @generated
-     */
-    public Adapter createComputedStyleDescriptionRegistryAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '{@link java.util.Map.Entry
-     * <em>Diagram Element Mapping2 Model Element</em>}'. <!-- begin-user-doc
-     * --> This default implementation returns null so that we can easily ignore
-     * cases; it's useful to ignore a case when inheritance will catch all the
-     * cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see java.util.Map.Entry
-     * @generated
-     */
-    public Adapter createDiagramElementMapping2ModelElementAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '{@link java.util.Map.Entry
-     * <em>Model Element2 View Variable</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see java.util.Map.Entry
-     * @generated
-     */
-    public Adapter createModelElement2ViewVariableAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '{@link java.util.Map.Entry
-     * <em>View Variable2 Container Variable</em>}'. <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore
-     * cases; it's useful to ignore a case when inheritance will catch all the
-     * cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see java.util.Map.Entry
-     * @generated
-     */
-    public Adapter createViewVariable2ContainerVariableAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '{@link java.util.Map.Entry
-     * <em>Container Variable2 Style Description</em>}'. <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore
-     * cases; it's useful to ignore a case when inheritance will catch all the
-     * cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see java.util.Map.Entry
-     * @generated
-     */
-    public Adapter createContainerVariable2StyleDescriptionAdapter() {
         return null;
     }
 
@@ -1863,31 +1785,108 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.Ellipse <em>Ellipse</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.BracketEdgeStyle
+     * <em>Bracket Edge Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.Ellipse
+     * @see org.eclipse.sirius.viewpoint.BracketEdgeStyle
      * @generated
      */
-    public Adapter createEllipseAdapter() {
+    public Adapter createBracketEdgeStyleAdapter() {
         return null;
     }
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.Lozenge <em>Lozenge</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * {@link org.eclipse.sirius.viewpoint.Customizable <em>Customizable</em>}'.
+     * <!-- begin-user-doc --> This default implementation returns null so that
+     * we can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.Lozenge
+     * @see org.eclipse.sirius.viewpoint.Customizable
      * @generated
      */
-    public Adapter createLozengeAdapter() {
+    public Adapter createCustomizableAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.ComputedStyleDescriptionRegistry
+     * <em>Computed Style Description Registry</em>}'. <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the
+     * cases anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.ComputedStyleDescriptionRegistry
+     * @generated
+     */
+    public Adapter createComputedStyleDescriptionRegistryAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link java.util.Map.Entry
+     * <em>Diagram Element Mapping2 Model Element</em>}'. <!-- begin-user-doc
+     * --> This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the
+     * cases anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see java.util.Map.Entry
+     * @generated
+     */
+    public Adapter createDiagramElementMapping2ModelElementAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link java.util.Map.Entry
+     * <em>Model Element2 View Variable</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see java.util.Map.Entry
+     * @generated
+     */
+    public Adapter createModelElement2ViewVariableAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link java.util.Map.Entry
+     * <em>View Variable2 Container Variable</em>}'. <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the
+     * cases anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see java.util.Map.Entry
+     * @generated
+     */
+    public Adapter createViewVariable2ContainerVariableAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '{@link java.util.Map.Entry
+     * <em>Container Variable2 Style Description</em>}'. <!-- begin-user-doc -->
+     * This default implementation returns null so that we can easily ignore
+     * cases; it's useful to ignore a case when inheritance will catch all the
+     * cases anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see java.util.Map.Entry
+     * @generated
+     */
+    public Adapter createContainerVariable2StyleDescriptionAdapter() {
         return null;
     }
 
@@ -1934,4 +1933,4 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
         return null;
     }
 
-} // SiriusAdapterFactory
+} // ViewpointAdapterFactory

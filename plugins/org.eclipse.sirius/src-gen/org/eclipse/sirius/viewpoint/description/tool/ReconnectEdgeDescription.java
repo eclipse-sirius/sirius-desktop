@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
@@ -60,14 +61,10 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * The default value is <code>"RECONNECT_TARGET"</code>. The literals are
      * from the enumeration
      * {@link org.eclipse.sirius.viewpoint.description.tool.ReconnectionKind}.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Reconnection Kind</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The kind of reconnection :
-     * SOURCE : the source of the DEdge can be reconnected but not the target.
-     * TARGET : the target of the DEdge can be reconnected but not the source.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The kind of reconnection : 
+     * SOURCE : the source of the ViewEdge can be reconnected but not the target. 
+     * TARGET : the target of the ViewEdge can be reconnected but not the source.
      * 
      * <!-- end-model-doc -->
      * 
@@ -96,13 +93,9 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
 
     /**
      * Returns the value of the '<em><b>Source</b></em>' containment reference.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Source</em>' containment reference isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The semantic element of
-     * the source view of the reconnection operation. <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The semantic element of the source view of the reconnection operation.
+     * <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Source</em>' containment reference.
      * @see #setSource(SourceEdgeCreationVariable)
@@ -127,13 +120,9 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
 
     /**
      * Returns the value of the '<em><b>Target</b></em>' containment reference.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Target</em>' containment reference isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The semantic element of
-     * the target view of the reconnection operation. <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The semantic element of the target view of the reconnection operation.
+     * <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Target</em>' containment reference.
      * @see #setTarget(TargetEdgeCreationVariable)
@@ -158,13 +147,9 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
 
     /**
      * Returns the value of the '<em><b>Source View</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Source View</em>' containment reference isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The source view of the
-     * reconnection operation. <!-- end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The source view of the reconnection operation. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Source View</em>' containment reference.
      * @see #setSourceView(SourceEdgeViewCreationVariable)
@@ -190,13 +175,9 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
 
     /**
      * Returns the value of the '<em><b>Target View</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Target View</em>' containment reference isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The target view of the
-     * reconnection operation. <!-- end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The target view of the reconnection operation. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Target View</em>' containment reference.
      * @see #setTargetView(TargetEdgeViewCreationVariable)
@@ -222,13 +203,8 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
 
     /**
      * Returns the value of the '<em><b>Element</b></em>' containment reference.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Element</em>' reference isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The semantic element of
-     * the DEdge. <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The semantic element of the ViewEdge. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Element</em>' containment reference.
      * @see #setElement(ElementSelectVariable)
@@ -253,13 +229,8 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
 
     /**
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Initial Operation</em>' containment reference
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The first operation. <!--
-     * end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The first operation. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
@@ -285,34 +256,11 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
     void setInitialOperation(InitialOperation value);
 
     /**
-     * Returns the value of the '<em><b>Mappings</b></em>' reference list. The
-     * list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.EdgeMapping}. It is
-     * bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.viewpoint.description.EdgeMapping#getReconnections
-     * <em>Reconnections</em>}'. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Mappings</em>' reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The mappings that create
-     * edges that can be reconnected by this tool. <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>Mappings</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getReconnectEdgeDescription_Mappings()
-     * @see org.eclipse.sirius.viewpoint.description.EdgeMapping#getReconnections
-     * @model type="viewpoint.description.EdgeMapping" opposite="reconnections"
-     *        required="true"
-     * @generated
-     */
-    EList<EdgeMapping> getMappings();
-
-    /**
      * Returns the value of the '<em><b>Edge View</b></em>' containment
      * reference. <!-- begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Edge View</em>' attribute isn't clear, there
-     * really should be more of a description here...
+     * If the meaning of the '<em>Edge View</em>' containment reference isn't
+     * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * 
@@ -337,5 +285,19 @@ public interface ReconnectEdgeDescription extends MappingBasedToolDescription {
      * @generated
      */
     void setEdgeView(ElementSelectVariable value);
+
+    /**
+     * Returns the value of the '<em><b>Mappings</b></em>' reference list. The
+     * list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.EdgeMapping}. It is
+     * bidirectional and its opposite is '
+     * {@link org.eclipse.sirius.viewpoint.description.EdgeMapping#getReconnections
+     * <em>Reconnections</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @model kind="operation" required="true"
+     * @generated
+     */
+    EList<EdgeMapping> getMappings();
 
 } // ReconnectEdgeDescription

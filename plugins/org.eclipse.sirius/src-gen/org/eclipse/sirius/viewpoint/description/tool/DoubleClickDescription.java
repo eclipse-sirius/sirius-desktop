@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
@@ -64,8 +65,8 @@ public interface DoubleClickDescription extends MappingBasedToolDescription {
     /**
      * Returns the value of the '<em><b>Element</b></em>' containment reference.
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The semantic element of the SiriusElement to delete. <!-- end-model-doc
-     * -->
+     * The semantic element of the ViewPointElement to delete. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Element</em>' containment reference.
      * @see #setElement(ElementDoubleClickVariable)

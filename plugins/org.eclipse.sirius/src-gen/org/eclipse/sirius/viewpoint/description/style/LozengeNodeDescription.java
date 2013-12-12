@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style;
 
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
@@ -42,14 +43,17 @@ public interface LozengeNodeDescription extends NodeStyleDescription {
     /**
      * Returns the value of the '<em><b>Width Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
-     * begin-model-doc --> The acceleo expression that computes the width of the
-     * lozenge. <!-- end-model-doc -->
+     * begin-model-doc --> An expression to compute the width of the lozenge.
+     * <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Width Computation Expression</em>'
      *         attribute.
      * @see #setWidthComputationExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLozengeNodeDescription_WidthComputationExpression()
-     * @model dataType="org.eclipse.sirius.description.AcceleoExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      * @generated
      */
     String getWidthComputationExpression();
@@ -71,14 +75,17 @@ public interface LozengeNodeDescription extends NodeStyleDescription {
     /**
      * Returns the value of the '<em><b>Height Computation Expression</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
-     * begin-model-doc --> The acceleo expression that computes the height of
-     * the lozenge. <!-- end-model-doc -->
+     * begin-model-doc --> An expression to computes the height of the lozenge.
+     * <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Height Computation Expression</em>'
      *         attribute.
      * @see #setHeightComputationExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLozengeNodeDescription_HeightComputationExpression()
-     * @model dataType="org.eclipse.sirius.description.AcceleoExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      * @generated
      */
     String getHeightComputationExpression();
@@ -98,12 +105,12 @@ public interface LozengeNodeDescription extends NodeStyleDescription {
     void setHeightComputationExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Color</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The color of the lozenge. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Color</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * color of the lozenge. <!-- end-model-doc -->
      * 
-     * @return the value of the '<em>Color</em>' containment reference.
-     * @see #setColor(ColorMapping)
+     * @return the value of the '<em>Color</em>' reference.
+     * @see #setColor(ColorDescription)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLozengeNodeDescription_Color()
      * @model required="true"
      * @generated

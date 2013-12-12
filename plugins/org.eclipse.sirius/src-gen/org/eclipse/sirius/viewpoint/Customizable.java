@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
@@ -35,13 +36,13 @@ public interface Customizable extends EObject {
      * list. The list contents are of type {@link java.lang.String}. <!--
      * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Custom Features</em>' reference list isn't
+     * If the meaning of the '<em>Custom Features</em>' attribute list isn't
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * 
      * @return the value of the '<em>Custom Features</em>' attribute list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getCustomizable_CustomFeatures()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getCustomizable_CustomFeatures()
      * @model
      * @generated
      */

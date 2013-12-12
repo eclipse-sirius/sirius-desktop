@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -1636,15 +1637,6 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
-    public EReference getSelectionWizardDescription_InitialOperation() {
-        return (EReference) selectionWizardDescriptionEClass.getEStructuralFeatures().get(3);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EReference getSelectionWizardDescription_Element() {
         return (EReference) selectionWizardDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -1665,6 +1657,15 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      */
     public EReference getSelectionWizardDescription_Container() {
         return (EReference) selectionWizardDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getSelectionWizardDescription_InitialOperation() {
+        return (EReference) selectionWizardDescriptionEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -1708,15 +1709,6 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
-    public EReference getPaneBasedSelectionWizardDescription_InitialOperation() {
-        return (EReference) paneBasedSelectionWizardDescriptionEClass.getEStructuralFeatures().get(3);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EReference getPaneBasedSelectionWizardDescription_Element() {
         return (EReference) paneBasedSelectionWizardDescriptionEClass.getEStructuralFeatures().get(0);
     }
@@ -1737,6 +1729,15 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      */
     public EReference getPaneBasedSelectionWizardDescription_Container() {
         return (EReference) paneBasedSelectionWizardDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getPaneBasedSelectionWizardDescription_InitialOperation() {
+        return (EReference) paneBasedSelectionWizardDescriptionEClass.getEStructuralFeatures().get(3);
     }
 
     /**

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -447,27 +448,6 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      * 
      * @generated
      */
-    public LabelAlignment getLabelAlignment() {
-        return labelAlignment;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setLabelAlignment(LabelAlignment newLabelAlignment) {
-        LabelAlignment oldLabelAlignment = labelAlignment;
-        labelAlignment = newLabelAlignment == null ? LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT, oldLabelAlignment, labelAlignment));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public ColorDescription getLabelColor() {
         if (labelColor != null && labelColor.eIsProxy()) {
             InternalEObject oldLabelColor = (InternalEObject) labelColor;
@@ -520,6 +500,27 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         iconPath = newIconPath;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH, oldIconPath, iconPath));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public LabelAlignment getLabelAlignment() {
+        return labelAlignment;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setLabelAlignment(LabelAlignment newLabelAlignment) {
+        LabelAlignment oldLabelAlignment = labelAlignment;
+        labelAlignment = newLabelAlignment == null ? LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT, oldLabelAlignment, labelAlignment));
     }
 
     /**

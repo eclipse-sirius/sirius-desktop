@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.impl;
 
 import java.util.Collection;
@@ -652,6 +653,27 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * 
      * @generated
      */
+    public String getEndUserDocumentation() {
+        return endUserDocumentation;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setEndUserDocumentation(String newEndUserDocumentation) {
+        String oldEndUserDocumentation = endUserDocumentation;
+        endUserDocumentation = newEndUserDocumentation;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__END_USER_DOCUMENTATION, oldEndUserDocumentation, endUserDocumentation));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public String getName() {
         return name;
     }
@@ -774,27 +796,6 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
             pasteDescriptions = new EObjectResolvingEList<PasteDescription>(PasteDescription.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__PASTE_DESCRIPTIONS);
         }
         return pasteDescriptions;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public String getEndUserDocumentation() {
-        return endUserDocumentation;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setEndUserDocumentation(String newEndUserDocumentation) {
-        String oldEndUserDocumentation = endUserDocumentation;
-        endUserDocumentation = newEndUserDocumentation;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__END_USER_DOCUMENTATION, oldEndUserDocumentation, endUserDocumentation));
     }
 
     /**

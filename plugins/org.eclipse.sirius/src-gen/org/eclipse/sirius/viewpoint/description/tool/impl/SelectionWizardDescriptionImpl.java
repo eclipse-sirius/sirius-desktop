@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -455,76 +456,6 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
      * 
      * @generated
      */
-    public InitialOperation getInitialOperation() {
-        if (initialOperation != null && initialOperation.eIsProxy()) {
-            InternalEObject oldInitialOperation = (InternalEObject) initialOperation;
-            initialOperation = (InitialOperation) eResolveProxy(oldInitialOperation);
-            if (initialOperation != oldInitialOperation) {
-                InternalEObject newInitialOperation = (InternalEObject) initialOperation;
-                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, null);
-                if (newInitialOperation.eInternalContainer() == null) {
-                    msgs = newInitialOperation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, msgs);
-                }
-                if (msgs != null)
-                    msgs.dispatch();
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, initialOperation));
-            }
-        }
-        return initialOperation;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public InitialOperation basicGetInitialOperation() {
-        return initialOperation;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
-        InitialOperation oldInitialOperation = initialOperation;
-        initialOperation = newInitialOperation;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
-        }
-        return msgs;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setInitialOperation(InitialOperation newInitialOperation) {
-        if (newInitialOperation != initialOperation) {
-            NotificationChain msgs = null;
-            if (initialOperation != null)
-                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, msgs);
-            if (newInitialOperation != null)
-                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, msgs);
-            msgs = basicSetInitialOperation(newInitialOperation, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public ElementSelectVariable getElement() {
         if (element != null && element.eIsProxy()) {
             InternalEObject oldElement = (InternalEObject) element;
@@ -728,6 +659,76 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
                 msgs.dispatch();
         } else if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__CONTAINER, newContainer, newContainer));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public InitialOperation getInitialOperation() {
+        if (initialOperation != null && initialOperation.eIsProxy()) {
+            InternalEObject oldInitialOperation = (InternalEObject) initialOperation;
+            initialOperation = (InitialOperation) eResolveProxy(oldInitialOperation);
+            if (initialOperation != oldInitialOperation) {
+                InternalEObject newInitialOperation = (InternalEObject) initialOperation;
+                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, null);
+                if (newInitialOperation.eInternalContainer() == null) {
+                    msgs = newInitialOperation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+                }
+                if (msgs != null)
+                    msgs.dispatch();
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, initialOperation));
+            }
+        }
+        return initialOperation;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public InitialOperation basicGetInitialOperation() {
+        return initialOperation;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public NotificationChain basicSetInitialOperation(InitialOperation newInitialOperation, NotificationChain msgs) {
+        InitialOperation oldInitialOperation = initialOperation;
+        initialOperation = newInitialOperation;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setInitialOperation(InitialOperation newInitialOperation) {
+        if (newInitialOperation != initialOperation) {
+            NotificationChain msgs = null;
+            if (initialOperation != null)
+                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            if (newInitialOperation != null)
+                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            msgs = basicSetInitialOperation(newInitialOperation, msgs);
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.SELECTION_WIZARD_DESCRIPTION__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
     }
 
     /**

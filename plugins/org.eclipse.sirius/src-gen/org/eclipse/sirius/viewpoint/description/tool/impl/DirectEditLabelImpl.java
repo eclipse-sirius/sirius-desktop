@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -103,17 +104,6 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
     @Override
     protected EClass eStaticClass() {
         return ToolPackage.Literals.DIRECT_EDIT_LABEL;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EList<DiagramElementMapping> getMapping() {
-        // TODO: implement this method
-        // Ensure that you remove @generated or mark it @generated NOT
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -275,6 +265,17 @@ public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl impleme
         inputLabelExpression = newInputLabelExpression;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.DIRECT_EDIT_LABEL__INPUT_LABEL_EXPRESSION, oldInputLabelExpression, inputLabelExpression));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EList<DiagramElementMapping> getMapping() {
+        // TODO: implement this method
+        // Ensure that you remove @generated or mark it @generated NOT
+        throw new UnsupportedOperationException();
     }
 
     /**

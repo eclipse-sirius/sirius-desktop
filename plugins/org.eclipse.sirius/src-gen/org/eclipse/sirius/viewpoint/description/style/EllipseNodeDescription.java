@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style;
 
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
@@ -40,12 +41,12 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  */
 public interface EllipseNodeDescription extends NodeStyleDescription {
     /**
-     * Returns the value of the '<em><b>Color</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The color of the ellipse. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Color</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * color of the ellipse. <!-- end-model-doc -->
      * 
-     * @return the value of the '<em>Color</em>' containment reference.
-     * @see #setColor(ColorMapping)
+     * @return the value of the '<em>Color</em>' reference.
+     * @see #setColor(ColorDescription)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEllipseNodeDescription_Color()
      * @model required="true"
      * @generated
@@ -68,16 +69,18 @@ public interface EllipseNodeDescription extends NodeStyleDescription {
      * Returns the value of the '
      * <em><b>Horizontal Diameter Computation Expression</b></em>' attribute.
      * The default value is <code>"0"</code>. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> The acceleo expression that
-     * computes the horizontal diameter of the ellipse. (Semimajor axis) <!--
-     * end-model-doc -->
+     * end-user-doc --> <!-- begin-model-doc --> An expression to compute the
+     * horizontal diameter of the ellipse. (Semimajor axis) <!-- end-model-doc
+     * -->
      * 
      * @return the value of the '
      *         <em>Horizontal Diameter Computation Expression</em>' attribute.
      * @see #setHorizontalDiameterComputationExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEllipseNodeDescription_HorizontalDiameterComputationExpression()
-     * @model default="0"
-     *        dataType="org.eclipse.sirius.description.AcceleoExpression"
+     * @model default="0" dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      * @generated
      */
     String getHorizontalDiameterComputationExpression();
@@ -101,16 +104,17 @@ public interface EllipseNodeDescription extends NodeStyleDescription {
      * Returns the value of the '
      * <em><b>Vertical Diameter Computation Expression</b></em>' attribute. The
      * default value is <code>"0"</code>. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> The acceleo expression that
-     * computes the vertical diameter of the ellipse. (Semiminor axis) <!--
-     * end-model-doc -->
+     * end-user-doc --> <!-- begin-model-doc --> An expression to compute the
+     * vertical diameter of the ellipse. (Semiminor axis) <!-- end-model-doc -->
      * 
      * @return the value of the '
      *         <em>Vertical Diameter Computation Expression</em>' attribute.
      * @see #setVerticalDiameterComputationExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEllipseNodeDescription_VerticalDiameterComputationExpression()
-     * @model default="0"
-     *        dataType="org.eclipse.sirius.description.AcceleoExpression"
+     * @model default="0" dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      * @generated
      */
     String getVerticalDiameterComputationExpression();

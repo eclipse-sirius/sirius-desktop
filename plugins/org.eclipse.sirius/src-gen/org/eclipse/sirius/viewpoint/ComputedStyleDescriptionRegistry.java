@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
@@ -64,7 +65,7 @@ public interface ComputedStyleDescriptionRegistry extends EObject {
      * <org.eclipse.emf.ecore.EObject,
      * org.eclipse.emf.common.util.EMap<org.eclipse.emf.ecore.EObject,
      * org.eclipse.emf.common.util.EMap<org.eclipse.emf.ecore.EObject,
-     * org.eclipse.sirius.description.style.StyleDescription>>>}, <!--
+     * org.eclipse.sirius.viewpoint.description.style.StyleDescription>>>}, <!--
      * begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Cache</em>' map isn't clear, there really
@@ -73,9 +74,9 @@ public interface ComputedStyleDescriptionRegistry extends EObject {
      * <!-- end-user-doc -->
      * 
      * @return the value of the '<em>Cache</em>' map.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getComputedStyleDescriptionRegistry_Cache()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getComputedStyleDescriptionRegistry_Cache()
      * @model mapType=
-     *        "org.eclipse.sirius.DiagramElementMapping2ModelElement<org.eclipse.sirius.description.DiagramElementMapping, org.eclipse.sirius.ModelElement2ViewVariable>"
+     *        "org.eclipse.sirius.viewpoint.DiagramElementMapping2ModelElement<org.eclipse.sirius.viewpoint.description.DiagramElementMapping, org.eclipse.sirius.viewpoint.ModelElement2ViewVariable>"
      * @generated
      */
     EMap<DiagramElementMapping, EMap<EObject, EMap<EObject, EMap<EObject, StyleDescription>>>> getCache();

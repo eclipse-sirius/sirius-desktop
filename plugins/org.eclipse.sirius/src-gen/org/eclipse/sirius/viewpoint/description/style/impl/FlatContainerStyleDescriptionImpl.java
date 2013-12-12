@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -218,6 +219,27 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
      * 
      * @generated
      */
+    public BackgroundStyle getBackgroundStyle() {
+        return backgroundStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setBackgroundStyle(BackgroundStyle newBackgroundStyle) {
+        BackgroundStyle oldBackgroundStyle = backgroundStyle;
+        backgroundStyle = newBackgroundStyle == null ? BACKGROUND_STYLE_EDEFAULT : newBackgroundStyle;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_STYLE, oldBackgroundStyle, backgroundStyle));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public ColorDescription getBackgroundColor() {
         if (backgroundColor != null && backgroundColor.eIsProxy()) {
             InternalEObject oldBackgroundColor = (InternalEObject) backgroundColor;
@@ -249,27 +271,6 @@ public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescription
         backgroundColor = newBackgroundColor;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public BackgroundStyle getBackgroundStyle() {
-        return backgroundStyle;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setBackgroundStyle(BackgroundStyle newBackgroundStyle) {
-        BackgroundStyle oldBackgroundStyle = backgroundStyle;
-        backgroundStyle = newBackgroundStyle == null ? BACKGROUND_STYLE_EDEFAULT : newBackgroundStyle;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.FLAT_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_STYLE, oldBackgroundStyle, backgroundStyle));
     }
 
     /**

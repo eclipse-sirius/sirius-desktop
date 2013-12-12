@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style;
 
 import org.eclipse.sirius.viewpoint.LabelPosition;
@@ -44,17 +45,18 @@ import org.eclipse.sirius.viewpoint.ResizeKind;
 public interface NodeStyleDescription extends StyleDescription, BorderedStyleDescription, LabelStyleDescription, TooltipStyleDescription {
     /**
      * Returns the value of the '<em><b>Size Computation Expression</b></em>'
-     * attribute. The default value is <code>"<%eContents().nSize%>"</code>.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Acceleo expression that computes the size of the node. <!-- end-model-doc
-     * -->
+     * attribute. The default value is <code>"3"</code>. <!-- begin-user-doc -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> Expression that computes
+     * the size of the node. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Size Computation Expression</em>'
      *         attribute.
      * @see #setSizeComputationExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getNodeStyleDescription_SizeComputationExpression()
-     * @model default="<%eContents().nSize%>"
-     *        dataType="org.eclipse.sirius.description.AcceleoExpression"
+     * @model default="3" dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      * @generated
      */
     String getSizeComputationExpression();
@@ -78,7 +80,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * default value is <code>"border"</code>. The literals are from the
      * enumeration {@link org.eclipse.sirius.viewpoint.LabelPosition}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * position of the label of the node. <!-- end-model-doc -->
+     * relative position of the label to the node. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Label Position</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.LabelPosition
@@ -107,9 +109,9 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * Returns the value of the '<em><b>Hide Label By Default</b></em>'
      * attribute. The default value is <code>"false"</code>. <!-- begin-user-doc
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> The default visibility
-     * of the label (available only if labelPosition equals BORDER).&#xA;A
-     * change of this option does not affect already existing elements. <!--
-     * end-model-doc -->
+     * of the label (available only if labelPosition equals BORDER). A change of
+     * this option does not affect already existing elements. <!-- end-model-doc
+     * -->
      * 
      * @return the value of the '<em>Hide Label By Default</em>' attribute.
      * @see #setHideLabelByDefault(boolean)
@@ -137,8 +139,8 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * Returns the value of the '<em><b>Resize Kind</b></em>' attribute. The
      * default value is <code>"NONE"</code>. The literals are from the
      * enumeration {@link org.eclipse.sirius.viewpoint.ResizeKind}. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> If true
-     * then the node can be resized by the user. <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Define
+     * the directions the user is able to resize. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Resize Kind</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.ResizeKind

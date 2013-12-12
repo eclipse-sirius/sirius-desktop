@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.impl;
 
 import java.util.Collection;
@@ -87,7 +88,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
  * @generated
  */
 public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMapping {
-
     /**
      * The default value of the '{@link #getDocumentation()
      * <em>Documentation</em>}' attribute. <!-- begin-user-doc --> <!--
@@ -348,7 +348,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     /**
      * <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      */
     public EList<DiagramElementMapping> getSourceMapping() {
@@ -360,8 +360,8 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
 
     /**
      * <!-- begin-user-doc -->
-     * 
-     * @since 0.9.0
+
+     * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
     public EList<DiagramElementMapping> getTargetMapping() {

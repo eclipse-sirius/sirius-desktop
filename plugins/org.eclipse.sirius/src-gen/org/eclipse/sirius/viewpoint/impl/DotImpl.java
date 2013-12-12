@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -83,7 +84,6 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * 
      * @generated
      */
-
     @Override
     protected EClass eStaticClass() {
         return ViewpointPackage.Literals.DOT;
@@ -199,7 +199,6 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * 
      * @generated
      */
-
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
@@ -218,7 +217,6 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * 
      * @generated
      */
-
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -237,7 +235,6 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * 
      * @generated
      */
-
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
@@ -256,7 +253,6 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * 
      * @generated
      */
-
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
@@ -273,7 +269,6 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * 
      * @generated
      */
-
     @Override
     public String toString() {
         if (eIsProxy())

@@ -1,18 +1,19 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Source File Link</b></em>'. <!-- end-user-doc -->
+ * <em><b>DSource File Link</b></em>'. <!-- end-user-doc -->
  * 
  * <!-- begin-model-doc --> A link that references a Source File. <!--
  * end-model-doc -->
@@ -36,16 +37,12 @@ package org.eclipse.sirius.viewpoint;
 public interface DSourceFileLink extends DNavigationLink {
     /**
      * Returns the value of the '<em><b>File Path</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>File Path</em>' attribute isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * path of the source file. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>File Path</em>' attribute.
      * @see #setFilePath(String)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getSourceFileLink_FilePath()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDSourceFileLink_FilePath()
      * @model required="true"
      * @generated
      */
@@ -66,17 +63,13 @@ public interface DSourceFileLink extends DNavigationLink {
 
     /**
      * Returns the value of the '<em><b>Start Position</b></em>' attribute. The
-     * default value is <code>"0"</code>. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Start Position</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The index of the start
-     * portion of code. <!-- end-model-doc -->
+     * default value is <code>"0"</code>. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> The index of the start portion
+     * of code. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Start Position</em>' attribute.
      * @see #setStartPosition(int)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getSourceFileLink_StartPosition()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDSourceFileLink_StartPosition()
      * @model default="0"
      * @generated
      */
@@ -97,17 +90,13 @@ public interface DSourceFileLink extends DNavigationLink {
 
     /**
      * Returns the value of the '<em><b>End Position</b></em>' attribute. The
-     * default value is <code>"1"</code>. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>End Position</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The index of the end
-     * portion of code. <!-- end-model-doc -->
+     * default value is <code>"1"</code>. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> The index of the end portion of
+     * code. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>End Position</em>' attribute.
      * @see #setEndPosition(int)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getSourceFileLink_EndPosition()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDSourceFileLink_EndPosition()
      * @model default="1"
      * @generated
      */

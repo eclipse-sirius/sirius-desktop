@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.ecore.EObject;
@@ -15,7 +16,7 @@ import org.eclipse.sirius.viewpoint.description.NavigationTargetType;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Navigation Link</b></em>'. <!-- end-user-doc -->
+ * <em><b>DNavigation Link</b></em>'. <!-- end-user-doc -->
  * 
  * <!-- begin-model-doc --> A link for a navigable. <!-- end-model-doc -->
  * 
@@ -38,18 +39,13 @@ public interface DNavigationLink extends EObject {
      * Returns the value of the '<em><b>Target Type</b></em>' attribute. The
      * literals are from the enumeration
      * {@link org.eclipse.sirius.viewpoint.description.NavigationTargetType}.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Target Type</em>' attribute isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The type of the target.
-     * <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The type of the target. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Target Type</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.description.NavigationTargetType
      * @see #setTargetType(NavigationTargetType)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getNavigationLink_TargetType()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDNavigationLink_TargetType()
      * @model
      * @generated
      */
@@ -71,17 +67,13 @@ public interface DNavigationLink extends EObject {
 
     /**
      * Returns the value of the '<em><b>Label</b></em>' attribute. The default
-     * value is <code>"link to..."</code>. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Label</em>' attribute isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The label of the
-     * navigation. <!-- end-model-doc -->
+     * value is <code>"link to..."</code>. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> The label of the navigation.
+     * <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Label</em>' attribute.
      * @see #setLabel(String)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getNavigationLink_Label()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDNavigationLink_Label()
      * @model default="link to..."
      * @generated
      */

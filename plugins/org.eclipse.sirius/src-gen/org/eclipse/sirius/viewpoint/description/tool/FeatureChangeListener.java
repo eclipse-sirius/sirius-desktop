@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.ecore.EObject;
@@ -45,7 +46,8 @@ public interface FeatureChangeListener extends EObject {
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getFeatureChangeListener_DomainClass()
-     * @model dataType="org.eclipse.sirius.description.TypeName" required="true"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.TypeName"
+     *        required="true"
      * @generated
      */
     String getDomainClass();
@@ -75,7 +77,7 @@ public interface FeatureChangeListener extends EObject {
      * @return the value of the '<em>Feature Name</em>' attribute.
      * @see #setFeatureName(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getFeatureChangeListener_FeatureName()
-     * @model dataType="org.eclipse.sirius.description.FeatureName"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.FeatureName"
      *        required="true"
      * @generated
      */

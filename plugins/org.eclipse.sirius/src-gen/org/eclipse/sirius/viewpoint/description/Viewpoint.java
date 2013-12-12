@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 import org.eclipse.emf.common.util.EList;
@@ -17,7 +18,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>DView Description</b></em>'. <!-- end-user-doc -->
+ * <em><b>Viewpoint</b></em>'. <!-- end-user-doc -->
  * 
  * <!-- begin-model-doc --> A Viewpoint defines a
  * "way of looking at your model", you could make an analogy with
@@ -71,10 +72,6 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
     /**
      * Returns the value of the '<em><b>Model File Extension</b></em>'
      * attribute. The default value is <code>"*"</code>. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Model File Extension</em>' attribute isn't
-     * clear, there really should be more of a description here...
-     * </p>
      * <!-- end-user-doc --> <!-- begin-model-doc --> Might be used to restrict
      * your viewpoint to a set of file extensions, for instance "ecore" <!--
      * end-model-doc -->
@@ -109,7 +106,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * @return the value of the '<em>Validation Set</em>' containment reference.
      * @see #setValidationSet(ValidationSet)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_ValidationSet()
-     * @model containment="true" resolveProxies="true"
+     * @model containment="true" resolveProxies="true" keys="name"
      * @generated
      */
     ValidationSet getValidationSet();
@@ -183,8 +180,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * @return the value of the '<em>Owned Java Extensions</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_OwnedJavaExtensions()
-     * @model type="org.eclipse.sirius.description.JavaExtension"
-     *        containment="true" resolveProxies="true" keys="qualifiedClassName"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<JavaExtension> getOwnedJavaExtensions();
@@ -285,7 +281,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * 
      * @return the value of the '<em>Conflicts</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_Conflicts()
-     * @model dataType="org.eclipse.sirius.description.URI"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.URI"
      * @generated
      */
     EList<URI> getConflicts();
@@ -302,7 +298,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * 
      * @return the value of the '<em>Reuses</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_Reuses()
-     * @model dataType="org.eclipse.sirius.description.URI"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.URI"
      * @generated
      */
     EList<URI> getReuses();
@@ -319,7 +315,7 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
      * 
      * @return the value of the '<em>Customizes</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint_Customizes()
-     * @model dataType="org.eclipse.sirius.description.URI"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.URI"
      * @generated
      */
     EList<URI> getCustomizes();
@@ -336,4 +332,4 @@ public interface Viewpoint extends DocumentedElement, Component, EndUserDocument
     @Deprecated
     void initView(EObject model);
 
-} // Sirius
+} // Viewpoint

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.filter;
 
 import org.eclipse.emf.common.util.EList;
@@ -44,13 +45,8 @@ public interface MappingFilter extends Filter {
      * Returns the value of the '<em><b>Mappings</b></em>' reference list. The
      * list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping}.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Mappings</em>' reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> All mappings to filter.
-     * <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * All mappings to filter. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Mappings</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.filter.FilterPackage#getMappingFilter_Mappings()
@@ -61,19 +57,18 @@ public interface MappingFilter extends Filter {
 
     /**
      * Returns the value of the '<em><b>Semantic Condition Expression</b></em>'
-     * attribute. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Semantic Condition Expression</em>' attribute
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The condition to apply on
-     * the semantic element. <!-- end-model-doc -->
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The condition to apply on the semantic element, if
+     * true the element is filtered. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Semantic Condition Expression</em>'
      *         attribute.
      * @see #setSemanticConditionExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.filter.FilterPackage#getMappingFilter_SemanticConditionExpression()
-     * @model
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      * @generated
      */
     String getSemanticConditionExpression();
@@ -94,18 +89,17 @@ public interface MappingFilter extends Filter {
 
     /**
      * Returns the value of the '<em><b>View Condition Expression</b></em>'
-     * attribute. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>View Condition Expression</em>' attribute
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The condition to apply on
-     * the view element. <!-- end-model-doc -->
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The condition to apply on the view element. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>View Condition Expression</em>' attribute.
      * @see #setViewConditionExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.filter.FilterPackage#getMappingFilter_ViewConditionExpression()
-     * @model
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      * @generated
      */
     String getViewConditionExpression();

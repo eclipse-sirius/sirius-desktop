@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 /**
@@ -31,7 +32,6 @@ package org.eclipse.sirius.viewpoint;
  * @generated
  */
 public interface NodeStyle extends LabelStyle, Style, BorderedStyle {
-
     /**
      * Returns the value of the '<em><b>Label Position</b></em>' attribute. The
      * literals are from the enumeration
@@ -43,7 +43,7 @@ public interface NodeStyle extends LabelStyle, Style, BorderedStyle {
      * @return the value of the '<em>Label Position</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.LabelPosition
      * @see #setLabelPosition(LabelPosition)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getNodeStyle_LabelPosition()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getNodeStyle_LabelPosition()
      * @model
      * @generated
      */
@@ -73,7 +73,7 @@ public interface NodeStyle extends LabelStyle, Style, BorderedStyle {
      * 
      * @return the value of the '<em>Hide Label By Default</em>' attribute.
      * @see #setHideLabelByDefault(boolean)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getNodeStyle_HideLabelByDefault()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getNodeStyle_HideLabelByDefault()
      * @model default="false"
      * @generated
      */
@@ -92,4 +92,5 @@ public interface NodeStyle extends LabelStyle, Style, BorderedStyle {
      * @generated
      */
     void setHideLabelByDefault(boolean value);
+
 } // NodeStyle

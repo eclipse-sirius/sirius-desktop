@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 import org.eclipse.emf.common.util.EList;
@@ -43,18 +44,14 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedElement {
     /**
      * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Domain Class</em>' reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The domain class of the
-     * mapping. <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * domain class of the mapping. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Domain Class</em>' attribute.
      * @see #setDomainClass(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAbstractNodeMapping_DomainClass()
-     * @model dataType="viewpoint.description.TypeName" required="true"
+     * @model dataType="org.eclipse.sirius.viewpoint.description.TypeName"
+     *        required="true"
      * @generated
      */
     String getDomainClass();
@@ -76,21 +73,14 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
      * Returns the value of the '<em><b>Bordered Node Mappings</b></em>'
      * containment reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.NodeMapping}. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Bordered Node Mappings</em>' containment
-     * reference list isn't clear, there really should be more of a description
-     * here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The mapping for nodes that
-     * are on the border of nodes created by this mapping. <!-- end-model-doc
-     * -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * mapping for nodes that are on the border of nodes created by this
+     * mapping. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Bordered Node Mappings</em>' containment
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAbstractNodeMapping_BorderedNodeMappings()
-     * @model type="viewpoint.description.NodeMapping" containment="true"
-     *        resolveProxies="true" keys="name"
+     * @model containment="true" resolveProxies="true" keys="name"
      * @generated
      */
     EList<NodeMapping> getBorderedNodeMappings();
@@ -109,7 +99,7 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
      * @return the value of the '<em>Reused Bordered Node Mappings</em>'
      *         reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getAbstractNodeMapping_ReusedBorderedNodeMappings()
-     * @model type="org.eclipse.sirius.description.NodeMapping"
+     * @model
      * @generated
      */
     EList<NodeMapping> getReusedBorderedNodeMappings();
@@ -119,7 +109,7 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
      * Return all nodes that have been created by this mapping. <!--
      * end-model-doc -->
      * 
-     * @model kind="operation" type="org.eclipse.sirius.DDiagramElement"
+     * @model kind="operation"
      * @generated
      */
     @Deprecated
@@ -132,7 +122,7 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
      * 
      * @param eObject
      *            The semantic element. <!-- end-model-doc -->
-     * @model type="org.eclipse.sirius.DDiagramElement"
+     * @model
      * @generated
      */
     @Deprecated

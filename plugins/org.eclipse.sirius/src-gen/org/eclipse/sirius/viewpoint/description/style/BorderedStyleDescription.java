@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style;
 
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
@@ -36,21 +37,16 @@ public interface BorderedStyleDescription extends StyleDescription {
     /**
      * Returns the value of the '
      * <em><b>Border Size Computation Expression</b></em>' attribute. The
-     * default value is <code>"0"</code>. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Border Size Computation Expression</em>'
-     * attribute isn't clear, there really should be more of a description
-     * here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> An expression computing
-     * the size of the border. <!-- end-model-doc -->
+     * default value is <code>"0"</code>. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> An expression computing the
+     * size of the border. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Border Size Computation Expression</em>'
      *         attribute.
      * @see #setBorderSizeComputationExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getBorderedStyleDescription_BorderSizeComputationExpression()
-     * @model default="0"
-     *        dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model default="0" dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
      * @generated
@@ -75,8 +71,8 @@ public interface BorderedStyleDescription extends StyleDescription {
      * Returns the value of the '<em><b>Border Color</b></em>' reference. <!--
      * begin-user-doc -->
      * <p>
-     * If the meaning of the '<em>Border Color</em>' containment reference isn't
-     * clear, there really should be more of a description here...
+     * If the meaning of the '<em>Border Color</em>' reference isn't clear,
+     * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * 

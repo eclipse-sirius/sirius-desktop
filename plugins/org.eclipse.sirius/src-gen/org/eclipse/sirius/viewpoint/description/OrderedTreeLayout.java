@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 import org.eclipse.emf.common.util.EList;
@@ -35,15 +36,18 @@ import org.eclipse.emf.common.util.EList;
 public interface OrderedTreeLayout extends Layout {
     /**
      * Returns the value of the '<em><b>Children Expression</b></em>' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The acceleo expression that computes the children element of this
-     * element. <!-- end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> An
+     * expression returning the semantic children of an element, the result of
+     * this expression is used to compute a hiearchical tree for the layout.
+     * <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Children Expression</em>' attribute.
      * @see #setChildrenExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getOrderedTreeLayout_ChildrenExpression()
-     * @model dataType="org.eclipse.sirius.description.AcceleoExpression"
-     *        required="true"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        required="true" annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      * @generated
      */
     String getChildrenExpression();
@@ -62,12 +66,14 @@ public interface OrderedTreeLayout extends Layout {
     void setChildrenExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Node Mapping</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
-     * domain class of the mapping. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Node Mapping</b></em>' reference list.
+     * The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.AbstractNodeMapping}.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The list of mappings affected by the ordered tree routing. <!--
+     * end-model-doc -->
      * 
-     * @return the value of the '<em>Node Mapping</em>' reference.
-     * @see #setNodeMapping(AbstractNodeMapping)
+     * @return the value of the '<em>Node Mapping</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getOrderedTreeLayout_NodeMapping()
      * @model required="true"
      * @generated

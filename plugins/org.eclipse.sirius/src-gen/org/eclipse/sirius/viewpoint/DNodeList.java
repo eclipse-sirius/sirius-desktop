@@ -1,20 +1,21 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>View Node List</b></em>'. <!-- end-user-doc -->
+ * <em><b>DNode List</b></em>'. <!-- end-user-doc -->
  * 
  * <!-- begin-model-doc --> A container that shows its contents as a list. <!--
  * end-model-doc -->
@@ -38,36 +39,26 @@ public interface DNodeList extends DDiagramElementContainer {
      * Returns the value of the '<em><b>Owned Elements</b></em>' containment
      * reference list. The list contents are of type
      * {@link org.eclipse.sirius.viewpoint.DNodeListElement}. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Owned Elements</em>' containment reference
-     * list isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> elements owned by this
-     * list. <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * elements owned by this list. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Owned Elements</em>' containment reference
      *         list.
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewNodeList_OwnedElements()
-     * @model type="viewpoint.DNodeListElement" containment="true"
-     *        resolveProxies="true"
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDNodeList_OwnedElements()
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
     EList<DNodeListElement> getOwnedElements();
 
     /**
      * Returns the value of the '<em><b>Line Width</b></em>' attribute. The
-     * default value is <code>"1"</code>. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Line Width</em>' attribute isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The width of the line.
-     * <!-- end-model-doc -->
+     * default value is <code>"1"</code>. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> The width of the line. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Line Width</em>' attribute.
      * @see #setLineWidth(int)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewNodeList_LineWidth()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDNodeList_LineWidth()
      * @model default="1"
      * @generated
      */

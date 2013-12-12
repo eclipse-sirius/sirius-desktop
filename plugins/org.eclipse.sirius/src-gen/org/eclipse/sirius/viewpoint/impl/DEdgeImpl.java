@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.impl;
 
 import java.util.Collection;
@@ -33,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.IEdgeMapping;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>View Edge</b></em>'. <!-- end-user-doc -->
+ * <em><b>DEdge</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -306,7 +307,6 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
-
     @Override
     protected EClass eStaticClass() {
         return ViewpointPackage.Literals.DEDGE;
@@ -803,7 +803,6 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
-
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -826,7 +825,6 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
-
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
@@ -879,7 +877,6 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
-
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
@@ -942,7 +939,6 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
-
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
@@ -1000,7 +996,6 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
-
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
@@ -1083,7 +1078,6 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
      * 
      * @generated
      */
-
     @Override
     public String toString() {
         if (eIsProxy())

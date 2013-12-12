@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 import org.eclipse.emf.ecore.EFactory;
@@ -27,6 +28,24 @@ public interface DescriptionFactory extends EFactory {
      * @generated
      */
     DescriptionFactory eINSTANCE = org.eclipse.sirius.viewpoint.description.impl.DescriptionFactoryImpl.init();
+
+    /**
+     * Returns a new object of class '<em>Group</em>'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Group</em>'.
+     * @generated
+     */
+    Group createGroup();
+
+    /**
+     * Returns a new object of class '<em>Viewpoint</em>'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Viewpoint</em>'.
+     * @generated
+     */
+    Viewpoint createViewpoint();
 
     /**
      * Returns a new object of class '<em>Diagram Description</em>'. <!--
@@ -83,6 +102,15 @@ public interface DescriptionFactory extends EFactory {
     NodeMapping createNodeMapping();
 
     /**
+     * Returns a new object of class '<em>Container Mapping</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Container Mapping</em>'.
+     * @generated
+     */
+    ContainerMapping createContainerMapping();
+
+    /**
      * Returns a new object of class '<em>Node Mapping Import</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -99,15 +127,6 @@ public interface DescriptionFactory extends EFactory {
      * @generated
      */
     ContainerMappingImport createContainerMappingImport();
-
-    /**
-     * Returns a new object of class '<em>Container Mapping</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>Container Mapping</em>'.
-     * @generated
-     */
-    ContainerMapping createContainerMapping();
 
     /**
      * Returns a new object of class '<em>Edge Mapping</em>'. <!--
@@ -146,37 +165,23 @@ public interface DescriptionFactory extends EFactory {
     DAnnotation createDAnnotation();
 
     /**
-     * Returns a new object of class '<em>Group</em>'. <!-- begin-user-doc -->
+     * Returns a new object of class '
+     * <em>Conditional Node Style Description</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
-     * @return a new object of class '<em>Group</em>'.
-     * @generated
-     */
-    Group createGroup();
-
-    /**
-     * Returns a new object of class '<em>Viewpoint</em>'. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>Viewpoint</em>'.
-     * @generated
-     */
-    Viewpoint createViewpoint();
-
-    /**
-     * Returns a new object of class '<em>Conditional Node Style</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>Conditional Node Style</em>'.
+     * @return a new object of class '
+     *         <em>Conditional Node Style Description</em>'.
      * @generated
      */
     ConditionalNodeStyleDescription createConditionalNodeStyleDescription();
 
     /**
-     * Returns a new object of class '<em>Conditional Edge Style</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Returns a new object of class '
+     * <em>Conditional Edge Style Description</em>'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * 
-     * @return a new object of class '<em>Conditional Edge Style</em>'.
+     * @return a new object of class '
+     *         <em>Conditional Edge Style Description</em>'.
      * @generated
      */
     ConditionalEdgeStyleDescription createConditionalEdgeStyleDescription();

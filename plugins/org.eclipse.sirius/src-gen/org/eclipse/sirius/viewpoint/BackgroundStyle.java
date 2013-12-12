@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import java.util.Arrays;
@@ -22,7 +23,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- end-user-doc --> <!-- begin-model-doc --> Style of the background of a
  * container. <!-- end-model-doc -->
  * 
- * @see org.eclipse.sirius.viewpoint.SiriusPackage#getBackgroundStyle()
+ * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getBackgroundStyle()
  * @model
  * @generated
  */
@@ -36,6 +37,7 @@ public enum BackgroundStyle implements Enumerator {
      * @ordered
      */
     GRADIENT_LEFT_TO_RIGHT_LITERAL(0, "GradientLeftToRight", "GradientLeftToRight"),
+
     /**
      * The '<em><b>Liquid</b></em>' literal object. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -45,6 +47,7 @@ public enum BackgroundStyle implements Enumerator {
      * @ordered
      */
     LIQUID_LITERAL(1, "Liquid", "Liquid"),
+
     /**
      * The '<em><b>Gradient Top To Bottom</b></em>' literal object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -54,14 +57,11 @@ public enum BackgroundStyle implements Enumerator {
      * @ordered
      */
     GRADIENT_TOP_TO_BOTTOM_LITERAL(3, "GradientTopToBottom", "GradientTopToBottom");
+
     /**
      * The '<em><b>Gradient Left To Right</b></em>' literal value. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of '<em><b>Gradient Left To Right</b></em>' literal object
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Gradient style. <!-- end-model-doc -->
      * 
      * @see #GRADIENT_LEFT_TO_RIGHT_LITERAL
      * @model name="GradientLeftToRight"
@@ -71,12 +71,8 @@ public enum BackgroundStyle implements Enumerator {
     public static final int GRADIENT_LEFT_TO_RIGHT = 0;
 
     /**
-     * The '<em><b>Liquid</b></em>' literal value. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of '<em><b>Liquid</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Liquid style. <!--
+     * The '<em><b>Liquid</b></em>' literal value. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> Liquid style. <!--
      * end-model-doc -->
      * 
      * @see #LIQUID_LITERAL
@@ -234,4 +230,5 @@ public enum BackgroundStyle implements Enumerator {
     public String toString() {
         return literal;
     }
-}
+
+} // BackgroundStyle

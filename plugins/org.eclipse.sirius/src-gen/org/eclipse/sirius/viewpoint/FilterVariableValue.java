@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.ecore.EObject;
@@ -74,7 +75,7 @@ public interface FilterVariableValue extends EObject {
      * 
      * @return the value of the '<em>Model Element</em>' reference.
      * @see #setModelElement(EObject)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getFilterVariableValue_ModelElement()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getFilterVariableValue_ModelElement()
      * @model required="true"
      * @generated
      */

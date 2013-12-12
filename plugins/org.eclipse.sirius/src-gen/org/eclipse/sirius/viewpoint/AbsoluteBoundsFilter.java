@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 /**
@@ -47,7 +48,7 @@ public interface AbsoluteBoundsFilter extends GraphicalFilter {
      * 
      * @return the value of the '<em>X</em>' attribute.
      * @see #setX(Integer)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getAbsoluteBoundsFilter_X()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getAbsoluteBoundsFilter_X()
      * @model
      * @generated
      */
@@ -76,7 +77,7 @@ public interface AbsoluteBoundsFilter extends GraphicalFilter {
      * 
      * @return the value of the '<em>Y</em>' attribute.
      * @see #setY(Integer)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getAbsoluteBoundsFilter_Y()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getAbsoluteBoundsFilter_Y()
      * @model
      * @generated
      */
@@ -105,7 +106,7 @@ public interface AbsoluteBoundsFilter extends GraphicalFilter {
      * 
      * @return the value of the '<em>Height</em>' attribute.
      * @see #setHeight(Integer)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getAbsoluteBoundsFilter_Height()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getAbsoluteBoundsFilter_Height()
      * @model
      * @generated
      */
@@ -135,7 +136,7 @@ public interface AbsoluteBoundsFilter extends GraphicalFilter {
      * 
      * @return the value of the '<em>Width</em>' attribute.
      * @see #setWidth(Integer)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getAbsoluteBoundsFilter_Width()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getAbsoluteBoundsFilter_Width()
      * @model
      * @generated
      */

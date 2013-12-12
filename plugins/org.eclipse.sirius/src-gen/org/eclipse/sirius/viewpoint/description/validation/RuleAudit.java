@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.validation;
 
 import org.eclipse.emf.ecore.EObject;
@@ -34,18 +35,17 @@ import org.eclipse.emf.ecore.EObject;
 public interface RuleAudit extends EObject {
     /**
      * Returns the value of the '<em><b>Audit Expression</b></em>' attribute.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Audit Expression</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The expression. <!--
-     * end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> An
+     * expression checked on the model, if the audit fails (return false) then
+     * the rule fail. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Audit Expression</em>' attribute.
      * @see #setAuditExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getRuleAudit_AuditExpression()
-     * @model required="true"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        required="true" annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      * @generated
      */
     String getAuditExpression();

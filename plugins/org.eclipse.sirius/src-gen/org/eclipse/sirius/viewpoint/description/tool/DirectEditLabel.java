@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
@@ -41,37 +42,9 @@ import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
  */
 public interface DirectEditLabel extends MappingBasedToolDescription {
     /**
-     * Returns the value of the '<em><b>Mapping</b></em>' reference list. The
-     * list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping}.
-     * It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping#getLabelDirectEdit
-     * <em>Label Direct Edit</em>}'. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Mapping</em>' reference isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The mapping used by this
-     * tool. <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>Mapping</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getDirectEditLabel_Mapping()
-     * @see org.eclipse.sirius.viewpoint.description.DiagramElementMapping#getLabelDirectEdit
-     * @model type="viewpoint.description.DiagramElementMapping"
-     *        opposite="labelDirectEdit" required="true"
-     * @generated
-     */
-    EList<DiagramElementMapping> getMapping();
-
-    /**
      * Returns the value of the '<em><b>Mask</b></em>' containment reference.
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Mask</em>' containment reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The edit mask. <!--
-     * end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The edit mask. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Mask</em>' containment reference.
      * @see #setMask(EditMaskVariables)
@@ -96,13 +69,8 @@ public interface DirectEditLabel extends MappingBasedToolDescription {
 
     /**
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Initial Operation</em>' containment reference
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The first operation. <!--
-     * end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The first operation. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
@@ -136,7 +104,8 @@ public interface DirectEditLabel extends MappingBasedToolDescription {
      * @return the value of the '<em>Input Label Expression</em>' attribute.
      * @see #setInputLabelExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getDirectEditLabel_InputLabelExpression()
-     * @model dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'"
      *        annotation=
@@ -158,5 +127,19 @@ public interface DirectEditLabel extends MappingBasedToolDescription {
      * @generated
      */
     void setInputLabelExpression(String value);
+
+    /**
+     * Returns the value of the '<em><b>Mapping</b></em>' reference list. The
+     * list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping}.
+     * It is bidirectional and its opposite is '
+     * {@link org.eclipse.sirius.viewpoint.description.DiagramElementMapping#getLabelDirectEdit
+     * <em>Label Direct Edit</em>}'
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @model kind="operation" required="true"
+     * @generated
+     */
+    EList<DiagramElementMapping> getMapping();
 
 } // DirectEditLabel

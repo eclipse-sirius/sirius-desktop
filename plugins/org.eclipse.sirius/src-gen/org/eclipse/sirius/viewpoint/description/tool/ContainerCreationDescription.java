@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import org.eclipse.emf.common.util.EList;
@@ -66,18 +67,16 @@ public interface ContainerCreationDescription extends MappingBasedToolDescriptio
 
     /**
      * Returns the value of the '<em><b>Variable</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Variable</em>' containment reference isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The semantic element of
-     * the cicked view. <!-- end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The semantic element of the cicked view. <!--
+     * end-model-doc -->
      * 
      * @return the value of the '<em>Variable</em>' containment reference.
      * @see #setVariable(NodeCreationVariable)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerCreationDescription_Variable()
      * @model containment="true" resolveProxies="true" required="true"
+     *        annotation=
+     *        "http://www.eclipse.org/emf/2002/GenModel documentedName='container'"
      * @generated
      */
     NodeCreationVariable getVariable();
@@ -98,18 +97,16 @@ public interface ContainerCreationDescription extends MappingBasedToolDescriptio
 
     /**
      * Returns the value of the '<em><b>View Variable</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>View Variable</em>' reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The clicked view (instance
-     * of DDiagram or DNodeContainer). <!-- end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The clicked view (instance of ViewPoint or
+     * ViewNodeContainer). <!-- end-model-doc -->
      * 
      * @return the value of the '<em>View Variable</em>' containment reference.
      * @see #setViewVariable(ContainerViewVariable)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerCreationDescription_ViewVariable()
      * @model containment="true" resolveProxies="true" required="true"
+     *        annotation=
+     *        "http://www.eclipse.org/emf/2002/GenModel documentedName='containerView'"
      * @generated
      */
     ContainerViewVariable getViewVariable();
@@ -130,13 +127,8 @@ public interface ContainerCreationDescription extends MappingBasedToolDescriptio
 
     /**
      * Returns the value of the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Initial Operation</em>' containment reference
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The first operation. <!--
-     * end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The first operation. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
@@ -163,20 +155,15 @@ public interface ContainerCreationDescription extends MappingBasedToolDescriptio
 
     /**
      * Returns the value of the '<em><b>Icon Path</b></em>' attribute. The
-     * default value is
-     * <code>"/org.eclipse.sirius.ui/icons/full/obj16/NodeMapping.gif"</code> .
-     * <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Icon Path</em>' attribute isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The path of the icon to
-     * display in the palette. <!-- end-model-doc -->
+     * default value is <code>""</code>. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> The path of the icon to display
+     * in the palette. If unset, the icon corresponding to the semantic element
+     * associated with the mapping will be displayed. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Icon Path</em>' attribute.
      * @see #setIconPath(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerCreationDescription_IconPath()
-     * @model default="/org.eclipse.sirius.ui/icons/full/obj16/NodeMapping.gif"
+     * @model default=""
      * @generated
      */
     String getIconPath();
@@ -197,16 +184,16 @@ public interface ContainerCreationDescription extends MappingBasedToolDescriptio
     /**
      * Returns the value of the '<em><b>Extra Mappings</b></em>' reference list.
      * The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.ContainerMapping}. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
-     * mappings that create views that are able to received a request to manage
-     * this creation
+     * {@link org.eclipse.sirius.viewpoint.description.AbstractNodeMapping}.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * All mappings that create views that are able to received a request to
+     * manage this creation
      * 
      * <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Extra Mappings</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerCreationDescription_ExtraMappings()
-     * @model type="viewpoint.description.ContainerMapping"
+     * @model
      * @generated
      */
     EList<AbstractNodeMapping> getExtraMappings();

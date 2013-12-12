@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.impl;
 
 import org.eclipse.emf.common.util.URI;
@@ -126,7 +127,6 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @generated
      */
-
     @Override
     public EObject create(EClass eClass) {
         switch (eClass.getClassifierID()) {
@@ -284,6 +284,34 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @not-generated
      */
+    public Group createGroup() {
+        GroupImpl group = new GroupImpl();
+        group.setSystemColorsPalette(forgeSystemPaletteProxy());
+        return group;
+    }
+
+    private SytemColorsPalette forgeSystemPaletteProxy() {
+        final EObject environment = EcoreUtil.create(DescriptionPackage.eINSTANCE.getSytemColorsPalette());
+        URI paletteURI = URI.createURI("environment:/viewpoint#/0/@systemColors");
+        ((InternalEObject) environment).eSetProxyURI(paletteURI);
+        return ((SytemColorsPalette) environment);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
+    public Viewpoint createViewpoint() {
+        ViewpointImpl viewpoint = new ViewpointSpec();
+        return viewpoint;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
     public DiagramDescription createDiagramDescription() {
         DiagramDescriptionImpl diagramDescription = new DiagramDescriptionSpec();
         return diagramDescription;
@@ -307,16 +335,6 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public DiagramExtensionDescription createDiagramExtensionDescription() {
         DiagramExtensionDescriptionImpl diagramExtensionDescription = new DiagramExtensionDescriptionImpl();
         return diagramExtensionDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @not-generated
-     */
-    public Viewpoint createSirius() {
-        ViewpointImpl viewpoint = new ViewpointSpec();
-        return viewpoint;
     }
 
     /**
@@ -354,6 +372,16 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @not-generated
      */
+    public ContainerMapping createContainerMapping() {
+        ContainerMappingImpl containerMapping = new ContainerMappingSpec();
+        return containerMapping;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
     public NodeMappingImport createNodeMappingImport() {
         NodeMappingImport nodeMappingImport = new NodeMappingImportSpec();
         return nodeMappingImport;
@@ -367,16 +395,6 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public ContainerMappingImport createContainerMappingImport() {
         ContainerMappingImport containerMappingImport = new ContainerMappingImportSpec();
         return containerMappingImport;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @not-generated
-     */
-    public ContainerMapping createContainerMapping() {
-        ContainerMappingImpl containerMapping = new ContainerMappingSpec();
-        return containerMapping;
     }
 
     /**
@@ -426,37 +444,9 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * 
      * @not-generated
      */
-    public Group createGroup() {
-        GroupImpl group = new GroupImpl();
-        group.setSystemColorsPalette(forgeSystemPaletteProxy());
-        return group;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public Viewpoint createViewpoint() {
-        ViewpointImpl viewpoint = new ViewpointImpl();
-        return viewpoint;
-    }
-
-    private SytemColorsPalette forgeSystemPaletteProxy() {
-        final EObject environment = EcoreUtil.create(DescriptionPackage.eINSTANCE.getSytemColorsPalette());
-        URI paletteURI = URI.createURI("environment:/viewpoint#/0/@systemColors");
-        ((InternalEObject) environment).eSetProxyURI(paletteURI);
-        return ((SytemColorsPalette) environment);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @not-generated
-     */
     public ConditionalNodeStyleDescription createConditionalNodeStyleDescription() {
-        ConditionalNodeStyleDescriptionImpl conditionalNodeStyle = new ConditionalNodeStyleDescriptionSpec();
-        return conditionalNodeStyle;
+        ConditionalNodeStyleDescriptionImpl conditionalNodeStyleDescription = new ConditionalNodeStyleDescriptionSpec();
+        return conditionalNodeStyleDescription;
     }
 
     /**
@@ -465,8 +455,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * @not-generated
      */
     public ConditionalEdgeStyleDescription createConditionalEdgeStyleDescription() {
-        ConditionalEdgeStyleDescriptionImpl conditionalEdgeStyle = new ConditionalEdgeStyleDescriptionSpec();
-        return conditionalEdgeStyle;
+        ConditionalEdgeStyleDescriptionImpl conditionalEdgeStyleDescription = new ConditionalEdgeStyleDescriptionSpec();
+        return conditionalEdgeStyleDescription;
     }
 
     /**
@@ -475,8 +465,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * @not-generated
      */
     public ConditionalContainerStyleDescription createConditionalContainerStyleDescription() {
-        ConditionalContainerStyleDescriptionImpl conditionalContainerStyle = new ConditionalContainerStyleDescriptionSpec();
-        return conditionalContainerStyle;
+        ConditionalContainerStyleDescriptionImpl conditionalContainerStyleDescription = new ConditionalContainerStyleDescriptionSpec();
+        return conditionalContainerStyleDescription;
     }
 
     /**

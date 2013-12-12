@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description;
 
 import org.eclipse.emf.common.util.EList;
@@ -19,7 +20,7 @@ import org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>View Point Element Mapping</b></em>'. <!-- end-user-doc -->
+ * <em><b>Diagram Element Mapping</b></em>'. <!-- end-user-doc -->
  * 
  * <!-- begin-model-doc --> Represent the mapping of a ViewPointElement. <!--
  * end-model-doc -->
@@ -59,21 +60,23 @@ import org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription;
  * @generated
  */
 public interface DiagramElementMapping extends RepresentationElementMapping, PasteTargetDescription {
-
     /**
      * Returns the value of the '<em><b>Precondition Expression</b></em>'
      * attribute. The default value is <code>""</code>. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Precondition Expression</em>' attribute isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The precondition (Acceleo
-     * Expression). <!-- end-model-doc -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> An expression guarding the
+     * effect if evaluated to false. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Precondition Expression</em>' attribute.
      * @see #setPreconditionExpression(String)
-     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSiriusElementMapping_PreconditionExpression()
-     * @model default=""
+     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDiagramElementMapping_PreconditionExpression()
+     * @model default="" dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation
+     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables containerView='viewpoint.DragAndDropTarget | the view that sould contain the potential views of the checked elements.' container='ecore.EObject | the semantic element of containerView.' viewpoint='viewpoint.DSemanticDiagram | (deprecated) the current DSemanticDiagram.' diagram='viewpoint.DSemanticDiagram | the current DSemanticDiagram.' sourceView='viewpoint.DSemanticDecorator | (edge only) the source view of the current potential edge.' source='ecore.EObject | (edge only) the semantic element of sourceView.' targetView='viewpoint.DSemanticDecorator | (edge only) the target view of the current potential edge.' target='ecore.EObject | (edge only) the semantic element of targetView.'"
      * @generated
      */
     String getPreconditionExpression();
@@ -94,21 +97,14 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
 
     /**
      * Returns the value of the '<em><b>Deletion Description</b></em>'
-     * reference. It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription#getMappings
-     * <em>Mappings</em>}'. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Deletion Description</em>' reference isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The tool that describes
-     * how to delete this element. <!-- end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The tool that describes how to delete this element.
+     * <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Deletion Description</em>' reference.
      * @see #setDeletionDescription(DeleteElementDescription)
-     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSiriusElementMapping_DeletionDescription()
-     * @see org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription#getMappings
-     * @model opposite="mappings"
+     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDiagramElementMapping_DeletionDescription()
+     * @model
      * @generated
      */
     DeleteElementDescription getDeletionDescription();
@@ -129,22 +125,14 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
 
     /**
      * Returns the value of the '<em><b>Label Direct Edit</b></em>' reference.
-     * It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel#getMapping
-     * <em>Mapping</em>}'. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Label Direct Edit</em>' reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The tool that describes
-     * what to do when the user edits the label of the elements. <!--
-     * end-model-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The tool that describes what to do when the user edits the label of the
+     * elements. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Label Direct Edit</em>' reference.
      * @see #setLabelDirectEdit(DirectEditLabel)
-     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSiriusElementMapping_LabelDirectEdit()
-     * @see org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel#getMapping
-     * @model opposite="mapping"
+     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDiagramElementMapping_LabelDirectEdit()
+     * @model
      * @generated
      */
     DirectEditLabel getLabelDirectEdit();
@@ -164,24 +152,26 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
 
     /**
      * Returns the value of the '<em><b>Semantic Candidates Expression</b></em>'
-     * attribute. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Semantic Candidates Expression</em>' attribute
-     * isn't clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> In the default case,
-     * candidates of a mapping are all EObjet owned by the semantic element of
-     * the view container. The semanticCandidatesExpression is an Acceleo
-     * Expression that returns the list of EObject that are candidates of the
-     * mapping instead of the candidates of the default case. The context of the
-     * Acceleo Expression is the semantic element of the view container. <!--
-     * end-model-doc -->
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> In the default case, candidates of a mapping are all
+     * EObjet owned by the semantic element of the view container. The
+     * semanticCandidatesExpression is an expression that returns the list of
+     * EObject that are candidates of the mapping instead of the candidates of
+     * the default case. The context of the expression is the semantic element
+     * of the view container. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Semantic Candidates Expression</em>'
      *         attribute.
      * @see #setSemanticCandidatesExpression(String)
-     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSiriusElementMapping_SemanticCandidatesExpression()
-     * @model
+     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDiagramElementMapping_SemanticCandidatesExpression()
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation
+     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables containerView='viewpoint.DDiagram | the parent view of potential candidates.' diagram='viewpoint.DDiagram | the current DDiagram.' viewpoint='viewpoint.DDiagram | (deprecated) the current DDiagram.' viewPoint='viewpoint.DDiagram | (deprecated) the current DDiagram.'"
      * @generated
      */
     String getSemanticCandidatesExpression();
@@ -209,7 +199,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * 
      * @return the value of the '<em>Create Elements</em>' attribute.
      * @see #setCreateElements(boolean)
-     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSiriusElementMapping_CreateElements()
+     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDiagramElementMapping_CreateElements()
      * @model default="true" required="true"
      * @generated
      */
@@ -237,7 +227,14 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * @return the value of the '<em>Semantic Elements</em>' attribute.
      * @see #setSemanticElements(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDiagramElementMapping_SemanticElements()
-     * @model dataType="org.eclipse.sirius.description.AcceleoExpression"
+     * @model dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
+     *        annotation
+     *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='viewpoint.DDiagram | the current DSemanticDiagram.' view='viewpoint.DDiagramElement | the current view created from the current mapping.' viewpoint='viewpoint.DDiagram | (deprecated) the current DSemanticDiagram.'"
      * @generated
      */
     String getSemanticElements();
@@ -321,26 +318,10 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
     void setSynchronizationLock(boolean value);
 
     /**
-     * <!-- begin-user-doc -->
-     * <p>
-     * Check the precondition of the mapping for the object
-     * <code>modelElement</code>.
-     * </p>
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Check the precondition of the mapping. Return true if the condition is
+     * checked, false otherwise.
      * 
-     * @param mapping
-     *            the mapping.
-     * @param modelElement
-     *            the element to check.
-     * @param container
-     *            the semantic element of the view that contains the potential
-     *            view of <code>modelElement</code>.
-     * @param containerView
-     *            the view that contains the potential view of
-     *            <code>modelElement</code>.
-     * @return <code>true</code> if the precondition is checked, false
-     *         otherwise. <!-- end-user-doc --> <!-- begin-model-doc --> Check
-     *         the precondition of the mapping. Return true if the condition is
-     *         checked, false otherwise.
      * @param modelElement
      *            The element to test.
      * @param container
@@ -352,7 +333,6 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * @model
      * @generated
      */
-    @Deprecated
     boolean checkPrecondition(EObject modelElement, EObject container, EObject containerView);
 
     /**
@@ -360,20 +340,20 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * Return all sub mappings. <!-- end-model-doc -->
      * 
      * @model kind="operation"
-     *        type="viewpoint.description.DiagramElementMapping"
      * @generated
      */
     EList<DiagramElementMapping> getAllMappings();
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Returns true if the given DDiagramElement has been produced from this
+     * Returns true if the given ViewPointElement has been produced from this
      * Mapping or any imported mapping.
      * 
      * @param element
-     *            Any DDiagramElement <!-- end-model-doc -->
+     *            Any ViewPointElement <!-- end-model-doc -->
      * @model
      * @generated
      */
     boolean isFrom(DMappingBased element);
+
 } // DiagramElementMapping

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import java.util.Arrays;
@@ -54,10 +55,11 @@ public enum ContainerLayout implements Enumerator {
      * @generated
      * @ordered
      */
-    HORIZONTAL_STACK(2, "HorizontalStack", "HorizontalStack"), /**
-     * The '
-     * <em><b>Vertical Stack</b></em>' literal object. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+    HORIZONTAL_STACK(2, "HorizontalStack", "HorizontalStack"),
+
+    /**
+     * The '<em><b>Vertical Stack</b></em>' literal object. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
      * 
      * @see #VERTICAL_STACK_VALUE
      * @generated

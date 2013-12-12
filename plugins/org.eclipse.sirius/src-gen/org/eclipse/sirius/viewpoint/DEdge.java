@@ -1,22 +1,22 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.description.IEdgeMapping;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>View Edge</b></em>'. <!-- end-user-doc -->
+ * <em><b>DEdge</b></em>'. <!-- end-user-doc -->
  * 
  * <!-- begin-model-doc --> A view edge. It is a connection between two
  * EdgeTarget. <!-- end-model-doc -->
@@ -57,17 +57,12 @@ import org.eclipse.sirius.viewpoint.description.IEdgeMapping;
 public interface DEdge extends DDiagramElement, EdgeTarget {
     /**
      * Returns the value of the '<em><b>Owned Style</b></em>' containment
-     * reference. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Owned Style</em>' containment reference isn't
-     * clear, there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The style of the
-     * connection. <!-- end-model-doc -->
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> The style of the connection. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Owned Style</em>' containment reference.
      * @see #setOwnedStyle(EdgeStyle)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewEdge_OwnedStyle()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDEdge_OwnedStyle()
      * @model containment="true" resolveProxies="true"
      * @generated
      */
@@ -89,17 +84,12 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
 
     /**
      * Returns the value of the '<em><b>Size</b></em>' attribute. The default
-     * value is <code>"1"</code>. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Size</em>' attribute isn't clear, there really
-     * should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The line width. <!--
-     * end-model-doc -->
+     * value is <code>"1"</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-model-doc --> The line width. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Size</em>' attribute.
      * @see #setSize(Integer)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewEdge_Size()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDEdge_Size()
      * @model default="1"
      * @generated
      */
@@ -122,17 +112,13 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * Returns the value of the '<em><b>Source Node</b></em>' reference. It is
      * bidirectional and its opposite is '
      * {@link org.eclipse.sirius.viewpoint.EdgeTarget#getOutgoingEdges
-     * <em>Outgoing Edges</em>}'. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Source Node</em>' reference isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The source of the
-     * connection. <!-- end-model-doc -->
+     * <em>Outgoing Edges</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-model-doc --> The source of the connection. <!-- end-model-doc
+     * -->
      * 
      * @return the value of the '<em>Source Node</em>' reference.
      * @see #setSourceNode(EdgeTarget)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewEdge_SourceNode()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDEdge_SourceNode()
      * @see org.eclipse.sirius.viewpoint.EdgeTarget#getOutgoingEdges
      * @model opposite="outgoingEdges" required="true"
      * @generated
@@ -156,17 +142,13 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * Returns the value of the '<em><b>Target Node</b></em>' reference. It is
      * bidirectional and its opposite is '
      * {@link org.eclipse.sirius.viewpoint.EdgeTarget#getIncomingEdges
-     * <em>Incoming Edges</em>}'. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Target Node</em>' reference isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The target of the
-     * connection. <!-- end-model-doc -->
+     * <em>Incoming Edges</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * <!-- begin-model-doc --> The target of the connection. <!-- end-model-doc
+     * -->
      * 
      * @return the value of the '<em>Target Node</em>' reference.
      * @see #setTargetNode(EdgeTarget)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewEdge_TargetNode()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDEdge_TargetNode()
      * @see org.eclipse.sirius.viewpoint.EdgeTarget#getIncomingEdges
      * @model opposite="incomingEdges" required="true"
      * @generated
@@ -187,18 +169,13 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
     void setTargetNode(EdgeTarget value);
 
     /**
-     * Returns the value of the '<em><b>Origin Mapping</b></em>' reference. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Origin Mapping</em>' reference isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The mapping that has
-     * created the view edge. <!-- end-model-doc -->
+     * Returns the value of the '<em><b>Actual Mapping</b></em>' reference. <!--
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * mapping that has created the view edge. <!-- end-model-doc -->
      * 
-     * @return the value of the '<em>Origin Mapping</em>' reference.
-     * @see #setActualMapping(EdgeMapping)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewEdge_OriginMapping()
+     * @return the value of the '<em>Actual Mapping</em>' reference.
+     * @see #setActualMapping(IEdgeMapping)
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDEdge_ActualMapping()
      * @model required="true"
      * @generated
      */
@@ -221,18 +198,13 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * Returns the value of the '<em><b>Routing Style</b></em>' attribute. The
      * default value is <code>"straight"</code>. The literals are from the
      * enumeration {@link org.eclipse.sirius.viewpoint.EdgeRouting}. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Routing Style</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> The routing style of the
-     * edge. <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * routing style of the edge. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Routing Style</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.EdgeRouting
      * @see #setRoutingStyle(EdgeRouting)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewEdge_RoutingStyle()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDEdge_RoutingStyle()
      * @model default="straight" required="true"
      * @generated
      */
@@ -256,16 +228,12 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
 
     /**
      * Returns the value of the '<em><b>Is Fold</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Is Fold</em>' attribute isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * <code>true</code> if the view edge is folded. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Is Fold</em>' attribute.
      * @see #setIsFold(boolean)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewEdge_IsFold()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDEdge_IsFold()
      * @model
      * @generated
      */
@@ -287,18 +255,13 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
 
     /**
      * Returns the value of the '<em><b>Is Mock Edge</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Is Mock Edge</em>' attribute isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> <code>true</code> if the
-     * edge is an edge that is displayed only to have the plus image to
-     * decollapse a branch. <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * <code>true</code> if the edge is an edge that is displayed only to have
+     * the plus image to decollapse a branch. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Is Mock Edge</em>' attribute.
      * @see #setIsMockEdge(boolean)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewEdge_IsMockEdge()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDEdge_IsMockEdge()
      * @model
      * @generated
      */
@@ -327,7 +290,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * 
      * @return the value of the '<em>Original Style</em>' reference.
      * @see #setOriginalStyle(Style)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getViewEdge_OriginalStyle()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDEdge_OriginalStyle()
      * @model
      * @generated
      */
@@ -378,8 +341,8 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * 
      * @return the value of the '<em>Arrange Constraints</em>' attribute list.
      * @see org.eclipse.sirius.viewpoint.ArrangeConstraint
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDEdge_ArrangeConstraints()
-     * @model default=""
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDEdge_ArrangeConstraints()
+     * @model default="KEEP_LOCATION"
      * @generated
      */
     EList<ArrangeConstraint> getArrangeConstraints();
@@ -392,7 +355,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * 
      * @return the value of the '<em>Begin Label</em>' attribute.
      * @see #setBeginLabel(String)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDEdge_BeginLabel()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDEdge_BeginLabel()
      * @model default=""
      * @generated
      */
@@ -419,7 +382,7 @@ public interface DEdge extends DDiagramElement, EdgeTarget {
      * 
      * @return the value of the '<em>End Label</em>' attribute.
      * @see #setEndLabel(String)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDEdge_EndLabel()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDEdge_EndLabel()
      * @model default=""
      * @generated
      */

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 /**
@@ -41,7 +42,7 @@ public interface Ellipse extends NodeStyle {
      * 
      * @return the value of the '<em>Horizontal Diameter</em>' attribute.
      * @see #setHorizontalDiameter(Integer)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getEllipse_HorizontalDiameter()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getEllipse_HorizontalDiameter()
      * @model default="0"
      * @generated
      */
@@ -68,7 +69,7 @@ public interface Ellipse extends NodeStyle {
      * 
      * @return the value of the '<em>Vertical Diameter</em>' attribute.
      * @see #setVerticalDiameter(Integer)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getEllipse_VerticalDiameter()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getEllipse_VerticalDiameter()
      * @model default="0"
      * @generated
      */

@@ -1,20 +1,21 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
- * <em><b>Decorate Semantic Element</b></em>'. <!-- end-user-doc -->
+ * <em><b>DSemantic Decorator</b></em>'. <!-- end-user-doc -->
  * 
  * <!-- begin-model-doc --> An element that has a link to the semantic model.
  * <!-- end-model-doc -->
@@ -34,16 +35,12 @@ import org.eclipse.emf.ecore.EObject;
 public interface DSemanticDecorator extends EObject {
     /**
      * Returns the value of the '<em><b>Target</b></em>' reference. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Target</em>' reference isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
+     * referenced EObject. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Target</em>' reference.
      * @see #setTarget(EObject)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getDecorateSemanticElement_Target()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDSemanticDecorator_Target()
      * @model required="true"
      * @generated
      */

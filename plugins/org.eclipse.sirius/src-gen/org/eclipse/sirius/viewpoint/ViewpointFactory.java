@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.ecore.EFactory;
@@ -236,6 +237,33 @@ public interface ViewpointFactory extends EFactory {
     Dot createDot();
 
     /**
+     * Returns a new object of class '<em>Gauge Section</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Gauge Section</em>'.
+     * @generated
+     */
+    GaugeSection createGaugeSection();
+
+    /**
+     * Returns a new object of class '<em>Flat Container Style</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Flat Container Style</em>'.
+     * @generated
+     */
+    FlatContainerStyle createFlatContainerStyle();
+
+    /**
+     * Returns a new object of class '<em>Shape Container Style</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Shape Container Style</em>'.
+     * @generated
+     */
+    ShapeContainerStyle createShapeContainerStyle();
+
+    /**
      * Returns a new object of class '<em>Square</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
@@ -243,6 +271,24 @@ public interface ViewpointFactory extends EFactory {
      * @generated
      */
     Square createSquare();
+
+    /**
+     * Returns a new object of class '<em>Ellipse</em>'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Ellipse</em>'.
+     * @generated
+     */
+    Ellipse createEllipse();
+
+    /**
+     * Returns a new object of class '<em>Lozenge</em>'. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Lozenge</em>'.
+     * @generated
+     */
+    Lozenge createLozenge();
 
     /**
      * Returns a new object of class '<em>Bundled Image</em>'. <!--
@@ -272,33 +318,6 @@ public interface ViewpointFactory extends EFactory {
     CustomStyle createCustomStyle();
 
     /**
-     * Returns a new object of class '<em>Gauge Section</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>Gauge Section</em>'.
-     * @generated
-     */
-    GaugeSection createGaugeSection();
-
-    /**
-     * Returns a new object of class '<em>Flat Container Style</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>Flat Container Style</em>'.
-     * @generated
-     */
-    FlatContainerStyle createFlatContainerStyle();
-
-    /**
-     * Returns a new object of class '<em>Shape Container Style</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>Shape Container Style</em>'.
-     * @generated
-     */
-    ShapeContainerStyle createShapeContainerStyle();
-
-    /**
      * Returns a new object of class '<em>Edge Style</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
@@ -306,35 +325,6 @@ public interface ViewpointFactory extends EFactory {
      * @generated
      */
     EdgeStyle createEdgeStyle();
-
-    /**
-     * Returns a new object of class '<em>Bracket Edge Style</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>Bracket Edge Style</em>'.
-     * @generated
-     */
-    BracketEdgeStyle createBracketEdgeStyle();
-
-    /**
-     * Returns a new object of class '
-     * <em>Computed Style Description Registry</em>'. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @return a new object of class '
-     *         <em>Computed Style Description Registry</em>'.
-     * @generated
-     */
-    ComputedStyleDescriptionRegistry createComputedStyleDescriptionRegistry();
-
-    /**
-     * Returns the package supported by this factory. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @return the package supported by this factory.
-     * @generated
-     */
-    ViewpointPackage getViewpointPackage();
 
     /**
      * Returns a new object of class '<em>DAnalysis Custom Data</em>'. <!--
@@ -535,21 +525,32 @@ public interface ViewpointFactory extends EFactory {
     EndLabelStyle createEndLabelStyle();
 
     /**
-     * Returns a new object of class '<em>Ellipse</em>'. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns a new object of class '<em>Bracket Edge Style</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @return a new object of class '<em>Ellipse</em>'.
+     * @return a new object of class '<em>Bracket Edge Style</em>'.
      * @generated
      */
-    Ellipse createEllipse();
+    BracketEdgeStyle createBracketEdgeStyle();
 
     /**
-     * Returns a new object of class '<em>Lozenge</em>'. <!-- begin-user-doc -->
+     * Returns a new object of class '
+     * <em>Computed Style Description Registry</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
-     * @return a new object of class '<em>Lozenge</em>'.
+     * @return a new object of class '
+     *         <em>Computed Style Description Registry</em>'.
      * @generated
      */
-    Lozenge createLozenge();
+    ComputedStyleDescriptionRegistry createComputedStyleDescriptionRegistry();
 
-} // SiriusFactory
+    /**
+     * Returns the package supported by this factory. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @return the package supported by this factory.
+     * @generated
+     */
+    ViewpointPackage getViewpointPackage();
+
+} // ViewpointFactory

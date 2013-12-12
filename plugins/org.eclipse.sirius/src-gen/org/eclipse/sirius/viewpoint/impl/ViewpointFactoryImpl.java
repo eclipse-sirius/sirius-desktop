@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.impl;
 
 import java.util.Map;
@@ -158,7 +159,6 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
-
     @Override
     public EObject create(EClass eClass) {
         switch (eClass.getClassifierID()) {
@@ -294,7 +294,6 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
-
     @Override
     public Object createFromString(EDataType eDataType, String initialValue) {
         switch (eDataType.getClassifierID()) {
@@ -338,7 +337,6 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
-
     @Override
     public String convertToString(EDataType eDataType, Object instanceValue) {
         switch (eDataType.getClassifierID()) {
@@ -385,6 +383,16 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     public DAnalysis createDAnalysis() {
         DAnalysisImpl dAnalysis = new DAnalysisImpl();
         return dAnalysis;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
+    public DRepresentationContainer createDRepresentationContainer() {
+        DRepresentationContainerImpl dRepresentationContainer = new DRepresentationContainerSpec();
+        return dRepresentationContainer;
     }
 
     /**
@@ -600,11 +608,61 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
+     * @generated
+     */
+    public GaugeSection createGaugeSection() {
+        GaugeSectionImpl gaugeSection = new GaugeSectionImpl();
+        return gaugeSection;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
+    public FlatContainerStyle createFlatContainerStyle() {
+        FlatContainerStyleImpl flatContainerStyle = new FlatContainerStyleSpec();
+        return flatContainerStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
+    public ShapeContainerStyle createShapeContainerStyle() {
+        ShapeContainerStyleImpl shapeContainerStyle = new ShapeContainerStyleSpec();
+        return shapeContainerStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @not-generated
      */
     public Square createSquare() {
         SquareImpl square = new SquareSpec();
         return square;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
+    public Ellipse createEllipse() {
+        EllipseImpl ellipse = new EllipseSpec();
+        return ellipse;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
+    public Lozenge createLozenge() {
+        LozengeImpl lozenge = new LozengeSpec();
+        return lozenge;
     }
 
     /**
@@ -640,36 +698,6 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated
-     */
-    public GaugeSection createGaugeSection() {
-        GaugeSectionImpl gaugeSection = new GaugeSectionImpl();
-        return gaugeSection;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @not-generated
-     */
-    public FlatContainerStyle createFlatContainerStyle() {
-        FlatContainerStyleImpl flatContainerStyle = new FlatContainerStyleSpec();
-        return flatContainerStyle;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @not-generated
-     */
-    public ShapeContainerStyle createShapeContainerStyle() {
-        ShapeContainerStyleImpl shapeContainerStyle = new ShapeContainerStyleSpec();
-        return shapeContainerStyle;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @not-generated
      */
     public EdgeStyle createEdgeStyle() {
@@ -682,100 +710,9 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * 
      * @generated
      */
-    public BracketEdgeStyle createBracketEdgeStyle() {
-        BracketEdgeStyleImpl bracketEdgeStyle = new BracketEdgeStyleImpl();
-        return bracketEdgeStyle;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public ComputedStyleDescriptionRegistry createComputedStyleDescriptionRegistry() {
-        ComputedStyleDescriptionRegistryImpl computedStyleDescriptionRegistry = new ComputedStyleDescriptionRegistryImpl();
-        return computedStyleDescriptionRegistry;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public Map.Entry<DiagramElementMapping, EMap<EObject, EMap<EObject, EMap<EObject, StyleDescription>>>> createDiagramElementMapping2ModelElement() {
-        DiagramElementMapping2ModelElementImpl diagramElementMapping2ModelElement = new DiagramElementMapping2ModelElementImpl();
-        return diagramElementMapping2ModelElement;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public Map.Entry<EObject, EMap<EObject, EMap<EObject, StyleDescription>>> createModelElement2ViewVariable() {
-        ModelElement2ViewVariableImpl modelElement2ViewVariable = new ModelElement2ViewVariableImpl();
-        return modelElement2ViewVariable;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public Map.Entry<EObject, EMap<EObject, StyleDescription>> createViewVariable2ContainerVariable() {
-        ViewVariable2ContainerVariableImpl viewVariable2ContainerVariable = new ViewVariable2ContainerVariableImpl();
-        return viewVariable2ContainerVariable;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public Map.Entry<EObject, StyleDescription> createContainerVariable2StyleDescription() {
-        ContainerVariable2StyleDescriptionImpl containerVariable2StyleDescription = new ContainerVariable2StyleDescriptionImpl();
-        return containerVariable2StyleDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public ContainerLayout createContainerLayoutFromString(EDataType eDataType, String initialValue) {
-        ContainerLayout result = ContainerLayout.get(initialValue);
-        if (result == null)
-            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-        return result;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public String convertContainerLayoutToString(EDataType eDataType, Object instanceValue) {
-        return instanceValue == null ? null : instanceValue.toString();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public DAnalysisCustomData createDAnalysisCustomData() {
         DAnalysisCustomDataImpl dAnalysisCustomData = new DAnalysisCustomDataImpl();
         return dAnalysisCustomData;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @not-generated
-     */
-    public DRepresentationContainer createDRepresentationContainer() {
-        DRepresentationContainerImpl representationContainer = new DRepresentationContainerSpec();
-        return representationContainer;
     }
 
     /**
@@ -991,21 +928,82 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @not-generated
+     * @generated
      */
-    public Ellipse createEllipse() {
-        EllipseImpl ellipse = new EllipseSpec();
-        return ellipse;
+    public BracketEdgeStyle createBracketEdgeStyle() {
+        BracketEdgeStyleImpl bracketEdgeStyle = new BracketEdgeStyleImpl();
+        return bracketEdgeStyle;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @not-generated
+     * @generated
      */
-    public Lozenge createLozenge() {
-        LozengeImpl lozenge = new LozengeSpec();
-        return lozenge;
+    public ComputedStyleDescriptionRegistry createComputedStyleDescriptionRegistry() {
+        ComputedStyleDescriptionRegistryImpl computedStyleDescriptionRegistry = new ComputedStyleDescriptionRegistryImpl();
+        return computedStyleDescriptionRegistry;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public Map.Entry<DiagramElementMapping, EMap<EObject, EMap<EObject, EMap<EObject, StyleDescription>>>> createDiagramElementMapping2ModelElement() {
+        DiagramElementMapping2ModelElementImpl diagramElementMapping2ModelElement = new DiagramElementMapping2ModelElementImpl();
+        return diagramElementMapping2ModelElement;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public Map.Entry<EObject, EMap<EObject, EMap<EObject, StyleDescription>>> createModelElement2ViewVariable() {
+        ModelElement2ViewVariableImpl modelElement2ViewVariable = new ModelElement2ViewVariableImpl();
+        return modelElement2ViewVariable;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public Map.Entry<EObject, EMap<EObject, StyleDescription>> createViewVariable2ContainerVariable() {
+        ViewVariable2ContainerVariableImpl viewVariable2ContainerVariable = new ViewVariable2ContainerVariableImpl();
+        return viewVariable2ContainerVariable;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public Map.Entry<EObject, StyleDescription> createContainerVariable2StyleDescription() {
+        ContainerVariable2StyleDescriptionImpl containerVariable2StyleDescription = new ContainerVariable2StyleDescriptionImpl();
+        return containerVariable2StyleDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public ContainerLayout createContainerLayoutFromString(EDataType eDataType, String initialValue) {
+        ContainerLayout result = ContainerLayout.get(initialValue);
+        if (result == null)
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public String convertContainerLayoutToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
     }
 
     /**
@@ -1221,7 +1219,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     /**
      * <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
     public LabelAlignment createLabelAlignmentFromString(EDataType eDataType, String initialValue) {
@@ -1234,7 +1232,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     /**
      * <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
     public String convertLabelAlignmentToString(EDataType eDataType, Object instanceValue) {
@@ -1321,4 +1319,4 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
         return ViewpointPackage.eINSTANCE;
     }
 
-} // SiriusFactoryImpl
+} // ViewpointFactoryImpl

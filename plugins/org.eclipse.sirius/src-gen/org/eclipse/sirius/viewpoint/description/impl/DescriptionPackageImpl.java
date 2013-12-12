@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -4208,23 +4209,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
     }
 
     /**
-     * Initializes the annotations for <b>TagValues</b>. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void createTagValuesAnnotations() {
-        String source = "TagValues";
-        addAnnotation(getDiagramDescription_DefaultConcern(), source, new String[] {});
-        addAnnotation(getDiagramDescription_Init(), source, new String[] {});
-        addAnnotation(getDiagramDescription_NodeMappings(), source, new String[] {});
-        addAnnotation(getDiagramDescription_EdgeMappings(), source, new String[] {});
-        addAnnotation(getDiagramDescription_ContainerMappings(), source, new String[] {});
-        addAnnotation(getDiagramDescription_ReusedMappings(), source, new String[] {});
-        addAnnotation(getDiagramDescription_ReusedTools(), source, new String[] {});
-    }
-
-    /**
      * Initializes the annotations for
      * <b>http://www.eclipse.org/sirius/interpreted/expression/returnType</b>.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -4314,6 +4298,23 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         addAnnotation(getComputedColor_Red(), source, new String[] {});
         addAnnotation(getComputedColor_Green(), source, new String[] {});
         addAnnotation(getComputedColor_Blue(), source, new String[] {});
+    }
+
+    /**
+     * Initializes the annotations for <b>TagValues</b>. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void createTagValuesAnnotations() {
+        String source = "TagValues";
+        addAnnotation(getDiagramDescription_DefaultConcern(), source, new String[] {});
+        addAnnotation(getDiagramDescription_Init(), source, new String[] {});
+        addAnnotation(getDiagramDescription_NodeMappings(), source, new String[] {});
+        addAnnotation(getDiagramDescription_EdgeMappings(), source, new String[] {});
+        addAnnotation(getDiagramDescription_ContainerMappings(), source, new String[] {});
+        addAnnotation(getDiagramDescription_ReusedMappings(), source, new String[] {});
+        addAnnotation(getDiagramDescription_ReusedTools(), source, new String[] {});
     }
 
 } // DescriptionPackageImpl

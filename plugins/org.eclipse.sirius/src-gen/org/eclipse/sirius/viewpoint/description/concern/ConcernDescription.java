@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.concern;
 
 import org.eclipse.emf.common.util.EList;
@@ -49,13 +50,8 @@ public interface ConcernDescription extends DocumentedElement, IdentifiedElement
      * Returns the value of the '<em><b>Filters</b></em>' reference list. The
      * list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.filter.FilterDescription}
-     * . <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Filters</em>' reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> All filters of this
-     * concern. <!-- end-model-doc -->
+     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * All filters of this concern. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Filters</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.concern.ConcernPackage#getConcernDescription_Filters()
@@ -68,17 +64,12 @@ public interface ConcernDescription extends DocumentedElement, IdentifiedElement
      * Returns the value of the '<em><b>Rules</b></em>' reference list. The list
      * contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule}
-     * . <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Rules</em>' reference list isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> All rules of this concern.
-     * <!-- end-model-doc -->
+     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * All rules of this concern. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Rules</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.concern.ConcernPackage#getConcernDescription_Rules()
-     * @model type="org.eclipse.sirius.description.validation.ValidationRule"
+     * @model
      * @generated
      */
     EList<ValidationRule> getRules();
@@ -87,17 +78,12 @@ public interface ConcernDescription extends DocumentedElement, IdentifiedElement
      * Returns the value of the '<em><b>Behaviors</b></em>' reference list. The
      * list contents are of type
      * {@link org.eclipse.sirius.viewpoint.description.tool.BehaviorTool}. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Behaviors</em>' reference list isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> All behaviors of the
-     * concern. <!-- end-model-doc -->
+     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> All
+     * behaviors of the concern. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Behaviors</em>' reference list.
      * @see org.eclipse.sirius.viewpoint.description.concern.ConcernPackage#getConcernDescription_Behaviors()
-     * @model type="viewpoint.description.tool.BehaviorTool"
+     * @model
      * @generated
      */
     EList<BehaviorTool> getBehaviors();

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -143,6 +144,50 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
      * 
      * @generated
      */
+    public String getWidthComputationExpression() {
+        return widthComputationExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setWidthComputationExpression(String newWidthComputationExpression) {
+        String oldWidthComputationExpression = widthComputationExpression;
+        widthComputationExpression = newWidthComputationExpression;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION, oldWidthComputationExpression,
+                    widthComputationExpression));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public String getHeightComputationExpression() {
+        return heightComputationExpression;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setHeightComputationExpression(String newHeightComputationExpression) {
+        String oldHeightComputationExpression = heightComputationExpression;
+        heightComputationExpression = newHeightComputationExpression;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, oldHeightComputationExpression,
+                    heightComputationExpression));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public ContainerShape getShape() {
         return shape;
     }
@@ -195,50 +240,6 @@ public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptio
         backgroundColor = newBackgroundColor;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public String getWidthComputationExpression() {
-        return widthComputationExpression;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setWidthComputationExpression(String newWidthComputationExpression) {
-        String oldWidthComputationExpression = widthComputationExpression;
-        widthComputationExpression = newWidthComputationExpression;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION, oldWidthComputationExpression,
-                    widthComputationExpression));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public String getHeightComputationExpression() {
-        return heightComputationExpression;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setHeightComputationExpression(String newHeightComputationExpression) {
-        String oldHeightComputationExpression = heightComputationExpression;
-        heightComputationExpression = newHeightComputationExpression;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.SHAPE_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, oldHeightComputationExpression,
-                    heightComputationExpression));
     }
 
     /**

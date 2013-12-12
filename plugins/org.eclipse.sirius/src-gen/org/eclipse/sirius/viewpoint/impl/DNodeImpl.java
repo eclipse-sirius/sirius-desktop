@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.impl;
 
 import java.util.Collection;
@@ -39,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.NodeMapping;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>View Node</b></em>'. <!-- end-user-doc -->
+ * <em><b>DNode</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -270,7 +271,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
-
     @Override
     protected EClass eStaticClass() {
         return ViewpointPackage.Literals.DNODE;
@@ -441,56 +441,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
-    public NodeMapping getActualMapping() {
-        if (actualMapping != null && actualMapping.eIsProxy()) {
-            InternalEObject oldActualMapping = (InternalEObject) actualMapping;
-            actualMapping = (NodeMapping) eResolveProxy(oldActualMapping);
-            if (actualMapping != oldActualMapping) {
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewpointPackage.DNODE__ACTUAL_MAPPING, oldActualMapping, actualMapping));
-            }
-        }
-        return actualMapping;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NodeMapping basicGetActualMapping() {
-        return actualMapping;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setActualMapping(NodeMapping newActualMapping) {
-        NodeMapping oldActualMapping = actualMapping;
-        actualMapping = newActualMapping;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DNODE__ACTUAL_MAPPING, oldActualMapping, actualMapping));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EList<NodeMapping> getCandidatesMapping() {
-        if (candidatesMapping == null) {
-            candidatesMapping = new EObjectResolvingEList<NodeMapping>(NodeMapping.class, this, ViewpointPackage.DNODE__CANDIDATES_MAPPING);
-        }
-        return candidatesMapping;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public LabelPosition getLabelPosition() {
         return labelPosition;
     }
@@ -583,6 +533,56 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
+    public NodeMapping getActualMapping() {
+        if (actualMapping != null && actualMapping.eIsProxy()) {
+            InternalEObject oldActualMapping = (InternalEObject) actualMapping;
+            actualMapping = (NodeMapping) eResolveProxy(oldActualMapping);
+            if (actualMapping != oldActualMapping) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewpointPackage.DNODE__ACTUAL_MAPPING, oldActualMapping, actualMapping));
+            }
+        }
+        return actualMapping;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public NodeMapping basicGetActualMapping() {
+        return actualMapping;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setActualMapping(NodeMapping newActualMapping) {
+        NodeMapping oldActualMapping = actualMapping;
+        actualMapping = newActualMapping;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DNODE__ACTUAL_MAPPING, oldActualMapping, actualMapping));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EList<NodeMapping> getCandidatesMapping() {
+        if (candidatesMapping == null) {
+            candidatesMapping = new EObjectResolvingEList<NodeMapping>(NodeMapping.class, this, ViewpointPackage.DNODE__CANDIDATES_MAPPING);
+        }
+        return candidatesMapping;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public DragAndDropTargetDescription getDragAndDropDescription() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -611,7 +611,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
-
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -634,7 +633,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
-
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
@@ -679,7 +677,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
-
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
@@ -738,7 +735,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
-
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
@@ -790,7 +786,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
-
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
@@ -829,7 +824,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
-
     @Override
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
         if (baseClass == EdgeTarget.class) {
@@ -856,7 +850,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
-
     @Override
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == EdgeTarget.class) {
@@ -883,7 +876,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
-
     @Override
     public String toString() {
         if (eIsProxy())

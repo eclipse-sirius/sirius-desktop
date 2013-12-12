@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.validation;
 
 import java.util.Arrays;
@@ -35,31 +36,32 @@ public enum ERROR_LEVEL implements Enumerator {
      * @generated
      * @ordered
      */
-    INFO_LITERAL(0, "INFO", "INFO"), /**
-     * The '<em><b>WARNING</b></em>' literal
-     * object. <!-- begin-user-doc --> <!-- end-user-doc -->
+    INFO_LITERAL(0, "INFO", "INFO"),
+
+    /**
+     * The '<em><b>WARNING</b></em>' literal object. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * 
      * @see #WARNING
      * @generated
      * @ordered
      */
-    WARNING_LITERAL(1, "WARNING", "WARNING"), /**
-     * The '<em><b>ERROR</b></em>'
-     * literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+    WARNING_LITERAL(1, "WARNING", "WARNING"),
+
+    /**
+     * The '<em><b>ERROR</b></em>' literal object. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @see #ERROR
      * @generated
      * @ordered
      */
     ERROR_LITERAL(3, "ERROR", "ERROR");
+
     /**
-     * The '<em><b>INFO</b></em>' literal value. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of '<em><b>INFO</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Info level. <!--
-     * end-model-doc -->
+     * The '<em><b>INFO</b></em>' literal value. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> Info level. <!-- end-model-doc
+     * -->
      * 
      * @see #INFO_LITERAL
      * @model
@@ -69,12 +71,8 @@ public enum ERROR_LEVEL implements Enumerator {
     public static final int INFO = 0;
 
     /**
-     * The '<em><b>WARNING</b></em>' literal value. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of '<em><b>WARNING</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Warning level. <!--
+     * The '<em><b>WARNING</b></em>' literal value. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> Warning level. <!--
      * end-model-doc -->
      * 
      * @see #WARNING_LITERAL
@@ -85,13 +83,9 @@ public enum ERROR_LEVEL implements Enumerator {
     public static final int WARNING = 1;
 
     /**
-     * The '<em><b>ERROR</b></em>' literal value. <!-- begin-user-doc -->
-     * <p>
-     * If the meaning of '<em><b>ERROR</b></em>' literal object isn't clear,
-     * there really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Error level. <!--
-     * end-model-doc -->
+     * The '<em><b>ERROR</b></em>' literal value. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> Error level. <!-- end-model-doc
+     * -->
      * 
      * @see #ERROR_LITERAL
      * @model
@@ -236,4 +230,5 @@ public enum ERROR_LEVEL implements Enumerator {
     public String toString() {
         return literal;
     }
-}
+
+} // ERROR_LEVEL

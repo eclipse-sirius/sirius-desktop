@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.impl;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -109,6 +110,27 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * 
      * @generated
      */
+    public BackgroundStyle getBackgroundStyle() {
+        return backgroundStyle;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setBackgroundStyle(BackgroundStyle newBackgroundStyle) {
+        BackgroundStyle oldBackgroundStyle = backgroundStyle;
+        backgroundStyle = newBackgroundStyle == null ? BACKGROUND_STYLE_EDEFAULT : newBackgroundStyle;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE, oldBackgroundStyle, backgroundStyle));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public RGBValues getBackgroundColor() {
         if (backgroundColor != null && backgroundColor.eIsProxy()) {
             InternalEObject oldBackgroundColor = (InternalEObject) backgroundColor;
@@ -172,27 +194,6 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
                 msgs.dispatch();
         } else if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, newBackgroundColor, newBackgroundColor));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public BackgroundStyle getBackgroundStyle() {
-        return backgroundStyle;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setBackgroundStyle(BackgroundStyle newBackgroundStyle) {
-        BackgroundStyle oldBackgroundStyle = backgroundStyle;
-        backgroundStyle = newBackgroundStyle == null ? BACKGROUND_STYLE_EDEFAULT : newBackgroundStyle;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE, oldBackgroundStyle, backgroundStyle));
     }
 
     /**

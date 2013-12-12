@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool.impl;
 
 import java.util.Collection;
@@ -379,6 +380,146 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
      * 
      * @generated
      */
+    public SourceEdgeViewCreationVariable getSourceViewVariable() {
+        if (sourceViewVariable != null && sourceViewVariable.eIsProxy()) {
+            InternalEObject oldSourceViewVariable = (InternalEObject) sourceViewVariable;
+            sourceViewVariable = (SourceEdgeViewCreationVariable) eResolveProxy(oldSourceViewVariable);
+            if (sourceViewVariable != oldSourceViewVariable) {
+                InternalEObject newSourceViewVariable = (InternalEObject) sourceViewVariable;
+                NotificationChain msgs = oldSourceViewVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE, null, null);
+                if (newSourceViewVariable.eInternalContainer() == null) {
+                    msgs = newSourceViewVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE, null, msgs);
+                }
+                if (msgs != null)
+                    msgs.dispatch();
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE, oldSourceViewVariable, sourceViewVariable));
+            }
+        }
+        return sourceViewVariable;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public SourceEdgeViewCreationVariable basicGetSourceViewVariable() {
+        return sourceViewVariable;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public NotificationChain basicSetSourceViewVariable(SourceEdgeViewCreationVariable newSourceViewVariable, NotificationChain msgs) {
+        SourceEdgeViewCreationVariable oldSourceViewVariable = sourceViewVariable;
+        sourceViewVariable = newSourceViewVariable;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE, oldSourceViewVariable, newSourceViewVariable);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setSourceViewVariable(SourceEdgeViewCreationVariable newSourceViewVariable) {
+        if (newSourceViewVariable != sourceViewVariable) {
+            NotificationChain msgs = null;
+            if (sourceViewVariable != null)
+                msgs = ((InternalEObject) sourceViewVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE, null, msgs);
+            if (newSourceViewVariable != null)
+                msgs = ((InternalEObject) newSourceViewVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE, null, msgs);
+            msgs = basicSetSourceViewVariable(newSourceViewVariable, msgs);
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE, newSourceViewVariable, newSourceViewVariable));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public TargetEdgeViewCreationVariable getTargetViewVariable() {
+        if (targetViewVariable != null && targetViewVariable.eIsProxy()) {
+            InternalEObject oldTargetViewVariable = (InternalEObject) targetViewVariable;
+            targetViewVariable = (TargetEdgeViewCreationVariable) eResolveProxy(oldTargetViewVariable);
+            if (targetViewVariable != oldTargetViewVariable) {
+                InternalEObject newTargetViewVariable = (InternalEObject) targetViewVariable;
+                NotificationChain msgs = oldTargetViewVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE, null, null);
+                if (newTargetViewVariable.eInternalContainer() == null) {
+                    msgs = newTargetViewVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE, null, msgs);
+                }
+                if (msgs != null)
+                    msgs.dispatch();
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE, oldTargetViewVariable, targetViewVariable));
+            }
+        }
+        return targetViewVariable;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public TargetEdgeViewCreationVariable basicGetTargetViewVariable() {
+        return targetViewVariable;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public NotificationChain basicSetTargetViewVariable(TargetEdgeViewCreationVariable newTargetViewVariable, NotificationChain msgs) {
+        TargetEdgeViewCreationVariable oldTargetViewVariable = targetViewVariable;
+        targetViewVariable = newTargetViewVariable;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE, oldTargetViewVariable, newTargetViewVariable);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setTargetViewVariable(TargetEdgeViewCreationVariable newTargetViewVariable) {
+        if (newTargetViewVariable != targetViewVariable) {
+            NotificationChain msgs = null;
+            if (targetViewVariable != null)
+                msgs = ((InternalEObject) targetViewVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE, null, msgs);
+            if (newTargetViewVariable != null)
+                msgs = ((InternalEObject) newTargetViewVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE, null, msgs);
+            msgs = basicSetTargetViewVariable(newTargetViewVariable, msgs);
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE, newTargetViewVariable, newTargetViewVariable));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public InitEdgeCreationOperation getInitialOperation() {
         if (initialOperation != null && initialOperation.eIsProxy()) {
             InternalEObject oldInitialOperation = (InternalEObject) initialOperation;
@@ -519,146 +660,6 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
         throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public SourceEdgeViewCreationVariable getSourceViewVariable() {
-        if (sourceViewVariable != null && sourceViewVariable.eIsProxy()) {
-            InternalEObject oldSourceViewVariable = (InternalEObject) sourceViewVariable;
-            sourceViewVariable = (SourceEdgeViewCreationVariable) eResolveProxy(oldSourceViewVariable);
-            if (sourceViewVariable != oldSourceViewVariable) {
-                InternalEObject newSourceViewVariable = (InternalEObject) sourceViewVariable;
-                NotificationChain msgs = oldSourceViewVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE, null, null);
-                if (newSourceViewVariable.eInternalContainer() == null) {
-                    msgs = newSourceViewVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE, null, msgs);
-                }
-                if (msgs != null)
-                    msgs.dispatch();
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE, oldSourceViewVariable, sourceViewVariable));
-            }
-        }
-        return sourceViewVariable;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public SourceEdgeViewCreationVariable basicGetSourceViewVariable() {
-        return sourceViewVariable;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NotificationChain basicSetSourceViewVariable(SourceEdgeViewCreationVariable newSourceViewVariable, NotificationChain msgs) {
-        SourceEdgeViewCreationVariable oldSourceViewVariable = sourceViewVariable;
-        sourceViewVariable = newSourceViewVariable;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE, oldSourceViewVariable, newSourceViewVariable);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
-        }
-        return msgs;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setSourceViewVariable(SourceEdgeViewCreationVariable newSourceViewVariable) {
-        if (newSourceViewVariable != sourceViewVariable) {
-            NotificationChain msgs = null;
-            if (sourceViewVariable != null)
-                msgs = ((InternalEObject) sourceViewVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE, null, msgs);
-            if (newSourceViewVariable != null)
-                msgs = ((InternalEObject) newSourceViewVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE, null, msgs);
-            msgs = basicSetSourceViewVariable(newSourceViewVariable, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE, newSourceViewVariable, newSourceViewVariable));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public TargetEdgeViewCreationVariable getTargetViewVariable() {
-        if (targetViewVariable != null && targetViewVariable.eIsProxy()) {
-            InternalEObject oldTargetViewVariable = (InternalEObject) targetViewVariable;
-            targetViewVariable = (TargetEdgeViewCreationVariable) eResolveProxy(oldTargetViewVariable);
-            if (targetViewVariable != oldTargetViewVariable) {
-                InternalEObject newTargetViewVariable = (InternalEObject) targetViewVariable;
-                NotificationChain msgs = oldTargetViewVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE, null, null);
-                if (newTargetViewVariable.eInternalContainer() == null) {
-                    msgs = newTargetViewVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE, null, msgs);
-                }
-                if (msgs != null)
-                    msgs.dispatch();
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE, oldTargetViewVariable, targetViewVariable));
-            }
-        }
-        return targetViewVariable;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public TargetEdgeViewCreationVariable basicGetTargetViewVariable() {
-        return targetViewVariable;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NotificationChain basicSetTargetViewVariable(TargetEdgeViewCreationVariable newTargetViewVariable, NotificationChain msgs) {
-        TargetEdgeViewCreationVariable oldTargetViewVariable = targetViewVariable;
-        targetViewVariable = newTargetViewVariable;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE, oldTargetViewVariable, newTargetViewVariable);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
-        }
-        return msgs;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setTargetViewVariable(TargetEdgeViewCreationVariable newTargetViewVariable) {
-        if (newTargetViewVariable != targetViewVariable) {
-            NotificationChain msgs = null;
-            if (targetViewVariable != null)
-                msgs = ((InternalEObject) targetViewVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE, null, msgs);
-            if (newTargetViewVariable != null)
-                msgs = ((InternalEObject) newTargetViewVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE, null, msgs);
-            msgs = basicSetTargetViewVariable(newTargetViewVariable, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE, newTargetViewVariable, newTargetViewVariable));
     }
 
     /**

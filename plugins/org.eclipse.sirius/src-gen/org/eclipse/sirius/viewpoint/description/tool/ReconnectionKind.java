@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool;
 
 import java.util.Arrays;
@@ -35,6 +36,7 @@ public enum ReconnectionKind implements Enumerator {
      * @ordered
      */
     RECONNECT_TARGET_LITERAL(0, "RECONNECT_TARGET", "RECONNECT_TARGET"),
+
     /**
      * The '<em><b>RECONNECT SOURCE</b></em>' literal object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -44,6 +46,7 @@ public enum ReconnectionKind implements Enumerator {
      * @ordered
      */
     RECONNECT_SOURCE_LITERAL(1, "RECONNECT_SOURCE", "RECONNECT_SOURCE"),
+
     /**
      * The '<em><b>RECONNECT BOTH</b></em>' literal object. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
@@ -53,6 +56,7 @@ public enum ReconnectionKind implements Enumerator {
      * @ordered
      */
     RECONNECT_BOTH_LITERAL(2, "RECONNECT_BOTH", "RECONNECT_BOTH");
+
     /**
      * The '<em><b>RECONNECT TARGET</b></em>' literal value. <!-- begin-user-doc
      * -->
@@ -237,4 +241,5 @@ public enum ReconnectionKind implements Enumerator {
     public String toString() {
         return literal;
     }
-}
+
+} // ReconnectionKind

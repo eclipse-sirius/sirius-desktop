@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
@@ -32,7 +33,6 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * @generated
  */
 public interface Style extends DRefreshable, Customizable {
-
     /**
      * Returns the value of the '<em><b>Description</b></em>' reference. <!--
      * begin-user-doc -->
@@ -44,7 +44,7 @@ public interface Style extends DRefreshable, Customizable {
      * 
      * @return the value of the '<em>Description</em>' reference.
      * @see #setDescription(StyleDescription)
-     * @see org.eclipse.sirius.viewpoint.SiriusPackage#getStyle_Description()
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getStyle_Description()
      * @model
      * @generated
      */
@@ -62,4 +62,5 @@ public interface Style extends DRefreshable, Customizable {
      * @generated
      */
     void setDescription(StyleDescription value);
+
 } // Style

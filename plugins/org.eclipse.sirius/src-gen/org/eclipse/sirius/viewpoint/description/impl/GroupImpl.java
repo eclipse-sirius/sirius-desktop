@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.impl;
 
 import java.util.Collection;
@@ -165,7 +166,6 @@ public class GroupImpl extends DModelElementImpl implements Group {
      * 
      * @generated
      */
-
     @Override
     protected EClass eStaticClass() {
         return DescriptionPackage.Literals.GROUP;
@@ -301,7 +301,6 @@ public class GroupImpl extends DModelElementImpl implements Group {
      * 
      * @generated
      */
-
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -318,7 +317,6 @@ public class GroupImpl extends DModelElementImpl implements Group {
      * 
      * @generated
      */
-
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
@@ -345,7 +343,6 @@ public class GroupImpl extends DModelElementImpl implements Group {
      * 
      * @generated
      */
-
     @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
@@ -379,7 +376,6 @@ public class GroupImpl extends DModelElementImpl implements Group {
      * 
      * @generated
      */
-
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
@@ -410,7 +406,6 @@ public class GroupImpl extends DModelElementImpl implements Group {
      * 
      * @generated
      */
-
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
@@ -471,7 +466,6 @@ public class GroupImpl extends DModelElementImpl implements Group {
      * 
      * @generated
      */
-
     @Override
     public String toString() {
         if (eIsProxy())
