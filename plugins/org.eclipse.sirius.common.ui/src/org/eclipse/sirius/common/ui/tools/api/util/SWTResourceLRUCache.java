@@ -10,9 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.ui.tools.api.util;
 
+import org.eclipse.sirius.ext.base.cache.LRUCache;
 import org.eclipse.swt.graphics.Resource;
-
-import org.eclipse.sirius.common.tools.api.util.LRUCache;
 
 /**
  * A cache to store SWT Resources, and dispose the last Resource used when the
@@ -42,7 +41,7 @@ public class SWTResourceLRUCache<K, V extends Resource> extends LRUCache<K, V> {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.common.tools.api.util.LRUCache#removeEldestEntry(java.util.Map.Entry)
+     * @see org.eclipse.sirius.ext.base.collect.LRUCache#removeEldestEntry(java.util.Map.Entry)
      */
     @Override
     protected boolean removeEldestEntry(final java.util.Map.Entry<K, V> eldest) {

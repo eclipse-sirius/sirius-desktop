@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.common.tools.api.util;
+package org.eclipse.sirius.ext.base.cache;
 
 import java.util.LinkedHashMap;
 
