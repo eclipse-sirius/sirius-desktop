@@ -47,7 +47,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ext.base.collections.MultipleCollection;
+import org.eclipse.sirius.ext.base.collect.MultipleCollection;
 
 /**
  * An helper class to handle edges specific operations.

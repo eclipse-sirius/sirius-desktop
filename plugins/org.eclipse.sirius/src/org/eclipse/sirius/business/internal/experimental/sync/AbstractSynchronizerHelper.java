@@ -39,7 +39,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ext.base.collections.MultipleCollection;
+import org.eclipse.sirius.ext.base.collect.MultipleCollection;
 
 /**
  * A common helper for nodes and edges.

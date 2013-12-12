@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ext.base.collections;
+package org.eclipse.sirius.ext.base.collect;
 
 import java.util.ArrayList;
 import java.util.Collection;

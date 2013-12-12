@@ -107,9 +107,9 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.ext.base.cache.KeyCache;
-import org.eclipse.sirius.ext.base.collections.GSetIntersection;
-import org.eclipse.sirius.ext.base.collections.MultipleCollection;
-import org.eclipse.sirius.ext.base.collections.SetIntersection;
+import org.eclipse.sirius.ext.base.collect.GSetIntersection;
+import org.eclipse.sirius.ext.base.collect.MultipleCollection;
+import org.eclipse.sirius.ext.base.collect.SetIntersection;
 
 /**
  * This class is able to synchronize a {@link DSemanticDiagram} instance from a

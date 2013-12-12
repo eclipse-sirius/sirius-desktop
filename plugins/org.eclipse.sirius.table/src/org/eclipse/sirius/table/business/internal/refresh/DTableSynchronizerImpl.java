@@ -65,9 +65,9 @@ import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVar
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ext.base.collections.GSetIntersection;
-import org.eclipse.sirius.ext.base.collections.MultipleCollection;
-import org.eclipse.sirius.ext.base.collections.SetIntersection;
+import org.eclipse.sirius.ext.base.collect.GSetIntersection;
+import org.eclipse.sirius.ext.base.collect.MultipleCollection;
+import org.eclipse.sirius.ext.base.collect.SetIntersection;
 
 /**
  * The synchronizer for tables.
