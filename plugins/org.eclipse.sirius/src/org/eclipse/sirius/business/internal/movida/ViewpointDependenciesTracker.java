@@ -16,10 +16,10 @@ import org.eclipse.emf.common.util.URI;
 
 import com.google.common.base.Preconditions;
 
-import org.eclipse.sirius.business.internal.movida.dependencies.DependencyTracker;
-import org.eclipse.sirius.business.internal.movida.dependencies.Relation;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistryListener;
+import org.eclipse.sirius.ext.base.relations.DependencyTracker;
+import org.eclipse.sirius.ext.base.relations.Relation;
 
 /**
  * Tracks various kinds of dependencies between a set of Viewpoints.

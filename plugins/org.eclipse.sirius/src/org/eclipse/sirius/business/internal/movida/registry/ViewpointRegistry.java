@@ -45,6 +45,7 @@ import com.google.common.collect.Sets;
 
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.ext.base.relations.Relation;
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistryFilter;
 import org.eclipse.sirius.business.api.componentization.ViewointRegistryListener2;
@@ -54,7 +55,6 @@ import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.query.ViewpointURIQuery;
 import org.eclipse.sirius.business.internal.movida.ViewpointDependenciesTracker;
 import org.eclipse.sirius.business.internal.movida.ViewpointResourceOperations;
-import org.eclipse.sirius.business.internal.movida.dependencies.Relation;
 import org.eclipse.sirius.business.internal.movida.registry.MaskingPolicy.MaskingChange;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.CompositeResourceMonitor;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.LegacyPluginMonitor;

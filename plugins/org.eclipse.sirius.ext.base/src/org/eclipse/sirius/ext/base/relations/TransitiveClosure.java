@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.movida.dependencies;
+package org.eclipse.sirius.ext.base.relations;
 
 import java.util.Collections;
 import java.util.Set;

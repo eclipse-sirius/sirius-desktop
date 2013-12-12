@@ -21,9 +21,9 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 
-import org.eclipse.sirius.business.internal.movida.dependencies.Relation;
-import org.eclipse.sirius.business.internal.movida.dependencies.TransitiveClosure;
-import org.eclipse.sirius.business.internal.movida.dependencies.UnionRelation;
+import org.eclipse.sirius.ext.base.relations.Relation;
+import org.eclipse.sirius.ext.base.relations.TransitiveClosure;
+import org.eclipse.sirius.ext.base.relations.UnionRelation;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**

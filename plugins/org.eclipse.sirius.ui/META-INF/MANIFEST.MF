@@ -117,3 +117,4 @@ Require-Bundle: com.google.guava;bundle-version="[11.0.0,12.0.0)",
 Eclipse-LazyStart: true
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.sirius.ext.base.relations;version="1.0.0"
