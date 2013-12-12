@@ -4,7 +4,7 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for all major releases of Sirius.
 
-h2. Changes in Sirius 1.0.0M4 (from Sirius 0.9)
+h2(#sirius1.0M4). Changes in Sirius 1.0.0M4 (from Sirius 0.9)
 
 h3. User-Visible Changes
 
@@ -92,7 +92,36 @@ h4. Changes in @org.eclipse.sirius.tree@
 
 * The deprecated method @DTreeUserInteraction.refreshContent()@ has been removed. Use the variant which take an additional @IProgressMonitor@ parameter instead.
 
-h2. Changes from Viewpoint 6.9 to Sirius 0.9
+h2(#sirius0.9). Changes in Sirius 0.9.0
+
+Version 0.9.0 is the first release under the Sirius name and under the Eclipse Foundation umbrella. Except for the few cases mentioned below (in the "Other API Changes", "Specifier-Visible Changes" and "User-Visible Changes" sections), Sirius 0.9.0 is functionally equivalent to the latest version of Viewpoint (version 6.10), which was the name of the project before it was open sourced at Eclipse. See the rest of the documentation for the complete list of feature of the Sirius platform.
+
+h3. Migrating from Obeo Designer or Viewpoint to Sirius
+
+If you have existing projects which used this technology before it became Eclipse Sirius and want to migrate to Sirius, you must:
+# first migrate your projects and models to the latest pre-Sirius version of Viewpoint or Obeo Designer available to you (Viewpoint is the previous name of Sirius);
+# then migrate those to Sirius 0.9.
+
+The latest version of Viewpoint which was available in an Obeo Designer release is Viewpoint 6.8, released in Obeo Designer 6.2. Sirius 0.9 is based on Viewpoint 6.10, which was not released publicly.
+
+If you were using Obeo Designer, you must thus first migrate your projects and models to Obeo Designer 6.2, and then consult the "release notes for Viewpoint 6.9 and 6.10":release_notes_vp.html, which lists the API changes from Viewpoint 6.8 to 6.10.
+
+Once your projects are compatible with the latest Viewpoint available to you, you can migrate to Sirius, first by updating your Viewpoint Specification Projects and plug-ins which use the Viewpoint APIs, then by updating any Modeling Project and representation files (@*.aird@). 
+
+h4. Migrating Viewpoint Specification Projects
+
+* Any plug-in dependencies towards Viewpoint plug-ins must be updated to the corresponding Sirius plug-in and version number. See the  correspondence table below for the plug-in names to use.
+* If your plug-ins used any of the extension points defined in Viewpoint, you will need to update your @plugin.xml@ files to reference the correct extension points identifiers. In particular, all Viewpoint Specification Projects created using Viewpoint use the @fr.obeo.dsl.viewpoint.componentization@ in their @plugin.xml@ to register the VSMs they define. This should be changed to use the equivalent @org.eclipse.sirius.componentization@ extension point id. The identifier changes for the other extension points follow the same rules as the name changes of the plug-ins they are defined in.
+* The migration of your VSMs (@*.odesign@ files) is automatic: simply open your files once in the VSM editor, perform some no-op change to make the editor "dirty" and save it. The saved version will have been migrated to Sirius.
+* If you had Java code which used the Viewpoint APIs, you will need to update it to use the Sirius APIs. A simple "Source > Organize Imports" on your source folders should find most classes you used in their new namespace. The Viewpoint code base and APIs used the term "Viewpoint" both for the name of the product and for the name of the concept. When it refered to the name of the product, the names were changed to use "Sirius" instead, so you may need to adjust some names in your code beyond just updating the imports (for example, @ViewpointControlCommand@ is now @SiriusControlCommand@).
+
+Note that if you used Obeo Designer, you may have used the legacy Acceleo 2.x language for the computed expressions inside the @*.odesign@ files (if your expressions are of the form @<%something%>@ then you used the legacy language). That language is not supported anymore in Sirius 0.9, so you must migrate your expressions to use Acceleo 3 and/or the specialized interpreters (@var:@, @feature:@ and @service:@, see the documentation). 
+
+h4. Migrating Modeling Projects and Representation Files
+
+* First migrate any modeler definitions used by your modeling projects and representation files (see the section above).
+* Modeling projects created using Viewpoint will not be recognized directly by Sirius, because the nature identfier has changed. You must use the "Configure/Convert to Modeling Project" action in the project's context menu to make it a Sirius-compatible modeling project (see the section below for the technical details of the change).
+* The migration of you representation files (@*.aird@) is performed automatically when they are loaded in memory. It will become permanent the first time you save it (you can force this by opening a representation, making some arbitrary change and saving the session).
 
 h3. Plug-ins version numbers.
 
@@ -147,7 +176,11 @@ All identifiers have changed to start with the @org.eclipse.sirius@ namespace pr
 | fr.obeo.dsl.viewpoint.specifier.ide.ui.acceleo | org.eclipse.sirius.specifier.ide.ui.acceleo |
 | fr.obeo.dsl.viewpoint.doc.feature              | org.eclipse.sirius.doc.feature              |
 
-h4. Java Packages Names
+h4. Java Packages and Classes Names
+
+The Java package names have changed to start with the identifier of the plug-in they are defined in (which has changed).  A simple "Source > Organize Imports" on your source folders should find most classes you used in their new namespace.
+
+The Viewpoint code base and APIs used the term "Viewpoint" both for the name of the product and for the name of the concept. When it refered to the name of the product, the names where changed to use "Sirius" instead (for example, @ViewpointControlCommand@ is now @SiriusControlCommand@).
 
 h4. Models namespace URIs
 
@@ -162,6 +195,8 @@ If you have modeling project created with Viewpoint, you must launch the action 
 If you have many modeling projects to "migrate", you can easily make a script to replace @fr.obeo.dsl.viewpoint.nature.modelingproject@ by @org.eclipse.sirius.nature.modelingproject@ in all @.project@ file of each modeling projects.
 
 h3. Other API Changes
+
+This section only lists API changes in Sirius 0.9.0 compared to the latest version of Viewpoint it is based on, i.e. Viewpoint 6.10.
 
 h4. API Added
 

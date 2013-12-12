@@ -13,16 +13,16 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="#ChangesinSirius1.0.0M4fromSirius0.9">Changes in Sirius 1.0.0M4 (from Sirius 0.9)</a>
+						<a href="#sirius1.0M4">Changes in Sirius 1.0.0M4 (from Sirius 0.9)</a>
 					</li>
 					<li>
-						<a href="#ChangesfromViewpoint6.9toSirius0.9">Changes from Viewpoint 6.9 to Sirius 0.9</a>
+						<a href="#sirius0.9">Changes in Sirius 0.9.0</a>
 					</li>
 				</ol>
 			</li>
 		</ol>
 		<p>This document contains the release notes for all major releases of Sirius.</p>
-		<h2 id="ChangesinSirius1.0.0M4fromSirius0.9">Changes in Sirius 1.0.0M4 (from Sirius 0.9)</h2>
+		<h2 id="sirius1.0M4">Changes in Sirius 1.0.0M4 (from Sirius 0.9)</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
 			<li>The ability to print table representations, which had been disabled for the 0.9 release, has been re-enabled.</li>
@@ -323,7 +323,53 @@
 				<code>IProgressMonitor</code> parameter instead.
 			</li>
 		</ul>
-		<h2 id="ChangesfromViewpoint6.9toSirius0.9">Changes from Viewpoint 6.9 to Sirius 0.9</h2>
+		<h2 id="sirius0.9">Changes in Sirius 0.9.0</h2>
+		<p>Version 0.9.0 is the first release under the Sirius name and under the Eclipse Foundation umbrella. Except for the few cases mentioned below (in the &#171;Other API Changes&#187;, &#171;Specifier-Visible Changes&#187; and &#171;User-Visible Changes&#187; sections), Sirius 0.9.0 is functionally equivalent to the latest version of Viewpoint (version 6.10), which was the name of the project before it was open sourced at Eclipse. See the rest of the documentation for the complete list of feature of the Sirius platform.</p>
+		<h3 id="MigratingfromObeoDesignerorViewpointtoSirius">Migrating from Obeo Designer or Viewpoint to Sirius</h3>
+		<p>If you have existing projects which used this technology before it became Eclipse Sirius and want to migrate to Sirius, you must:</p>
+		<ol>
+			<li>first migrate your projects and models to the latest pre-Sirius version of Viewpoint or Obeo Designer available to you (Viewpoint is the previous name of Sirius);</li>
+			<li>then migrate those to Sirius 0.9.</li>
+		</ol>
+		<p>The latest version of Viewpoint which was available in an Obeo Designer release is Viewpoint 6.8, released in Obeo Designer 6.2. Sirius 0.9 is based on Viewpoint 6.10, which was not released publicly.</p>
+		<p>If you were using Obeo Designer, you must thus first migrate your projects and models to Obeo Designer 6.2, and then consult the 
+			<a href="release_notes_vp.html">release notes for Viewpoint 6.9 and 6.10</a>, which lists the API changes from Viewpoint 6.8 to 6.10.
+		</p>
+		<p>Once your projects are compatible with the latest Viewpoint available to you, you can migrate to Sirius, first by updating your Viewpoint Specification Projects and plug-ins which use the Viewpoint APIs, then by updating any Modeling Project and representation files (
+			<code>*.aird</code>). 
+		</p>
+		<h4 id="MigratingViewpointSpecificationProjects">Migrating Viewpoint Specification Projects</h4>
+		<ul>
+			<li>Any plug-in dependencies towards Viewpoint plug-ins must be updated to the corresponding Sirius plug-in and version number. See the  correspondence table below for the plug-in names to use.</li>
+			<li>If your plug-ins used any of the extension points defined in Viewpoint, you will need to update your 
+				<code>plugin.xml</code> files to reference the correct extension points identifiers. In particular, all Viewpoint Specification Projects created using Viewpoint use the 
+				<code>fr.obeo.dsl.viewpoint.componentization</code> in their 
+				<code>plugin.xml</code> to register the VSMs they define. This should be changed to use the equivalent 
+				<code>org.eclipse.sirius.componentization</code> extension point id. The identifier changes for the other extension points follow the same rules as the name changes of the plug-ins they are defined in.
+			</li>
+			<li>The migration of your VSMs (
+				<code>*.odesign</code> files) is automatic: simply open your files once in the VSM editor, perform some no-op change to make the editor &#171;dirty&#187; and save it. The saved version will have been migrated to Sirius.
+			</li>
+			<li>If you had Java code which used the Viewpoint APIs, you will need to update it to use the Sirius APIs. A simple &#171;Source &gt; Organize Imports&#187; on your source folders should find most classes you used in their new namespace. The Viewpoint code base and APIs used the term &#171;Viewpoint&#187; both for the name of the product and for the name of the concept. When it refered to the name of the product, the names were changed to use &#171;Sirius&#187; instead, so you may need to adjust some names in your code beyond just updating the imports (for example, 
+				<code>ViewpointControlCommand</code> is now 
+				<code>SiriusControlCommand</code>).
+			</li>
+		</ul>
+		<p>Note that if you used Obeo Designer, you may have used the legacy Acceleo 2.x language for the computed expressions inside the 
+			<code>*.odesign</code> files (if your expressions are of the form 
+			<code>&lt;%something%&gt;</code> then you used the legacy language). That language is not supported anymore in Sirius 0.9, so you must migrate your expressions to use Acceleo 3 and/or the specialized interpreters (
+			<code>var:</code>, 
+			<code>feature:</code> and 
+			<code>service:</code>, see the documentation). 
+		</p>
+		<h4 id="MigratingModelingProjectsandRepresentationFiles">Migrating Modeling Projects and Representation Files</h4>
+		<ul>
+			<li>First migrate any modeler definitions used by your modeling projects and representation files (see the section above).</li>
+			<li>Modeling projects created using Viewpoint will not be recognized directly by Sirius, because the nature identfier has changed. You must use the &#171;Configure/Convert to Modeling Project&#187; action in the project&#8217;s context menu to make it a Sirius-compatible modeling project (see the section below for the technical details of the change).</li>
+			<li>The migration of you representation files (
+				<code>*.aird</code>) is performed automatically when they are loaded in memory. It will become permanent the first time you save it (you can force this by opening a representation, making some arbitrary change and saving the session).
+			</li>
+		</ul>
 		<h3 id="Pluginsversionnumbers.">Plug-ins version numbers.</h3>
 		<p>As of Sirius 0.9, and probably at least until Sirius 1.0 when the APIs will be more stable, all the bundles share the same version, which is also the version for the feature. If you used versioned dependencies to the old Viewpoint code (e.g. dependencies towards Viewpoint 6.8), you need to adjust the versions in your 
 			<code>MANIFEST.MF</code>  files in addition to the namespaces.
@@ -494,7 +540,12 @@
 				<td>org.eclipse.sirius.doc.feature              </td>
 			</tr>
 		</table>
-		<h4 id="JavaPackagesNames">Java Packages Names</h4>
+		<h4 id="JavaPackagesandClassesNames">Java Packages and Classes Names</h4>
+		<p>The Java package names have changed to start with the identifier of the plug-in they are defined in (which has changed).  A simple &#171;Source &gt; Organize Imports&#187; on your source folders should find most classes you used in their new namespace.</p>
+		<p>The Viewpoint code base and APIs used the term &#171;Viewpoint&#187; both for the name of the product and for the name of the concept. When it refered to the name of the product, the names where changed to use &#171;Sirius&#187; instead (for example, 
+			<code>ViewpointControlCommand</code> is now 
+			<code>SiriusControlCommand</code>).
+		</p>
 		<h4 id="ModelsnamespaceURIs">Models namespace URIs</h4>
 		<p>All namespace URIs have also been changed from &#171;http://www.obeo.fr/dsl/viewpoint*&#187; to &#171;http://www.eclipse.org/sirius/&#187;.</p>
 		<p>If you have created VSM file (.odesign) or representations file (.aird) with Viewpoint, the changes of the namespace URIs will be automatically migrated during the loading of your VSM or your representations file. These new nsURIs will be stored physically in the file during the first save. If the file is not saved, the automatic migration will be replayed at the next opening.</p>
@@ -509,6 +560,7 @@
 			<code>.project</code> file of each modeling projects.
 		</p>
 		<h3 id="OtherAPIChanges">Other API Changes</h3>
+		<p>This section only lists API changes in Sirius 0.9.0 compared to the latest version of Viewpoint it is based on, i.e. Viewpoint 6.10.</p>
 		<h4 id="APIAdded">API Added</h4>
 		<ul>
 			<li>Add 
