@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.common.tools.api.util;
+package org.eclipse.sirius.ext.base.collect;
 
 import java.util.ArrayList;
 import java.util.EmptyStackException;

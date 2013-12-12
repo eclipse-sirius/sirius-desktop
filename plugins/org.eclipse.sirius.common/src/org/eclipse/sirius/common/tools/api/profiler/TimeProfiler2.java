@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.util.StackEx;
+import org.eclipse.sirius.ext.base.collect.StackEx;
 
 /**
  * An advanced profiler.
