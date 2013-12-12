@@ -22,6 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.lang.model.SourceVersion;
+
 import org.eclipse.core.commands.Command;
 import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.commands.common.CommandException;
@@ -48,13 +50,16 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.jdt.core.JavaConventions;
-import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableContext;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
@@ -66,11 +71,6 @@ import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.IHandlerService;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
-import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
-import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.Group;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Manage viewpoint specification projects.
@@ -332,7 +332,7 @@ public final class ViewpointSpecificationProject {
         final Map<String, String> replacements = new HashMap<String, String>();
         final String projectName;
         final String packageName;
-        if (JavaConventions.validatePackageName(prj.getName(), JavaCore.VERSION_1_3, JavaCore.VERSION_1_3).isOK()) {
+        if (SourceVersion.isIdentifier(prj.getName())) {
             packageName = prj.getName();
         } else {
             packageName = DEFAULT_PACKAGE_NAME;
