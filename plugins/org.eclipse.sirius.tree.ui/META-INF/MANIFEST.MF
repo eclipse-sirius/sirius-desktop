@@ -41,3 +41,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.sirius.common.ui
 Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
+Import-Package: org.eclipse.sirius.ext.base;version="1.0.0"

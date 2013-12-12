@@ -17,7 +17,7 @@ import org.eclipse.gmf.runtime.notation.View;
 
 import com.google.common.base.Function;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**

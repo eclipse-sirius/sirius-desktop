@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 
 import com.google.common.base.Preconditions;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.business.api.query.ViewpointURIQuery;
 import org.eclipse.sirius.business.internal.movida.Movida;
 

@@ -14,9 +14,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 
 import com.google.common.base.Function;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * A function which computes the vertical position (in absolute, normalized

@@ -11,10 +11,9 @@
 package org.eclipse.sirius.diagram.sequence.ui.business.internal;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 
 /**
  * Class responsible for querying a model starting from an EObject.

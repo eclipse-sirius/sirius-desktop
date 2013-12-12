@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.EObject;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.AppliedCompositeFilters;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.CollapseFilter;

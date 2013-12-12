@@ -25,12 +25,12 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.ArrangeRequest;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.business.internal.view.AbstractLayoutData;
 import org.eclipse.sirius.diagram.business.internal.view.EdgeLabelLayoutData;
 import org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData;
 import org.eclipse.sirius.diagram.business.internal.view.LayoutData;
 import org.eclipse.sirius.diagram.business.internal.view.SiriusLayoutDataManagerImpl;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.AbstractDNode;
 import org.eclipse.sirius.viewpoint.DEdge;
 

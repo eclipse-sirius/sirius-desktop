@@ -27,10 +27,10 @@ import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.diagram.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.internal.refresh.GMFHelper;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 
 /**
  * Utilities for GMF notation model modifications.

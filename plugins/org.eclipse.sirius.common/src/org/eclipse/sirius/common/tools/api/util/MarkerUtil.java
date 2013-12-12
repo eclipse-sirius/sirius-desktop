@@ -13,8 +13,9 @@ package org.eclipse.sirius.common.tools.api.util;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 
 /**
  * This class provides utility methods that aid in the creation of

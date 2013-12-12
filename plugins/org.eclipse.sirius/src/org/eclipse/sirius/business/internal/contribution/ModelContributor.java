@@ -24,9 +24,9 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.description.contribution.Contribution;
 import org.eclipse.sirius.description.contribution.FeatureContribution;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * Applies a set of contributions on a whole target model.

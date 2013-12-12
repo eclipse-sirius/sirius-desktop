@@ -13,7 +13,7 @@ package org.eclipse.sirius.tools.internal.command.builders;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromParsedVariableTask;
 import org.eclipse.sirius.business.api.query.EObjectQuery;

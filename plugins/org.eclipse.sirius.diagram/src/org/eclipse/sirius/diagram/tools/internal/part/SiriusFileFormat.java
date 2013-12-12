@@ -15,9 +15,8 @@ import java.io.OutputStream;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.ImageLoader;
 import org.eclipse.swt.internal.image.FileFormat;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * A specific FileFormat class to modify the encoderQFactor of the

@@ -39,3 +39,4 @@ Export-Package: org.eclipse.sirius.editor.tree,
  org.eclipse.sirius.tree.editor.properties.sections.description.treemapping,
  org.eclipse.sirius.tree.editor.properties.sections.description.treenavigationdescription,
  org.eclipse.sirius.tree.editor.properties.sections.description.treevariable
+Import-Package: org.eclipse.sirius.ext.base;version="1.0.0"

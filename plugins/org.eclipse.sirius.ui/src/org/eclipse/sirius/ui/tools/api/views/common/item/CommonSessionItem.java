@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.api.views.common.item;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.ui.tools.api.view.common.item.CommonItem;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.business.api.session.Session;
 
 /**

@@ -25,13 +25,13 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.sirius.common.tools.internal.interpreter.IMonomorphicService;
 import org.eclipse.sirius.common.tools.internal.interpreter.IPolymorphicService;
 import org.eclipse.sirius.common.tools.internal.interpreter.IService;
 import org.eclipse.sirius.common.tools.internal.interpreter.ServiceInterpreter;
 import org.eclipse.sirius.common.tools.internal.interpreter.VariableInterpreter;
+import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.collect.Lists;
 

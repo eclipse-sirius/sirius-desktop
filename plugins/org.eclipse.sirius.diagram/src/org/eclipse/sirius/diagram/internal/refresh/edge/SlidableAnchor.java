@@ -25,9 +25,8 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.internal.refresh.GMFHelper;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * Provides the GMF implementation of Slidable anchor.

@@ -27,7 +27,7 @@ import org.eclipse.emf.common.util.URI;
 
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.query.ResourceDeltaQuery;

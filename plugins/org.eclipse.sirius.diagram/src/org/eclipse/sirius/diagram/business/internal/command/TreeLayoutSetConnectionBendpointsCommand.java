@@ -25,9 +25,8 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.commands.SetConnectionBendpoi
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.tools.internal.util.GMFNotationUtilities;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * A specific SetConnectionBendpointsCommand to change all GMF edges of this

@@ -21,7 +21,6 @@ import org.eclipse.gmf.runtime.notation.Node;
 
 import com.google.common.collect.Maps;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
@@ -36,6 +35,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHe
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DNode;
 
 /**

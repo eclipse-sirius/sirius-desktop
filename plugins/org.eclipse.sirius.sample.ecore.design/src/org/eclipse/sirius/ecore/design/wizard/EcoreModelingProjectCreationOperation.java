@@ -38,7 +38,6 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.importer.ecore.EcoreImporter;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.Session;
@@ -49,6 +48,7 @@ import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelection
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.ecore.design.service.EcoreSamplePlugin;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * A {@link WorkspaceModifyOperation} to create a new Ecore Modeling Project

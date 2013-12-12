@@ -17,7 +17,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.business.api.diagramtype.ICollapseUpdater;
 import org.eclipse.sirius.business.api.helper.filter.FilterService;
 import org.eclipse.sirius.business.api.query.CompositeFilterDescriptionQuery;

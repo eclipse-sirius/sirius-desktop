@@ -12,7 +12,7 @@ package org.eclipse.sirius.business.api.migration;
 
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.osgi.framework.Version;
-import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.business.api.query.AirDResouceQuery;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;

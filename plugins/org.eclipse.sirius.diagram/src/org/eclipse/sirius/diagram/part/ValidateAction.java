@@ -49,7 +49,6 @@ import org.eclipse.ui.actions.WorkspaceModifyDelegatingOperation;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -57,6 +56,7 @@ import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.internal.providers.SiriusMarkerNavigationProvider;
 import org.eclipse.sirius.diagram.internal.providers.SiriusValidationProvider;
 import org.eclipse.sirius.diagram.tools.internal.marker.SiriusMarkerNavigationProviderSpec;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tools.api.validation.constraint.RuleWrappingStatus;
 import org.eclipse.sirius.viewpoint.DDiagram;

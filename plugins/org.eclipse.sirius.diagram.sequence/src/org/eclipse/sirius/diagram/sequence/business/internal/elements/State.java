@@ -22,7 +22,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceNodeQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.ParentOperandFinder;
@@ -31,6 +30,7 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.util.NotationPredicate;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**

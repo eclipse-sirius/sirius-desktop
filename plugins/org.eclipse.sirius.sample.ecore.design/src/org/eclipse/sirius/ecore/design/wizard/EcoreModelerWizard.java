@@ -59,7 +59,6 @@ import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
@@ -73,6 +72,7 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.sirius.ecore.design.service.EcoreSamplePlugin;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * Wizard to create an EMF project with the {@link ModelingProject} nature, an

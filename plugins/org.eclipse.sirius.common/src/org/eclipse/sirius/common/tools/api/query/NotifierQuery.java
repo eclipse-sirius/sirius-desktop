@@ -15,8 +15,8 @@ import org.eclipse.emf.common.notify.Notifier;
 
 import com.google.common.base.Preconditions;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 
 /**
  * Queries on EMF Notifier.

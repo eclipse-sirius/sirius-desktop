@@ -37,7 +37,6 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.business.api.diagramtype.ICollapseUpdater;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.CollapseUpdater;
@@ -48,6 +47,7 @@ import org.eclipse.sirius.diagram.internal.refresh.AbstractCanonicalSynchronizer
 import org.eclipse.sirius.diagram.part.SiriusDiagramUpdater;
 import org.eclipse.sirius.diagram.part.SiriusLinkDescriptor;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.CollapseFilter;
 import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DDiagramElement;

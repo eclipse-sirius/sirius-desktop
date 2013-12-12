@@ -14,11 +14,11 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 
 import com.google.common.base.Preconditions;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.SequenceLayout;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * Refreshes the graphical locations of the elements in a sequence diagram to

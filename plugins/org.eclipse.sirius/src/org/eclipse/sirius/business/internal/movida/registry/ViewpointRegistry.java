@@ -43,8 +43,8 @@ import com.google.common.collect.Maps;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.base.relations.Relation;
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistryFilter;

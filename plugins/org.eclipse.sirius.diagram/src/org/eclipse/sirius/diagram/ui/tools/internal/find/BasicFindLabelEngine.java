@@ -26,9 +26,9 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.api.find.AbstractFindLabelEngine;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FigureQuery;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * A basic implementation of the AbstractFindLabelEngine. This engine simple

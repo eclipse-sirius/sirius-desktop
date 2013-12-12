@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.common.tools.api.util;
+package org.eclipse.sirius.ext.base;
 
 /**
  * This class means a value which might be here, or not depending on the "some"

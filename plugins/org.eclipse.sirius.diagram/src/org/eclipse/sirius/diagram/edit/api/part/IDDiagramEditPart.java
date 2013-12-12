@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.edit.api.part;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**

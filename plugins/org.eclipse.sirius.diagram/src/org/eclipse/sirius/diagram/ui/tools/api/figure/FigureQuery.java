@@ -16,8 +16,8 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrapLabel;
 
 import com.google.common.collect.Iterables;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link IFigure} as

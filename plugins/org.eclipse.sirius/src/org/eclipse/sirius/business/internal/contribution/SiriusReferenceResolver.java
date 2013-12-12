@@ -18,12 +18,12 @@ import com.google.common.base.Preconditions;
 
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.description.contribution.ComputedEObjectReference;
 import org.eclipse.sirius.description.contribution.DirectEObjectReference;
 import org.eclipse.sirius.description.contribution.EObjectReference;
 import org.eclipse.sirius.description.contribution.util.ContributionSwitch;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 
 /**
  * Resolves {@link EObjectReference}s using a Sirius {@link IInterpreter}

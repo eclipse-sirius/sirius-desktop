@@ -30,3 +30,4 @@ Export-Package: org.eclipse.sirius.diagram.sequence.ui,
  org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout;x-internal:=true,
  org.eclipse.sirius.diagram.sequence.ui.tool.internal.provider;x-internal:=true,
  org.eclipse.sirius.diagram.sequence.ui.tool.internal.util;x-internal:=true
+Import-Package: org.eclipse.sirius.ext.base;version="1.0.0"

@@ -31,7 +31,7 @@ import com.google.common.collect.MapMaker;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;

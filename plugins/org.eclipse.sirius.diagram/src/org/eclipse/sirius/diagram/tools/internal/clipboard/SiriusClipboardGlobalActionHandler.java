@@ -53,7 +53,6 @@ import org.eclipse.ui.IWorkbenchPart;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -68,6 +67,7 @@ import org.eclipse.sirius.diagram.tools.internal.commands.emf.PasteFromSiriusCli
 import org.eclipse.sirius.diagram.tools.internal.delete.DeleteWrapperHookExecutorCommand;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.tools.internal.command.builders.PasteCommandBuilder;

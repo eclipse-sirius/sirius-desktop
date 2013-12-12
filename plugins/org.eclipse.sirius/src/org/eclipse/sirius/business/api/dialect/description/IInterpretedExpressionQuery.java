@@ -14,8 +14,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EPackage;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * Query inspecting the Description of representations to determine useful
