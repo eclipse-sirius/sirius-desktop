@@ -10,6 +10,12 @@ h3. User-Visible Changes
 
 h3. API Changes
 
+h4. Library Extensions
+
+This milestone (Sirius 1.0M5) introduces several new plug-ins, collectively called "library extensions". They are all named @org.eclipse.sirius.ext.LIB@, where @LIB@ is the name of a library or component Sirius depends on. These plug-ins are used to isolate generic code which extends existing libraries with features and helpers needed for Sirius, but which do not depend on Sirius themselves. A relatively large part of the code in Sirius is of this kind: things that could/should be in EMF, GMF, Eclipse itself, etc. and which are not not Sirius-specific but which make it easier to build Sirius itself. Sirius 1.0M5 introduces several of these library extensions and starts to fill them with existing classes which were "hidden" inside Sirius and are now exposed in library extensions. Most of the time, existing code which used the Sirius API will only need to:
+# Add the necessary @Import-Package@ (recommended) or @Require-Bundle@ to depend on the library extension(s) where the code they use now lives;
+# Perform a simple "Organize Imports" operation, which should find the classes and interfaces in their new locations.
+
 h4. Changes in @org.eclipse.sirius@
 
 * The @org.eclipse.sirius.business.api.migration.resource.StringCouple@ class has been removed.

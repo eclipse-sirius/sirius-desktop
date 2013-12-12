@@ -61,10 +61,7 @@ import org.eclipse.sirius.business.api.query.ContainerMappingQuery;
 import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.business.api.refresh.GSetIntersection;
-import org.eclipse.sirius.business.api.refresh.MultipleCollection;
 import org.eclipse.sirius.business.api.refresh.RefreshExtensionService;
-import org.eclipse.sirius.business.api.refresh.SetIntersection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
@@ -109,6 +106,10 @@ import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+import org.eclipse.sirius.ext.base.cache.KeyCache;
+import org.eclipse.sirius.ext.base.collections.GSetIntersection;
+import org.eclipse.sirius.ext.base.collections.MultipleCollection;
+import org.eclipse.sirius.ext.base.collections.SetIntersection;
 
 /**
  * This class is able to synchronize a {@link DSemanticDiagram} instance from a

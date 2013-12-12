@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.refresh;
+package org.eclipse.sirius.ext.base.collections;
 
 import java.util.Collection;
 import java.util.HashMap;

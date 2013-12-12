@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.experimental.sync;
+package org.eclipse.sirius.ext.base.cache;
 
 import java.util.Map;
 
