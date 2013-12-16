@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.migration.description;
 
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.xmi.XMLResource;
@@ -54,5 +56,25 @@ public class VSMXMIHelper extends XMIHelperImpl {
             super.setValue(object, feature, value, position);
         }
 
+    }
+
+    @Override
+    public EObject createObject(EFactory eFactory, EClassifier type) {
+        EFactory factory = eFactory;
+        if (migrationNeeded) {
+            // Handle EClass moved from one package to another,
+            // prefix is not sufficient to retrieve the new package and factory
+            // in
+            // org.eclipse.emf.ecore.xmi.impl.XMLHandler.getFactoryForPrefix(String)
+            // which does factory =
+            // ePackage.getEFactoryInstance();
+            // The migration participants return the new type with EClassifier
+            // getType(EPackage, String, String).
+            // Then we get the factory instance from the EClassifier's EPackage.
+            if (type != null && type.getEPackage() != null && type.getEPackage().getEFactoryInstance() != null) {
+                factory = type.getEPackage().getEFactoryInstance();
+            }
+        }
+        return super.createObject(factory, type);
     }
 }

@@ -535,6 +535,10 @@
             kind="RepresentationsFile">
       </participant>
       <participant
+            class="org.eclipse.sirius.business.internal.migration.DiagramSplitMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
+      <participant
             class="org.eclipse.sirius.business.internal.migration.description.RemoveOldMigrationAnnotations"
             kind="VSM">
       </participant>
@@ -550,6 +554,10 @@
             class="org.eclipse.sirius.business.internal.migration.NsURIMigrationParticipant"
             kind="VSM">
       </participant>
+       <participant
+             class="org.eclipse.sirius.business.internal.migration.DiagramSplitMigrationParticipant"
+             kind="VSM">
+       </participant>
    </extension>
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated contribution -->

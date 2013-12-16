@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.business.internal.migration;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
@@ -32,6 +33,7 @@ import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
+import com.google.common.collect.Sets;
 
 /**
  * The migration code of Sirius 6.9.0.
@@ -57,7 +59,8 @@ public class DiagramRepresentationsFileMigrationParticipantV690 {
      *         OptionalLayer.
      */
     public EClassifier getType(EPackage ePackage, String name) {
-        if (ePackage != null && ePackage.getNsURI() != null && ePackage.getNsURI().equals(DescriptionPackage.eINSTANCE.getNsURI()) && name.equals("OptionalLayer")) {
+        Set<String> descriptionsNsUri = Sets.newHashSet(DescriptionPackage.eINSTANCE.getNsURI(), org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getNsURI());
+        if (ePackage != null && ePackage.getNsURI() != null && descriptionsNsUri.contains(ePackage.getNsURI()) && name.equals("OptionalLayer")) {
             return DescriptionPackage.eINSTANCE.getAdditionalLayer();
         }
         return null;

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.migration.description;
 
+import java.util.Set;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
@@ -19,6 +21,8 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.osgi.framework.Version;
+
+import com.google.common.collect.Sets;
 
 /**
  * The VSM migration participant for the migration from OptionalLayer to
@@ -41,7 +45,8 @@ public class OptionalLayersVSMMigrationParticipant extends AbstractVSMMigrationP
     @Override
     public EClassifier getType(EPackage ePackage, String name, String loadedVersion) {
         if (Version.parseVersion(loadedVersion).compareTo(MIGRATION_VERSION) < 0) {
-            if (ePackage != null && ePackage.getNsURI() != null && ePackage.getNsURI().equals(DescriptionPackage.eINSTANCE.getNsURI()) && name.equals("OptionalLayer")) {
+            Set<String> descriptionsNsUri = Sets.newHashSet(DescriptionPackage.eINSTANCE.getNsURI(), org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getNsURI());
+            if (ePackage != null && ePackage.getNsURI() != null && descriptionsNsUri.contains(ePackage.getNsURI()) && name.equals("OptionalLayer")) {
                 return DescriptionPackage.eINSTANCE.getAdditionalLayer();
             }
         }
