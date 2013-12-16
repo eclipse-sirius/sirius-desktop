@@ -125,13 +125,6 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
 
     private IPreferenceChangeListener viewPointPreferenceChangeListener;
 
-    /**
-     * Default constructor.
-     */
-    public AbstractDTableEditor() {
-        super();
-    }
-
     private IInterpreter getInterpreter() {
         return SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(getTableModel().getTarget());
     }
@@ -302,7 +295,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             notify(PROP_TITLE);
 
             /* handle preferences */
-            new InstanceScope().getNode(SiriusPlugin.ID).addPreferenceChangeListener(viewPointPreferenceChangeListener);
+            InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).addPreferenceChangeListener(viewPointPreferenceChangeListener);
 
             // Launch the refresh if needed
             if (DialectManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
@@ -650,7 +643,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             refreshAtOpeningActivator = null;
         }
 
-        new InstanceScope().getNode(SiriusPlugin.ID).removePreferenceChangeListener(viewPointPreferenceChangeListener);
+        InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).removePreferenceChangeListener(viewPointPreferenceChangeListener);
         viewPointPreferenceChangeListener = null;
 
     }

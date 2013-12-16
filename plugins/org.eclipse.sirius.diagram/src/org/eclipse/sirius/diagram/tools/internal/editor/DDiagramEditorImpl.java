@@ -654,7 +654,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
         /* handle preferences */
         if (viewPointPreferenceChangeListener != null) {
-            new InstanceScope().getNode(SiriusPlugin.ID).addPreferenceChangeListener(viewPointPreferenceChangeListener);
+            InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).addPreferenceChangeListener(viewPointPreferenceChangeListener);
         }
 
         /* add a listener to selection */
@@ -705,7 +705,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             getSession().removeListener(this);
         }
         if (viewPointPreferenceChangeListener != null) {
-            new InstanceScope().getNode(SiriusPlugin.ID).removePreferenceChangeListener(viewPointPreferenceChangeListener);
+            InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).removePreferenceChangeListener(viewPointPreferenceChangeListener);
         }
         viewPointPreferenceChangeListener = null;
 

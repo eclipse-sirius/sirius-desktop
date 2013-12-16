@@ -212,7 +212,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
             notify(PROP_TITLE);
 
             /* handle preferences */
-            new InstanceScope().getNode(SiriusPlugin.ID).addPreferenceChangeListener(viewPointPreferenceChangeListener);
+            InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).addPreferenceChangeListener(viewPointPreferenceChangeListener);
 
             // Launch the refresh if needed
             if (DialectManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
@@ -648,7 +648,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
             ((IDisposable) getAdapterFactory()).dispose();
         }
 
-        new InstanceScope().getNode(SiriusPlugin.ID).removePreferenceChangeListener(viewPointPreferenceChangeListener);
+        InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).removePreferenceChangeListener(viewPointPreferenceChangeListener);
         viewPointPreferenceChangeListener = null;
     }
 
