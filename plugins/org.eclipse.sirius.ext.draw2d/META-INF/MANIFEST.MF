@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Sirius Library Extension - Draw2D (Incubation)
+Bundle-SymbolicName: org.eclipse.sirius.ext.draw2d
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Eclipse.org
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.eclipse.draw2d,
+ org.eclipse.draw2d.geometry,
+ org.eclipse.draw2d.graph,
+ org.eclipse.draw2d.images,
+ org.eclipse.draw2d.internal,
+ org.eclipse.draw2d.parts,
+ org.eclipse.draw2d.text,
+ org.eclipse.draw2d.widgets

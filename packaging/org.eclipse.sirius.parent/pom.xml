@@ -49,8 +49,19 @@
   <modules>
     <!-- plugins -->
     <module>../../plugins/org.eclipse.sirius.ext.base</module>
+    <module>../../plugins/org.eclipse.sirius.ext.draw2d</module>
+    <module>../../plugins/org.eclipse.sirius.ext.e3.ui</module>
+    <module>../../plugins/org.eclipse.sirius.ext.e3</module>
+    <module>../../plugins/org.eclipse.sirius.ext.emf.edit</module>
+    <module>../../plugins/org.eclipse.sirius.ext.emf.tx</module>
+    <module>../../plugins/org.eclipse.sirius.ext.emf.ui</module>
     <module>../../plugins/org.eclipse.sirius.ext.emf</module>
+    <module>../../plugins/org.eclipse.sirius.ext.gef</module>
+    <module>../../plugins/org.eclipse.sirius.ext.gmf.notation</module>
+    <module>../../plugins/org.eclipse.sirius.ext.gmf.runtime</module>
+    <module>../../plugins/org.eclipse.sirius.ext.jface</module>
     <module>../../plugins/org.eclipse.sirius.ext.swt</module>
+
     <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl.ide</module>
     <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl</module>
     <module>../../plugins/org.eclipse.sirius.common.ocl</module>
