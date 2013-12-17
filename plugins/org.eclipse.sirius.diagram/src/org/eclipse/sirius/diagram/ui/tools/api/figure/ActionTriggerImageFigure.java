@@ -18,8 +18,6 @@ import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseListener;
 import org.eclipse.swt.graphics.Image;
 
-import org.eclipse.sirius.common.ui.tools.api.util.ISimpleAction;
-
 /**
  * A figure that triggers actions when the user clicks on the image.
  * 
@@ -32,10 +30,9 @@ public class ActionTriggerImageFigure extends MouseAwareImageFigure {
     protected Image clickedImage;
 
     /**
-     * Actions to triggers when the image is clicked (type of
-     * {@link ISimpleAction}.
+     * Actions to triggers when the image is clicked.
      */
-    private List actions;
+    private List<Runnable> actions;
 
     /**
      * the action trigger mandatory to simulate click
@@ -78,7 +75,7 @@ public class ActionTriggerImageFigure extends MouseAwareImageFigure {
      * Initialize the figure.
      */
     private void init() {
-        this.actions = new LinkedList();
+        this.actions = new LinkedList<Runnable>();
         this.actionTrigger = new ActionTrigger();
         this.addMouseListener(this.actionTrigger);
     }
@@ -124,10 +121,8 @@ public class ActionTriggerImageFigure extends MouseAwareImageFigure {
      * Trigger all actions.
      */
     public void trigger() {
-        final Iterator iterActions = this.iterActions();
-        while (iterActions.hasNext()) {
-            final ISimpleAction action = (ISimpleAction) iterActions.next();
-            action.executeAction();
+        for (Runnable action : actions) {
+            action.run();
         }
     }
 
@@ -137,7 +132,7 @@ public class ActionTriggerImageFigure extends MouseAwareImageFigure {
      * @param simpleAction
      *            the action to add.
      */
-    public void addAction(final ISimpleAction simpleAction) {
+    public void addAction(Runnable simpleAction) {
         this.actions.add(simpleAction);
     }
 
@@ -149,7 +144,7 @@ public class ActionTriggerImageFigure extends MouseAwareImageFigure {
      * @param index
      *            index at which the specified element is to be inserted
      */
-    public void addAction(final ISimpleAction simpleAction, final int index) {
+    public void addAction(Runnable simpleAction, final int index) {
         this.actions.add(index, simpleAction);
     }
 
@@ -166,7 +161,7 @@ public class ActionTriggerImageFigure extends MouseAwareImageFigure {
      * @param simpleAction
      *            the action to remove.
      */
-    public void removeAction(final ISimpleAction simpleAction) {
+    public void removeAction(Runnable simpleAction) {
         this.actions.remove(simpleAction);
     }
 
@@ -175,7 +170,7 @@ public class ActionTriggerImageFigure extends MouseAwareImageFigure {
      * 
      * @return an iterator that iterates on actions.
      */
-    public Iterator iterActions() {
+    public Iterator<Runnable> iterActions() {
         return this.actions.iterator();
     }
 

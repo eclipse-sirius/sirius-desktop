@@ -22,7 +22,8 @@ h4. Changes in @org.eclipse.sirius@
 
 h4. Changes in @org.eclipse.sirius.common.ui@
 
-* The @org/eclipse/sirius/common/ui/business/api/interpreter/VariableContentProvider@ class has been removed.
+* The @org.eclipse.sirius.common.ui.business.api.interpreter.VariableContentProvider@ class has been removed.
+* The @org.eclipse.sirius.common.ui.tools.api.util.ISimpleAction@ interface has been removed.
 
 h2(#sirius1.0M4). Changes in Sirius 1.0.0M4 (from Sirius 0.9)
 
