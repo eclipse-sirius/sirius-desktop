@@ -25,29 +25,28 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.business.api.helper.graphicalfilters.HideFilterHelper;
+import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.AbsoluteBoundsFilter;
+import org.eclipse.sirius.diagram.CollapseFilter;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.GraphicalFilter;
+import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.eclipse.sirius.diagram.business.api.image.ImageSelectorService;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.edit.api.part.DesignerEditPartHelper;
+import org.eclipse.sirius.diagram.tools.api.migration.DiagramCrossReferencer;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
+import org.eclipse.sirius.viewpoint.Customizable;
+import org.eclipse.sirius.viewpoint.Style;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.business.api.helper.graphicalfilters.HideFilterHelper;
-import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.business.api.image.ImageSelectorService;
-import org.eclipse.sirius.diagram.edit.api.part.DesignerEditPartHelper;
-import org.eclipse.sirius.diagram.tools.api.migration.DiagramCrossReferencer;
-import org.eclipse.sirius.viewpoint.AbsoluteBoundsFilter;
-import org.eclipse.sirius.viewpoint.BasicLabelStyle;
-import org.eclipse.sirius.viewpoint.CollapseFilter;
-import org.eclipse.sirius.viewpoint.Customizable;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.GraphicalFilter;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.WorkspaceImage;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
  * This will be used to save the current state of a given DDiagramElement. An
@@ -200,7 +199,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
 
             public boolean apply(Object input) {
                 if (input instanceof CollapseFilter) {
-                    if (((CollapseFilter) input).eIsSet(ViewpointPackage.eINSTANCE.getCollapseFilter_Height()) && ((CollapseFilter) input).eIsSet(ViewpointPackage.eINSTANCE.getCollapseFilter_Width())) {
+                    if (((CollapseFilter) input).eIsSet(DiagramPackage.eINSTANCE.getCollapseFilter_Height()) && ((CollapseFilter) input).eIsSet(DiagramPackage.eINSTANCE.getCollapseFilter_Width())) {
                         return true;
                     }
                 }
@@ -277,10 +276,10 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
 
         element.setVisible(isVisible);
         if (isExplictlyFolded) {
-            addFilterType(element, ViewpointFactory.eINSTANCE.createFoldingPointFilter());
+            addFilterType(element, DiagramFactory.eINSTANCE.createFoldingPointFilter());
         }
         if (isIndirectlyFold) {
-            addFilterType(element, ViewpointFactory.eINSTANCE.createFoldingFilter());
+            addFilterType(element, DiagramFactory.eINSTANCE.createFoldingFilter());
         }
 
         for (int i = 0; i < nodes.size(); i++) {
@@ -337,7 +336,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
         Map<String, Object> customizedFeatures = customizableToCustomizedFeatures.get(customizableIdentifier);
         if (customizedFeatures != null) {
             if (isWorkspaceImageStyleSetedByUser(currentCustomizable, customizedFeatures)) {
-                Object object = customizedFeatures.get(ViewpointPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName());
+                Object object = customizedFeatures.get(DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName());
                 EObject eContainer = currentCustomizable.eContainer();
                 EReference eContainmentFeature = currentCustomizable.eContainmentFeature();
                 if (object instanceof String && currentCustomizable instanceof BasicLabelStyle && eContainer != null && eContainmentFeature != null) {
@@ -366,8 +365,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
     }
 
     private boolean isWorkspaceImageStyleSetedByUser(Customizable customizable, Map<String, Object> customizedFeatures) {
-        boolean isWorkspaceImageStyleSetedByUser = customizedFeatures.keySet().contains(ViewpointPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName())
-                && !(customizable instanceof WorkspaceImage);
+        boolean isWorkspaceImageStyleSetedByUser = customizedFeatures.keySet().contains(DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName()) && !(customizable instanceof WorkspaceImage);
         return isWorkspaceImageStyleSetedByUser;
     }
 

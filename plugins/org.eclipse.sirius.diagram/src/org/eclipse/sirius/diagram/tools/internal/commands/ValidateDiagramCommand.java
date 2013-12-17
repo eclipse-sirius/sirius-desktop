@@ -15,10 +15,9 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.common.ui.util.WorkbenchPartDescriptor;
+import org.eclipse.sirius.diagram.part.ValidateAction;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.handlers.HandlerUtil;
-
-import org.eclipse.sirius.diagram.part.ValidateAction;
 
 /**
  * A command to launch a validation.

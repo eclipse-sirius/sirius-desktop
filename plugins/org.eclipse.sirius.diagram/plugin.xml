@@ -824,7 +824,7 @@
 
    <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
       <?gmfgen generated="false"?>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <specializationType
                id="org.eclipse.sirius.diagram.DDiagram_1000"
                name="%metatype.name.DDiagram_1000"
@@ -834,7 +834,7 @@
             <param name="semanticHint" value="1000"/>
          </specializationType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.DNode_2001"
                name="%metatype.name.DNode_2001"
@@ -844,7 +844,7 @@
             <param name="semanticHint" value="2001"/>
          </metamodelType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.DNodeContainer_2002"
                name="%metatype.name.DNodeContainer_2002"
@@ -854,7 +854,7 @@
             <param name="semanticHint" value="2002"/>
          </metamodelType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <specializationType
                id="org.eclipse.sirius.diagram.DNodeList_2003"
                name="%metatype.name.DNodeList_2003"
@@ -863,7 +863,7 @@
             <param name="semanticHint" value="2003"/>
          </specializationType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <specializationType
                id="org.eclipse.sirius.diagram.DNode_3001"
                name="%metatype.name.DNode_3001"
@@ -872,7 +872,7 @@
             <param name="semanticHint" value="3001"/>
          </specializationType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.BundledImage_3004"
                name="%metatype.name.BundledImage_3004"
@@ -882,7 +882,7 @@
             <param name="semanticHint" value="3004"/>
          </metamodelType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.Dot_3002"
                name="%metatype.name.Dot_3002"
@@ -892,7 +892,7 @@
             <param name="semanticHint" value="3002"/>
          </metamodelType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.GaugeCompositeStyle_3006"
                name="%metatype.name.GaugeCompositeStyle_3006"
@@ -902,7 +902,7 @@
             <param name="semanticHint" value="3006"/>
          </metamodelType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.Square_3003"
                name="%metatype.name.Square_3003"
@@ -912,7 +912,7 @@
             <param name="semanticHint" value="3003"/>
          </metamodelType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.Ellipse_3016"
                name="%metatype.name.Ellipse_3016"
@@ -922,7 +922,7 @@
             <param name="semanticHint" value="3016"/>
          </metamodelType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.Lozenge_3017"
                name="%metatype.name.Lozenge_3017"
@@ -932,7 +932,7 @@
             <param name="semanticHint" value="3017"/>
          </metamodelType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.WorkspaceImage_3005"
                name="%metatype.name.WorkspaceImage_3005"
@@ -942,7 +942,7 @@
             <param name="semanticHint" value="3005"/>
          </metamodelType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.Note_3013"
                name="%metatype.name.Note_3013"
@@ -952,7 +952,7 @@
             <param name="semanticHint" value="3013"/>
          </metamodelType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.CustomStyle_3014"
                name="%metatype.name.CustomStyle_3014"
@@ -962,7 +962,7 @@
             <param name="semanticHint" value="3014"/>
          </metamodelType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <specializationType
                id="org.eclipse.sirius.diagram.DNode_3007"
                name="%metatype.name.DNode_3007"
@@ -971,7 +971,7 @@
             <param name="semanticHint" value="3007"/>
          </specializationType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <specializationType
                id="org.eclipse.sirius.diagram.DNodeContainer_3008"
                name="%metatype.name.DNodeContainer_3008"
@@ -980,7 +980,7 @@
             <param name="semanticHint" value="3008"/>
          </specializationType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.DNodeList_3009"
                name="%metatype.name.DNodeList_3009"
@@ -990,7 +990,7 @@
             <param name="semanticHint" value="3009"/>
          </metamodelType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.DNodeListElement_3010"
                name="%metatype.name.DNodeListElement_3010"
@@ -1000,7 +1000,7 @@
             <param name="semanticHint" value="3010"/>
          </metamodelType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <specializationType
                id="org.eclipse.sirius.diagram.DNode_3012"
                name="%metatype.name.DNode_3012"
@@ -1009,7 +1009,7 @@
             <param name="semanticHint" value="3012"/>
          </specializationType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.DEdge_4001"
                name="%metatype.name.DEdge_4001"
@@ -1019,7 +1019,7 @@
             <param name="semanticHint" value="4001"/>
          </metamodelType>
       </metamodel>
-      <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+      <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.BracketEdge_4002"
                name="%metatype.name.DimensionEdge_4002"
@@ -1696,7 +1696,7 @@
    
    <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
 
-             <metamodel nsURI="http://www.eclipse.org/sirius/1.1.0">
+             <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.DDiagram_3001"
                name="%metatype.name.DDiagram_3001"

@@ -14,7 +14,6 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.diagram.internal.edit.parts.BundledImageEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.CustomStyleEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;

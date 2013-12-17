@@ -40,7 +40,6 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIStatusCodes;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.util.EditPartUtil;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.diagram.internal.refresh.IsOrphanedSwitch;
 import org.eclipse.sirius.diagram.part.SiriusDiagramUpdater;
 import org.eclipse.sirius.diagram.part.SiriusNodeDescriptor;

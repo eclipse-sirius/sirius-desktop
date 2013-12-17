@@ -31,17 +31,24 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Image;
-
-import com.google.common.collect.Iterables;
-
 import org.eclipse.sirius.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.experimental.sync.DDiagramElementSynchronizer;
+import org.eclipse.sirius.diagram.ContainerStyle;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.internal.query.StyleConfigurationQuery;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramNameEditPart;
@@ -51,31 +58,24 @@ import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.tools.api.part.IDiagramDialectGraphicalViewer;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.SemanticChangedCommand;
-import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
-import org.eclipse.sirius.viewpoint.ContainerStyle;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeListElement;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.DStylizable;
-import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.EdgeStyle;
-import org.eclipse.sirius.viewpoint.LabelStyle;
-import org.eclipse.sirius.viewpoint.NodeStyle;
-import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.LabelStyle;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Image;
+
+import com.google.common.collect.Iterables;
 
 /**
  * Implementation of {@link IDiagramElementEditPart}.
@@ -296,7 +296,7 @@ public final class DiagramElementEditPartOperation {
             return;
         }
         final DiagramEventBroker broker = DiagramElementEditPartOperation.getDiagramEventBroker(self);
-        if (ViewpointPackage.eINSTANCE.getDNode_OwnedStyle().equals(notification.getFeature())) {
+        if (DiagramPackage.eINSTANCE.getDNode_OwnedStyle().equals(notification.getFeature())) {
             if (notification.getOldValue() instanceof NodeStyle) {
                 final NodeStyle oldNodeStyle = (NodeStyle) notification.getOldValue();
                 broker.removeNotificationListener(oldNodeStyle, (NotificationListener) self);
@@ -306,7 +306,7 @@ public final class DiagramElementEditPartOperation {
                 broker.addNotificationListener(newNodeStyle, (NotificationListener) self);
             }
             self.refresh();
-        } else if (ViewpointPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle().equals(notification.getFeature())) {
+        } else if (DiagramPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle().equals(notification.getFeature())) {
             if (notification.getOldValue() instanceof ContainerStyle) {
                 final ContainerStyle oldContainerStyle = (ContainerStyle) notification.getOldValue();
                 broker.removeNotificationListener(oldContainerStyle, (NotificationListener) self);
@@ -316,7 +316,7 @@ public final class DiagramElementEditPartOperation {
                 broker.addNotificationListener(newContainerStyle, (NotificationListener) self);
             }
             self.refresh();
-        } else if (ViewpointPackage.eINSTANCE.getDEdge_OwnedStyle().equals(notification.getFeature())) {
+        } else if (DiagramPackage.eINSTANCE.getDEdge_OwnedStyle().equals(notification.getFeature())) {
             if (notification.getOldValue() instanceof EdgeStyle) {
                 final EdgeStyle oldEdgeStyle = (EdgeStyle) notification.getOldValue();
                 broker.removeNotificationListener(oldEdgeStyle, (NotificationListener) self);

@@ -13,12 +13,11 @@ package org.eclipse.sirius.diagram.tools.internal.editor.tabbar;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.diagram.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.diagram.tools.internal.editor.DDiagramEditorImpl;
 
 /**
  * A ResourceSet listener to refresh the tabbar icons . for layer icon . for

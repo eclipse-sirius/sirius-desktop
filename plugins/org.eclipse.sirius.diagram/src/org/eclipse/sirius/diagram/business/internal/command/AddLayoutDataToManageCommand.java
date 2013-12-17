@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.business.internal.command;
 
 import org.eclipse.emf.common.command.AbstractCommand;
-
 import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.business.internal.view.AbstractLayoutData;
 

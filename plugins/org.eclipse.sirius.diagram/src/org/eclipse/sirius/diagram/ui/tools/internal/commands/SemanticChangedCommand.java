@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
 

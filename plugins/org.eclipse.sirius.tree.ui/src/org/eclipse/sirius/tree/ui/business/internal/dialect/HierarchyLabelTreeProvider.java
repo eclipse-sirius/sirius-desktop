@@ -13,14 +13,14 @@ package org.eclipse.sirius.tree.ui.business.internal.dialect;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.description.TreeMapping;
 import org.eclipse.sirius.tree.description.TreeNavigationDescription;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * A label provider for mappings to display their hierarchy.
@@ -85,8 +85,8 @@ public class HierarchyLabelTreeProvider extends LabelProvider {
 
         if (eObject instanceof IdentifiedElement) {
             label = new IdentifiedElementQuery((IdentifiedElement) eObject).getLabel();
-        } else if (eObject instanceof AbstractNodeMapping) {
-            label = ((AbstractNodeMapping) eObject).getName();
+        } else if (eObject instanceof RepresentationExtensionDescription) {
+            label = ((RepresentationExtensionDescription) eObject).getName();
         }
         return label != null ? label : "Element whithout name";
     }

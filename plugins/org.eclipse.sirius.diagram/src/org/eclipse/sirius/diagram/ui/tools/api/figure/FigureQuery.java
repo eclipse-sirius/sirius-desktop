@@ -13,11 +13,10 @@ package org.eclipse.sirius.diagram.ui.tools.api.figure;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrapLabel;
-
-import com.google.common.collect.Iterables;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
+
+import com.google.common.collect.Iterables;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link IFigure} as

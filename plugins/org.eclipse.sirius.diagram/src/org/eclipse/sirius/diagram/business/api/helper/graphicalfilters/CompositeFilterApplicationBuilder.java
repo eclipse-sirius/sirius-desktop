@@ -13,21 +13,21 @@ package org.eclipse.sirius.diagram.business.api.helper.graphicalfilters;
 import java.util.Collection;
 import java.util.List;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.diagramtype.ICollapseUpdater;
 import org.eclipse.sirius.business.api.helper.filter.FilterService;
 import org.eclipse.sirius.business.api.query.CompositeFilterDescriptionQuery;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.viewpoint.AppliedCompositeFilters;
-import org.eclipse.sirius.viewpoint.CollapseFilter;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.description.filter.CompositeFilterDescription;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.diagram.AppliedCompositeFilters;
+import org.eclipse.sirius.diagram.CollapseFilter;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Helper to handle CollapseFilter and AppliedCompositeFilters.
@@ -107,7 +107,7 @@ public class CompositeFilterApplicationBuilder {
 
     private void createFilterApplication(DDiagramElement element, List<CompositeFilterDescription> appliedFilters) {
         if (element != null && appliedFilters != null && !appliedFilters.isEmpty()) {
-            AppliedCompositeFilters filterApplication = ViewpointFactory.eINSTANCE.createAppliedCompositeFilters();
+            AppliedCompositeFilters filterApplication = DiagramFactory.eINSTANCE.createAppliedCompositeFilters();
             filterApplication.getCompositeFilterDescriptions().addAll(appliedFilters);
             element.getGraphicalFilters().add(filterApplication);
         }

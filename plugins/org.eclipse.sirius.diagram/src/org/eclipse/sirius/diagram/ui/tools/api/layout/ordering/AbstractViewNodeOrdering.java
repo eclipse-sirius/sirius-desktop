@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.api.layout.ordering;
 
 import org.eclipse.gmf.runtime.notation.Node;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.diagram.AbstractDNode;
 
 /**
  * This class orders a list of {@link AbstractDNode}s.

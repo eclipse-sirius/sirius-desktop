@@ -14,11 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.sirius.viewpoint.BracketEdgeStyle;
+import org.eclipse.sirius.diagram.BracketEdgeStyle;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.viewpoint.Customizable;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.WorkspaceImage;
 
 /**
  * A query on {@link Customizable}.
@@ -63,24 +64,24 @@ public class CustomizableQuery {
     }
 
     private boolean isGaugeCompositeSectionsFeature(EStructuralFeature feature) {
-        boolean isGaugeCompositeSectionsFeature = ViewpointPackage.Literals.GAUGE_COMPOSITE_STYLE__SECTIONS.equals(feature);
+        boolean isGaugeCompositeSectionsFeature = DiagramPackage.Literals.GAUGE_COMPOSITE_STYLE__SECTIONS.equals(feature);
         return isGaugeCompositeSectionsFeature;
     }
 
     private boolean isEdgeStyleBeginCenterEndFeature(EStructuralFeature feature) {
-        boolean isEdgeStyleBeginCenterEndFeature = ViewpointPackage.Literals.EDGE_STYLE__BEGIN_LABEL_STYLE.equals(feature) || ViewpointPackage.Literals.EDGE_STYLE__CENTER_LABEL_STYLE.equals(feature)
-                || ViewpointPackage.Literals.EDGE_STYLE__END_LABEL_STYLE.equals(feature);
+        boolean isEdgeStyleBeginCenterEndFeature = DiagramPackage.Literals.EDGE_STYLE__BEGIN_LABEL_STYLE.equals(feature) || DiagramPackage.Literals.EDGE_STYLE__CENTER_LABEL_STYLE.equals(feature)
+                || DiagramPackage.Literals.EDGE_STYLE__END_LABEL_STYLE.equals(feature);
         return isEdgeStyleBeginCenterEndFeature;
     }
 
     private boolean isUselessFeature(EStructuralFeature feature) {
         // CHECKSTYLE:OFF
-        return ViewpointPackage.Literals.BORDERED_STYLE__BORDER_SIZE.equals(feature) || ViewpointPackage.Literals.NODE_STYLE__HIDE_LABEL_BY_DEFAULT.equals(feature)
-                || ViewpointPackage.Literals.SQUARE__WIDTH.equals(feature) || ViewpointPackage.Literals.SQUARE__HEIGHT.equals(feature) || ViewpointPackage.Literals.LOZENGE__WIDTH.equals(feature)
-                || ViewpointPackage.Literals.LOZENGE__HEIGHT.equals(feature) || ViewpointPackage.Literals.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION.equals(feature)
-                || ViewpointPackage.Literals.SHAPE_CONTAINER_STYLE__SHAPE.equals(feature)
-                || (customizable instanceof WorkspaceImage && customizable.eContainer() instanceof DDiagramElementContainer && ViewpointPackage.Literals.NODE_STYLE__LABEL_POSITION.equals(feature))
-                || (customizable instanceof BracketEdgeStyle && ViewpointPackage.Literals.EDGE_STYLE__ROUTING_STYLE.equals(feature));
+        return DiagramPackage.Literals.BORDERED_STYLE__BORDER_SIZE.equals(feature) || DiagramPackage.Literals.NODE_STYLE__HIDE_LABEL_BY_DEFAULT.equals(feature)
+                || DiagramPackage.Literals.SQUARE__WIDTH.equals(feature) || DiagramPackage.Literals.SQUARE__HEIGHT.equals(feature) || DiagramPackage.Literals.LOZENGE__WIDTH.equals(feature)
+                || DiagramPackage.Literals.LOZENGE__HEIGHT.equals(feature) || DiagramPackage.Literals.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION.equals(feature)
+                || DiagramPackage.Literals.SHAPE_CONTAINER_STYLE__SHAPE.equals(feature)
+                || (customizable instanceof WorkspaceImage && customizable.eContainer() instanceof DDiagramElementContainer && DiagramPackage.Literals.NODE_STYLE__LABEL_POSITION.equals(feature))
+                || (customizable instanceof BracketEdgeStyle && DiagramPackage.Literals.EDGE_STYLE__ROUTING_STYLE.equals(feature));
         // Only one literal choice is possible for ShapeContainerStyle.shape
         // then it is not usefull to customize it
         // The labelPosition for DDiagramElementContainer isn't taken into

@@ -11,11 +11,10 @@
 package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions;
 
 import org.eclipse.jface.action.ActionContributionItem;
-import org.eclipse.ui.menus.IContributionRoot;
-import org.eclipse.ui.services.IServiceLocator;
-
 import org.eclipse.sirius.diagram.tools.internal.actions.layout.CopyLayoutAction;
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramElementTabbarExpression;
+import org.eclipse.ui.menus.IContributionRoot;
+import org.eclipse.ui.services.IServiceLocator;
 
 /**
  * ExtensionContributionFactory responsible for Copy layout action tabbar item

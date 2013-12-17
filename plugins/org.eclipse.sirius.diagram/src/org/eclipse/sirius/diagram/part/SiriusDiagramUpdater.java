@@ -21,6 +21,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.graphical.edit.part.specific.BracketEdgeEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.BundledImageEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.CustomStyleEditPart;
@@ -47,16 +57,6 @@ import org.eclipse.sirius.diagram.internal.edit.parts.NoteEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.SquareEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.WorkspaceImageEditPart;
 import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
-import org.eclipse.sirius.viewpoint.DNodeList;
-import org.eclipse.sirius.viewpoint.DNodeListElement;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.NodeStyle;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * @was-generated NOT
@@ -1186,7 +1186,7 @@ public class SiriusDiagramUpdater {
         Collection<EStructuralFeature.Setting> settings = crossReferences.get(target);
         for (Iterator<EStructuralFeature.Setting> it = settings.iterator(); it.hasNext();) {
             EStructuralFeature.Setting setting = it.next();
-            if (setting.getEStructuralFeature() != ViewpointPackage.eINSTANCE.getDEdge_TargetNode() || false == setting.getEObject() instanceof DEdge) {
+            if (setting.getEStructuralFeature() != DiagramPackage.eINSTANCE.getDEdge_TargetNode() || false == setting.getEObject() instanceof DEdge) {
                 continue;
             }
             DEdge link = (DEdge) setting.getEObject();

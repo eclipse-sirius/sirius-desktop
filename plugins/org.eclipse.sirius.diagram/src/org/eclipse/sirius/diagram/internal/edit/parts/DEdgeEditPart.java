@@ -17,12 +17,11 @@ import org.eclipse.gef.RootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editpolicies.ConnectionLineSegEditPolicy;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.graphical.edit.policies.DeleteFromDiagramEditPolicy;
 import org.eclipse.sirius.diagram.graphical.edit.policies.HideSiriusElementEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.TreeLayoutConnectionLineSegEditPolicy;
 import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
+import org.eclipse.sirius.diagram.graphical.edit.policies.TreeLayoutConnectionLineSegEditPolicy;
 import org.eclipse.sirius.diagram.internal.edit.policies.DEdgeItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 

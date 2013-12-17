@@ -34,18 +34,18 @@ import org.eclipse.gmf.runtime.diagram.ui.image.ImageFileFormat;
 import org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramGenerator;
 import org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToImageUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.internal.refresh.layout.SiriusCanonicalLayoutHandler;
+import org.eclipse.sirius.diagram.tools.internal.part.OffscreenEditPartFactory;
+import org.eclipse.sirius.diagram.tools.internal.part.SiriusImageLoader;
+import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.PaletteData;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.sirius.diagram.internal.refresh.layout.SiriusCanonicalLayoutHandler;
-import org.eclipse.sirius.diagram.tools.internal.part.OffscreenEditPartFactory;
-import org.eclipse.sirius.diagram.tools.internal.part.SiriusImageLoader;
-import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Utility class to render a diagram to an image file (with the use of specific

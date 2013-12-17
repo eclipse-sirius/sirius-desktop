@@ -27,31 +27,32 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.color.RGBValuesProvider;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.diagram.BeginLabelStyle;
+import org.eclipse.sirius.diagram.BorderedStyle;
+import org.eclipse.sirius.diagram.BundledImage;
+import org.eclipse.sirius.diagram.CenterLabelStyle;
+import org.eclipse.sirius.diagram.ContainerStyle;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.Dot;
+import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.Ellipse;
+import org.eclipse.sirius.diagram.EndLabelStyle;
+import org.eclipse.sirius.diagram.FlatContainerStyle;
+import org.eclipse.sirius.diagram.Lozenge;
+import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.Note;
+import org.eclipse.sirius.diagram.ShapeContainerStyle;
+import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
-import org.eclipse.sirius.viewpoint.BeginLabelStyle;
-import org.eclipse.sirius.viewpoint.BorderedStyle;
-import org.eclipse.sirius.viewpoint.BundledImage;
-import org.eclipse.sirius.viewpoint.CenterLabelStyle;
-import org.eclipse.sirius.viewpoint.ContainerStyle;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.Dot;
-import org.eclipse.sirius.viewpoint.EdgeStyle;
-import org.eclipse.sirius.viewpoint.Ellipse;
-import org.eclipse.sirius.viewpoint.EndLabelStyle;
-import org.eclipse.sirius.viewpoint.FlatContainerStyle;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.LabelStyle;
-import org.eclipse.sirius.viewpoint.Lozenge;
-import org.eclipse.sirius.viewpoint.NodeStyle;
-import org.eclipse.sirius.viewpoint.Note;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.ShapeContainerStyle;
-import org.eclipse.sirius.viewpoint.Square;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
@@ -281,28 +282,28 @@ public class ViewPropertiesSynchronizer {
         List<EStructuralFeature> features = new ArrayList<EStructuralFeature>();
         if (Properties.ID_FILLCOLOR.equals(gmfPropertyID)) {
             if (style instanceof Square) {
-                features.add(ViewpointPackage.Literals.SQUARE__COLOR);
+                features.add(DiagramPackage.Literals.SQUARE__COLOR);
             } else if (style instanceof Lozenge) {
-                features.add(ViewpointPackage.Literals.LOZENGE__COLOR);
+                features.add(DiagramPackage.Literals.LOZENGE__COLOR);
             } else if (style instanceof Ellipse) {
-                features.add(ViewpointPackage.Literals.ELLIPSE__COLOR);
+                features.add(DiagramPackage.Literals.ELLIPSE__COLOR);
             } else if (style instanceof Dot) {
-                features.add(ViewpointPackage.Literals.DOT__BACKGROUND_COLOR);
+                features.add(DiagramPackage.Literals.DOT__BACKGROUND_COLOR);
             } else if (style instanceof Note) {
-                features.add(ViewpointPackage.Literals.NOTE__COLOR);
+                features.add(DiagramPackage.Literals.NOTE__COLOR);
             } else if (style instanceof BundledImage) {
-                features.add(ViewpointPackage.Literals.BUNDLED_IMAGE__COLOR);
+                features.add(DiagramPackage.Literals.BUNDLED_IMAGE__COLOR);
             } else if (style instanceof FlatContainerStyle) {
-                features.add(ViewpointPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR);
-                features.add(ViewpointPackage.Literals.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR);
+                features.add(DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR);
+                features.add(DiagramPackage.Literals.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR);
             } else if (style instanceof ShapeContainerStyle) {
-                features.add(ViewpointPackage.Literals.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR);
+                features.add(DiagramPackage.Literals.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR);
             }
         } else if (Properties.ID_LINECOLOR.equals(gmfPropertyID)) {
             if (style instanceof EdgeStyle) {
-                features.add(ViewpointPackage.Literals.EDGE_STYLE__STROKE_COLOR);
+                features.add(DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR);
             } else {
-                features.add(ViewpointPackage.Literals.BORDERED_STYLE__BORDER_COLOR);
+                features.add(DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR);
             }
         } else if (Properties.ID_FONTCOLOR.equals(gmfPropertyID)) {
             features.add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR);

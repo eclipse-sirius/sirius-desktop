@@ -17,8 +17,8 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
 
 /**
  * Abstract class to Generalized all common behavior between

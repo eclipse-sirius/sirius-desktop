@@ -21,6 +21,7 @@ import org.eclipse.gmf.runtime.common.ui.services.parser.IParserProvider;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.ui.services.parser.ParserHintAdapter;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeNameEditPart;
@@ -304,13 +305,13 @@ public class SiriusParserProvider extends AbstractProvider implements IParserPro
     }
 
     protected IParser createDEdgeName_6002Parser() {
-        EAttribute[] features = new EAttribute[] { ViewpointPackage.eINSTANCE.getDEdge_BeginLabel(), };
+        EAttribute[] features = new EAttribute[] { DiagramPackage.eINSTANCE.getDEdge_BeginLabel(), };
         MessageFormatParser parser = new MessageFormatParser(features);
         return parser;
     }
 
     protected IParser createDEdgeName_6003Parser() {
-        EAttribute[] features = new EAttribute[] { ViewpointPackage.eINSTANCE.getDEdge_EndLabel(), };
+        EAttribute[] features = new EAttribute[] { DiagramPackage.eINSTANCE.getDEdge_EndLabel(), };
         MessageFormatParser parser = new MessageFormatParser(features);
         return parser;
     }
@@ -399,7 +400,8 @@ public class SiriusParserProvider extends AbstractProvider implements IParserPro
         /**
          * @was-generated
          */
-        public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+        public Object getAdapter(@SuppressWarnings("rawtypes")
+        Class adapter) {
             if (IElementType.class.equals(adapter)) {
                 return elementType;
             }

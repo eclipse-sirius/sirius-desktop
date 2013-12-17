@@ -24,19 +24,20 @@ import org.eclipse.gmf.runtime.notation.ConnectorStyle;
 import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.ui.views.properties.IPropertySource;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.EdgeRouting;
+import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DStylizable;
-import org.eclipse.sirius.viewpoint.EdgeRouting;
-import org.eclipse.sirius.viewpoint.EdgeStyle;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.ui.views.properties.IPropertySource;
 
 /**
  * Properties section that shows the properties of a style of a DiagramElement.
@@ -266,7 +267,7 @@ public class StylePropertySection extends SemanticPropertySection {
                         }
                     } else if (notationStyle instanceof ConnectorStyle) {
                         ConnectorStyle connectorStyle = (ConnectorStyle) notationStyle;
-                        if (value instanceof EdgeRouting && propertyId.equals(ViewpointPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName())) {
+                        if (value instanceof EdgeRouting && propertyId.equals(DiagramPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName())) {
                             if (EdgeRouting.MANHATTAN_LITERAL == value) {
                                 connectorStyle.setRouting(Routing.RECTILINEAR_LITERAL);
                             } else if (EdgeRouting.STRAIGHT_LITERAL == value) {

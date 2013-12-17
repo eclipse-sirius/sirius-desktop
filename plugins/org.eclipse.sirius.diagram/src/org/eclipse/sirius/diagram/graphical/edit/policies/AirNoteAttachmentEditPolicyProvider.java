@@ -21,10 +21,9 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.NoteAttachmentEditP
 import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.CreateEditPoliciesOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvider;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Provides Edit Policy for Note Attachment.

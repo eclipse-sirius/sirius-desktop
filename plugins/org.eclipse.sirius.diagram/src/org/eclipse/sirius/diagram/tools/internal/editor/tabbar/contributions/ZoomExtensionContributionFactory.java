@@ -16,6 +16,11 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.l10n.DiagramUIPluginImages;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarZoomAction;
+import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarZoomInAction;
+import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarZoomOutAction;
+import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramTabbarExpression;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.IPartListener;
@@ -23,12 +28,6 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.menus.IContributionRoot;
 import org.eclipse.ui.services.IServiceLocator;
-
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarZoomAction;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarZoomInAction;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarZoomOutAction;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramTabbarExpression;
 
 /**
  * 

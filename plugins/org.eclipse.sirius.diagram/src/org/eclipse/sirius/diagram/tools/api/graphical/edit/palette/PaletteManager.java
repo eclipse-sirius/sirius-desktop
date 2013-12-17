@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.tools.api.graphical.edit.palette;
 
 import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.diagram.description.Layer;
 
 /**
  * Manage the palette and the associated filters.

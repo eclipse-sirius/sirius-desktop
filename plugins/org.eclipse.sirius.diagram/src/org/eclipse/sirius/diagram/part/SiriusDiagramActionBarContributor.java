@@ -22,11 +22,6 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.Separator;
-import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.actions.RetargetAction;
-import org.osgi.framework.Bundle;
-import org.osgi.framework.Version;
-
 import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
@@ -45,6 +40,10 @@ import org.eclipse.sirius.diagram.tools.internal.actions.visibility.RevealAllEle
 import org.eclipse.sirius.diagram.ui.tools.api.action.ConcernComboContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.api.action.DeleteFromDiagramContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.api.action.SetStyleToWorkspaceImageContributionItem;
+import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.actions.RetargetAction;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.Version;
 
 /**
  * @was-generated

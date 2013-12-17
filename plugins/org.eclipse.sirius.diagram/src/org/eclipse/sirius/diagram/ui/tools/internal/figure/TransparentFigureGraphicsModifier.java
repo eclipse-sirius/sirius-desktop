@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.figure;
 
 import org.eclipse.draw2d.Graphics;
-
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ITransparentFigure;
 
 /**

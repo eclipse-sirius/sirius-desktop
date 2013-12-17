@@ -14,13 +14,13 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.Layout;
+import org.eclipse.sirius.diagram.description.OrderedTreeLayout;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrdering;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrderingProvider;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.Layout;
-import org.eclipse.sirius.viewpoint.description.OrderedTreeLayout;
 
 /**
  * A tree ordered view ordering {@link ViewOrdering} provider.

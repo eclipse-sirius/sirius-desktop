@@ -11,16 +11,15 @@
 package org.eclipse.sirius.diagram.business.internal.query;
 
 import org.eclipse.draw2d.geometry.Dimension;
-import org.eclipse.swt.graphics.Image;
-
-import com.google.common.base.Preconditions;
-
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ui.tools.api.dialogs.ImageFileFormat;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.WorkspaceImage;
+import org.eclipse.swt.graphics.Image;
+
+import com.google.common.base.Preconditions;
 
 /**
  * Queries relative to a DNode.

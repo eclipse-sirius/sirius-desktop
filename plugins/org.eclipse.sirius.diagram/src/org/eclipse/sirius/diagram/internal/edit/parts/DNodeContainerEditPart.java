@@ -15,7 +15,6 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.graphical.edit.policies.ContainerCreationEditPolicy;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;

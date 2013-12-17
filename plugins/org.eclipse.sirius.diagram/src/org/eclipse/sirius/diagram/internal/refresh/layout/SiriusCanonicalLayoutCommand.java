@@ -18,9 +18,8 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.swt.widgets.Display;
-
 import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.swt.widgets.Display;
 
 /**
  * Specific Command to do layout for newly created views in pre-commit without

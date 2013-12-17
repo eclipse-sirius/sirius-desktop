@@ -14,14 +14,13 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.collect.Iterables;
-
 import org.eclipse.sirius.diagram.internal.edit.parts.DNode4EditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListViewNodeListCompartment2EditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+
+import com.google.common.collect.Iterables;
 
 /**
  * @was-generated

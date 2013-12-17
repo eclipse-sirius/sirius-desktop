@@ -24,7 +24,6 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.commands.SetConnectionBendpointsCommand;
-
 import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
 
 // CHECKSTYLE:OFF

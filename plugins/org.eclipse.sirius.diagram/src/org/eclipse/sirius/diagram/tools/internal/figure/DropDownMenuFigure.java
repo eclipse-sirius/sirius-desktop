@@ -27,9 +27,8 @@ import org.eclipse.draw2d.MouseMotionListener;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.swt.graphics.Image;
-
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * A figure which behaves like a drop down menu.

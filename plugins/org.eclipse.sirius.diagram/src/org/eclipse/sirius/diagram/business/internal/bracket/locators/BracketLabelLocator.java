@@ -16,7 +16,6 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.figures.LabelLocator;
-
 import org.eclipse.sirius.diagram.business.internal.bracket.BracketConnectionQuery;
 
 /**

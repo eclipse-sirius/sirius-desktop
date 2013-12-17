@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.business.internal.dialect.identifier;
 
 import org.eclipse.sirius.business.api.dialect.identifier.AbstractRepresentationElementIdentifier;
-import org.eclipse.sirius.viewpoint.NodeStyle;
+import org.eclipse.sirius.diagram.NodeStyle;
 
 /**
  * An identifier for node style.

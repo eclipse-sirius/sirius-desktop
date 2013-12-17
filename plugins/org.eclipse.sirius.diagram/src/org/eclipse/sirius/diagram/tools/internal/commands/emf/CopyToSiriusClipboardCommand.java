@@ -18,13 +18,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.CopyToClipboardCommand;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.diagram.tools.internal.clipboard.SiriusClipboardManager;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.diagram.tools.internal.clipboard.SiriusClipboardManager;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * A copy command which is a proxy to {@link CopyToClipboardCommand} but set the

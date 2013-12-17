@@ -19,12 +19,12 @@ import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.emf.type.core.commands.CreateElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.internal.edit.policies.SiriusBaseItemSemanticEditPolicy;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * @was-generated
@@ -54,7 +54,7 @@ public class DEdgeCreateCommand extends CreateElementCommand {
         this.source = source;
         this.target = target;
         if (request.getContainmentFeature() == null) {
-            setContainmentFeature(ViewpointPackage.eINSTANCE.getDDiagram_OwnedDiagramElements());
+            setContainmentFeature(DiagramPackage.eINSTANCE.getDDiagram_OwnedDiagramElements());
         }
 
         // Find container element for the new link.
@@ -83,7 +83,8 @@ public class DEdgeCreateCommand extends CreateElementCommand {
             return false;
         }
         if (getSource() == null) {
-            return true; // link creation is in progress; source is not defined yet
+            return true; // link creation is in progress; source is not defined
+                         // yet
         }
         // target may be null here but it's possible to check constraint
         if (getContainer() == null) {
@@ -96,8 +97,9 @@ public class DEdgeCreateCommand extends CreateElementCommand {
      * @was-generated
      */
     protected EObject doDefaultElementCreation() {
-        // org.eclipse.sirius.DEdge newElement = (org.eclipse.sirius.DEdge) super.doDefaultElementCreation();
-        DEdge newElement = ViewpointFactory.eINSTANCE.createDEdge();
+        // org.eclipse.sirius.DEdge newElement = (org.eclipse.sirius.DEdge)
+        // super.doDefaultElementCreation();
+        DEdge newElement = DiagramFactory.eINSTANCE.createDEdge();
         getContainer().getOwnedDiagramElements().add(newElement);
         newElement.setSourceNode(getSource());
         newElement.setTargetNode(getTarget());
@@ -108,7 +110,7 @@ public class DEdgeCreateCommand extends CreateElementCommand {
      * @was-generated
      */
     protected EClass getEClassToEdit() {
-        return ViewpointPackage.eINSTANCE.getDDiagram();
+        return DiagramPackage.eINSTANCE.getDDiagram();
     }
 
     /**

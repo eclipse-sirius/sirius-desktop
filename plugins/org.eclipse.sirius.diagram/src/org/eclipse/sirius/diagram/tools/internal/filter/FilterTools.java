@@ -18,18 +18,18 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.helper.SelectionDescriptionHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
-import org.eclipse.sirius.business.api.helper.SelectionDescriptionHelper;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.FilterVariableValue;
+import org.eclipse.sirius.diagram.description.filter.FilterVariable;
+import org.eclipse.sirius.diagram.description.filter.VariableFilter;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.FilterVariableValue;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.filter.FilterVariable;
-import org.eclipse.sirius.viewpoint.description.filter.VariableFilter;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
@@ -86,7 +86,7 @@ public final class FilterTools {
             if (!var.isMultiple()) {
                 final EObject modelElement = uiCallback.askForEObject(var.getMessage(), input, SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
 
-                final FilterVariableValue newValue = ViewpointFactory.eINSTANCE.createFilterVariableValue();
+                final FilterVariableValue newValue = DiagramFactory.eINSTANCE.createFilterVariableValue();
                 newValue.setModelElement(modelElement);
                 newValue.setVariableDefinition(var);
                 if (diagram.getFilterVariableHistory() != null) {
@@ -99,7 +99,7 @@ public final class FilterTools {
                 values.addAll(modelElements);
                 EList<FilterVariableValue> variables = new BasicEList<FilterVariableValue>();
                 for (EObject modelElement : values) {
-                    FilterVariableValue newValue = ViewpointFactory.eINSTANCE.createFilterVariableValue();
+                    FilterVariableValue newValue = DiagramFactory.eINSTANCE.createFilterVariableValue();
                     newValue.setModelElement(modelElement);
                     newValue.setVariableDefinition(var);
                     variables.add(newValue);

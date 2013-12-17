@@ -17,7 +17,6 @@ import org.eclipse.gef.dnd.TemplateTransfer;
 import org.eclipse.gef.dnd.TemplateTransferDropTargetListener;
 import org.eclipse.gef.requests.CreationFactory;
 import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
-
 import org.eclipse.sirius.diagram.tools.internal.palette.CreationTool;
 
 /**

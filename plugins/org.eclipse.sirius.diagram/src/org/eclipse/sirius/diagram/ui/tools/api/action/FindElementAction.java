@@ -13,14 +13,13 @@ package org.eclipse.sirius.diagram.ui.tools.api.action;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.common.ui.tools.api.find.AbstractFindLabelDialog;
+import org.eclipse.sirius.diagram.ui.tools.internal.find.BasicFindLabelEngine;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.common.ui.tools.api.find.AbstractFindLabelDialog;
-import org.eclipse.sirius.diagram.ui.tools.internal.find.BasicFindLabelEngine;
 
 /**
  * A find element Eclipse action.

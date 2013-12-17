@@ -20,7 +20,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DragDropEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 

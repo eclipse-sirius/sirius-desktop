@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.dialect.description;
+package org.eclipse.sirius.business.internal.dialect.description;
 
 import java.util.Collection;
 
@@ -18,17 +18,18 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
-import org.eclipse.sirius.diagram.description.DescriptionPackage;
-import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.description.DiagramImportDescription;
-import org.eclipse.sirius.diagram.description.EdgeMapping;
-import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
-import org.eclipse.sirius.diagram.description.util.DescriptionSwitch;
+import org.eclipse.sirius.viewpoint.description.ColorStep;
+import org.eclipse.sirius.viewpoint.description.ComputedColor;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
+import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.SelectionDescription;
+import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
+import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
+import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 
 import com.google.common.collect.Sets;
 
@@ -51,7 +52,7 @@ import com.google.common.collect.Sets;
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
  */
-public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<Option<Collection<String>>> {
+public class ViewpointInterpretedExpressionTargetSwitch extends DescriptionSwitch<Option<Collection<String>>> {
 
     /**
      * Constant used in switches on feature id to consider the case when the
@@ -82,7 +83,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      * @param targetSwitch
      *            the global switch
      */
-    public DiagramInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch targetSwitch) {
+    public ViewpointInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch targetSwitch) {
         super();
         this.feature = feature;
         this.globalSwitch = targetSwitch;
@@ -151,40 +152,12 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
         return container;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseDiagramDescription(org.eclipse.sirius.viewpoint.description.DiagramDescription)
-     */
     @Override
-    public Option<Collection<String>> caseDiagramDescription(DiagramDescription diagramDescription) {
-        Option<Collection<String>> result = null;
-        Collection<String> target = Sets.newLinkedHashSet();
-        switch (getFeatureId(diagramDescription.eClass())) {
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION:
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__ROOT_EXPRESSION:
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__TITLE_EXPRESSION:
-        case DO_NOT_CONSIDER_FEATURE:
-            target.add(diagramDescription.getDomainClass());
-            result = Options.newSome(target);
-            break;
-        default:
-            break;
-        }
-
-        return result;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Option<Collection<String>> caseDiagramImportDescription(DiagramImportDescription object) {
+    public Option<Collection<String>> caseSemanticBasedDecoration(SemanticBasedDecoration object) {
         Option<Collection<String>> result = null;
         Collection<String> target = Sets.newLinkedHashSet();
         switch (getFeatureId(object.eClass())) {
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__TITLE_EXPRESSION:
+        case DescriptionPackage.SEMANTIC_BASED_DECORATION__PRECONDITION_EXPRESSION:
         case DO_NOT_CONSIDER_FEATURE:
             target.add(object.getDomainClass());
             result = Options.newSome(target);
@@ -197,19 +170,27 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
     }
 
     @Override
-    public Option<Collection<String>> caseMappingBasedDecoration(MappingBasedDecoration object) {
+    public Option<Collection<String>> caseVSMElementCustomization(VSMElementCustomization object) {
         Option<Collection<String>> result = null;
-        Collection<String> target = Sets.newLinkedHashSet();
         switch (getFeatureId(object.eClass())) {
-        case DescriptionPackage.MAPPING_BASED_DECORATION__PRECONDITION_EXPRESSION:
+        case DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION__PREDICATE_EXPRESSION:
         case DO_NOT_CONSIDER_FEATURE:
-            for (DiagramElementMapping mapping : object.getMappings()) {
-                Option<Collection<String>> mappingTargets = globalSwitch.doSwitch(mapping, false);
-                if (mappingTargets.some()) {
-                    target.addAll(mappingTargets.get());
-                }
-            }
-            result = Options.newSome(target);
+            result = Options.newNone();
+            break;
+        default:
+            break;
+        }
+
+        return result;
+    }
+
+    @Override
+    public Option<Collection<String>> caseEAttributeCustomization(EAttributeCustomization object) {
+        Option<Collection<String>> result = null;
+        switch (getFeatureId(object.eClass())) {
+        case DescriptionPackage.EATTRIBUTE_CUSTOMIZATION__VALUE:
+        case DO_NOT_CONSIDER_FEATURE:
+            result = Options.newNone();
             break;
         default:
             break;
@@ -222,21 +203,57 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseAbstractNodeMapping(org.eclipse.sirius.viewpoint.description.AbstractNodeMapping)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseSelectionDescription(org.eclipse.sirius.viewpoint.description.SelectionDescription)
      */
     @Override
-    public Option<Collection<String>> caseAbstractNodeMapping(AbstractNodeMapping object) {
+    public Option<Collection<String>> caseSelectionDescription(SelectionDescription selectionDescription) {
         Option<Collection<String>> result = null;
-        Collection<String> target = Sets.newLinkedHashSet();
+        switch (getFeatureId(selectionDescription.eClass())) {
+        case DescriptionPackage.SELECTION_DESCRIPTION__CANDIDATES_EXPRESSION:
+        case DescriptionPackage.SELECTION_DESCRIPTION__ROOT_EXPRESSION:
+        case DescriptionPackage.SELECTION_DESCRIPTION__CHILDREN_EXPRESSION:
+            result = globalSwitch.doSwitch(getRepresentationDescription(selectionDescription), false);
+            break;
+
+        default:
+            break;
+        }
+        return result;
+    }
+
+    /**
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseInterpolatedColor(org.eclipse.sirius.viewpoint.description.InterpolatedColor)
+     */
+    @Override
+    public Option<Collection<String>> caseInterpolatedColor(InterpolatedColor object) {
+        Option<Collection<String>> result = null;
         switch (getFeatureId(object.eClass())) {
-        case DescriptionPackage.ABSTRACT_NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
+        case DescriptionPackage.INTERPOLATED_COLOR__COLOR_VALUE_COMPUTATION_EXPRESSION:
+        case DescriptionPackage.INTERPOLATED_COLOR__MIN_VALUE_COMPUTATION_EXPRESSION:
+        case DescriptionPackage.INTERPOLATED_COLOR__MAX_VALUE_COMPUTATION_EXPRESSION:
             result = globalSwitch.doSwitch(getFirstRelevantContainer(object), false);
             break;
-        case DescriptionPackage.ABSTRACT_NODE_MAPPING__PRECONDITION_EXPRESSION:
-        case DescriptionPackage.ABSTRACT_NODE_MAPPING__SEMANTIC_ELEMENTS:
-        case DO_NOT_CONSIDER_FEATURE:
-            target.add(object.getDomainClass());
-            result = Options.newSome(target);
+        default:
+            break;
+        }
+        return result;
+    }
+
+    /**
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseColorStep(org.eclipse.sirius.viewpoint.description.ColorStep)
+     */
+    @Override
+    public Option<Collection<String>> caseColorStep(ColorStep object) {
+        Option<Collection<String>> result = null;
+        switch (getFeatureId(object.eClass())) {
+        case DescriptionPackage.COLOR_STEP__ASSOCIATED_VALUE:
+            result = globalSwitch.doSwitch(getFirstRelevantContainer(object), false);
             break;
         default:
             break;
@@ -248,55 +265,19 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseEdgeMapping(org.eclipse.sirius.viewpoint.description.EdgeMapping)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseComputedColor(org.eclipse.sirius.viewpoint.description.ComputedColor)
      */
     @Override
-    public Option<Collection<String>> caseEdgeMapping(EdgeMapping edgeMapping) {
+    public Option<Collection<String>> caseComputedColor(ComputedColor object) {
         Option<Collection<String>> result = null;
-        Collection<String> target = Sets.newLinkedHashSet();
-        if (edgeMapping.isUseDomainElement()) {
-            // DOMAIN-BASED EDGE MAPPING
-            switch (getFeatureId(edgeMapping.eClass())) {
-            case DescriptionPackage.EDGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
-                result = globalSwitch.doSwitch(getFirstRelevantContainer(edgeMapping), false);
-                break;
-            case DescriptionPackage.EDGE_MAPPING__SOURCE_FINDER_EXPRESSION:
-            case DescriptionPackage.EDGE_MAPPING__TARGET_FINDER_EXPRESSION:
-            case DescriptionPackage.EDGE_MAPPING__PRECONDITION_EXPRESSION:
-            case DescriptionPackage.EDGE_MAPPING__PATH_EXPRESSION:
-            case DescriptionPackage.EDGE_MAPPING__TARGET_EXPRESSION:
-            case DescriptionPackage.EDGE_MAPPING__SEMANTIC_ELEMENTS:
-            case DO_NOT_CONSIDER_FEATURE:
-                target.add(edgeMapping.getDomainClass());
-                result = Options.newSome(target);
-                break;
-            default:
-                break;
-            }
-        } else {
-            // RELATION-BASED EDGE MAPPING
-            switch (getFeatureId(edgeMapping.eClass())) {
-            case DescriptionPackage.EDGE_MAPPING__SOURCE_FINDER_EXPRESSION:
-            case DescriptionPackage.EDGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION:
-                result = Options.newNone();
-                break;
-            case DescriptionPackage.EDGE_MAPPING__TARGET_FINDER_EXPRESSION:
-            case DescriptionPackage.EDGE_MAPPING__PRECONDITION_EXPRESSION:
-            case DescriptionPackage.EDGE_MAPPING__PATH_EXPRESSION:
-            case DescriptionPackage.EDGE_MAPPING__TARGET_EXPRESSION:
-            case DescriptionPackage.EDGE_MAPPING__SEMANTIC_ELEMENTS:
-            case DO_NOT_CONSIDER_FEATURE:
-                for (DiagramElementMapping mapping : edgeMapping.getSourceMapping()) {
-                    Option<Collection<String>> sourceMappingTarget = globalSwitch.doSwitch(mapping, false);
-                    if (sourceMappingTarget.some()) {
-                        target.addAll(sourceMappingTarget.get());
-                    }
-                }
-                result = Options.newSome(target);
-                break;
-            default:
-                break;
-            }
+        switch (getFeatureId(object.eClass())) {
+        case DescriptionPackage.COMPUTED_COLOR__RED:
+        case DescriptionPackage.COMPUTED_COLOR__GREEN:
+        case DescriptionPackage.COMPUTED_COLOR__BLUE:
+            result = globalSwitch.doSwitch(getFirstRelevantContainer(object), false);
+            break;
+        default:
+            break;
         }
         return result;
     }

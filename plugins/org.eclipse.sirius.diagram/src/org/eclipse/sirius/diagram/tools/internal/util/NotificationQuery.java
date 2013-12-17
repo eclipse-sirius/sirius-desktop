@@ -13,11 +13,10 @@ package org.eclipse.sirius.diagram.tools.internal.util;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.HideFilter;
 
 import com.google.common.base.Preconditions;
-
-import org.eclipse.sirius.viewpoint.HideFilter;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Queries on EMF Notifications to identify what they are about.
@@ -74,7 +73,7 @@ public class NotificationQuery extends org.eclipse.sirius.common.tools.api.query
      */
     public boolean isHideFilterAddEvent() {
         Object feature = notif.getFeature();
-        boolean isHideFilterAddEvent = ViewpointPackage.eINSTANCE.getDDiagramElement_GraphicalFilters().equals(feature);
+        boolean isHideFilterAddEvent = DiagramPackage.eINSTANCE.getDDiagramElement_GraphicalFilters().equals(feature);
         isHideFilterAddEvent = isHideFilterAddEvent && notif.getNewValue() instanceof HideFilter;
         isHideFilterAddEvent = isHideFilterAddEvent && Notification.ADD == notif.getEventType();
         return isHideFilterAddEvent;

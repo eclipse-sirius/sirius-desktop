@@ -33,7 +33,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutExtender;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.GridView;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.GridView.Column;

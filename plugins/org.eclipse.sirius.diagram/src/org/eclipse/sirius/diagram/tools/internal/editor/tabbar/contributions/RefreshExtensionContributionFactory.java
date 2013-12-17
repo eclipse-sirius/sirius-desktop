@@ -11,14 +11,13 @@
 package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions;
 
 import org.eclipse.jface.action.ActionContributionItem;
-import org.eclipse.ui.menus.IContributionRoot;
-import org.eclipse.ui.services.IServiceLocator;
-
 import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.part.SiriusDiagramActionBarContributor;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.internal.actions.refresh.RefreshDiagramAction;
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramTabbarExpression;
+import org.eclipse.ui.menus.IContributionRoot;
+import org.eclipse.ui.services.IServiceLocator;
 
 /**
  * 

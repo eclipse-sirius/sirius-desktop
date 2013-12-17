@@ -41,6 +41,11 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.edit.internal.part.AbstractDiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
@@ -55,11 +60,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClipping
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.WorkspaceImage;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -118,7 +118,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     private void handleDefaultSizeNotification(Notification notification) {
         if (!notification.isTouch()) {
             Object feature = notification.getFeature();
-            if (feature.equals(ViewpointPackage.eINSTANCE.getDDiagramElementContainer_Width()) || feature.equals(ViewpointPackage.eINSTANCE.getDDiagramElementContainer_Height())) {
+            if (feature.equals(DiagramPackage.eINSTANCE.getDDiagramElementContainer_Width()) || feature.equals(DiagramPackage.eINSTANCE.getDDiagramElementContainer_Height())) {
                 IFigure figure = getMainFigure();
                 if (figure instanceof DefaultSizeNodeFigure && !isRegion()) {
                     setFigureDefaultSize((DefaultSizeNodeFigure) figure);

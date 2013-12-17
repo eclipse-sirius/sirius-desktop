@@ -28,6 +28,12 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocument
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.common.ui.SiriusTransPlugin;
+import org.eclipse.sirius.common.ui.tools.api.editor.IEObjectNavigable;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.ImagesPath;
+import org.eclipse.sirius.diagram.business.internal.navigation.MappingDefinitionFinder;
+import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
@@ -38,12 +44,6 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
-import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.common.ui.tools.api.editor.IEObjectNavigable;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.business.internal.navigation.MappingDefinitionFinder;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 
 /**
  * This menu contribution add a "specification" menu in the DDiagram diagram

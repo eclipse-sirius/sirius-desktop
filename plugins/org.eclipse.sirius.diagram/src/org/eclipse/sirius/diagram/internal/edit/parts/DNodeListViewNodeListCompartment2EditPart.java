@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.internal.edit.parts;
 
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.diagram.part.Messages;
 
 /**

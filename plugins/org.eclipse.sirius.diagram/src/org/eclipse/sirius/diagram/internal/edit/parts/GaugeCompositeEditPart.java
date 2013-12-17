@@ -28,6 +28,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.GaugeCompositeStyle;
+import org.eclipse.sirius.diagram.GaugeSection;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IStyleEditPart;
@@ -36,8 +38,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFig
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GaugeCompositeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GaugeSectionFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
-import org.eclipse.sirius.viewpoint.GaugeCompositeStyle;
-import org.eclipse.sirius.viewpoint.GaugeSection;
 
 /**
  * @was-generated

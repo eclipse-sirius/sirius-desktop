@@ -30,12 +30,11 @@ import org.eclipse.gmf.runtime.diagram.ui.printing.render.internal.printpreview.
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceStore;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.IEditorPart;
-
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.tools.api.part.DiagramEditPartService;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IEditorPart;
 
 /**
  * A specialized <code>RenderedPrintPreviewHelper</code> that supports printing

@@ -21,9 +21,9 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.AbstractNodeDecorateSemanticElementOrdering;
-import org.eclipse.sirius.viewpoint.DEdge;
 
 /**
  * A useful class to add some magic elements on a connection. The connection is

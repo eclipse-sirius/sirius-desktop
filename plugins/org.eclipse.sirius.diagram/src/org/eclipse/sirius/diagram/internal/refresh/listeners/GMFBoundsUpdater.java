@@ -27,15 +27,15 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.business.internal.query.WorkspaceImageQuery;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.WorkspaceImage;
 import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.WorkspaceImageDescription;
 
@@ -57,9 +57,9 @@ public class GMFBoundsUpdater extends ResourceSetListenerImpl {
      *            {@link DDiagram}.
      */
     public GMFBoundsUpdater(TransactionalEditingDomain domain, DDiagram dDiagram) {
-        super(NotificationFilter.NOT_TOUCH.and(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getDNode_OwnedStyle()))
-                .or(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle()))
-                .or(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getDNode_Height())).or(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getDNode_Width())));
+        super(NotificationFilter.NOT_TOUCH.and(NotificationFilter.createFeatureFilter(DiagramPackage.eINSTANCE.getDNode_OwnedStyle()))
+                .or(NotificationFilter.createFeatureFilter(DiagramPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle()))
+                .or(NotificationFilter.createFeatureFilter(DiagramPackage.eINSTANCE.getDNode_Height())).or(NotificationFilter.createFeatureFilter(DiagramPackage.eINSTANCE.getDNode_Width())));
         this.dDiagram = dDiagram;
         domain.addResourceSetListener(this);
     }

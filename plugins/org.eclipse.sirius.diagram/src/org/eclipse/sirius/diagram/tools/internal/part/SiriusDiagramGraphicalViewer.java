@@ -23,12 +23,11 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.parts.PaletteToolTransferDropTargetListener;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.jface.util.TransferDropTargetListener;
-import org.eclipse.ui.PlatformUI;
-
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.api.part.IDiagramDialectGraphicalViewer;
 import org.eclipse.sirius.diagram.tools.internal.editor.SiriusPaletteToolDropTargetListener;
 import org.eclipse.sirius.diagram.tools.internal.graphical.edit.policies.ChangeBoundRequestRecorder;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * {@link org.eclipse.gef.GraphicalViewer} used for the

@@ -13,10 +13,9 @@ package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.sirius.diagram.ui.tools.api.action.FindElementAction;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.handlers.HandlerUtil;
-
-import org.eclipse.sirius.diagram.ui.tools.api.action.FindElementAction;
 
 /**
  * A command to find an element.

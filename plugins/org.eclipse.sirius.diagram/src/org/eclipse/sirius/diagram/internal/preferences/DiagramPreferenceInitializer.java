@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.internal.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
-
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 
 /**

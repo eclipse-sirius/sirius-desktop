@@ -15,14 +15,14 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.BorderItemLocatorProvider;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.DefaultBorderItemLocatorProvider;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.ResizeKind;
 
 /**
  * A

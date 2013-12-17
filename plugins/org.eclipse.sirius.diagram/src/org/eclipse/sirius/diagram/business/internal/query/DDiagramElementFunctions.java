@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.query;
 
-import com.google.common.base.Predicate;
+import org.eclipse.sirius.diagram.DDiagramElement;
 
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import com.google.common.base.Predicate;
 
 /**
  * Functions which take a {@link DDiagramElement} as input.

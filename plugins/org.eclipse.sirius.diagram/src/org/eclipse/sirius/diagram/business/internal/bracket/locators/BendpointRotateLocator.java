@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.business.internal.bracket.locators;
 
 import org.eclipse.draw2d.BendpointLocator;
 import org.eclipse.draw2d.Connection;
-
 import org.eclipse.sirius.diagram.business.internal.bracket.BracketConnectionQuery;
 
 /**

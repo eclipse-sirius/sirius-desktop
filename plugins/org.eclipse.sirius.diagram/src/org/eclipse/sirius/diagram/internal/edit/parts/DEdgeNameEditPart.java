@@ -18,7 +18,6 @@ import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.diagram.business.internal.bracket.locators.BracketLabelLocator;
 import org.eclipse.sirius.diagram.business.internal.bracket.locators.BracketResizableLabelLocator;
 import org.eclipse.sirius.diagram.graphical.edit.part.specific.BracketEdgeEditPart;

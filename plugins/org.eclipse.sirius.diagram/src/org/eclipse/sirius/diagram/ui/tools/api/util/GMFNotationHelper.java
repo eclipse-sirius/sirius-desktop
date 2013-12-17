@@ -36,9 +36,8 @@ import org.eclipse.gmf.runtime.notation.ShapeStyle;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
-import org.eclipse.swt.graphics.RGB;
-
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
+import org.eclipse.swt.graphics.RGB;
 
 /**
  * Utility class to work with the GMF Annotation model.

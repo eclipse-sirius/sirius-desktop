@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.ui.tools.internal.layout.provider;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
 

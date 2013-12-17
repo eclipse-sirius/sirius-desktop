@@ -15,7 +15,6 @@ import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.Region;
 import org.eclipse.jface.text.information.IInformationProvider;
 import org.eclipse.jface.text.information.IInformationProviderExtension;
-
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditor;
 
 /**

@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.palette;
 
-import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.diagram.description.Layer;
 
 /**
  * An interface to implement for palette elements which need to knows layer

@@ -35,7 +35,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.ILayoutNodeOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.SimpleViewOrdering;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrdering;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrderingHint;

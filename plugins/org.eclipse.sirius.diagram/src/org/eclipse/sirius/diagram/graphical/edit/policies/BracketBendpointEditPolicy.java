@@ -34,9 +34,6 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Cursor;
-
 import org.eclipse.sirius.diagram.business.internal.bracket.BracketConnectionQuery;
 import org.eclipse.sirius.diagram.business.internal.bracket.Direction;
 import org.eclipse.sirius.diagram.business.internal.bracket.DirectionUtil;
@@ -46,6 +43,8 @@ import org.eclipse.sirius.diagram.graphical.edit.part.specific.BracketEdgeEditPa
 import org.eclipse.sirius.diagram.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Cursor;
 
 /**
  * A specific {@link BendpointEditPolicy} to manage move/rotate and their

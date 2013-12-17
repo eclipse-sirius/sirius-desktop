@@ -24,9 +24,9 @@ import org.eclipse.gmf.runtime.emf.type.core.ElementTypeRegistry;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
-import org.eclipse.swt.graphics.Image;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * @not-generated now that we have a new type, the dimension edge type
@@ -263,45 +263,45 @@ public class SiriusElementTypes extends ElementInitializers {
         if (elements == null) {
             elements = new IdentityHashMap<IElementType, EClass>();
 
-            elements.put(DDiagram_1000, ViewpointPackage.eINSTANCE.getDDiagram());
+            elements.put(DDiagram_1000, DiagramPackage.eINSTANCE.getDDiagram());
 
-            elements.put(DNode_2001, ViewpointPackage.eINSTANCE.getDNode());
+            elements.put(DNode_2001, DiagramPackage.eINSTANCE.getDNode());
 
-            elements.put(DNodeContainer_2002, ViewpointPackage.eINSTANCE.getDNodeContainer());
+            elements.put(DNodeContainer_2002, DiagramPackage.eINSTANCE.getDNodeContainer());
 
-            elements.put(DNodeList_2003, ViewpointPackage.eINSTANCE.getDNodeList());
+            elements.put(DNodeList_2003, DiagramPackage.eINSTANCE.getDNodeList());
 
-            elements.put(DNode_3001, ViewpointPackage.eINSTANCE.getDNode());
+            elements.put(DNode_3001, DiagramPackage.eINSTANCE.getDNode());
 
-            elements.put(BundledImage_3004, ViewpointPackage.eINSTANCE.getBundledImage());
+            elements.put(BundledImage_3004, DiagramPackage.eINSTANCE.getBundledImage());
 
-            elements.put(Dot_3002, ViewpointPackage.eINSTANCE.getDot());
+            elements.put(Dot_3002, DiagramPackage.eINSTANCE.getDot());
 
-            elements.put(GaugeCompositeStyle_3006, ViewpointPackage.eINSTANCE.getGaugeCompositeStyle());
+            elements.put(GaugeCompositeStyle_3006, DiagramPackage.eINSTANCE.getGaugeCompositeStyle());
 
-            elements.put(Square_3003, ViewpointPackage.eINSTANCE.getSquare());
+            elements.put(Square_3003, DiagramPackage.eINSTANCE.getSquare());
 
-            elements.put(Ellipse_3016, ViewpointPackage.eINSTANCE.getEllipse());
+            elements.put(Ellipse_3016, DiagramPackage.eINSTANCE.getEllipse());
 
-            elements.put(Lozenge_3017, ViewpointPackage.eINSTANCE.getLozenge());
+            elements.put(Lozenge_3017, DiagramPackage.eINSTANCE.getLozenge());
 
-            elements.put(WorkspaceImage_3005, ViewpointPackage.eINSTANCE.getWorkspaceImage());
+            elements.put(WorkspaceImage_3005, DiagramPackage.eINSTANCE.getWorkspaceImage());
 
-            elements.put(Note_3013, ViewpointPackage.eINSTANCE.getNote());
+            elements.put(Note_3013, DiagramPackage.eINSTANCE.getNote());
 
-            elements.put(CustomStyle_3014, ViewpointPackage.eINSTANCE.getCustomStyle());
+            elements.put(CustomStyle_3014, DiagramPackage.eINSTANCE.getCustomStyle());
 
-            elements.put(DNode_3007, ViewpointPackage.eINSTANCE.getDNode());
+            elements.put(DNode_3007, DiagramPackage.eINSTANCE.getDNode());
 
-            elements.put(DNodeContainer_3008, ViewpointPackage.eINSTANCE.getDNodeContainer());
+            elements.put(DNodeContainer_3008, DiagramPackage.eINSTANCE.getDNodeContainer());
 
-            elements.put(DNodeList_3009, ViewpointPackage.eINSTANCE.getDNodeList());
+            elements.put(DNodeList_3009, DiagramPackage.eINSTANCE.getDNodeList());
 
-            elements.put(DNodeListElement_3010, ViewpointPackage.eINSTANCE.getDNodeListElement());
+            elements.put(DNodeListElement_3010, DiagramPackage.eINSTANCE.getDNodeListElement());
 
-            elements.put(DNode_3012, ViewpointPackage.eINSTANCE.getDNode());
+            elements.put(DNode_3012, DiagramPackage.eINSTANCE.getDNode());
 
-            elements.put(DEdge_4001, ViewpointPackage.eINSTANCE.getDEdge());
+            elements.put(DEdge_4001, DiagramPackage.eINSTANCE.getDEdge());
         }
         return (ENamedElement) elements.get(type);
     }

@@ -53,14 +53,14 @@ import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
 import org.eclipse.sirius.viewpoint.description.Environment;
-import org.eclipse.sirius.viewpoint.description.Layer;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
@@ -206,15 +206,17 @@ public class PaletteManagerImpl implements PaletteManager {
             }
         }
         /*
-         * Update the palette (according to filters, that are also updated during this method)
+         * Update the palette (according to filters, that are also updated
+         * during this method)
          */
         updatePalette(diagram);
         paletteRoot = null;
     }
 
     /**
-     * Set the palette root field with the palette root referenced in the palette viewer and if there is no palette
-     * viewer, use reflection to directly get the palette root of the edit domain (protected field).
+     * Set the palette root field with the palette root referenced in the
+     * palette viewer and if there is no palette viewer, use reflection to
+     * directly get the palette root of the edit domain (protected field).
      */
     private void initPaletteRoot() {
         final PaletteViewer viewer = editDomain.getPaletteViewer();
@@ -256,9 +258,11 @@ public class PaletteManagerImpl implements PaletteManager {
      * Update the palette.
      * 
      * @param dDiagram
-     *            The {@link DDiagram} representing by the editor which contains the palette to update.
+     *            The {@link DDiagram} representing by the editor which contains
+     *            the palette to update.
      * @param description
-     *            The {@link DiagramDescription} of the {@link DDiagram}. It should not be a proxy.
+     *            The {@link DiagramDescription} of the {@link DDiagram}. It
+     *            should not be a proxy.
      * @param session
      *            The {@session} containing the {@link DDiagram}.
      */
@@ -274,9 +278,11 @@ public class PaletteManagerImpl implements PaletteManager {
      * Update the palette for a diagram that has no layer.
      * 
      * @param dDiagram
-     *            The {@link DDiagram} representing by the editor which contains the palette to update.
+     *            The {@link DDiagram} representing by the editor which contains
+     *            the palette to update.
      * @param description
-     *            The {@link DiagramDescription} of the {@link DDiagram}. It should not be a proxy.
+     *            The {@link DiagramDescription} of the {@link DDiagram}. It
+     *            should not be a proxy.
      * @param session
      *            The {@session} containing the {@link DDiagram}.
      */
@@ -297,12 +303,15 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     /**
-     * Update the palette for a diagram that has layer(s), at least a default one.
+     * Update the palette for a diagram that has layer(s), at least a default
+     * one.
      * 
      * @param dDiagram
-     *            The {@link DDiagram} representing by the editor which contains the palette to update.
+     *            The {@link DDiagram} representing by the editor which contains
+     *            the palette to update.
      * @param description
-     *            The {@link DiagramDescription} of the {@link DDiagram}. It should not be a proxy.
+     *            The {@link DiagramDescription} of the {@link DDiagram}. It
+     *            should not be a proxy.
      * @param session
      *            The {@session} containing the {@link DDiagram}.
      */
@@ -333,9 +342,10 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     /**
-     * Returns the palette entry contained in the given {@link PaletteContainer} with the given id, of the given type.
-     * If none found, {@link Options#newNone()} will be returned. If several found, we will log a warning and return
-     * only one of the candidates.
+     * Returns the palette entry contained in the given {@link PaletteContainer}
+     * with the given id, of the given type. If none found,
+     * {@link Options#newNone()} will be returned. If several found, we will log
+     * a warning and return only one of the candidates.
      * 
      * @param <T>
      *            the type of the searched palette entry
@@ -345,8 +355,9 @@ public class PaletteManagerImpl implements PaletteManager {
      *            the searched id
      * @param type
      *            the expected type
-     * @return {@link Options#newNone()} if no matching candidate is found, or the found candidate (if several found, we
-     *         will log a warning and return only one of the candidates).
+     * @return {@link Options#newNone()} if no matching candidate is found, or
+     *         the found candidate (if several found, we will log a warning and
+     *         return only one of the candidates).
      */
     private <T extends PaletteEntry> Option<T> getPaletteEntry(PaletteContainer container, final String id, Class<T> type) {
         Option<T> matchingPaletteEntry = Options.newNone();
@@ -369,8 +380,8 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     /**
-     * Replace if needed the GMF note attachment tool by a specific one (2 clicks for link creation instead of one click
-     * with drag).
+     * Replace if needed the GMF note attachment tool by a specific one (2
+     * clicks for link creation instead of one click with drag).
      */
     private void replaceNoteAttachmentCreationToolIfNeeded() {
         // Get the container of the Note Attachment Creation Tool
@@ -409,7 +420,8 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     /**
-     * Search a palette container by its label in the children of the <code>container</code>.
+     * Search a palette container by its label in the children of the
+     * <code>container</code>.
      * 
      * @param container
      *            The container in which searched
@@ -596,7 +608,8 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     /**
-     * Adds the default tools contributed by the environment in the same group as the default GEF tools.
+     * Adds the default tools contributed by the environment in the same group
+     * as the default GEF tools.
      */
     private void addDefaultTools(final Diagram diagram) {
         final PaletteContainer container = paletteRoot.getDefaultEntry().getParent();
@@ -675,8 +688,9 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     /**
-     * Update the container with the list of tool. The tools are created only if needed (not already existing) and not
-     * filtered. If a tool exists and should be filtered, it is removed from the container.
+     * Update the container with the list of tool. The tools are created only if
+     * needed (not already existing) and not filtered. If a tool exists and
+     * should be filtered, it is removed from the container.
      * 
      * @param session
      *            the current session
@@ -692,7 +706,8 @@ public class PaletteManagerImpl implements PaletteManager {
             if (toolEntry instanceof AbstractToolDescription) {
                 final AbstractToolDescription toolDescription = (AbstractToolDescription) toolEntry;
                 /*
-                 * do not create a new entry for the tool if it should not be displayed
+                 * do not create a new entry for the tool if it should not be
+                 * displayed
                  */
                 Option<PaletteEntry> paletteEntry = getPaletteEntry(container, new IdentifiedElementQuery(toolEntry).getLabel(), PaletteEntry.class);
                 if (!paletteEntry.some()) {
@@ -712,7 +727,8 @@ public class PaletteManagerImpl implements PaletteManager {
                 }
                 for (final AbstractToolDescription tool : new DiagramComponentizationManager().getTools(session.getSelectedViewpoints(false), (ToolGroup) toolEntry)) {
                     /*
-                     * do not create a new entry for the tool if it should not be displayed
+                     * do not create a new entry for the tool if it should not
+                     * be displayed
                      */
                     Option<PaletteEntry> paletteEntry = getPaletteEntry(paletteStack.get(), getToolEntryId(tool), PaletteEntry.class);
                     if (!isFiltered(diagram, tool)) {
@@ -751,8 +767,8 @@ public class PaletteManagerImpl implements PaletteManager {
      * @param toolEntry
      *            the tool to add.
      * @param existingPaletteEntry
-     *            the palette entry currently existing with the id of toolEntry, or {@link Options#newNone()} if it does
-     *            not currently exists
+     *            the palette entry currently existing with the id of toolEntry,
+     *            or {@link Options#newNone()} if it does not currently exists
      */
     protected void addElementToContainer(final PaletteContainer container, final ToolEntry toolEntry, final Option<PaletteEntry> existingPaletteEntry) {
         if (toolEntry instanceof ToolGroup) {

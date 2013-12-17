@@ -20,11 +20,11 @@ import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.tools.internal.commands.UpdateGMFEdgeStyleCommand;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.EdgeStyle;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * This listener is in charge of updating the GMF informations related to Edge
@@ -39,8 +39,8 @@ public class EdgeStyleUpdater extends ResourceSetListenerImpl {
      * The Viewpoint features that, when modified, should trigger an update of
      * GMF features.
      */
-    private static final NotificationFilter LISTENED_FEATURES = NotificationFilter.NOT_TOUCH.and(NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getDEdge_OwnedStyle()).or(
-            NotificationFilter.createFeatureFilter(ViewpointPackage.eINSTANCE.getEdgeStyle_RoutingStyle())));
+    private static final NotificationFilter LISTENED_FEATURES = NotificationFilter.NOT_TOUCH.and(NotificationFilter.createFeatureFilter(DiagramPackage.eINSTANCE.getDEdge_OwnedStyle()).or(
+            NotificationFilter.createFeatureFilter(DiagramPackage.eINSTANCE.getEdgeStyle_RoutingStyle())));
 
     /**
      * The viewpoint cross reference used to get GMF elements from
@@ -102,7 +102,7 @@ public class EdgeStyleUpdater extends ResourceSetListenerImpl {
 
             }
             // - a change of EdgeStyle
-            else if (notification.getNotifier() instanceof EdgeStyle && ViewpointPackage.eINSTANCE.getEdgeStyle_RoutingStyle().equals(notification.getFeature())) {
+            else if (notification.getNotifier() instanceof EdgeStyle && DiagramPackage.eINSTANCE.getEdgeStyle_RoutingStyle().equals(notification.getFeature())) {
                 viewpointEdgeStyle = (EdgeStyle) notification.getNotifier();
                 gmfEdge = SiriusGMFHelper.getGmfEdge((DEdge) viewpointEdgeStyle.eContainer(), crossReference);
             }

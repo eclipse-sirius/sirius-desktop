@@ -16,12 +16,11 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.view.factories.AbstractLabelViewFactory;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.collect.Lists;
-
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+
+import com.google.common.collect.Lists;
 
 /**
  * @was-generated

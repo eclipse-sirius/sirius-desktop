@@ -14,10 +14,10 @@ import java.util.Collection;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.business.api.helper.concern.ConcernService;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
+import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 
 /**
  * Specific command to update activated filters.
@@ -61,7 +61,8 @@ public final class DeactivateFiltersCommand extends RecordingCommand {
 
         if (oldElements.size() > 0) {
             ConcernService.resetCurrentConcern(diagram);
-            NotificationUtil.sendNotification(diagram, org.eclipse.sirius.common.tools.api.listener.Notification.Kind.START, org.eclipse.sirius.common.tools.api.listener.Notification.VISIBILITY_UPDATE);
+            NotificationUtil.sendNotification(diagram, org.eclipse.sirius.common.tools.api.listener.Notification.Kind.START,
+                    org.eclipse.sirius.common.tools.api.listener.Notification.VISIBILITY_UPDATE);
         }
     }
 }

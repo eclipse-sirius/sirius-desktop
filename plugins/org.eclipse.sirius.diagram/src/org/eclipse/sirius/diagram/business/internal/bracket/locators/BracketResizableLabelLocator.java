@@ -16,12 +16,12 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.internal.figures.ResizableLabelLocator;
-
 import org.eclipse.sirius.diagram.business.internal.bracket.BracketConnectionQuery;
 
 /**
- * Bracket specific {@link LabelLocator} to have the center label the middle of
- * the bracket segment as reference point.
+ * Bracket specific
+ * {@link org.eclipse.gmf.runtime.diagram.ui.figures.LabelLocator} to have the
+ * center label the middle of the bracket segment as reference point.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */

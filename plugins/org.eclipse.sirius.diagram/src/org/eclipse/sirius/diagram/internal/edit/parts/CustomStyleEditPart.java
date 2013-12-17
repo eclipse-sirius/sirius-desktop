@@ -25,6 +25,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.BundledImage;
+import org.eclipse.sirius.diagram.BundledImageShape;
+import org.eclipse.sirius.diagram.CustomStyle;
+import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IStyleEditPart;
@@ -33,10 +37,6 @@ import org.eclipse.sirius.diagram.internal.edit.policies.NonResizableAndNonDupli
 import org.eclipse.sirius.diagram.internal.edit.policies.StyleItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.BundledImageFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
-import org.eclipse.sirius.viewpoint.BundledImage;
-import org.eclipse.sirius.viewpoint.BundledImageShape;
-import org.eclipse.sirius.viewpoint.CustomStyle;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
 
 /**
@@ -119,7 +119,7 @@ public class CustomStyleEditPart extends AbstractNotSelectableShapeNodeEditPart 
         return primaryShape = bif;
     }
 
-    private static BundledImage bundledImage = ViewpointFactory.eINSTANCE.createBundledImage();
+    private static BundledImage bundledImage = DiagramFactory.eINSTANCE.createBundledImage();
     static {
         bundledImage.setColor(VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.GREEN_LITERAL));
         bundledImage.setBorderColor(VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.GREEN_LITERAL));

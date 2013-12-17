@@ -20,23 +20,23 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.session.CustomDataConstants;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.business.internal.command.CreateAndStoreGMFDiagramCommand;
+import org.eclipse.sirius.diagram.business.internal.dialect.DiagramDialectArrangeOperation;
+import org.eclipse.sirius.diagram.tools.internal.editor.DDiagramEditorImpl;
+import org.eclipse.sirius.ui.business.api.editor.SpecificEditor;
+import org.eclipse.sirius.ui.business.api.editor.SpecificEditorInputTranformer;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.session.CustomDataConstants;
-import org.eclipse.sirius.diagram.business.internal.command.CreateAndStoreGMFDiagramCommand;
-import org.eclipse.sirius.diagram.business.internal.dialect.DiagramDialectArrangeOperation;
-import org.eclipse.sirius.diagram.tools.internal.editor.DDiagramEditorImpl;
-import org.eclipse.sirius.ui.business.api.editor.SpecificEditor;
-import org.eclipse.sirius.ui.business.api.editor.SpecificEditorInputTranformer;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 
 /**
  * A specific editor you may extend, which includes a session. The session

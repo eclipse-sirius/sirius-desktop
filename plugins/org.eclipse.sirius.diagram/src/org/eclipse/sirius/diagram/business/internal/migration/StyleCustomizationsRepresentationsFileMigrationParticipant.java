@@ -13,11 +13,11 @@ package org.eclipse.sirius.diagram.business.internal.migration;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.osgi.framework.Version;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
 import org.eclipse.sirius.diagram.business.internal.query.CustomizableQuery;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.Style;
+import org.osgi.framework.Version;
 
 /**
  * Migration contribution for style with custom attribute at true.

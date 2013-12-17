@@ -12,10 +12,9 @@ package org.eclipse.sirius.diagram.business.internal.browser;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.base.Predicate;
-
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * A specific predicate to match edit part by the semantic element they should

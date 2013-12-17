@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.tools.internal.preferences;
 
 import org.eclipse.core.runtime.preferences.IEclipsePreferences.IPreferenceChangeListener;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences.PreferenceChangeEvent;
-
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
 

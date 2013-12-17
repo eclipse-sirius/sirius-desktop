@@ -25,20 +25,20 @@ import org.eclipse.gmf.runtime.diagram.core.listener.NotificationPreCommitListen
 import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.graphical.edit.policies.LabelDeletionEditPolicy;
 import org.eclipse.sirius.diagram.graphical.edit.policies.LabelSemanticEditPolicy;
 import org.eclipse.sirius.diagram.graphical.edit.policies.ToolBasedLabelDirectEditPolicy;
 import org.eclipse.sirius.diagram.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
 import org.eclipse.sirius.viewpoint.DMappingBased;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
-import org.eclipse.sirius.viewpoint.DNodeList;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * Basic implementation of edit part that can have a label.

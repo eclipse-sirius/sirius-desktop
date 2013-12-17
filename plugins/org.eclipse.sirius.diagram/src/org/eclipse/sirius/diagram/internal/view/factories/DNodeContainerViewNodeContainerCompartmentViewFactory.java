@@ -20,11 +20,10 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.TitleStyle;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+
+import com.google.common.collect.Lists;
 
 /**
  * @was-generated

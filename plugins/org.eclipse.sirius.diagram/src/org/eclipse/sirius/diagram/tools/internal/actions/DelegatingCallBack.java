@@ -13,8 +13,8 @@ package org.eclipse.sirius.diagram.tools.internal.actions;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.sirius.viewpoint.DNavigationLink;
+import org.eclipse.ui.IEditorPart;
 
 /**
  * This class allows to run many callback when an editor is opened.

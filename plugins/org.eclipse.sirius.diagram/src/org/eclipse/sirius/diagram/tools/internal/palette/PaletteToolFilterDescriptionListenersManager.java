@@ -15,13 +15,12 @@ import java.util.Collection;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.sirius.business.api.tool.ToolFilterDescriptionListener;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.business.api.tool.ToolFilterDescriptionListener;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 
 /**
  * Manager the listeners for tool filter.

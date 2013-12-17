@@ -13,10 +13,9 @@ package org.eclipse.sirius.diagram.tools.internal.editor.tabbar;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.ToolBarManager;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.menus.IMenuService;
-
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 
 /**
  * Default filler to subclass.

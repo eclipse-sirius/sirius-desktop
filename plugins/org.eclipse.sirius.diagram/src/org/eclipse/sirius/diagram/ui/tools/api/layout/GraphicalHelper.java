@@ -17,10 +17,9 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.tools.api.draw2d.ui.figures.FigureUtilities;
 
 import com.google.common.base.Preconditions;
-
-import org.eclipse.sirius.diagram.tools.api.draw2d.ui.figures.FigureUtilities;
 
 /**
  * Utility class to collect helper methods which deal with GraphicalOrdering but

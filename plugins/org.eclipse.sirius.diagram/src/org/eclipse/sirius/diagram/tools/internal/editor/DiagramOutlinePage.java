@@ -46,6 +46,13 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerComparator;
+import org.eclipse.sirius.common.ui.tools.api.util.IObjectActionDelegateWrapper;
+import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineContentProvider;
+import org.eclipse.sirius.ui.business.api.provider.DEdgeLabelItemProvider;
+import org.eclipse.sirius.ui.business.api.provider.DNodeLabelItemProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
@@ -57,14 +64,6 @@ import org.eclipse.ui.part.IPageSite;
 import org.eclipse.ui.part.PageBook;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.ui.tools.api.util.IObjectActionDelegateWrapper;
-import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
-import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineContentProvider;
-import org.eclipse.sirius.ui.business.api.provider.DEdgeLabelItemProvider;
-import org.eclipse.sirius.ui.business.api.provider.DNodeLabelItemProvider;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.DNode;
 
 /**
  * <p>

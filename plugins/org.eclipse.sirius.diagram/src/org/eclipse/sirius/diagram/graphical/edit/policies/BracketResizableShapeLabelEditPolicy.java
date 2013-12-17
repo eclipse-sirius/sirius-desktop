@@ -15,7 +15,6 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
-
 import org.eclipse.sirius.diagram.business.internal.bracket.BracketConnectionQuery;
 
 /**

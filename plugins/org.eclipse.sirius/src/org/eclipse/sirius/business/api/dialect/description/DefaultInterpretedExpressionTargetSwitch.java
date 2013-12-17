@@ -19,6 +19,7 @@ import org.eclipse.sirius.business.internal.dialect.description.FilterInterprete
 import org.eclipse.sirius.business.internal.dialect.description.StyleInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.internal.dialect.description.ToolInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.internal.dialect.description.ValidationInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.business.internal.dialect.description.ViewpointInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 
@@ -44,6 +45,8 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
 
     private ValidationInterpretedExpressionTargetSwitch validationSwitch;
 
+    private ViewpointInterpretedExpressionTargetSwitch viewpointSwitch;
+
     /**
      * Default constructor.
      * 
@@ -63,6 +66,7 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
         this.toolSwitch = new ToolInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
         this.filterSwitch = new FilterInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
         this.validationSwitch = new ValidationInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
+        this.viewpointSwitch = new ViewpointInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
     }
 
     /**
@@ -92,6 +96,11 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
             if (expressionTarget.some() && expressionTarget.get().isEmpty()) {
                 validationSwitch.setConsiderFeature(considerFeature);
                 expressionTarget = validationSwitch.doSwitch(theEObject);
+            }
+
+            if (expressionTarget.some() && expressionTarget.get().isEmpty()) {
+                viewpointSwitch.setConsiderFeature(considerFeature);
+                expressionTarget = viewpointSwitch.doSwitch(theEObject);
             }
 
             // Tool in last position -> tool will return a defautl EObject value

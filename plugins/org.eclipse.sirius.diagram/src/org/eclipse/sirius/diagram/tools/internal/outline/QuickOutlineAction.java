@@ -13,14 +13,13 @@ package org.eclipse.sirius.diagram.tools.internal.outline;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.diagram.part.SiriusDiagramEditor;
+import org.eclipse.sirius.diagram.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditor;
-import org.eclipse.sirius.diagram.tools.internal.editor.DDiagramEditorImpl;
 
 /**
  * This action will display a quick outline view within a text popup menu.

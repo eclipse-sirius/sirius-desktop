@@ -11,8 +11,8 @@
 package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.sirius.diagram.BackgroundStyle;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.sirius.viewpoint.BackgroundStyle;
 
 /**
  * Common interface which add support of gradient for container and list figure

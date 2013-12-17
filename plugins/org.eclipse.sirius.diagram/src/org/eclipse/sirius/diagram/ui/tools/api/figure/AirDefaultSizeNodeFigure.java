@@ -18,7 +18,6 @@ import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
-
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.ZoomDependantAnchor;
 

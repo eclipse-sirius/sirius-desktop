@@ -15,11 +15,10 @@ import java.util.Set;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.sirius.diagram.DiagramPackage;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Pridicate to filter {@link Notification} concerning only the DSemanticDiagram
@@ -35,22 +34,22 @@ public class DSemanticDiagramScopePredicate implements Predicate<Notification> {
      * Create the predicate.
      */
     public DSemanticDiagramScopePredicate() {
-        featureToContainDDiagramElements.add(ViewpointPackage.eINSTANCE.getDDiagram_OwnedDiagramElements());
-        featureToContainDDiagramElements.add(ViewpointPackage.eINSTANCE.getDNodeList_OwnedElements());
-        featureToContainDDiagramElements.add(ViewpointPackage.eINSTANCE.getAbstractDNode_OwnedBorderedNodes());
-        featureToContainDDiagramElements.add(ViewpointPackage.eINSTANCE.getDEdge_SourceNode());
-        featureToContainDDiagramElements.add(ViewpointPackage.eINSTANCE.getDEdge_TargetNode());
-        featureToContainDDiagramElements.add(ViewpointPackage.eINSTANCE.getDNodeContainer_OwnedDiagramElements());
-        featureToContainDDiagramElements.add(ViewpointPackage.eINSTANCE.getDDiagramElementContainer_Containers());
-        featureToContainDDiagramElements.add(ViewpointPackage.eINSTANCE.getDNode_OwnedStyle());
-        featureToContainDDiagramElements.add(ViewpointPackage.eINSTANCE.getDEdge_OwnedStyle());
-        featureToContainDDiagramElements.add(ViewpointPackage.eINSTANCE.getDNodeListElement_OwnedStyle());
-        featureToContainDDiagramElements.add(ViewpointPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle());
-        featureToContainDDiagramElements.add(ViewpointPackage.eINSTANCE.getEdgeTarget_IncomingEdges());
-        featureToContainDDiagramElements.add(ViewpointPackage.eINSTANCE.getEdgeTarget_OutgoingEdges());
-        featureToContainDDiagramElements.add(ViewpointPackage.eINSTANCE.getDDiagram_ActivatedFilters());
-        featureToContainDDiagramElements.add(ViewpointPackage.eINSTANCE.getDDiagram_ActivatedLayers());
-        featureToContainDDiagramElements.add(ViewpointPackage.eINSTANCE.getDDiagramElement_GraphicalFilters());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDDiagram_OwnedDiagramElements());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDNodeList_OwnedElements());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getAbstractDNode_OwnedBorderedNodes());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDEdge_SourceNode());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDEdge_TargetNode());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDNodeContainer_OwnedDiagramElements());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDDiagramElementContainer_Containers());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDNode_OwnedStyle());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDEdge_OwnedStyle());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDNodeListElement_OwnedStyle());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getEdgeTarget_IncomingEdges());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getEdgeTarget_OutgoingEdges());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDDiagram_ActivatedFilters());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDDiagram_ActivatedLayers());
+        featureToContainDDiagramElements.add(DiagramPackage.eINSTANCE.getDDiagramElement_GraphicalFilters());
         featureToContainDDiagramElements.add(NotationPackage.eINSTANCE.getEdge_Source());
         featureToContainDDiagramElements.add(NotationPackage.eINSTANCE.getEdge_Target());
         featureToContainDDiagramElements.add(NotationPackage.eINSTANCE.getView_PersistedChildren());

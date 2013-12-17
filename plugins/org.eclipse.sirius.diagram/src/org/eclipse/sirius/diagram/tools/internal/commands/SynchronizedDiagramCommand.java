@@ -12,14 +12,14 @@ package org.eclipse.sirius.diagram.tools.internal.commands;
 
 import java.util.Map;
 
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.tools.internal.actions.SynchronizedDiagramAction;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.commands.IElementUpdater;
 import org.eclipse.ui.menus.UIElement;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.internal.actions.SynchronizedDiagramAction;
-import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * Toggle between synchronized and unsynchronized diagram modes.

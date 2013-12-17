@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.layout.semantic;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.NodeLayoutDataKey;
 
 /**

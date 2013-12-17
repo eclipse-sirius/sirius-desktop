@@ -15,9 +15,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.printing.render.util.RenderedDiagramPrinter;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.swt.widgets.Shell;
-
 import org.eclipse.sirius.diagram.tools.api.part.DiagramEditPartService;
+import org.eclipse.swt.widgets.Shell;
 
 /**
  * A specialized <code>RenderedDiagramPrinter</code> that supports Sirius

@@ -14,9 +14,6 @@ import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.menus.IContributionRoot;
-import org.eclipse.ui.services.IServiceLocator;
-
 import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.part.SiriusDiagramActionBarContributor;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
@@ -27,6 +24,8 @@ import org.eclipse.sirius.diagram.tools.internal.actions.visibility.HideDDiagram
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.HideDDiagramElementLabelActionContributionItem;
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramElementTabbarExpression;
 import org.eclipse.sirius.diagram.ui.tools.api.action.DeleteFromDiagramContributionItem;
+import org.eclipse.ui.menus.IContributionRoot;
+import org.eclipse.ui.services.IServiceLocator;
 
 /**
  * ExtensionContributionFactory responsible for hide and Delete actions tabbar

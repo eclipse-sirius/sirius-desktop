@@ -11,8 +11,8 @@
 package org.eclipse.sirius.diagram.tools.internal.actions.repair;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 
 /**
  * Contract for all diagram element states.

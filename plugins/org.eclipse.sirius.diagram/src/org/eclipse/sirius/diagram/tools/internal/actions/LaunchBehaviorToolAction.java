@@ -24,11 +24,10 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.RetargetAction;
-
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
 
 /**
  * This action launch all {@link RuleTool} to update the model.

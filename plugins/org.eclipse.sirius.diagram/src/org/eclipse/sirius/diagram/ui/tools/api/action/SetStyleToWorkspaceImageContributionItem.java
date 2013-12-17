@@ -18,13 +18,12 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.tools.internal.graphical.edit.part.DDiagramRootEditPart;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IPartService;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
-
-import org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart;
-import org.eclipse.sirius.diagram.tools.internal.graphical.edit.part.DDiagramRootEditPart;
 
 /**
  * A ControlContribution that uses a {@link org.eclipse.swt.widgets.Button} as

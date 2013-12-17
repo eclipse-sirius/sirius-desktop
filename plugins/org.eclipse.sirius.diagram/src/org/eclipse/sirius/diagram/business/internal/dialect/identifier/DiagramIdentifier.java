@@ -11,10 +11,10 @@
 package org.eclipse.sirius.diagram.business.internal.dialect.identifier;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.business.api.dialect.identifier.AbstractRepresentationElementIdentifier;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 
 /**
  * Identifies a diagram.

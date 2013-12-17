@@ -66,7 +66,6 @@ import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;
 import org.eclipse.sirius.tree.description.TreeItemCreationTool;
 import org.eclipse.sirius.tree.description.TreeItemDeletionTool;
 import org.eclipse.sirius.tree.description.TreeItemEditionTool;
-import org.eclipse.sirius.viewpoint.DEdge;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
@@ -224,9 +223,6 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
         if (delete) {
             cmd.getTasks().addAll(buildCommandFromModelOfTool(semanticElement, deleteTool, element.eContainer()).getTasks());
             cmd.getTasks().add(new DeleteTreeElementsTask(domain, modelAccessor, cmd, this, element));
-            if (element instanceof DEdge) {
-                cmd.getTasks().add(new DeleteTreeElementTask(element, modelAccessor));
-            }
         } else {
             cmd.getTasks().add(UnexecutableTask.INSTANCE);
         }

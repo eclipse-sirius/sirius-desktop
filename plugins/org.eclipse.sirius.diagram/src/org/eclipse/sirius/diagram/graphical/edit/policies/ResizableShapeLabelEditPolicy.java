@@ -33,7 +33,6 @@ import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.diagram.internal.edit.parts.AbstractDEdgeNameEditPart;
 
 /**

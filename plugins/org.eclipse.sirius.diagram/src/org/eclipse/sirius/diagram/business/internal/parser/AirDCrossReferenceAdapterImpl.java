@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.business.internal.parser;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter;
-
 import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 
 /**

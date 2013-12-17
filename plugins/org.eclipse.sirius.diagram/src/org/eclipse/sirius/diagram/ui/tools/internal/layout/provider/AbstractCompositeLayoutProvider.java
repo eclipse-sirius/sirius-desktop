@@ -53,6 +53,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutExtender;
@@ -61,7 +62,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.ExtendableLayoutP
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.ArrangeAllWithAutoSize;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.AutoSizeAndRegionAwareGraphLayout;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.DiagramLayoutCustomization;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;

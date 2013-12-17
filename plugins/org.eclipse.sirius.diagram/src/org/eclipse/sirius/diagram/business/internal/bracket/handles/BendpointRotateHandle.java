@@ -16,7 +16,6 @@ import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.SharedCursors;
 import org.eclipse.gef.handles.BendpointHandle;
 import org.eclipse.gef.tools.ConnectionBendpointTracker;
-
 import org.eclipse.sirius.diagram.business.internal.bracket.locators.BendpointRotateLocator;
 import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
 

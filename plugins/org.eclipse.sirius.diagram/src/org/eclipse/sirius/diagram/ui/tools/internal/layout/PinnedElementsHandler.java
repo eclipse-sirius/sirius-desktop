@@ -36,6 +36,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget.Direction;
+import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
@@ -44,8 +45,6 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
 
 /**
  * Fixes the layout of a particular level as done by a base layout provider to

@@ -27,6 +27,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.FillStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.Note;
 import org.eclipse.sirius.diagram.business.internal.edit.helpers.LabelAlignmentHelper;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramBorderNodeEditPart;
@@ -36,7 +37,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.AirNoteFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.LabelStyle;
-import org.eclipse.sirius.viewpoint.Note;
 import org.eclipse.sirius.viewpoint.RGBValues;
 
 /**

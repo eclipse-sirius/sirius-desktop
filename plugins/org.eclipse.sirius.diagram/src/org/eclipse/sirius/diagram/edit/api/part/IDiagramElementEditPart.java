@@ -16,9 +16,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationPreCommitListener;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.swt.graphics.Image;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.permission.EditPartAuthorityListener;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * This is the top level interface of the hierarchy of all edit parts.

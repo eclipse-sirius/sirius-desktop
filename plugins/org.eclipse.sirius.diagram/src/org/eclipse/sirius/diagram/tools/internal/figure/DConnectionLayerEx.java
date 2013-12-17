@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.tools.internal.figure;
 
 import org.eclipse.draw2d.ConnectionRouter;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.ConnectionLayerEx;
-
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.DForestRouter;
 
 /**

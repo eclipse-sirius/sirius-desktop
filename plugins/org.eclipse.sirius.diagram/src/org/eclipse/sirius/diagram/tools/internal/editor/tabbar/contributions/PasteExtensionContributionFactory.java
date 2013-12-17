@@ -11,11 +11,10 @@
 package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions;
 
 import org.eclipse.jface.action.ActionContributionItem;
-import org.eclipse.ui.menus.IContributionRoot;
-import org.eclipse.ui.services.IServiceLocator;
-
 import org.eclipse.sirius.diagram.tools.internal.actions.layout.PasteLayoutAction;
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramTabbarExpression;
+import org.eclipse.ui.menus.IContributionRoot;
+import org.eclipse.ui.services.IServiceLocator;
 
 /**
  * 

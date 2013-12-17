@@ -26,12 +26,12 @@ import org.eclipse.sirius.business.api.resource.WorkspaceDragAndDropSupport;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.ui.tools.internal.dnd.DragAndDropWrapper;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
@@ -107,12 +107,11 @@ public class DragAndDropValidator {
             } else if (editPart instanceof IGraphicalEditPart) {
                 IGraphicalEditPart graphicalEditPartToDrop = (IGraphicalEditPart) editPart;
                 /*
-                 * Impossible to move a bordered node in a
-                 * subfunction if there is a drag and drop tool associated to
-                 * the node
+                 * Impossible to move a bordered node in a subfunction if there
+                 * is a drag and drop tool associated to the node
                  * 
-                 * drag'n'drop should not be enabled on the
-                 * same container to avoid to block the move of an element
+                 * drag'n'drop should not be enabled on the same container to
+                 * avoid to block the move of an element
                  */
                 if (!(graphicalEditPartToDrop.getParent() == hostGraphicalEditPart || hostGraphicalEditPart instanceof CompartmentEditPart
                         && graphicalEditPartToDrop.getParent() == hostGraphicalEditPart.getParent())

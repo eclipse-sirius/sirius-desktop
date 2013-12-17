@@ -10,13 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions;
 
-import org.eclipse.ui.menus.IContributionRoot;
-import org.eclipse.ui.services.IServiceLocator;
-
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarArrangeMenuManager;
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarSelectMenuManager;
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramAndDDiagramElementTabbarExpression;
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramTabbarExpression;
+import org.eclipse.ui.menus.IContributionRoot;
+import org.eclipse.ui.services.IServiceLocator;
 
 /**
  * ExtensionContributionFactory responsible for Arrange all tabbar item

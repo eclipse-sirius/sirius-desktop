@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.internal.view.factories;
 
 import org.eclipse.sirius.diagram.internal.edit.parts.DNode3EditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.NotationViewIDs;
-import org.eclipse.sirius.diagram.internal.view.factories.AbstractDNodeViewFactory;
 
 /**
  * @was-generated

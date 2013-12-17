@@ -18,7 +18,6 @@ import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.editpolicies.SelectionEditPolicy;
-
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 
 

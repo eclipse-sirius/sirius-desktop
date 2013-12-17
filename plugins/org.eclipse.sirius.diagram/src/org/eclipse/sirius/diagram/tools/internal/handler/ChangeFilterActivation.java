@@ -19,19 +19,19 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
-import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.business.api.helper.concern.ConcernService;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
+import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
+import org.eclipse.sirius.diagram.description.filter.Filter;
+import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.eclipse.sirius.diagram.description.filter.VariableFilter;
 import org.eclipse.sirius.diagram.tools.internal.filter.FilterTools;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.description.concern.ConcernDescription;
-import org.eclipse.sirius.viewpoint.description.filter.CompositeFilterDescription;
-import org.eclipse.sirius.viewpoint.description.filter.Filter;
-import org.eclipse.sirius.viewpoint.description.filter.FilterDescription;
-import org.eclipse.sirius.viewpoint.description.filter.VariableFilter;
 
 /**
  * Change filter activation.
@@ -77,7 +77,8 @@ public class ChangeFilterActivation extends AbstractChangeActivation {
              * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
              */
             public void execute() {
-                NotificationUtil.sendNotification(diagram, org.eclipse.sirius.common.tools.api.listener.Notification.Kind.START, org.eclipse.sirius.common.tools.api.listener.Notification.VISIBILITY_UPDATE);
+                NotificationUtil.sendNotification(diagram, org.eclipse.sirius.common.tools.api.listener.Notification.Kind.START,
+                        org.eclipse.sirius.common.tools.api.listener.Notification.VISIBILITY_UPDATE);
 
                 if (activate) {
                     handleActivation(diagram, filter);

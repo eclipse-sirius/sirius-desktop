@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.edit.api.part;
 
 import org.eclipse.draw2d.IFigure;
-
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 
 /**

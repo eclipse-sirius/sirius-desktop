@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.ui.tools.api.layout.provider;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.graph.Node;
-
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutExtender;
 
 /**

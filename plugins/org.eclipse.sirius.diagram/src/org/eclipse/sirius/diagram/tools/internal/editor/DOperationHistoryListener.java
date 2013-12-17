@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.tools.internal.editor;
 
 import org.eclipse.core.commands.operations.IOperationHistoryListener;
 import org.eclipse.core.commands.operations.OperationHistoryEvent;
-
 import org.eclipse.sirius.diagram.internal.refresh.layout.SiriusCanonicalLayoutHandler;
 
 /**

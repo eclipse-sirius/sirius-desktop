@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.tools.internal.editor;
 
 import org.eclipse.jface.resource.ImageDescriptor;
-
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 
 /**

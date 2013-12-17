@@ -37,7 +37,6 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.tree.provider.TreeItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.concern.provider.ConcernItemProviderAdapterFactory;
-import org.eclipse.sirius.viewpoint.description.filter.provider.FilterItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
@@ -226,7 +225,6 @@ public final class TreeUIPlugin extends EMFPlugin {
             factories.add(new ViewpointItemProviderAdapterFactory());
             factories.add(new DescriptionItemProviderAdapterFactory());
             factories.add(new ToolItemProviderAdapterFactory());
-            factories.add(new FilterItemProviderAdapterFactory());
             factories.add(new ValidationItemProviderAdapterFactory());
             factories.add(new AuditItemProviderAdapterFactory());
             factories.add(new ConcernItemProviderAdapterFactory());

@@ -23,16 +23,15 @@ import org.eclipse.gef.handles.BendpointMoveHandle;
 import org.eclipse.gef.handles.ConnectionEndHandle;
 import org.eclipse.gef.handles.ConnectionStartHandle;
 import org.eclipse.gef.handles.NonResizableHandleKit;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Display;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramEdgeEditPartOperation;
 import org.eclipse.sirius.diagram.internal.edit.parts.AbstractDEdgeNameEditPart;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
+
+import com.google.common.collect.Lists;
 
 /**
  * An abstract edit policy to handle feedback for selection of

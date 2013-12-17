@@ -13,16 +13,15 @@ package org.eclipse.sirius.diagram.ui.tools.api.figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.swt.graphics.Image;
-
-import com.google.common.base.Preconditions;
-
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.internal.query.EdgeTargetQuery;
 import org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.internal.commands.ToggleFoldingStateCommand;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.swt.graphics.Image;
+
+import com.google.common.base.Preconditions;
 
 /**
  * A figure which displays and controls the folding state of an element.

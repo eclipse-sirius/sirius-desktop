@@ -15,11 +15,10 @@ import java.util.List;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.handles.NonResizableHandleKit;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Display;
-
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.AbstractDEdgeNameEditPart;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
 
 /**
  * An edit policy that can show feedback for selection of

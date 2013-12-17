@@ -45,7 +45,6 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalC
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
-
 import org.eclipse.sirius.diagram.tools.internal.commands.SnapCommand;
 import org.eclipse.sirius.diagram.tools.internal.ui.GMFRuntimeCompatibility;
 

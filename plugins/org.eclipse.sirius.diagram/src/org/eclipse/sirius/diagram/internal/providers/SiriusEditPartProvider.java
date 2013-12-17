@@ -23,7 +23,6 @@ import org.eclipse.gmf.runtime.diagram.ui.services.editpart.CreateRootEditPartOp
 import org.eclipse.gmf.runtime.diagram.ui.services.editpart.IEditPartOperation;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.SiriusEditPartFactory;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;

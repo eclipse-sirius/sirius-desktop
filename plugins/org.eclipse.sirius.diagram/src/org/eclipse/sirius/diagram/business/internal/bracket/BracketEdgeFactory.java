@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.business.internal.bracket;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.diagram.graphical.edit.part.specific.BracketEdgeEditPart;
 import org.eclipse.sirius.diagram.internal.view.factories.DEdgeViewFactory;
 

@@ -27,6 +27,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.graphical.edit.policies.DeleteFromDiagramEditPolicy;
@@ -49,11 +52,8 @@ import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfigura
 import org.eclipse.sirius.diagram.tools.api.part.NodePlateProvider;
 import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DStylizable;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
  * Implementation of {@link IAbstractDiagramNodeEditPart}.
@@ -83,7 +83,7 @@ public final class AbstractDiagramNodeEditPartOperation {
         }
         // To handle REMOVE type as above might have side-effect. Handle it only
         // for DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS feature
-        if (notification.getEventType() == Notification.REMOVE && ViewpointPackage.Literals.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS.equals(notification.getFeature())) {
+        if (notification.getEventType() == Notification.REMOVE && DiagramPackage.Literals.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS.equals(notification.getFeature())) {
             AbstractDiagramNodeEditPartOperation.safeRefresh(self);
         }
         if (notification.getEventType() == Notification.SET && notification.getFeature() instanceof EAttribute) {

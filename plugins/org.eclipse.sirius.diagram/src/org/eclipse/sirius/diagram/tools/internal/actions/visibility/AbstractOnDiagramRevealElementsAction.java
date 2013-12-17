@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.tools.internal.actions.visibility;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.jface.resource.ImageDescriptor;
-
 import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.tools.internal.graphical.edit.part.DDiagramHelper;
 

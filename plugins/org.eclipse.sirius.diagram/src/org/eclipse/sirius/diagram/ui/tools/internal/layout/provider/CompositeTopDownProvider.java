@@ -13,13 +13,13 @@ package org.eclipse.sirius.diagram.ui.tools.internal.layout.provider;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPartProvider;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.description.CompositeLayout;
+import org.eclipse.sirius.diagram.description.Layout;
+import org.eclipse.sirius.diagram.description.LayoutDirection;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.CompoundLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.DiagramLayoutCustomization;
-import org.eclipse.sirius.viewpoint.description.CompositeLayout;
-import org.eclipse.sirius.viewpoint.description.Layout;
-import org.eclipse.sirius.viewpoint.description.LayoutDirection;
 
 /**
  * Provides

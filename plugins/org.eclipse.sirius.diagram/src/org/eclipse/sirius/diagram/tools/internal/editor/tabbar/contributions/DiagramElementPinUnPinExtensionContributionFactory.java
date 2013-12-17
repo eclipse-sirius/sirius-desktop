@@ -10,12 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions;
 
-import org.eclipse.ui.menus.IContributionRoot;
-import org.eclipse.ui.services.IServiceLocator;
-
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarPinElementsEclipseAction;
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarUnpinElementsEclipseAction;
 import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramElementTabbarExpression;
+import org.eclipse.ui.menus.IContributionRoot;
+import org.eclipse.ui.services.IServiceLocator;
 
 /**
  * ExtensionContributionFactory responsible for pin/unpin tabbar item creation.

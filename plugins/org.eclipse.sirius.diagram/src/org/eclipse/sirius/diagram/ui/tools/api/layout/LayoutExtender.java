@@ -26,10 +26,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ListItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.ExtendableLayoutProvider;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.ExtendableLayoutProvider;
 
 /**
  * Class providing extended service for {@link ExtendableLayoutProvider}s

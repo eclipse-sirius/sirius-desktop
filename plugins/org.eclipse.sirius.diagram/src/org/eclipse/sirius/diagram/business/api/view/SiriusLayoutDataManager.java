@@ -26,13 +26,13 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCo
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.internal.view.AbstractLayoutData;
 import org.eclipse.sirius.diagram.business.internal.view.EdgeLabelLayoutData;
 import org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData;
 import org.eclipse.sirius.diagram.business.internal.view.LayoutData;
 import org.eclipse.sirius.diagram.business.internal.view.SiriusLayoutDataManagerImpl;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DEdge;
 
 /**
  * Manage the AbstractLayoutData during node creation or drag'n'drop. LayoutData

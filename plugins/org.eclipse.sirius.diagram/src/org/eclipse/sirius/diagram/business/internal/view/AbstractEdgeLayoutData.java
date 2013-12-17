@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.business.internal.view;
 
 import org.eclipse.gmf.runtime.notation.Edge;
-import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.diagram.DEdge;
 
 /**
  * Common behavior for edge layout data.

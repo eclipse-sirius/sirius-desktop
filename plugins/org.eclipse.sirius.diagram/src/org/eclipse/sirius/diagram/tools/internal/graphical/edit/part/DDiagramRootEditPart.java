@@ -18,7 +18,6 @@ import org.eclipse.gef.AutoexposeHelper;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemsAwareFreeFormLayer;
 import org.eclipse.gmf.runtime.diagram.ui.render.editparts.RenderedDiagramRootEditPart;
 import org.eclipse.gmf.runtime.notation.MeasurementUnit;
-
 import org.eclipse.sirius.diagram.tools.internal.figure.DConnectionLayerEx;
 
 /**

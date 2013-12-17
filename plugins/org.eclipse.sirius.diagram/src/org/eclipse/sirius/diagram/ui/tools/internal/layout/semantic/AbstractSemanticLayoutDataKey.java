@@ -12,10 +12,9 @@ package org.eclipse.sirius.diagram.ui.tools.internal.layout.semantic;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey;
 
 import com.google.common.base.Objects;
-
-import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey;
 
 /**
  * Common behavior for Semantic*LayoutDataKey classes.

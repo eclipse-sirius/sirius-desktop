@@ -17,13 +17,13 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.swt.graphics.Image;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.viewpoint.ContainerStyle;
-import org.eclipse.sirius.viewpoint.FlatContainerStyle;
-import org.eclipse.sirius.viewpoint.WorkspaceImage;
+import org.eclipse.sirius.diagram.ContainerStyle;
+import org.eclipse.sirius.diagram.FlatContainerStyle;
+import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * The {@link SVGWorkspaceImageFigure} is useful to load svg images using a

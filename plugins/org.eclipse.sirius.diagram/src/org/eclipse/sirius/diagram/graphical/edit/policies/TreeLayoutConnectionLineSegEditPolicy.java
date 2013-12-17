@@ -20,7 +20,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editpolicies.ConnectionLineSegEditPolicy;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Edge;
-
 import org.eclipse.sirius.diagram.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.business.api.query.ConnectionQuery;
 import org.eclipse.sirius.diagram.business.internal.command.TreeLayoutSetConnectionBendpointsCommand;

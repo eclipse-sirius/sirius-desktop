@@ -12,14 +12,14 @@ package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.XYLayout;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.BundledImage;
+import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager;
+import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.swt.graphics.Color;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager;
-import org.eclipse.sirius.viewpoint.BundledImage;
-import org.eclipse.sirius.viewpoint.RGBValues;
 
 /**
  * A {@link BundledImageFigure} is a Figure corresponding to an Image defined in

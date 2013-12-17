@@ -16,9 +16,8 @@ import java.util.List;
 
 import org.eclipse.draw2d.MouseEvent;
 import org.eclipse.draw2d.MouseListener;
-import org.eclipse.swt.graphics.Image;
-
 import org.eclipse.sirius.common.ui.tools.api.util.ISimpleAction;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * A figure that triggers actions when the user clicks on the image.

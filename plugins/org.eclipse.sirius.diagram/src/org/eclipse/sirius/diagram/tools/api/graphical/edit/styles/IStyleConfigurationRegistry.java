@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.api.graphical.edit.styles;
 
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.tools.internal.graphical.edit.styles.StyleConfigurationRegistry;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
  * A registry for {@link StyleConfiguration}s.

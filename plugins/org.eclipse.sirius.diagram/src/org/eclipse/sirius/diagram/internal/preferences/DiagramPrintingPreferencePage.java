@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.internal.preferences;
 
 import org.eclipse.gmf.runtime.diagram.ui.preferences.PrintingPreferencePage;
-
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 
 /**

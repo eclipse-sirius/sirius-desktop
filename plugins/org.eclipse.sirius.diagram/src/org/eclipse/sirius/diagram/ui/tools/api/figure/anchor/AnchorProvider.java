@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.ui.tools.api.figure.anchor;
 
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
-
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirDefaultSizeNodeFigure;
 
 /**

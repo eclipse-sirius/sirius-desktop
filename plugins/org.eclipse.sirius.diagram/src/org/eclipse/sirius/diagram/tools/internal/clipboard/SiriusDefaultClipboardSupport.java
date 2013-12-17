@@ -23,11 +23,10 @@ import org.eclipse.gmf.runtime.emf.clipboard.core.OverridePasteChildOperation;
 import org.eclipse.gmf.runtime.emf.clipboard.core.PasteChildOperation;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 
 /**
  * Implementation of copy/paste wich disallow copy/paste operations of semantic elements and keep the standard behavior for GMF notes.

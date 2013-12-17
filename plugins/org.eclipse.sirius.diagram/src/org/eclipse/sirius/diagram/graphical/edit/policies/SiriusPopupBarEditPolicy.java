@@ -28,11 +28,11 @@ import org.eclipse.gmf.runtime.diagram.ui.tools.PopupBarTool;
 import org.eclipse.gmf.runtime.emf.type.core.ElementTypeRegistry;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
@@ -40,6 +40,7 @@ import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDes
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * A {@link PopupBarEditPolicy} with less memory for the array list which store
@@ -181,7 +182,7 @@ public class SiriusPopupBarEditPolicy extends PopupBarEditPolicy {
         EClass klass = null;
 
         if (desc instanceof NodeCreationDescription) {
-            klass = ViewpointPackage.eINSTANCE.getDNode();
+            klass = DiagramPackage.eINSTANCE.getDNode();
         } else if (desc instanceof ContainerCreationDescription) {
             klass = ViewpointPackage.eINSTANCE.getDContainer();
         } else if (desc instanceof SelectionWizardDescription || desc instanceof PaneBasedSelectionWizardDescription) {
@@ -189,13 +190,13 @@ public class SiriusPopupBarEditPolicy extends PopupBarEditPolicy {
              * return a fake class as element type is not used by popup bar
              * descriptor
              */
-            klass = ViewpointPackage.eINSTANCE.getDNode();
+            klass = DiagramPackage.eINSTANCE.getDNode();
         } else if (desc instanceof ToolDescription) {
             /*
              * return a fake class as element type is not used by popup bar
              * descriptor
              */
-            klass = ViewpointPackage.eINSTANCE.getDNode();
+            klass = DiagramPackage.eINSTANCE.getDNode();
         }
 
         if (klass != null) {

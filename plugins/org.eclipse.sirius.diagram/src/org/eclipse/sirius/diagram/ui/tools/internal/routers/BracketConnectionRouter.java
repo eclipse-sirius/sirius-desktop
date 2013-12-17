@@ -16,7 +16,6 @@ import java.util.Map;
 import org.eclipse.draw2d.AbstractRouter;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.geometry.PointList;
-
 import org.eclipse.sirius.diagram.business.internal.bracket.BracketConnectionQuery;
 
 /**

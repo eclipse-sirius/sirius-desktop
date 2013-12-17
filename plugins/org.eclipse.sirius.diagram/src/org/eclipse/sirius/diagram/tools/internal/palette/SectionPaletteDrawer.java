@@ -15,7 +15,7 @@ import java.util.Set;
 
 import org.eclipse.gef.palette.PaletteDrawer;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.viewpoint.description.Layer;
+import org.eclipse.sirius.diagram.description.Layer;
 
 /**
  * A palette drawer associated to a section.

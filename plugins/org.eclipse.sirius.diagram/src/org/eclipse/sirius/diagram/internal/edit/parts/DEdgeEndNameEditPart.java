@@ -14,7 +14,6 @@ import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 
 /**

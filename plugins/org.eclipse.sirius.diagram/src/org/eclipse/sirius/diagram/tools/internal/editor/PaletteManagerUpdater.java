@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.tools.internal.editor;
 
 import org.eclipse.gmf.runtime.notation.Diagram;
-
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager;
 
 /**

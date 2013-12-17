@@ -12,11 +12,11 @@ package org.eclipse.sirius.diagram.internal.edit.policies;
 
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.internal.edit.commands.DNode3CreateCommand;
 import org.eclipse.sirius.diagram.internal.edit.commands.DNodeContainer2CreateCommand;
 import org.eclipse.sirius.diagram.internal.edit.commands.DNodeList2CreateCommand;
 import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * @was-generated
@@ -29,19 +29,19 @@ public class DNodeContainerViewNodeContainerCompartmentItemSemanticEditPolicy ex
     protected Command getCreateCommand(CreateElementRequest req) {
         if (SiriusElementTypes.DNode_3007 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getDNodeContainer_OwnedDiagramElements());
+                req.setContainmentFeature(DiagramPackage.eINSTANCE.getDNodeContainer_OwnedDiagramElements());
             }
             return getGEFWrapper(new DNode3CreateCommand(req));
         }
         if (SiriusElementTypes.DNodeContainer_3008 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getDNodeContainer_OwnedDiagramElements());
+                req.setContainmentFeature(DiagramPackage.eINSTANCE.getDNodeContainer_OwnedDiagramElements());
             }
             return getGEFWrapper(new DNodeContainer2CreateCommand(req));
         }
         if (SiriusElementTypes.DNodeList_3009 == req.getElementType()) {
             if (req.getContainmentFeature() == null) {
-                req.setContainmentFeature(ViewpointPackage.eINSTANCE.getDNodeContainer_OwnedDiagramElements());
+                req.setContainmentFeature(DiagramPackage.eINSTANCE.getDNodeContainer_OwnedDiagramElements());
             }
             return getGEFWrapper(new DNodeList2CreateCommand(req));
         }

@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.business.api.view.refresh;
 
 import org.eclipse.gmf.runtime.notation.Diagram;
-
 import org.eclipse.sirius.diagram.internal.refresh.factory.CanonicalSynchronizerFactoryImpl;
 
 /**

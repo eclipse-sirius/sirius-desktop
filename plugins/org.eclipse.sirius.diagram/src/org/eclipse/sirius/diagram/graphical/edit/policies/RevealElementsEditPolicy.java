@@ -12,9 +12,9 @@ package org.eclipse.sirius.diagram.graphical.edit.policies;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.gef.Request;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
-import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * Returns a command to reveal all diagram elements. (set the visible property

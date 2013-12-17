@@ -16,12 +16,10 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.internal.edit.parts.DotEditPart;
+import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.diagram.internal.edit.parts.DotEditPart;
-import org.eclipse.sirius.diagram.internal.view.factories.AbstractDesignerNodeFactory;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 
 /**
  * @was-generated

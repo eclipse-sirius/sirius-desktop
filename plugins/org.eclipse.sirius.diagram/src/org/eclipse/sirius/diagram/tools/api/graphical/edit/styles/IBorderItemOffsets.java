@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.tools.api.graphical.edit.styles;
 
 import org.eclipse.draw2d.geometry.Dimension;
-
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ICollapseMode;
 
 /**

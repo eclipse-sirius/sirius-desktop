@@ -11,11 +11,11 @@
 package org.eclipse.sirius.diagram.business.internal.query;
 
 import org.eclipse.gmf.runtime.notation.Routing;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.EdgeRouting;
-import org.eclipse.sirius.viewpoint.EdgeStyle;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.description.FoldingStyle;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.EdgeRouting;
+import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.FoldingStyle;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;

@@ -14,11 +14,10 @@ import java.util.Collection;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * A command to mark a collection of diagram elements as "un-pinned" so that

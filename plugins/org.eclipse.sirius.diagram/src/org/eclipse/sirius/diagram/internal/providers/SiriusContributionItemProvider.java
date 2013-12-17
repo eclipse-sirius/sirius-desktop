@@ -14,8 +14,6 @@ import org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.Abstra
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.printing.actions.PrintPreviewAction;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.ui.IWorkbenchPage;
-
 import org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.tools.internal.actions.SaveAsImageFileAction;
 import org.eclipse.sirius.diagram.tools.internal.actions.SelectHiddenElementsAction;
@@ -27,6 +25,7 @@ import org.eclipse.sirius.diagram.tools.internal.actions.pinning.PinElementsEcli
 import org.eclipse.sirius.diagram.tools.internal.actions.pinning.UnpinElementsEclipseAction;
 import org.eclipse.sirius.diagram.tools.internal.print.SiriusDiagramPrintPreviewAction;
 import org.eclipse.sirius.diagram.tools.internal.print.SiriusEnhancedPrintActionHelper;
+import org.eclipse.ui.IWorkbenchPage;
 
 /**
  * @was-generated

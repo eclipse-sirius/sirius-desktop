@@ -19,14 +19,12 @@ import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeList2EditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListName2EditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
-import org.eclipse.sirius.diagram.internal.view.factories.AbstractDesignerNodeFactory;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+
+import com.google.common.collect.Lists;
 
 /**
  * @was-generated

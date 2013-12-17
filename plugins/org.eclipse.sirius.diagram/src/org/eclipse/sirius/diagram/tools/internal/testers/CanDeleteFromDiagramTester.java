@@ -14,7 +14,6 @@ import java.util.Collections;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-
 import org.eclipse.sirius.diagram.tools.internal.actions.delete.DeleteFromDiagramAction;
 
 /**

@@ -30,6 +30,10 @@ import org.apache.batik.util.XMLResourceDescriptor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.tools.internal.figure.svg.InferringNamespaceContext;
+import org.eclipse.sirius.diagram.tools.internal.figure.svg.SVGUtils;
+import org.eclipse.sirius.diagram.tools.internal.figure.svg.SimpleImageTranscoder;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Device;
@@ -40,11 +44,6 @@ import org.eclipse.swt.widgets.Display;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.internal.figure.svg.InferringNamespaceContext;
-import org.eclipse.sirius.diagram.tools.internal.figure.svg.SVGUtils;
-import org.eclipse.sirius.diagram.tools.internal.figure.svg.SimpleImageTranscoder;
 
 //CHECKSTYLE:OFF
 public class SVGFigure extends Figure {

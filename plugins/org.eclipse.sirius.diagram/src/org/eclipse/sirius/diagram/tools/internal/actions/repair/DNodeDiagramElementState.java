@@ -11,11 +11,11 @@
 package org.eclipse.sirius.diagram.tools.internal.actions.repair;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.BundledImage;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.tools.api.migration.DiagramCrossReferencer;
-import org.eclipse.sirius.viewpoint.BundledImage;
-import org.eclipse.sirius.viewpoint.DNode;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
  * Diagram element state for {@link DNode}.

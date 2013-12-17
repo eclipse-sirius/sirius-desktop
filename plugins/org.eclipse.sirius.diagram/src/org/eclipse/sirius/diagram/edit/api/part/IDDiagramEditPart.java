@@ -12,7 +12,7 @@ package org.eclipse.sirius.diagram.edit.api.part;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.diagram.DDiagram;
 
 /**
  * The top level interface of diagram edit part.

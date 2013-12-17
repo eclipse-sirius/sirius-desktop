@@ -12,11 +12,10 @@ package org.eclipse.sirius.diagram.tools.internal.graphical.edit.part;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
-import org.eclipse.sirius.viewpoint.DDiagram;
 
 /**
  * {@link DDiagram} helpers.

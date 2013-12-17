@@ -12,10 +12,9 @@ package org.eclipse.sirius.diagram.ui.tools.api.action;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
-import org.eclipse.swt.widgets.Shell;
-
 import org.eclipse.sirius.common.tools.api.find.AbstractFindLabelEngine;
 import org.eclipse.sirius.common.ui.tools.api.find.AbstractFindLabelDialog;
+import org.eclipse.swt.widgets.Shell;
 
 /**
  * An implementation of the AbstractFindLabelDialog that use the "reveal" method

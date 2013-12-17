@@ -17,11 +17,10 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
 import org.eclipse.ui.views.properties.PropertyDescriptor;
-
-import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 
 /**
  * This property source uses the reflection Java API to display debug

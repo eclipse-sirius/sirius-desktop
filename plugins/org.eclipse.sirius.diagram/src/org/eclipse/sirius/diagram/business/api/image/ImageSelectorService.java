@@ -28,29 +28,30 @@ import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Size;
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.metamodel.helper.StyleHelper;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.diagram.ContainerStyle;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.internal.image.ImageSelectorDescriptor;
 import org.eclipse.sirius.diagram.business.internal.image.ImageSelectorDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.internal.image.refresh.WorkspaceImageFigureRefresher;
 import org.eclipse.sirius.diagram.business.internal.query.CustomizableQuery;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
-import org.eclipse.sirius.viewpoint.ContainerStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
-import org.eclipse.sirius.viewpoint.DNode;
 import org.eclipse.sirius.viewpoint.LabelStyle;
-import org.eclipse.sirius.viewpoint.NodeStyle;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.WorkspaceImage;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.style.StyleFactory;
 import org.eclipse.sirius.viewpoint.description.style.WorkspaceImageDescription;
+import org.eclipse.ui.IEditorPart;
 
 /**
  * Service class to get the most priority {@link ImageSelector}.
@@ -149,10 +150,10 @@ public class ImageSelectorService {
         TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(basicLabelStyle);
         if (domain != null) {
             if (basicLabelStyle instanceof WorkspaceImage) {
-                updateWorkspacePathCmd = SetCommand.create(domain, basicLabelStyle, ViewpointPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH, workspacePath);
-                if (!basicLabelStyle.getCustomFeatures().contains(ViewpointPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName())) {
+                updateWorkspacePathCmd = SetCommand.create(domain, basicLabelStyle, DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH, workspacePath);
+                if (!basicLabelStyle.getCustomFeatures().contains(DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName())) {
                     updateWorkspacePathCmd = updateWorkspacePathCmd.chain(AddCommand.create(domain, basicLabelStyle, ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES,
-                            ViewpointPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName()));
+                            DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName()));
                 }
             } else {
                 Object feature = getFeature(basicLabelStyle);
@@ -191,9 +192,9 @@ public class ImageSelectorService {
         Object feature = null;
         EObject container = basicLabelStyle.eContainer();
         if (container instanceof DNode) {
-            feature = ViewpointPackage.Literals.DNODE__OWNED_STYLE;
+            feature = DiagramPackage.Literals.DNODE__OWNED_STYLE;
         } else if (container instanceof DDiagramElementContainer) {
-            feature = ViewpointPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE;
+            feature = DiagramPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE;
         }
         return feature;
     }
@@ -217,7 +218,7 @@ public class ImageSelectorService {
         } else if (dde instanceof DDiagramElementContainer) {
             newStyle = createAndAffectContainerStyle((DDiagramElementContainer) dde, wid);
         }
-        newStyle.getCustomFeatures().add(ViewpointPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName());
+        newStyle.getCustomFeatures().add(DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName());
         return newStyle;
     }
 

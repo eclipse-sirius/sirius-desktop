@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.ex
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.viewers.IStructuredSelection;
-
 import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
 
 /**

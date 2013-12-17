@@ -15,9 +15,9 @@ import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
-import org.eclipse.swt.graphics.Color;
+import org.eclipse.sirius.diagram.BackgroundStyle;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IContainerLabelOffsets;
-import org.eclipse.sirius.viewpoint.BackgroundStyle;
+import org.eclipse.swt.graphics.Color;
 
 /**
  * Basic implementation of RoundedRectangle shape with gradient and label

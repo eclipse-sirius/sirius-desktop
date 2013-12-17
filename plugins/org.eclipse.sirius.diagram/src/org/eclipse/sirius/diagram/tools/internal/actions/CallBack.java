@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.actions;
 
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.sirius.viewpoint.DNavigationLink;
+import org.eclipse.ui.IEditorPart;
 
 /**
  * A CallBack is usefull when ones want's to add special behavior once the

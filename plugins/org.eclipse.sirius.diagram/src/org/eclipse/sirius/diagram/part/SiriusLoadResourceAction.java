@@ -14,11 +14,10 @@ import org.eclipse.emf.edit.ui.action.LoadResourceAction;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
 
 /**
  * @was-generated

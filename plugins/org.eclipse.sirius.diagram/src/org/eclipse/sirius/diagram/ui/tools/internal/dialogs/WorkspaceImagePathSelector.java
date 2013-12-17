@@ -20,14 +20,13 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.gmf.runtime.diagram.ui.image.ImageFileFormat;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.sirius.common.ui.tools.api.resource.WorkspaceResourceDialogWithFilter;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.ui.tools.api.resource.WorkspaceResourceDialogWithFilter;
 
 /**
  * A {@link SelectionAdapter} to select a image path in the workspace.

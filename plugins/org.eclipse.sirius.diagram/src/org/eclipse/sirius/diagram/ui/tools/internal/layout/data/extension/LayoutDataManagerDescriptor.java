@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ILayoutDataManagerProvider;
 

@@ -27,26 +27,25 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.business.api.helper.SiriusHelper;
+import org.eclipse.sirius.business.api.session.CustomDataConstants;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.ResizeKind;
+import org.eclipse.sirius.diagram.business.api.query.EdgeQuery;
+import org.eclipse.sirius.diagram.tools.internal.util.GMFNotationUtilities;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.osgi.framework.Version;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.business.api.helper.SiriusHelper;
-import org.eclipse.sirius.business.api.session.CustomDataConstants;
-import org.eclipse.sirius.diagram.business.api.query.EdgeQuery;
-import org.eclipse.sirius.diagram.tools.internal.util.GMFNotationUtilities;
-import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.ResizeKind;
-import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
  * The migration code of Sirius 6.5.0.

@@ -21,16 +21,15 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 import org.eclipse.gmf.runtime.emf.core.internal.util.EMFCoreConstants;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory;
-import org.osgi.framework.Version;
-
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
-
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileExtendedMetaData;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileResourceHandler;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser;
 import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
+import org.osgi.framework.Version;
+
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
 
 /**
  * A resource factory decorator to set XMI encodings.

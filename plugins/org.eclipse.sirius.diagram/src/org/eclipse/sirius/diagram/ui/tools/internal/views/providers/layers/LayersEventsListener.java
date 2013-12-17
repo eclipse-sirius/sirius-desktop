@@ -12,9 +12,8 @@ package org.eclipse.sirius.diagram.ui.tools.internal.views.providers.layers;
 
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.ui.PlatformUI;
-
 import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * A listener to update the viewer.
