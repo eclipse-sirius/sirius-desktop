@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style.provider;
 
 import java.util.Collection;
@@ -151,19 +152,6 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
     }
 
     /**
-     * This adds a property descriptor for the Label Alignment feature. <!--
-     * begin-user-doc -->
-     * 
-     * @since 0.9.0
-     * @generated
-     */
-    protected void addLabelAlignmentPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_LabelStyleDescription_labelAlignment_feature"), getString("_UI_LabelStyleDescription_labelAlignment_description"),
-                StylePackage.Literals.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), null));
-    }
-
-    /**
      * This adds a property descriptor for the Label Color feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -189,11 +177,23 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
     }
 
     /**
+     * This adds a property descriptor for the Label Alignment feature. <!--
+     * begin-user-doc -->
+     * 
+     * @since 0.9.0 <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addLabelAlignmentPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_LabelStyleDescription_labelAlignment_feature"), getString("_UI_LabelStyleDescription_labelAlignment_description"),
+                StylePackage.Literals.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), null));
+    }
+
+    /**
      * This adds a property descriptor for the Tooltip Expression feature. <!--
      * begin-user-doc -->
      * 
-     * @since 0.9.0
-     * 
+     * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
     protected void addTooltipExpressionPropertyDescriptor(Object object) {

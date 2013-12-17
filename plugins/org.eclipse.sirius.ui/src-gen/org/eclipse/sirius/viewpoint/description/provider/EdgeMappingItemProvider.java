@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.provider;
 
 import java.util.Collection;
@@ -261,6 +262,7 @@ public class EdgeMappingItemProvider extends DiagramElementMappingItemProvider i
      * 
      * @not-generated
      */
+    @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((EdgeMapping) object).getLabel();
         if ((label == null || label.length() == 0)) {

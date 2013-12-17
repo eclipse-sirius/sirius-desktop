@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.provider;
 
 import java.util.Collection;
@@ -70,30 +71,6 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
     }
 
     /**
-     * This adds a property descriptor for the Selected Views feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addSelectedViewsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysis_selectedViews_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_selectedViews_feature", "_UI_DAnalysis_type"),
-                ViewpointPackage.Literals.DANALYSIS__SELECTED_VIEWS, true, false, true, null, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the Version feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addVersionPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysis_version_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_version_feature", "_UI_DAnalysis_type"),
-                ViewpointPackage.Literals.DANALYSIS__VERSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-    }
-
-    /**
      * This adds a property descriptor for the Referenced Analysis feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -116,6 +93,30 @@ public class DAnalysisItemProvider extends ItemProviderAdapter implements IEditi
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DAnalysis_models_feature"),
                         getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_models_feature", "_UI_DAnalysis_type"), ViewpointPackage.Literals.DANALYSIS__MODELS, true, false, true, null,
                         null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Selected Views feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addSelectedViewsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_DAnalysis_selectedViews_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_selectedViews_feature", "_UI_DAnalysis_type"),
+                ViewpointPackage.Literals.DANALYSIS__SELECTED_VIEWS, true, false, true, null, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Version feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addVersionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_DAnalysis_version_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DAnalysis_version_feature", "_UI_DAnalysis_type"),
+                ViewpointPackage.Literals.DANALYSIS__VERSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**

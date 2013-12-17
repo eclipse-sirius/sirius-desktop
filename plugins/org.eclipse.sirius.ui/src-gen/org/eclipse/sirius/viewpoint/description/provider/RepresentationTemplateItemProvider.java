@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.provider;
 
 import java.util.Collection;
@@ -151,18 +152,11 @@ public class RepresentationTemplateItemProvider extends ItemProviderAdapter impl
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @not-generated : preventing creation of representations in the owned
-     *                feature as it should be automatically computed.
+     * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
-
-        // newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.REPRESENTATION_TEMPLATE__OWNED_REPRESENTATIONS,
-        // DescriptionFactory.eINSTANCE.createDiagramDescription()));
-        //
-        // newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.REPRESENTATION_TEMPLATE__OWNED_REPRESENTATIONS,
-        // DescriptionFactory.eINSTANCE.createDiagramImportDescription()));
     }
 
     /**

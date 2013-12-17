@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style.provider;
 
 import java.util.Collection;
@@ -67,32 +68,6 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
     }
 
     /**
-     * This adds a property descriptor for the Shape feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addShapePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ShapeContainerStyleDescription_shape_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ShapeContainerStyleDescription_shape_feature", "_UI_ShapeContainerStyleDescription_type"),
-                StylePackage.Literals.SHAPE_CONTAINER_STYLE_DESCRIPTION__SHAPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
-    }
-
-    /**
-     * This adds a property descriptor for the Background Color feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addBackgroundColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ShapeContainerStyleDescription_backgroundColor_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_ShapeContainerStyleDescription_backgroundColor_feature", "_UI_ShapeContainerStyleDescription_type"),
-                StylePackage.Literals.SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), null));
-    }
-
-    /**
      * This adds a property descriptor for the Width Computation Expression
      * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -124,6 +99,32 @@ public class ShapeContainerStyleDescriptionItemProvider extends ContainerStyleDe
                         getString("_UI_PropertyDescriptor_description", "_UI_SizeComputationContainerStyleDescription_heightComputationExpression_feature",
                                 "_UI_SizeComputationContainerStyleDescription_type"), StylePackage.Literals.SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION, true, false,
                         false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+    }
+
+    /**
+     * This adds a property descriptor for the Shape feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addShapePropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_ShapeContainerStyleDescription_shape_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_ShapeContainerStyleDescription_shape_feature", "_UI_ShapeContainerStyleDescription_type"),
+                StylePackage.Literals.SHAPE_CONTAINER_STYLE_DESCRIPTION__SHAPE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+    }
+
+    /**
+     * This adds a property descriptor for the Background Color feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addBackgroundColorPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_ShapeContainerStyleDescription_backgroundColor_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_ShapeContainerStyleDescription_backgroundColor_feature", "_UI_ShapeContainerStyleDescription_type"),
+                StylePackage.Literals.SHAPE_CONTAINER_STYLE_DESCRIPTION__BACKGROUND_COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), null));
     }
 
     /**

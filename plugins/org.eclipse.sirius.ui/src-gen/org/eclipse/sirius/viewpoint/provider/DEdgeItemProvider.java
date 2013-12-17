@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.provider;
 
 import java.util.ArrayList;
@@ -50,24 +51,6 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider implements IE
      * @not-generated
      */
     HashMap<Object, DEdgeLabelItemProvider> edgeLabelItemProviders = new HashMap<Object, DEdgeLabelItemProvider>();
-
-    /**
-     * The item provider used to simulate another child for Edge that has label
-     * on border.
-     * 
-     * @not-generated
-     */
-    // HashMap<Object, DEdgeBeginLabelItemProvider> edgeBeginLabelItemProviders
-    // = new HashMap<Object, DEdgeBeginLabelItemProvider>();
-
-    /**
-     * The item provider used to simulate another child for Edge that has label
-     * on border.
-     * 
-     * @not-generated
-     */
-    // HashMap<Object, DEdgeEndLabelItemProvider> edgeEndLabelItemProviders =
-    // new HashMap<Object, DEdgeEndLabelItemProvider>();
 
     /**
      * This constructs an instance from a factory and a notifier. <!--

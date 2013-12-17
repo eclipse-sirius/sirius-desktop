@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.provider;
 
 import java.util.Collection;
@@ -65,19 +66,6 @@ public class FlatContainerStyleItemProvider extends ContainerStyleItemProvider i
     }
 
     /**
-     * This adds a property descriptor for the Background Color feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addBackgroundColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_FlatContainerStyle_backgroundColor_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_FlatContainerStyle_backgroundColor_feature", "_UI_FlatContainerStyle_type"),
-                ViewpointPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, true, false, false, null, getString("_UI_GeneralPropertyCategory"), null));
-    }
-
-    /**
      * This adds a property descriptor for the Background Style feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -88,6 +76,19 @@ public class FlatContainerStyleItemProvider extends ContainerStyleItemProvider i
                 getString("_UI_FlatContainerStyle_backgroundStyle_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_FlatContainerStyle_backgroundStyle_feature", "_UI_FlatContainerStyle_type"),
                 ViewpointPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+    }
+
+    /**
+     * This adds a property descriptor for the Background Color feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addBackgroundColorPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_FlatContainerStyle_backgroundColor_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_FlatContainerStyle_backgroundColor_feature", "_UI_FlatContainerStyle_type"),
+                ViewpointPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, true, false, false, null, getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**

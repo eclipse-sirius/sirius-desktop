@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.provider;
 
 import java.util.Collection;
@@ -122,6 +123,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider imp
      * 
      * @generated-not
      */
+    @Override
     public Object getImage(Object object) {
         EStructuralFeature eContainingFeature = ((EObject) object).eContainingFeature();
         if (eContainingFeature != null && eContainingFeature.getFeatureID() == DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS)

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.provider;
 
 import java.util.Collection;
@@ -20,6 +21,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
@@ -52,20 +54,16 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider imple
      * This returns the property descriptors for the adapted class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @not-generated
+     * @generated
      */
-    public List getPropertyDescriptors(Object object) {
+    @Override
+    public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
-            addHideSubMappingsPropertyDescriptor(object);
-            addImportedMappingPropertyDescriptor(object);
-            addInheritsAncestorFiltersPropertyDescriptor(object);
 
-            // we don't want to add property descriptors for heritated features.
-            // itemPropertyDescriptors = new ArrayList();
-            // addNamePropertyDescriptor(object);
-            // addReusedBorderedNodeMappingsPropertyDescriptor(object);
-            // addReusedInMappingPropertyDescriptor(object);
+            addHideSubMappingsPropertyDescriptor(object);
+            addInheritsAncestorFiltersPropertyDescriptor(object);
+            addImportedMappingPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -114,6 +112,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider imple
      * 
      * @generated-not
      */
+    @Override
     public Object getImage(Object object) {
         EStructuralFeature eContainingFeature = ((EObject) object).eContainingFeature();
         if (eContainingFeature != null && eContainingFeature.getFeatureID() == DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS)

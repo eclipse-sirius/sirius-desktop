@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.provider;
 
 import java.net.URL;
@@ -97,7 +98,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
     /**
      * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @not-generated
+     * @generated
      */
     public SiriusEditPlugin() {
         super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE, });
@@ -140,7 +141,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
     /**
      * The actual implementation of the Eclipse <b>Plugin</b>. <!--
-     * begin-user-doc --> <!-- end-user-doc --> mch : extend UI plug-in
+     * begin-user-doc --> Extend UI plug-in<!-- end-user-doc -->
      * 
      * @not-generated
      */
@@ -171,7 +172,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
         /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
-         * @generated-not
+         * @generated
          */
         public Implementation() {
             super();

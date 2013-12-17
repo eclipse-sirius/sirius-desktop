@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.provider;
 
 import java.util.Collection;
@@ -95,6 +96,19 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
+     * This adds a property descriptor for the End User Documentation feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addEndUserDocumentationPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_EndUserDocumentedElement_endUserDocumentation_feature"), getString("_UI_EndUserDocumentedElement_endUserDocumentation_description"),
+                DescriptionPackage.Literals.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_DocumentationPropertyCategory"), null));
+    }
+
+    /**
      * This adds a property descriptor for the Name feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
@@ -146,6 +160,33 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     }
 
     /**
+     * This adds a property descriptor for the Metamodel feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addMetamodelPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_RepresentationDescription_metamodel_feature"), getString("_UI_RepresentationDescription_metamodel_description"),
+                DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__METAMODEL, true, false, true, null, getString("_UI_MetamodelsPropertyCategory"), null));
+    }
+
+    /**
+     * This adds a property descriptor for the Show On Startup feature. <!--
+     * begin-user-doc -->
+     * 
+     * @since 0.9.0 <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addShowOnStartupPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                        getString("_UI_RepresentationDescription_showOnStartup_feature"), getString("_UI_RepresentationDescription_showOnStartup_description"),
+                        DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__SHOW_ON_STARTUP, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                        getString("_UI_GeneralPropertyCategory"), null));
+    }
+
+    /**
      * This adds a property descriptor for the Drop Descriptions feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -167,19 +208,6 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_PasteTargetDescription_pasteDescriptions_feature"), getString("_UI_PasteTargetDescription_pasteDescriptions_description"),
                 DescriptionPackage.Literals.PASTE_TARGET_DESCRIPTION__PASTE_DESCRIPTIONS, true, false, true, null, getString("_UI_BehaviorPropertyCategory"), null));
-    }
-
-    /**
-     * This adds a property descriptor for the End User Documentation feature.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addEndUserDocumentationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EndUserDocumentedElement_endUserDocumentation_feature"), getString("_UI_EndUserDocumentedElement_endUserDocumentation_description"),
-                DescriptionPackage.Literals.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_DocumentationPropertyCategory"), null));
     }
 
     /**
@@ -231,33 +259,6 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_DiagramDescription_allTools_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allTools_feature", "_UI_DiagramDescription_type"),
                 DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_TOOLS, false, false, false, null, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the Metamodel feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addMetamodelPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_RepresentationDescription_metamodel_feature"), getString("_UI_RepresentationDescription_metamodel_description"),
-                DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__METAMODEL, true, false, true, null, getString("_UI_MetamodelsPropertyCategory"), null));
-    }
-
-    /**
-     * This adds a property descriptor for the Show On Startup feature. <!--
-     * begin-user-doc -->
-     * 
-     * @since 0.9.0
-     * @generated
-     */
-    protected void addShowOnStartupPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                        getString("_UI_RepresentationDescription_showOnStartup_feature"), getString("_UI_RepresentationDescription_showOnStartup_description"),
-                        DescriptionPackage.Literals.REPRESENTATION_DESCRIPTION__SHOW_ON_STARTUP, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                        getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
@@ -375,8 +376,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
      * This adds a property descriptor for the Enable Popup Bars feature. <!--
      * begin-user-doc -->
      * 
-     * @since 0.9.0
-     * 
+     * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
     protected void addEnablePopupBarsPropertyDescriptor(Object object) {
@@ -414,7 +414,6 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__FILTERS);
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__VALIDATION_SET);
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONCERNS);
-            childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__INFORMATION_SECTIONS);
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT);
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION);
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER);
@@ -493,7 +492,6 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__FILTERS:
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__VALIDATION_SET:
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__CONCERNS:
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__INFORMATION_SECTIONS:
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__LAYOUT:
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__DIAGRAM_INITIALISATION:
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__DEFAULT_LAYER:
@@ -526,8 +524,6 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONCERNS, ConcernFactory.eINSTANCE.createConcernSet()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__INFORMATION_SECTIONS, AuditFactory.eINSTANCE.createTemplateInformationSection()));
-
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT, DescriptionFactory.eINSTANCE.createOrderedTreeLayout()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT, DescriptionFactory.eINSTANCE.createCompositeLayout()));
@@ -555,7 +551,6 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createContainerMappingImport()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__TOOL_SECTION, ToolFactory.eINSTANCE.createToolSection()));
-
     }
 
     /**

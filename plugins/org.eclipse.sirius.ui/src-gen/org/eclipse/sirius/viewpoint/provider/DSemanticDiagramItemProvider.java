@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.provider;
 
 import java.util.Collection;
@@ -89,8 +90,9 @@ public class DSemanticDiagramItemProvider extends DDiagramItemProvider implement
      * 
      * @not-generated
      */
-    public String getText(final Object object) {
-        final String label = ((DSemanticDiagram) object).getName();
+    @Override
+    public String getText(Object object) {
+        String label = ((DSemanticDiagram) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_DSemanticDiagram_type") : label;
     }
 

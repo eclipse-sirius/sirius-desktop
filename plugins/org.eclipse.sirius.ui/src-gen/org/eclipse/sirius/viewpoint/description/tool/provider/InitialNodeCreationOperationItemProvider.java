@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.tool.provider;
 
 import java.util.Collection;
@@ -144,53 +145,10 @@ public class InitialNodeCreationOperationItemProvider extends ItemProviderAdapte
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @not-generated
+     * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-        super.collectNewChildDescriptors(newChildDescriptors, object);
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createExternalJavaAction()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createExternalJavaActionCall()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateInstance()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createChangeContext()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createSetValue()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createSetObject()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createUnset()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createMoveElement()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createRemoveElement()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createFor()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateView()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateEdgeView()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createIf()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createDeleteView()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createNavigation()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createSwitch()));
-    }
-
-    /**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
-     * describing the children that can be created under this object. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createExternalJavaAction()));

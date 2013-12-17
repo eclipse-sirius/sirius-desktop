@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.style.provider;
 
 import java.util.ArrayList;
@@ -257,6 +258,56 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
 
     /**
      * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected LozengeNodeDescriptionItemProvider lozengeNodeDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription}
+     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Adapter createLozengeNodeDescriptionAdapter() {
+        if (lozengeNodeDescriptionItemProvider == null) {
+            lozengeNodeDescriptionItemProvider = new LozengeNodeDescriptionItemProvider(this);
+        }
+
+        return lozengeNodeDescriptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected EllipseNodeDescriptionItemProvider ellipseNodeDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription}
+     * . <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Adapter createEllipseNodeDescriptionAdapter() {
+        if (ellipseNodeDescriptionItemProvider == null) {
+            ellipseNodeDescriptionItemProvider = new EllipseNodeDescriptionItemProvider(this);
+        }
+
+        return ellipseNodeDescriptionItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.style.BundledImageDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -457,35 +508,10 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.style.BracketEdgeStyleDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected BracketEdgeStyleDescriptionItemProvider bracketEdgeStyleDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.style.BracketEdgeStyleDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createBracketEdgeStyleDescriptionAdapter() {
-        if (bracketEdgeStyleDescriptionItemProvider == null) {
-            bracketEdgeStyleDescriptionItemProvider = new BracketEdgeStyleDescriptionItemProvider(this);
-        }
-
-        return bracketEdgeStyleDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription}
      * instances. <!-- begin-user-doc -->
      * 
-     * @since 0.9.0
+     * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
     protected TooltipStyleDescriptionItemProvider tooltipStyleDescriptionItemProvider;
@@ -608,52 +634,27 @@ public class StyleItemProviderAdapterFactory extends StyleAdapterFactory impleme
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription}
+     * {@link org.eclipse.sirius.viewpoint.description.style.BracketEdgeStyleDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    protected EllipseNodeDescriptionItemProvider ellipseNodeDescriptionItemProvider;
+    protected BracketEdgeStyleDescriptionItemProvider bracketEdgeStyleDescriptionItemProvider;
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.style.EllipseNodeDescription}
+     * {@link org.eclipse.sirius.viewpoint.description.style.BracketEdgeStyleDescription}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
     @Override
-    public Adapter createEllipseNodeDescriptionAdapter() {
-        if (ellipseNodeDescriptionItemProvider == null) {
-            ellipseNodeDescriptionItemProvider = new EllipseNodeDescriptionItemProvider(this);
+    public Adapter createBracketEdgeStyleDescriptionAdapter() {
+        if (bracketEdgeStyleDescriptionItemProvider == null) {
+            bracketEdgeStyleDescriptionItemProvider = new BracketEdgeStyleDescriptionItemProvider(this);
         }
 
-        return ellipseNodeDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected LozengeNodeDescriptionItemProvider lozengeNodeDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.style.LozengeNodeDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createLozengeNodeDescriptionAdapter() {
-        if (lozengeNodeDescriptionItemProvider == null) {
-            lozengeNodeDescriptionItemProvider = new LozengeNodeDescriptionItemProvider(this);
-        }
-
-        return lozengeNodeDescriptionItemProvider;
+        return bracketEdgeStyleDescriptionItemProvider;
     }
 
     /**

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.provider;
 
 import java.util.ArrayList;
@@ -752,6 +753,56 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
 
     /**
      * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.viewpoint.Ellipse} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected EllipseItemProvider ellipseItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.viewpoint.Ellipse}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Adapter createEllipseAdapter() {
+        if (ellipseItemProvider == null) {
+            ellipseItemProvider = new EllipseItemProvider(this);
+        }
+
+        return ellipseItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.viewpoint.Lozenge} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected LozengeItemProvider lozengeItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.viewpoint.Lozenge}. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Adapter createLozengeAdapter() {
+        if (lozengeItemProvider == null) {
+            lozengeItemProvider = new LozengeItemProvider(this);
+        }
+
+        return lozengeItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.BundledImage} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -848,152 +899,6 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
         }
 
         return edgeStyleItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.BracketEdgeStyle} instances. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected BracketEdgeStyleItemProvider bracketEdgeStyleItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.BracketEdgeStyle}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createBracketEdgeStyleAdapter() {
-        if (bracketEdgeStyleItemProvider == null) {
-            bracketEdgeStyleItemProvider = new BracketEdgeStyleItemProvider(this);
-        }
-
-        return bracketEdgeStyleItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.ComputedStyleDescriptionRegistry}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ComputedStyleDescriptionRegistryItemProvider computedStyleDescriptionRegistryItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.ComputedStyleDescriptionRegistry}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createComputedStyleDescriptionRegistryAdapter() {
-        if (computedStyleDescriptionRegistryItemProvider == null) {
-            computedStyleDescriptionRegistryItemProvider = new ComputedStyleDescriptionRegistryItemProvider(this);
-        }
-
-        return computedStyleDescriptionRegistryItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link java.util.Map.Entry} instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DiagramElementMapping2ModelElementItemProvider diagramElementMapping2ModelElementItemProvider;
-
-    /**
-     * This creates an adapter for a {@link java.util.Map.Entry}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDiagramElementMapping2ModelElementAdapter() {
-        if (diagramElementMapping2ModelElementItemProvider == null) {
-            diagramElementMapping2ModelElementItemProvider = new DiagramElementMapping2ModelElementItemProvider(this);
-        }
-
-        return diagramElementMapping2ModelElementItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link java.util.Map.Entry} instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ModelElement2ViewVariableItemProvider modelElement2ViewVariableItemProvider;
-
-    /**
-     * This creates an adapter for a {@link java.util.Map.Entry}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createModelElement2ViewVariableAdapter() {
-        if (modelElement2ViewVariableItemProvider == null) {
-            modelElement2ViewVariableItemProvider = new ModelElement2ViewVariableItemProvider(this);
-        }
-
-        return modelElement2ViewVariableItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link java.util.Map.Entry} instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ViewVariable2ContainerVariableItemProvider viewVariable2ContainerVariableItemProvider;
-
-    /**
-     * This creates an adapter for a {@link java.util.Map.Entry}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createViewVariable2ContainerVariableAdapter() {
-        if (viewVariable2ContainerVariableItemProvider == null) {
-            viewVariable2ContainerVariableItemProvider = new ViewVariable2ContainerVariableItemProvider(this);
-        }
-
-        return viewVariable2ContainerVariableItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link java.util.Map.Entry} instances. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ContainerVariable2StyleDescriptionItemProvider containerVariable2StyleDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a {@link java.util.Map.Entry}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createContainerVariable2StyleDescriptionAdapter() {
-        if (containerVariable2StyleDescriptionItemProvider == null) {
-            containerVariable2StyleDescriptionItemProvider = new ContainerVariable2StyleDescriptionItemProvider(this);
-        }
-
-        return containerVariable2StyleDescriptionItemProvider;
     }
 
     /**
@@ -1545,52 +1450,148 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.Ellipse} instances. <!--
+     * {@link org.eclipse.sirius.viewpoint.BracketEdgeStyle} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    protected EllipseItemProvider ellipseItemProvider;
+    protected BracketEdgeStyleItemProvider bracketEdgeStyleItemProvider;
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.Ellipse}. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.BracketEdgeStyle}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
     @Override
-    public Adapter createEllipseAdapter() {
-        if (ellipseItemProvider == null) {
-            ellipseItemProvider = new EllipseItemProvider(this);
+    public Adapter createBracketEdgeStyleAdapter() {
+        if (bracketEdgeStyleItemProvider == null) {
+            bracketEdgeStyleItemProvider = new BracketEdgeStyleItemProvider(this);
         }
 
-        return ellipseItemProvider;
+        return bracketEdgeStyleItemProvider;
     }
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.Lozenge} instances. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.ComputedStyleDescriptionRegistry}
+     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    protected LozengeItemProvider lozengeItemProvider;
+    protected ComputedStyleDescriptionRegistryItemProvider computedStyleDescriptionRegistryItemProvider;
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.Lozenge}. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.ComputedStyleDescriptionRegistry}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
     @Override
-    public Adapter createLozengeAdapter() {
-        if (lozengeItemProvider == null) {
-            lozengeItemProvider = new LozengeItemProvider(this);
+    public Adapter createComputedStyleDescriptionRegistryAdapter() {
+        if (computedStyleDescriptionRegistryItemProvider == null) {
+            computedStyleDescriptionRegistryItemProvider = new ComputedStyleDescriptionRegistryItemProvider(this);
         }
 
-        return lozengeItemProvider;
+        return computedStyleDescriptionRegistryItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link java.util.Map.Entry} instances. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     */
+    protected DiagramElementMapping2ModelElementItemProvider diagramElementMapping2ModelElementItemProvider;
+
+    /**
+     * This creates an adapter for a {@link java.util.Map.Entry}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Adapter createDiagramElementMapping2ModelElementAdapter() {
+        if (diagramElementMapping2ModelElementItemProvider == null) {
+            diagramElementMapping2ModelElementItemProvider = new DiagramElementMapping2ModelElementItemProvider(this);
+        }
+
+        return diagramElementMapping2ModelElementItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link java.util.Map.Entry} instances. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     */
+    protected ModelElement2ViewVariableItemProvider modelElement2ViewVariableItemProvider;
+
+    /**
+     * This creates an adapter for a {@link java.util.Map.Entry}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Adapter createModelElement2ViewVariableAdapter() {
+        if (modelElement2ViewVariableItemProvider == null) {
+            modelElement2ViewVariableItemProvider = new ModelElement2ViewVariableItemProvider(this);
+        }
+
+        return modelElement2ViewVariableItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link java.util.Map.Entry} instances. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     */
+    protected ViewVariable2ContainerVariableItemProvider viewVariable2ContainerVariableItemProvider;
+
+    /**
+     * This creates an adapter for a {@link java.util.Map.Entry}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Adapter createViewVariable2ContainerVariableAdapter() {
+        if (viewVariable2ContainerVariableItemProvider == null) {
+            viewVariable2ContainerVariableItemProvider = new ViewVariable2ContainerVariableItemProvider(this);
+        }
+
+        return viewVariable2ContainerVariableItemProvider;
+    }
+
+    /**
+     * This keeps track of the one adapter used for all
+     * {@link java.util.Map.Entry} instances. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     */
+    protected ContainerVariable2StyleDescriptionItemProvider containerVariable2StyleDescriptionItemProvider;
+
+    /**
+     * This creates an adapter for a {@link java.util.Map.Entry}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Adapter createContainerVariable2StyleDescriptionAdapter() {
+        if (containerVariable2StyleDescriptionItemProvider == null) {
+            containerVariable2StyleDescriptionItemProvider = new ContainerVariable2StyleDescriptionItemProvider(this);
+        }
+
+        return containerVariable2StyleDescriptionItemProvider;
     }
 
     /**

@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.viewpoint.description.provider;
 
 import java.util.Collection;
@@ -109,42 +110,16 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
     }
 
     /**
-     * This adds a property descriptor for the All Edge Mappings feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addAllEdgeMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DiagramDescription_allEdgeMappings_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allEdgeMappings_feature", "_UI_DiagramDescription_type"),
-                DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS, false, false, false, null, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the All Node Mappings feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addAllNodeMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DiagramDescription_allNodeMappings_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allNodeMappings_feature", "_UI_DiagramDescription_type"),
-                DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS, false, false, false, null, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the All Container Mappings feature.
+     * This adds a property descriptor for the End User Documentation feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    protected void addAllContainerMappingsPropertyDescriptor(Object object) {
+    protected void addEndUserDocumentationPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DiagramDescription_allContainerMappings_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allContainerMappings_feature", "_UI_DiagramDescription_type"),
-                DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS, false, false, false, null, null, null));
+                getString("_UI_EndUserDocumentedElement_endUserDocumentation_feature"), getString("_UI_EndUserDocumentedElement_endUserDocumentation_description"),
+                DescriptionPackage.Literals.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_DocumentationPropertyCategory"), null));
     }
 
     /**
@@ -199,18 +174,6 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
     }
 
     /**
-     * This adds a property descriptor for the All Tools feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addAllToolsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DiagramDescription_allTools_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allTools_feature", "_UI_DiagramDescription_type"),
-                DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_TOOLS, false, false, false, null, null, null));
-    }
-
-    /**
      * This adds a property descriptor for the Metamodel feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -226,7 +189,7 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
      * This adds a property descriptor for the Show On Startup feature. <!--
      * begin-user-doc -->
      * 
-     * @since 0.9.0
+     *  @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
     protected void addShowOnStartupPropertyDescriptor(Object object) {
@@ -250,16 +213,54 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
     }
 
     /**
-     * This adds a property descriptor for the End User Documentation feature.
+     * This adds a property descriptor for the All Edge Mappings feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addAllEdgeMappingsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_DiagramDescription_allEdgeMappings_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allEdgeMappings_feature", "_UI_DiagramDescription_type"),
+                DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS, false, false, false, null, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the All Node Mappings feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addAllNodeMappingsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_DiagramDescription_allNodeMappings_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allNodeMappings_feature", "_UI_DiagramDescription_type"),
+                DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS, false, false, false, null, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the All Container Mappings feature.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    protected void addEndUserDocumentationPropertyDescriptor(Object object) {
+    protected void addAllContainerMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EndUserDocumentedElement_endUserDocumentation_feature"), getString("_UI_EndUserDocumentedElement_endUserDocumentation_description"),
-                DescriptionPackage.Literals.END_USER_DOCUMENTED_ELEMENT__END_USER_DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_DocumentationPropertyCategory"), null));
+                getString("_UI_DiagramDescription_allContainerMappings_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allContainerMappings_feature", "_UI_DiagramDescription_type"),
+                DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS, false, false, false, null, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the All Tools feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addAllToolsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_DiagramDescription_allTools_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allTools_feature", "_UI_DiagramDescription_type"),
+                DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_TOOLS, false, false, false, null, null, null));
     }
 
     /**
@@ -377,8 +378,7 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
      * This adds a property descriptor for the Enable Popup Bars feature. <!--
      * begin-user-doc -->
      * 
-     * @since 0.9.0
-     * 
+     * @since 0.9.0 <!-- end-user-doc -->
      * @generated
      */
     protected void addEnablePopupBarsPropertyDescriptor(Object object) {
@@ -404,7 +404,6 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__FILTERS);
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__VALIDATION_SET);
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONCERNS);
-            childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__INFORMATION_SECTIONS);
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT);
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION);
             childrenFeatures.add(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER);
@@ -449,9 +448,10 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
      * 
      * @not-generated
      */
-    public String getText(final Object object) {
-        final String label = new IdentifiedElementQuery((DiagramDescription) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_DiagramDescription_type") : label;
+    @Override
+    public String getText(Object object) {
+        String label = ((DiagramDescription) object).getName();
+        return label == null || label.length() == 0 ? getString("_UI_DiagramDescription_type") : getString("_UI_DiagramDescription_type") + " " + label;
     }
 
     /**
@@ -483,7 +483,6 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
         case DescriptionPackage.DIAGRAM_DESCRIPTION__FILTERS:
         case DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET:
         case DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS:
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__INFORMATION_SECTIONS:
         case DescriptionPackage.DIAGRAM_DESCRIPTION__LAYOUT:
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION:
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER:
@@ -504,88 +503,17 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @not-generated : removing the optional layer which can be created as a
-     *                default layer.
+     * @generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        // Create automatically an edge style description on edge mapping and a
-        // center label
-        // style description on the edge style description
-        EdgeMapping edge = DescriptionFactory.eINSTANCE.createEdgeMapping();
-        EdgeMapping edgeDomain = DescriptionFactory.eINSTANCE.createEdgeMappingUsingDomainElement();
-
-        // Create an edge style description for the edge mapping
-        EdgeStyleDescription edgeStyle = StyleFactory.eINSTANCE.createEdgeStyleDescription();
-        // Create an edge style description for the edge mapping with domain
-        // element
-        EdgeStyleDescription edgeDomainStyle = StyleFactory.eINSTANCE.createEdgeStyleDescription();
-
-        // Add the center label style to edge style description
-        edgeStyle.setSizeComputationExpression("2");
-        edgeStyle.setCenterLabelStyleDescription(StyleFactory.eINSTANCE.createCenterLabelStyleDescription());
-        // Add the center label style to edge style description for edge with
-        // domain element
-        edgeDomainStyle.setSizeComputationExpression("2");
-        edgeDomainStyle.setCenterLabelStyleDescription(StyleFactory.eINSTANCE.createCenterLabelStyleDescription());
-
-        // Add the edge style description to edge mapping
-        edge.setStyle(edgeStyle);
-        // Add the edge style description to edge mapping with domain element
-        edgeDomain.setStyle(edgeDomainStyle);
-
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__FILTERS, FilterFactory.eINSTANCE.createCompositeFilterDescription()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__VALIDATION_SET, ValidationFactory.eINSTANCE.createValidationSet()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONCERNS, ConcernFactory.eINSTANCE.createConcernSet()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__INFORMATION_SECTIONS, AuditFactory.eINSTANCE.createTemplateInformationSection()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT, DescriptionFactory.eINSTANCE.createOrderedTreeLayout()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT, DescriptionFactory.eINSTANCE.createCompositeLayout()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION, ToolFactory.eINSTANCE.createInitialOperation()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, DescriptionFactory.eINSTANCE.createLayer()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS, DescriptionFactory.eINSTANCE.createAdditionalLayer()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createNodeMapping()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createNodeMappingImport()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS, edge));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS, edgeDomain));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS, DescriptionFactory.eINSTANCE.createEdgeMappingImport()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createContainerMapping()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createContainerMappingImport()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__TOOL_SECTION, ToolFactory.eINSTANCE.createToolSection()));
-
-    }
-
-    /*
-     * the up-to-date generated version, it's only here for documentation
-     * purpose and it should not be called.
-     */
-    protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
-        super.collectNewChildDescriptors(newChildDescriptors, object);
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__FILTERS, FilterFactory.eINSTANCE.createCompositeFilterDescription()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__VALIDATION_SET, ValidationFactory.eINSTANCE.createValidationSet()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONCERNS, ConcernFactory.eINSTANCE.createConcernSet()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__INFORMATION_SECTIONS, AuditFactory.eINSTANCE.createTemplateInformationSection()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT, DescriptionFactory.eINSTANCE.createOrderedTreeLayout()));
 
@@ -605,8 +533,6 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createEdgeMapping()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createEdgeMappingUsingDomainElement()));
-
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS, DescriptionFactory.eINSTANCE.createEdgeMappingImport()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createContainerMapping()));
@@ -614,7 +540,6 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createContainerMappingImport()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__TOOL_SECTION, ToolFactory.eINSTANCE.createToolSection()));
-
     }
 
     /**
