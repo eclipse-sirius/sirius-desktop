@@ -190,5 +190,6 @@ Export-Package: org.eclipse.sirius.diagram,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.sirius.ext.base;version="1.0.0",
+ org.eclipse.sirius.ext.draw2d.figure;version="1.0.0",
  org.eclipse.sirius.ext.emf;version="1.0.0",
  org.eclipse.sirius.ext.swt;version="1.0.0"

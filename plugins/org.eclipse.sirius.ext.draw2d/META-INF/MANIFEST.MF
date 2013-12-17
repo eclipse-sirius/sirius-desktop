@@ -12,4 +12,6 @@ Import-Package: org.eclipse.draw2d,
  org.eclipse.draw2d.internal,
  org.eclipse.draw2d.parts,
  org.eclipse.draw2d.text,
- org.eclipse.draw2d.widgets
+ org.eclipse.draw2d.widgets,
+ org.eclipse.swt.graphics
+Export-Package: org.eclipse.sirius.ext.draw2d.figure;version="1.0.0"

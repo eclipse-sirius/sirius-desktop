@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.tools.api.figure;
+package org.eclipse.sirius.ext.draw2d.figure;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.ImageFigure;
