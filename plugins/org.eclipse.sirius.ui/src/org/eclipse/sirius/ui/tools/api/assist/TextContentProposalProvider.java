@@ -19,9 +19,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
 import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.jface.viewers.TreeSelection;
-import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
-
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
@@ -30,6 +27,8 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.internal.assist.ContentContextHelper;
 import org.eclipse.sirius.common.ui.tools.internal.contentassist.ContentProposalConverter;
 import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 
 /**
  * This class is used to attach content proposal behavior to a control.

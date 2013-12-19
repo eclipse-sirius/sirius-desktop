@@ -13,10 +13,10 @@ package org.eclipse.sirius.ui.tools.internal.actions.analysis;
 import java.util.Collection;
 import java.util.Set;
 
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.tools.api.actions.analysis.IAddModelDependencyWizard;
+
+import com.google.common.collect.Sets;
 
 /**
  * Registry containing all the {@link IAddModelDependencyWizard}s that have been

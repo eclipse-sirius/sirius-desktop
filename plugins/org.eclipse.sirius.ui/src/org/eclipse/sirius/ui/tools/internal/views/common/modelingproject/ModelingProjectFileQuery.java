@@ -13,11 +13,10 @@ package org.eclipse.sirius.ui.tools.internal.views.common.modelingproject;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.sirius.business.api.query.FileQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 
 import com.google.common.base.Preconditions;
-
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.query.FileQuery;
 
 /**
  * Queries on file in the context of a modeling project.

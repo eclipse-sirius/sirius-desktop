@@ -13,14 +13,13 @@ package org.eclipse.sirius.ui.tools.internal.views.common.navigator;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.IActionBars;
-import org.eclipse.ui.navigator.CommonActionProvider;
-import org.eclipse.ui.navigator.ICommonActionExtensionSite;
-
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.ContextMenuFiller;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
+import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.navigator.CommonActionProvider;
+import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 
 /**
  * Provide viewpoint actions for common navigator.

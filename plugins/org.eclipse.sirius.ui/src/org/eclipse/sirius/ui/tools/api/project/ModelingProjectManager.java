@@ -17,7 +17,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
-
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.manager.ModelingProjectManagerImpl;
 
 /**

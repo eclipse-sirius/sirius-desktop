@@ -23,6 +23,8 @@ import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -30,9 +32,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * A dialog which lets user select representations among a list of candidates.

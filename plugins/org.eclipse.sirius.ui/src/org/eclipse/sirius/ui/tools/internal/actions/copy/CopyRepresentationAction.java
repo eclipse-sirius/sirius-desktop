@@ -16,14 +16,14 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.window.Window;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.ISharedImages;
-import org.eclipse.ui.PlatformUI;
+import org.eclipse.sirius.business.api.dialect.command.CopyRepresentationCommand;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.dialog.RenameDialog;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.business.api.dialect.command.CopyRepresentationCommand;
-import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * An action to copy selected representations.

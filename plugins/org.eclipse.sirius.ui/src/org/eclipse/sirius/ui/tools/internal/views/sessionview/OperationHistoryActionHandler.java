@@ -27,6 +27,7 @@ import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IPartListener;
@@ -42,8 +43,6 @@ import org.eclipse.ui.internal.operations.TimeTriggeredProgressMonitorDialog;
 import org.eclipse.ui.internal.util.Util;
 import org.eclipse.ui.part.MultiPageEditorSite;
 import org.eclipse.ui.statushandlers.StatusManager;
-
-import org.eclipse.sirius.business.api.session.Session;
 
 /**
  * <p>

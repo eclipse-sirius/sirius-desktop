@@ -21,17 +21,16 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.ui.INewWizard;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
-
-import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.common.ui.tools.api.selection.page.EObjectSelectionWizardPage;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionCreationOperation;
+import org.eclipse.sirius.common.ui.SiriusTransPlugin;
+import org.eclipse.sirius.common.ui.tools.api.selection.page.EObjectSelectionWizardPage;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SessionResourceCreationWizardPage;
+import org.eclipse.ui.INewWizard;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
  * Wizard to create a new DView from an Existing model.

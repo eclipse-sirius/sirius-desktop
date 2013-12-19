@@ -10,9 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.manager;
 
-import org.eclipse.ui.IStartup;
-
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
+import org.eclipse.ui.IStartup;
 
 /**
  * A startup to initialize the ModelingProjectManager.

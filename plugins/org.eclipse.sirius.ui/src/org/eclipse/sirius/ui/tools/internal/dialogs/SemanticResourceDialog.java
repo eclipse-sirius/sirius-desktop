@@ -22,6 +22,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+import org.eclipse.sirius.business.api.query.FileQuery;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Button;
@@ -29,9 +31,6 @@ import org.eclipse.swt.widgets.Shell;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.business.api.query.FileQuery;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Specific resource dialog to avoid representation file selection. The browse

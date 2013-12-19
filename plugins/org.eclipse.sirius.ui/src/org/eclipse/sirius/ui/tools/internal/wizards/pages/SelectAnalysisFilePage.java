@@ -22,6 +22,10 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.common.ui.tools.api.dialog.FolderSelectionDialog;
+import org.eclipse.sirius.common.ui.tools.api.dialog.NewFileDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -35,11 +39,6 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.ui.model.WorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
-
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.common.ui.tools.api.dialog.FolderSelectionDialog;
-import org.eclipse.sirius.common.ui.tools.api.dialog.NewFileDialog;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 
 /**
  * A wizard page to select a viewpoint analysis model file.

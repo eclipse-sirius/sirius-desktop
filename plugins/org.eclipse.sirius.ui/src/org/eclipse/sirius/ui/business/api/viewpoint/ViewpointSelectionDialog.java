@@ -28,6 +28,11 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerCell;
+import org.eclipse.sirius.business.api.query.ViewpointQuery;
+import org.eclipse.sirius.business.internal.movida.ViewpointDependenciesTracker;
+import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.layout.FillLayout;
@@ -48,12 +53,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
-
-import org.eclipse.sirius.business.api.query.ViewpointQuery;
-import org.eclipse.sirius.business.internal.movida.ViewpointDependenciesTracker;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * A dialog box which allow end-users to select which viewpoints are enabled

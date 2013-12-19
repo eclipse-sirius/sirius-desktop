@@ -31,16 +31,6 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.statushandlers.StatusManager;
-
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.util.MarkerUtil;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
@@ -48,12 +38,21 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.modelingproject.manager.InitializeModelingProjectJob;
 import org.eclipse.sirius.business.internal.modelingproject.marker.ModelingMarker;
+import org.eclipse.sirius.common.tools.api.util.MarkerUtil;
+import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionHelper;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.statushandlers.StatusManager;
+
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * A job to load one or more representations files (load the aird file and all

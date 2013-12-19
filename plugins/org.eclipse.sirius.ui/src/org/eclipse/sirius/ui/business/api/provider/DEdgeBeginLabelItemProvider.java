@@ -12,8 +12,8 @@ package org.eclipse.sirius.ui.business.api.provider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.sirius.business.api.query.DEdgeQuery;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
 
 /**
  * A custom ItemProvider to add the label of Edge. This ItemProvider "simulates"

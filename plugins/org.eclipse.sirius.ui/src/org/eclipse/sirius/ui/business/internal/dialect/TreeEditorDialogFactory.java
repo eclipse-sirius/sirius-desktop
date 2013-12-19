@@ -11,10 +11,9 @@
 package org.eclipse.sirius.ui.business.internal.dialect;
 
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.ui.PlatformUI;
-
 import org.eclipse.sirius.ui.business.api.dialect.DefaultDialectEditorDialogFactory;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * Dialog factory for AbstractDTreeEditors.

@@ -13,11 +13,10 @@ package org.eclipse.sirius.ui.tools.internal.views.common.item;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.resource.Resource;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.tools.api.views.common.item.AnalysisResourceItem;
+
+import com.google.common.collect.Lists;
 
 /**
  * Represents resource folder item in session view.

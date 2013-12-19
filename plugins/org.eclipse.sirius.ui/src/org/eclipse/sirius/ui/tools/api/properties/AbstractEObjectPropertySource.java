@@ -11,10 +11,9 @@
 package org.eclipse.sirius.ui.tools.api.properties;
 
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor.PropertyValueWrapper;
-import org.eclipse.ui.IEditorPart;
-
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
+import org.eclipse.ui.IEditorPart;
 
 /**
  * Specialization for the manage of DTable elements.

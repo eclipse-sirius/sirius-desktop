@@ -12,9 +12,9 @@ package org.eclipse.sirius.ui.business.api.action;
 
 import java.util.Set;
 
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.viewpoint.DRepresentation;
+
+import com.google.common.collect.Sets;
 
 /**
  * A registry listing all the listeners that will be notified any time a user

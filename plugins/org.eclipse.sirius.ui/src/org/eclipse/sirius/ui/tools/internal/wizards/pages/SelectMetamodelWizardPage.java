@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.common.ui.tools.api.resource.WorkspaceResourceDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -37,8 +38,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.PlatformUI;
-
-import org.eclipse.sirius.common.ui.tools.api.resource.WorkspaceResourceDialog;
 
 /**
  * The role of this wizard page is to select an ecore metamodel, in the

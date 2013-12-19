@@ -26,6 +26,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.viewpoint.DNavigable;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -141,9 +142,9 @@ public class DNavigableItemProvider extends ItemProviderAdapter implements IEdit
 
         newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DNAVIGABLE__OWNED_NAVIGATION_LINKS, ViewpointFactory.eINSTANCE.createDEObjectLink()));
 
-        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DNAVIGABLE__OWNED_NAVIGATION_LINKS, ViewpointFactory.eINSTANCE.createDDiagramLink()));
-
         newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DNAVIGABLE__OWNED_NAVIGATION_LINKS, ViewpointFactory.eINSTANCE.createDSourceFileLink()));
+
+        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DNAVIGABLE__OWNED_NAVIGATION_LINKS, DiagramFactory.eINSTANCE.createDDiagramLink()));
     }
 
     /**

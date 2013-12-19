@@ -15,13 +15,13 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.util.Policy;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.tools.api.command.ICommandFactory;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Listener;
-import org.eclipse.sirius.tools.api.command.ICommandFactory;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
  * This class manages the tree viewer for display the DTable or DTree

@@ -18,10 +18,9 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.viewers.IStructuredSelection;
-
-import org.eclipse.sirius.common.tools.api.util.WorkspaceUtil;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.common.tools.api.util.WorkspaceUtil;
 
 /**
  * Wizard page to create a new Session file.

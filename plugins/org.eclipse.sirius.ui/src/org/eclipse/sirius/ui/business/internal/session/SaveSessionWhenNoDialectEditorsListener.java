@@ -18,20 +18,19 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.jface.preference.IPreferenceStore;
-
-import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
-import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
-import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
+import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
+import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
+import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
 import org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.session.EditingSessionEvent;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+
+import com.google.common.collect.Sets;
 
 /**
  * A listener to resource set change which save session if there is no dialect

@@ -22,13 +22,6 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.ui.tools.api.actions.analysis.IAddModelDependencyWizard;
@@ -36,6 +29,12 @@ import org.eclipse.sirius.ui.tools.internal.dialogs.SemanticResourceDialog;
 import org.eclipse.sirius.ui.tools.internal.operations.SemanticResourceAdditionOperation;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
+
+import com.google.common.collect.Lists;
 
 /**
  * Action to add a model dependency to a modeling project.

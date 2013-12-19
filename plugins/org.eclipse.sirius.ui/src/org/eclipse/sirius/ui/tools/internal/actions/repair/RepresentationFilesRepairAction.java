@@ -21,10 +21,10 @@ import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.actions.ActionDelegate;
 import org.eclipse.sirius.business.api.repair.SiriusRepairProcess;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.ActionDelegate;
 
 /**
  * This action will be called when the user needs to repair a representations

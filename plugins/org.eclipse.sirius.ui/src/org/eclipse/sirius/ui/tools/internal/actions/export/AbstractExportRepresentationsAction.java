@@ -26,23 +26,22 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.window.Window;
+import org.eclipse.sirius.business.api.query.URIQuery;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.ui.tools.api.actions.export.ExportAction;
+import org.eclipse.sirius.ui.tools.api.dialogs.AbstractExportRepresentationsAsImagesDialog;
+import org.eclipse.sirius.ui.tools.api.dialogs.ExportOneRepresentationAsImageDialog;
+import org.eclipse.sirius.ui.tools.api.dialogs.ExportSeveralRepresentationsAsImagesDialog;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.query.URIQuery;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.ui.tools.api.actions.export.ExportAction;
-import org.eclipse.sirius.ui.tools.api.dialogs.AbstractExportRepresentationsAsImagesDialog;
-import org.eclipse.sirius.ui.tools.api.dialogs.ExportOneRepresentationAsImageDialog;
-import org.eclipse.sirius.ui.tools.api.dialogs.ExportSeveralRepresentationsAsImagesDialog;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * Abstract action to export representations as images.

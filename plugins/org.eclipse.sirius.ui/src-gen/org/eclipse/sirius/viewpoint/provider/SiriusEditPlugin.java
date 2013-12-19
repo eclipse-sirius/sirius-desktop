@@ -45,6 +45,7 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.preferences.DCorePreferences;
 import org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys;
@@ -60,7 +61,6 @@ import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.tab.Mo
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.concern.provider.ConcernItemProviderAdapterFactory;
-import org.eclipse.sirius.viewpoint.description.filter.provider.FilterItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.style.provider.StyleItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;

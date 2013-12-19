@@ -133,81 +133,6 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DiagramDescriptionItemProvider diagramDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramDescription}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDiagramDescriptionAdapter() {
-        if (diagramDescriptionItemProvider == null) {
-            diagramDescriptionItemProvider = new DiagramDescriptionItemProvider(this);
-        }
-
-        return diagramDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramImportDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DiagramImportDescriptionItemProvider diagramImportDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramImportDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDiagramImportDescriptionAdapter() {
-        if (diagramImportDescriptionItemProvider == null) {
-            diagramImportDescriptionItemProvider = new DiagramImportDescriptionItemProvider(this);
-        }
-
-        return diagramImportDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DiagramExtensionDescriptionItemProvider diagramExtensionDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.DiagramExtensionDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDiagramExtensionDescriptionAdapter() {
-        if (diagramExtensionDescriptionItemProvider == null) {
-            diagramExtensionDescriptionItemProvider = new DiagramExtensionDescriptionItemProvider(this);
-        }
-
-        return diagramExtensionDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -258,156 +183,6 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.NodeMapping} instances.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected NodeMappingItemProvider nodeMappingItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.NodeMapping}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createNodeMappingAdapter() {
-        if (nodeMappingItemProvider == null) {
-            nodeMappingItemProvider = new NodeMappingItemProvider(this);
-        }
-
-        return nodeMappingItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.ContainerMapping}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ContainerMappingItemProvider containerMappingItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.ContainerMapping}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createContainerMappingAdapter() {
-        if (containerMappingItemProvider == null) {
-            containerMappingItemProvider = new ContainerMappingItemProvider(this);
-        }
-
-        return containerMappingItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.NodeMappingImport}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected NodeMappingImportItemProvider nodeMappingImportItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.NodeMappingImport}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createNodeMappingImportAdapter() {
-        if (nodeMappingImportItemProvider == null) {
-            nodeMappingImportItemProvider = new NodeMappingImportItemProvider(this);
-        }
-
-        return nodeMappingImportItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.ContainerMappingImport}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ContainerMappingImportItemProvider containerMappingImportItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.ContainerMappingImport}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createContainerMappingImportAdapter() {
-        if (containerMappingImportItemProvider == null) {
-            containerMappingImportItemProvider = new ContainerMappingImportItemProvider(this);
-        }
-
-        return containerMappingImportItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.EdgeMapping} instances.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected EdgeMappingItemProvider edgeMappingItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.EdgeMapping}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createEdgeMappingAdapter() {
-        if (edgeMappingItemProvider == null) {
-            edgeMappingItemProvider = new EdgeMappingItemProvider(this);
-        }
-
-        return edgeMappingItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.EdgeMappingImport}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected EdgeMappingImportItemProvider edgeMappingImportItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.EdgeMappingImport}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createEdgeMappingImportAdapter() {
-        if (edgeMappingImportItemProvider == null) {
-            edgeMappingImportItemProvider = new EdgeMappingImportItemProvider(this);
-        }
-
-        return edgeMappingImportItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.DAnnotation} instances.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -429,131 +204,6 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
         }
 
         return dAnnotationItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.ConditionalNodeStyleDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ConditionalNodeStyleDescriptionItemProvider conditionalNodeStyleDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.ConditionalNodeStyleDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createConditionalNodeStyleDescriptionAdapter() {
-        if (conditionalNodeStyleDescriptionItemProvider == null) {
-            conditionalNodeStyleDescriptionItemProvider = new ConditionalNodeStyleDescriptionItemProvider(this);
-        }
-
-        return conditionalNodeStyleDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.ConditionalEdgeStyleDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ConditionalEdgeStyleDescriptionItemProvider conditionalEdgeStyleDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.ConditionalEdgeStyleDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createConditionalEdgeStyleDescriptionAdapter() {
-        if (conditionalEdgeStyleDescriptionItemProvider == null) {
-            conditionalEdgeStyleDescriptionItemProvider = new ConditionalEdgeStyleDescriptionItemProvider(this);
-        }
-
-        return conditionalEdgeStyleDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.ConditionalContainerStyleDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ConditionalContainerStyleDescriptionItemProvider conditionalContainerStyleDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.ConditionalContainerStyleDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createConditionalContainerStyleDescriptionAdapter() {
-        if (conditionalContainerStyleDescriptionItemProvider == null) {
-            conditionalContainerStyleDescriptionItemProvider = new ConditionalContainerStyleDescriptionItemProvider(this);
-        }
-
-        return conditionalContainerStyleDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.OrderedTreeLayout}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected OrderedTreeLayoutItemProvider orderedTreeLayoutItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.OrderedTreeLayout}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createOrderedTreeLayoutAdapter() {
-        if (orderedTreeLayoutItemProvider == null) {
-            orderedTreeLayoutItemProvider = new OrderedTreeLayoutItemProvider(this);
-        }
-
-        return orderedTreeLayoutItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.CompositeLayout}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected CompositeLayoutItemProvider compositeLayoutItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.CompositeLayout}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createCompositeLayoutAdapter() {
-        if (compositeLayoutItemProvider == null) {
-            compositeLayoutItemProvider = new CompositeLayoutItemProvider(this);
-        }
-
-        return compositeLayoutItemProvider;
     }
 
     /**
@@ -583,31 +233,6 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.MappingBasedDecoration}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected MappingBasedDecorationItemProvider mappingBasedDecorationItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.MappingBasedDecoration}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createMappingBasedDecorationAdapter() {
-        if (mappingBasedDecorationItemProvider == null) {
-            mappingBasedDecorationItemProvider = new MappingBasedDecorationItemProvider(this);
-        }
-
-        return mappingBasedDecorationItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -629,56 +254,6 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
         }
 
         return semanticBasedDecorationItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.Layer} instances. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected LayerItemProvider layerItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.Layer}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createLayerAdapter() {
-        if (layerItemProvider == null) {
-            layerItemProvider = new LayerItemProvider(this);
-        }
-
-        return layerItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.AdditionalLayer}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected AdditionalLayerItemProvider additionalLayerItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.AdditionalLayer}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createAdditionalLayerAdapter() {
-        if (additionalLayerItemProvider == null) {
-            additionalLayerItemProvider = new AdditionalLayerItemProvider(this);
-        }
-
-        return additionalLayerItemProvider;
     }
 
     /**
@@ -1208,50 +783,16 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
             groupItemProvider.dispose();
         if (viewpointItemProvider != null)
             viewpointItemProvider.dispose();
-        if (diagramDescriptionItemProvider != null)
-            diagramDescriptionItemProvider.dispose();
-        if (diagramImportDescriptionItemProvider != null)
-            diagramImportDescriptionItemProvider.dispose();
-        if (diagramExtensionDescriptionItemProvider != null)
-            diagramExtensionDescriptionItemProvider.dispose();
         if (metamodelExtensionSettingItemProvider != null)
             metamodelExtensionSettingItemProvider.dispose();
         if (javaExtensionItemProvider != null)
             javaExtensionItemProvider.dispose();
-        if (nodeMappingItemProvider != null)
-            nodeMappingItemProvider.dispose();
-        if (containerMappingItemProvider != null)
-            containerMappingItemProvider.dispose();
-        if (nodeMappingImportItemProvider != null)
-            nodeMappingImportItemProvider.dispose();
-        if (containerMappingImportItemProvider != null)
-            containerMappingImportItemProvider.dispose();
-        if (edgeMappingItemProvider != null)
-            edgeMappingItemProvider.dispose();
-        if (edgeMappingImportItemProvider != null)
-            edgeMappingImportItemProvider.dispose();
         if (dAnnotationItemProvider != null)
             dAnnotationItemProvider.dispose();
-        if (conditionalNodeStyleDescriptionItemProvider != null)
-            conditionalNodeStyleDescriptionItemProvider.dispose();
-        if (conditionalEdgeStyleDescriptionItemProvider != null)
-            conditionalEdgeStyleDescriptionItemProvider.dispose();
-        if (conditionalContainerStyleDescriptionItemProvider != null)
-            conditionalContainerStyleDescriptionItemProvider.dispose();
-        if (orderedTreeLayoutItemProvider != null)
-            orderedTreeLayoutItemProvider.dispose();
-        if (compositeLayoutItemProvider != null)
-            compositeLayoutItemProvider.dispose();
         if (decorationDescriptionsSetItemProvider != null)
             decorationDescriptionsSetItemProvider.dispose();
-        if (mappingBasedDecorationItemProvider != null)
-            mappingBasedDecorationItemProvider.dispose();
         if (semanticBasedDecorationItemProvider != null)
             semanticBasedDecorationItemProvider.dispose();
-        if (layerItemProvider != null)
-            layerItemProvider.dispose();
-        if (additionalLayerItemProvider != null)
-            additionalLayerItemProvider.dispose();
         if (customizationItemProvider != null)
             customizationItemProvider.dispose();
         if (vsmElementCustomizationItemProvider != null)

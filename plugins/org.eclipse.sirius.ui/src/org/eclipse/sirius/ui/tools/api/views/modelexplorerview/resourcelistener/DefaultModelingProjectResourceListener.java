@@ -23,11 +23,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
-import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.resource.LoadEMFResource;
@@ -35,9 +30,13 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.modelingproject.manager.AttachSemanticResourcesJob;
 import org.eclipse.sirius.business.internal.modelingproject.manager.DetachSemanticResourcesJob;
 import org.eclipse.sirius.business.internal.modelingproject.manager.InitializeModelingProjectJob;
+import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
+import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.ModelingProjectFileQuery;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+
+import com.google.common.collect.Lists;
 
 /**
  * A workspace resource listener to automatically add files loadable as emf

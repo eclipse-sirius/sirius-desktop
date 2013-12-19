@@ -11,7 +11,6 @@
 package org.eclipse.sirius.ui.tools.internal.views.modelexplorer;
 
 import org.eclipse.jface.viewers.IElementComparer;
-
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 
 /**

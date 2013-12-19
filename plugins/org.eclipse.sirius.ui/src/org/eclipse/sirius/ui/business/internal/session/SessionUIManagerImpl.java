@@ -22,9 +22,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.IPathEditorInput;
-import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener2;
@@ -33,6 +30,9 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.business.api.session.factory.UISessionFactory;
 import org.eclipse.sirius.ui.business.internal.session.factory.UISessionFactoryService;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IPathEditorInput;
+import org.eclipse.ui.part.FileEditorInput;
 
 /**
  * Default session ui manager implementation.

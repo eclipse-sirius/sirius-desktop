@@ -14,6 +14,10 @@ import java.util.Collection;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerTabExtension;
+import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.ModelExplorerView;
+import org.eclipse.sirius.ui.tools.internal.views.sessionview.DeleteActionHandler;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.events.KeyAdapter;
@@ -25,11 +29,6 @@ import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.actions.ActionFactory;
 
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerTabExtension;
-import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.ModelExplorerView;
-import org.eclipse.sirius.ui.tools.internal.views.sessionview.DeleteActionHandler;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * TODO MCH comment here.

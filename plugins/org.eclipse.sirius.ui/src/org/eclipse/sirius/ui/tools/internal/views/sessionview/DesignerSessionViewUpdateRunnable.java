@@ -14,11 +14,10 @@ import java.util.Collection;
 
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+
+import com.google.common.collect.Lists;
 
 /**
  * A runnable that update the treeViewer of the DesignerSessionView.

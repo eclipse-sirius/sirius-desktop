@@ -241,7 +241,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider impleme
      */
     @Override
     public String getText(Object object) {
-        final String label = new IdentifiedElementQuery((Viewpoint) object).getLabel();
+        String label = new IdentifiedElementQuery((Viewpoint) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_Sirius_type") : label;
     }
 
@@ -290,7 +290,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider impleme
      *                childs.
      */
     @Override
-    protected void collectNewChildDescriptors(final Collection<Object> newChildDescriptors, final Object object) {
+    protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__VALIDATION_SET, ValidationFactory.eINSTANCE.createValidationSet()));
@@ -304,9 +304,11 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider impleme
         // newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATION_EXTENSIONS,
         // DescriptionFactory.eINSTANCE.createDiagramExtensionDescription()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_JAVA_EXTENSIONS, DescriptionFactory.eINSTANCE.createJavaExtension()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_JAVA_EXTENSIONS,
+                org.eclipse.sirius.viewpoint.description.DescriptionFactory.eINSTANCE.createJavaExtension()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_MM_EXTENSIONS, DescriptionFactory.eINSTANCE.createMetamodelExtensionSetting()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_MM_EXTENSIONS,
+                org.eclipse.sirius.viewpoint.description.DescriptionFactory.eINSTANCE.createMetamodelExtensionSetting()));
 
         // add known representation descriptions
         newChildDescriptors.addAll(DialectUIManager.INSTANCE.provideNewChildDescriptors());
@@ -329,11 +331,14 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider impleme
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__VALIDATION_SET, ValidationFactory.eINSTANCE.createValidationSet()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, DescriptionFactory.eINSTANCE.createDiagramDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS,
+                org.eclipse.sirius.diagram.description.DescriptionFactory.eINSTANCE.createDiagramDescription()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, DescriptionFactory.eINSTANCE.createDiagramImportDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS,
+                org.eclipse.sirius.diagram.description.DescriptionFactory.eINSTANCE.createDiagramImportDescription()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATION_EXTENSIONS, DescriptionFactory.eINSTANCE.createDiagramExtensionDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATION_EXTENSIONS,
+                org.eclipse.sirius.diagram.description.DescriptionFactory.eINSTANCE.createDiagramExtensionDescription()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_JAVA_EXTENSIONS, DescriptionFactory.eINSTANCE.createJavaExtension()));
 

@@ -27,19 +27,18 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.ui.IWorkingSet;
-import org.eclipse.ui.internal.misc.StringMatcher;
-import org.eclipse.ui.navigator.CommonViewer;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-
 import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ProjectDependenciesItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ResourcesFolderItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointsFolderItem;
+import org.eclipse.ui.IWorkingSet;
+import org.eclipse.ui.internal.misc.StringMatcher;
+import org.eclipse.ui.navigator.CommonViewer;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 /**
  * A filter used in conjunction with <code>FilteredCommonTree</code>. In order

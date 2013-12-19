@@ -12,12 +12,12 @@ package org.eclipse.sirius.ui.tools.internal.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RunnableWithResult;
+import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.swt.widgets.Item;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
-import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
-import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 /**
  * Class which look for from a {@link DRepresentationElement} the first

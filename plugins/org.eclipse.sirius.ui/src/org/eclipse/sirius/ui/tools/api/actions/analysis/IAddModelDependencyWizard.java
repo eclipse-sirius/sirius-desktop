@@ -13,9 +13,8 @@ package org.eclipse.sirius.ui.tools.api.actions.analysis;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.ui.INewWizard;
-
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.ui.INewWizard;
 
 /**
  * An interface representing a wizard that allows to add semantic resources to a

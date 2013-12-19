@@ -19,11 +19,10 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
+
+import com.google.common.collect.Sets;
 
 /**
  * Operation to add a semantic resource to a session.

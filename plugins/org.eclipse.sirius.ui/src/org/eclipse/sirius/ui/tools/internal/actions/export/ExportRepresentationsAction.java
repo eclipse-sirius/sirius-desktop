@@ -12,15 +12,14 @@ package org.eclipse.sirius.ui.tools.internal.actions.export;
 
 import java.util.Collection;
 
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * Action to export representations as images.

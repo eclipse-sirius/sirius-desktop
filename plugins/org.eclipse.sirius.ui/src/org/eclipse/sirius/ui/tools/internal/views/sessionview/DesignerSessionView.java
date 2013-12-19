@@ -31,6 +31,22 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.api.session.SessionManagerListener2;
+import org.eclipse.sirius.business.api.session.SessionStatus;
+import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
+import org.eclipse.sirius.ui.business.api.session.IEditingSession;
+import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
+import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
+import org.eclipse.sirius.ui.tools.internal.views.common.ContextMenuFiller;
+import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
+import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonContentProvider;
+import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider;
+import org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.RepresentationDescriptionWithoutRepresentationCommonFilter;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.Transfer;
@@ -49,23 +65,6 @@ import org.eclipse.ui.dialogs.PatternFilter;
 import org.eclipse.ui.part.ViewPart;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionListener;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.api.session.SessionManagerListener2;
-import org.eclipse.sirius.business.api.session.SessionStatus;
-import org.eclipse.sirius.ui.business.api.session.IEditingSession;
-import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
-import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
-import org.eclipse.sirius.ui.tools.internal.views.common.ContextMenuFiller;
-import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
-import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonContentProvider;
-import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider;
-import org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.RepresentationDescriptionWithoutRepresentationCommonFilter;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * An Eclipse view to see the viewpoint resource set content.

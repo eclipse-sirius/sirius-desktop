@@ -36,11 +36,6 @@ import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.ui.tools.api.actions.analysis.IAddModelDependencyWizard;
@@ -51,6 +46,11 @@ import org.eclipse.sirius.ui.tools.internal.wizards.pages.GenericInitialObjectPa
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.GenericModelCreationPage;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SelectMetamodelWizardPage;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
  * Wizard to create or add a new resource to the session.

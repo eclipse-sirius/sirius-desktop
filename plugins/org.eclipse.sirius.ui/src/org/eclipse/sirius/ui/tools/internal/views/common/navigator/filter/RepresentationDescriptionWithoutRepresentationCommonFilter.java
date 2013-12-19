@@ -12,7 +12,6 @@ package org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter;
 
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescriptionItem;
 
 /**

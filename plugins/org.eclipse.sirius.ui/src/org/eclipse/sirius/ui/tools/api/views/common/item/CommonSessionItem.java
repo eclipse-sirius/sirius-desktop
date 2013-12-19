@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.api.views.common.item;
 
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.ui.tools.api.view.common.item.CommonItem;
-import org.eclipse.sirius.business.api.session.Session;
 
 /**
  * An interface to get the wrapped object.

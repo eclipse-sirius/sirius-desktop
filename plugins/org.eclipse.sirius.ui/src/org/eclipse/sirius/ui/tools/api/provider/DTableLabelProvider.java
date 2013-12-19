@@ -21,15 +21,14 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.ui.IEditorPart;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.common.ui.business.api.views.properties.tabbed.LabelProviderProviderService;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.ui.IEditorPart;
+
+import com.google.common.collect.Lists;
 
 /**
  * Label provider of the DTable tabbed property sheet page.

@@ -12,8 +12,8 @@ package org.eclipse.sirius.ui.business.api.session;
 
 import java.util.Collection;
 
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.ui.IEditorPart;
 
 public interface DeprecatedIEditingSession {
 

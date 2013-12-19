@@ -12,10 +12,9 @@ package org.eclipse.sirius.ui.business.api.session;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
-
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionCreationOperation;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
  * //TODOCBR comment this.

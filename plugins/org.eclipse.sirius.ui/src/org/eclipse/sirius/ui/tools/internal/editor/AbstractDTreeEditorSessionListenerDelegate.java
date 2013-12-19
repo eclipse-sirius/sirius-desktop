@@ -10,12 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.editor;
 
-import org.eclipse.ui.IEditorPart;
-import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IWorkbenchPart;
 
 /**
  * Delegate the managment of {@link SessionListener} events.

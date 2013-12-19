@@ -12,7 +12,6 @@ package org.eclipse.sirius.ui.tools.internal.wizards;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.wizard.Wizard;
-
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.internal.actions.creation.CreateRepresentationAction;

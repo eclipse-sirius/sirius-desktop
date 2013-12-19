@@ -25,6 +25,22 @@ import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
+import org.eclipse.sirius.business.internal.session.ReloadingPolicyImpl;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
+import org.eclipse.sirius.tools.api.command.ui.RefreshFilter;
+import org.eclipse.sirius.tools.api.command.ui.RefreshFilterManager;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.session.EditingSessionEvent;
+import org.eclipse.sirius.ui.business.api.session.EditorNameAdapter;
+import org.eclipse.sirius.ui.business.api.session.IEditingSession;
+import org.eclipse.sirius.ui.business.internal.dialect.editor.DialectEditorCloser;
+import org.eclipse.sirius.ui.tools.internal.util.SessionCallBackWithUI;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -42,23 +58,6 @@ import org.eclipse.ui.part.FileEditorInput;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
-import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
-import org.eclipse.sirius.business.internal.session.ReloadingPolicyImpl;
-import org.eclipse.sirius.tools.api.command.ui.RefreshFilter;
-import org.eclipse.sirius.tools.api.command.ui.RefreshFilterManager;
-import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.ui.business.api.session.EditingSessionEvent;
-import org.eclipse.sirius.ui.business.api.session.EditorNameAdapter;
-import org.eclipse.sirius.ui.business.api.session.IEditingSession;
-import org.eclipse.sirius.ui.business.internal.dialect.editor.DialectEditorCloser;
-import org.eclipse.sirius.ui.tools.internal.util.SessionCallBackWithUI;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * An {@link EditingSession} is responsible of keeping track of the opened

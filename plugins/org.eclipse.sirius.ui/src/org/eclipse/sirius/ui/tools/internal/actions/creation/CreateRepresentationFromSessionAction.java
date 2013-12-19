@@ -14,11 +14,10 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.wizard.WizardDialog;
-import org.eclipse.ui.PlatformUI;
-
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.tools.internal.wizards.CreateRepresentationWizard;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * Action to create a representation.

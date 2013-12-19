@@ -11,11 +11,11 @@
 package org.eclipse.sirius.ui.business.api.dialect;
 
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.ISaveablePart2;
 import org.eclipse.ui.ISaveablesSource;
 import org.eclipse.ui.ide.IGotoMarker;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * An interface to implement for all dialect editors.

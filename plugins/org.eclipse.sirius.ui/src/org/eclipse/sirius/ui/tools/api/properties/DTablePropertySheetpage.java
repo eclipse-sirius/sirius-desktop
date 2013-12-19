@@ -14,11 +14,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
-import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
+import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 /**
  * The DTable's property sheet page.

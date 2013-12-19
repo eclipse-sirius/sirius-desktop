@@ -12,7 +12,6 @@ package org.eclipse.sirius.ui.tools.api.views;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.jface.viewers.ITreeContentProvider;
-
 import org.eclipse.sirius.ui.tools.internal.views.ViewHelperImpl;
 
 /**

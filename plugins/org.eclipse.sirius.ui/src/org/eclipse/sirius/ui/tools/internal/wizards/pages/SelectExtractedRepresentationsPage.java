@@ -30,6 +30,14 @@ import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
@@ -39,14 +47,6 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Table;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
-import org.eclipse.sirius.viewpoint.description.filter.provider.FilterItemProviderAdapterFactory;
-import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
-import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
-import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
-import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 
 /**
  * Wizard page to select the representations you want to export.

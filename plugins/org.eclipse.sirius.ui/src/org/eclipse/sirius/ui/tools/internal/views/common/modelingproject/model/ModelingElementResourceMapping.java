@@ -18,7 +18,6 @@ import org.eclipse.core.resources.mapping.ResourceTraversal;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-
 import org.eclipse.sirius.business.api.modelingproject.IModelingElement;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 

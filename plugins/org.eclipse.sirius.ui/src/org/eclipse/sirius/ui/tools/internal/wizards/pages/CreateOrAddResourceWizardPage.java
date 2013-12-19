@@ -11,14 +11,13 @@
 package org.eclipse.sirius.ui.tools.internal.wizards.pages;
 
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
-
-import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 
 /**
  * A wizard page to choose Session kind.

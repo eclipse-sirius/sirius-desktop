@@ -25,8 +25,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
@@ -164,7 +164,7 @@ public class DRepresentationContainerItemProvider extends DViewItemProvider impl
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DREPRESENTATION_CONTAINER__DIAGRAM_SET, ViewpointFactory.eINSTANCE.createDDiagramSet()));
+        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DREPRESENTATION_CONTAINER__DIAGRAM_SET, DiagramFactory.eINSTANCE.createDDiagramSet()));
     }
 
     /**

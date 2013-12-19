@@ -19,17 +19,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.browser.Browser;
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.Pattern;
-import org.eclipse.swt.graphics.RGB;
-import org.eclipse.swt.graphics.Resource;
-import org.eclipse.swt.widgets.Display;
-
-import com.google.common.base.Objects;
-
 import org.eclipse.sirius.common.ui.tools.api.util.SWTResourceLRUCache;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
@@ -41,6 +30,16 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.SystemColor;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.browser.Browser;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.Pattern;
+import org.eclipse.swt.graphics.RGB;
+import org.eclipse.swt.graphics.Resource;
+import org.eclipse.swt.widgets.Display;
+
+import com.google.common.base.Objects;
 
 /**
  * Take care of computing colors, font or size from integer values. Avoid memory

@@ -12,9 +12,9 @@ package org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.tab;
 
 import java.util.Collection;
 
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+
+import com.google.common.collect.Lists;
 
 /**
  * Registry containing all  model explorer tab  extensions that have been parsed from

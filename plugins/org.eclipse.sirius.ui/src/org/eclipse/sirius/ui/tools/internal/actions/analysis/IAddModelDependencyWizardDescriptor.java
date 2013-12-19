@@ -12,7 +12,6 @@ package org.eclipse.sirius.ui.tools.internal.actions.analysis;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.ui.tools.api.actions.analysis.IAddModelDependencyWizard;
 

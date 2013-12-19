@@ -10,14 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.perspectives;
 
-import org.eclipse.ui.IFolderLayout;
-import org.eclipse.ui.IPageLayout;
-import org.eclipse.ui.IPerspectiveFactory;
-
 import org.eclipse.sirius.ui.tools.api.perspectives.ModelingPerspective;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.sirius.ui.tools.internal.wizards.ModelingProjectWizard;
 import org.eclipse.sirius.ui.tools.internal.wizards.NewSessionWizard;
+import org.eclipse.ui.IFolderLayout;
+import org.eclipse.ui.IPageLayout;
+import org.eclipse.ui.IPerspectiveFactory;
 
 /**
  * A user-oriented perspective with the minimum things necessary.

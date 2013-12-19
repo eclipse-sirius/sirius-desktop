@@ -28,6 +28,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -209,15 +210,15 @@ public class DViewItemProvider extends ItemProviderAdapter implements IEditingDo
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS, ViewpointFactory.eINSTANCE.createDDiagram()));
+        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS, DiagramFactory.eINSTANCE.createDDiagram()));
 
-        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS, ViewpointFactory.eINSTANCE.createDSemanticDiagram()));
+        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS, DiagramFactory.eINSTANCE.createDSemanticDiagram()));
 
         newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DVIEW__OWNED_EXTENSIONS, ViewpointFactory.eINSTANCE.createMetaModelExtension()));
 
-        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DVIEW__HIDDEN_REPRESENTATIONS, ViewpointFactory.eINSTANCE.createDDiagram()));
+        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DVIEW__HIDDEN_REPRESENTATIONS, DiagramFactory.eINSTANCE.createDDiagram()));
 
-        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DVIEW__HIDDEN_REPRESENTATIONS, ViewpointFactory.eINSTANCE.createDSemanticDiagram()));
+        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DVIEW__HIDDEN_REPRESENTATIONS, DiagramFactory.eINSTANCE.createDSemanticDiagram()));
     }
 
     /**

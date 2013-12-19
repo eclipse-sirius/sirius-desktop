@@ -19,13 +19,12 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.ui.tools.internal.views.common.action.DeleteRepresentationAction;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItemImpl;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 
 /**
  * An handler which redirect to the appropriate delete action depending on the

@@ -18,12 +18,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.ui.tools.internal.actions.session.OpenRepresentationsAction;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.ui.tools.internal.actions.session.OpenRepresentationsAction;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * A double click listener which opens an editor if the clicked element is a representation.

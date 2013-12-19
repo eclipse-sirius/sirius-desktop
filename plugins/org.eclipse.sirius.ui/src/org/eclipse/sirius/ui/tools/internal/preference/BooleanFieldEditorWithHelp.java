@@ -12,13 +12,13 @@ package org.eclipse.sirius.ui.tools.internal.preference;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * BooleanFieldEditor with an help tooltip next to the checkbox text.
