@@ -58,9 +58,9 @@ public class EStructuralFeatureCustomizationAppliedOnPropertySection extends Abs
      */
     protected String getLabelText() {
         String labelText;
-        labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
+        labelText = super.getLabelText() + ":"; //$NON-NLS-1$
         // Start of user code get label text
-
+        labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
         // End of user code get label text
         return labelText;
     }
@@ -114,9 +114,8 @@ public class EStructuralFeatureCustomizationAppliedOnPropertySection extends Abs
         help.setImage(getHelpIcon());
         help.setToolTipText("The style to customize.");
 
-        nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
         // Start of user code create controls
-
+        nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
         // End of user code create controls
     }
 

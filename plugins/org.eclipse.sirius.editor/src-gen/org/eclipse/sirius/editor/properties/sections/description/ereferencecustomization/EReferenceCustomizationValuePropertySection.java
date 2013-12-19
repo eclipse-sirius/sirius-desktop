@@ -190,7 +190,6 @@ public class EReferenceCustomizationValuePropertySection extends AbstractComboPr
 
         // End of user code create controls
     }
-
     // Start of user code user operations
 
     // End of user code user operations

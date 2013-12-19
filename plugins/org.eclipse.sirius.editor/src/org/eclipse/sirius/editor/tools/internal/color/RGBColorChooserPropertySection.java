@@ -20,7 +20,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.business.api.color.RGBValuesProvider;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractSiriusPropertySection;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -45,7 +45,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  * 
  * @author mporhel
  */
-public class RGBColorChooserPropertySection extends AbstractSiriusPropertySection {
+public class RGBColorChooserPropertySection extends AbstractViewpointPropertySection {
     /** The color control for the section. */
     protected CLabel colorLabel;
 

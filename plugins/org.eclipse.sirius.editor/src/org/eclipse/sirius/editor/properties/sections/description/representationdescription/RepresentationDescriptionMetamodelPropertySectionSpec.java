@@ -21,7 +21,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractSiriusPropertySection;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.SWT;
@@ -42,7 +42,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
-public class RepresentationDescriptionMetamodelPropertySectionSpec extends AbstractSiriusPropertySection {
+public class RepresentationDescriptionMetamodelPropertySectionSpec extends AbstractViewpointPropertySection {
 
     private CLabel help;
 

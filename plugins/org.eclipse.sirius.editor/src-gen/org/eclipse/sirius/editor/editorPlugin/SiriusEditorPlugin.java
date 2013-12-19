@@ -22,7 +22,6 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.osgi.framework.BundleContext;
 
 // End of user code imports
 
@@ -175,27 +174,7 @@ public final class SiriusEditorPlugin extends EMFPlugin {
         }
 
         // Start of user code Implementation specifics
-        /**
-         * 
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
-         */
-        @Override
-        public void start(BundleContext context) throws Exception {
-            super.start(context);
-        }
 
-        /**
-         * 
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
-         */
-        @Override
-        public void stop(BundleContext context) throws Exception {
-            super.stop(context);
-        }
         // End of user code Implementation specifics
     }
 }

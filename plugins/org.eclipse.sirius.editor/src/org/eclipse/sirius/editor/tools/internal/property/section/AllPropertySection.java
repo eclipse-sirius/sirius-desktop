@@ -23,7 +23,7 @@ import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractSiriusPropertySection;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIManager;
 import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
@@ -49,7 +49,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public class AllPropertySection extends AbstractSiriusPropertySection implements IPropertySourceProvider {
+public class AllPropertySection extends AbstractViewpointPropertySection implements IPropertySourceProvider {
     /**
      * the content property sheet page witch manages SheetEntry for this
      * section.

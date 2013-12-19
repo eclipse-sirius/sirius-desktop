@@ -11,7 +11,6 @@
 package org.eclipse.sirius.editor.properties.sections.description.representationextensiondescription;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractSiriusPropertySection;
 import org.eclipse.sirius.editor.properties.sections.description.representationdescription.AddFromFilesystemButtonListener;
 import org.eclipse.sirius.editor.properties.sections.description.representationdescription.AddFromRegistryButtonListener;
 import org.eclipse.sirius.editor.properties.sections.description.representationdescription.AddFromWorkspaceButtonListener;
