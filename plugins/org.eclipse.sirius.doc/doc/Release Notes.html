@@ -31,7 +31,7 @@
 		<h4 id="LibraryExtensions">Library Extensions</h4>
 		<p>This milestone (Sirius 1.0M5) introduces several new plug-ins, collectively called &#171;library extensions&#187;. They are all named 
 			<code>org.eclipse.sirius.ext.LIB</code>, where 
-			<code>LIB</code> is the name of a library or component Sirius depends on. These plug-ins are used to isolate generic code which extends existing libraries with features and helpers needed for Sirius, but which do not depend on Sirius themselves. A relatively large part of the code in Sirius is of this kind: things that could/should be in EMF, GMF, Eclipse itself, etc. and which are not not Sirius-specific but which make it easier to build Sirius itself. Sirius 1.0M5 introduces several of these library extensions and starts to fill them with existing classes which were &#171;hidden&#187; inside Sirius and are now exposed in library extensions. Most of the time, existing code which used the Sirius API will only need to:
+			<code>LIB</code> is the name of a library or component Sirius depends on. These plug-ins are used to isolate generic code which extends existing libraries with features and helpers needed for Sirius, but which do not depend on Sirius themselves. A relatively large part of the code in Sirius is of this kind: things that could/should be in EMF, GMF, Eclipse itself, etc. and which are not Sirius-specific but which make it easier to build Sirius itself. Sirius 1.0M5 introduces several of these library extensions and starts to fill them with existing classes which were &#171;hidden&#187; inside Sirius and are now exposed in library extensions. Most of the time, existing code which used the Sirius API will only need to:
 		</p>
 		<ol>
 			<li>Add the necessary 
