@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.sequence;
 
 import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
 import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -37,7 +36,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDiagram;
  * @model
  * @generated
  */
-public interface SequenceDDiagram extends DSemanticDiagram {
+public interface SequenceDDiagram extends org.eclipse.sirius.diagram.DSemanticDiagram {
     /**
      * Returns the value of the '<em><b>Semantic Ordering</b></em>' containment
      * reference. <!-- begin-user-doc -->

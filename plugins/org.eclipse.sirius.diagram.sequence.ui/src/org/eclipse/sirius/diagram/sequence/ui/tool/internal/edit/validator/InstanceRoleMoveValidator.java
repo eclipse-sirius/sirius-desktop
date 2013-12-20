@@ -16,14 +16,13 @@ import java.util.List;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
-
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
-
 import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
+
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
 
 /**
  * Validator for ChangeBoundsRequest of type RequestConstants#REQ_MOVE.

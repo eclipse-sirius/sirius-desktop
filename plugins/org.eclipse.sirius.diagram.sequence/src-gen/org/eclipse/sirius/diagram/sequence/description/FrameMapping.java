@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description;
 
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Frame Mapping</b></em>'. <!-- end-user-doc -->
@@ -32,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.ContainerMapping;
  * @model abstract="true"
  * @generated
  */
-public interface FrameMapping extends ContainerMapping, DelimitedEventMapping {
+public interface FrameMapping extends org.eclipse.sirius.diagram.description.ContainerMapping, DelimitedEventMapping {
     /**
      * Returns the value of the '<em><b>Covered Lifelines Expression</b></em>'
      * attribute. <!-- begin-user-doc -->

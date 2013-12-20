@@ -14,7 +14,6 @@ import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.ScrollPane;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
-
 import org.eclipse.sirius.diagram.ui.tools.api.figure.InvisibleResizableCompartmentFigure;
 
 public class CombinedFragmentInvisibleResizableCompartmentFigure extends InvisibleResizableCompartmentFigure {

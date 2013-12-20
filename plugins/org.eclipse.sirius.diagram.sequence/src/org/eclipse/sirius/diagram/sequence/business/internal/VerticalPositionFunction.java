@@ -12,10 +12,6 @@ package org.eclipse.sirius.diagram.sequence.business.internal;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
-
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
@@ -23,6 +19,9 @@ import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 
 /**
  * A function which computes the vertical position (in absolute, normalized

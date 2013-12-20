@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.sequence.business.internal.refresh;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.gmf.runtime.notation.Node;
-
 import org.eclipse.sirius.diagram.internal.refresh.edge.SlidableAnchor;
 
 /**

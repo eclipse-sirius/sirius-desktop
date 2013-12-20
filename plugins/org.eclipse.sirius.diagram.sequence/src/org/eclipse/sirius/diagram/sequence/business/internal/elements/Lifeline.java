@@ -19,14 +19,9 @@ import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceNodeQuery;
@@ -36,7 +31,11 @@ import org.eclipse.sirius.diagram.sequence.business.internal.util.SubEventsHelpe
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.util.NotationPredicate;
 import org.eclipse.sirius.diagram.sequence.util.Range;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+
+import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Common interface for all the elements of a sequence diagram.
@@ -47,7 +46,7 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
     /**
      * The visual id.
      * 
-     * @see DNode2EditPart.VISUAL_ID
+     * @see org.eclipse.sirius.diagram.internal.edit.parts.DNode2EditPart.VISUAL_ID
      */
     public static final int VISUAL_ID = 3001;
 
@@ -85,11 +84,11 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
     }
 
     /**
-     * Returns a predicate to check whether a Sirius DDiagramElement
-     * represents a lifeline.
+     * Returns a predicate to check whether a Sirius DDiagramElement represents
+     * a lifeline.
      * 
-     * @return a predicate to check whether a Sirius DDiagramElement
-     *         represents a lifeline.
+     * @return a predicate to check whether a Sirius DDiagramElement represents
+     *         a lifeline.
      */
     public static Predicate<DDiagramElement> viewpointElementPredicate() {
         return SiriusElementPredicate.INSTANCE;

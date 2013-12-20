@@ -11,13 +11,12 @@
 package org.eclipse.sirius.diagram.sequence.business.internal;
 
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.base.Function;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+
+import com.google.common.base.Function;
 
 /**
  * Computes the absolute vertical range occupied by an element of a sequence

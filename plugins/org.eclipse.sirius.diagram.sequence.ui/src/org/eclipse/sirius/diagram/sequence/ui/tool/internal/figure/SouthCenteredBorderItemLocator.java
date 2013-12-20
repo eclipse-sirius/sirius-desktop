@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
-
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.CenteredBorderItemLocator;
 
 /**

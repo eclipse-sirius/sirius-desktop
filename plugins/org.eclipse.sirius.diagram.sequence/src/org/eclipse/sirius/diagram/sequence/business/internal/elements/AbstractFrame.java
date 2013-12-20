@@ -25,6 +25,7 @@ import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.EventFinder;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.ParentOperandFinder;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
@@ -32,7 +33,6 @@ import org.eclipse.sirius.diagram.sequence.description.FrameMapping;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;

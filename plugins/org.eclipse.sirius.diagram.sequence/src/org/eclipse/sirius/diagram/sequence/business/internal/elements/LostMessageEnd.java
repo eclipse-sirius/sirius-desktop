@@ -18,19 +18,17 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.sequence.util.NotationPredicate;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.diagram.sequence.util.NotationPredicate;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
  * Represents the LostMEssageEnd marker which can appear at at the end of a
@@ -49,14 +47,14 @@ public class LostMessageEnd extends AbstractSequenceNode {
     public static final int VISUAL_ID = 2001;
 
     /**
-     * Predicate to check whether a Sirius DDiagramElement represents an
-     * Lost Message End.
+     * Predicate to check whether a Sirius DDiagramElement represents an Lost
+     * Message End.
      */
     private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
 
         public boolean apply(DDiagramElement input) {
-            boolean result = AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getNodeMapping());
+            boolean result = AbstractSequenceElement.isSequenceDiagramElement(input, org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getNodeMapping());
             if (input instanceof EdgeTarget) {
                 EdgeTarget et = (EdgeTarget) input;
                 result = result && Iterables.any(Iterables.concat(et.getIncomingEdges(), et.getOutgoingEdges()), Message.viewpointElementPredicate());
@@ -86,20 +84,22 @@ public class LostMessageEnd extends AbstractSequenceNode {
     }
 
     /**
-     * Returns a predicate to check whether a GMF View represents an Lost Message End.
+     * Returns a predicate to check whether a GMF View represents an Lost
+     * Message End.
      * 
-     * @return a predicate to check whether a GMF View represents an Lost Message End.
+     * @return a predicate to check whether a GMF View represents an Lost
+     *         Message End.
      */
     public static Predicate<View> notationPredicate() {
         return new NotationPredicate(NotationPackage.eINSTANCE.getNode(), VISUAL_ID, LostMessageEnd.viewpointElementPredicate());
     }
 
     /**
-     * Returns a predicate to check whether a Sirius DDiagramElement
-     * represents an EndOfLife.
+     * Returns a predicate to check whether a Sirius DDiagramElement represents
+     * an EndOfLife.
      * 
-     * @return a predicate to check whether a Sirius DDiagramElement
-     *         represents an EndOfLife.
+     * @return a predicate to check whether a Sirius DDiagramElement represents
+     *         an EndOfLife.
      */
     public static Predicate<DDiagramElement> viewpointElementPredicate() {
         return SiriusElementPredicate.INSTANCE;

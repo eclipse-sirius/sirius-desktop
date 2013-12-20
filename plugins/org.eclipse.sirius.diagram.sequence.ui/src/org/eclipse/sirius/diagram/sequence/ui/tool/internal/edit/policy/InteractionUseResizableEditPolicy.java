@@ -20,9 +20,6 @@ import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
@@ -35,6 +32,8 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.Inter
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
+
+import com.google.common.collect.Lists;
 
 /**
  * A specific AirResizableEditPolicy to manage interaction use roles move &

@@ -17,6 +17,10 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.BracketEdgeStyle;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
@@ -46,10 +50,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDi
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageNameEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.StateEditPart;
-import org.eclipse.sirius.viewpoint.BracketEdgeStyle;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Provides specific edit parts for Sirius Sequence Diagrams.
@@ -79,7 +79,7 @@ public class SequenceDiagramEditPartProvider extends AbstractEditPartProvider {
     protected Class<?> getNodeEditPartClass(View view) {
         if (view instanceof Node) {
             EObject semanticElement = ViewUtil.resolveSemanticElement(view);
-            if (ViewpointPackage.eINSTANCE.getDNode().isInstance(semanticElement)) {
+            if (DiagramPackage.eINSTANCE.getDNode().isInstance(semanticElement)) {
                 if (InstanceRole.notationPredicate().apply(view)) {
                     return InstanceRoleEditPart.class;
                 } else if (Lifeline.notationPredicate().apply(view)) {
@@ -95,7 +95,7 @@ public class SequenceDiagramEditPartProvider extends AbstractEditPartProvider {
                 } else if (ObservationPoint.notationPredicate().apply(view)) {
                     return ObservationPointEditPart.class;
                 }
-            } else if (ViewpointPackage.eINSTANCE.getDNodeContainer().isInstance(semanticElement)) {
+            } else if (DiagramPackage.eINSTANCE.getDNodeContainer().isInstance(semanticElement)) {
                 if (InteractionUse.notationPredicate().apply(view)) {
                     return InteractionUseEditPart.class;
                 } else if (CombinedFragment.notationPredicate().apply(view)) {
@@ -107,7 +107,7 @@ public class SequenceDiagramEditPartProvider extends AbstractEditPartProvider {
                 } else if (Operand.compartmentNotationPredicate().apply(view)) {
                     return OperandCompartmentEditPart.class;
                 }
-            } else if (ViewpointPackage.eINSTANCE.getDEdge().isInstance(semanticElement)) {
+            } else if (DiagramPackage.eINSTANCE.getDEdge().isInstance(semanticElement)) {
                 DEdge edge = (DEdge) semanticElement;
                 if (Message.viewpointElementPredicate().apply(edge) && SiriusVisualIDRegistry.getVisualID(view) == SequenceMessageNameEditPart.VISUAL_ID) {
                     return SequenceMessageNameEditPart.class;

@@ -25,6 +25,10 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.CollapseFilter;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramBorderNodeEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeEditPart;
@@ -38,11 +42,7 @@ import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigur
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
-import org.eclipse.sirius.viewpoint.CollapseFilter;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DNode;
 import org.eclipse.sirius.viewpoint.DStylizable;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * The edit part for {@link ObservationPoint}s.
@@ -151,7 +151,7 @@ public class ObservationPointEditPart extends DNodeEditPart {
     protected void handleNotificationEvent(Notification notification) {
         super.handleNotificationEvent(notification);
 
-        if (ViewpointPackage.eINSTANCE.getDDiagramElement_GraphicalFilters().equals(notification.getFeature())) {
+        if (DiagramPackage.eINSTANCE.getDDiagramElement_GraphicalFilters().equals(notification.getFeature())) {
             boolean collapse = notification.getNewValue() instanceof CollapseFilter && notification.getOldValue() == null;
             boolean uncollapse = notification.getOldValue() instanceof CollapseFilter && notification.getNewValue() == null;
             if (collapse || uncollapse) {

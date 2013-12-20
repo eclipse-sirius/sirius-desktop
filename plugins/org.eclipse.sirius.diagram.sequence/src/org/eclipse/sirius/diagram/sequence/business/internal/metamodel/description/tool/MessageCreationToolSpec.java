@@ -12,10 +12,10 @@ package org.eclipse.sirius.diagram.sequence.business.internal.metamodel.descript
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl;
 import org.eclipse.sirius.tools.api.refresh.BestMappingGetter;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 
 /**
  * Implementation of <code>MessageCreationTool</code>. Uses the same code as the

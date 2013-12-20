@@ -15,12 +15,11 @@ import java.util.Set;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.impl.CompoundEventEndImpl;
+
+import com.google.common.collect.Sets;
 
 /**
  * Implementation of <code>CompoundEventEnd</code>.

@@ -22,10 +22,6 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.VerticalPositionFunction;
@@ -39,6 +35,9 @@ import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Utility class to collect helper methods which deal with GraphicalOrdering but

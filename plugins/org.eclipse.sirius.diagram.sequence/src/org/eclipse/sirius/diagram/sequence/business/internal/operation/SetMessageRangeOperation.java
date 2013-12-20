@@ -13,13 +13,12 @@ package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.base.Objects;
-
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.sequence.util.Range;
-import org.eclipse.sirius.viewpoint.DEdge;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
+
+import com.google.common.base.Objects;
 
 /**
  * An operation to set the vertical range of a sequence message.

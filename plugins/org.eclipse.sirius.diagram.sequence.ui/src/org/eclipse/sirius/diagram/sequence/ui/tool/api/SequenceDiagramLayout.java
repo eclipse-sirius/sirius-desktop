@@ -11,11 +11,10 @@
 package org.eclipse.sirius.diagram.sequence.ui.tool.api;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
-
-import com.google.common.base.Preconditions;
-
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.SequenceLayout;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
+
+import com.google.common.base.Preconditions;
 
 /**
  * API class to allow clients to control some aspects of the layout of sequence

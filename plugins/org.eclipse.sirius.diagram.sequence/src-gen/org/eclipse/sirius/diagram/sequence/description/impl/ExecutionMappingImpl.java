@@ -17,7 +17,6 @@ import org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.EventMapping;
 import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
-import org.eclipse.sirius.viewpoint.description.impl.NodeMappingImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -36,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.impl.NodeMappingImpl;
  * 
  * @generated
  */
-public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMapping {
+public class ExecutionMappingImpl extends org.eclipse.sirius.diagram.description.impl.NodeMappingImpl implements ExecutionMapping {
     /**
      * The default value of the '{@link #getStartingEndFinderExpression()
      * <em>Starting End Finder Expression</em>}' attribute. <!-- begin-user-doc

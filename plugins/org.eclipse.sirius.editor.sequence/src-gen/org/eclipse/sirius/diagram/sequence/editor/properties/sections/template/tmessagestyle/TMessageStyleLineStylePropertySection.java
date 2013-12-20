@@ -14,10 +14,10 @@ package org.eclipse.sirius.diagram.sequence.editor.properties.sections.template.
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
-import org.eclipse.sirius.viewpoint.LineStyle;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;

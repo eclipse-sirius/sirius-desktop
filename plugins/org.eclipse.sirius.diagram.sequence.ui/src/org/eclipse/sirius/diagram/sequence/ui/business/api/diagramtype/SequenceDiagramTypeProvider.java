@@ -25,22 +25,19 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.gmf.runtime.notation.Diagram;
-
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.business.api.diagramtype.HeaderData;
 import org.eclipse.sirius.business.api.diagramtype.ICollapseUpdater;
 import org.eclipse.sirius.business.api.diagramtype.IDiagramDescriptionProvider;
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramGraphicalQuery;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
@@ -68,13 +65,15 @@ import org.eclipse.sirius.diagram.sequence.provider.SequenceItemProviderAdapterF
 import org.eclipse.sirius.diagram.sequence.template.provider.TemplateItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype.SequenceCollapseUpdater;
 import org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype.SequenceToolInterpretedExpressionSwitch;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * Provides diagram description for Sequence diagram.
@@ -143,20 +142,21 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
     public Collection<? extends CommandParameter> collectMappingsCommands() {
         Collection<CommandParameter> result = Lists.newArrayList();
         // Nodes
-        result.add(new CommandParameter(null, org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createInstanceRoleMapping()));
-        result.add(new CommandParameter(null, org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createExecutionMapping()));
-        result.add(new CommandParameter(null, org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createStateMapping()));
-        result.add(new CommandParameter(null, org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createEndOfLifeMapping()));
-        result.add(new CommandParameter(null, org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createObservationPointMapping()));
+        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createInstanceRoleMapping()));
+        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createExecutionMapping()));
+        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createStateMapping()));
+        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createEndOfLifeMapping()));
+        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__NODE_MAPPINGS, DescriptionFactory.eINSTANCE.createObservationPointMapping()));
         // Containers
-        result.add(new CommandParameter(null, org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createInteractionUseMapping()));
-        result.add(new CommandParameter(null, org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createCombinedFragmentMapping()));
-        result.add(new CommandParameter(null, org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createOperandMapping()));
+        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createInteractionUseMapping()));
+        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE
+                .createCombinedFragmentMapping()));
+        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__CONTAINER_MAPPINGS, DescriptionFactory.eINSTANCE.createOperandMapping()));
         // Edges
-        result.add(new CommandParameter(null, org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.LAYER__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createBasicMessageMapping()));
-        result.add(new CommandParameter(null, org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.LAYER__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createReturnMessageMapping()));
-        result.add(new CommandParameter(null, org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.LAYER__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createCreationMessageMapping()));
-        result.add(new CommandParameter(null, org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.LAYER__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createDestructionMessageMapping()));
+        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createBasicMessageMapping()));
+        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createReturnMessageMapping()));
+        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createCreationMessageMapping()));
+        result.add(new CommandParameter(null, org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__EDGE_MAPPINGS, DescriptionFactory.eINSTANCE.createDestructionMessageMapping()));
         return result;
     }
 
@@ -180,8 +180,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      * @see org.eclipse.sirius.business.api.diagramtype.IDiagramDescriptionProvider#handles(org.eclipse.emf.ecore.EPackage)
      */
     public boolean handles(EPackage ePackage) {
-        return DescriptionPackage.eINSTANCE.getNsURI().equals(ePackage.getNsURI())
-                || org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage.eINSTANCE.getNsURI().equals(ePackage.getNsURI());
+        return DescriptionPackage.eINSTANCE.getNsURI().equals(ePackage.getNsURI()) || org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage.eINSTANCE.getNsURI().equals(ePackage.getNsURI());
     }
 
     /**

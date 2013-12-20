@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.template;
 
-import org.eclipse.sirius.viewpoint.EdgeArrows;
-import org.eclipse.sirius.viewpoint.LineStyle;
+import org.eclipse.sirius.diagram.EdgeArrows;
+import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
@@ -84,7 +84,7 @@ public interface TMessageStyle extends TTransformer {
      * @model
      * @generated
      */
-    LineStyle getLineStyle();
+    org.eclipse.sirius.diagram.LineStyle getLineStyle();
 
     /**
      * Sets the value of the '
@@ -94,11 +94,11 @@ public interface TMessageStyle extends TTransformer {
      * 
      * @param value
      *            the new value of the '<em>Line Style</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.LineStyle
+     * @see org.eclipse.sirius.diagram.LineStyle
      * @see #getLineStyle()
      * @generated
      */
-    void setLineStyle(LineStyle value);
+    void setLineStyle(org.eclipse.sirius.diagram.LineStyle value);
 
     /**
      * Returns the value of the '<em><b>Source Arrow</b></em>' attribute. The
@@ -114,7 +114,7 @@ public interface TMessageStyle extends TTransformer {
      * @model default="NoDecoration" required="true"
      * @generated
      */
-    EdgeArrows getSourceArrow();
+    org.eclipse.sirius.diagram.EdgeArrows getSourceArrow();
 
     /**
      * Sets the value of the '
@@ -124,11 +124,11 @@ public interface TMessageStyle extends TTransformer {
      * 
      * @param value
      *            the new value of the '<em>Source Arrow</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.EdgeArrows
+     * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see #getSourceArrow()
      * @generated
      */
-    void setSourceArrow(EdgeArrows value);
+    void setSourceArrow(org.eclipse.sirius.diagram.EdgeArrows value);
 
     /**
      * Returns the value of the '<em><b>Target Arrow</b></em>' attribute. The
@@ -144,7 +144,7 @@ public interface TMessageStyle extends TTransformer {
      * @model default="InputArrow" required="true"
      * @generated
      */
-    EdgeArrows getTargetArrow();
+    org.eclipse.sirius.diagram.EdgeArrows getTargetArrow();
 
     /**
      * Sets the value of the '
@@ -154,11 +154,11 @@ public interface TMessageStyle extends TTransformer {
      * 
      * @param value
      *            the new value of the '<em>Target Arrow</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.EdgeArrows
+     * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see #getTargetArrow()
      * @generated
      */
-    void setTargetArrow(EdgeArrows value);
+    void setTargetArrow(org.eclipse.sirius.diagram.EdgeArrows value);
 
     /**
      * Returns the value of the '<em><b>Label Expression</b></em>' attribute.

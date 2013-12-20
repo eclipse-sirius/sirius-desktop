@@ -29,7 +29,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
-import org.eclipse.sirius.viewpoint.description.provider.NodeMappingItemProvider;
 
 /**
  * This is the item provider adapter for a
@@ -38,8 +37,8 @@ import org.eclipse.sirius.viewpoint.description.provider.NodeMappingItemProvider
  * 
  * @generated
  */
-public class ExecutionMappingItemProvider extends NodeMappingItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class ExecutionMappingItemProvider extends org.eclipse.sirius.diagram.description.provider.NodeMappingItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+        ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -148,19 +147,19 @@ public class ExecutionMappingItemProvider extends NodeMappingItemProvider implem
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createInstanceRoleMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createExecutionMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createStateMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createEndOfLifeMapping()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createObservationPointMapping()));
     }
 
@@ -187,7 +186,7 @@ public class ExecutionMappingItemProvider extends NodeMappingItemProvider implem
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == org.eclipse.sirius.viewpoint.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS;
+        boolean qualify = childFeature == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS;
         qualify = qualify && childObject instanceof EObject && DescriptionPackage.eINSTANCE.equals(((EObject) childObject).eClass().getEPackage());
 
         if (qualify) {

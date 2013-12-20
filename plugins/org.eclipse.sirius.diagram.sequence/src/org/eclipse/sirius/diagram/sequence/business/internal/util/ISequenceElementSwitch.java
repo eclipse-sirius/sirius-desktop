@@ -11,6 +11,8 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.util;
 
 import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
@@ -24,8 +26,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.State;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 
 /**
  * <!-- begin-user-doc --> The <b>Switch</b> for the sequence elements's

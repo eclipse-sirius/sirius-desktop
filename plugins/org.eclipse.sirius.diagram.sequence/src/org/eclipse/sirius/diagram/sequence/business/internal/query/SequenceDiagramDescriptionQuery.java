@@ -12,14 +12,14 @@ package org.eclipse.sirius.diagram.sequence.business.internal.query;
 
 import java.util.Iterator;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterators;
-
 import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
 import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
 import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
 import org.eclipse.sirius.diagram.sequence.description.MessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterators;
 
 /**
  * Queries from a {@link SequenceDiagramDescription}.

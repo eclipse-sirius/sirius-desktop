@@ -18,15 +18,6 @@ import java.util.SortedSet;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.base.Function;
-import com.google.common.base.Predicates;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
@@ -50,6 +41,14 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceGraph
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.CreateRequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
+
+import com.google.common.base.Function;
+import com.google.common.base.Predicates;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Sets;
 
 /**
  * Validates that is request for InteractionUse or CombinedFragment is allowed.

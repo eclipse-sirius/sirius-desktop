@@ -20,11 +20,10 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.notation.Bounds;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 
 /**
  * Abstract class to validate InstanceRole move & resize request and get from it

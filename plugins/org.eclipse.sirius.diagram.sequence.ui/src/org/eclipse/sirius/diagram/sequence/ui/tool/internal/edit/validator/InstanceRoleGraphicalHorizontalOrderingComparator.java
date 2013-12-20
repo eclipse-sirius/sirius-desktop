@@ -16,7 +16,6 @@ import java.util.Map;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Node;
-
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 
 /**

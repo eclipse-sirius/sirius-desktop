@@ -17,7 +17,6 @@ import org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.EventMapping;
 import org.eclipse.sirius.diagram.sequence.description.FrameMapping;
-import org.eclipse.sirius.viewpoint.description.impl.ContainerMappingImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -42,7 +41,7 @@ import org.eclipse.sirius.viewpoint.description.impl.ContainerMappingImpl;
  * 
  * @generated
  */
-public abstract class FrameMappingImpl extends ContainerMappingImpl implements FrameMapping {
+public abstract class FrameMappingImpl extends org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl implements FrameMapping {
     /**
      * The default value of the '{@link #getStartingEndFinderExpression()
      * <em>Starting End Finder Expression</em>}' attribute. <!-- begin-user-doc

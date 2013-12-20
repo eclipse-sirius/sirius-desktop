@@ -18,16 +18,18 @@ import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
-import org.osgi.framework.Version;
-
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.CollapseFilter;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.GraphicalFilter;
+import org.eclipse.sirius.diagram.IndirectlyCollapseFilter;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNode2EditPart;
@@ -41,18 +43,15 @@ import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype.SequenceCollapseUpdater;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.CollapseFilter;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DNode;
-import org.eclipse.sirius.viewpoint.DNodeContainer;
-import org.eclipse.sirius.viewpoint.DNodeList;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.GraphicalFilter;
-import org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.osgi.framework.Version;
+
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * Migration contribution for sequence diagram part of representations file.
@@ -173,7 +172,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
             }
         }
         for (DDiagramElement indirectlyCollaspedDDE : indirectlyCollaspedDDEs) {
-            IndirectlyCollapseFilter indirectlyCollapseFilter = ViewpointFactory.eINSTANCE.createIndirectlyCollapseFilter();
+            IndirectlyCollapseFilter indirectlyCollapseFilter = DiagramFactory.eINSTANCE.createIndirectlyCollapseFilter();
             indirectlyCollaspedDDE.getGraphicalFilters().add(indirectlyCollapseFilter);
         }
     }

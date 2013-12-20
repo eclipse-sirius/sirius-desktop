@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description;
 
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
-
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Observation Point Mapping</b></em>'. <!-- end-user-doc -->
@@ -21,5 +19,5 @@ import org.eclipse.sirius.viewpoint.description.NodeMapping;
  * @model
  * @generated
  */
-public interface ObservationPointMapping extends NodeMapping {
+public interface ObservationPointMapping extends org.eclipse.sirius.diagram.description.NodeMapping {
 } // ObservationPointMapping

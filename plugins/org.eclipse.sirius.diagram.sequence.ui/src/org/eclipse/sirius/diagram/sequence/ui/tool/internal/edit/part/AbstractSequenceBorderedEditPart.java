@@ -23,9 +23,6 @@ import org.eclipse.gef.requests.DropRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.diagram.internal.edit.parts.DNode2EditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -38,6 +35,8 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.Sequence
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+
+import com.google.common.collect.Sets;
 
 /**
  * Special edit part for common behavior of Lifelines, Executions and States.

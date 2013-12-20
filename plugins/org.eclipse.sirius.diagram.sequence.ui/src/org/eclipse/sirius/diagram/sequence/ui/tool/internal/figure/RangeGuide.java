@@ -13,9 +13,8 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.swt.graphics.Color;
-
 import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.swt.graphics.Color;
 
 /**
  * A rectangle across the whole diagram, useful as feedback for sequence

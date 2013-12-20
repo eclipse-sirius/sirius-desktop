@@ -22,13 +22,11 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
-
-import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.repair.IRepairParticipant;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.migration.resource.session.commands.MigrationCommandExecutor;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
@@ -37,9 +35,10 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRo
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.flag.SequenceDiagramAbsoluteBoundsFlagger;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DNode;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DView;
+
+import com.google.common.collect.Iterables;
 
 /**
  * Sequence diagram repair participant.

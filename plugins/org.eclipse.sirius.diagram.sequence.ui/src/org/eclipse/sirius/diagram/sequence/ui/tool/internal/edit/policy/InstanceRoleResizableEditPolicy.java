@@ -32,10 +32,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
-
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Multimap;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.graphical.edit.policies.AirResizableEditPolicy;
@@ -54,6 +50,9 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.Insta
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.tools.api.command.DoNothingCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
+
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 
 /**
  * A specific AirResizableEditPolicy to manage instance roles move & resize

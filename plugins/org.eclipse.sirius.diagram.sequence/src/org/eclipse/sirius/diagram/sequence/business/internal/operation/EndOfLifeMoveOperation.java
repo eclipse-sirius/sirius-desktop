@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
-import com.google.common.base.Preconditions;
-
 import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+
+import com.google.common.base.Preconditions;
 
 /**
  * Modifies the vertical range of a lifeline edit part to move the end of life

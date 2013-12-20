@@ -17,11 +17,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
 import org.eclipse.sirius.viewpoint.DContainer;
-import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DValidable;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
@@ -124,7 +122,7 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseDDiagram(DDiagram object) {
+        public Adapter caseDDiagram(org.eclipse.sirius.diagram.DDiagram object) {
             return createDDiagramAdapter();
         }
 
@@ -134,7 +132,7 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseDSemanticDiagram(DSemanticDiagram object) {
+        public Adapter caseDSemanticDiagram(org.eclipse.sirius.diagram.DSemanticDiagram object) {
             return createDSemanticDiagramAdapter();
         }
 
@@ -316,14 +314,14 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DSemanticDiagram
+     * {@link org.eclipse.sirius.diagram.DSemanticDiagram
      * <em>DSemantic Diagram</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.DSemanticDiagram
+     * @see org.eclipse.sirius.diagram.DSemanticDiagram
      * @generated
      */
     public Adapter createDSemanticDiagramAdapter() {

@@ -21,8 +21,8 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.CombinedFragmentMapping;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
  * This is the item provider adapter for a
@@ -118,7 +118,8 @@ public class CombinedFragmentMappingItemProvider extends FrameMappingItemProvide
         Object childFeature = feature;
         Object childObject = child;
 
-        boolean qualify = childFeature == DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS || childFeature == DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
+        boolean qualify = childFeature == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS
+                || childFeature == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
 
         if (qualify) {
             return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });

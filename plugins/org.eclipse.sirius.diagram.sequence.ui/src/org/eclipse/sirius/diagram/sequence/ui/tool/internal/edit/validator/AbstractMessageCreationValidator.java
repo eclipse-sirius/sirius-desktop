@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.requests.CreateConnectionRequest;
-
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 
 /**

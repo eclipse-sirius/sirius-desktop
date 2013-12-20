@@ -26,11 +26,8 @@ import org.eclipse.sirius.diagram.sequence.description.MessageEndVariable;
 import org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
-import org.eclipse.sirius.viewpoint.EdgeTarget;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
@@ -232,7 +229,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected EList<EdgeMapping> edgeMappings;
+    protected EList<org.eclipse.sirius.diagram.description.EdgeMapping> edgeMappings;
 
     /**
      * The cached value of the '{@link #getSourceVariable()
@@ -318,7 +315,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected EList<DiagramElementMapping> extraSourceMappings;
+    protected EList<org.eclipse.sirius.diagram.description.DiagramElementMapping> extraSourceMappings;
 
     /**
      * The cached value of the '{@link #getExtraTargetMappings()
@@ -329,7 +326,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected EList<DiagramElementMapping> extraTargetMappings;
+    protected EList<org.eclipse.sirius.diagram.description.DiagramElementMapping> extraTargetMappings;
 
     /**
      * The default value of the '{@link #getConnectionStartPrecondition()
@@ -516,9 +513,10 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public EList<EdgeMapping> getEdgeMappings() {
+    public EList<org.eclipse.sirius.diagram.description.EdgeMapping> getEdgeMappings() {
         if (edgeMappings == null) {
-            edgeMappings = new EObjectResolvingEList<EdgeMapping>(EdgeMapping.class, this, ToolPackage.MESSAGE_CREATION_TOOL__EDGE_MAPPINGS);
+            edgeMappings = new EObjectResolvingEList<org.eclipse.sirius.diagram.description.EdgeMapping>(org.eclipse.sirius.diagram.description.EdgeMapping.class, this,
+                    ToolPackage.MESSAGE_CREATION_TOOL__EDGE_MAPPINGS);
         }
         return edgeMappings;
     }
@@ -899,9 +897,10 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public EList<DiagramElementMapping> getExtraSourceMappings() {
+    public EList<org.eclipse.sirius.diagram.description.DiagramElementMapping> getExtraSourceMappings() {
         if (extraSourceMappings == null) {
-            extraSourceMappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_SOURCE_MAPPINGS);
+            extraSourceMappings = new EObjectResolvingEList<org.eclipse.sirius.diagram.description.DiagramElementMapping>(org.eclipse.sirius.diagram.description.DiagramElementMapping.class, this,
+                    ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_SOURCE_MAPPINGS);
         }
         return extraSourceMappings;
     }
@@ -911,9 +910,10 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public EList<DiagramElementMapping> getExtraTargetMappings() {
+    public EList<org.eclipse.sirius.diagram.description.DiagramElementMapping> getExtraTargetMappings() {
         if (extraTargetMappings == null) {
-            extraTargetMappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_TARGET_MAPPINGS);
+            extraTargetMappings = new EObjectResolvingEList<org.eclipse.sirius.diagram.description.DiagramElementMapping>(org.eclipse.sirius.diagram.description.DiagramElementMapping.class, this,
+                    ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_TARGET_MAPPINGS);
         }
         return extraTargetMappings;
     }
@@ -1038,7 +1038,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public EdgeMapping getBestMapping(EdgeTarget source, EdgeTarget target, EList<EObject> createdElements) {
+    public org.eclipse.sirius.diagram.description.EdgeMapping getBestMapping(org.eclipse.sirius.diagram.EdgeTarget source, org.eclipse.sirius.diagram.EdgeTarget target, EList<EObject> createdElements) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
         throw new UnsupportedOperationException();
@@ -1160,7 +1160,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__EDGE_MAPPINGS:
             getEdgeMappings().clear();
-            getEdgeMappings().addAll((Collection<? extends EdgeMapping>) newValue);
+            getEdgeMappings().addAll((Collection<? extends org.eclipse.sirius.diagram.description.EdgeMapping>) newValue);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE:
             setSourceVariable((SourceEdgeCreationVariable) newValue);
@@ -1182,11 +1182,11 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_SOURCE_MAPPINGS:
             getExtraSourceMappings().clear();
-            getExtraSourceMappings().addAll((Collection<? extends DiagramElementMapping>) newValue);
+            getExtraSourceMappings().addAll((Collection<? extends org.eclipse.sirius.diagram.description.DiagramElementMapping>) newValue);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_TARGET_MAPPINGS:
             getExtraTargetMappings().clear();
-            getExtraTargetMappings().addAll((Collection<? extends DiagramElementMapping>) newValue);
+            getExtraTargetMappings().addAll((Collection<? extends org.eclipse.sirius.diagram.description.DiagramElementMapping>) newValue);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__CONNECTION_START_PRECONDITION:
             setConnectionStartPrecondition((String) newValue);

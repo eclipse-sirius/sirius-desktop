@@ -16,8 +16,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.diagram.sequence.template.TMessageStyle;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
-import org.eclipse.sirius.viewpoint.EdgeArrows;
-import org.eclipse.sirius.viewpoint.LineStyle;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 
 /**
@@ -65,7 +63,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * @generated
      * @ordered
      */
-    protected static final LineStyle LINE_STYLE_EDEFAULT = LineStyle.SOLID_LITERAL;
+    protected static final org.eclipse.sirius.diagram.LineStyle LINE_STYLE_EDEFAULT = org.eclipse.sirius.diagram.LineStyle.SOLID_LITERAL;
 
     /**
      * The cached value of the '{@link #getLineStyle() <em>Line Style</em>}'
@@ -75,7 +73,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * @generated
      * @ordered
      */
-    protected LineStyle lineStyle = LINE_STYLE_EDEFAULT;
+    protected org.eclipse.sirius.diagram.LineStyle lineStyle = LINE_STYLE_EDEFAULT;
 
     /**
      * The default value of the '{@link #getSourceArrow() <em>Source Arrow</em>}
@@ -85,7 +83,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * @generated
      * @ordered
      */
-    protected static final EdgeArrows SOURCE_ARROW_EDEFAULT = EdgeArrows.NO_DECORATION_LITERAL;
+    protected static final org.eclipse.sirius.diagram.EdgeArrows SOURCE_ARROW_EDEFAULT = org.eclipse.sirius.diagram.EdgeArrows.NO_DECORATION_LITERAL;
 
     /**
      * The cached value of the '{@link #getSourceArrow() <em>Source Arrow</em>}'
@@ -95,7 +93,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * @generated
      * @ordered
      */
-    protected EdgeArrows sourceArrow = SOURCE_ARROW_EDEFAULT;
+    protected org.eclipse.sirius.diagram.EdgeArrows sourceArrow = SOURCE_ARROW_EDEFAULT;
 
     /**
      * The default value of the '{@link #getTargetArrow() <em>Target Arrow</em>}
@@ -105,7 +103,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * @generated
      * @ordered
      */
-    protected static final EdgeArrows TARGET_ARROW_EDEFAULT = EdgeArrows.INPUT_ARROW_LITERAL;
+    protected static final org.eclipse.sirius.diagram.EdgeArrows TARGET_ARROW_EDEFAULT = org.eclipse.sirius.diagram.EdgeArrows.INPUT_ARROW_LITERAL;
 
     /**
      * The cached value of the '{@link #getTargetArrow() <em>Target Arrow</em>}'
@@ -115,7 +113,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * @generated
      * @ordered
      */
-    protected EdgeArrows targetArrow = TARGET_ARROW_EDEFAULT;
+    protected org.eclipse.sirius.diagram.EdgeArrows targetArrow = TARGET_ARROW_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelExpression()
@@ -201,7 +199,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * 
      * @generated
      */
-    public LineStyle getLineStyle() {
+    public org.eclipse.sirius.diagram.LineStyle getLineStyle() {
         return lineStyle;
     }
 
@@ -210,8 +208,8 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * 
      * @generated
      */
-    public void setLineStyle(LineStyle newLineStyle) {
-        LineStyle oldLineStyle = lineStyle;
+    public void setLineStyle(org.eclipse.sirius.diagram.LineStyle newLineStyle) {
+        org.eclipse.sirius.diagram.LineStyle oldLineStyle = lineStyle;
         lineStyle = newLineStyle == null ? LINE_STYLE_EDEFAULT : newLineStyle;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TMESSAGE_STYLE__LINE_STYLE, oldLineStyle, lineStyle));
@@ -222,7 +220,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * 
      * @generated
      */
-    public EdgeArrows getSourceArrow() {
+    public org.eclipse.sirius.diagram.EdgeArrows getSourceArrow() {
         return sourceArrow;
     }
 
@@ -231,8 +229,8 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * 
      * @generated
      */
-    public void setSourceArrow(EdgeArrows newSourceArrow) {
-        EdgeArrows oldSourceArrow = sourceArrow;
+    public void setSourceArrow(org.eclipse.sirius.diagram.EdgeArrows newSourceArrow) {
+        org.eclipse.sirius.diagram.EdgeArrows oldSourceArrow = sourceArrow;
         sourceArrow = newSourceArrow == null ? SOURCE_ARROW_EDEFAULT : newSourceArrow;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TMESSAGE_STYLE__SOURCE_ARROW, oldSourceArrow, sourceArrow));
@@ -243,7 +241,7 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * 
      * @generated
      */
-    public EdgeArrows getTargetArrow() {
+    public org.eclipse.sirius.diagram.EdgeArrows getTargetArrow() {
         return targetArrow;
     }
 
@@ -252,8 +250,8 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
      * 
      * @generated
      */
-    public void setTargetArrow(EdgeArrows newTargetArrow) {
-        EdgeArrows oldTargetArrow = targetArrow;
+    public void setTargetArrow(org.eclipse.sirius.diagram.EdgeArrows newTargetArrow) {
+        org.eclipse.sirius.diagram.EdgeArrows oldTargetArrow = targetArrow;
         targetArrow = newTargetArrow == null ? TARGET_ARROW_EDEFAULT : newTargetArrow;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, TemplatePackage.TMESSAGE_STYLE__TARGET_ARROW, oldTargetArrow, targetArrow));
@@ -316,13 +314,13 @@ public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle
             setStrokeColor((ColorDescription) newValue);
             return;
         case TemplatePackage.TMESSAGE_STYLE__LINE_STYLE:
-            setLineStyle((LineStyle) newValue);
+            setLineStyle((org.eclipse.sirius.diagram.LineStyle) newValue);
             return;
         case TemplatePackage.TMESSAGE_STYLE__SOURCE_ARROW:
-            setSourceArrow((EdgeArrows) newValue);
+            setSourceArrow((org.eclipse.sirius.diagram.EdgeArrows) newValue);
             return;
         case TemplatePackage.TMESSAGE_STYLE__TARGET_ARROW:
-            setTargetArrow((EdgeArrows) newValue);
+            setTargetArrow((org.eclipse.sirius.diagram.EdgeArrows) newValue);
             return;
         case TemplatePackage.TMESSAGE_STYLE__LABEL_EXPRESSION:
             setLabelExpression((String) newValue);

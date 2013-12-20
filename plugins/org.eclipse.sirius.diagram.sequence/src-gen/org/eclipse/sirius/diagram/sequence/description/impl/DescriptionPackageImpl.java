@@ -626,7 +626,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
         // Obtain other dependent packages
         ToolPackage theToolPackage = (ToolPackage) EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI);
-        org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
+        org.eclipse.sirius.diagram.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.diagram.description.DescriptionPackage) EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI);
+        org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_2 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eNS_URI);
         org.eclipse.sirius.viewpoint.description.tool.ToolPackage theToolPackage_1 = (org.eclipse.sirius.viewpoint.description.tool.ToolPackage) EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eNS_URI);
@@ -665,9 +667,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
         // Initialize classes and features; add operations and parameters
         initEClass(sequenceDiagramDescriptionEClass, SequenceDiagramDescription.class, "SequenceDiagramDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getSequenceDiagramDescription_EndsOrdering(), theDescriptionPackage_1.getInterpretedExpression(), "endsOrdering", null, 1, 1, SequenceDiagramDescription.class, !IS_TRANSIENT,
+        initEAttribute(getSequenceDiagramDescription_EndsOrdering(), theDescriptionPackage_2.getInterpretedExpression(), "endsOrdering", null, 1, 1, SequenceDiagramDescription.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getSequenceDiagramDescription_InstanceRolesOrdering(), theDescriptionPackage_1.getInterpretedExpression(), "instanceRolesOrdering", null, 1, 1,
+        initEAttribute(getSequenceDiagramDescription_InstanceRolesOrdering(), theDescriptionPackage_2.getInterpretedExpression(), "instanceRolesOrdering", null, 1, 1,
                 SequenceDiagramDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(instanceRoleMappingEClass, InstanceRoleMapping.class, "InstanceRoleMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -675,9 +677,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEClass(eventMappingEClass, EventMapping.class, "EventMapping", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(delimitedEventMappingEClass, DelimitedEventMapping.class, "DelimitedEventMapping", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getDelimitedEventMapping_StartingEndFinderExpression(), theDescriptionPackage_1.getInterpretedExpression(), "startingEndFinderExpression", null, 1, 1,
+        initEAttribute(getDelimitedEventMapping_StartingEndFinderExpression(), theDescriptionPackage_2.getInterpretedExpression(), "startingEndFinderExpression", null, 1, 1,
                 DelimitedEventMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDelimitedEventMapping_FinishingEndFinderExpression(), theDescriptionPackage_1.getInterpretedExpression(), "finishingEndFinderExpression", null, 1, 1,
+        initEAttribute(getDelimitedEventMapping_FinishingEndFinderExpression(), theDescriptionPackage_2.getInterpretedExpression(), "finishingEndFinderExpression", null, 1, 1,
                 DelimitedEventMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(executionMappingEClass, ExecutionMapping.class, "ExecutionMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -687,15 +689,15 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEClass(endOfLifeMappingEClass, EndOfLifeMapping.class, "EndOfLifeMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(messageMappingEClass, MessageMapping.class, "MessageMapping", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getMessageMapping_SendingEndFinderExpression(), theDescriptionPackage_1.getInterpretedExpression(), "sendingEndFinderExpression", null, 1, 1, MessageMapping.class,
+        initEAttribute(getMessageMapping_SendingEndFinderExpression(), theDescriptionPackage_2.getInterpretedExpression(), "sendingEndFinderExpression", null, 1, 1, MessageMapping.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getMessageMapping_ReceivingEndFinderExpression(), theDescriptionPackage_1.getInterpretedExpression(), "receivingEndFinderExpression", null, 1, 1, MessageMapping.class,
+        initEAttribute(getMessageMapping_ReceivingEndFinderExpression(), theDescriptionPackage_2.getInterpretedExpression(), "receivingEndFinderExpression", null, 1, 1, MessageMapping.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(basicMessageMappingEClass, BasicMessageMapping.class, "BasicMessageMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(returnMessageMappingEClass, ReturnMessageMapping.class, "ReturnMessageMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getReturnMessageMapping_InvocationMessageFinderExpression(), theDescriptionPackage_1.getInterpretedExpression(), "invocationMessageFinderExpression", null, 1, 1,
+        initEAttribute(getReturnMessageMapping_InvocationMessageFinderExpression(), theDescriptionPackage_2.getInterpretedExpression(), "invocationMessageFinderExpression", null, 1, 1,
                 ReturnMessageMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(creationMessageMappingEClass, CreationMessageMapping.class, "CreationMessageMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -707,9 +709,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEClass(coveredLifelinesVariableEClass, CoveredLifelinesVariable.class, "CoveredLifelinesVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(frameMappingEClass, FrameMapping.class, "FrameMapping", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getFrameMapping_CoveredLifelinesExpression(), theDescriptionPackage_1.getInterpretedExpression(), "coveredLifelinesExpression", null, 1, 1, FrameMapping.class, !IS_TRANSIENT,
+        initEAttribute(getFrameMapping_CoveredLifelinesExpression(), theDescriptionPackage_2.getInterpretedExpression(), "coveredLifelinesExpression", null, 1, 1, FrameMapping.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getFrameMapping_CenterLabelExpression(), theDescriptionPackage_1.getInterpretedExpression(), "centerLabelExpression", null, 0, 1, FrameMapping.class, !IS_TRANSIENT,
+        initEAttribute(getFrameMapping_CenterLabelExpression(), theDescriptionPackage_2.getInterpretedExpression(), "centerLabelExpression", null, 0, 1, FrameMapping.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(interactionUseMappingEClass, InteractionUseMapping.class, "InteractionUseMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

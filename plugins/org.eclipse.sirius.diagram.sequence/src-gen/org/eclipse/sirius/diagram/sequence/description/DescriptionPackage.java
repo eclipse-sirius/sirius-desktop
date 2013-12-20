@@ -79,7 +79,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__DROP_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__DROP_DESCRIPTIONS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__DROP_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__DROP_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -88,7 +88,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__DOCUMENTATION;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>End User Documentation</b></em>'
@@ -97,7 +97,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__END_USER_DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__END_USER_DOCUMENTATION;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__END_USER_DOCUMENTATION = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__END_USER_DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -106,7 +106,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__NAME;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__NAME = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -115,7 +115,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__LABEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__LABEL;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__LABEL = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__LABEL;
 
     /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
@@ -124,7 +124,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__TITLE_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__TITLE_EXPRESSION;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__TITLE_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__TITLE_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Initialisation</b></em>' attribute. <!--
@@ -133,7 +133,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__INITIALISATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__INITIALISATION;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__INITIALISATION = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__INITIALISATION;
 
     /**
      * The feature id for the '<em><b>Metamodel</b></em>' reference list. <!--
@@ -142,7 +142,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__METAMODEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__METAMODEL;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__METAMODEL = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__METAMODEL;
 
     /**
      * The feature id for the '<em><b>Show On Startup</b></em>' attribute. <!--
@@ -151,7 +151,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__SHOW_ON_STARTUP = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__SHOW_ON_STARTUP;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__SHOW_ON_STARTUP = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__SHOW_ON_STARTUP;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -160,7 +160,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__PASTE_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__PASTE_DESCRIPTIONS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__PASTE_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -169,7 +169,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__FILTERS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__FILTERS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__FILTERS;
 
     /**
      * The feature id for the '<em><b>All Edge Mappings</b></em>' reference
@@ -178,7 +178,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference
@@ -187,7 +187,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>All Container Mappings</b></em>' reference
@@ -196,7 +196,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Validation Set</b></em>' containment
@@ -205,7 +205,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__VALIDATION_SET = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__VALIDATION_SET = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET;
 
     /**
      * The feature id for the '<em><b>Concerns</b></em>' containment reference.
@@ -214,16 +214,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__CONCERNS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS;
-
-    /**
-     * The feature id for the '<em><b>Information Sections</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__INFORMATION_SECTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__INFORMATION_SECTIONS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__CONCERNS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS;
 
     /**
      * The feature id for the '<em><b>All Tools</b></em>' reference list. <!--
@@ -232,7 +223,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_TOOLS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_TOOLS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_TOOLS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_TOOLS;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -241,7 +232,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__DOMAIN_CLASS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__DOMAIN_CLASS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__DOMAIN_CLASS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -250,7 +241,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Default Concern</b></em>' reference. <!--
@@ -259,7 +250,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__DEFAULT_CONCERN = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_CONCERN;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__DEFAULT_CONCERN = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_CONCERN;
 
     /**
      * The feature id for the '<em><b>Root Expression</b></em>' attribute. <!--
@@ -268,7 +259,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ROOT_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ROOT_EXPRESSION;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__ROOT_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ROOT_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Init</b></em>' reference. <!--
@@ -277,7 +268,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__INIT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__INIT;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__INIT = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__INIT;
 
     /**
      * The feature id for the '<em><b>Layout</b></em>' containment reference.
@@ -286,7 +277,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__LAYOUT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__LAYOUT;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__LAYOUT = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__LAYOUT;
 
     /**
      * The feature id for the '<em><b>Diagram Initialisation</b></em>'
@@ -295,7 +286,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION;
 
     /**
      * The feature id for the '<em><b>Default Layer</b></em>' containment
@@ -304,7 +295,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__DEFAULT_LAYER = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__DEFAULT_LAYER = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__DEFAULT_LAYER;
 
     /**
      * The feature id for the '<em><b>Additional Layers</b></em>' containment
@@ -313,7 +304,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS;
 
     /**
      * The feature id for the '<em><b>All Layers</b></em>' reference list. <!--
@@ -322,7 +313,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_LAYERS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_LAYERS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_LAYERS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_LAYERS;
 
     /**
      * The feature id for the '<em><b>All Activated Tools</b></em>' reference
@@ -331,7 +322,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS;
 
     /**
      * The feature id for the '<em><b>Node Mappings</b></em>' containment
@@ -340,7 +331,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__NODE_MAPPINGS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Edge Mappings</b></em>' containment
@@ -349,7 +340,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__EDGE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__EDGE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Edge Mapping Imports</b></em>' containment
@@ -358,7 +349,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS;
 
     /**
      * The feature id for the '<em><b>Container Mappings</b></em>' containment
@@ -367,7 +358,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Mappings</b></em>' reference list.
@@ -376,7 +367,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__REUSED_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__REUSED_MAPPINGS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__REUSED_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__REUSED_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Tool Section</b></em>' containment
@@ -385,7 +376,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__TOOL_SECTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__TOOL_SECTION;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__TOOL_SECTION = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__TOOL_SECTION;
 
     /**
      * The feature id for the '<em><b>Reused Tools</b></em>' reference list.
@@ -394,7 +385,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__REUSED_TOOLS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__REUSED_TOOLS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__REUSED_TOOLS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__REUSED_TOOLS;
 
     /**
      * The feature id for the '<em><b>Enable Popup Bars</b></em>' attribute.
@@ -403,7 +394,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS;
 
     /**
      * The feature id for the '<em><b>Ends Ordering</b></em>' attribute. <!--
@@ -412,7 +403,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ENDS_ORDERING = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION_FEATURE_COUNT + 0;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__ENDS_ORDERING = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Instance Roles Ordering</b></em>'
@@ -421,7 +412,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__INSTANCE_ROLES_ORDERING = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION_FEATURE_COUNT + 1;
+    int SEQUENCE_DIAGRAM_DESCRIPTION__INSTANCE_ROLES_ORDERING = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '
@@ -431,7 +422,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int SEQUENCE_DIAGRAM_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DIAGRAM_DESCRIPTION_FEATURE_COUNT + 2;
+    int SEQUENCE_DIAGRAM_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -452,7 +443,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__NAME;
+    int INSTANCE_ROLE_MAPPING__NAME = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -461,7 +452,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__LABEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__LABEL;
+    int INSTANCE_ROLE_MAPPING__LABEL = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -470,7 +461,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DETAIL_DESCRIPTIONS;
+    int INSTANCE_ROLE_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -479,7 +470,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int INSTANCE_ROLE_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -488,7 +479,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__PASTE_DESCRIPTIONS;
+    int INSTANCE_ROLE_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -497,7 +488,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__PRECONDITION_EXPRESSION;
+    int INSTANCE_ROLE_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -506,7 +497,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DELETION_DESCRIPTION;
+    int INSTANCE_ROLE_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -515,7 +506,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__LABEL_DIRECT_EDIT;
+    int INSTANCE_ROLE_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -524,7 +515,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int INSTANCE_ROLE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
@@ -533,7 +524,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__CREATE_ELEMENTS;
+    int INSTANCE_ROLE_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -542,7 +533,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_ELEMENTS;
+    int INSTANCE_ROLE_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -551,7 +542,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int INSTANCE_ROLE_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -560,7 +551,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__SYNCHRONIZATION_LOCK;
+    int INSTANCE_ROLE_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -569,7 +560,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DOCUMENTATION;
+    int INSTANCE_ROLE_MAPPING__DOCUMENTATION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -578,7 +569,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DOMAIN_CLASS;
+    int INSTANCE_ROLE_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>'
@@ -587,7 +578,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__BORDERED_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__BORDERED_NODE_MAPPINGS;
+    int INSTANCE_ROLE_MAPPING__BORDERED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>'
@@ -596,7 +587,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
+    int INSTANCE_ROLE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference
@@ -605,7 +596,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__DROP_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DROP_DESCRIPTIONS;
+    int INSTANCE_ROLE_MAPPING__DROP_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DROP_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -614,7 +605,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__STYLE = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__STYLE;
+    int INSTANCE_ROLE_MAPPING__STYLE = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -623,7 +614,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__CONDITIONNAL_STYLES;
+    int INSTANCE_ROLE_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__CONDITIONNAL_STYLES;
 
     /**
      * The number of structural features of the '<em>Instance Role Mapping</em>'
@@ -632,7 +623,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_MAPPING_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 0;
+    int INSTANCE_ROLE_MAPPING_FEATURE_COUNT = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -714,7 +705,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__NAME;
+    int EXECUTION_MAPPING__NAME = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -723,7 +714,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__LABEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__LABEL;
+    int EXECUTION_MAPPING__LABEL = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -732,7 +723,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DETAIL_DESCRIPTIONS;
+    int EXECUTION_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -741,7 +732,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int EXECUTION_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -750,7 +741,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__PASTE_DESCRIPTIONS;
+    int EXECUTION_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -759,7 +750,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__PRECONDITION_EXPRESSION;
+    int EXECUTION_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -768,7 +759,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DELETION_DESCRIPTION;
+    int EXECUTION_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -777,7 +768,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__LABEL_DIRECT_EDIT;
+    int EXECUTION_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -786,7 +777,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int EXECUTION_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
@@ -795,7 +786,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__CREATE_ELEMENTS;
+    int EXECUTION_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -804,7 +795,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_ELEMENTS;
+    int EXECUTION_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -813,7 +804,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int EXECUTION_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -822,7 +813,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__SYNCHRONIZATION_LOCK;
+    int EXECUTION_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -831,7 +822,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DOCUMENTATION;
+    int EXECUTION_MAPPING__DOCUMENTATION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -840,7 +831,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DOMAIN_CLASS;
+    int EXECUTION_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>'
@@ -849,7 +840,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__BORDERED_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__BORDERED_NODE_MAPPINGS;
+    int EXECUTION_MAPPING__BORDERED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>'
@@ -858,7 +849,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
+    int EXECUTION_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference
@@ -867,7 +858,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__DROP_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DROP_DESCRIPTIONS;
+    int EXECUTION_MAPPING__DROP_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DROP_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -876,7 +867,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__STYLE = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__STYLE;
+    int EXECUTION_MAPPING__STYLE = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -885,7 +876,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__CONDITIONNAL_STYLES;
+    int EXECUTION_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__CONDITIONNAL_STYLES;
 
     /**
      * The feature id for the '<em><b>Starting End Finder Expression</b></em>'
@@ -894,7 +885,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__STARTING_END_FINDER_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 0;
+    int EXECUTION_MAPPING__STARTING_END_FINDER_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Finishing End Finder Expression</b></em>'
@@ -903,7 +894,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING__FINISHING_END_FINDER_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 1;
+    int EXECUTION_MAPPING__FINISHING_END_FINDER_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Execution Mapping</em>'
@@ -912,7 +903,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_MAPPING_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 2;
+    int EXECUTION_MAPPING_FEATURE_COUNT = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -933,7 +924,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__NAME;
+    int STATE_MAPPING__NAME = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -942,7 +933,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__LABEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__LABEL;
+    int STATE_MAPPING__LABEL = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -951,7 +942,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DETAIL_DESCRIPTIONS;
+    int STATE_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -960,7 +951,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int STATE_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -969,7 +960,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__PASTE_DESCRIPTIONS;
+    int STATE_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -978,7 +969,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__PRECONDITION_EXPRESSION;
+    int STATE_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -987,7 +978,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DELETION_DESCRIPTION;
+    int STATE_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -996,7 +987,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__LABEL_DIRECT_EDIT;
+    int STATE_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1005,7 +996,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int STATE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
@@ -1014,7 +1005,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__CREATE_ELEMENTS;
+    int STATE_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -1023,7 +1014,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_ELEMENTS;
+    int STATE_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -1032,7 +1023,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int STATE_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -1041,7 +1032,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__SYNCHRONIZATION_LOCK;
+    int STATE_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -1050,7 +1041,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DOCUMENTATION;
+    int STATE_MAPPING__DOCUMENTATION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -1059,7 +1050,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DOMAIN_CLASS;
+    int STATE_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>'
@@ -1068,7 +1059,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__BORDERED_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__BORDERED_NODE_MAPPINGS;
+    int STATE_MAPPING__BORDERED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>'
@@ -1077,7 +1068,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
+    int STATE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference
@@ -1086,7 +1077,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__DROP_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DROP_DESCRIPTIONS;
+    int STATE_MAPPING__DROP_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DROP_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -1095,7 +1086,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__STYLE = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__STYLE;
+    int STATE_MAPPING__STYLE = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -1104,7 +1095,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__CONDITIONNAL_STYLES;
+    int STATE_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__CONDITIONNAL_STYLES;
 
     /**
      * The feature id for the '<em><b>Starting End Finder Expression</b></em>'
@@ -1113,7 +1104,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__STARTING_END_FINDER_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 0;
+    int STATE_MAPPING__STARTING_END_FINDER_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Finishing End Finder Expression</b></em>'
@@ -1122,7 +1113,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING__FINISHING_END_FINDER_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 1;
+    int STATE_MAPPING__FINISHING_END_FINDER_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>State Mapping</em>' class.
@@ -1131,7 +1122,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_MAPPING_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 2;
+    int STATE_MAPPING_FEATURE_COUNT = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -1152,7 +1143,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__NAME;
+    int END_OF_LIFE_MAPPING__NAME = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -1161,7 +1152,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__LABEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__LABEL;
+    int END_OF_LIFE_MAPPING__LABEL = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -1170,7 +1161,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DETAIL_DESCRIPTIONS;
+    int END_OF_LIFE_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -1179,7 +1170,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int END_OF_LIFE_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -1188,7 +1179,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__PASTE_DESCRIPTIONS;
+    int END_OF_LIFE_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -1197,7 +1188,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__PRECONDITION_EXPRESSION;
+    int END_OF_LIFE_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -1206,7 +1197,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DELETION_DESCRIPTION;
+    int END_OF_LIFE_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -1215,7 +1206,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__LABEL_DIRECT_EDIT;
+    int END_OF_LIFE_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1224,7 +1215,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int END_OF_LIFE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
@@ -1233,7 +1224,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__CREATE_ELEMENTS;
+    int END_OF_LIFE_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -1242,7 +1233,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_ELEMENTS;
+    int END_OF_LIFE_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -1251,7 +1242,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int END_OF_LIFE_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -1260,7 +1251,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__SYNCHRONIZATION_LOCK;
+    int END_OF_LIFE_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -1269,7 +1260,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DOCUMENTATION;
+    int END_OF_LIFE_MAPPING__DOCUMENTATION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -1278,7 +1269,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DOMAIN_CLASS;
+    int END_OF_LIFE_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>'
@@ -1287,7 +1278,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__BORDERED_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__BORDERED_NODE_MAPPINGS;
+    int END_OF_LIFE_MAPPING__BORDERED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>'
@@ -1296,7 +1287,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
+    int END_OF_LIFE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference
@@ -1305,7 +1296,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__DROP_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DROP_DESCRIPTIONS;
+    int END_OF_LIFE_MAPPING__DROP_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DROP_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -1314,7 +1305,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__STYLE = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__STYLE;
+    int END_OF_LIFE_MAPPING__STYLE = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -1323,7 +1314,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__CONDITIONNAL_STYLES;
+    int END_OF_LIFE_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__CONDITIONNAL_STYLES;
 
     /**
      * The number of structural features of the '<em>End Of Life Mapping</em>'
@@ -1332,7 +1323,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int END_OF_LIFE_MAPPING_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 0;
+    int END_OF_LIFE_MAPPING_FEATURE_COUNT = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -1353,7 +1344,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__NAME;
+    int MESSAGE_MAPPING__NAME = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -1362,7 +1353,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__LABEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__LABEL;
+    int MESSAGE_MAPPING__LABEL = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -1371,7 +1362,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__DETAIL_DESCRIPTIONS;
+    int MESSAGE_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -1380,7 +1371,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int MESSAGE_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -1389,7 +1380,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__PASTE_DESCRIPTIONS;
+    int MESSAGE_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -1398,7 +1389,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__PRECONDITION_EXPRESSION;
+    int MESSAGE_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -1407,7 +1398,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__DELETION_DESCRIPTION;
+    int MESSAGE_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -1416,7 +1407,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__LABEL_DIRECT_EDIT;
+    int MESSAGE_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -1425,7 +1416,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int MESSAGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
@@ -1434,7 +1425,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__CREATE_ELEMENTS;
+    int MESSAGE_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -1443,7 +1434,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__SEMANTIC_ELEMENTS;
+    int MESSAGE_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -1452,7 +1443,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int MESSAGE_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -1461,7 +1452,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__SYNCHRONIZATION_LOCK;
+    int MESSAGE_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -1470,7 +1461,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__DOCUMENTATION;
+    int MESSAGE_MAPPING__DOCUMENTATION = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Source Mapping</b></em>' reference list.
@@ -1479,7 +1470,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__SOURCE_MAPPING = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__SOURCE_MAPPING;
+    int MESSAGE_MAPPING__SOURCE_MAPPING = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__SOURCE_MAPPING;
 
     /**
      * The feature id for the '<em><b>Target Mapping</b></em>' reference list.
@@ -1488,7 +1479,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__TARGET_MAPPING = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__TARGET_MAPPING;
+    int MESSAGE_MAPPING__TARGET_MAPPING = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__TARGET_MAPPING;
 
     /**
      * The feature id for the '<em><b>Target Finder Expression</b></em>'
@@ -1497,7 +1488,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__TARGET_FINDER_EXPRESSION;
+    int MESSAGE_MAPPING__TARGET_FINDER_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__TARGET_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Source Finder Expression</b></em>'
@@ -1506,7 +1497,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__SOURCE_FINDER_EXPRESSION;
+    int MESSAGE_MAPPING__SOURCE_FINDER_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__SOURCE_FINDER_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -1515,7 +1506,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__STYLE = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__STYLE;
+    int MESSAGE_MAPPING__STYLE = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -1524,7 +1515,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__CONDITIONNAL_STYLES;
+    int MESSAGE_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__CONDITIONNAL_STYLES;
 
     /**
      * The feature id for the '<em><b>Target Expression</b></em>' attribute.
@@ -1533,7 +1524,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__TARGET_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__TARGET_EXPRESSION;
+    int MESSAGE_MAPPING__TARGET_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__TARGET_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -1542,7 +1533,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__DOMAIN_CLASS;
+    int MESSAGE_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Use Domain Element</b></em>' attribute.
@@ -1551,7 +1542,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__USE_DOMAIN_ELEMENT;
+    int MESSAGE_MAPPING__USE_DOMAIN_ELEMENT = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__USE_DOMAIN_ELEMENT;
 
     /**
      * The feature id for the '<em><b>Reconnections</b></em>' reference list.
@@ -1560,7 +1551,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__RECONNECTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__RECONNECTIONS;
+    int MESSAGE_MAPPING__RECONNECTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__RECONNECTIONS;
 
     /**
      * The feature id for the '<em><b>Path Expression</b></em>' attribute. <!--
@@ -1569,7 +1560,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__PATH_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__PATH_EXPRESSION;
+    int MESSAGE_MAPPING__PATH_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__PATH_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Path Node Mapping</b></em>' reference
@@ -1578,7 +1569,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__PATH_NODE_MAPPING = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING__PATH_NODE_MAPPING;
+    int MESSAGE_MAPPING__PATH_NODE_MAPPING = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING__PATH_NODE_MAPPING;
 
     /**
      * The feature id for the '<em><b>Sending End Finder Expression</b></em>'
@@ -1587,7 +1578,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING_FEATURE_COUNT + 0;
+    int MESSAGE_MAPPING__SENDING_END_FINDER_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Receiving End Finder Expression</b></em>'
@@ -1596,7 +1587,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING_FEATURE_COUNT + 1;
+    int MESSAGE_MAPPING__RECEIVING_END_FINDER_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Message Mapping</em>'
@@ -1605,7 +1596,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int MESSAGE_MAPPING_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.EDGE_MAPPING_FEATURE_COUNT + 2;
+    int MESSAGE_MAPPING_FEATURE_COUNT = org.eclipse.sirius.diagram.description.DescriptionPackage.EDGE_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -2791,7 +2782,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__NAME;
+    int FRAME_MAPPING__NAME = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -2800,7 +2791,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__LABEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__LABEL;
+    int FRAME_MAPPING__LABEL = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -2809,7 +2800,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__DETAIL_DESCRIPTIONS;
+    int FRAME_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -2818,7 +2809,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int FRAME_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -2827,7 +2818,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__PASTE_DESCRIPTIONS;
+    int FRAME_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -2836,7 +2827,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__PRECONDITION_EXPRESSION;
+    int FRAME_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -2845,7 +2836,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__DELETION_DESCRIPTION;
+    int FRAME_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -2854,7 +2845,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__LABEL_DIRECT_EDIT;
+    int FRAME_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -2863,7 +2854,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int FRAME_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
@@ -2872,7 +2863,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__CREATE_ELEMENTS;
+    int FRAME_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -2881,7 +2872,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__SEMANTIC_ELEMENTS;
+    int FRAME_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -2890,7 +2881,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int FRAME_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -2899,7 +2890,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__SYNCHRONIZATION_LOCK;
+    int FRAME_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -2908,7 +2899,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__DOCUMENTATION;
+    int FRAME_MAPPING__DOCUMENTATION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -2917,7 +2908,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__DOMAIN_CLASS;
+    int FRAME_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>'
@@ -2926,7 +2917,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__BORDERED_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__BORDERED_NODE_MAPPINGS;
+    int FRAME_MAPPING__BORDERED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>'
@@ -2935,7 +2926,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
+    int FRAME_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference
@@ -2944,7 +2935,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__DROP_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__DROP_DESCRIPTIONS;
+    int FRAME_MAPPING__DROP_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DROP_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Sub Node Mappings</b></em>' containment
@@ -2953,7 +2944,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__SUB_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
+    int FRAME_MAPPING__SUB_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference
@@ -2962,7 +2953,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__ALL_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__ALL_NODE_MAPPINGS;
+    int FRAME_MAPPING__ALL_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__ALL_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Node Mappings</b></em>' reference
@@ -2971,7 +2962,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__REUSED_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS;
+    int FRAME_MAPPING__REUSED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Sub Container Mappings</b></em>'
@@ -2980,7 +2971,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__SUB_CONTAINER_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS;
+    int FRAME_MAPPING__SUB_CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Container Mappings</b></em>'
@@ -2989,7 +2980,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__REUSED_CONTAINER_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS;
+    int FRAME_MAPPING__REUSED_CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>All Container Mappings</b></em>' reference
@@ -2998,7 +2989,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__ALL_CONTAINER_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS;
+    int FRAME_MAPPING__ALL_CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -3007,7 +2998,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__STYLE = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__STYLE;
+    int FRAME_MAPPING__STYLE = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -3016,7 +3007,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__CONDITIONNAL_STYLES;
+    int FRAME_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__CONDITIONNAL_STYLES;
 
     /**
      * The feature id for the '<em><b>Children Presentation</b></em>' attribute.
@@ -3025,7 +3016,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__CHILDREN_PRESENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__CHILDREN_PRESENTATION;
+    int FRAME_MAPPING__CHILDREN_PRESENTATION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__CHILDREN_PRESENTATION;
 
     /**
      * The feature id for the '<em><b>Starting End Finder Expression</b></em>'
@@ -3034,7 +3025,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__STARTING_END_FINDER_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 0;
+    int FRAME_MAPPING__STARTING_END_FINDER_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Finishing End Finder Expression</b></em>'
@@ -3043,7 +3034,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__FINISHING_END_FINDER_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 1;
+    int FRAME_MAPPING__FINISHING_END_FINDER_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Covered Lifelines Expression</b></em>'
@@ -3052,7 +3043,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 2;
+    int FRAME_MAPPING__COVERED_LIFELINES_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Center Label Expression</b></em>'
@@ -3061,7 +3052,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING__CENTER_LABEL_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 3;
+    int FRAME_MAPPING__CENTER_LABEL_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The number of structural features of the '<em>Frame Mapping</em>' class.
@@ -3070,7 +3061,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FRAME_MAPPING_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 4;
+    int FRAME_MAPPING_FEATURE_COUNT = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 4;
 
     /**
      * The meta object id for the '
@@ -3693,7 +3684,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__NAME;
+    int OPERAND_MAPPING__NAME = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -3702,7 +3693,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__LABEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__LABEL;
+    int OPERAND_MAPPING__LABEL = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -3711,7 +3702,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__DETAIL_DESCRIPTIONS;
+    int OPERAND_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -3720,7 +3711,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int OPERAND_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -3729,7 +3720,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__PASTE_DESCRIPTIONS;
+    int OPERAND_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -3738,7 +3729,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__PRECONDITION_EXPRESSION;
+    int OPERAND_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -3747,7 +3738,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__DELETION_DESCRIPTION;
+    int OPERAND_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -3756,7 +3747,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__LABEL_DIRECT_EDIT;
+    int OPERAND_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -3765,7 +3756,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int OPERAND_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
@@ -3774,7 +3765,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__CREATE_ELEMENTS;
+    int OPERAND_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -3783,7 +3774,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__SEMANTIC_ELEMENTS;
+    int OPERAND_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -3792,7 +3783,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int OPERAND_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -3801,7 +3792,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__SYNCHRONIZATION_LOCK;
+    int OPERAND_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -3810,7 +3801,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__DOCUMENTATION;
+    int OPERAND_MAPPING__DOCUMENTATION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -3819,7 +3810,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__DOMAIN_CLASS;
+    int OPERAND_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>'
@@ -3828,7 +3819,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__BORDERED_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__BORDERED_NODE_MAPPINGS;
+    int OPERAND_MAPPING__BORDERED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>'
@@ -3837,7 +3828,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
+    int OPERAND_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference
@@ -3846,7 +3837,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__DROP_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__DROP_DESCRIPTIONS;
+    int OPERAND_MAPPING__DROP_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__DROP_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Sub Node Mappings</b></em>' containment
@@ -3855,7 +3846,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__SUB_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
+    int OPERAND_MAPPING__SUB_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SUB_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference
@@ -3864,7 +3855,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__ALL_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__ALL_NODE_MAPPINGS;
+    int OPERAND_MAPPING__ALL_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__ALL_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Node Mappings</b></em>' reference
@@ -3873,7 +3864,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__REUSED_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS;
+    int OPERAND_MAPPING__REUSED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Sub Container Mappings</b></em>'
@@ -3882,7 +3873,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__SUB_CONTAINER_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS;
+    int OPERAND_MAPPING__SUB_CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Container Mappings</b></em>'
@@ -3891,7 +3882,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__REUSED_CONTAINER_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS;
+    int OPERAND_MAPPING__REUSED_CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>All Container Mappings</b></em>' reference
@@ -3900,7 +3891,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__ALL_CONTAINER_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS;
+    int OPERAND_MAPPING__ALL_CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__ALL_CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -3909,7 +3900,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__STYLE = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__STYLE;
+    int OPERAND_MAPPING__STYLE = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -3918,7 +3909,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__CONDITIONNAL_STYLES;
+    int OPERAND_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__CONDITIONNAL_STYLES;
 
     /**
      * The feature id for the '<em><b>Children Presentation</b></em>' attribute.
@@ -3927,7 +3918,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__CHILDREN_PRESENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING__CHILDREN_PRESENTATION;
+    int OPERAND_MAPPING__CHILDREN_PRESENTATION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING__CHILDREN_PRESENTATION;
 
     /**
      * The feature id for the '<em><b>Starting End Finder Expression</b></em>'
@@ -3936,7 +3927,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__STARTING_END_FINDER_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 0;
+    int OPERAND_MAPPING__STARTING_END_FINDER_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Finishing End Finder Expression</b></em>'
@@ -3945,7 +3936,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING__FINISHING_END_FINDER_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 1;
+    int OPERAND_MAPPING__FINISHING_END_FINDER_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Operand Mapping</em>'
@@ -3954,7 +3945,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_MAPPING_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 2;
+    int OPERAND_MAPPING_FEATURE_COUNT = org.eclipse.sirius.diagram.description.DescriptionPackage.CONTAINER_MAPPING_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -3975,7 +3966,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__NAME;
+    int OBSERVATION_POINT_MAPPING__NAME = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -3984,7 +3975,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__LABEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__LABEL;
+    int OBSERVATION_POINT_MAPPING__LABEL = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__LABEL;
 
     /**
      * The feature id for the '<em><b>Detail Descriptions</b></em>' reference
@@ -3993,7 +3984,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DETAIL_DESCRIPTIONS;
+    int OBSERVATION_POINT_MAPPING__DETAIL_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DETAIL_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Navigation Descriptions</b></em>'
@@ -4002,7 +3993,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__NAVIGATION_DESCRIPTIONS;
+    int OBSERVATION_POINT_MAPPING__NAVIGATION_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__NAVIGATION_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -4011,7 +4002,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__PASTE_DESCRIPTIONS;
+    int OBSERVATION_POINT_MAPPING__PASTE_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__PASTE_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -4020,7 +4011,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__PRECONDITION_EXPRESSION;
+    int OBSERVATION_POINT_MAPPING__PRECONDITION_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__PRECONDITION_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Deletion Description</b></em>' reference.
@@ -4029,7 +4020,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DELETION_DESCRIPTION;
+    int OBSERVATION_POINT_MAPPING__DELETION_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DELETION_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Label Direct Edit</b></em>' reference.
@@ -4038,7 +4029,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__LABEL_DIRECT_EDIT;
+    int OBSERVATION_POINT_MAPPING__LABEL_DIRECT_EDIT = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__LABEL_DIRECT_EDIT;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>'
@@ -4047,7 +4038,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
+    int OBSERVATION_POINT_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION;
 
     /**
      * The feature id for the '<em><b>Create Elements</b></em>' attribute. <!--
@@ -4056,7 +4047,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__CREATE_ELEMENTS;
+    int OBSERVATION_POINT_MAPPING__CREATE_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__CREATE_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Semantic Elements</b></em>' attribute.
@@ -4065,7 +4056,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_ELEMENTS;
+    int OBSERVATION_POINT_MAPPING__SEMANTIC_ELEMENTS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__SEMANTIC_ELEMENTS;
 
     /**
      * The feature id for the '<em><b>Double Click Description</b></em>'
@@ -4074,7 +4065,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
+    int OBSERVATION_POINT_MAPPING__DOUBLE_CLICK_DESCRIPTION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DOUBLE_CLICK_DESCRIPTION;
 
     /**
      * The feature id for the '<em><b>Synchronization Lock</b></em>' attribute.
@@ -4083,7 +4074,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__SYNCHRONIZATION_LOCK;
+    int OBSERVATION_POINT_MAPPING__SYNCHRONIZATION_LOCK = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__SYNCHRONIZATION_LOCK;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -4092,7 +4083,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DOCUMENTATION;
+    int OBSERVATION_POINT_MAPPING__DOCUMENTATION = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -4101,7 +4092,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DOMAIN_CLASS;
+    int OBSERVATION_POINT_MAPPING__DOMAIN_CLASS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DOMAIN_CLASS;
 
     /**
      * The feature id for the '<em><b>Bordered Node Mappings</b></em>'
@@ -4110,7 +4101,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__BORDERED_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__BORDERED_NODE_MAPPINGS;
+    int OBSERVATION_POINT_MAPPING__BORDERED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Reused Bordered Node Mappings</b></em>'
@@ -4119,7 +4110,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
+    int OBSERVATION_POINT_MAPPING__REUSED_BORDERED_NODE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__REUSED_BORDERED_NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Drop Descriptions</b></em>' reference
@@ -4128,7 +4119,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__DROP_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__DROP_DESCRIPTIONS;
+    int OBSERVATION_POINT_MAPPING__DROP_DESCRIPTIONS = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__DROP_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Style</b></em>' containment reference.
@@ -4137,7 +4128,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__STYLE = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__STYLE;
+    int OBSERVATION_POINT_MAPPING__STYLE = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__STYLE;
 
     /**
      * The feature id for the '<em><b>Conditionnal Styles</b></em>' containment
@@ -4146,7 +4137,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING__CONDITIONNAL_STYLES;
+    int OBSERVATION_POINT_MAPPING__CONDITIONNAL_STYLES = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__CONDITIONNAL_STYLES;
 
     /**
      * The number of structural features of the '
@@ -4156,7 +4147,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_MAPPING_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 0;
+    int OBSERVATION_POINT_MAPPING_FEATURE_COUNT = org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING_FEATURE_COUNT + 0;
 
     /**
      * Returns the meta object for class '

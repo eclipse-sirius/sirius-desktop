@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.SequenceFactory;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
@@ -226,7 +227,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
         OrderingPackage theOrderingPackage = (OrderingPackage) EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI);
         TemplatePackage theTemplatePackage = (TemplatePackage) EPackage.Registry.INSTANCE.getEPackage(TemplatePackage.eNS_URI);
-        ViewpointPackage theViewpointPackage = (ViewpointPackage) EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
+        DiagramPackage theDiagramPackage = (DiagramPackage) EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI);
 
         // Add subpackages
         getESubpackages().add(theDescriptionPackage);
@@ -238,7 +239,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
         // Set bounds for type parameters
 
         // Add supertypes to classes
-        sequenceDDiagramEClass.getESuperTypes().add(theViewpointPackage.getDSemanticDiagram());
+        sequenceDDiagramEClass.getESuperTypes().add(theDiagramPackage.getDSemanticDiagram());
 
         // Initialize classes and features; add operations and parameters
         initEClass(sequenceDDiagramEClass, SequenceDDiagram.class, "SequenceDDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -15,12 +15,11 @@ import java.util.Collection;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 
 /**
  * Move an execution, interaction use of combined fragment vertically.

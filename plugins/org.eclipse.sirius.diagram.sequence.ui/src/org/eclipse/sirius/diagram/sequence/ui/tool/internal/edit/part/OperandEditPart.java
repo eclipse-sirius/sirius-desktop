@@ -16,9 +16,9 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.base.Preconditions;
-
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
@@ -29,10 +29,9 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.Seque
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.OperandResizableEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.OperandFigure;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DDiagramElementContainer;
 import org.eclipse.sirius.viewpoint.DStylizable;
-import org.eclipse.sirius.viewpoint.FlatContainerStyle;
+
+import com.google.common.base.Preconditions;
 
 /**
  * Special edit part for operands inside combined fragments.

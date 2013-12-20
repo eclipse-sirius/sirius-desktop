@@ -12,17 +12,17 @@ package org.eclipse.sirius.diagram.sequence.business.internal.refresh;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
-
-import com.google.common.base.Predicate;
-
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.BendpointsHelper;
 import org.eclipse.sirius.diagram.sequence.util.NotificationQuery;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.WorkspaceImage;
+
+import com.google.common.base.Predicate;
 
 /**
  * Default refresh layout scope for sequence diagram. This predicate decides
@@ -112,7 +112,7 @@ public class RefreshLayoutScope implements Predicate<Notification> {
         boolean wkpImageCustomization = false;
         boolean wkpImageDeCustomization = false;
 
-        if (notification.getEventType() == Notification.SET && ViewpointPackage.eINSTANCE.getDNode_OwnedStyle().equals(notification.getFeature()) && hasSequenceMapping(notification.getNotifier())) {
+        if (notification.getEventType() == Notification.SET && DiagramPackage.eINSTANCE.getDNode_OwnedStyle().equals(notification.getFeature()) && hasSequenceMapping(notification.getNotifier())) {
             newStyle = true;
         } else if (ViewpointPackage.eINSTANCE.getCustomizable_CustomFeatures().equals(notification.getFeature()) && notification.getNotifier() instanceof WorkspaceImage) {
             WorkspaceImage workspaceImage = (WorkspaceImage) notification.getNotifier();

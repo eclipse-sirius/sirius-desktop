@@ -34,17 +34,10 @@ import org.eclipse.sirius.diagram.sequence.description.OperandMapping;
 import org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 import org.eclipse.sirius.diagram.sequence.description.StateMapping;
-import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
 import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
-import org.eclipse.sirius.viewpoint.description.IEdgeMapping;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
@@ -979,7 +972,7 @@ public class DescriptionSwitch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseDiagramDescription(DiagramDescription object) {
+    public T caseDiagramDescription(org.eclipse.sirius.diagram.description.DiagramDescription object) {
         return null;
     }
 
@@ -1013,7 +1006,7 @@ public class DescriptionSwitch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseDiagramElementMapping(DiagramElementMapping object) {
+    public T caseDiagramElementMapping(org.eclipse.sirius.diagram.description.DiagramElementMapping object) {
         return null;
     }
 
@@ -1030,7 +1023,7 @@ public class DescriptionSwitch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseAbstractNodeMapping(AbstractNodeMapping object) {
+    public T caseAbstractNodeMapping(org.eclipse.sirius.diagram.description.AbstractNodeMapping object) {
         return null;
     }
 
@@ -1047,7 +1040,7 @@ public class DescriptionSwitch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseNodeMapping(NodeMapping object) {
+    public T caseNodeMapping(org.eclipse.sirius.diagram.description.NodeMapping object) {
         return null;
     }
 
@@ -1064,7 +1057,7 @@ public class DescriptionSwitch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseIEdgeMapping(IEdgeMapping object) {
+    public T caseIEdgeMapping(org.eclipse.sirius.diagram.description.IEdgeMapping object) {
         return null;
     }
 
@@ -1081,7 +1074,7 @@ public class DescriptionSwitch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseEdgeMapping(EdgeMapping object) {
+    public T caseEdgeMapping(org.eclipse.sirius.diagram.description.EdgeMapping object) {
         return null;
     }
 
@@ -1115,7 +1108,7 @@ public class DescriptionSwitch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseContainerMapping(ContainerMapping object) {
+    public T caseContainerMapping(org.eclipse.sirius.diagram.description.ContainerMapping object) {
         return null;
     }
 

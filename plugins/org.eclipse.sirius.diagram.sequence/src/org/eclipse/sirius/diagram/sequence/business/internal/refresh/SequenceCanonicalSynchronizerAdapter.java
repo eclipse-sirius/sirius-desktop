@@ -34,15 +34,14 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.CollapseFilter;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.business.internal.view.LayoutData;
 import org.eclipse.sirius.diagram.internal.refresh.listeners.FilterListener;
@@ -64,10 +63,10 @@ import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceDiagr
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.CollapseFilter;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
+
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Sets;
 
 /**
  * {@link ModelChangeTrigger} which return a {@link Command} to be executed just
@@ -208,7 +207,7 @@ public class SequenceCanonicalSynchronizerAdapter implements ModelChangeTrigger 
                 DDiagramElement dde = (DDiagramElement) newNode.getElement();
                 CollapseFilter filter = Iterables.filter(dde.getGraphicalFilters(), CollapseFilter.class).iterator().next();
 
-                Command setFilterHeightCmd = SetCommand.create(domain, filter, ViewpointPackage.Literals.COLLAPSE_FILTER__HEIGHT, height);
+                Command setFilterHeightCmd = SetCommand.create(domain, filter, DiagramPackage.Literals.COLLAPSE_FILTER__HEIGHT, height);
                 Command setHeightCmd = SetCommand.create(domain, newNode.getLayoutConstraint(), NotationPackage.Literals.SIZE__HEIGHT, height);
                 result = globalCmd.chain(setFilterHeightCmd);
                 result = result.chain(setHeightCmd);

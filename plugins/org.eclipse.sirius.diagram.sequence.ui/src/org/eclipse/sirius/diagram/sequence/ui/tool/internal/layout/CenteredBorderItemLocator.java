@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
-
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 
 /**

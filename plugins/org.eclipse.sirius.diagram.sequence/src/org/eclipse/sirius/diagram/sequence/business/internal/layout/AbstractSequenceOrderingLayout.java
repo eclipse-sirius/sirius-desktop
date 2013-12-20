@@ -14,13 +14,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 
 /**
  * Computes the appropriate graphical locations of sequence events and lifelines

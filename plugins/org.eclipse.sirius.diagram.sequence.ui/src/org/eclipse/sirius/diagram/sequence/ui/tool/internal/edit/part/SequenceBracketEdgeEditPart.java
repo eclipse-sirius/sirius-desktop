@@ -13,12 +13,11 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 import java.util.List;
 
 import org.eclipse.gmf.runtime.notation.View;
-
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.diagram.business.internal.bracket.BracketRelativeBendpoint;
 import org.eclipse.sirius.diagram.business.internal.bracket.Direction;
 import org.eclipse.sirius.diagram.graphical.edit.part.specific.BracketEdgeEditPart;
+
+import com.google.common.collect.Lists;
 
 /**
  * A custom bracket edit part to force default bracket direction.

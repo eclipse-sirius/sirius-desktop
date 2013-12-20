@@ -14,22 +14,21 @@ import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.refresh.IRefreshExtension;
+import org.eclipse.sirius.diagram.AbsoluteBoundsFilter;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
+import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.business.api.refresh.IRefreshExtension;
-import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
-import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
-import org.eclipse.sirius.viewpoint.AbsoluteBoundsFilter;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 
 /**
  * Specific refresh extension to handle structural changes in sequence diagrams.
@@ -81,7 +80,7 @@ public class SequenceRefreshExtension implements IRefreshExtension {
                     if (semanticTarget != null && Iterables.isEmpty(flag) && flags.containsKey(semanticTarget)) {
                         AbsoluteBoundsFilter prevFlag = flags.get(semanticTarget);
 
-                        AbsoluteBoundsFilter newFlag = ViewpointFactory.eINSTANCE.createAbsoluteBoundsFilter();
+                        AbsoluteBoundsFilter newFlag = DiagramFactory.eINSTANCE.createAbsoluteBoundsFilter();
                         newFlag.setX(LayoutConstants.EXTERNAL_CHANGE_FLAG.x);
                         newFlag.setY(prevFlag.getY());
                         newFlag.setHeight(prevFlag.getHeight());

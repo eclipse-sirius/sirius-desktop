@@ -12,12 +12,12 @@ package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import java.util.List;
 
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
+
+import com.google.common.collect.Lists;
 
 /**
  * An operation to remove the invalid ends from the graphical ordering of a

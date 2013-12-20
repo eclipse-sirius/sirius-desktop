@@ -13,10 +13,9 @@ package org.eclipse.sirius.diagram.sequence.business.internal.util;
 import java.util.Iterator;
 
 import org.eclipse.emf.common.util.AbstractTreeIterator;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 
 import com.google.common.collect.Iterators;
-
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 
 /**
  * A tree iterator to iterate on hierarchies of ISequenceEvent.

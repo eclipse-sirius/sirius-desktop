@@ -12,14 +12,14 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 
 import java.util.Collection;
 
-import com.google.common.base.Preconditions;
-
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+
+import com.google.common.base.Preconditions;
 
 /**
  * This class is responsible to check whether a resize request on a Combined

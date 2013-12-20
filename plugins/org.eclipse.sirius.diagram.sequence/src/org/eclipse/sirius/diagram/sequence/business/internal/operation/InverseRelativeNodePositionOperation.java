@@ -12,10 +12,9 @@ package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
 
 import com.google.common.base.Preconditions;
-
-import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
 
 /**
  * An operation to inverse the relative position of a node on both axes. This is

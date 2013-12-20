@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description;
 
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
-
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Sequence Diagram Description</b></em>'. <!-- end-user-doc -->
@@ -32,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.DiagramDescription;
  * @model
  * @generated
  */
-public interface SequenceDiagramDescription extends DiagramDescription {
+public interface SequenceDiagramDescription extends org.eclipse.sirius.diagram.description.DiagramDescription {
     /**
      * Returns the value of the '<em><b>Ends Ordering</b></em>' attribute. <!--
      * begin-user-doc -->

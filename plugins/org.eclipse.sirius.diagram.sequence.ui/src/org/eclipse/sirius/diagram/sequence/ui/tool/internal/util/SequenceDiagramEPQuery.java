@@ -12,10 +12,10 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.util;
 
 import java.util.List;
 
-import com.google.common.base.Preconditions;
-
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
+
+import com.google.common.base.Preconditions;
 
 /**
  * Queries on a sequence diagram.

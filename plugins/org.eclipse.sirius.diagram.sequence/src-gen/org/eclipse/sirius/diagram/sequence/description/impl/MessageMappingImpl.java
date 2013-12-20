@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.MessageMapping;
-import org.eclipse.sirius.viewpoint.description.impl.EdgeMappingImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -34,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.impl.EdgeMappingImpl;
  * 
  * @generated
  */
-public abstract class MessageMappingImpl extends EdgeMappingImpl implements MessageMapping {
+public abstract class MessageMappingImpl extends org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl implements MessageMapping {
     /**
      * The default value of the '{@link #getSendingEndFinderExpression()
      * <em>Sending End Finder Expression</em>}' attribute. <!-- begin-user-doc

@@ -15,10 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.sirius.diagram.EdgeArrows;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTablePropertySection;
-import org.eclipse.sirius.viewpoint.EdgeArrows;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 

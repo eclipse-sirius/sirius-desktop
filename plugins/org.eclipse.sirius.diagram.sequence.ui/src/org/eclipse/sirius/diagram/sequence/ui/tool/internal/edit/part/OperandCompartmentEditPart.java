@@ -12,12 +12,11 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.diagram.graphical.edit.policies.NodeCreationEditPolicy;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ExecutionOperations;
-import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceNodeCreationPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceNodeCreationPolicy;
 
 /**
  * Custom edit part to customize what happens inside an operand.

@@ -19,13 +19,6 @@ import java.util.Map;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.notation.Location;
-
-import com.google.common.base.Function;
-import com.google.common.base.Preconditions;
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
@@ -44,6 +37,12 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionE
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.FinalParentHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+
+import com.google.common.base.Function;
+import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Abstract class to validate Execution move & resize request and get from it a

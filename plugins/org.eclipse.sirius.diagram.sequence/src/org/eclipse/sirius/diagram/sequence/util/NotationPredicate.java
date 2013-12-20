@@ -13,11 +13,10 @@ package org.eclipse.sirius.diagram.sequence.util;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagramElement;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
-
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Predicate to check whether a GMF View represents an EndOfLife.

@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.impl.DescriptionPackageImpl;
@@ -1013,7 +1014,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
         org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eNS_URI);
         StylePackage theStylePackage = (StylePackage) EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI);
-        ViewpointPackage theViewpointPackage = (ViewpointPackage) EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
+        DiagramPackage theDiagramPackage = (DiagramPackage) EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI);
 
         // Create type parameters
 
@@ -1132,11 +1133,11 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
         initEClass(tMessageStyleEClass, TMessageStyle.class, "TMessageStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getTMessageStyle_StrokeColor(), theDescriptionPackage_1.getColorDescription(), null, "strokeColor", null, 1, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getTMessageStyle_LineStyle(), theViewpointPackage.getLineStyle(), "lineStyle", null, 0, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+        initEAttribute(getTMessageStyle_LineStyle(), theDiagramPackage.getLineStyle(), "lineStyle", null, 0, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
                 !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getTMessageStyle_SourceArrow(), theViewpointPackage.getEdgeArrows(), "sourceArrow", "NoDecoration", 1, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+        initEAttribute(getTMessageStyle_SourceArrow(), theDiagramPackage.getEdgeArrows(), "sourceArrow", "NoDecoration", 1, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getTMessageStyle_TargetArrow(), theViewpointPackage.getEdgeArrows(), "targetArrow", "InputArrow", 1, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+        initEAttribute(getTMessageStyle_TargetArrow(), theDiagramPackage.getEdgeArrows(), "targetArrow", "InputArrow", 1, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getTMessageStyle_LabelExpression(), theDescriptionPackage_1.getInterpretedExpression(), "labelExpression", "<%name%>", 0, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -12,10 +12,6 @@ package org.eclipse.sirius.diagram.sequence.business.internal.layout;
 
 import java.util.Map;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
@@ -25,6 +21,10 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.LostMessag
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceElementQuery;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
 
 /**
  * Computes the appropriate graphical locations of sequence events and lifelines

@@ -13,16 +13,14 @@ package org.eclipse.sirius.diagram.sequence.internal.tool.command.builders;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Diagram;
-
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
-
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizerFactory;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizer;
+import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
@@ -32,9 +30,10 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.State;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.internal.command.builders.GenericToolCommandBuilder;
-import org.eclipse.sirius.viewpoint.DDiagram;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
+
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 
 /**
  * Specific GenericToolCommandBuilder.

@@ -11,10 +11,9 @@
 package org.eclipse.sirius.diagram.sequence.util;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 import com.google.common.base.Function;
-
-import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 /**
  * Helper functions to use Sirius elements with Google Collections.

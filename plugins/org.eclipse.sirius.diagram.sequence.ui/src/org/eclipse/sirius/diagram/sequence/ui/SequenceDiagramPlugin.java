@@ -12,10 +12,9 @@ package org.eclipse.sirius.diagram.sequence.ui;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
-
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 
 /**
  * The activator class controls the plug-in life cycle.

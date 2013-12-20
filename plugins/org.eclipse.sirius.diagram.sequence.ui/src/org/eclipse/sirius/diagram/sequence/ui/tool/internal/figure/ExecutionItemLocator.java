@@ -16,13 +16,12 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-
-import com.google.common.collect.Iterables;
-
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.description.StateMapping;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.LayoutEditPartConstants;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
+
+import com.google.common.collect.Iterables;
 
 /**
  * Specific DBorderItemLocator to handle border item offset and side

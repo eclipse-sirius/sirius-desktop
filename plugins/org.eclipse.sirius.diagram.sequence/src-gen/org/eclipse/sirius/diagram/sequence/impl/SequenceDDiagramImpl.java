@@ -19,7 +19,6 @@ import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
 import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
-import org.eclipse.sirius.viewpoint.impl.DSemanticDiagramImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -41,7 +40,7 @@ import org.eclipse.sirius.viewpoint.impl.DSemanticDiagramImpl;
  * 
  * @generated
  */
-public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements SequenceDDiagram {
+public class SequenceDDiagramImpl extends org.eclipse.sirius.diagram.impl.DSemanticDiagramImpl implements SequenceDDiagram {
     /**
      * The cached value of the '{@link #getSemanticOrdering()
      * <em>Semantic Ordering</em>}' containment reference. <!-- begin-user-doc

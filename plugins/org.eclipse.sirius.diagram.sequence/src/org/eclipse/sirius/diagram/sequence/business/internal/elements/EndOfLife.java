@@ -17,16 +17,15 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.sequence.util.NotationPredicate;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
-import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
-import org.eclipse.sirius.diagram.sequence.util.NotationPredicate;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * Represents the EndOfLife marker which can appear at the bottom of a lifeline.
@@ -41,7 +40,7 @@ public class EndOfLife extends AbstractSequenceNode {
     /**
      * The visual ID. Same as a normal bordered node.
      * 
-     * @see DNode2EditPart.VISUAL_ID
+     * @see org.eclipse.sirius.diagram.internal.edit.parts.DNode2EditPart.VISUAL_ID
      */
     public static final int VISUAL_ID = 3001;
 
@@ -78,11 +77,11 @@ public class EndOfLife extends AbstractSequenceNode {
     }
 
     /**
-     * Returns a predicate to check whether a Sirius DDiagramElement
-     * represents an EndOfLife.
+     * Returns a predicate to check whether a Sirius DDiagramElement represents
+     * an EndOfLife.
      * 
-     * @return a predicate to check whether a Sirius DDiagramElement
-     *         represents an EndOfLife.
+     * @return a predicate to check whether a Sirius DDiagramElement represents
+     *         an EndOfLife.
      */
     public static Predicate<DDiagramElement> viewpointElementPredicate() {
         return SiriusElementPredicate.INSTANCE;

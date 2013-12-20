@@ -18,7 +18,6 @@ import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
 
 /**

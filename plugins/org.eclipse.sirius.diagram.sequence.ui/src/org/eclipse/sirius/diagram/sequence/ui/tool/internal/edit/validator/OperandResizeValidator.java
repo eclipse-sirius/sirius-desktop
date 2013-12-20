@@ -10,10 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 
-import com.google.common.base.Preconditions;
-
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
+
+import com.google.common.base.Preconditions;
 
 /**
  * This class is responsible to check whether a resize request on an operand

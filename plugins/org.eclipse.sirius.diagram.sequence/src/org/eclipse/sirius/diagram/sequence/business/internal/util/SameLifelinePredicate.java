@@ -12,8 +12,6 @@ package org.eclipse.sirius.diagram.sequence.business.internal.util;
 
 import java.util.Collection;
 
-import com.google.common.base.Predicate;
-
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -21,6 +19,8 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceN
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
+
+import com.google.common.base.Predicate;
 
 /**
  * Predicate used to filter {@link ISequenceEvent} owned by one specified

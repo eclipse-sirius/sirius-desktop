@@ -18,14 +18,13 @@ import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.business.internal.metamodel.helper.DiagramDescriptionHelper;
 import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.sequence.SequenceFactory;
 import org.eclipse.sirius.diagram.sequence.description.impl.SequenceDiagramDescriptionImpl;
-import org.eclipse.sirius.viewpoint.DSemanticDiagram;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.Layer;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
@@ -53,7 +52,8 @@ public class SequenceDiagramDescriptionSpec extends SequenceDiagramDescriptionIm
     @Override
     public EList<AbstractToolDescription> getAllTools() {
         final Set<AbstractToolDescription> result = DiagramDescriptionHelper.getAllTools(this);
-        return new EcoreEList.UnmodifiableEList<AbstractToolDescription>(eInternalContainer(), DescriptionPackage.eINSTANCE.getDiagramDescription_AllTools(), result.size(), result.toArray());
+        return new EcoreEList.UnmodifiableEList<AbstractToolDescription>(eInternalContainer(), org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getDiagramDescription_AllTools(),
+                result.size(), result.toArray());
     }
 
     /**

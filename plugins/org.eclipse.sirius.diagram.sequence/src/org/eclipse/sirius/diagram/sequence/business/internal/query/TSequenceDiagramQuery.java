@@ -12,13 +12,13 @@ package org.eclipse.sirius.diagram.sequence.business.internal.query;
 
 import java.util.Iterator;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterators;
-
 import org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping;
 import org.eclipse.sirius.diagram.sequence.template.TExecutionMapping;
 import org.eclipse.sirius.diagram.sequence.template.TLifelineMapping;
 import org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterators;
 
 /**
  * Queries starting from a {@link TSequenceDiagram}.

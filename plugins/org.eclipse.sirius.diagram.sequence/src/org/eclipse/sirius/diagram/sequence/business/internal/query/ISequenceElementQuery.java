@@ -11,13 +11,12 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.query;
 
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.sirius.diagram.AbsoluteBoundsFilter;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
-import org.eclipse.sirius.viewpoint.AbsoluteBoundsFilter;
-import org.eclipse.sirius.viewpoint.DDiagramElement;
 
 /**
  * General queries on {@link ISequenceElement}s.

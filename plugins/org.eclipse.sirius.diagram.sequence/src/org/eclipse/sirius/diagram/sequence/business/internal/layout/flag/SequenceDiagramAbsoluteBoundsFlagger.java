@@ -13,11 +13,11 @@ package org.eclipse.sirius.diagram.sequence.business.internal.layout.flag;
 import java.util.Collection;
 import java.util.List;
 
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Helper to compute and attach absolute bounds flag for sequence events.

@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description;
 
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Message Mapping</b></em>'. <!-- end-user-doc -->
@@ -32,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.EdgeMapping;
  * @model abstract="true"
  * @generated
  */
-public interface MessageMapping extends EdgeMapping, EventMapping {
+public interface MessageMapping extends org.eclipse.sirius.diagram.description.EdgeMapping, EventMapping {
 
     /**
      * Returns the value of the '<em><b>Sending End Finder Expression</b></em>'

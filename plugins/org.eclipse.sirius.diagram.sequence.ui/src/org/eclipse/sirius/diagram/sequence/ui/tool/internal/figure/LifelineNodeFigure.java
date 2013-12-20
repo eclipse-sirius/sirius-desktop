@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.PositionConstants;
-
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;

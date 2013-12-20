@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description;
 
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
-
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>End Of Life Mapping</b></em>'. <!-- end-user-doc -->
@@ -21,5 +19,5 @@ import org.eclipse.sirius.viewpoint.description.NodeMapping;
  * @model
  * @generated
  */
-public interface EndOfLifeMapping extends NodeMapping {
+public interface EndOfLifeMapping extends org.eclipse.sirius.diagram.description.NodeMapping {
 } // EndOfLifeMapping

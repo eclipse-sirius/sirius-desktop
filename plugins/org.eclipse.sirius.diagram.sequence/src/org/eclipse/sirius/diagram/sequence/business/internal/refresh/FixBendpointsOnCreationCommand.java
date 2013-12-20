@@ -32,14 +32,14 @@ import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData;
 import org.eclipse.sirius.diagram.business.internal.view.LayoutData;
 import org.eclipse.sirius.diagram.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.internal.refresh.edge.SlidableAnchor;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IBorderItemOffsets;
-import org.eclipse.sirius.viewpoint.AbstractDNode;
-import org.eclipse.sirius.viewpoint.DEdge;
 
 /**
  * A Command to update sequence message bendpoints after the
