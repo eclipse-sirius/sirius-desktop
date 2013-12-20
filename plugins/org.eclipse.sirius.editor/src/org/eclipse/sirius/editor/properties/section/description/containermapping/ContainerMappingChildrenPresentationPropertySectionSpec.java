@@ -13,8 +13,8 @@ package org.eclipse.sirius.editor.properties.section.description.containermappin
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.editor.properties.sections.description.containermapping.ContainerMappingChildrenPresentationPropertySection;
-import org.eclipse.sirius.viewpoint.ContainerLayout;
 
 import com.google.common.collect.Lists;
 

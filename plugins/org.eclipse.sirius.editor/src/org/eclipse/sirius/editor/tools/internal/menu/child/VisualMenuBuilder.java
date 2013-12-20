@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.internal.menu.child;
 
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuilder;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
  * The visual menu.
@@ -29,7 +29,7 @@ public class VisualMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
         addValidType(DescriptionPackage.eINSTANCE.getLayer());
         addValidType(DescriptionPackage.eINSTANCE.getNodeMapping());
         addValidType(DescriptionPackage.eINSTANCE.getContainerMapping());
-        addValidType(DescriptionPackage.eINSTANCE.getDecorationDescriptionsSet());
+        addValidType(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.getDecorationDescriptionsSet());
 
         addRestrictedType(DescriptionPackage.eINSTANCE.getContainerMappingImport());
         addRestrictedType(DescriptionPackage.eINSTANCE.getNodeMappingImport());

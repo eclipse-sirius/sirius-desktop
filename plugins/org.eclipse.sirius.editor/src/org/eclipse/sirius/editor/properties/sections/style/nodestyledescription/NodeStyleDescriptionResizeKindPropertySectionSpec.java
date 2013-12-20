@@ -22,10 +22,10 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxGroupPropertySection;
-import org.eclipse.sirius.viewpoint.ResizeKind;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.swt.SWT;
@@ -233,7 +233,7 @@ public class NodeStyleDescriptionResizeKindPropertySectionSpec extends AbstractC
 
     protected EAttribute getAttribute() {
         EAttribute attribute = null;
-        for (EAttribute eAttribute : ViewpointPackage.eINSTANCE.getNodeStyle().getEAllAttributes()) {
+        for (EAttribute eAttribute : DiagramPackage.eINSTANCE.getNodeStyle().getEAllAttributes()) {
             if (eAttribute.getEType().equals(getFeatures())) {
                 attribute = eAttribute;
                 break;
@@ -281,6 +281,6 @@ public class NodeStyleDescriptionResizeKindPropertySectionSpec extends AbstractC
     }
 
     protected EEnum getFeatures() {
-        return ViewpointPackage.eINSTANCE.getResizeKind();
+        return DiagramPackage.eINSTANCE.getResizeKind();
     }
 }

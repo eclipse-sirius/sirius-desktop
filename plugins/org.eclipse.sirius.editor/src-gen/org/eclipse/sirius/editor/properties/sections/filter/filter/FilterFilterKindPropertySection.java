@@ -14,10 +14,10 @@ package org.eclipse.sirius.editor.properties.sections.filter.filter;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.sirius.diagram.description.filter.FilterKind;
+import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractRadioButtonPropertySection;
-import org.eclipse.sirius.viewpoint.description.filter.FilterKind;
-import org.eclipse.sirius.viewpoint.description.filter.FilterPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;

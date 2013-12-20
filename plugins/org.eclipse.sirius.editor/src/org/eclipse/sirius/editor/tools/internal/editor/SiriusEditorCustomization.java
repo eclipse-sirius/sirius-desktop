@@ -11,8 +11,8 @@
 package org.eclipse.sirius.editor.tools.internal.editor;
 
 import org.eclipse.emf.ecore.EModelElement;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.editor.tools.api.editor.EditorCustomization;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
  * We deactivate the tool section creation menu on DiagramDescription. We

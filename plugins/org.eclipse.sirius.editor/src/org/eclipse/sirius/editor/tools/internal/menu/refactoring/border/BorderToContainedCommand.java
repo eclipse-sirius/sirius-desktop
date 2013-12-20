@@ -12,9 +12,9 @@ package org.eclipse.sirius.editor.tools.internal.menu.refactoring.border;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractUndoRecordingCommand;
-import org.eclipse.sirius.viewpoint.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 
 /**
  * Command changing a border node to a contained node.

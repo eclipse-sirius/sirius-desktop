@@ -10,9 +10,9 @@
 package org.eclipse.sirius.editor.properties.sections.description.compositelayout;
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractSpinnerPropertySection;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 

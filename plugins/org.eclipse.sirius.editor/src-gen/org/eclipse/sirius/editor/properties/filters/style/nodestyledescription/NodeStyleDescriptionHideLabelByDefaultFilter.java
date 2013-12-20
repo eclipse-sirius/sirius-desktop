@@ -13,9 +13,9 @@ package org.eclipse.sirius.editor.properties.filters.style.nodestyledescription;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 // End of user code specific imports

@@ -14,10 +14,10 @@ package org.eclipse.sirius.editor.properties.sections.description.containermappi
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.sirius.diagram.ContainerLayout;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractRadioButtonPropertySection;
-import org.eclipse.sirius.viewpoint.ContainerLayout;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;

@@ -44,8 +44,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
-import org.eclipse.sirius.diagram.description.filter.FilterFactory;
-import org.eclipse.sirius.diagram.description.filter.FilterPackage;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -71,26 +71,26 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 /**
  * This is a simple wizard for creating a new model file.
  */
-public class FilterModelWizard extends Wizard implements INewWizard {
+public class DiagramModelWizard extends Wizard implements INewWizard {
     /**
      * This caches an instance of the model package.
      */
-    protected FilterPackage filterPackage = FilterPackage.eINSTANCE;
+    protected DiagramPackage diagramPackage = DiagramPackage.eINSTANCE;
 
     /**
      * This caches an instance of the model factory.
      */
-    protected FilterFactory filterFactory = filterPackage.getFilterFactory();
+    protected DiagramFactory diagramFactory = diagramPackage.getDiagramFactory();
 
     /**
      * This is the file creation page.
      */
-    protected FilterModelWizardNewFileCreationPage newFileCreationPage;
+    protected DiagramModelWizardNewFileCreationPage newFileCreationPage;
 
     /**
      * This is the initial object creation page.
      */
-    protected FilterModelWizardInitialObjectCreationPage initialObjectCreationPage;
+    protected DiagramModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
     /**
      * Remember the selection during initialization for populating the default
@@ -124,7 +124,7 @@ public class FilterModelWizard extends Wizard implements INewWizard {
     protected Collection<String> getInitialObjectNames() {
         if (initialObjectNames == null) {
             initialObjectNames = new ArrayList<String>();
-            for (Iterator<EClassifier> classifiers = filterPackage.getEClassifiers().iterator(); classifiers.hasNext();) {
+            for (Iterator<EClassifier> classifiers = diagramPackage.getEClassifiers().iterator(); classifiers.hasNext();) {
                 EClassifier eClassifier = (EClassifier) classifiers.next();
                 if (eClassifier instanceof EClass) {
                     EClass eClass = (EClass) eClassifier;
@@ -146,8 +146,8 @@ public class FilterModelWizard extends Wizard implements INewWizard {
      * Create a new model.
      */
     protected EObject createInitialModel() {
-        EClass eClass = (EClass) filterPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
-        EObject rootObject = filterFactory.create(eClass);
+        EClass eClass = (EClass) diagramPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
+        EObject rootObject = diagramFactory.create(eClass);
 
         // Start of user code createInitialModel
 
@@ -237,11 +237,11 @@ public class FilterModelWizard extends Wizard implements INewWizard {
     /**
      * This is the one page of the wizard.
      */
-    public class FilterModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
+    public class DiagramModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
         /**
          * Pass in the selection.
          */
-        public FilterModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
+        public DiagramModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
             super(pageId, selection);
         }
 
@@ -250,7 +250,7 @@ public class FilterModelWizard extends Wizard implements INewWizard {
          */
         protected boolean validatePage() {
             if (super.validatePage()) {
-                // Make sure the file ends in ".filter".
+                // Make sure the file ends in ".diagram".
                 //
                 String requiredExt = SiriusEditorPlugin.INSTANCE.getString("_UI_SiriusEditorFilenameExtension");
                 String enteredExt = new Path(getFileName()).getFileExtension();
@@ -273,7 +273,7 @@ public class FilterModelWizard extends Wizard implements INewWizard {
     /**
      * This is the page where the type of object to create is selected.
      */
-    public class FilterModelWizardInitialObjectCreationPage extends WizardPage {
+    public class DiagramModelWizardInitialObjectCreationPage extends WizardPage {
         protected Combo initialObjectField;
 
         protected List<String> encodings;
@@ -283,7 +283,7 @@ public class FilterModelWizard extends Wizard implements INewWizard {
         /**
          * Pass in the selection.
          */
-        public FilterModelWizardInitialObjectCreationPage(String pageId) {
+        public DiagramModelWizardInitialObjectCreationPage(String pageId) {
             super(pageId);
         }
 
@@ -423,9 +423,9 @@ public class FilterModelWizard extends Wizard implements INewWizard {
     public void addPages() {
         // Create a page, set the title, and the initial model file name.
         //
-        newFileCreationPage = new FilterModelWizardNewFileCreationPage("Whatever", selection);
-        newFileCreationPage.setTitle(SiriusEditorPlugin.INSTANCE.getString("_UI_FilterModelWizard_label"));
-        newFileCreationPage.setDescription(SiriusEditorPlugin.INSTANCE.getString("_UI_FilterModelWizard_description"));
+        newFileCreationPage = new DiagramModelWizardNewFileCreationPage("Whatever", selection);
+        newFileCreationPage.setTitle(SiriusEditorPlugin.INSTANCE.getString("_UI_DiagramModelWizard_label"));
+        newFileCreationPage.setDescription(SiriusEditorPlugin.INSTANCE.getString("_UI_DiagramModelWizard_description"));
         newFileCreationPage
                 .setFileName(SiriusEditorPlugin.INSTANCE.getString("_UI_SiriusEditorFilenameDefaultBase") + "." + SiriusEditorPlugin.INSTANCE.getString("_UI_SiriusEditorFilenameExtension"));
         addPage(newFileCreationPage);
@@ -464,8 +464,8 @@ public class FilterModelWizard extends Wizard implements INewWizard {
                 }
             }
         }
-        initialObjectCreationPage = new FilterModelWizardInitialObjectCreationPage("Whatever2");
-        initialObjectCreationPage.setTitle(SiriusEditorPlugin.INSTANCE.getString("_UI_FilterModelWizard_label"));
+        initialObjectCreationPage = new DiagramModelWizardInitialObjectCreationPage("Whatever2");
+        initialObjectCreationPage.setTitle(SiriusEditorPlugin.INSTANCE.getString("_UI_DiagramModelWizard_label"));
         initialObjectCreationPage.setDescription(SiriusEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
         addPage(initialObjectCreationPage);
     }

@@ -22,12 +22,11 @@ import org.eclipse.jface.fieldassist.ContentProposalAdapter;
 import org.eclipse.jface.fieldassist.TextContentAdapter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
 import org.eclipse.sirius.ui.tools.api.assist.IAssistContentProvider;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DiagramDescription;
 import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -207,7 +206,7 @@ public class AbstractToolDescriptionPreconditionPropertySection extends Abstract
     private boolean isFromSequenceDiagram() {
         EObject cont = eObject;
         while (cont != null) {
-            if (cont instanceof DiagramDescription && DescriptionPackage.eINSTANCE.getDiagramDescription() != cont.eClass()) {
+            if (cont instanceof DiagramDescription && org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getDiagramDescription() != cont.eClass()) {
                 return true;
             }
             cont = cont.eContainer();

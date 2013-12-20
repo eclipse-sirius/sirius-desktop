@@ -13,8 +13,8 @@ package org.eclipse.sirius.editor.properties.filters.tool.reconnectedgedescripti
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 // End of user code specific imports
 

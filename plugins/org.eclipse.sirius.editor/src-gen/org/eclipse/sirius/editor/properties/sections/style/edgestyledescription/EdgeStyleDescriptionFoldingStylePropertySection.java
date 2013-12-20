@@ -14,8 +14,8 @@ package org.eclipse.sirius.editor.properties.sections.style.edgestyledescription
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.sirius.diagram.description.FoldingStyle;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractRadioButtonPropertySection;
-import org.eclipse.sirius.viewpoint.description.FoldingStyle;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;

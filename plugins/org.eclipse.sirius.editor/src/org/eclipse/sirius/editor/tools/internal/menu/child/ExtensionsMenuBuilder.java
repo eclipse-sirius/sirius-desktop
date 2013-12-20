@@ -31,7 +31,7 @@ public class ExtensionsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
         addValidType(AuditPackage.eINSTANCE.getTemplateInformationSection());
         addValidType(DescriptionPackage.eINSTANCE.getJavaExtension());
         addValidType(DescriptionPackage.eINSTANCE.getMetamodelExtensionSetting());
-        addValidType(DescriptionPackage.eINSTANCE.getDiagramExtensionDescription());
+        addValidType(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getDiagramExtensionDescription());
         addValidType(ToolPackage.eINSTANCE.getExternalJavaAction());
         addValidType(ToolPackage.eINSTANCE.getRequestDescription());
         addValidType(ToolPackage.eINSTANCE.getToolGroupExtension());

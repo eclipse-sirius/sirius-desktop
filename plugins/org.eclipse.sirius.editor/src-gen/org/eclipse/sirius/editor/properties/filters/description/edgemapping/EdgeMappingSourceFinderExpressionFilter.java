@@ -13,8 +13,9 @@ package org.eclipse.sirius.editor.properties.filters.description.edgemapping;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 // End of user code specific imports
 
@@ -34,12 +35,12 @@ public class EdgeMappingSourceFinderExpressionFilter extends ViewpointPropertyFi
      * {@inheritDoc}
      */
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.viewpoint.description.EdgeMapping;
+        return arg0 instanceof org.eclipse.sirius.diagram.description.EdgeMapping;
     }
 
     // Start of user code user methods
     public boolean select(Object arg0) {
-        return super.select(arg0) && (!isNormalEdgeMapping(arg0) || ((org.eclipse.sirius.viewpoint.description.EdgeMapping) arg0).isUseDomainElement());
+        return super.select(arg0) && (!isNormalEdgeMapping(arg0) || ((EdgeMapping) arg0).isUseDomainElement());
     }
 
     private boolean isNormalEdgeMapping(Object obj) {

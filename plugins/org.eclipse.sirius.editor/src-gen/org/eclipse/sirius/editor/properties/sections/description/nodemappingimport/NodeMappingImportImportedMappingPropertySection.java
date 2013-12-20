@@ -27,12 +27,12 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.tools.api.selection.EObjectSelectionWizard;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
 import org.eclipse.sirius.ui.tools.api.properties.AbstractMappingImportSelectionWizardBuilder;
 import org.eclipse.sirius.ui.tools.api.properties.NodeMappingImportSelectionWizardItemsBuilder;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.NodeMapping;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -197,5 +197,6 @@ public class NodeMappingImportImportedMappingPropertySection extends AbstractCom
         // End of user code create controls
     }
     // Start of user code user operations
+
     // End of user code user operations
 }

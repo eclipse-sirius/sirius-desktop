@@ -14,9 +14,9 @@ package org.eclipse.sirius.editor.properties.sections.style.nodestyledescription
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
-import org.eclipse.sirius.viewpoint.LabelPosition;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;

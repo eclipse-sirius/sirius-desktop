@@ -12,8 +12,8 @@ package org.eclipse.sirius.editor.properties.filters.description.abstractnodemap
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 // End of user code specific imports
 
@@ -33,7 +33,7 @@ public class AbstractNodeMappingReusedBorderedNodeMappingsFilter extends Viewpoi
      * {@inheritDoc}
      */
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+        return arg0 instanceof org.eclipse.sirius.diagram.description.AbstractNodeMapping;
     }
 
     // Start of user code user methods

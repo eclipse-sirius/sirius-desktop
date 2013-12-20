@@ -93,6 +93,8 @@ import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
+import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.sirius.editor.utils.SelectionTreeTextEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -100,7 +102,6 @@ import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIM
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.concern.provider.ConcernItemProviderAdapterFactory;
-import org.eclipse.sirius.viewpoint.description.filter.provider.FilterItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.style.provider.StyleItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
@@ -592,16 +593,19 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
         factories.add(DialectUIManager.INSTANCE.createAdapterFactory());
         factories.add(FeatureExtensionsUIManager.INSTANCE.createAdapterFactory());
         factories.add(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
+        factories.add(new org.eclipse.sirius.diagram.description.provider.DescriptionItemProviderAdapterFactory());
         // End of user code put your specific adapter factories
         factories.add(new ResourceItemProviderAdapterFactory());
         factories.add(new ViewpointItemProviderAdapterFactory());
         factories.add(new DescriptionItemProviderAdapterFactory());
         factories.add(new StyleItemProviderAdapterFactory());
         factories.add(new ToolItemProviderAdapterFactory());
-        factories.add(new FilterItemProviderAdapterFactory());
         factories.add(new ValidationItemProviderAdapterFactory());
         factories.add(new AuditItemProviderAdapterFactory());
         factories.add(new ConcernItemProviderAdapterFactory());
+        factories.add(new DiagramItemProviderAdapterFactory());
+        factories.add(new DescriptionItemProviderAdapterFactory());
+        factories.add(new FilterItemProviderAdapterFactory());
         factories.add(new ReflectiveItemProviderAdapterFactory());
 
         adapterFactory = new ComposedAdapterFactory(factories);
@@ -842,7 +846,7 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
 
                 selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
                 selectionViewer.setInput(editingDomain.getResourceSet());
-                viewerPane.setTitle(getString("_UI_SiriusEditor_label"), new AdapterFactoryLabelProvider(adapterFactory).getImage(DescriptionFactory.eINSTANCE.createViewpoint()));
+                viewerPane.setTitle("Sirius Specification Editor", new AdapterFactoryLabelProvider(adapterFactory).getImage(DescriptionFactory.eINSTANCE.createViewpoint()));
 
                 new SelectionTreeTextEditor(editingDomain, selectionViewer.getTree(), adapterFactory);
 

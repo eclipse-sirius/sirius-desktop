@@ -33,7 +33,7 @@
                class="org.eclipse.sirius.editor.properties.section.description.diagramelementmapping.DiagramElementMappingSynchronizationPropertySection"
                id="description.section.diagramElementMapping.Synchronization"
                tab="viewpoint.tab.advanced">
-        	<input type="org.eclipse.sirius.viewpoint.description.DiagramElementMapping"/>
+        	<input type="org.eclipse.sirius.diagram.description.DiagramElementMapping"/>
 		</propertySection>
 		<propertySection
                class="org.eclipse.sirius.editor.properties.sections.style.basiclabelstyle.BasicLabelStyleDescriptionLabelFormatPropertySection"
@@ -312,14 +312,14 @@
                filter="org.eclipse.sirius.editor.properties.filters.filter.filtervariable.FilterVariableNameFilter"
                id="filter.section.filterVariable.Name"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.filter.FilterVariable"/>        
+        <input type="org.eclipse.sirius.diagram.description.filter.FilterVariable"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.filter.variablefilter.VariableFilterSemanticConditionExpressionPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.filter.variablefilter.VariableFilterSemanticConditionExpressionFilter"
                id="filter.section.variableFilter.SemanticConditionExpression"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.filter.VariableFilter"/>        
+        <input type="org.eclipse.sirius.diagram.description.filter.VariableFilter"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.filter.mappingfilter.MappingFilterViewConditionExpressionPropertySection"
@@ -327,7 +327,7 @@
                id="filter.section.mappingFilter.ViewConditionExpression"
                afterSection="filter.section.mappingFilter.SemanticConditionExpression"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.filter.MappingFilter"/>        
+        <input type="org.eclipse.sirius.diagram.description.filter.MappingFilter"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.filter.mappingfilter.MappingFilterSemanticConditionExpressionPropertySection"
@@ -335,21 +335,21 @@
                id="filter.section.mappingFilter.SemanticConditionExpression"
                afterSection="filter.section.mappingFilter.Mappings"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.filter.MappingFilter"/>        
+        <input type="org.eclipse.sirius.diagram.description.filter.MappingFilter"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.filter.mappingfilter.MappingFilterMappingsPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.filter.mappingfilter.MappingFilterMappingsFilter"
                id="filter.section.mappingFilter.Mappings"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.filter.MappingFilter"/>        
+        <input type="org.eclipse.sirius.diagram.description.filter.MappingFilter"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.filter.filter.FilterFilterKindPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.filter.filter.FilterFilterKindFilter"
                id="filter.section.filter.FilterKind"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.filter.Filter"/>        
+        <input type="org.eclipse.sirius.diagram.description.filter.Filter"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.tool.case_.CaseConditionExpressionPropertySection"
@@ -1655,7 +1655,7 @@
                filter="org.eclipse.sirius.editor.properties.filters.description.additionallayer.AdditionalLayerOptionalFilter"
                id="description.section.additionalLayer.Optional"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.AdditionalLayer"/>        
+        <input type="org.eclipse.sirius.diagram.description.AdditionalLayer"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.additionallayer.AdditionalLayerActiveByDefaultPropertySectionSpec"
@@ -1663,7 +1663,7 @@
                id="description.section.additionalLayer.ActiveByDefault"
                afterSection="description.section.additionalLayer.Optional"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.AdditionalLayer"/>        
+        <input type="org.eclipse.sirius.diagram.description.AdditionalLayer"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.layer.LayerIconPropertySection"
@@ -1671,7 +1671,7 @@
                id="description.section.layer.Icon"
                afterSection="description.section.layer.ReusedTools"
                 tab="viewpoint.tab.advanced">
-        <input type="org.eclipse.sirius.viewpoint.description.Layer"/>        
+        <input type="org.eclipse.sirius.diagram.description.Layer"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.layer.LayerReusedToolsPropertySection"
@@ -1679,7 +1679,7 @@
                id="description.section.layer.ReusedTools"
                afterSection="description.section.layer.AllTools"
                 tab="viewpoint.tab.advanced">
-        <input type="org.eclipse.sirius.viewpoint.description.Layer"/>        
+        <input type="org.eclipse.sirius.diagram.description.Layer"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.layer.LayerReusedMappingsPropertySection"
@@ -1687,7 +1687,7 @@
                id="description.section.layer.ReusedMappings"
                afterSection="description.section.identifiedElement.Label"
                 tab="viewpoint.tab.advanced">
-        <input type="org.eclipse.sirius.viewpoint.description.Layer"/>        
+        <input type="org.eclipse.sirius.diagram.description.Layer"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.semanticbaseddecoration.SemanticBasedDecorationDomainClassPropertySection"
@@ -1701,7 +1701,7 @@
                filter="org.eclipse.sirius.editor.properties.filters.description.mappingbaseddecoration.MappingBasedDecorationMappingsFilter"
                id="description.section.mappingBasedDecoration.Mappings"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.MappingBasedDecoration"/>        
+        <input type="org.eclipse.sirius.diagram.description.MappingBasedDecoration"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.decorationdescription.DecorationDescriptionPreconditionExpressionPropertySection"
@@ -1740,14 +1740,14 @@
                id="description.section.compositeLayout.Direction"
                afterSection="description.section.compositeLayout.Padding"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.CompositeLayout"/>        
+        <input type="org.eclipse.sirius.diagram.description.CompositeLayout"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.compositelayout.CompositeLayoutPaddingPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.description.compositelayout.CompositeLayoutPaddingFilter"
                id="description.section.compositeLayout.Padding"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.CompositeLayout"/>        
+        <input type="org.eclipse.sirius.diagram.description.CompositeLayout"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.orderedtreelayout.OrderedTreeLayoutNodeMappingPropertySection"
@@ -1755,14 +1755,14 @@
                id="description.section.orderedTreeLayout.NodeMapping"
                afterSection="description.section.orderedTreeLayout.ChildrenExpression"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.OrderedTreeLayout"/>        
+        <input type="org.eclipse.sirius.diagram.description.OrderedTreeLayout"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.orderedtreelayout.OrderedTreeLayoutChildrenExpressionPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.description.orderedtreelayout.OrderedTreeLayoutChildrenExpressionFilter"
                id="description.section.orderedTreeLayout.ChildrenExpression"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.OrderedTreeLayout"/>        
+        <input type="org.eclipse.sirius.diagram.description.OrderedTreeLayout"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.pastetargetdescription.PasteTargetDescriptionPasteDescriptionsPropertySection"
@@ -1791,7 +1791,7 @@
                id="description.section.edgeMappingImport.ImportedMapping"
                afterSection="description.section.identifiedElement.Label"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.EdgeMappingImport"/>        
+        <input type="org.eclipse.sirius.diagram.description.EdgeMappingImport"/>        
       </propertySection>
       <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.edgemappingimport.EdgeMappingImportInheritsAncestorFiltersPropertySection"
@@ -1799,7 +1799,7 @@
                id="description.section.edgeMappingImport.InheritsAncestorFilters"
                afterSection="description.section.edgeMappingImport.ImportedMapping"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.EdgeMappingImport"/>        
+        <input type="org.eclipse.sirius.diagram.description.EdgeMappingImport"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.edgemapping.EdgeMappingPathNodeMappingPropertySection"
@@ -1807,7 +1807,7 @@
                id="description.section.edgeMapping.PathNodeMapping"
                afterSection="description.section.edgeMapping.PathExpression"
                 tab="viewpoint.tab.path">
-        <input type="org.eclipse.sirius.viewpoint.description.EdgeMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.EdgeMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.edgemapping.EdgeMappingPathExpressionPropertySection"
@@ -1815,7 +1815,7 @@
                id="description.section.edgeMapping.PathExpression"
                afterSection="description.section.edgeMapping.Reconnections"
                 tab="viewpoint.tab.path">
-        <input type="org.eclipse.sirius.viewpoint.description.EdgeMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.EdgeMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.edgemapping.EdgeMappingReconnectionsPropertySection"
@@ -1823,7 +1823,7 @@
                id="description.section.edgeMapping.Reconnections"
                afterSection="description.section.edgeMapping.UseDomainElement"
                 tab="viewpoint.tab.behavior">
-        <input type="org.eclipse.sirius.viewpoint.description.EdgeMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.EdgeMapping"/>        
       </propertySection>  	 
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.edgemapping.EdgeMappingDomainClassPropertySection"
@@ -1831,7 +1831,7 @@
                id="description.section.edgeMapping.DomainClass"
                afterSection="description.section.identifiedElement.Label"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.EdgeMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.EdgeMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.edgemapping.EdgeMappingTargetExpressionPropertySection"
@@ -1839,7 +1839,7 @@
                id="description.section.edgeMapping.TargetExpression"
                afterSection="description.section.edgeMapping.SourceFinderExpression"
                 tab="viewpoint.tab.advanced">
-        <input type="org.eclipse.sirius.viewpoint.description.EdgeMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.EdgeMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.edgemapping.EdgeMappingSourceFinderExpressionPropertySection"
@@ -1847,7 +1847,7 @@
                id="description.section.edgeMapping.SourceFinderExpression"
                afterSection="description.section.edgeMapping.SourceMapping"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.EdgeMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.EdgeMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.edgemapping.EdgeMappingTargetFinderExpressionPropertySection"
@@ -1855,7 +1855,7 @@
                id="description.section.edgeMapping.TargetFinderExpression"
                afterSection="description.section.edgeMapping.TargetMapping"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.EdgeMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.EdgeMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.edgemapping.EdgeMappingTargetMappingPropertySection"
@@ -1863,7 +1863,7 @@
                id="description.section.edgeMapping.TargetMapping"
                afterSection="description.section.edgeMapping.SourceFinderExpression"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.EdgeMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.EdgeMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.edgemapping.EdgeMappingSourceMappingPropertySection"
@@ -1871,21 +1871,21 @@
                id="description.section.edgeMapping.SourceMapping"
                afterSection="description.section.edgeMapping.DomainClass"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.EdgeMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.EdgeMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.containermappingimport.ContainerMappingImportImportedMappingPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.description.containermappingimport.ContainerMappingImportImportedMappingFilter"
                id="description.section.containerMappingImport.ImportedMapping"
                 tab="viewpoint.tab.import">
-        <input type="org.eclipse.sirius.viewpoint.description.ContainerMappingImport"/>        
+        <input type="org.eclipse.sirius.diagram.description.ContainerMappingImport"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.nodemappingimport.NodeMappingImportImportedMappingPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.description.nodemappingimport.NodeMappingImportImportedMappingFilter"
                id="description.section.nodeMappingImport.ImportedMapping"
                 tab="viewpoint.tab.import">
-        <input type="org.eclipse.sirius.viewpoint.description.NodeMappingImport"/>        
+        <input type="org.eclipse.sirius.diagram.description.NodeMappingImport"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.abstractmappingimport.AbstractMappingImportInheritsAncestorFiltersPropertySection"
@@ -1908,7 +1908,7 @@
                id="description.section.containerMapping.ReusedContainerMappings"
                afterSection="description.section.containerMapping.ReusedNodeMappings"
                 tab="viewpoint.tab.import">
-        <input type="org.eclipse.sirius.viewpoint.description.ContainerMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.ContainerMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.containermapping.ContainerMappingReusedNodeMappingsPropertySection"
@@ -1916,7 +1916,7 @@
                id="description.section.containerMapping.ReusedNodeMappings"
                afterSection="description.section.containerMapping.AllNodeMappings"
                 tab="viewpoint.tab.import">
-        <input type="org.eclipse.sirius.viewpoint.description.ContainerMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.ContainerMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.section.description.containermapping.ContainerMappingChildrenPresentationPropertySectionSpec"
@@ -1924,7 +1924,7 @@
                id="description.section.containerMapping.ChildrenPresentation"
                afterSection="description.section.frameMapping.CoveredLifelinesExpression"
                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.ContainerMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.ContainerMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.abstractnodemapping.AbstractNodeMappingReusedBorderedNodeMappingsPropertySection"
@@ -1932,14 +1932,14 @@
                id="description.section.abstractNodeMapping.ReusedBorderedNodeMappings"
                afterSection="description.section.documentedElement.Documentation"
                 tab="viewpoint.tab.import">
-        <input type="org.eclipse.sirius.viewpoint.description.AbstractNodeMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.AbstractNodeMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.abstractnodemapping.AbstractNodeMappingDomainClassPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.description.abstractnodemapping.AbstractNodeMappingDomainClassFilter"
                id="description.section.abstractNodeMapping.DomainClass"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.AbstractNodeMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.AbstractNodeMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.diagramelementmapping.DiagramElementMappingDoubleClickDescriptionPropertySection"
@@ -1947,7 +1947,7 @@
                id="description.section.diagramElementMapping.DoubleClickDescription"
                afterSection="description.section.diagramElementMapping.SemanticElements"
                 tab="viewpoint.tab.behavior">
-        <input type="org.eclipse.sirius.viewpoint.description.DiagramElementMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.DiagramElementMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.diagramelementmapping.DiagramElementMappingSemanticElementsPropertySection"
@@ -1955,7 +1955,7 @@
                id="description.section.diagramElementMapping.SemanticElements"
                afterSection="description.section.diagramElementMapping.Synchronization"
                 tab="viewpoint.tab.advanced">
-        <input type="org.eclipse.sirius.viewpoint.description.DiagramElementMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.DiagramElementMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.diagramelementmapping.DiagramElementMappingSemanticCandidatesExpressionPropertySection"
@@ -1963,7 +1963,7 @@
                id="description.section.diagramElementMapping.SemanticCandidatesExpression"
                afterSection="description.section.edgeMapping.TargetFinderExpression"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.DiagramElementMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.DiagramElementMapping"/>        
       </propertySection>
       <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.edgemapping.EdgeMappingUseDomainElementPropertySection"
@@ -1971,7 +1971,7 @@
                id="description.section.edgeMapping.UseDomainElement"
                afterSection="description.section.diagramElementMapping.SemanticCandidatesExpression"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.EdgeMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.EdgeMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.diagramelementmapping.DiagramElementMappingLabelDirectEditPropertySection"
@@ -1979,7 +1979,7 @@
                id="description.section.diagramElementMapping.LabelDirectEdit"
                afterSection="description.section.diagramElementMapping.DeletionDescription"
                 tab="viewpoint.tab.behavior">
-        <input type="org.eclipse.sirius.viewpoint.description.DiagramElementMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.DiagramElementMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.diagramelementmapping.DiagramElementMappingDeletionDescriptionPropertySection"
@@ -1987,14 +1987,14 @@
                id="description.section.diagramElementMapping.DeletionDescription"
                afterSection="description.section.diagramElementMapping.PreconditionExpression"
                 tab="viewpoint.tab.behavior">
-        <input type="org.eclipse.sirius.viewpoint.description.DiagramElementMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.DiagramElementMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.diagramelementmapping.DiagramElementMappingPreconditionExpressionPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.description.diagramelementmapping.DiagramElementMappingPreconditionExpressionFilter"
                id="description.section.diagramElementMapping.PreconditionExpression"
                 tab="viewpoint.tab.advanced">
-        <input type="org.eclipse.sirius.viewpoint.description.DiagramElementMapping"/>        
+        <input type="org.eclipse.sirius.diagram.description.DiagramElementMapping"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.representationelementmapping.RepresentationElementMappingNavigationDescriptionsPropertySection"
@@ -2024,7 +2024,7 @@
                id="description.section.diagramDescription.DomainClass"
                afterSection="description.section.identifiedElement.Label"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.DiagramDescription"/>
+        <input type="org.eclipse.sirius.diagram.description.DiagramDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.javaextension.JavaExtensionQualifiedClassNamePropertySection"
@@ -2046,7 +2046,7 @@
                id="description.section.diagramImportDescription.ImportedDiagram"
                afterSection="description.section.diagramDescription.EnablePopupBars"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.DiagramImportDescription"/>        
+        <input type="org.eclipse.sirius.diagram.description.DiagramImportDescription"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.diagramdescription.DiagramDescriptionEnablePopupBarsPropertySection"
@@ -2054,7 +2054,7 @@
                id="description.section.diagramDescription.EnablePopupBars"
                afterSection="description.section.representationDescription.Initialisation"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.DiagramDescription"/>        
+        <input type="org.eclipse.sirius.diagram.description.DiagramDescription"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.diagramdescription.DiagramDescriptionReusedToolsPropertySection"
@@ -2062,7 +2062,7 @@
                id="description.section.diagramDescription.ReusedTools"
                afterSection="description.section.diagramDescription.ReusedMappings"
                 tab="viewpoint.tab.import">
-        <input type="org.eclipse.sirius.viewpoint.description.DiagramDescription"/>        
+        <input type="org.eclipse.sirius.diagram.description.DiagramDescription"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.diagramdescription.DiagramDescriptionReusedMappingsPropertySection"
@@ -2070,7 +2070,7 @@
                id="description.section.diagramDescription.ReusedMappings"
                afterSection="description.section.diagramDescription.AllActivatedTools"
                 tab="viewpoint.tab.import">
-        <input type="org.eclipse.sirius.viewpoint.description.DiagramDescription"/>        
+        <input type="org.eclipse.sirius.diagram.description.DiagramDescription"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.diagramdescription.DiagramDescriptionInitPropertySection"
@@ -2078,7 +2078,7 @@
                id="description.section.diagramDescription.Init"
                afterSection="description.section.diagramDescription.RootExpression"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.DiagramDescription"/>        
+        <input type="org.eclipse.sirius.diagram.description.DiagramDescription"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.diagramdescription.DiagramDescriptionRootExpressionPropertySection"
@@ -2086,7 +2086,7 @@
                id="description.section.diagramDescription.RootExpression"
                afterSection="description.section.diagramDescription.DefaultConcern"
                 tab="viewpoint.tab.advanced">
-        <input type="org.eclipse.sirius.viewpoint.description.DiagramDescription"/>        
+        <input type="org.eclipse.sirius.diagram.description.DiagramDescription"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.diagramdescription.DiagramDescriptionDefaultConcernPropertySection"
@@ -2094,7 +2094,7 @@
                id="description.section.diagramDescription.DefaultConcern"
                afterSection="description.section.diagramDescription.PreconditionExpression"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.DiagramDescription"/>        
+        <input type="org.eclipse.sirius.diagram.description.DiagramDescription"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.diagramdescription.DiagramDescriptionPreconditionExpressionPropertySection"
@@ -2102,7 +2102,7 @@
                id="description.section.diagramDescription.PreconditionExpression"
                afterSection="description.section.diagramDescription.AllTools"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.DiagramDescription"/>        
+        <input type="org.eclipse.sirius.diagram.description.DiagramDescription"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.draganddroptargetdescription.DragAndDropTargetDescriptionDropDescriptionsPropertySection"

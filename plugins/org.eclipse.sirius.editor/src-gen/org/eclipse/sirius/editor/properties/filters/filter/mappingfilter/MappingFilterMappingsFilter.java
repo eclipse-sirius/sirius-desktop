@@ -12,8 +12,8 @@ package org.eclipse.sirius.editor.properties.filters.filter.mappingfilter;
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
-import org.eclipse.sirius.viewpoint.description.filter.FilterPackage;
 
 // End of user code specific imports
 
@@ -33,7 +33,7 @@ public class MappingFilterMappingsFilter extends ViewpointPropertyFilter {
      * {@inheritDoc}
      */
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.viewpoint.description.filter.MappingFilter;
+        return arg0 instanceof org.eclipse.sirius.diagram.description.filter.MappingFilter;
     }
 
     // Start of user code user methods

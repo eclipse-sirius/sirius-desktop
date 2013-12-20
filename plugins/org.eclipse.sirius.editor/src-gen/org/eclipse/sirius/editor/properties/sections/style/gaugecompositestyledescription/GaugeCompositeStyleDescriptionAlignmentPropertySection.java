@@ -14,9 +14,9 @@ package org.eclipse.sirius.editor.properties.sections.style.gaugecompositestyled
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.sirius.diagram.AlignmentKind;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractRadioButtonPropertySection;
-import org.eclipse.sirius.viewpoint.AlignmentKind;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;

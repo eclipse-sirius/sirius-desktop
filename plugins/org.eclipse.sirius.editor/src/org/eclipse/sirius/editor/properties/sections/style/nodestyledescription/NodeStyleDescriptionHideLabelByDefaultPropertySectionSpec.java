@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.properties.sections.style.nodestyledescription;
 
-import org.eclipse.sirius.viewpoint.LabelPosition;
+import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
 
 /**
