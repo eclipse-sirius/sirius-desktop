@@ -10,6 +10,7 @@
 package org.eclipse.sirius.diagram.sequence.editor.properties.sections.ordering.singleeventend;
 
 // Start of user code imports
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;

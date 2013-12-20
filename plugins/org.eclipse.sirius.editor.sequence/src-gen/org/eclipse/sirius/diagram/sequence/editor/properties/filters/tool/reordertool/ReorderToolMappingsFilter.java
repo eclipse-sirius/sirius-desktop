@@ -10,6 +10,7 @@
 package org.eclipse.sirius.diagram.sequence.editor.properties.filters.tool.reordertool;
 
 // Start of user code specific imports
+
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
 import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
