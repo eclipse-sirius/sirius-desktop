@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.common.ui.business.api.interpreter;
+package org.eclipse.sirius.ui.tools.internal.views.interpreterview;
 
 import java.util.Collection;
 import java.util.Map;

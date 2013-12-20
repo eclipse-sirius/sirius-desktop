@@ -76,7 +76,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.common.ui.business.api.interpreter.VariableContentProvider;
 import org.eclipse.sirius.common.ui.tools.api.contentassist.ContentInstanceProposalProvider;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.session.Session;
