@@ -18,7 +18,7 @@ import com.google.common.base.Preconditions;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
-import org.eclipse.sirius.ui.tools.api.dialogs.ImageFileFormat;
+import org.eclipse.sirius.ext.swt.ImageFileFormat;
 import org.eclipse.sirius.viewpoint.DNode;
 import org.eclipse.sirius.viewpoint.WorkspaceImage;
 

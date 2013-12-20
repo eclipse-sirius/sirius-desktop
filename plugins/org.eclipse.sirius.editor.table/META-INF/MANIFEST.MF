@@ -49,3 +49,4 @@ Export-Package: org.eclipse.sirius.editor.table.tools.internal.menu;x-internal:=
  org.eclipse.sirius.table.editor.properties.sections.description.tablemapping,
  org.eclipse.sirius.table.editor.properties.sections.description.tablenavigationdescription,
  org.eclipse.sirius.table.editor.properties.sections.description.tablevariable
+Import-Package: org.eclipse.sirius.ext.swt;version="1.0.0"

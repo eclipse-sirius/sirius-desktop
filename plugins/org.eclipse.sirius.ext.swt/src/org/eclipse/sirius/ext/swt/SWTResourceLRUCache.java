@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.common.ui.tools.api.util;
+package org.eclipse.sirius.ext.swt;
 
 import org.eclipse.sirius.ext.base.cache.LRUCache;
 import org.eclipse.swt.graphics.Resource;

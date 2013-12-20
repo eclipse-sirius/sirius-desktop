@@ -30,7 +30,7 @@ import org.eclipse.swt.widgets.Display;
 
 import com.google.common.base.Objects;
 
-import org.eclipse.sirius.common.ui.tools.api.util.SWTResourceLRUCache;
+import org.eclipse.sirius.ext.swt.SWTResourceLRUCache;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.FontFormat;

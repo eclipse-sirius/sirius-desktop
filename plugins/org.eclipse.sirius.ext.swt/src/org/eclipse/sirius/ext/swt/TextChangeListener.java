@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.tools.api.assist;
+package org.eclipse.sirius.ext.swt;
 
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;

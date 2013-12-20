@@ -69,3 +69,4 @@ Export-Package: org.eclipse.sirius.diagram.sequence.editor.properties.filters.de
  org.eclipse.sirius.diagram.sequence.editor.properties.sections.template.tsourcetargetmessagemapping,
  org.eclipse.sirius.diagram.sequence.editor.properties.sections.tool.instancerolereordertool,
  org.eclipse.sirius.diagram.sequence.editor.properties.sections.tool.reordertool
+Import-Package: org.eclipse.sirius.ext.swt;version="1.0.0"

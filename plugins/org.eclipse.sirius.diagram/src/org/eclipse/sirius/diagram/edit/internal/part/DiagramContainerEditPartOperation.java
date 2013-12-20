@@ -33,8 +33,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDes
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelogram;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
+import org.eclipse.sirius.ext.swt.ImageFileFormat;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
-import org.eclipse.sirius.ui.tools.api.dialogs.ImageFileFormat;
 import org.eclipse.sirius.viewpoint.BackgroundStyle;
 import org.eclipse.sirius.viewpoint.ContainerStyle;
 import org.eclipse.sirius.viewpoint.DDiagramElement;

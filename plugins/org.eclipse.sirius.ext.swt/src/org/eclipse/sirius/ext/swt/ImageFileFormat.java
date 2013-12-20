@@ -9,7 +9,7 @@
  *    IBM Corporation - initial API and implementation 
  ****************************************************************************/
 
-package org.eclipse.sirius.ui.tools.api.dialogs;
+package org.eclipse.sirius.ext.swt;
 
 import java.util.Arrays;
 import java.util.Collections;

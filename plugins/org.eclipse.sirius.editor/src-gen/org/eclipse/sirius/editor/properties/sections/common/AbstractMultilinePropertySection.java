@@ -22,7 +22,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.sirius.editor.utils.TextChangeHelper;
-import org.eclipse.sirius.ui.tools.api.assist.TextChangeListener;
+import org.eclipse.sirius.ext.swt.TextChangeListener;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
