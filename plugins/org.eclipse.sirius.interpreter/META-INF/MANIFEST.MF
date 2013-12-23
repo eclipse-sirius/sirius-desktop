@@ -20,4 +20,4 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Import-Package: com.google.common.base;version="2.0.0",
  com.google.common.collect;version="2.0.0"
-Export-Package: org.eclipse.sirius.common.acceleo.interpreter
+Export-Package: org.eclipse.sirius.common.acceleo.interpreter;version="1.0.0"
