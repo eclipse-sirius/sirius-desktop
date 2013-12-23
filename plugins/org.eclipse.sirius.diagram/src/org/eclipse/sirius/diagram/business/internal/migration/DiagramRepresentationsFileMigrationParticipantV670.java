@@ -152,7 +152,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
         // has been moved, it is removed from this list.
         List<Node> otherBorderedNodesToIgnore = Lists.newArrayList(Iterators.filter(Iterators.filter(diagram.eAllContents(), Node.class), isBorderedNode));
         while (viewIterator.hasNext()) {
-            Node node = (Node) viewIterator.next();
+            Node node = viewIterator.next();
             Node parentNode = (Node) node.eContainer();
             // Create a canonicalDBorderItemLocator to locate this bordered
             // nodes according to current location and conflicts with other
@@ -201,7 +201,7 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
     private void migrateGraphicalFiltersAndGMFBounds(Diagram diagram) {
         Iterator<Node> viewIterator = Iterators.filter(Iterators.filter(diagram.eAllContents(), Node.class), isBorderedNode);
         while (viewIterator.hasNext()) {
-            Node node = (Node) viewIterator.next();
+            Node node = viewIterator.next();
             if (node.getElement() instanceof DNode && node.eContainer() instanceof Node) {
                 // The element of a bordered node should be a DNode and the
                 // parent of a bordered node should be a Node.

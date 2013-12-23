@@ -274,7 +274,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
      * {@inheritDoc}
      */
     public boolean eInstanceOf(final EObject instance, final String name) {
-        if ("EObject".equals(name) && instance instanceof EObject) {
+        if ("EObject".equals(name) && instance != null) {
             return true;
         }
         boolean result = eInstanceOf(instance.eClass(), name);

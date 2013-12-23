@@ -101,7 +101,7 @@ public class NotificationFigure extends RectangleFigure {
 
         // Workaround, as the size of the figure follows zoom, we apply twice
         // the zoom on figure offset to balance
-        double notationFigureOffset = ((double) (viewSize.width - WIDTH) / 2d) / (rootEditPart.getZoomManager().getZoom() * rootEditPart.getZoomManager().getZoom());
+        double notationFigureOffset = ((viewSize.width - WIDTH) / 2d) / (rootEditPart.getZoomManager().getZoom() * rootEditPart.getZoomManager().getZoom());
 
         viewLocation.performScale(1.0d / rootEditPart.getZoomManager().getZoom());
 

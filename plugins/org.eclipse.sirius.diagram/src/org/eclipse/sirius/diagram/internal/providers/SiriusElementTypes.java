@@ -303,7 +303,7 @@ public class SiriusElementTypes extends ElementInitializers {
 
             elements.put(DEdge_4001, ViewpointPackage.eINSTANCE.getDEdge());
         }
-        return (ENamedElement) elements.get(type);
+        return elements.get(type);
     }
 
     /**

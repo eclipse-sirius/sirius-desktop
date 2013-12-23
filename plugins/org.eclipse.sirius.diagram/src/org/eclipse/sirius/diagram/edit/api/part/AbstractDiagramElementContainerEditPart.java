@@ -289,7 +289,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
                     int tempHeightToApplied = dDiagramElementContainerHeight * LayoutUtils.SCALE;
                     heightToApplied = tempHeightToApplied;
                 }
-                DefaultSizeNodeFigure dsnf = (DefaultSizeNodeFigure) figure;
+                DefaultSizeNodeFigure dsnf = figure;
                 Dimension d = new Dimension(widthToApplied, heightToApplied);
                 dsnf.setDefaultSize(d);
             }

@@ -235,7 +235,7 @@ public class DTableContentAdapter extends ResourceSetListenerImpl {
     private void move(final int position, final Integer oldValue, final DTargetColumn newValue) {
         PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
             public void run() {
-                addNewColumn(position + 1, (DTargetColumn) newValue);
+                addNewColumn(position + 1, newValue);
                 final int newPosition = position + 1;
                 final int oldPosition = oldValue.intValue() + 1;
                 if (newPosition < oldPosition) {
@@ -324,7 +324,7 @@ public class DTableContentAdapter extends ResourceSetListenerImpl {
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REFRESH_SWT_LINE_KEY);
             break;
         case TablePackage.DLINE__COLLAPSED:
-            if (n.getNewValue() instanceof Boolean && dTableTreeViewer instanceof DTableTreeViewer) {
+            if (n.getNewValue() instanceof Boolean && dTableTreeViewer != null) {
                 DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHANGE_SWT_LINE_COLAPSE_STATE_KEY);
                 final boolean collapsed = n.getNewBooleanValue();
                 PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
@@ -338,7 +338,7 @@ public class DTableContentAdapter extends ResourceSetListenerImpl {
             }
             break;
         case TablePackage.DLINE__VISIBLE:
-            if (n.getNewValue() instanceof Boolean && dTableTreeViewer instanceof DTableTreeViewer) {
+            if (n.getNewValue() instanceof Boolean && dTableTreeViewer != null) {
                 DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHANGE_SWT_LINE_VISIBLE_STATE_KEY);
                 dTableTreeViewer.refresh(false);
                 DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CHANGE_SWT_LINE_VISIBLE_STATE_KEY);
@@ -389,7 +389,7 @@ public class DTableContentAdapter extends ResourceSetListenerImpl {
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REFRESH_TABLE_KEY);
             break;
         case TablePackage.DCOLUMN__VISIBLE:
-            if (n.getNewValue() instanceof Boolean && dTableTreeViewer instanceof DTableTreeViewer) {
+            if (n.getNewValue() instanceof Boolean && dTableTreeViewer != null) {
                 Display.getDefault().asyncExec(new Runnable() {
                     public void run() {
                         if (dTableTreeViewer != null && dTableTreeViewer.getControl() != null && !dTableTreeViewer.getTree().isDisposed()) {
@@ -513,7 +513,7 @@ public class DTableContentAdapter extends ResourceSetListenerImpl {
                 DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.UPDATE_SWT_LINE_KEY);
             } else if (notifier.eContainer() instanceof DLine) {
                 DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.UPDATE_SWT_LINE_KEY);
-                updateViewer((DLine) notifier.eContainer());
+                updateViewer(notifier.eContainer());
                 DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.UPDATE_SWT_LINE_KEY);
             } else if (notifier.eContainer() instanceof DColumn) {
                 DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_SWT_TABLE_KEY);

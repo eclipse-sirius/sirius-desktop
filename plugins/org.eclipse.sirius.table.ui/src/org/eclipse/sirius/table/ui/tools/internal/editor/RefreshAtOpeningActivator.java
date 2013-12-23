@@ -113,7 +113,7 @@ public class RefreshAtOpeningActivator implements IPartListener {
             TreeColumn treeColumn = treeColumns[0];
             TreeColumnWidthQuery treeColumnWidthQuery = new TreeColumnWidthQuery(treeColumn);
             Display.getDefault().syncExec(treeColumnWidthQuery);
-            int widgetWidth = (Integer) treeColumnWidthQuery.getResult();
+            int widgetWidth = treeColumnWidthQuery.getResult();
             if (dTable.getHeaderColumnWidth() != widgetWidth && session.getModelAccessor().getPermissionAuthority().canEditInstance(dTable)) {
                 Command changeColumnWidthCommand = new ChangeColumnWidthCommand(session, widgetWidth, dTable);
                 refreshDTableAtOpeningCmd.append(changeColumnWidthCommand);
@@ -124,7 +124,7 @@ public class RefreshAtOpeningActivator implements IPartListener {
                 DColumn dColumn = (DColumn) treeColumn.getData(DTableViewerManager.TABLE_COLUMN_DATA);
                 treeColumnWidthQuery = new TreeColumnWidthQuery(treeColumn);
                 Display.getDefault().syncExec(treeColumnWidthQuery);
-                widgetWidth = (Integer) treeColumnWidthQuery.getResult();
+                widgetWidth = treeColumnWidthQuery.getResult();
 
                 // If opening the editor causes a resize of the DTable
                 if (dColumn.isVisible() && dColumn.getWidth() != widgetWidth && session.getModelAccessor().getPermissionAuthority().canEditInstance(dColumn)) {

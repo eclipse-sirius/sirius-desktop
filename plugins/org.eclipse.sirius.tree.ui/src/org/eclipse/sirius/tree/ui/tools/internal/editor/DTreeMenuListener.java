@@ -212,8 +212,8 @@ public class DTreeMenuListener implements IMenuListener {
             // Add actions to navigate to existing representation
             createNavigationAction(navigateMenuItem, currentTreeElement);
             // Add actions to navigate to new representation
-            if (currentTreeElement instanceof DTreeItem) {
-                createDetailsActions((DTreeItem) currentTreeElement, navigateMenuItem);
+            if (currentTreeElement != null) {
+                createDetailsActions(currentTreeElement, navigateMenuItem);
             }
         } else {
             // Add actions to navigate to existing representation

@@ -175,7 +175,7 @@ public class TimeProfiler2ViewLabelProvider extends LabelProvider implements ITa
         if (!fontCache.containsKey(Boolean.valueOf(bold))) {
             fontCache.put(Boolean.valueOf(bold), new Font(Display.getDefault(), "ARIAL", 8, !bold ? SWT.NORMAL : SWT.BOLD));
         }
-        return (Font) fontCache.get(Boolean.valueOf(bold));
+        return fontCache.get(Boolean.valueOf(bold));
 
     }
 }

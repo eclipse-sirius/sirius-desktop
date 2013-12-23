@@ -132,7 +132,7 @@ public class RemoveRepresentationResourceAction extends Action {
         @Override
         protected void doExecute() {
             for (final Resource res : analysisResources) {
-                ((DAnalysisSession) session).removeAnalysis(res);
+                session.removeAnalysis(res);
             }
         }
     }

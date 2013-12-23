@@ -95,7 +95,7 @@ public class TimeProfilerTreeViewContentProvider implements ITreeContentProvider
         final Iterator<TreeItemWrapper> iterTreeItemWrapper = treeItemWrappers.iterator();
         int i = 0;
         while (iterTreeItemWrapper.hasNext()) {
-            final TreeItemWrapper treeItemWrapper = (TreeItemWrapper) iterTreeItemWrapper.next();
+            final TreeItemWrapper treeItemWrapper = iterTreeItemWrapper.next();
             final ProfilerTask task = (ProfilerTask) treeItemWrapper.getWrappedObject();
             final long time = profiler.getTimeEllapsed(task);
             final int occurences = profiler.getCountTask(task);

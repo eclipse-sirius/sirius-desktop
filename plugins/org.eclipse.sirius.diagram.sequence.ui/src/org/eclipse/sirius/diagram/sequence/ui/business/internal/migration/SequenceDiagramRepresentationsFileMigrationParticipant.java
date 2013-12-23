@@ -36,7 +36,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.AbstractDNode;
 import org.eclipse.sirius.viewpoint.CollapseFilter;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DDiagram;
 import org.eclipse.sirius.viewpoint.DDiagramElement;
 import org.eclipse.sirius.viewpoint.DNode;
 import org.eclipse.sirius.viewpoint.DNodeContainer;
@@ -114,7 +113,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
 
         for (DView view : dAnalysis.getOwnedViews()) {
             for (SequenceDDiagram diagram : Iterables.filter(view.getOwnedRepresentations(), SequenceDDiagram.class)) {
-                DDiagramGraphicalQuery query = new DDiagramGraphicalQuery((DDiagram) diagram);
+                DDiagramGraphicalQuery query = new DDiagramGraphicalQuery(diagram);
                 Option<Diagram> option = query.getAssociatedGMFDiagram();
                 if (option.some()) {
                     diagrams.add(option.get());

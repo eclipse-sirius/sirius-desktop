@@ -71,7 +71,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
     protected void appendAllLocalVariableDefinitions(Multimap<String, String> definitions, EObject context) {
         super.appendAllLocalVariableDefinitions(definitions, context);
         // Direct edit defines numbered variables based on their mask.
-        if (context instanceof DirectEditLabel && ((DirectEditLabel) context).getMask() instanceof EditMaskVariables) {
+        if (context instanceof DirectEditLabel && ((DirectEditLabel) context).getMask() != null) {
             EditMaskVariables emv = ((DirectEditLabel) context).getMask();
             appendEditMaskVariables(emv, definitions);
         }

@@ -145,7 +145,7 @@ public class GaugeCompositeFigure extends AbstractTransparentNode implements Sty
             sections = new ArrayList(this.getGauges());
         }
         for (int i = 0; i < sections.size(); i++) {
-            final GaugeSectionFigure figure = (GaugeSectionFigure) sections.get(i);
+            final GaugeSectionFigure figure = sections.get(i);
             Point p = null;
             switch (this.alignment) {
             case VERTICAL_LITERAL:

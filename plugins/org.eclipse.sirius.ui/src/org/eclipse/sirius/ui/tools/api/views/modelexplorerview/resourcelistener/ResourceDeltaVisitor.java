@@ -189,7 +189,7 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
                 switch (delta.getKind()) {
                 case IResourceDelta.ADDED:
                 case IResourceDelta.REMOVED:
-                    if (defaultModelingProjectResourceListener.isRepresentationsModel((IFile) file)) {
+                    if (defaultModelingProjectResourceListener.isRepresentationsModel(file)) {
                         // A representations file is added so this project
                         // is potentially became valid, so we must load it.
                         projectsToInitializeAndLoad.add(modelingProject.get());
@@ -236,7 +236,7 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
                     }
                     semanticResourcesURIsToAttach.add(uri);
                 }
-            } else if (this.defaultModelingProjectResourceListener.isRepresentationsModel((IFile) file)) {
+            } else if (this.defaultModelingProjectResourceListener.isRepresentationsModel(file)) {
                 projectsToInitialize.add(file.getProject());
             }
             /*
@@ -252,7 +252,7 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
                 }
                 semanticResourcesURIsToDetach.add(uri);
             }
-            if (this.defaultModelingProjectResourceListener.isRepresentationsModel((IFile) file)) {
+            if (this.defaultModelingProjectResourceListener.isRepresentationsModel(file)) {
                 projectsToInitialize.add(file.getProject());
             }
             break;

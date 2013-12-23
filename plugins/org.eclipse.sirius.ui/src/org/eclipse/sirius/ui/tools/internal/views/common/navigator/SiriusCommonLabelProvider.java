@@ -268,7 +268,7 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
         }
 
         if (parentResource != null) {
-            IProject project = ((IResource) parentResource).getProject();
+            IProject project = parentResource.getProject();
             return project != null ? ModelingProject.hasModelingProjectNature(project) : false;
         }
         return false;

@@ -185,7 +185,7 @@ public class ValidateAction extends Action {
 
                     createMarkers(target, runEMFValidator(semanticElement), diagramEditPart);
 
-                    for (final EObject representationElement : AllContents.of((DSemanticDecorator) view.getElement(), ViewpointPackage.eINSTANCE.getDRepresentationElement())) {
+                    for (final EObject representationElement : AllContents.of(view.getElement(), ViewpointPackage.eINSTANCE.getDRepresentationElement())) {
                         elementsToValidate.addAll(((DRepresentationElement) representationElement).getSemanticElements());
                     }
 

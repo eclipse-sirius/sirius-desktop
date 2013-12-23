@@ -79,7 +79,7 @@ public final class GMFNotationUtilities {
             if (edge.getSourceAnchor() instanceof IdentityAnchor) {
                 // Get current anchor position
                 IdentityAnchor anchor = (IdentityAnchor) edge.getSourceAnchor();
-                PrecisionPoint relativeReferencePoint = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) anchor).getId());
+                PrecisionPoint relativeReferencePoint = BaseSlidableAnchor.parseTerminalString(anchor.getId());
                 if (relativeReferencePoint.preciseX != newXAnchorPercentage) {
                     // Change x id anchor
                     setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY);
@@ -131,7 +131,7 @@ public final class GMFNotationUtilities {
             if (edge.getTargetAnchor() instanceof IdentityAnchor) {
                 // Get current anchor position
                 IdentityAnchor anchor = (IdentityAnchor) edge.getTargetAnchor();
-                PrecisionPoint relativeReferencePoint = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) anchor).getId());
+                PrecisionPoint relativeReferencePoint = BaseSlidableAnchor.parseTerminalString(anchor.getId());
                 if (relativeReferencePoint.preciseX != newXAnchorPercentage) {
                     // Change x id anchor
                     setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY);
@@ -232,13 +232,13 @@ public final class GMFNotationUtilities {
             if (edge.getSourceAnchor() instanceof IdentityAnchor) {
                 // Get current anchor position
                 IdentityAnchor anchor = (IdentityAnchor) edge.getSourceAnchor();
-                PrecisionPoint relativeReferencePoint = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) anchor).getId());
+                PrecisionPoint relativeReferencePoint = BaseSlidableAnchor.parseTerminalString(anchor.getId());
                 // Get the current x location of end segment
                 double xCurrentPosition = sourceFigure.x + sourceFigure.width * relativeReferencePoint.preciseX;
                 // Compute position of x location of end segment after move
                 double xNewPosition = xCurrentPosition - deltaX;
                 // Compute new anchor percentage
-                double newXAnchorPercentage = ((double) (xNewPosition - sourceFigure.x)) / ((double) sourceFigure.width);
+                double newXAnchorPercentage = (xNewPosition - sourceFigure.x) / (sourceFigure.width);
                 // Change x id anchor
                 setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY);
                 return Options.newSome(new Point(sourceFigure.getLocation().x + sourceFigure.width * newXAnchorPercentage, sourceFigure.getLocation().y + sourceFigure.height
@@ -271,13 +271,13 @@ public final class GMFNotationUtilities {
             if (edge.getTargetAnchor() instanceof IdentityAnchor) {
                 // Get current anchor position
                 IdentityAnchor anchor = (IdentityAnchor) edge.getTargetAnchor();
-                PrecisionPoint relativeReferencePoint = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) anchor).getId());
+                PrecisionPoint relativeReferencePoint = BaseSlidableAnchor.parseTerminalString(anchor.getId());
                 // Get the current x location of end segment
                 double xCurrentPosition = targetFigure.x + targetFigure.width * relativeReferencePoint.preciseX;
                 // Compute position of x location of end segment after move
                 double xNewPosition = xCurrentPosition - deltaX;
                 // Compute new anchor percentage
-                double newXAnchorPercentage = ((double) (xNewPosition - targetFigure.x)) / ((double) targetFigure.width);
+                double newXAnchorPercentage = (xNewPosition - targetFigure.x) / (targetFigure.width);
                 // Change x id anchor
                 setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY);
                 return Options.newSome(new Point(targetFigure.getLocation().x + targetFigure.width * newXAnchorPercentage, targetFigure.getLocation().y + targetFigure.height
@@ -339,7 +339,7 @@ public final class GMFNotationUtilities {
                 brotherNewBendpoints.add(new RelativeBendpoint(0, targetLocation.y + secondRelativeBendpointOfMovedEdge.getTargetY() - sourceLocation.y, sourceLocation.x - targetLocation.x,
                         secondRelativeBendpointOfMovedEdge.getTargetY()));
                 brotherNewBendpoints.add(new RelativeBendpoint(targetLocation.x - sourceLocation.x, targetLocation.y + secondRelativeBendpointOfMovedEdge.getTargetY() - sourceLocation.y, 0,
-                        ((RelativeBendpoint) secondRelativeBendpointOfMovedEdge).getTargetY()));
+                        secondRelativeBendpointOfMovedEdge.getTargetY()));
                 brotherNewBendpoints.add(new RelativeBendpoint(targetLocation.x - sourceLocation.x, targetBounds.y + targetBounds.width - sourceLocation.y, 0, targetBounds.y + targetBounds.width
                         - targetLocation.y));
                 ((RelativeBendpoints) edgeToModify.getBendpoints()).setPoints(brotherNewBendpoints);

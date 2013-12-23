@@ -70,7 +70,7 @@ public class TreeInterpretedExpressionQuery extends AbstractInterpretedExpressio
     protected void appendAllLocalVariableDefinitions(Multimap<String, String> definitions, EObject context) {
         super.appendAllLocalVariableDefinitions(definitions, context);
         // Direct edit defines numbered variables based on their mask.
-        if (context instanceof TreeItemEditionTool && ((TreeItemEditionTool) context).getMask() instanceof EditMaskVariables) {
+        if (context instanceof TreeItemEditionTool && ((TreeItemEditionTool) context).getMask() != null) {
             EditMaskVariables emv = ((TreeItemEditionTool) context).getMask();
             appendEditMaskVariables(emv, definitions);
         }

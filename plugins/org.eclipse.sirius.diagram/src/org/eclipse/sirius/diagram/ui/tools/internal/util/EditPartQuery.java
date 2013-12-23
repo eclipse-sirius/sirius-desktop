@@ -117,7 +117,7 @@ public class EditPartQuery {
     public List<Node> getBorderedNodes(final int expectedSide) {
         List<Node> result = new ArrayList<Node>();
         if (part instanceof IBorderedShapeEditPart) {
-            Iterable<IBorderItemEditPart> bordersItemPart = (Iterable<IBorderItemEditPart>) Iterables.filter(part.getChildren(),
+            Iterable<IBorderItemEditPart> bordersItemPart = Iterables.filter(part.getChildren(),
                     Predicates.and(Predicates.instanceOf(IBorderItemEditPart.class), new Predicate<IBorderItemEditPart>() {
                         public boolean apply(IBorderItemEditPart input) {
                             int currentSide = input.getBorderItemLocator().getCurrentSideOfParent();

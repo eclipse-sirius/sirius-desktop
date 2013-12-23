@@ -107,9 +107,9 @@ public class PatternFilter extends ViewerFilter {
             result = super.filter(viewer, parent, elements);
         } else {
 
-            Object[] filtered = (Object[]) cache.get(parent);
+            Object[] filtered = cache.get(parent);
             if (filtered == null) {
-                Boolean foundAny = (Boolean) foundAnyCache.get(parent);
+                Boolean foundAny = foundAnyCache.get(parent);
                 if (foundAny != null && !foundAny.booleanValue()) {
                     filtered = EMPTY;
                 } else {
@@ -140,11 +140,11 @@ public class PatternFilter extends ViewerFilter {
         } else if (!useCache) {
             result = computeAnyVisible(viewer, elements);
         } else {
-            Object[] filtered = (Object[]) cache.get(parent);
+            Object[] filtered = cache.get(parent);
             if (filtered != null) {
                 result = filtered.length > 0;
             } else {
-                Boolean foundAny = (Boolean) foundAnyCache.get(parent);
+                Boolean foundAny = foundAnyCache.get(parent);
                 if (foundAny == null) {
                     foundAny = computeAnyVisible(viewer, elements) ? Boolean.TRUE : Boolean.FALSE;
                     foundAnyCache.put(parent, foundAny);
@@ -424,7 +424,7 @@ public class PatternFilter extends ViewerFilter {
             }
             i = j;
         }
-        return (String[]) words.toArray(new String[words.size()]);
+        return words.toArray(new String[words.size()]);
     }
 
     /**

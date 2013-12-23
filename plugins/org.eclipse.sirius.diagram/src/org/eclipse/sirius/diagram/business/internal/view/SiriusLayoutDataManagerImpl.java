@@ -564,7 +564,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         rect.setSize(LayoutHelper.UNDEFINED.getSize());
         Point centerLocation;
         if (previousCenterLocation == null) {
-            Point result = getLayoutHelper().getReferencePosition(host.getContentPane(), ((FigureCanvas) host.getViewer().getControl()).getViewport(), (IGraphicalEditPart) host);
+            Point result = getLayoutHelper().getReferencePosition(host.getContentPane(), ((FigureCanvas) host.getViewer().getControl()).getViewport(), host);
             rect.setLocation(result);
             Point point = getLayoutHelper().validatePosition(host.getContentPane(), rect);
             centerLocation = point.getCopy();

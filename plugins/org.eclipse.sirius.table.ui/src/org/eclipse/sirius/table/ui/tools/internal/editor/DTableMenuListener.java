@@ -567,7 +567,7 @@ public class DTableMenuListener implements IMenuListener {
             // Tools only available for column of type DTargetColumn
             if (column instanceof DTargetColumn && ((DTargetColumn) column).getOriginMapping() != null) {
                 final DTargetColumn targetColumn = (DTargetColumn) column;
-                final AbstractTargetColumnAction deleteAction = (AbstractTargetColumnAction) getMappingToDeleteActions().get(targetColumn.getOriginMapping());
+                final AbstractTargetColumnAction deleteAction = getMappingToDeleteActions().get(targetColumn.getOriginMapping());
                 deleteAction.setColumn(targetColumn);
                 if (deleteAction.canExecute()) {
                     manager.add(deleteAction);

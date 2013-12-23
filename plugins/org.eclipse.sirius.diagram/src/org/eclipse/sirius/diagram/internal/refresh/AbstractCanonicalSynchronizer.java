@@ -551,8 +551,8 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             // Compute the best location according to other existing bordered
             // nodes.
             CanonicalDBorderItemLocator locator = new CanonicalDBorderItemLocator(parentNode, PositionConstants.NSEW);
-            if (portNode instanceof DDiagramElement) {
-                if (new DDiagramElementQuery((DDiagramElement) portNode).isIndirectlyCollapsed()) {
+            if (portNode != null) {
+                if (new DDiagramElementQuery(portNode).isIndirectlyCollapsed()) {
                     locator.setBorderItemOffset(IBorderItemOffsets.COLLAPSE_FILTER_OFFSET);
                 } else {
                     locator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);

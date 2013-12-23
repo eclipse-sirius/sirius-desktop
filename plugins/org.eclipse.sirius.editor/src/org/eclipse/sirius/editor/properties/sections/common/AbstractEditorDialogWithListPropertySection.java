@@ -114,7 +114,7 @@ public abstract class AbstractEditorDialogWithListPropertySection extends Abstra
         StringBuilder sb = new StringBuilder();
 
         if (getCurrentValue() != null) {
-            List values = (List) getCurrentValue();
+            List values = getCurrentValue();
             for (Iterator iterator = values.iterator(); iterator.hasNext();) {
                 EObject eObj = (EObject) iterator.next();
                 sb.append(getAdapterFactoryLabelProvider(eObj).getText(eObj));

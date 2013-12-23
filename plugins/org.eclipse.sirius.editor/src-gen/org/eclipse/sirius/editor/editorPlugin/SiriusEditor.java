@@ -819,7 +819,7 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
 
         // Only creates the other pages if there is something that can be edited
         //
-        if (!getEditingDomain().getResourceSet().getResources().isEmpty() && !((Resource) getEditingDomain().getResourceSet().getResources().get(0)).getContents().isEmpty()) {
+        if (!getEditingDomain().getResourceSet().getResources().isEmpty() && !getEditingDomain().getResourceSet().getResources().get(0).getContents().isEmpty()) {
             // Create a page for the selection tree view.
             //
             {
@@ -1137,7 +1137,7 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
     }
 
     protected void doSaveAs(URI uri, IEditorInput editorInput) {
-        ((Resource) editingDomain.getResourceSet().getResources().get(0)).setURI(uri);
+        editingDomain.getResourceSet().getResources().get(0).setURI(uri);
         setInputWithNotify(editorInput);
         setPartName(editorInput.getName());
         IProgressMonitor progressMonitor = getActionBars().getStatusLineManager() != null ? getActionBars().getStatusLineManager().getProgressMonitor() : new NullProgressMonitor();

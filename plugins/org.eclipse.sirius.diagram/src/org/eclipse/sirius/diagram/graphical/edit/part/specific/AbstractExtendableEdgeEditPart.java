@@ -131,7 +131,7 @@ public abstract class AbstractExtendableEdgeEditPart extends DEdgeEditPart {
                 final int stepY = lengthY / (objects.size() + 1);
 
                 for (int i = 0; i < objects.size(); i++) {
-                    final EObject edgeElement = (EObject) objects.get(i);
+                    final EObject edgeElement = objects.get(i);
                     final int currentStepX = stepX * (i + 1);
                     final int currentX = firstPoint.x + currentStepX;
                     final int currentStepY = stepY * (i + 1);

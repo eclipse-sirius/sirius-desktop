@@ -85,7 +85,7 @@ public final class FileSessionFinder {
         }
 
         for (final IFile file : files) {
-            if (file instanceof IFile) {
+            if (file != null) {
                 Collection<Session> fileSessions = getSessionFromFile(file, true);
                 if (fileSessions != null && !fileSessions.isEmpty()) {
                     selectedSessions.addAll(fileSessions);

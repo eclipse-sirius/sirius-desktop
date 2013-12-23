@@ -244,9 +244,9 @@ public final class DiagramContainerEditPartOperation {
         if (img != null && !StringUtil.isEmpty(img.getWorkspacePath())) {
             String workspacePath = img.getWorkspacePath();
             if (workspacePath.toUpperCase().endsWith(ImageFileFormat.SVG.getName())) {
-                imageFigure = (IFigure) SVGWorkspaceImageFigure.createImageFigure(img);
+                imageFigure = SVGWorkspaceImageFigure.createImageFigure(img);
             } else {
-                imageFigure = (IFigure) WorkspaceImageFigure.createImageFigure(workspacePath);
+                imageFigure = WorkspaceImageFigure.createImageFigure(workspacePath);
             }
         }
         return imageFigure;

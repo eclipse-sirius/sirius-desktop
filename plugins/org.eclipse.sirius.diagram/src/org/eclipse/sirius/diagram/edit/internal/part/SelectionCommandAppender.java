@@ -65,7 +65,7 @@ public final class SelectionCommandAppender {
     public static Command addSelectionCommand(final Command command, GraphicalEditPart editPart) {
         DDiagram currentDDiagram = DDiagramHelper.findParentDDiagram(editPart);
         if (currentDDiagram != null) {
-            return decorateCommandWithSelectionOfCreatedElements(command, (Notifier) currentDDiagram);
+            return decorateCommandWithSelectionOfCreatedElements(command, currentDDiagram);
         } else {
             return decorateCommandWithSelectionOfCreatedElements(command, editPart.getEditingDomain().getResourceSet());
         }

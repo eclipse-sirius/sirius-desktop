@@ -80,7 +80,7 @@ public final class DTableEditorUtil {
         TreeColumn treeColumn = treeColumns[0];
         TreeColumnWidthQuery treeColumnWidthQuery = new TreeColumnWidthQuery(treeColumn);
         Display.getDefault().syncExec(treeColumnWidthQuery);
-        int widgetWidth = (Integer) treeColumnWidthQuery.getResult();
+        int widgetWidth = treeColumnWidthQuery.getResult();
         if (dTable.getHeaderColumnWidth() != widgetWidth && dTable.getHeaderColumnWidth() > 0) {
             treeColumn.setWidth(dTable.getHeaderColumnWidth());
         }
@@ -95,7 +95,7 @@ public final class DTableEditorUtil {
                 handledDColumns.add(dColumn);
                 treeColumnWidthQuery = new TreeColumnWidthQuery(treeColumn);
                 Display.getDefault().syncExec(treeColumnWidthQuery);
-                widgetWidth = (Integer) treeColumnWidthQuery.getResult();
+                widgetWidth = treeColumnWidthQuery.getResult();
                 // If the DColumn as a default width (0) then resizing at
                 // opening should not impact the model
                 if (dColumn.isVisible() && dColumn.getWidth() > 0 && dColumn.getWidth() != widgetWidth) {

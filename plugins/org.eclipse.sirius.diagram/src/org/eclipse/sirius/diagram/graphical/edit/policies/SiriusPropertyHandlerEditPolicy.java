@@ -105,7 +105,7 @@ public class SiriusPropertyHandlerEditPolicy extends PropertyHandlerEditPolicy {
 
         final View viewToCopy = request.getViewToCopyFrom();
         if (viewToCopy.getElement() instanceof DStylizable) {
-            styleToCopy = (Style) EcoreUtil.copy(((DStylizable) viewToCopy.getElement()).getStyle());
+            styleToCopy = EcoreUtil.copy(((DStylizable) viewToCopy.getElement()).getStyle());
         }
 
         ICommand viewStyleCommand = null;

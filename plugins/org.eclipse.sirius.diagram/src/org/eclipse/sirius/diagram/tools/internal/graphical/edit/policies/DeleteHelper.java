@@ -150,7 +150,7 @@ public final class DeleteHelper {
                 if (GMFNotationHelper.isNoteAttachment(sourceEdge)) {
                     Set<View> linked = Sets.newHashSet();
                     linked.add(viewToDelete);
-                    collectLinkedViews((Node) target, linked);
+                    collectLinkedViews(target, linked);
                     linked.remove(viewToDelete);
 
                     linkedViews.addAll(getSafe(linked));
@@ -163,7 +163,7 @@ public final class DeleteHelper {
                 if (GMFNotationHelper.isNoteAttachment(targetEdge)) {
                     Set<View> linked = Sets.newHashSet();
                     linked.add(viewToDelete);
-                    collectLinkedViews((Node) source, linked);
+                    collectLinkedViews(source, linked);
                     linked.remove(viewToDelete);
 
                     linkedViews.addAll(getSafe(linked));
@@ -206,7 +206,7 @@ public final class DeleteHelper {
                 View target = sourceEdge.getTarget();
                 if (GMFNotationHelper.isNoteAttachment(sourceEdge)) {
                     if (!linkedViews.contains(target) && target instanceof Node && GMFNotationHelper.isNote((Node) target)) {
-                        collectLinkedViews((Node) target, linkedViews);
+                        collectLinkedViews(target, linkedViews);
                     } else {
                         linkedViews.add(target);
                     }
@@ -217,7 +217,7 @@ public final class DeleteHelper {
                 View source = targetEdge.getSource();
                 if (GMFNotationHelper.isNoteAttachment(targetEdge)) {
                     if (!linkedViews.contains(source) && source instanceof Node && GMFNotationHelper.isNote((Node) source)) {
-                        collectLinkedViews((Node) source, linkedViews);
+                        collectLinkedViews(source, linkedViews);
                     } else {
                         linkedViews.add(source);
                     }

@@ -24,7 +24,6 @@ import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -216,7 +215,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         View sourceView = (View) request.getTarget().getModel();
         @SuppressWarnings("unchecked")
         SiriusSetConnectionAnchorsCommand scaCommand = new SiriusSetConnectionAnchorsCommand(editingDomain, DiagramUIMessages.Commands_SetConnectionEndsCommand_Source, sourceView,
-                (EList<Edge>) sourceView.getSourceEdges(), ReconnectionKind.RECONNECT_SOURCE_LITERAL);
+                sourceView.getSourceEdges(), ReconnectionKind.RECONNECT_SOURCE_LITERAL);
         scaCommand.setNewSourceTerminal(node.mapConnectionAnchorToTerminal(sourceAnchor));
         CompositeCommand cc = new CompositeCommand(DiagramUIMessages.Commands_SetConnectionEndsCommand_Source);
         cc.compose(scaCommand);
@@ -291,7 +290,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         View targetView = (View) targetEP.getModel();
         @SuppressWarnings("unchecked")
         SiriusSetConnectionAnchorsCommand scaCommand = new SiriusSetConnectionAnchorsCommand(editingDomain, DiagramUIMessages.Commands_SetConnectionEndsCommand_Target, targetView,
-                (List<Edge>) targetView.getTargetEdges(), ReconnectionKind.RECONNECT_TARGET_LITERAL);
+                targetView.getTargetEdges(), ReconnectionKind.RECONNECT_TARGET_LITERAL);
         scaCommand.setNewTargetTerminal(targetEP.mapConnectionAnchorToTerminal(targetAnchor));
         Command cmd = new ICommandProxy(scaCommand);
         EditPart cep = request.getConnectionEditPart();
@@ -508,8 +507,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
             Point targetRefPoint = targetAnchor.getReferencePoint();
 
-            final LayoutData sourceLayoutData = new RootLayoutData((EditPart) sourceEditPart, sourceLocation.getCopy(), null);
-            final LayoutData targetLayoutData = new RootLayoutData((EditPart) targetEP, targetLocation.getCopy(), null);
+            final LayoutData sourceLayoutData = new RootLayoutData(sourceEditPart, sourceLocation.getCopy(), null);
+            final LayoutData targetLayoutData = new RootLayoutData(targetEP, targetLocation.getCopy(), null);
             final EdgeLayoutData edgeLayoutData = new EdgeLayoutData(sourceLayoutData, targetLayoutData);
 
             edgeLayoutData.setSourceTerminal("" + newSourceTerminal);

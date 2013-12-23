@@ -34,8 +34,6 @@ import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
-import org.eclipse.gmf.runtime.notation.Anchor;
-import org.eclipse.gmf.runtime.notation.Bendpoints;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
@@ -45,8 +43,6 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.RoutingStyle;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Shell;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -68,6 +64,8 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
 
 /**
  * Useful operations.
@@ -362,19 +360,19 @@ public final class LayoutUtils {
             final Node nodeTarget = (Node) targetView;
             final LayoutConstraint sourceConstraint = nodeSource.getLayoutConstraint();
             if (sourceConstraint != null) {
-                nodeTarget.setLayoutConstraint((LayoutConstraint) EcoreUtil.copy(sourceConstraint));
+                nodeTarget.setLayoutConstraint(EcoreUtil.copy(sourceConstraint));
             }
         } else if (sourceView instanceof Edge && targetView instanceof Edge) {
             final Edge edgeSource = (Edge) sourceView;
             final Edge edgeTarget = (Edge) targetView;
             if (edgeSource.getBendpoints() != null) {
-                edgeTarget.setBendpoints((Bendpoints) EcoreUtil.copy(edgeSource.getBendpoints()));
+                edgeTarget.setBendpoints(EcoreUtil.copy(edgeSource.getBendpoints()));
             }
             if (edgeSource.getSourceAnchor() != null) {
-                edgeTarget.setSourceAnchor((Anchor) EcoreUtil.copy(edgeSource.getSourceAnchor()));
+                edgeTarget.setSourceAnchor(EcoreUtil.copy(edgeSource.getSourceAnchor()));
             }
             if (edgeSource.getTargetAnchor() != null) {
-                edgeTarget.setTargetAnchor((Anchor) EcoreUtil.copy(edgeSource.getTargetAnchor()));
+                edgeTarget.setTargetAnchor(EcoreUtil.copy(edgeSource.getTargetAnchor()));
             }
             final RoutingStyle rstyle = (RoutingStyle) edgeSource.getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
             if (rstyle != null) {

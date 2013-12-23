@@ -233,7 +233,7 @@ public class FileProvider {
 
     private File getFileFromBundles(final IPath relativePath, final Bundle bundle) {
 
-        final String requiredBundles = (String) bundle.getHeaders().get(Constants.REQUIRE_BUNDLE);
+        final String requiredBundles = bundle.getHeaders().get(Constants.REQUIRE_BUNDLE);
         if (requiredBundles != null) {
             final StringTokenizer st = new StringTokenizer(requiredBundles, ",");
             while (st.hasMoreTokens()) {

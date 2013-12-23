@@ -44,7 +44,7 @@ public final class ItemProviderHelper {
         // CHECKSTYLE:OFF
         for (Iterator<Object> iter = newChildDescriptors.iterator(); iter.hasNext();) {
             // CHECKSTYLE:ON
-            Object desc = (Object) iter.next();
+            Object desc = iter.next();
             if (desc instanceof CommandParameter) {
                 CommandParameter cp = (CommandParameter) desc;
                 if (cp.getValue() instanceof EObject) {

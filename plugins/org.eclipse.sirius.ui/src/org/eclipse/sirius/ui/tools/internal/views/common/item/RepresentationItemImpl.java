@@ -142,9 +142,8 @@ public class RepresentationItemImpl implements ItemWrapper, IAdaptable {
      * 
      * @see org.eclipse.core.runtime.IAdaptable#getAdapter(java.lang.Class)
      */
-    @SuppressWarnings("all")
-    public Object getAdapter(Class adapter) {
-        if (rep.get() instanceof EObject && adapter == EObject.class) {
+    public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+        if (rep.get() != null && adapter == EObject.class) {
             return rep.get();
         }
 

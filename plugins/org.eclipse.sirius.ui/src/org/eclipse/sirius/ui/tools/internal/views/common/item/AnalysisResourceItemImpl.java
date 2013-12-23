@@ -102,7 +102,7 @@ public class AnalysisResourceItemImpl implements AnalysisResourceItem {
      * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getSession()
      */
     public Option<Session> getSession() {
-        return Options.newSome((Session) session);
+        return Options.newSome(session);
     }
 
     /**
@@ -158,7 +158,7 @@ public class AnalysisResourceItemImpl implements AnalysisResourceItem {
             }
             Collections.sort(all);
         }
-        return (List<?>) all;
+        return all;
     }
 
     /**

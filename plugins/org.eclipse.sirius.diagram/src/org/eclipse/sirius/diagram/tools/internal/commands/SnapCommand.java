@@ -78,7 +78,7 @@ public class SnapCommand extends AbstractTransactionalCommand {
         if (editparts != null) {
             // we only need the first child since all the edit parts being
             // snapped originate from the same diagram
-            IGraphicalEditPart parent = (IGraphicalEditPart) editparts.get(0);
+            IGraphicalEditPart parent = editparts.get(0);
             View view = (View) parent.getParent().getModel();
             return getWorkspaceFiles(view);
         }

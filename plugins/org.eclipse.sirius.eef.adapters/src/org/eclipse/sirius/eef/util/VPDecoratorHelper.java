@@ -41,7 +41,7 @@ public class VPDecoratorHelper {
      * @return <code>true</code> if we can adapt the specified target.
      */
     public boolean canAdapt() {
-        return target instanceof EObject;
+        return target != null;
     }
 
     /**

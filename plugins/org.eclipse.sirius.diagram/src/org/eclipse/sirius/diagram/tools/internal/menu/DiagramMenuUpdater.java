@@ -116,7 +116,7 @@ public class DiagramMenuUpdater implements ISelectionListener {
         }
         if (graphicalElement != null) {
             RootEditPart root = graphicalElement.getRoot();
-            if (root != null && (IGraphicalEditPart) root.getChildren().iterator().next() instanceof IGraphicalEditPart) {
+            if (root != null && (IGraphicalEditPart) root.getChildren().iterator().next() != null) {
                 IGraphicalEditPart diagramEditPart = (IGraphicalEditPart) root.getChildren().iterator().next();
 
                 // Step 2 : we get the LayoutNodeProvider associated to this

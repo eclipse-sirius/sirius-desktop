@@ -122,7 +122,7 @@ public class NodeMappingImportImportedMappingPropertySection extends AbstractCom
         List<?> values = Collections.emptyList();
         List<IItemPropertyDescriptor> propertyDescriptors = getDescriptors();
         for (Iterator<IItemPropertyDescriptor> iterator = propertyDescriptors.iterator(); iterator.hasNext();) {
-            IItemPropertyDescriptor propertyDescriptor = (IItemPropertyDescriptor) iterator.next();
+            IItemPropertyDescriptor propertyDescriptor = iterator.next();
             if (((EStructuralFeature) propertyDescriptor.getFeature(eObject)) == getFeature())
                 values = new ArrayList<Object>(propertyDescriptor.getChoiceOfValues(eObject));
         }

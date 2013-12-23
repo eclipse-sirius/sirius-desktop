@@ -39,7 +39,7 @@ public class TimeProfilerViewContentProvider implements IStructuredContentProvid
         final Iterator<ProfilerTask> iterTasks = tasks.iterator();
         int i = 0;
         while (iterTasks.hasNext()) {
-            final ProfilerTask task = (ProfilerTask) iterTasks.next();
+            final ProfilerTask task = iterTasks.next();
             final long time = profiler.getTimeEllapsed(task);
             final int occurences = profiler.getCountTask(task);
             final TimeProfilerViewItem item = new TimeProfilerViewItem(task, Long.valueOf(time), Integer.valueOf(occurences));

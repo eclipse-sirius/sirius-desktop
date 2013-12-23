@@ -238,7 +238,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
         existingLinks.removeAll(lines);
         final Iterator<Edge> linksIterator = existingLinks.iterator();
         while (linksIterator.hasNext()) {
-            final Edge nextDiagramLink = (Edge) linksIterator.next();
+            final Edge nextDiagramLink = linksIterator.next();
             final EObject diagramLinkObject = nextDiagramLink.getElement();
             // eContainer can be quite expensive when deep in the model
             final EObject nextDiagramLinkEContainer = nextDiagramLink.eContainer();
@@ -394,7 +394,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
         @SuppressWarnings("unchecked")
         final Iterator<Edge> edges = diagram.getEdges().iterator();
         while (edges.hasNext()) {
-            final Edge currentEdge = (Edge) edges.next();
+            final Edge currentEdge = edges.next();
             if ("line".equals(currentEdge.getType())) {
                 result.add(currentEdge);
             }

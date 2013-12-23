@@ -204,7 +204,7 @@ public class ImageSelectorService {
         workspaceImageDescription.setWorkspacePath(workspacePath);
         newWorkspaceImageStyle = createAndAffectWorkspaceImageCustomized((DDiagramElement) basicLabelStyle.eContainer(), workspaceImageDescription);
         if (basicLabelStyle != null && newWorkspaceImageStyle instanceof LabelStyle) {
-            copyProperties(basicLabelStyle, (LabelStyle) newWorkspaceImageStyle);
+            copyProperties(basicLabelStyle, newWorkspaceImageStyle);
         }
         newWorkspaceImageStyle.setDescription(((Style) basicLabelStyle).getDescription());
         return newWorkspaceImageStyle;
