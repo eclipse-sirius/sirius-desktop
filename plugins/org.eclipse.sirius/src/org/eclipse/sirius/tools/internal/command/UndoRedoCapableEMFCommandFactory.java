@@ -587,7 +587,7 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
      * {@inheritDoc}
      */
     public void setAutoRefreshDView(final boolean autoRefreshDView) {
-        throw new UnsupportedOperationException();
+        // TODO Feature not implemented.
     }
 
     /**
