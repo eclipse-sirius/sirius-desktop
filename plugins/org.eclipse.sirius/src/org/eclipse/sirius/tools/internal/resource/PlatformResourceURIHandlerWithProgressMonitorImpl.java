@@ -41,6 +41,7 @@ public class PlatformResourceURIHandlerWithProgressMonitorImpl extends PlatformR
         super();
     }
 
+    @SuppressWarnings("resource")
     @Override
     public InputStream createInputStream(URI uri, Map<?, ?> options) throws IOException {
         InputStream inputStream = null;
@@ -70,6 +71,7 @@ public class PlatformResourceURIHandlerWithProgressMonitorImpl extends PlatformR
         return inputStream;
     }
 
+    @SuppressWarnings("resource")
     @Override
     public OutputStream createOutputStream(URI uri, Map<?, ?> options) throws IOException {
         OutputStream outputStream = null;

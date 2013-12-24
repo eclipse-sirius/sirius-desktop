@@ -35,7 +35,6 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * @see org.eclipse.sirius.diagram.sequence.SequencePackage
  * @generated
  */
-@SuppressWarnings("deprecation")
 public class SequenceAdapterFactory extends AdapterFactoryImpl {
     /**
      * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->

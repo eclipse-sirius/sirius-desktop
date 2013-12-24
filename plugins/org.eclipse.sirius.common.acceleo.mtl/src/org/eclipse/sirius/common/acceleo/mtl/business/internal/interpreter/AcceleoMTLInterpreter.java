@@ -1107,7 +1107,6 @@ public class AcceleoMTLInterpreter implements IInterpreter {
             if (viewpointPlugin != null) {
                 final String fileSeparator = "/"; //$NON-NLS-1$
                 final String fileName = emtlPath.substring(emtlPath.lastIndexOf(fileSeparator) + 1);
-                @SuppressWarnings("unchecked")
                 // "fileSeparator" is also the bundle root.
                 final Enumeration<URL> emtlEntries = viewpointPlugin.findEntries(fileSeparator, fileName, true);
                 if (emtlEntries != null) {

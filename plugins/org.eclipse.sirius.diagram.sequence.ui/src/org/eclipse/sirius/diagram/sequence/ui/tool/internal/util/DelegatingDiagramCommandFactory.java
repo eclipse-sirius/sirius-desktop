@@ -59,7 +59,6 @@ import com.google.common.base.Preconditions;
  * 
  * @author pcdavid
  */
-@SuppressWarnings("deprecation")
 public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     private final IDiagramCommandFactory baseFactory;
 

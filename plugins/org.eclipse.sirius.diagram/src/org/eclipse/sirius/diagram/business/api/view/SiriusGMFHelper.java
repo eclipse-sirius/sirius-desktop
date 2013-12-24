@@ -232,7 +232,6 @@ public final class SiriusGMFHelper {
      * @return the view which has as element the diagram element given as
      *         parameter or null if any
      */
-    @SuppressWarnings("unchecked")
     private static <T> T getGmfView(final EObject diagramElement, final Class<T> clazz, final Session session) {
 
         if (diagramElement instanceof DSemanticDecorator) {
