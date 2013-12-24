@@ -204,26 +204,7 @@ public class GroupingContentProvider implements ITreeContentProvider {
     }
 
     private Object[] groupChildrenByContainingFeature(Object parent, Object[] children) {
-
-        LinkedListMultimap<Object, Object> childrenContainingMapping = LinkedListMultimap.create();
-        Object noContainingFeature = new Object();
-        for (Object child : children) {
-            Object containingFeature;
-            if (child instanceof EObject) {
-                containingFeature = ((EObject) child).eContainingFeature();
-            } else if (child instanceof TreeItemWrapper) {
-                Object wrappedObject = ((TreeItemWrapper) child).getWrappedObject();
-                if (wrappedObject instanceof EObject) {
-                    containingFeature = ((EObject) wrappedObject).eContainingFeature();
-                } else {
-                    containingFeature = noContainingFeature;
-                }
-            } else {
-                containingFeature = noContainingFeature;
-            }
-            childrenContainingMapping.put(containingFeature, child);
-        }
-
+        LinkedListMultimap<Object, Object> childrenContainingMapping = buildChildrenContainerMapping(children);
         final int groupSize = getGroupSize();
         List<Object> result = new ArrayList<Object>();
         for (Object structuralFeature : childrenContainingMapping.keySet()) {
@@ -255,6 +236,28 @@ public class GroupingContentProvider implements ITreeContentProvider {
         }
         return result.toArray();
 
+    }
+
+    private LinkedListMultimap<Object, Object> buildChildrenContainerMapping(Object[] children) {
+        LinkedListMultimap<Object, Object> childrenContainingMapping = LinkedListMultimap.create();
+        Object noContainingFeature = new Object();
+        for (Object child : children) {
+            Object containingFeature;
+            if (child instanceof EObject) {
+                containingFeature = ((EObject) child).eContainingFeature();
+            } else if (child instanceof TreeItemWrapper) {
+                Object wrappedObject = ((TreeItemWrapper) child).getWrappedObject();
+                if (wrappedObject instanceof EObject) {
+                    containingFeature = ((EObject) wrappedObject).eContainingFeature();
+                } else {
+                    containingFeature = noContainingFeature;
+                }
+            } else {
+                containingFeature = noContainingFeature;
+            }
+            childrenContainingMapping.put(containingFeature, child);
+        }
+        return childrenContainingMapping;
     }
 
     private Object[] defaultGroupChildren(Object parent, Object[] children) {
