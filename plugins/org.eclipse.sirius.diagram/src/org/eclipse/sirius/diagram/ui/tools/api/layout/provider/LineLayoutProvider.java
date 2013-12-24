@@ -21,6 +21,7 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
@@ -35,7 +36,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.ILayoutNodeOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.SimpleViewOrdering;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrdering;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrderingHint;
@@ -144,8 +144,8 @@ public class LineLayoutProvider extends AbstractLayoutProvider {
                 if (existingRequest == null) {
                     final ChangeBoundsRequest request = new ChangeBoundsRequest(org.eclipse.gef.RequestConstants.REQ_MOVE);
                     request.setEditParts(shapeEditPart);
-                    request.setMoveDelta(new Point(delta.width * scale, delta.height * scale));
-                    request.setLocation(new Point(ptLocation.x * scale, ptLocation.y * scale));
+                    request.setMoveDelta(new PrecisionPoint(delta.width * scale, delta.height * scale));
+                    request.setLocation(new PrecisionPoint(ptLocation.x * scale, ptLocation.y * scale));
                     step = this.horizontal ? getBounds(shapeEditPart).width : getBounds(shapeEditPart).height;
 
                     final Command cmd = this.buildCommandWrapper(request, shapeEditPart);
@@ -156,8 +156,8 @@ public class LineLayoutProvider extends AbstractLayoutProvider {
                     }
                 } else if (existingRequest instanceof ChangeBoundsRequest) {
                     final ChangeBoundsRequest changeBoundsRequest = (ChangeBoundsRequest) existingRequest;
-                    changeBoundsRequest.setMoveDelta(new Point(delta.width * scale, delta.height * scale));
-                    changeBoundsRequest.setLocation(new Point(ptLocation.x * scale, ptLocation.y * scale));
+                    changeBoundsRequest.setMoveDelta(new PrecisionPoint(delta.width * scale, delta.height * scale));
+                    changeBoundsRequest.setLocation(new PrecisionPoint(ptLocation.x * scale, ptLocation.y * scale));
 
                     step = this.horizontal ? getBounds(shapeEditPart).width : getBounds(shapeEditPart).height;
                 }
@@ -180,7 +180,7 @@ public class LineLayoutProvider extends AbstractLayoutProvider {
 
                     final Dimension minDimension = new Dimension(minWidth, minHeight);
 
-                    final Dimension difference = minDimension.getDifference(containerEditPart.getFigure().getBounds().getSize());
+                    final Dimension difference = minDimension.getShrinked(containerEditPart.getFigure().getBounds().getSize());
                     if (difference.width > 0 || difference.height > 0) {
                         final Object existingContainerRequest = this.findRequest(containerEditPart, org.eclipse.gef.RequestConstants.REQ_RESIZE); // ;this.getViewsToChangeBoundsRequest().get(containerEditPart.getNotationView());
                         createChangeBoundsCommand(result, existingContainerRequest, containerEditPart, difference, scale);

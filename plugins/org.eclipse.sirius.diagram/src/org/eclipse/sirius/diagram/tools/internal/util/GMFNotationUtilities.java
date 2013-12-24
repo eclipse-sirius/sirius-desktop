@@ -80,11 +80,11 @@ public final class GMFNotationUtilities {
                 // Get current anchor position
                 IdentityAnchor anchor = (IdentityAnchor) edge.getSourceAnchor();
                 PrecisionPoint relativeReferencePoint = BaseSlidableAnchor.parseTerminalString(anchor.getId());
-                if (relativeReferencePoint.preciseX != newXAnchorPercentage) {
+                if (relativeReferencePoint.preciseX() != newXAnchorPercentage) {
                     // Change x id anchor
-                    setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY);
-                    referencePointOfChangedAnchor = new Point(sourceFigure.getLocation().x + sourceFigure.width * newXAnchorPercentage, sourceFigure.getLocation().y + sourceFigure.height
-                            * relativeReferencePoint.preciseY);
+                    setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY());
+                    referencePointOfChangedAnchor = new PrecisionPoint(sourceFigure.getLocation().x + sourceFigure.width * newXAnchorPercentage, sourceFigure.getLocation().y + sourceFigure.height
+                            * relativeReferencePoint.preciseY());
                 }
             } else if (edge.getSourceAnchor() == null) {
                 // Use the center of the source if there is no previous
@@ -92,7 +92,7 @@ public final class GMFNotationUtilities {
                 IdentityAnchor anchor = NotationFactory.eINSTANCE.createIdentityAnchor();
                 setIdentityAnchorId(anchor, newXAnchorPercentage, 0.5d);
                 edge.setSourceAnchor(anchor);
-                referencePointOfChangedAnchor = new Point(sourceFigure.getLocation().x + sourceFigure.width * newXAnchorPercentage, sourceFigure.getLocation().y + sourceFigure.height * 0.5d);
+                referencePointOfChangedAnchor = new PrecisionPoint(sourceFigure.getLocation().x + sourceFigure.width * newXAnchorPercentage, sourceFigure.getLocation().y + sourceFigure.height * 0.5d);
             }
         } else if (edge.getSource() instanceof Edge) {
             throw new UnsupportedOperationException(MSG_EDGE_ON_EDGE_NOT_MANAGED);
@@ -132,11 +132,11 @@ public final class GMFNotationUtilities {
                 // Get current anchor position
                 IdentityAnchor anchor = (IdentityAnchor) edge.getTargetAnchor();
                 PrecisionPoint relativeReferencePoint = BaseSlidableAnchor.parseTerminalString(anchor.getId());
-                if (relativeReferencePoint.preciseX != newXAnchorPercentage) {
+                if (relativeReferencePoint.preciseX() != newXAnchorPercentage) {
                     // Change x id anchor
-                    setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY);
-                    referencePointOfChangedAnchor = new Point(targetFigure.getLocation().x + targetFigure.width * newXAnchorPercentage, targetFigure.getLocation().y + targetFigure.height
-                            * relativeReferencePoint.preciseY);
+                    setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY());
+                    referencePointOfChangedAnchor = new PrecisionPoint(targetFigure.getLocation().x + targetFigure.width * newXAnchorPercentage, targetFigure.getLocation().y + targetFigure.height
+                            * relativeReferencePoint.preciseY());
                 }
             } else if (edge.getTargetAnchor() == null) {
                 // Use the center of the source if there is no previous
@@ -144,7 +144,7 @@ public final class GMFNotationUtilities {
                 IdentityAnchor anchor = NotationFactory.eINSTANCE.createIdentityAnchor();
                 setIdentityAnchorId(anchor, newXAnchorPercentage, 0.5d);
                 edge.setTargetAnchor(anchor);
-                referencePointOfChangedAnchor = new Point(targetFigure.getLocation().x + targetFigure.width * newXAnchorPercentage, targetFigure.getLocation().y + targetFigure.height * 0.5d);
+                referencePointOfChangedAnchor = new PrecisionPoint(targetFigure.getLocation().x + targetFigure.width * newXAnchorPercentage, targetFigure.getLocation().y + targetFigure.height * 0.5d);
             }
         } else if (edge.getTarget() instanceof Edge) {
             throw new UnsupportedOperationException(MSG_EDGE_ON_EDGE_NOT_MANAGED);
@@ -224,7 +224,7 @@ public final class GMFNotationUtilities {
      *         corresponding to the new source. This Option can be null if the
      *         anchor is not changed.
      */
-    public static Option<Point> setSourceAnchor(Edge edge, int deltaX) {
+    public static Option<PrecisionPoint> setSourceAnchor(Edge edge, int deltaX) {
         // Compute new x anchor of source point after horizontal source
         // segment movement
         if (edge.getSource() instanceof Node) {
@@ -234,15 +234,15 @@ public final class GMFNotationUtilities {
                 IdentityAnchor anchor = (IdentityAnchor) edge.getSourceAnchor();
                 PrecisionPoint relativeReferencePoint = BaseSlidableAnchor.parseTerminalString(anchor.getId());
                 // Get the current x location of end segment
-                double xCurrentPosition = sourceFigure.x + sourceFigure.width * relativeReferencePoint.preciseX;
+                double xCurrentPosition = sourceFigure.x + sourceFigure.width * relativeReferencePoint.preciseX();
                 // Compute position of x location of end segment after move
                 double xNewPosition = xCurrentPosition - deltaX;
                 // Compute new anchor percentage
                 double newXAnchorPercentage = (xNewPosition - sourceFigure.x) / (sourceFigure.width);
                 // Change x id anchor
-                setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY);
-                return Options.newSome(new Point(sourceFigure.getLocation().x + sourceFigure.width * newXAnchorPercentage, sourceFigure.getLocation().y + sourceFigure.height
-                        * relativeReferencePoint.preciseY));
+                setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY());
+                return Options.newSome(new PrecisionPoint(sourceFigure.getLocation().x + sourceFigure.width * newXAnchorPercentage, sourceFigure.getLocation().y + sourceFigure.height
+                        * relativeReferencePoint.preciseY()));
             }
         } else {
             throw new UnsupportedOperationException(MSG_EDGE_ON_EDGE_NOT_MANAGED);
@@ -263,7 +263,7 @@ public final class GMFNotationUtilities {
      *         corresponding to the new target anchor. This Option can be null
      *         if the anchor is not changed.
      */
-    public static Option<Point> setTargetAnchor(Edge edge, int deltaX) {
+    public static Option<PrecisionPoint> setTargetAnchor(Edge edge, int deltaX) {
         // Compute new x anchor of target point after horizontal target
         // segment movement
         if (edge.getTarget() instanceof Node) {
@@ -273,15 +273,15 @@ public final class GMFNotationUtilities {
                 IdentityAnchor anchor = (IdentityAnchor) edge.getTargetAnchor();
                 PrecisionPoint relativeReferencePoint = BaseSlidableAnchor.parseTerminalString(anchor.getId());
                 // Get the current x location of end segment
-                double xCurrentPosition = targetFigure.x + targetFigure.width * relativeReferencePoint.preciseX;
+                double xCurrentPosition = targetFigure.x + targetFigure.width * relativeReferencePoint.preciseX();
                 // Compute position of x location of end segment after move
                 double xNewPosition = xCurrentPosition - deltaX;
                 // Compute new anchor percentage
                 double newXAnchorPercentage = (xNewPosition - targetFigure.x) / (targetFigure.width);
                 // Change x id anchor
-                setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY);
-                return Options.newSome(new Point(targetFigure.getLocation().x + targetFigure.width * newXAnchorPercentage, targetFigure.getLocation().y + targetFigure.height
-                        * relativeReferencePoint.preciseY));
+                setIdentityAnchorId(anchor, newXAnchorPercentage, relativeReferencePoint.preciseY());
+                return Options.newSome(new PrecisionPoint(targetFigure.getLocation().x + targetFigure.width * newXAnchorPercentage, targetFigure.getLocation().y + targetFigure.height
+                        * relativeReferencePoint.preciseY()));
             }
         } else {
             throw new UnsupportedOperationException(MSG_EDGE_ON_EDGE_NOT_MANAGED);
@@ -317,14 +317,14 @@ public final class GMFNotationUtilities {
         Rectangle targetBounds = null;
         if (edgeToModify.getSource() instanceof Node) {
             sourceBounds = GMFHelper.getBounds((Node) edgeToModify.getSource(), true);
-            sourceLocation = new Point(sourceBounds.x + sourceBounds.width * sourceAnchorReference.preciseX, sourceBounds.y + sourceBounds.height * sourceAnchorReference.preciseY);
+            sourceLocation = new PrecisionPoint(sourceBounds.x + sourceBounds.width * sourceAnchorReference.preciseX(), sourceBounds.y + sourceBounds.height * sourceAnchorReference.preciseY());
         } else if (edgeToModify.getSource() instanceof Edge) {
             // TODO Manage edge on egde ...
             throw new UnsupportedOperationException(MSG_EDGE_ON_EDGE_NOT_MANAGED);
         }
         if (edgeToModify.getTarget() instanceof Node) {
             targetBounds = GMFHelper.getBounds((Node) edgeToModify.getTarget(), true);
-            targetLocation = new Point(targetBounds.x + targetBounds.width * targetAnchorReference.preciseX, targetBounds.y + targetBounds.height * targetAnchorReference.preciseY);
+            targetLocation = new PrecisionPoint(targetBounds.x + targetBounds.width * targetAnchorReference.preciseX(), targetBounds.y + targetBounds.height * targetAnchorReference.preciseY());
         } else if (edgeToModify.getTarget() instanceof Edge) {
             // TODO Manage edge on egde ...
             throw new UnsupportedOperationException(MSG_EDGE_ON_EDGE_NOT_MANAGED);

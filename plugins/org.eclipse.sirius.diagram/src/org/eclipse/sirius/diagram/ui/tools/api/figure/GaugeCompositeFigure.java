@@ -18,6 +18,7 @@ import java.util.RandomAccess;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.RectangularDropShadowLineBorder;
 import org.eclipse.sirius.viewpoint.AlignmentKind;
@@ -139,10 +140,10 @@ public class GaugeCompositeFigure extends AbstractTransparentNode implements Sty
             break;
         }
 
-        List sections = this.getGauges();
+        List<GaugeSectionFigure> sections = this.getGauges();
         if (!(sections instanceof RandomAccess)) {
             // Convert sections to an ArrayList to improve performance.
-            sections = new ArrayList(this.getGauges());
+            sections = new ArrayList<GaugeSectionFigure>(this.getGauges());
         }
         for (int i = 0; i < sections.size(); i++) {
             final GaugeSectionFigure figure = sections.get(i);
@@ -156,7 +157,7 @@ public class GaugeCompositeFigure extends AbstractTransparentNode implements Sty
                 break;
             case SQUARE_LITERAL:
             default:
-                p = new Point(childDimension.width * (i % sideSize), childDimension.height * (Math.floor((double) i / sideSize) % vSideSize));
+                p = new PrecisionPoint(childDimension.width * (i % sideSize), childDimension.height * (Math.floor((double) i / sideSize) % vSideSize));
                 break;
             }
             figure.setBounds(new Rectangle(p, childDimension));

@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.diagram.ui.internal.commands.SetConnectionBendpointsCommand;
@@ -127,13 +128,13 @@ public class TreeLayoutSetConnectionBendpointsCommand extends SetConnectionBendp
                 Point sourceRefPoint = getSourceRefPoint();
                 if (deltaXTarget != 0) {
                     // Move targetAnchor according to delta
-                    Option<Point> optionalTargetRefPoint = GMFNotationUtilities.setTargetAnchor(edge, deltaXTarget);
+                    Option<? extends Point> optionalTargetRefPoint = GMFNotationUtilities.setTargetAnchor(edge, deltaXTarget);
                     if (optionalTargetRefPoint.some()) {
                         targetRefPoint = optionalTargetRefPoint.get();
                     }
                 } else if (deltaXSource != 0) {
                     // Move sourceAnchor according to delta
-                    Option<Point> optionalSourceRefPoint = GMFNotationUtilities.setSourceAnchor(edge, deltaXTarget);
+                    Option<PrecisionPoint> optionalSourceRefPoint = GMFNotationUtilities.setSourceAnchor(edge, deltaXTarget);
                     if (optionalSourceRefPoint.some()) {
                         sourceRefPoint = optionalSourceRefPoint.get();
                     }
