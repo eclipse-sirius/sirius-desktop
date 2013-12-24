@@ -58,6 +58,8 @@ import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.PolygoneAndPolylineDecoraction;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.EdgeRoutingStyleChangedCommand;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.DEdge;
 import org.eclipse.sirius.viewpoint.EdgeArrows;
@@ -66,12 +68,8 @@ import org.eclipse.sirius.viewpoint.EdgeStyle;
 import org.eclipse.sirius.viewpoint.EdgeTarget;
 import org.eclipse.sirius.viewpoint.LineStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.EdgeMapping;
-import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
-import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * Implementation of {@link IDiagramEdgeEditPart}.
@@ -671,58 +669,6 @@ public final class DiagramEdgeEditPartOperation {
         decoration.setScale(6, 3);
         DiagramEdgeEditPartOperation.applyLineWidth(decoration, self);
         return decoration;
-    }
-
-    // TODOYMO comment this !
-    /**
-     * .
-     * 
-     * @author ymortier
-     */
-    private static class AnchorKey {
-
-        private final GraphicalEditPart target;
-
-        private final DiagramElementMapping mapping;
-
-        /**
-         * Default constructor.
-         * 
-         * @param target
-         *            the target
-         * @param mapping
-         *            the mapping.
-         */
-        public AnchorKey(final GraphicalEditPart target, final EdgeMapping mapping) {
-            super();
-            this.target = target;
-            this.mapping = mapping;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#hashCode()
-         */
-        @Override
-        public int hashCode() {
-            return target.hashCode();
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#equals(java.lang.Object)
-         */
-        @Override
-        public boolean equals(final Object obj) {
-            if (!(obj instanceof AnchorKey)) {
-                return false;
-            }
-            final AnchorKey anchorKey = (AnchorKey) obj;
-            return anchorKey.mapping == this.mapping && anchorKey.target == target;
-        }
-
     }
 
     /**

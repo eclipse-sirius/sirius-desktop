@@ -37,10 +37,9 @@ import org.eclipse.sirius.viewpoint.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.description.NodeMappingImport;
 
 /**
- * TODOCBR comment.
+ * Helpers to navigate the Sirius Diagrams models.
  * 
  * @author cbrun
- * 
  */
 public final class ContentHelper {
 

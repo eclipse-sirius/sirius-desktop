@@ -1036,7 +1036,6 @@ public final class StyleHelper {
         }
 
         org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper equalityHelper = new org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper();
-        // TODO : manage a finer GaugeSection customization
         // Change sections only if new list is different from original one
         if (!equalityHelper.equals((List) style.getSections(), (List) newGaugeSections) && !style.getCustomFeatures().contains(ViewpointPackage.Literals.GAUGE_COMPOSITE_STYLE__SECTIONS.getName())) {
             style.getSections().clear();

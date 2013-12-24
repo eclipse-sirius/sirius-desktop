@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.Unset;
 
 /**
- * Unset a reference. TODOYMO comment.
+ * Unset a reference.
  * 
  * @author Yann Mortier (ymortier)
  */

@@ -177,7 +177,6 @@ public class RemoveDanglingReferencesTask extends AbstractCommandTask {
             // ignoring the EPackage.eFactoryInstance reference
                     || ECORE_REFERENCE_NAME_TO_IGNORE.equals(eReference.getName()) && ECORE_REFERENCE_CONTAINER_NAME_TO_IGNORE.equals(eReference.getContainerClass().getName());
         }
-        // TODO : ignore any transient reference ?
     }
 
     /**

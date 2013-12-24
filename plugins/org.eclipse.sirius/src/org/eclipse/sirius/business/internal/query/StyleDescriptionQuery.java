@@ -136,8 +136,6 @@ public class StyleDescriptionQuery {
 
     private void addStyleDescriptionAndAllSubStyles(Set<EObject> appliedOn) {
         appliedOn.add(this.styleDescription);
-        // TODO LRE: Review of VP-4135 (not sure of
-        // this.styleDescription.eAllContents()).
         Iterators.addAll(appliedOn, this.styleDescription.eAllContents());
     }
 

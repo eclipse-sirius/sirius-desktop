@@ -10,17 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.api.interpreter;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.List;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
-import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -45,34 +39,6 @@ public class InterpreterRegistry {
      * @since 0.9.0
      */
     public static final String ERROR_MSG_IMPOSSIBLE_TO_FIND_AN_INTERPRETER = "Impossible to find an interpreter";
-
-    /**
-     * Return the resource that contains the current specification.
-     * 
-     * @param modelElement
-     *            a model element.
-     * @return the resource that contains the current specification.
-     */
-    private static Resource getModelerDescriptionResource(final EObject modelElement) {
-
-        Resource res = null;
-        final List<Resource> airResources = new ArrayList<Resource>();
-        final Resource resource = modelElement.eResource();
-        if (resource != null && resource.getResourceSet() != null) {
-            final Iterator<Resource> it = resource.getResourceSet().getResources().iterator();
-            while (it.hasNext()) {
-                final Resource currentRes = it.next();
-                final URI uri = currentRes.getURI();
-                if (uri != null && new FileQuery(uri.fileExtension()).isVSMFile()) {
-                    if (res == null) {
-                        res = currentRes;
-                    }
-                    airResources.add(res);
-                }
-            }
-        }
-        return res;
-    }
 
     /**
      * Return the model requests interpreter for the specified
@@ -105,17 +71,6 @@ public class InterpreterRegistry {
             result = CompoundInterpreter.INSTANCE;
         }
         return result;
-    }
-
-    private String getMapKeyFromResource(final EObject modelElement) {
-        String uri = "";
-        if (modelElement != null) {
-            final Resource modelerDescriptionResource = InterpreterRegistry.getModelerDescriptionResource(modelElement);
-            if (modelerDescriptionResource != null && modelerDescriptionResource.getURI() != null) {
-                uri = modelerDescriptionResource.getURI().toString();
-            }
-        }
-        return uri;
     }
 
     /**

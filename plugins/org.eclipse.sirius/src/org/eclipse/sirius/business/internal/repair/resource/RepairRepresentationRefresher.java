@@ -169,32 +169,9 @@ public class RepairRepresentationRefresher {
         }
     }
 
-    // /**
-    // * Init Analaysis.
-    // *
-    // * @param view
-    // * {@link DView} to init
-    // */
-    // private void initAnalysis(final DView view) {
-    // if (view.getSirius() == null) {
-    // informSirius(view);
-    // }
-    // if (view instanceof DRepresentationContainer) {
-    // informModel((DRepresentationContainer) view);
-    // }
-    // view.setInitialized(true);
-    // }
-
     private void refreshLostDiagramElements(final DView view) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_LOST_ELEMENTS_KEY);
         TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(view);
-
-        // Command refreshLostDiagramElementsCommand = new
-        // RefreshLostDiagramElementsCommand(this, view);
-        //
-
-        MigrationCommandExecutor migrationCommandExecutor = new MigrationCommandExecutor();
-
         Command refreshLostDiagramElementsCommand = new IdentityCommand() {
             @Override
             public void execute() {

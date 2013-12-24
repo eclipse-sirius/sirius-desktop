@@ -41,8 +41,6 @@ import org.eclipse.sirius.ext.emf.EStructuralFeatureQuery;
  * 
  * @author pierre-charles.david@obeo.fr
  */
-// TODO Extract the validation logic into a method which can be called by
-// Contributor with no side-effect on elements.
 public class FeatureContributor {
     private static final String TARGET_OBJECT = "Target object";
 

@@ -15,7 +15,6 @@ import java.util.Iterator;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicates;
-import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
@@ -99,14 +98,6 @@ public class RefreshPlanner {
                     post.appendOutputDescritorsKeepingTheMostSpecific(allCandidateDescriptors);
                 }
             }
-        }
-
-        Collection<? extends Mapping> mappingsCheckingElements = Collections2.filter(childMappings, Mapping.IS_CHECK_ONLY);
-        Iterable<MappingHiearchy> childCheckingHiearchies = Sets.newLinkedHashSet(Iterables.concat(Iterables.transform(mappingsCheckingElements, toHierarchy)));
-
-        for (CreatedOutput toDelete : post.getDescriptorsToDelete()) {
-            // TODO handle checkonly mappings
-
         }
         return post;
     }

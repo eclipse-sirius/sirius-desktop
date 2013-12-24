@@ -178,7 +178,6 @@ public class CandidateMappingManager {
 
     }
 
-    // TODOMCH move this in a helper or derivated feature
     /**
      * Get the imported mapping from a mapping import.
      * 
