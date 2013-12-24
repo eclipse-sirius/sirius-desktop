@@ -11,7 +11,7 @@
 package org.eclipse.sirius.business.internal.movida.registry;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
+import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 import org.eclipse.sirius.business.api.query.ViewpointURIQuery;
 import org.eclipse.sirius.ext.base.Option;
 
@@ -22,7 +22,7 @@ import com.google.common.base.Preconditions;
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public final class ViewpointURIConverter extends URIConverterImpl {
+public final class ViewpointURIConverter extends ExtensibleURIConverterImpl {
     private final ViewpointRegistry registry;
 
     /**
