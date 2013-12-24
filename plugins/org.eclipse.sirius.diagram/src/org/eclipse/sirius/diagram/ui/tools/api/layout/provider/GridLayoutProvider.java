@@ -337,8 +337,6 @@ public class GridLayoutProvider extends DefaultLayoutProvider implements Extenda
             request = new ChangeBoundsRequest();
             request.setEditParts(editPart);
             result = this.buildCommandWrapper(request, editPart);
-            // this.getViewsToChangeBoundsRequest().put(editPart.getNotationView(),
-            // request);
         }
         if (newPosition != null) {
             final Rectangle intrinsicBounds = editPart.getFigure().getBounds();
@@ -350,16 +348,6 @@ public class GridLayoutProvider extends DefaultLayoutProvider implements Extenda
                 request.setLocation(newPosition);
                 request.setType(org.eclipse.gef.RequestConstants.REQ_MOVE);
                 result = this.buildCommandWrapper(request, editPart);
-                // String nameToDisplay = editPart.getModel().toString();
-                // if (editPart.getModel() instanceof
-                // org.eclipse.gmf.runtime.notation.Node) {
-                // org.eclipse.gmf.runtime.notation.Node n =
-                // (org.eclipse.gmf.runtime.notation.Node) editPart.getModel();
-                // nameToDisplay = n.getElement().toString();
-                // }
-                // System.out.println("newPosition:" + newPosition +
-                // ", figureBounds: " + intrinsicBounds + " --> " +
-                // nameToDisplay);
                 extender.getUpdatedBounds().put(editPart, new Rectangle(newPosition, intrinsicBounds.getSize()));
             } else {
                 // no move, return null.

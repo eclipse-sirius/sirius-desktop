@@ -554,17 +554,6 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
     }
 
     /**
-     * Returns the current active {@link Session}.
-     * 
-     * @return the current active {@link Session} if found, <code>null</code>
-     *         otherwise
-     */
-    private Session getCurrentSession() {
-
-        return null;
-    }
-
-    /**
      * TreeSelectionDialog used to allow user to select Representations he would
      * like to open.
      * 

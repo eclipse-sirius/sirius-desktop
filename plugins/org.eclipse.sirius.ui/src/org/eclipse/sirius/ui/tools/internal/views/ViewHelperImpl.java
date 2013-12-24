@@ -18,13 +18,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
-
-import com.google.common.base.Function;
-import com.google.common.collect.Collections2;
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIManager;
@@ -33,14 +27,16 @@ import org.eclipse.sirius.ui.tools.internal.views.common.SessionWrapperContentPr
 import org.eclipse.sirius.ui.tools.internal.views.sessionview.extension.IContextMenuActionProvider;
 import org.eclipse.sirius.ui.tools.internal.views.sessionview.extension.ISessionViewExtension;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Collections2;
+import com.google.common.collect.Lists;
+
 /**
  * An helper to provide facilities to view which extends viewpoint.
  * 
  * @author mchauvin
  */
 public final class ViewHelperImpl implements ViewHelper {
-
-    private ILabelProvider labelProvider;
 
     private ITreeContentProvider contentProvider;
 

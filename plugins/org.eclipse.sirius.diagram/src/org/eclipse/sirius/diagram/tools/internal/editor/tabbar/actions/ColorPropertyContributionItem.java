@@ -492,19 +492,6 @@ public class ColorPropertyContributionItem extends PropertyChangeContributionIte
     }
 
     /**
-     * Creates a menu item for the default color
-     * 
-     * @param theMenu
-     *            The menu
-     */
-    private void createDefaultColorMenuItem(Menu theMenu) {
-        String text = DiagramUIActionsMessages.ColorPropertyChangeAction_default;
-        Image image = null; // new ColorBoxImageDescriptor(color).createImage();
-        MenuItem mi = createMenuItem(theMenu, text, image);
-        mi.setData(DEFAULT);
-    }
-
-    /**
      * Creates a menu item for the color picker
      * 
      * @param theMenu

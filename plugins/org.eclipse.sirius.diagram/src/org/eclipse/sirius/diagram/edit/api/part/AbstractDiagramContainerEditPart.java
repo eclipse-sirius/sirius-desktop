@@ -467,7 +467,7 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
     protected IFigure createNodeShape() {
         final EObject eObj = resolveSemanticElement();
         IFigure shapeFigure = null;
-        if (eObj != null && eObj instanceof DDiagramElementContainer) {
+        if (eObj instanceof DDiagramElementContainer) {
             final DDiagramElementContainer container = (DDiagramElementContainer) eObj;
             if (container.getOwnedStyle() != null) {
                 if (container.getOwnedStyle() instanceof ShapeContainerStyle) {

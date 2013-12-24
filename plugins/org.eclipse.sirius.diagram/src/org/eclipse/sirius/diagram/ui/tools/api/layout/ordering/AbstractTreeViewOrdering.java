@@ -177,8 +177,6 @@ public abstract class AbstractTreeViewOrdering implements ViewOrdering {
             //
             // appends a line to the grid.
             extendedGrid.appendLine();
-            // index of the node in the line.
-            int nodeIndexInLine = 0;
             // iterate over the line.
             for (final AirTree node : currentNodes) {
 
@@ -235,8 +233,6 @@ public abstract class AbstractTreeViewOrdering implements ViewOrdering {
                 //
                 // append children for the next line.
                 next.addAll(node.getChildren());
-                // next node.
-                nodeIndexInLine++;
             }
             currentNodes = next;
             lineIndex++;
