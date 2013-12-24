@@ -16,6 +16,7 @@ import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 
 /**
  * A class aggregating all the queries (read-only!) having a
@@ -43,14 +44,7 @@ public class ResourceDeltaQuery {
      * @return true if the nature has been added, false otherwise.
      */
     public boolean hasModelingNatureAdded() {
-        Option<Object> oldInfo = ReflectionHelper.getFieldValueWithoutException(resourceDelta, "oldInfo");
-        Option<Object> newInfo = ReflectionHelper.getFieldValueWithoutException(resourceDelta, "newInfo");
-        if (oldInfo.some() && newInfo.some() && oldInfo.get() instanceof ProjectInfo && newInfo.get() instanceof ProjectInfo) {
-            IProjectDescription oldProjectDescription = ((ProjectInfo) oldInfo.get()).getDescription();
-            IProjectDescription newProjectDescription = ((ProjectInfo) newInfo.get()).getDescription();
-            return !oldProjectDescription.hasNature(ModelingProject.NATURE_ID) && newProjectDescription.hasNature(ModelingProject.NATURE_ID);
-        }
-        return false;
+        return !hasModelingNature(getOldProjectDescription()) && hasModelingNature(getNewProjectDescription());
     }
 
     /**
@@ -59,13 +53,29 @@ public class ResourceDeltaQuery {
      * @return true if the nature has been removed, false otherwise.
      */
     public boolean hasModelingNatureRemoved() {
-        Option<Object> oldInfo = ReflectionHelper.getFieldValueWithoutException(resourceDelta, "oldInfo");
-        Option<Object> newInfo = ReflectionHelper.getFieldValueWithoutException(resourceDelta, "newInfo");
-        if (oldInfo.some() && newInfo.some() && oldInfo.get() instanceof ProjectInfo && newInfo.get() instanceof ProjectInfo) {
-            IProjectDescription oldProjectDescription = ((ProjectInfo) oldInfo.get()).getDescription();
-            IProjectDescription newProjectDescription = ((ProjectInfo) newInfo.get()).getDescription();
-            return oldProjectDescription.hasNature(ModelingProject.NATURE_ID) && !newProjectDescription.hasNature(ModelingProject.NATURE_ID);
-        }
-        return false;
+        return hasModelingNature(getOldProjectDescription()) && !hasModelingNature(getNewProjectDescription());
     }
+    
+    private boolean hasModelingNature(Option<IProjectDescription> project) {
+        return project.some() && project.get().hasNature(ModelingProject.NATURE_ID);
+    }
+    
+    private Option<IProjectDescription> getOldProjectDescription() {
+        return getProjectDescription(ReflectionHelper.getFieldValueWithoutException(resourceDelta, "oldInfo"));
+    }
+
+    private Option<IProjectDescription> getNewProjectDescription() {
+        return getProjectDescription(ReflectionHelper.getFieldValueWithoutException(resourceDelta, "newInfo"));
+    }
+
+    @SuppressWarnings("restriction")
+    private Option<IProjectDescription> getProjectDescription(Option<Object> info) {
+        if (info.some() && info.get() instanceof ProjectInfo) {
+            IProjectDescription oldProjectDescription = ((ProjectInfo) info.get()).getDescription();
+            return Options.fromNullable(oldProjectDescription);
+        } else {
+            return Options.newNone();
+        }
+    }
+
 }
