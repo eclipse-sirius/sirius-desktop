@@ -24,6 +24,8 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.table.business.internal.metamodel.TableToolVariables;
+import org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
@@ -147,7 +149,7 @@ public class CrossTableDescriptionItemProvider extends TableDescriptionItemProvi
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -157,7 +159,13 @@ public class CrossTableDescriptionItemProvider extends TableDescriptionItemProvi
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CROSS_TABLE_DESCRIPTION__INTERSECTION, DescriptionFactory.eINSTANCE.createIntersectionMapping()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CROSS_TABLE_DESCRIPTION__CREATE_COLUMN, DescriptionFactory.eINSTANCE.createCreateCrossColumnTool()));
+        collectCreateCrossColumnTool(newChildDescriptors);
+    }
+
+    private void collectCreateCrossColumnTool(Collection<Object> newChildDescriptors) {
+        CreateCrossColumnTool createCrossColumnTool = DescriptionFactory.eINSTANCE.createCreateCrossColumnTool();
+        new TableToolVariables().doSwitch(createCrossColumnTool);
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CROSS_TABLE_DESCRIPTION__CREATE_COLUMN, createCrossColumnTool));
     }
 
 }
