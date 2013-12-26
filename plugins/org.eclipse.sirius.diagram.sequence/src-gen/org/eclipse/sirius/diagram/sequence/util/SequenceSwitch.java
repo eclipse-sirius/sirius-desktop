@@ -14,6 +14,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
 import org.eclipse.sirius.viewpoint.DContainer;
@@ -279,7 +281,7 @@ public class SequenceSwitch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseDDiagram(org.eclipse.sirius.diagram.DDiagram object) {
+    public T caseDDiagram(DDiagram object) {
         return null;
     }
 
@@ -313,7 +315,7 @@ public class SequenceSwitch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseDSemanticDiagram(org.eclipse.sirius.diagram.DSemanticDiagram object) {
+    public T caseDSemanticDiagram(DSemanticDiagram object) {
         return null;
     }
 

@@ -14,6 +14,8 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
 import org.eclipse.sirius.viewpoint.DContainer;
@@ -121,7 +123,7 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseDDiagram(org.eclipse.sirius.diagram.DDiagram object) {
+        public Adapter caseDDiagram(DDiagram object) {
             return createDDiagramAdapter();
         }
 
@@ -131,7 +133,7 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseDSemanticDiagram(org.eclipse.sirius.diagram.DSemanticDiagram object) {
+        public Adapter caseDSemanticDiagram(DSemanticDiagram object) {
             return createDSemanticDiagramAdapter();
         }
 

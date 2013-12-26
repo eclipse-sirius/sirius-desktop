@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.sequence.description.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.MessageMapping;
 
@@ -33,7 +34,7 @@ import org.eclipse.sirius.diagram.sequence.description.MessageMapping;
  * 
  * @generated
  */
-public abstract class MessageMappingImpl extends org.eclipse.sirius.diagram.description.impl.EdgeMappingImpl implements MessageMapping {
+public abstract class MessageMappingImpl extends EdgeMappingImpl implements MessageMapping {
     /**
      * The default value of the '{@link #getSendingEndFinderExpression()
      * <em>Sending End Finder Expression</em>}' attribute. <!-- begin-user-doc

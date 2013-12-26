@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.description.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.sirius.diagram.description.impl.NodeMappingImpl;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
 
@@ -22,7 +23,7 @@ import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
  * 
  * @generated
  */
-public class EndOfLifeMappingImpl extends org.eclipse.sirius.diagram.description.impl.NodeMappingImpl implements EndOfLifeMapping {
+public class EndOfLifeMappingImpl extends NodeMappingImpl implements EndOfLifeMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

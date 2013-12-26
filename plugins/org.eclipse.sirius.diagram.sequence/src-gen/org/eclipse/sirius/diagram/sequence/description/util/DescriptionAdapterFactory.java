@@ -14,6 +14,13 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.IEdgeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.sequence.description.BasicMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.CombinedFragmentMapping;
 import org.eclipse.sirius.diagram.sequence.description.CoveredLifelinesVariable;
@@ -224,7 +231,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseDiagramDescription(org.eclipse.sirius.diagram.description.DiagramDescription object) {
+        public Adapter caseDiagramDescription(DiagramDescription object) {
             return createDiagramDescriptionAdapter();
         }
 
@@ -234,27 +241,27 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseDiagramElementMapping(org.eclipse.sirius.diagram.description.DiagramElementMapping object) {
+        public Adapter caseDiagramElementMapping(DiagramElementMapping object) {
             return createDiagramElementMappingAdapter();
         }
 
         @Override
-        public Adapter caseAbstractNodeMapping(org.eclipse.sirius.diagram.description.AbstractNodeMapping object) {
+        public Adapter caseAbstractNodeMapping(AbstractNodeMapping object) {
             return createAbstractNodeMappingAdapter();
         }
 
         @Override
-        public Adapter caseNodeMapping(org.eclipse.sirius.diagram.description.NodeMapping object) {
+        public Adapter caseNodeMapping(NodeMapping object) {
             return createNodeMappingAdapter();
         }
 
         @Override
-        public Adapter caseIEdgeMapping(org.eclipse.sirius.diagram.description.IEdgeMapping object) {
+        public Adapter caseIEdgeMapping(IEdgeMapping object) {
             return createIEdgeMappingAdapter();
         }
 
         @Override
-        public Adapter caseEdgeMapping(org.eclipse.sirius.diagram.description.EdgeMapping object) {
+        public Adapter caseEdgeMapping(EdgeMapping object) {
             return createEdgeMappingAdapter();
         }
 
@@ -264,7 +271,7 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseContainerMapping(org.eclipse.sirius.diagram.description.ContainerMapping object) {
+        public Adapter caseContainerMapping(ContainerMapping object) {
             return createContainerMappingAdapter();
         }
 

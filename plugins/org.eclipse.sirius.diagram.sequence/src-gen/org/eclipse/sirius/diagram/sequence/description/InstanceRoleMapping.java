@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description;
 
+import org.eclipse.sirius.diagram.description.NodeMapping;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Instance Role Mapping</b></em>'. <!-- end-user-doc -->
@@ -19,5 +21,5 @@ package org.eclipse.sirius.diagram.sequence.description;
  * @model
  * @generated
  */
-public interface InstanceRoleMapping extends org.eclipse.sirius.diagram.description.NodeMapping {
+public interface InstanceRoleMapping extends NodeMapping {
 } // InstanceRoleMapping

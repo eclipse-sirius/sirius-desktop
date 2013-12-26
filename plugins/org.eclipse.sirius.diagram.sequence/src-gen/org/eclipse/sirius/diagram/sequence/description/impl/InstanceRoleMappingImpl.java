@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.description.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.sirius.diagram.description.impl.NodeMappingImpl;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
 
@@ -22,7 +23,7 @@ import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
  * 
  * @generated
  */
-public class InstanceRoleMappingImpl extends org.eclipse.sirius.diagram.description.impl.NodeMappingImpl implements InstanceRoleMapping {
+public class InstanceRoleMappingImpl extends NodeMappingImpl implements InstanceRoleMapping {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

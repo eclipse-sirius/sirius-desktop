@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.sequence.description.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 
@@ -33,7 +34,7 @@ import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescriptio
  * 
  * @generated
  */
-public class SequenceDiagramDescriptionImpl extends org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl implements SequenceDiagramDescription {
+public class SequenceDiagramDescriptionImpl extends DiagramDescriptionImpl implements SequenceDiagramDescription {
     /**
      * The default value of the '{@link #getEndsOrdering()
      * <em>Ends Ordering</em>}' attribute. <!-- begin-user-doc --> <!--

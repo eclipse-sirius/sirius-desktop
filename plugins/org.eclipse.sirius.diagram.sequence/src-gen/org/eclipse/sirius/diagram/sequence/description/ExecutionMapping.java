@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description;
 
+import org.eclipse.sirius.diagram.description.NodeMapping;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Execution Mapping</b></em>'. <!-- end-user-doc -->
@@ -19,6 +21,6 @@ package org.eclipse.sirius.diagram.sequence.description;
  * @model
  * @generated
  */
-public interface ExecutionMapping extends org.eclipse.sirius.diagram.description.NodeMapping, DelimitedEventMapping {
+public interface ExecutionMapping extends NodeMapping, DelimitedEventMapping {
 
 } // ExecutionMapping

@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.sequence.description.impl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.sirius.diagram.description.impl.NodeMappingImpl;
 import org.eclipse.sirius.diagram.sequence.description.DelimitedEventMapping;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.description.EventMapping;
@@ -35,7 +36,7 @@ import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
  * 
  * @generated
  */
-public class ExecutionMappingImpl extends org.eclipse.sirius.diagram.description.impl.NodeMappingImpl implements ExecutionMapping {
+public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMapping {
     /**
      * The default value of the '{@link #getStartingEndFinderExpression()
      * <em>Starting End Finder Expression</em>}' attribute. <!-- begin-user-doc

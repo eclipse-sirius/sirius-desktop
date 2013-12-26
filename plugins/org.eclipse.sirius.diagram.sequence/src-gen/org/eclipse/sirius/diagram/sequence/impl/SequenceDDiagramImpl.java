@@ -15,6 +15,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.sirius.diagram.impl.DSemanticDiagramImpl;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
@@ -40,7 +41,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
  * 
  * @generated
  */
-public class SequenceDDiagramImpl extends org.eclipse.sirius.diagram.impl.DSemanticDiagramImpl implements SequenceDDiagram {
+public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements SequenceDDiagram {
     /**
      * The cached value of the '{@link #getSemanticOrdering()
      * <em>Semantic Ordering</em>}' containment reference. <!-- begin-user-doc
