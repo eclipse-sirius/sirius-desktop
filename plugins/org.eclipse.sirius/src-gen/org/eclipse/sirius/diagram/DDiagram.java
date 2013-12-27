@@ -336,12 +336,12 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * 
      * @return the value of the '<em>Filter Variable History</em>' containment
      *         reference.
-     * @see #setFilterVariableHistory(org.eclipse.sirius.diagram.FilterVariableHistory)
+     * @see #setFilterVariableHistory(FilterVariableHistory)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_FilterVariableHistory()
      * @model containment="true" resolveProxies="true" required="true"
      * @generated
      */
-    org.eclipse.sirius.diagram.FilterVariableHistory getFilterVariableHistory();
+    FilterVariableHistory getFilterVariableHistory();
 
     /**
      * Sets the value of the '
@@ -355,7 +355,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * @see #getFilterVariableHistory()
      * @generated
      */
-    void setFilterVariableHistory(org.eclipse.sirius.diagram.FilterVariableHistory value);
+    void setFilterVariableHistory(FilterVariableHistory value);
 
     /**
      * Returns the value of the '<em><b>Activated Layers</b></em>' reference

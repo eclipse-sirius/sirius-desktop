@@ -28,6 +28,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -448,11 +449,11 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((DiagramDescription) object).getName();
+        String label = new IdentifiedElementQuery((DiagramDescription) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_DiagramDescription_type") : getString("_UI_DiagramDescription_type") + " " + label;
     }
 
@@ -505,7 +506,7 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
@@ -531,8 +532,9 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
         newChildDescriptors
                 .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, DescriptionFactory.eINSTANCE.createLayer()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER,
-                DescriptionFactory.eINSTANCE.createAdditionalLayer()));
+        // Do not add additional layer as default layer.
+        // newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER,
+        // DescriptionFactory.eINSTANCE.createAdditionalLayer()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS,
                 DescriptionFactory.eINSTANCE.createAdditionalLayer()));
@@ -545,6 +547,9 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createEdgeMapping()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createEdgeMappingUsingDomainElement()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS,
                 DescriptionFactory.eINSTANCE.createEdgeMappingImport()));

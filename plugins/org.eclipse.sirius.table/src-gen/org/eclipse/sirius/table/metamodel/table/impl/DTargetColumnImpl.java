@@ -277,7 +277,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated-not
+     * @not-generated
      */
     public TableMapping basicGetTableElementMapping() {
         return (TableMapping) getMapping();

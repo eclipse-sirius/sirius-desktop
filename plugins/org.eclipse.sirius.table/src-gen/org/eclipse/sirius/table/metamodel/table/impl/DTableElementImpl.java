@@ -64,7 +64,7 @@ public abstract class DTableElementImpl extends DRepresentationElementImpl imple
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated-not
+     * @not-generated
      */
     public TableMapping basicGetTableElementMapping() {
         return (TableMapping) getMapping();

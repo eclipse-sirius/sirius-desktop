@@ -121,7 +121,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider imp
      * This returns NodeMapping.gif. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      * 
-     * @generated-not
+     * @not-generated
      */
     @Override
     public Object getImage(Object object) {

@@ -110,7 +110,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider imple
      * This returns NodeMappingImport.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
-     * @generated-not
+     * @not-generated
      */
     @Override
     public Object getImage(Object object) {
@@ -124,7 +124,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider imple
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated-not
+     * @not-generated
      */
     @Override
     public String getText(Object object) {

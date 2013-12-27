@@ -27,6 +27,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -169,11 +170,11 @@ public class EdgeMappingImportItemProvider extends DocumentedElementItemProvider
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated-not
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((EdgeMappingImport) object).getName();
+        String label = new IdentifiedElementQuery((EdgeMappingImport) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_EdgeMappingImport_type") : label;
     }
 

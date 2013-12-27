@@ -271,7 +271,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated-not
+     * @not-generated
      */
     public TableMapping basicGetTableElementMapping() {
         return (TableMapping) getMapping();

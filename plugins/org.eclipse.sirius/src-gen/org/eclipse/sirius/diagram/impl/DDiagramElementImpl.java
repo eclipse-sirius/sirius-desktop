@@ -255,7 +255,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     public DiagramElementMapping getDiagramElementMapping() {
         DiagramElementMapping diagramElementMapping = basicGetDiagramElementMapping();

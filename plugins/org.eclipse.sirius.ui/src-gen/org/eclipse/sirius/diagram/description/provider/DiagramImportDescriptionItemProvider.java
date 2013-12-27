@@ -517,10 +517,70 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
      * describing the children that can be created under this object. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
+        super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__FILTERS,
+                FilterFactory.eINSTANCE.createCompositeFilterDescription()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__VALIDATION_SET,
+                ValidationFactory.eINSTANCE.createValidationSet()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONCERNS, ConcernFactory.eINSTANCE.createConcernSet()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT,
+                DescriptionFactory.eINSTANCE.createOrderedTreeLayout()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__LAYOUT,
+                DescriptionFactory.eINSTANCE.createCompositeLayout()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION,
+                ToolFactory.eINSTANCE.createInitialOperation()));
+
+        newChildDescriptors
+                .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, DescriptionFactory.eINSTANCE.createLayer()));
+
+        // Do not add additional layer as default layer.
+        // newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER,
+        // DescriptionFactory.eINSTANCE.createAdditionalLayer()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS,
+                DescriptionFactory.eINSTANCE.createAdditionalLayer()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__NODE_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createNodeMapping()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__NODE_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createNodeMappingImport()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createEdgeMapping()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createEdgeMappingUsingDomainElement()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS,
+                DescriptionFactory.eINSTANCE.createEdgeMappingImport()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createContainerMapping()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS,
+                DescriptionFactory.eINSTANCE.createContainerMappingImport()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__TOOL_SECTION, ToolFactory.eINSTANCE.createToolSection()));
+    }
+
+    /**
+     * 
+     * @param newChildDescriptors
+     * @param object
+     * @generated
+     */
+    protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__FILTERS,

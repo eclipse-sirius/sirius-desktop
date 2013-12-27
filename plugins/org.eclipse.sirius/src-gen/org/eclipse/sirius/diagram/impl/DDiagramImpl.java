@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.FilterVariableHistory;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -200,7 +201,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * @generated
      * @ordered
      */
-    protected org.eclipse.sirius.diagram.FilterVariableHistory filterVariableHistory;
+    protected FilterVariableHistory filterVariableHistory;
 
     /**
      * The cached value of the '{@link #getActivatedLayers()
@@ -568,10 +569,10 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
-    public org.eclipse.sirius.diagram.FilterVariableHistory getFilterVariableHistory() {
+    public FilterVariableHistory getFilterVariableHistory() {
         if (filterVariableHistory != null && filterVariableHistory.eIsProxy()) {
             InternalEObject oldFilterVariableHistory = (InternalEObject) filterVariableHistory;
-            filterVariableHistory = (org.eclipse.sirius.diagram.FilterVariableHistory) eResolveProxy(oldFilterVariableHistory);
+            filterVariableHistory = (FilterVariableHistory) eResolveProxy(oldFilterVariableHistory);
             if (filterVariableHistory != oldFilterVariableHistory) {
                 InternalEObject newFilterVariableHistory = (InternalEObject) filterVariableHistory;
                 NotificationChain msgs = oldFilterVariableHistory.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY, null, null);
@@ -592,7 +593,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
-    public org.eclipse.sirius.diagram.FilterVariableHistory basicGetFilterVariableHistory() {
+    public FilterVariableHistory basicGetFilterVariableHistory() {
         return filterVariableHistory;
     }
 
@@ -601,8 +602,8 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
-    public NotificationChain basicSetFilterVariableHistory(org.eclipse.sirius.diagram.FilterVariableHistory newFilterVariableHistory, NotificationChain msgs) {
-        org.eclipse.sirius.diagram.FilterVariableHistory oldFilterVariableHistory = filterVariableHistory;
+    public NotificationChain basicSetFilterVariableHistory(FilterVariableHistory newFilterVariableHistory, NotificationChain msgs) {
+        FilterVariableHistory oldFilterVariableHistory = filterVariableHistory;
         filterVariableHistory = newFilterVariableHistory;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY, oldFilterVariableHistory, newFilterVariableHistory);
@@ -619,7 +620,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
-    public void setFilterVariableHistory(org.eclipse.sirius.diagram.FilterVariableHistory newFilterVariableHistory) {
+    public void setFilterVariableHistory(FilterVariableHistory newFilterVariableHistory) {
         if (newFilterVariableHistory != filterVariableHistory) {
             NotificationChain msgs = null;
             if (filterVariableHistory != null)
@@ -912,7 +913,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             getActivateBehaviors().addAll((Collection<? extends BehaviorTool>) newValue);
             return;
         case DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY:
-            setFilterVariableHistory((org.eclipse.sirius.diagram.FilterVariableHistory) newValue);
+            setFilterVariableHistory((FilterVariableHistory) newValue);
             return;
         case DiagramPackage.DDIAGRAM__ACTIVATED_LAYERS:
             getActivatedLayers().clear();
@@ -968,7 +969,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             getActivateBehaviors().clear();
             return;
         case DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY:
-            setFilterVariableHistory((org.eclipse.sirius.diagram.FilterVariableHistory) null);
+            setFilterVariableHistory((FilterVariableHistory) null);
             return;
         case DiagramPackage.DDIAGRAM__ACTIVATED_LAYERS:
             getActivatedLayers().clear();
