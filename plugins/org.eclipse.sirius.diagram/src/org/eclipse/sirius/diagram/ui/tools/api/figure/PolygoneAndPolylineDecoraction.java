@@ -78,7 +78,7 @@ public class PolygoneAndPolylineDecoraction extends PolygonDecoration {
     public Rectangle getBounds() {
         if (bounds == null) {
             if (polylineDecoration != null) {
-                bounds = getPoints().getBounds().getUnion(polylineDecoration.getPoints().getBounds()).getExpanded(lineWidth / 2, lineWidth / 2);
+                bounds = getPoints().getBounds().getUnion(polylineDecoration.getPoints().getBounds()).getExpanded(getLineWidth() / 2, getLineWidth() / 2);
             } else {
                 // In case of constructor the first geBounds is called before
                 // the polylineDecoration creation.

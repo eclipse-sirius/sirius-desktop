@@ -195,14 +195,14 @@ public class ShiftDescendantMessagesOperation extends ShiftMessagesOperation {
             IdentityAnchor sourceAnchor = (IdentityAnchor) edge.getSourceAnchor();
             int sourceAnchorLocation = SequenceGraphicalHelper.getAnchorAbsolutePosition(sourceAnchor, oldParentRange);
             PrecisionPoint position = BaseSlidableAnchor.parseTerminalString(sourceAnchor.getId());
-            position.preciseY = newParentRange.getProportionalLocation(sourceAnchorLocation);
+            position.setPreciseY(newParentRange.getProportionalLocation(sourceAnchorLocation));
             String terminal = new SlidableAnchor(null, position).getTerminal();
             sourceAnchor.setId(terminal);
         } else {
             IdentityAnchor targetAnchor = (IdentityAnchor) edge.getTargetAnchor();
             int targetAnchorLocation = SequenceGraphicalHelper.getAnchorAbsolutePosition(targetAnchor, oldParentRange);
             PrecisionPoint position = BaseSlidableAnchor.parseTerminalString(targetAnchor.getId());
-            position.preciseY = newParentRange.getProportionalLocation(targetAnchorLocation);
+            position.setPreciseY(newParentRange.getProportionalLocation(targetAnchorLocation));
             String terminal = new SlidableAnchor(null, position).getTerminal();
             targetAnchor.setId(terminal);
         }

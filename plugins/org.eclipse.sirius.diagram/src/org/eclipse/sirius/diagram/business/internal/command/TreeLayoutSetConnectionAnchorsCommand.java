@@ -96,7 +96,7 @@ public class TreeLayoutSetConnectionAnchorsCommand extends SetConnectionAnchorsC
                 }
                 if (sourceBounds != null) {
                     PrecisionPoint sourceAnchorReference = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) edge.getSourceAnchor()).getId());
-                    sourceRefPoint = new Point(sourceBounds.x + sourceBounds.width * sourceAnchorReference.preciseX, sourceBounds.y + sourceBounds.height * sourceAnchorReference.preciseY);
+                    sourceRefPoint = new PrecisionPoint(sourceBounds.x + sourceBounds.width * sourceAnchorReference.preciseX(), sourceBounds.y + sourceBounds.height * sourceAnchorReference.preciseY());
                 }
             } else {
                 // Use the source ref point of the current figure
@@ -120,7 +120,7 @@ public class TreeLayoutSetConnectionAnchorsCommand extends SetConnectionAnchorsC
                 }
                 if (targetBounds != null) {
                     PrecisionPoint targetAnchorReference = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) edge.getTargetAnchor()).getId());
-                    targetRefPoint = new Point(targetBounds.x + targetBounds.width * targetAnchorReference.preciseX, targetBounds.y + targetBounds.height * targetAnchorReference.preciseY);
+                    targetRefPoint = new PrecisionPoint(targetBounds.x + targetBounds.width * targetAnchorReference.preciseX(), targetBounds.y + targetBounds.height * targetAnchorReference.preciseY());
                 }
             } else {
                 // Use the target ref point of the current figure

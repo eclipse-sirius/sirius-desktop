@@ -81,7 +81,6 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
      *         logic.
      * 
      */
-    @SuppressWarnings("restriction")
     public static boolean isHandledByMovida(DRepresentation representation) {
         return Movida.isEnabled() && (representation instanceof DTable) && (((DTable) representation).getDescription() instanceof EditionTableDescription);
     }

@@ -26,6 +26,7 @@ import org.eclipse.draw2d.Viewport;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.LayerConstants;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
@@ -105,7 +106,7 @@ public class NotificationFigure extends RectangleFigure {
 
         viewLocation.performScale(1.0d / rootEditPart.getZoomManager().getZoom());
 
-        this.setLocation(new Point(viewLocation.x + notationFigureOffset, viewLocation.y));
+        this.setLocation(new PrecisionPoint(viewLocation.x + notationFigureOffset, viewLocation.y));
     }
 
     /**

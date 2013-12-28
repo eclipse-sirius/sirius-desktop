@@ -136,9 +136,9 @@ public class SlidableAnchor {
     private String composeTerminalString(PrecisionPoint p) {
         StringBuffer s = new StringBuffer(24);
         s.append(TERMINAL_START_CHAR); // 1 char
-        s.append(p.preciseX); // 10 chars
+        s.append(p.preciseX()); // 10 chars
         s.append(TERMINAL_DELIMITER_CHAR); // 1 char
-        s.append(p.preciseY); // 10 chars
+        s.append(p.preciseY()); // 10 chars
         s.append(TERMINAL_END_CHAR); // 1 char
         return s.toString(); // 24 chars max (+1 for safety, i.e. for string
         // termination)
@@ -152,7 +152,7 @@ public class SlidableAnchor {
         PrecisionRectangle rBox = new PrecisionRectangle(getBox());
         if (isDefaultAnchor())
             return rBox.getCenter();
-        return new PrecisionPoint(relativeReference.preciseX * rBox.preciseWidth + rBox.preciseX, relativeReference.preciseY * rBox.preciseHeight + rBox.preciseY);
+        return new PrecisionPoint(relativeReference.preciseX() * rBox.preciseWidth() + rBox.preciseX(), relativeReference.preciseY() * rBox.preciseHeight() + rBox.preciseY());
     }
 
     /**
@@ -221,14 +221,12 @@ public class SlidableAnchor {
         PrecisionPoint preciseOwnReference = new PrecisionPoint(ownReference);
         PrecisionPoint normalizedReference = (PrecisionPoint) preciseOwnReference.getCopy();
         PrecisionPoint preciseForeignReference = new PrecisionPoint(foreignReference);
-        if (Math.abs(preciseForeignReference.preciseX - preciseOwnReference.preciseX) < tolerance) {
-            normalizedReference.preciseX = preciseForeignReference.preciseX;
-            normalizedReference.updateInts();
+        if (Math.abs(preciseForeignReference.preciseX() - preciseOwnReference.preciseX()) < tolerance) {
+            normalizedReference.setPreciseX(preciseForeignReference.preciseX());
             return normalizedReference;
         }
-        if (Math.abs(preciseForeignReference.preciseY - preciseOwnReference.preciseY) < tolerance) {
-            normalizedReference.preciseY = preciseForeignReference.preciseY;
-            normalizedReference.updateInts();
+        if (Math.abs(preciseForeignReference.preciseY() - preciseOwnReference.preciseY()) < tolerance) {
+            normalizedReference.setPreciseY(preciseForeignReference.preciseY());
         }
         return normalizedReference;
     }
@@ -262,11 +260,11 @@ public class SlidableAnchor {
     protected PointList getPolygonPoints() {
         PrecisionRectangle r = new PrecisionRectangle(getBox());
         PointList ptList = new PointList(5);
-        ptList.addPoint(new PrecisionPoint(r.preciseX, r.preciseY));
-        ptList.addPoint(new PrecisionPoint(r.preciseX + r.preciseWidth, r.preciseY));
-        ptList.addPoint(new PrecisionPoint(r.preciseX + r.preciseWidth, r.preciseY + r.preciseHeight));
-        ptList.addPoint(new PrecisionPoint(r.preciseX, r.preciseY + r.preciseHeight));
-        ptList.addPoint(new PrecisionPoint(r.preciseX, r.preciseY));
+        ptList.addPoint(new PrecisionPoint(r.preciseX(), r.preciseY()));
+        ptList.addPoint(new PrecisionPoint(r.preciseX() + r.preciseWidth(), r.preciseY()));
+        ptList.addPoint(new PrecisionPoint(r.preciseX() + r.preciseWidth(), r.preciseY() + r.preciseHeight()));
+        ptList.addPoint(new PrecisionPoint(r.preciseX(), r.preciseY() + r.preciseHeight()));
+        ptList.addPoint(new PrecisionPoint(r.preciseX(), r.preciseY()));
         return ptList;
     }
 
@@ -324,14 +322,13 @@ public class SlidableAnchor {
         PrecisionRectangle bounds = new PrecisionRectangle(getBox());
         PrecisionPoint preciseOrthoReference = new PrecisionPoint(orthoReference);
         int orientation = PositionConstants.NONE;
-        if (preciseOrthoReference.preciseX >= bounds.preciseX && preciseOrthoReference.preciseX <= bounds.preciseX + bounds.preciseWidth) {
-            ownReference.preciseX = preciseOrthoReference.preciseX;
+        if (preciseOrthoReference.preciseX() >= bounds.preciseX() && preciseOrthoReference.preciseX() <= bounds.preciseX() + bounds.preciseWidth()) {
+            ownReference.setPreciseX(preciseOrthoReference.preciseX());
             orientation = PositionConstants.VERTICAL;
-        } else if (preciseOrthoReference.preciseY >= bounds.preciseY && preciseOrthoReference.preciseY <= bounds.preciseY + bounds.preciseHeight) {
-            ownReference.preciseY = preciseOrthoReference.preciseY;
+        } else if (preciseOrthoReference.preciseY() >= bounds.preciseY() && preciseOrthoReference.preciseY() <= bounds.preciseY() + bounds.preciseHeight()) {
+            ownReference.setPreciseY(preciseOrthoReference.preciseY());
             orientation = PositionConstants.HORIZONTAL;
         }
-        ownReference.updateInts();
 
         Point location = getLocation(ownReference, preciseOrthoReference);
         if (location == null) {
@@ -342,11 +339,10 @@ public class SlidableAnchor {
         if (orientation != PositionConstants.NONE) {
             PrecisionPoint loc = new PrecisionPoint(location);
             if (orientation == PositionConstants.VERTICAL) {
-                loc.preciseX = preciseOrthoReference.preciseX;
+                loc.setPreciseX(preciseOrthoReference.preciseX());
             } else {
-                loc.preciseY = preciseOrthoReference.preciseY;
+                loc.setPreciseY(preciseOrthoReference.preciseY());
             }
-            loc.updateInts();
             location = loc;
         }
 

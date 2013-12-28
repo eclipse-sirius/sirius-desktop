@@ -152,12 +152,12 @@ public class BracketConnectionDecoratorLocator extends ConnectionLocator {
         case LEFT:
         case RIGHT:
             bracketSegmentTooSmallForDecoration = 3 * decorationBounds.height > bracketSegmentLength;
-            bracketSegmentBounds.crop(new Insets(1, 0, 1, 0));
+            bracketSegmentBounds.shrink(new Insets(1, 0, 1, 0));
             break;
         case TOP:
         case BOTTOM:
             bracketSegmentTooSmallForDecoration = 3 * decorationBounds.width > bracketSegmentLength;
-            bracketSegmentBounds.crop(new Insets(0, 1, 0, 1));
+            bracketSegmentBounds.shrink(new Insets(0, 1, 0, 1));
             break;
         default:
         }

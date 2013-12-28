@@ -113,7 +113,7 @@ public class SnapCommand extends AbstractTransactionalCommand {
                      * factor of the zoom tool, i.e. ScaledRootEditPart
                      */
                     newEditPart.getFigure().translateToAbsolute(moveDeltaDim);
-                    PrecisionPoint moveDelta = new PrecisionPoint(moveDeltaDim.preciseWidth, moveDeltaDim.preciseHeight);
+                    PrecisionPoint moveDelta = new PrecisionPoint(moveDeltaDim.preciseWidth(), moveDeltaDim.preciseHeight());
 
                     // In the case that the figure bounds and model's layout
                     // constant are the same,

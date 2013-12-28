@@ -102,7 +102,7 @@ public class SiriusScroller extends ViewportAutoexposeHelper {
         port.getClientArea(rect);
         port.translateToParent(rect);
         port.translateToAbsolute(rect);
-        return rect.contains(where) && !rect.crop(threshold).contains(where);
+        return rect.contains(where) && !rect.shrink(threshold).contains(where);
     }
 
     /**
@@ -149,7 +149,7 @@ public class SiriusScroller extends ViewportAutoexposeHelper {
         port.getClientArea(rect);
         port.translateToParent(rect);
         port.translateToAbsolute(rect);
-        if (!rect.contains(where) || rect.crop(threshold).contains(where)) {
+        if (!rect.contains(where) || rect.shrink(threshold).contains(where)) {
             // If the zone is out of editor bounds
             // we calculate a new multiplicator according to the distance
             // between the cursor location on the bounds of the editors
@@ -171,7 +171,7 @@ public class SiriusScroller extends ViewportAutoexposeHelper {
         // Step 3 : calculate scroll location
         if (scrollOffset != 0) {
             scrollOffset = multiplicator * scrollOffset;
-            rect.crop(threshold);
+            rect.shrink(threshold);
 
             int region = rect.getPosition(where);
             Point loc = port.getViewLocation();

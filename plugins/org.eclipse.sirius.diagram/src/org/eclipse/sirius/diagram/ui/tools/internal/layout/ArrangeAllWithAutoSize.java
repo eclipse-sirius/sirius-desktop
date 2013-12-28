@@ -281,7 +281,7 @@ public class ArrangeAllWithAutoSize {
 
             gep.getFigure().translateToAbsolute(oldSize);
             gep.getFigure().translateToAbsolute(size);
-            final Dimension deltaSize = size.getDifference(oldSize);
+            final Dimension deltaSize = size.getShrinked(oldSize);
 
             request.setType(org.eclipse.gef.RequestConstants.REQ_RESIZE);
             request.setConstrainedResize(true);

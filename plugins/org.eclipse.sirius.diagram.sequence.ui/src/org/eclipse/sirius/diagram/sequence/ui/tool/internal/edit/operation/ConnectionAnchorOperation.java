@@ -91,7 +91,7 @@ public final class ConnectionAnchorOperation {
             if (!StringUtil.isEmpty(id)) {
                 PrecisionPoint pp = BaseSlidableAnchor.parseTerminalString(id);
                 if (pp != null) {
-                    pp.preciseX = preciseX;
+                    pp.setPreciseX(preciseX);
                     result = new SequenceSlidableAnchor(anchor, pp);
                 }
             }

@@ -37,7 +37,7 @@ public class ODesignEllipseFigure extends AbstractTransparentEllipse {
         r.setBounds(getDrawBounds());
         r.width--;
         r.height--;
-        r.shrink((lineWidth - 1) / 2, (lineWidth - 1) / 2);
+        r.shrink((getLineWidth() - 1) / 2, (getLineWidth() - 1) / 2);
         graphics.drawOval(r);
     }
 

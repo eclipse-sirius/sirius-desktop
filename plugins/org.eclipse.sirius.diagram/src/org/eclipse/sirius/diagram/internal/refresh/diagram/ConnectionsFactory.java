@@ -235,7 +235,7 @@ public class ConnectionsFactory {
 
                     if (optionalSourceBounds.some()) {
                         PrecisionPoint sourceRelativeLocation = BaseSlidableAnchor.getAnchorRelativeLocation(firstClick, optionalSourceBounds.get());
-                        sourceTerminal = GMFNotationUtilities.getTerminalString(sourceRelativeLocation.preciseX, sourceRelativeLocation.preciseY);
+                        sourceTerminal = GMFNotationUtilities.getTerminalString(sourceRelativeLocation.preciseX(), sourceRelativeLocation.preciseY());
                     } else {
                         sourceTerminal = GMFNotationUtilities.getTerminalString(0.5d, 0.5d);
                     }
@@ -250,7 +250,7 @@ public class ConnectionsFactory {
 
                     if (optionaltargetBounds.some()) {
                         PrecisionPoint targetRelativeLocation = BaseSlidableAnchor.getAnchorRelativeLocation(secondClick, optionaltargetBounds.get());
-                        targetTerminal = GMFNotationUtilities.getTerminalString(targetRelativeLocation.preciseX, targetRelativeLocation.preciseY);
+                        targetTerminal = GMFNotationUtilities.getTerminalString(targetRelativeLocation.preciseX(), targetRelativeLocation.preciseY());
                     } else {
                         targetTerminal = GMFNotationUtilities.getTerminalString(0.5d, 0.5d);
                     }

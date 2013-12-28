@@ -151,13 +151,13 @@ public class GradientRoundedRectangle extends RoundedRectangle implements ViewNo
      * {@inheritDoc}
      */
     public int getCornerHeight() {
-        return this.corner.height;
+        return this.getCornerDimensions().height;
     }
 
     /**
      * {@inheritDoc}
      */
     public int getCornerWidth() {
-        return this.corner.width;
+        return this.getCornerDimensions().width;
     }
 }

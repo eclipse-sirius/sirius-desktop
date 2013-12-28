@@ -820,7 +820,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
             return subStringText = "";//$NON-NLS-1$;;
         }
         Dimension size = getSize();
-        Dimension shrink = getPreferredSize(size.width, size.height).getDifference(size);
+        Dimension shrink = getPreferredSize(size.width, size.height).getShrinked(size);
         Dimension effectiveSize = getTextSize().getExpanded(-shrink.width, -shrink.height);
 
         if (effectiveSize.height == 0) {

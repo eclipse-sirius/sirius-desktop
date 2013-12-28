@@ -51,7 +51,6 @@ import org.eclipse.ui.PlatformUI;
  * 
  * @author lredor
  */
-@SuppressWarnings("restriction")
 public class DTableContentAdapter extends ResourceSetListenerImpl {
 
     private DTableViewerManager dTableViewerManager;

@@ -26,8 +26,9 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.draw2d.geometry.Ray;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.draw2d.geometry.Vector;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -810,7 +811,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
                 // Use the center of the opposite element to determine the ray
                 // (this ray is then use to determine the side on which to put
                 // the border node)
-                final Map<IBorderItemEditPart, Ray> headings = new HashMap<IBorderItemEditPart, Ray>();
+                final Map<IBorderItemEditPart, Vector> headings = new HashMap<IBorderItemEditPart, Vector>();
                 for (Object child : castedEditPart.getChildren()) {
                     if (child instanceof IBorderItemEditPart) {
                         if (!isPinned((IBorderItemEditPart) child) && !(elementsToKeepFixed != null && elementsToKeepFixed.contains(child))) {
@@ -822,9 +823,9 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
                 final Point topLeft = containerBoundsAfterArrangeAll.getTopLeft();
                 // Make some trigonometry calculations to know which ports must
                 // be on top, bottom, right, left border of their container.
-                final double absoluteCos = Math.abs(BorderItemAwareLayoutProvider.cos(new Ray(Math.abs(containerCenterAfterArrangeAll.x - topLeft.x), Math.abs(containerCenterAfterArrangeAll.y
+                final double absoluteCos = Math.abs(BorderItemAwareLayoutProvider.cos(new Vector(Math.abs(containerCenterAfterArrangeAll.x - topLeft.x), Math.abs(containerCenterAfterArrangeAll.y
                         - topLeft.y))));
-                final double absoluteSin = Math.abs(BorderItemAwareLayoutProvider.sin(new Ray(Math.abs(containerCenterAfterArrangeAll.x - topLeft.x), Math.abs(containerCenterAfterArrangeAll.y
+                final double absoluteSin = Math.abs(BorderItemAwareLayoutProvider.sin(new Vector(Math.abs(containerCenterAfterArrangeAll.x - topLeft.x), Math.abs(containerCenterAfterArrangeAll.y
                         - topLeft.y))));
 
                 final List<IBorderItemEditPart> tops = getNorthBorderItems(headings, absoluteCos, scale, containerCenterAfterArrangeAll);
@@ -873,8 +874,8 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
         return resCommand;
     }
 
-    private void computeHeading(IBorderItemEditPart borderItemEditPart, Point containerCenterAfterArrangeAll, double scale, Map<IBorderItemEditPart, Ray> headings) {
-        final Ray heading = getHeading(borderItemEditPart, containerCenterAfterArrangeAll, scale);
+    private void computeHeading(IBorderItemEditPart borderItemEditPart, Point containerCenterAfterArrangeAll, double scale, Map<IBorderItemEditPart, Vector> headings) {
+        final Vector heading = getHeading(borderItemEditPart, containerCenterAfterArrangeAll, scale);
         if (heading != null) {
             headings.put(borderItemEditPart, heading);
         }
@@ -1012,7 +1013,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            The vector
      * @return The cosinus value of the vector
      */
-    private static double cos(final Ray ray) {
+    private static double cos(final Vector ray) {
         return ray.x / Math.sqrt(Math.pow(ray.x, 2) + Math.pow(ray.y, 2));
     }
 
@@ -1023,7 +1024,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            The vector
      * @return The sinus value of the vector
      */
-    private static double sin(final Ray ray) {
+    private static double sin(final Vector ray) {
         return ray.y / Math.sqrt(Math.pow(ray.x, 2) + Math.pow(ray.y, 2));
     }
 
@@ -1057,12 +1058,12 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            the center of the container of the border items
      * @return the list of border items to be at the North position.
      */
-    private List<IBorderItemEditPart> getNorthBorderItems(final Map<IBorderItemEditPart, Ray> headings, final double containerAbsoluteCos, double scale, final Point containerCenter) {
+    private List<IBorderItemEditPart> getNorthBorderItems(final Map<IBorderItemEditPart, Vector> headings, final double containerAbsoluteCos, double scale, final Point containerCenter) {
 
         final List<IBorderItemEditPart> parts = new LinkedList<IBorderItemEditPart>();
 
-        for (Map.Entry<IBorderItemEditPart, Ray> entry : headings.entrySet()) {
-            final Ray ray = entry.getValue();
+        for (Map.Entry<IBorderItemEditPart, Vector> entry : headings.entrySet()) {
+            final Vector ray = entry.getValue();
             if (ray.y != 0) {
 
                 final double cos = BorderItemAwareLayoutProvider.cos(ray);
@@ -1089,12 +1090,12 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            The absolute cos of the container
      * @return the list of border items to be at the South position.
      */
-    private List<IBorderItemEditPart> getSouthBorderItems(final Map<IBorderItemEditPart, Ray> headings, final double absoluteCos, double scale, final Point containerCenter) {
+    private List<IBorderItemEditPart> getSouthBorderItems(final Map<IBorderItemEditPart, Vector> headings, final double absoluteCos, double scale, final Point containerCenter) {
 
         final List<IBorderItemEditPart> parts = new LinkedList<IBorderItemEditPart>();
 
-        for (Map.Entry<IBorderItemEditPart, Ray> entry : headings.entrySet()) {
-            final Ray ray = entry.getValue();
+        for (Map.Entry<IBorderItemEditPart, Vector> entry : headings.entrySet()) {
+            final Vector ray = entry.getValue();
             if (ray.y != 0) {
                 final double cos = BorderItemAwareLayoutProvider.cos(ray);
 
@@ -1119,12 +1120,12 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            The absolute sinus of the container
      * @return the list of border items to be at the East position.
      */
-    private List<IBorderItemEditPart> getEastBorderItems(final Map<IBorderItemEditPart, Ray> headings, final double containerAbsoluteSin, double scale, final Point containerCenter) {
+    private List<IBorderItemEditPart> getEastBorderItems(final Map<IBorderItemEditPart, Vector> headings, final double containerAbsoluteSin, double scale, final Point containerCenter) {
 
         final List<IBorderItemEditPart> parts = new LinkedList<IBorderItemEditPart>();
 
-        for (Map.Entry<IBorderItemEditPart, Ray> entry : headings.entrySet()) {
-            final Ray ray = entry.getValue();
+        for (Map.Entry<IBorderItemEditPart, Vector> entry : headings.entrySet()) {
+            final Vector ray = entry.getValue();
 
             if (ray.x != 0) {
                 final double sin = BorderItemAwareLayoutProvider.sin(ray);
@@ -1151,12 +1152,12 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            The absolute sinus of the container
      * @return the list of border items to be at the West position.
      */
-    private List<IBorderItemEditPart> getWestBorderItems(final Map<IBorderItemEditPart, Ray> headings, final double containerAbsoluteSin, double scale, final Point containerCenter) {
+    private List<IBorderItemEditPart> getWestBorderItems(final Map<IBorderItemEditPart, Vector> headings, final double containerAbsoluteSin, double scale, final Point containerCenter) {
 
         final List<IBorderItemEditPart> parts = new LinkedList<IBorderItemEditPart>();
 
-        for (Map.Entry<IBorderItemEditPart, Ray> entry : headings.entrySet()) {
-            final Ray ray = entry.getValue();
+        for (Map.Entry<IBorderItemEditPart, Vector> entry : headings.entrySet()) {
+            final Vector ray = entry.getValue();
             if (ray.x != 0) {
                 final double sin = BorderItemAwareLayoutProvider.sin(ray);
 
@@ -1194,10 +1195,10 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            border item arrange
      * @return A vector representing the edge
      */
-    private Ray getHeading(final IBorderItemEditPart editPart, final Point containerCenterAfterArrange, final double scale) {
+    private Vector getHeading(final IBorderItemEditPart editPart, final Point containerCenterAfterArrange, final double scale) {
         final Point targetPoint = getTargetPoint(editPart, scale);
         if (targetPoint != null) {
-            return new Ray(containerCenterAfterArrange, targetPoint);
+            return new Vector(new PrecisionPoint(containerCenterAfterArrange), new PrecisionPoint(targetPoint));
         }
         return null;
     }

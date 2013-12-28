@@ -19,6 +19,7 @@ import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -705,7 +706,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         GraphicalHelper.screen2logical(location, endOfLifeEditPart);
         Rectangle bounds = endOfLifeEditPart.getFigure().getBounds();
         int delta = location.y - (bounds.getCenter().y);
-        cbr.setMoveDelta(new Point(0, delta * zoom));
+        cbr.setMoveDelta(new PrecisionPoint(0, delta * zoom));
         return cbr;
     }
 

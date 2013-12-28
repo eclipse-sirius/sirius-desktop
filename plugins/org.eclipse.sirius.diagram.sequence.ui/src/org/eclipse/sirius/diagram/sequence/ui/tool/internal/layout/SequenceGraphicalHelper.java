@@ -213,6 +213,6 @@ public final class SequenceGraphicalHelper {
      */
     public static int getAnchorAbsolutePosition(IdentityAnchor anchor, Range range) {
         PrecisionPoint rel = anchor != null ? BaseSlidableAnchor.parseTerminalString(anchor.getId()) : new PrecisionPoint(0.5, 0.5);
-        return range.getLowerBound() + (int) Math.round(rel.preciseY * range.width());
+        return range.getLowerBound() + (int) Math.round(rel.preciseY() * range.width());
     }
 }
