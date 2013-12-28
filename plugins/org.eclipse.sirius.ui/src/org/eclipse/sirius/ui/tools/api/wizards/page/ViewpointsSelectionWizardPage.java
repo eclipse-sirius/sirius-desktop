@@ -11,7 +11,6 @@
 package org.eclipse.sirius.ui.tools.api.wizards.page;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -429,11 +428,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
             final IPath path = new Path("/" + pluginId + url);
             if (workspace.getRoot().exists(path)) {
                 IResource resource = workspace.getRoot().findMember(path);
-                try {
-                    rewrittenURL = resource.getLocation().toFile().toURL().toString();
-                } catch (MalformedURLException e) {
-                    // do nothing
-                }
+                rewrittenURL = resource.getLocation().toFile().toURI().toString();
             }
         }
 
