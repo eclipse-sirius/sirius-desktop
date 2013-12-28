@@ -24,6 +24,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.Transaction;
 import org.eclipse.emf.workspace.AbstractEMFOperation;
 import org.eclipse.gef.EditPart;
@@ -104,9 +105,9 @@ public class DumnySiriusCanonicalEditPolicy extends CanonicalEditPolicy {
     @Override
     protected List getSemanticChildrenList() {
         View viewObject = (View) getHost().getModel();
-        List result = new LinkedList();
-        for (Iterator it = SiriusDiagramUpdater.getSemanticChildren(viewObject).iterator(); it.hasNext();) {
-            result.add(((SiriusNodeDescriptor) it.next()).getModelElement());
+        List<Object> result = new LinkedList<Object>();
+        for (Iterator<SiriusNodeDescriptor> it = SiriusDiagramUpdater.getSemanticChildren(viewObject).iterator(); it.hasNext();) {
+            result.add(it.next().getModelElement());
         }
         return result;
     }
@@ -116,7 +117,7 @@ public class DumnySiriusCanonicalEditPolicy extends CanonicalEditPolicy {
      * feature to null.
      */
     @Override
-    protected boolean isOrphaned(Collection semanticChildren, View view) {
+    protected boolean isOrphaned(Collection<EObject> semanticChildren, View view) {
         boolean isOrphaned = false;
         View parentView = (View) view.eContainer();
         int visualID = SiriusVisualIDRegistry.getVisualID(parentView);

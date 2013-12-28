@@ -200,9 +200,10 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
     /*
      * hide non visible elements
      */
-    protected List getModelChildren() {
+    @Override
+    protected List<?> getModelChildren() {
         // create a new view to avoid to change the super.getModelChildren list.
-        List modelChildren = new ArrayList(super.getModelChildren());
+        List<?> modelChildren = new ArrayList(super.getModelChildren());
         DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
         Collections.sort((List<View>) modelChildren, indexComparator);
         Collections.sort(modelChildren, mappingComparator);

@@ -79,10 +79,8 @@ public class PrintAsImageCallback implements PrintCallback {
      * 
      */
     private Image takeSnapshot(final Control control) {
-
         /* necessary to avoid blank shadow, but does not work all the time */
         display.syncExec(new Runnable() {
-
             public void run() {
                 synchronizationWithUIThread();
                 control.redraw();
@@ -94,23 +92,20 @@ public class PrintAsImageCallback implements PrintCallback {
                     // do nothing
                 }
             }
-
         });
 
-        final RunnableWithResult runnable = new RunnableWithResult.Impl() {
+        RunnableWithResult<Image> runnable = new RunnableWithResult.Impl<Image>() {
             public void run() {
-
-                final Point size = control.getSize();
-                final Image snap = new Image(display, size.x, size.y);
-                final GC gc = new GC(control);
+                Point size = control.getSize();
+                Image snap = new Image(display, size.x, size.y);
+                GC gc = new GC(control);
                 gc.copyArea(snap, 0, 0);
                 gc.dispose();
                 setResult(snap);
             }
-
         };
         display.syncExec(runnable);
-        return (Image) runnable.getResult();
+        return runnable.getResult();
     }
 
     /**
