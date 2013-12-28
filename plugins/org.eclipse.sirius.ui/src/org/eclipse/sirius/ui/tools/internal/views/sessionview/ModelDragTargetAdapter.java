@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.views.sessionview;
 
+import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.util.TransferDragSourceListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.swt.dnd.DragSourceAdapter;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.Transfer;
-import org.eclipse.ui.views.navigator.LocalSelectionTransfer;
 
 /**
  * A simple drag target adapter for {@link LocalSelectionTransfer}.
@@ -44,7 +44,7 @@ public class ModelDragTargetAdapter extends DragSourceAdapter implements Transfe
      * @see org.eclipse.jface.util.TransferDragSourceListener#getTransfer()
      */
     public Transfer getTransfer() {
-        return LocalSelectionTransfer.getInstance();
+        return LocalSelectionTransfer.getTransfer();
     }
 
     /**
@@ -55,8 +55,8 @@ public class ModelDragTargetAdapter extends DragSourceAdapter implements Transfe
     @Override
     public void dragStart(final DragSourceEvent event) {
         final ISelection selection = provider.getSelection();
-        LocalSelectionTransfer.getInstance().setSelection(selection);
-        LocalSelectionTransfer.getInstance().setSelectionSetTime(event.time & 0xFFFFFFFFL);
+        LocalSelectionTransfer.getTransfer().setSelection(selection);
+        LocalSelectionTransfer.getTransfer().setSelectionSetTime(event.time & 0xFFFFFFFFL);
         event.doit = true;
     }
 
@@ -67,7 +67,7 @@ public class ModelDragTargetAdapter extends DragSourceAdapter implements Transfe
      */
     @Override
     public void dragSetData(final DragSourceEvent event) {
-        event.data = LocalSelectionTransfer.getInstance().getSelection();
+        event.data = LocalSelectionTransfer.getTransfer().getSelection();
     }
 
     /**
@@ -77,7 +77,7 @@ public class ModelDragTargetAdapter extends DragSourceAdapter implements Transfe
      */
     @Override
     public void dragFinished(final DragSourceEvent event) {
-        LocalSelectionTransfer.getInstance().setSelection(null);
-        LocalSelectionTransfer.getInstance().setSelectionSetTime(0);
+        LocalSelectionTransfer.getTransfer().setSelection(null);
+        LocalSelectionTransfer.getTransfer().setSelectionSetTime(0);
     }
 }

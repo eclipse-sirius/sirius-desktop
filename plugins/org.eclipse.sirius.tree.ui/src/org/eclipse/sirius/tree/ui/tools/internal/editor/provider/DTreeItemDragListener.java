@@ -13,19 +13,17 @@ package org.eclipse.sirius.tree.ui.tools.internal.editor.provider;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.swt.dnd.DragSourceAdapter;
 import org.eclipse.swt.dnd.DragSourceEvent;
 import org.eclipse.swt.dnd.DragSourceListener;
-import org.eclipse.ui.views.navigator.LocalSelectionTransfer;
 
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.tree.DTreeItem;
-
-//FIXME Alex Lagarde
 /**
  * .
  * 
@@ -74,7 +72,7 @@ public class DTreeItemDragListener extends DragSourceAdapter implements DragSour
                     dragData.add((DTreeItem) selectedElement);
                 }
             }
-            LocalSelectionTransfer.getInstance().setSelection(this.selectionProvider.getSelection());
+            LocalSelectionTransfer.getTransfer().setSelection(this.selectionProvider.getSelection());
             event.data = dragData;
         }
     }
