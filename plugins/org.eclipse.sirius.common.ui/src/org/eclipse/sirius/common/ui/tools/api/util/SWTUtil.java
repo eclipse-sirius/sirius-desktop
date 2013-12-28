@@ -168,7 +168,7 @@ public final class SWTUtil {
      * @return the new filtered tree widget
      */
     public static FilteredTree createFilteredTree(final Composite parent, final int style, final PatternFilter filter) {
-        final FilteredTree filteredTree = new FilteredTree(parent, style, filter);
+        final FilteredTree filteredTree = new FilteredTree(parent, style, filter, true);
 
         // add a dispose listener
         SWTUtil.addDisposeListener(parent, filteredTree);

@@ -76,7 +76,6 @@ import com.google.common.collect.Lists;
  * 
  * @author cbrun
  */
-@Deprecated
 public class FiltersPropertySection extends AbstractPropertySection {
 
     /** The editing domain. */

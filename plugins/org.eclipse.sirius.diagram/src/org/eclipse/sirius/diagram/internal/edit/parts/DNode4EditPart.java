@@ -261,9 +261,9 @@ public class DNode4EditPart extends AbstractDiagramBorderNodeEditPart {
         public ViewNodePortFigureDesc() {
             final FlowLayout layoutThis = new FlowLayout();
             layoutThis.setStretchMinorAxis(false);
-            layoutThis.setMinorAlignment(FlowLayout.ALIGN_LEFTTOP);
+            layoutThis.setMinorAlignment(FlowLayout.ALIGN_TOPLEFT);
 
-            layoutThis.setMajorAlignment(FlowLayout.ALIGN_LEFTTOP);
+            layoutThis.setMajorAlignment(FlowLayout.ALIGN_TOPLEFT);
             layoutThis.setMajorSpacing(5);
             layoutThis.setMinorSpacing(5);
             layoutThis.setHorizontal(true);
