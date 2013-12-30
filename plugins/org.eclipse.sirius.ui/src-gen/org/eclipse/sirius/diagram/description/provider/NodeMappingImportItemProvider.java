@@ -116,7 +116,7 @@ public class NodeMappingImportItemProvider extends NodeMappingItemProvider imple
     public Object getImage(Object object) {
         EStructuralFeature eContainingFeature = ((EObject) object).eContainingFeature();
         if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS)
-            return overlayImage(object, getResourceLocator().getImage("full/obj16/BorderedNodeMappingImport"));
+            return overlayImage(object, getResourceLocator().getImage("obj16/BorderedNodeMappingImport"));
         return overlayImage(object, getResourceLocator().getImage("full/obj16/NodeMappingImport"));
     }
 

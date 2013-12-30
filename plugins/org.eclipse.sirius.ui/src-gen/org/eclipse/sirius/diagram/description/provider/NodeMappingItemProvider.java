@@ -127,7 +127,7 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider imp
     public Object getImage(Object object) {
         EStructuralFeature eContainingFeature = ((EObject) object).eContainingFeature();
         if (eContainingFeature != null && eContainingFeature.getFeatureID() == org.eclipse.sirius.diagram.description.DescriptionPackage.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS)
-            return overlayImage(object, getResourceLocator().getImage("full/obj16/BorderedNodeMapping"));
+            return overlayImage(object, getResourceLocator().getImage("obj16/BorderedNodeMapping"));
         return overlayImage(object, getResourceLocator().getImage("full/obj16/NodeMapping"));
     }
 
