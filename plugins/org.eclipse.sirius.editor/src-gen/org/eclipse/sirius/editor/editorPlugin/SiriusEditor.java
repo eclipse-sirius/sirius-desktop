@@ -594,6 +594,7 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
         factories.add(FeatureExtensionsUIManager.INSTANCE.createAdapterFactory());
         factories.add(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
         factories.add(new org.eclipse.sirius.diagram.description.provider.DescriptionItemProviderAdapterFactory());
+        factories.add(new org.eclipse.sirius.diagram.description.style.provider.StyleItemProviderAdapterFactory());
         // End of user code put your specific adapter factories
         factories.add(new ResourceItemProviderAdapterFactory());
         factories.add(new ViewpointItemProviderAdapterFactory());
@@ -606,6 +607,7 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
         factories.add(new DiagramItemProviderAdapterFactory());
         factories.add(new DescriptionItemProviderAdapterFactory());
         factories.add(new FilterItemProviderAdapterFactory());
+        factories.add(new StyleItemProviderAdapterFactory());
         factories.add(new ReflectiveItemProviderAdapterFactory());
 
         adapterFactory = new ComposedAdapterFactory(factories);

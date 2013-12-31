@@ -12,9 +12,9 @@ package org.eclipse.sirius.editor.properties.filters.style.edgestyledescription;
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.diagram.description.style.BracketEdgeStyleDescription;
+import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
-import org.eclipse.sirius.viewpoint.description.style.BracketEdgeStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 // End of user code specific imports
 
@@ -34,7 +34,7 @@ public class EdgeStyleDescriptionRoutingStyleFilter extends ViewpointPropertyFil
      * {@inheritDoc}
      */
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.viewpoint.description.style.EdgeStyleDescription;
+        return arg0 instanceof org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
     }
 
     // Start of user code user methods

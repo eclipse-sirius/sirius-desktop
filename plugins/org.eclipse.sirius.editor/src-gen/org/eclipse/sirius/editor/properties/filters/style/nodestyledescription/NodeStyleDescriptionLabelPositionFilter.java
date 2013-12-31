@@ -14,9 +14,9 @@ package org.eclipse.sirius.editor.properties.filters.style.nodestyledescription;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 // End of user code specific imports
 
@@ -36,7 +36,7 @@ public class NodeStyleDescriptionLabelPositionFilter extends ViewpointPropertyFi
      * {@inheritDoc}
      */
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
+        return arg0 instanceof org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
     }
 
     // Start of user code user methods
@@ -45,7 +45,7 @@ public class NodeStyleDescriptionLabelPositionFilter extends ViewpointPropertyFi
      * {@inheritDoc}
      */
     public boolean select(Object arg0) {
-        if (isRightInputType(arg0) && isStyleInNodeMapping((org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription) arg0)) {
+        if (isRightInputType(arg0) && isStyleInNodeMapping((org.eclipse.sirius.diagram.description.style.NodeStyleDescription) arg0)) {
             EStructuralFeature feature = getFeature();
             if (feature != null && isVisible(feature)) {
                 return true;
@@ -62,7 +62,7 @@ public class NodeStyleDescriptionLabelPositionFilter extends ViewpointPropertyFi
      * @return <code>true</code> if the style is contained in a node mapping,
      *         <code>false</code> otherwise
      */
-    private boolean isStyleInNodeMapping(org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription styleDescription) {
+    private boolean isStyleInNodeMapping(org.eclipse.sirius.diagram.description.style.NodeStyleDescription styleDescription) {
         EObject container = styleDescription.eContainer();
         while (container instanceof ConditionalStyleDescription) {
             container = container.eContainer();

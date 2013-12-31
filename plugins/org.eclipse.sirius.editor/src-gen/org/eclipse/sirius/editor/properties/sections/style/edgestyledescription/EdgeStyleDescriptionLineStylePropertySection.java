@@ -15,8 +15,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.LineStyle;
+import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
-import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
