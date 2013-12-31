@@ -36,6 +36,9 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
+import org.eclipse.sirius.diagram.description.style.SquareDescription;
+import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.diagram.internal.edit.policies.DNode2ItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
@@ -59,9 +62,6 @@ import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
-import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.SquareDescription;
-import org.eclipse.sirius.viewpoint.description.style.WorkspaceImageDescription;
 
 import com.google.common.collect.Iterables;
 

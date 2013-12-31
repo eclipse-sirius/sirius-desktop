@@ -75,6 +75,7 @@ import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.tools.api.part.DiagramEditPartService;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
@@ -356,8 +357,11 @@ public class DiagramDialectUIServices implements DialectUIServices {
             }
         }
         factory.addAdapterFactory(new DescriptionItemProviderAdapterFactory());
+        factory.addAdapterFactory(new org.eclipse.sirius.diagram.description.provider.DescriptionItemProviderAdapterFactory());
         factory.addAdapterFactory(new ViewpointItemProviderAdapterFactory());
         factory.addAdapterFactory(new StyleItemProviderAdapterFactory());
+        factory.addAdapterFactory(new DiagramItemProviderAdapterFactory());
+        factory.addAdapterFactory(new org.eclipse.sirius.diagram.description.style.provider.StyleItemProviderAdapterFactory());
         factory.addAdapterFactory(new ToolItemProviderAdapterFactory());
         factory.addAdapterFactory(new FilterItemProviderAdapterFactory());
         factory.addAdapterFactory(new ValidationItemProviderAdapterFactory());

@@ -35,9 +35,9 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.business.internal.query.WorkspaceImageQuery;
+import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
+import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
-import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.WorkspaceImageDescription;
 
 /**
  * A ResourceSet listener to resize image with this default size.

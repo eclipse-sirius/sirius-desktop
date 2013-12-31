@@ -11,10 +11,10 @@
 package org.eclipse.sirius.diagram.business.internal.query;
 
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.ext.swt.ImageFileFormat;
-import org.eclipse.sirius.viewpoint.description.style.WorkspaceImageDescription;
 import org.eclipse.swt.graphics.Image;
 
 import com.google.common.base.Preconditions;

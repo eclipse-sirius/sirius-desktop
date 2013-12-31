@@ -25,10 +25,10 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.sequence.template.TLifelineMapping;
 import org.eclipse.sirius.diagram.sequence.template.TemplateFactory;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
-import org.eclipse.sirius.viewpoint.description.style.StyleFactory;
 
 /**
  * This is the item provider adapter for a

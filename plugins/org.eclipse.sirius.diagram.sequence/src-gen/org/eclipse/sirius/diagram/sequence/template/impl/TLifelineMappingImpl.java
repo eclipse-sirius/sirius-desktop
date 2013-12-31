@@ -20,12 +20,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle;
 import org.eclipse.sirius.diagram.sequence.template.TExecutionMapping;
 import org.eclipse.sirius.diagram.sequence.template.TLifelineMapping;
 import org.eclipse.sirius.diagram.sequence.template.TLifelineStyle;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
-import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

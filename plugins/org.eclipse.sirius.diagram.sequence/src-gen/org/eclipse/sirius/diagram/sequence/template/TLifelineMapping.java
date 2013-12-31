@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.template;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
+import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

@@ -292,12 +292,12 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="executionMappings" upperBound="-1"
           eType="#//template/TExecutionMapping" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="instanceRoleStyle" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/NodeStyleDescription"
+          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//diagram/description/style/NodeStyleDescription"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="lifelineStyle" lowerBound="1"
           eType="#//template/TLifelineStyle" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="endOfLifeStyle" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/NodeStyleDescription"
+          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//diagram/description/style/NodeStyleDescription"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalLifeLineStyles"
           upperBound="-1" eType="#//template/TConditionalLifelineStyle" containment="true">

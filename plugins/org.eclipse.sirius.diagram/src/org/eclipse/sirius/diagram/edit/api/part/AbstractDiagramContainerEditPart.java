@@ -66,6 +66,7 @@ import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.PortLayoutHelper;
@@ -84,7 +85,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DStylizable;
-import org.eclipse.sirius.viewpoint.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 
 import com.google.common.collect.Iterables;

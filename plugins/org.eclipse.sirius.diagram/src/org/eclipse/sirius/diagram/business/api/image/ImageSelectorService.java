@@ -44,13 +44,13 @@ import org.eclipse.sirius.diagram.business.internal.image.ImageSelectorDescripto
 import org.eclipse.sirius.diagram.business.internal.image.ImageSelectorDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.internal.image.refresh.WorkspaceImageFigureRefresher;
 import org.eclipse.sirius.diagram.business.internal.query.CustomizableQuery;
+import org.eclipse.sirius.diagram.description.style.StyleFactory;
+import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.description.style.StyleFactory;
-import org.eclipse.sirius.viewpoint.description.style.WorkspaceImageDescription;
 import org.eclipse.ui.IEditorPart;
 
 /**

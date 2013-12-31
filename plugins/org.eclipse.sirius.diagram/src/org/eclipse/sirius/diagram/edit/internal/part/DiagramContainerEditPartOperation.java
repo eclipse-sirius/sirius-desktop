@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.internal.edit.helpers.LabelAlignmentHelper;
+import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramContainerEditPart;
@@ -47,7 +48,6 @@ import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.description.style.ContainerStyleDescription;
 
 /**
  * Implementation of {@link IDiagramContainerEditPart}.
