@@ -29,10 +29,10 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.style.BracketEdgeStyleDescription;
+import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
+import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.style.BracketEdgeStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.EdgeStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.StyleFactory;
 
 /**
  * This is the item provider adapter for a

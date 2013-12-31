@@ -18,8 +18,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.viewpoint.description.impl.ConditionalStyleDescriptionImpl;
-import org.eclipse.sirius.viewpoint.description.style.ContainerStyleDescription;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

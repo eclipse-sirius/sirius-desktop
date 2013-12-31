@@ -17,8 +17,8 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

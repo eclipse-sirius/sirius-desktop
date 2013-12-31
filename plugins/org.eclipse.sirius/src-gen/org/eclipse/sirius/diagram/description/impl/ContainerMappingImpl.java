@@ -31,8 +31,8 @@ import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescripti
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.viewpoint.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
 
 /**

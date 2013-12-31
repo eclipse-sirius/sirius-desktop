@@ -11,8 +11,8 @@
  */
 package org.eclipse.sirius.diagram.description;
 
+import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.ContainerStyleDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

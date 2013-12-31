@@ -27,13 +27,13 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.viewpoint.description.style.RoundedCornerStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.StylePackage;
+import org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription;
+import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.style.RoundedCornerStyleDescription}
+ * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated

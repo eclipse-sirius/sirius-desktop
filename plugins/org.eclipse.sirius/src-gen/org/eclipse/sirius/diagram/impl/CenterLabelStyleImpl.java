@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.sirius.diagram.CenterLabelStyle;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.description.style.CenterLabelStyleDescription;
+import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.CenterLabelStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl;
 
 /**

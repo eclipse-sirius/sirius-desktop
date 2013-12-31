@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
-import org.eclipse.sirius.viewpoint.description.style.EdgeStyleDescription;
 
 /**
  * Constraint ensuring that all Interpreted Expressions of the Odesign are

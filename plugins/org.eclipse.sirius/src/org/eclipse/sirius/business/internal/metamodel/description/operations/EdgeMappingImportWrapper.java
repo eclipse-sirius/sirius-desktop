@@ -43,9 +43,9 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
+import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
 import org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription;
@@ -386,7 +386,7 @@ public final class EdgeMappingImportWrapper extends EObjectImpl implements EdgeM
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.EdgeMapping#setStyle(org.eclipse.sirius.viewpoint.description.style.EdgeStyleDescription)
+     * @see org.eclipse.sirius.viewpoint.description.EdgeMapping#setStyle(org.eclipse.sirius.diagram.description.style.EdgeStyleDescription)
      */
     public void setStyle(final EdgeStyleDescription value) {
         // do nothing

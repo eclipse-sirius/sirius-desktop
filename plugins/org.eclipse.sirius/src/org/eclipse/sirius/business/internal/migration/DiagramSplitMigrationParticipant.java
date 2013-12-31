@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.business.api.migration.AbstractMigrationParticipant;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.osgi.framework.Version;
@@ -51,6 +52,8 @@ public class DiagramSplitMigrationParticipant extends AbstractMigrationParticipa
                 type = DescriptionPackage.eINSTANCE.getEClassifier(name);
             } else if (org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eINSTANCE.equals(ePackage)) {
                 type = ToolPackage.eINSTANCE.getEClassifier(name);
+            } else if (org.eclipse.sirius.viewpoint.description.style.StylePackage.eINSTANCE.equals(ePackage)) {
+                type = StylePackage.eINSTANCE.getEClassifier(name);
             }
         }
         return type;

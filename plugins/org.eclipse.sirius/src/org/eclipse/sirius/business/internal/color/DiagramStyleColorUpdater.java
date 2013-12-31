@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
@@ -27,7 +28,6 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
@@ -55,7 +55,7 @@ public class DiagramStyleColorUpdater extends AbstractColorUpdater {
     public DiagramStyleColorUpdater() {
         descToStyleForColorFeatures = HashBiMap.create();
         descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getBorderedStyleDescription_BorderColor(), DiagramPackage.eINSTANCE.getBorderedStyle_BorderColor());
-        descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getBasicLabelStyleDescription_LabelColor(), ViewpointPackage.eINSTANCE.getBasicLabelStyle_LabelColor());
+        descToStyleForColorFeatures.put(org.eclipse.sirius.viewpoint.description.style.StylePackage.eINSTANCE.getBasicLabelStyleDescription_LabelColor(), ViewpointPackage.eINSTANCE.getBasicLabelStyle_LabelColor());
         descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getBundledImageDescription_Color(), DiagramPackage.eINSTANCE.getBundledImage_Color());
         descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getDotDescription_BackgroundColor(), DiagramPackage.eINSTANCE.getDot_BackgroundColor());
         descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getEdgeStyleDescription_StrokeColor(), DiagramPackage.eINSTANCE.getEdgeStyle_StrokeColor());

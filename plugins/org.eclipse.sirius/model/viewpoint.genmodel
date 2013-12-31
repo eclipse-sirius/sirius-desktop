@@ -436,18 +436,6 @@
       <nestedGenPackages prefix="Style" basePackage="org.eclipse.sirius.viewpoint.description"
           disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/style">
         <genClasses image="false" ecoreClass="viewpoint.ecore#//description/style/StyleDescription"/>
-        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/style/RoundedCornerStyleDescription">
-          <genFeatures createChild="false" propertyCategory="Corner" propertyDescription=""
-              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/RoundedCornerStyleDescription/arcWidth"/>
-          <genFeatures createChild="false" propertyCategory="Corner" propertyDescription=""
-              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/RoundedCornerStyleDescription/arcHeight"/>
-        </genClasses>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/BorderedStyleDescription">
-          <genFeatures createChild="false" propertyCategory="Border" propertyDescription="Expression returning the size of the border."
-              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/BorderedStyleDescription/borderSizeComputationExpression"/>
-          <genFeatures createChild="false" propertyCategory="Color" propertyDescription=""
-              ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/BorderedStyleDescription/borderColor"/>
-        </genClasses>
         <genClasses ecoreClass="viewpoint.ecore#//description/style/BasicLabelStyleDescription">
           <genFeatures createChild="false" propertyCategory="Label" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/BasicLabelStyleDescription/labelSize"/>
           <genFeatures createChild="false" propertyCategory="Label" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/BasicLabelStyleDescription/labelFormat"/>
@@ -471,109 +459,9 @@
           <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/LabelBorderStyleDescription/cornerHeight"/>
           <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/LabelBorderStyleDescription/cornerWidth"/>
         </genClasses>
-        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/style/NodeStyleDescription">
-          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/NodeStyleDescription/sizeComputationExpression"/>
-          <genFeatures createChild="false" propertyCategory="Label" propertyDescription="Pick either 'node' position which mean 'inside the node' or 'border' to put the label around the node."
-              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/NodeStyleDescription/labelPosition"/>
-          <genFeatures createChild="false" propertyCategory="Label" propertyDescription="Define the default visibility status of this label (available only if label position is \&quot;border\&quot;). A change of this option does not affect already existing elements."
-              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/NodeStyleDescription/hideLabelByDefault"/>
-          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Authorized resize directions for the node."
-              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/NodeStyleDescription/resizeKind"/>
-        </genClasses>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/CustomStyleDescription">
-          <genFeatures createChild="false" propertyCategory="General" propertyDescription="ID for the custom style, you should put here an ID you'll leverage using the API to provide your own custom style."
-              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/CustomStyleDescription/id"/>
-        </genClasses>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/SquareDescription">
-          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/SquareDescription/width"/>
-          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/SquareDescription/height"/>
-          <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/SquareDescription/color"/>
-        </genClasses>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/LozengeNodeDescription">
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/LozengeNodeDescription/widthComputationExpression"/>
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/LozengeNodeDescription/heightComputationExpression"/>
-          <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/LozengeNodeDescription/color"/>
-        </genClasses>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/EllipseNodeDescription">
-          <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/EllipseNodeDescription/color"/>
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/EllipseNodeDescription/horizontalDiameterComputationExpression"/>
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/EllipseNodeDescription/verticalDiameterComputationExpression"/>
-        </genClasses>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/BundledImageDescription">
-          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/BundledImageDescription/shape"/>
-          <genFeatures createChild="false" propertyCategory="Color" propertyDescription="Color for the shape."
-              ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/BundledImageDescription/color"/>
-        </genClasses>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/NoteDescription">
-          <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/NoteDescription/color"/>
-        </genClasses>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/DotDescription">
-          <genFeatures createChild="false" propertyCategory="Color" propertySortChoices="true"
-              ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/DotDescription/backgroundColor"/>
-          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/DotDescription/strokeSizeComputationExpression"/>
-        </genClasses>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/GaugeCompositeStyleDescription">
-          <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Alignment of the gauges."
-              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/GaugeCompositeStyleDescription/alignment"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/GaugeCompositeStyleDescription/sections"/>
-        </genClasses>
-        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/style/ContainerStyleDescription">
-          <genFeatures createChild="false" propertyCategory="Corner" propertyDescription=""
-              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/ContainerStyleDescription/roundedCorner"/>
-        </genClasses>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/FlatContainerStyleDescription">
-          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/FlatContainerStyleDescription/backgroundStyle"/>
-          <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/FlatContainerStyleDescription/backgroundColor"/>
-          <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/FlatContainerStyleDescription/foregroundColor"/>
-          <genFeatures notify="false" createChild="false" propertyCategory="Label"
-              propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/FlatContainerStyleDescription/labelBorderStyle"/>
-        </genClasses>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/ShapeContainerStyleDescription">
-          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/ShapeContainerStyleDescription/shape"/>
-          <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/ShapeContainerStyleDescription/backgroundColor"/>
-        </genClasses>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/WorkspaceImageDescription"
-            labelFeature="#//viewpoint/description/style/WorkspaceImageDescription/workspacePath">
-          <genFeatures createChild="false" propertyCategory="General" propertyDescription="Path for the image in the form of /myProjectID/path/to/image.png . If the image is not found in the workspace the tooling will look for it in the plugins."
-              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/WorkspaceImageDescription/workspacePath"/>
-        </genClasses>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/EdgeStyleDescription">
-          <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/EdgeStyleDescription/strokeColor"/>
-          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/EdgeStyleDescription/lineStyle"/>
-          <genFeatures createChild="false" propertyCategory="Decorators" propertyDescription=""
-              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/EdgeStyleDescription/sourceArrow"/>
-          <genFeatures createChild="false" propertyCategory="Decorators" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/EdgeStyleDescription/targetArrow"/>
-          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/EdgeStyleDescription/sizeComputationExpression"/>
-          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/EdgeStyleDescription/routingStyle"/>
-          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/EdgeStyleDescription/foldingStyle"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/EdgeStyleDescription/beginLabelStyleDescription"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/EdgeStyleDescription/centerLabelStyleDescription"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/EdgeStyleDescription/endLabelStyleDescription"/>
-        </genClasses>
         <genClasses ecoreClass="viewpoint.ecore#//description/style/TooltipStyleDescription">
           <genFeatures createChild="false" propertyCategory="General" propertyDescription="An optional expression which should return the text of the element's tool-tip."
               ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/TooltipStyleDescription/tooltipExpression"/>
-        </genClasses>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/GaugeSectionDescription">
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/GaugeSectionDescription/minValueExpression"/>
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/GaugeSectionDescription/maxValueExpression"/>
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/GaugeSectionDescription/valueExpression"/>
-          <genFeatures createChild="false" propertyCategory="Color" propertySortChoices="true"
-              ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/GaugeSectionDescription/backgroundColor"/>
-          <genFeatures createChild="false" propertyCategory="Color" propertySortChoices="true"
-              ecoreFeature="ecore:EReference viewpoint.ecore#//description/style/GaugeSectionDescription/foregroundColor"/>
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/GaugeSectionDescription/label"/>
-        </genClasses>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/BeginLabelStyleDescription"
-            labelFeature="#//viewpoint/description/style/BasicLabelStyleDescription/labelExpression"/>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/CenterLabelStyleDescription"
-            labelFeature="#//viewpoint/description/style/BasicLabelStyleDescription/labelExpression"/>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/EndLabelStyleDescription"
-            labelFeature="#//viewpoint/description/style/BasicLabelStyleDescription/labelExpression"/>
-        <genClasses ecoreClass="viewpoint.ecore#//description/style/BracketEdgeStyleDescription"/>
-        <genClasses image="false" ecoreClass="viewpoint.ecore#//description/style/SizeComputationContainerStyleDescription">
-          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/SizeComputationContainerStyleDescription/widthComputationExpression"/>
-          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/SizeComputationContainerStyleDescription/heightComputationExpression"/>
         </genClasses>
       </nestedGenPackages>
       <nestedGenPackages prefix="Tool" basePackage="org.eclipse.sirius.viewpoint.description"
@@ -1781,6 +1669,117 @@
           <genClasses ecoreClass="viewpoint.ecore#//diagram/description/filter/FilterVariable">
             <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/filter/FilterVariable/name"/>
           </genClasses>
+        </nestedGenPackages>
+        <nestedGenPackages prefix="Style" basePackage="org.eclipse.sirius.diagram.description"
+            disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//diagram/description/style">
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/BorderedStyleDescription">
+            <genFeatures createChild="false" propertyCategory="Border" propertyDescription="Expression returning the size of the border."
+                ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/BorderedStyleDescription/borderSizeComputationExpression"/>
+            <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/BorderedStyleDescription/borderColor"/>
+          </genClasses>
+          <genClasses image="false" ecoreClass="viewpoint.ecore#//diagram/description/style/NodeStyleDescription">
+            <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/NodeStyleDescription/sizeComputationExpression"/>
+            <genFeatures createChild="false" propertyCategory="Label" propertyDescription="Pick either 'node' position which mean 'inside the node' or 'border' to put the label around the node."
+                ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/NodeStyleDescription/labelPosition"/>
+            <genFeatures createChild="false" propertyCategory="Label" propertyDescription="Define the default visibility status of this label (available only if label position is \&quot;border\&quot;). A change of this option does not affect already existing elements."
+                ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/NodeStyleDescription/hideLabelByDefault"/>
+            <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Authorized resize directions for the node."
+                ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/NodeStyleDescription/resizeKind"/>
+          </genClasses>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/CustomStyleDescription">
+            <genFeatures createChild="false" propertyCategory="General" propertyDescription="ID for the custom style, you should put here an ID you'll leverage using the API to provide your own custom style."
+                ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/CustomStyleDescription/id"/>
+          </genClasses>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/SquareDescription">
+            <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/SquareDescription/width"/>
+            <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/SquareDescription/height"/>
+            <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/SquareDescription/color"/>
+          </genClasses>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/LozengeNodeDescription">
+            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/LozengeNodeDescription/widthComputationExpression"/>
+            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/LozengeNodeDescription/heightComputationExpression"/>
+            <genFeatures createChild="false" propertyCategory="Color" propertyDescription=""
+                ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/LozengeNodeDescription/color"/>
+          </genClasses>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/EllipseNodeDescription">
+            <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/EllipseNodeDescription/color"/>
+            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/EllipseNodeDescription/horizontalDiameterComputationExpression"/>
+            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/EllipseNodeDescription/verticalDiameterComputationExpression"/>
+          </genClasses>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/BundledImageDescription">
+            <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/BundledImageDescription/shape"/>
+            <genFeatures createChild="false" propertyCategory="Color" propertyDescription="Color for the shape."
+                ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/BundledImageDescription/color"/>
+          </genClasses>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/NoteDescription">
+            <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/NoteDescription/color"/>
+          </genClasses>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/DotDescription">
+            <genFeatures createChild="false" propertyCategory="Color" propertySortChoices="true"
+                ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/DotDescription/backgroundColor"/>
+            <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/DotDescription/strokeSizeComputationExpression"/>
+          </genClasses>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/GaugeCompositeStyleDescription">
+            <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Alignment of the gauges."
+                ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/GaugeCompositeStyleDescription/alignment"/>
+            <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/GaugeCompositeStyleDescription/sections"/>
+          </genClasses>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/GaugeSectionDescription">
+            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/GaugeSectionDescription/minValueExpression"/>
+            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/GaugeSectionDescription/maxValueExpression"/>
+            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/GaugeSectionDescription/valueExpression"/>
+            <genFeatures createChild="false" propertyCategory="Color" propertySortChoices="true"
+                ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/GaugeSectionDescription/backgroundColor"/>
+            <genFeatures createChild="false" propertyCategory="Color" propertySortChoices="true"
+                ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/GaugeSectionDescription/foregroundColor"/>
+            <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/GaugeSectionDescription/label"/>
+          </genClasses>
+          <genClasses image="false" ecoreClass="viewpoint.ecore#//diagram/description/style/SizeComputationContainerStyleDescription">
+            <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/SizeComputationContainerStyleDescription/widthComputationExpression"/>
+            <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/SizeComputationContainerStyleDescription/heightComputationExpression"/>
+          </genClasses>
+          <genClasses image="false" ecoreClass="viewpoint.ecore#//diagram/description/style/RoundedCornerStyleDescription">
+            <genFeatures createChild="false" propertyCategory="Corner" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/RoundedCornerStyleDescription/arcWidth"/>
+            <genFeatures createChild="false" propertyCategory="Corner" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/RoundedCornerStyleDescription/arcHeight"/>
+          </genClasses>
+          <genClasses image="false" ecoreClass="viewpoint.ecore#//diagram/description/style/ContainerStyleDescription">
+            <genFeatures createChild="false" propertyCategory="Corner" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/ContainerStyleDescription/roundedCorner"/>
+          </genClasses>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/FlatContainerStyleDescription">
+            <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/FlatContainerStyleDescription/backgroundStyle"/>
+            <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/FlatContainerStyleDescription/backgroundColor"/>
+            <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/FlatContainerStyleDescription/foregroundColor"/>
+            <genFeatures notify="false" createChild="false" propertyCategory="Label"
+                propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/FlatContainerStyleDescription/labelBorderStyle"/>
+          </genClasses>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/ShapeContainerStyleDescription">
+            <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/ShapeContainerStyleDescription/shape"/>
+            <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/ShapeContainerStyleDescription/backgroundColor"/>
+          </genClasses>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/WorkspaceImageDescription"
+              labelFeature="#//viewpoint/diagram/description/style/WorkspaceImageDescription/workspacePath">
+            <genFeatures createChild="false" propertyCategory="General" propertyDescription="Path for the image in the form of /myProjectID/path/to/image.png . If the image is not found in the workspace the tooling will look for it in the plugins."
+                ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/WorkspaceImageDescription/workspacePath"/>
+          </genClasses>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/EdgeStyleDescription">
+            <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/EdgeStyleDescription/strokeColor"/>
+            <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/EdgeStyleDescription/lineStyle"/>
+            <genFeatures createChild="false" propertyCategory="Decorators" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/EdgeStyleDescription/sourceArrow"/>
+            <genFeatures createChild="false" propertyCategory="Decorators" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/EdgeStyleDescription/targetArrow"/>
+            <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/EdgeStyleDescription/sizeComputationExpression"/>
+            <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/EdgeStyleDescription/routingStyle"/>
+            <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//diagram/description/style/EdgeStyleDescription/foldingStyle"/>
+            <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/EdgeStyleDescription/beginLabelStyleDescription"/>
+            <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/EdgeStyleDescription/centerLabelStyleDescription"/>
+            <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//diagram/description/style/EdgeStyleDescription/endLabelStyleDescription"/>
+          </genClasses>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/BeginLabelStyleDescription"
+              labelFeature="#//viewpoint/description/style/BasicLabelStyleDescription/labelExpression"/>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/CenterLabelStyleDescription"
+              labelFeature="#//viewpoint/description/style/BasicLabelStyleDescription/labelExpression"/>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/EndLabelStyleDescription"
+              labelFeature="#//viewpoint/description/style/BasicLabelStyleDescription/labelExpression"/>
+          <genClasses ecoreClass="viewpoint.ecore#//diagram/description/style/BracketEdgeStyleDescription"/>
         </nestedGenPackages>
       </nestedGenPackages>
     </nestedGenPackages>

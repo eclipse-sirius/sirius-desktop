@@ -107,6 +107,14 @@
             genModel="model/viewpoint.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated viewpoint -->
+      <package
+            uri="http://www.eclipse.org/sirius/diagram/description/style/1.1.0"
+            class="org.eclipse.sirius.diagram.description.style.StylePackage"
+            genModel="model/viewpoint.genmodel"/>
+   </extension>
+
   <extension
         point="org.eclipse.emf.ecore.protocol_parser">
      <parser

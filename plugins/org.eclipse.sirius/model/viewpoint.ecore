@@ -1004,35 +1004,6 @@
         nsPrefix="style">
       <eClassifiers xsi:type="ecore:EClass" name="StyleDescription" abstract="true"
           interface="true"/>
-      <eClassifiers xsi:type="ecore:EClass" name="RoundedCornerStyleDescription" abstract="true"
-          eSuperTypes="#//description/style/StyleDescription">
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="arcWidth" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EIntegerObject"
-            defaultValueLiteral="1">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The width of the ellipse used to draw the corners."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="arcHeight" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EIntegerObject"
-            defaultValueLiteral="1">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The height of the ellipse used to draw the corners."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="BorderedStyleDescription" eSuperTypes="#//description/style/StyleDescription">
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="borderSizeComputationExpression"
-            eType="#//description/InterpretedExpression" defaultValueLiteral="0">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="An expression computing the size of the border."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
-            <details key="returnType" value="an integer."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="borderColor" lowerBound="1"
-            eType="#//description/ColorDescription"/>
-      </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="BasicLabelStyleDescription">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The style of a label."/>
@@ -1103,308 +1074,6 @@
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="cornerHeight" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="cornerWidth" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="NodeStyleDescription" abstract="true"
-          eSuperTypes="#//description/style/StyleDescription #//description/style/BorderedStyleDescription #//description/style/LabelStyleDescription #//description/style/TooltipStyleDescription">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Style of a node."/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="sizeComputationExpression"
-            eType="#//description/InterpretedExpression" defaultValueLiteral="3">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Expression that computes the size of the node."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
-            <details key="returnType" value="an integer."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelPosition" eType="#//diagram/LabelPosition"
-            defaultValueLiteral="border">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The relative position of the label to the node."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="hideLabelByDefault"
-            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
-            defaultValueLiteral="false">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The default visibility of the label (available only if labelPosition equals BORDER).&#xA;A change of this option does not affect already existing elements."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="resizeKind" lowerBound="1"
-            eType="#//diagram/ResizeKind" defaultValueLiteral="NONE">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Define the directions the user is able to resize."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="CustomStyleDescription" eSuperTypes="#//description/style/NodeStyleDescription">
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Set here an ID to identify your custom style.  You'll then be able to provide your own figure implementation for every representation element having a style with this ID."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="SquareDescription" eSuperTypes="#//description/style/NodeStyleDescription">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The square style to display a node as a square."/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
-            defaultValueLiteral="0">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Return all nodes that have been created with the specified mapping."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
-            defaultValueLiteral="0">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The height of the square."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="color" lowerBound="1"
-            eType="#//description/ColorDescription"/>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="LozengeNodeDescription" eSuperTypes="#//description/style/NodeStyleDescription">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The lozenge style to display a node as a lozenge."/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="widthComputationExpression"
-            eType="#//description/InterpretedExpression">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="An expression to compute the width of the lozenge."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
-            <details key="returnType" value="an integer."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="heightComputationExpression"
-            eType="#//description/InterpretedExpression">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="An expression to computes the height of the lozenge."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
-            <details key="returnType" value="an integer."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="color" lowerBound="1"
-            eType="#//description/ColorDescription">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The color of the lozenge."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="EllipseNodeDescription" eSuperTypes="#//description/style/NodeStyleDescription">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The ellipse style to display a node as an ellipse."/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="color" lowerBound="1"
-            eType="#//description/ColorDescription">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The color of the ellipse."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="horizontalDiameterComputationExpression"
-            eType="#//description/InterpretedExpression" defaultValueLiteral="0">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="An expression to compute the horizontal diameter of the ellipse. (Semimajor axis)"/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
-            <details key="returnType" value="an integer."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="verticalDiameterComputationExpression"
-            eType="#//description/InterpretedExpression" defaultValueLiteral="0">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="An expression to compute the vertical diameter of the ellipse. (Semiminor axis)"/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
-            <details key="returnType" value="an integer."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="BundledImageDescription" eSuperTypes="#//description/style/NodeStyleDescription">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The bundled image style allows to use the default images provide by the Viewpoint editor."/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="shape" lowerBound="1"
-            eType="#//diagram/BundledImageShape">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The shape to use."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="color" lowerBound="1"
-            eType="#//description/ColorDescription">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The color to use."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="NoteDescription" eSuperTypes="#//description/style/NodeStyleDescription">
-        <eStructuralFeatures xsi:type="ecore:EReference" name="color" lowerBound="1"
-            eType="#//description/ColorDescription">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The color to use."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="DotDescription" eSuperTypes="#//description/style/NodeStyleDescription">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The dot style."/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" lowerBound="1"
-            eType="#//description/ColorDescription">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The background color."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeSizeComputationExpression"
-            eType="#//description/InterpretedExpression" defaultValueLiteral="2">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="An expression to compute the size of the stroke."/>
-          </eAnnotations>
-          <eAnnotations source="TagValues" references="#//%Tags%/@details.0"/>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
-            <details key="returnType" value="an integer."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="GaugeCompositeStyleDescription"
-          eSuperTypes="#//description/style/NodeStyleDescription">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="This style groups many GaugeSection."/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="alignment" eType="#//diagram/AlignmentKind"
-            defaultValueLiteral="SQUARE">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The alignment of the gauges"/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="sections" upperBound="-1"
-            eType="#//description/style/GaugeSectionDescription" containment="true">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The sections."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="ContainerStyleDescription" abstract="true"
-          eSuperTypes="#//description/style/RoundedCornerStyleDescription #//description/style/BorderedStyleDescription #//description/style/LabelStyleDescription #//description/style/TooltipStyleDescription">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The style of a container."/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="roundedCorner" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value=""/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="FlatContainerStyleDescription" eSuperTypes="#//description/style/ContainerStyleDescription #//description/style/SizeComputationContainerStyleDescription">
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="backgroundStyle" lowerBound="1"
-            eType="#//diagram/BackgroundStyle">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The background style."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" lowerBound="1"
-            eType="#//description/ColorDescription">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The color to use."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" lowerBound="1"
-            eType="#//description/ColorDescription">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The color to use."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="labelBorderStyle" eType="#//description/style/LabelBorderStyleDescription"/>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="ShapeContainerStyleDescription"
-          eSuperTypes="#//description/style/ContainerStyleDescription #//description/style/SizeComputationContainerStyleDescription">
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="shape" lowerBound="1"
-            eType="#//diagram/ContainerShape"/>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" lowerBound="1"
-            eType="#//description/ColorDescription">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The color to use."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="WorkspaceImageDescription" eSuperTypes="#//description/style/NodeStyleDescription #//description/style/ContainerStyleDescription">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="A custom image that is present in the user workspace."/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="workspacePath" lowerBound="1"
-            eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The path of the image to use in the form of /myProjectID/path/to/image.png,  if the image is not found in the workspace it will be looked for in the plugins."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="EdgeStyleDescription" eSuperTypes="#//description/style/StyleDescription">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The style of an edge."/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="strokeColor" lowerBound="1"
-            eType="#//description/ColorDescription">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The color of the edge."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="lineStyle" eType="#//diagram/LineStyle">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The style of the line."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceArrow" lowerBound="1"
-            eType="#//diagram/EdgeArrows" defaultValueLiteral="NoDecoration">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The source decoration."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetArrow" lowerBound="1"
-            eType="#//diagram/EdgeArrows" defaultValueLiteral="InputArrow">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The target decoration."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="sizeComputationExpression"
-            lowerBound="1" eType="#//description/InterpretedExpression" defaultValueLiteral="&lt;%eContents().nSize%>">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="An expression to compute the thickness of the link."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
-            <details key="returnType" value="an integer."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-            <details key="diagram" value="viewpoint.DDiagram | the current DSemanticDiagram."/>
-            <details key="view" value="viewpoint.DEdge | the current edge view for which the size is calculated."/>
-            <details key="sourceView" value="viewpoint.EdgeTarget | the source view of the current edge."/>
-            <details key="targetView" value="viewpoint.EdgeTarget | the target view of the current edge."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="routingStyle" lowerBound="1"
-            eType="#//diagram/EdgeRouting" defaultValueLiteral="straight">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The routing style for your edge."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="foldingStyle" eType="#//diagram/description/FoldingStyle">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="A folding style allow to collapse the elements targeted by the edge."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="beginLabelStyleDescription"
-            eType="#//description/style/BeginLabelStyleDescription" containment="true"/>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="centerLabelStyleDescription"
-            eType="#//description/style/CenterLabelStyleDescription" containment="true"/>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="endLabelStyleDescription"
-            eType="#//description/style/EndLabelStyleDescription" containment="true"/>
-      </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="TooltipStyleDescription">
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="tooltipExpression"
             eType="#//description/InterpretedExpression" defaultValueLiteral="">
@@ -1417,88 +1086,6 @@
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
             <details key="view" value="viewpoint.DSemanticDecorator | the current view."/>
           </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="GaugeSectionDescription">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The gauge section represents one gauge of a GaugeCompositeStyle."/>
-        </eAnnotations>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="minValueExpression"
-            eType="#//description/InterpretedExpression" defaultValueLiteral="0">
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
-            <details key="returnType" value="an integer."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxValueExpression"
-            eType="#//description/InterpretedExpression" defaultValueLiteral="0">
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
-            <details key="returnType" value="an integer."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="#//description/InterpretedExpression"
-            defaultValueLiteral="0">
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
-            <details key="returnType" value="an integer."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" lowerBound="1"
-            eType="#//description/ColorDescription">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The background color."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" lowerBound="1"
-            eType="#//description/ColorDescription">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The foreground color."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The label of the gauge."/>
-          </eAnnotations>
-        </eStructuralFeatures>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="BeginLabelStyleDescription" eSuperTypes="#//description/style/BasicLabelStyleDescription">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The style of a begin label."/>
-        </eAnnotations>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="CenterLabelStyleDescription" eSuperTypes="#//description/style/BasicLabelStyleDescription">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The style of a center label."/>
-        </eAnnotations>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="EndLabelStyleDescription" eSuperTypes="#//description/style/BasicLabelStyleDescription">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The style of a end label."/>
-        </eAnnotations>
-      </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="BracketEdgeStyleDescription" eSuperTypes="#//description/style/EdgeStyleDescription"/>
-      <eClassifiers xsi:type="ecore:EClass" name="SizeComputationContainerStyleDescription"
-          abstract="true">
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="widthComputationExpression"
-            eType="#//description/InterpretedExpression" defaultValueLiteral="-1">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Expression that computes the size of the node."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
-            <details key="returnType" value="an integer."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
-        </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EAttribute" name="heightComputationExpression"
-            eType="#//description/InterpretedExpression" defaultValueLiteral="-1">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="Expression that computes the size of the node."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
-            <details key="returnType" value="an integer."/>
-          </eAnnotations>
-          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
         </eStructuralFeatures>
       </eClassifiers>
     </eSubpackages>
@@ -4456,7 +4043,7 @@
             </eAnnotations>
           </eParameters>
         </eOperations>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//description/style/NodeStyleDescription"
+        <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//diagram/description/style/NodeStyleDescription"
             containment="true">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="The style of the node."/>
@@ -4511,7 +4098,7 @@
         <eStructuralFeatures xsi:type="ecore:EReference" name="allContainerMappings"
             upperBound="-1" eType="#//diagram/description/ContainerMapping" changeable="false"
             volatile="true" transient="true" derived="true"/>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//description/style/ContainerStyleDescription"
+        <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//diagram/description/style/ContainerStyleDescription"
             containment="true"/>
         <eStructuralFeatures xsi:type="ecore:EReference" name="conditionnalStyles"
             upperBound="-1" eType="#//diagram/description/ConditionalContainerStyleDescription"
@@ -4621,7 +4208,7 @@
             <details key="viewPoint" value="viewpoint.DDiagram | (deprecated) the current DDiagram."/>
           </eAnnotations>
         </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//description/style/EdgeStyleDescription"
+        <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//diagram/description/style/EdgeStyleDescription"
             containment="true">
           <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
             <details key="documentation" value="The style of the edge."/>
@@ -4702,17 +4289,17 @@
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="ConditionalNodeStyleDescription"
           eSuperTypes="#//description/ConditionalStyleDescription">
-        <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//description/style/NodeStyleDescription"
+        <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//diagram/description/style/NodeStyleDescription"
             containment="true"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="ConditionalEdgeStyleDescription"
           eSuperTypes="#//description/ConditionalStyleDescription">
-        <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//description/style/EdgeStyleDescription"
+        <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//diagram/description/style/EdgeStyleDescription"
             containment="true"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="ConditionalContainerStyleDescription"
           eSuperTypes="#//description/ConditionalStyleDescription">
-        <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//description/style/ContainerStyleDescription"
+        <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//diagram/description/style/ContainerStyleDescription"
             containment="true"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EEnum" name="FoldingStyle">
@@ -4961,6 +4548,424 @@
           <eLiterals name="HIDE"/>
           <eLiterals name="COLLAPSE" value="1"/>
         </eClassifiers>
+      </eSubpackages>
+      <eSubpackages name="style" nsURI="http://www.eclipse.org/sirius/diagram/description/style/1.1.0"
+          nsPrefix="style">
+        <eClassifiers xsi:type="ecore:EClass" name="BorderedStyleDescription" eSuperTypes="#//description/style/StyleDescription">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="borderSizeComputationExpression"
+              eType="#//description/InterpretedExpression" defaultValueLiteral="0">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="An expression computing the size of the border."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+              <details key="returnType" value="an integer."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="borderColor" lowerBound="1"
+              eType="#//description/ColorDescription"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="NodeStyleDescription" abstract="true"
+            eSuperTypes="#//description/style/StyleDescription #//diagram/description/style/BorderedStyleDescription #//description/style/LabelStyleDescription #//description/style/TooltipStyleDescription">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Style of a node."/>
+          </eAnnotations>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="sizeComputationExpression"
+              eType="#//description/InterpretedExpression" defaultValueLiteral="3">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="Expression that computes the size of the node."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+              <details key="returnType" value="an integer."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelPosition" eType="#//diagram/LabelPosition"
+              defaultValueLiteral="border">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The relative position of the label to the node."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="hideLabelByDefault"
+              eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+              defaultValueLiteral="false">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The default visibility of the label (available only if labelPosition equals BORDER).&#xA;A change of this option does not affect already existing elements."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="resizeKind" lowerBound="1"
+              eType="#//diagram/ResizeKind" defaultValueLiteral="NONE">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="Define the directions the user is able to resize."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="CustomStyleDescription" eSuperTypes="#//diagram/description/style/NodeStyleDescription">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="Set here an ID to identify your custom style.  You'll then be able to provide your own figure implementation for every representation element having a style with this ID."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="SquareDescription" eSuperTypes="#//diagram/description/style/NodeStyleDescription">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="The square style to display a node as a square."/>
+          </eAnnotations>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+              defaultValueLiteral="0">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="Return all nodes that have been created with the specified mapping."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
+              defaultValueLiteral="0">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The height of the square."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="color" lowerBound="1"
+              eType="#//description/ColorDescription"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="LozengeNodeDescription" eSuperTypes="#//diagram/description/style/NodeStyleDescription">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="The lozenge style to display a node as a lozenge."/>
+          </eAnnotations>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="widthComputationExpression"
+              eType="#//description/InterpretedExpression">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="An expression to compute the width of the lozenge."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+              <details key="returnType" value="an integer."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="heightComputationExpression"
+              eType="#//description/InterpretedExpression">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="An expression to computes the height of the lozenge."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+              <details key="returnType" value="an integer."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="color" lowerBound="1"
+              eType="#//description/ColorDescription">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The color of the lozenge."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="EllipseNodeDescription" eSuperTypes="#//diagram/description/style/NodeStyleDescription">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="The ellipse style to display a node as an ellipse."/>
+          </eAnnotations>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="color" lowerBound="1"
+              eType="#//description/ColorDescription">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The color of the ellipse."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="horizontalDiameterComputationExpression"
+              eType="#//description/InterpretedExpression" defaultValueLiteral="0">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="An expression to compute the horizontal diameter of the ellipse. (Semimajor axis)"/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+              <details key="returnType" value="an integer."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="verticalDiameterComputationExpression"
+              eType="#//description/InterpretedExpression" defaultValueLiteral="0">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="An expression to compute the vertical diameter of the ellipse. (Semiminor axis)"/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+              <details key="returnType" value="an integer."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="BundledImageDescription" eSuperTypes="#//diagram/description/style/NodeStyleDescription">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="The bundled image style allows to use the default images provide by the Viewpoint editor."/>
+          </eAnnotations>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="shape" lowerBound="1"
+              eType="#//diagram/BundledImageShape">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The shape to use."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="color" lowerBound="1"
+              eType="#//description/ColorDescription">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The color to use."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="NoteDescription" eSuperTypes="#//diagram/description/style/NodeStyleDescription">
+          <eStructuralFeatures xsi:type="ecore:EReference" name="color" lowerBound="1"
+              eType="#//description/ColorDescription">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The color to use."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="DotDescription" eSuperTypes="#//diagram/description/style/NodeStyleDescription">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="The dot style."/>
+          </eAnnotations>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor"
+              lowerBound="1" eType="#//description/ColorDescription">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The background color."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeSizeComputationExpression"
+              eType="#//description/InterpretedExpression" defaultValueLiteral="2">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="An expression to compute the size of the stroke."/>
+            </eAnnotations>
+            <eAnnotations source="TagValues" references="#//%Tags%/@details.0"/>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+              <details key="returnType" value="an integer."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="GaugeCompositeStyleDescription"
+            eSuperTypes="#//diagram/description/style/NodeStyleDescription">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="This style groups many GaugeSection."/>
+          </eAnnotations>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="alignment" eType="#//diagram/AlignmentKind"
+              defaultValueLiteral="SQUARE">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The alignment of the gauges"/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="sections" upperBound="-1"
+              eType="#//diagram/description/style/GaugeSectionDescription" containment="true">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The sections."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="GaugeSectionDescription">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="The gauge section represents one gauge of a GaugeCompositeStyle."/>
+          </eAnnotations>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="minValueExpression"
+              eType="#//description/InterpretedExpression" defaultValueLiteral="0">
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+              <details key="returnType" value="an integer."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxValueExpression"
+              eType="#//description/InterpretedExpression" defaultValueLiteral="0">
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+              <details key="returnType" value="an integer."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression"
+              eType="#//description/InterpretedExpression" defaultValueLiteral="0">
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+              <details key="returnType" value="an integer."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor"
+              lowerBound="1" eType="#//description/ColorDescription">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The background color."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor"
+              lowerBound="1" eType="#//description/ColorDescription">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The foreground color."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The label of the gauge."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="SizeComputationContainerStyleDescription"
+            abstract="true">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="widthComputationExpression"
+              eType="#//description/InterpretedExpression" defaultValueLiteral="-1">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="Expression that computes the size of the node."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+              <details key="returnType" value="an integer."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="heightComputationExpression"
+              eType="#//description/InterpretedExpression" defaultValueLiteral="-1">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="Expression that computes the size of the node."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+              <details key="returnType" value="an integer."/>
+            </eAnnotations>
+            <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="RoundedCornerStyleDescription"
+            abstract="true" eSuperTypes="#//description/style/StyleDescription">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="arcWidth" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EIntegerObject"
+              defaultValueLiteral="1">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The width of the ellipse used to draw the corners."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="arcHeight" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EIntegerObject"
+              defaultValueLiteral="1">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The height of the ellipse used to draw the corners."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="ContainerStyleDescription" abstract="true"
+            eSuperTypes="#//diagram/description/style/RoundedCornerStyleDescription #//diagram/description/style/BorderedStyleDescription #//description/style/LabelStyleDescription #//description/style/TooltipStyleDescription">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="The style of a container."/>
+          </eAnnotations>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="roundedCorner" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value=""/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="FlatContainerStyleDescription"
+            eSuperTypes="#//diagram/description/style/ContainerStyleDescription #//diagram/description/style/SizeComputationContainerStyleDescription">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="backgroundStyle"
+              lowerBound="1" eType="#//diagram/BackgroundStyle">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The background style."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor"
+              lowerBound="1" eType="#//description/ColorDescription">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The color to use."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor"
+              lowerBound="1" eType="#//description/ColorDescription">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The color to use."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="labelBorderStyle"
+              eType="#//description/style/LabelBorderStyleDescription"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="ShapeContainerStyleDescription"
+            eSuperTypes="#//diagram/description/style/ContainerStyleDescription #//diagram/description/style/SizeComputationContainerStyleDescription">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="shape" lowerBound="1"
+              eType="#//diagram/ContainerShape"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor"
+              lowerBound="1" eType="#//description/ColorDescription">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The color to use."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="WorkspaceImageDescription" eSuperTypes="#//diagram/description/style/NodeStyleDescription #//diagram/description/style/ContainerStyleDescription">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="A custom image that is present in the user workspace."/>
+          </eAnnotations>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="workspacePath" lowerBound="1"
+              eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The path of the image to use in the form of /myProjectID/path/to/image.png,  if the image is not found in the workspace it will be looked for in the plugins."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="EdgeStyleDescription" eSuperTypes="#//description/style/StyleDescription">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="The style of an edge."/>
+          </eAnnotations>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="strokeColor" lowerBound="1"
+              eType="#//description/ColorDescription">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The color of the edge."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="lineStyle" eType="#//diagram/LineStyle">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The style of the line."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceArrow" lowerBound="1"
+              eType="#//diagram/EdgeArrows" defaultValueLiteral="NoDecoration">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The source decoration."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetArrow" lowerBound="1"
+              eType="#//diagram/EdgeArrows" defaultValueLiteral="InputArrow">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The target decoration."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="sizeComputationExpression"
+            lowerBound="1" eType="#//description/InterpretedExpression" defaultValueLiteral="&lt;%eContents().nSize%>">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="An expression to compute the thickness of the link."/>
+          </eAnnotations>
+          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
+            <details key="returnType" value="an integer."/>
+          </eAnnotations>
+          <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
+            <details key="diagram" value="viewpoint.DDiagram | the current DSemanticDiagram."/>
+            <details key="view" value="viewpoint.DEdge | the current edge view for which the size is calculated."/>
+            <details key="sourceView" value="viewpoint.EdgeTarget | the source view of the current edge."/>
+            <details key="targetView" value="viewpoint.EdgeTarget | the target view of the current edge."/>
+          </eAnnotations>
+        </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="routingStyle" lowerBound="1"
+              eType="#//diagram/EdgeRouting" defaultValueLiteral="straight">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="The routing style for your edge."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="foldingStyle" eType="#//diagram/description/FoldingStyle">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentation" value="A folding style allow to collapse the elements targeted by the edge."/>
+            </eAnnotations>
+          </eStructuralFeatures>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="beginLabelStyleDescription"
+              eType="#//diagram/description/style/BeginLabelStyleDescription" containment="true"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="centerLabelStyleDescription"
+              eType="#//diagram/description/style/CenterLabelStyleDescription" containment="true"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="endLabelStyleDescription"
+              eType="#//diagram/description/style/EndLabelStyleDescription" containment="true"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="BeginLabelStyleDescription" eSuperTypes="#//description/style/BasicLabelStyleDescription">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="The style of a begin label."/>
+          </eAnnotations>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="CenterLabelStyleDescription" eSuperTypes="#//description/style/BasicLabelStyleDescription">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="The style of a center label."/>
+          </eAnnotations>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="EndLabelStyleDescription" eSuperTypes="#//description/style/BasicLabelStyleDescription">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="The style of a end label."/>
+          </eAnnotations>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="BracketEdgeStyleDescription" eSuperTypes="#//diagram/description/style/EdgeStyleDescription"/>
       </eSubpackages>
     </eSubpackages>
   </eSubpackages>

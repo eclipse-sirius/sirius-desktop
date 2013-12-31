@@ -29,11 +29,11 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
+import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.util.DescriptionSwitch;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.ContainerStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.NodeStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
@@ -315,7 +315,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
     protected IStatus checkNodeMappingSizeComputation(final IValidationContext ctx, final NodeMapping nodeMapping) {
         if (MappingHelper.getDefaultStyleDescription(nodeMapping) != null) {
             return this.checkVariables(ctx, ((NodeStyleDescription) MappingHelper.getDefaultStyleDescription(nodeMapping)).getSizeComputationExpression(), Collections.<String> emptySet(),
-                    nodeMapping, StylePackage.eINSTANCE.getNodeStyleDescription_SizeComputationExpression().getName());
+                    nodeMapping, org.eclipse.sirius.diagram.description.style.StylePackage.eINSTANCE.getNodeStyleDescription_SizeComputationExpression().getName());
         }
         return ctx.createSuccessStatus();
     }
@@ -383,8 +383,8 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      */
     protected IStatus checkEdgeMappingSizeComputation(final IValidationContext ctx, final EdgeMapping edgeMapping) {
         if (edgeMapping.getStyle() != null) {
-            return this.checkVariables(ctx, edgeMapping.getStyle().getSizeComputationExpression(), Collections.<String> emptySet(), edgeMapping, StylePackage.eINSTANCE
-                    .getEdgeStyleDescription_SizeComputationExpression().getName());
+            return this.checkVariables(ctx, edgeMapping.getStyle().getSizeComputationExpression(), Collections.<String> emptySet(), edgeMapping,
+                    org.eclipse.sirius.diagram.description.style.StylePackage.eINSTANCE.getEdgeStyleDescription_SizeComputationExpression().getName());
         }
         return ctx.createSuccessStatus();
     }
