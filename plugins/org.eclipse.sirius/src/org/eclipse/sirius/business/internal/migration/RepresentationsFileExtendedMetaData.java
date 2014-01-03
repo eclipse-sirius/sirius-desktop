@@ -64,21 +64,6 @@ public class RepresentationsFileExtendedMetaData extends BasicExtendedMetaData {
         return super.getType(ePackage, name);
     }
 
-    /**
-     * Does not create EPackage for unknown metamodel to have
-     * {@link org.eclipse.emf.ecore.xmi.PackageNotFoundException} thrown.
-     * 
-     * {@inheritDoc}
-     */
-    @Override
-    public EPackage demandPackage(String namespace) {
-        EPackage ePackage = null;
-        if (namespace == null) {
-            ePackage = super.demandPackage(namespace);
-        }
-        return ePackage;
-    }
-
     @Override
     public EPackage getPackage(String namespace) {
         EPackage ePackage = RepresentationsFileMigrationService.getInstance().getPackage(namespace, version);
