@@ -44,7 +44,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DDiagramLink;
-import org.eclipse.sirius.diagram.DDiagramSet;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -229,13 +228,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     private EClass dEdgeEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass dDiagramSetEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1483,42 +1475,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EClass getDDiagramSet() {
-        return dDiagramSetEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDDiagramSet_Description() {
-        return (EReference) dDiagramSetEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDDiagramSet_Diagrams() {
-        return (EReference) dDiagramSetEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDDiagramSet_View() {
-        return (EReference) dDiagramSetEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EClass getNodeStyle() {
         return nodeStyleEClass;
     }
@@ -2572,11 +2528,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         createEAttribute(dEdgeEClass, DEDGE__BEGIN_LABEL);
         createEAttribute(dEdgeEClass, DEDGE__END_LABEL);
 
-        dDiagramSetEClass = createEClass(DDIAGRAM_SET);
-        createEReference(dDiagramSetEClass, DDIAGRAM_SET__DESCRIPTION);
-        createEReference(dDiagramSetEClass, DDIAGRAM_SET__DIAGRAMS);
-        createEReference(dDiagramSetEClass, DDIAGRAM_SET__VIEW);
-
         nodeStyleEClass = createEClass(NODE_STYLE);
         createEAttribute(nodeStyleEClass, NODE_STYLE__LABEL_POSITION);
         createEAttribute(nodeStyleEClass, NODE_STYLE__HIDE_LABEL_BY_DEFAULT);
@@ -3036,14 +2987,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 IS_ORDERED);
 
         addEOperation(dEdgeEClass, theEcorePackage.getEBoolean(), "isRootFolding", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-        initEClass(dDiagramSetEClass, DDiagramSet.class, "DDiagramSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDDiagramSet_Description(), theDescriptionPackage_1.getDiagramDescription(), null, "description", null, 0, 1, DDiagramSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDDiagramSet_Diagrams(), this.getDDiagram(), null, "diagrams", null, 0, -1, DDiagramSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, !IS_ORDERED);
-        initEReference(getDDiagramSet_View(), theViewpointPackage.getDRepresentationContainer(), null, "view", null, 0, 1, DDiagramSet.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(nodeStyleEClass, NodeStyle.class, "NodeStyle", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getNodeStyle_LabelPosition(), this.getLabelPosition(), "labelPosition", null, 0, 1, NodeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,

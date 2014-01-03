@@ -34,7 +34,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DDiagramLink;
-import org.eclipse.sirius.diagram.DDiagramSet;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -228,11 +227,6 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDEdge(DEdge object) {
             return createDEdgeAdapter();
-        }
-
-        @Override
-        public Adapter caseDDiagramSet(DDiagramSet object) {
-            return createDDiagramSetAdapter();
         }
 
         @Override
@@ -772,21 +766,6 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDEdgeAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.DDiagramSet <em>DDiagram Set</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.diagram.DDiagramSet
-     * @generated
-     */
-    public Adapter createDDiagramSetAdapter() {
         return null;
     }
 

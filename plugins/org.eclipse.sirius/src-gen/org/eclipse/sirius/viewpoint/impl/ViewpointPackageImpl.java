@@ -643,17 +643,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * 
      * @generated
      */
-    public EReference getDRepresentationContainer_DiagramSet() {
-        return (EReference) dRepresentationContainerEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EReference getDRepresentationContainer_Models() {
-        return (EReference) dRepresentationContainerEClass.getEStructuralFeatures().get(1);
+        return (EReference) dRepresentationContainerEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -1379,7 +1370,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         dContainerEClass = createEClass(DCONTAINER);
 
         dRepresentationContainerEClass = createEClass(DREPRESENTATION_CONTAINER);
-        createEReference(dRepresentationContainerEClass, DREPRESENTATION_CONTAINER__DIAGRAM_SET);
         createEReference(dRepresentationContainerEClass, DREPRESENTATION_CONTAINER__MODELS);
 
         dSemanticDecoratorEClass = createEClass(DSEMANTIC_DECORATOR);
@@ -1592,13 +1582,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEClass(dContainerEClass, DContainer.class, "DContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(dRepresentationContainerEClass, DRepresentationContainer.class, "DRepresentationContainer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDRepresentationContainer_DiagramSet(), theDiagramPackage.getDDiagramSet(), null, "diagramSet", null, 0, -1, DRepresentationContainer.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getDRepresentationContainer_Models(), theEcorePackage.getEObject(), null, "models", null, 0, -1, DRepresentationContainer.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
                 !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-
-        EOperation op = addEOperation(dRepresentationContainerEClass, null, "addSemanticDiagram", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theDiagramPackage.getDSemanticDiagram(), "diagram", 0, 1, IS_UNIQUE, IS_ORDERED);
 
         initEClass(dSemanticDecoratorEClass, DSemanticDecorator.class, "DSemanticDecorator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getDSemanticDecorator_Target(), ecorePackage.getEObject(), null, "target", null, 1, 1, DSemanticDecorator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
@@ -1616,7 +1601,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         addEOperation(dRepresentationEClass, null, "createContents", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-        op = addEOperation(dRepresentationEClass, null, "createContents", 0, 1, IS_UNIQUE, IS_ORDERED);
+        EOperation op = addEOperation(dRepresentationEClass, null, "createContents", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, theEcorePackage.getEObject(), "rootElement", 0, 1, IS_UNIQUE, IS_ORDERED);
 
         addEOperation(dRepresentationEClass, null, "updateContent", 0, 1, IS_UNIQUE, IS_ORDERED);

@@ -430,31 +430,6 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.diagram.DDiagramSet} instances. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DDiagramSetItemProvider dDiagramSetItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.DDiagramSet}. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDDiagramSetAdapter() {
-        if (dDiagramSetItemProvider == null) {
-            dDiagramSetItemProvider = new DDiagramSetItemProvider(this);
-        }
-
-        return dDiagramSetItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.Dot} instances. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
@@ -1245,8 +1220,6 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
             dNodeListElementItemProvider.dispose();
         if (dEdgeItemProvider != null)
             dEdgeItemProvider.dispose();
-        if (dDiagramSetItemProvider != null)
-            dDiagramSetItemProvider.dispose();
         if (dotItemProvider != null)
             dotItemProvider.dispose();
         if (gaugeSectionItemProvider != null)

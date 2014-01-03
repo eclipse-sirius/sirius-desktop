@@ -33,7 +33,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DDiagramLink;
-import org.eclipse.sirius.diagram.DDiagramSet;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -505,13 +504,6 @@ public class DiagramSwitch<T> {
                 result = caseDRefreshable(dEdge);
             if (result == null)
                 result = caseDSemanticDecorator(dEdge);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case DiagramPackage.DDIAGRAM_SET: {
-            DDiagramSet dDiagramSet = (DDiagramSet) theEObject;
-            T result = caseDDiagramSet(dDiagramSet);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -1258,23 +1250,6 @@ public class DiagramSwitch<T> {
      * @generated
      */
     public T caseDEdge(DEdge object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DDiagram Set</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DDiagram Set</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDDiagramSet(DDiagramSet object) {
         return null;
     }
 

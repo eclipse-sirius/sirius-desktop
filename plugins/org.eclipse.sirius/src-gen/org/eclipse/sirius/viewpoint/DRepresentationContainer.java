@@ -13,8 +13,6 @@ package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.DDiagramSet;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -23,9 +21,6 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.DRepresentationContainer#getDiagramSet
- * <em>Diagram Set</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DRepresentationContainer#getModels
  * <em>Models</em>}</li>
  * </ul>
@@ -36,49 +31,6 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
  * @generated
  */
 public interface DRepresentationContainer extends DView {
-    /**
-     * Returns the value of the '<em><b>Diagram Set</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.DDiagramSet}. <!-- begin-user-doc -->
-     * <!-- end-user-doc --> <!-- begin-model-doc --> Set of diagrams grouped by
-     * DiagramDescription. <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>Diagram Set</em>' containment reference
-     *         list.
-     * @see #isSetDiagramSet()
-     * @see #unsetDiagramSet()
-     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentationContainer_DiagramSet()
-     * @model containment="true" resolveProxies="true" unsettable="true"
-     * @generated
-     */
-    EList<DDiagramSet> getDiagramSet();
-
-    /**
-     * Unsets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.DRepresentationContainer#getDiagramSet
-     * <em>Diagram Set</em>}' containment reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @see #isSetDiagramSet()
-     * @see #getDiagramSet()
-     * @generated
-     */
-    void unsetDiagramSet();
-
-    /**
-     * Returns whether the value of the '
-     * {@link org.eclipse.sirius.viewpoint.DRepresentationContainer#getDiagramSet
-     * <em>Diagram Set</em>}' containment reference list is set. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return whether the value of the '<em>Diagram Set</em>' containment
-     *         reference list is set.
-     * @see #unsetDiagramSet()
-     * @see #getDiagramSet()
-     * @generated
-     */
-    boolean isSetDiagramSet();
-
     /**
      * Returns the value of the '<em><b>Models</b></em>' reference list. The
      * list contents are of type {@link org.eclipse.emf.ecore.EObject}. <!--
@@ -95,13 +47,5 @@ public interface DRepresentationContainer extends DView {
      * @generated
      */
     EList<EObject> getModels();
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @model
-     * @generated
-     */
-    void addSemanticDiagram(DSemanticDiagram diagram);
 
 } // DRepresentationContainer

@@ -488,22 +488,13 @@ public interface ViewpointPackage extends EPackage {
     int DREPRESENTATION_CONTAINER__VIEWPOINT = DVIEW__VIEWPOINT;
 
     /**
-     * The feature id for the '<em><b>Diagram Set</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DREPRESENTATION_CONTAINER__DIAGRAM_SET = DVIEW_FEATURE_COUNT + 0;
-
-    /**
      * The feature id for the '<em><b>Models</b></em>' reference list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int DREPRESENTATION_CONTAINER__MODELS = DVIEW_FEATURE_COUNT + 1;
+    int DREPRESENTATION_CONTAINER__MODELS = DVIEW_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -513,7 +504,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DREPRESENTATION_CONTAINER_FEATURE_COUNT = DVIEW_FEATURE_COUNT + 2;
+    int DREPRESENTATION_CONTAINER_FEATURE_COUNT = DVIEW_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -1862,19 +1853,6 @@ public interface ViewpointPackage extends EPackage {
     EClass getDRepresentationContainer();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.viewpoint.DRepresentationContainer#getDiagramSet
-     * <em>Diagram Set</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the containment reference list '
-     *         <em>Diagram Set</em>'.
-     * @see org.eclipse.sirius.viewpoint.DRepresentationContainer#getDiagramSet()
-     * @see #getDRepresentationContainer()
-     * @generated
-     */
-    EReference getDRepresentationContainer_DiagramSet();
-
-    /**
      * Returns the meta object for the reference list '
      * {@link org.eclipse.sirius.viewpoint.DRepresentationContainer#getModels
      * <em>Models</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3002,15 +2980,6 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EClass DREPRESENTATION_CONTAINER = eINSTANCE.getDRepresentationContainer();
-
-        /**
-         * The meta object literal for the '<em><b>Diagram Set</b></em>'
-         * containment reference list feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference DREPRESENTATION_CONTAINER__DIAGRAM_SET = eINSTANCE.getDRepresentationContainer_DiagramSet();
 
         /**
          * The meta object literal for the '<em><b>Models</b></em>' reference

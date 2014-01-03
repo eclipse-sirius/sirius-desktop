@@ -156,15 +156,6 @@ public interface DiagramFactory extends EFactory {
     DEdge createDEdge();
 
     /**
-     * Returns a new object of class '<em>DDiagram Set</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>DDiagram Set</em>'.
-     * @generated
-     */
-    DDiagramSet createDDiagramSet();
-
-    /**
      * Returns a new object of class '<em>Dot</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 

@@ -66,7 +66,6 @@ import org.eclipse.sirius.common.tools.api.util.ResourceUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DDiagramSet;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.FilterVariableValue;
@@ -466,12 +465,6 @@ public class SiriusRepairProcess {
                     }
                 }
             }
-        }
-        final Iterator<DDiagramSet> diagramSetIterator = Iterators.filter(view.eAllContents(), DDiagramSet.class);
-        while (diagramSetIterator.hasNext()) {
-            final DDiagramSet diagElement = diagramSetIterator.next();
-            toBeRemoved.add(diagElement);
-
         }
         return toBeRemoved;
     }

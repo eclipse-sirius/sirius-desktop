@@ -58,7 +58,6 @@ import org.eclipse.sirius.diagram.ContainerShape;
 import org.eclipse.sirius.diagram.CustomStyle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramLink;
-import org.eclipse.sirius.diagram.DDiagramSet;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -165,8 +164,6 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
             return createDNodeListElement();
         case DiagramPackage.DEDGE:
             return createDEdge();
-        case DiagramPackage.DDIAGRAM_SET:
-            return createDDiagramSet();
         case DiagramPackage.DOT:
             return createDot();
         case DiagramPackage.GAUGE_SECTION:
@@ -434,16 +431,6 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     public DEdge createDEdge() {
         DEdgeImpl dEdge = new DEdgeSpec();
         return dEdge;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public DDiagramSet createDDiagramSet() {
-        DDiagramSetImpl dDiagramSet = new DDiagramSetImpl();
-        return dDiagramSet;
     }
 
     /**

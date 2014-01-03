@@ -86,15 +86,6 @@
     </eAnnotations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DRepresentationContainer" eSuperTypes="#//DView">
-    <eOperations name="addSemanticDiagram">
-      <eParameters name="diagram" eType="#//diagram/DSemanticDiagram"/>
-    </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="diagramSet" upperBound="-1"
-        eType="#//diagram/DDiagramSet" unsettable="true" containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Set of diagrams grouped by DiagramDescription."/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="models" upperBound="-1"
         eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"
         changeable="false" volatile="true" transient="true" derived="true"/>
@@ -2389,25 +2380,6 @@
           <details key="documentation" value="The name of the representation."/>
         </eAnnotations>
       </eStructuralFeatures>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="DDiagramSet">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="A set of semantic diagrams"/>
-      </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//diagram/description/DiagramDescription"
-          unsettable="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The ViewPointDescription of all viewpoints that are in this set."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="diagrams" ordered="false"
-          upperBound="-1" eType="#//diagram/DDiagram" derived="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The viewpoints referenced by this set."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="view" eType="#//DRepresentationContainer"
-          transient="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EEnum" name="LabelPosition">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
