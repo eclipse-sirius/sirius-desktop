@@ -20,8 +20,8 @@ import org.eclipse.sirius.business.internal.dialect.description.StyleInterpreted
 import org.eclipse.sirius.business.internal.dialect.description.ToolInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.internal.dialect.description.ValidationInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.internal.dialect.description.ViewpointInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.collect.Sets;
 

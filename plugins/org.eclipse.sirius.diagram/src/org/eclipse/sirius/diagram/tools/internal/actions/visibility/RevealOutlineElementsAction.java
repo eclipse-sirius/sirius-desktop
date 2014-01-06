@@ -10,16 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.actions.visibility;
 
-import java.util.Iterator;
-
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.gef.EditPart;
 import org.eclipse.gef.RootEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.tools.internal.editor.DiagramOutlinePage;
@@ -88,52 +83,5 @@ public class RevealOutlineElementsAction extends AbstractRevealElementsAction<DD
         allInOne.append(cmd);
 
         domain.getCommandStack().execute(allInOne);
-    }
-
-    /**
-     * Specific command to reveal elements from outline.
-     * 
-     * @author mporhel
-     */
-    private static class RevealOutlineElementsCommand extends RecordingCommand {
-
-        private final RootEditPart root;
-
-        /**
-         * Constructor.
-         * 
-         * @param domain
-         *            the editing domain
-         * @param root
-         */
-        public RevealOutlineElementsCommand(final TransactionalEditingDomain domain, RootEditPart root) {
-            super(domain, "Reveal elements from outline");
-            this.root = root;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        protected void doExecute() {
-            refreshChild(root);
-        }
-
-        /**
-         * Refresh all the childs.
-         * 
-         * @param part
-         *            parent {@link EditPart}
-         */
-        private void refreshChild(final EditPart part) {
-            part.refresh();
-            final Iterator<?> it = part.getChildren().iterator();
-            while (it.hasNext()) {
-                final Object obj = it.next();
-                if (obj instanceof GraphicalEditPart) {
-                    refreshChild((GraphicalEditPart) obj);
-                }
-            }
-        }
     }
 }

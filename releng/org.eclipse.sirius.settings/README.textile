@@ -1,0 +1,5 @@
+h1. Eclipse Configuration Files for Sirius
+
+This directory contains configuration files for Eclipse which should be installed by every Sirius team member to ensure a common coding style.
+
+* @CheckstyleConfiguration.xml@: the configuration file for CheckStyle v5. Import it from __Preferences > CheckStyle__. *Required for everyone*.

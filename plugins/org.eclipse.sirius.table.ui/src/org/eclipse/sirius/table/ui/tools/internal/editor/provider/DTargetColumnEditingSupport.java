@@ -19,8 +19,6 @@ import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.swt.widgets.Tree;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DLine;
@@ -32,6 +30,7 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.command.CreateCellRecor
 import org.eclipse.sirius.table.ui.tools.internal.editor.command.SetCellValueRecordingCommand;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * Support for the cells editing of a Cross DTable (with {@link DTarget}).

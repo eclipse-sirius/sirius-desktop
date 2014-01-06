@@ -18,13 +18,13 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
  * @author <a href="mailto:julien.dupont@obeo.fr">Julien DUPONT</a>
  * 
  */
-public class CustomSiriusAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider {
+class CustomSiriusAdapterFactoryLabelProvider extends AdapterFactoryLabelProvider {
+    private boolean showTypes;
 
     public CustomSiriusAdapterFactoryLabelProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
-    private boolean showTypes = false;
 
     @Override
     public String getText(Object object) {

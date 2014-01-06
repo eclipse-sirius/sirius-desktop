@@ -34,7 +34,7 @@ public class GenericPreferencesInitializer extends AbstractPreferenceInitializer
     @Override
     public void initializeDefaultPreferences() {
         final IPreferenceStore uiPreferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
-        final IEclipsePreferences defaultCorePreferences = new DefaultScope().getNode(SiriusPlugin.ID);
+        final IEclipsePreferences defaultCorePreferences = DefaultScope.INSTANCE.getNode(SiriusPlugin.ID);
 
         uiPreferenceStore.setDefault(DesignerUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), getValue("_Pref_RefreshOnRepresentationOpening"));
         uiPreferenceStore.setDefault(DesignerUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), getValue("_Pref_ReloadOnLastEditorClose"));

@@ -22,7 +22,6 @@ import org.eclipse.gmf.runtime.diagram.ui.services.decorator.AbstractDecorator;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
@@ -122,7 +121,7 @@ public class SubDiagramDecorator extends AbstractDecorator {
     }
 
     private Image getSubDiagramImage() {
-        return WorkspaceImageFigure.flyWeightImage((ImageDescriptor) SiriusEditPlugin.INSTANCE.getImageDescriptor(ImagesPath.HAS_DIAG_IMG));
+        return WorkspaceImageFigure.flyWeightImage(SiriusEditPlugin.INSTANCE.getImageDescriptor(ImagesPath.HAS_DIAG_IMG));
     }
 
     private boolean shouldHaveSubDiagDecoration(DRepresentationElement node) {

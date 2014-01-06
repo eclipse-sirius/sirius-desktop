@@ -103,6 +103,20 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
  */
 public class DTableViewerManager extends AbstractDTableViewerManager {
 
+    private final class SortListener implements Listener {
+        public void handleEvent(final Event e) {
+            final TreeColumn currentTreeColumn = (TreeColumn) e.widget;
+            final DColumn currentColumn = (DColumn) currentTreeColumn.getData(DTableViewerManager.TABLE_COLUMN_DATA);
+            if ((sortedBy == null && currentColumn == null) || (sortedBy != null && sortedBy.equals(currentColumn))) {
+                sortDirection = sortDirection == SWT.UP ? SWT.DOWN : SWT.UP;
+            } else {
+                sortDirection = SWT.UP;
+                sortedBy = currentColumn;
+            }
+            sortLines();
+        }
+    }
+
     /** The key for the image which represents an export action. */
     public static final String EXPORT_IMG = "table/export";
 
@@ -222,31 +236,15 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         // Create a composite to hold the children
         final GridData gridData = new GridData(GridData.HORIZONTAL_ALIGN_FILL | GridData.FILL_BOTH);
         composite.setLayoutData(gridData);
-
         final TreeColumnLayout treeLayout = new TreeColumnLayout();
         composite.setLayout(treeLayout);
-
         // Create and setup the TreeViewer
         final int style = SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.MULTI;
         treeViewer = new DTableTreeViewer(composite, style, this);
         // Add a focus listener to deactivate the EMF actions on the Tree
         treeViewer.getTree().addFocusListener(new DTableTreeFocusListener(tableEditor, treeViewer.getTree()));
         initializeDragSupport();
-        // Add sort indicator and sort data when column selected
-        sortListener = new Listener() {
-            public void handleEvent(final Event e) {
-                // determine new sort column and direction
-                final TreeColumn currentTreeColumn = (TreeColumn) e.widget;
-                final DColumn currentColumn = (DColumn) currentTreeColumn.getData(DTableViewerManager.TABLE_COLUMN_DATA);
-                if ((sortedBy == null && currentColumn == null) || (sortedBy != null && sortedBy.equals(currentColumn))) {
-                    sortDirection = sortDirection == SWT.UP ? SWT.DOWN : SWT.UP;
-                } else {
-                    sortDirection = SWT.UP;
-                    sortedBy = currentColumn;
-                }
-                sortLines();
-            }
-        };
+        sortListener = new SortListener();
         // 1st column with line labels
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.ADD_SWT_COLUMN_KEY);
         final TreeViewerColumn headerTreeColumn = new TreeViewerColumn(treeViewer, SWT.CENTER, 0);
@@ -256,12 +254,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
 
         ILabelDecorator decorator = PlatformUI.getWorkbench().getDecoratorManager().getLabelDecorator();
         CellLabelProvider lineheaderColumnLabelProvider = new DTableLineLabelProvider(decorator) {
-
-            /**
-             * Display gray background for the OS other than GTK. {@inheritDoc}
-             * 
-             * @see org.eclipse.jface.viewers.ColumnLabelProvider#getBackground(java.lang.Object)
-             */
+            /* Display gray background for the OS other than GTK. */
             @Override
             public Color getBackground(final Object element) {
                 if (IS_GTK_OS) {
@@ -304,11 +297,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         }
         treeViewer.setUseHashlookup(true);
 
-        // tableViewer.setSorter(new
-        // ExampleTaskSorter(ExampleTaskSorter.DESCRIPTION));
         dTableContentProvider = new DTableContentProvider(getSession(), this);
         treeViewer.setContentProvider(dTableContentProvider);
-        // treeViewer.setLabelProvider(new DTableLabelProvider());
         // The input for the table viewer is the instance of DTable
         treeViewer.setInput(dRepresentation);
 
@@ -339,8 +329,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer), ColumnViewerEditor.TABBING_HORIZONTAL
                 | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
 
-        // Set after the setInput to avoid layout call it several time for
-        // nothing at opening
+        // Set after the setInput to avoid layout call it several time for nothing at opening
         headerTreeColumn.getColumn().addControlListener(tableViewerListener);
     }
     

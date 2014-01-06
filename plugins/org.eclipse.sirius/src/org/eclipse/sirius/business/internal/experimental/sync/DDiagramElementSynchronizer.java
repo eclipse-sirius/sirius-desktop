@@ -43,8 +43,6 @@ import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -71,6 +69,8 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -397,7 +397,18 @@ public class DDiagramElementSynchronizer {
             containerVariable = ((DSemanticDecorator) edge.eContainer()).getTarget();
         }
         // Recompute the conditional style
+        this.interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, this.diagram);
+        this.interpreter.setVariable(IInterpreterSiriusVariables.VIEW, edge);
+        this.interpreter.setVariable(IInterpreterSiriusVariables.SOURCE_VIEW, edge.getSourceNode());
+        this.interpreter.setVariable(IInterpreterSiriusVariables.TARGET_VIEW, edge.getTargetNode());
+
         this.mappingHelper.affectAndRefreshStyle(edge.getDiagramElementMapping(), edge, edge.getTarget(), containerVariable, (DDiagram) edge.eContainer());
+
+        this.interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
+        this.interpreter.unSetVariable(IInterpreterSiriusVariables.VIEW);
+        this.interpreter.unSetVariable(IInterpreterSiriusVariables.SOURCE_VIEW);
+        this.interpreter.unSetVariable(IInterpreterSiriusVariables.TARGET_VIEW);
+
         final EdgeStyle edgeStyle = edge.getOwnedStyle();
         if (edgeStyle != null) {
             final EdgeStyleDescription edgeStyleDescription = (EdgeStyleDescription) edgeStyle.getDescription();
@@ -717,6 +728,11 @@ public class DDiagramElementSynchronizer {
      *            the parent diagram of the edge
      */
     public void refreshStyle(final DEdge edge, final EdgeMapping mapping, final DDiagram parentDiagram) {
+        this.interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, this.diagram);
+        this.interpreter.setVariable(IInterpreterSiriusVariables.VIEW, edge);
+        this.interpreter.setVariable(IInterpreterSiriusVariables.SOURCE_VIEW, edge.getSourceNode());
+        this.interpreter.setVariable(IInterpreterSiriusVariables.TARGET_VIEW, edge.getTargetNode());
+
         EObject containerVariable = null;
         if (edge.eContainer() instanceof DSemanticDecorator) {
             containerVariable = ((DSemanticDecorator) edge.eContainer()).getTarget();
@@ -731,6 +747,11 @@ public class DDiagramElementSynchronizer {
         } else if (edge.getStyle() != null) {
             styleHelper.refreshStyle(edge.getStyle());
         }
+
+        this.interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
+        this.interpreter.unSetVariable(IInterpreterSiriusVariables.VIEW);
+        this.interpreter.unSetVariable(IInterpreterSiriusVariables.SOURCE_VIEW);
+        this.interpreter.unSetVariable(IInterpreterSiriusVariables.TARGET_VIEW);
     }
 
     /**
@@ -753,6 +774,7 @@ public class DDiagramElementSynchronizer {
         this.interpreter.setVariable(IInterpreterSiriusVariables.VIEWPOINT, this.diagram);
         this.interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, this.diagram);
         this.interpreter.setVariable(IInterpreterSiriusVariables.VIEW, node);
+        
         this.mappingHelper.affectAndRefreshStyle(mapping, node, node.getTarget(), containerVariable, diagram);
 
         if (node.eContainer() != null) {
@@ -778,6 +800,11 @@ public class DDiagramElementSynchronizer {
      *            the parent diagram of the edge
      */
     public void createStyle(final DEdge edge, final EdgeMapping mapping, final DDiagram parentDiagram) {
+        this.interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, this.diagram);
+        this.interpreter.setVariable(IInterpreterSiriusVariables.VIEW, edge);
+        this.interpreter.setVariable(IInterpreterSiriusVariables.SOURCE_VIEW, edge.getSourceNode());
+        this.interpreter.setVariable(IInterpreterSiriusVariables.TARGET_VIEW, edge.getTargetNode());
+
         if (edge.getStyle() == null || edge.getStyle().getCustomFeatures().isEmpty()) {
             EObject containerVariable = null;
             if (edge.eContainer() instanceof DSemanticDecorator) {
@@ -792,6 +819,11 @@ public class DDiagramElementSynchronizer {
                 styleHelper.refreshStyle(edge.getOwnedStyle(), Options.newSome(edge.getOwnedStyle()));
             }
         }
+
+        this.interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
+        this.interpreter.unSetVariable(IInterpreterSiriusVariables.VIEW);
+        this.interpreter.unSetVariable(IInterpreterSiriusVariables.SOURCE_VIEW);
+        this.interpreter.unSetVariable(IInterpreterSiriusVariables.TARGET_VIEW);
     }
 
     private String computeLabel(final DDiagramElement view, final EObject descriptionObject) {

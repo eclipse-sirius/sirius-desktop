@@ -12,12 +12,10 @@ package org.eclipse.sirius.ui.tools.internal.views.common.navigator;
 
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.ContextMenuFiller;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
-import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 
@@ -40,18 +38,6 @@ public class ManageSessionActionProvider extends CommonActionProvider {
     public void init(final ICommonActionExtensionSite aSite) {
         super.init(aSite);
         contextMenuFiller = new ContextMenuFiller(aSite.getStructuredViewer(), new SessionLabelProvider(ViewHelper.INSTANCE.createAdapterFactory()));
-    }
-
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.actions.ActionGroup#fillActionBars(org.eclipse.ui.IActionBars)
-     */
-    @Override
-    public void fillActionBars(final IActionBars actionBars) {
-        super.fillActionBars(actionBars);
-        final IStructuredSelection selection = (IStructuredSelection) getContext().getSelection();
     }
 
     /**

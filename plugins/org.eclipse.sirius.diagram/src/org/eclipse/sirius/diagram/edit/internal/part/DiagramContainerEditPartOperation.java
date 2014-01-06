@@ -41,8 +41,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDes
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelogram;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
+import org.eclipse.sirius.ext.swt.ImageFileFormat;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
-import org.eclipse.sirius.ui.tools.api.dialogs.ImageFileFormat;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -244,9 +244,9 @@ public final class DiagramContainerEditPartOperation {
         if (img != null && !StringUtil.isEmpty(img.getWorkspacePath())) {
             String workspacePath = img.getWorkspacePath();
             if (workspacePath.toUpperCase().endsWith(ImageFileFormat.SVG.getName())) {
-                imageFigure = (IFigure) SVGWorkspaceImageFigure.createImageFigure(img);
+                imageFigure = SVGWorkspaceImageFigure.createImageFigure(img);
             } else {
-                imageFigure = (IFigure) WorkspaceImageFigure.createImageFigure(workspacePath);
+                imageFigure = WorkspaceImageFigure.createImageFigure(workspacePath);
             }
         }
         return imageFigure;

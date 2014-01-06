@@ -75,6 +75,50 @@ import org.eclipse.ui.PartInitException;
  * 
  */
 public class CustomSiriusActionBarContributor extends EditingDomainActionBarContributor implements ISelectionChangedListener {
+    private final class ShowTypeAction extends Action {
+        private final String showText = SiriusEditorPlugin.INSTANCE.getString("_UI_ShowType_menu_item");
+
+        private final String hideText = SiriusEditorPlugin.INSTANCE.getString("_UI_HideType_menu_item");
+
+        @Override
+        public void run() {
+            CustomSiriusAdapterFactoryLabelProvider labelProvider = getCustomLabelProvider();
+            if (labelProvider != null) {
+                labelProvider.setShowTypes(!labelProvider.isShowTypes());
+                setText(getText());
+                refreshViewerAction.run();
+            }
+        }
+
+        private CustomSiriusAdapterFactoryLabelProvider getCustomLabelProvider() {
+            if (activeEditor instanceof IViewerProvider) {
+                Viewer viewer = ((IViewerProvider) activeEditor).getViewer();
+                if (viewer instanceof ContentViewer) {
+                    IBaseLabelProvider labelProvider = ((ContentViewer) viewer).getLabelProvider();
+                    if (labelProvider instanceof DecoratingLabelProvider) {
+                        labelProvider = ((DecoratingLabelProvider) labelProvider).getLabelProvider();
+                    }
+                    if (labelProvider instanceof CustomSiriusAdapterFactoryLabelProvider) {
+                        return (CustomSiriusAdapterFactoryLabelProvider) labelProvider;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public String getText() {
+            CustomSiriusAdapterFactoryLabelProvider labelProvider = getCustomLabelProvider();
+            if (labelProvider != null) {
+                return labelProvider.isShowTypes() ? hideText : showText;
+            }
+            return super.getText();
+        }
+
+        public boolean isEnabled() {
+            return getCustomLabelProvider() != null;
+        }
+    }
+
     private static final String UI_ACTIONS = "ui-actions";
 
     /**
@@ -125,52 +169,7 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
     /**
      * This action allow to display type on VSM or hide if types are displayed.
      */
-    protected IAction showType = new Action() {
-
-        private final String showText = SiriusEditorPlugin.INSTANCE.getString("_UI_ShowType_menu_item");
-
-        private final String hideText = SiriusEditorPlugin.INSTANCE.getString("_UI_HideType_menu_item");
-
-        @Override
-        public void run() {
-            CustomSiriusAdapterFactoryLabelProvider labelProvider = getCustomLabelProvider();
-            if (labelProvider != null) {
-                labelProvider.setShowTypes(!labelProvider.isShowTypes());
-                setText(getText());
-                refreshViewerAction.run();
-            }
-        }
-
-        private CustomSiriusAdapterFactoryLabelProvider getCustomLabelProvider() {
-            if (activeEditor instanceof IViewerProvider) {
-                Viewer viewer = ((IViewerProvider) activeEditor).getViewer();
-
-                if (viewer instanceof ContentViewer) {
-                    IBaseLabelProvider labelProvider = ((ContentViewer) viewer).getLabelProvider();
-                    if (labelProvider instanceof DecoratingLabelProvider) {
-                        labelProvider = ((DecoratingLabelProvider) labelProvider).getLabelProvider();
-                    }
-
-                    if (labelProvider instanceof CustomSiriusAdapterFactoryLabelProvider) {
-                        return (CustomSiriusAdapterFactoryLabelProvider) labelProvider;
-                    }
-                }
-            }
-            return null;
-        }
-
-        public String getText() {
-            CustomSiriusAdapterFactoryLabelProvider labelProvider = getCustomLabelProvider();
-            if (labelProvider != null) {
-                return labelProvider.isShowTypes() ? hideText : showText;
-            }
-            return super.getText();
-        };
-
-        public boolean isEnabled() {
-            return getCustomLabelProvider() != null;
-        };
-    };
+    protected IAction showType = new ShowTypeAction();
 
     private Collection<AbstractMenuBuilder> builders;
 
@@ -371,7 +370,7 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
     protected Collection<IAction> generateCreateChildActions(final Collection<?> descriptors, final ISelection selection) {
         final Collection<IAction> actions = new ArrayList<IAction>();
         if (descriptors != null) {
-            for (final Iterator<?> i = descriptors.iterator(); i.hasNext();) {
+            for (final Iterator<?> i = descriptors.iterator(); i.hasNext(); /* */) {
                 actions.add(new CreateChildAction(activeEditorPart, selection, i.next()));
             }
         }
@@ -393,7 +392,7 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
     protected Collection<IAction> generateCreateSiblingActions(final Collection<?> descriptors, final ISelection selection) {
         final Collection<IAction> actions = new ArrayList<IAction>();
         if (descriptors != null) {
-            for (final Iterator<?> i = descriptors.iterator(); i.hasNext();) {
+            for (final Iterator<?> i = descriptors.iterator(); i.hasNext(); /* */) {
                 actions.add(new CreateSiblingAction(activeEditorPart, selection, i.next()));
             }
         }

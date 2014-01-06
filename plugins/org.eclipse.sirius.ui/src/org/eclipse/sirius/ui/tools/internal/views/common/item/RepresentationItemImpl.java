@@ -18,8 +18,8 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -141,9 +141,8 @@ public class RepresentationItemImpl implements ItemWrapper, IAdaptable {
      * 
      * @see org.eclipse.core.runtime.IAdaptable#getAdapter(java.lang.Class)
      */
-    @SuppressWarnings("all")
-    public Object getAdapter(Class adapter) {
-        if (rep.get() instanceof EObject && adapter == EObject.class) {
+    public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
+        if (rep.get() != null && adapter == EObject.class) {
             return rep.get();
         }
 

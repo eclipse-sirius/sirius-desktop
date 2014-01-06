@@ -44,4 +44,12 @@
   <plugin id="org.eclipse.sirius.tree.ui" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.eclipse.sirius.ui" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
+  <plugin id="org.eclipse.sirius.ext.swt" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+  <plugin id="org.eclipse.sirius.ext.jface" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+  <plugin id="org.eclipse.sirius.ext.e3.ui" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+  <plugin id="org.eclipse.sirius.ext.draw2d" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+  <plugin id="org.eclipse.sirius.ext.gef" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+  <plugin id="org.eclipse.sirius.ext.gmf.notation" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+  <plugin id="org.eclipse.sirius.ext.gmf.runtime" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+
 </feature>

@@ -36,12 +36,12 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractEObjectRefactoringAction;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractUndoRecordingCommand;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.description.TreeItemEditionTool;
@@ -213,26 +213,7 @@ class TreeDescriptionBuilderFromEClass {
 
         Option<EAttribute> editableName = lookForEditableName(eClassToStartFrom);
         if (editableName.some()) {
-            EAttribute editableFeature = editableName.get();
-            TreeItemEditionTool editTool = DescriptionFactory.eINSTANCE.createTreeItemEditionTool();
-            editTool.setName(editableFeature.getName());
-            EditMaskVariables maskVar = ToolFactory.eINSTANCE.createEditMaskVariables();
-            maskVar.setMask("{0}");
-            editTool.setMask(maskVar);
-
-            SetValue setVal = ToolFactory.eINSTANCE.createSetValue();
-            setVal.setFeatureName(editableFeature.getName());
-            setVal.setValueExpression("<%$0%>");
-
-            ElementDropVariable elementVar = ToolFactory.eINSTANCE.createElementDropVariable();
-            elementVar.setName("element");
-            editTool.setElement(elementVar);
-
-            ElementDropVariable rootVar = ToolFactory.eINSTANCE.createElementDropVariable();
-            elementVar.setName("root");
-            editTool.setRoot(rootVar);
-            editTool.setFirstModelOperation(setVal);
-            map.setDirectEdit(editTool);
+            handleEditableName(map, editableName);
         }
 
         doneClasses.put(eClassToStartFrom, map);
@@ -302,6 +283,29 @@ class TreeDescriptionBuilderFromEClass {
         return map;
     }
 
+    protected void handleEditableName(TreeItemMapping map, Option<EAttribute> editableName) {
+        EAttribute editableFeature = editableName.get();
+        TreeItemEditionTool editTool = DescriptionFactory.eINSTANCE.createTreeItemEditionTool();
+        editTool.setName(editableFeature.getName());
+        EditMaskVariables maskVar = ToolFactory.eINSTANCE.createEditMaskVariables();
+        maskVar.setMask("{0}");
+        editTool.setMask(maskVar);
+
+        SetValue setVal = ToolFactory.eINSTANCE.createSetValue();
+        setVal.setFeatureName(editableFeature.getName());
+        setVal.setValueExpression("<%$0%>");
+
+        ElementDropVariable elementVar = ToolFactory.eINSTANCE.createElementDropVariable();
+        elementVar.setName("element");
+        editTool.setElement(elementVar);
+
+        ElementDropVariable rootVar = ToolFactory.eINSTANCE.createElementDropVariable();
+        elementVar.setName("root");
+        editTool.setRoot(rootVar);
+        editTool.setFirstModelOperation(setVal);
+        map.setDirectEdit(editTool);
+    }
+
     private String qualifiedName(EClass eClassToStartFrom) {
         return eClassToStartFrom.getEPackage().getName() + "." + eClassToStartFrom.getName();
     }
@@ -326,7 +330,7 @@ class TreeDescriptionBuilderFromEClass {
             Iterator<CreateInstance> itNewInstance = Iterators.filter(cur.eAllContents(), CreateInstance.class);
             while (itNewInstance.hasNext()) {
                 CreateInstance newInstance = itNewInstance.next();
-                if ((referenceName).equals(newInstance.getReferenceName())) {
+                if (referenceName.equals(newInstance.getReferenceName())) {
                     found = cur;
                 }
             }

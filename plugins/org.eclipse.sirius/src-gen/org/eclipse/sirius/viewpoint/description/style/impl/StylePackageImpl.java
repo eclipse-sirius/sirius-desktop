@@ -1658,7 +1658,9 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         addAnnotation(getEllipseNodeDescription_HorizontalDiameterComputationExpression(), source, new String[] {});
         addAnnotation(getEllipseNodeDescription_VerticalDiameterComputationExpression(), source, new String[] {});
         addAnnotation(getDotDescription_StrokeSizeComputationExpression(), source, new String[] {});
-        addAnnotation(getEdgeStyleDescription_SizeComputationExpression(), source, new String[] {});
+        addAnnotation(getEdgeStyleDescription_SizeComputationExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DSemanticDiagram.", "view",
+                "viewpoint.DEdge | the current edge view for which the size is calculated.", "sourceView", "viewpoint.EdgeTarget | the source view of the current edge.", "targetView",
+                "viewpoint.EdgeTarget | the target view of the current edge." });
         addAnnotation(getTooltipStyleDescription_TooltipExpression(), source, new String[] { "view", "viewpoint.DSemanticDecorator | the current view." });
         addAnnotation(getGaugeSectionDescription_MinValueExpression(), source, new String[] {});
         addAnnotation(getGaugeSectionDescription_MaxValueExpression(), source, new String[] {});

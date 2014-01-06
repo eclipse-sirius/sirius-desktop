@@ -205,8 +205,8 @@ public class DiagramDialectUIServices implements DialectUIServices {
         };
         PlatformUI.getWorkbench().getDisplay().syncExec(runnable);
         monitor.worked(10);
-        if (runnable.getResult() instanceof DialectEditor) {
-            dialectEditor = (DialectEditor) runnable.getResult();
+        if (runnable.getResult() != null) {
+            dialectEditor = runnable.getResult();
         }
         return dialectEditor;
     }

@@ -13,10 +13,10 @@ package org.eclipse.sirius.business.internal.movida;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.sirius.business.internal.movida.dependencies.DependencyTracker;
-import org.eclipse.sirius.business.internal.movida.dependencies.Relation;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistryListener;
+import org.eclipse.sirius.ext.base.relations.DependencyTracker;
+import org.eclipse.sirius.ext.base.relations.Relation;
 
 import com.google.common.base.Preconditions;
 

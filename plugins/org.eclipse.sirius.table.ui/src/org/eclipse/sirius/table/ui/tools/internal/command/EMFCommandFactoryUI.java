@@ -11,11 +11,10 @@
 package org.eclipse.sirius.table.ui.tools.internal.command;
 
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback;
 
 /**
- * Implementation of the {@link UICallBack} interface using SWT.
+ * Implementation of the {@code UICallBack} interface using SWT.
  * 
  * @author mchauvin
  */

@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.internal.movida.DynamicVSMLoader;
-import org.eclipse.sirius.business.internal.movida.dependencies.Relation;
+import org.eclipse.sirius.ext.base.relations.Relation;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -35,7 +35,7 @@ import com.google.common.collect.Multimap;
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public class VSMRequirementChangeAdapter extends EContentAdapter {
+class VSMRequirementChangeAdapter extends EContentAdapter {
     private final Resource resource;
 
     private final DynamicVSMLoader loader;

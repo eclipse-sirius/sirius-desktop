@@ -60,7 +60,7 @@ import org.eclipse.ocl.expressions.CollectionKind;
 import org.eclipse.ocl.types.OCLStandardLibrary;
 import org.eclipse.ocl.util.Bag;
 import org.eclipse.sirius.common.acceleo.mtl.AcceleoMTLInterpreterPlugin;
-import org.eclipse.sirius.common.tools.api.util.LRUCache;
+import org.eclipse.sirius.ext.base.cache.LRUCache;
 
 /**
  * This class has been mostly copy/pasted from

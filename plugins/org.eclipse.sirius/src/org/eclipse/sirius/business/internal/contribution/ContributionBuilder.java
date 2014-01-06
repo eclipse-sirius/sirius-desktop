@@ -16,12 +16,12 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.sirius.business.api.query.EStructuralFeatureQuery;
 import org.eclipse.sirius.description.contribution.ComputedEObjectReference;
 import org.eclipse.sirius.description.contribution.Contribution;
 import org.eclipse.sirius.description.contribution.ContributionFactory;
 import org.eclipse.sirius.description.contribution.DirectEObjectReference;
 import org.eclipse.sirius.description.contribution.FeatureContribution;
+import org.eclipse.sirius.ext.emf.EStructuralFeatureQuery;
 
 import com.google.common.base.Preconditions;
 

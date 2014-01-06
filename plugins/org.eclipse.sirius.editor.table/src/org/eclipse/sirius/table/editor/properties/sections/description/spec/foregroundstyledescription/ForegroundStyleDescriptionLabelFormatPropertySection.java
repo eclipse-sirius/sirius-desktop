@@ -15,7 +15,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -23,6 +22,12 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxGroupPropertySection;
+import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
+import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription;
+import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
@@ -31,12 +36,6 @@ import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxGroupPropertySection;
-import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
-import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription;
-import org.eclipse.sirius.viewpoint.FontFormat;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * A section for the font label.
@@ -51,6 +50,9 @@ public class ForegroundStyleDescriptionLabelFormatPropertySection extends Abstra
 
     private static final String TOOL_TIP = "The font formatting style to use for the label";
 
+    /**
+     * Create a new instance.
+     */
     public ForegroundStyleDescriptionLabelFormatPropertySection() {
         buttonGroup = false;
     }
@@ -81,7 +83,7 @@ public class ForegroundStyleDescriptionLabelFormatPropertySection extends Abstra
         return values;
     }
 
-    protected FontFormat getSelectedValue() {
+    private FontFormat getSelectedValue() {
         List<?> possibleValues = getChoiceOfValues();
         List<Object> selectedValues = new ArrayList<Object>();
         FontFormat fontFormat;
@@ -156,7 +158,7 @@ public class ForegroundStyleDescriptionLabelFormatPropertySection extends Abstra
         if (eObject instanceof ForegroundStyleDescription) {
             for (String str : ForegroundStyleDescriptionLabelFormatPropertySection.convertPropertiesToUI(((ForegroundStyleDescription) eObject).getLabelFormat())) {
                 if (returnStr.length() > 0) {
-                    returnStr = returnStr + (", ") + str;
+                    returnStr = returnStr + ", " + str;
                 } else {
                     returnStr = str;
                 }
@@ -248,7 +250,7 @@ public class ForegroundStyleDescriptionLabelFormatPropertySection extends Abstra
             } else {
                 CompoundCommand compoundCommand = new CompoundCommand();
                 /* apply the property change to all selected elements */
-                for (Iterator<EObject> i = eObjectList.iterator(); i.hasNext();) {
+                for (Iterator<EObject> i = eObjectList.iterator(); i.hasNext(); /* */) {
                     EObject nextObject = i.next();
                     compoundCommand.append(SetCommand.create(editingDomain, nextObject, getFeature(), value));
                 }
@@ -257,18 +259,7 @@ public class ForegroundStyleDescriptionLabelFormatPropertySection extends Abstra
         }
     }
 
-    protected EAttribute getAttribute() {
-        EAttribute attribute = null;
-        for (EAttribute eAttribute : ViewpointPackage.eINSTANCE.getBasicLabelStyle().getEAllAttributes()) {
-            if (eAttribute.getEType().equals(getFeatures())) {
-                attribute = eAttribute;
-                break;
-            }
-        }
-        return attribute;
-    }
-
-    public static List<String> convertPropertiesToUI(FontFormat font) {
+    private static List<String> convertPropertiesToUI(FontFormat font) {
         List<String> formats = new ArrayList<String>();
         if (font.getValue() == 1) {
             formats.add(ITALIC);

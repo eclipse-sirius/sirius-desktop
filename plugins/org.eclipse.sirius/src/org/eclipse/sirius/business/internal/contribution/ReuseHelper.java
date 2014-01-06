@@ -12,9 +12,9 @@ package org.eclipse.sirius.business.internal.contribution;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.common.tools.api.util.AllContents;
 import org.eclipse.sirius.description.contribution.Contribution;
 import org.eclipse.sirius.description.contribution.DirectEObjectReference;
+import org.eclipse.sirius.ext.emf.AllContents;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;

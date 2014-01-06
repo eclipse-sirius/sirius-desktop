@@ -31,13 +31,13 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
 import org.eclipse.sirius.business.internal.movida.Movida;
-import org.eclipse.sirius.common.tools.api.util.AllContents;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.tools.api.selection.EObjectSelectionWizard;
 import org.eclipse.sirius.description.contribution.ContributionPackage;
 import org.eclipse.sirius.description.contribution.DirectEObjectReference;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
+import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.ui.tools.api.properties.AbstractMappingImportSelectionWizardBuilder;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -130,7 +130,7 @@ public class DirectEObjectReferenceValuePropertySection extends AbstractComboPro
         List<?> values = Collections.emptyList();
         List<IItemPropertyDescriptor> propertyDescriptors = getDescriptors();
         for (Iterator<IItemPropertyDescriptor> iterator = propertyDescriptors.iterator(); iterator.hasNext();) {
-            IItemPropertyDescriptor propertyDescriptor = (IItemPropertyDescriptor) iterator.next();
+            IItemPropertyDescriptor propertyDescriptor = iterator.next();
             if (((EStructuralFeature) propertyDescriptor.getFeature(eObject)) == getFeature())
                 values = new ArrayList<Object>(propertyDescriptor.getChoiceOfValues(eObject));
         }

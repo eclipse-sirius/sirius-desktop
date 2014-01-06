@@ -114,17 +114,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
     private IPreferenceChangeListener viewPointPreferenceChangeListener;
 
     /**
-     * Creates a new Editor for tree representations.
-     * 
-     */
-    public DTreeEditor() {
-        super();
-    }
-
-    /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor#getInitialImage()
      */
     public Image getInitialImage() {
         if (initialTitleImage == null || initialTitleImage.isDisposed()) {
@@ -135,8 +125,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor#getFrozenRepresentationImage()
      */
     @Override
     public Image getFrozenRepresentationImage() {
@@ -212,7 +200,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
             notify(PROP_TITLE);
 
             /* handle preferences */
-            new InstanceScope().getNode(SiriusPlugin.ID).addPreferenceChangeListener(viewPointPreferenceChangeListener);
+            InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).addPreferenceChangeListener(viewPointPreferenceChangeListener);
 
             // Launch the refresh if needed
             if (DialectManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
@@ -384,7 +372,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
      */
     public void validateRepresentation() {
         // TODO Auto-generated method stub
-
     }
 
     /**
@@ -427,37 +414,13 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
      */
     @Override
     public void doSave(final IProgressMonitor progressMonitor) {
-
         if (isDeleted(getEditorInput())) {
-
             if (isSaveAsAllowed()) {
-
-                /*
-                 * 1GEUSSR: ITPUI:ALL - User should never loose changes made in
-                 * the editors. Changed Behavior to make sure that if called
-                 * inside a regular save (because of deletion of input element)
-                 * there is a way to report back to the caller.
-                 */
                 performSaveAs(progressMonitor);
-
-            } else {
-
-                // final Shell shell = getSite().getShell();
-                // final String title =
-                // Messages.dTableEditor_ErrorSaveDeletedTitle;
-                // final String msg =
-                // Messages.dTableEditor_ErrorSaveDeletedMessage;
-                // MessageDialog.openError(shell, title, msg);
             }
-
         } else {
-            // Update the readonly state
-            // updateState(getEditorInput());
-            // Valide the state
-            // validateState(getEditorInput());
             performSave(false, progressMonitor);
         }
-        // Indicates that the editor is saved
     }
 
     /**
@@ -475,13 +438,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
             dialog.setOriginalFile(original);
         }
         dialog.create();
-        // if (isDeleted(input) && original != null) {
-        // final String message =
-        // NLS.bind(Messages.dTableEditor_SavingDeletedFile,
-        // original.getName());
-        // dialog.setErrorMessage(null);
-        // dialog.setMessage(message, IMessageProvider.WARNING);
-        // }
         if (dialog.open() == Window.CANCEL) {
             if (progressMonitor != null) {
                 progressMonitor.setCanceled(true);
@@ -509,24 +465,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
                 }
             }
             final boolean success = false;
-            // try {
-            // provider.aboutToChange(newInput);
-            // getDocumentProvider(newInput).saveDocument(progressMonitor,
-            // newInput,
-            // getDocumentProvider().getDocument(getEditorInput()), true);
-            // success = true;
-            // } catch (final CoreException x) {
-            // final IStatus status = x.getStatus();
-            // if (status == null || status.getSeverity() != IStatus.CANCEL) {
-            // ErrorDialog.openError(shell, Messages.dTableEditorSaveErrorTitle,
-            // Messages.dTableEditorSaveErrorMessage, x.getStatus());
-            // }
-            // } finally {
-            // provider.changed(newInput);
-            // if (success) {
-            // setInput(newInput);
-            // }
-            // }
             if (progressMonitor != null) {
                 progressMonitor.setCanceled(!success);
             }
@@ -634,8 +572,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor#dispose()
      */
     @Override
     public void dispose() {
@@ -648,14 +584,12 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
             ((IDisposable) getAdapterFactory()).dispose();
         }
 
-        new InstanceScope().getNode(SiriusPlugin.ID).removePreferenceChangeListener(viewPointPreferenceChangeListener);
+        InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).removePreferenceChangeListener(viewPointPreferenceChangeListener);
         viewPointPreferenceChangeListener = null;
     }
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tree.ui.tools.api.editor.DTreeEditor#getControl()
      */
     public Control getControl() {
         TreeViewer treeViewer = this.getTableViewer().getTreeViewer();

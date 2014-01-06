@@ -67,7 +67,7 @@ public class WorkspaceImagePathSelector extends SelectionAdapter {
         IFile[] selectedResources = WorkspaceResourceDialogWithFilter.openFileSelection(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Background image", "Select the image file:", false,
                 null, filters);
         if (selectedResources != null && selectedResources.length == 1) {
-            workspacePathText.setText(((IFile) selectedResources[0]).getFullPath().makeRelative().toString());
+            workspacePathText.setText(selectedResources[0].getFullPath().makeRelative().toString());
         }
     }
 
@@ -101,7 +101,7 @@ public class WorkspaceImagePathSelector extends SelectionAdapter {
                 IContainer container = (IContainer) element;
                 if (!container.isDerived()) {
                     try {
-                        final IResource[] members = ((IContainer) container).members();
+                        final IResource[] members = container.members();
                         for (IResource member : members) {
                             isValid = select(viewer, parentElement, member);
                             if (isValid) {

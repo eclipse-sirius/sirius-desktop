@@ -58,8 +58,10 @@ public class DTableViewerListener implements ITreeViewerListener, ControlListene
     /**
      * Default constructor.
      * 
+     * @param dTableViewerManager
+     *            the table viewer manager.
      * @param session
-     *            {@link Session}
+     *            the session.
      */
     public DTableViewerListener(DTableViewerManager dTableViewerManager, Session session) {
         this.dTableViewerManager = dTableViewerManager;
@@ -142,8 +144,8 @@ public class DTableViewerListener implements ITreeViewerListener, ControlListene
                 featureName = TablePackage.eINSTANCE.getDTable_HeaderColumnWidth().getName();
             }
             ModelAccessor modelAccessor = session.getModelAccessor();
-            TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-            if (mustUpdateModel && modelAccessor.getPermissionAuthority().canEditFeature(objectToModify, featureName) && ((TransactionalEditingDomainImpl) domain).getActiveTransaction() == null) {
+            TransactionalEditingDomain ted = session.getTransactionalEditingDomain();
+            if (mustUpdateModel && modelAccessor.getPermissionAuthority().canEditFeature(objectToModify, featureName) && ((TransactionalEditingDomainImpl) ted).getActiveTransaction() == null) {
                 // If the user has resized the column with a null size
                 // We set it to 1 to avoid that the DColumn width is considered
                 // as default
@@ -151,9 +153,9 @@ public class DTableViewerListener implements ITreeViewerListener, ControlListene
                     widgetWidth = 1;
                 }
                 if (objectToModify instanceof DColumn && widgetWidth != dColumn.getWidth()) {
-                    domain.getCommandStack().execute(new ChangeColumnWidthCommand(session, widgetWidth, dColumn));
+                    ted.getCommandStack().execute(new ChangeColumnWidthCommand(session, widgetWidth, dColumn));
                 } else if (dTable.getHeaderColumnWidth() != widgetWidth) {
-                    domain.getCommandStack().execute(new ChangeColumnWidthCommand(session, widgetWidth, dTable));
+                    ted.getCommandStack().execute(new ChangeColumnWidthCommand(session, widgetWidth, dTable));
                 }
 
             }

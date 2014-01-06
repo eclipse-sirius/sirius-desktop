@@ -45,7 +45,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -68,6 +67,7 @@ import org.eclipse.sirius.diagram.part.SiriusDiagramUpdater;
 import org.eclipse.sirius.diagram.part.SiriusNodeDescriptor;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IBorderItemOffsets;
+import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -551,8 +551,8 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
             // Compute the best location according to other existing bordered
             // nodes.
             CanonicalDBorderItemLocator locator = new CanonicalDBorderItemLocator(parentNode, PositionConstants.NSEW);
-            if (portNode instanceof DDiagramElement) {
-                if (new DDiagramElementQuery((DDiagramElement) portNode).isIndirectlyCollapsed()) {
+            if (portNode != null) {
+                if (new DDiagramElementQuery(portNode).isIndirectlyCollapsed()) {
                     locator.setBorderItemOffset(IBorderItemOffsets.COLLAPSE_FILTER_OFFSET);
                 } else {
                     locator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);

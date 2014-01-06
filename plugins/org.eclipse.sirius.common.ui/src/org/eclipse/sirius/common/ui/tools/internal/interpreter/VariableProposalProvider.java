@@ -110,7 +110,7 @@ public class VariableProposalProvider implements IProposalProvider {
                 proposals.add(new ContentProposal(VariableInterpreter.SELF_VARIABLE_NAME, VariableInterpreter.SELF_VARIABLE_NAME, VariableInterpreter.SELF_VARIABLE_NAME));
             }
             while (variablesIterator.hasNext()) {
-                Map.Entry<java.lang.String, java.lang.String> entry = (Map.Entry<java.lang.String, java.lang.String>) variablesIterator.next();
+                Map.Entry<String, String> entry = variablesIterator.next();
                 String variableName = entry.getKey();
                 String variableType = entry.getValue();
                 if (variableName.startsWith(variableNamePrefix)) {

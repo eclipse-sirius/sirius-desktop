@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.common.ui.tools.api.util.SWTResourceLRUCache;
+import org.eclipse.sirius.ext.swt.SWTResourceLRUCache;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.FontFormat;
@@ -31,7 +31,6 @@ import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.SystemColor;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Pattern;
@@ -417,22 +416,6 @@ public class VisualBindingManager {
      */
     public Color getColorFromValue(final int value, final int max, final int min) {
         return getColorFromCache(getColorCodeValue(value, max, min));
-    }
-
-    /**
-     * Initialize the {@link Browser} color using all the colors defined in the
-     * cache.
-     * 
-     * @param browser
-     *            {@link Browser} instance to initialize.
-     */
-    public void prepareColors(final Browser browser) {
-        final Iterator<String> it = systemPalette.keySet().iterator();
-        while (it.hasNext()) {
-            final String name = it.next();
-            final Color color = getColorFromCache(systemPalette.get(name));
-            // TODO browser.setBackground(color);
-        }
     }
 
     /**

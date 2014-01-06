@@ -22,7 +22,6 @@ import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappin
 import org.eclipse.sirius.business.api.query.DiagramDescriptionMappingManagerQuery;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.ContainerMappingImport;
@@ -32,6 +31,7 @@ import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 
 import com.google.common.base.Predicate;
@@ -178,7 +178,6 @@ public class CandidateMappingManager {
 
     }
 
-    // TODOMCH move this in a helper or derivated feature
     /**
      * Get the imported mapping from a mapping import.
      * 

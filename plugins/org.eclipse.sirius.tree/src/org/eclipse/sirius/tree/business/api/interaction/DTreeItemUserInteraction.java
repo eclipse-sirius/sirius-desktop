@@ -12,8 +12,7 @@ package org.eclipse.sirius.tree.business.api.interaction;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.synchronizer.SemanticPartitionInvalidator;
-
-import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.query.DTreeItemQuery;

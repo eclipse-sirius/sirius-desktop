@@ -22,16 +22,8 @@ import org.eclipse.jface.layout.TreeColumnLayout;
 import org.eclipse.jface.viewers.CellLabelProvider;
 import org.eclipse.jface.viewers.ColumnPixelData;
 import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Tree;
-import org.eclipse.swt.widgets.TreeColumn;
-import org.eclipse.ui.PlatformUI;
-
-import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
@@ -47,6 +39,11 @@ import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.ui.tools.internal.util.ItemSearcher;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.swt.widgets.TreeColumn;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * This class is an EMF Adapter which listen change in the model to update a
@@ -238,7 +235,7 @@ public class DTableContentAdapter extends ResourceSetListenerImpl {
     private void move(final int position, final Integer oldValue, final DTargetColumn newValue) {
         PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
             public void run() {
-                addNewColumn(position + 1, (DTargetColumn) newValue);
+                addNewColumn(position + 1, newValue);
                 final int newPosition = position + 1;
                 final int oldPosition = oldValue.intValue() + 1;
                 if (newPosition < oldPosition) {
@@ -327,7 +324,7 @@ public class DTableContentAdapter extends ResourceSetListenerImpl {
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REFRESH_SWT_LINE_KEY);
             break;
         case TablePackage.DLINE__COLLAPSED:
-            if (n.getNewValue() instanceof Boolean && dTableTreeViewer instanceof DTableTreeViewer) {
+            if (n.getNewValue() instanceof Boolean && dTableTreeViewer != null) {
                 DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHANGE_SWT_LINE_COLAPSE_STATE_KEY);
                 final boolean collapsed = n.getNewBooleanValue();
                 PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
@@ -341,7 +338,7 @@ public class DTableContentAdapter extends ResourceSetListenerImpl {
             }
             break;
         case TablePackage.DLINE__VISIBLE:
-            if (n.getNewValue() instanceof Boolean && dTableTreeViewer instanceof DTableTreeViewer) {
+            if (n.getNewValue() instanceof Boolean && dTableTreeViewer != null) {
                 DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHANGE_SWT_LINE_VISIBLE_STATE_KEY);
                 dTableTreeViewer.refresh(false);
                 DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CHANGE_SWT_LINE_VISIBLE_STATE_KEY);
@@ -392,9 +389,8 @@ public class DTableContentAdapter extends ResourceSetListenerImpl {
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REFRESH_TABLE_KEY);
             break;
         case TablePackage.DCOLUMN__VISIBLE:
-            if (n.getNewValue() instanceof Boolean && dTableTreeViewer instanceof DTableTreeViewer) {
+            if (n.getNewValue() instanceof Boolean && dTableTreeViewer != null) {
                 Display.getDefault().asyncExec(new Runnable() {
-
                     public void run() {
                         if (dTableTreeViewer != null && dTableTreeViewer.getControl() != null && !dTableTreeViewer.getTree().isDisposed()) {
                             for (int i = 0; i < dTableTreeViewer.getTree().getColumns().length; i++) {
@@ -402,25 +398,29 @@ public class DTableContentAdapter extends ResourceSetListenerImpl {
                                 if (labelProvider instanceof DTableColumnLabelProvider && ((DTableColumnLabelProvider) labelProvider).isProvideColumn(dColumn)) {
                                     DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHANGE_SWT_COLUMN_VISIBLE_STATE_KEY);
                                     final TreeColumn treeColumn = dTableTreeViewer.getTree().getColumn(i);
-                                    if (n.getNewBooleanValue()) {
-                                        // Show column
-                                        final Integer restoredWith = (Integer) treeColumn.getData("restoredWidth");
-                                        if (restoredWith != null) {
-                                            treeColumn.setWidth(restoredWith.intValue());
-                                            ((TreeColumnLayout) treeColumn.getParent().getParent().getLayout()).setColumnData(treeColumn, new ColumnPixelData(restoredWith.intValue()));
-                                        } else {
-                                            treeColumn.pack();
-                                            ((TreeColumnLayout) treeColumn.getParent().getParent().getLayout()).setColumnData(treeColumn, new ColumnPixelData(treeColumn.getWidth()));
-                                        }
-                                    } else {
-                                        // Hide column
-                                        treeColumn.setData("restoredWidth", Integer.valueOf(treeColumn.getWidth()));
-                                        treeColumn.setWidth(0);
-                                        ((TreeColumnLayout) treeColumn.getParent().getParent().getLayout()).setColumnData(treeColumn, new ColumnPixelData(0));
-                                    }
+                                    handleColumn(treeColumn, n);
                                     DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CHANGE_SWT_COLUMN_VISIBLE_STATE_KEY);
                                 }
                             }
+                        }
+                    }
+
+                    protected void handleColumn(final TreeColumn treeColumn, final Notification n) {
+                        if (n.getNewBooleanValue()) {
+                            // Show column
+                            final Integer restoredWith = (Integer) treeColumn.getData("restoredWidth");
+                            if (restoredWith != null) {
+                                treeColumn.setWidth(restoredWith.intValue());
+                                ((TreeColumnLayout) treeColumn.getParent().getParent().getLayout()).setColumnData(treeColumn, new ColumnPixelData(restoredWith.intValue()));
+                            } else {
+                                treeColumn.pack();
+                                ((TreeColumnLayout) treeColumn.getParent().getParent().getLayout()).setColumnData(treeColumn, new ColumnPixelData(treeColumn.getWidth()));
+                            }
+                        } else {
+                            // Hide column
+                            treeColumn.setData("restoredWidth", Integer.valueOf(treeColumn.getWidth()));
+                            treeColumn.setWidth(0);
+                            ((TreeColumnLayout) treeColumn.getParent().getParent().getLayout()).setColumnData(treeColumn, new ColumnPixelData(0));
                         }
                     }
                 });
@@ -513,7 +513,7 @@ public class DTableContentAdapter extends ResourceSetListenerImpl {
                 DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.UPDATE_SWT_LINE_KEY);
             } else if (notifier.eContainer() instanceof DLine) {
                 DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.UPDATE_SWT_LINE_KEY);
-                updateViewer((DLine) notifier.eContainer());
+                updateViewer(notifier.eContainer());
                 DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.UPDATE_SWT_LINE_KEY);
             } else if (notifier.eContainer() instanceof DColumn) {
                 DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_SWT_TABLE_KEY);

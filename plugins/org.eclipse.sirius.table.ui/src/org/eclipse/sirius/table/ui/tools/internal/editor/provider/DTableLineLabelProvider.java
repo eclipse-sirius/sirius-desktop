@@ -31,7 +31,7 @@ public class DTableLineLabelProvider extends DSemanticTargetBasedLabelProvider i
     /**
      * Constructor.
      * 
-     * @param decorator
+     * @param decorator the decorator to use.
      */
     public DTableLineLabelProvider(ILabelDecorator decorator) {
         super(ViewHelper.INSTANCE.createAdapterFactory());

@@ -19,14 +19,15 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.diagram.ui.internal.commands.SetConnectionBendpointsCommand;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.tools.internal.util.GMFNotationUtilities;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * A specific SetConnectionBendpointsCommand to change all GMF edges of this
@@ -127,13 +128,13 @@ public class TreeLayoutSetConnectionBendpointsCommand extends SetConnectionBendp
                 Point sourceRefPoint = getSourceRefPoint();
                 if (deltaXTarget != 0) {
                     // Move targetAnchor according to delta
-                    Option<Point> optionalTargetRefPoint = GMFNotationUtilities.setTargetAnchor(edge, deltaXTarget);
+                    Option<? extends Point> optionalTargetRefPoint = GMFNotationUtilities.setTargetAnchor(edge, deltaXTarget);
                     if (optionalTargetRefPoint.some()) {
                         targetRefPoint = optionalTargetRefPoint.get();
                     }
                 } else if (deltaXSource != 0) {
                     // Move sourceAnchor according to delta
-                    Option<Point> optionalSourceRefPoint = GMFNotationUtilities.setSourceAnchor(edge, deltaXTarget);
+                    Option<PrecisionPoint> optionalSourceRefPoint = GMFNotationUtilities.setSourceAnchor(edge, deltaXTarget);
                     if (optionalSourceRefPoint.some()) {
                         sourceRefPoint = optionalSourceRefPoint.get();
                     }

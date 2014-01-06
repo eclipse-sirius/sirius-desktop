@@ -38,7 +38,6 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.Edge;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramBorderNodeEditPartOperation;
 import org.eclipse.sirius.diagram.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
@@ -74,6 +73,7 @@ import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.tools.api.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.swt.graphics.Color;
 
 import com.google.common.base.Predicate;
@@ -526,7 +526,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             Rectangle bounds = feedbackLayer.getBounds().getCopy();
             bounds.y = conflictingPosition.y;
             bounds.height = 1;
-            
+
             HorizontalGuide conflictGuide = new HorizontalGuide(ColorConstants.red, conflictingPosition.y);
             conflictGuide.setBounds(bounds);
             addFeedback(conflictGuide);
@@ -542,7 +542,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             Rectangle bounds = feedbackLayer.getBounds().getCopy();
             bounds.height = expand.width();
             bounds.y = expand.getLowerBound();
-            
+
             RangeGuide expansion = new RangeGuide(validator.isValid() ? ColorConstants.blue : ColorConstants.red, expand, true);
             expansion.setBounds(bounds);
             addFeedback(expansion);

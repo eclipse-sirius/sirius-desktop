@@ -19,8 +19,6 @@ bq.
   % mvn clean package -Dplatform-version-name=<name>
 
 where @<name>@ can be any of the supported platform versions:
-* @helios@ (Eclipse 3.6)
-* @indigo@ (Eclipse 3.7)
 * @juno@ (Eclipse 4.2)
 * @kepler@ (Eclipse 4.3)
 * @luna@ (Eclipse 4.4M2)

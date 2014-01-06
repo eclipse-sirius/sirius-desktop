@@ -27,12 +27,8 @@ import org.eclipse.ui.texteditor.ITextEditorActionDefinitionIds;
  * @author smonnier
  */
 public abstract class TextWithContentAssistChangeHelper extends TextChangeHelper {
-
-    public TextWithContentAssistChangeHelper() {
-    }
-
     /**
-     * @see org.eclipse.swt.widgets.Listener#handleEvent(org.eclipse.swt.widgets.Event)
+     * {@inheritDoc}
      */
     @Override
     public void handleEvent(Event event) {
@@ -43,7 +39,8 @@ public abstract class TextWithContentAssistChangeHelper extends TextChangeHelper
             final KeyStroke keyStroke = getKeyStroke(contentAssistBindings[0]);
             switch (event.type) {
             case SWT.KeyDown:
-                if (event.character == SWT.CR && notifyOnCarriageReturn || (keyStroke != null && event.keyCode == keyStroke.getNaturalKey() && event.stateMask == keyStroke.getModifierKeys())) {
+                boolean isCR = event.character == SWT.CR && notifyOnCarriageReturn;
+                if (isCR || (keyStroke != null && event.keyCode == keyStroke.getNaturalKey() && event.stateMask == keyStroke.getModifierKeys())) {
                     textChanged((Text) event.widget);
                 }
                 break;

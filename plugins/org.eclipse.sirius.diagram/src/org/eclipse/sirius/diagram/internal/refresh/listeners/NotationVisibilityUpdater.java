@@ -150,7 +150,7 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
             if (GMFNotationHelper.isNoteAttachment(sourceEdge)) {
                 Set<View> linked = Sets.newHashSet();
                 linked.add(viewToDelete);
-                collectLinkedViews((Node) target, linked, viewsToUpdate);
+                collectLinkedViews(target, linked, viewsToUpdate);
                 linked.remove(viewToDelete);
 
                 linkedViews.addAll(getSafe(linked));
@@ -163,7 +163,7 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
             if (GMFNotationHelper.isNoteAttachment(targetEdge)) {
                 Set<View> linked = Sets.newHashSet();
                 linked.add(viewToDelete);
-                collectLinkedViews((Node) source, linked, viewsToUpdate);
+                collectLinkedViews(source, linked, viewsToUpdate);
                 linked.remove(viewToDelete);
 
                 linkedViews.addAll(getSafe(linked));
@@ -202,7 +202,7 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
             }
             if (GMFNotationHelper.isNoteAttachment(sourceEdge)) {
                 if (!linkedViews.contains(target) && target instanceof Node && GMFNotationHelper.isNote((Node) target)) {
-                    collectLinkedViews((Node) target, linkedViews, viewsToUpdate);
+                    collectLinkedViews(target, linkedViews, viewsToUpdate);
                 } else if (target.isVisible() && sourceIsNotViewToUpdate) {
                     linkedViews.add(target);
                 }
@@ -217,7 +217,7 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
             }
             if (GMFNotationHelper.isNoteAttachment(targetEdge)) {
                 if (!linkedViews.contains(source) && source instanceof Node && GMFNotationHelper.isNote((Node) source)) {
-                    collectLinkedViews((Node) source, linkedViews, viewsToUpdate);
+                    collectLinkedViews(source, linkedViews, viewsToUpdate);
                 } else if (source.isVisible() && sourceIsNotViewToUpdate) {
                     linkedViews.add(source);
                 }

@@ -34,12 +34,15 @@ import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
  */
-public class DTableEditorUtil {
+public final class DTableEditorUtil {
+    private DTableEditorUtil() {
+        // Prevents instanciation/
+    }
 
     /**
      * Adds a new column to the given viewer, at the given position.
      * 
-     * @param dTableViewerManager
+     * @param treeViewerManager
      *            the table viewer on which the new column should be added
      * @param position
      *            the position of the column
@@ -64,7 +67,7 @@ public class DTableEditorUtil {
      * Updates the viewer columns according to the given {@link DTable} :
      * creates, deletes and update columns width if needed.
      * 
-     * @param dTableTreeViewer
+     * @param treeViewerManager
      *            the table viewer to update
      * @param dTable
      *            the {@link DTable} reflecting the expected viewer state
@@ -77,7 +80,7 @@ public class DTableEditorUtil {
         TreeColumn treeColumn = treeColumns[0];
         TreeColumnWidthQuery treeColumnWidthQuery = new TreeColumnWidthQuery(treeColumn);
         Display.getDefault().syncExec(treeColumnWidthQuery);
-        int widgetWidth = (Integer) treeColumnWidthQuery.getResult();
+        int widgetWidth = treeColumnWidthQuery.getResult();
         if (dTable.getHeaderColumnWidth() != widgetWidth && dTable.getHeaderColumnWidth() > 0) {
             treeColumn.setWidth(dTable.getHeaderColumnWidth());
         }
@@ -92,7 +95,7 @@ public class DTableEditorUtil {
                 handledDColumns.add(dColumn);
                 treeColumnWidthQuery = new TreeColumnWidthQuery(treeColumn);
                 Display.getDefault().syncExec(treeColumnWidthQuery);
-                widgetWidth = (Integer) treeColumnWidthQuery.getResult();
+                widgetWidth = treeColumnWidthQuery.getResult();
                 // If the DColumn as a default width (0) then resizing at
                 // opening should not impact the model
                 if (dColumn.isVisible() && dColumn.getWidth() > 0 && dColumn.getWidth() != widgetWidth) {

@@ -39,7 +39,6 @@ import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.query.ViewpointURIQuery;
 import org.eclipse.sirius.business.internal.movida.ViewpointDependenciesTracker;
 import org.eclipse.sirius.business.internal.movida.ViewpointResourceOperations;
-import org.eclipse.sirius.business.internal.movida.dependencies.Relation;
 import org.eclipse.sirius.business.internal.movida.registry.MaskingPolicy.MaskingChange;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.CompositeResourceMonitor;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.LegacyPluginMonitor;
@@ -47,8 +46,9 @@ import org.eclipse.sirius.business.internal.movida.registry.monitoring.PluginMon
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.ViewpointResourceListener;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.ViewpointResourceMonitor;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.WorkspaceMonitor;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.base.relations.Relation;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Component;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -431,7 +431,6 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
                 result = Options.newNone();
             } else if (!vsm.getErrors().isEmpty()) {
                 warning(MessageFormat.format("Errors occured while trying to load the VSM at {0}", uri), null);
-                // TODO Report the errors to the end-user/specifier.
                 vsm.unload();
                 resourceSet.getResources().remove(vsm);
                 result = Options.newNone();

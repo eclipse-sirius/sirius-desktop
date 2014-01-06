@@ -51,7 +51,7 @@ public class SemanticPropertySection extends AdvancedPropertySection implements 
         IPropertySource propSrc = null;
         Object selectedObject = object;
         if (selectedObject instanceof IAdaptable) {
-            selectedObject = (EObject) ((IAdaptable) selectedObject).getAdapter(EObject.class);
+            selectedObject = ((IAdaptable) selectedObject).getAdapter(EObject.class);
         }
         AdapterFactory af = SiriusEditPlugin.getPlugin().getItemProvidersAdapterFactory();
         if (af != null && (isSemanticEObject(selectedObject) || object instanceof PropertyValueWrapper)) {

@@ -34,7 +34,7 @@ public class CreateCellRecordingCommand extends RecordingCommand {
     private ITableCommandFactory tableCommandFactory;
 
     /**
-     * {@inheritDoc}
+     * Create a new CreateCellRecordingCommand.
      * 
      * @param domain
      *            my domain

@@ -22,8 +22,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
@@ -78,10 +78,12 @@ public class TypeAssistant {
             } else if (value instanceof EPackage.Descriptor) {
                 try {
                     addProposals(proposals, ((EPackage.Descriptor) value).getEPackage(), incompleteName);
+                    // CHECKSTYLE:OFF
                 } catch (Exception e) {
                     // we don't really know what might go on from now, some
                     // other Eclipse tools might break the registry some time,
                     // we should just go on and ignore any issue.
+                    // CHECKSTYLE:ON
                 }
             }
         }

@@ -31,14 +31,9 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.CartesianProduct;
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.refresh.GSetIntersection;
-import org.eclipse.sirius.business.api.refresh.MultipleCollection;
-import org.eclipse.sirius.business.api.refresh.SetIntersection;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
@@ -68,6 +63,11 @@ import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVar
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.base.collect.GSetIntersection;
+import org.eclipse.sirius.ext.base.collect.MultipleCollection;
+import org.eclipse.sirius.ext.base.collect.SetIntersection;
 
 /**
  * The synchronizer for tables.

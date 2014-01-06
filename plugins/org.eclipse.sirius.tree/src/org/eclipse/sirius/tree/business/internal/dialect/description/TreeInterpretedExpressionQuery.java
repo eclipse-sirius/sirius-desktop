@@ -18,8 +18,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
@@ -70,7 +70,7 @@ public class TreeInterpretedExpressionQuery extends AbstractInterpretedExpressio
     protected void appendAllLocalVariableDefinitions(Multimap<String, String> definitions, EObject context) {
         super.appendAllLocalVariableDefinitions(definitions, context);
         // Direct edit defines numbered variables based on their mask.
-        if (context instanceof TreeItemEditionTool && ((TreeItemEditionTool) context).getMask() instanceof EditMaskVariables) {
+        if (context instanceof TreeItemEditionTool && ((TreeItemEditionTool) context).getMask() != null) {
             EditMaskVariables emv = ((TreeItemEditionTool) context).getMask();
             appendEditMaskVariables(emv, definitions);
         }

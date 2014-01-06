@@ -40,6 +40,12 @@ public class SortDColumnsCommand extends RecordingCommand {
      * @param domain
      *            the {@link TransactionalEditingDomain} on which this command
      *            will be executed
+     * @param dTable
+     *            the table to modify.
+     * @param dLine
+     *            the line on which to sort the columns.
+     * @param sortDirection
+     *            the direction in which to sort. One of SWT.UP or SWT.DOWN.
      */
     public SortDColumnsCommand(TransactionalEditingDomain domain, DTable dTable, DLine dLine, int sortDirection) {
         super(domain, (sortDirection == SWT.UP ? "Ascending " : "Descending ") + "columns sorting");
@@ -58,5 +64,4 @@ public class SortDColumnsCommand extends RecordingCommand {
             dTable.getColumns().add(dColumn);
         }
     }
-
 }

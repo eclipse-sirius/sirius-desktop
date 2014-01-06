@@ -35,7 +35,7 @@ import org.osgi.framework.Constants;
 import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.util.LRUCache;
+import org.eclipse.sirius.ext.base.cache.LRUCache;
 
 /**
  * To find a module file in the workspace or in the plugins.
@@ -233,7 +233,7 @@ public class FileProvider {
 
     private File getFileFromBundles(final IPath relativePath, final Bundle bundle) {
 
-        final String requiredBundles = (String) bundle.getHeaders().get(Constants.REQUIRE_BUNDLE);
+        final String requiredBundles = bundle.getHeaders().get(Constants.REQUIRE_BUNDLE);
         if (requiredBundles != null) {
             final StringTokenizer st = new StringTokenizer(requiredBundles, ",");
             while (st.hasMoreTokens()) {

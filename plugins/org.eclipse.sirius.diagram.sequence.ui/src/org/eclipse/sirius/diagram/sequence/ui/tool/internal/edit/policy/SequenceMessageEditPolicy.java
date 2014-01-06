@@ -39,8 +39,6 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.commands.SetConnectionBendpoi
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.Edge;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
@@ -78,6 +76,8 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.swt.graphics.Color;
 
 import com.google.common.base.Function;
@@ -138,7 +138,6 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
          * Do nothing: the handles created by default use a raw GEF drag tracker
          * which we do not control, and which can lead to disconnections of
          * branches on reflective messages.
-         * 
          */
     }
 

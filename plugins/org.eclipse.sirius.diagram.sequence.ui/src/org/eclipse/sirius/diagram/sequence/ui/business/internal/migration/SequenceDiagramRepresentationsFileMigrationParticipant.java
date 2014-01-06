@@ -19,10 +19,8 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.CollapseFilter;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -43,6 +41,7 @@ import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype.SequenceCollapseUpdater;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
@@ -62,7 +61,11 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
     /**
      * The latest VP version for this participant.
      */
-    private static final Version MIGRATION_VERSION = new Version("6.5.3.201301221200");
+    private static final Version MIGRATION_VERSION = new Version("6.7.0.201302181200");
+
+    private static final Version ALREADY_MIGRATED_VERSION = new Version("6.5.3");
+
+    private static final Version NOT_MIGRATED_VERSION = new Version("6.6.0");
 
     private Predicate<Node> isNode = new IsNode();
 
@@ -85,9 +88,16 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
     public void postLoad(DAnalysis dAnalysis, Version loadedVersion) {
         super.postLoad(dAnalysis, loadedVersion);
 
-        List<Diagram> sequenceDiagrams = getGMFSequenceDiagrams(dAnalysis);
-        if (!sequenceDiagrams.isEmpty()) {
-            migrateGMFBoundsOfCollapsedBorderedNode(sequenceDiagrams);
+        if (loadedVersion.compareTo(MIGRATION_VERSION) < 0) {
+            // The 6.5.3 maintenance version already contains the migration,
+            // migration should be done for versions in
+            // [0.0.0, 6.5.3[ U [6.6.0, 6.7.0[.
+            if (loadedVersion.compareTo(ALREADY_MIGRATED_VERSION) < 0 || loadedVersion.compareTo(NOT_MIGRATED_VERSION) >= 0) {
+                List<Diagram> sequenceDiagrams = getGMFSequenceDiagrams(dAnalysis);
+                if (!sequenceDiagrams.isEmpty()) {
+                    migrateGMFBoundsOfCollapsedBorderedNode(sequenceDiagrams);
+                }
+            }
         }
     }
 
@@ -103,7 +113,7 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
 
         for (DView view : dAnalysis.getOwnedViews()) {
             for (SequenceDDiagram diagram : Iterables.filter(view.getOwnedRepresentations(), SequenceDDiagram.class)) {
-                DDiagramGraphicalQuery query = new DDiagramGraphicalQuery((DDiagram) diagram);
+                DDiagramGraphicalQuery query = new DDiagramGraphicalQuery(diagram);
                 Option<Diagram> option = query.getAssociatedGMFDiagram();
                 if (option.some()) {
                     diagrams.add(option.get());
@@ -172,8 +182,10 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
             }
         }
         for (DDiagramElement indirectlyCollaspedDDE : indirectlyCollaspedDDEs) {
-            IndirectlyCollapseFilter indirectlyCollapseFilter = DiagramFactory.eINSTANCE.createIndirectlyCollapseFilter();
-            indirectlyCollaspedDDE.getGraphicalFilters().add(indirectlyCollapseFilter);
+            if (!Iterables.any(indirectlyCollaspedDDE.getGraphicalFilters(), Predicates.instanceOf(IndirectlyCollapseFilter.class))) {
+                IndirectlyCollapseFilter indirectlyCollapseFilter = DiagramFactory.eINSTANCE.createIndirectlyCollapseFilter();
+                indirectlyCollaspedDDE.getGraphicalFilters().add(indirectlyCollapseFilter);
+            }
         }
     }
 

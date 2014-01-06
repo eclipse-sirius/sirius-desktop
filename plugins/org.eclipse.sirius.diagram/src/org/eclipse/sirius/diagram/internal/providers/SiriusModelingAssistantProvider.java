@@ -217,7 +217,7 @@ public class SiriusModelingAssistantProvider extends ModelingAssistantProvider {
         Diagram diagram = (Diagram) editPart.getRoot().getContents().getModel();
         Collection<EObject> elements = new HashSet<EObject>();
         for (Iterator<EObject> it = diagram.getElement().eAllContents(); it.hasNext();) {
-            EObject element = (EObject) it.next();
+            EObject element = it.next();
             if (isApplicableElement(element, types)) {
                 elements.add(element);
             }
@@ -225,7 +225,7 @@ public class SiriusModelingAssistantProvider extends ModelingAssistantProvider {
         if (elements.isEmpty()) {
             return null;
         }
-        return selectElement((EObject[]) elements.toArray(new EObject[elements.size()]));
+        return selectElement(elements.toArray(new EObject[elements.size()]));
     }
 
     /**

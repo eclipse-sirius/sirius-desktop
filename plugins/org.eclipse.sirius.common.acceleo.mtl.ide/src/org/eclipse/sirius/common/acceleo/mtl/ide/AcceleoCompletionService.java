@@ -10,9 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.ide;
 
-import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.DynamicAcceleoModule;
-import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
-
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -33,6 +30,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.text.Document;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
+import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.DynamicAcceleoModule;
+import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 
 /**
  * Service to provide completion for the Acceleo MTL interpreter.
@@ -52,7 +51,7 @@ public class AcceleoCompletionService {
     /**
      * Constructor.
      * 
-     * @param mtl
+     * @param moduleContent
      *            the dynamic module.
      * @param module
      *            The dynamic acceleo module in which our dependencies have been

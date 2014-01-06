@@ -26,10 +26,10 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.SubContributionItem;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.ArrangeAllOnlyLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPart;
@@ -116,7 +116,7 @@ public class DiagramMenuUpdater implements ISelectionListener {
         }
         if (graphicalElement != null) {
             RootEditPart root = graphicalElement.getRoot();
-            if (root != null && (IGraphicalEditPart) root.getChildren().iterator().next() instanceof IGraphicalEditPart) {
+            if (root != null && (IGraphicalEditPart) root.getChildren().iterator().next() != null) {
                 IGraphicalEditPart diagramEditPart = (IGraphicalEditPart) root.getChildren().iterator().next();
 
                 // Step 2 : we get the LayoutNodeProvider associated to this

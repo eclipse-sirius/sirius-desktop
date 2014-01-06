@@ -13,8 +13,8 @@ package org.eclipse.sirius.common.tools.api.profiler;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 
 /**
  * An profilerTask registry maintains a mapping between symbolic profilerTask

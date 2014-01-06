@@ -286,7 +286,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
          */
         private void reflectPreferencesOnCore(final SiriusPreferencesKeys key) {
             final IPreferenceStore uiPreferenceStore = this.getPreferenceStore();
-            final IEclipsePreferences corePreferenceStore = new InstanceScope().getNode(SiriusPlugin.ID);
+            final IEclipsePreferences corePreferenceStore = InstanceScope.INSTANCE.getNode(SiriusPlugin.ID);
 
             final String keyName = key.name();
             if (key.getType() == boolean.class) {

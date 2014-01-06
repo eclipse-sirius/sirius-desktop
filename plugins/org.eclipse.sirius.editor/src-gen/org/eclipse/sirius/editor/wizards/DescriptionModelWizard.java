@@ -127,7 +127,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
         if (initialObjectNames == null) {
             initialObjectNames = new ArrayList<String>();
             for (Iterator<EClassifier> classifiers = descriptionPackage.getEClassifiers().iterator(); classifiers.hasNext();) {
-                EClassifier eClassifier = (EClassifier) classifiers.next();
+                EClassifier eClassifier = classifiers.next();
                 if (eClassifier instanceof EClass) {
                     EClass eClass = (EClass) eClassifier;
                     if (!eClass.isAbstract()) {
@@ -326,7 +326,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
             }
 
             for (Iterator<String> i = getInitialObjectNames().iterator(); i.hasNext();) {
-                initialObjectField.add(getLabel((String) i.next()));
+                initialObjectField.add(getLabel(i.next()));
             }
 
             if (initialObjectField.getItemCount() == 1) {
@@ -351,7 +351,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
             }
 
             for (Iterator<String> i = getEncodings().iterator(); i.hasNext();) {
-                encodingField.add((String) i.next());
+                encodingField.add(i.next());
             }
 
             encodingField.select(0);
@@ -388,7 +388,7 @@ public class DescriptionModelWizard extends Wizard implements INewWizard {
             String label = initialObjectField.getText();
 
             for (Iterator<String> i = getInitialObjectNames().iterator(); i.hasNext();) {
-                String name = (String) i.next();
+                String name = i.next();
                 if (getLabel(name).equals(label)) {
                     return name;
                 }

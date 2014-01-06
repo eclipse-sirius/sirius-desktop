@@ -23,12 +23,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.sirius.business.api.query.EClassQuery;
 import org.eclipse.sirius.business.api.query.EClassesQuery;
 import org.eclipse.sirius.business.api.query.EStructuralFeaturesQuery;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.emf.EClassQuery;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
@@ -120,7 +120,7 @@ public class EReferenceCustomizationValuePropertySection extends AbstractComboPr
         List<?> values = Collections.emptyList();
         List<IItemPropertyDescriptor> propertyDescriptors = getDescriptors();
         for (Iterator<IItemPropertyDescriptor> iterator = propertyDescriptors.iterator(); iterator.hasNext();) {
-            IItemPropertyDescriptor propertyDescriptor = (IItemPropertyDescriptor) iterator.next();
+            IItemPropertyDescriptor propertyDescriptor = iterator.next();
             if (((EStructuralFeature) propertyDescriptor.getFeature(eObject)) == getFeature())
                 values = new ArrayList<Object>(propertyDescriptor.getChoiceOfValues(eObject));
         }

@@ -17,13 +17,13 @@ import org.eclipse.sirius.business.api.diagramtype.ICollapseUpdater;
 import org.eclipse.sirius.business.api.helper.filter.FilterService;
 import org.eclipse.sirius.business.api.query.CompositeFilterDescriptionQuery;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.AppliedCompositeFilters;
 import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
+import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;

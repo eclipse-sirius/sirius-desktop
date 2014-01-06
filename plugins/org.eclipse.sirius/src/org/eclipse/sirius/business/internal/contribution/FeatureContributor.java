@@ -18,7 +18,6 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.sirius.business.api.query.EStructuralFeatureQuery;
 import org.eclipse.sirius.description.contribution.AddFeatureContribution;
 import org.eclipse.sirius.description.contribution.ClearFeatureContribution;
 import org.eclipse.sirius.description.contribution.FeatureContribution;
@@ -27,6 +26,7 @@ import org.eclipse.sirius.description.contribution.RemoveFeatureContribution;
 import org.eclipse.sirius.description.contribution.ResetFeatureContribution;
 import org.eclipse.sirius.description.contribution.SetFeatureContribution;
 import org.eclipse.sirius.description.contribution.util.ContributionSwitch;
+import org.eclipse.sirius.ext.emf.EStructuralFeatureQuery;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
@@ -40,8 +40,6 @@ import com.google.common.collect.Iterables;
  * 
  * @author pierre-charles.david@obeo.fr
  */
-// TODO Extract the validation logic into a method which can be called by
-// Contributor with no side-effect on elements.
 public class FeatureContributor {
     private static final String TARGET_OBJECT = "Target object";
 

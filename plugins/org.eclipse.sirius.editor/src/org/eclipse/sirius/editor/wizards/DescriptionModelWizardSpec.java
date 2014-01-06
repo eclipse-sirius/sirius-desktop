@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.wizards;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
@@ -22,25 +21,12 @@ import org.eclipse.ui.IWorkbench;
 public class DescriptionModelWizardSpec extends DescriptionModelWizard {
 
     /**
-     * This just records the information.
+     * {@inheritDoc}
      */
     public void init(IWorkbench workbench, IStructuredSelection selection) {
         this.workbench = workbench;
         this.selection = selection;
         setWindowTitle(SiriusEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
         setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(SiriusEditorPlugin.INSTANCE.getImage("full/wizban/banner_odesign")));
-    }
-
-    /**
-     * Create a new model.
-     */
-    @Override
-    protected EObject createInitialModel() {
-        // super should create the group and name it.
-        EObject rootObject = super.createInitialModel();
-        // if (rootObject instanceof Group) {
-        // addNecessaryMigrationTags((Group) rootObject);
-        // }
-        return rootObject;
     }
 }

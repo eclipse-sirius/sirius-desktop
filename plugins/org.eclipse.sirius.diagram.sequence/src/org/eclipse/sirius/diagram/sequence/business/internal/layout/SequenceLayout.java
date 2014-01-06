@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.sequence.business.internal.layout;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
@@ -24,6 +23,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.flag.Sequenc
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.horizontal.SequenceHorizontalLayout;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.observation.SequenceObservationLayout;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.vertical.SequenceVerticalLayout;
+import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.collect.Iterables;
 

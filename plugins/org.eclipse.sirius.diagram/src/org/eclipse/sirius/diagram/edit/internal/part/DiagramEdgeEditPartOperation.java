@@ -56,8 +56,6 @@ import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.LineStyle;
-import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart;
@@ -671,58 +669,6 @@ public final class DiagramEdgeEditPartOperation {
         decoration.setScale(6, 3);
         DiagramEdgeEditPartOperation.applyLineWidth(decoration, self);
         return decoration;
-    }
-
-    // TODOYMO comment this !
-    /**
-     * .
-     * 
-     * @author ymortier
-     */
-    private static class AnchorKey {
-
-        private final GraphicalEditPart target;
-
-        private final DiagramElementMapping mapping;
-
-        /**
-         * Default constructor.
-         * 
-         * @param target
-         *            the target
-         * @param mapping
-         *            the mapping.
-         */
-        public AnchorKey(final GraphicalEditPart target, final EdgeMapping mapping) {
-            super();
-            this.target = target;
-            this.mapping = mapping;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#hashCode()
-         */
-        @Override
-        public int hashCode() {
-            return target.hashCode();
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#equals(java.lang.Object)
-         */
-        @Override
-        public boolean equals(final Object obj) {
-            if (!(obj instanceof AnchorKey)) {
-                return false;
-            }
-            final AnchorKey anchorKey = (AnchorKey) obj;
-            return anchorKey.mapping == this.mapping && anchorKey.target == target;
-        }
-
     }
 
     /**

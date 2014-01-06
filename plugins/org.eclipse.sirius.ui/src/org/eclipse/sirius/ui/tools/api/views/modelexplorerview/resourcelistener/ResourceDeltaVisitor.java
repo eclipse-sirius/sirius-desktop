@@ -27,7 +27,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.query.ResourceDeltaQuery;
-import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.collect.Sets;
 
@@ -188,7 +188,7 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
                 switch (delta.getKind()) {
                 case IResourceDelta.ADDED:
                 case IResourceDelta.REMOVED:
-                    if (defaultModelingProjectResourceListener.isRepresentationsModel((IFile) file)) {
+                    if (defaultModelingProjectResourceListener.isRepresentationsModel(file)) {
                         // A representations file is added so this project
                         // is potentially became valid, so we must load it.
                         projectsToInitializeAndLoad.add(modelingProject.get());
@@ -235,7 +235,7 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
                     }
                     semanticResourcesURIsToAttach.add(uri);
                 }
-            } else if (this.defaultModelingProjectResourceListener.isRepresentationsModel((IFile) file)) {
+            } else if (this.defaultModelingProjectResourceListener.isRepresentationsModel(file)) {
                 projectsToInitialize.add(file.getProject());
             }
             /*
@@ -251,7 +251,7 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
                 }
                 semanticResourcesURIsToDetach.add(uri);
             }
-            if (this.defaultModelingProjectResourceListener.isRepresentationsModel((IFile) file)) {
+            if (this.defaultModelingProjectResourceListener.isRepresentationsModel(file)) {
                 projectsToInitialize.add(file.getProject());
             }
             break;

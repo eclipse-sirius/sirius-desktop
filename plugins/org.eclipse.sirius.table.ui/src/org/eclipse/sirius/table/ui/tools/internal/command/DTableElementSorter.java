@@ -26,6 +26,9 @@ import org.eclipse.sirius.table.metamodel.table.DTableElement;
  */
 public abstract class DTableElementSorter<T extends DTableElement> implements Comparator<T> {
 
+    /**
+     * The direction in which to sort. One of SWT.UP or SWT.DOWN.
+     */
     protected int sortDirection;
 
     /**
@@ -67,5 +70,12 @@ public abstract class DTableElementSorter<T extends DTableElement> implements Co
         return result;
     }
 
+    /**
+     * Returns the label to use for sorting.
+     * 
+     * @param element
+     *            the element to sort.
+     * @return the label to use as sort key for that element.
+     */
     protected abstract String getSortLabel(final T element);
 }

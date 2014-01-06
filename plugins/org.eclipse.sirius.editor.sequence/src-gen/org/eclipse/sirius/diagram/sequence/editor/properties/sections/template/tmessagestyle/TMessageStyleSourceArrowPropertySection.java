@@ -73,7 +73,7 @@ public class TMessageStyleSourceArrowPropertySection extends AbstractTableProper
      */
     protected List<?> getChoiceOfValues() {
         List<ImageItem> result = new ArrayList<ImageItem>();
-        for (EdgeArrows edgeArrows : (Iterable<EdgeArrows>) EdgeArrows.VALUES) {
+        for (EdgeArrows edgeArrows : EdgeArrows.VALUES) {
             if (edgeArrows.equals(EdgeArrows.NO_DECORATION_LITERAL)) {
                 result.add(new ImageItem(edgeArrows, "icons/full/decorator/noDecoration.gif"));
             }

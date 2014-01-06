@@ -31,9 +31,9 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
@@ -551,17 +551,6 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
                 }
             }
         }
-    }
-
-    /**
-     * Returns the current active {@link Session}.
-     * 
-     * @return the current active {@link Session} if found, <code>null</code>
-     *         otherwise
-     */
-    private Session getCurrentSession() {
-
-        return null;
     }
 
     /**

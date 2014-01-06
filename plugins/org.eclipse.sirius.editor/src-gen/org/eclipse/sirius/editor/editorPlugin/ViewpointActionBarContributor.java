@@ -290,7 +290,7 @@ public class ViewpointActionBarContributor extends EditingDomainActionBarContrib
     protected void populateManager(IContributionManager manager, Collection<IAction> actions, String contributionID) {
         if (actions != null) {
             for (Iterator<IAction> i = actions.iterator(); i.hasNext();) {
-                IAction action = (IAction) i.next();
+                IAction action = i.next();
                 if (contributionID != null) {
                     manager.insertBefore(contributionID, action);
                 } else {

@@ -27,13 +27,13 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.common.tools.api.query.NotifierQuery;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorUtil;
 import org.eclipse.sirius.diagram.tools.internal.graphical.edit.part.DDiagramHelper;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.listener.IChangeListener;
 import org.eclipse.sirius.tools.api.command.listener.TriggerOperation;
 import org.eclipse.ui.IEditorPart;
@@ -65,7 +65,7 @@ public final class SelectionCommandAppender {
     public static Command addSelectionCommand(final Command command, GraphicalEditPart editPart) {
         DDiagram currentDDiagram = DDiagramHelper.findParentDDiagram(editPart);
         if (currentDDiagram != null) {
-            return decorateCommandWithSelectionOfCreatedElements(command, (Notifier) currentDDiagram);
+            return decorateCommandWithSelectionOfCreatedElements(command, currentDDiagram);
         } else {
             return decorateCommandWithSelectionOfCreatedElements(command, editPart.getEditingDomain().getResourceSet());
         }

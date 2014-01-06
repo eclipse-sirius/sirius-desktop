@@ -16,9 +16,9 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.description.contribution.Contribution;
 import org.eclipse.sirius.description.contribution.FeatureContribution;
+import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
@@ -26,7 +26,6 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-
 /**
  * Applies a set of contributions on a whole target model.
  * 

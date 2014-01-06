@@ -12,24 +12,22 @@ package org.eclipse.sirius.table.ui.tools.internal.editor;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.table.metamodel.table.DColumn;
+import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.sirius.table.ui.tools.internal.command.ChangeColumnWidthCommand;
+import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableEditorUtil;
+import org.eclipse.sirius.table.ui.tools.internal.editor.utils.TreeColumnWidthQuery;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 
-import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.table.metamodel.table.DColumn;
-import org.eclipse.sirius.table.metamodel.table.DTable;
-import org.eclipse.sirius.table.metamodel.table.TablePackage;
-import org.eclipse.sirius.table.ui.tools.internal.command.ChangeColumnWidthCommand;
-import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableEditorUtil;
-import org.eclipse.sirius.table.ui.tools.internal.editor.utils.TreeColumnWidthQuery;
-
 /**
- * IPartListener to update the {@link TablePackage#DTABLE__HEADER_COLUMN_WIDTH}
- * feature of the {@link DTable} and the {@link TablePackage#DCOLUMN__WIDTH}
+ * IPartListener to update the {@code TablePackage#DTABLE__HEADER_COLUMN_WIDTH}
+ * feature of the {@link DTable} and the {@code TablePackage#DCOLUMN__WIDTH}
  * feature of the {@link DColumn}s at opening.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
@@ -38,7 +36,7 @@ public class RefreshAtOpeningActivator implements IPartListener {
 
     private AbstractDTableEditor abstractDTableEditor;
 
-    private boolean enablePropertiesRefreshOnNextActivate = false;
+    private boolean enablePropertiesRefreshOnNextActivate;
 
     private Session session;
 
@@ -61,6 +59,9 @@ public class RefreshAtOpeningActivator implements IPartListener {
         this.tree = (Tree) abstractDTableEditor.getControl();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public void partActivated(IWorkbenchPart part) {
         if (part == abstractDTableEditor && enablePropertiesRefreshOnNextActivate) {
             refreshDTableModelFromTreeColumnWidth();
@@ -73,18 +74,30 @@ public class RefreshAtOpeningActivator implements IPartListener {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public void partBroughtToTop(IWorkbenchPart part) {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public void partClosed(IWorkbenchPart part) {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public void partDeactivated(IWorkbenchPart part) {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public void partOpened(IWorkbenchPart part) {
         if (part == abstractDTableEditor) {
             enablePropertiesRefreshOnNextActivate = true;
@@ -100,7 +113,7 @@ public class RefreshAtOpeningActivator implements IPartListener {
             TreeColumn treeColumn = treeColumns[0];
             TreeColumnWidthQuery treeColumnWidthQuery = new TreeColumnWidthQuery(treeColumn);
             Display.getDefault().syncExec(treeColumnWidthQuery);
-            int widgetWidth = (Integer) treeColumnWidthQuery.getResult();
+            int widgetWidth = treeColumnWidthQuery.getResult();
             if (dTable.getHeaderColumnWidth() != widgetWidth && session.getModelAccessor().getPermissionAuthority().canEditInstance(dTable)) {
                 Command changeColumnWidthCommand = new ChangeColumnWidthCommand(session, widgetWidth, dTable);
                 refreshDTableAtOpeningCmd.append(changeColumnWidthCommand);
@@ -111,7 +124,7 @@ public class RefreshAtOpeningActivator implements IPartListener {
                 DColumn dColumn = (DColumn) treeColumn.getData(DTableViewerManager.TABLE_COLUMN_DATA);
                 treeColumnWidthQuery = new TreeColumnWidthQuery(treeColumn);
                 Display.getDefault().syncExec(treeColumnWidthQuery);
-                widgetWidth = (Integer) treeColumnWidthQuery.getResult();
+                widgetWidth = treeColumnWidthQuery.getResult();
 
                 // If opening the editor causes a resize of the DTable
                 if (dColumn.isVisible() && dColumn.getWidth() != widgetWidth && session.getModelAccessor().getPermissionAuthority().canEditInstance(dColumn)) {

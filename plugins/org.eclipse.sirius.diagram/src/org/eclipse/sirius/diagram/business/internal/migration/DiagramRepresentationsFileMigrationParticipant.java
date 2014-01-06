@@ -19,9 +19,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramGraphicalQuery;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
@@ -40,6 +40,8 @@ public class DiagramRepresentationsFileMigrationParticipant extends AbstractRepr
 
     private static final Version ALREADY_MIGRATED_VERSION = new Version("6.5.3");
 
+    private static final Version NOT_MIGRATED_VERSION = new Version("6.6.0");
+
     /**
      * {@inheritDoc}
      */
@@ -54,12 +56,18 @@ public class DiagramRepresentationsFileMigrationParticipant extends AbstractRepr
                 new DiagramRepresentationsFileMigrationParticipantV650().moveGMFDiagramsFromRoot(dAnalysis, diagramsToMove);
             }
         }
-        if (loadedVersion.compareTo(ALREADY_MIGRATED_VERSION) < 0) {
-            List<Diagram> diagrams = getGMFDiagrams(dAnalysis);
-            if (!diagrams.isEmpty()) {
-                DiagramRepresentationsFileMigrationParticipantV670 diagramRepresentationsFileMigrationParticipantV670 = new DiagramRepresentationsFileMigrationParticipantV670();
-                diagramRepresentationsFileMigrationParticipantV670.migrateLabelConstraintFromBoundsToLocation(diagrams);
-                diagramRepresentationsFileMigrationParticipantV670.migrateGMFBoundsOfBorderedNodes(diagrams);
+
+        if (loadedVersion.compareTo(DiagramRepresentationsFileMigrationParticipantV670.MIGRATION_VERSION) < 0) {
+            // The 6.5.3 maintenance version already contains the migration,
+            // migration should be done for versions in
+            // [0.0.0, 6.5.3[ U [6.6.0, 6.7.0[.
+            if (loadedVersion.compareTo(ALREADY_MIGRATED_VERSION) < 0 || loadedVersion.compareTo(NOT_MIGRATED_VERSION) >= 0) {
+                List<Diagram> diagrams = getGMFDiagrams(dAnalysis);
+                if (!diagrams.isEmpty()) {
+                    DiagramRepresentationsFileMigrationParticipantV670 diagramRepresentationsFileMigrationParticipantV670 = new DiagramRepresentationsFileMigrationParticipantV670();
+                    diagramRepresentationsFileMigrationParticipantV670.migrateLabelConstraintFromBoundsToLocation(diagrams);
+                    diagramRepresentationsFileMigrationParticipantV670.migrateGMFBoundsOfBorderedNodes(diagrams);
+                }
             }
         }
         if (loadedVersion.compareTo(DiagramRepresentationsFileMigrationParticipantV680.MIGRATION_VERSION) < 0) {

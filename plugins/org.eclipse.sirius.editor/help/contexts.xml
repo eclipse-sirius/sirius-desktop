@@ -2459,6 +2459,10 @@
 
        Interpreted expressions, requested return type and available variables:
           - sizeComputationExpression: an integer.
+                . diagram: the current DSemanticDiagram.
+                . view: the current edge view for which the size is calculated.
+                . sourceView: the source view of the current edge.
+                . targetView: the target view of the current edge.
 
 
          
@@ -2558,6 +2562,10 @@
        
        Interpreted expressions, requested return type and available variables:
           - sizeComputationExpression: an integer.
+                . diagram: the current DSemanticDiagram.
+                . view: the current edge view for which the size is calculated.
+                . sourceView: the source view of the current edge.
+                . targetView: the target view of the current edge.
 
 
          

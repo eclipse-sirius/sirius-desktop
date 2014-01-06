@@ -24,8 +24,6 @@ import org.eclipse.sirius.business.internal.color.DiagramStyleColorUpdater;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.BeginLabelStyle;
@@ -58,6 +56,8 @@ import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.util.DiagramSwitch;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -1037,7 +1037,6 @@ public final class StyleHelper {
         }
 
         org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper equalityHelper = new org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper();
-        // TODO : manage a finer GaugeSection customization
         // Change sections only if new list is different from original one
         if (!equalityHelper.equals((List) style.getSections(), (List) newGaugeSections) && !style.getCustomFeatures().contains(DiagramPackage.Literals.GAUGE_COMPOSITE_STYLE__SECTIONS.getName())) {
             style.getSections().clear();

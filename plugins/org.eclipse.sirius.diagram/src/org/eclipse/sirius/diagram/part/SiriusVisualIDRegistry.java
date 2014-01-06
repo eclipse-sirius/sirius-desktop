@@ -90,7 +90,7 @@ public class SiriusVisualIDRegistry {
         while (view != diagram) {
             EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
             if (annotation != null) {
-                return (String) annotation.getDetails().get("modelID"); //$NON-NLS-1$
+                return annotation.getDetails().get("modelID"); //$NON-NLS-1$
             }
             view = (View) view.eContainer();
         }

@@ -24,7 +24,7 @@ import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
-import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
@@ -267,7 +267,7 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
         }
 
         if (parentResource != null) {
-            IProject project = ((IResource) parentResource).getProject();
+            IProject project = parentResource.getProject();
             return project != null ? ModelingProject.hasModelingProjectNature(project) : false;
         }
         return false;

@@ -18,15 +18,14 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
-import org.eclipse.ui.views.properties.IPropertySource;
-import org.eclipse.sirius.table.metamodel.table.DCell;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.ui.tools.internal.properties.propertysource.TableCompositeEObjectPropertySource;
 import org.eclipse.sirius.table.ui.tools.internal.properties.section.common.AbstractDTablePropertySection;
 import org.eclipse.sirius.ui.tools.api.properties.AbstractCompositeEObjectPropertySource;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.ui.views.properties.IPropertySource;
 
 /**
  * Properties for the semantic model.
@@ -37,8 +36,6 @@ public class SemanticPropertySection extends AbstractDTablePropertySection {
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.IPropertySourceProvider#getPropertySource(java.lang.Object)
      */
     public IPropertySource getPropertySource(final Object object) {
         IPropertySource propSrc = null;
@@ -81,7 +78,7 @@ public class SemanticPropertySection extends AbstractDTablePropertySection {
     }
 
     /**
-     * Returns a property source for the given {@link DCell cell}.
+     * Returns a property source for the given cell.
      * 
      * @param accessor
      *            the model accessor

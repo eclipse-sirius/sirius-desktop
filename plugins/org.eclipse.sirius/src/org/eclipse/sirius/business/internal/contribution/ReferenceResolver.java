@@ -13,8 +13,8 @@ package org.eclipse.sirius.business.internal.contribution;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.description.contribution.EObjectReference;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * Resolves {@link EObjectReference}s.

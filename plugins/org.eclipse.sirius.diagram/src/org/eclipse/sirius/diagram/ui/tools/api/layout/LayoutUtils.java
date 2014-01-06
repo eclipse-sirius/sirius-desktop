@@ -34,8 +34,6 @@ import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
-import org.eclipse.gmf.runtime.notation.Anchor;
-import org.eclipse.gmf.runtime.notation.Bendpoints;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
@@ -362,19 +360,19 @@ public final class LayoutUtils {
             final Node nodeTarget = (Node) targetView;
             final LayoutConstraint sourceConstraint = nodeSource.getLayoutConstraint();
             if (sourceConstraint != null) {
-                nodeTarget.setLayoutConstraint((LayoutConstraint) EcoreUtil.copy(sourceConstraint));
+                nodeTarget.setLayoutConstraint(EcoreUtil.copy(sourceConstraint));
             }
         } else if (sourceView instanceof Edge && targetView instanceof Edge) {
             final Edge edgeSource = (Edge) sourceView;
             final Edge edgeTarget = (Edge) targetView;
             if (edgeSource.getBendpoints() != null) {
-                edgeTarget.setBendpoints((Bendpoints) EcoreUtil.copy(edgeSource.getBendpoints()));
+                edgeTarget.setBendpoints(EcoreUtil.copy(edgeSource.getBendpoints()));
             }
             if (edgeSource.getSourceAnchor() != null) {
-                edgeTarget.setSourceAnchor((Anchor) EcoreUtil.copy(edgeSource.getSourceAnchor()));
+                edgeTarget.setSourceAnchor(EcoreUtil.copy(edgeSource.getSourceAnchor()));
             }
             if (edgeSource.getTargetAnchor() != null) {
-                edgeTarget.setTargetAnchor((Anchor) EcoreUtil.copy(edgeSource.getTargetAnchor()));
+                edgeTarget.setTargetAnchor(EcoreUtil.copy(edgeSource.getTargetAnchor()));
             }
             final RoutingStyle rstyle = (RoutingStyle) edgeSource.getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
             if (rstyle != null) {

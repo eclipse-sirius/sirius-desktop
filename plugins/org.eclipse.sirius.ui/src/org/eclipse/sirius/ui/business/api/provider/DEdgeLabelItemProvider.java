@@ -69,7 +69,7 @@ public class DEdgeLabelItemProvider extends AbstractDDiagramElementLabelItemProv
      */
     private static boolean hasRelevantDEdgelabelItem(DEdge edge) {
         boolean isRelevant = false;
-        if (edge instanceof DEdge) {
+        if (edge != null) {
             DEdgeQuery candidateEdgeQuery = new DEdgeQuery(edge);
             isRelevant = candidateEdgeQuery.hasNonEmptyNameDefinition();
         }

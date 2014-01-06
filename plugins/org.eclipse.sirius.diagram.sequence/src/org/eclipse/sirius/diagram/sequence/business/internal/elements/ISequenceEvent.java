@@ -14,13 +14,12 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-
 /**
  * Common interface for all the elements of a sequence diagram which represent
  * an event associated to a (logical) time interval and thus a range of vertical

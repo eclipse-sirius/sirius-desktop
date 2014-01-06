@@ -25,7 +25,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.sirius.editor.utils.TextWithContentAssistChangeHelper;
-import org.eclipse.sirius.ui.tools.api.assist.TextChangeListener;
+import org.eclipse.sirius.ext.swt.TextChangeListener;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;

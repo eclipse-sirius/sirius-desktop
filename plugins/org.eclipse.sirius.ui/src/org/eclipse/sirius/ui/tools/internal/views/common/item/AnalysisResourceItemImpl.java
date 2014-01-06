@@ -16,9 +16,9 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ui.tools.api.views.common.item.AnalysisResourceItem;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -102,7 +102,7 @@ public class AnalysisResourceItemImpl implements AnalysisResourceItem {
      * @see org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem#getSession()
      */
     public Option<Session> getSession() {
-        return Options.newSome((Session) session);
+        return Options.newSome(session);
     }
 
     /**
@@ -158,7 +158,7 @@ public class AnalysisResourceItemImpl implements AnalysisResourceItem {
             }
             Collections.sort(all);
         }
-        return (List<?>) all;
+        return all;
     }
 
     /**

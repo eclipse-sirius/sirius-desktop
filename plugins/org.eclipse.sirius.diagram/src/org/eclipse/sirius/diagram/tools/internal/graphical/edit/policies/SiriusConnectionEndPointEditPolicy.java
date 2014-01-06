@@ -21,10 +21,10 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.editpolicies.ConnectionEndpointEditPolicy;
 import org.eclipse.gef.requests.ReconnectRequest;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.diagram.business.api.query.ConnectionQuery;
 import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.tools.internal.graphical.edit.handles.SiriusConnectionEndPointHandle;
+import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.collect.Lists;
 

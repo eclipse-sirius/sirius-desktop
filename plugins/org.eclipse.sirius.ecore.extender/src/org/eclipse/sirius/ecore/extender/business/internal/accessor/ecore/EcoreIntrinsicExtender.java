@@ -238,27 +238,6 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
     }
 
     /**
-     * Indicates if the given container class is contained in the given types to
-     * ignore collection.
-     * 
-     * @param typesToIgnore
-     *            the list of types to ignore
-     * @param containerClass
-     *            the class to test
-     * @return true if the given container class (or one of its super types) is
-     *         contained in the given types to ignore collection, false
-     *         otherwise
-     */
-    private boolean isTypeToIgnore(Collection<Class<? extends EObject>> typesToIgnore, Class<?> containerClass) {
-        for (Class<? extends EObject> classToIgnore : typesToIgnore) {
-            if (classToIgnore.isAssignableFrom(containerClass)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
      * {@inheritDoc}
      */
     public Object eGet(final EObject instance, final String name) {
@@ -274,7 +253,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
      * {@inheritDoc}
      */
     public boolean eInstanceOf(final EObject instance, final String name) {
-        if ("EObject".equals(name) && instance instanceof EObject) {
+        if ("EObject".equals(name) && instance != null) {
             return true;
         }
         boolean result = eInstanceOf(instance.eClass(), name);

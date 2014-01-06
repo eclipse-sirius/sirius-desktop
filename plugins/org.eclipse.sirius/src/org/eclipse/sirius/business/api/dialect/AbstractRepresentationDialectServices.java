@@ -455,8 +455,6 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
      *         name and on the same semantic element already exists</li>
      *         </ul>
      */
-    // TODO remove the "domainClass" parameter whenever the domainClass feature
-    // will be pulled up in RepresentationDescription
     protected boolean shouldInitializeRepresentation(final EObject semanticElement, RepresentationDescription description, String domainClass) {
         boolean shouldInitializeRepresentation = !StringUtil.isEmpty(domainClass) && description.isInitialisation();
         return shouldInitializeRepresentation;

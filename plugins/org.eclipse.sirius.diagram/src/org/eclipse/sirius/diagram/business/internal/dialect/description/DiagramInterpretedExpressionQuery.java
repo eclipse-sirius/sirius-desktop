@@ -20,8 +20,8 @@ import org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedEx
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 
@@ -70,7 +70,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
     protected void appendAllLocalVariableDefinitions(Multimap<String, String> definitions, EObject context) {
         super.appendAllLocalVariableDefinitions(definitions, context);
         // Direct edit defines numbered variables based on their mask.
-        if (context instanceof DirectEditLabel && ((DirectEditLabel) context).getMask() instanceof EditMaskVariables) {
+        if (context instanceof DirectEditLabel && ((DirectEditLabel) context).getMask() != null) {
             EditMaskVariables emv = ((DirectEditLabel) context).getMask();
             appendEditMaskVariables(emv, definitions);
         }

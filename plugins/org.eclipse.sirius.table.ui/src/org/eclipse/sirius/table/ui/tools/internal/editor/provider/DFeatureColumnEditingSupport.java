@@ -50,7 +50,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.ui.tools.api.dialog.FeatureEditorDialog;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
@@ -71,6 +70,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * Support for the cells editing of a Edition DTable (with
@@ -131,25 +131,25 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
      */
     @Override
     protected boolean canEdit(final Object element) {
+        boolean result = false;
         if (element instanceof DLine) {
             final DLine line = (DLine) element;
             boolean canEdit = true;
             Option<DCell> optCell = TableHelper.getCell(line, featureColumn);
-            if (!optCell.some()) {
-                return false;
-            }
-            DCell cell = optCell.get();
-            if (cell.getUpdater() != null && cell.getUpdater().getCanEdit() != null && cell.getUpdater().getCanEdit().length() > 0) {
-                final IInterpreter interpreter = InterpreterUtil.getInterpreter(cell.getTarget());
-                try {
-                    canEdit = interpreter.evaluateBoolean(cell.getTarget(), cell.getUpdater().getCanEdit());
-                } catch (final EvaluationException e) {
-                    RuntimeLoggerManager.INSTANCE.error(cell.getUpdater(), DescriptionPackage.eINSTANCE.getCellUpdater_CanEdit(), e);
+            if (optCell.some()) {
+                DCell cell = optCell.get();
+                if (cell.getUpdater() != null && cell.getUpdater().getCanEdit() != null && cell.getUpdater().getCanEdit().length() > 0) {
+                    final IInterpreter interpreter = InterpreterUtil.getInterpreter(cell.getTarget());
+                    try {
+                        canEdit = interpreter.evaluateBoolean(cell.getTarget(), cell.getUpdater().getCanEdit());
+                    } catch (final EvaluationException e) {
+                        RuntimeLoggerManager.INSTANCE.error(cell.getUpdater(), DescriptionPackage.eINSTANCE.getCellUpdater_CanEdit(), e);
+                    }
                 }
+                result = canEdit && getAuthority().canEditFeature(cell.getTarget(), getFeatureName()) && getAuthority().canEditInstance(line);
             }
-            return canEdit && getAuthority().canEditFeature(cell.getTarget(), getFeatureName()) && getAuthority().canEditInstance(line);
         }
-        return false;
+        return result;
     }
 
     /**

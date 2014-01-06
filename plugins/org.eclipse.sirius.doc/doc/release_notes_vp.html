@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>release_notes_vp</title>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="/help/topic/org.eclipse.sirius.doc/doc/resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="ReleaseNotesforViewpoint">Release Notes for Viewpoint</h1>
+		<h2 id="vp6.10">Viewpoint 6.10</h2>
+		<p>Viewpoint 6.10 contains no API or feature changes compared to Viewpoint 6.9.</p>
+		<h2 id="vp6.9">Viewpoint 6.9</h2>
+		<h3 id="ChangesVisibletoEndUsers">Changes Visible to End-Users</h3>
+		<ul>
+			<li>New notion for layers: Additional layers (formerly Optional layer) cannot be disabled by end-user if the specifier unchecked the &#171;optional&#187; option. In this case, the layers become mandatory. The end-user do not see the mandatory layers in the layer activation menu.</li>
+			<li>A new graphical wrapper have been provided to group huge hierarchy children in tree items. Several preferences allow to customize this feature in the viewpoint preference page.
+				<ul>
+					<li>We find this wrapper on the model explorer tree viewer and on viewpoint selection wizards that use a tree viewer.</li>
+					<li>On viewpoint selection wizards
+						<ul>
+							<li>if the wrapper is disabled, we expand all children like in previous releases of viewpoint.</li>
+							<li>if the wrapper is enabled and root items are not grouping items, we expand only the first level of children.</li>
+							<li>if the wrapper is enabled and root items are grouping items, we not expand children.</li>
+						</ul>
+					</li>
+					<li>For more graphical details about this feature, please refer to the 
+						<a href="user/general/Modeling%20Project.html#ModelExplorer">Modeling Project section</a> in the user documentation.
+					</li>
+				</ul>
+			</li>
+			<li>Until Viewpoint 6.2, the endÂ­-user had access to the Connections preference page (Viewpoint/Viewpoint Diagram/Connections). This page is provided by default by GMF but was unsuitable for Viewpoint use. Indeed, in Viewpoint the default routing style is defined in VSM. This preference page is available again. It has been adapted to Viewpoint (see 
+				<a href="user/diagrams/Diagrams.html#routingStylePref">
+					<em>Viewpoint User Manual/Diagrams/Features Overview/Style customizations/Customize edge routing style from preferences</em>
+				</a> for further details).
+			</li>
+		</ul>
+		<h3 id="ChangesVisibletoSpecifiers">Changes Visible to Specifiers</h3>
+		<ul>
+			<li>Optional Layer has been renamed to Additional Layer.</li>
+			<li>A new attribute &#171;Optional&#187; is available to specified whether the additional layer can be disabled or not by end-user.</li>
+			<li>A new checkbox about 
+				<code>fr.obeo.dsl.viewpoint.description.EStructuralFeatureCustomization.applyOnAll</code> under the 
+				<code>fr.obeo.dsl.viewpoint.description.EStructuralFeatureCustomization.appliedOn</code> property section has been added. When this checkbox will be checked the 
+				<code>fr.obeo.dsl.viewpoint.description.EStructuralFeatureCustomization.appliedOn</code> section will turn gray and disabled.
+			</li>
+			<li>The fields ViewpointURI and representationName on Diagram Extension Description can be a regular expression as well.</li>
+		</ul>
+		<h3 id="ChangesVisibletoDevelopers">Changes Visible to Developers</h3>
+		<ul>
+			<li>Changed APIs:
+				<ul>
+					<li>
+						<code>fr.obeo.dsl.viewpoint.description.OptionalLayer</code> type has been renamed to 
+						<code>fr.obeo.dsl.viewpoint.description.AdditionalLayer</code>
+					</li>
+					<li>
+						<code>fr.obeo.dsl.viewpoint.description.DiagramDescription.optionalLayers</code> meta-model reference has been renamed to 
+						<code>fr.obeo.dsl.viewpoint.description.DiagramDescription.additionalLayers</code>
+					</li>
+					<li>
+						<code>fr.obeo.dsl.viewpoint.ui.tools.api.views.common.item.CommonItem.getSession()</code> is now refactored in 
+						<code>fr.obeo.dsl.viewpoint.ui.tools.api.views.common.item.CommonSessionItem</code>.
+					</li>
+					<li>
+						<code>fr.obeo.dsl.viewpoint.ui.tools.api.views.common.item.CommonItem</code> is now moved in 
+						<code>fr.obeo.dsl.common.ui.tools.api.view.common.item.CommonItem</code>.
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<ul>
+			<li>New APIs:
+				<ul>
+					<li>
+						<code>fr.obeo.dsl.viewpoint.description.AdditionalLayer.optional:Boolean</code> meta-model attribute has been added.
+					</li>
+					<li>Four new preferences to customize the new tree item group wrapper.
+						<ol>
+							<li>
+								<code>PREF_GROUP_ENABLE</code>:Boolean (default=true)
+								<ul>
+									<li>has been added in 
+										<code>fr.obeo.dsl.common.tools.api.constant.CommonPreferencesConstants</code> to say the tree item group wrapper is enable.
+									</li>
+								</ul>
+							</li>
+							<li>
+								<code>PREF_GROUP_BY_CONTAINING_FEATURE</code>:Boolean (default=false) 
+								<ul>
+									<li>has been added in 
+										<code>fr.obeo.dsl.common.tools.api.constant.CommonPreferencesConstants</code> to say if the grouping strategy uses the containing feature instead of the basic hierarchy.
+									</li>
+									<li>This preference cannot be directly edited by the final user. A developer can override this default value, for example in its own AbstractUIPlugin implementation, in the start() method : ViewPointTransPlugin.getPlugin().getPreferenceStore().setValue(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE, true)</li>
+								</ul>
+							</li>
+							<li>
+								<code>PREF_GROUP_TRIGGER</code>:Integer (default=10000)
+								<ul>
+									<li>has been added in 
+										<code>fr.obeo.dsl.common.tools.api.constant.CommonPreferencesConstants</code> to define the size of children that triggers the group in sub block.
+									</li>
+								</ul>
+							</li>
+							<li>
+								<code>PREF_GROUP_SIZE</code>:Integer (default=100)
+								<ul>
+									<li>has been added in 
+										<code>fr.obeo.dsl.common.tools.api.constant.CommonPreferencesConstants</code> to define the size of elements contained in a group.
+									</li>
+								</ul>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<code>fr.obeo.dsl.common.ui.tools.api.navigator.GroupingContentProvider</code> a new content provider wrapper that delegates everything to the replaced content provider excepted if groups are expected.
+					</li>
+					<li>
+						<code>fr.obeo.dsl.common.ui.tools.api.navigator.GroupingItem</code> a dedicated group tree item to provide an new ui render.
+					</li>
+					<li>
+						<code>fr.obeo.dsl.viewpoint.ui.tools.api.views.common.item.CommonSessionItem</code> extends 
+						<code>fr.obeo.dsl.common.ui.tools.api.view.common.item.CommonItem</code> and provide getSession().
+					</li>
+					<li>
+						<code>fr.obeo.dsl.viewpoint.diagram.business.api.view.ViewpointGMFHelper.getGmfEdge(DDiagramElement, ECrossReferenceAdapter)</code> has been added in complementary of 
+						<code>getGmfEdge(DDiagramElement, Session)</code>. This method uses directly the parameter 
+						<code>ECrossReferenceAdapter</code> (instead of 
+						<code>Session.getSemanticCrossReferencer()</code>) to retrieve the GMF edge corresponding to the DDiagramElement.
+					</li>
+					<li>
+						<code>fr.obeo.dsl.viewpoint.tools.api.preferences.ViewpointDiagramCorePreferences</code> has been added. This interface declares constants corresponding to default routing styles. These constants are set via the UI preference page of 
+						<code>fr.obeo.dsl.viewpoint.diagram</code> but declared here to allow access outside UI plug-in.
+					</li>
+					<li>
+						<code>fr.obeo.dsl.viewpoint.description.EStructuralFeatureCustomization.applyOnAll:Boolean</code> meta-model attribute has been added.
+					</li>
+					<li>
+						<code>fr.obeo.dsl.viewpoint.ui.tools.api.dialogs.AbstractExportRepresentationsAsImagesDialog.FILE_SEPARATOR_ALTERNATIVE</code> constant has been added. It defines the alternative character in 
+						<em>export diagram as image dialog</em> when file separators are found in the representation name.
+					</li>
+					<li>
+						<code>fr.obeo.dsl.viewpoint.business.api.migration.IMigrationParticipant.getNewFragment(String)</code> returns the new fragment if the corresponding reference has changed. This method is added in the migration framework to handle the rename of a reference. The abstract implementation, 
+						<code>fr.obeo.dsl.viewpoint.business.api.migration.AbstractMigrationParticipant</code>,  has also been changed.
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</body>
+</html>

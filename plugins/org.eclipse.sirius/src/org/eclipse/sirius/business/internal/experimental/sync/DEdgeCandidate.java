@@ -20,6 +20,7 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
+import org.eclipse.sirius.ext.base.cache.KeyCache;
 
 /**
  * This class represents a candidate for a DEdge, a candidate is a "possible"

@@ -22,6 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.lang.model.SourceVersion;
+
 import org.eclipse.core.commands.Command;
 import org.eclipse.core.commands.ParameterizedCommand;
 import org.eclipse.core.commands.common.CommandException;
@@ -48,8 +50,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.jdt.core.JavaConventions;
-import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableContext;
@@ -332,7 +332,7 @@ public final class ViewpointSpecificationProject {
         final Map<String, String> replacements = new HashMap<String, String>();
         final String projectName;
         final String packageName;
-        if (JavaConventions.validatePackageName(prj.getName(), JavaCore.VERSION_1_3, JavaCore.VERSION_1_3).isOK()) {
+        if (SourceVersion.isIdentifier(prj.getName())) {
             packageName = prj.getName();
         } else {
             packageName = DEFAULT_PACKAGE_NAME;

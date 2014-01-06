@@ -54,7 +54,7 @@ public final class WorkspaceUtil {
     public static List<IFile> getFilesFromWorkspace(final Collection<IProject> projects, final String extension) {
         List<IFile> allFiles = new ArrayList<IFile>();
         try {
-            allFiles = getWorkspaceFiles((IProject[]) projects.toArray(new IProject[projects.size()]));
+            allFiles = getWorkspaceFiles(projects.toArray(new IProject[projects.size()]));
         } catch (final CoreException e1) {
             // do nothing -- fail silently
         }

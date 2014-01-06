@@ -43,8 +43,6 @@ import org.eclipse.gmf.runtime.draw2d.ui.internal.graph.CompositeDirectedGraphLa
 import org.eclipse.gmf.runtime.draw2d.ui.internal.graph.VirtualNode;
 import org.eclipse.sirius.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -52,6 +50,8 @@ import org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.collect.Iterables;
 

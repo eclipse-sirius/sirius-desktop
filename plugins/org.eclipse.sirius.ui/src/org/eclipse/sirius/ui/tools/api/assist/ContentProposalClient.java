@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.tools.api.assist;
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.sirius.ext.swt.TextChangeListener;
 
 /**
  * Client for the content proposal extension point.

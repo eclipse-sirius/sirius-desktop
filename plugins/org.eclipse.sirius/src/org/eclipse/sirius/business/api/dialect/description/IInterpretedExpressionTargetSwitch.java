@@ -13,7 +13,7 @@ package org.eclipse.sirius.business.api.dialect.description;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * A switch that will return the Target Types associated to a given element and
@@ -27,7 +27,7 @@ import org.eclipse.sirius.common.tools.api.util.Option;
  * class associated to this mapping</li>
  * </p>
  * 
- * Can return {@link org.eclipse.sirius.common.tools.api.util.Options#newNone()} if the
+ * Can return {@link org.eclipse.sirius.ext.base.Options#newNone()} if the
  * given expression does not require any target type (for example, a Popup menu
  * contribution uses variables and clicked element in its expressions, and the
  * receiver is an EObject, there is no reference in the meta model to compute
@@ -40,7 +40,7 @@ public interface IInterpretedExpressionTargetSwitch {
 
     /**
      * Returns all the possible target Types for the given target and feature.
-     * Can return {@link org.eclipse.sirius.common.tools.api.util.Options#newNone()} if
+     * Can return {@link org.eclipse.sirius.ext.base.Options#newNone()} if
      * the given expression does not require any target type (for example, a
      * Popup menu contribution uses variables and clicked element in its
      * expressions, and the receiver is an EObject, there is no reference in the
@@ -53,7 +53,7 @@ public interface IInterpretedExpressionTargetSwitch {
      *            semanticCandidateExpression and semanticElements for a
      *            NodeMapping for example)
      * @return all possible target types for the given target and feature,
-     *         {@link org.eclipse.sirius.common.tools.api.util.Options#newNone()} if no
+     *         {@link org.eclipse.sirius.ext.base.Options#newNone()} if no
      *         target type is needed (see description)
      */
     Option<Collection<String>> doSwitch(EObject target, boolean considerFeature);

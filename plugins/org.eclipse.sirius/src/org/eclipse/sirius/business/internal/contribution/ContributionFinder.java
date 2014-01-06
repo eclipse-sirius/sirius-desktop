@@ -14,14 +14,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.AllContents;
 import org.eclipse.sirius.description.contribution.Contribution;
 import org.eclipse.sirius.description.contribution.ContributionPackage;
+import org.eclipse.sirius.ext.emf.AllContents;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
 /**
  * Implementations of a
  * {@code Function&lt;EObject, Iterable&lt;Contribution&gt;&gt;} for the common

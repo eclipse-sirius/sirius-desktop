@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.business.internal.query.EdgeTargetQuery;
 import org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.internal.commands.ToggleFoldingStateCommand;
+import org.eclipse.sirius.ext.draw2d.figure.ActionTriggerImageFigure;
 import org.eclipse.swt.graphics.Image;
 
 import com.google.common.base.Preconditions;

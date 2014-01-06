@@ -33,7 +33,6 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.diagramtype.ICollapseUpdater;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -46,6 +45,7 @@ import org.eclipse.sirius.diagram.internal.refresh.AbstractCanonicalSynchronizer
 import org.eclipse.sirius.diagram.part.SiriusDiagramUpdater;
 import org.eclipse.sirius.diagram.part.SiriusLinkDescriptor;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 
 import com.google.common.base.Predicate;
@@ -237,7 +237,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
         existingLinks.removeAll(lines);
         final Iterator<Edge> linksIterator = existingLinks.iterator();
         while (linksIterator.hasNext()) {
-            final Edge nextDiagramLink = (Edge) linksIterator.next();
+            final Edge nextDiagramLink = linksIterator.next();
             final EObject diagramLinkObject = nextDiagramLink.getElement();
             // eContainer can be quite expensive when deep in the model
             final EObject nextDiagramLinkEContainer = nextDiagramLink.eContainer();
@@ -393,7 +393,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
         @SuppressWarnings("unchecked")
         final Iterator<Edge> edges = diagram.getEdges().iterator();
         while (edges.hasNext()) {
-            final Edge currentEdge = (Edge) edges.next();
+            final Edge currentEdge = edges.next();
             if ("line".equals(currentEdge.getType())) {
                 result.add(currentEdge);
             }

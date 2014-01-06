@@ -116,7 +116,7 @@ public class SiriusEditPartProvider extends AbstractEditPartProvider {
      */
     protected IGraphicalEditPart getCachedPart(View view) {
         if (cachedView != null && cachedView.get() == view) {
-            return (IGraphicalEditPart) cachedPart.get();
+            return cachedPart.get();
         }
         return null;
     }

@@ -28,9 +28,9 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.SubContributionItem;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.editor.tools.internal.editor.EditorCustomizationManager;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.ui.IEditorPart;
 
@@ -227,7 +227,7 @@ public abstract class AbstractMenuBuilder {
     protected Collection generateCreateChildActions(final Collection actionDescriptors, final ISelection selection, final IEditorPart editor) {
         final Collection actions = new ArrayList();
         if (actionDescriptors != null) {
-            for (final Iterator i = actionDescriptors.iterator(); i.hasNext();) {
+            for (final Iterator i = actionDescriptors.iterator(); i.hasNext(); /* */) {
                 actions.add(new CreateChildAction(editor, selection, i.next()));
             }
         }
@@ -264,7 +264,7 @@ public abstract class AbstractMenuBuilder {
      */
     protected void populateManager(final IContributionManager manager, final Collection actions, final String contributionID) {
         if (actions != null) {
-            for (final Iterator i = actions.iterator(); i.hasNext();) {
+            for (final Iterator i = actions.iterator(); i.hasNext(); /* */) {
                 final IAction action = (IAction) i.next();
                 if (contributionID != null) {
                     manager.insertBefore(contributionID, action);
@@ -276,6 +276,12 @@ public abstract class AbstractMenuBuilder {
         manager.update(true);
     }
 
+    /**
+     * Inserts this menu before the EDIT item.
+     * 
+     * @param parent
+     *            the parent in which to inset this menu.
+     */
     public void insertBeforeInContainer(IMenuManager parent) {
         createMenuManager();
         populateMenu();
@@ -283,6 +289,12 @@ public abstract class AbstractMenuBuilder {
 
     }
 
+    /**
+     * Inserts this menu after the EDIT item.
+     * 
+     * @param parent
+     *            the parent in which to inset this menu.
+     */
     public void insertAfterInContainer(IMenuManager parent) {
         createMenuManager();
         populateMenu();

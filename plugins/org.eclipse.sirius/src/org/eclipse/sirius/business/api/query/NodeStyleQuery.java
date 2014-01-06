@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.diagram.BundledImage;
 import org.eclipse.sirius.diagram.CustomStyle;
 import org.eclipse.sirius.diagram.Dot;
@@ -23,6 +21,8 @@ import org.eclipse.sirius.diagram.Note;
 import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.util.DiagramSwitch;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.RGBValues;
 
 /**

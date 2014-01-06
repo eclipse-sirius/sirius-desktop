@@ -154,19 +154,26 @@ public abstract class AbstractEditorCreateMenuAction<T extends AbstractToolActio
     /**
      * The change is applied on the next getMenu.
      * 
-     * @param createActionsForTable
+     * @param actions
      *            List of <{@link AbstractToolAction}
      */
-    public void update(final List<AbstractToolAction> createActionsForTable) {
+    public void update(final List<AbstractToolAction> actions) {
         getCreateActionsForTable().clear();
         menuManager.removeAll();
         // Add all create line tool
-        for (final T toolAction : filter(createActionsForTable)) {
+        for (final T toolAction : filter(actions)) {
             getCreateActionsForTable().add(toolAction);
         }
         update();
     }
 
+    /**
+     * Filter the actions.
+     * 
+     * @param createActionsForTable
+     *            all the candidate actions.
+     * @return the sub-set of actions to use.
+     */
     protected abstract List<T> filter(List<AbstractToolAction> createActionsForTable);
 
     /**

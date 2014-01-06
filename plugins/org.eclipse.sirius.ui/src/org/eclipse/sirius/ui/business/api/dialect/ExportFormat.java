@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.api.dialect;
 
-import org.eclipse.sirius.ui.tools.api.dialogs.ImageFileFormat;
+import org.eclipse.sirius.ext.swt.ImageFileFormat;
 
 /**
  * A class to store the format for representations export.

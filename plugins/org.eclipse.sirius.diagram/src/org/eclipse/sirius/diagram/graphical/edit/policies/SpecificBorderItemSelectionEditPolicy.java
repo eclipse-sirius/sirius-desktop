@@ -186,9 +186,9 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
 
                 DBorderItemLocator borderItemLocator = new FeedbackDBorderItemLocator(targetFigure);
                 if (isCollapsed(borderItemEP)) {
-                    ((DBorderItemLocator) borderItemLocator).setBorderItemOffset(IBorderItemOffsets.COLLAPSE_FILTER_OFFSET);
+                    borderItemLocator.setBorderItemOffset(IBorderItemOffsets.COLLAPSE_FILTER_OFFSET);
                 } else {
-                    ((DBorderItemLocator) borderItemLocator).setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
+                    borderItemLocator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
                 }
                 // Verify if the dropping of bordered node is not an element of
                 // the same level

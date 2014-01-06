@@ -57,8 +57,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
@@ -83,6 +81,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDes
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelogram;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
@@ -466,7 +466,7 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
     protected IFigure createNodeShape() {
         final EObject eObj = resolveSemanticElement();
         IFigure shapeFigure = null;
-        if (eObj != null && eObj instanceof DDiagramElementContainer) {
+        if (eObj instanceof DDiagramElementContainer) {
             final DDiagramElementContainer container = (DDiagramElementContainer) eObj;
             if (container.getOwnedStyle() != null) {
                 if (container.getOwnedStyle() instanceof ShapeContainerStyle) {

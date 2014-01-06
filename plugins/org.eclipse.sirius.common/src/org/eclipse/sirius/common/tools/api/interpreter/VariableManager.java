@@ -13,7 +13,7 @@ package org.eclipse.sirius.common.tools.api.interpreter;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.sirius.common.tools.api.util.StackEx;
+import org.eclipse.sirius.ext.base.collect.StackEx;
 
 /**
  * This class is able to manage variables.

@@ -53,7 +53,7 @@ public class OpenRepresentationListener implements IDoubleClickListener {
             else {
                 DRepresentation adapted = adaptToDRepresentation(obj);
                 if (adapted != null)
-                    representations.add((DRepresentation) adapted);
+                    representations.add(adapted);
             }    
         }
         return representations;

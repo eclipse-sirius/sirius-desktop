@@ -14,9 +14,9 @@ import java.text.MessageFormat;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.sirius.business.internal.movida.dependencies.Relation;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
-import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.relations.Relation;
 
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
@@ -25,7 +25,6 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
-
 /**
  * Resolves a set of logical Sirius URIs into the complete set of physical
  * VSM resources required to be loaded to provide all these Viewpoints.

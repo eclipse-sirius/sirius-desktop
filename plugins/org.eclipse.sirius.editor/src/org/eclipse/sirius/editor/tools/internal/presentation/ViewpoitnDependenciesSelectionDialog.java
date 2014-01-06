@@ -23,8 +23,8 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
-import org.eclipse.sirius.common.tools.api.util.Option;
-import org.eclipse.sirius.common.tools.api.util.Options;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Shell;
@@ -91,7 +91,7 @@ public class ViewpoitnDependenciesSelectionDialog {
 
     /**
      * Opens a dialog box allowing the user to select the list of Viewpoints this
-     * element is in conflict with
+     * element is in conflict with.
      * 
      * @param shell
      *            the shell to use to open the dialog box.
@@ -122,8 +122,8 @@ public class ViewpoitnDependenciesSelectionDialog {
     }
 
     @SuppressWarnings("unchecked")
-    private List<URI> getSelectedSiriusURIs(Viewpoint viewpoint, EStructuralFeature feature) {
-        return Lists.newArrayList(Iterables.filter((List<URI>) viewpoint.eGet(feature), Predicates.notNull()));
+    private List<URI> getSelectedSiriusURIs(Viewpoint vp, EStructuralFeature feature) {
+        return Lists.newArrayList(Iterables.filter((List<URI>) vp.eGet(feature), Predicates.notNull()));
     }
 
     private List<URI> getAvailableViewpointsURIs() {

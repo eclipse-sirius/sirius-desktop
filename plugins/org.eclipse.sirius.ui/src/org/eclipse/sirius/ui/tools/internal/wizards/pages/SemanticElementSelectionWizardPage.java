@@ -273,7 +273,7 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
          *         content.
          */
         protected boolean canCreateRepresentation(EObject element) {
-            if (DialectManager.INSTANCE.canCreate((EObject) element, representationDescription)) {
+            if (DialectManager.INSTANCE.canCreate(element, representationDescription)) {
                 return true;
             }
             return canCreateRepresentationOnContents(element);
@@ -285,8 +285,8 @@ public class SemanticElementSelectionWizardPage extends WizardPage {
          */
         private boolean canCreateRepresentationOnContents(EObject element) {
             for (Iterator<EObject> iterator = element.eAllContents(); iterator.hasNext();) {
-                EObject type = (EObject) iterator.next();
-                if (DialectManager.INSTANCE.canCreate((EObject) type, representationDescription)) {
+                EObject type = iterator.next();
+                if (DialectManager.INSTANCE.canCreate(type, representationDescription)) {
                     return true;
                 }
             }

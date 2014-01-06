@@ -40,7 +40,7 @@ public class TableCommandFactorySetValueRecordingCommand extends RecordingComman
 
     /**
      * 
-     * {@inheritDoc}
+     * Create a new TableCommandFactorySetValueRecordingCommand.
      * 
      * @param domain
      *            my domain
@@ -66,7 +66,7 @@ public class TableCommandFactorySetValueRecordingCommand extends RecordingComman
 
     /**
      * 
-     * {@inheritDoc}
+     * Create a new TableCommandFactorySetValueRecordingCommand.
      * 
      * @param domain
      *            my domain

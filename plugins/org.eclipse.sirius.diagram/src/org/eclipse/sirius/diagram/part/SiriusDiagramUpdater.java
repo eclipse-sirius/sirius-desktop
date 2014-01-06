@@ -227,7 +227,7 @@ public class SiriusDiagramUpdater {
             }
         }
         for (Iterator<DNode> it = modelElement.getOwnedBorderedNodes().iterator(); it.hasNext();) {
-            DNode childElement = (DNode) it.next();
+            DNode childElement = it.next();
             int visualID = SiriusVisualIDRegistry.getNodeVisualID(view, childElement);
             if (visualID == DNode2EditPart.VISUAL_ID) {
                 result.add(new SiriusNodeDescriptor(childElement, visualID));
@@ -247,7 +247,7 @@ public class SiriusDiagramUpdater {
         DNode modelElement = (DNode) view.getElement();
         List<SiriusNodeDescriptor> result = new LinkedList<SiriusNodeDescriptor>();
         for (Iterator<DNode> it = modelElement.getOwnedBorderedNodes().iterator(); it.hasNext();) {
-            DNode childElement = (DNode) it.next();
+            DNode childElement = it.next();
             int visualID = SiriusVisualIDRegistry.getNodeVisualID(view, childElement);
             if (visualID == DNode2EditPart.VISUAL_ID) {
                 result.add(new SiriusNodeDescriptor(childElement, visualID));
@@ -298,7 +298,7 @@ public class SiriusDiagramUpdater {
         DNodeContainer modelElement = (DNodeContainer) view.getElement();
         List<SiriusNodeDescriptor> result = new LinkedList<SiriusNodeDescriptor>();
         for (Iterator<DNode> it = modelElement.getOwnedBorderedNodes().iterator(); it.hasNext();) {
-            DNode childElement = (DNode) it.next();
+            DNode childElement = it.next();
             int visualID = SiriusVisualIDRegistry.getNodeVisualID(view, childElement);
             if (visualID == DNode4EditPart.VISUAL_ID) {
                 result.add(new SiriusNodeDescriptor(childElement, visualID));
@@ -318,7 +318,7 @@ public class SiriusDiagramUpdater {
         DNodeList modelElement = (DNodeList) view.getElement();
         List<SiriusNodeDescriptor> result = new LinkedList<SiriusNodeDescriptor>();
         for (Iterator<DNode> it = modelElement.getOwnedBorderedNodes().iterator(); it.hasNext();) {
-            DNode childElement = (DNode) it.next();
+            DNode childElement = it.next();
             int visualID = SiriusVisualIDRegistry.getNodeVisualID(view, childElement);
             if (visualID == DNode4EditPart.VISUAL_ID) {
                 result.add(new SiriusNodeDescriptor(childElement, visualID));
@@ -366,7 +366,7 @@ public class SiriusDiagramUpdater {
             }
         }
         for (Iterator<DNode> it = modelElement.getOwnedBorderedNodes().iterator(); it.hasNext();) {
-            DNode childElement = (DNode) it.next();
+            DNode childElement = it.next();
             int visualID = SiriusVisualIDRegistry.getNodeVisualID(view, childElement);
             if (visualID == DNode4EditPart.VISUAL_ID) {
                 result.add(new SiriusNodeDescriptor(childElement, visualID));

@@ -9,7 +9,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.utils;
 
-import org.eclipse.sirius.ui.tools.api.assist.TextChangeListener;
+import org.eclipse.sirius.ext.swt.TextChangeListener;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Text;

@@ -60,7 +60,7 @@ public class CreateRepresentationWizard extends Wizard {
     public boolean performFinish() {
         EObject element = selectElementPage.getSelectedElement();
         if (element != null) {
-            CreateRepresentationAction action = new CreateRepresentationAction(session, (EObject) element, representationWizardPage.getRepresentation(), new SessionLabelProvider(
+            CreateRepresentationAction action = new CreateRepresentationAction(session, element, representationWizardPage.getRepresentation(), new SessionLabelProvider(
                     ViewHelper.INSTANCE.createAdapterFactory()));
             action.run();
         }

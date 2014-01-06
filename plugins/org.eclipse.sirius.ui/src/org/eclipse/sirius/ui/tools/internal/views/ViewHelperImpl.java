@@ -18,7 +18,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -38,8 +37,6 @@ import com.google.common.collect.Lists;
  * @author mchauvin
  */
 public final class ViewHelperImpl implements ViewHelper {
-
-    private ILabelProvider labelProvider;
 
     private ITreeContentProvider contentProvider;
 

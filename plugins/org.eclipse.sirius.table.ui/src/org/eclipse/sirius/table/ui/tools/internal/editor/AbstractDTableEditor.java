@@ -106,17 +106,17 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
  */
 public abstract class AbstractDTableEditor extends AbstractDTreeEditor implements DTableEditor {
 
-    /**
-     * This is the one adapter factory used for providing views of the model (as
-     * in EcoreEditor).
-     */
-    protected AdapterFactory adapterFactory;
-
     /** The contributor ID */
     private static final String CONTRIBUTOR_ID = "org.eclipse.sirius.table.ui.EditorID";
 
     /** the context ID. */
     private static final String CONTEXT_ID = CONTRIBUTOR_ID + ".tableContext";
+
+    /**
+     * This is the one adapter factory used for providing views of the model (as
+     * in EcoreEditor).
+     */
+    protected AdapterFactory adapterFactory;
 
     /** This is the one adapter factory used for providing views of the model */
     private DTable tableModel;
@@ -124,13 +124,6 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
     private IPartListener refreshAtOpeningActivator;
 
     private IPreferenceChangeListener viewPointPreferenceChangeListener;
-
-    /**
-     * Default constructor.
-     */
-    public AbstractDTableEditor() {
-        super();
-    }
 
     private IInterpreter getInterpreter() {
         return SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(getTableModel().getTarget());
@@ -302,7 +295,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             notify(PROP_TITLE);
 
             /* handle preferences */
-            new InstanceScope().getNode(SiriusPlugin.ID).addPreferenceChangeListener(viewPointPreferenceChangeListener);
+            InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).addPreferenceChangeListener(viewPointPreferenceChangeListener);
 
             // Launch the refresh if needed
             if (DialectManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
@@ -444,8 +437,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             Image refreshImage = TableUIPlugin.Implementation.getImage(TableUIPlugin.Implementation.getBundledImageDescriptor("icons/" + DTableViewerManager.REFRESH_IMG + ".gif"));
             List<Object> images = new ArrayList<Object>(2);
             images.add(refreshImage);
-            Image lockByOtherOverlayIamge = SiriusEditPlugin.getPlugin()
-                    .getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied_overlay.gif"));
+            Image lockByOtherOverlayIamge = SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied_overlay.gif"));
             images.add(lockByOtherOverlayIamge);
             ImageDescriptor composedImageDescriptor = new ComposedImageDescriptor(new ComposedImage(images));
             frozenRepresentationImage = SiriusEditPlugin.getPlugin().getImage(composedImageDescriptor);
@@ -650,7 +642,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             refreshAtOpeningActivator = null;
         }
 
-        new InstanceScope().getNode(SiriusPlugin.ID).removePreferenceChangeListener(viewPointPreferenceChangeListener);
+        InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).removePreferenceChangeListener(viewPointPreferenceChangeListener);
         viewPointPreferenceChangeListener = null;
 
     }

@@ -108,8 +108,8 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
     }
 
     /**
-     * Creates a generic interpreter that is able to parse all expressions of
-     * the world and more.
+     * Creates a generic interpreter that will delegate the evaluation to
+     * concrete interpreters.
      * 
      * @return the created interpreter.
      */

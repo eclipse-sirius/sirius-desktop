@@ -106,10 +106,25 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
             if (newSelectedViewpoints != null) {
                 List<Viewpoint> sorted = sortByDependencies(newSelectedViewpoints);
                 monitor.worked(1);
+
                 for (final Viewpoint viewpoint : sorted) {
                     monitor.subTask("Select viewpoint : " + new IdentifiedElementQuery(viewpoint).getLabel());
-                    callback.selectViewpoint(viewpoint, session, createNewRepresentations, new SubProgressMonitor(monitor, 1));
+                    try {
+                        callback.selectViewpoint(viewpoint, session, createNewRepresentations, new SubProgressMonitor(monitor, 1));
+                    } catch (SecurityException e) {
+                        // If permission were not sufficient to select the
+                        // viewpoint on the main or one of the referenced
+                        // DAnalysis
+
+                        // Provide a meaningful error message to the end-user
+                        String errorMessage = "Unable to activate viewpoint '" + viewpoint.getName() + "' because of insufficient rights.";
+
+                        // And re-throw the security exception with the previous
+                        // as cause
+                        throw new SecurityException(errorMessage, e);
+                    }
                 }
+
             }
             if (newDeselectedViewpoints != null) {
                 for (final Viewpoint viewpoint : newDeselectedViewpoints) {

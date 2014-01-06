@@ -78,14 +78,6 @@ public class DRepresentationPermissionStatusListener implements IAuthorityListen
         if (dRepresentationPermissionStatusQuery.isDSemanticDecoratorLockStatusNotification(lockedElements)) {
             LockStatus lockStatus = permissionAuthority.getLockStatus(representation);
             changeUILockStatus(lockStatus);
-            // TODO : to enable only if we want lock decoration on tab editor
-            // for top level semantic lock
-            // } else if
-            // (dRepresentationPermissionStatusQuery.isDSemanticDecoratorTargetLockStatusNotification(lockedElements))
-            // {
-            // LockStatus lockStatus =
-            // permissionAuthority.getLockStatus(representation.getTarget());
-            // changeUILockStatus(lockStatus);
         }
     }
 
@@ -106,12 +98,6 @@ public class DRepresentationPermissionStatusListener implements IAuthorityListen
     public void notifyIsReleased(Collection<EObject> unlockedElements) {
         if (dRepresentationPermissionStatusQuery.isDSemanticDecoratorLockStatusNotification(unlockedElements)) {
             changeUILockStatus(LockStatus.NOT_LOCKED);
-            // TODO : to enable only if we want lock decoration on tab editor
-            // for top level semantic lock
-            // } else if
-            // (dRepresentationPermissionStatusQuery.isDSemanticDecoratorTargetLockStatusNotification(unlockedElements))
-            // {
-            // changeUILockStatus(LockStatus.NOT_LOCKED);
         }
     }
 

@@ -56,6 +56,9 @@ public class EAttributeCustomizationAttributeNameContentProposalProvider impleme
         this.eAttributeCustomization = eAttributeCustomization;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public IContentProposal[] getProposals(String contents, int position) {
         List<IContentProposal> proposals = new ArrayList<IContentProposal>();
         String incompleteText = contents.substring(0, position);
@@ -143,13 +146,13 @@ public class EAttributeCustomizationAttributeNameContentProposalProvider impleme
             adapter.addContentProposalListener(new IContentProposalListener2() {
 
                 public void proposalPopupClosed(final ContentProposalAdapter arg0) {
-                    if (section instanceof ModelViewBinding) {
+                    if (section != null) {
                         ((ModelViewBinding) section).enableModelUpdating();
                     }
                 }
 
                 public void proposalPopupOpened(final ContentProposalAdapter arg0) {
-                    if (section instanceof ModelViewBinding) {
+                    if (section != null) {
                         ((ModelViewBinding) section).disableModelUpdating();
                     }
                 }

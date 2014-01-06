@@ -42,8 +42,8 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
@@ -565,7 +565,7 @@ public class DTableMenuListener implements IMenuListener {
             // Tools only available for column of type DTargetColumn
             if (column instanceof DTargetColumn && ((DTargetColumn) column).getOriginMapping() != null) {
                 final DTargetColumn targetColumn = (DTargetColumn) column;
-                final AbstractTargetColumnAction deleteAction = (AbstractTargetColumnAction) getMappingToDeleteActions().get(targetColumn.getOriginMapping());
+                final AbstractTargetColumnAction deleteAction = getMappingToDeleteActions().get(targetColumn.getOriginMapping());
                 deleteAction.setColumn(targetColumn);
                 if (deleteAction.canExecute()) {
                     manager.add(deleteAction);
