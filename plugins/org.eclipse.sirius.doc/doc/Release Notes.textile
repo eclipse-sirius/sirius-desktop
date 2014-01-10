@@ -16,6 +16,20 @@ This milestone (Sirius 1.0M5) introduces several new plug-ins, collectively call
 # Add the necessary @Import-Package@ (recommended) or @Require-Bundle@ to depend on the library extension(s) where the code they use now lives;
 # Perform a simple "Organize Imports" operation, which should find the classes and interfaces in their new locations.
 
+h4. Move diagram-specific EClasses into a separate EPackage
+
+For historical reasons, the core Sirius metamodels defined in viewpoint.ecore contain both generic (dialect-independant like Viewpoint, RepresentationDescription, DAnalysis...) concepts and diagram-specific ones (e.g. DNode, EdgeStyle, ContainerCreationDescription...). The table and tree metamodels are more cleanly separated.
+This milestone (Sirius 1.0M5) includes the first step towards a full separation of the diagram-specific stuff out of the core of Sirius. So many EClasses have been moved. Most of the time, existing code which used these Sirius EClasses will only need to perform a simple "Organize Imports" operation, which should find the classes and interfaces in their new locations.
+The existing VSM (@*.odesign@) and representations file (@*.aird@) are automatically migrated. 
+The impacted EPackages are : 
+* @viewpoint@ : some of its EClasses have been moved to @viewpoint/diagram@
+* @viewpoint/description@ : some of its EClasses have been moved to @viewpoint/diagram/description@
+* @viewpoint/description/style@ : some of its EClasses have been moved to @viewpoint/diagram/description/style@
+* @viewpoint/description/tool@ : some of its EClasses have been moved to @viewpoint/diagram/description/tool@
+* @viewpoint/description/filter@ : this EPackage has been moved to @viewpoint/diagram/description/filter@
+* @viewpoint/description/validation@ : this EPackage has been moved to @viewpoint/diagram/description/validation@
+* @viewpoint/description/concern@ : this EPackage has been moved to @viewpoint/diagram/description/concern@ 
+
 h4. Changes in @org.eclipse.sirius@
 
 * The @org.eclipse.sirius.business.api.migration.resource.StringCouple@ class has been removed.
