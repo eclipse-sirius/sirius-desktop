@@ -27,6 +27,9 @@
 		<p>This document contains the release notes for all major releases of Sirius.</p>
 		<h2 id="sirius1.0M5">Changes in Sirius 1.0.0M5 (from Sirius 1.0M4)</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<ul>
+			<li>The table csv export has been improved to handle cropped label. In some specific cases, the cell label is automatically cropped and &#8249;...&#8250; is concatenated to the resulting value. This cropped displayed label was previously exported, now the complete semantic value is exported.</li>
+		</ul>
 		<h3 id="APIChanges">API Changes</h3>
 		<h4 id="LibraryExtensions">Library Extensions</h4>
 		<p>This milestone (Sirius 1.0M5) introduces several new plug-ins, collectively called &#171;library extensions&#187;. They are all named 
@@ -57,6 +60,24 @@
 			</li>
 			<li>The 
 				<code>org.eclipse.sirius.common.ui.tools.api.util.ISimpleAction</code> interface has been removed.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.table">Changes in 
+			<code>org.eclipse.sirius.table</code>
+		</h4>
+		<ul>
+			<li>The 
+				<code>org.eclipse.sirius.table.business.api.query.DCellQuery.getExportableLabel()</code> method has been added to compute the label to export when the label is cropped by the 
+				<code>org.eclipse.emf.edit.provider.ItemPropertyDescriptor.ItemDelegator</code>.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.table.ui">Changes in 
+			<code>org.eclipse.sirius.table.ui</code>
+		</h4>
+		<ul>
+			<li>The 
+				<code>org.eclipse.sirius.table.ui.business.api.helper.TableUIHelper</code> now uses 
+				<code>DCellQuery.getExportableLabel()</code> to compute the cell labels used in HTML export.
 			</li>
 		</ul>
 		<h2 id="sirius1.0M4">Changes in Sirius 1.0.0M4 (from Sirius 0.9)</h2>
@@ -343,7 +364,7 @@
 				<code>CreateRepresentationFromRepresentationCreationDescription</code> classes (iof plug-ins sirius.diagram, sirius.table.ui, sirius.tree.ui).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.table">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.table2">Changes in 
 			<code>org.eclipse.sirius.table</code>
 		</h4>
 		<ul>

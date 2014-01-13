@@ -15,10 +15,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.widgets.Tree;
-import org.eclipse.swt.widgets.TreeColumn;
-import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
@@ -33,6 +29,10 @@ import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.swt.widgets.TreeColumn;
+import org.eclipse.swt.widgets.TreeItem;
 
 /**
  * Utility methods to handle Table models.
@@ -481,7 +481,8 @@ class TableFiller {
     }
 
     public String getContent(final DCell cell) {
-        if (!StringUtil.isEmpty(cell.getLabel())) {
+        String label = new DCellQuery(cell).getExportableLabel();
+        if (!StringUtil.isEmpty(label)) {
             return cell.getLabel();
         }
         return BLANK_MARKER;

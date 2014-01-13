@@ -10,10 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.api.query;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
-
-import com.google.common.base.Preconditions;
-
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.table.metamodel.table.DCell;
@@ -22,8 +27,12 @@ import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
+import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription;
 import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+
+import com.google.common.base.Preconditions;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DCell} as a
@@ -277,5 +286,50 @@ public class DCellQuery {
      */
     public int getColumnIndex() {
         return new DColumnQuery(cell.getColumn()).getColumnIndex();
+    }
+
+    /**
+     * When a cell belongs to a column defined by a FeatureColumnMapping with an
+     * empty label computation expression, the item property descriptor is used
+     * to compute the DCell label to display. For non Boolean and non EEnum data
+     * types, org.eclipse.emf.edit.provider.ItemPropertyDescriptor.ItemDelegator
+     * .convert(EDataType, Object) crops the obtained value at the first found
+     * char on which Character.isISOControl return true, the "..." is added to
+     * the label.
+     * 
+     * This method return the label value before the crop.
+     * 
+     * @return the complete label of the cell.
+     */
+    public String getExportableLabel() {
+        String label = cell.getLabel();
+        if (cell.getUpdater() instanceof FeatureColumnMapping && cell.getTarget() != null) {
+            String featureName = ((FeatureColumnMapping) cell.getUpdater()).getFeatureName();
+            if (!StringUtil.isEmpty(featureName) && StringUtil.isEmpty(cell.getUpdater().getLabelComputationExpression())) {
+                ModelAccessor modelAccessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(cell);
+                EObject target = cell.getTarget();
+                EStructuralFeature eStructuralFeature = null;
+                Object value = null;
+                try {
+                    value = modelAccessor.eGet(cell.getTarget(), featureName);
+                    eStructuralFeature = target.eClass().getEStructuralFeature(featureName);
+                } catch (FeatureNotFoundException e) {
+                    // Do nothing
+                }
+
+                if (value instanceof String) {
+                    label = (String) value;
+                } else if (eStructuralFeature instanceof EAttribute && !(value instanceof Boolean || value instanceof EEnum)) {
+                    // See
+                    // org.eclipse.emf.edit.provider.ItemPropertyDescriptor.ItemDelegator.getText(Object)
+                    // and
+                    // org.eclipse.emf.edit.provider.ItemPropertyDescriptor.ItemDelegator.convert(EDataType,
+                    // Object)
+                    EDataType eDataType = ((EAttribute) eStructuralFeature).getEAttributeType();
+                    label = EcoreUtil.convertToString(eDataType, value);
+                }
+            }
+        }
+        return label;
     }
 }

@@ -11,6 +11,7 @@
 package org.eclipse.sirius.table.tools.internal.export.csv;
 
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.table.business.api.query.DCellQuery;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
@@ -87,7 +88,7 @@ public class TableFiller {
      *         returned.
      */
     public String getContent(final DCell cell) {
-        String label = cell.getLabel();
+        String label = new DCellQuery(cell).getExportableLabel();
         if (null != label) {
             // Use standard replacement policy.
             label = replaceDelimiter(getDelimiter(), getReplacementDelimiter(), label);
