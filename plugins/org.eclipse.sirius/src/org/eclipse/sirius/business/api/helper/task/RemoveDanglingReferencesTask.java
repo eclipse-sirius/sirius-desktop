@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,10 +24,14 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
+import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 
 /**
  * A task which remove dangling references.
@@ -35,27 +39,6 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
  * @author mchauvin
  */
 public class RemoveDanglingReferencesTask extends AbstractCommandTask {
-    /**
-     * Name of the GMF View feature to ignore in the remove dangling references.
-     */
-    private static final String GMF_REFERENCE_NAME_TO_IGNORE = "element";
-
-    /**
-     * Container name of the GMF View feature to ignore in the remove dangling
-     * references.
-     */
-    private static final String GMF_REFERENCE_CONTAINER_NAME_TO_IGNORE = "org.eclipse.gmf.runtime.notation.View";
-
-    /**
-     * Name of the ECore reference to ignore in the remove dangling references.
-     */
-    private static final String ECORE_REFERENCE_NAME_TO_IGNORE = "eFactoryInstance";
-
-    /**
-     * Container name of the ECore reference to ignore in the remove dangling
-     * references.
-     */
-    private static final String ECORE_REFERENCE_CONTAINER_NAME_TO_IGNORE = "org.eclipse.emf.ecore.EPackage";
 
     private EObject root;
 
@@ -171,11 +154,12 @@ public class RemoveDanglingReferencesTask extends AbstractCommandTask {
         }
 
         private boolean isReferenceToIgnore(final EReference eReference) {
-            return
-            // ignoring the View.element reference
-            GMF_REFERENCE_NAME_TO_IGNORE.equals(eReference.getName()) && GMF_REFERENCE_CONTAINER_NAME_TO_IGNORE.equals(eReference.getContainerClass().getName())
-            // ignoring the EPackage.eFactoryInstance reference
-                    || ECORE_REFERENCE_NAME_TO_IGNORE.equals(eReference.getName()) && ECORE_REFERENCE_CONTAINER_NAME_TO_IGNORE.equals(eReference.getContainerClass().getName());
+            Predicate<EReference> toIgnore = Predicates.or(
+                    // ignoring the View.element reference
+                    DanglingRefRemovalTrigger.NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE,
+                    // ignoring the EPackage.eFactoryInstance reference
+                    DanglingRefRemovalTrigger.EPACKAGE_EFACTORYINSTANCE_REFERENCE_TO_IGNORE_PREDICATE);
+            return toIgnore.apply(eReference);
         }
     }
 
@@ -201,6 +185,5 @@ public class RemoveDanglingReferencesTask extends AbstractCommandTask {
             this.value = value;
             this.obj = obj;
         }
-
     }
 }

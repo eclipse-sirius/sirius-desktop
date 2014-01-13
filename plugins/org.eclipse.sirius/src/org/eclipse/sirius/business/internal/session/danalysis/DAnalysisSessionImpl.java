@@ -39,6 +39,7 @@ import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -67,6 +68,7 @@ import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
+import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.ReloadingPolicy;
 import org.eclipse.sirius.business.api.session.ReloadingPolicy.Action;
 import org.eclipse.sirius.business.api.session.SavingPolicy;
@@ -129,6 +131,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl;
 
 import com.google.common.base.Preconditions;
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
@@ -433,6 +436,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             } else {
                 ViewpointRegistry.getInstance().addListener(this);
             }
+            initLocalTriggers();
             super.setOpen(true);
             notifyListeners(SessionListener.OPENED);
             monitor.worked(1);
@@ -444,6 +448,18 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         } finally {
             monitor.done();
         }
+    }
+
+    /**
+     * This method allows adding {@link ModelChangeTrigger} to the current
+     * session {@link SessionEventBroker}. This method is called during the opening of
+     * the Session, before setting the open attribute to true and before
+     * launching the SessionListener.OPENED notifications.
+     */
+    protected void initLocalTriggers() {
+        Predicate<Notification> danglingRemovalPredicate = Predicates.or(DanglingRefRemovalTrigger.IS_DETACHMENT, DanglingRefRemovalTrigger.IS_ATTACHMENT);
+        DanglingRefRemovalTrigger danglingRemovalTrigger = new DanglingRefRemovalTrigger(this.getTransactionalEditingDomain(), this.getModelAccessor(), this.getSemanticCrossReferencer());
+        getEventBroker().addLocalTrigger(danglingRemovalPredicate, danglingRemovalTrigger);
     }
 
     /**
