@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,6 @@ import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 
 /**
@@ -114,9 +113,6 @@ public class ContainerCreationCommandBuilder extends AbstractCommandBuilder {
                 final DCommand result = buildCreateNodeCommandFromTool(model, diagram);
                 result.getTasks().add(new CreateContainerTask(tool, result, modelAccessor, diagram));
                 addRefreshTask(diagram, result, tool);
-                if (diagram instanceof DSemanticDecorator) {
-                    addRemoveDanglingReferencesTask(result, tool, (DSemanticDecorator) diagram);
-                }
                 return result;
             }
         }
@@ -130,7 +126,6 @@ public class ContainerCreationCommandBuilder extends AbstractCommandBuilder {
                 final DCommand result = buildCreateNodeCommandFromTool(model, nodeContainer);
                 result.getTasks().add(new CreateContainerTask(tool, result, modelAccessor, nodeContainer));
                 addRefreshTask(nodeContainer, result, tool);
-                addRemoveDanglingReferencesTask(result, tool, nodeContainer);
                 return result;
             }
         }

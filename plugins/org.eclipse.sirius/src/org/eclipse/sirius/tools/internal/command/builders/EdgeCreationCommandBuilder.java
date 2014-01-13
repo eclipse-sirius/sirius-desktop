@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -93,7 +93,6 @@ public class EdgeCreationCommandBuilder extends AbstractCommandBuilder {
             final DCommand result = buildCreateEdgeCommandFromTool(sourceTarget, targetTarget);
             result.getTasks().add(buildCreateEdgeTask(result));
             addRefreshTask((DDiagramElement) source, result, tool);
-            addRemoveDanglingReferencesTask(result, tool, (DSemanticDecorator) source);
             return result;
         }
         return UnexecutableCommand.INSTANCE;
@@ -248,7 +247,7 @@ public class EdgeCreationCommandBuilder extends AbstractCommandBuilder {
         final ICommandTask result = new CreateDEdgeTask(tool, createdObjects, modelAccessor, source, target);
         return result;
     }
-    
+
     /**
      * {@inheritDoc}
      */

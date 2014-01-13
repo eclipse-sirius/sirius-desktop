@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,19 +16,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
-import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
-import org.eclipse.sirius.business.api.helper.task.RemoveDanglingReferencesTask;
-import org.eclipse.sirius.business.api.helper.task.RemoveSemanticDanglingReferenceTask;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
@@ -49,11 +43,9 @@ import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.NoNullResourceCommand;
-import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -154,17 +146,6 @@ public class DeletionCommandBuilder extends AbstractCommandBuilder {
             /* delete the diagram */
             addDeleteDiagramTask(vpCmd, diagram);
 
-            /* remove the dangling references of the viewpoint */
-            vpCmd.getTasks().add(new AbstractCommandTask() {
-
-                public void execute() {
-                    RemoveDanglingReferences.removeDanglingReferences(EcoreUtil.getRootContainer(diagram));
-                }
-
-                public String getLabel() {
-                    return null;
-                }
-            });
             cmd = vpCmd;
 
         }
@@ -222,19 +203,7 @@ public class DeletionCommandBuilder extends AbstractCommandBuilder {
                 setTool();
                 if (tool != null) {
                     addDeleteDiagramElementFromTool(result);
-                    EObject rootContainer = null;
-                    final boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
-                    if (automaticRefresh) {
-                        result.getTasks().add(new RemoveDanglingReferencesTask(EcoreUtil.getRootContainer(((DSemanticDecorator) diagramElement).getTarget())));
-                        addRefreshTask(diagramElement, result, tool);
-                        rootContainer = EcoreUtil.getRootContainer(diagramElement);
-                    } else {
-                        result.getTasks().add(new RemoveSemanticDanglingReferenceTask(permissionAuthority, allSemanticElements, uiCallback));
-                        EObjectQuery eObjectQuery = new EObjectQuery(diagramElement);
-                        DRepresentation dRepresentation = eObjectQuery.getRepresentation().get();
-                        rootContainer = dRepresentation;
-                    }
-                    result.getTasks().add(new RemoveDanglingReferencesTask(rootContainer));
+                    addRefreshTask(diagramElement, result, tool);
                     cmd = new NoNullResourceCommand(result, diagramElement);
                 } else {
                     cmd = buildDeleteDiagramElementCommandWithoutTool(result, foundDiagram);
@@ -352,20 +321,6 @@ public class DeletionCommandBuilder extends AbstractCommandBuilder {
                 result.getTasks().add(deleteSemanticElementTask);
             }
 
-            /*
-             * and remove possible dangling references
-             */
-            final boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
-            if (automaticRefresh) {
-                if (diagramElement.getTarget() != null) {
-                    result.getTasks().add(new RemoveDanglingReferencesTask(EcoreUtil.getRootContainer(diagramElement.getTarget())));
-                }
-                result.getTasks().add(new RemoveDanglingReferencesTask(EcoreUtil.getRootContainer(diagramElement)));
-            } else {
-                // result.getTasks().add(new
-                // RemoveDanglingReferencesTask(dRepresentation, uiCallback));
-                result.getTasks().add(new RemoveSemanticDanglingReferenceTask(permissionAuthority, allSemanticElements, uiCallback));
-            }
             // Add a refresh task if the autoRefresh is on.
             addRefreshTask(diagramElement, result, tool);
             /* Avoid notifications of the outline on each change */
@@ -429,17 +384,6 @@ public class DeletionCommandBuilder extends AbstractCommandBuilder {
                 }
             }
 
-            /* remove the dangling references of the diagram */
-            cmd.getTasks().add(new AbstractCommandTask() {
-
-                public void execute() {
-                    RemoveDanglingReferences.removeDanglingReferences(EcoreUtil.getRootContainer(diagramToDelete));
-                }
-
-                public String getLabel() {
-                    return null;
-                }
-            });
         } else {
             cmd.getTasks().add(UnexecutableTask.INSTANCE);
         }

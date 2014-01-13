@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -160,7 +160,6 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
                 }
             }
             addRefreshTask(rootObject, result, tool);
-            addRemoveDanglingReferencesTask(result, tool, rootObject);
             return result;
         }
         return UnexecutableCommand.INSTANCE;
@@ -268,7 +267,6 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
         for (final DSemanticDecorator containerView : containerViews) {
             addRefreshTask(containerView, dCommand, tool);
         }
-        addRemoveDanglingReferencesTask(dCommand, tool, containerViews.iterator().next());
         return compoundCommand;
     }
 
@@ -288,7 +286,6 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
         for (final DSemanticDecorator containerView : containerViews) {
             addRefreshTask(containerView, command, tool);
         }
-        addRemoveDanglingReferencesTask(command, tool, containerViews.iterator().next());
         return command;
     }
 
@@ -411,7 +408,6 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
         if (representation.some() && desc.getInitialOperation() != null && desc.getInitialOperation().getFirstModelOperations() != null) {
             cmd.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(representation.get(), target.getTarget(), desc.getInitialOperation().getFirstModelOperations()));
         }
-        addRemoveDanglingReferencesTask(cmd, desc, target);
         return cmd;
     }
 

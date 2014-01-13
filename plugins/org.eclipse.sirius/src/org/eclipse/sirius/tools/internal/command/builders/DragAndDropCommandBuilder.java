@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -150,7 +150,6 @@ public class DragAndDropCommandBuilder extends AbstractCommandBuilder {
                         // to the DDiagram modifications
                         final DDiagram diagram = container instanceof DDiagram ? (DDiagram) container : ((DDiagramElement) container).getParentDiagram();
                         this.addRefreshTask(diagram, cmd, tool);
-                        addRemoveDanglingReferencesTask(cmd, tool, (DSemanticDecorator) container);
                         return cmd;
                     }
                 }
@@ -247,7 +246,7 @@ public class DragAndDropCommandBuilder extends AbstractCommandBuilder {
         }
         return result;
     }
-    
+
     /**
      * {@inheritDoc}
      */

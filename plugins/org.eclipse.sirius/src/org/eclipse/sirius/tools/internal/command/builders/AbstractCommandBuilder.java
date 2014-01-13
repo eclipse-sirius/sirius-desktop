@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,14 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.internal.command.builders;
 
-import java.util.Iterator;
-
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
-import org.eclipse.sirius.business.api.helper.task.RemoveDanglingReferencesTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
@@ -40,7 +37,6 @@ import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * Default implementation for {@link CommandBuilder}.
@@ -164,31 +160,6 @@ public abstract class AbstractCommandBuilder implements CommandBuilder {
             evaluation = false;
         }
         return evaluation;
-    }
-
-    /**
-     * Adds the remove dangling reference task if necessary.
-     * 
-     * @param result
-     *            the command.
-     * @param tool
-     *            the tool.
-     * @param any
-     *            any semantic decorator.
-     */
-    protected void addRemoveDanglingReferencesTask(final DCommand result, final AbstractToolDescription tool, final DSemanticDecorator any) {
-        boolean containsRemove = false;
-        final Iterator<EObject> iterContent = tool.eAllContents();
-        while (!containsRemove && iterContent.hasNext()) {
-            final EObject next = iterContent.next();
-            if (ToolPackage.eINSTANCE.getRemoveElement().isInstance(next)) {
-                containsRemove = true;
-            }
-        }
-        if (containsRemove) {
-            result.getTasks().add(new RemoveDanglingReferencesTask(any));
-            result.getTasks().add(new RemoveDanglingReferencesTask(any.getTarget()));
-        }
     }
 
     /**

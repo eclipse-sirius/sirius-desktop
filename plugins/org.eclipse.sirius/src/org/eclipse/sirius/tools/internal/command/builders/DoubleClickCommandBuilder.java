@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -97,7 +97,6 @@ public class DoubleClickCommandBuilder extends AbstractCommandBuilder {
     protected void addPostOperationTasks(final DCommand command, IInterpreter interpreter) {
         if (dDiagramElement != null) {
             addRefreshTask(dDiagramElement, command, tool);
-            addRemoveDanglingReferencesTask(command, tool, dDiagramElement);
         }
     }
 

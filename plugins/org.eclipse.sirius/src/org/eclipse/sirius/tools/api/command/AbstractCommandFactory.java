@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,15 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.api.command;
 
-import java.util.Iterator;
-
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
-import org.eclipse.sirius.business.api.helper.task.RemoveDanglingReferencesTask;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -32,7 +29,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * .
@@ -165,30 +161,4 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
     protected void addRefreshTask(final DSemanticDecorator semanticDecorator, final DCommand result, final AbstractToolDescription toolDescription) {
         addRefreshTask(semanticDecorator, result, toolDescription, new NullProgressMonitor());
     }
-
-    /**
-     * Adds the remove dangling reference task if necessary.
-     * 
-     * @param result
-     *            the command.
-     * @param tool
-     *            the tool.
-     * @param any
-     *            any semantic decorator.
-     */
-    protected void addRemoveDanglingReferencesTask(final DCommand result, final EObject tool, final DSemanticDecorator any) {
-        boolean containsRemove = false;
-        final Iterator<EObject> iterContent = tool.eAllContents();
-        while (!containsRemove && iterContent.hasNext()) {
-            final EObject next = iterContent.next();
-            if (ToolPackage.eINSTANCE.getRemoveElement().isInstance(next)) {
-                containsRemove = true;
-            }
-        }
-        if (containsRemove) {
-            result.getTasks().add(new RemoveDanglingReferencesTask(any));
-            result.getTasks().add(new RemoveDanglingReferencesTask(any.getTarget()));
-        }
-    }
-
 }
