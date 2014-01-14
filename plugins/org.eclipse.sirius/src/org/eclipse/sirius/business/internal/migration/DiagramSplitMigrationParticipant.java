@@ -13,11 +13,6 @@ package org.eclipse.sirius.business.internal.migration;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.business.api.migration.AbstractMigrationParticipant;
-import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.description.DescriptionPackage;
-import org.eclipse.sirius.diagram.description.style.StylePackage;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.osgi.framework.Version;
 
 /**
@@ -46,14 +41,14 @@ public class DiagramSplitMigrationParticipant extends AbstractMigrationParticipa
             // org.eclipse.emf.ecore.EPackage.getEClassifier(String) will return
             // null if not found.
             // A map name -> classifier is populated once.
-            if (ViewpointPackage.eINSTANCE.equals(ePackage)) {
-                type = DiagramPackage.eINSTANCE.getEClassifier(name);
+            if (org.eclipse.sirius.viewpoint.ViewpointPackage.eINSTANCE.equals(ePackage)) {
+                type = org.eclipse.sirius.diagram.DiagramPackage.eINSTANCE.getEClassifier(name);
             } else if (org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE.equals(ePackage)) {
-                type = DescriptionPackage.eINSTANCE.getEClassifier(name);
+                type = org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getEClassifier(name);
             } else if (org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eINSTANCE.equals(ePackage)) {
-                type = ToolPackage.eINSTANCE.getEClassifier(name);
+                type = org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE.getEClassifier(name);
             } else if (org.eclipse.sirius.viewpoint.description.style.StylePackage.eINSTANCE.equals(ePackage)) {
-                type = StylePackage.eINSTANCE.getEClassifier(name);
+                type = org.eclipse.sirius.diagram.description.style.StylePackage.eINSTANCE.getEClassifier(name);
             }
         }
         return type;

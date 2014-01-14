@@ -27,9 +27,17 @@ import com.google.common.collect.ImmutableMap;
  */
 public class NsURIMigrationParticipant extends AbstractMigrationParticipant {
 
+    private static final String SIRIUS_DESCRIPTION_CONCERN_1_1_0 = "http://www.eclipse.org/sirius/description/concern/1.1.0";
+
+    private static final String SIRIUS_DIAGRAM_DESCRIPTION_CONCERN_1_1_0 = "http://www.eclipse.org/sirius/diagram/description/concern/1.1.0";
+
     private static final String SIRIUS_DESCRIPTION_FILTER_1_1_0 = "http://www.eclipse.org/sirius/description/filter/1.1.0";
 
     private static final String SIRIUS_DIAGRAM_DESCRIPTION_FILTER_1_1_0 = "http://www.eclipse.org/sirius/diagram/description/filter/1.1.0";
+
+    private static final String SIRIUS_DESCRIPTION_VALIDATION_1_1_0 = "http://www.eclipse.org/sirius/description/validation/1.1.0";
+
+    private static final String SIRIUS_DIAGRAM_DESCRIPTION_VALIDATION_1_1_0 = "http://www.eclipse.org/sirius/diagram/description/validation/1.1.0";
 
     /**
      * The version 7.0.0 corresponds to the file format of Sirius 0.9 (more
@@ -39,16 +47,13 @@ public class NsURIMigrationParticipant extends AbstractMigrationParticipant {
 
     private static final Version MIGRATION_VERSION = new Version("8.0.0");
 
-    private static final Map<String, String> NS_URI_MAPPINGS = ImmutableMap.<String, String> builder()
+    private static final Map<String, String> VIEWPOINT_TO_SIRUS_0_9_NS_URI_MAPPINGS = ImmutableMap.<String, String> builder()
             .put("http://www.obeo.fr/dsl/viewpoint/description/contribution/1.0.0", "http://www.eclipse.org/sirius/description/contribution/1.0.0")
             .put("http://www.obeo.fr/dsl/viewpoint/1.1.0", "http://www.eclipse.org/sirius/1.1.0")
             .put("http://www.obeo.fr/dsl/viewpoint/description/1.1.0", "http://www.eclipse.org/sirius/description/1.1.0")
             .put("http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0", "http://www.eclipse.org/sirius/description/style/1.1.0")
             .put("http://www.obeo.fr/dsl/viewpoint/description/tool/1.1.0", "http://www.eclipse.org/sirius/description/tool/1.1.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/description/filter/1.1.0", SIRIUS_DIAGRAM_DESCRIPTION_FILTER_1_1_0)
-            .put("http://www.obeo.fr/dsl/viewpoint/description/validation/1.1.0", "http://www.eclipse.org/sirius/description/validation/1.1.0")
             .put("http://www.obeo.fr/dsl/viewpoint/description/audit/1.1.0", "http://www.eclipse.org/sirius/description/audit/1.1.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/description/concern/1.1.0", "http://www.eclipse.org/sirius/description/concern/1.1.0")
             .put("http://www.obeo.fr/dsl/layoutdata/1.1.0", "http://www.eclipse.org/sirius/dsl/layoutdata/1.1.0")
             .put("http://www.obeo.fr/dsl/viewpoint/diagram/sequence/2.0.0", "http://www.eclipse.org/sirius/diagram/sequence/2.0.0")
             .put("http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/2.0.0", "http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0")
@@ -58,7 +63,15 @@ public class NsURIMigrationParticipant extends AbstractMigrationParticipant {
             .put("http://www.obeo.fr/dsl/viewpoint/table/1.1.0", "http://www.eclipse.org/sirius/table/1.1.0")
             .put("http://www.obeo.fr/dsl/viewpoint/table/description/1.1.0", "http://www.eclipse.org/sirius/table/description/1.1.0")
             .put("http://www.obeo.fr/dsl/viewpoint/tree/1.0.0", "http://www.eclipse.org/sirius/tree/1.0.0")
-            .put("http://www.obeo.fr/dsl/viewpoint/tree/description/1.0.0", "http://www.eclipse.org/sirius/tree/description/1.0.0").build();
+            .put("http://www.obeo.fr/dsl/viewpoint/tree/description/1.0.0", "http://www.eclipse.org/sirius/tree/description/1.0.0")
+            .put("http://www.obeo.fr/dsl/viewpoint/description/concern/1.1.0", SIRIUS_DIAGRAM_DESCRIPTION_CONCERN_1_1_0)
+            .put("http://www.obeo.fr/dsl/viewpoint/description/filter/1.1.0", SIRIUS_DIAGRAM_DESCRIPTION_FILTER_1_1_0)
+            .put("http://www.obeo.fr/dsl/viewpoint/description/validation/1.1.0", SIRIUS_DIAGRAM_DESCRIPTION_VALIDATION_1_1_0).build();
+    
+    private static final Map<String, String> SIRUS_0_9_TO_SIRUS_1_0_NS_URI_MAPPINGS = ImmutableMap.<String, String> builder()
+            .put(SIRIUS_DESCRIPTION_CONCERN_1_1_0, SIRIUS_DIAGRAM_DESCRIPTION_CONCERN_1_1_0)
+            .put(SIRIUS_DESCRIPTION_FILTER_1_1_0, SIRIUS_DIAGRAM_DESCRIPTION_FILTER_1_1_0)
+            .put(SIRIUS_DESCRIPTION_VALIDATION_1_1_0, SIRIUS_DIAGRAM_DESCRIPTION_VALIDATION_1_1_0).build();
 
     public Version getMigrationVersion() {
         return MIGRATION_VERSION;
@@ -72,9 +85,9 @@ public class NsURIMigrationParticipant extends AbstractMigrationParticipant {
         if (namespace != null) {
             String mapTo = null;
             if (Version.parseVersion(loadedVersion).compareTo(ALREADY_MIGRATED_VERSION) < 0) {
-                mapTo = NS_URI_MAPPINGS.get(namespace);
-            } else if (Version.parseVersion(loadedVersion).compareTo(MIGRATION_VERSION) < 0 && SIRIUS_DESCRIPTION_FILTER_1_1_0.equals(namespace)) {
-                mapTo = SIRIUS_DIAGRAM_DESCRIPTION_FILTER_1_1_0;
+                mapTo = VIEWPOINT_TO_SIRUS_0_9_NS_URI_MAPPINGS.get(namespace);
+            } else if (Version.parseVersion(loadedVersion).compareTo(MIGRATION_VERSION) < 0) {
+                mapTo = SIRUS_0_9_TO_SIRUS_1_0_NS_URI_MAPPINGS.get(namespace);
             }
 
             if (mapTo != null) {
