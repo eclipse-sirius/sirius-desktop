@@ -12,16 +12,16 @@ package org.eclipse.sirius.business.api.query;
 
 import java.util.Collection;
 
+import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
+import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
+import org.eclipse.sirius.diagram.description.tool.DoubleClickDescription;
+import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
-import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
-import org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription;
-import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
 
 import com.google.common.collect.Sets;
 

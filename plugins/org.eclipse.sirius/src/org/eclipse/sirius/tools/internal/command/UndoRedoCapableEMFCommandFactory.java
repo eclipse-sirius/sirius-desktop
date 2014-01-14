@@ -42,6 +42,14 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
+import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
+import org.eclipse.sirius.diagram.description.tool.DoubleClickDescription;
+import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
+import org.eclipse.sirius.diagram.description.validation.ValidationFix;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.AbstractCommandFactory;
@@ -78,22 +86,14 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
-import org.eclipse.sirius.viewpoint.description.tool.BehaviorTool;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
-import org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription;
-import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
-import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
 
 /**
  * A command factory that creates commands that can be undone.

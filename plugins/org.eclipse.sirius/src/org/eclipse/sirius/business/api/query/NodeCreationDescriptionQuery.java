@@ -16,7 +16,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
-import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 
 /**
  * A class aggregating all the queries (read-only!) having a

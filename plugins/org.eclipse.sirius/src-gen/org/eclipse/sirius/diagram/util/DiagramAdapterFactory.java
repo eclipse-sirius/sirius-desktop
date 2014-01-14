@@ -1116,22 +1116,6 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle
-     * <em>Basic Label Style</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.BasicLabelStyle
-     * @generated
-     */
-    public Adapter createBasicLabelStyleAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.diagram.BeginLabelStyle
      * <em>Begin Label Style</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
@@ -1499,6 +1483,22 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createCustomizableAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle
+     * <em>Basic Label Style</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.BasicLabelStyle
+     * @generated
+     */
+    public Adapter createBasicLabelStyleAdapter() {
         return null;
     }
 

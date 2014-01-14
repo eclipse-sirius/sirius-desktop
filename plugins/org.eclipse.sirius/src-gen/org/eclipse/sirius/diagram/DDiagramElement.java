@@ -153,7 +153,7 @@ public interface DDiagramElement extends DRepresentationElement, DValidable, DNa
     /**
      * Returns the value of the '<em><b>Graphical Filters</b></em>' containment
      * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.GraphicalFilter}. <!-- begin-user-doc
+     * {@link org.eclipse.sirius.diagram.GraphicalFilter}. <!-- begin-user-doc
      * --> <!-- end-user-doc --> <!-- begin-model-doc --> Graphical filters
      * allowing to handle this element. <!-- end-model-doc -->
      * 

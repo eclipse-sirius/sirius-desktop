@@ -23,13 +23,13 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
+import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.tools.api.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
 
 /**
  * Edit policy for nodes.

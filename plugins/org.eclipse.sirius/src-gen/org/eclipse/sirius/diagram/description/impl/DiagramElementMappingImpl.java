@@ -23,14 +23,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
+import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
+import org.eclipse.sirius.diagram.description.tool.DoubleClickDescription;
+import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.impl.RepresentationElementMappingImpl;
-import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
-import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
-import org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

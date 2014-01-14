@@ -47,7 +47,7 @@ public interface EllipseNodeDescription extends NodeStyleDescription {
      * 
      * @return the value of the '<em>Color</em>' reference.
      * @see #setColor(ColorDescription)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEllipseNodeDescription_Color()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEllipseNodeDescription_Color()
      * @model required="true"
      * @generated
      */
@@ -76,7 +76,7 @@ public interface EllipseNodeDescription extends NodeStyleDescription {
      * @return the value of the '
      *         <em>Horizontal Diameter Computation Expression</em>' attribute.
      * @see #setHorizontalDiameterComputationExpression(String)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEllipseNodeDescription_HorizontalDiameterComputationExpression()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEllipseNodeDescription_HorizontalDiameterComputationExpression()
      * @model default="0" dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
@@ -110,7 +110,7 @@ public interface EllipseNodeDescription extends NodeStyleDescription {
      * @return the value of the '
      *         <em>Vertical Diameter Computation Expression</em>' attribute.
      * @see #setVerticalDiameterComputationExpression(String)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEllipseNodeDescription_VerticalDiameterComputationExpression()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEllipseNodeDescription_VerticalDiameterComputationExpression()
      * @model default="0" dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=

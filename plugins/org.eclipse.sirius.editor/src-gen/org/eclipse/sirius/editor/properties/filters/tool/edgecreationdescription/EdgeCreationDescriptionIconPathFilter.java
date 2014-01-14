@@ -13,7 +13,7 @@ package org.eclipse.sirius.editor.properties.filters.tool.edgecreationdescriptio
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 
 // End of user code specific imports
 
@@ -33,7 +33,7 @@ public class EdgeCreationDescriptionIconPathFilter extends ViewpointPropertyFilt
      * {@inheritDoc}
      */
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
+        return arg0 instanceof org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
     }
 
     // Start of user code user methods

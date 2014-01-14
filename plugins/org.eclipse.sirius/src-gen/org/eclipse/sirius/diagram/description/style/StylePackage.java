@@ -63,18 +63,6 @@ public interface StylePackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.style.impl.RoundedCornerStyleDescriptionImpl
-     * <em>Rounded Corner Style Description</em>}' class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.RoundedCornerStyleDescriptionImpl
-     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getRoundedCornerStyleDescription()
-     * @generated
-     */
-    int ROUNDED_CORNER_STYLE_DESCRIPTION = 12;
-
-    /**
-     * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.style.impl.BorderedStyleDescriptionImpl
      * <em>Bordered Style Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -1620,66 +1608,6 @@ public interface StylePackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl
-     * <em>Container Style Description</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl
-     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getContainerStyleDescription()
-     * @generated
-     */
-    int CONTAINER_STYLE_DESCRIPTION = 13;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl
-     * <em>Flat Container Style Description</em>}' class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl
-     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getFlatContainerStyleDescription()
-     * @generated
-     */
-    int FLAT_CONTAINER_STYLE_DESCRIPTION = 14;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.style.impl.ShapeContainerStyleDescriptionImpl
-     * <em>Shape Container Style Description</em>}' class. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.ShapeContainerStyleDescriptionImpl
-     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getShapeContainerStyleDescription()
-     * @generated
-     */
-    int SHAPE_CONTAINER_STYLE_DESCRIPTION = 15;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl
-     * <em>Workspace Image Description</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl
-     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getWorkspaceImageDescription()
-     * @generated
-     */
-    int WORKSPACE_IMAGE_DESCRIPTION = 16;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl
-     * <em>Edge Style Description</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl
-     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getEdgeStyleDescription()
-     * @generated
-     */
-    int EDGE_STYLE_DESCRIPTION = 17;
-
-    /**
-     * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.style.impl.GaugeSectionDescriptionImpl
      * <em>Gauge Section Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -1756,54 +1684,6 @@ public interface StylePackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.style.impl.BeginLabelStyleDescriptionImpl
-     * <em>Begin Label Style Description</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.BeginLabelStyleDescriptionImpl
-     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getBeginLabelStyleDescription()
-     * @generated
-     */
-    int BEGIN_LABEL_STYLE_DESCRIPTION = 18;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.style.impl.CenterLabelStyleDescriptionImpl
-     * <em>Center Label Style Description</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.CenterLabelStyleDescriptionImpl
-     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getCenterLabelStyleDescription()
-     * @generated
-     */
-    int CENTER_LABEL_STYLE_DESCRIPTION = 19;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.style.impl.EndLabelStyleDescriptionImpl
-     * <em>End Label Style Description</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.EndLabelStyleDescriptionImpl
-     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getEndLabelStyleDescription()
-     * @generated
-     */
-    int END_LABEL_STYLE_DESCRIPTION = 20;
-
-    /**
-     * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.style.impl.BracketEdgeStyleDescriptionImpl
-     * <em>Bracket Edge Style Description</em>}' class. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.diagram.description.style.impl.BracketEdgeStyleDescriptionImpl
-     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getBracketEdgeStyleDescription()
-     * @generated
-     */
-    int BRACKET_EDGE_STYLE_DESCRIPTION = 21;
-
-    /**
-     * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.style.impl.SizeComputationContainerStyleDescriptionImpl
      * <em>Size Computation Container Style Description</em>}' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -1843,6 +1723,18 @@ public interface StylePackage extends EPackage {
     int SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = 2;
 
     /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.description.style.impl.RoundedCornerStyleDescriptionImpl
+     * <em>Rounded Corner Style Description</em>}' class. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.description.style.impl.RoundedCornerStyleDescriptionImpl
+     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getRoundedCornerStyleDescription()
+     * @generated
+     */
+    int ROUNDED_CORNER_STYLE_DESCRIPTION = 12;
+
+    /**
      * The feature id for the '<em><b>Arc Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1869,6 +1761,18 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl
+     * <em>Container Style Description</em>}' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl
+     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getContainerStyleDescription()
+     * @generated
+     */
+    int CONTAINER_STYLE_DESCRIPTION = 13;
 
     /**
      * The feature id for the '<em><b>Arc Width</b></em>' attribute. <!--
@@ -1973,9 +1877,8 @@ public interface StylePackage extends EPackage {
 
     /**
      * The feature id for the '<em><b>Tooltip Expression</b></em>' attribute.
-     * <!-- begin-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @since 0.9.0<!-- end-user-doc -->
      * @generated
      * @ordered
      */
@@ -1999,6 +1902,18 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = ROUNDED_CORNER_STYLE_DESCRIPTION_FEATURE_COUNT + 11;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl
+     * <em>Flat Container Style Description</em>}' class. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.description.style.impl.FlatContainerStyleDescriptionImpl
+     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getFlatContainerStyleDescription()
+     * @generated
+     */
+    int FLAT_CONTAINER_STYLE_DESCRIPTION = 14;
 
     /**
      * The feature id for the '<em><b>Arc Width</b></em>' attribute. <!--
@@ -2185,6 +2100,18 @@ public interface StylePackage extends EPackage {
     int FLAT_CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.description.style.impl.ShapeContainerStyleDescriptionImpl
+     * <em>Shape Container Style Description</em>}' class. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.description.style.impl.ShapeContainerStyleDescriptionImpl
+     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getShapeContainerStyleDescription()
+     * @generated
+     */
+    int SHAPE_CONTAINER_STYLE_DESCRIPTION = 15;
+
+    /**
      * The feature id for the '<em><b>Arc Width</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -2349,6 +2276,18 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int SHAPE_CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT = CONTAINER_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl
+     * <em>Workspace Image Description</em>}' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.description.style.impl.WorkspaceImageDescriptionImpl
+     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getWorkspaceImageDescription()
+     * @generated
+     */
+    int WORKSPACE_IMAGE_DESCRIPTION = 16;
 
     /**
      * The feature id for the '
@@ -2526,6 +2465,18 @@ public interface StylePackage extends EPackage {
     int WORKSPACE_IMAGE_DESCRIPTION_FEATURE_COUNT = NODE_STYLE_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl
+     * <em>Edge Style Description</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl
+     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getEdgeStyleDescription()
+     * @generated
+     */
+    int EDGE_STYLE_DESCRIPTION = 17;
+
+    /**
      * The feature id for the '<em><b>Stroke Color</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -2625,6 +2576,18 @@ public interface StylePackage extends EPackage {
     int EDGE_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 10;
 
     /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.description.style.impl.BeginLabelStyleDescriptionImpl
+     * <em>Begin Label Style Description</em>}' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.description.style.impl.BeginLabelStyleDescriptionImpl
+     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getBeginLabelStyleDescription()
+     * @generated
+     */
+    int BEGIN_LABEL_STYLE_DESCRIPTION = 18;
+
+    /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -2687,6 +2650,18 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int BEGIN_LABEL_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.description.style.impl.CenterLabelStyleDescriptionImpl
+     * <em>Center Label Style Description</em>}' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.description.style.impl.CenterLabelStyleDescriptionImpl
+     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getCenterLabelStyleDescription()
+     * @generated
+     */
+    int CENTER_LABEL_STYLE_DESCRIPTION = 19;
 
     /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
@@ -2753,6 +2728,18 @@ public interface StylePackage extends EPackage {
     int CENTER_LABEL_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.description.style.impl.EndLabelStyleDescriptionImpl
+     * <em>End Label Style Description</em>}' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.description.style.impl.EndLabelStyleDescriptionImpl
+     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getEndLabelStyleDescription()
+     * @generated
+     */
+    int END_LABEL_STYLE_DESCRIPTION = 20;
+
+    /**
      * The feature id for the '<em><b>Label Size</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -2815,6 +2802,18 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int END_LABEL_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.description.style.impl.BracketEdgeStyleDescriptionImpl
+     * <em>Bracket Edge Style Description</em>}' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.description.style.impl.BracketEdgeStyleDescriptionImpl
+     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getBracketEdgeStyleDescription()
+     * @generated
+     */
+    int BRACKET_EDGE_STYLE_DESCRIPTION = 21;
 
     /**
      * The feature id for the '<em><b>Stroke Color</b></em>' reference. <!--
@@ -2915,43 +2914,6 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int BRACKET_EDGE_STYLE_DESCRIPTION_FEATURE_COUNT = EDGE_STYLE_DESCRIPTION_FEATURE_COUNT + 0;
-
-    /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription
-     * <em>Rounded Corner Style Description</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for class '
-     *         <em>Rounded Corner Style Description</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription
-     * @generated
-     */
-    EClass getRoundedCornerStyleDescription();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcWidth
-     * <em>Arc Width</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Arc Width</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcWidth()
-     * @see #getRoundedCornerStyleDescription()
-     * @generated
-     */
-    EAttribute getRoundedCornerStyleDescription_ArcWidth();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcHeight
-     * <em>Arc Height</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Arc Height</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcHeight()
-     * @see #getRoundedCornerStyleDescription()
-     * @generated
-     */
-    EAttribute getRoundedCornerStyleDescription_ArcHeight();
 
     /**
      * Returns the meta object for class '
@@ -3369,6 +3331,175 @@ public interface StylePackage extends EPackage {
 
     /**
      * Returns the meta object for class '
+     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription
+     * <em>Gauge Section Description</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Gauge Section Description</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription
+     * @generated
+     */
+    EClass getGaugeSectionDescription();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMinValueExpression
+     * <em>Min Value Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Min Value Expression</em>
+     *         '.
+     * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMinValueExpression()
+     * @see #getGaugeSectionDescription()
+     * @generated
+     */
+    EAttribute getGaugeSectionDescription_MinValueExpression();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMaxValueExpression
+     * <em>Max Value Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Max Value Expression</em>
+     *         '.
+     * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMaxValueExpression()
+     * @see #getGaugeSectionDescription()
+     * @generated
+     */
+    EAttribute getGaugeSectionDescription_MaxValueExpression();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getValueExpression
+     * <em>Value Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @return the meta object for the attribute '<em>Value Expression</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getValueExpression()
+     * @see #getGaugeSectionDescription()
+     * @generated
+     */
+    EAttribute getGaugeSectionDescription_ValueExpression();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getBackgroundColor
+     * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @return the meta object for the reference '<em>Background Color</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getBackgroundColor()
+     * @see #getGaugeSectionDescription()
+     * @generated
+     */
+    EReference getGaugeSectionDescription_BackgroundColor();
+
+    /**
+     * Returns the meta object for the reference '
+     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getForegroundColor
+     * <em>Foreground Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @return the meta object for the reference '<em>Foreground Color</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getForegroundColor()
+     * @see #getGaugeSectionDescription()
+     * @generated
+     */
+    EReference getGaugeSectionDescription_ForegroundColor();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getLabel
+     * <em>Label</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Label</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getLabel()
+     * @see #getGaugeSectionDescription()
+     * @generated
+     */
+    EAttribute getGaugeSectionDescription_Label();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription
+     * <em>Size Computation Container Style Description</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for class '
+     *         <em>Size Computation Container Style Description</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription
+     * @generated
+     */
+    EClass getSizeComputationContainerStyleDescription();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression
+     * <em>Width Computation Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the attribute '
+     *         <em>Width Computation Expression</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression()
+     * @see #getSizeComputationContainerStyleDescription()
+     * @generated
+     */
+    EAttribute getSizeComputationContainerStyleDescription_WidthComputationExpression();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression
+     * <em>Height Computation Expression</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the attribute '
+     *         <em>Height Computation Expression</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression()
+     * @see #getSizeComputationContainerStyleDescription()
+     * @generated
+     */
+    EAttribute getSizeComputationContainerStyleDescription_HeightComputationExpression();
+
+    /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription
+     * <em>Rounded Corner Style Description</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for class '
+     *         <em>Rounded Corner Style Description</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription
+     * @generated
+     */
+    EClass getRoundedCornerStyleDescription();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcWidth
+     * <em>Arc Width</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Arc Width</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcWidth()
+     * @see #getRoundedCornerStyleDescription()
+     * @generated
+     */
+    EAttribute getRoundedCornerStyleDescription_ArcWidth();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcHeight
+     * <em>Arc Height</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Arc Height</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription#getArcHeight()
+     * @see #getRoundedCornerStyleDescription()
+     * @generated
+     */
+    EAttribute getRoundedCornerStyleDescription_ArcHeight();
+
+    /**
+     * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.style.ContainerStyleDescription
      * <em>Container Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -3660,97 +3791,6 @@ public interface StylePackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription
-     * <em>Gauge Section Description</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for class '<em>Gauge Section Description</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription
-     * @generated
-     */
-    EClass getGaugeSectionDescription();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMinValueExpression
-     * <em>Min Value Expression</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Min Value Expression</em>
-     *         '.
-     * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMinValueExpression()
-     * @see #getGaugeSectionDescription()
-     * @generated
-     */
-    EAttribute getGaugeSectionDescription_MinValueExpression();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMaxValueExpression
-     * <em>Max Value Expression</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Max Value Expression</em>
-     *         '.
-     * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getMaxValueExpression()
-     * @see #getGaugeSectionDescription()
-     * @generated
-     */
-    EAttribute getGaugeSectionDescription_MaxValueExpression();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getValueExpression
-     * <em>Value Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     * 
-     * @return the meta object for the attribute '<em>Value Expression</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getValueExpression()
-     * @see #getGaugeSectionDescription()
-     * @generated
-     */
-    EAttribute getGaugeSectionDescription_ValueExpression();
-
-    /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getBackgroundColor
-     * <em>Background Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     * 
-     * @return the meta object for the reference '<em>Background Color</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getBackgroundColor()
-     * @see #getGaugeSectionDescription()
-     * @generated
-     */
-    EReference getGaugeSectionDescription_BackgroundColor();
-
-    /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getForegroundColor
-     * <em>Foreground Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     * 
-     * @return the meta object for the reference '<em>Foreground Color</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getForegroundColor()
-     * @see #getGaugeSectionDescription()
-     * @generated
-     */
-    EReference getGaugeSectionDescription_ForegroundColor();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getLabel
-     * <em>Label</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Label</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription#getLabel()
-     * @see #getGaugeSectionDescription()
-     * @generated
-     */
-    EAttribute getGaugeSectionDescription_Label();
-
-    /**
-     * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.style.BeginLabelStyleDescription
      * <em>Begin Label Style Description</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -3801,47 +3841,6 @@ public interface StylePackage extends EPackage {
     EClass getBracketEdgeStyleDescription();
 
     /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription
-     * <em>Size Computation Container Style Description</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for class '
-     *         <em>Size Computation Container Style Description</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription
-     * @generated
-     */
-    EClass getSizeComputationContainerStyleDescription();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression
-     * <em>Width Computation Expression</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for the attribute '
-     *         <em>Width Computation Expression</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getWidthComputationExpression()
-     * @see #getSizeComputationContainerStyleDescription()
-     * @generated
-     */
-    EAttribute getSizeComputationContainerStyleDescription_WidthComputationExpression();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression
-     * <em>Height Computation Expression</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for the attribute '
-     *         <em>Height Computation Expression</em>'.
-     * @see org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription#getHeightComputationExpression()
-     * @see #getSizeComputationContainerStyleDescription()
-     * @generated
-     */
-    EAttribute getSizeComputationContainerStyleDescription_HeightComputationExpression();
-
-    /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3864,34 +3863,6 @@ public interface StylePackage extends EPackage {
      * @generated
      */
     interface Literals {
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.style.impl.RoundedCornerStyleDescriptionImpl
-         * <em>Rounded Corner Style Description</em>}' class. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.RoundedCornerStyleDescriptionImpl
-         * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getRoundedCornerStyleDescription()
-         * @generated
-         */
-        EClass ROUNDED_CORNER_STYLE_DESCRIPTION = eINSTANCE.getRoundedCornerStyleDescription();
-
-        /**
-         * The meta object literal for the '<em><b>Arc Width</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_WIDTH = eINSTANCE.getRoundedCornerStyleDescription_ArcWidth();
-
-        /**
-         * The meta object literal for the '<em><b>Arc Height</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_HEIGHT = eINSTANCE.getRoundedCornerStyleDescription_ArcHeight();
-
         /**
          * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.style.impl.BorderedStyleDescriptionImpl
@@ -4207,6 +4178,124 @@ public interface StylePackage extends EPackage {
 
         /**
          * The meta object literal for the '
+         * {@link org.eclipse.sirius.diagram.description.style.impl.GaugeSectionDescriptionImpl
+         * <em>Gauge Section Description</em>}' class. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.diagram.description.style.impl.GaugeSectionDescriptionImpl
+         * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getGaugeSectionDescription()
+         * @generated
+         */
+        EClass GAUGE_SECTION_DESCRIPTION = eINSTANCE.getGaugeSectionDescription();
+
+        /**
+         * The meta object literal for the '<em><b>Min Value Expression</b></em>
+         * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute GAUGE_SECTION_DESCRIPTION__MIN_VALUE_EXPRESSION = eINSTANCE.getGaugeSectionDescription_MinValueExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Max Value Expression</b></em>
+         * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute GAUGE_SECTION_DESCRIPTION__MAX_VALUE_EXPRESSION = eINSTANCE.getGaugeSectionDescription_MaxValueExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Value Expression</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute GAUGE_SECTION_DESCRIPTION__VALUE_EXPRESSION = eINSTANCE.getGaugeSectionDescription_ValueExpression();
+
+        /**
+         * The meta object literal for the '<em><b>Background Color</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference GAUGE_SECTION_DESCRIPTION__BACKGROUND_COLOR = eINSTANCE.getGaugeSectionDescription_BackgroundColor();
+
+        /**
+         * The meta object literal for the '<em><b>Foreground Color</b></em>'
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference GAUGE_SECTION_DESCRIPTION__FOREGROUND_COLOR = eINSTANCE.getGaugeSectionDescription_ForegroundColor();
+
+        /**
+         * The meta object literal for the '<em><b>Label</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute GAUGE_SECTION_DESCRIPTION__LABEL = eINSTANCE.getGaugeSectionDescription_Label();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.diagram.description.style.impl.SizeComputationContainerStyleDescriptionImpl
+         * <em>Size Computation Container Style Description</em>}' class. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.diagram.description.style.impl.SizeComputationContainerStyleDescriptionImpl
+         * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getSizeComputationContainerStyleDescription()
+         * @generated
+         */
+        EClass SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION = eINSTANCE.getSizeComputationContainerStyleDescription();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Width Computation Expression</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = eINSTANCE.getSizeComputationContainerStyleDescription_WidthComputationExpression();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Height Computation Expression</b></em>' attribute feature.
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = eINSTANCE.getSizeComputationContainerStyleDescription_HeightComputationExpression();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.diagram.description.style.impl.RoundedCornerStyleDescriptionImpl
+         * <em>Rounded Corner Style Description</em>}' class. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.diagram.description.style.impl.RoundedCornerStyleDescriptionImpl
+         * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getRoundedCornerStyleDescription()
+         * @generated
+         */
+        EClass ROUNDED_CORNER_STYLE_DESCRIPTION = eINSTANCE.getRoundedCornerStyleDescription();
+
+        /**
+         * The meta object literal for the '<em><b>Arc Width</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_WIDTH = eINSTANCE.getRoundedCornerStyleDescription_ArcWidth();
+
+        /**
+         * The meta object literal for the '<em><b>Arc Height</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute ROUNDED_CORNER_STYLE_DESCRIPTION__ARC_HEIGHT = eINSTANCE.getRoundedCornerStyleDescription_ArcHeight();
+
+        /**
+         * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.style.impl.ContainerStyleDescriptionImpl
          * <em>Container Style Description</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
@@ -4415,66 +4504,6 @@ public interface StylePackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.style.impl.GaugeSectionDescriptionImpl
-         * <em>Gauge Section Description</em>}' class. <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.GaugeSectionDescriptionImpl
-         * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getGaugeSectionDescription()
-         * @generated
-         */
-        EClass GAUGE_SECTION_DESCRIPTION = eINSTANCE.getGaugeSectionDescription();
-
-        /**
-         * The meta object literal for the '<em><b>Min Value Expression</b></em>
-         * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute GAUGE_SECTION_DESCRIPTION__MIN_VALUE_EXPRESSION = eINSTANCE.getGaugeSectionDescription_MinValueExpression();
-
-        /**
-         * The meta object literal for the '<em><b>Max Value Expression</b></em>
-         * ' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute GAUGE_SECTION_DESCRIPTION__MAX_VALUE_EXPRESSION = eINSTANCE.getGaugeSectionDescription_MaxValueExpression();
-
-        /**
-         * The meta object literal for the '<em><b>Value Expression</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute GAUGE_SECTION_DESCRIPTION__VALUE_EXPRESSION = eINSTANCE.getGaugeSectionDescription_ValueExpression();
-
-        /**
-         * The meta object literal for the '<em><b>Background Color</b></em>'
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference GAUGE_SECTION_DESCRIPTION__BACKGROUND_COLOR = eINSTANCE.getGaugeSectionDescription_BackgroundColor();
-
-        /**
-         * The meta object literal for the '<em><b>Foreground Color</b></em>'
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference GAUGE_SECTION_DESCRIPTION__FOREGROUND_COLOR = eINSTANCE.getGaugeSectionDescription_ForegroundColor();
-
-        /**
-         * The meta object literal for the '<em><b>Label</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute GAUGE_SECTION_DESCRIPTION__LABEL = eINSTANCE.getGaugeSectionDescription_Label();
-
-        /**
-         * The meta object literal for the '
          * {@link org.eclipse.sirius.diagram.description.style.impl.BeginLabelStyleDescriptionImpl
          * <em>Begin Label Style Description</em>}' class. <!-- begin-user-doc
          * --> <!-- end-user-doc -->
@@ -4520,36 +4549,6 @@ public interface StylePackage extends EPackage {
          * @generated
          */
         EClass BRACKET_EDGE_STYLE_DESCRIPTION = eINSTANCE.getBracketEdgeStyleDescription();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.style.impl.SizeComputationContainerStyleDescriptionImpl
-         * <em>Size Computation Container Style Description</em>}' class. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.description.style.impl.SizeComputationContainerStyleDescriptionImpl
-         * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getSizeComputationContainerStyleDescription()
-         * @generated
-         */
-        EClass SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION = eINSTANCE.getSizeComputationContainerStyleDescription();
-
-        /**
-         * The meta object literal for the '
-         * <em><b>Width Computation Expression</b></em>' attribute feature. <!--
-         * begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__WIDTH_COMPUTATION_EXPRESSION = eINSTANCE.getSizeComputationContainerStyleDescription_WidthComputationExpression();
-
-        /**
-         * The meta object literal for the '
-         * <em><b>Height Computation Expression</b></em>' attribute feature.
-         * <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute SIZE_COMPUTATION_CONTAINER_STYLE_DESCRIPTION__HEIGHT_COMPUTATION_EXPRESSION = eINSTANCE.getSizeComputationContainerStyleDescription_HeightComputationExpression();
 
     }
 

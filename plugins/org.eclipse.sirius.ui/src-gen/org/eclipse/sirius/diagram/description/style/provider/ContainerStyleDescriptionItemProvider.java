@@ -26,7 +26,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.StylePackage;
+import org.eclipse.sirius.diagram.description.style.StylePackage;
 
 /**
  * This is the item provider adapter for a
@@ -82,8 +82,8 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
     protected void addBorderSizeComputationExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_BorderedStyleDescription_borderSizeComputationExpression_feature"), getString("_UI_BorderedStyleDescription_borderSizeComputationExpression_description"),
-                org.eclipse.sirius.diagram.description.style.StylePackage.Literals.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_BorderPropertyCategory"), null));
+                StylePackage.Literals.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_BorderPropertyCategory"), null));
     }
 
     /**
@@ -96,7 +96,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_BorderedStyleDescription_borderColor_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_BorderedStyleDescription_borderColor_feature", "_UI_BorderedStyleDescription_type"),
-                org.eclipse.sirius.diagram.description.style.StylePackage.Literals.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), null));
+                StylePackage.Literals.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR, true, false, false, null, getString("_UI_ColorPropertyCategory"), null));
     }
 
     /**
@@ -109,7 +109,8 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_BasicLabelStyleDescription_labelSize_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyleDescription_labelSize_feature", "_UI_BasicLabelStyleDescription_type"),
-                StylePackage.Literals.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), null));
+                org.eclipse.sirius.viewpoint.description.style.StylePackage.Literals.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_SIZE, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                getString("_UI_LabelPropertyCategory"), null));
     }
 
     /**
@@ -122,7 +123,8 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_BasicLabelStyleDescription_labelFormat_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyleDescription_labelFormat_feature", "_UI_BasicLabelStyleDescription_type"),
-                StylePackage.Literals.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_FORMAT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), null));
+                org.eclipse.sirius.viewpoint.description.style.StylePackage.Literals.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_FORMAT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_LabelPropertyCategory"), null));
     }
 
     /**
@@ -135,7 +137,8 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_BasicLabelStyleDescription_showIcon_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyleDescription_showIcon_feature", "_UI_BasicLabelStyleDescription_type"),
-                StylePackage.Literals.BASIC_LABEL_STYLE_DESCRIPTION__SHOW_ICON, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), null));
+                org.eclipse.sirius.viewpoint.description.style.StylePackage.Literals.BASIC_LABEL_STYLE_DESCRIPTION__SHOW_ICON, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                getString("_UI_LabelPropertyCategory"), null));
     }
 
     /**
@@ -148,7 +151,8 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_BasicLabelStyleDescription_labelExpression_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyleDescription_labelExpression_feature", "_UI_BasicLabelStyleDescription_type"),
-                StylePackage.Literals.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), null));
+                org.eclipse.sirius.viewpoint.description.style.StylePackage.Literals.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_LabelPropertyCategory"), null));
     }
 
     /**
@@ -158,10 +162,12 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
      * @generated
      */
     protected void addLabelColorPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_BasicLabelStyleDescription_labelColor_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyleDescription_labelColor_feature", "_UI_BasicLabelStyleDescription_type"),
-                StylePackage.Literals.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR, true, false, true, null, getString("_UI_ColorPropertyCategory"), null));
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                        getString("_UI_BasicLabelStyleDescription_labelColor_feature"),
+                        getString("_UI_PropertyDescriptor_description", "_UI_BasicLabelStyleDescription_labelColor_feature", "_UI_BasicLabelStyleDescription_type"),
+                        org.eclipse.sirius.viewpoint.description.style.StylePackage.Literals.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR, true, false, true, null,
+                        getString("_UI_ColorPropertyCategory"), null));
     }
 
     /**
@@ -173,7 +179,8 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
     protected void addIconPathPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_BasicLabelStyleDescription_iconPath_feature"), getString("_UI_BasicLabelStyleDescription_iconPath_description"),
-                StylePackage.Literals.BASIC_LABEL_STYLE_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                org.eclipse.sirius.viewpoint.description.style.StylePackage.Literals.BASIC_LABEL_STYLE_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_AdvancedPropertyCategory"), null));
     }
 
     /**
@@ -186,7 +193,8 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
     protected void addLabelAlignmentPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_LabelStyleDescription_labelAlignment_feature"), getString("_UI_LabelStyleDescription_labelAlignment_description"),
-                StylePackage.Literals.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_LabelPropertyCategory"), null));
+                org.eclipse.sirius.viewpoint.description.style.StylePackage.Literals.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_LabelPropertyCategory"), null));
     }
 
     /**
@@ -199,7 +207,8 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
     protected void addTooltipExpressionPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_TooltipStyleDescription_tooltipExpression_feature"), getString("_UI_TooltipStyleDescription_tooltipExpression_description"),
-                StylePackage.Literals.TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+                org.eclipse.sirius.viewpoint.description.style.StylePackage.Literals.TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
@@ -212,8 +221,7 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_ContainerStyleDescription_roundedCorner_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_ContainerStyleDescription_roundedCorner_feature", "_UI_ContainerStyleDescription_type"),
-                org.eclipse.sirius.diagram.description.style.StylePackage.Literals.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-                getString("_UI_CornerPropertyCategory"), null));
+                StylePackage.Literals.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, getString("_UI_CornerPropertyCategory"), null));
     }
 
     /**
@@ -242,16 +250,16 @@ public class ContainerStyleDescriptionItemProvider extends RoundedCornerStyleDes
         updateChildren(notification);
 
         switch (notification.getFeatureID(ContainerStyleDescription.class)) {
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION:
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH:
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

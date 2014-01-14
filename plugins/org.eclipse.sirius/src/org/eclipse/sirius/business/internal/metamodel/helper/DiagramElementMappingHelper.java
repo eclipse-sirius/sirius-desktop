@@ -31,6 +31,8 @@ import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
+import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
 import org.eclipse.sirius.tools.api.ui.resource.ISiriusMessages;
@@ -38,8 +40,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
-import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;

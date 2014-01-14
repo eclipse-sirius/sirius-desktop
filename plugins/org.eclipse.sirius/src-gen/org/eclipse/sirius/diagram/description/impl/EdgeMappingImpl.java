@@ -34,8 +34,8 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
+import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
-import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

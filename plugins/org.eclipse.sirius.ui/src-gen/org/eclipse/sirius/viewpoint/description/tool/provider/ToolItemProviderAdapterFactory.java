@@ -83,81 +83,6 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ToolSection}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ToolSectionItemProvider toolSectionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ToolSection}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createToolSectionAdapter() {
-        if (toolSectionItemProvider == null) {
-            toolSectionItemProvider = new ToolSectionItemProvider(this);
-        }
-
-        return toolSectionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ToolGroup}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ToolGroupItemProvider toolGroupItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ToolGroup}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createToolGroupAdapter() {
-        if (toolGroupItemProvider == null) {
-            toolGroupItemProvider = new ToolGroupItemProvider(this);
-        }
-
-        return toolGroupItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ToolGroupExtension}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ToolGroupExtensionItemProvider toolGroupExtensionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ToolGroupExtension}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createToolGroupExtensionAdapter() {
-        if (toolGroupExtensionItemProvider == null) {
-            toolGroupExtensionItemProvider = new ToolGroupExtensionItemProvider(this);
-        }
-
-        return toolGroupExtensionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -179,81 +104,6 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
         }
 
         return toolDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected NodeCreationDescriptionItemProvider nodeCreationDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createNodeCreationDescriptionAdapter() {
-        if (nodeCreationDescriptionItemProvider == null) {
-            nodeCreationDescriptionItemProvider = new NodeCreationDescriptionItemProvider(this);
-        }
-
-        return nodeCreationDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected EdgeCreationDescriptionItemProvider edgeCreationDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createEdgeCreationDescriptionAdapter() {
-        if (edgeCreationDescriptionItemProvider == null) {
-            edgeCreationDescriptionItemProvider = new EdgeCreationDescriptionItemProvider(this);
-        }
-
-        return edgeCreationDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ContainerCreationDescriptionItemProvider containerCreationDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createContainerCreationDescriptionAdapter() {
-        if (containerCreationDescriptionItemProvider == null) {
-            containerCreationDescriptionItemProvider = new ContainerCreationDescriptionItemProvider(this);
-        }
-
-        return containerCreationDescriptionItemProvider;
     }
 
     /**
@@ -304,156 +154,6 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
         }
 
         return pasteDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DeleteElementDescriptionItemProvider deleteElementDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDeleteElementDescriptionAdapter() {
-        if (deleteElementDescriptionItemProvider == null) {
-            deleteElementDescriptionItemProvider = new DeleteElementDescriptionItemProvider(this);
-        }
-
-        return deleteElementDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DoubleClickDescriptionItemProvider doubleClickDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDoubleClickDescriptionAdapter() {
-        if (doubleClickDescriptionItemProvider == null) {
-            doubleClickDescriptionItemProvider = new DoubleClickDescriptionItemProvider(this);
-        }
-
-        return doubleClickDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DeleteHook}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DeleteHookItemProvider deleteHookItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DeleteHook}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDeleteHookAdapter() {
-        if (deleteHookItemProvider == null) {
-            deleteHookItemProvider = new DeleteHookItemProvider(this);
-        }
-
-        return deleteHookItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DeleteHookParameter}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DeleteHookParameterItemProvider deleteHookParameterItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DeleteHookParameter}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDeleteHookParameterAdapter() {
-        if (deleteHookParameterItemProvider == null) {
-            deleteHookParameterItemProvider = new DeleteHookParameterItemProvider(this);
-        }
-
-        return deleteHookParameterItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ReconnectEdgeDescriptionItemProvider reconnectEdgeDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createReconnectEdgeDescriptionAdapter() {
-        if (reconnectEdgeDescriptionItemProvider == null) {
-            reconnectEdgeDescriptionItemProvider = new ReconnectEdgeDescriptionItemProvider(this);
-        }
-
-        return reconnectEdgeDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.RequestDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected RequestDescriptionItemProvider requestDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.RequestDescription}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createRequestDescriptionAdapter() {
-        if (requestDescriptionItemProvider == null) {
-            requestDescriptionItemProvider = new RequestDescriptionItemProvider(this);
-        }
-
-        return requestDescriptionItemProvider;
     }
 
     /**
@@ -633,56 +333,6 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DirectEditLabelItemProvider directEditLabelItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDirectEditLabelAdapter() {
-        if (directEditLabelItemProvider == null) {
-            directEditLabelItemProvider = new DirectEditLabelItemProvider(this);
-        }
-
-        return directEditLabelItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.BehaviorTool}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected BehaviorToolItemProvider behaviorToolItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.BehaviorTool}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createBehaviorToolAdapter() {
-        if (behaviorToolItemProvider == null) {
-            behaviorToolItemProvider = new BehaviorToolItemProvider(this);
-        }
-
-        return behaviorToolItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -704,106 +354,6 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
         }
 
         return acceleoVariableItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.SourceEdgeCreationVariable}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected SourceEdgeCreationVariableItemProvider sourceEdgeCreationVariableItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.SourceEdgeCreationVariable}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createSourceEdgeCreationVariableAdapter() {
-        if (sourceEdgeCreationVariableItemProvider == null) {
-            sourceEdgeCreationVariableItemProvider = new SourceEdgeCreationVariableItemProvider(this);
-        }
-
-        return sourceEdgeCreationVariableItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.SourceEdgeViewCreationVariable}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected SourceEdgeViewCreationVariableItemProvider sourceEdgeViewCreationVariableItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.SourceEdgeViewCreationVariable}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createSourceEdgeViewCreationVariableAdapter() {
-        if (sourceEdgeViewCreationVariableItemProvider == null) {
-            sourceEdgeViewCreationVariableItemProvider = new SourceEdgeViewCreationVariableItemProvider(this);
-        }
-
-        return sourceEdgeViewCreationVariableItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.TargetEdgeCreationVariable}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected TargetEdgeCreationVariableItemProvider targetEdgeCreationVariableItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.TargetEdgeCreationVariable}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createTargetEdgeCreationVariableAdapter() {
-        if (targetEdgeCreationVariableItemProvider == null) {
-            targetEdgeCreationVariableItemProvider = new TargetEdgeCreationVariableItemProvider(this);
-        }
-
-        return targetEdgeCreationVariableItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.TargetEdgeViewCreationVariable}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected TargetEdgeViewCreationVariableItemProvider targetEdgeViewCreationVariableItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.TargetEdgeViewCreationVariable}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createTargetEdgeViewCreationVariableAdapter() {
-        if (targetEdgeViewCreationVariableItemProvider == null) {
-            targetEdgeViewCreationVariableItemProvider = new TargetEdgeViewCreationVariableItemProvider(this);
-        }
-
-        return targetEdgeViewCreationVariableItemProvider;
     }
 
     /**
@@ -929,56 +479,6 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
         }
 
         return elementDeleteVariableItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ElementDoubleClickVariable}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ElementDoubleClickVariableItemProvider elementDoubleClickVariableItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ElementDoubleClickVariable}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createElementDoubleClickVariableAdapter() {
-        if (elementDoubleClickVariableItemProvider == null) {
-            elementDoubleClickVariableItemProvider = new ElementDoubleClickVariableItemProvider(this);
-        }
-
-        return elementDoubleClickVariableItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.NodeCreationVariable}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected NodeCreationVariableItemProvider nodeCreationVariableItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.NodeCreationVariable}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createNodeCreationVariableAdapter() {
-        if (nodeCreationVariableItemProvider == null) {
-            nodeCreationVariableItemProvider = new NodeCreationVariableItemProvider(this);
-        }
-
-        return nodeCreationVariableItemProvider;
     }
 
     /**
@@ -1408,56 +908,6 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.CreateView}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected CreateViewItemProvider createViewItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.CreateView}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createCreateViewAdapter() {
-        if (createViewItemProvider == null) {
-            createViewItemProvider = new CreateViewItemProvider(this);
-        }
-
-        return createViewItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.CreateEdgeView}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected CreateEdgeViewItemProvider createEdgeViewItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.CreateEdgeView}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createCreateEdgeViewAdapter() {
-        if (createEdgeViewItemProvider == null) {
-            createEdgeViewItemProvider = new CreateEdgeViewItemProvider(this);
-        }
-
-        return createEdgeViewItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.If} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1508,31 +958,6 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.Navigation}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected NavigationItemProvider navigationItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.Navigation}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createNavigationAdapter() {
-        if (navigationItemProvider == null) {
-            navigationItemProvider = new NavigationItemProvider(this);
-        }
-
-        return navigationItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.NameVariable}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1579,56 +1004,6 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
         }
 
         return externalJavaActionParameterItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DiagramCreationDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DiagramCreationDescriptionItemProvider diagramCreationDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DiagramCreationDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDiagramCreationDescriptionAdapter() {
-        if (diagramCreationDescriptionItemProvider == null) {
-            diagramCreationDescriptionItemProvider = new DiagramCreationDescriptionItemProvider(this);
-        }
-
-        return diagramCreationDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DiagramNavigationDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DiagramNavigationDescriptionItemProvider diagramNavigationDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DiagramNavigationDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDiagramNavigationDescriptionAdapter() {
-        if (diagramNavigationDescriptionItemProvider == null) {
-            diagramNavigationDescriptionItemProvider = new DiagramNavigationDescriptionItemProvider(this);
-        }
-
-        return diagramNavigationDescriptionItemProvider;
     }
 
     /**
@@ -1854,36 +1229,12 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
      * @generated
      */
     public void dispose() {
-        if (toolSectionItemProvider != null)
-            toolSectionItemProvider.dispose();
-        if (toolGroupItemProvider != null)
-            toolGroupItemProvider.dispose();
-        if (toolGroupExtensionItemProvider != null)
-            toolGroupExtensionItemProvider.dispose();
         if (toolDescriptionItemProvider != null)
             toolDescriptionItemProvider.dispose();
-        if (nodeCreationDescriptionItemProvider != null)
-            nodeCreationDescriptionItemProvider.dispose();
-        if (edgeCreationDescriptionItemProvider != null)
-            edgeCreationDescriptionItemProvider.dispose();
-        if (containerCreationDescriptionItemProvider != null)
-            containerCreationDescriptionItemProvider.dispose();
         if (containerDropDescriptionItemProvider != null)
             containerDropDescriptionItemProvider.dispose();
         if (pasteDescriptionItemProvider != null)
             pasteDescriptionItemProvider.dispose();
-        if (deleteElementDescriptionItemProvider != null)
-            deleteElementDescriptionItemProvider.dispose();
-        if (doubleClickDescriptionItemProvider != null)
-            doubleClickDescriptionItemProvider.dispose();
-        if (deleteHookItemProvider != null)
-            deleteHookItemProvider.dispose();
-        if (deleteHookParameterItemProvider != null)
-            deleteHookParameterItemProvider.dispose();
-        if (reconnectEdgeDescriptionItemProvider != null)
-            reconnectEdgeDescriptionItemProvider.dispose();
-        if (requestDescriptionItemProvider != null)
-            requestDescriptionItemProvider.dispose();
         if (selectionWizardDescriptionItemProvider != null)
             selectionWizardDescriptionItemProvider.dispose();
         if (paneBasedSelectionWizardDescriptionItemProvider != null)
@@ -1898,20 +1249,8 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
             externalJavaActionCallItemProvider.dispose();
         if (popupMenuItemProvider != null)
             popupMenuItemProvider.dispose();
-        if (directEditLabelItemProvider != null)
-            directEditLabelItemProvider.dispose();
-        if (behaviorToolItemProvider != null)
-            behaviorToolItemProvider.dispose();
         if (acceleoVariableItemProvider != null)
             acceleoVariableItemProvider.dispose();
-        if (sourceEdgeCreationVariableItemProvider != null)
-            sourceEdgeCreationVariableItemProvider.dispose();
-        if (sourceEdgeViewCreationVariableItemProvider != null)
-            sourceEdgeViewCreationVariableItemProvider.dispose();
-        if (targetEdgeCreationVariableItemProvider != null)
-            targetEdgeCreationVariableItemProvider.dispose();
-        if (targetEdgeViewCreationVariableItemProvider != null)
-            targetEdgeViewCreationVariableItemProvider.dispose();
         if (elementDropVariableItemProvider != null)
             elementDropVariableItemProvider.dispose();
         if (elementSelectVariableItemProvider != null)
@@ -1922,10 +1261,6 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
             elementViewVariableItemProvider.dispose();
         if (elementDeleteVariableItemProvider != null)
             elementDeleteVariableItemProvider.dispose();
-        if (elementDoubleClickVariableItemProvider != null)
-            elementDoubleClickVariableItemProvider.dispose();
-        if (nodeCreationVariableItemProvider != null)
-            nodeCreationVariableItemProvider.dispose();
         if (dropContainerVariableItemProvider != null)
             dropContainerVariableItemProvider.dispose();
         if (selectContainerVariableItemProvider != null)
@@ -1960,24 +1295,14 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
             removeElementItemProvider.dispose();
         if (forItemProvider != null)
             forItemProvider.dispose();
-        if (createViewItemProvider != null)
-            createViewItemProvider.dispose();
-        if (createEdgeViewItemProvider != null)
-            createEdgeViewItemProvider.dispose();
         if (ifItemProvider != null)
             ifItemProvider.dispose();
         if (deleteViewItemProvider != null)
             deleteViewItemProvider.dispose();
-        if (navigationItemProvider != null)
-            navigationItemProvider.dispose();
         if (nameVariableItemProvider != null)
             nameVariableItemProvider.dispose();
         if (externalJavaActionParameterItemProvider != null)
             externalJavaActionParameterItemProvider.dispose();
-        if (diagramCreationDescriptionItemProvider != null)
-            diagramCreationDescriptionItemProvider.dispose();
-        if (diagramNavigationDescriptionItemProvider != null)
-            diagramNavigationDescriptionItemProvider.dispose();
         if (toolFilterDescriptionItemProvider != null)
             toolFilterDescriptionItemProvider.dispose();
         if (featureChangeListenerItemProvider != null)

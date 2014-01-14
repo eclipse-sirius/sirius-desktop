@@ -26,6 +26,7 @@ import org.eclipse.gmf.runtime.diagram.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.internal.view.factories.ViewLocationHint;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -47,7 +48,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator
 import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 
 /**
  * Helper class to share code between different kinds of edit parts when

@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.internal.menu.child;
 
+import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuilder;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
 /**
  * The validation menu.

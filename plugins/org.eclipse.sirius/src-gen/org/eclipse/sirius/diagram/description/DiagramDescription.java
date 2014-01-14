@@ -13,17 +13,17 @@ package org.eclipse.sirius.diagram.description;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
+import org.eclipse.sirius.diagram.description.concern.ConcernSet;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.eclipse.sirius.diagram.description.tool.ToolSection;
+import org.eclipse.sirius.diagram.description.validation.ValidationSet;
 import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.eclipse.sirius.viewpoint.description.concern.ConcernDescription;
-import org.eclipse.sirius.viewpoint.description.concern.ConcernSet;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -122,8 +122,8 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
     /**
      * Returns the value of the '<em><b>Filters</b></em>' containment reference
      * list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.filter.FilterDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * {@link org.eclipse.sirius.diagram.description.filter.FilterDescription}.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Filters that are owned by this simple mapping. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Filters</em>' containment reference list.

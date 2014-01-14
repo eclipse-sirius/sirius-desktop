@@ -56,6 +56,9 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.tool.CreateEdgeView;
+import org.eclipse.sirius.diagram.description.tool.CreateView;
+import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
@@ -66,9 +69,6 @@ import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.CreateEdgeView;
-import org.eclipse.sirius.viewpoint.description.tool.CreateView;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 import com.google.common.collect.Iterators;
 

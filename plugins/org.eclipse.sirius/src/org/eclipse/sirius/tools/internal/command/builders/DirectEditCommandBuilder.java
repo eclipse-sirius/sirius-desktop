@@ -18,12 +18,12 @@ import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
 
 public class DirectEditCommandBuilder extends AbstractCommandBuilder {
 

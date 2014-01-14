@@ -44,6 +44,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.diagram.part.SiriusDiagramActionBarContributor;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -51,7 +52,6 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAutho
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.IWorkbenchPage;

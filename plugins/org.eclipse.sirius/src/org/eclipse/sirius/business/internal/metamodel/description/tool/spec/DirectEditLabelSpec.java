@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.description.tool.impl.DirectEditLabelImpl;
+import org.eclipse.sirius.diagram.description.tool.impl.DirectEditLabelImpl;
 
 /**
  * Implementation of DirectEditLabel.

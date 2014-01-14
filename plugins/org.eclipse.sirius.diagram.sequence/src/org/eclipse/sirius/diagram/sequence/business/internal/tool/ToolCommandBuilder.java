@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -66,7 +67,6 @@ import org.eclipse.sirius.tools.internal.command.builders.NodeCreationCommandBui
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;

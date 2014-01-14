@@ -229,6 +229,17 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      * 
      * @not-generated
      */
+    public GaugeSectionDescription createGaugeSectionDescription() {
+        GaugeSectionDescriptionImpl gaugeSectionDescription = new GaugeSectionDescriptionImpl();
+        new DefaultColorStyleDescription().setDefaultColors(gaugeSectionDescription);
+        return gaugeSectionDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
     public FlatContainerStyleDescription createFlatContainerStyleDescription() {
         FlatContainerStyleDescriptionImpl flatContainerStyleDescription = new FlatContainerStyleDescriptionImpl();
         new DefaultColorStyleDescription().setDefaultColors(flatContainerStyleDescription);
@@ -266,17 +277,6 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
         EdgeStyleDescriptionImpl edgeStyleDescription = new EdgeStyleDescriptionImpl();
         new DefaultColorStyleDescription().setDefaultColors(edgeStyleDescription);
         return edgeStyleDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @not-generated
-     */
-    public GaugeSectionDescription createGaugeSectionDescription() {
-        GaugeSectionDescriptionImpl gaugeSectionDescription = new GaugeSectionDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(gaugeSectionDescription);
-        return gaugeSectionDescription;
     }
 
     /**

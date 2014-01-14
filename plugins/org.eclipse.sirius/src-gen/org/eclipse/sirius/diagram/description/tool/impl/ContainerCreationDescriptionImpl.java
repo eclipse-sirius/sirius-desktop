@@ -1,0 +1,562 @@
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *    Obeo - initial API and implementation
+ * 
+ */
+package org.eclipse.sirius.diagram.description.tool.impl;
+
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.NodeCreationVariable;
+import org.eclipse.sirius.diagram.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
+import org.eclipse.sirius.viewpoint.description.tool.InitialNodeCreationOperation;
+import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescriptionImpl;
+
+/**
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Container Creation Description</b></em>'. <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * <ul>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl#getContainerMappings
+ * <em>Container Mappings</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl#getVariable
+ * <em>Variable</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl#getViewVariable
+ * <em>View Variable</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl#getInitialOperation
+ * <em>Initial Operation</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl#getIconPath
+ * <em>Icon Path</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl#getExtraMappings
+ * <em>Extra Mappings</em>}</li>
+ * </ul>
+ * </p>
+ * 
+ * @generated
+ */
+public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptionImpl implements ContainerCreationDescription {
+    /**
+     * The cached value of the '{@link #getContainerMappings()
+     * <em>Container Mappings</em>}' reference list. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #getContainerMappings()
+     * @generated
+     * @ordered
+     */
+    protected EList<ContainerMapping> containerMappings;
+
+    /**
+     * The cached value of the '{@link #getVariable() <em>Variable</em>}'
+     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getVariable()
+     * @generated
+     * @ordered
+     */
+    protected NodeCreationVariable variable;
+
+    /**
+     * The cached value of the '{@link #getViewVariable()
+     * <em>View Variable</em>}' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @see #getViewVariable()
+     * @generated
+     * @ordered
+     */
+    protected ContainerViewVariable viewVariable;
+
+    /**
+     * The cached value of the '{@link #getInitialOperation()
+     * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @see #getInitialOperation()
+     * @generated
+     * @ordered
+     */
+    protected InitialNodeCreationOperation initialOperation;
+
+    /**
+     * The default value of the '{@link #getIconPath() <em>Icon Path</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getIconPath()
+     * @generated
+     * @ordered
+     */
+    protected static final String ICON_PATH_EDEFAULT = "";
+
+    /**
+     * The cached value of the '{@link #getIconPath() <em>Icon Path</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getIconPath()
+     * @generated
+     * @ordered
+     */
+    protected String iconPath = ICON_PATH_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getExtraMappings()
+     * <em>Extra Mappings</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getExtraMappings()
+     * @generated
+     * @ordered
+     */
+    protected EList<AbstractNodeMapping> extraMappings;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected ContainerCreationDescriptionImpl() {
+        super();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    protected EClass eStaticClass() {
+        return ToolPackage.Literals.CONTAINER_CREATION_DESCRIPTION;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EList<ContainerMapping> getContainerMappings() {
+        if (containerMappings == null) {
+            containerMappings = new EObjectResolvingEList<ContainerMapping>(ContainerMapping.class, this, ToolPackage.CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS);
+        }
+        return containerMappings;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public NodeCreationVariable getVariable() {
+        if (variable != null && variable.eIsProxy()) {
+            InternalEObject oldVariable = (InternalEObject) variable;
+            variable = (NodeCreationVariable) eResolveProxy(oldVariable);
+            if (variable != oldVariable) {
+                InternalEObject newVariable = (InternalEObject) variable;
+                NotificationChain msgs = oldVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE, null, null);
+                if (newVariable.eInternalContainer() == null) {
+                    msgs = newVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE, null, msgs);
+                }
+                if (msgs != null)
+                    msgs.dispatch();
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE, oldVariable, variable));
+            }
+        }
+        return variable;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public NodeCreationVariable basicGetVariable() {
+        return variable;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public NotificationChain basicSetVariable(NodeCreationVariable newVariable, NotificationChain msgs) {
+        NodeCreationVariable oldVariable = variable;
+        variable = newVariable;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE, oldVariable, newVariable);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setVariable(NodeCreationVariable newVariable) {
+        if (newVariable != variable) {
+            NotificationChain msgs = null;
+            if (variable != null)
+                msgs = ((InternalEObject) variable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE, null, msgs);
+            if (newVariable != null)
+                msgs = ((InternalEObject) newVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE, null, msgs);
+            msgs = basicSetVariable(newVariable, msgs);
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE, newVariable, newVariable));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public ContainerViewVariable getViewVariable() {
+        if (viewVariable != null && viewVariable.eIsProxy()) {
+            InternalEObject oldViewVariable = (InternalEObject) viewVariable;
+            viewVariable = (ContainerViewVariable) eResolveProxy(oldViewVariable);
+            if (viewVariable != oldViewVariable) {
+                InternalEObject newViewVariable = (InternalEObject) viewVariable;
+                NotificationChain msgs = oldViewVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE, null, null);
+                if (newViewVariable.eInternalContainer() == null) {
+                    msgs = newViewVariable.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE, null, msgs);
+                }
+                if (msgs != null)
+                    msgs.dispatch();
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE, oldViewVariable, viewVariable));
+            }
+        }
+        return viewVariable;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public ContainerViewVariable basicGetViewVariable() {
+        return viewVariable;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public NotificationChain basicSetViewVariable(ContainerViewVariable newViewVariable, NotificationChain msgs) {
+        ContainerViewVariable oldViewVariable = viewVariable;
+        viewVariable = newViewVariable;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE, oldViewVariable, newViewVariable);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setViewVariable(ContainerViewVariable newViewVariable) {
+        if (newViewVariable != viewVariable) {
+            NotificationChain msgs = null;
+            if (viewVariable != null)
+                msgs = ((InternalEObject) viewVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE, null, msgs);
+            if (newViewVariable != null)
+                msgs = ((InternalEObject) newViewVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE, null, msgs);
+            msgs = basicSetViewVariable(newViewVariable, msgs);
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE, newViewVariable, newViewVariable));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public InitialNodeCreationOperation getInitialOperation() {
+        if (initialOperation != null && initialOperation.eIsProxy()) {
+            InternalEObject oldInitialOperation = (InternalEObject) initialOperation;
+            initialOperation = (InitialNodeCreationOperation) eResolveProxy(oldInitialOperation);
+            if (initialOperation != oldInitialOperation) {
+                InternalEObject newInitialOperation = (InternalEObject) initialOperation;
+                NotificationChain msgs = oldInitialOperation.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION, null, null);
+                if (newInitialOperation.eInternalContainer() == null) {
+                    msgs = newInitialOperation.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+                }
+                if (msgs != null)
+                    msgs.dispatch();
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, initialOperation));
+            }
+        }
+        return initialOperation;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public InitialNodeCreationOperation basicGetInitialOperation() {
+        return initialOperation;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public NotificationChain basicSetInitialOperation(InitialNodeCreationOperation newInitialOperation, NotificationChain msgs) {
+        InitialNodeCreationOperation oldInitialOperation = initialOperation;
+        initialOperation = newInitialOperation;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION, oldInitialOperation, newInitialOperation);
+            if (msgs == null)
+                msgs = notification;
+            else
+                msgs.add(notification);
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setInitialOperation(InitialNodeCreationOperation newInitialOperation) {
+        if (newInitialOperation != initialOperation) {
+            NotificationChain msgs = null;
+            if (initialOperation != null)
+                msgs = ((InternalEObject) initialOperation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            if (newInitialOperation != null)
+                msgs = ((InternalEObject) newInitialOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION, null, msgs);
+            msgs = basicSetInitialOperation(newInitialOperation, msgs);
+            if (msgs != null)
+                msgs.dispatch();
+        } else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION, newInitialOperation, newInitialOperation));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public String getIconPath() {
+        return iconPath;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setIconPath(String newIconPath) {
+        String oldIconPath = iconPath;
+        iconPath = newIconPath;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ToolPackage.CONTAINER_CREATION_DESCRIPTION__ICON_PATH, oldIconPath, iconPath));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EList<AbstractNodeMapping> getExtraMappings() {
+        if (extraMappings == null) {
+            extraMappings = new EObjectResolvingEList<AbstractNodeMapping>(AbstractNodeMapping.class, this, ToolPackage.CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS);
+        }
+        return extraMappings;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+        switch (featureID) {
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE:
+            return basicSetVariable(null, msgs);
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE:
+            return basicSetViewVariable(null, msgs);
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION:
+            return basicSetInitialOperation(null, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Object eGet(int featureID, boolean resolve, boolean coreType) {
+        switch (featureID) {
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS:
+            return getContainerMappings();
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE:
+            if (resolve)
+                return getVariable();
+            return basicGetVariable();
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE:
+            if (resolve)
+                return getViewVariable();
+            return basicGetViewVariable();
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION:
+            if (resolve)
+                return getInitialOperation();
+            return basicGetInitialOperation();
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__ICON_PATH:
+            return getIconPath();
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS:
+            return getExtraMappings();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @SuppressWarnings("unchecked")
+    @Override
+    public void eSet(int featureID, Object newValue) {
+        switch (featureID) {
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS:
+            getContainerMappings().clear();
+            getContainerMappings().addAll((Collection<? extends ContainerMapping>) newValue);
+            return;
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE:
+            setVariable((NodeCreationVariable) newValue);
+            return;
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE:
+            setViewVariable((ContainerViewVariable) newValue);
+            return;
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION:
+            setInitialOperation((InitialNodeCreationOperation) newValue);
+            return;
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__ICON_PATH:
+            setIconPath((String) newValue);
+            return;
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS:
+            getExtraMappings().clear();
+            getExtraMappings().addAll((Collection<? extends AbstractNodeMapping>) newValue);
+            return;
+        }
+        super.eSet(featureID, newValue);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public void eUnset(int featureID) {
+        switch (featureID) {
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS:
+            getContainerMappings().clear();
+            return;
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE:
+            setVariable((NodeCreationVariable) null);
+            return;
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE:
+            setViewVariable((ContainerViewVariable) null);
+            return;
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION:
+            setInitialOperation((InitialNodeCreationOperation) null);
+            return;
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__ICON_PATH:
+            setIconPath(ICON_PATH_EDEFAULT);
+            return;
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS:
+            getExtraMappings().clear();
+            return;
+        }
+        super.eUnset(featureID);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public boolean eIsSet(int featureID) {
+        switch (featureID) {
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS:
+            return containerMappings != null && !containerMappings.isEmpty();
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE:
+            return variable != null;
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE:
+            return viewVariable != null;
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION:
+            return initialOperation != null;
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__ICON_PATH:
+            return ICON_PATH_EDEFAULT == null ? iconPath != null : !ICON_PATH_EDEFAULT.equals(iconPath);
+        case ToolPackage.CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS:
+            return extraMappings != null && !extraMappings.isEmpty();
+        }
+        return super.eIsSet(featureID);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public String toString() {
+        if (eIsProxy())
+            return super.toString();
+
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (iconPath: ");
+        result.append(iconPath);
+        result.append(')');
+        return result.toString();
+    }
+
+} // ContainerCreationDescriptionImpl

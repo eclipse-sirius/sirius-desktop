@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description.tool;
 
-import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
-
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Obervation Point Creation Tool</b></em>'. <!-- end-user-doc -->
@@ -21,5 +19,5 @@ import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
  * @model
  * @generated
  */
-public interface ObservationPointCreationTool extends NodeCreationDescription, SequenceDiagramToolDescription, OrderedElementCreationTool {
+public interface ObservationPointCreationTool extends org.eclipse.sirius.diagram.description.tool.NodeCreationDescription, SequenceDiagramToolDescription, OrderedElementCreationTool {
 } // ObservationPointCreationTool

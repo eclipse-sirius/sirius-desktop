@@ -33,13 +33,8 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.SourceEdgeCreationVariable;
-import org.eclipse.sirius.viewpoint.description.tool.SourceEdgeViewCreationVariable;
-import org.eclipse.sirius.viewpoint.description.tool.TargetEdgeCreationVariable;
-import org.eclipse.sirius.viewpoint.description.tool.TargetEdgeViewCreationVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 
@@ -243,7 +238,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected SourceEdgeCreationVariable sourceVariable;
+    protected org.eclipse.sirius.diagram.description.tool.SourceEdgeCreationVariable sourceVariable;
 
     /**
      * The cached value of the '{@link #getTargetVariable()
@@ -254,7 +249,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected TargetEdgeCreationVariable targetVariable;
+    protected org.eclipse.sirius.diagram.description.tool.TargetEdgeCreationVariable targetVariable;
 
     /**
      * The cached value of the '{@link #getSourceViewVariable()
@@ -265,7 +260,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected SourceEdgeViewCreationVariable sourceViewVariable;
+    protected org.eclipse.sirius.diagram.description.tool.SourceEdgeViewCreationVariable sourceViewVariable;
 
     /**
      * The cached value of the '{@link #getTargetViewVariable()
@@ -276,7 +271,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * @generated
      * @ordered
      */
-    protected TargetEdgeViewCreationVariable targetViewVariable;
+    protected org.eclipse.sirius.diagram.description.tool.TargetEdgeViewCreationVariable targetViewVariable;
 
     /**
      * The cached value of the '{@link #getInitialOperation()
@@ -528,10 +523,10 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public SourceEdgeCreationVariable getSourceVariable() {
+    public org.eclipse.sirius.diagram.description.tool.SourceEdgeCreationVariable getSourceVariable() {
         if (sourceVariable != null && sourceVariable.eIsProxy()) {
             InternalEObject oldSourceVariable = (InternalEObject) sourceVariable;
-            sourceVariable = (SourceEdgeCreationVariable) eResolveProxy(oldSourceVariable);
+            sourceVariable = (org.eclipse.sirius.diagram.description.tool.SourceEdgeCreationVariable) eResolveProxy(oldSourceVariable);
             if (sourceVariable != oldSourceVariable) {
                 InternalEObject newSourceVariable = (InternalEObject) sourceVariable;
                 NotificationChain msgs = oldSourceVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE, null, null);
@@ -552,7 +547,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public SourceEdgeCreationVariable basicGetSourceVariable() {
+    public org.eclipse.sirius.diagram.description.tool.SourceEdgeCreationVariable basicGetSourceVariable() {
         return sourceVariable;
     }
 
@@ -561,8 +556,8 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public NotificationChain basicSetSourceVariable(SourceEdgeCreationVariable newSourceVariable, NotificationChain msgs) {
-        SourceEdgeCreationVariable oldSourceVariable = sourceVariable;
+    public NotificationChain basicSetSourceVariable(org.eclipse.sirius.diagram.description.tool.SourceEdgeCreationVariable newSourceVariable, NotificationChain msgs) {
+        org.eclipse.sirius.diagram.description.tool.SourceEdgeCreationVariable oldSourceVariable = sourceVariable;
         sourceVariable = newSourceVariable;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE, oldSourceVariable, newSourceVariable);
@@ -579,7 +574,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public void setSourceVariable(SourceEdgeCreationVariable newSourceVariable) {
+    public void setSourceVariable(org.eclipse.sirius.diagram.description.tool.SourceEdgeCreationVariable newSourceVariable) {
         if (newSourceVariable != sourceVariable) {
             NotificationChain msgs = null;
             if (sourceVariable != null)
@@ -598,10 +593,10 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public TargetEdgeCreationVariable getTargetVariable() {
+    public org.eclipse.sirius.diagram.description.tool.TargetEdgeCreationVariable getTargetVariable() {
         if (targetVariable != null && targetVariable.eIsProxy()) {
             InternalEObject oldTargetVariable = (InternalEObject) targetVariable;
-            targetVariable = (TargetEdgeCreationVariable) eResolveProxy(oldTargetVariable);
+            targetVariable = (org.eclipse.sirius.diagram.description.tool.TargetEdgeCreationVariable) eResolveProxy(oldTargetVariable);
             if (targetVariable != oldTargetVariable) {
                 InternalEObject newTargetVariable = (InternalEObject) targetVariable;
                 NotificationChain msgs = oldTargetVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE, null, null);
@@ -622,7 +617,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public TargetEdgeCreationVariable basicGetTargetVariable() {
+    public org.eclipse.sirius.diagram.description.tool.TargetEdgeCreationVariable basicGetTargetVariable() {
         return targetVariable;
     }
 
@@ -631,8 +626,8 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public NotificationChain basicSetTargetVariable(TargetEdgeCreationVariable newTargetVariable, NotificationChain msgs) {
-        TargetEdgeCreationVariable oldTargetVariable = targetVariable;
+    public NotificationChain basicSetTargetVariable(org.eclipse.sirius.diagram.description.tool.TargetEdgeCreationVariable newTargetVariable, NotificationChain msgs) {
+        org.eclipse.sirius.diagram.description.tool.TargetEdgeCreationVariable oldTargetVariable = targetVariable;
         targetVariable = newTargetVariable;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE, oldTargetVariable, newTargetVariable);
@@ -649,7 +644,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public void setTargetVariable(TargetEdgeCreationVariable newTargetVariable) {
+    public void setTargetVariable(org.eclipse.sirius.diagram.description.tool.TargetEdgeCreationVariable newTargetVariable) {
         if (newTargetVariable != targetVariable) {
             NotificationChain msgs = null;
             if (targetVariable != null)
@@ -668,10 +663,10 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public SourceEdgeViewCreationVariable getSourceViewVariable() {
+    public org.eclipse.sirius.diagram.description.tool.SourceEdgeViewCreationVariable getSourceViewVariable() {
         if (sourceViewVariable != null && sourceViewVariable.eIsProxy()) {
             InternalEObject oldSourceViewVariable = (InternalEObject) sourceViewVariable;
-            sourceViewVariable = (SourceEdgeViewCreationVariable) eResolveProxy(oldSourceViewVariable);
+            sourceViewVariable = (org.eclipse.sirius.diagram.description.tool.SourceEdgeViewCreationVariable) eResolveProxy(oldSourceViewVariable);
             if (sourceViewVariable != oldSourceViewVariable) {
                 InternalEObject newSourceViewVariable = (InternalEObject) sourceViewVariable;
                 NotificationChain msgs = oldSourceViewVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE, null, null);
@@ -692,7 +687,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public SourceEdgeViewCreationVariable basicGetSourceViewVariable() {
+    public org.eclipse.sirius.diagram.description.tool.SourceEdgeViewCreationVariable basicGetSourceViewVariable() {
         return sourceViewVariable;
     }
 
@@ -701,8 +696,8 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public NotificationChain basicSetSourceViewVariable(SourceEdgeViewCreationVariable newSourceViewVariable, NotificationChain msgs) {
-        SourceEdgeViewCreationVariable oldSourceViewVariable = sourceViewVariable;
+    public NotificationChain basicSetSourceViewVariable(org.eclipse.sirius.diagram.description.tool.SourceEdgeViewCreationVariable newSourceViewVariable, NotificationChain msgs) {
+        org.eclipse.sirius.diagram.description.tool.SourceEdgeViewCreationVariable oldSourceViewVariable = sourceViewVariable;
         sourceViewVariable = newSourceViewVariable;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE, oldSourceViewVariable, newSourceViewVariable);
@@ -719,7 +714,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public void setSourceViewVariable(SourceEdgeViewCreationVariable newSourceViewVariable) {
+    public void setSourceViewVariable(org.eclipse.sirius.diagram.description.tool.SourceEdgeViewCreationVariable newSourceViewVariable) {
         if (newSourceViewVariable != sourceViewVariable) {
             NotificationChain msgs = null;
             if (sourceViewVariable != null)
@@ -738,10 +733,10 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public TargetEdgeViewCreationVariable getTargetViewVariable() {
+    public org.eclipse.sirius.diagram.description.tool.TargetEdgeViewCreationVariable getTargetViewVariable() {
         if (targetViewVariable != null && targetViewVariable.eIsProxy()) {
             InternalEObject oldTargetViewVariable = (InternalEObject) targetViewVariable;
-            targetViewVariable = (TargetEdgeViewCreationVariable) eResolveProxy(oldTargetViewVariable);
+            targetViewVariable = (org.eclipse.sirius.diagram.description.tool.TargetEdgeViewCreationVariable) eResolveProxy(oldTargetViewVariable);
             if (targetViewVariable != oldTargetViewVariable) {
                 InternalEObject newTargetViewVariable = (InternalEObject) targetViewVariable;
                 NotificationChain msgs = oldTargetViewVariable.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE, null, null);
@@ -762,7 +757,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public TargetEdgeViewCreationVariable basicGetTargetViewVariable() {
+    public org.eclipse.sirius.diagram.description.tool.TargetEdgeViewCreationVariable basicGetTargetViewVariable() {
         return targetViewVariable;
     }
 
@@ -771,8 +766,8 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public NotificationChain basicSetTargetViewVariable(TargetEdgeViewCreationVariable newTargetViewVariable, NotificationChain msgs) {
-        TargetEdgeViewCreationVariable oldTargetViewVariable = targetViewVariable;
+    public NotificationChain basicSetTargetViewVariable(org.eclipse.sirius.diagram.description.tool.TargetEdgeViewCreationVariable newTargetViewVariable, NotificationChain msgs) {
+        org.eclipse.sirius.diagram.description.tool.TargetEdgeViewCreationVariable oldTargetViewVariable = targetViewVariable;
         targetViewVariable = newTargetViewVariable;
         if (eNotificationRequired()) {
             ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE, oldTargetViewVariable, newTargetViewVariable);
@@ -789,7 +784,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
      * 
      * @generated
      */
-    public void setTargetViewVariable(TargetEdgeViewCreationVariable newTargetViewVariable) {
+    public void setTargetViewVariable(org.eclipse.sirius.diagram.description.tool.TargetEdgeViewCreationVariable newTargetViewVariable) {
         if (newTargetViewVariable != targetViewVariable) {
             NotificationChain msgs = null;
             if (targetViewVariable != null)
@@ -1163,16 +1158,16 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
             getEdgeMappings().addAll((Collection<? extends EdgeMapping>) newValue);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE:
-            setSourceVariable((SourceEdgeCreationVariable) newValue);
+            setSourceVariable((org.eclipse.sirius.diagram.description.tool.SourceEdgeCreationVariable) newValue);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE:
-            setTargetVariable((TargetEdgeCreationVariable) newValue);
+            setTargetVariable((org.eclipse.sirius.diagram.description.tool.TargetEdgeCreationVariable) newValue);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE:
-            setSourceViewVariable((SourceEdgeViewCreationVariable) newValue);
+            setSourceViewVariable((org.eclipse.sirius.diagram.description.tool.SourceEdgeViewCreationVariable) newValue);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE:
-            setTargetViewVariable((TargetEdgeViewCreationVariable) newValue);
+            setTargetViewVariable((org.eclipse.sirius.diagram.description.tool.TargetEdgeViewCreationVariable) newValue);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION:
             setInitialOperation((InitEdgeCreationOperation) newValue);
@@ -1231,16 +1226,16 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
             getEdgeMappings().clear();
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE:
-            setSourceVariable((SourceEdgeCreationVariable) null);
+            setSourceVariable((org.eclipse.sirius.diagram.description.tool.SourceEdgeCreationVariable) null);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE:
-            setTargetVariable((TargetEdgeCreationVariable) null);
+            setTargetVariable((org.eclipse.sirius.diagram.description.tool.TargetEdgeCreationVariable) null);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE:
-            setSourceViewVariable((SourceEdgeViewCreationVariable) null);
+            setSourceViewVariable((org.eclipse.sirius.diagram.description.tool.SourceEdgeViewCreationVariable) null);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE:
-            setTargetViewVariable((TargetEdgeViewCreationVariable) null);
+            setTargetViewVariable((org.eclipse.sirius.diagram.description.tool.TargetEdgeViewCreationVariable) null);
             return;
         case ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION:
             setInitialOperation((InitEdgeCreationOperation) null);
@@ -1364,28 +1359,28 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
                 return -1;
             }
         }
-        if (baseClass == EdgeCreationDescription.class) {
+        if (baseClass == org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription.class) {
             switch (derivedFeatureID) {
             case ToolPackage.MESSAGE_CREATION_TOOL__EDGE_MAPPINGS:
-                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS;
+                return org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS;
             case ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE:
-                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VARIABLE;
+                return org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VARIABLE;
             case ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE:
-                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VARIABLE;
+                return org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VARIABLE;
             case ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE:
-                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE;
+                return org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE;
             case ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE:
-                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE;
+                return org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE;
             case ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION:
-                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__INITIAL_OPERATION;
+                return org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__INITIAL_OPERATION;
             case ToolPackage.MESSAGE_CREATION_TOOL__ICON_PATH:
-                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__ICON_PATH;
+                return org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__ICON_PATH;
             case ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_SOURCE_MAPPINGS:
-                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS;
+                return org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS;
             case ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_TARGET_MAPPINGS:
-                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS;
+                return org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS;
             case ToolPackage.MESSAGE_CREATION_TOOL__CONNECTION_START_PRECONDITION:
-                return org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION;
+                return org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION;
             default:
                 return -1;
             }
@@ -1452,27 +1447,27 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
                 return -1;
             }
         }
-        if (baseClass == EdgeCreationDescription.class) {
+        if (baseClass == org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription.class) {
             switch (baseFeatureID) {
-            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS:
+            case org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS:
                 return ToolPackage.MESSAGE_CREATION_TOOL__EDGE_MAPPINGS;
-            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VARIABLE:
+            case org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VARIABLE:
                 return ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VARIABLE;
-            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VARIABLE:
+            case org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VARIABLE:
                 return ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VARIABLE;
-            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE:
+            case org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE:
                 return ToolPackage.MESSAGE_CREATION_TOOL__SOURCE_VIEW_VARIABLE;
-            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE:
+            case org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE:
                 return ToolPackage.MESSAGE_CREATION_TOOL__TARGET_VIEW_VARIABLE;
-            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__INITIAL_OPERATION:
+            case org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__INITIAL_OPERATION:
                 return ToolPackage.MESSAGE_CREATION_TOOL__INITIAL_OPERATION;
-            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__ICON_PATH:
+            case org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__ICON_PATH:
                 return ToolPackage.MESSAGE_CREATION_TOOL__ICON_PATH;
-            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS:
+            case org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS:
                 return ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_SOURCE_MAPPINGS;
-            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS:
+            case org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS:
                 return ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_TARGET_MAPPINGS;
-            case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION:
+            case org.eclipse.sirius.diagram.description.tool.ToolPackage.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION:
                 return ToolPackage.MESSAGE_CREATION_TOOL__CONNECTION_START_PRECONDITION;
             default:
                 return -1;

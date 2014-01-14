@@ -68,7 +68,7 @@ public interface StylePackage extends EPackage {
      * -->
      * 
      * @see org.eclipse.sirius.viewpoint.description.style.StyleDescription
-     * @see org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl#getStyleDescription()
+     * @see org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl#getStyleDescription()
      * @generated
      */
     int STYLE_DESCRIPTION = 0;

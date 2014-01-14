@@ -48,7 +48,7 @@ public interface BundledImageDescription extends NodeStyleDescription {
      * @return the value of the '<em>Shape</em>' attribute.
      * @see org.eclipse.sirius.diagram.BundledImageShape
      * @see #setShape(BundledImageShape)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getBundledImageDescription_Shape()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getBundledImageDescription_Shape()
      * @model required="true"
      * @generated
      */
@@ -74,7 +74,7 @@ public interface BundledImageDescription extends NodeStyleDescription {
      * 
      * @return the value of the '<em>Color</em>' reference.
      * @see #setColor(ColorDescription)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getBundledImageDescription_Color()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getBundledImageDescription_Color()
      * @model required="true"
      * @generated
      */

@@ -103,7 +103,7 @@ public interface SquareDescription extends NodeStyleDescription {
      * 
      * @return the value of the '<em>Color</em>' reference.
      * @see #setColor(ColorDescription)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getSquareDescription_Color()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getSquareDescription_Color()
      * @model required="true"
      * @generated
      */

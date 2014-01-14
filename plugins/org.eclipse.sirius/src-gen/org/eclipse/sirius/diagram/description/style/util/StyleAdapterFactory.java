@@ -250,38 +250,6 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.style.StyleDescription
-     * <em>Description</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.style.StyleDescription
-     * @generated
-     */
-    public Adapter createStyleDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription
-     * <em>Rounded Corner Style Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription
-     * @generated
-     */
-    public Adapter createRoundedCornerStyleDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.diagram.description.style.BorderedStyleDescription
      * <em>Bordered Style Description</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
@@ -293,38 +261,6 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createBorderedStyleDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription
-     * <em>Basic Label Style Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription
-     * @generated
-     */
-    public Adapter createBasicLabelStyleDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription
-     * <em>Label Style Description</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription
-     * @generated
-     */
-    public Adapter createLabelStyleDescriptionAdapter() {
         return null;
     }
 
@@ -474,6 +410,54 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription
+     * <em>Gauge Section Description</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription
+     * @generated
+     */
+    public Adapter createGaugeSectionDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription
+     * <em>Size Computation Container Style Description</em>}'. <!--
+     * begin-user-doc --> This default implementation returns null so that we
+     * can easily ignore cases; it's useful to ignore a case when inheritance
+     * will catch all the cases anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription
+     * @generated
+     */
+    public Adapter createSizeComputationContainerStyleDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription
+     * <em>Rounded Corner Style Description</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription
+     * @generated
+     */
+    public Adapter createRoundedCornerStyleDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.diagram.description.style.ContainerStyleDescription
      * <em>Container Style Description</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
@@ -554,39 +538,6 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription
-     * <em>Tooltip Style Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway.
-     * 
-     * @since 0.9.0 <!-- end-user-doc -->
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription
-     * @generated
-     */
-    public Adapter createTooltipStyleDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.description.style.GaugeSectionDescription
-     * <em>Gauge Section Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.diagram.description.style.GaugeSectionDescription
-     * @generated
-     */
-    public Adapter createGaugeSectionDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.diagram.description.style.BeginLabelStyleDescription
      * <em>Begin Label Style Description</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
@@ -651,17 +602,66 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription
-     * <em>Size Computation Container Style Description</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.description.style.StyleDescription
+     * <em>Description</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription
+     * @see org.eclipse.sirius.viewpoint.description.style.StyleDescription
      * @generated
      */
-    public Adapter createSizeComputationContainerStyleDescriptionAdapter() {
+    public Adapter createStyleDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription
+     * <em>Basic Label Style Description</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription
+     * @generated
+     */
+    public Adapter createBasicLabelStyleDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription
+     * <em>Label Style Description</em>}'. <!-- begin-user-doc --> This default
+     * implementation returns null so that we can easily ignore cases; it's
+     * useful to ignore a case when inheritance will catch all the cases anyway.
+     * <!-- end-user-doc -->
+     * 
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription
+     * @generated
+     */
+    public Adapter createLabelStyleDescriptionAdapter() {
+        return null;
+    }
+
+    /**
+     * Creates a new adapter for an object of class '
+     * {@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription
+     * <em>Tooltip Style Description</em>}'. <!-- begin-user-doc --> This
+     * default implementation returns null so that we can easily ignore cases;
+     * it's useful to ignore a case when inheritance will catch all the cases
+     * anyway. 
+     * 
+     * @since 0.9.0 <!-- end-user-doc -->
+     * @return the new adapter.
+     * @see org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription
+     * @generated
+     */
+    public Adapter createTooltipStyleDescriptionAdapter() {
         return null;
     }
 

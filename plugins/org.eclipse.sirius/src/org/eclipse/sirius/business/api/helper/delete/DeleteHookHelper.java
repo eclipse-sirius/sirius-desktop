@@ -29,11 +29,11 @@ import org.eclipse.sirius.business.internal.helper.delete.IDeleteHookDescriptor;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
+import org.eclipse.sirius.diagram.description.tool.DeleteHook;
+import org.eclipse.sirius.diagram.description.tool.DeleteHookParameter;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
-import org.eclipse.sirius.viewpoint.description.tool.DeleteHook;
-import org.eclipse.sirius.viewpoint.description.tool.DeleteHookParameter;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**

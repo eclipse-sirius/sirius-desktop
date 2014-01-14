@@ -45,7 +45,7 @@ public interface BorderedStyleDescription extends StyleDescription {
      * @return the value of the '<em>Border Size Computation Expression</em>'
      *         attribute.
      * @see #setBorderSizeComputationExpression(String)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getBorderedStyleDescription_BorderSizeComputationExpression()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getBorderedStyleDescription_BorderSizeComputationExpression()
      * @model default="0" dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
@@ -79,7 +79,7 @@ public interface BorderedStyleDescription extends StyleDescription {
      * 
      * @return the value of the '<em>Border Color</em>' reference.
      * @see #setBorderColor(ColorDescription)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getBorderedStyleDescription_BorderColor()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getBorderedStyleDescription_BorderColor()
      * @model required="true"
      * @generated
      */

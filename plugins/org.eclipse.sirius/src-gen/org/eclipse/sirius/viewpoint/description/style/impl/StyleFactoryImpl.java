@@ -156,4 +156,3 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
     }
 
 } // StyleFactoryImpl
-

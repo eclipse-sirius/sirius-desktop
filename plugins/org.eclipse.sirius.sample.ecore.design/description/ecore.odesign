@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="Ecore Editing Workbench V4.6" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="Ecore Editing Workbench V4.6" version="8.0.0">
   <ownedViewpoints endUserDocumentation="&lt;html>&#xA;&lt;head>&#xA;&lt;/head>&#xA;&lt;body>&#xA;&lt;p>Provides graphical and tabular representation to design an Ecore model.&lt;/p>&#xA;&lt;br>&#xA;&lt;img src=&quot;/doc/screenshots/entities.png&quot;/>&#xA;&lt;img src=&quot;/doc/screenshots/classes.png&quot;/>&#xA;&lt;/body>&#xA;&lt;/html>&#xA;&#xA;&#xA;" name="Design" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='External%20EClass%20from%20treeview'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20external%20package']" endUserDocumentation="A graphical modeler for Ecore model similar to a UML class diagram." name="Entities" titleExpression="[name + ' package entities'/]" initialisation="true" domainClass="EPackage" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
@@ -168,8 +168,8 @@
           </style>
         </containerMappings>
         <toolSections name="Classifier">
-          <ownedTools xsi:type="tool:ToolGroup" name="Classifier">
-            <tools xsi:type="tool:ContainerCreationDescription" name="Class" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <ownedTools xsi:type="tool_1:ToolGroup" name="Classifier">
+            <tools xsi:type="tool_1:ContainerCreationDescription" name="Class" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -178,7 +178,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" name="Abstract Class" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/AbstractClass.gif">
+            <tools xsi:type="tool_1:ContainerCreationDescription" name="Abstract Class" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/AbstractClass.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -188,7 +188,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Interface.gif">
+            <tools xsi:type="tool_1:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Interface.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -200,7 +200,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Datatype" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Datatype" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -210,7 +210,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Enumeration" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Enumeration" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -228,7 +228,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete EClass">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete EClass">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -243,7 +243,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Feature">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Literal" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Literal" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -252,7 +252,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Operation" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Operation" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -261,7 +261,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Attribute" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Attribute" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -294,22 +294,22 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Relation">
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="New Package Entities" titleExpression="[name + ' package entities'/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="New Package Entities" titleExpression="[name + ' package entities'/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Relation for class Diagram" diagramDescription="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Relations']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Relation for class Diagram" diagramDescription="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Relations']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Hierarchy Diagram" diagramDescription="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Hierarchy']">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Hierarchy Diagram" diagramDescription="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Hierarchy']">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SuperType" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']" iconPath="/org.eclipse.sirius.ui/icons/full/obj16/EdgeMapping.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="SuperType" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']" iconPath="/org.eclipse.sirius.ui/icons/full/obj16/EdgeMapping.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -320,7 +320,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Reference" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Reference" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -334,7 +334,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Bi-directional Reference" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='Bi-directional%20EC_EReference%20']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Bi-directional Reference" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='Bi-directional%20EC_EReference%20']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -358,7 +358,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Composition" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Composition" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -374,7 +374,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete ESuperType">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete ESuperType">
             <element name="element"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
@@ -386,7 +386,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Reconnect">
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectEReference" reconnectionKind="RECONNECT_BOTH">
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="ReconnectEReference" reconnectionKind="RECONNECT_BOTH">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -425,7 +425,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectESupertype" reconnectionKind="RECONNECT_BOTH">
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="ReconnectESupertype" reconnectionKind="RECONNECT_BOTH">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -469,7 +469,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectBiDirectionnalEReference Source" reconnectionKind="RECONNECT_SOURCE">
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="ReconnectBiDirectionnalEReference Source" reconnectionKind="RECONNECT_SOURCE">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -493,7 +493,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectBiDirectionnalEReference Target">
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="ReconnectBiDirectionnalEReference Target">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
@@ -519,31 +519,31 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Direct Edit">
-          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit Name">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Name">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="Edit EAttribute Name">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit EAttribute Name">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[performEdit(arg0)/]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" name="EReference Name">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="EReference Name">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[performEdit(arg0)/]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DirectEditLabel" documentation="- &quot;name&quot; : change the name of the operation" name="Operation Name" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" documentation="- &quot;name&quot; : change the name of the operation" name="Operation Name" forceRefresh="true">
             <mask mask="{0}"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[performEdit(arg0)/]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DoubleClickDescription" name="ShowPropertiesView" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="ShowPropertiesView" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -591,7 +591,7 @@
           </style>
         </containerMappings>
         <toolSections name="Package">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Package" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@containerMappings[name='Design%20Package']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Package" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@containerMappings[name='Design%20Package']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -674,7 +674,7 @@
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <layers name="Archetypes" activeByDefault="true">
         <toolSections name="Archetype">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a moment or interval of time that we need to track for business or legal reasons? " name="MomentInterval" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/MomentInterval.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Does the class represent a moment or interval of time that we need to track for business or legal reasons? " name="MomentInterval" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/MomentInterval.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -692,7 +692,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a catalog-entry like description? " name="Description" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Description.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Does the class represent a catalog-entry like description? " name="Description" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Description.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -710,7 +710,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a role being played by a party (person or organization), place or thing? " name="Role" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Role.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Does the class represent a role being played by a party (person or organization), place or thing? " name="Role" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Role.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -728,7 +728,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Place/Thing" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Thing.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Place/Thing" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Thing.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>

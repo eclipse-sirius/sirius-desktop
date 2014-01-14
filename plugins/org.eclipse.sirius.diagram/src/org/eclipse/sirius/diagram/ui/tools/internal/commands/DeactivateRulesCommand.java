@@ -15,7 +15,7 @@ import java.util.Collection;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
+import org.eclipse.sirius.diagram.description.validation.ValidationRule;
 
 /**
  * Specific command to update activated rules.

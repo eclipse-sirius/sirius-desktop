@@ -21,12 +21,12 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.description.tool.DoubleClickDescription;
+import org.eclipse.sirius.diagram.description.tool.Navigation;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
-import org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription;
-import org.eclipse.sirius.viewpoint.description.tool.Navigation;
 
 /**
  * A builder to execute operations in a Double Click tool.

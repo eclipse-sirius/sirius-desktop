@@ -13,12 +13,12 @@ package org.eclipse.sirius.diagram.description;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
+import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
+import org.eclipse.sirius.diagram.description.tool.DoubleClickDescription;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
-import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
-import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
-import org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -257,7 +257,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
     /**
      * Returns the value of the '<em><b>Double Click Description</b></em>'
      * reference. It is bidirectional and its opposite is '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription#getMappings
+     * {@link org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getMappings
      * <em>Mappings</em>}'. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Double Click Description</em>' reference isn't
@@ -268,7 +268,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      * @return the value of the '<em>Double Click Description</em>' reference.
      * @see #setDoubleClickDescription(DoubleClickDescription)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramElementMapping_DoubleClickDescription()
-     * @see org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription#getMappings
+     * @see org.eclipse.sirius.diagram.description.tool.DoubleClickDescription#getMappings
      * @model opposite="mappings"
      * @generated
      */

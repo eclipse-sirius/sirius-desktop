@@ -21,31 +21,18 @@ import org.eclipse.sirius.viewpoint.description.SelectionDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
-import org.eclipse.sirius.viewpoint.description.tool.BehaviorTool;
 import org.eclipse.sirius.viewpoint.description.tool.Case;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
-import org.eclipse.sirius.viewpoint.description.tool.CreateEdgeView;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
-import org.eclipse.sirius.viewpoint.description.tool.CreateView;
 import org.eclipse.sirius.viewpoint.description.tool.Default;
-import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
-import org.eclipse.sirius.viewpoint.description.tool.DeleteHook;
-import org.eclipse.sirius.viewpoint.description.tool.DeleteHookParameter;
 import org.eclipse.sirius.viewpoint.description.tool.DeleteView;
-import org.eclipse.sirius.viewpoint.description.tool.DiagramCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.DiagramNavigationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DialogVariable;
-import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
-import org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DropContainerVariable;
-import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 import org.eclipse.sirius.viewpoint.description.tool.ElementDeleteVariable;
-import org.eclipse.sirius.viewpoint.description.tool.ElementDoubleClickVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ElementSelectVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ElementVariable;
@@ -67,37 +54,25 @@ import org.eclipse.sirius.viewpoint.description.tool.MenuItemOrRef;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.MoveElement;
 import org.eclipse.sirius.viewpoint.description.tool.NameVariable;
-import org.eclipse.sirius.viewpoint.description.tool.Navigation;
-import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.NodeCreationVariable;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
-import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RemoveElement;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.RequestDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectContainerVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SetObject;
 import org.eclipse.sirius.viewpoint.description.tool.SetValue;
-import org.eclipse.sirius.viewpoint.description.tool.SourceEdgeCreationVariable;
-import org.eclipse.sirius.viewpoint.description.tool.SourceEdgeViewCreationVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SubVariable;
 import org.eclipse.sirius.viewpoint.description.tool.Switch;
 import org.eclipse.sirius.viewpoint.description.tool.SwitchChild;
-import org.eclipse.sirius.viewpoint.description.tool.TargetEdgeCreationVariable;
-import org.eclipse.sirius.viewpoint.description.tool.TargetEdgeViewCreationVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ToolGroup;
-import org.eclipse.sirius.viewpoint.description.tool.ToolGroupExtension;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
 import org.eclipse.sirius.viewpoint.description.tool.Unset;
 import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 
@@ -174,17 +149,6 @@ public class ToolSwitch<T> {
      */
     protected T doSwitch(int classifierID, EObject theEObject) {
         switch (classifierID) {
-        case ToolPackage.TOOL_SECTION: {
-            ToolSection toolSection = (ToolSection) theEObject;
-            T result = caseToolSection(toolSection);
-            if (result == null)
-                result = caseDocumentedElement(toolSection);
-            if (result == null)
-                result = caseIdentifiedElement(toolSection);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
         case ToolPackage.TOOL_ENTRY: {
             ToolEntry toolEntry = (ToolEntry) theEObject;
             T result = caseToolEntry(toolEntry);
@@ -192,26 +156,6 @@ public class ToolSwitch<T> {
                 result = caseDocumentedElement(toolEntry);
             if (result == null)
                 result = caseIdentifiedElement(toolEntry);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.TOOL_GROUP: {
-            ToolGroup toolGroup = (ToolGroup) theEObject;
-            T result = caseToolGroup(toolGroup);
-            if (result == null)
-                result = caseToolEntry(toolGroup);
-            if (result == null)
-                result = caseDocumentedElement(toolGroup);
-            if (result == null)
-                result = caseIdentifiedElement(toolGroup);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.TOOL_GROUP_EXTENSION: {
-            ToolGroupExtension toolGroupExtension = (ToolGroupExtension) theEObject;
-            T result = caseToolGroupExtension(toolGroupExtension);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -261,57 +205,6 @@ public class ToolSwitch<T> {
                 result = defaultCase(theEObject);
             return result;
         }
-        case ToolPackage.NODE_CREATION_DESCRIPTION: {
-            NodeCreationDescription nodeCreationDescription = (NodeCreationDescription) theEObject;
-            T result = caseNodeCreationDescription(nodeCreationDescription);
-            if (result == null)
-                result = caseMappingBasedToolDescription(nodeCreationDescription);
-            if (result == null)
-                result = caseAbstractToolDescription(nodeCreationDescription);
-            if (result == null)
-                result = caseToolEntry(nodeCreationDescription);
-            if (result == null)
-                result = caseDocumentedElement(nodeCreationDescription);
-            if (result == null)
-                result = caseIdentifiedElement(nodeCreationDescription);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.EDGE_CREATION_DESCRIPTION: {
-            EdgeCreationDescription edgeCreationDescription = (EdgeCreationDescription) theEObject;
-            T result = caseEdgeCreationDescription(edgeCreationDescription);
-            if (result == null)
-                result = caseMappingBasedToolDescription(edgeCreationDescription);
-            if (result == null)
-                result = caseAbstractToolDescription(edgeCreationDescription);
-            if (result == null)
-                result = caseToolEntry(edgeCreationDescription);
-            if (result == null)
-                result = caseDocumentedElement(edgeCreationDescription);
-            if (result == null)
-                result = caseIdentifiedElement(edgeCreationDescription);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.CONTAINER_CREATION_DESCRIPTION: {
-            ContainerCreationDescription containerCreationDescription = (ContainerCreationDescription) theEObject;
-            T result = caseContainerCreationDescription(containerCreationDescription);
-            if (result == null)
-                result = caseMappingBasedToolDescription(containerCreationDescription);
-            if (result == null)
-                result = caseAbstractToolDescription(containerCreationDescription);
-            if (result == null)
-                result = caseToolEntry(containerCreationDescription);
-            if (result == null)
-                result = caseDocumentedElement(containerCreationDescription);
-            if (result == null)
-                result = caseIdentifiedElement(containerCreationDescription);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
         case ToolPackage.CONTAINER_DROP_DESCRIPTION: {
             ContainerDropDescription containerDropDescription = (ContainerDropDescription) theEObject;
             T result = caseContainerDropDescription(containerDropDescription);
@@ -342,86 +235,6 @@ public class ToolSwitch<T> {
                 result = caseDocumentedElement(pasteDescription);
             if (result == null)
                 result = caseIdentifiedElement(pasteDescription);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.DELETE_ELEMENT_DESCRIPTION: {
-            DeleteElementDescription deleteElementDescription = (DeleteElementDescription) theEObject;
-            T result = caseDeleteElementDescription(deleteElementDescription);
-            if (result == null)
-                result = caseMappingBasedToolDescription(deleteElementDescription);
-            if (result == null)
-                result = caseAbstractToolDescription(deleteElementDescription);
-            if (result == null)
-                result = caseToolEntry(deleteElementDescription);
-            if (result == null)
-                result = caseDocumentedElement(deleteElementDescription);
-            if (result == null)
-                result = caseIdentifiedElement(deleteElementDescription);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.DOUBLE_CLICK_DESCRIPTION: {
-            DoubleClickDescription doubleClickDescription = (DoubleClickDescription) theEObject;
-            T result = caseDoubleClickDescription(doubleClickDescription);
-            if (result == null)
-                result = caseMappingBasedToolDescription(doubleClickDescription);
-            if (result == null)
-                result = caseAbstractToolDescription(doubleClickDescription);
-            if (result == null)
-                result = caseToolEntry(doubleClickDescription);
-            if (result == null)
-                result = caseDocumentedElement(doubleClickDescription);
-            if (result == null)
-                result = caseIdentifiedElement(doubleClickDescription);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.DELETE_HOOK: {
-            DeleteHook deleteHook = (DeleteHook) theEObject;
-            T result = caseDeleteHook(deleteHook);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.DELETE_HOOK_PARAMETER: {
-            DeleteHookParameter deleteHookParameter = (DeleteHookParameter) theEObject;
-            T result = caseDeleteHookParameter(deleteHookParameter);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.RECONNECT_EDGE_DESCRIPTION: {
-            ReconnectEdgeDescription reconnectEdgeDescription = (ReconnectEdgeDescription) theEObject;
-            T result = caseReconnectEdgeDescription(reconnectEdgeDescription);
-            if (result == null)
-                result = caseMappingBasedToolDescription(reconnectEdgeDescription);
-            if (result == null)
-                result = caseAbstractToolDescription(reconnectEdgeDescription);
-            if (result == null)
-                result = caseToolEntry(reconnectEdgeDescription);
-            if (result == null)
-                result = caseDocumentedElement(reconnectEdgeDescription);
-            if (result == null)
-                result = caseIdentifiedElement(reconnectEdgeDescription);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.REQUEST_DESCRIPTION: {
-            RequestDescription requestDescription = (RequestDescription) theEObject;
-            T result = caseRequestDescription(requestDescription);
-            if (result == null)
-                result = caseAbstractToolDescription(requestDescription);
-            if (result == null)
-                result = caseToolEntry(requestDescription);
-            if (result == null)
-                result = caseDocumentedElement(requestDescription);
-            if (result == null)
-                result = caseIdentifiedElement(requestDescription);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -601,38 +414,6 @@ public class ToolSwitch<T> {
                 result = defaultCase(theEObject);
             return result;
         }
-        case ToolPackage.DIRECT_EDIT_LABEL: {
-            DirectEditLabel directEditLabel = (DirectEditLabel) theEObject;
-            T result = caseDirectEditLabel(directEditLabel);
-            if (result == null)
-                result = caseMappingBasedToolDescription(directEditLabel);
-            if (result == null)
-                result = caseAbstractToolDescription(directEditLabel);
-            if (result == null)
-                result = caseToolEntry(directEditLabel);
-            if (result == null)
-                result = caseDocumentedElement(directEditLabel);
-            if (result == null)
-                result = caseIdentifiedElement(directEditLabel);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.BEHAVIOR_TOOL: {
-            BehaviorTool behaviorTool = (BehaviorTool) theEObject;
-            T result = caseBehaviorTool(behaviorTool);
-            if (result == null)
-                result = caseAbstractToolDescription(behaviorTool);
-            if (result == null)
-                result = caseToolEntry(behaviorTool);
-            if (result == null)
-                result = caseDocumentedElement(behaviorTool);
-            if (result == null)
-                result = caseIdentifiedElement(behaviorTool);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
         case ToolPackage.ABSTRACT_VARIABLE: {
             AbstractVariable abstractVariable = (AbstractVariable) theEObject;
             T result = caseAbstractVariable(abstractVariable);
@@ -674,50 +455,6 @@ public class ToolSwitch<T> {
             T result = caseDialogVariable(dialogVariable);
             if (result == null)
                 result = caseAbstractVariable(dialogVariable);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.SOURCE_EDGE_CREATION_VARIABLE: {
-            SourceEdgeCreationVariable sourceEdgeCreationVariable = (SourceEdgeCreationVariable) theEObject;
-            T result = caseSourceEdgeCreationVariable(sourceEdgeCreationVariable);
-            if (result == null)
-                result = caseAbstractVariable(sourceEdgeCreationVariable);
-            if (result == null)
-                result = caseVariableContainer(sourceEdgeCreationVariable);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.SOURCE_EDGE_VIEW_CREATION_VARIABLE: {
-            SourceEdgeViewCreationVariable sourceEdgeViewCreationVariable = (SourceEdgeViewCreationVariable) theEObject;
-            T result = caseSourceEdgeViewCreationVariable(sourceEdgeViewCreationVariable);
-            if (result == null)
-                result = caseAbstractVariable(sourceEdgeViewCreationVariable);
-            if (result == null)
-                result = caseVariableContainer(sourceEdgeViewCreationVariable);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.TARGET_EDGE_CREATION_VARIABLE: {
-            TargetEdgeCreationVariable targetEdgeCreationVariable = (TargetEdgeCreationVariable) theEObject;
-            T result = caseTargetEdgeCreationVariable(targetEdgeCreationVariable);
-            if (result == null)
-                result = caseAbstractVariable(targetEdgeCreationVariable);
-            if (result == null)
-                result = caseVariableContainer(targetEdgeCreationVariable);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.TARGET_EDGE_VIEW_CREATION_VARIABLE: {
-            TargetEdgeViewCreationVariable targetEdgeViewCreationVariable = (TargetEdgeViewCreationVariable) theEObject;
-            T result = caseTargetEdgeViewCreationVariable(targetEdgeViewCreationVariable);
-            if (result == null)
-                result = caseAbstractVariable(targetEdgeViewCreationVariable);
-            if (result == null)
-                result = caseVariableContainer(targetEdgeViewCreationVariable);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -771,28 +508,6 @@ public class ToolSwitch<T> {
                 result = caseAbstractVariable(elementDeleteVariable);
             if (result == null)
                 result = caseVariableContainer(elementDeleteVariable);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.ELEMENT_DOUBLE_CLICK_VARIABLE: {
-            ElementDoubleClickVariable elementDoubleClickVariable = (ElementDoubleClickVariable) theEObject;
-            T result = caseElementDoubleClickVariable(elementDoubleClickVariable);
-            if (result == null)
-                result = caseAbstractVariable(elementDoubleClickVariable);
-            if (result == null)
-                result = caseVariableContainer(elementDoubleClickVariable);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.NODE_CREATION_VARIABLE: {
-            NodeCreationVariable nodeCreationVariable = (NodeCreationVariable) theEObject;
-            T result = caseNodeCreationVariable(nodeCreationVariable);
-            if (result == null)
-                result = caseAbstractVariable(nodeCreationVariable);
-            if (result == null)
-                result = caseVariableContainer(nodeCreationVariable);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -982,30 +697,6 @@ public class ToolSwitch<T> {
                 result = defaultCase(theEObject);
             return result;
         }
-        case ToolPackage.CREATE_VIEW: {
-            CreateView createView = (CreateView) theEObject;
-            T result = caseCreateView(createView);
-            if (result == null)
-                result = caseContainerModelOperation(createView);
-            if (result == null)
-                result = caseModelOperation(createView);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.CREATE_EDGE_VIEW: {
-            CreateEdgeView createEdgeView = (CreateEdgeView) theEObject;
-            T result = caseCreateEdgeView(createEdgeView);
-            if (result == null)
-                result = caseCreateView(createEdgeView);
-            if (result == null)
-                result = caseContainerModelOperation(createEdgeView);
-            if (result == null)
-                result = caseModelOperation(createEdgeView);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
         case ToolPackage.IF: {
             If if_ = (If) theEObject;
             T result = caseIf(if_);
@@ -1028,17 +719,6 @@ public class ToolSwitch<T> {
                 result = defaultCase(theEObject);
             return result;
         }
-        case ToolPackage.NAVIGATION: {
-            Navigation navigation = (Navigation) theEObject;
-            T result = caseNavigation(navigation);
-            if (result == null)
-                result = caseContainerModelOperation(navigation);
-            if (result == null)
-                result = caseModelOperation(navigation);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
         case ToolPackage.NAME_VARIABLE: {
             NameVariable nameVariable = (NameVariable) theEObject;
             T result = caseNameVariable(nameVariable);
@@ -1051,40 +731,6 @@ public class ToolSwitch<T> {
         case ToolPackage.EXTERNAL_JAVA_ACTION_PARAMETER: {
             ExternalJavaActionParameter externalJavaActionParameter = (ExternalJavaActionParameter) theEObject;
             T result = caseExternalJavaActionParameter(externalJavaActionParameter);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.DIAGRAM_CREATION_DESCRIPTION: {
-            DiagramCreationDescription diagramCreationDescription = (DiagramCreationDescription) theEObject;
-            T result = caseDiagramCreationDescription(diagramCreationDescription);
-            if (result == null)
-                result = caseRepresentationCreationDescription(diagramCreationDescription);
-            if (result == null)
-                result = caseAbstractToolDescription(diagramCreationDescription);
-            if (result == null)
-                result = caseToolEntry(diagramCreationDescription);
-            if (result == null)
-                result = caseDocumentedElement(diagramCreationDescription);
-            if (result == null)
-                result = caseIdentifiedElement(diagramCreationDescription);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.DIAGRAM_NAVIGATION_DESCRIPTION: {
-            DiagramNavigationDescription diagramNavigationDescription = (DiagramNavigationDescription) theEObject;
-            T result = caseDiagramNavigationDescription(diagramNavigationDescription);
-            if (result == null)
-                result = caseRepresentationNavigationDescription(diagramNavigationDescription);
-            if (result == null)
-                result = caseAbstractToolDescription(diagramNavigationDescription);
-            if (result == null)
-                result = caseToolEntry(diagramNavigationDescription);
-            if (result == null)
-                result = caseDocumentedElement(diagramNavigationDescription);
-            if (result == null)
-                result = caseIdentifiedElement(diagramNavigationDescription);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -1144,23 +790,6 @@ public class ToolSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Section</em>'. <!-- begin-user-doc --> This implementation returns
-     * null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Section</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseToolSection(ToolSection object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
      * <em>Entry</em>'. <!-- begin-user-doc --> This implementation returns
      * null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
@@ -1173,40 +802,6 @@ public class ToolSwitch<T> {
      * @generated
      */
     public T caseToolEntry(ToolEntry object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Group</em>'. <!-- begin-user-doc --> This implementation returns
-     * null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Group</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseToolGroup(ToolGroup object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Group Extension</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Group Extension</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseToolGroupExtension(ToolGroupExtension object) {
         return null;
     }
 
@@ -1263,57 +858,6 @@ public class ToolSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Node Creation Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Node Creation Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseNodeCreationDescription(NodeCreationDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Edge Creation Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Edge Creation Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseEdgeCreationDescription(EdgeCreationDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Container Creation Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Container Creation Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseContainerCreationDescription(ContainerCreationDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
      * <em>Container Drop Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
@@ -1343,108 +887,6 @@ public class ToolSwitch<T> {
      * @generated
      */
     public T casePasteDescription(PasteDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Delete Element Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Delete Element Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDeleteElementDescription(DeleteElementDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Double Click Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Double Click Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDoubleClickDescription(DoubleClickDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Delete Hook</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Delete Hook</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDeleteHook(DeleteHook object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Delete Hook Parameter</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Delete Hook Parameter</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDeleteHookParameter(DeleteHookParameter object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Reconnect Edge Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Reconnect Edge Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseReconnectEdgeDescription(ReconnectEdgeDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Request Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Request Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseRequestDescription(RequestDescription object) {
         return null;
     }
 
@@ -1637,40 +1079,6 @@ public class ToolSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Direct Edit Label</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Direct Edit Label</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDirectEditLabel(DirectEditLabel object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Behavior Tool</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Behavior Tool</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseBehaviorTool(BehaviorTool object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
      * <em>Abstract Variable</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
@@ -1756,74 +1164,6 @@ public class ToolSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Source Edge Creation Variable</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Source Edge Creation Variable</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseSourceEdgeCreationVariable(SourceEdgeCreationVariable object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Source Edge View Creation Variable</em>'. <!-- begin-user-doc -->
-     * This implementation returns null; returning a non-null result will
-     * terminate the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Source Edge View Creation Variable</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseSourceEdgeViewCreationVariable(SourceEdgeViewCreationVariable object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Target Edge Creation Variable</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Target Edge Creation Variable</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseTargetEdgeCreationVariable(TargetEdgeCreationVariable object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Target Edge View Creation Variable</em>'. <!-- begin-user-doc -->
-     * This implementation returns null; returning a non-null result will
-     * terminate the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Target Edge View Creation Variable</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseTargetEdgeViewCreationVariable(TargetEdgeViewCreationVariable object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
      * <em>Element Drop Variable</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
@@ -1904,40 +1244,6 @@ public class ToolSwitch<T> {
      * @generated
      */
     public T caseElementDeleteVariable(ElementDeleteVariable object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Element Double Click Variable</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Element Double Click Variable</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseElementDoubleClickVariable(ElementDoubleClickVariable object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Node Creation Variable</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Node Creation Variable</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseNodeCreationVariable(NodeCreationVariable object) {
         return null;
     }
 
@@ -2266,40 +1572,6 @@ public class ToolSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Create View</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Create View</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseCreateView(CreateView object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Create Edge View</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Create Edge View</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseCreateEdgeView(CreateEdgeView object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
      * <em>If</em>'. <!-- begin-user-doc --> This implementation returns null;
      * returning a non-null result will terminate the switch. <!-- end-user-doc
      * -->
@@ -2334,23 +1606,6 @@ public class ToolSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Navigation</em>'. <!-- begin-user-doc --> This implementation returns
-     * null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Navigation</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseNavigation(Navigation object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
      * <em>Name Variable</em>'. <!-- begin-user-doc --> This implementation
      * returns null; returning a non-null result will terminate the switch. <!--
      * end-user-doc -->
@@ -2380,40 +1635,6 @@ public class ToolSwitch<T> {
      * @generated
      */
     public T caseExternalJavaActionParameter(ExternalJavaActionParameter object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Diagram Creation Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Diagram Creation Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDiagramCreationDescription(DiagramCreationDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Diagram Navigation Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Diagram Navigation Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDiagramNavigationDescription(DiagramNavigationDescription object) {
         return null;
     }
 

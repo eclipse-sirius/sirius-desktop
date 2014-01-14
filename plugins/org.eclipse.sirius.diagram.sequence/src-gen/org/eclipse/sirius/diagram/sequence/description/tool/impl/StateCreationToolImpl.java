@@ -20,7 +20,6 @@ import org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreati
 import org.eclipse.sirius.diagram.sequence.description.tool.SequenceDiagramToolDescription;
 import org.eclipse.sirius.diagram.sequence.description.tool.StateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
-import org.eclipse.sirius.viewpoint.description.tool.impl.NodeCreationDescriptionImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -39,7 +38,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.NodeCreationDescriptio
  * 
  * @generated
  */
-public class StateCreationToolImpl extends NodeCreationDescriptionImpl implements StateCreationTool {
+public class StateCreationToolImpl extends org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl implements StateCreationTool {
     /**
      * The cached value of the '{@link #getStartingEndPredecessor()
      * <em>Starting End Predecessor</em>}' containment reference. <!--

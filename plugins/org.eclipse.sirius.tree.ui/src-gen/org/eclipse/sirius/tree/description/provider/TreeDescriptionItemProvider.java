@@ -37,7 +37,6 @@ import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
-import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
  * This is the item provider adapter for a
@@ -351,14 +350,8 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider i
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.tree.description.DescriptionPackage.Literals.TREE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS,
                 DescriptionFactory.eINSTANCE.createTreeCreationDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.tree.description.DescriptionPackage.Literals.TREE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS,
-                ToolFactory.eINSTANCE.createDiagramCreationDescription()));
-
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.tree.description.DescriptionPackage.Literals.TREE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS,
                 DescriptionFactory.eINSTANCE.createTreeNavigationDescription()));
-
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.tree.description.DescriptionPackage.Literals.TREE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS,
-                ToolFactory.eINSTANCE.createDiagramNavigationDescription()));
     }
 
     private void collectTreeItemCreationTool(Collection<Object> newChildDescriptors) {

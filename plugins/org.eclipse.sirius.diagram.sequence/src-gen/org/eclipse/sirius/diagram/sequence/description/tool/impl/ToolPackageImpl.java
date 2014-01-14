@@ -580,7 +580,9 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
 
         // Obtain other dependent packages
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
-        org.eclipse.sirius.viewpoint.description.tool.ToolPackage theToolPackage_1 = (org.eclipse.sirius.viewpoint.description.tool.ToolPackage) EPackage.Registry.INSTANCE
+        org.eclipse.sirius.diagram.description.tool.ToolPackage theToolPackage_1 = (org.eclipse.sirius.diagram.description.tool.ToolPackage) EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.tool.ToolPackage.eNS_URI);
+        org.eclipse.sirius.viewpoint.description.tool.ToolPackage theToolPackage_2 = (org.eclipse.sirius.viewpoint.description.tool.ToolPackage) EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eNS_URI);
 
         // Create type parameters
@@ -615,9 +617,9 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         observationPointCreationToolEClass.getESuperTypes().add(theToolPackage_1.getNodeCreationDescription());
         observationPointCreationToolEClass.getESuperTypes().add(this.getSequenceDiagramToolDescription());
         observationPointCreationToolEClass.getESuperTypes().add(this.getOrderedElementCreationTool());
-        reorderToolEClass.getESuperTypes().add(theToolPackage_1.getAbstractToolDescription());
+        reorderToolEClass.getESuperTypes().add(theToolPackage_2.getAbstractToolDescription());
         reorderToolEClass.getESuperTypes().add(this.getSequenceDiagramToolDescription());
-        instanceRoleReorderToolEClass.getESuperTypes().add(theToolPackage_1.getAbstractToolDescription());
+        instanceRoleReorderToolEClass.getESuperTypes().add(theToolPackage_2.getAbstractToolDescription());
         instanceRoleReorderToolEClass.getESuperTypes().add(this.getSequenceDiagramToolDescription());
 
         // Initialize classes and features; add operations and parameters
@@ -634,7 +636,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(instanceRoleCreationToolEClass, InstanceRoleCreationTool.class, "InstanceRoleCreationTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getInstanceRoleCreationTool_Predecessor(), theToolPackage_1.getElementVariable(), null, "predecessor", null, 0, 1, InstanceRoleCreationTool.class, !IS_TRANSIENT, !IS_VOLATILE,
+        initEReference(getInstanceRoleCreationTool_Predecessor(), theToolPackage_2.getElementVariable(), null, "predecessor", null, 0, 1, InstanceRoleCreationTool.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(lifelineCreationToolEClass, LifelineCreationTool.class, "LifelineCreationTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -664,17 +666,17 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getReorderTool_FinishingEndPredecessorAfter(), theDescriptionPackage.getMessageEndVariable(), null, "finishingEndPredecessorAfter", null, 0, 1, ReorderTool.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getReorderTool_OnEventMovedOperation(), theToolPackage_1.getInitialOperation(), null, "onEventMovedOperation", null, 1, 1, ReorderTool.class, !IS_TRANSIENT, !IS_VOLATILE,
+        initEReference(getReorderTool_OnEventMovedOperation(), theToolPackage_2.getInitialOperation(), null, "onEventMovedOperation", null, 1, 1, ReorderTool.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(instanceRoleReorderToolEClass, InstanceRoleReorderTool.class, "InstanceRoleReorderTool", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getInstanceRoleReorderTool_Mappings(), theDescriptionPackage.getInstanceRoleMapping(), null, "mappings", null, 0, -1, InstanceRoleReorderTool.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getInstanceRoleReorderTool_PredecessorBefore(), theToolPackage_1.getElementVariable(), null, "predecessorBefore", null, 0, 1, InstanceRoleReorderTool.class, !IS_TRANSIENT,
+        initEReference(getInstanceRoleReorderTool_PredecessorBefore(), theToolPackage_2.getElementVariable(), null, "predecessorBefore", null, 0, 1, InstanceRoleReorderTool.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getInstanceRoleReorderTool_PredecessorAfter(), theToolPackage_1.getElementVariable(), null, "predecessorAfter", null, 0, 1, InstanceRoleReorderTool.class, !IS_TRANSIENT,
+        initEReference(getInstanceRoleReorderTool_PredecessorAfter(), theToolPackage_2.getElementVariable(), null, "predecessorAfter", null, 0, 1, InstanceRoleReorderTool.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getInstanceRoleReorderTool_InstanceRoleMoved(), theToolPackage_1.getInitialOperation(), null, "instanceRoleMoved", null, 1, 1, InstanceRoleReorderTool.class, !IS_TRANSIENT,
+        initEReference(getInstanceRoleReorderTool_InstanceRoleMoved(), theToolPackage_2.getInitialOperation(), null, "instanceRoleMoved", null, 1, 1, InstanceRoleReorderTool.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Create annotations

@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description.tool;
 
-import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
-
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Interaction Use Creation Tool</b></em>'. <!-- end-user-doc -->
@@ -21,6 +19,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescriptio
  * @model
  * @generated
  */
-public interface InteractionUseCreationTool extends ContainerCreationDescription, SequenceDiagramToolDescription, OrderedElementCreationTool, CoveringElementCreationTool {
+public interface InteractionUseCreationTool extends org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription, SequenceDiagramToolDescription, OrderedElementCreationTool,
+        CoveringElementCreationTool {
 
 } // InteractionUseCreationTool

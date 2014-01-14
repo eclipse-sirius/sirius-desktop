@@ -20,7 +20,6 @@ import org.eclipse.sirius.diagram.sequence.description.tool.OperandCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.SequenceDiagramToolDescription;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
-import org.eclipse.sirius.viewpoint.description.tool.impl.ContainerCreationDescriptionImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -39,7 +38,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.ContainerCreationDescr
  * 
  * @generated
  */
-public class OperandCreationToolImpl extends ContainerCreationDescriptionImpl implements OperandCreationTool {
+public class OperandCreationToolImpl extends org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl implements OperandCreationTool {
     /**
      * The cached value of the '{@link #getStartingEndPredecessor()
      * <em>Starting End Predecessor</em>}' containment reference. <!--

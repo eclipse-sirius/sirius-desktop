@@ -24,6 +24,7 @@ import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.diagram.description.filter.Filter;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
@@ -31,7 +32,6 @@ import org.eclipse.sirius.diagram.description.filter.VariableFilter;
 import org.eclipse.sirius.diagram.tools.internal.filter.FilterTools;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
-import org.eclipse.sirius.viewpoint.description.concern.ConcernDescription;
 
 /**
  * Change filter activation.

@@ -17,12 +17,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.diagram.description.style.BorderedStyleDescription;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
+import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
 
 /**
@@ -296,7 +296,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
      */
     @Override
     protected EClass eStaticClass() {
-        return org.eclipse.sirius.diagram.description.style.StylePackage.Literals.CONTAINER_STYLE_DESCRIPTION;
+        return StylePackage.Literals.CONTAINER_STYLE_DESCRIPTION;
     }
 
     /**
@@ -317,8 +317,8 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         String oldBorderSizeComputationExpression = borderSizeComputationExpression;
         borderSizeComputationExpression = newBorderSizeComputationExpression;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION,
-                    oldBorderSizeComputationExpression, borderSizeComputationExpression));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION, oldBorderSizeComputationExpression,
+                    borderSizeComputationExpression));
     }
 
     /**
@@ -332,8 +332,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
             borderColor = (ColorDescription) eResolveProxy(oldBorderColor);
             if (borderColor != oldBorderColor) {
                 if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR, oldBorderColor,
-                            borderColor));
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR, oldBorderColor, borderColor));
             }
         }
         return borderColor;
@@ -357,7 +356,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         ColorDescription oldBorderColor = borderColor;
         borderColor = newBorderColor;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR, oldBorderColor, borderColor));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR, oldBorderColor, borderColor));
     }
 
     /**
@@ -378,7 +377,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         int oldLabelSize = labelSize;
         labelSize = newLabelSize;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE, oldLabelSize, labelSize));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE, oldLabelSize, labelSize));
     }
 
     /**
@@ -399,7 +398,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         FontFormat oldLabelFormat = labelFormat;
         labelFormat = newLabelFormat == null ? LABEL_FORMAT_EDEFAULT : newLabelFormat;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT, oldLabelFormat, labelFormat));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT, oldLabelFormat, labelFormat));
     }
 
     /**
@@ -420,7 +419,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         boolean oldShowIcon = showIcon;
         showIcon = newShowIcon;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON, oldShowIcon, showIcon));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON, oldShowIcon, showIcon));
     }
 
     /**
@@ -441,8 +440,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         String oldLabelExpression = labelExpression;
         labelExpression = newLabelExpression;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION, oldLabelExpression,
-                    labelExpression));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
     }
 
     /**
@@ -456,8 +454,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
             labelColor = (ColorDescription) eResolveProxy(oldLabelColor);
             if (labelColor != oldLabelColor) {
                 if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR, oldLabelColor,
-                            labelColor));
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR, oldLabelColor, labelColor));
             }
         }
         return labelColor;
@@ -481,7 +478,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         ColorDescription oldLabelColor = labelColor;
         labelColor = newLabelColor;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR, oldLabelColor, labelColor));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR, oldLabelColor, labelColor));
     }
 
     /**
@@ -502,7 +499,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         String oldIconPath = iconPath;
         iconPath = newIconPath;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH, oldIconPath, iconPath));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH, oldIconPath, iconPath));
     }
 
     /**
@@ -523,8 +520,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         LabelAlignment oldLabelAlignment = labelAlignment;
         labelAlignment = newLabelAlignment == null ? LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT, oldLabelAlignment,
-                    labelAlignment));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT, oldLabelAlignment, labelAlignment));
     }
 
     /**
@@ -545,8 +541,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         String oldTooltipExpression = tooltipExpression;
         tooltipExpression = newTooltipExpression;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION, oldTooltipExpression,
-                    tooltipExpression));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION, oldTooltipExpression, tooltipExpression));
     }
 
     /**
@@ -567,8 +562,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
         boolean oldRoundedCorner = roundedCorner;
         roundedCorner = newRoundedCorner;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER, oldRoundedCorner,
-                    roundedCorner));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER, oldRoundedCorner, roundedCorner));
     }
 
     /**
@@ -579,31 +573,31 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
             return getBorderSizeComputationExpression();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
             if (resolve)
                 return getBorderColor();
             return basicGetBorderColor();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
             return getLabelSize();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
             return getLabelFormat();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
             return isShowIcon();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION:
             return getLabelExpression();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR:
             if (resolve)
                 return getLabelColor();
             return basicGetLabelColor();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH:
             return getIconPath();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
             return getLabelAlignment();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
             return getTooltipExpression();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
             return isRoundedCorner();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -617,37 +611,37 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
             setBorderSizeComputationExpression((String) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
             setBorderColor((ColorDescription) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
             setLabelSize((Integer) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
             setLabelFormat((FontFormat) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
             setShowIcon((Boolean) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION:
             setLabelExpression((String) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR:
             setLabelColor((ColorDescription) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH:
             setIconPath((String) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
             setLabelAlignment((LabelAlignment) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
             setTooltipExpression((String) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
             setRoundedCorner((Boolean) newValue);
             return;
         }
@@ -662,37 +656,37 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
             setBorderSizeComputationExpression(BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
             setBorderColor((ColorDescription) null);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
             setLabelSize(LABEL_SIZE_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
             setLabelFormat(LABEL_FORMAT_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
             setShowIcon(SHOW_ICON_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION:
             setLabelExpression(LABEL_EXPRESSION_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR:
             setLabelColor((ColorDescription) null);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH:
             setIconPath(ICON_PATH_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
             setLabelAlignment(LABEL_ALIGNMENT_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
             setTooltipExpression(TOOLTIP_EXPRESSION_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
             setRoundedCorner(ROUNDED_CORNER_EDEFAULT);
             return;
         }
@@ -707,27 +701,27 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
             return BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null : !BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(borderSizeComputationExpression);
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
             return borderColor != null;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
             return labelSize != LABEL_SIZE_EDEFAULT;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
             return labelFormat != LABEL_FORMAT_EDEFAULT;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
             return showIcon != SHOW_ICON_EDEFAULT;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION:
             return LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR:
             return labelColor != null;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH:
             return ICON_PATH_EDEFAULT == null ? iconPath != null : !ICON_PATH_EDEFAULT.equals(iconPath);
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
             return labelAlignment != LABEL_ALIGNMENT_EDEFAULT;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
             return TOOLTIP_EXPRESSION_EDEFAULT == null ? tooltipExpression != null : !TOOLTIP_EXPRESSION_EDEFAULT.equals(tooltipExpression);
-        case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
+        case StylePackage.CONTAINER_STYLE_DESCRIPTION__ROUNDED_CORNER:
             return roundedCorner != ROUNDED_CORNER_EDEFAULT;
         }
         return super.eIsSet(featureID);
@@ -742,44 +736,44 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
         if (baseClass == BorderedStyleDescription.class) {
             switch (derivedFeatureID) {
-            case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
-            case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR;
+            case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
+                return StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
+            case StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR:
+                return StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR;
             default:
                 return -1;
             }
         }
         if (baseClass == BasicLabelStyleDescription.class) {
             switch (derivedFeatureID) {
-            case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
-                return StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_SIZE;
-            case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
-                return StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_FORMAT;
-            case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
-                return StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__SHOW_ICON;
-            case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION:
-                return StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_EXPRESSION;
-            case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR:
-                return StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR;
-            case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH:
-                return StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__ICON_PATH;
+            case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE:
+                return org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_SIZE;
+            case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT:
+                return org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_FORMAT;
+            case StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON:
+                return org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__SHOW_ICON;
+            case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION:
+                return org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_EXPRESSION;
+            case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR:
+                return org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR;
+            case StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH:
+                return org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__ICON_PATH;
             default:
                 return -1;
             }
         }
         if (baseClass == LabelStyleDescription.class) {
             switch (derivedFeatureID) {
-            case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
-                return StylePackage.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
+            case StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
+                return org.eclipse.sirius.viewpoint.description.style.StylePackage.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
             default:
                 return -1;
             }
         }
         if (baseClass == TooltipStyleDescription.class) {
             switch (derivedFeatureID) {
-            case org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
-                return StylePackage.TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+            case StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
+                return org.eclipse.sirius.viewpoint.description.style.StylePackage.TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
             default:
                 return -1;
             }
@@ -796,44 +790,44 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == BorderedStyleDescription.class) {
             switch (baseFeatureID) {
-            case org.eclipse.sirius.diagram.description.style.StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
-            case org.eclipse.sirius.diagram.description.style.StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR;
+            case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
+                return StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
+            case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR:
+                return StylePackage.CONTAINER_STYLE_DESCRIPTION__BORDER_COLOR;
             default:
                 return -1;
             }
         }
         if (baseClass == BasicLabelStyleDescription.class) {
             switch (baseFeatureID) {
-            case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_SIZE:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE;
-            case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_FORMAT:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT;
-            case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__SHOW_ICON:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON;
-            case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_EXPRESSION:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION;
-            case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR;
-            case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__ICON_PATH:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH;
+            case org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_SIZE:
+                return StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_SIZE;
+            case org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_FORMAT:
+                return StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT;
+            case org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__SHOW_ICON:
+                return StylePackage.CONTAINER_STYLE_DESCRIPTION__SHOW_ICON;
+            case org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_EXPRESSION:
+                return StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_EXPRESSION;
+            case org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR:
+                return StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_COLOR;
+            case org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__ICON_PATH:
+                return StylePackage.CONTAINER_STYLE_DESCRIPTION__ICON_PATH;
             default:
                 return -1;
             }
         }
         if (baseClass == LabelStyleDescription.class) {
             switch (baseFeatureID) {
-            case StylePackage.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
+            case org.eclipse.sirius.viewpoint.description.style.StylePackage.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
+                return StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
             default:
                 return -1;
             }
         }
         if (baseClass == TooltipStyleDescription.class) {
             switch (baseFeatureID) {
-            case StylePackage.TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+            case org.eclipse.sirius.viewpoint.description.style.StylePackage.TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
+                return StylePackage.CONTAINER_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
             default:
                 return -1;
             }

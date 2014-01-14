@@ -93,7 +93,9 @@ import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.sirius.diagram.description.concern.provider.ConcernItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
+import org.eclipse.sirius.diagram.description.validation.provider.ValidationItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.sirius.editor.utils.SelectionTreeTextEditor;
@@ -101,11 +103,9 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIManager;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
-import org.eclipse.sirius.viewpoint.description.concern.provider.ConcernItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.style.provider.StyleItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
-import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
@@ -595,19 +595,21 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
         factories.add(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
         factories.add(new org.eclipse.sirius.diagram.description.provider.DescriptionItemProviderAdapterFactory());
         factories.add(new org.eclipse.sirius.diagram.description.style.provider.StyleItemProviderAdapterFactory());
+        factories.add(new org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory());
         // End of user code put your specific adapter factories
         factories.add(new ResourceItemProviderAdapterFactory());
         factories.add(new ViewpointItemProviderAdapterFactory());
         factories.add(new DescriptionItemProviderAdapterFactory());
         factories.add(new StyleItemProviderAdapterFactory());
         factories.add(new ToolItemProviderAdapterFactory());
-        factories.add(new ValidationItemProviderAdapterFactory());
         factories.add(new AuditItemProviderAdapterFactory());
-        factories.add(new ConcernItemProviderAdapterFactory());
         factories.add(new DiagramItemProviderAdapterFactory());
         factories.add(new DescriptionItemProviderAdapterFactory());
-        factories.add(new FilterItemProviderAdapterFactory());
         factories.add(new StyleItemProviderAdapterFactory());
+        factories.add(new ToolItemProviderAdapterFactory());
+        factories.add(new FilterItemProviderAdapterFactory());
+        factories.add(new ValidationItemProviderAdapterFactory());
+        factories.add(new ConcernItemProviderAdapterFactory());
         factories.add(new ReflectiveItemProviderAdapterFactory());
 
         adapterFactory = new ComposedAdapterFactory(factories);
@@ -925,8 +927,7 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
     /**
      * This is how the framework determines which interfaces we implement.
      */
-    public Object getAdapter(@SuppressWarnings("rawtypes")
-    Class key) {
+    public Object getAdapter(@SuppressWarnings("rawtypes") Class key) {
         if (key.equals(IContentOutlinePage.class)) {
             return showOutlineView() ? getContentOutlinePage() : null;
         } else if (key.equals(IPropertySheetPage.class)) {

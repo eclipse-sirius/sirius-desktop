@@ -44,7 +44,7 @@ public interface SizeComputationContainerStyleDescription extends EObject {
      * @return the value of the '<em>Width Computation Expression</em>'
      *         attribute.
      * @see #setWidthComputationExpression(String)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getSizeComputationContainerStyleDescription_WidthComputationExpression()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getSizeComputationContainerStyleDescription_WidthComputationExpression()
      * @model default="-1" dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
@@ -76,7 +76,7 @@ public interface SizeComputationContainerStyleDescription extends EObject {
      * @return the value of the '<em>Height Computation Expression</em>'
      *         attribute.
      * @see #setHeightComputationExpression(String)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getSizeComputationContainerStyleDescription_HeightComputationExpression()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getSizeComputationContainerStyleDescription_HeightComputationExpression()
      * @model default="-1" dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=

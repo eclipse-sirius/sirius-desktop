@@ -72,7 +72,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * 
      * @return the value of the '<em>Stroke Color</em>' reference.
      * @see #setStrokeColor(ColorDescription)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEdgeStyleDescription_StrokeColor()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEdgeStyleDescription_StrokeColor()
      * @model required="true"
      * @generated
      */
@@ -101,7 +101,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * @return the value of the '<em>Line Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.LineStyle
      * @see #setLineStyle(LineStyle)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEdgeStyleDescription_LineStyle()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEdgeStyleDescription_LineStyle()
      * @model
      * @generated
      */
@@ -131,7 +131,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * @return the value of the '<em>Source Arrow</em>' attribute.
      * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see #setSourceArrow(EdgeArrows)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEdgeStyleDescription_SourceArrow()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEdgeStyleDescription_SourceArrow()
      * @model default="NoDecoration" required="true"
      * @generated
      */
@@ -161,7 +161,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * @return the value of the '<em>Target Arrow</em>' attribute.
      * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see #setTargetArrow(EdgeArrows)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEdgeStyleDescription_TargetArrow()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEdgeStyleDescription_TargetArrow()
      * @model default="InputArrow" required="true"
      * @generated
      */
@@ -190,11 +190,13 @@ public interface EdgeStyleDescription extends StyleDescription {
      * @return the value of the '<em>Size Computation Expression</em>'
      *         attribute.
      * @see #setSizeComputationExpression(String)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEdgeStyleDescription_SizeComputationExpression()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEdgeStyleDescription_SizeComputationExpression()
      * @model default="<%eContents().nSize%>" dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
+     *        annotation=
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='viewpoint.DDiagram | the current DSemanticDiagram.' view='viewpoint.DEdge | the current edge view for which the size is calculated.' sourceView='viewpoint.EdgeTarget | the source view of the current edge.' targetView='viewpoint.EdgeTarget | the target view of the current edge.'"
      * @generated
      */
     String getSizeComputationExpression();
@@ -223,7 +225,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * @return the value of the '<em>Routing Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.EdgeRouting
      * @see #setRoutingStyle(EdgeRouting)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEdgeStyleDescription_RoutingStyle()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEdgeStyleDescription_RoutingStyle()
      * @model default="straight" required="true"
      * @generated
      */
@@ -254,7 +256,7 @@ public interface EdgeStyleDescription extends StyleDescription {
      * @return the value of the '<em>Folding Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.description.FoldingStyle
      * @see #setFoldingStyle(FoldingStyle)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getEdgeStyleDescription_FoldingStyle()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEdgeStyleDescription_FoldingStyle()
      * @model
      * @generated
      */

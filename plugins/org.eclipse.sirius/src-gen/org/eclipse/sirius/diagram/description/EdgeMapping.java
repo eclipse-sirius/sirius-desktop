@@ -18,8 +18,8 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
+import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
-import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -321,7 +321,7 @@ public interface EdgeMapping extends DiagramElementMapping, DocumentedElement, I
     /**
      * Returns the value of the '<em><b>Reconnections</b></em>' reference list.
      * The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription}
+     * {@link org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription}
      * . <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Reconnections</em>' reference list isn't

@@ -146,7 +146,7 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
     protected void addEdgeMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_EdgeCreationDescription_edgeMappings_feature"), getString("_UI_EdgeCreationDescription_edgeMappings_description"),
-                ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
@@ -157,8 +157,9 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
      */
     protected void addIconPathPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeCreationDescription_iconPath_feature"), getString("_UI_EdgeCreationDescription_iconPath_description"), ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__ICON_PATH,
-                true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                getString("_UI_EdgeCreationDescription_iconPath_feature"), getString("_UI_EdgeCreationDescription_iconPath_description"),
+                org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                getString("_UI_AdvancedPropertyCategory"), null));
     }
 
     /**
@@ -170,7 +171,8 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
     protected void addExtraSourceMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_EdgeCreationDescription_extraSourceMappings_feature"), getString("_UI_EdgeCreationDescription_extraSourceMappings_description"),
-                ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), null));
+                org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"),
+                null));
     }
 
     /**
@@ -183,7 +185,8 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_EdgeCreationDescription_extraTargetMappings_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_EdgeCreationDescription_extraTargetMappings_feature", "_UI_EdgeCreationDescription_type"),
-                ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), null));
+                org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"),
+                null));
     }
 
     /**
@@ -196,8 +199,8 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_EdgeCreationDescription_connectionStartPrecondition_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_EdgeCreationDescription_connectionStartPrecondition_feature", "_UI_EdgeCreationDescription_type"),
-                ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION, true, false, false,
+                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
@@ -215,11 +218,11 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__FILTERS);
-            childrenFeatures.add(ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__SOURCE_VARIABLE);
-            childrenFeatures.add(ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__TARGET_VARIABLE);
-            childrenFeatures.add(ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE);
-            childrenFeatures.add(ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE);
-            childrenFeatures.add(ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__INITIAL_OPERATION);
+            childrenFeatures.add(org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__SOURCE_VARIABLE);
+            childrenFeatures.add(org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__TARGET_VARIABLE);
+            childrenFeatures.add(org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE);
+            childrenFeatures.add(org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE);
+            childrenFeatures.add(org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__INITIAL_OPERATION);
             childrenFeatures.add(org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage.Literals.ORDERED_ELEMENT_CREATION_TOOL__STARTING_END_PREDECESSOR);
             childrenFeatures.add(org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage.Literals.ORDERED_ELEMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR);
         }
@@ -312,15 +315,20 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__FILTERS, ToolFactory.eINSTANCE.createToolFilterDescription()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__SOURCE_VARIABLE, ToolFactory.eINSTANCE.createSourceEdgeCreationVariable()));
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__SOURCE_VARIABLE,
+                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createSourceEdgeCreationVariable()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__TARGET_VARIABLE, ToolFactory.eINSTANCE.createTargetEdgeCreationVariable()));
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__TARGET_VARIABLE,
+                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createTargetEdgeCreationVariable()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE, ToolFactory.eINSTANCE.createSourceEdgeViewCreationVariable()));
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__SOURCE_VIEW_VARIABLE,
+                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createSourceEdgeViewCreationVariable()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE, ToolFactory.eINSTANCE.createTargetEdgeViewCreationVariable()));
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__TARGET_VIEW_VARIABLE,
+                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createTargetEdgeViewCreationVariable()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__INITIAL_OPERATION, ToolFactory.eINSTANCE.createInitEdgeCreationOperation()));
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.tool.ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__INITIAL_OPERATION,
+                ToolFactory.eINSTANCE.createInitEdgeCreationOperation()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage.Literals.ORDERED_ELEMENT_CREATION_TOOL__STARTING_END_PREDECESSOR,
                 DescriptionFactory.eINSTANCE.createMessageEndVariable()));

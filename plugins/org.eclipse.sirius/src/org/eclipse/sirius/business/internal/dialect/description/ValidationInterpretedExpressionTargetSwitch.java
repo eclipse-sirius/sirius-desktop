@@ -15,15 +15,15 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.diagram.description.validation.RuleAudit;
+import org.eclipse.sirius.diagram.description.validation.SemanticValidationRule;
+import org.eclipse.sirius.diagram.description.validation.ValidationFix;
+import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
+import org.eclipse.sirius.diagram.description.validation.ValidationRule;
+import org.eclipse.sirius.diagram.description.validation.ViewValidationRule;
+import org.eclipse.sirius.diagram.description.validation.util.ValidationSwitch;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
-import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
-import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
-import org.eclipse.sirius.viewpoint.description.validation.util.ValidationSwitch;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -31,8 +31,8 @@ import com.google.common.collect.Sets;
 /**
  * A switch that will return the Target Types associated to a given element
  * (part of the
- * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationPackage}) and
- * feature corresponding to an Interpreted Expression. For example, for a
+ * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationPackage}
+ * ) and feature corresponding to an Interpreted Expression. For example, for a
  * NodeMapping :
  * <p>
  * <li>if the feature is semantic candidate expression, we return the domain

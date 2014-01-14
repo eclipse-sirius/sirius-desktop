@@ -27,6 +27,7 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalC
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData;
+import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNode2EditPart;
 import org.eclipse.sirius.diagram.internal.view.factories.ViewLocationHint;
@@ -54,7 +55,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;

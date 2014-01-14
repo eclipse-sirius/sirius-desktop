@@ -36,6 +36,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
@@ -67,7 +68,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;

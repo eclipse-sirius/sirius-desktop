@@ -154,19 +154,6 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated viewpoint -->
       <factory
-            uri="http://www.eclipse.org/sirius/description/validation/1.1.0"
-            class="org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory"
-            supportedTypes=
-              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-               org.eclipse.emf.edit.provider.ITreeItemContentProvider
-               org.eclipse.emf.edit.provider.IItemLabelProvider
-               org.eclipse.emf.edit.provider.IItemPropertySource"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated viewpoint -->
-      <factory
             uri="http://www.eclipse.org/sirius/description/audit/1.1.0"
             class="org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory"
             supportedTypes=
@@ -219,8 +206,34 @@
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated viewpoint -->
       <factory
+            uri="http://www.eclipse.org/sirius/diagram/description/validation/1.1.0"
+            class="org.eclipse.sirius.diagram.description.validation.provider.ValidationItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated viewpoint -->
+      <factory
             uri="http://www.eclipse.org/sirius/diagram/description/style/1.1.0"
             class="org.eclipse.sirius.diagram.description.style.provider.StyleItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated viewpoint -->
+      <factory
+            uri="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0"
+            class="org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
                org.eclipse.emf.edit.provider.IStructuredItemContentProvider

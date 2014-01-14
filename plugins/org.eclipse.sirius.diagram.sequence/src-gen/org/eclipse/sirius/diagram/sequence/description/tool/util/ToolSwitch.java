@@ -32,10 +32,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
 
 /**
@@ -703,6 +700,23 @@ public class ToolSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
+     * <em>Node Creation Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Node Creation Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseNodeCreationDescription(org.eclipse.sirius.diagram.description.tool.NodeCreationDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
      * <em>Container Creation Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
@@ -714,7 +728,7 @@ public class ToolSwitch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseContainerCreationDescription(ContainerCreationDescription object) {
+    public T caseContainerCreationDescription(org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription object) {
         return null;
     }
 
@@ -731,24 +745,7 @@ public class ToolSwitch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseEdgeCreationDescription(EdgeCreationDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Node Creation Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Node Creation Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseNodeCreationDescription(NodeCreationDescription object) {
+    public T caseEdgeCreationDescription(org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription object) {
         return null;
     }
 

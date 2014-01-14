@@ -21,6 +21,8 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshSemanticOrderingsOperation;
@@ -37,8 +39,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.DelegatingDiagr
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;

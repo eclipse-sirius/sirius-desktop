@@ -33,13 +33,13 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
+import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.refresh.BestMappingGetter;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
-import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 
 /**
  * Create a {@link DEdge}.

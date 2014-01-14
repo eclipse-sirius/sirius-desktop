@@ -171,7 +171,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__DOCUMENTATION;
+    int INSTANCE_ROLE_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -180,7 +180,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_CREATION_TOOL__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NAME;
+    int INSTANCE_ROLE_CREATION_TOOL__NAME = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -189,7 +189,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_CREATION_TOOL__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__LABEL;
+    int INSTANCE_ROLE_CREATION_TOOL__LABEL = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
@@ -198,7 +198,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__PRECONDITION;
+    int INSTANCE_ROLE_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
@@ -207,7 +207,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FORCE_REFRESH;
+    int INSTANCE_ROLE_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -216,7 +216,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_CREATION_TOOL__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FILTERS;
+    int INSTANCE_ROLE_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FILTERS;
 
     /**
      * The feature id for the '<em><b>Node Mappings</b></em>' reference list.
@@ -225,7 +225,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_CREATION_TOOL__NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS;
+    int INSTANCE_ROLE_CREATION_TOOL__NODE_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -234,7 +234,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_CREATION_TOOL__VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE;
+    int INSTANCE_ROLE_CREATION_TOOL__VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE;
 
     /**
      * The feature id for the '<em><b>View Variable</b></em>' containment
@@ -243,7 +243,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE;
+    int INSTANCE_ROLE_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
@@ -252,7 +252,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION;
+    int INSTANCE_ROLE_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
@@ -261,7 +261,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__ICON_PATH;
+    int INSTANCE_ROLE_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Extra Mappings</b></em>' reference list.
@@ -270,7 +270,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
+    int INSTANCE_ROLE_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Predecessor</b></em>' containment
@@ -279,7 +279,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_CREATION_TOOL__PREDECESSOR = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
+    int INSTANCE_ROLE_CREATION_TOOL__PREDECESSOR = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The number of structural features of the '
@@ -289,7 +289,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INSTANCE_ROLE_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 1;
+    int INSTANCE_ROLE_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '
@@ -310,7 +310,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LIFELINE_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__DOCUMENTATION;
+    int LIFELINE_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -319,7 +319,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LIFELINE_CREATION_TOOL__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__NAME;
+    int LIFELINE_CREATION_TOOL__NAME = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -328,7 +328,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LIFELINE_CREATION_TOOL__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__LABEL;
+    int LIFELINE_CREATION_TOOL__LABEL = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
@@ -337,7 +337,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LIFELINE_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__PRECONDITION;
+    int LIFELINE_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
@@ -346,7 +346,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LIFELINE_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FORCE_REFRESH;
+    int LIFELINE_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -355,7 +355,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LIFELINE_CREATION_TOOL__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FILTERS;
+    int LIFELINE_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FILTERS;
 
     /**
      * The feature id for the '<em><b>Container Mappings</b></em>' reference
@@ -364,7 +364,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LIFELINE_CREATION_TOOL__CONTAINER_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS;
+    int LIFELINE_CREATION_TOOL__CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -373,7 +373,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LIFELINE_CREATION_TOOL__VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE;
+    int LIFELINE_CREATION_TOOL__VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE;
 
     /**
      * The feature id for the '<em><b>View Variable</b></em>' containment
@@ -382,7 +382,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LIFELINE_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE;
+    int LIFELINE_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
@@ -391,7 +391,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LIFELINE_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION;
+    int LIFELINE_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
@@ -400,7 +400,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LIFELINE_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__ICON_PATH;
+    int LIFELINE_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Extra Mappings</b></em>' reference list.
@@ -409,7 +409,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LIFELINE_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
+    int LIFELINE_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
 
     /**
      * The number of structural features of the '<em>Lifeline Creation Tool</em>
@@ -418,7 +418,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int LIFELINE_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
+    int LIFELINE_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The meta object id for the '
@@ -622,7 +622,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__DOCUMENTATION;
+    int EXECUTION_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -631,7 +631,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_CREATION_TOOL__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NAME;
+    int EXECUTION_CREATION_TOOL__NAME = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -640,7 +640,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_CREATION_TOOL__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__LABEL;
+    int EXECUTION_CREATION_TOOL__LABEL = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
@@ -649,7 +649,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__PRECONDITION;
+    int EXECUTION_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
@@ -658,7 +658,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FORCE_REFRESH;
+    int EXECUTION_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -667,7 +667,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_CREATION_TOOL__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FILTERS;
+    int EXECUTION_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FILTERS;
 
     /**
      * The feature id for the '<em><b>Node Mappings</b></em>' reference list.
@@ -676,7 +676,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_CREATION_TOOL__NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS;
+    int EXECUTION_CREATION_TOOL__NODE_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -685,7 +685,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_CREATION_TOOL__VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE;
+    int EXECUTION_CREATION_TOOL__VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE;
 
     /**
      * The feature id for the '<em><b>View Variable</b></em>' containment
@@ -694,7 +694,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE;
+    int EXECUTION_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
@@ -703,7 +703,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION;
+    int EXECUTION_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
@@ -712,7 +712,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__ICON_PATH;
+    int EXECUTION_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Extra Mappings</b></em>' reference list.
@@ -721,7 +721,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
+    int EXECUTION_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Starting End Predecessor</b></em>'
@@ -730,7 +730,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_CREATION_TOOL__STARTING_END_PREDECESSOR = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
+    int EXECUTION_CREATION_TOOL__STARTING_END_PREDECESSOR = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Finishing End Predecessor</b></em>'
@@ -739,7 +739,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_CREATION_TOOL__FINISHING_END_PREDECESSOR = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 1;
+    int EXECUTION_CREATION_TOOL__FINISHING_END_PREDECESSOR = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '
@@ -749,7 +749,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EXECUTION_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 2;
+    int EXECUTION_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -770,7 +770,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__DOCUMENTATION;
+    int STATE_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -779,7 +779,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_CREATION_TOOL__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NAME;
+    int STATE_CREATION_TOOL__NAME = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -788,7 +788,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_CREATION_TOOL__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__LABEL;
+    int STATE_CREATION_TOOL__LABEL = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
@@ -797,7 +797,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__PRECONDITION;
+    int STATE_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
@@ -806,7 +806,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FORCE_REFRESH;
+    int STATE_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -815,7 +815,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_CREATION_TOOL__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FILTERS;
+    int STATE_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FILTERS;
 
     /**
      * The feature id for the '<em><b>Node Mappings</b></em>' reference list.
@@ -824,7 +824,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_CREATION_TOOL__NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS;
+    int STATE_CREATION_TOOL__NODE_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -833,7 +833,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_CREATION_TOOL__VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE;
+    int STATE_CREATION_TOOL__VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE;
 
     /**
      * The feature id for the '<em><b>View Variable</b></em>' containment
@@ -842,7 +842,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE;
+    int STATE_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
@@ -851,7 +851,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION;
+    int STATE_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
@@ -860,7 +860,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__ICON_PATH;
+    int STATE_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Extra Mappings</b></em>' reference list.
@@ -869,7 +869,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
+    int STATE_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Starting End Predecessor</b></em>'
@@ -878,7 +878,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_CREATION_TOOL__STARTING_END_PREDECESSOR = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
+    int STATE_CREATION_TOOL__STARTING_END_PREDECESSOR = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Finishing End Predecessor</b></em>'
@@ -887,7 +887,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_CREATION_TOOL__FINISHING_END_PREDECESSOR = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 1;
+    int STATE_CREATION_TOOL__FINISHING_END_PREDECESSOR = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>State Creation Tool</em>'
@@ -896,7 +896,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int STATE_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 2;
+    int STATE_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -929,7 +929,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__DOCUMENTATION;
+    int INTERACTION_USE_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -938,7 +938,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_CREATION_TOOL__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__NAME;
+    int INTERACTION_USE_CREATION_TOOL__NAME = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -947,7 +947,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_CREATION_TOOL__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__LABEL;
+    int INTERACTION_USE_CREATION_TOOL__LABEL = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
@@ -956,7 +956,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__PRECONDITION;
+    int INTERACTION_USE_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
@@ -965,7 +965,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FORCE_REFRESH;
+    int INTERACTION_USE_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -974,7 +974,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_CREATION_TOOL__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FILTERS;
+    int INTERACTION_USE_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FILTERS;
 
     /**
      * The feature id for the '<em><b>Container Mappings</b></em>' reference
@@ -983,7 +983,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_CREATION_TOOL__CONTAINER_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS;
+    int INTERACTION_USE_CREATION_TOOL__CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -992,7 +992,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_CREATION_TOOL__VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE;
+    int INTERACTION_USE_CREATION_TOOL__VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE;
 
     /**
      * The feature id for the '<em><b>View Variable</b></em>' containment
@@ -1001,7 +1001,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE;
+    int INTERACTION_USE_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
@@ -1010,7 +1010,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION;
+    int INTERACTION_USE_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
@@ -1019,7 +1019,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__ICON_PATH;
+    int INTERACTION_USE_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Extra Mappings</b></em>' reference list.
@@ -1028,7 +1028,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
+    int INTERACTION_USE_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Starting End Predecessor</b></em>'
@@ -1037,7 +1037,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_CREATION_TOOL__STARTING_END_PREDECESSOR = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
+    int INTERACTION_USE_CREATION_TOOL__STARTING_END_PREDECESSOR = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Finishing End Predecessor</b></em>'
@@ -1046,7 +1046,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_CREATION_TOOL__FINISHING_END_PREDECESSOR = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 1;
+    int INTERACTION_USE_CREATION_TOOL__FINISHING_END_PREDECESSOR = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Covered Lifelines</b></em>' containment
@@ -1055,7 +1055,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_CREATION_TOOL__COVERED_LIFELINES = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 2;
+    int INTERACTION_USE_CREATION_TOOL__COVERED_LIFELINES = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '
@@ -1065,7 +1065,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERACTION_USE_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 3;
+    int INTERACTION_USE_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -1086,7 +1086,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__DOCUMENTATION;
+    int COMBINED_FRAGMENT_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1095,7 +1095,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_CREATION_TOOL__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__NAME;
+    int COMBINED_FRAGMENT_CREATION_TOOL__NAME = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -1104,7 +1104,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_CREATION_TOOL__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__LABEL;
+    int COMBINED_FRAGMENT_CREATION_TOOL__LABEL = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
@@ -1113,7 +1113,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__PRECONDITION;
+    int COMBINED_FRAGMENT_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
@@ -1122,7 +1122,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FORCE_REFRESH;
+    int COMBINED_FRAGMENT_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -1131,7 +1131,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_CREATION_TOOL__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FILTERS;
+    int COMBINED_FRAGMENT_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FILTERS;
 
     /**
      * The feature id for the '<em><b>Container Mappings</b></em>' reference
@@ -1140,7 +1140,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_CREATION_TOOL__CONTAINER_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS;
+    int COMBINED_FRAGMENT_CREATION_TOOL__CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -1149,7 +1149,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_CREATION_TOOL__VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE;
+    int COMBINED_FRAGMENT_CREATION_TOOL__VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE;
 
     /**
      * The feature id for the '<em><b>View Variable</b></em>' containment
@@ -1158,7 +1158,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE;
+    int COMBINED_FRAGMENT_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
@@ -1167,7 +1167,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION;
+    int COMBINED_FRAGMENT_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
@@ -1176,7 +1176,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__ICON_PATH;
+    int COMBINED_FRAGMENT_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Extra Mappings</b></em>' reference list.
@@ -1185,7 +1185,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
+    int COMBINED_FRAGMENT_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Starting End Predecessor</b></em>'
@@ -1194,7 +1194,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_CREATION_TOOL__STARTING_END_PREDECESSOR = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
+    int COMBINED_FRAGMENT_CREATION_TOOL__STARTING_END_PREDECESSOR = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Finishing End Predecessor</b></em>'
@@ -1203,7 +1203,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 1;
+    int COMBINED_FRAGMENT_CREATION_TOOL__FINISHING_END_PREDECESSOR = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Covered Lifelines</b></em>' containment
@@ -1212,7 +1212,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_CREATION_TOOL__COVERED_LIFELINES = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 2;
+    int COMBINED_FRAGMENT_CREATION_TOOL__COVERED_LIFELINES = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The number of structural features of the '
@@ -1222,7 +1222,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int COMBINED_FRAGMENT_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 3;
+    int COMBINED_FRAGMENT_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The meta object id for the '
@@ -1243,7 +1243,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__DOCUMENTATION;
+    int OPERAND_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1252,7 +1252,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_CREATION_TOOL__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__NAME;
+    int OPERAND_CREATION_TOOL__NAME = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -1261,7 +1261,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_CREATION_TOOL__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__LABEL;
+    int OPERAND_CREATION_TOOL__LABEL = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
@@ -1270,7 +1270,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__PRECONDITION;
+    int OPERAND_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
@@ -1279,7 +1279,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FORCE_REFRESH;
+    int OPERAND_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -1288,7 +1288,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_CREATION_TOOL__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FILTERS;
+    int OPERAND_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__FILTERS;
 
     /**
      * The feature id for the '<em><b>Container Mappings</b></em>' reference
@@ -1297,7 +1297,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_CREATION_TOOL__CONTAINER_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS;
+    int OPERAND_CREATION_TOOL__CONTAINER_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__CONTAINER_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -1306,7 +1306,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_CREATION_TOOL__VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE;
+    int OPERAND_CREATION_TOOL__VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__VARIABLE;
 
     /**
      * The feature id for the '<em><b>View Variable</b></em>' containment
@@ -1315,7 +1315,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE;
+    int OPERAND_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__VIEW_VARIABLE;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
@@ -1324,7 +1324,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION;
+    int OPERAND_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__INITIAL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
@@ -1333,7 +1333,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__ICON_PATH;
+    int OPERAND_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Extra Mappings</b></em>' reference list.
@@ -1342,7 +1342,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
+    int OPERAND_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Starting End Predecessor</b></em>'
@@ -1351,7 +1351,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_CREATION_TOOL__STARTING_END_PREDECESSOR = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
+    int OPERAND_CREATION_TOOL__STARTING_END_PREDECESSOR = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Finishing End Predecessor</b></em>'
@@ -1360,7 +1360,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_CREATION_TOOL__FINISHING_END_PREDECESSOR = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 1;
+    int OPERAND_CREATION_TOOL__FINISHING_END_PREDECESSOR = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Operand Creation Tool</em>'
@@ -1369,7 +1369,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OPERAND_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 2;
+    int OPERAND_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.diagram.description.tool.ToolPackage.CONTAINER_CREATION_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The meta object id for the '
@@ -1390,7 +1390,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__DOCUMENTATION;
+    int OBSERVATION_POINT_CREATION_TOOL__DOCUMENTATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1399,7 +1399,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_CREATION_TOOL__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NAME;
+    int OBSERVATION_POINT_CREATION_TOOL__NAME = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NAME;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -1408,7 +1408,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_CREATION_TOOL__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__LABEL;
+    int OBSERVATION_POINT_CREATION_TOOL__LABEL = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__LABEL;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
@@ -1417,7 +1417,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__PRECONDITION;
+    int OBSERVATION_POINT_CREATION_TOOL__PRECONDITION = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__PRECONDITION;
 
     /**
      * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
@@ -1426,7 +1426,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FORCE_REFRESH;
+    int OBSERVATION_POINT_CREATION_TOOL__FORCE_REFRESH = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FORCE_REFRESH;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -1435,7 +1435,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_CREATION_TOOL__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FILTERS;
+    int OBSERVATION_POINT_CREATION_TOOL__FILTERS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__FILTERS;
 
     /**
      * The feature id for the '<em><b>Node Mappings</b></em>' reference list.
@@ -1444,7 +1444,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_CREATION_TOOL__NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS;
+    int OBSERVATION_POINT_CREATION_TOOL__NODE_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -1453,7 +1453,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_CREATION_TOOL__VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE;
+    int OBSERVATION_POINT_CREATION_TOOL__VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VARIABLE;
 
     /**
      * The feature id for the '<em><b>View Variable</b></em>' containment
@@ -1462,7 +1462,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE;
+    int OBSERVATION_POINT_CREATION_TOOL__VIEW_VARIABLE = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__VIEW_VARIABLE;
 
     /**
      * The feature id for the '<em><b>Initial Operation</b></em>' containment
@@ -1471,7 +1471,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION;
+    int OBSERVATION_POINT_CREATION_TOOL__INITIAL_OPERATION = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__INITIAL_OPERATION;
 
     /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
@@ -1480,7 +1480,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__ICON_PATH;
+    int OBSERVATION_POINT_CREATION_TOOL__ICON_PATH = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__ICON_PATH;
 
     /**
      * The feature id for the '<em><b>Extra Mappings</b></em>' reference list.
@@ -1489,7 +1489,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
+    int OBSERVATION_POINT_CREATION_TOOL__EXTRA_MAPPINGS = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS;
 
     /**
      * The feature id for the '<em><b>Starting End Predecessor</b></em>'
@@ -1498,7 +1498,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_CREATION_TOOL__STARTING_END_PREDECESSOR = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
+    int OBSERVATION_POINT_CREATION_TOOL__STARTING_END_PREDECESSOR = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Finishing End Predecessor</b></em>'
@@ -1507,7 +1507,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_CREATION_TOOL__FINISHING_END_PREDECESSOR = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 1;
+    int OBSERVATION_POINT_CREATION_TOOL__FINISHING_END_PREDECESSOR = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '
@@ -1517,7 +1517,7 @@ public interface ToolPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int OBSERVATION_POINT_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 2;
+    int OBSERVATION_POINT_CREATION_TOOL_FEATURE_COUNT = org.eclipse.sirius.diagram.description.tool.ToolPackage.NODE_CREATION_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--

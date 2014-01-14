@@ -24,7 +24,6 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.sirius.diagram.sequence.description.provider.SequenceEditPlugin;
 import org.eclipse.sirius.diagram.sequence.description.tool.LifelineCreationTool;
-import org.eclipse.sirius.viewpoint.description.tool.provider.ContainerCreationDescriptionItemProvider;
 
 /**
  * This is the item provider adapter for a
@@ -33,8 +32,8 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.ContainerCreationD
  * 
  * @generated
  */
-public class LifelineCreationToolItemProvider extends ContainerCreationDescriptionItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
-        IItemLabelProvider, IItemPropertySource {
+public class LifelineCreationToolItemProvider extends org.eclipse.sirius.diagram.description.tool.provider.ContainerCreationDescriptionItemProvider implements IEditingDomainItemProvider,
+        IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->

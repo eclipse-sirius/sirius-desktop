@@ -50,10 +50,9 @@ public interface AbstractDNode extends DDiagramElement {
     /**
      * Returns the value of the '<em><b>Arrange Constraints</b></em>' attribute
      * list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.ArrangeConstraint}. The literals are
-     * from the enumeration
-     * {@link org.eclipse.sirius.viewpoint.ArrangeConstraint}. <!--
-     * begin-user-doc -->
+     * {@link org.eclipse.sirius.diagram.ArrangeConstraint}. The literals are
+     * from the enumeration {@link org.eclipse.sirius.diagram.ArrangeConstraint}
+     * . <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Arrange Constraints</em>' attribute list isn't
      * clear, there really should be more of a description here...
@@ -61,7 +60,7 @@ public interface AbstractDNode extends DDiagramElement {
      * <!-- end-user-doc -->
      * 
      * @return the value of the '<em>Arrange Constraints</em>' attribute list.
-     * @see org.eclipse.sirius.viewpoint.ArrangeConstraint
+     * @see org.eclipse.sirius.diagram.ArrangeConstraint
      * @see org.eclipse.sirius.diagram.DiagramPackage#getAbstractDNode_ArrangeConstraints()
      * @model default="KEEP_LOCATION"
      * @generated

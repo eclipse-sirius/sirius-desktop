@@ -12,8 +12,8 @@ package org.eclipse.sirius.editor.properties.filters.tool.behaviortool;
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 // End of user code specific imports
 
@@ -33,7 +33,7 @@ public class BehaviorToolDomainClassFilter extends ViewpointPropertyFilter {
      * {@inheritDoc}
      */
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.viewpoint.description.tool.BehaviorTool;
+        return arg0 instanceof org.eclipse.sirius.diagram.description.tool.BehaviorTool;
     }
 
     // Start of user code user methods

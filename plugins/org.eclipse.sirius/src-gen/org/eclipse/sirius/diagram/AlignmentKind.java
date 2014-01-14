@@ -63,7 +63,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- end-user-doc --> <!-- begin-model-doc --> Possible alignments of gauges.
  * <!-- end-model-doc -->
  * 
- * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getAlignmentKind()
+ * @see org.eclipse.sirius.diagram.DiagramPackage#getAlignmentKind()
  * @model
  * @generated
  */

@@ -55,7 +55,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * @return the value of the '<em>Size Computation Expression</em>'
      *         attribute.
      * @see #setSizeComputationExpression(String)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getNodeStyleDescription_SizeComputationExpression()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getNodeStyleDescription_SizeComputationExpression()
      * @model default="3" dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
@@ -81,14 +81,14 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
     /**
      * Returns the value of the '<em><b>Label Position</b></em>' attribute. The
      * default value is <code>"border"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.viewpoint.LabelPosition}. <!--
+     * enumeration {@link org.eclipse.sirius.diagram.LabelPosition}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * relative position of the label to the node. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Label Position</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.LabelPosition
+     * @see org.eclipse.sirius.diagram.LabelPosition
      * @see #setLabelPosition(LabelPosition)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getNodeStyleDescription_LabelPosition()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getNodeStyleDescription_LabelPosition()
      * @model default="border"
      * @generated
      */
@@ -118,7 +118,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * 
      * @return the value of the '<em>Hide Label By Default</em>' attribute.
      * @see #setHideLabelByDefault(boolean)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getNodeStyleDescription_HideLabelByDefault()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getNodeStyleDescription_HideLabelByDefault()
      * @model default="false"
      * @generated
      */
@@ -148,7 +148,7 @@ public interface NodeStyleDescription extends StyleDescription, BorderedStyleDes
      * @return the value of the '<em>Resize Kind</em>' attribute.
      * @see org.eclipse.sirius.diagram.ResizeKind
      * @see #setResizeKind(ResizeKind)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getNodeStyleDescription_ResizeKind()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getNodeStyleDescription_ResizeKind()
      * @model default="NONE" required="true"
      * @generated
      */

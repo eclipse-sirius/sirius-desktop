@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description.tool;
 
-import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
-
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Lifeline Creation Tool</b></em>'. <!-- end-user-doc -->
@@ -21,5 +19,5 @@ import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescriptio
  * @model
  * @generated
  */
-public interface LifelineCreationTool extends ContainerCreationDescription, SequenceDiagramToolDescription {
+public interface LifelineCreationTool extends org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription, SequenceDiagramToolDescription {
 } // LifelineCreationTool

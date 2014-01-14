@@ -29,6 +29,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.diagram.description.validation.ValidationFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIManager;
@@ -37,7 +38,6 @@ import org.eclipse.sirius.ui.tools.internal.util.EMFCoreUtil;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
 
 /**
  * This is the item provider adapter for a

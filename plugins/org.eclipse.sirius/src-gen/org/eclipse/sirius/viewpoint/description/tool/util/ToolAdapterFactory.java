@@ -21,31 +21,18 @@ import org.eclipse.sirius.viewpoint.description.SelectionDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
-import org.eclipse.sirius.viewpoint.description.tool.BehaviorTool;
 import org.eclipse.sirius.viewpoint.description.tool.Case;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
-import org.eclipse.sirius.viewpoint.description.tool.CreateEdgeView;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
-import org.eclipse.sirius.viewpoint.description.tool.CreateView;
 import org.eclipse.sirius.viewpoint.description.tool.Default;
-import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
-import org.eclipse.sirius.viewpoint.description.tool.DeleteHook;
-import org.eclipse.sirius.viewpoint.description.tool.DeleteHookParameter;
 import org.eclipse.sirius.viewpoint.description.tool.DeleteView;
-import org.eclipse.sirius.viewpoint.description.tool.DiagramCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.DiagramNavigationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DialogVariable;
-import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
-import org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DropContainerVariable;
-import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 import org.eclipse.sirius.viewpoint.description.tool.ElementDeleteVariable;
-import org.eclipse.sirius.viewpoint.description.tool.ElementDoubleClickVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ElementSelectVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ElementVariable;
@@ -67,37 +54,25 @@ import org.eclipse.sirius.viewpoint.description.tool.MenuItemOrRef;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.MoveElement;
 import org.eclipse.sirius.viewpoint.description.tool.NameVariable;
-import org.eclipse.sirius.viewpoint.description.tool.Navigation;
-import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.NodeCreationVariable;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
-import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RemoveElement;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.RequestDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectContainerVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SetObject;
 import org.eclipse.sirius.viewpoint.description.tool.SetValue;
-import org.eclipse.sirius.viewpoint.description.tool.SourceEdgeCreationVariable;
-import org.eclipse.sirius.viewpoint.description.tool.SourceEdgeViewCreationVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SubVariable;
 import org.eclipse.sirius.viewpoint.description.tool.Switch;
 import org.eclipse.sirius.viewpoint.description.tool.SwitchChild;
-import org.eclipse.sirius.viewpoint.description.tool.TargetEdgeCreationVariable;
-import org.eclipse.sirius.viewpoint.description.tool.TargetEdgeViewCreationVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ToolGroup;
-import org.eclipse.sirius.viewpoint.description.tool.ToolGroupExtension;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
 import org.eclipse.sirius.viewpoint.description.tool.Unset;
 import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 
@@ -157,23 +132,8 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
      */
     protected ToolSwitch<Adapter> modelSwitch = new ToolSwitch<Adapter>() {
         @Override
-        public Adapter caseToolSection(ToolSection object) {
-            return createToolSectionAdapter();
-        }
-
-        @Override
         public Adapter caseToolEntry(ToolEntry object) {
             return createToolEntryAdapter();
-        }
-
-        @Override
-        public Adapter caseToolGroup(ToolGroup object) {
-            return createToolGroupAdapter();
-        }
-
-        @Override
-        public Adapter caseToolGroupExtension(ToolGroupExtension object) {
-            return createToolGroupExtensionAdapter();
         }
 
         @Override
@@ -192,21 +152,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseNodeCreationDescription(NodeCreationDescription object) {
-            return createNodeCreationDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseEdgeCreationDescription(EdgeCreationDescription object) {
-            return createEdgeCreationDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseContainerCreationDescription(ContainerCreationDescription object) {
-            return createContainerCreationDescriptionAdapter();
-        }
-
-        @Override
         public Adapter caseContainerDropDescription(ContainerDropDescription object) {
             return createContainerDropDescriptionAdapter();
         }
@@ -214,36 +159,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter casePasteDescription(PasteDescription object) {
             return createPasteDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseDeleteElementDescription(DeleteElementDescription object) {
-            return createDeleteElementDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseDoubleClickDescription(DoubleClickDescription object) {
-            return createDoubleClickDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseDeleteHook(DeleteHook object) {
-            return createDeleteHookAdapter();
-        }
-
-        @Override
-        public Adapter caseDeleteHookParameter(DeleteHookParameter object) {
-            return createDeleteHookParameterAdapter();
-        }
-
-        @Override
-        public Adapter caseReconnectEdgeDescription(ReconnectEdgeDescription object) {
-            return createReconnectEdgeDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseRequestDescription(RequestDescription object) {
-            return createRequestDescriptionAdapter();
         }
 
         @Override
@@ -302,16 +217,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseDirectEditLabel(DirectEditLabel object) {
-            return createDirectEditLabelAdapter();
-        }
-
-        @Override
-        public Adapter caseBehaviorTool(BehaviorTool object) {
-            return createBehaviorToolAdapter();
-        }
-
-        @Override
         public Adapter caseAbstractVariable(AbstractVariable object) {
             return createAbstractVariableAdapter();
         }
@@ -337,26 +242,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseSourceEdgeCreationVariable(SourceEdgeCreationVariable object) {
-            return createSourceEdgeCreationVariableAdapter();
-        }
-
-        @Override
-        public Adapter caseSourceEdgeViewCreationVariable(SourceEdgeViewCreationVariable object) {
-            return createSourceEdgeViewCreationVariableAdapter();
-        }
-
-        @Override
-        public Adapter caseTargetEdgeCreationVariable(TargetEdgeCreationVariable object) {
-            return createTargetEdgeCreationVariableAdapter();
-        }
-
-        @Override
-        public Adapter caseTargetEdgeViewCreationVariable(TargetEdgeViewCreationVariable object) {
-            return createTargetEdgeViewCreationVariableAdapter();
-        }
-
-        @Override
         public Adapter caseElementDropVariable(ElementDropVariable object) {
             return createElementDropVariableAdapter();
         }
@@ -379,16 +264,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseElementDeleteVariable(ElementDeleteVariable object) {
             return createElementDeleteVariableAdapter();
-        }
-
-        @Override
-        public Adapter caseElementDoubleClickVariable(ElementDoubleClickVariable object) {
-            return createElementDoubleClickVariableAdapter();
-        }
-
-        @Override
-        public Adapter caseNodeCreationVariable(NodeCreationVariable object) {
-            return createNodeCreationVariableAdapter();
         }
 
         @Override
@@ -487,16 +362,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseCreateView(CreateView object) {
-            return createCreateViewAdapter();
-        }
-
-        @Override
-        public Adapter caseCreateEdgeView(CreateEdgeView object) {
-            return createCreateEdgeViewAdapter();
-        }
-
-        @Override
         public Adapter caseIf(If object) {
             return createIfAdapter();
         }
@@ -507,11 +372,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseNavigation(Navigation object) {
-            return createNavigationAdapter();
-        }
-
-        @Override
         public Adapter caseNameVariable(NameVariable object) {
             return createNameVariableAdapter();
         }
@@ -519,16 +379,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseExternalJavaActionParameter(ExternalJavaActionParameter object) {
             return createExternalJavaActionParameterAdapter();
-        }
-
-        @Override
-        public Adapter caseDiagramCreationDescription(DiagramCreationDescription object) {
-            return createDiagramCreationDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseDiagramNavigationDescription(DiagramNavigationDescription object) {
-            return createDiagramNavigationDescriptionAdapter();
         }
 
         @Override
@@ -598,22 +448,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ToolSection
-     * <em>Section</em>}'. <!-- begin-user-doc --> This default implementation
-     * returns null so that we can easily ignore cases; it's useful to ignore a
-     * case when inheritance will catch all the cases anyway. <!-- end-user-doc
-     * -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ToolSection
-     * @generated
-     */
-    public Adapter createToolSectionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolEntry
      * <em>Entry</em>}'. <!-- begin-user-doc --> This default implementation
      * returns null so that we can easily ignore cases; it's useful to ignore a
@@ -625,38 +459,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createToolEntryAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ToolGroup
-     * <em>Group</em>}'. <!-- begin-user-doc --> This default implementation
-     * returns null so that we can easily ignore cases; it's useful to ignore a
-     * case when inheritance will catch all the cases anyway. <!-- end-user-doc
-     * -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ToolGroup
-     * @generated
-     */
-    public Adapter createToolGroupAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ToolGroupExtension
-     * <em>Group Extension</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ToolGroupExtension
-     * @generated
-     */
-    public Adapter createToolGroupExtensionAdapter() {
         return null;
     }
 
@@ -710,54 +512,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription
-     * <em>Node Creation Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription
-     * @generated
-     */
-    public Adapter createNodeCreationDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription
-     * <em>Edge Creation Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription
-     * @generated
-     */
-    public Adapter createEdgeCreationDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription
-     * <em>Container Creation Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription
-     * @generated
-     */
-    public Adapter createContainerCreationDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription
      * <em>Container Drop Description</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
@@ -785,102 +539,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createPasteDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription
-     * <em>Delete Element Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription
-     * @generated
-     */
-    public Adapter createDeleteElementDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription
-     * <em>Double Click Description</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.DoubleClickDescription
-     * @generated
-     */
-    public Adapter createDoubleClickDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DeleteHook
-     * <em>Delete Hook</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.DeleteHook
-     * @generated
-     */
-    public Adapter createDeleteHookAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DeleteHookParameter
-     * <em>Delete Hook Parameter</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.DeleteHookParameter
-     * @generated
-     */
-    public Adapter createDeleteHookParameterAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription
-     * <em>Reconnect Edge Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription
-     * @generated
-     */
-    public Adapter createReconnectEdgeDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.RequestDescription
-     * <em>Request Description</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.RequestDescription
-     * @generated
-     */
-    public Adapter createRequestDescriptionAdapter() {
         return null;
     }
 
@@ -1062,38 +720,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel
-     * <em>Direct Edit Label</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel
-     * @generated
-     */
-    public Adapter createDirectEditLabelAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.BehaviorTool
-     * <em>Behavior Tool</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.BehaviorTool
-     * @generated
-     */
-    public Adapter createBehaviorToolAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractVariable
      * <em>Abstract Variable</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
@@ -1174,70 +800,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.SourceEdgeCreationVariable
-     * <em>Source Edge Creation Variable</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.SourceEdgeCreationVariable
-     * @generated
-     */
-    public Adapter createSourceEdgeCreationVariableAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.SourceEdgeViewCreationVariable
-     * <em>Source Edge View Creation Variable</em>}'. <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore
-     * cases; it's useful to ignore a case when inheritance will catch all the
-     * cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.SourceEdgeViewCreationVariable
-     * @generated
-     */
-    public Adapter createSourceEdgeViewCreationVariableAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.TargetEdgeCreationVariable
-     * <em>Target Edge Creation Variable</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.TargetEdgeCreationVariable
-     * @generated
-     */
-    public Adapter createTargetEdgeCreationVariableAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.TargetEdgeViewCreationVariable
-     * <em>Target Edge View Creation Variable</em>}'. <!-- begin-user-doc -->
-     * This default implementation returns null so that we can easily ignore
-     * cases; it's useful to ignore a case when inheritance will catch all the
-     * cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.TargetEdgeViewCreationVariable
-     * @generated
-     */
-    public Adapter createTargetEdgeViewCreationVariableAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable
      * <em>Element Drop Variable</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
@@ -1313,38 +875,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createElementDeleteVariableAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ElementDoubleClickVariable
-     * <em>Element Double Click Variable</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ElementDoubleClickVariable
-     * @generated
-     */
-    public Adapter createElementDoubleClickVariableAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.NodeCreationVariable
-     * <em>Node Creation Variable</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.NodeCreationVariable
-     * @generated
-     */
-    public Adapter createNodeCreationVariableAdapter() {
         return null;
     }
 
@@ -1653,38 +1183,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.CreateView
-     * <em>Create View</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.CreateView
-     * @generated
-     */
-    public Adapter createCreateViewAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.CreateEdgeView
-     * <em>Create Edge View</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.CreateEdgeView
-     * @generated
-     */
-    public Adapter createCreateEdgeViewAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
      * {@link org.eclipse.sirius.viewpoint.description.tool.If <em>If</em>}'.
      * <!-- begin-user-doc --> This default implementation returns null so that
      * we can easily ignore cases; it's useful to ignore a case when inheritance
@@ -1711,22 +1209,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDeleteViewAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.Navigation
-     * <em>Navigation</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.Navigation
-     * @generated
-     */
-    public Adapter createNavigationAdapter() {
         return null;
     }
 
@@ -1759,38 +1241,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createExternalJavaActionParameterAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DiagramCreationDescription
-     * <em>Diagram Creation Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.DiagramCreationDescription
-     * @generated
-     */
-    public Adapter createDiagramCreationDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.DiagramNavigationDescription
-     * <em>Diagram Navigation Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.DiagramNavigationDescription
-     * @generated
-     */
-    public Adapter createDiagramNavigationDescriptionAdapter() {
         return null;
     }
 

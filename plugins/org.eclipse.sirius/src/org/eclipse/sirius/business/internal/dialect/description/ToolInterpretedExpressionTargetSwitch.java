@@ -27,12 +27,9 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
-import org.eclipse.sirius.viewpoint.description.tool.BehaviorTool;
 import org.eclipse.sirius.viewpoint.description.tool.Case;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
-import org.eclipse.sirius.viewpoint.description.tool.DeleteHookParameter;
-import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionParameter;
@@ -44,7 +41,6 @@ import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PopupMenu;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.RequestDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
@@ -52,7 +48,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch;
 
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
 /**
@@ -250,40 +245,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
      * {@inheritDoc}
      */
     @Override
-    public Option<Collection<String>> caseRequestDescription(RequestDescription object) {
-        Option<Collection<String>> result = null;
-        switch (getFeatureId(ToolPackage.eINSTANCE.getRequestDescription())) {
-        case ToolPackage.REQUEST_DESCRIPTION__PRECONDITION:
-        case DO_NOT_CONSIDER_FEATURE:
-            result = Options.newNone();
-            break;
-        default:
-            break;
-        }
-        return result;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Option<Collection<String>> caseBehaviorTool(BehaviorTool object) {
-        Option<Collection<String>> result = null;
-        switch (getFeatureId(ToolPackage.eINSTANCE.getBehaviorTool())) {
-        case ToolPackage.BEHAVIOR_TOOL__PRECONDITION:
-        case DO_NOT_CONSIDER_FEATURE:
-            result = Options.newNone();
-            break;
-        default:
-            break;
-        }
-        return result;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public Option<Collection<String>> casePasteDescription(PasteDescription object) {
         Option<Collection<String>> result = null;
         switch (getFeatureId(ToolPackage.eINSTANCE.getPasteDescription())) {
@@ -333,30 +294,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         case ToolPackage.SELECT_MODEL_ELEMENT_VARIABLE__ROOT_EXPRESSION:
         case DO_NOT_CONSIDER_FEATURE:
             result = globalSwitch.doSwitch(getFirstContextChangingContainer(object), false);
-            break;
-        default:
-            break;
-        }
-        return result;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Option<Collection<String>> caseEdgeCreationDescription(EdgeCreationDescription object) {
-        Option<Collection<String>> result = null;
-        switch (getFeatureId(ToolPackage.eINSTANCE.getEdgeCreationDescription())) {
-        case ToolPackage.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION:
-        case DO_NOT_CONSIDER_FEATURE:
-            Collection<String> targets = Sets.newLinkedHashSet();
-            for (RepresentationElementMapping correspondingMapping : Iterables.concat(object.getEdgeMappings(), object.getExtraSourceMappings())) {
-                Option<Collection<String>> targetsFromMapping = globalSwitch.doSwitch(correspondingMapping, false);
-                if (targetsFromMapping.some()) {
-                    targets.addAll(targetsFromMapping.get());
-                }
-            }
-            result = Options.newSome(targets);
             break;
         default:
             break;
@@ -540,17 +477,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
     @Override
     public Option<Collection<String>> caseCase(Case object) {
         // Default behavior for cases : returning the first context
-        // changing parent Model operation or the containing Tool
-        return globalSwitch.doSwitch(getFirstContextChangingContainer(object), false);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Option<Collection<String>> caseDeleteHookParameter(DeleteHookParameter object) {
-        // Default behavior for delete hooks parameters: returning the first
-        // context
         // changing parent Model operation or the containing Tool
         return globalSwitch.doSwitch(getFirstContextChangingContainer(object), false);
     }

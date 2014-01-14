@@ -19,15 +19,15 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
+import org.eclipse.sirius.diagram.description.validation.ValidationRule;
 import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DValidable;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
-import org.eclipse.sirius.viewpoint.description.concern.ConcernDescription;
-import org.eclipse.sirius.viewpoint.description.tool.BehaviorTool;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -268,8 +268,8 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
     /**
      * Returns the value of the '<em><b>Activated Filters</b></em>' reference
      * list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.filter.FilterDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * {@link org.eclipse.sirius.diagram.description.filter.FilterDescription}.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Filters that are currently activated for this viewpoint. <!--
      * end-model-doc -->
      * 
@@ -283,8 +283,8 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
     /**
      * Returns the value of the '<em><b>All Filters</b></em>' reference list.
      * The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.filter.FilterDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * {@link org.eclipse.sirius.diagram.description.filter.FilterDescription}.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Filters that can be activated for this viewpoint. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>All Filters</em>' reference list.
@@ -297,8 +297,8 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
     /**
      * Returns the value of the '<em><b>Activated Rules</b></em>' reference
      * list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule}
-     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * {@link org.eclipse.sirius.diagram.description.validation.ValidationRule}.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Validation rules that are currently activated for this viewpoint. <!--
      * end-model-doc -->
      * 
@@ -312,7 +312,7 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
     /**
      * Returns the value of the '<em><b>Activate Behaviors</b></em>' reference
      * list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.tool.BehaviorTool}. <!--
+     * {@link org.eclipse.sirius.diagram.description.tool.BehaviorTool}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Behaviors that are currently activated for this viewpoint. <!--
      * end-model-doc -->

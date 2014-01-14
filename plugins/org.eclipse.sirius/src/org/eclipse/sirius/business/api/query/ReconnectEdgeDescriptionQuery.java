@@ -16,8 +16,8 @@ import java.util.Iterator;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.viewpoint.DMappingBased;
-import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
 
 import com.google.common.collect.Lists;
 

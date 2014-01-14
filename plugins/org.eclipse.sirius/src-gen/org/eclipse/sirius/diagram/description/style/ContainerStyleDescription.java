@@ -42,7 +42,7 @@ public interface ContainerStyleDescription extends RoundedCornerStyleDescription
      * 
      * @return the value of the '<em>Rounded Corner</em>' attribute.
      * @see #setRoundedCorner(boolean)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getContainerStyleDescription_RoundedCorner()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getContainerStyleDescription_RoundedCorner()
      * @model
      * @generated
      */

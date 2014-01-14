@@ -45,20 +45,20 @@ import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.diagram.description.OrderedTreeLayout;
+import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
+import org.eclipse.sirius.diagram.description.concern.impl.ConcernPackageImpl;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl;
-import org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl;
+import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
+import org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl;
 import org.eclipse.sirius.diagram.impl.DiagramPackageImpl;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.audit.AuditPackage;
 import org.eclipse.sirius.viewpoint.description.audit.impl.AuditPackageImpl;
-import org.eclipse.sirius.viewpoint.description.concern.ConcernPackage;
-import org.eclipse.sirius.viewpoint.description.concern.impl.ConcernPackageImpl;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
+import org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
-import org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl;
 import org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl;
 
 /**
@@ -289,23 +289,26 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl theDescriptionPackage_1 = (org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl) (EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eNS_URI) instanceof org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eNS_URI) : org.eclipse.sirius.viewpoint.description.DescriptionPackage.eINSTANCE);
-        org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl theStylePackage = (org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl) (EPackage.Registry.INSTANCE
-                .getEPackage(StylePackage.eNS_URI) instanceof org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI)
-                : StylePackage.eINSTANCE);
+        StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) instanceof StylePackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
-        ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
         AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
-        ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) instanceof ConcernPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ConcernPackage.eNS_URI) : ConcernPackage.eINSTANCE);
         DiagramPackageImpl theDiagramPackage = (DiagramPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) instanceof DiagramPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(DiagramPackage.eNS_URI) : DiagramPackage.eINSTANCE);
+        org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl theStylePackage_1 = (org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl) (EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.style.StylePackage.eNS_URI) instanceof org.eclipse.sirius.diagram.description.style.impl.StylePackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.style.StylePackage.eNS_URI) : org.eclipse.sirius.diagram.description.style.StylePackage.eINSTANCE);
+        org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl theToolPackage_1 = (org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl) (EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.tool.ToolPackage.eNS_URI) instanceof org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.tool.ToolPackage.eNS_URI) : org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE);
         FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
-        StylePackageImpl theStylePackage_1 = (StylePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(org.eclipse.sirius.diagram.description.style.StylePackage.eNS_URI) instanceof StylePackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(org.eclipse.sirius.diagram.description.style.StylePackage.eNS_URI) : org.eclipse.sirius.diagram.description.style.StylePackage.eINSTANCE);
+        ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
+        ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) instanceof ConcernPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(ConcernPackage.eNS_URI) : ConcernPackage.eINSTANCE);
 
         // Create package meta-data objects
         theDescriptionPackage.createPackageContents();
@@ -313,12 +316,13 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         theDescriptionPackage_1.createPackageContents();
         theStylePackage.createPackageContents();
         theToolPackage.createPackageContents();
-        theValidationPackage.createPackageContents();
         theAuditPackage.createPackageContents();
-        theConcernPackage.createPackageContents();
         theDiagramPackage.createPackageContents();
-        theFilterPackage.createPackageContents();
         theStylePackage_1.createPackageContents();
+        theToolPackage_1.createPackageContents();
+        theFilterPackage.createPackageContents();
+        theValidationPackage.createPackageContents();
+        theConcernPackage.createPackageContents();
 
         // Initialize created meta-data
         theDescriptionPackage.initializePackageContents();
@@ -326,12 +330,13 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         theDescriptionPackage_1.initializePackageContents();
         theStylePackage.initializePackageContents();
         theToolPackage.initializePackageContents();
-        theValidationPackage.initializePackageContents();
         theAuditPackage.initializePackageContents();
-        theConcernPackage.initializePackageContents();
         theDiagramPackage.initializePackageContents();
-        theFilterPackage.initializePackageContents();
         theStylePackage_1.initializePackageContents();
+        theToolPackage_1.initializePackageContents();
+        theFilterPackage.initializePackageContents();
+        theValidationPackage.initializePackageContents();
+        theConcernPackage.initializePackageContents();
 
         // Mark meta-data to indicate it can't be changed
         theDescriptionPackage.freeze();
@@ -1559,21 +1564,26 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         setNsURI(eNS_URI);
 
         // Obtain other dependent packages
-        FilterPackage theFilterPackage = (FilterPackage) EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI);
         org.eclipse.sirius.diagram.description.style.StylePackage theStylePackage_1 = (org.eclipse.sirius.diagram.description.style.StylePackage) EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.diagram.description.style.StylePackage.eNS_URI);
-        org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
-                .getEPackage(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eNS_URI);
+        org.eclipse.sirius.diagram.description.tool.ToolPackage theToolPackage_1 = (org.eclipse.sirius.diagram.description.tool.ToolPackage) EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.tool.ToolPackage.eNS_URI);
+        FilterPackage theFilterPackage = (FilterPackage) EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI);
         ValidationPackage theValidationPackage = (ValidationPackage) EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI);
         ConcernPackage theConcernPackage = (ConcernPackage) EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI);
+        org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eNS_URI);
         ToolPackage theToolPackage = (ToolPackage) EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI);
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
         DiagramPackage theDiagramPackage = (DiagramPackage) EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI);
         ViewpointPackage theViewpointPackage = (ViewpointPackage) EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
 
         // Add subpackages
-        getESubpackages().add(theFilterPackage);
         getESubpackages().add(theStylePackage_1);
+        getESubpackages().add(theToolPackage_1);
+        getESubpackages().add(theFilterPackage);
+        getESubpackages().add(theValidationPackage);
+        getESubpackages().add(theConcernPackage);
 
         // Create type parameters
 
@@ -1670,7 +1680,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         getDiagramDescription_ContainerMappings().getEKeys().add(theDescriptionPackage_1.getIdentifiedElement_Name());
         initEReference(getDiagramDescription_ReusedMappings(), this.getDiagramElementMapping(), null, "reusedMappings", null, 0, -1, DiagramDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDiagramDescription_ToolSection(), theToolPackage.getToolSection(), null, "toolSection", null, 0, 1, DiagramDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+        initEReference(getDiagramDescription_ToolSection(), theToolPackage_1.getToolSection(), null, "toolSection", null, 0, 1, DiagramDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         getDiagramDescription_ToolSection().getEKeys().add(theDescriptionPackage_1.getIdentifiedElement_Name());
         initEReference(getDiagramDescription_ReusedTools(), theToolPackage.getAbstractToolDescription(), null, "reusedTools", null, 0, -1, DiagramDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
@@ -1696,18 +1706,19 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEClass(diagramElementMappingEClass, DiagramElementMapping.class, "DiagramElementMapping", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDiagramElementMapping_PreconditionExpression(), theDescriptionPackage_1.getInterpretedExpression(), "preconditionExpression", "", 0, 1, DiagramElementMapping.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDiagramElementMapping_DeletionDescription(), theToolPackage.getDeleteElementDescription(), null, "deletionDescription", null, 0, 1, DiagramElementMapping.class,
+        initEReference(getDiagramElementMapping_DeletionDescription(), theToolPackage_1.getDeleteElementDescription(), null, "deletionDescription", null, 0, 1, DiagramElementMapping.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDiagramElementMapping_LabelDirectEdit(), theToolPackage.getDirectEditLabel(), null, "labelDirectEdit", null, 0, 1, DiagramElementMapping.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getDiagramElementMapping_LabelDirectEdit(), theToolPackage_1.getDirectEditLabel(), null, "labelDirectEdit", null, 0, 1, DiagramElementMapping.class, !IS_TRANSIENT,
+                !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDiagramElementMapping_SemanticCandidatesExpression(), theDescriptionPackage_1.getInterpretedExpression(), "semanticCandidatesExpression", null, 0, 1,
                 DiagramElementMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDiagramElementMapping_CreateElements(), theEcorePackage.getEBoolean(), "createElements", "true", 1, 1, DiagramElementMapping.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDiagramElementMapping_SemanticElements(), theDescriptionPackage_1.getInterpretedExpression(), "semanticElements", null, 0, 1, DiagramElementMapping.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDiagramElementMapping_DoubleClickDescription(), theToolPackage.getDoubleClickDescription(), theToolPackage.getDoubleClickDescription_Mappings(), "doubleClickDescription",
-                null, 0, 1, DiagramElementMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getDiagramElementMapping_DoubleClickDescription(), theToolPackage_1.getDoubleClickDescription(), theToolPackage_1.getDoubleClickDescription_Mappings(),
+                "doubleClickDescription", null, 0, 1, DiagramElementMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+                !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDiagramElementMapping_SynchronizationLock(), ecorePackage.getEBoolean(), "synchronizationLock", "false", 0, 1, DiagramElementMapping.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1848,8 +1859,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getEdgeMapping_UseDomainElement(), theEcorePackage.getEBoolean(), "useDomainElement", "false", 0, 1, EdgeMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getEdgeMapping_Reconnections(), theToolPackage.getReconnectEdgeDescription(), null, "reconnections", null, 0, -1, EdgeMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getEdgeMapping_Reconnections(), theToolPackage_1.getReconnectEdgeDescription(), null, "reconnections", null, 0, -1, EdgeMapping.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getEdgeMapping_PathExpression(), theDescriptionPackage_1.getInterpretedExpression(), "pathExpression", null, 0, 1, EdgeMapping.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getEdgeMapping_PathNodeMapping(), this.getAbstractNodeMapping(), null, "pathNodeMapping", null, 0, -1, EdgeMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
@@ -1950,7 +1961,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getLayer_AllTools(), theToolPackage.getAbstractToolDescription(), null, "allTools", null, 0, -1, Layer.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-        initEReference(getLayer_ToolSections(), theToolPackage.getToolSection(), null, "toolSections", null, 0, -1, Layer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+        initEReference(getLayer_ToolSections(), theToolPackage_1.getToolSection(), null, "toolSections", null, 0, -1, Layer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getLayer_ReusedTools(), theToolPackage.getAbstractToolDescription(), null, "reusedTools", null, 0, -1, Layer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

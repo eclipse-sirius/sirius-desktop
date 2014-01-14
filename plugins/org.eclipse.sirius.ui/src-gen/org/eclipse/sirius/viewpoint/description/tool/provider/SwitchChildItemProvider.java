@@ -163,15 +163,16 @@ public class SwitchChildItemProvider extends ItemProviderAdapter implements IEdi
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createFor()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateView()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateEdgeView()));
-
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createIf()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createDeleteView()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createNavigation()));
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createCreateView()));
+
+        newChildDescriptors
+                .add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createCreateEdgeView()));
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createNavigation()));
 
         Switch switchCase = ToolFactory.eINSTANCE.createSwitch();
         Case caseCase = ToolFactory.eINSTANCE.createCase();
@@ -212,17 +213,18 @@ public class SwitchChildItemProvider extends ItemProviderAdapter implements IEdi
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createFor()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateView()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateEdgeView()));
-
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createIf()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createDeleteView()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createNavigation()));
-
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createSwitch()));
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createCreateView()));
+
+        newChildDescriptors
+                .add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createCreateEdgeView()));
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createNavigation()));
     }
 
     /**

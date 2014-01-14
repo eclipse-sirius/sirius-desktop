@@ -38,7 +38,7 @@ public interface CustomStyleDescription extends NodeStyleDescription {
      * 
      * @return the value of the '<em>Id</em>' attribute.
      * @see #setId(String)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getCustomStyleDescription_Id()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getCustomStyleDescription_Id()
      * @model
      * @generated
      */

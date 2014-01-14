@@ -29,13 +29,13 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.tool.ToolSection;
 import org.eclipse.sirius.viewpoint.description.Customization;
 import org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet;
 import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

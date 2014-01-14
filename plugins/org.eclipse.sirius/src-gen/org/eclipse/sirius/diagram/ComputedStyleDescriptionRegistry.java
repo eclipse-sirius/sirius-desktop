@@ -76,7 +76,7 @@ public interface ComputedStyleDescriptionRegistry extends EObject {
      * @return the value of the '<em>Cache</em>' map.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getComputedStyleDescriptionRegistry_Cache()
      * @model mapType=
-     *        "org.eclipse.sirius.diagram.DiagramElementMapping2ModelElement<org.eclipse.sirius.diagram.description.DiagramElementMapping, org.eclipse.sirius.viewpoint.ModelElement2ViewVariable>"
+     *        "org.eclipse.sirius.diagram.DiagramElementMapping2ModelElement<org.eclipse.sirius.diagram.description.DiagramElementMapping, org.eclipse.sirius.diagram.ModelElement2ViewVariable>"
      * @generated
      */
     EMap<DiagramElementMapping, EMap<EObject, EMap<EObject, EMap<EObject, StyleDescription>>>> getCache();

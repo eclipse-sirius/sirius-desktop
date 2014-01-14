@@ -20,9 +20,9 @@ import org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedEx
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 
 import com.google.common.collect.Multimap;

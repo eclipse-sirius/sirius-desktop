@@ -28,7 +28,6 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.sequence.description.provider.SequenceEditPlugin;
 import org.eclipse.sirius.diagram.sequence.description.tool.StateCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
-import org.eclipse.sirius.viewpoint.description.tool.provider.NodeCreationDescriptionItemProvider;
 
 /**
  * This is the item provider adapter for a
@@ -37,8 +36,8 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.NodeCreationDescri
  * 
  * @generated
  */
-public class StateCreationToolItemProvider extends NodeCreationDescriptionItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
-        IItemLabelProvider, IItemPropertySource {
+public class StateCreationToolItemProvider extends org.eclipse.sirius.diagram.description.tool.provider.NodeCreationDescriptionItemProvider implements IEditingDomainItemProvider,
+        IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->

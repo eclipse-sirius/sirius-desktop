@@ -31,13 +31,13 @@ import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.tool.ToolGroup;
+import org.eclipse.sirius.diagram.description.tool.ToolGroupExtension;
+import org.eclipse.sirius.diagram.description.tool.ToolSection;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
-import org.eclipse.sirius.viewpoint.description.tool.ToolGroup;
-import org.eclipse.sirius.viewpoint.description.tool.ToolGroupExtension;
-import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
 
 /**
  * This class handles componentization for diagram elements. This class will

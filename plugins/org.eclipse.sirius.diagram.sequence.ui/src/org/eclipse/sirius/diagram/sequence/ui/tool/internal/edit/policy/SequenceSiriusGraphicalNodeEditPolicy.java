@@ -29,6 +29,7 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewRequest;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData;
+import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
 import org.eclipse.sirius.diagram.internal.edit.parts.NoteEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
@@ -51,7 +52,6 @@ import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 
 /**
  * This edit policy is overridden to use our own connection router. This way

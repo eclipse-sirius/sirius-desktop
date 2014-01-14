@@ -12,7 +12,7 @@ package org.eclipse.sirius.business.internal.metamodel.description.validation.sp
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.internal.metamodel.description.validation.operations.ValidationRuleSpecOperations;
-import org.eclipse.sirius.viewpoint.description.validation.impl.SemanticValidationRuleImpl;
+import org.eclipse.sirius.diagram.description.validation.impl.SemanticValidationRuleImpl;
 
 /**
  * Implementation of SemanticValidationRule.

@@ -38,7 +38,7 @@ public interface NoteDescription extends NodeStyleDescription {
      * 
      * @return the value of the '<em>Color</em>' reference.
      * @see #setColor(ColorDescription)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getNoteDescription_Color()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getNoteDescription_Color()
      * @model required="true"
      * @generated
      */

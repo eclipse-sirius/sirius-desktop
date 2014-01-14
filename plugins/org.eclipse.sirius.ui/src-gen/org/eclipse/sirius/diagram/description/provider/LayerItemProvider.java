@@ -36,12 +36,12 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
+import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.internal.util.EMFCoreUtil;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
-import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**

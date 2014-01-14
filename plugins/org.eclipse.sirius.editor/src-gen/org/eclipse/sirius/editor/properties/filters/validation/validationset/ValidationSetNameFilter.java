@@ -12,8 +12,8 @@ package org.eclipse.sirius.editor.properties.filters.validation.validationset;
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
 import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
 // End of user code specific imports
 
@@ -33,7 +33,7 @@ public class ValidationSetNameFilter extends ViewpointPropertyFilter {
      * {@inheritDoc}
      */
     protected boolean isRightInputType(Object arg0) {
-        return arg0 instanceof org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
+        return arg0 instanceof org.eclipse.sirius.diagram.description.validation.ValidationSet;
     }
 
     // Start of user code user methods

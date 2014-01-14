@@ -158,7 +158,7 @@ public interface GaugeSectionDescription extends EObject {
      * 
      * @return the value of the '<em>Background Color</em>' reference.
      * @see #setBackgroundColor(ColorDescription)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getGaugeSectionDescription_BackgroundColor()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeSectionDescription_BackgroundColor()
      * @model required="true"
      * @generated
      */
@@ -184,7 +184,7 @@ public interface GaugeSectionDescription extends EObject {
      * 
      * @return the value of the '<em>Foreground Color</em>' reference.
      * @see #setForegroundColor(ColorDescription)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getGaugeSectionDescription_ForegroundColor()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeSectionDescription_ForegroundColor()
      * @model required="true"
      * @generated
      */
@@ -210,7 +210,7 @@ public interface GaugeSectionDescription extends EObject {
      * 
      * @return the value of the '<em>Label</em>' attribute.
      * @see #setLabel(String)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getGaugeSectionDescription_Label()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeSectionDescription_Label()
      * @model
      * @generated
      */

@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
-import org.eclipse.sirius.viewpoint.description.tool.impl.ReconnectEdgeDescriptionImpl;
+import org.eclipse.sirius.diagram.description.tool.impl.ReconnectEdgeDescriptionImpl;
 
 /**
  * Implementation of ReconnectEdgeDescription.

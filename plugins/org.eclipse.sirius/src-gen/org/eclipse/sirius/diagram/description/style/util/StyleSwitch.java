@@ -459,40 +459,6 @@ public class StyleSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Description</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseStyleDescription(StyleDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Rounded Corner Style Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Rounded Corner Style Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseRoundedCornerStyleDescription(RoundedCornerStyleDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
      * <em>Bordered Style Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
@@ -505,40 +471,6 @@ public class StyleSwitch<T> {
      * @generated
      */
     public T caseBorderedStyleDescription(BorderedStyleDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Basic Label Style Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Basic Label Style Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseBasicLabelStyleDescription(BasicLabelStyleDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Label Style Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Label Style Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseLabelStyleDescription(LabelStyleDescription object) {
         return null;
     }
 
@@ -697,6 +629,57 @@ public class StyleSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
+     * <em>Gauge Section Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Gauge Section Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseGaugeSectionDescription(GaugeSectionDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Size Computation Container Style Description</em>'. <!--
+     * begin-user-doc --> This implementation returns null; returning a non-null
+     * result will terminate the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Size Computation Container Style Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseSizeComputationContainerStyleDescription(SizeComputationContainerStyleDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Rounded Corner Style Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Rounded Corner Style Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseRoundedCornerStyleDescription(RoundedCornerStyleDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
      * <em>Container Style Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
@@ -782,41 +765,6 @@ public class StyleSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Tooltip Style Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch.
-     * 
-     * @since 0.9.0 <!-- end-user-doc -->
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Tooltip Style Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseTooltipStyleDescription(TooltipStyleDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Gauge Section Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Gauge Section Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseGaugeSectionDescription(GaugeSectionDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
      * <em>Begin Label Style Description</em>'. <!-- begin-user-doc --> This
      * implementation returns null; returning a non-null result will terminate
      * the switch. <!-- end-user-doc -->
@@ -885,18 +833,70 @@ public class StyleSwitch<T> {
 
     /**
      * Returns the result of interpreting the object as an instance of '
-     * <em>Size Computation Container Style Description</em>'. <!--
-     * begin-user-doc --> This implementation returns null; returning a non-null
-     * result will terminate the switch. <!-- end-user-doc -->
+     * <em>Description</em>'. <!-- begin-user-doc --> This implementation
+     * returns null; returning a non-null result will terminate the switch. <!--
+     * end-user-doc -->
      * 
      * @param object
      *            the target of the switch.
      * @return the result of interpreting the object as an instance of '
-     *         <em>Size Computation Container Style Description</em>'.
+     *         <em>Description</em>'.
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseSizeComputationContainerStyleDescription(SizeComputationContainerStyleDescription object) {
+    public T caseStyleDescription(StyleDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Basic Label Style Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Basic Label Style Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseBasicLabelStyleDescription(BasicLabelStyleDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Label Style Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Label Style Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseLabelStyleDescription(LabelStyleDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Tooltip Style Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch.
+     * 
+     * @since 0.9.0 <!-- end-user-doc -->
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Tooltip Style Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseTooltipStyleDescription(TooltipStyleDescription object) {
         return null;
     }
 

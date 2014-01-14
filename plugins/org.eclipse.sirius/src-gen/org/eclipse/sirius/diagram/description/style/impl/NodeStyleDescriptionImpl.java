@@ -20,12 +20,12 @@ import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.description.style.BorderedStyleDescription;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
+import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.LabelStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
 
 /**
@@ -372,7 +372,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
      */
     @Override
     protected EClass eStaticClass() {
-        return org.eclipse.sirius.diagram.description.style.StylePackage.Literals.NODE_STYLE_DESCRIPTION;
+        return StylePackage.Literals.NODE_STYLE_DESCRIPTION;
     }
 
     /**
@@ -393,8 +393,8 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
         String oldBorderSizeComputationExpression = borderSizeComputationExpression;
         borderSizeComputationExpression = newBorderSizeComputationExpression;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION,
-                    oldBorderSizeComputationExpression, borderSizeComputationExpression));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION, oldBorderSizeComputationExpression,
+                    borderSizeComputationExpression));
     }
 
     /**
@@ -408,8 +408,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
             borderColor = (ColorDescription) eResolveProxy(oldBorderColor);
             if (borderColor != oldBorderColor) {
                 if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR, oldBorderColor,
-                            borderColor));
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR, oldBorderColor, borderColor));
             }
         }
         return borderColor;
@@ -433,7 +432,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
         ColorDescription oldBorderColor = borderColor;
         borderColor = newBorderColor;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR, oldBorderColor, borderColor));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR, oldBorderColor, borderColor));
     }
 
     /**
@@ -454,7 +453,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
         int oldLabelSize = labelSize;
         labelSize = newLabelSize;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE, oldLabelSize, labelSize));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE, oldLabelSize, labelSize));
     }
 
     /**
@@ -475,7 +474,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
         FontFormat oldLabelFormat = labelFormat;
         labelFormat = newLabelFormat == null ? LABEL_FORMAT_EDEFAULT : newLabelFormat;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT, oldLabelFormat, labelFormat));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT, oldLabelFormat, labelFormat));
     }
 
     /**
@@ -496,7 +495,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
         boolean oldShowIcon = showIcon;
         showIcon = newShowIcon;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON, oldShowIcon, showIcon));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON, oldShowIcon, showIcon));
     }
 
     /**
@@ -517,8 +516,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
         String oldLabelExpression = labelExpression;
         labelExpression = newLabelExpression;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION, oldLabelExpression,
-                    labelExpression));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION, oldLabelExpression, labelExpression));
     }
 
     /**
@@ -532,7 +530,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
             labelColor = (ColorDescription) eResolveProxy(oldLabelColor);
             if (labelColor != oldLabelColor) {
                 if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR, oldLabelColor, labelColor));
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR, oldLabelColor, labelColor));
             }
         }
         return labelColor;
@@ -556,7 +554,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
         ColorDescription oldLabelColor = labelColor;
         labelColor = newLabelColor;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR, oldLabelColor, labelColor));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR, oldLabelColor, labelColor));
     }
 
     /**
@@ -577,7 +575,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
         String oldIconPath = iconPath;
         iconPath = newIconPath;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH, oldIconPath, iconPath));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH, oldIconPath, iconPath));
     }
 
     /**
@@ -598,7 +596,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
         LabelAlignment oldLabelAlignment = labelAlignment;
         labelAlignment = newLabelAlignment == null ? LABEL_ALIGNMENT_EDEFAULT : newLabelAlignment;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT, oldLabelAlignment, labelAlignment));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT, oldLabelAlignment, labelAlignment));
     }
 
     /**
@@ -619,8 +617,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
         String oldTooltipExpression = tooltipExpression;
         tooltipExpression = newTooltipExpression;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION, oldTooltipExpression,
-                    tooltipExpression));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION, oldTooltipExpression, tooltipExpression));
     }
 
     /**
@@ -641,8 +638,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
         String oldSizeComputationExpression = sizeComputationExpression;
         sizeComputationExpression = newSizeComputationExpression;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION,
-                    oldSizeComputationExpression, sizeComputationExpression));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION, oldSizeComputationExpression, sizeComputationExpression));
     }
 
     /**
@@ -663,7 +659,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
         LabelPosition oldLabelPosition = labelPosition;
         labelPosition = newLabelPosition == null ? LABEL_POSITION_EDEFAULT : newLabelPosition;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION, oldLabelPosition, labelPosition));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION, oldLabelPosition, labelPosition));
     }
 
     /**
@@ -684,8 +680,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
         boolean oldHideLabelByDefault = hideLabelByDefault;
         hideLabelByDefault = newHideLabelByDefault;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT, oldHideLabelByDefault,
-                    hideLabelByDefault));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT, oldHideLabelByDefault, hideLabelByDefault));
     }
 
     /**
@@ -706,7 +701,7 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
         ResizeKind oldResizeKind = resizeKind;
         resizeKind = newResizeKind == null ? RESIZE_KIND_EDEFAULT : newResizeKind;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND, oldResizeKind, resizeKind));
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND, oldResizeKind, resizeKind));
     }
 
     /**
@@ -717,37 +712,37 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
             return getBorderSizeComputationExpression();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR:
+        case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR:
             if (resolve)
                 return getBorderColor();
             return basicGetBorderColor();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE:
             return getLabelSize();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT:
             return getLabelFormat();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON:
+        case StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON:
             return isShowIcon();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION:
             return getLabelExpression();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR:
             if (resolve)
                 return getLabelColor();
             return basicGetLabelColor();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH:
+        case StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH:
             return getIconPath();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
             return getLabelAlignment();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
             return getTooltipExpression();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
             return getSizeComputationExpression();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION:
             return getLabelPosition();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
+        case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
             return isHideLabelByDefault();
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
+        case StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
             return getResizeKind();
         }
         return super.eGet(featureID, resolve, coreType);
@@ -761,46 +756,46 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
             setBorderSizeComputationExpression((String) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR:
+        case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR:
             setBorderColor((ColorDescription) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE:
             setLabelSize((Integer) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT:
             setLabelFormat((FontFormat) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON:
+        case StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON:
             setShowIcon((Boolean) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION:
             setLabelExpression((String) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR:
             setLabelColor((ColorDescription) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH:
+        case StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH:
             setIconPath((String) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
             setLabelAlignment((LabelAlignment) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
             setTooltipExpression((String) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
             setSizeComputationExpression((String) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION:
             setLabelPosition((LabelPosition) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
+        case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
             setHideLabelByDefault((Boolean) newValue);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
+        case StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
             setResizeKind((ResizeKind) newValue);
             return;
         }
@@ -815,46 +810,46 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
             setBorderSizeComputationExpression(BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR:
+        case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR:
             setBorderColor((ColorDescription) null);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE:
             setLabelSize(LABEL_SIZE_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT:
             setLabelFormat(LABEL_FORMAT_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON:
+        case StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON:
             setShowIcon(SHOW_ICON_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION:
             setLabelExpression(LABEL_EXPRESSION_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR:
             setLabelColor((ColorDescription) null);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH:
+        case StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH:
             setIconPath(ICON_PATH_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
             setLabelAlignment(LABEL_ALIGNMENT_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
             setTooltipExpression(TOOLTIP_EXPRESSION_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
             setSizeComputationExpression(SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION:
             setLabelPosition(LABEL_POSITION_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
+        case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
             setHideLabelByDefault(HIDE_LABEL_BY_DEFAULT_EDEFAULT);
             return;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
+        case StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
             setResizeKind(RESIZE_KIND_EDEFAULT);
             return;
         }
@@ -869,33 +864,33 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
             return BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null : !BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(borderSizeComputationExpression);
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR:
+        case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR:
             return borderColor != null;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE:
             return labelSize != LABEL_SIZE_EDEFAULT;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT:
             return labelFormat != LABEL_FORMAT_EDEFAULT;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON:
+        case StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON:
             return showIcon != SHOW_ICON_EDEFAULT;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION:
             return LABEL_EXPRESSION_EDEFAULT == null ? labelExpression != null : !LABEL_EXPRESSION_EDEFAULT.equals(labelExpression);
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR:
             return labelColor != null;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH:
+        case StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH:
             return ICON_PATH_EDEFAULT == null ? iconPath != null : !ICON_PATH_EDEFAULT.equals(iconPath);
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
             return labelAlignment != LABEL_ALIGNMENT_EDEFAULT;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
             return TOOLTIP_EXPRESSION_EDEFAULT == null ? tooltipExpression != null : !TOOLTIP_EXPRESSION_EDEFAULT.equals(tooltipExpression);
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
             return SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? sizeComputationExpression != null : !SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(sizeComputationExpression);
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION:
+        case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_POSITION:
             return labelPosition != LABEL_POSITION_EDEFAULT;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
+        case StylePackage.NODE_STYLE_DESCRIPTION__HIDE_LABEL_BY_DEFAULT:
             return hideLabelByDefault != HIDE_LABEL_BY_DEFAULT_EDEFAULT;
-        case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
+        case StylePackage.NODE_STYLE_DESCRIPTION__RESIZE_KIND:
             return resizeKind != RESIZE_KIND_EDEFAULT;
         }
         return super.eIsSet(featureID);
@@ -910,44 +905,44 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
     public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
         if (baseClass == BorderedStyleDescription.class) {
             switch (derivedFeatureID) {
-            case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
-            case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR;
+            case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
+                return StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
+            case StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR:
+                return StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR;
             default:
                 return -1;
             }
         }
         if (baseClass == BasicLabelStyleDescription.class) {
             switch (derivedFeatureID) {
-            case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE:
-                return StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_SIZE;
-            case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT:
-                return StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_FORMAT;
-            case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON:
-                return StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__SHOW_ICON;
-            case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION:
-                return StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_EXPRESSION;
-            case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR:
-                return StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR;
-            case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH:
-                return StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__ICON_PATH;
+            case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE:
+                return org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_SIZE;
+            case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT:
+                return org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_FORMAT;
+            case StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON:
+                return org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__SHOW_ICON;
+            case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION:
+                return org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_EXPRESSION;
+            case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR:
+                return org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR;
+            case StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH:
+                return org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__ICON_PATH;
             default:
                 return -1;
             }
         }
         if (baseClass == LabelStyleDescription.class) {
             switch (derivedFeatureID) {
-            case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
-                return StylePackage.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
+            case StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
+                return org.eclipse.sirius.viewpoint.description.style.StylePackage.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
             default:
                 return -1;
             }
         }
         if (baseClass == TooltipStyleDescription.class) {
             switch (derivedFeatureID) {
-            case org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
-                return StylePackage.TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+            case StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
+                return org.eclipse.sirius.viewpoint.description.style.StylePackage.TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
             default:
                 return -1;
             }
@@ -964,44 +959,44 @@ public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements No
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == BorderedStyleDescription.class) {
             switch (baseFeatureID) {
-            case org.eclipse.sirius.diagram.description.style.StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
-            case org.eclipse.sirius.diagram.description.style.StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
+            case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION:
+                return StylePackage.NODE_STYLE_DESCRIPTION__BORDER_SIZE_COMPUTATION_EXPRESSION;
+            case StylePackage.BORDERED_STYLE_DESCRIPTION__BORDER_COLOR:
+                return StylePackage.NODE_STYLE_DESCRIPTION__BORDER_COLOR;
             default:
                 return -1;
             }
         }
         if (baseClass == BasicLabelStyleDescription.class) {
             switch (baseFeatureID) {
-            case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_SIZE:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE;
-            case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_FORMAT:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
-            case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__SHOW_ICON:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON;
-            case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_EXPRESSION:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
-            case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR;
-            case StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__ICON_PATH:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH;
+            case org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_SIZE:
+                return StylePackage.NODE_STYLE_DESCRIPTION__LABEL_SIZE;
+            case org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_FORMAT:
+                return StylePackage.NODE_STYLE_DESCRIPTION__LABEL_FORMAT;
+            case org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__SHOW_ICON:
+                return StylePackage.NODE_STYLE_DESCRIPTION__SHOW_ICON;
+            case org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_EXPRESSION:
+                return StylePackage.NODE_STYLE_DESCRIPTION__LABEL_EXPRESSION;
+            case org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_COLOR:
+                return StylePackage.NODE_STYLE_DESCRIPTION__LABEL_COLOR;
+            case org.eclipse.sirius.viewpoint.description.style.StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__ICON_PATH:
+                return StylePackage.NODE_STYLE_DESCRIPTION__ICON_PATH;
             default:
                 return -1;
             }
         }
         if (baseClass == LabelStyleDescription.class) {
             switch (baseFeatureID) {
-            case StylePackage.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
+            case org.eclipse.sirius.viewpoint.description.style.StylePackage.LABEL_STYLE_DESCRIPTION__LABEL_ALIGNMENT:
+                return StylePackage.NODE_STYLE_DESCRIPTION__LABEL_ALIGNMENT;
             default:
                 return -1;
             }
         }
         if (baseClass == TooltipStyleDescription.class) {
             switch (baseFeatureID) {
-            case StylePackage.TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
-                return org.eclipse.sirius.diagram.description.style.StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
+            case org.eclipse.sirius.viewpoint.description.style.StylePackage.TOOLTIP_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION:
+                return StylePackage.NODE_STYLE_DESCRIPTION__TOOLTIP_EXPRESSION;
             default:
                 return -1;
             }

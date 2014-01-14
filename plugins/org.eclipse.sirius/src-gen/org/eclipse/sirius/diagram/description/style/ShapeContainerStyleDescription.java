@@ -75,7 +75,7 @@ public interface ShapeContainerStyleDescription extends ContainerStyleDescriptio
      * 
      * @return the value of the '<em>Background Color</em>' reference.
      * @see #setBackgroundColor(ColorDescription)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getShapeContainerStyleDescription_BackgroundColor()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getShapeContainerStyleDescription_BackgroundColor()
      * @model required="true"
      * @generated
      */

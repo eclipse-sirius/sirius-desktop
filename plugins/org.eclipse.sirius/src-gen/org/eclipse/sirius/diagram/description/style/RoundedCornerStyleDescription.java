@@ -42,7 +42,7 @@ public interface RoundedCornerStyleDescription extends StyleDescription {
      * 
      * @return the value of the '<em>Arc Width</em>' attribute.
      * @see #setArcWidth(Integer)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getRoundedCornerStyleDescription_ArcWidth()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getRoundedCornerStyleDescription_ArcWidth()
      * @model default="1"
      * @generated
      */
@@ -69,7 +69,7 @@ public interface RoundedCornerStyleDescription extends StyleDescription {
      * 
      * @return the value of the '<em>Arc Height</em>' attribute.
      * @see #setArcHeight(Integer)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getRoundedCornerStyleDescription_ArcHeight()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getRoundedCornerStyleDescription_ArcHeight()
      * @model default="1"
      * @generated
      */

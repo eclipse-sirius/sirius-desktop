@@ -49,7 +49,7 @@ public interface LozengeNodeDescription extends NodeStyleDescription {
      * @return the value of the '<em>Width Computation Expression</em>'
      *         attribute.
      * @see #setWidthComputationExpression(String)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLozengeNodeDescription_WidthComputationExpression()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getLozengeNodeDescription_WidthComputationExpression()
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
@@ -81,7 +81,7 @@ public interface LozengeNodeDescription extends NodeStyleDescription {
      * @return the value of the '<em>Height Computation Expression</em>'
      *         attribute.
      * @see #setHeightComputationExpression(String)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLozengeNodeDescription_HeightComputationExpression()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getLozengeNodeDescription_HeightComputationExpression()
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
@@ -111,7 +111,7 @@ public interface LozengeNodeDescription extends NodeStyleDescription {
      * 
      * @return the value of the '<em>Color</em>' reference.
      * @see #setColor(ColorDescription)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLozengeNodeDescription_Color()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getLozengeNodeDescription_Color()
      * @model required="true"
      * @generated
      */

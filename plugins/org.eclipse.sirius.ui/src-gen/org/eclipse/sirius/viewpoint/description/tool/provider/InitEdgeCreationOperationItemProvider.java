@@ -171,17 +171,20 @@ public class InitEdgeCreationOperationItemProvider extends ItemProviderAdapter i
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INIT_EDGE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createFor()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INIT_EDGE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateView()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INIT_EDGE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateEdgeView()));
-
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INIT_EDGE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createIf()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INIT_EDGE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createDeleteView()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INIT_EDGE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createNavigation()));
-
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INIT_EDGE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createSwitch()));
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INIT_EDGE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS,
+                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createCreateView()));
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INIT_EDGE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS,
+                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createCreateEdgeView()));
+
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INIT_EDGE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS,
+                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createNavigation()));
     }
 
     /**

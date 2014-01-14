@@ -43,7 +43,7 @@ public interface DotDescription extends NodeStyleDescription {
      * 
      * @return the value of the '<em>Background Color</em>' reference.
      * @see #setBackgroundColor(ColorDescription)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getDotDescription_BackgroundColor()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getDotDescription_BackgroundColor()
      * @model required="true"
      * @generated
      */
@@ -72,7 +72,7 @@ public interface DotDescription extends NodeStyleDescription {
      * @return the value of the '<em>Stroke Size Computation Expression</em>'
      *         attribute.
      * @see #setStrokeSizeComputationExpression(String)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getDotDescription_StrokeSizeComputationExpression()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getDotDescription_StrokeSizeComputationExpression()
      * @model default="2" dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=

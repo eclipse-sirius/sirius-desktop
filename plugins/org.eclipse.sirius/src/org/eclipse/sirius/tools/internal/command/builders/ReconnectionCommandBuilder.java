@@ -31,6 +31,8 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
+import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.ext.base.Option;
@@ -41,8 +43,6 @@ import org.eclipse.sirius.tools.internal.command.reconnect.ReconnectSourceNodeCo
 import org.eclipse.sirius.tools.internal.command.reconnect.SetEdgeActualMappingCommand;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
-import org.eclipse.sirius.viewpoint.description.tool.ReconnectEdgeDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ReconnectionKind;
 import org.eclipse.sirius.viewpoint.description.tool.SetObject;
 import org.eclipse.sirius.viewpoint.description.tool.SubVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;

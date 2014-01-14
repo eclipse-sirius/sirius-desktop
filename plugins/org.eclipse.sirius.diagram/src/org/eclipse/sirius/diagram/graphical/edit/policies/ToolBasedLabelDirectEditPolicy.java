@@ -22,13 +22,13 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.LabelDirectEditPolicy;
 import org.eclipse.gmf.runtime.gef.ui.internal.parts.TextCellEditorEx;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.diagram.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
-import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
 
 /**
  * {@link org.eclipse.gef.EditPolicy} used to handle Labels direct edits.

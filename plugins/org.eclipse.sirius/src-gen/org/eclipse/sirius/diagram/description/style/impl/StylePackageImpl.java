@@ -18,6 +18,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
+import org.eclipse.sirius.diagram.description.concern.impl.ConcernPackageImpl;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl;
 import org.eclipse.sirius.diagram.description.style.BeginLabelStyleDescription;
@@ -42,20 +44,18 @@ import org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescripti
 import org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.SquareDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
+import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
+import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
+import org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl;
 import org.eclipse.sirius.diagram.impl.DiagramPackageImpl;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.audit.AuditPackage;
 import org.eclipse.sirius.viewpoint.description.audit.impl.AuditPackageImpl;
-import org.eclipse.sirius.viewpoint.description.concern.ConcernPackage;
-import org.eclipse.sirius.viewpoint.description.concern.impl.ConcernPackageImpl;
 import org.eclipse.sirius.viewpoint.description.impl.DescriptionPackageImpl;
-import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
-import org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl;
 import org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl;
 
 /**
@@ -64,14 +64,7 @@ import org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl;
  * 
  * @generated
  */
-public class StylePackageImpl extends EPackageImpl implements org.eclipse.sirius.diagram.description.style.StylePackage {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass roundedCornerStyleDescriptionEClass = null;
-
+public class StylePackageImpl extends EPackageImpl implements StylePackage {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -147,6 +140,27 @@ public class StylePackageImpl extends EPackageImpl implements org.eclipse.sirius
      * 
      * @generated
      */
+    private EClass gaugeSectionDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass sizeComputationContainerStyleDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EClass roundedCornerStyleDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     private EClass containerStyleDescriptionEClass = null;
 
     /**
@@ -182,13 +196,6 @@ public class StylePackageImpl extends EPackageImpl implements org.eclipse.sirius
      * 
      * @generated
      */
-    private EClass gaugeSectionDescriptionEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     private EClass beginLabelStyleDescriptionEClass = null;
 
     /**
@@ -213,13 +220,6 @@ public class StylePackageImpl extends EPackageImpl implements org.eclipse.sirius
     private EClass bracketEdgeStyleDescriptionEClass = null;
 
     /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass sizeComputationContainerStyleDescriptionEClass = null;
-
-    /**
      * Creates an instance of the model <b>Package</b>, registered with
      * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the
      * package package URI value.
@@ -230,7 +230,7 @@ public class StylePackageImpl extends EPackageImpl implements org.eclipse.sirius
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.emf.ecore.EPackage.Registry
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#eNS_URI
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#eNS_URI
      * @see #init()
      * @generated
      */
@@ -260,9 +260,9 @@ public class StylePackageImpl extends EPackageImpl implements org.eclipse.sirius
      * @see #initializePackageContents()
      * @generated
      */
-    public static org.eclipse.sirius.diagram.description.style.StylePackage init() {
+    public static StylePackage init() {
         if (isInited)
-            return (org.eclipse.sirius.diagram.description.style.StylePackage) EPackage.Registry.INSTANCE.getEPackage(org.eclipse.sirius.diagram.description.style.StylePackage.eNS_URI);
+            return (StylePackage) EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI);
 
         // Obtain or create and register package
         StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.get(eNS_URI) instanceof StylePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new StylePackageImpl());
@@ -278,23 +278,26 @@ public class StylePackageImpl extends EPackageImpl implements org.eclipse.sirius
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
         org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl theStylePackage_1 = (org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl) (EPackage.Registry.INSTANCE
-                .getEPackage(StylePackage.eNS_URI) instanceof org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI)
-                : StylePackage.eINSTANCE);
+                .getEPackage(org.eclipse.sirius.viewpoint.description.style.StylePackage.eNS_URI) instanceof org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.style.StylePackage.eNS_URI) : org.eclipse.sirius.viewpoint.description.style.StylePackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
-        ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
         AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
-        ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) instanceof ConcernPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ConcernPackage.eNS_URI) : ConcernPackage.eINSTANCE);
         DiagramPackageImpl theDiagramPackage = (DiagramPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) instanceof DiagramPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(DiagramPackage.eNS_URI) : DiagramPackage.eINSTANCE);
         org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl theDescriptionPackage_1 = (org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl) (EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI) instanceof org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI) : org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE);
+        org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl theToolPackage_1 = (org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl) (EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.tool.ToolPackage.eNS_URI) instanceof org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.diagram.description.tool.ToolPackage.eNS_URI) : org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE);
         FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
+        ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
+        ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) instanceof ConcernPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(ConcernPackage.eNS_URI) : ConcernPackage.eINSTANCE);
 
         // Create package meta-data objects
         theStylePackage.createPackageContents();
@@ -302,12 +305,13 @@ public class StylePackageImpl extends EPackageImpl implements org.eclipse.sirius
         theDescriptionPackage.createPackageContents();
         theStylePackage_1.createPackageContents();
         theToolPackage.createPackageContents();
-        theValidationPackage.createPackageContents();
         theAuditPackage.createPackageContents();
-        theConcernPackage.createPackageContents();
         theDiagramPackage.createPackageContents();
         theDescriptionPackage_1.createPackageContents();
+        theToolPackage_1.createPackageContents();
         theFilterPackage.createPackageContents();
+        theValidationPackage.createPackageContents();
+        theConcernPackage.createPackageContents();
 
         // Initialize created meta-data
         theStylePackage.initializePackageContents();
@@ -315,46 +319,20 @@ public class StylePackageImpl extends EPackageImpl implements org.eclipse.sirius
         theDescriptionPackage.initializePackageContents();
         theStylePackage_1.initializePackageContents();
         theToolPackage.initializePackageContents();
-        theValidationPackage.initializePackageContents();
         theAuditPackage.initializePackageContents();
-        theConcernPackage.initializePackageContents();
         theDiagramPackage.initializePackageContents();
         theDescriptionPackage_1.initializePackageContents();
+        theToolPackage_1.initializePackageContents();
         theFilterPackage.initializePackageContents();
+        theValidationPackage.initializePackageContents();
+        theConcernPackage.initializePackageContents();
 
         // Mark meta-data to indicate it can't be changed
         theStylePackage.freeze();
 
         // Update the registry and return the package
-        EPackage.Registry.INSTANCE.put(org.eclipse.sirius.diagram.description.style.StylePackage.eNS_URI, theStylePackage);
+        EPackage.Registry.INSTANCE.put(StylePackage.eNS_URI, theStylePackage);
         return theStylePackage;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getRoundedCornerStyleDescription() {
-        return roundedCornerStyleDescriptionEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getRoundedCornerStyleDescription_ArcWidth() {
-        return (EAttribute) roundedCornerStyleDescriptionEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getRoundedCornerStyleDescription_ArcHeight() {
-        return (EAttribute) roundedCornerStyleDescriptionEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -659,6 +637,123 @@ public class StylePackageImpl extends EPackageImpl implements org.eclipse.sirius
      * 
      * @generated
      */
+    public EClass getGaugeSectionDescription() {
+        return gaugeSectionDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getGaugeSectionDescription_MinValueExpression() {
+        return (EAttribute) gaugeSectionDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getGaugeSectionDescription_MaxValueExpression() {
+        return (EAttribute) gaugeSectionDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getGaugeSectionDescription_ValueExpression() {
+        return (EAttribute) gaugeSectionDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getGaugeSectionDescription_BackgroundColor() {
+        return (EReference) gaugeSectionDescriptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getGaugeSectionDescription_ForegroundColor() {
+        return (EReference) gaugeSectionDescriptionEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getGaugeSectionDescription_Label() {
+        return (EAttribute) gaugeSectionDescriptionEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EClass getSizeComputationContainerStyleDescription() {
+        return sizeComputationContainerStyleDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getSizeComputationContainerStyleDescription_WidthComputationExpression() {
+        return (EAttribute) sizeComputationContainerStyleDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getSizeComputationContainerStyleDescription_HeightComputationExpression() {
+        return (EAttribute) sizeComputationContainerStyleDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EClass getRoundedCornerStyleDescription() {
+        return roundedCornerStyleDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getRoundedCornerStyleDescription_ArcWidth() {
+        return (EAttribute) roundedCornerStyleDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getRoundedCornerStyleDescription_ArcHeight() {
+        return (EAttribute) roundedCornerStyleDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public EClass getContainerStyleDescription() {
         return containerStyleDescriptionEClass;
     }
@@ -866,69 +961,6 @@ public class StylePackageImpl extends EPackageImpl implements org.eclipse.sirius
      * 
      * @generated
      */
-    public EClass getGaugeSectionDescription() {
-        return gaugeSectionDescriptionEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getGaugeSectionDescription_MinValueExpression() {
-        return (EAttribute) gaugeSectionDescriptionEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getGaugeSectionDescription_MaxValueExpression() {
-        return (EAttribute) gaugeSectionDescriptionEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getGaugeSectionDescription_ValueExpression() {
-        return (EAttribute) gaugeSectionDescriptionEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getGaugeSectionDescription_BackgroundColor() {
-        return (EReference) gaugeSectionDescriptionEClass.getEStructuralFeatures().get(3);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getGaugeSectionDescription_ForegroundColor() {
-        return (EReference) gaugeSectionDescriptionEClass.getEStructuralFeatures().get(4);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getGaugeSectionDescription_Label() {
-        return (EAttribute) gaugeSectionDescriptionEClass.getEStructuralFeatures().get(5);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EClass getBeginLabelStyleDescription() {
         return beginLabelStyleDescriptionEClass;
     }
@@ -958,33 +990,6 @@ public class StylePackageImpl extends EPackageImpl implements org.eclipse.sirius
      */
     public EClass getBracketEdgeStyleDescription() {
         return bracketEdgeStyleDescriptionEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getSizeComputationContainerStyleDescription() {
-        return sizeComputationContainerStyleDescriptionEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getSizeComputationContainerStyleDescription_WidthComputationExpression() {
-        return (EAttribute) sizeComputationContainerStyleDescriptionEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getSizeComputationContainerStyleDescription_HeightComputationExpression() {
-        return (EAttribute) sizeComputationContainerStyleDescriptionEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -1137,7 +1142,8 @@ public class StylePackageImpl extends EPackageImpl implements org.eclipse.sirius
         setNsURI(eNS_URI);
 
         // Obtain other dependent packages
-        StylePackage theStylePackage_1 = (StylePackage) EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI);
+        org.eclipse.sirius.viewpoint.description.style.StylePackage theStylePackage_1 = (org.eclipse.sirius.viewpoint.description.style.StylePackage) EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.style.StylePackage.eNS_URI);
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
         DiagramPackage theDiagramPackage = (DiagramPackage) EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI);
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);

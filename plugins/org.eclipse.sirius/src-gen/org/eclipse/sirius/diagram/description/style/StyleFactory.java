@@ -112,6 +112,15 @@ public interface StyleFactory extends EFactory {
     GaugeCompositeStyleDescription createGaugeCompositeStyleDescription();
 
     /**
+     * Returns a new object of class '<em>Gauge Section Description</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Gauge Section Description</em>'.
+     * @generated
+     */
+    GaugeSectionDescription createGaugeSectionDescription();
+
+    /**
      * Returns a new object of class '<em>Flat Container Style Description</em>
      * '. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -148,15 +157,6 @@ public interface StyleFactory extends EFactory {
      * @generated
      */
     EdgeStyleDescription createEdgeStyleDescription();
-
-    /**
-     * Returns a new object of class '<em>Gauge Section Description</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>Gauge Section Description</em>'.
-     * @generated
-     */
-    GaugeSectionDescription createGaugeSectionDescription();
 
     /**
      * Returns a new object of class '<em>Begin Label Style Description</em>'.

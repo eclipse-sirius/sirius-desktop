@@ -23,10 +23,10 @@ import org.eclipse.sirius.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.impl.AdditionalLayerImpl;
+import org.eclipse.sirius.diagram.description.tool.ToolGroup;
+import org.eclipse.sirius.diagram.description.tool.ToolSection;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
-import org.eclipse.sirius.viewpoint.description.tool.ToolGroup;
-import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
 
 /**
  * Specialization of OptionalLayer. Copied from {@link LayerSpec}.

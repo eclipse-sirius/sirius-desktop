@@ -52,7 +52,7 @@ public interface FlatContainerStyleDescription extends ContainerStyleDescription
      * @return the value of the '<em>Background Style</em>' attribute.
      * @see org.eclipse.sirius.diagram.BackgroundStyle
      * @see #setBackgroundStyle(BackgroundStyle)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getFlatContainerStyleDescription_BackgroundStyle()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getFlatContainerStyleDescription_BackgroundStyle()
      * @model required="true"
      * @generated
      */
@@ -79,7 +79,7 @@ public interface FlatContainerStyleDescription extends ContainerStyleDescription
      * 
      * @return the value of the '<em>Background Color</em>' reference.
      * @see #setBackgroundColor(ColorDescription)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getFlatContainerStyleDescription_BackgroundColor()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getFlatContainerStyleDescription_BackgroundColor()
      * @model required="true"
      * @generated
      */
@@ -105,7 +105,7 @@ public interface FlatContainerStyleDescription extends ContainerStyleDescription
      * 
      * @return the value of the '<em>Foreground Color</em>' reference.
      * @see #setForegroundColor(ColorDescription)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getFlatContainerStyleDescription_ForegroundColor()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getFlatContainerStyleDescription_ForegroundColor()
      * @model required="true"
      * @generated
      */

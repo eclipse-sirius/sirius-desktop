@@ -13,7 +13,7 @@ package org.eclipse.sirius.editor.properties.sections.tool.toolsection;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 

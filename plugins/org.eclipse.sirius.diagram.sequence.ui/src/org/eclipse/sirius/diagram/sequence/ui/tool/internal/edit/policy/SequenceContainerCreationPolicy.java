@@ -35,6 +35,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.graphical.edit.policies.ContainerCreationEditPolicy;
 import org.eclipse.sirius.diagram.graphical.edit.policies.CreationUtil;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
@@ -64,8 +66,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
 
 import com.google.common.collect.Lists;
 

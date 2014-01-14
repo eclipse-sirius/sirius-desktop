@@ -32,12 +32,12 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.concern.ConcernFactory;
 import org.eclipse.sirius.diagram.description.filter.FilterFactory;
+import org.eclipse.sirius.diagram.description.validation.ValidationFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.concern.ConcernFactory;
 import org.eclipse.sirius.viewpoint.description.provider.DragAndDropTargetDescriptionItemProvider;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
@@ -560,7 +560,8 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createContainerMappingImport()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__TOOL_SECTION, ToolFactory.eINSTANCE.createToolSection()));
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__TOOL_SECTION,
+                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createToolSection()));
     }
 
     /**

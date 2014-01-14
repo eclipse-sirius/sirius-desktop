@@ -30,12 +30,12 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramImportDescription;
+import org.eclipse.sirius.diagram.description.concern.ConcernFactory;
 import org.eclipse.sirius.diagram.description.filter.FilterFactory;
+import org.eclipse.sirius.diagram.description.tool.ToolFactory;
+import org.eclipse.sirius.diagram.description.validation.ValidationFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.concern.ConcernFactory;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
-import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
@@ -538,7 +538,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
                 DescriptionFactory.eINSTANCE.createCompositeLayout()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION,
-                ToolFactory.eINSTANCE.createInitialOperation()));
+                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation()));
 
         newChildDescriptors
                 .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, DescriptionFactory.eINSTANCE.createLayer()));
@@ -571,7 +571,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createContainerMappingImport()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__TOOL_SECTION, ToolFactory.eINSTANCE.createToolSection()));
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__TOOL_SECTION,
+                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createToolSection()));
     }
 
     /**
@@ -598,7 +599,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
                 DescriptionFactory.eINSTANCE.createCompositeLayout()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION,
-                ToolFactory.eINSTANCE.createInitialOperation()));
+                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation()));
 
         newChildDescriptors
                 .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, DescriptionFactory.eINSTANCE.createLayer()));

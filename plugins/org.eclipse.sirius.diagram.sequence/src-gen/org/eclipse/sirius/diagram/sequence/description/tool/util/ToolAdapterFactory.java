@@ -32,10 +32,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
 
 /**
@@ -189,17 +186,17 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseNodeCreationDescription(NodeCreationDescription object) {
+        public Adapter caseNodeCreationDescription(org.eclipse.sirius.diagram.description.tool.NodeCreationDescription object) {
             return createNodeCreationDescriptionAdapter();
         }
 
         @Override
-        public Adapter caseContainerCreationDescription(ContainerCreationDescription object) {
+        public Adapter caseContainerCreationDescription(org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription object) {
             return createContainerCreationDescriptionAdapter();
         }
 
         @Override
-        public Adapter caseEdgeCreationDescription(EdgeCreationDescription object) {
+        public Adapter caseEdgeCreationDescription(org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription object) {
             return createEdgeCreationDescriptionAdapter();
         }
 
@@ -529,14 +526,14 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription
      * <em>Container Creation Description</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ContainerCreationDescription
+     * @see org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription
      * @generated
      */
     public Adapter createContainerCreationDescriptionAdapter() {
@@ -545,14 +542,14 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription
+     * {@link org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription
      * <em>Edge Creation Description</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription
+     * @see org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription
      * @generated
      */
     public Adapter createEdgeCreationDescriptionAdapter() {
@@ -561,14 +558,14 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription
+     * {@link org.eclipse.sirius.diagram.description.tool.NodeCreationDescription
      * <em>Node Creation Description</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
      * anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.NodeCreationDescription
+     * @see org.eclipse.sirius.diagram.description.tool.NodeCreationDescription
      * @generated
      */
     public Adapter createNodeCreationDescriptionAdapter() {

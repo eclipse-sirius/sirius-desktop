@@ -43,6 +43,7 @@ import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.description.tool.RequestDescription;
 import org.eclipse.sirius.diagram.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramEdgeEditPartOperation;
 import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
@@ -59,7 +60,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.SiriusBendpointConnectionRouter;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
-import org.eclipse.sirius.viewpoint.description.tool.RequestDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.swt.graphics.Image;
 

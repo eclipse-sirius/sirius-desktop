@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.internal.menu.child;
 
+import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuilder;
-import org.eclipse.sirius.viewpoint.description.concern.ConcernPackage;
 
 /**
  * The filters menu.

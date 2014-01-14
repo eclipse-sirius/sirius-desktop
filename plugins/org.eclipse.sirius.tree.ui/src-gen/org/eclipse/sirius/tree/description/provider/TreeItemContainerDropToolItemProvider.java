@@ -47,7 +47,7 @@ import com.google.common.collect.Lists;
  */
 public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescriptionItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
         IItemLabelProvider, IItemPropertySource {
-    private static final Collection<EClass> TYPES_TO_HIDE = Lists.newArrayList(ToolPackage.Literals.CREATE_EDGE_VIEW, ToolPackage.Literals.CREATE_VIEW, ToolPackage.Literals.DELETE_VIEW);
+    private static final Collection<EClass> TYPES_TO_HIDE = Lists.newArrayList(ToolPackage.Literals.DELETE_VIEW);
 
     /**
      * This constructs an instance from a factory and a notifier. <!--
@@ -221,15 +221,9 @@ public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescr
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, ToolFactory.eINSTANCE.createFor()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, ToolFactory.eINSTANCE.createCreateView()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, ToolFactory.eINSTANCE.createCreateEdgeView()));
-
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, ToolFactory.eINSTANCE.createIf()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, ToolFactory.eINSTANCE.createDeleteView()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, ToolFactory.eINSTANCE.createNavigation()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_TOOL__FIRST_MODEL_OPERATION, ToolFactory.eINSTANCE.createSwitch()));
 

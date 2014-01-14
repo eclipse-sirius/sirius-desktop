@@ -30,9 +30,9 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
+import org.eclipse.sirius.diagram.description.concern.ConcernFactory;
+import org.eclipse.sirius.diagram.description.validation.ValidationFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.concern.ConcernFactory;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**

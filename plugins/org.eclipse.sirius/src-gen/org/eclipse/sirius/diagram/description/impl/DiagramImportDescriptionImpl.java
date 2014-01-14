@@ -35,21 +35,21 @@ import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.Layout;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
+import org.eclipse.sirius.diagram.description.concern.ConcernSet;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.eclipse.sirius.diagram.description.tool.ToolSection;
+import org.eclipse.sirius.diagram.description.validation.ValidationSet;
 import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
-import org.eclipse.sirius.viewpoint.description.concern.ConcernDescription;
-import org.eclipse.sirius.viewpoint.description.concern.ConcernSet;
 import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

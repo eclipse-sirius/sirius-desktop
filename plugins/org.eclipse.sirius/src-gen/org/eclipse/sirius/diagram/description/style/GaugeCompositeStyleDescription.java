@@ -48,7 +48,7 @@ public interface GaugeCompositeStyleDescription extends NodeStyleDescription {
      * @return the value of the '<em>Alignment</em>' attribute.
      * @see org.eclipse.sirius.diagram.AlignmentKind
      * @see #setAlignment(AlignmentKind)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getGaugeCompositeStyleDescription_Alignment()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeCompositeStyleDescription_Alignment()
      * @model default="SQUARE"
      * @generated
      */
@@ -76,7 +76,7 @@ public interface GaugeCompositeStyleDescription extends NodeStyleDescription {
      * The sections. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Sections</em>' containment reference list.
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getGaugeCompositeStyleDescription_Sections()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeCompositeStyleDescription_Sections()
      * @model containment="true" resolveProxies="true"
      * @generated
      */

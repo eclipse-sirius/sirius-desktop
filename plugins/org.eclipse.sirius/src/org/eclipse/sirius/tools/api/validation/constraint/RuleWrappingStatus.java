@@ -12,7 +12,7 @@ package org.eclipse.sirius.tools.api.validation.constraint;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.validation.model.ConstraintStatus;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
+import org.eclipse.sirius.diagram.description.validation.ValidationRule;
 
 /**
  * 

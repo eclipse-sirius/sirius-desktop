@@ -31,9 +31,9 @@ import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.query.EdgeQuery;
+import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.viewpoint.description.tool.ReconnectionKind;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;

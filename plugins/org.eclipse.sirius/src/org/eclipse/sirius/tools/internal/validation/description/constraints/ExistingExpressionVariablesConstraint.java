@@ -17,6 +17,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
@@ -31,6 +32,12 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
+import org.eclipse.sirius.diagram.description.tool.CreateEdgeView;
+import org.eclipse.sirius.diagram.description.tool.CreateView;
+import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
+import org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
+import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.util.DescriptionSwitch;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
@@ -40,14 +47,8 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.viewpoint.description.tool.CreateEdgeView;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
-import org.eclipse.sirius.viewpoint.description.tool.CreateView;
-import org.eclipse.sirius.viewpoint.description.tool.DeleteElementDescription;
-import org.eclipse.sirius.viewpoint.description.tool.DiagramCreationDescription;
-import org.eclipse.sirius.viewpoint.description.tool.DirectEditLabel;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
-import org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 import org.eclipse.sirius.viewpoint.description.tool.For;
 import org.eclipse.sirius.viewpoint.description.tool.MoveElement;
@@ -215,7 +216,22 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      */
     private IStatus validateTool(final EObject eObj, final IValidationContext ctx, final IStatus statusInput) {
         final ToolSwitchValidator toolSwitchValidator = new ToolSwitchValidator(ctx, statusInput);
-        final IStatus status = toolSwitchValidator.doSwitch(eObj);
+        final IStatus statusCoreTool = toolSwitchValidator.doSwitch(eObj);
+        final DiagramToolSwitchValidator diagramToolSwitchValidator = new DiagramToolSwitchValidator(ctx, statusInput);
+        final IStatus statusDiagramTool = diagramToolSwitchValidator.doSwitch(eObj);
+        MultiStatus status = null;
+        if (statusCoreTool != null || statusDiagramTool != null) {
+            if (statusCoreTool != null) {
+                status = new MultiStatus(statusCoreTool.getPlugin(), statusCoreTool.getCode(), null, null);
+                status.add(statusCoreTool);
+            }
+            if (statusDiagramTool != null) {
+                if (status == null) {
+                    status = new MultiStatus(statusDiagramTool.getPlugin(), statusDiagramTool.getCode(), null, null);
+                }
+                status.add(statusDiagramTool);
+            }
+        }
         return status;
     }
 
@@ -589,8 +605,8 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      * @return the validation status.
      */
     protected IStatus checkCreateViewContainerView(final IValidationContext ctx, final CreateView createViewOp) {
-        return this.checkVariables(ctx, createViewOp.getContainerViewExpression(), getDeclaredVariables(createViewOp), createViewOp, ToolPackage.eINSTANCE.getCreateView_ContainerViewExpression()
-                .getName());
+        return this.checkVariables(ctx, createViewOp.getContainerViewExpression(), getDeclaredVariables(createViewOp), createViewOp, org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE
+                .getCreateView_ContainerViewExpression().getName());
     }
 
     /**
@@ -604,8 +620,8 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      * @return the validation status.
      */
     protected IStatus checkCreateEdgeViewSource(final IValidationContext ctx, final CreateEdgeView createEdgeViewOp) {
-        return this.checkVariables(ctx, createEdgeViewOp.getSourceExpression(), getDeclaredVariables(createEdgeViewOp), createEdgeViewOp, ToolPackage.eINSTANCE.getCreateEdgeView_SourceExpression()
-                .getName());
+        return this.checkVariables(ctx, createEdgeViewOp.getSourceExpression(), getDeclaredVariables(createEdgeViewOp), createEdgeViewOp,
+                org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE.getCreateEdgeView_SourceExpression().getName());
     }
 
     /**
@@ -619,8 +635,8 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      * @return the validation status.
      */
     protected IStatus checkCreateEdgeViewTarget(final IValidationContext ctx, final CreateEdgeView createEdgeViewOp) {
-        return this.checkVariables(ctx, createEdgeViewOp.getTargetExpression(), getDeclaredVariables(createEdgeViewOp), createEdgeViewOp, ToolPackage.eINSTANCE.getCreateEdgeView_TargetExpression()
-                .getName());
+        return this.checkVariables(ctx, createEdgeViewOp.getTargetExpression(), getDeclaredVariables(createEdgeViewOp), createEdgeViewOp,
+                org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE.getCreateEdgeView_TargetExpression().getName());
     }
 
     /**
@@ -1024,6 +1040,86 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
         /**
          * {@inheritDoc}
          * 
+         * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseAcceleoVariable(org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable)
+         */
+        @Override
+        public IStatus caseAcceleoVariable(final AcceleoVariable object) {
+            if (this.currentStatus.isOK()) {
+                final IStatus superStatus = super.caseAcceleoVariable(object);
+                if (superStatus == null || superStatus.isOK()) {
+                    this.currentStatus = checkAcceleoVariableComputation(ctx, object);
+                } else {
+                    this.currentStatus = superStatus;
+                }
+            }
+            return this.currentStatus;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
+         */
+        @Override
+        public IStatus doSwitch(final EObject theEObject) {
+            if (this.currentStatus == null || this.currentStatus.isOK()) {
+                this.currentStatus = super.doSwitch(theEObject);
+            }
+            return this.currentStatus;
+        }
+
+    }
+
+    /**
+     * Validates {@link ToolPackage} acceleo expressions.
+     * 
+     * @author ymortier
+     */
+    public class DiagramToolSwitchValidator extends org.eclipse.sirius.diagram.description.tool.util.ToolSwitch<IStatus> {
+
+        /** The ecurrent status. */
+        private IStatus currentStatus;
+
+        /** The validation context. */
+        private final IValidationContext ctx;
+
+        /**
+         * Creates a new validator.
+         * 
+         * @param ctx
+         *            the validation context (mandatory).
+         * @param currentStatus
+         *            the current status (optional).
+         */
+        public DiagramToolSwitchValidator(final IValidationContext ctx, final IStatus currentStatus) {
+            this.currentStatus = currentStatus;
+            this.ctx = ctx;
+            if (this.currentStatus == null) {
+                this.currentStatus = ctx.createSuccessStatus();
+            }
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseAbstractToolDescription(org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription)
+         */
+        @Override
+        public IStatus caseAbstractToolDescription(final AbstractToolDescription object) {
+            if (this.currentStatus.isOK()) {
+                final IStatus superStatus = super.caseAbstractToolDescription(object);
+                if (superStatus == null || superStatus.isOK()) {
+                    this.currentStatus = checkAbstractToolDescriptionPrecondition(ctx, object);
+                } else {
+                    this.currentStatus = superStatus;
+                }
+            }
+            return this.currentStatus;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
          * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseCreateView(org.eclipse.sirius.viewpoint.description.tool.CreateView)
          */
         @Override
@@ -1054,24 +1150,6 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
                     if (this.currentStatus.isOK()) {
                         this.currentStatus = checkCreateEdgeViewTarget(ctx, object);
                     }
-                } else {
-                    this.currentStatus = superStatus;
-                }
-            }
-            return this.currentStatus;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseAcceleoVariable(org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable)
-         */
-        @Override
-        public IStatus caseAcceleoVariable(final AcceleoVariable object) {
-            if (this.currentStatus.isOK()) {
-                final IStatus superStatus = super.caseAcceleoVariable(object);
-                if (superStatus == null || superStatus.isOK()) {
-                    this.currentStatus = checkAcceleoVariableComputation(ctx, object);
                 } else {
                     this.currentStatus = superStatus;
                 }

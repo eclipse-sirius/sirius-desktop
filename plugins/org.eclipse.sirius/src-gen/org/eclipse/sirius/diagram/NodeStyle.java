@@ -38,13 +38,13 @@ public interface NodeStyle extends LabelStyle, Style, BorderedStyle {
     /**
      * Returns the value of the '<em><b>Label Position</b></em>' attribute. The
      * literals are from the enumeration
-     * {@link org.eclipse.sirius.viewpoint.LabelPosition}. <!-- begin-user-doc
-     * --> <!-- end-user-doc --> <!-- begin-model-doc --> The position of the
-     * label : BORDER : The label is around the node, on the border. NODE : the
-     * label is in the node. <!-- end-model-doc -->
+     * {@link org.eclipse.sirius.diagram.LabelPosition}. <!-- begin-user-doc -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> The position of the label
+     * : BORDER : The label is around the node, on the border. NODE : the label
+     * is in the node. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Label Position</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.LabelPosition
+     * @see org.eclipse.sirius.diagram.LabelPosition
      * @see #setLabelPosition(LabelPosition)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getNodeStyle_LabelPosition()
      * @model

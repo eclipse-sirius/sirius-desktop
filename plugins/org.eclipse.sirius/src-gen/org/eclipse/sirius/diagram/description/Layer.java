@@ -12,13 +12,13 @@
 package org.eclipse.sirius.diagram.description;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.sirius.diagram.description.tool.ToolSection;
 import org.eclipse.sirius.viewpoint.description.Customization;
 import org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -155,7 +155,7 @@ public interface Layer extends DocumentedElement, EndUserDocumentedElement, Iden
     /**
      * Returns the value of the '<em><b>Tool Sections</b></em>' containment
      * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ToolSection}. <!--
+     * {@link org.eclipse.sirius.diagram.description.tool.ToolSection}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> A tool
      * section encloses many tools <!-- end-model-doc -->
      * 

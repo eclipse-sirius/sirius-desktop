@@ -41,7 +41,7 @@ public interface WorkspaceImageDescription extends NodeStyleDescription, Contain
      * 
      * @return the value of the '<em>Workspace Path</em>' attribute.
      * @see #setWorkspacePath(String)
-     * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getWorkspaceImageDescription_WorkspacePath()
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getWorkspaceImageDescription_WorkspacePath()
      * @model required="true"
      * @generated
      */

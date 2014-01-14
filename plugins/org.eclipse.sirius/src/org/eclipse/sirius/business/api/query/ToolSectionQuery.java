@@ -14,10 +14,10 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.description.tool.ToolSection;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
-import org.eclipse.sirius.viewpoint.description.tool.ToolSection;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link ToolSection}

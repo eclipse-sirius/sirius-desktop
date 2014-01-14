@@ -15,6 +15,7 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.internal.dialect.description.DescriptionInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.business.internal.dialect.description.DiagramToolInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.internal.dialect.description.FilterInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.internal.dialect.description.StyleInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.internal.dialect.description.ToolInterpretedExpressionTargetSwitch;
@@ -41,6 +42,8 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
 
     private ToolInterpretedExpressionTargetSwitch toolSwitch;
 
+    private DiagramToolInterpretedExpressionTargetSwitch diagramToolSwitch;
+
     private FilterInterpretedExpressionTargetSwitch filterSwitch;
 
     private ValidationInterpretedExpressionTargetSwitch validationSwitch;
@@ -64,6 +67,7 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
         this.descriptionSwitch = new DescriptionInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
         this.styleSwitch = new StyleInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
         this.toolSwitch = new ToolInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
+        this.diagramToolSwitch = new DiagramToolInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
         this.filterSwitch = new FilterInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
         this.validationSwitch = new ValidationInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
         this.viewpointSwitch = new ViewpointInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
@@ -103,7 +107,12 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
                 expressionTarget = viewpointSwitch.doSwitch(theEObject);
             }
 
-            // Tool in last position -> tool will return a defautl EObject value
+            if (expressionTarget.some() && expressionTarget.get().isEmpty()) {
+                diagramToolSwitch.setConsiderFeature(considerFeature);
+                expressionTarget = diagramToolSwitch.doSwitch(theEObject);
+            }
+
+            // Tool in last position -> tool will return a default EObject value
             // as domain class.
             if (expressionTarget.some() && expressionTarget.get().isEmpty()) {
                 toolSwitch.setConsiderFeature(considerFeature);

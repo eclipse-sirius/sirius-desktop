@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
-import org.eclipse.sirius.viewpoint.description.concern.ConcernSet;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
+import org.eclipse.sirius.diagram.description.concern.ConcernSet;
+import org.eclipse.sirius.diagram.description.validation.ValidationSet;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

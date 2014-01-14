@@ -123,7 +123,7 @@
         <eStructuralFeatures xsi:type="ecore:EReference" name="coveredLifelines" lowerBound="1"
             eType="#//description/CoveredLifelinesVariable" containment="true"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="InstanceRoleCreationTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription">
+      <eClassifiers xsi:type="ecore:EClass" name="InstanceRoleCreationTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//diagram/description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription">
         <eStructuralFeatures xsi:type="ecore:EReference" name="predecessor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ElementVariable"
             containment="true">
           <eAnnotations source="toolVariable">
@@ -131,14 +131,14 @@
           </eAnnotations>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="LifelineCreationTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription"/>
-      <eClassifiers xsi:type="ecore:EClass" name="MessageCreationTool" eSuperTypes="#//description/tool/SequenceDiagramToolDescription ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/EdgeCreationDescription #//description/tool/OrderedElementCreationTool"/>
-      <eClassifiers xsi:type="ecore:EClass" name="ExecutionCreationTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
-      <eClassifiers xsi:type="ecore:EClass" name="StateCreationTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
-      <eClassifiers xsi:type="ecore:EClass" name="InteractionUseCreationTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool #//description/tool/CoveringElementCreationTool"/>
-      <eClassifiers xsi:type="ecore:EClass" name="CombinedFragmentCreationTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool #//description/tool/CoveringElementCreationTool"/>
-      <eClassifiers xsi:type="ecore:EClass" name="OperandCreationTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
-      <eClassifiers xsi:type="ecore:EClass" name="ObservationPointCreationTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
+      <eClassifiers xsi:type="ecore:EClass" name="LifelineCreationTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//diagram/description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription"/>
+      <eClassifiers xsi:type="ecore:EClass" name="MessageCreationTool" eSuperTypes="#//description/tool/SequenceDiagramToolDescription ../../org.eclipse.sirius/model/viewpoint.ecore#//diagram/description/tool/EdgeCreationDescription #//description/tool/OrderedElementCreationTool"/>
+      <eClassifiers xsi:type="ecore:EClass" name="ExecutionCreationTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//diagram/description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
+      <eClassifiers xsi:type="ecore:EClass" name="StateCreationTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//diagram/description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
+      <eClassifiers xsi:type="ecore:EClass" name="InteractionUseCreationTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//diagram/description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool #//description/tool/CoveringElementCreationTool"/>
+      <eClassifiers xsi:type="ecore:EClass" name="CombinedFragmentCreationTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//diagram/description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool #//description/tool/CoveringElementCreationTool"/>
+      <eClassifiers xsi:type="ecore:EClass" name="OperandCreationTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//diagram/description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
+      <eClassifiers xsi:type="ecore:EClass" name="ObservationPointCreationTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//diagram/description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
       <eClassifiers xsi:type="ecore:EClass" name="ReorderTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractToolDescription #//description/tool/SequenceDiagramToolDescription">
         <eStructuralFeatures xsi:type="ecore:EReference" name="mappings" upperBound="-1"
             eType="#//description/EventMapping"/>

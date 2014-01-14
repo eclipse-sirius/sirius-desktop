@@ -35,7 +35,6 @@ import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
-import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 
 /**
  * This is the item provider adapter for a
@@ -343,14 +342,8 @@ public class TableDescriptionItemProvider extends DocumentedElementItemProvider 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS,
                 DescriptionFactory.eINSTANCE.createTableCreationDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS,
-                ToolFactory.eINSTANCE.createDiagramCreationDescription()));
-
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS,
                 DescriptionFactory.eINSTANCE.createTableNavigationDescription()));
-
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS,
-                ToolFactory.eINSTANCE.createDiagramNavigationDescription()));
 
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage.Literals.TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS,
                 DescriptionFactory.eINSTANCE.createLineMapping()));
