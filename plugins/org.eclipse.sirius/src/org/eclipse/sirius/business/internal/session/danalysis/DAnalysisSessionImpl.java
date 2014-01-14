@@ -436,6 +436,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             } else {
                 ViewpointRegistry.getInstance().addListener(this);
             }
+            getEventBroker().addLocalTrigger(TrackingModificationTrigger.IS_CHANGE, new TrackingModificationTrigger(this.getTransactionalEditingDomain()));
             super.setOpen(true);
             notifyListeners(SessionListener.OPENED);
             monitor.worked(1);
@@ -751,7 +752,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         addSemanticResource(resource, true, null);
     }
 
-    private void doAddSemanticResource(final Resource newResource, final ResourceSet set) {
+    protected void doAddSemanticResource(final Resource newResource, final ResourceSet set) {
         if (new ResourceQuery(newResource).isRepresentationsResource()) {
             throw new IllegalArgumentException("A representation file cannot be added as semantic resource.");
         }
@@ -766,20 +767,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             }
         }
         registerResourceInCrossReferencer(newResource);
-        enableTrackingModification(newResource);
     }
 
-    /**
-     * Enable modification tracking in the specified resource.
-     * 
-     * @param res
-     *            a resource
-     */
-    protected void enableTrackingModification(Resource res) {
-        if (!res.isTrackingModification()) {
-            res.setTrackingModification(true);
-        }
-    }
 
     /**
      * Add the cross referencer (if exists and is not present) to the eAdapters
@@ -1352,7 +1341,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     protected void doRemoveSemanticResource(final Resource res, final ResourceSet set) {
-        disableTrackingModification(res);
         if (res.getContents().size() > 0) {
             final EObject root = res.getContents().get(0);
             for (final DAnalysis analysis : this.allAnalyses()) {
@@ -1366,17 +1354,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         set.getResources().remove(res);
     }
 
-    /**
-     * Disable modification tracking in the specified resource.
-     * 
-     * @param res
-     *            a resource
-     */
-    protected void disableTrackingModification(Resource res) {
-        if (res != null && res.isTrackingModification()) {
-            res.setTrackingModification(false);
-        }
-    }
 
     @Override
     public void statusChanged(final Resource resource, final ResourceStatus oldStatus, final ResourceStatus newStatus) {

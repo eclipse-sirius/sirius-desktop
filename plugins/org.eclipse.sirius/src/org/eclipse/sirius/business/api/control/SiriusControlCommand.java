@@ -136,7 +136,6 @@ public class SiriusControlCommand extends ControlCommand {
             super.doExecute(); // Control the semantic model
             monitor.worked(1);
             markContainerResourceAsModified(semanticObjectToControl.eContainer());
-            enableTrackingModification(controlledResource);
             createNewRepresentationsFileAndMoveRepresentations();
             monitor.worked(1);
             notifySessionAboutControlledModel();
@@ -168,11 +167,6 @@ public class SiriusControlCommand extends ControlCommand {
         return new EObjectQuery(eObject).getResourceContainer();
     }
 
-    private void enableTrackingModification(final Resource resource) {
-        if (!resource.isTrackingModification()) {
-            resource.setTrackingModification(true);
-        }
-    }
 
     /**
      * Create a new representations resource if needed :
