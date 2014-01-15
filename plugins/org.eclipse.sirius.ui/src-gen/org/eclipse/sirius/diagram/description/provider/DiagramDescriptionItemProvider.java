@@ -454,7 +454,7 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((DiagramDescription) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_DiagramDescription_type") : getString("_UI_DiagramDescription_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_DiagramDescription_type") : label;
     }
 
     /**
