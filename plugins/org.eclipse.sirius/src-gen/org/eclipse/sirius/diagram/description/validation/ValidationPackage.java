@@ -46,7 +46,7 @@ public interface ValidationPackage extends EPackage {
      * 
      * @generated
      */
-    String eNS_URI = "http://www.eclipse.org/sirius/description/validation/1.1.0";
+    String eNS_URI = "http://www.eclipse.org/sirius/diagram/description/validation/1.1.0";
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
