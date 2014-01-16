@@ -34,9 +34,11 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.IndirectlyCollapseFilter;
 import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNode2EditPart;
 import org.eclipse.sirius.diagram.internal.edit.parts.DNode3EditPart;
@@ -51,8 +53,6 @@ import org.eclipse.sirius.diagram.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.internal.refresh.borderednode.CanonicalDBorderItemLocator;
 import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IBorderItemOffsets;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.osgi.framework.Version;
 
 import com.google.common.base.Predicate;
@@ -289,10 +289,10 @@ public class DiagramRepresentationsFileMigrationParticipantV670 {
             if (input.getElement() instanceof DDiagram) {
                 DDiagram diag = (DDiagram) input.getElement();
                 EPackage diagPackage = diag.eClass().getEPackage();
-                apply = ViewpointPackage.eINSTANCE.equals(diagPackage);
+                apply = DiagramPackage.eINSTANCE.equals(diagPackage);
                 if (apply && diag.getDescription() != null) {
                     EPackage descriptionPackage = diag.getDescription().eClass().getEPackage();
-                    apply = DescriptionPackage.eINSTANCE.equals(descriptionPackage) && ViewpointPackage.eINSTANCE.equals(diagPackage);
+                    apply = DescriptionPackage.eINSTANCE.equals(descriptionPackage);
                 }
             }
             return apply;
