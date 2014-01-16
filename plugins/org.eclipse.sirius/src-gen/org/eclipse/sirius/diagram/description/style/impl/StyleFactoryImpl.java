@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.sirius.business.internal.color.DefaultColorStyleDescription;
+import org.eclipse.sirius.business.internal.color.DiagramDefaultColorStyleDescription;
 import org.eclipse.sirius.business.internal.metamodel.description.style.spec.BeginLabelStyleDescriptionSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.style.spec.CenterLabelStyleDescriptionSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.style.spec.EndLabelStyleDescriptionSpec;
@@ -132,7 +132,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public BorderedStyleDescription createBorderedStyleDescription() {
         BorderedStyleDescriptionImpl borderedStyleDescription = new BorderedStyleDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(borderedStyleDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(borderedStyleDescription);
         return borderedStyleDescription;
     }
 
@@ -143,7 +143,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public CustomStyleDescription createCustomStyleDescription() {
         CustomStyleDescriptionImpl customStyleDescription = new CustomStyleDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(customStyleDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(customStyleDescription);
         return customStyleDescription;
     }
 
@@ -154,7 +154,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public SquareDescription createSquareDescription() {
         SquareDescriptionImpl squareDescription = new SquareDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(squareDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(squareDescription);
         return squareDescription;
     }
 
@@ -165,7 +165,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public LozengeNodeDescription createLozengeNodeDescription() {
         LozengeNodeDescriptionImpl lozengeNodeDescription = new LozengeNodeDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(lozengeNodeDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(lozengeNodeDescription);
         return lozengeNodeDescription;
     }
 
@@ -176,7 +176,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public EllipseNodeDescription createEllipseNodeDescription() {
         EllipseNodeDescriptionImpl ellipseNodeDescription = new EllipseNodeDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(ellipseNodeDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(ellipseNodeDescription);
         return ellipseNodeDescription;
     }
 
@@ -187,7 +187,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public BundledImageDescription createBundledImageDescription() {
         BundledImageDescriptionImpl bundledImageDescription = new BundledImageDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(bundledImageDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(bundledImageDescription);
         return bundledImageDescription;
     }
 
@@ -198,7 +198,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public NoteDescription createNoteDescription() {
         NoteDescriptionImpl noteDescription = new NoteDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(noteDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(noteDescription);
         return noteDescription;
     }
 
@@ -209,7 +209,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public DotDescription createDotDescription() {
         DotDescriptionImpl dotDescription = new DotDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(dotDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(dotDescription);
         return dotDescription;
     }
 
@@ -220,7 +220,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public GaugeCompositeStyleDescription createGaugeCompositeStyleDescription() {
         GaugeCompositeStyleDescriptionImpl gaugeCompositeStyleDescription = new GaugeCompositeStyleDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(gaugeCompositeStyleDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(gaugeCompositeStyleDescription);
         return gaugeCompositeStyleDescription;
     }
 
@@ -231,7 +231,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public GaugeSectionDescription createGaugeSectionDescription() {
         GaugeSectionDescriptionImpl gaugeSectionDescription = new GaugeSectionDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(gaugeSectionDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(gaugeSectionDescription);
         return gaugeSectionDescription;
     }
 
@@ -242,7 +242,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public FlatContainerStyleDescription createFlatContainerStyleDescription() {
         FlatContainerStyleDescriptionImpl flatContainerStyleDescription = new FlatContainerStyleDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(flatContainerStyleDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(flatContainerStyleDescription);
         return flatContainerStyleDescription;
     }
 
@@ -253,7 +253,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public ShapeContainerStyleDescription createShapeContainerStyleDescription() {
         ShapeContainerStyleDescriptionImpl shapeContainerStyleDescription = new ShapeContainerStyleDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(shapeContainerStyleDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(shapeContainerStyleDescription);
         return shapeContainerStyleDescription;
     }
 
@@ -264,7 +264,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public WorkspaceImageDescription createWorkspaceImageDescription() {
         WorkspaceImageDescriptionImpl workspaceImageDescription = new WorkspaceImageDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(workspaceImageDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(workspaceImageDescription);
         return workspaceImageDescription;
     }
 
@@ -275,7 +275,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public EdgeStyleDescription createEdgeStyleDescription() {
         EdgeStyleDescriptionImpl edgeStyleDescription = new EdgeStyleDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(edgeStyleDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(edgeStyleDescription);
         return edgeStyleDescription;
     }
 
@@ -286,7 +286,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public BeginLabelStyleDescription createBeginLabelStyleDescription() {
         BeginLabelStyleDescriptionImpl beginLabelStyleDescription = new BeginLabelStyleDescriptionSpec();
-        new DefaultColorStyleDescription().setDefaultColors(beginLabelStyleDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(beginLabelStyleDescription);
         return beginLabelStyleDescription;
     }
 
@@ -297,7 +297,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public CenterLabelStyleDescription createCenterLabelStyleDescription() {
         CenterLabelStyleDescriptionImpl centerLabelStyleDescription = new CenterLabelStyleDescriptionSpec();
-        new DefaultColorStyleDescription().setDefaultColors(centerLabelStyleDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(centerLabelStyleDescription);
         return centerLabelStyleDescription;
     }
 
@@ -308,7 +308,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public EndLabelStyleDescription createEndLabelStyleDescription() {
         EndLabelStyleDescriptionImpl endLabelStyleDescription = new EndLabelStyleDescriptionSpec();
-        new DefaultColorStyleDescription().setDefaultColors(endLabelStyleDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(endLabelStyleDescription);
         return endLabelStyleDescription;
     }
 
@@ -319,7 +319,7 @@ public class StyleFactoryImpl extends EFactoryImpl implements StyleFactory {
      */
     public BracketEdgeStyleDescription createBracketEdgeStyleDescription() {
         BracketEdgeStyleDescriptionImpl bracketEdgeStyleDescription = new BracketEdgeStyleDescriptionImpl();
-        new DefaultColorStyleDescription().setDefaultColors(bracketEdgeStyleDescription);
+        new DiagramDefaultColorStyleDescription().setDefaultColors(bracketEdgeStyleDescription);
         return bracketEdgeStyleDescription;
     }
 
