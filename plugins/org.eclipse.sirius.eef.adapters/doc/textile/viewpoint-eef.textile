@@ -71,10 +71,12 @@ bc..
 
 p. 
 
-Note : this configuration can also be cloned to be used with viewpoint tables and trees (by using the following property contributor ids 
+Note: this configuration can also be cloned to be used with viewpoint tables and trees (by using the following property contributor ids 
 @org.eclipse.sirius.table.ui.EditorID@ and @org.eclipse.sirius.tree.ui.EditorID@).
 
 A @propertySection@ must be declared for each *tab* generated in the  @org.eclipse.ui.views.properties.tabbed.propertyTabs@ extension.
+
+Note: if you have not set *Descriptors Contributor ID* in the @.eefgen@ model and you override the @org.eclipse.sirius.diagram@, @org.eclipse.sirius.table.ui.EditorID@ or @org.eclipse.sirius.tree.ui.EditorID@ contributorId, do not forget to remove the use of @org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider@ as labelProvider. Otherwise you will get a viewpoint type name as title of the properties view instead of the type name of the semantic model element.
 
 h2. Testing properties view
 
