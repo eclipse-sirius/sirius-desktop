@@ -85,8 +85,8 @@ public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implem
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramMappingsRegistry#getDiagramMappingsManager(org.eclipse.sirius.business.api.session.Session,
-     *      org.eclipse.sirius.viewpoint.DDiagram)
+     * @see org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry#getDiagramMappingsManager(Session,
+     *      DDiagram)
      */
     public DiagramMappingsManager getDiagramMappingsManager(final Session session, final DDiagram diagram) {
         if (diagram == null) {

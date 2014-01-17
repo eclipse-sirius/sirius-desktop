@@ -79,7 +79,7 @@ public class LayersContribution extends AbstractMenuContributionItem {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.AbstractTabbarContribution#setDiagram(org.eclipse.sirius.viewpoint.DDiagram)
+     * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.AbstractTabbarContribution#setDiagram(org.eclipse.sirius.diagram.DDiagram)
      */
     @Override
     protected void setDiagram(DDiagram diagram) {

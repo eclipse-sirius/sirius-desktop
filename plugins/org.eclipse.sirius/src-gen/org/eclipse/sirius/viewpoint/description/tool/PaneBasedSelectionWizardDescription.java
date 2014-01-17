@@ -365,7 +365,7 @@ public interface PaneBasedSelectionWizardDescription extends AbstractToolDescrip
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='viewpoint.DDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the selected view.' container='ecore.EObject | the semantic element of containerView.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the selected view.' container='ecore.EObject | the semantic element of containerView.'"
      * @generated
      */
     String getCandidatesExpression();
@@ -427,7 +427,7 @@ public interface PaneBasedSelectionWizardDescription extends AbstractToolDescrip
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='viewpoint.DDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the selected view.' container='ecore.EObject | the semantic element of containerView.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the selected view.' container='ecore.EObject | the semantic element of containerView.'"
      * @generated
      */
     String getRootExpression();
@@ -462,7 +462,7 @@ public interface PaneBasedSelectionWizardDescription extends AbstractToolDescrip
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='viewpoint.DDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the selected view.' container='ecore.EObject | the semantic element of containerView.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the selected view.' container='ecore.EObject | the semantic element of containerView.'"
      * @generated
      */
     String getChildrenExpression();
@@ -532,7 +532,7 @@ public interface PaneBasedSelectionWizardDescription extends AbstractToolDescrip
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='viewpoint.DDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the selected view.' container='ecore.EObject | the semantic element of containerView.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the selected view.' container='ecore.EObject | the semantic element of containerView.'"
      * @generated
      */
     String getPreSelectedCandidatesExpression();

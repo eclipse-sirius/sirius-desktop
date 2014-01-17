@@ -109,7 +109,7 @@ public final class RefreshExtensionService implements IRefreshExtension {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.viewpoint.DDiagram)
+     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(DDiagram)
      */
     public void beforeRefresh(final DDiagram viewPoint) {
         final ListIterator<RefreshExtensionProviderDescriptor> iterProviders = this.getProviders().listIterator();
@@ -128,7 +128,7 @@ public final class RefreshExtensionService implements IRefreshExtension {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.viewpoint.DDiagram)
+     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(DDiagram)
      */
     public void postRefresh(final DDiagram viewPoint) {
         final ListIterator<RefreshExtensionProviderDescriptor> iterProviders = this.getProviders().listIterator();

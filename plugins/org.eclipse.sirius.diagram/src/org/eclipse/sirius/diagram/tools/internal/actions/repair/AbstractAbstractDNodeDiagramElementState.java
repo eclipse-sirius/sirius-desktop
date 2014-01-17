@@ -51,9 +51,8 @@ public abstract class AbstractAbstractDNodeDiagramElementState<D extends Abstrac
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.internal.actions.migration.state.AbstractDiagramElementState#storeElementState(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.sirius.viewpoint.description.DiagramElementMapping,
-     *      org.eclipse.sirius.viewpoint.DDiagramElement)
+     * @see org.eclipse.sirius.diagram.tools.internal.actions.repair.AbstractDiagramElementState#storeElementState(EObject,
+     *      DiagramElementMapping, org.eclipse.sirius.diagram.DDiagramElement)
      */
     @Override
     public void storeElementState(EObject target, DiagramElementMapping mapping, D element) {
@@ -68,7 +67,7 @@ public abstract class AbstractAbstractDNodeDiagramElementState<D extends Abstrac
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.internal.actions.migration.state.AbstractDiagramElementState#restoreElementState(org.eclipse.sirius.viewpoint.DDiagramElement)
+     * @see org.eclipse.sirius.diagram.tools.internal.actions.repair.AbstractDiagramElementState#restoreElementState(org.eclipse.sirius.diagram.DDiagramElement)
      */
     @Override
     public void restoreElementState(D element) {

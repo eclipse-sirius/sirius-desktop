@@ -48,8 +48,8 @@ public final class DefaultBorderItemLocatorProvider implements BorderItemLocator
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.BorderItemLocatorProvider#getBorderItemLocator(org.eclipse.draw2d.IFigure,
-     *      org.eclipse.sirius.viewpoint.DDiagramElement,
-     *      org.eclipse.sirius.viewpoint.DDiagramElement)
+     *      org.eclipse.sirius.diagram.DDiagramElement,
+     *      org.eclipse.sirius.diagram.DDiagramElement)
      */
     public IBorderItemLocator getBorderItemLocator(final IFigure figure, final DDiagramElement vpElementOwner, final DDiagramElement diagramElementBorderItem) {
         final DBorderItemLocator locator = new DBorderItemLocator(figure, PositionConstants.NSEW);

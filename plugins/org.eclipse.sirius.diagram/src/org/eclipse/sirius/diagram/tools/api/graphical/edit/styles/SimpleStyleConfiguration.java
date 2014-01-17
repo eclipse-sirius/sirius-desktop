@@ -127,7 +127,8 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getLabelIcon(org.eclipse.sirius.viewpoint.DDiagramElement)
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getLabelIcon(DDiagramElement,
+     *      IGraphicalEditPart)
      */
     public Image getLabelIcon(final DDiagramElement vpElement, IGraphicalEditPart editPart) {
         Image icon = null;

@@ -284,13 +284,13 @@ public class SequenceAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DDiagram <em>DDiagram</em>}'. <!--
+     * {@link org.eclipse.sirius.diagram.DDiagram <em>DDiagram</em>}'. <!--
      * begin-user-doc --> This default implementation returns null so that we
      * can easily ignore cases; it's useful to ignore a case when inheritance
      * will catch all the cases anyway. <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.DDiagram
+     * @see org.eclipse.sirius.diagram.DDiagram
      * @generated
      */
     public Adapter createDDiagramAdapter() {

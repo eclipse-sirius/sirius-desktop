@@ -43,7 +43,7 @@ import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
- * A Task to create {@link org.eclipse.sirius.viewpoint.DDiagramElementContainer}.
+ * A Task to create {@link org.eclipse.sirius.diagram.DDiagramElementContainer}.
  * 
  * @author mchauvin
  */
@@ -103,19 +103,19 @@ public class CreateContainerTask extends AbstractCommandTask implements ICreatio
             BestMappingGetter bestMappingGetter = new BestMappingGetter((DSemanticDecorator) containerView, semanticElt);
             ContainerMapping bestMapping = bestMappingGetter.getBestContainerMapping(tool.getContainerMappings());
             if (bestMapping != null) {
-                    AbstractDNodeCandidate abstractDNodeCandidate = new AbstractDNodeCandidate(bestMapping, semanticElt, containerView);
-                    AbstractDNode createdAbstractDNode = dDiagramElementSynchronizer.createNewNode(mappingManager, abstractDNodeCandidate, false);
-                    if (createdAbstractDNode != null) {
-                        AbstractNodeMappingSpecOperations.createBorderingNodes(bestMapping, semanticElt, createdAbstractDNode, Collections.emptyList(), dSemanticDiagram);
+                AbstractDNodeCandidate abstractDNodeCandidate = new AbstractDNodeCandidate(bestMapping, semanticElt, containerView);
+                AbstractDNode createdAbstractDNode = dDiagramElementSynchronizer.createNewNode(mappingManager, abstractDNodeCandidate, false);
+                if (createdAbstractDNode != null) {
+                    AbstractNodeMappingSpecOperations.createBorderingNodes(bestMapping, semanticElt, createdAbstractDNode, Collections.emptyList(), dSemanticDiagram);
 
-                        if (isAutoPinOnCreateEnabled()) {
-                            createdAbstractDNode.getArrangeConstraints().add(ArrangeConstraint.KEEP_LOCATION);
-                            createdAbstractDNode.getArrangeConstraints().add(ArrangeConstraint.KEEP_RATIO);
-                            createdAbstractDNode.getArrangeConstraints().add(ArrangeConstraint.KEEP_SIZE);
-                        }
-                        AbstractNodeMappingSpecOperations.setInitialVisibility(createdAbstractDNode, dSemanticDiagram, session);
-                        createdAbstractDNodes.add(createdAbstractDNode);
+                    if (isAutoPinOnCreateEnabled()) {
+                        createdAbstractDNode.getArrangeConstraints().add(ArrangeConstraint.KEEP_LOCATION);
+                        createdAbstractDNode.getArrangeConstraints().add(ArrangeConstraint.KEEP_RATIO);
+                        createdAbstractDNode.getArrangeConstraints().add(ArrangeConstraint.KEEP_SIZE);
                     }
+                    AbstractNodeMappingSpecOperations.setInitialVisibility(createdAbstractDNode, dSemanticDiagram, session);
+                    createdAbstractDNodes.add(createdAbstractDNode);
+                }
             }
         }
     }

@@ -126,7 +126,8 @@ public class SafeStyleConfiguration implements StyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getLabelIcon(org.eclipse.sirius.viewpoint.DDiagramElement)
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getLabelIcon(DDiagramElement,
+     *      IGraphicalEditPart)
      */
     public Image getLabelIcon(DDiagramElement vpElement, IGraphicalEditPart editPart) {
         try {
@@ -140,8 +141,8 @@ public class SafeStyleConfiguration implements StyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getNameBorderItemLocator(org.eclipse.sirius.viewpoint.DNode,
-     *      org.eclipse.draw2d.IFigure)
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#getNameBorderItemLocator(DNode,
+     *      IFigure)
      */
     public IBorderItemLocator getNameBorderItemLocator(DNode node, IFigure mainFigure) {
         try {

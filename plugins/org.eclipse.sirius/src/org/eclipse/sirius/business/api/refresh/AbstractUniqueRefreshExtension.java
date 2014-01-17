@@ -49,7 +49,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(org.eclipse.sirius.viewpoint.DDiagram)
+     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(DDiagram)
      */
     public void beforeRefresh(final DDiagram viewPoint) {
         // Do nothing.
@@ -58,7 +58,7 @@ public abstract class AbstractUniqueRefreshExtension implements IRefreshExtensio
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(org.eclipse.sirius.viewpoint.DDiagram)
+     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(DDiagram)
      */
     public void postRefresh(final DDiagram diagram) {
         final DiagramDescription desc = diagram.getDescription();

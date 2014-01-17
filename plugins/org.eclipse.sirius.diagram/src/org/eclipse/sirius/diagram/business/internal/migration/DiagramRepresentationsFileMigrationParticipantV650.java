@@ -145,7 +145,7 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
      *            The analysis to migrate.
      * @param diagrams
      *            list of GMF Diagram to move from the root of the resource to
-     *            the concerned {@link org.eclipse.sirius.viewpoint.DDiagram}.
+     *            the concerned {@link org.eclipse.sirius.diagram.DDiagram}.
      */
     public void moveGMFDiagramsFromRoot(DAnalysis dAnalysis, List<Diagram> diagrams) {
         for (Diagram diagram : diagrams) {
@@ -173,11 +173,10 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
     }
 
     /**
-     * In case of
-     * resizeKind == NONE and that DNode.width/height is different this of the
-     * GMF Node, before the fix changing the resizeKind to something different
-     * of NONE has the effect to resize the bounds of concerned figures to the
-     * DNode.width/height and not the GMF Node bounds.
+     * In case of resizeKind == NONE and that DNode.width/height is different
+     * this of the GMF Node, before the fix changing the resizeKind to something
+     * different of NONE has the effect to resize the bounds of concerned
+     * figures to the DNode.width/height and not the GMF Node bounds.
      * 
      * @param view
      *            The view to migrate.
@@ -198,14 +197,14 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
     }
 
     /**
-     * The existing diagram may have incorrect coordinates on
-     * their anchors, resulting in an inconsistent display now. The objective of
-     * this automatic migration is to ensure that egdes of the same tree goes
-     * through the same branches (ie they have the same anchor on source side or
-     * target side depending on the direction of the tree). If this is not the
-     * case the command modifies the GMF anchors to {0.5, 0.5}, if all anchors
-     * are different or to the unique id if there is only one defined anchor in
-     * the tree (other anchors are null).
+     * The existing diagram may have incorrect coordinates on their anchors,
+     * resulting in an inconsistent display now. The objective of this automatic
+     * migration is to ensure that egdes of the same tree goes through the same
+     * branches (ie they have the same anchor on source side or target side
+     * depending on the direction of the tree). If this is not the case the
+     * command modifies the GMF anchors to {0.5, 0.5}, if all anchors are
+     * different or to the unique id if there is only one defined anchor in the
+     * tree (other anchors are null).
      * 
      * @param view
      *            The view to migrate.

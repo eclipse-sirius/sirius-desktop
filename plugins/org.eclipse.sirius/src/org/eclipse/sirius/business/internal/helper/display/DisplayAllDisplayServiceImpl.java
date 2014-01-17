@@ -60,8 +60,8 @@ public final class DisplayAllDisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#isDisplayed(org.eclipse.sirius.viewpoint.DDiagram,
-     *      org.eclipse.sirius.viewpoint.DDiagramElement)
+     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#isDisplayed(DDiagram,
+     *      DDiagramElement)
      */
     public boolean isDisplayed(final DDiagram diagram, final DDiagramElement element) {
         return true;
@@ -70,8 +70,8 @@ public final class DisplayAllDisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeVisibility(org.eclipse.sirius.viewpoint.DDiagram,
-     *      org.eclipse.sirius.viewpoint.DDiagramElement)
+     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeVisibility(DiagramMappingsManager,
+     *      DDiagram, DDiagramElement)
      */
     public boolean computeVisibility(DiagramMappingsManager session, final DDiagram diagram, final DDiagramElement element) {
         return true;
@@ -80,8 +80,8 @@ public final class DisplayAllDisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeLabelVisibility(org.eclipse.sirius.viewpoint.DDiagram,
-     *      org.eclipse.sirius.viewpoint.DDiagramElement)
+     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeLabelVisibility(DDiagram,
+     *      DDiagramElement)
      */
     public boolean computeLabelVisibility(DDiagram diagram, DDiagramElement element) {
         return true;

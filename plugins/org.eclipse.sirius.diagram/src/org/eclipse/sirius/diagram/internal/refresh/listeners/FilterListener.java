@@ -25,8 +25,8 @@ import org.eclipse.sirius.ext.base.Options;
 
 /**
  * A ModelChangeTrigger listener to refresh filter applications on each
- * {@link org.eclipse.sirius.viewpoint.DDiagramElement} of the current {@link DDiagram}
- * .
+ * {@link org.eclipse.sirius.diagram.DDiagramElement} of the current
+ * {@link DDiagram} .
  * 
  * @author mporhel
  */

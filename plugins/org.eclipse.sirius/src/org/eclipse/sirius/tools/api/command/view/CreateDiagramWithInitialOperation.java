@@ -50,7 +50,7 @@ public class CreateDiagramWithInitialOperation extends AbstractCommandTask {
      *            the diagram description.
      * @param semanticElement
      *            semantic element on which the user requested the creation of
-     *            the {@link org.eclipse.sirius.viewpoint.DDiagram}.
+     *            the {@link org.eclipse.sirius.diagram.DDiagram}.
      * @param uiCallBack
      *            the ui callback used to ask for the detail name.
      * @param monitor

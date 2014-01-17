@@ -31,7 +31,7 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * {@link org.eclipse.gef.GraphicalViewer} used for the
- * {@link org.eclipse.sirius.viewpoint.DDiagram} modeler.
+ * {@link org.eclipse.sirius.diagram.DDiagram} modeler.
  * 
  * @author mchauvin
  */
@@ -124,8 +124,8 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
 
     /**
      * Special version of the ToggleUpdateManager normally used in the
-     * super-class, with a workaround to avoid infinite loops triggered during figure
-     * validation.
+     * super-class, with a workaround to avoid infinite loops triggered during
+     * figure validation.
      * 
      * @author ymortier
      */

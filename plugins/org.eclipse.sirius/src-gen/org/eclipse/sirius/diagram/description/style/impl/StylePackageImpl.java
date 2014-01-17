@@ -1387,9 +1387,9 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         addAnnotation(getGaugeSectionDescription_ValueExpression(), source, new String[] {});
         addAnnotation(getSizeComputationContainerStyleDescription_WidthComputationExpression(), source, new String[] {});
         addAnnotation(getSizeComputationContainerStyleDescription_HeightComputationExpression(), source, new String[] {});
-        addAnnotation(getEdgeStyleDescription_SizeComputationExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DSemanticDiagram.", "view",
-                "viewpoint.DEdge | the current edge view for which the size is calculated.", "sourceView", "viewpoint.EdgeTarget | the source view of the current edge.", "targetView",
-                "viewpoint.EdgeTarget | the target view of the current edge." });
+        addAnnotation(getEdgeStyleDescription_SizeComputationExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DSemanticDiagram.", "view",
+                "diagram.DEdge | the current edge view for which the size is calculated.", "sourceView", "diagram.EdgeTarget | the source view of the current edge.", "targetView",
+                "diagram.EdgeTarget | the target view of the current edge." });
     }
 
     /**

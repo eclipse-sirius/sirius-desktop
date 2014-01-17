@@ -28,7 +28,7 @@ public class DDiagramLinkSpec extends DDiagramLinkImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.impl.DDiagramLinkImpl#setNode(org.eclipse.sirius.viewpoint.EdgeTarget)
+     * @see org.eclipse.sirius.viewpoint.impl.DDiagramLinkImpl#setNode(org.eclipse.sirius.diagram.EdgeTarget)
      */
     @Override
     public void setNode(final EdgeTarget newNode) {

@@ -63,7 +63,7 @@ public interface SelectionDescription extends EObject {
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='viewpoint.DDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the view of the container.' container='ecore.EObject | the semantic element of the container.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the view of the container.' container='ecore.EObject | the semantic element of the container.'"
      * @generated
      */
     String getCandidatesExpression();
@@ -155,7 +155,7 @@ public interface SelectionDescription extends EObject {
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='viewpoint.DDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the view of the container.' container='ecore.EObject | the semantic element of the container.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the view of the container.' container='ecore.EObject | the semantic element of the container.'"
      * @generated
      */
     String getRootExpression();
@@ -190,7 +190,7 @@ public interface SelectionDescription extends EObject {
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='viewpoint.DDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the view of the container.' container='ecore.EObject | the semantic element of the container.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DDiagram | the current DDiagram.' containerView='viewpoint.DSemanticDecorator | the view of the container.' container='ecore.EObject | the semantic element of the container.'"
      * @generated
      */
     String getChildrenExpression();

@@ -52,8 +52,8 @@ public class StateEditPart extends ExecutionEditPart {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart#createBorderItemLocator(org.eclipse.draw2d.IFigure,
-     *      org.eclipse.sirius.viewpoint.DDiagramElement)
+     * @see org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart#createBorderItemLocator(IFigure,
+     *      DDiagramElement)
      */
     @Override
     public IBorderItemLocator createBorderItemLocator(final IFigure figure, final DDiagramElement vpElementBorderItem) {

@@ -47,8 +47,8 @@ public class ToolFilterFromDescription implements ToolFilter {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter#filter(org.eclipse.sirius.viewpoint.DDiagram,
-     *      org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription)
+     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter#filter(DDiagram,
+     *      AbstractToolDescription)
      */
     public boolean filter(DDiagram diagram, AbstractToolDescription tool) {
         if (tool == toolDescription) {

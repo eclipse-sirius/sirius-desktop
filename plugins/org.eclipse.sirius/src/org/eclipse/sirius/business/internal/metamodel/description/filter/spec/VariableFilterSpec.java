@@ -44,7 +44,7 @@ public class VariableFilterSpec extends VariableFilterImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.filter.impl.FilterImpl#isVisible(org.eclipse.sirius.viewpoint.DDiagramElement)
+     * @see org.eclipse.sirius.diagram.description.filter.impl.FilterImpl#isVisible(DDiagramElement)
      */
     @Override
     public boolean isVisible(final DDiagramElement element) {

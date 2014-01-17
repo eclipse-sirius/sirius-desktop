@@ -55,7 +55,8 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
 /**
- * Hide a {@link DDiagramElement} on a {@link org.eclipse.sirius.viewpoint.DDiagram}.
+ * Hide a {@link DDiagramElement} on a
+ * {@link org.eclipse.sirius.diagram.DDiagram}.
  * 
  * @author cbrun
  * 

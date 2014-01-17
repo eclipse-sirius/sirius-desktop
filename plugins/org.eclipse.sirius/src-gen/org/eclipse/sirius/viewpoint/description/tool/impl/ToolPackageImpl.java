@@ -2727,13 +2727,13 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         addAnnotation(getAbstractToolDescription_Precondition(), source, new String[] { "container", "ecore.EObject | the container." });
         addAnnotation(getToolDescription_Element(), source, new String[] { "type", "ecore.EObject" });
         addAnnotation(getToolDescription_ElementView(), source, new String[] { "type", "ecore.EObject" });
-        addAnnotation(getPaneBasedSelectionWizardDescription_CandidatesExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DDiagram.", "containerView",
+        addAnnotation(getPaneBasedSelectionWizardDescription_CandidatesExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", "containerView",
                 "viewpoint.DSemanticDecorator | the selected view.", "container", "ecore.EObject | the semantic element of containerView." });
-        addAnnotation(getPaneBasedSelectionWizardDescription_RootExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DDiagram.", "containerView",
+        addAnnotation(getPaneBasedSelectionWizardDescription_RootExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", "containerView",
                 "viewpoint.DSemanticDecorator | the selected view.", "container", "ecore.EObject | the semantic element of containerView." });
-        addAnnotation(getPaneBasedSelectionWizardDescription_ChildrenExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DDiagram.", "containerView",
+        addAnnotation(getPaneBasedSelectionWizardDescription_ChildrenExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", "containerView",
                 "viewpoint.DSemanticDecorator | the selected view.", "container", "ecore.EObject | the semantic element of containerView." });
-        addAnnotation(getPaneBasedSelectionWizardDescription_PreSelectedCandidatesExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DDiagram.", "containerView",
+        addAnnotation(getPaneBasedSelectionWizardDescription_PreSelectedCandidatesExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", "containerView",
                 "viewpoint.DSemanticDecorator | the selected view.", "container", "ecore.EObject | the semantic element of containerView." });
         addAnnotation(getRepresentationCreationDescription_TitleExpression(), source, new String[] {});
         addAnnotation(getRepresentationCreationDescription_BrowseExpression(), source, new String[] {});

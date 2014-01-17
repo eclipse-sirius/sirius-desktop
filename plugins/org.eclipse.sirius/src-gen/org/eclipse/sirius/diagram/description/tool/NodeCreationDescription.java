@@ -114,7 +114,7 @@ public interface NodeCreationDescription extends MappingBasedToolDescription {
      *        annotation=
      *        "http://www.eclipse.org/emf/2002/GenModel documentedName='containerView'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables type='viewpoint.DDiagramElementContainer'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables type='diagram.DDiagramElementContainer'"
      * @generated
      */
     ContainerViewVariable getViewVariable();

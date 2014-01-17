@@ -26,8 +26,8 @@ public class EdgeCreationDescriptionSpec extends EdgeCreationDescriptionImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.tool.impl.EdgeCreationDescriptionImpl#getBestMapping(org.eclipse.sirius.viewpoint.EdgeTarget,
-     *      org.eclipse.sirius.viewpoint.EdgeTarget,
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.EdgeCreationDescriptionImpl#getBestMapping(org.eclipse.sirius.diagram.EdgeTarget,
+     *      org.eclipse.sirius.diagram.EdgeTarget,
      *      org.eclipse.emf.common.util.EList)
      */
     @Override

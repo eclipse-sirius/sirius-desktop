@@ -2031,26 +2031,26 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
     protected void createVariablesAnnotations() {
         String source = "http://www.eclipse.org/sirius/interpreted/expression/variables";
         addAnnotation(getDiagramDescription_PreconditionExpression(), source, new String[] {});
-        addAnnotation(getDiagramDescription_RootExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DDiagram.", "viewpoint",
-                "viewpoint.DDiagram | (deprecated) the current DDiagram." });
+        addAnnotation(getDiagramDescription_RootExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", "viewpoint",
+                "diagram.DDiagram | (deprecated) the current DDiagram." });
         addAnnotation(getDiagramElementMapping_PreconditionExpression(), source, new String[] { "containerView",
                 "viewpoint.DragAndDropTarget | the view that sould contain the potential views of the checked elements.", "container", "ecore.EObject | the semantic element of containerView.",
                 "viewpoint", "viewpoint.DSemanticDiagram | (deprecated) the current DSemanticDiagram.", "diagram", "viewpoint.DSemanticDiagram | the current DSemanticDiagram.", "sourceView",
                 "viewpoint.DSemanticDecorator | (edge only) the source view of the current potential edge.", "source", "ecore.EObject | (edge only) the semantic element of sourceView.", "targetView",
                 "viewpoint.DSemanticDecorator | (edge only) the target view of the current potential edge.", "target", "ecore.EObject | (edge only) the semantic element of targetView." });
-        addAnnotation(getDiagramElementMapping_SemanticCandidatesExpression(), source, new String[] { "containerView", "viewpoint.DDiagram | the parent view of potential candidates.", "diagram",
-                "viewpoint.DDiagram | the current DDiagram.", "viewpoint", "viewpoint.DDiagram | (deprecated) the current DDiagram.", "viewPoint",
-                "viewpoint.DDiagram | (deprecated) the current DDiagram." });
-        addAnnotation(getDiagramElementMapping_SemanticElements(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DSemanticDiagram.", "view",
-                "viewpoint.DDiagramElement | the current view created from the current mapping.", "viewpoint", "viewpoint.DDiagram | (deprecated) the current DSemanticDiagram." });
-        addAnnotation(getEdgeMapping_TargetFinderExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DDiagram.", "viewpoint",
-                "viewpoint.DDiagram | (deprecated) the current DDiagram.", "viewPoint", "viewpoint.DDiagram | (deprecated) the current DDiagram." });
-        addAnnotation(getEdgeMapping_SourceFinderExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DDiagram.", "viewpoint",
-                "viewpoint.DDiagram | (deprecated) the current DDiagram.", "viewPoint", "viewpoint.DDiagram | (deprecated) the current DDiagram." });
-        addAnnotation(getEdgeMapping_TargetExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DDiagram.", "viewpoint",
-                "viewpoint.DDiagram | (deprecated) the current DDiagram.", "viewPoint", "viewpoint.DDiagram | (deprecated) the current DDiagram." });
-        addAnnotation(getEdgeMapping_PathExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DDiagram.", "viewpoint",
-                "viewpoint.DDiagram | (deprecated) the current DDiagram.", "element", "ecore.EObject | the semantic element  of the current edge.", "source",
+        addAnnotation(getDiagramElementMapping_SemanticCandidatesExpression(), source,
+                new String[] { "containerView", "diagram.DDiagram | the parent view of potential candidates.", "diagram", "diagram.DDiagram | the current DDiagram.", "viewpoint",
+                        "diagram.DDiagram | (deprecated) the current DDiagram.", "viewPoint", "diagram.DDiagram | (deprecated) the current DDiagram." });
+        addAnnotation(getDiagramElementMapping_SemanticElements(), source, new String[] { "diagram", "diagram.DDiagram | the current DSemanticDiagram.", "view",
+                "diagram.DDiagramElement | the current view created from the current mapping.", "viewpoint", "diagram.DDiagram | (deprecated) the current DSemanticDiagram." });
+        addAnnotation(getEdgeMapping_TargetFinderExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", "viewpoint",
+                "diagram.DDiagram | (deprecated) the current DDiagram.", "viewPoint", "diagram.DDiagram | (deprecated) the current DDiagram." });
+        addAnnotation(getEdgeMapping_SourceFinderExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", "viewpoint",
+                "diagram.DDiagram | (deprecated) the current DDiagram.", "viewPoint", "diagram.DDiagram | (deprecated) the current DDiagram." });
+        addAnnotation(getEdgeMapping_TargetExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", "viewpoint",
+                "diagram.DDiagram | (deprecated) the current DDiagram.", "viewPoint", "diagram.DDiagram | (deprecated) the current DDiagram." });
+        addAnnotation(getEdgeMapping_PathExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", "viewpoint",
+                "diagram.DDiagram | (deprecated) the current DDiagram.", "element", "ecore.EObject | the semantic element  of the current edge.", "source",
                 "ecore.EObject | the semantic target of the current source node.", "target", "ecore.EObject | the semantic element of the current target node." });
         addAnnotation(getOrderedTreeLayout_ChildrenExpression(), source, new String[] {});
     }

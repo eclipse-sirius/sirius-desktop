@@ -64,8 +64,8 @@ public class SequenceCollapseUpdater extends CollapseUpdater {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.CollapseUpdater#collapseBounds(org.eclipse.gmf.runtime.notation.Node,
-     *      org.eclipse.sirius.viewpoint.DDiagramElement)
+     * @see org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.CollapseUpdater#collapseBounds(Node,
+     *      DDiagramElement)
      */
     public void collapseBounds(Node node, DDiagramElement element) {
         if (!specificCollapsePredicate.apply(element)) {
@@ -95,8 +95,8 @@ public class SequenceCollapseUpdater extends CollapseUpdater {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.CollapseUpdater#getExpandedBounds(org.eclipse.gmf.runtime.notation.Node,
-     *      org.eclipse.sirius.viewpoint.DDiagramElement)
+     * @see org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.CollapseUpdater#getExpandedBounds(Node,
+     *      DDiagramElement)
      */
     @Override
     public Option<Bounds> getExpandedBounds(Node node, DDiagramElement element) {

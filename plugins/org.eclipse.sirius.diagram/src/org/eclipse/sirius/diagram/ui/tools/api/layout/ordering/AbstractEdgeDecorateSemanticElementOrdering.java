@@ -55,8 +55,8 @@ public abstract class AbstractEdgeDecorateSemanticElementOrdering extends Abstra
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.AbstractViewEdgeOrdering#compare(org.eclipse.sirius.viewpoint.DEdge,
-     *      org.eclipse.sirius.viewpoint.DEdge)
+     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.AbstractViewEdgeOrdering#compare(org.eclipse.sirius.diagram.DEdge,
+     *      org.eclipse.sirius.diagram.DEdge)
      */
     @Override
     public int compare(final DEdge vp1, final DEdge vp2) {
@@ -68,7 +68,7 @@ public abstract class AbstractEdgeDecorateSemanticElementOrdering extends Abstra
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.AbstractViewEdgeOrdering#isAbleToManageViewEdge(org.eclipse.sirius.viewpoint.DEdge)
+     * @see org.eclipse.sirius.diagram.business.api.layout.ordering.AbstractViewEdgeOrdering#isAbleToManageViewEdge(org.eclipse.sirius.diagram.DEdge)
      */
     @Override
     public final boolean isAbleToManageViewEdge(final DEdge viewEdge) {

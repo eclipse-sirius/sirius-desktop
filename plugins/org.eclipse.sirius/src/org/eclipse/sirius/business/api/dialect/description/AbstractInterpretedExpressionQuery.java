@@ -257,14 +257,14 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * following entry:
      * <p>
      * <code>
-     * diagram -> viewpoint.DDiagram | the current DSemanticDiagram.
+     * diagram -> diagram.DDiagram | the current DSemanticDiagram.
      * </code>
      * <p>
      * where <code>"diagram"</code> is the annotation key, representing the
      * variable's name, and
-     * <code>"viewpoint.DDiagram | the current DSemanticDiagram"</code> is the
+     * <code>"diagram.DDiagram | the current DSemanticDiagram"</code> is the
      * value, indicating that the type of the variable is
-     * <code>viewpoint.DDiagram</code>.
+     * <code>diagram.DDiagram</code>.
      * <p>
      * If no type is specified in the documentation,
      * {@link #DEFAULT_VARIABLE_TYPE} is assumed.

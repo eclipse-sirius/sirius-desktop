@@ -287,7 +287,7 @@ public class InstanceRoleSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNo
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.diagram.graphical.edit.policies.SiriusGraphicalNodeEditPolicy#buildCreateEdgeCommand(org.eclipse.gef.requests.CreateConnectionRequest,
-     *      org.eclipse.sirius.viewpoint.EdgeTarget, org.eclipse.sirius.viewpoint.EdgeTarget,
+     *      org.eclipse.sirius.diagram.EdgeTarget, org.eclipse.sirius.diagram.EdgeTarget,
      *      org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription,
      *      org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider,
      *      org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData)

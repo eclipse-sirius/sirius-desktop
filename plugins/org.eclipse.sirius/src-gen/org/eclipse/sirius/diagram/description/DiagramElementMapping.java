@@ -173,7 +173,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables containerView='viewpoint.DDiagram | the parent view of potential candidates.' diagram='viewpoint.DDiagram | the current DDiagram.' viewpoint='viewpoint.DDiagram | (deprecated) the current DDiagram.' viewPoint='viewpoint.DDiagram | (deprecated) the current DDiagram.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables containerView='diagram.DDiagram | the parent view of potential candidates.' diagram='diagram.DDiagram | the current DDiagram.' viewpoint='diagram.DDiagram | (deprecated) the current DDiagram.' viewPoint='diagram.DDiagram | (deprecated) the current DDiagram.'"
      * @generated
      */
     String getSemanticCandidatesExpression();
@@ -236,7 +236,7 @@ public interface DiagramElementMapping extends RepresentationElementMapping, Pas
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a Collection<EObject> or an EObject.'"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='viewpoint.DDiagram | the current DSemanticDiagram.' view='viewpoint.DDiagramElement | the current view created from the current mapping.' viewpoint='viewpoint.DDiagram | (deprecated) the current DSemanticDiagram.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables diagram='diagram.DDiagram | the current DSemanticDiagram.' view='diagram.DDiagramElement | the current view created from the current mapping.' viewpoint='diagram.DDiagram | (deprecated) the current DSemanticDiagram.'"
      * @generated
      */
     String getSemanticElements();

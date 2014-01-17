@@ -421,7 +421,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.business.api.diagramtype.IDiagramDescriptionProvider
-     *      #getCollapseUpdater(org.eclipse.sirius.viewpoint.DDiagram)
+     *      #getCollapseUpdater(DDiagram)
      */
     public Option<? extends ICollapseUpdater> getCollapseUpdater(DDiagram diagram) {
         if (diagram != null && diagram.getDescription() != null && handles(diagram.getDescription().eClass().getEPackage())) {

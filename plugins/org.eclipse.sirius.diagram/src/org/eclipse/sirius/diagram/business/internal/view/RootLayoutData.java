@@ -92,10 +92,10 @@ public class RootLayoutData extends LayoutData {
 
     /**
      * Default constructor from a parent
-     * {@link org.eclipse.sirius.viewpoint.DDiagramElement}/{@link DDiagram}.
+     * {@link org.eclipse.sirius.diagram.DDiagramElement}/{@link DDiagram}.
      * 
      * @param adaptObject
-     *            The parent {@link org.eclipse.sirius.viewpoint.DDiagramElement}/
+     *            The parent {@link org.eclipse.sirius.diagram.DDiagramElement}/
      *            {@link DDiagram}
      * @param location
      *            Location in the parent

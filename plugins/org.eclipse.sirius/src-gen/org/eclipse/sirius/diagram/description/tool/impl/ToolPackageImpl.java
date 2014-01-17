@@ -1645,13 +1645,13 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
     protected void createVariablesAnnotations() {
         String source = "http://www.eclipse.org/sirius/interpreted/expression/variables";
         addAnnotation(getNodeCreationDescription_Variable(), source, new String[] { "type", "ecore.EObject" });
-        addAnnotation(getNodeCreationDescription_ViewVariable(), source, new String[] { "type", "viewpoint.DDiagramElementContainer" });
+        addAnnotation(getNodeCreationDescription_ViewVariable(), source, new String[] { "type", "diagram.DDiagramElementContainer" });
         addAnnotation(getEdgeCreationDescription_ConnectionStartPrecondition(), source, new String[] { "container", "ecore.EObject | the semantic element of diagram.", "preSourceView",
-                "viewpoint.EdgeTarget | (edge only) the source view of the current potential edge.", "preSource", "ecore.EObject | (edge only) the semantic element of $preSourceView.", "diagram",
-                "viewpoint.DDiagram | the diagram of the current potential edge" });
+                "diagram.EdgeTarget | (edge only) the source view of the current potential edge.", "preSource", "ecore.EObject | (edge only) the semantic element of $preSourceView.", "diagram",
+                "diagram.DDiagram | the diagram of the current potential edge" });
         addAnnotation(getDeleteHookParameter_Value(), source, new String[] {});
-        addAnnotation(getDirectEditLabel_InputLabelExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DSemanticDiagram.", "view",
-                "viewpoint.DDiagramElement | the current view for which the label is calculated." });
+        addAnnotation(getDirectEditLabel_InputLabelExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DSemanticDiagram.", "view",
+                "diagram.DDiagramElement | the current view for which the label is calculated." });
         addAnnotation(getCreateView_ContainerViewExpression(), source, new String[] {});
         addAnnotation(getCreateEdgeView_SourceExpression(), source, new String[] {});
         addAnnotation(getCreateEdgeView_TargetExpression(), source, new String[] {});

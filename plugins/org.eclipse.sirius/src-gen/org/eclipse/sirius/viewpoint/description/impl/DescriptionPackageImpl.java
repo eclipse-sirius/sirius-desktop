@@ -2508,14 +2508,14 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 new String[] { "view", "ecore.EObject | the current view.", "container", "ecore.EObject | the semantic container." });
         addAnnotation(getDecorationDescription_PreconditionExpression(), source, new String[] { "containerView",
                 "viewpoint.DSemanticDecorator | the view that would contain the potential views of the checked elements.", "container", "ecore.EObject | the semantic element of the container view.",
-                "viewpoint", "viewpoint.DDiagram | (deprecated) the current diagram.", "diagram", "viewpoint.DDiagram | the current diagram." });
+                "viewpoint", "diagram.DDiagram | (deprecated) the current diagram.", "diagram", "diagram.DDiagram | the current diagram." });
         addAnnotation(getVSMElementCustomization_PredicateExpression(), source, new String[] { "view", "ecore.EObject | the current view.", "container", "ecore.EObject | the semantic container." });
         addAnnotation(getEAttributeCustomization_Value(), source, new String[] { "view", "ecore.EObject | the current view.", "container", "ecore.EObject | the semantic container." });
-        addAnnotation(getSelectionDescription_CandidatesExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DDiagram.", "containerView",
+        addAnnotation(getSelectionDescription_CandidatesExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", "containerView",
                 "viewpoint.DSemanticDecorator | the view of the container.", "container", "ecore.EObject | the semantic element of the container." });
-        addAnnotation(getSelectionDescription_RootExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DDiagram.", "containerView",
+        addAnnotation(getSelectionDescription_RootExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", "containerView",
                 "viewpoint.DSemanticDecorator | the view of the container.", "container", "ecore.EObject | the semantic element of the container." });
-        addAnnotation(getSelectionDescription_ChildrenExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DDiagram.", "containerView",
+        addAnnotation(getSelectionDescription_ChildrenExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", "containerView",
                 "viewpoint.DSemanticDecorator | the view of the container.", "container", "ecore.EObject | the semantic element of the container." });
         addAnnotation(getInterpolatedColor_ColorValueComputationExpression(), source, new String[] {});
         addAnnotation(getInterpolatedColor_MinValueComputationExpression(), source, new String[] {});

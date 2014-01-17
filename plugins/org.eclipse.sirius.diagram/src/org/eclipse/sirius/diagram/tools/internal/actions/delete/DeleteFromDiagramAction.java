@@ -54,7 +54,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * Delete a {@link org.eclipse.sirius.viewpoint.DDiagramElement}.
+ * Delete a {@link org.eclipse.sirius.diagram.DDiagramElement}.
  * 
  * @author cbrun
  * 

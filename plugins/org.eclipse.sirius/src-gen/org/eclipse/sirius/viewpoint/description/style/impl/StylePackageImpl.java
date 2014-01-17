@@ -537,8 +537,8 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      */
     protected void createVariablesAnnotations() {
         String source = "http://www.eclipse.org/sirius/interpreted/expression/variables";
-        addAnnotation(getBasicLabelStyleDescription_LabelExpression(), source, new String[] { "diagram", "viewpoint.DDiagram | the current DSemanticDiagram.", "view",
-                "viewpoint.DDiagramElement | the current view for which the label is calculated." });
+        addAnnotation(getBasicLabelStyleDescription_LabelExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DSemanticDiagram.", "view",
+                "diagram.DDiagramElement | the current view for which the label is calculated." });
         addAnnotation(getTooltipStyleDescription_TooltipExpression(), source, new String[] { "view", "viewpoint.DSemanticDecorator | the current view." });
     }
 

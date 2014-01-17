@@ -308,7 +308,7 @@ public interface EdgeCreationDescription extends MappingBasedToolDescription {
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/variables container='ecore.EObject | the semantic element of diagram.' preSourceView='viewpoint.EdgeTarget | (edge only) the source view of the current potential edge.' preSource='ecore.EObject | (edge only) the semantic element of $preSourceView.' diagram='viewpoint.DDiagram | the diagram of the current potential edge'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/variables container='ecore.EObject | the semantic element of diagram.' preSourceView='diagram.EdgeTarget | (edge only) the source view of the current potential edge.' preSource='ecore.EObject | (edge only) the semantic element of $preSourceView.' diagram='diagram.DDiagram | the diagram of the current potential edge'"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
      * @generated

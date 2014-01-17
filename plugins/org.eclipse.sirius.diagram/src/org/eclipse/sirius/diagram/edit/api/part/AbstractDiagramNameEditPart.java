@@ -256,12 +256,12 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
 
     /**
      * Indicates if the given {@link DDiagramElement}'s parent
-     * {@link org.eclipse.sirius.viewpoint.DDiagram} is in Layouting Mode.
+     * {@link org.eclipse.sirius.diagram.DDiagram} is in Layouting Mode.
      * 
      * @param element
      *            the element to test
      * @return true if the given {@link DDiagramElement}'s parent
-     *         {@link org.eclipse.sirius.viewpoint.DDiagram} is in Layouting Mode,
+     *         {@link org.eclipse.sirius.diagram.DDiagram} is in Layouting Mode,
      *         false otherwise
      */
     private boolean isInLayoutingModeDiagram(DDiagramElement element) {
@@ -354,8 +354,7 @@ public abstract class AbstractDiagramNameEditPart extends LabelEditPart implemen
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getAdapter()
      */
     @Override
-    public Object getAdapter(@SuppressWarnings("rawtypes")
-    Class key) {
+    public Object getAdapter(@SuppressWarnings("rawtypes") Class key) {
         try {
             return super.getAdapter(key);
         } catch (NullPointerException e) {
