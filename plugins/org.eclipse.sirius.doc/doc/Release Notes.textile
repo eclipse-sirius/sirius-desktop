@@ -8,6 +8,8 @@ h2(#sirius1.0M5). Changes in Sirius 1.0.0M5 (from Sirius 1.0M4)
 
 h3. User-Visible Changes
 
+* The table csv export has been improved to handle cropped label. In some specific cases, the cell label is automatically cropped and '...' is concatenated to the resulting value. This cropped displayed label was previously exported, now the complete semantic value is exported.
+
 h3. API Changes
 
 h4. Library Extensions
@@ -38,6 +40,14 @@ h4. Changes in @org.eclipse.sirius.common.ui@
 
 * The @org.eclipse.sirius.common.ui.business.api.interpreter.VariableContentProvider@ class has been removed.
 * The @org.eclipse.sirius.common.ui.tools.api.util.ISimpleAction@ interface has been removed.
+
+h4. Changes in @org.eclipse.sirius.table@
+
+* The @org.eclipse.sirius.table.business.api.query.DCellQuery.getExportableLabel()@ method has been added to compute the label to export when the label is cropped by the @org.eclipse.emf.edit.provider.ItemPropertyDescriptor.ItemDelegator@.
+
+h4. Changes in @org.eclipse.sirius.table.ui@
+
+* The @org.eclipse.sirius.table.ui.business.api.helper.TableUIHelper@ now uses @DCellQuery.getExportableLabel()@ to compute the cell labels used in HTML export.
 
 h2(#sirius1.0M4). Changes in Sirius 1.0.0M4 (from Sirius 0.9)
 
