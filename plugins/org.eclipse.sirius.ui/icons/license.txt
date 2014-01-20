@@ -285,6 +285,7 @@ icons/obj16/ViewpointSpecificationFile.gif - org.eclipse.osgi - org.eclipse.osgi
 icons/obj16/ViewpointSpecificationProject.gif - org.eclipse.ui - org.eclipse.ui/icons/obj16/prj_obj.gif
 icons/obj16/copyLayout - org.eclipse.ui - org.eclipse.ui/icons/etool16/copy_edit.gif
 icons/obj16/copyLayoutDisabled - org.eclipse.ui - org.eclipse.ui/icons/etool16/copy_edit.gif
+icons/obj16/label_obj.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/obj16/label_obj.gif
 icons/obj16/layoutingMode_activate.png - icons/full/obj16/CompositeLayout.gif - org.eclipse.sirius.ui/icons/full/obj16/CompositeLayout.gif
 icons/obj16/pasteLayout - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
 icons/obj16/pasteLayoutDisabled - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif

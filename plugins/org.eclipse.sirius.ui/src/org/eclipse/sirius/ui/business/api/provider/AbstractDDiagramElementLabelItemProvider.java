@@ -121,7 +121,7 @@ public abstract class AbstractDDiagramElementLabelItemProvider extends ItemProvi
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/label_obj"));
+        return overlayImage(object, getResourceLocator().getImage("obj16/label_obj"));
     }
 
     /**
