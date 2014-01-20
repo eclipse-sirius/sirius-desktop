@@ -134,7 +134,8 @@ public class EStructuralFeatureCustomizationAppliedOnPropertySection extends Abs
         for (Object choiceOfValue : super.getChoiceOfValues(currentValues)) {
             if (choiceOfValue instanceof EObject) {
                 EObject choice = (EObject) choiceOfValue;
-                if ((choice instanceof StyleDescription || choice.eContainer() instanceof StyleDescription) && choice.eClass().getEPackage() == StylePackage.eINSTANCE) {
+                if ((choice instanceof StyleDescription || choice.eContainer() instanceof StyleDescription)
+                        && (choice.eClass().getEPackage() == StylePackage.eINSTANCE || choice.eClass().getEPackage() == org.eclipse.sirius.diagram.description.style.StylePackage.eINSTANCE)) {
                     if (isStyleDescriptionEltConformToEAttributeCustomization(choice) || isStyleDescriptionEltConformToEReferenceCustomization(choice)) {
                         availableStyleDescriptions.add(choice);
                     }
