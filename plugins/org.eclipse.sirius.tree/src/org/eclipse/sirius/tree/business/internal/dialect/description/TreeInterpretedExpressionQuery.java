@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,19 +14,18 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeItemEditionTool;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Sets;
 
 /**
  * Query allowing to get the target domain classes and available packages for a
@@ -36,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
  */
-public class TreeInterpretedExpressionQuery extends AbstractInterpretedExpressionQuery implements IInterpretedExpressionQuery {
+public class TreeInterpretedExpressionQuery extends AbstractInterpretedExpressionQuery {
 
     /**
      * Default constructor.
@@ -86,9 +85,9 @@ public class TreeInterpretedExpressionQuery extends AbstractInterpretedExpressio
      */
     private class TreeGlobalInterpretedTargetSwitch implements IInterpretedExpressionTargetSwitch {
 
-        private DefaultInterpretedExpressionTargetSwitch defaultSwitch = new DefaultInterpretedExpressionTargetSwitch(feature, this);
+        private final DefaultInterpretedExpressionTargetSwitch defaultSwitch = new DefaultInterpretedExpressionTargetSwitch(feature, this);
 
-        private TreeInterpretedExpressionTargetSwitch specificTreeSwitch = new TreeInterpretedExpressionTargetSwitch(feature, this);
+        private final TreeInterpretedExpressionTargetSwitch specificTreeSwitch = new TreeInterpretedExpressionTargetSwitch(feature, this);
 
         /**
          * 
@@ -101,7 +100,7 @@ public class TreeInterpretedExpressionQuery extends AbstractInterpretedExpressio
             Option<Collection<String>> expressionTarget = Options.newSome(targetTypes);
             if (target != null) {
                 String packageURI = target.eClass().getEPackage().getNsURI();
-                // We first try to apply the Diagram specific switch
+                // We first try to apply the Tree specific switch
                 if (DescriptionPackage.eINSTANCE.getNsURI().equals(packageURI)) {
                     specificTreeSwitch.setConsiderFeature(considerFeature);
                     expressionTarget = specificTreeSwitch.doSwitch(target);
@@ -112,6 +111,15 @@ public class TreeInterpretedExpressionQuery extends AbstractInterpretedExpressio
                 }
             }
             return expressionTarget;
+        }
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public Function<EObject, EObject> getFirstRelevantContainerFinder() {
+            // Can be null only during default switch initialization.
+            return defaultSwitch != null ? defaultSwitch.getFirstRelevantContainerFinder() : null;
         }
     }
 }

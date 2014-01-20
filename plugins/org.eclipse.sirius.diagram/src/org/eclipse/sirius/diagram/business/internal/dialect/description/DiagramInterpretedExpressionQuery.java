@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,11 +20,16 @@ import org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedEx
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 
+import com.google.common.base.Function;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
@@ -86,9 +91,17 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
      */
     private class DiagramGlobalInterpretedTargetSwitch implements IInterpretedExpressionTargetSwitch {
 
-        private DefaultInterpretedExpressionTargetSwitch defaultSwitch = new DefaultInterpretedExpressionTargetSwitch(feature, this);
+        private final Function<EObject, EObject> diagramFirstRelevantContainerFinder = new FirstRelevantContainerDiagramFunction();
 
-        private DiagramInterpretedExpressionTargetSwitch specificDiagramSwitch = new DiagramInterpretedExpressionTargetSwitch(feature, this);
+        private DefaultInterpretedExpressionTargetSwitch defaultSwitch = new DefaultInterpretedExpressionTargetSwitch(feature, this, diagramFirstRelevantContainerFinder);
+
+        private DiagramInterpretedExpressionTargetSwitch diagramDescriptionSwitch = new DiagramInterpretedExpressionTargetSwitch(feature, this);
+
+        private DiagramStyleInterpretedExpressionTargetSwitch diagramStyleSwitch = new DiagramStyleInterpretedExpressionTargetSwitch(feature, this);
+
+        private DiagramToolInterpretedExpressionTargetSwitch diagramToolSwitch = new DiagramToolInterpretedExpressionTargetSwitch(feature, this);
+
+        private FilterInterpretedExpressionTargetSwitch diagramFilterSwitch = new FilterInterpretedExpressionTargetSwitch(feature, this);
 
         /**
          * 
@@ -100,9 +113,8 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
             Collection<String> targetTypes = Sets.newLinkedHashSet();
             Option<Collection<String>> expressionTarget = Options.newSome(targetTypes);
             if (target != null) {
-                // Step 1 : trying to apply any contributed switch that matches
-                // the
-                // given target's EPackage
+                // Step 1: trying to apply any contributed switch that matches
+                // the given target's EPackage
                 for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
                     if (diagramTypeDescriptor.getDiagramDescriptionProvider().handles(target.eClass().getEPackage())) {
                         IInterpretedExpressionTargetSwitch contributedSwitch = diagramTypeDescriptor.getDiagramDescriptionProvider().createInterpretedExpressionSwitch(feature, this);
@@ -113,20 +125,71 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
                 }
                 // If no result has been found
                 if (expressionTarget.some() && expressionTarget.get().isEmpty()) {
-                    // Step 2 : apply the Diagram specific switch
-                    specificDiagramSwitch.setConsiderFeature(considerFeature);
-                    expressionTarget = specificDiagramSwitch.doSwitch(target);
+                    // Step 2: apply the Diagram description specific switch
+                    diagramDescriptionSwitch.setConsiderFeature(considerFeature);
+                    expressionTarget = diagramDescriptionSwitch.doSwitch(target);
+                }
 
-                    // If no result has been found
-                    if (expressionTarget.some() && expressionTarget.get().isEmpty()) {
-                        // Step 3 : we use the default switch
-                        expressionTarget = defaultSwitch.doSwitch(target, considerFeature);
-                    }
+                // If no result has been found
+                if (expressionTarget.some() && expressionTarget.get().isEmpty()) {
+                    // Step 3: apply the Diagram style specific switch
+                    diagramStyleSwitch.setConsiderFeature(considerFeature);
+                    expressionTarget = diagramStyleSwitch.doSwitch(target);
+                }
+
+                // If no result has been found
+                if (expressionTarget.some() && expressionTarget.get().isEmpty()) {
+                    // Step 4: apply the Diagram tool specific switch
+                    diagramToolSwitch.setConsiderFeature(considerFeature);
+                    expressionTarget = diagramToolSwitch.doSwitch(target);
+                }
+
+                // If no result has been found
+                if (expressionTarget.some() && expressionTarget.get().isEmpty()) {
+                    // Step 5: apply the Diagram filter specific switch
+                    diagramFilterSwitch.setConsiderFeature(considerFeature);
+                    expressionTarget = diagramFilterSwitch.doSwitch(target);
+                }
+
+                // If no result has been found
+                if (expressionTarget.some() && expressionTarget.get().isEmpty()) {
+                    // Step 7 : we use the default switch
+                    expressionTarget = defaultSwitch.doSwitch(target, considerFeature);
                 }
             }
             return expressionTarget;
         }
 
+        @Override
+        public Function<EObject, EObject> getFirstRelevantContainerFinder() {
+            return diagramFirstRelevantContainerFinder;
+        }
+
+    }
+
+    /**
+     * Returns the first relevant for the given EObject, i.e. the first
+     * container from which a domain class can be determined.
+     * <p>
+     * For example, for a given NodeMapping will return the first
+     * ContainerMapping or DiagramRepresentationDescription that contains this
+     * mapping.
+     * </p>
+     */
+    private static class FirstRelevantContainerDiagramFunction implements Function<EObject, EObject> {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public EObject apply(EObject input) {
+            EObject container = input.eContainer();
+            while ((!(container instanceof RepresentationDescription)) && (!(container instanceof RepresentationElementMapping)) && (!(container instanceof EdgeMappingImport))
+                    && (!(container instanceof DiagramExtensionDescription))) {
+                container = container.eContainer();
+            }
+            return container;
+        }
     }
 
 }

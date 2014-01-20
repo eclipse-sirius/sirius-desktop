@@ -35,6 +35,7 @@ The impacted EPackages are :
 h4. Changes in @org.eclipse.sirius@
 
 * The @org.eclipse.sirius.business.api.migration.resource.StringCouple@ class has been removed.
+* The @org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch.getFirstRelevantContainerFinder@ method has been added to let each dialect use its own @Function@ to retrieve the first relevant container of a given @EObject@, i.e. the first container from which a domain class can be determined.
 
 h4. Changes in @org.eclipse.sirius.common.ui@
 

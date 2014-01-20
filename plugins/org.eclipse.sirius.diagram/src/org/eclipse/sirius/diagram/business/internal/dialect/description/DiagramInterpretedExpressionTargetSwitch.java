@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,20 +15,23 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
+import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.DiagramImportDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
+import org.eclipse.sirius.diagram.description.OrderedTreeLayout;
 import org.eclipse.sirius.diagram.description.util.DescriptionSwitch;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
-import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 
 import com.google.common.collect.Sets;
 
@@ -65,27 +68,27 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
     protected EStructuralFeature feature;
 
     /**
+     * Indicates if the feature must be considered.
+     */
+    protected boolean considerFeature;
+
+    /**
      * The global switch to delegate the doSwitch method to.
      */
     protected IInterpretedExpressionTargetSwitch globalSwitch;
 
     /**
-     * Indicates if the feature should be considered.
-     */
-    protected boolean considerFeature;
-
-    /**
      * Default constructor.
      * 
      * @param feature
-     *            representationDescription
-     * @param targetSwitch
+     *            the feature containing the Interpreted expression
+     * @param theGlobalSwitch
      *            the global switch
      */
-    public DiagramInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch targetSwitch) {
+    public DiagramInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch theGlobalSwitch) {
         super();
         this.feature = feature;
-        this.globalSwitch = targetSwitch;
+        this.globalSwitch = theGlobalSwitch;
     }
 
     /**
@@ -104,6 +107,18 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
         return Options.newSome(defaultResult);
     }
 
+    /**
+     * Changes the behavior of this switch : if true, then the feature will be
+     * considered to calculate target types ; if false, then the feature will be
+     * ignored.
+     * 
+     * @param considerFeature
+     *            true if the feature should be considered, false otherwise
+     */
+    public void setConsiderFeature(boolean considerFeature) {
+        this.considerFeature = considerFeature;
+    }
+
     private int getFeatureId(EClass eClass) {
         int featureID = DO_NOT_CONSIDER_FEATURE;
         if (considerFeature && feature != null) {
@@ -112,43 +127,11 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
         return featureID;
     }
 
-    /**
-     * Returns the {@link RepresentationDescription} that contains the given
-     * element.
-     * 
-     * @param element
-     *            the element to get the {@link RepresentationDescription} from
-     * @return the {@link RepresentationDescription} that contains the given
-     *         element, null if none found
+    /*
+     * @see IInterpretedExpressionTargetSwitch#getFirstRelevantContainerFinder()
      */
-    protected EObject getRepresentationDescription(EObject element) {
-        EObject container = element.eContainer();
-        while (!(container instanceof RepresentationDescription)) {
-            container = container.eContainer();
-        }
-        return container;
-    }
-
-    /**
-     * Returns the first relevant for the given EObject, i.e. the first
-     * container from which a domain class can be determined.
-     * <p>
-     * For example, for a given NodeMapping will return the first
-     * ContainerMapping or DiagramRepresentationDescription that contains this
-     * mapping.
-     * </p>
-     * 
-     * @param element
-     *            the element to get the container from
-     * @return the first relevant for the given EObject, i.e. the first
-     *         container from which a domain class can be determined
-     */
-    protected EObject getFirstRelevantContainer(EObject element) {
-        EObject container = element.eContainer();
-        while (container != null && !(container instanceof RepresentationDescription || container instanceof RepresentationExtensionDescription || container instanceof RepresentationElementMapping)) {
-            container = container.eContainer();
-        }
-        return container;
+    private EObject getFirstRelevantContainer(EObject element) {
+        return globalSwitch.getFirstRelevantContainerFinder().apply(element);
     }
 
     /**
@@ -174,6 +157,15 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
         }
 
         return result;
+    }
+
+    @Override
+    public Option<Collection<String>> caseDiagramExtensionDescription(DiagramExtensionDescription object) {
+        DiagramDescription diagramDescription = ComponentizationHelper.getDiagramDescription(object, ViewpointRegistry.getInstance().getViewpoints());
+        if (diagramDescription != null) {
+            return doSwitch(diagramDescription);
+        }
+        return null;
     }
 
     /**
@@ -301,15 +293,34 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
         return result;
     }
 
+    @Override
+    public Option<Collection<String>> caseEdgeMappingImport(EdgeMappingImport object) {
+        IEdgeMappingQuery edgeMappingQuery = new IEdgeMappingQuery(object);
+        Option<EdgeMapping> option = edgeMappingQuery.getOriginalEdgeMapping();
+        if (option.some()) {
+            return doSwitch(option.get());
+        }
+
+        return null;
+    }
+
     /**
-     * Changes the behavior of this switch : if true, then the feature will be
-     * considered to calculate target types ; if false, then the feature will be
-     * ignored.
      * 
-     * @param considerFeature
-     *            true if the feature should be considered, false otherwise
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.diagram.description.util.DescriptionSwitch#caseOrderedTreeLayout(OrderedTreeLayout)
      */
-    public void setConsiderFeature(boolean considerFeature) {
-        this.considerFeature = considerFeature;
+    @Override
+    public Option<Collection<String>> caseOrderedTreeLayout(OrderedTreeLayout layout) {
+        Collection<String> target = Sets.newLinkedHashSet();
+        Option<Collection<String>> result = Options.newSome(target);
+        switch (getFeatureId(DescriptionPackage.eINSTANCE.getOrderedTreeLayout())) {
+        case DescriptionPackage.ORDERED_TREE_LAYOUT__CHILDREN_EXPRESSION:
+            result = globalSwitch.doSwitch(getFirstRelevantContainer(layout), false);
+            break;
+        default:
+            break;
+        }
+        return result;
     }
 }

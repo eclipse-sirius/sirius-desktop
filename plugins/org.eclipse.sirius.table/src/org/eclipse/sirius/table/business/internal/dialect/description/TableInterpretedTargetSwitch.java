@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,8 +38,6 @@ import org.eclipse.sirius.table.metamodel.table.description.TableCreationDescrip
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription;
 import org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
@@ -63,7 +61,7 @@ import com.google.common.collect.Sets;
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
  */
-public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Collection<String>>> implements IInterpretedExpressionTargetSwitch {
+public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Collection<String>>> {
 
     /**
      * Constant used in switches on feature id to consider the case when the
@@ -87,7 +85,7 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
      * Default constructor.
      * 
      * @param feature
-     *            representationDescription
+     *            the feature containing the Interpreted expression
      * @param globalSwitch
      *            the global switch
      */
@@ -102,56 +100,23 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch#doSwitch(org.eclipse.emf.ecore.EObject,
-     *      boolean)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
      */
-    public Option<Collection<String>> doSwitch(EObject target, boolean considerFeature) {
-        setConsiderFeature(considerFeature);
-        Option<Collection<String>> doSwitch = super.doSwitch(target);
+    @Override
+    public Option<Collection<String>> doSwitch(EObject theEObject) {
+        Option<Collection<String>> doSwitch = super.doSwitch(theEObject);
         if (doSwitch != null) {
             return doSwitch;
         }
-        Collection<String> targets = Sets.newLinkedHashSet();
-        return Options.newSome(targets);
+        Collection<String> defaultResult = Sets.newLinkedHashSet();
+        return Options.newSome(defaultResult);
     }
 
-    /**
-     * Changes the behavior of this switch : if true, then the feature will be
-     * considered to calculate target types ; if false, then the feature will be
-     * ignored.
-     * 
-     * @param considerFeature
-     *            true if the feature should be considered, false otherwise
+    /*
+     * @see IInterpretedExpressionTargetSwitch#getFirstRelevantContainerFinder()
      */
-    public void setConsiderFeature(boolean considerFeature) {
-        if (considerFeature) {
-            this.featureID = lastFeatureID;
-        } else {
-            lastFeatureID = this.featureID;
-            this.featureID = DO_NOT_CONSIDER_FEATURE;
-        }
-
-    }
-
-    /**
-     * Returns the first relevant for the given EObject, i.e. the first
-     * container from which a domain class can be determined.
-     * <p>
-     * For example, for a given LineMapping will return the first LineMapping or
-     * TableDescription that contains this mapping.
-     * </p>
-     * 
-     * @param element
-     *            the element to get the container from
-     * @return the first relevant for the given EObject, i.e. the first
-     *         container from which a domain class can be determined
-     */
-    protected EObject getFirstRelevantContainer(EObject element) {
-        EObject container = element.eContainer();
-        while ((!(container instanceof RepresentationDescription)) && (!(container instanceof RepresentationElementMapping))) {
-            container = container.eContainer();
-        }
-        return container;
+    private EObject getFirstRelevantContainer(EObject element) {
+        return globalSwitch.getFirstRelevantContainerFinder().apply(element);
     }
 
     /**
@@ -473,5 +438,22 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
     @Override
     public Option<Collection<String>> caseTableNavigationDescription(TableNavigationDescription object) {
         return globalSwitch.doSwitch(object.getTableDescription(), false);
+    }
+
+    /**
+     * Changes the behavior of this switch : if true, then the feature will be
+     * considered to calculate target types ; if false, then the feature will be
+     * ignored.
+     * 
+     * @param considerFeature
+     *            true if the feature should be considered, false otherwise
+     */
+    public void setConsiderFeature(boolean considerFeature) {
+        if (considerFeature) {
+            this.featureID = lastFeatureID;
+        } else {
+            lastFeatureID = this.featureID;
+            this.featureID = DO_NOT_CONSIDER_FEATURE;
+        }
     }
 }

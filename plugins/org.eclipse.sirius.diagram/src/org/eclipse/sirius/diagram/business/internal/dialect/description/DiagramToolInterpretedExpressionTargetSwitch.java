@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.dialect.description;
+package org.eclipse.sirius.diagram.business.internal.dialect.description;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -30,7 +30,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
-import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
@@ -141,23 +140,6 @@ public class DiagramToolInterpretedExpressionTargetSwitch extends ToolSwitch<Opt
         return container;
     }
 
-    /**
-     * Returns the {@link RepresentationDescription} that contains the given
-     * element.
-     * 
-     * @param element
-     *            the element to get the {@link RepresentationDescription} from
-     * @return the {@link RepresentationDescription} that contains the given
-     *         element, null if none found
-     */
-    protected EObject getRepresentationDescription(EObject element) {
-        EObject container = element.eContainer();
-        while (!(container instanceof RepresentationDescription)) {
-            container = container.eContainer();
-        }
-        return container;
-    }
-
     private boolean isChangingContextElement(EObject element) {
         boolean descCanChange = element instanceof RepresentationDescription || element instanceof RepresentationElementMapping;
         boolean operationCanChange = element instanceof CreateInstance || element instanceof ChangeContext;
@@ -221,16 +203,6 @@ public class DiagramToolInterpretedExpressionTargetSwitch extends ToolSwitch<Opt
             break;
         }
         return result;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Option<Collection<String>> caseModelOperation(ModelOperation object) {
-        // Default behavior for model operations : returning the first context
-        // changing parent Model operation or the containing Tool
-        return globalSwitch.doSwitch(getFirstContextChangingContainer(object), false);
     }
 
     /**

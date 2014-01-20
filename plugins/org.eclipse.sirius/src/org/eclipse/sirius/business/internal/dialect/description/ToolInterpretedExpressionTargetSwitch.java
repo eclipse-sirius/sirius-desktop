@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -151,23 +151,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
     protected EObject getFirstContextChangingContainer(EObject element) {
         EObject container = element.eContainer();
         while (!isChangingContextElement(container)) {
-            container = container.eContainer();
-        }
-        return container;
-    }
-
-    /**
-     * Returns the {@link RepresentationDescription} that contains the given
-     * element.
-     * 
-     * @param element
-     *            the element to get the {@link RepresentationDescription} from
-     * @return the {@link RepresentationDescription} that contains the given
-     *         element, null if none found
-     */
-    protected EObject getRepresentationDescription(EObject element) {
-        EObject container = element.eContainer();
-        while (!(container instanceof RepresentationDescription)) {
             container = container.eContainer();
         }
         return container;

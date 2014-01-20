@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,8 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.ext.base.Option;
 
+import com.google.common.base.Function;
+
 /**
  * A switch that will return the Target Types associated to a given element and
  * feature corresponding to an Interpreted Expression. For example, for a
@@ -27,8 +29,8 @@ import org.eclipse.sirius.ext.base.Option;
  * class associated to this mapping</li>
  * </p>
  * 
- * Can return {@link org.eclipse.sirius.ext.base.Options#newNone()} if the
- * given expression does not require any target type (for example, a Popup menu
+ * Can return {@link org.eclipse.sirius.ext.base.Options#newNone()} if the given
+ * expression does not require any target type (for example, a Popup menu
  * contribution uses variables and clicked element in its expressions, and the
  * receiver is an EObject, there is no reference in the meta model to compute
  * the possible type.).
@@ -40,11 +42,11 @@ public interface IInterpretedExpressionTargetSwitch {
 
     /**
      * Returns all the possible target Types for the given target and feature.
-     * Can return {@link org.eclipse.sirius.ext.base.Options#newNone()} if
-     * the given expression does not require any target type (for example, a
-     * Popup menu contribution uses variables and clicked element in its
-     * expressions, and the receiver is an EObject, there is no reference in the
-     * meta model to compute the possible type.).
+     * Can return {@link org.eclipse.sirius.ext.base.Options#newNone()} if the
+     * given expression does not require any target type (for example, a Popup
+     * menu contribution uses variables and clicked element in its expressions,
+     * and the receiver is an EObject, there is no reference in the meta model
+     * to compute the possible type.).
      * 
      * @param target
      *            the target to analyse
@@ -57,4 +59,18 @@ public interface IInterpretedExpressionTargetSwitch {
      *         target type is needed (see description)
      */
     Option<Collection<String>> doSwitch(EObject target, boolean considerFeature);
+
+    /**
+     * Returns a function to compute the first relevant container for the given
+     * EObject, i.e. the first container from which a domain class can be
+     * determined.
+     * <p>
+     * For example: for a given RepresentationElementMapping, it will return the
+     * first parent RepresentationElementMapping or RepresentationDescription.
+     * mapping.
+     * </p>
+     * 
+     * @return a Function to compute the first relevant container.
+     */
+    Function<EObject, EObject> getFirstRelevantContainerFinder();
 }

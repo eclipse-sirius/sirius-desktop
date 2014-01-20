@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,19 +14,19 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Sets;
 
 /**
  * Query allowing to get the target domain classes and available packages for a
@@ -95,9 +95,9 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
      */
     private class TableGlobalInterpretedTargetSwitch implements IInterpretedExpressionTargetSwitch {
 
-        private DefaultInterpretedExpressionTargetSwitch defaultSwitch = new DefaultInterpretedExpressionTargetSwitch(feature, this);
+        private final DefaultInterpretedExpressionTargetSwitch defaultSwitch = new DefaultInterpretedExpressionTargetSwitch(feature, this);
 
-        private TableInterpretedTargetSwitch specificTableSwitch = new TableInterpretedTargetSwitch(feature, this);
+        private final TableInterpretedTargetSwitch specificTableSwitch = new TableInterpretedTargetSwitch(feature, this);
 
         /**
          * 
@@ -113,7 +113,7 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
                 // We first try to apply the Table specific switch
                 if (DescriptionPackage.eINSTANCE.getNsURI().equals(packageURI)) {
                     specificTableSwitch.setConsiderFeature(considerFeature);
-                    expressionTarget = specificTableSwitch.doSwitch(target, considerFeature);
+                    expressionTarget = specificTableSwitch.doSwitch(target);
                 }
                 // If no result has been found, we use the default switch
                 if (expressionTarget.some() && expressionTarget.get().isEmpty()) {
@@ -122,6 +122,14 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
             }
             return expressionTarget;
         }
-    }
 
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public Function<EObject, EObject> getFirstRelevantContainerFinder() {
+            // Can be null only during default switch initialization.
+            return defaultSwitch != null ? defaultSwitch.getFirstRelevantContainerFinder() : null;
+        }
+    }
 }

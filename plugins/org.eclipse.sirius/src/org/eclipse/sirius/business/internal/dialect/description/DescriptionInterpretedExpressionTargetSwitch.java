@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,22 +14,20 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
-import org.eclipse.sirius.diagram.description.DescriptionPackage;
-import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
-import org.eclipse.sirius.diagram.description.EdgeMapping;
-import org.eclipse.sirius.diagram.description.EdgeMappingImport;
-import org.eclipse.sirius.diagram.description.IEdgeMapping;
-import org.eclipse.sirius.diagram.description.OrderedTreeLayout;
-import org.eclipse.sirius.diagram.description.util.DescriptionSwitch;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.viewpoint.description.ColorDescription;
+import org.eclipse.sirius.viewpoint.description.ColorStep;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
+import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
+import org.eclipse.sirius.viewpoint.description.SelectionDescription;
+import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
+import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
+import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 
 import com.google.common.collect.Sets;
 
@@ -121,55 +119,33 @@ public class DescriptionInterpretedExpressionTargetSwitch extends DescriptionSwi
 
     }
 
-    /**
-     * Returns the first relevant for the given EObject, i.e. the first
-     * container from which a domain class can be determined.
-     * <p>
-     * For example, for a given NodeMapping will return the first
-     * ContainerMapping or DiagramRepresentationDescription that contains this
-     * mapping.
-     * </p>
-     * 
-     * @param element
-     *            the element to get the container from
-     * @return the first relevant for the given EObject, i.e. the first
-     *         container from which a domain class can be determined
+    /*
+     * @see IInterpretedExpressionTargetSwitch#getFirstRelevantContainerFinder()
      */
-    protected EObject getFirstRelevantContainer(EObject element) {
-        EObject container = element.eContainer();
-        while ((!(container instanceof RepresentationDescription)) && (!(container instanceof RepresentationElementMapping)) && (!(container instanceof EdgeMappingImport))
-                && (!(container instanceof DiagramExtensionDescription))) {
-            container = container.eContainer();
-        }
-        if (container instanceof DiagramExtensionDescription) {
-            container = ComponentizationHelper.getDiagramDescription((DiagramExtensionDescription) container, ViewpointRegistry.getInstance().getViewpoints());
-        }
-
-        if (container instanceof EdgeMappingImport) {
-            IEdgeMappingQuery edgeMappingQuery = new IEdgeMappingQuery((IEdgeMapping) container);
-            Option<EdgeMapping> option = edgeMappingQuery.getOriginalEdgeMapping();
-            if (option.some()) {
-                container = option.get();
-            }
-        }
-        return container;
+    private EObject getFirstRelevantContainer(EObject element) {
+        return globalSwitch.getFirstRelevantContainerFinder().apply(element);
     }
 
     /**
-     * Returns the {@link RepresentationDescription} that contains the given
-     * element.
      * 
-     * @param element
-     *            the element to get the {@link RepresentationDescription} from
-     * @return the {@link RepresentationDescription} that contains the given
-     *         element, null if none found
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseSemanticBasedDecoration(org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration)
      */
-    protected EObject getRepresentationDescription(EObject element) {
-        EObject container = element.eContainer();
-        while (!(container instanceof RepresentationDescription)) {
-            container = container.eContainer();
+    public Option<Collection<String>> caseSemanticBasedDecoration(SemanticBasedDecoration object) {
+        Option<Collection<String>> result = null;
+        Collection<String> target = Sets.newLinkedHashSet();
+        switch (featureID) {
+        case DescriptionPackage.SEMANTIC_BASED_DECORATION__PRECONDITION_EXPRESSION:
+        case DO_NOT_CONSIDER_FEATURE:
+            target.add(object.getDomainClass());
+            result = Options.newSome(target);
+            break;
+        default:
+            break;
         }
-        return container;
+
+        return result;
     }
 
     /**
@@ -183,7 +159,7 @@ public class DescriptionInterpretedExpressionTargetSwitch extends DescriptionSwi
         Collection<String> target = Sets.newLinkedHashSet();
         Option<Collection<String>> result = Options.newSome(target);
         switch (featureID) {
-        case org.eclipse.sirius.viewpoint.description.DescriptionPackage.CONDITIONAL_STYLE_DESCRIPTION__PREDICATE_EXPRESSION:
+        case DescriptionPackage.CONDITIONAL_STYLE_DESCRIPTION__PREDICATE_EXPRESSION:
             result = globalSwitch.doSwitch(getFirstRelevantContainer(styleDescription), false);
             break;
         default:
@@ -192,20 +168,71 @@ public class DescriptionInterpretedExpressionTargetSwitch extends DescriptionSwi
         return result;
     }
 
+    @Override
+    public Option<Collection<String>> caseColorDescription(ColorDescription object) {
+        return Options.newNone();
+    }
+
+    @Override
+    public Option<Collection<String>> caseColorStep(ColorStep object) {
+        return Options.newNone();
+    }
+
+    @Override
+    public Option<Collection<String>> caseInterpolatedColor(InterpolatedColor object) {
+        return Options.newNone();
+    }
+
+    @Override
+    public Option<Collection<String>> caseVSMElementCustomization(VSMElementCustomization object) {
+        Option<Collection<String>> result = null;
+        switch (featureID) {
+        case DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION__PREDICATE_EXPRESSION:
+        case DO_NOT_CONSIDER_FEATURE:
+            result = Options.newNone();
+            break;
+        default:
+            break;
+        }
+
+        return result;
+    }
+
+    @Override
+    public Option<Collection<String>> caseEAttributeCustomization(EAttributeCustomization object) {
+        Option<Collection<String>> result = null;
+        switch (featureID) {
+        case DescriptionPackage.EATTRIBUTE_CUSTOMIZATION__VALUE:
+        case DO_NOT_CONSIDER_FEATURE:
+            result = Options.newNone();
+            break;
+        default:
+            break;
+        }
+
+        return result;
+    }
+
     /**
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseOrderedTreeLayout(org.eclipse.sirius.viewpoint.description.OrderedTreeLayout)
+     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseSelectionDescription(org.eclipse.sirius.viewpoint.description.SelectionDescription)
      */
     @Override
-    public Option<Collection<String>> caseOrderedTreeLayout(OrderedTreeLayout layout) {
-        Collection<String> target = Sets.newLinkedHashSet();
-        Option<Collection<String>> result = Options.newSome(target);
+    public Option<Collection<String>> caseSelectionDescription(SelectionDescription selectionDescription) {
+        Option<Collection<String>> result = null;
         switch (featureID) {
-        case DescriptionPackage.ORDERED_TREE_LAYOUT__CHILDREN_EXPRESSION:
-            result = globalSwitch.doSwitch(getFirstRelevantContainer(layout), false);
+        case DescriptionPackage.SELECTION_DESCRIPTION__CANDIDATES_EXPRESSION:
+        case DescriptionPackage.SELECTION_DESCRIPTION__ROOT_EXPRESSION:
+        case DescriptionPackage.SELECTION_DESCRIPTION__CHILDREN_EXPRESSION:
+            EObjectQuery query = new EObjectQuery(selectionDescription);
+            Option<EObject> parentRepresentationDescription = query.getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getRepresentationDescription());
+            if (parentRepresentationDescription.some()) {
+                result = globalSwitch.doSwitch(parentRepresentationDescription.get(), false);
+            }
             break;
+
         default:
             break;
         }

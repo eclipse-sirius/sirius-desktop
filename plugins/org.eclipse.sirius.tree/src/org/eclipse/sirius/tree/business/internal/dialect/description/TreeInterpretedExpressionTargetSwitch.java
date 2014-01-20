@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,12 +14,9 @@ import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import com.google.common.collect.Sets;
-
+import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.tree.description.ConditionalTreeItemStyleDescription;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeCreationDescription;
@@ -30,8 +27,9 @@ import org.eclipse.sirius.tree.description.TreeItemTool;
 import org.eclipse.sirius.tree.description.TreeNavigationDescription;
 import org.eclipse.sirius.tree.description.TreePopupMenu;
 import org.eclipse.sirius.tree.description.util.DescriptionSwitch;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+
+import com.google.common.collect.Sets;
 
 /**
  * A switch that will return the Target Types associated to a given element
@@ -76,15 +74,15 @@ public class TreeInterpretedExpressionTargetSwitch extends DescriptionSwitch<Opt
      * Default constructor.
      * 
      * @param feature
-     *            representationDescription
-     * @param targetSwitch
+     *            the feature containing the Interpreted expression
+     * @param globalSwitch
      *            the global switch
      */
-    public TreeInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch targetSwitch) {
+    public TreeInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch globalSwitch) {
         super();
         this.featureID = feature != null ? feature.getFeatureID() : DO_NOT_CONSIDER_FEATURE;
         lastFeatureID = featureID;
-        this.globalSwitch = targetSwitch;
+        this.globalSwitch = globalSwitch;
     }
 
     /**
@@ -103,43 +101,11 @@ public class TreeInterpretedExpressionTargetSwitch extends DescriptionSwitch<Opt
         return Options.newSome(defaultResult);
     }
 
-    /**
-     * Returns the {@link RepresentationDescription} that contains the given
-     * element.
-     * 
-     * @param element
-     *            the element to get the {@link RepresentationDescription} from
-     * @return the {@link RepresentationDescription} that contains the given
-     *         element, null if none found
+    /*
+     * @see IInterpretedExpressionTargetSwitch#getFirstRelevantContainerFinder()
      */
-    protected EObject getRepresentationDescription(EObject element) {
-        EObject container = element.eContainer();
-        while (!(container instanceof RepresentationDescription)) {
-            container = container.eContainer();
-        }
-        return container;
-    }
-
-    /**
-     * Returns the first relevant for the given EObject, i.e. the first
-     * container from which a domain class can be determined.
-     * <p>
-     * For example, for a given NodeMapping will return the first
-     * ContainerMapping or DiagramRepresentationDescription that contains this
-     * mapping.
-     * </p>
-     * 
-     * @param element
-     *            the element to get the container from
-     * @return the first relevant for the given EObject, i.e. the first
-     *         container from which a domain class can be determined
-     */
-    protected EObject getFirstRelevantContainer(EObject element) {
-        EObject container = element.eContainer();
-        while ((!(container instanceof RepresentationDescription)) && (!(container instanceof RepresentationElementMapping))) {
-            container = container.eContainer();
-        }
-        return container;
+    private EObject getFirstRelevantContainer(EObject element) {
+        return globalSwitch.getFirstRelevantContainerFinder().apply(element);
     }
 
     /**

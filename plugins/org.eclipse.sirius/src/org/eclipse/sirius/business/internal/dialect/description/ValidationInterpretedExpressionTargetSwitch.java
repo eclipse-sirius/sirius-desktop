@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ import com.google.common.collect.Sets;
 /**
  * A switch that will return the Target Types associated to a given element
  * (part of the
- * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationPackage}
+ * {@link org.eclipse.sirius.diagram.description.validation.ValidationPackage}
  * ) and feature corresponding to an Interpreted Expression. For example, for a
  * NodeMapping :
  * <p>

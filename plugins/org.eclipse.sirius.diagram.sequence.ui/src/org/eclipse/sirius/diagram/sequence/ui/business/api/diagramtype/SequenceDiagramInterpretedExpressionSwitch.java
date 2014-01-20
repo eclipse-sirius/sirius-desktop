@@ -25,8 +25,6 @@ import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescriptio
 import org.eclipse.sirius.diagram.sequence.description.util.DescriptionSwitch;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 import com.google.common.collect.Sets;
 
@@ -76,14 +74,14 @@ public class SequenceDiagramInterpretedExpressionSwitch extends DescriptionSwitc
      * Default constructor.
      * 
      * @param feature
-     *            representationDescription
-     * @param targetSwitch
+     *            the feature containing the Interpreted expression
+     * @param theGlobalSwitch
      *            the global switch
      */
-    public SequenceDiagramInterpretedExpressionSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch targetSwitch) {
+    public SequenceDiagramInterpretedExpressionSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch theGlobalSwitch) {
         super();
         this.feature = feature;
-        this.globalSwitch = targetSwitch;
+        this.globalSwitch = theGlobalSwitch;
     }
 
     /**
@@ -120,42 +118,15 @@ public class SequenceDiagramInterpretedExpressionSwitch extends DescriptionSwitc
     }
 
     /**
-     * Returns the {@link RepresentationDescription} that contains the given
-     * element.
+     * Apply the
+     * IInterpretedExpressionTargetSwitch#getFirstRelevantContainerFinder() of
+     * the global switch.
      * 
-     * @param element
-     *            the element to get the {@link RepresentationDescription} from
-     * @return the {@link RepresentationDescription} that contains the given
-     *         element, null if none found
+     * @see IInterpretedExpressionTargetSwitch#getFirstRelevantContainerFinder()
      */
-    protected EObject getRepresentationDescription(EObject element) {
-        EObject container = element.eContainer();
-        while (!(container instanceof RepresentationDescription)) {
-            container = container.eContainer();
-        }
-        return container;
-    }
-
-    /**
-     * Returns the first relevant for the given EObject, i.e. the first
-     * container from which a domain class can be determined.
-     * <p>
-     * For example, for a given NodeMapping will return the first
-     * ContainerMapping or DiagramRepresentationDescription that contains this
-     * mapping.
-     * </p>
-     * 
-     * @param element
-     *            the element to get the container from
-     * @return the first relevant for the given EObject, i.e. the first
-     *         container from which a domain class can be determined
-     */
-    protected EObject getFirstRelevantContainer(EObject element) {
-        EObject container = element.eContainer();
-        while ((!(container instanceof RepresentationDescription)) && (!(container instanceof RepresentationElementMapping))) {
-            container = container.eContainer();
-        }
-        return container;
+    @SuppressWarnings("unused")
+    private EObject getFirstRelevantContainer(EObject element) {
+        return globalSwitch.getFirstRelevantContainerFinder().apply(element);
     }
 
     /**
@@ -164,7 +135,7 @@ public class SequenceDiagramInterpretedExpressionSwitch extends DescriptionSwitc
     @Override
     public Option<Collection<String>> caseSequenceDiagramDescription(SequenceDiagramDescription object) {
         Option<Collection<String>> result = null;
-        switch (getFeatureId(object.eClass())) {
+        switch (getFeatureId(DescriptionPackage.eINSTANCE.getSequenceDiagramDescription())) {
         case DescriptionPackage.SEQUENCE_DIAGRAM_DESCRIPTION__ENDS_ORDERING:
         case DescriptionPackage.SEQUENCE_DIAGRAM_DESCRIPTION__INSTANCE_ROLES_ORDERING:
             Collection<String> target = Sets.newLinkedHashSet();

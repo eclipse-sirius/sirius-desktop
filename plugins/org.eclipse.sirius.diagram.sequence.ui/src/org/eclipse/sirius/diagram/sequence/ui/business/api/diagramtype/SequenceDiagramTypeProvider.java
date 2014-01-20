@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -69,6 +69,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
@@ -374,11 +375,11 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      */
     private class SequenceGlobalInterpretedTargetSwitch implements IInterpretedExpressionTargetSwitch {
 
-        private DefaultInterpretedExpressionTargetSwitch defaultSwitch;
+        private final DefaultInterpretedExpressionTargetSwitch defaultSwitch;
 
-        private SequenceDiagramInterpretedExpressionSwitch sequenceSwitch;
+        private final SequenceDiagramInterpretedExpressionSwitch sequenceSwitch;
 
-        private SequenceToolInterpretedExpressionSwitch toolSwitch;
+        private final SequenceToolInterpretedExpressionSwitch toolSwitch;
 
         public SequenceGlobalInterpretedTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch parentSwitch) {
             defaultSwitch = new DefaultInterpretedExpressionTargetSwitch(feature, parentSwitch);
@@ -414,6 +415,15 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
                 }
             }
             return expressionTarget;
+        }
+        
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public Function<EObject, EObject> getFirstRelevantContainerFinder() {
+            // Can be null only during default switch initialization.
+            return defaultSwitch != null ? defaultSwitch.getFirstRelevantContainerFinder() : null;
         }
     }
 

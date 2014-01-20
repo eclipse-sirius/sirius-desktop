@@ -8,18 +8,17 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.dialect.description;
+package org.eclipse.sirius.diagram.business.internal.dialect.description;
 
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.diagram.description.style.GaugeSectionDescription;
+import org.eclipse.sirius.diagram.description.style.util.StyleSwitch;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.util.StyleSwitch;
 
 import com.google.common.collect.Sets;
 
@@ -43,7 +42,7 @@ import com.google.common.collect.Sets;
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  */
-public class StyleInterpretedExpressionTargetSwitch extends StyleSwitch<Option<Collection<String>>> {
+public class DiagramStyleInterpretedExpressionTargetSwitch extends StyleSwitch<Option<Collection<String>>> {
 
     /**
      * Constant used in switches on feature id to consider the case when the
@@ -68,7 +67,7 @@ public class StyleInterpretedExpressionTargetSwitch extends StyleSwitch<Option<C
      * @param defaultInterpretedExpressionTargetSwitch
      *            the global switch to use
      */
-    public StyleInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch defaultInterpretedExpressionTargetSwitch) {
+    public DiagramStyleInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch defaultInterpretedExpressionTargetSwitch) {
         this.featureID = feature != null ? feature.getFeatureID() : DO_NOT_CONSIDER_FEATURE;
         this.lastFeatureID = featureID;
         this.globalSwitch = defaultInterpretedExpressionTargetSwitch;
@@ -106,7 +105,7 @@ public class StyleInterpretedExpressionTargetSwitch extends StyleSwitch<Option<C
             this.featureID = DO_NOT_CONSIDER_FEATURE;
         }
     }
-
+    
     /*
      * @see IInterpretedExpressionTargetSwitch#getFirstRelevantContainerFinder()
      */
@@ -115,26 +114,10 @@ public class StyleInterpretedExpressionTargetSwitch extends StyleSwitch<Option<C
     }
 
     /**
-     * 
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.style.util.StyleSwitch#caseStyleDescription(org.eclipse.sirius.viewpoint.description.style.StyleDescription)
      */
     @Override
-    public Option<Collection<String>> caseStyleDescription(StyleDescription object) {
-        // BY DEFAULT, the target of all Interpreted expressions related to a
-        // style is the RepresentationElementMapping that contains it
-        return globalSwitch.doSwitch(getFirstRelevantContainer(object), false);
-    }
-
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.style.util.StyleSwitch#caseBasicLabelStyleDescription(org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription)
-     */
-    @Override
-    public Option<Collection<String>> caseBasicLabelStyleDescription(BasicLabelStyleDescription object) {
+    public Option<Collection<String>> caseGaugeSectionDescription(GaugeSectionDescription object) {
         return globalSwitch.doSwitch(getFirstRelevantContainer(object), false);
     }
 }

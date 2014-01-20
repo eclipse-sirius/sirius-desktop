@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,15 +15,16 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.internal.dialect.description.DescriptionInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.business.internal.dialect.description.DiagramToolInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.business.internal.dialect.description.FilterInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.internal.dialect.description.StyleInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.internal.dialect.description.ToolInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.internal.dialect.description.ValidationInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.business.internal.dialect.description.ViewpointInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 
+import com.google.common.base.Function;
 import com.google.common.collect.Sets;
 
 /**
@@ -42,13 +43,21 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
 
     private ToolInterpretedExpressionTargetSwitch toolSwitch;
 
-    private DiagramToolInterpretedExpressionTargetSwitch diagramToolSwitch;
-
-    private FilterInterpretedExpressionTargetSwitch filterSwitch;
-
     private ValidationInterpretedExpressionTargetSwitch validationSwitch;
 
-    private ViewpointInterpretedExpressionTargetSwitch viewpointSwitch;
+    private final Function<EObject, EObject> firstRelevantContainerFinder;
+
+    /**
+     * Default constructor.
+     * 
+     * @param feature
+     *            the feature containing the Interpreted expression
+     * @param globalSwitch
+     *            the global switch to use
+     */
+    public DefaultInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch globalSwitch) {
+        this(feature, globalSwitch, null);
+    }
 
     /**
      * Default constructor.
@@ -58,19 +67,28 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
      *            the target from
      * @param globalSwitch
      *            the global switch to use
+     * @param firstRelevantContainerFunction
+     *            d
      */
-    public DefaultInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch globalSwitch) {
+    public DefaultInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch globalSwitch, Function<EObject, EObject> firstRelevantContainerFunction) {
         IInterpretedExpressionTargetSwitch theGlobalSwitch = globalSwitch;
         if (theGlobalSwitch == null) {
             theGlobalSwitch = this;
         }
+
+        // Init the relevant container finder
+        if (firstRelevantContainerFunction != null) {
+            this.firstRelevantContainerFinder = firstRelevantContainerFunction;
+        } else if (globalSwitch != null && globalSwitch.getFirstRelevantContainerFinder() != null) {
+            this.firstRelevantContainerFinder = globalSwitch.getFirstRelevantContainerFinder();
+        } else {
+            this.firstRelevantContainerFinder = new FirstRelevantContainerDefaultFunction();
+        }
+
         this.descriptionSwitch = new DescriptionInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
         this.styleSwitch = new StyleInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
         this.toolSwitch = new ToolInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
-        this.diagramToolSwitch = new DiagramToolInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
-        this.filterSwitch = new FilterInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
         this.validationSwitch = new ValidationInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
-        this.viewpointSwitch = new ViewpointInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
     }
 
     /**
@@ -93,23 +111,8 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
             }
 
             if (expressionTarget.some() && expressionTarget.get().isEmpty()) {
-                filterSwitch.setConsiderFeature(considerFeature);
-                expressionTarget = filterSwitch.doSwitch(theEObject);
-            }
-
-            if (expressionTarget.some() && expressionTarget.get().isEmpty()) {
                 validationSwitch.setConsiderFeature(considerFeature);
                 expressionTarget = validationSwitch.doSwitch(theEObject);
-            }
-
-            if (expressionTarget.some() && expressionTarget.get().isEmpty()) {
-                viewpointSwitch.setConsiderFeature(considerFeature);
-                expressionTarget = viewpointSwitch.doSwitch(theEObject);
-            }
-
-            if (expressionTarget.some() && expressionTarget.get().isEmpty()) {
-                diagramToolSwitch.setConsiderFeature(considerFeature);
-                expressionTarget = diagramToolSwitch.doSwitch(theEObject);
             }
 
             // Tool in last position -> tool will return a default EObject value
@@ -120,5 +123,37 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
             }
         }
         return expressionTarget;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Function<EObject, EObject> getFirstRelevantContainerFinder() {
+        return firstRelevantContainerFinder;
+    }
+
+    /**
+     * A function to compute the first relevant container for the given EObject,
+     * i.e. the first container from which a domain class can be determined.
+     * <p>
+     * For example: for a given RepresentationElementMapping, it will return the
+     * first parent RepresentationElementMapping or RepresentationDescription.
+     * mapping.
+     * </p>
+     */
+    private static class FirstRelevantContainerDefaultFunction implements Function<EObject, EObject> {
+
+        /**
+         * {@inheritDoc}
+         */
+        @Override
+        public EObject apply(EObject input) {
+            EObject container = input.eContainer();
+            while (!(container instanceof RepresentationDescription || container instanceof RepresentationElementMapping || container instanceof RepresentationExtensionDescription)) {
+                container = container.eContainer();
+            }
+            return container;
+        }
     }
 }
