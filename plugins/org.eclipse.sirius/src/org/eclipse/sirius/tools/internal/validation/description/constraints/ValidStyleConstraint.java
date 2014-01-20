@@ -25,7 +25,7 @@ import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
-import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
+import org.eclipse.sirius.diagram.description.util.DescriptionSwitch;
 
 /**
  * Validate that the node mapping, container mapping, edgeMapping, the
