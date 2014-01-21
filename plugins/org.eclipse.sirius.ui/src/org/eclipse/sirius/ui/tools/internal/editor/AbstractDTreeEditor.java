@@ -383,7 +383,9 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
     @Override
     public void setFocus() {
         if (treeViewerManager != null) {
-            treeViewerManager.getControl().setFocus();
+            if (treeViewerManager.getTreeViewer().getTree().getTopItem() != null) {
+                treeViewerManager.getControl().setFocus();
+            }
             setEclipseWindowTitle();
         }
     }
