@@ -15,9 +15,9 @@ import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMappingImport;
-import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.viewpoint.DragAndDropTarget;
+import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 
 /**
  * This class represents a candidate for a AbstractDNode, a candidate is a
@@ -193,12 +193,10 @@ public class AbstractDNodeCandidate {
             return null;
         }
         AbstractNodeMapping result = mappingImport;
-        while (result != null
-                && (result.eClass().getClassifierID() == DescriptionPackage.eINSTANCE.getContainerMappingImport().getClassifierID() || result.eClass().getClassifierID() == DescriptionPackage.eINSTANCE
-                        .getNodeMappingImport().getClassifierID())) {
-            if (result.eClass().getClassifierID() == DescriptionPackage.eINSTANCE.getContainerMappingImport().getClassifierID()) {
+        while (result instanceof AbstractMappingImport) {
+            if (result instanceof ContainerMappingImport) {
                 result = ((ContainerMappingImport) result).getImportedMapping();
-            } else if (result.eClass().getClassifierID() == DescriptionPackage.eINSTANCE.getNodeMappingImport().getClassifierID()) {
+            } else if (result instanceof NodeMappingImport) {
                 result = ((NodeMappingImport) result).getImportedMapping();
             }
         }
@@ -243,8 +241,7 @@ public class AbstractDNodeCandidate {
             if (!(obj instanceof Id)) {
                 return false;
             }
-            final Id other = (Id) obj;
-            ;
+            final Id other = (Id) obj;;
             return value.equals(other.value);
         }
         // CHECKSTYLE:ON

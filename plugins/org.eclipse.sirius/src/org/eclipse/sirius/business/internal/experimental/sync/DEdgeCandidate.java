@@ -16,7 +16,6 @@ import org.eclipse.sirius.business.internal.metamodel.description.operations.Edg
 import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
@@ -226,8 +225,8 @@ public class DEdgeCandidate {
     private EdgeMapping getRootMapping(final IEdgeMapping iEdgeMapping) {
         IEdgeMapping result = iEdgeMapping;
         if (iEdgeMapping != null) {
-            while (result.eClass().getClassifierID() == DescriptionPackage.eINSTANCE.getEdgeMappingImport().getClassifierID() || result instanceof EdgeMappingImportWrapper) {
-                if (result.eClass().getClassifierID() == DescriptionPackage.eINSTANCE.getEdgeMappingImport().getClassifierID()) {
+            while (result instanceof EdgeMappingImport || result instanceof EdgeMappingImportWrapper) {
+                if (result instanceof EdgeMappingImport) {
                     result = ((EdgeMappingImport) result).getImportedMapping();
                 } else if (result instanceof EdgeMappingImportWrapper) {
                     result = ((EdgeMappingImportWrapper) result).getImportedMapping();
