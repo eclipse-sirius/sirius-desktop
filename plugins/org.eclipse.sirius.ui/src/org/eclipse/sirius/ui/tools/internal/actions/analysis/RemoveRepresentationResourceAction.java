@@ -87,7 +87,7 @@ public class RemoveRepresentationResourceAction extends Action {
                         }
                     }
                 }
-                ui.closeEditors(editorsToClose, choice == ISaveablePart2.YES);
+                ui.closeEditors(choice == ISaveablePart2.YES, editorsToClose);
             }
         }
         if (choice != ISaveablePart2.CANCEL) {

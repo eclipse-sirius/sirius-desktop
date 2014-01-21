@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
  * 
  * @author cbrun
  */
-public interface IEditingSession extends DeprecatedIEditingSession {
+public interface IEditingSession {
     
     /**
      * Get the wrapped {@link Session}.
