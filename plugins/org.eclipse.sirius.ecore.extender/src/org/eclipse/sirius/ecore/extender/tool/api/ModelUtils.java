@@ -38,15 +38,14 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.tool.internal.ReferencesResolver;
 import org.eclipse.sirius.ecore.extender.tool.internal.StringUtil;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * Utility class for model loading/saving and serialization.
@@ -280,8 +279,11 @@ public final class ModelUtils {
      *             If the given file does not exist.
      */
     public static EObject load(final URI modelURI, final ResourceSet resourceSet) throws IOException {
-        final Resource modelResource = ModelUtils.createResource(modelURI, resourceSet);
-        final Map<Object, Object> options = new HashMap<Object, Object>();
+        Resource modelResource = resourceSet.getResource(modelURI, false);
+        if (modelResource == null) {
+            modelResource = ModelUtils.createResource(modelURI, resourceSet);
+        }
+        Map<Object, Object> options = new HashMap<Object, Object>();
         options.put(XMLResource.OPTION_ENCODING, System.getProperty(ModelUtils.ENCODING_PROPERTY));
         return ModelUtils.load(modelResource, options);
     }
