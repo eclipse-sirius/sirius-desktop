@@ -48,8 +48,6 @@ public class AirDResourceImpl extends GMFResource implements DResource, AirdReso
         }
     };
 
-    private String loadedVersion;
-
     /**
      * This constructor should be used only if the version is up to date. There
      * is no automatic migration during the resolution of an object.
@@ -59,22 +57,6 @@ public class AirDResourceImpl extends GMFResource implements DResource, AirdReso
      */
     public AirDResourceImpl(final URI uri) {
         super(uri);
-    }
-
-    /**
-     * This constructor allows to migrate some references during the resolution
-     * of an object for the given URI. The method {@link #getEObject(String)} is
-     * override to recompute the fragment if the loadedVersion is not up to
-     * date.
-     * 
-     * @param uri
-     *            the URI
-     * @param loadedVersion
-     *            the last migration version of the representations file.
-     */
-    public AirDResourceImpl(URI uri, String loadedVersion) {
-        super(uri);
-        this.loadedVersion = loadedVersion;
     }
 
     /**

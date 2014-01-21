@@ -12,12 +12,15 @@ package org.eclipse.sirius.editor.tools.internal.presentation;
 
 import java.util.Collections;
 import java.util.EventObject;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.ui.URIEditorInput;
@@ -44,6 +47,10 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.business.api.logger.MarkerRuntimeLogger;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
+import org.eclipse.sirius.business.internal.migration.description.VSMExtendedMetaData;
+import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
+import org.eclipse.sirius.business.internal.migration.description.VSMResourceHandler;
+import org.eclipse.sirius.business.internal.migration.description.VSMVersionSAXParser;
 import org.eclipse.sirius.business.internal.movida.DynamicVSMLoader;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
@@ -59,11 +66,13 @@ import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditMan
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPathEditorInput;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.osgi.framework.Version;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -418,5 +427,38 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         }
         updateProblemIndication = true;
         updateProblemIndication();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * Trigger migration if required.
+     */
+    @Override
+    protected void beforeReload(Resource resource) {
+        if (resource instanceof DescriptionResourceImpl) {
+            VSMVersionSAXParser parser = new VSMVersionSAXParser(resource.getURI());
+            String loadedVersion = parser.getVersion(new NullProgressMonitor());
+            boolean migrationIsNeeded = true;
+            if (loadedVersion != null) {
+                migrationIsNeeded = VSMMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(loadedVersion));
+            }
+            if (migrationIsNeeded) {
+                VSMExtendedMetaData extendedMetaData = new VSMExtendedMetaData(loadedVersion);
+                VSMResourceHandler resourceHandler = new VSMResourceHandler(loadedVersion);
+
+                // set load options
+                final Map<Object, Object> loadOptions = new HashMap<Object, Object>();
+                loadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
+                loadOptions.put(XMLResource.OPTION_RESOURCE_HANDLER, resourceHandler);
+                ((DescriptionResourceImpl) resource).getDefaultLoadOptions().putAll(loadOptions);
+
+                // set save options
+                final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+                saveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
+                saveOptions.put(XMLResource.OPTION_RESOURCE_HANDLER, resourceHandler);
+                ((DescriptionResourceImpl) resource).getDefaultSaveOptions().putAll(saveOptions);
+            }
+        }
     }
 }

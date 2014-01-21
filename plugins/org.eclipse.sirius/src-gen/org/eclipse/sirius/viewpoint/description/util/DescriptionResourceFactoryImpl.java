@@ -63,33 +63,29 @@ public class DescriptionResourceFactoryImpl extends ResourceFactoryImpl {
             migrationIsNeeded = VSMMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(loadedVersion));
         }
 
-        if (migrationIsNeeded) {
-            extendedMetaData = new VSMExtendedMetaData(loadedVersion);
-            resourceHandler = new VSMResourceHandler(loadedVersion);
-        }
-        XMIResource resource = new DescriptionResourceImpl(uri, loadedVersion);
+        XMIResource resource = new DescriptionResourceImpl(uri);
 
         // set load options
         final Map<Object, Object> loadOptions = new HashMap<Object, Object>();
-        if (migrationIsNeeded) {
-            loadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
-            loadOptions.put(XMLResource.OPTION_RESOURCE_HANDLER, resourceHandler);
-        }
-
         loadOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
-
-        resource.getDefaultLoadOptions().putAll(loadOptions);
 
         // set save options
         final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+        saveOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
 
+        // handle migration option
         if (migrationIsNeeded) {
+            extendedMetaData = new VSMExtendedMetaData(loadedVersion);
+            resourceHandler = new VSMResourceHandler(loadedVersion);
+
+            loadOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
+            loadOptions.put(XMLResource.OPTION_RESOURCE_HANDLER, resourceHandler);
+
             saveOptions.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
             saveOptions.put(XMLResource.OPTION_RESOURCE_HANDLER, resourceHandler);
         }
 
-        saveOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
-
+        resource.getDefaultLoadOptions().putAll(loadOptions);
         resource.getDefaultSaveOptions().putAll(saveOptions);
 
         return resource;

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.migration.description;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
@@ -25,6 +26,7 @@ import org.osgi.framework.Version;
  * 
  */
 public class VSMXMIHelper extends XMIHelperImpl {
+    
     private String version;
 
     private boolean migrationNeeded;
@@ -34,13 +36,13 @@ public class VSMXMIHelper extends XMIHelperImpl {
      * 
      * @param resource
      *            the resource creating that helper.
-     * @param version
-     *            the mm version
      */
-    public VSMXMIHelper(String version, XMLResource resource) {
+    public VSMXMIHelper(XMLResource resource) {
         super(resource);
-        this.version = version;
-        this.migrationNeeded = version == null || VSMMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(version));
+        
+        VSMVersionSAXParser parser = new VSMVersionSAXParser(resource.getURI());
+        this.version = parser.getVersion(new NullProgressMonitor());
+        this.migrationNeeded = VSMMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(version));
     }
 
     @Override

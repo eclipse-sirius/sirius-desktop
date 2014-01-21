@@ -11,13 +11,11 @@
  */
 package org.eclipse.sirius.viewpoint.description.util;
 
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
-import org.eclipse.sirius.business.internal.migration.description.VSMVersionSAXParser;
 import org.eclipse.sirius.business.internal.migration.description.VSMXMIHelper;
 import org.eclipse.sirius.ext.base.Option;
 
@@ -42,30 +40,9 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
         super(uri);
     }
 
-    private String loadedVersion;
-
-    /**
-     * Creates an instance of the resource. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @param uri
-     *            the URI of the new resource.
-     * @param loadedVersion
-     *            the last migration version of the representations file.
-     * @generated NOT
-     */
-    public DescriptionResourceImpl(URI uri, String loadedVersion) {
-        super(uri);
-        this.loadedVersion = loadedVersion;
-    }
-
     @Override
     protected XMLHelper createXMLHelper() {
-        if (loadedVersion == null) {
-            VSMVersionSAXParser parser = new VSMVersionSAXParser(this.getURI());
-            loadedVersion = parser.getVersion(new NullProgressMonitor());
-        }
-        return new VSMXMIHelper(loadedVersion, this);
+        return new VSMXMIHelper(this);
     }
 
     /**

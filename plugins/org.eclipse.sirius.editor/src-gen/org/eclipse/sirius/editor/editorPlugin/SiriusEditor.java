@@ -512,6 +512,7 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
                 Resource resource = i.next();
                 if (resource.isLoaded()) {
                     resource.unload();
+                    beforeReload(resource);
                     try {
                         resource.load(Collections.EMPTY_MAP);
                     } catch (IOException exception) {
@@ -524,6 +525,18 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
             updateProblemIndication = true;
             updateProblemIndication();
         }
+    }
+
+    /**
+     * The changed resource has just been unloaded and will be loaded after this
+     * call. This method allows to analyze and update the resource (default
+     * load/save options for example) before the reload.
+     * 
+     * @param changedResource
+     *            the changed resource.
+     */
+    protected void beforeReload(Resource changedResource) {
+        // Nothing to do per default.
     }
 
     /**
