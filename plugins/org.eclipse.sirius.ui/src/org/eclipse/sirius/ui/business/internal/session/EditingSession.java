@@ -124,27 +124,17 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
         }
     }
 
-    /**
-     * Get the wrapped {@link Session}.
-     * 
-     * @return the session.
-     */
+    @Override
     public Session getSession() {
         return session;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.session.IEditingSession#getEditors()
-     */
+    @Override
     public Collection<DialectEditor> getEditors() {
         return editors;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void attachEditor(final DialectEditor dialectEditor) {
         if (!editors.contains(dialectEditor) && dialectEditor != null) {
             editors.add(dialectEditor);
@@ -191,9 +181,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void detachEditor(final DialectEditor dialectEditor) {
         editors.remove(dialectEditor);
         editorNameAdapter.unregisterEditor(dialectEditor);
@@ -205,26 +193,16 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.session.IEditingSession#closeEditors(boolean,
-     *      java.util.Collection)
-     */
+    @Override
     public void closeEditors(final boolean save, final Collection<? extends DialectEditor> editorParts) {
         for (final DialectEditor editor : new ArrayList<DialectEditor>(editorParts)) {
             closeEditor(editor, save);
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.session.IEditingSession#closeEditors(java.util.Collection,
-     *      boolean)
-     */
+    @Override
     public void closeEditors(final boolean save, final DialectEditor... editorParts) {
-        closeEditors(Arrays.asList(editorParts), save);
+        closeEditors(save, Arrays.asList(editorParts));
     }
 
     private void closeEditor(final DialectEditor editor, final boolean save) {
@@ -242,34 +220,22 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean isEmpty() {
         return editors.size() == 0;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean isLastOpenedEditor() {
         return editors.size() == 1;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @since 0.9.0
-     */
+    @Override
     public boolean needToBeSavedOnClose(final IEditorPart editor) {
         return needSaveOnCloseDetec.needToBeSavedOnClose(editor);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @since 0.9.0
-     */
+    @Override
     public int promptToSaveOnClose() {
         int choice = ISaveablePart2.DEFAULT;
         if (saveable != null) {
@@ -289,32 +255,22 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
         return choice;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @since
-     */
-    public boolean closeAllDetected() {
+    private boolean closeAllDetected() {
         return needSaveOnCloseDetec.closeAllDetected();
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
+    @Override
     public void close() {
         if (opened) {
             close(true);
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void close(final boolean save) {
         if (opened) {
             if (!isEmpty()) {
-                closeEditors(editors, save);
+                closeEditors(save, editors);
             }
             RefreshFilterManager.INSTANCE.removeRefreshFilter(this);
             removeListeners();
@@ -328,6 +284,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
 
     private void closeOthersEditors(final boolean save) {
         Display.getDefault().asyncExec(new Runnable() {
+            @Override
             public void run() {
                 final IWorkbenchPage page = EclipseUIUtil.getActivePage();
                 if (page != null) {
@@ -367,10 +324,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
         });
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
+    @Override
     public void open() {
         if (!opened) {
             RefreshFilterManager.INSTANCE.addRefreshFilter(this);
@@ -379,20 +333,12 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.session.IEditingSession#isOpen()
-     */
+    @Override
     public boolean isOpen() {
         return opened;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.session.IEditingSession#isSessionFor(org.eclipse.ui.IEditorInput)
-     */
+    @Override
     public boolean isSessionFor(final IEditorInput editorInput) {
         boolean result = false;
         final String key = keyFromInput(editorInput);
@@ -460,11 +406,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.session.IEditingSession#getEditor(org.eclipse.sirius.viewpoint.DRepresentation)
-     */
+    @Override
     public DialectEditor getEditor(final DRepresentation representation) {
         for (final DialectEditor editorPart : this.editors) {
             if (DialectUIManager.INSTANCE.isRepresentationManagedByEditor(representation, editorPart)) {
@@ -474,57 +416,12 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.session.IEditingSession#handleEditor(org.eclipse.ui.IEditorPart)
-     */
+    @Override
     public boolean handleEditor(final IEditorPart editor) {
         return this.editors.contains(editor);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.session.DeprecatedIEditingSession#attachEditor(org.eclipse.ui.IEditorPart)
-     */
-    public void attachEditor(final IEditorPart editor) {
-        attachEditor((DialectEditor) editor);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.session.DeprecatedIEditingSession#closeEditors(java.util.Collection,
-     *      boolean)
-     */
-    @SuppressWarnings("unchecked")
-    public void closeEditors(final Collection<? extends IEditorPart> dialectEditors, final boolean save) {
-        closeEditors(save, (Collection<DialectEditor>) dialectEditors);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.session.DeprecatedIEditingSession#closeEditors(boolean,
-     *      org.eclipse.ui.IEditorPart[])
-     */
-    public void closeEditors(final boolean save, final IEditorPart... dialectEditors) {
-        closeEditors(save, (DialectEditor[]) dialectEditors);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ui.business.api.session.DeprecatedIEditingSession#detachEditor(org.eclipse.ui.IEditorPart)
-     */
-    public void detachEditor(final IEditorPart editor) {
-        detachEditor((DialectEditor) editor);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Collection<DRepresentation> getOpenedRepresantationsToRefresh() {
         Collection<DRepresentation> openedRepresantationsToRefresh = new ArrayList<DRepresentation>();
         for (DialectEditor dialectEditor : getEditors()) {
@@ -536,9 +433,7 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
         return openedRepresantationsToRefresh;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean shouldRefresh(DRepresentation representation) {
         return getOpenedRepresantationsToRefresh().contains(representation);
     }
@@ -612,7 +507,6 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
 
         /**
          * Re-init detector.
-         * 
          */
         public void reInit() {
             closingEditors.clear();
@@ -621,23 +515,17 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Saveable[] getSaveables() {
         return saveable != null ? new Saveable[] { saveable } : new Saveable[0];
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Saveable[] getActiveSaveables() {
         return getSaveables();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void notify(EditingSessionEvent event) {
         saveSessionListener.notify(event);
     }

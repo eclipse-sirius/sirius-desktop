@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.editor;
 
-
 import java.util.Collections;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -383,7 +382,17 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
     @Override
     public void setFocus() {
         if (treeViewerManager != null) {
-            treeViewerManager.getControl().setFocus();
+            /*
+             * A regression in Kepler can cause an NPE inside the
+             * treeViewerManager.getControl().setFocus() below. The guard
+             * condition is a workaround, which seems to fix the problem (or at
+             * least the symptom) in our tests. See
+             * https://bugs.eclipse.org/bugs/show_bug.cgi?id=378846#c16
+             */
+            AbstractDTreeViewer viewer = treeViewerManager.getTreeViewer();
+            if (viewer != null && viewer.getTree() != null && viewer.getTree().getTopItem() != null) {
+                treeViewerManager.getControl().setFocus();
+            }
             setEclipseWindowTitle();
         }
     }
@@ -460,8 +469,7 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
      * @see org.eclipse.ui.part.WorkbenchPart#getAdapter(java.lang.Class)
      */
     @Override
-    public Object getAdapter(@SuppressWarnings("rawtypes")
-    final Class type) {
+    public Object getAdapter(@SuppressWarnings("rawtypes") final Class type) {
         Object result = super.getAdapter(type);
         if (result == null) {
             if (type == IPropertySheetPage.class) {

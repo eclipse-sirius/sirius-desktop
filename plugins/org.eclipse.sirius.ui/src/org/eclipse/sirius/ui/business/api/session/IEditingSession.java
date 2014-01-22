@@ -24,7 +24,7 @@ import org.eclipse.ui.IEditorPart;
  * 
  * @author cbrun
  */
-public interface IEditingSession extends DeprecatedIEditingSession {
+public interface IEditingSession {
     
     /**
      * Get the wrapped {@link Session}.
