@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -30,6 +31,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramImportDescription;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.concern.ConcernFactory;
 import org.eclipse.sirius.diagram.description.filter.FilterFactory;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
@@ -649,7 +651,23 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
         if (qualify) {
             return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
         }
-        return super.getCreateChildText(owner, feature, child, selection);
+        String createChildText = super.getCreateChildText(owner, feature, child, selection);
+        if (child != null && isNormalEdgeMapping(child)) {
+            if (((EdgeMapping) child).isUseDomainElement()) {
+                createChildText = "Element Based Edge";
+            } else {
+                createChildText = "Relation Based Edge";
+            }
+        }
+        return createChildText;
+    }
+    
+    /**
+     * @not-generated
+     */
+    private boolean isNormalEdgeMapping(Object obj) {
+        return org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getEdgeMapping().isInstance(obj)
+                && ((EObject) obj).eClass().equals(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getEdgeMapping());
     }
 
     /**
