@@ -1506,7 +1506,7 @@ public final class StyleHelper {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDNode(org.eclipse.sirius.viewpoint.DNode)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseDNode(org.eclipse.sirius.diagram.DNode)
          */
         @Override
         public Object caseDNode(final DNode object) {
@@ -1517,7 +1517,7 @@ public final class StyleHelper {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDNodeListElement(org.eclipse.sirius.viewpoint.DNodeListElement)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseDNodeListElement(org.eclipse.sirius.diagram.DNodeListElement)
          */
         @Override
         public Object caseDNodeListElement(final DNodeListElement object) {
@@ -1528,7 +1528,7 @@ public final class StyleHelper {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDNodeContainer(org.eclipse.sirius.viewpoint.DNodeContainer)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseDNodeContainer(org.eclipse.sirius.diagram.DNodeContainer)
          */
         @Override
         public Object caseDNodeContainer(final DNodeContainer object) {
@@ -1539,7 +1539,7 @@ public final class StyleHelper {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDNodeList(org.eclipse.sirius.viewpoint.DNodeList)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseDNodeList(org.eclipse.sirius.diagram.DNodeList)
          */
         @Override
         public Object caseDNodeList(final DNodeList object) {
@@ -1587,7 +1587,7 @@ public final class StyleHelper {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDNode(org.eclipse.sirius.viewpoint.DNode)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseDNode(org.eclipse.sirius.viewpoint.DNode)
          */
         @Override
         public Object caseDNode(final DNode object) {
@@ -1598,7 +1598,7 @@ public final class StyleHelper {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDNodeListElement(org.eclipse.sirius.viewpoint.DNodeListElement)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseDNodeListElement(org.eclipse.sirius.viewpoint.DNodeListElement)
          */
         @Override
         public Object caseDNodeListElement(final DNodeListElement object) {
@@ -1609,7 +1609,7 @@ public final class StyleHelper {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDNodeContainer(org.eclipse.sirius.viewpoint.DNodeContainer)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseDNodeContainer(org.eclipse.sirius.viewpoint.DNodeContainer)
          */
         @Override
         public Object caseDNodeContainer(final DNodeContainer object) {
@@ -1620,7 +1620,7 @@ public final class StyleHelper {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDNodeList(org.eclipse.sirius.viewpoint.DNodeList)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseDNodeList(org.eclipse.sirius.viewpoint.DNodeList)
          */
         @Override
         public Object caseDNodeList(final DNodeList object) {

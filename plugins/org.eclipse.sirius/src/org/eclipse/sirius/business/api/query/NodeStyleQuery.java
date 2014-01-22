@@ -52,7 +52,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseNodeStyle(org.eclipse.sirius.viewpoint.NodeStyle)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseNodeStyle(org.eclipse.sirius.diagram.NodeStyle)
          */
         @Override
         public RGBValues caseNodeStyle(NodeStyle object) {
@@ -62,7 +62,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseBundledImage(org.eclipse.sirius.viewpoint.BundledImage)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseBundledImage(org.eclipse.sirius.diagram.BundledImage)
          */
         @Override
         public RGBValues caseBundledImage(BundledImage object) {
@@ -72,7 +72,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseCustomStyle(org.eclipse.sirius.viewpoint.CustomStyle)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseCustomStyle(org.eclipse.sirius.diagram.CustomStyle)
          */
         @Override
         public RGBValues caseCustomStyle(CustomStyle object) {
@@ -82,7 +82,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseDot(org.eclipse.sirius.viewpoint.Dot)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseDot(org.eclipse.sirius.diagram.Dot)
          */
         @Override
         public RGBValues caseDot(Dot object) {
@@ -92,7 +92,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseEllipse(org.eclipse.sirius.viewpoint.Ellipse)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseEllipse(org.eclipse.sirius.diagram.Ellipse)
          */
         @Override
         public RGBValues caseEllipse(Ellipse object) {
@@ -102,7 +102,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseGaugeCompositeStyle(org.eclipse.sirius.viewpoint.GaugeCompositeStyle)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseGaugeCompositeStyle(org.eclipse.sirius.diagram.GaugeCompositeStyle)
          */
         @Override
         public RGBValues caseGaugeCompositeStyle(GaugeCompositeStyle object) {
@@ -112,7 +112,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseLozenge(org.eclipse.sirius.viewpoint.Lozenge)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseLozenge(org.eclipse.sirius.diagram.Lozenge)
          */
         @Override
         public RGBValues caseLozenge(Lozenge object) {
@@ -122,7 +122,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseNote(org.eclipse.sirius.viewpoint.Note)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseNote(org.eclipse.sirius.diagram.Note)
          */
         @Override
         public RGBValues caseNote(Note object) {
@@ -132,7 +132,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseSquare(org.eclipse.sirius.viewpoint.Square)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseSquare(org.eclipse.sirius.diagram.Square)
          */
         @Override
         public RGBValues caseSquare(Square object) {
@@ -142,7 +142,7 @@ public class NodeStyleQuery {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.viewpoint.util.ViewpointSwitch#caseWorkspaceImage(org.eclipse.sirius.viewpoint.WorkspaceImage)
+         * @see org.eclipse.sirius.diagram.util.DiagramSwitch#caseWorkspaceImage(org.eclipse.sirius.diagram.WorkspaceImage)
          */
         @Override
         public RGBValues caseWorkspaceImage(WorkspaceImage object) {

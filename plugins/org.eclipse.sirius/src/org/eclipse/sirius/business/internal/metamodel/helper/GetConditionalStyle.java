@@ -62,7 +62,7 @@ public class GetConditionalStyle extends DescriptionSwitch<List<? extends Condit
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseNodeMapping(org.eclipse.sirius.viewpoint.description.NodeMapping)
+     * @see org.eclipse.sirius.diagram.description.util.DescriptionSwitch#caseNodeMapping(org.eclipse.sirius.diagram.description.NodeMapping)
      */
     @Override
     public EList<? extends ConditionalStyleDescription> caseNodeMapping(final NodeMapping object) {
@@ -72,7 +72,7 @@ public class GetConditionalStyle extends DescriptionSwitch<List<? extends Condit
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseEdgeMapping(org.eclipse.sirius.viewpoint.description.EdgeMapping)
+     * @see org.eclipse.sirius.diagram.description.util.DescriptionSwitch#caseEdgeMapping(org.eclipse.sirius.diagram.description.EdgeMapping)
      */
     @Override
     public EList<? extends ConditionalStyleDescription> caseEdgeMapping(final EdgeMapping object) {
@@ -85,6 +85,11 @@ public class GetConditionalStyle extends DescriptionSwitch<List<? extends Condit
         // return object.getConditionnalStyles();
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.diagram.description.util.DescriptionSwitch#caseEdgeMappingImport(org.eclipse.sirius.diagram.description.EdgeMapping)
+     */
     @Override
     public EList<? extends ConditionalStyleDescription> caseEdgeMappingImport(final EdgeMappingImport object) {
         // We add in priority the conditional style of the edgeMappingImport
@@ -127,6 +132,11 @@ public class GetConditionalStyle extends DescriptionSwitch<List<? extends Condit
         return result;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.diagram.description.util.DescriptionSwitch#caseNodeMappingImport(org.eclipse.sirius.diagram.description.ContainerMappingImport)
+     */
     @Override
     public List<? extends ConditionalStyleDescription> caseContainerMappingImport(final ContainerMappingImport object) {
         List<ConditionalContainerStyleDescription> result = Lists.newArrayList();
@@ -138,6 +148,11 @@ public class GetConditionalStyle extends DescriptionSwitch<List<? extends Condit
         return result;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.diagram.description.util.DescriptionSwitch#caseNodeMappingImport(org.eclipse.sirius.diagram.description.NodeMappingImport)
+     */
     @Override
     public List<? extends ConditionalStyleDescription> caseNodeMappingImport(final NodeMappingImport object) {
         List<ConditionalNodeStyleDescription> result = Lists.newArrayList();
@@ -152,7 +167,7 @@ public class GetConditionalStyle extends DescriptionSwitch<List<? extends Condit
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseContainerMapping(org.eclipse.sirius.viewpoint.description.ContainerMapping)
+     * @see org.eclipse.sirius.diagram.description.util.DescriptionSwitch#caseContainerMapping(org.eclipse.sirius.diagram.description.ContainerMapping)
      */
     @Override
     public EList<? extends ConditionalStyleDescription> caseContainerMapping(final ContainerMapping object) {
@@ -162,7 +177,7 @@ public class GetConditionalStyle extends DescriptionSwitch<List<? extends Condit
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#defaultCase(org.eclipse.emf.ecore.EObject)
+     * @see org.eclipse.sirius.diagram.description.util.DescriptionSwitch#defaultCase(org.eclipse.emf.ecore.EObject)
      */
     @Override
     public EList<? extends ConditionalStyleDescription> defaultCase(final EObject object) {

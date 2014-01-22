@@ -89,7 +89,7 @@ public class TreeInterpretedExpressionTargetSwitch extends DescriptionSwitch<Opt
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
+     * @see org.eclipse.sirius.tree.description.util.DescriptionSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
      */
     @Override
     public Option<Collection<String>> doSwitch(EObject theEObject) {

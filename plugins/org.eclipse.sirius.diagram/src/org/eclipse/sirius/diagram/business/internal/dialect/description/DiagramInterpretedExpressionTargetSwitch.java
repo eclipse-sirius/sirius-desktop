@@ -95,7 +95,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
+     * @see org.eclipse.sirius.diagram.description.util.DescriptionSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
      */
     @Override
     public Option<Collection<String>> doSwitch(EObject theEObject) {
@@ -138,7 +138,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseDiagramDescription(org.eclipse.sirius.viewpoint.description.DiagramDescription)
+     * @see org.eclipse.sirius.diagram.description.util.DescriptionSwitch#caseDiagramDescription(org.eclipse.sirius.diagram.description.DiagramDescription)
      */
     @Override
     public Option<Collection<String>> caseDiagramDescription(DiagramDescription diagramDescription) {
@@ -159,6 +159,12 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
         return result;
     }
 
+    /**
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.diagram.description.util.DescriptionSwitch#caseDiagramExtensionDescription(org.eclipse.sirius.diagram.description.DiagramExtensionDescription)
+     */
     @Override
     public Option<Collection<String>> caseDiagramExtensionDescription(DiagramExtensionDescription object) {
         DiagramDescription diagramDescription = ComponentizationHelper.getDiagramDescription(object, ViewpointRegistry.getInstance().getViewpoints());
@@ -169,7 +175,10 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
     }
 
     /**
+     * 
      * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.diagram.description.util.DescriptionSwitch#caseDiagramImportDescription(org.eclipse.sirius.diagram.description.DiagramImportDescription)
      */
     @Override
     public Option<Collection<String>> caseDiagramImportDescription(DiagramImportDescription object) {
@@ -188,6 +197,12 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
         return result;
     }
 
+    /**
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.diagram.description.util.DescriptionSwitch#caseMappingBasedDecoration(org.eclipse.sirius.diagram.description.MappingBasedDecoration)
+     */
     @Override
     public Option<Collection<String>> caseMappingBasedDecoration(MappingBasedDecoration object) {
         Option<Collection<String>> result = null;
@@ -214,7 +229,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseAbstractNodeMapping(org.eclipse.sirius.viewpoint.description.AbstractNodeMapping)
+     * @see org.eclipse.sirius.diagram.description.util.DescriptionSwitch#caseAbstractNodeMapping(org.eclipse.sirius.diagram.description.AbstractNodeMapping)
      */
     @Override
     public Option<Collection<String>> caseAbstractNodeMapping(AbstractNodeMapping object) {
@@ -240,7 +255,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch#caseEdgeMapping(org.eclipse.sirius.viewpoint.description.EdgeMapping)
+     * @see org.eclipse.sirius.diagram.description.util.DescriptionSwitch#caseEdgeMapping(org.eclipse.sirius.diagram.description.EdgeMapping)
      */
     @Override
     public Option<Collection<String>> caseEdgeMapping(EdgeMapping edgeMapping) {
@@ -293,6 +308,12 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
         return result;
     }
 
+    /**
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.diagram.description.util.DescriptionSwitch#caseEdgeMappingImport(org.eclipse.sirius.diagram.description.EdgeMappingImport)
+     */
     @Override
     public Option<Collection<String>> caseEdgeMappingImport(EdgeMappingImport object) {
         IEdgeMappingQuery edgeMappingQuery = new IEdgeMappingQuery(object);
