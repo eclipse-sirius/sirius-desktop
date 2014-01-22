@@ -37,6 +37,11 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.style.provider.StyleItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.ui.IEditorPart;
 
 /**
@@ -148,6 +153,13 @@ public class DialectUIManagerImpl implements DialectUIManager {
      */
     public AdapterFactory createAdapterFactory() {
         final ComposedAdapterFactory composed = new ComposedAdapterFactory();
+
+        composed.addAdapterFactory(new DescriptionItemProviderAdapterFactory());
+        composed.addAdapterFactory(new ViewpointItemProviderAdapterFactory());
+        composed.addAdapterFactory(new StyleItemProviderAdapterFactory());
+        composed.addAdapterFactory(new ToolItemProviderAdapterFactory());
+        composed.addAdapterFactory(new AuditItemProviderAdapterFactory());
+
         for (final DialectUI dialect : dialects.values()) {
             composed.addAdapterFactory(dialect.getServices().createAdapterFactory());
         }

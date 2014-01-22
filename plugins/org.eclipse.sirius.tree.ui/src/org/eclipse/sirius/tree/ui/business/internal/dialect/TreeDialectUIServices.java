@@ -39,6 +39,7 @@ import org.eclipse.sirius.tree.description.DescriptionFactory;
 import org.eclipse.sirius.tree.description.TreeCreationDescription;
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.description.TreeNavigationDescription;
+import org.eclipse.sirius.tree.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.tree.provider.TreeItemProviderAdapterFactory;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
@@ -190,7 +191,7 @@ public class TreeDialectUIServices implements DialectUIServices {
      */
     public AdapterFactory createAdapterFactory() {
         final ComposedAdapterFactory factory = new ComposedAdapterFactory();
-        factory.addAdapterFactory(new org.eclipse.sirius.tree.description.provider.DescriptionItemProviderAdapterFactory());
+        factory.addAdapterFactory(new DescriptionItemProviderAdapterFactory());
         factory.addAdapterFactory(new TreeItemProviderAdapterFactory());
         return factory;
     }

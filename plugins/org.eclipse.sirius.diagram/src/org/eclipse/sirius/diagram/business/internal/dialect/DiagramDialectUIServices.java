@@ -74,7 +74,10 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.concern.provider.ConcernItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
+import org.eclipse.sirius.diagram.description.provider.DescriptionItemProviderAdapterFactory;
+import org.eclipse.sirius.diagram.description.style.provider.StyleItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
+import org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.validation.provider.ValidationItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
@@ -98,11 +101,6 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
-import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
-import org.eclipse.sirius.viewpoint.description.style.provider.StyleItemProviderAdapterFactory;
-import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
-import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
@@ -357,15 +355,11 @@ public class DiagramDialectUIServices implements DialectUIServices {
             }
         }
         factory.addAdapterFactory(new DescriptionItemProviderAdapterFactory());
-        factory.addAdapterFactory(new org.eclipse.sirius.diagram.description.provider.DescriptionItemProviderAdapterFactory());
-        factory.addAdapterFactory(new ViewpointItemProviderAdapterFactory());
-        factory.addAdapterFactory(new StyleItemProviderAdapterFactory());
         factory.addAdapterFactory(new DiagramItemProviderAdapterFactory());
-        factory.addAdapterFactory(new org.eclipse.sirius.diagram.description.style.provider.StyleItemProviderAdapterFactory());
+        factory.addAdapterFactory(new StyleItemProviderAdapterFactory());
         factory.addAdapterFactory(new ToolItemProviderAdapterFactory());
         factory.addAdapterFactory(new FilterItemProviderAdapterFactory());
         factory.addAdapterFactory(new ValidationItemProviderAdapterFactory());
-        factory.addAdapterFactory(new AuditItemProviderAdapterFactory());
         factory.addAdapterFactory(new ConcernItemProviderAdapterFactory());
         return factory;
     }

@@ -38,6 +38,7 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.tools.internal.editor.DiagramOutlinePageListener;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
@@ -321,6 +322,7 @@ public class OutlineContentProvider implements ITreeContentProvider, DiagramOutl
     public AdapterFactory getAdapterFactory() {
         List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
         factories.add(new ViewpointItemProviderAdapterFactory());
+        factories.add(new DiagramItemProviderAdapterFactory());
         factories.add(new ResourceItemProviderAdapterFactory());
         factories.add(new EcoreItemProviderAdapterFactory());
         factories.add(new ReflectiveItemProviderAdapterFactory());

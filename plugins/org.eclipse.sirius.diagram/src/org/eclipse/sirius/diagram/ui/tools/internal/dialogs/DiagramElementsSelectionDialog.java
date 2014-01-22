@@ -35,6 +35,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.tools.internal.providers.FilteredTreeContentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineLabelProvider;
 import org.eclipse.sirius.ext.base.Option;
@@ -818,6 +819,7 @@ public class DiagramElementsSelectionDialog {
     private AdapterFactory getAdapterFactory() {
         List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
         factories.add(new ViewpointItemProviderAdapterFactory());
+        factories.add(new DiagramItemProviderAdapterFactory());
         factories.add(new ResourceItemProviderAdapterFactory());
         factories.add(new EcoreItemProviderAdapterFactory());
         factories.add(new ReflectiveItemProviderAdapterFactory());

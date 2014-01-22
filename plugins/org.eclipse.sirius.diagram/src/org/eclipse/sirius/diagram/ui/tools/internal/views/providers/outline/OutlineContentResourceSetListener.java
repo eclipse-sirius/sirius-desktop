@@ -34,6 +34,7 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.tools.internal.editor.DiagramOutlinePageListener;
 import org.eclipse.sirius.ui.business.api.provider.DEdgeLabelItemProvider;
 import org.eclipse.sirius.ui.business.api.provider.DNodeLabelItemProvider;
@@ -232,6 +233,7 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
     private AdapterFactory getAdapterFactoryForNodeLabelItems() {
         List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
         factories.add(new ViewpointItemProviderAdapterFactory());
+        factories.add(new DiagramItemProviderAdapterFactory());
         factories.add(new ResourceItemProviderAdapterFactory());
         factories.add(new EcoreItemProviderAdapterFactory());
         factories.add(new ReflectiveItemProviderAdapterFactory());

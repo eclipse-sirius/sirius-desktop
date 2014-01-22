@@ -35,6 +35,7 @@ import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditor;
+import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.tools.internal.providers.FilteredTreeContentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineLabelProvider;
 import org.eclipse.sirius.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
@@ -442,6 +443,7 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
         if (adapterFactory == null) {
             java.util.List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
             factories.add(new ViewpointItemProviderAdapterFactory());
+            factories.add(new DiagramItemProviderAdapterFactory());
             factories.add(new ResourceItemProviderAdapterFactory());
             factories.add(new EcoreItemProviderAdapterFactory());
             factories.add(new ReflectiveItemProviderAdapterFactory());
