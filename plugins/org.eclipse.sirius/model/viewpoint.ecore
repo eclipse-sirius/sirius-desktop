@@ -3149,8 +3149,8 @@
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
             <details key="containerView" value="viewpoint.DragAndDropTarget | the view that sould contain the potential views of the checked elements."/>
             <details key="container" value="ecore.EObject | the semantic element of containerView."/>
-            <details key="viewpoint" value="viewpoint.DSemanticDiagram | (deprecated) the current DSemanticDiagram."/>
-            <details key="diagram" value="viewpoint.DSemanticDiagram | the current DSemanticDiagram."/>
+            <details key="viewpoint" value="diagram.DSemanticDiagram | (deprecated) the current DSemanticDiagram."/>
+            <details key="diagram" value="diagram.DSemanticDiagram | the current DSemanticDiagram."/>
             <details key="sourceView" value="viewpoint.DSemanticDecorator | (edge only) the source view of the current potential edge."/>
             <details key="source" value="ecore.EObject | (edge only) the semantic element of sourceView."/>
             <details key="targetView" value="viewpoint.DSemanticDecorator | (edge only) the target view of the current potential edge."/>
