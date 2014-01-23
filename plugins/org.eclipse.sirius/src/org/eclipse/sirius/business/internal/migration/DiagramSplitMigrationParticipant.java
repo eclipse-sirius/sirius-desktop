@@ -24,10 +24,10 @@ import org.osgi.framework.Version;
  * 
  */
 public class DiagramSplitMigrationParticipant extends AbstractMigrationParticipant {
+
     /**
-     * The VP version for which this migration is added.
+     * The version 8.0.0 corresponds to the file format of Sirius 1.0.0 M5. 
      */
-    // TODO During review, choose the version (8.0.0, 7.1.0, ..)
     private static final Version MIGRATION_VERSION = new Version("8.0.0");
 
     public Version getMigrationVersion() {
