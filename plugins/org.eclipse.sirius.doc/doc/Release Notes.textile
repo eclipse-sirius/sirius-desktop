@@ -22,7 +22,11 @@ h4. Move diagram-specific EClasses into a separate EPackage
 
 For historical reasons, the core Sirius metamodels defined in viewpoint.ecore contain both generic (dialect-independant like Viewpoint, RepresentationDescription, DAnalysis...) concepts and diagram-specific ones (e.g. DNode, EdgeStyle, ContainerCreationDescription...). The table and tree metamodels are more cleanly separated.
 This milestone (Sirius 1.0M5) includes the first step towards a full separation of the diagram-specific stuff out of the core of Sirius. So many EClasses have been moved. 
+
 Most of the time, existing code which used these Sirius EClasses will only need to perform a simple "Organize Imports" operation, which should find the classes and interfaces in their new locations.
+The "Organize imports" is not sufficient in case of imported classes existing several time in different packages (@EFactory@ classes for example with @DescriptionFactory@, or @EPackage@ classes for example with @DescriptionPackage@). And in some cases @ViewpointFactory@ (and @ViewpointPackage@) will have to be replaced by @DiagramFactory@ (and @DiagramPackage@). 
+
+The @Switch@ classes if overridden also require a particular attention.
  
 The existing VSM (@*.odesign@) and representations file (@*.aird@) are automatically migrated.
 Warning: Nevertheless, if you reference these Sirius concepts with the EPackage qualifier in your VSM (@*.odesign@), in interpreted expressions for example, you must change @viewpoint@ in @diagram@. For example @viewpoint::DDiagramElement@ becomes @diagram::DDiagramElement@.
