@@ -342,6 +342,10 @@
                   path="/formatMenu/routerMenu/routerGroup"
                   remove="true">
             </popupPredefinedItem>
+            <popupStructuredContributionCriteria
+                  objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
+                  policyClass="org.eclipse.sirius.diagram.tools.internal.menu.SiriusPopupMenuContributionPolicy">
+            </popupStructuredContributionCriteria>
          </popupContribution>
       </contributionItemProvider>
 
