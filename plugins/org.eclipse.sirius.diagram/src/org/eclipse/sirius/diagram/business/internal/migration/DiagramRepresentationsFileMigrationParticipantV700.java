@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.business.internal.migration;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
 import org.osgi.framework.Version;
 
 /**
@@ -43,8 +44,8 @@ public class DiagramRepresentationsFileMigrationParticipantV700 {
      * @return a new value if has to be changed otherwise null.
      */
     public Object getValue(EObject object, EStructuralFeature feature, Object value) {
-        if (NotationPackage.eINSTANCE.getView_Type().equals(feature) && NotationPackage.eINSTANCE.getDiagram().isInstance(object)) {
-            return "Sirius";
+        if (NotationPackage.eINSTANCE.getView_Type().equals(feature) && NotationPackage.eINSTANCE.getDiagram().isInstance(object) && "Viewpoint".equals(value)) {
+            return DDiagramEditPart.MODEL_ID;
         }
         return null;
     }
