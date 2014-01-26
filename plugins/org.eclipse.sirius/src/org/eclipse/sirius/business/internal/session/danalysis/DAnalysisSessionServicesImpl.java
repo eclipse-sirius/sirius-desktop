@@ -65,7 +65,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
      * @param allAnalysis
      *            the session analysis.
      */
-    public DAnalysisSessionServicesImpl(final Collection<DAnalysis> allAnalysis) {
+    public DAnalysisSessionServicesImpl(Collection<DAnalysis> allAnalysis) {
         this.allAnalysis = allAnalysis;
     }
 
@@ -127,10 +127,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
+    @Override
     public Collection<EObject> getCustomData(final String key, final EObject associatedInstance) {
 
         final Collection<DAnalysis> analysisAndReferenced = getAnalysisAndReferenced();
@@ -169,6 +166,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
     private Collection<EObject> getRepresentationData(final EObject associatedInstance, final Collection<DAnalysis> analysisAndReferenced) {
         RunnableWithResult<Collection<EObject>> runnable = new RunnableWithResult.Impl<Collection<EObject>>() {
 
+            @Override
             public void run() {
                 Collection<EObject> datas = new ArrayList<EObject>();
                 for (DAnalysis analysis : analysisAndReferenced) {
@@ -266,10 +264,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         return datas;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
+    @Override
     public void putCustomData(final String key, final EObject associatedInstance, final EObject data) {
         if (CustomDataConstants.GMF_DIAGRAMS.equals(key)) {
             if (associatedInstance instanceof DRepresentation) {
@@ -326,9 +321,6 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         return false;
     }
 
-    /**
-     * @return
-     */
     private Collection<DAnalysis> getAnalysisAndReferenced() {
         return new DAnalysisesInternalQuery(allAnalysis).getAllAnalyses();
     }
@@ -354,11 +346,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         existingContainer.getOwnedRepresentations().add(representation);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService#setAnalysisSelector(org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector)
-     */
+    @Override
     public void setAnalysisSelector(final DAnalysisSelector selector) {
         this.analysisSelector = selector;
     }
