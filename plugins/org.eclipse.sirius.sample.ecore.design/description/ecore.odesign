@@ -57,7 +57,7 @@
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="[containment/]">
+          <conditionnalStyles predicateExpression="feature:containment">
             <style sourceArrow="FillDiamond" targetArrow="NoDecoration" sizeComputationExpression="1">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <centerLabelStyleDescription showIcon="false" labelExpression="service:render">
@@ -1077,7 +1077,7 @@
   <ownedViewpoints endUserDocumentation="Provides representation to document and review Ecore models." name="Review" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" endUserDocumentation="Document the concepts in a package." name="Documentation" titleExpression="['Documentation for name ' + ' package'/]" domainClass="EPackage">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-      <ownedLineMappings name="Doc EClassifiers" semanticElements="var:self" domainClass="EClassifier" semanticCandidatesExpression="fature:eClassifiers" headerLabelExpression="[eClass().name + ' : ' + name/]">
+      <ownedLineMappings name="Doc EClassifiers" semanticElements="var:self" domainClass="EClassifier" semanticCandidatesExpression="feature:eClassifiers" headerLabelExpression="[eClass().name + ' : ' + name/]">
         <defaultBackground>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultBackground>
@@ -1087,7 +1087,7 @@
           </defaultBackground>
         </ownedSubLines>
       </ownedLineMappings>
-      <ownedColumnMappings name="Doc Root" headerLabelExpression="Domain Documentation" domainClass="EPackage" semanticCandidatesExpression="service:getRootContainer]"/>
+      <ownedColumnMappings name="Doc Root" headerLabelExpression="Domain Documentation" domainClass="EPackage" semanticCandidatesExpression="service:getRootContainer"/>
       <intersection name="EModelElements to Doc Annotation" semanticElements="var:self" lineMapping="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation']/@ownedLineMappings[name='Doc%20EClassifiers'] //@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation']/@ownedLineMappings[name='Doc%20EClassifiers']/@ownedSubLines[name='Doc%20EStructural%20Features']" columnMapping="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation']/@ownedColumnMappings.0" labelExpression="[value/]" useDomainClass="true" columnFinderExpression="service:getRootContainer" lineFinderExpression="[eContainer(ecore::EAnnotation).eContainer()/]" semanticCandidatesExpression="[eAllContents(ecore::EAnnotation)->select(source = 'http://www.eclipse.org/emf/2002/GenModel').details->select(key = 'documentation')/]" domainClass="EStringToStringMapEntry">
         <directEdit>
           <variables name="element" documentation="The currently edited element."/>
