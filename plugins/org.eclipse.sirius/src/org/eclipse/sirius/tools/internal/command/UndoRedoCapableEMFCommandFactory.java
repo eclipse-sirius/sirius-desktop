@@ -576,13 +576,6 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      */
-    public void setAutoRefreshDView(final boolean autoRefreshDView) {
-        // TODO Feature not implemented.
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public DCommand buildCreateDiagramFromDescription(final DiagramDescription description, final EObject semanticElement, IProgressMonitor monitor) {
         final DCommand command = new SiriusCommand(domain, "Create new diagram") {
             /**

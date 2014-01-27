@@ -294,13 +294,6 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     /**
      * {@inheritDoc}
      */
-    public void setAutoRefreshDView(boolean autoRefreshDView) {
-        baseFactory.setAutoRefreshDView(autoRefreshDView);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public void setUserInterfaceCallBack(UICallBack newCB) {
         baseFactory.setUserInterfaceCallBack(newCB);
     }

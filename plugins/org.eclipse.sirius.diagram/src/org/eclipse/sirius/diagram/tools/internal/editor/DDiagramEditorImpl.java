@@ -29,7 +29,6 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -143,7 +142,6 @@ import org.eclipse.sirius.diagram.tools.internal.outline.SiriusQuickOutlineInfor
 import org.eclipse.sirius.diagram.tools.internal.palette.PaletteManagerImpl;
 import org.eclipse.sirius.diagram.tools.internal.palette.SiriusPaletteViewer;
 import org.eclipse.sirius.diagram.tools.internal.part.SiriusDiagramGraphicalViewer;
-import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusPreferenceChangeListener;
 import org.eclipse.sirius.diagram.tools.internal.providers.decorators.SubDiagramDecoratorProvider;
 import org.eclipse.sirius.diagram.tools.internal.resource.CustomSiriusDocumentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.dnd.DragAndDropWrapper;
@@ -244,11 +242,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     private TemplateTransferDragSourceListener paletteTransferDragSourceListener;
 
     private SiriusPaletteToolDropTargetListener paletteTransferDropTargetListener;
-
-    /**
-     * The Sirius preference change listener.
-     */
-    private SiriusPreferenceChangeListener viewPointPreferenceChangeListener;
 
     /**
      * The abstract transfer drop target listener.
@@ -591,11 +584,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
          */
         IDiagramCommandFactory diagramCommandFactory = emfCommandFactoryProvider.getCommandFactory(getEditingDomain());
         diagramCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
-
-        diagramCommandFactory.setAutoRefreshDView(isAutoRefresh());
-
-        /* Set viewpoint preference change listener */
-        viewPointPreferenceChangeListener = new SiriusPreferenceChangeListener(diagramCommandFactory);
     }
 
     /**
@@ -650,11 +638,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             InterpreterRegistry.prepareImportsFromSession(interpreter, SessionManager.INSTANCE.getSession(semantic));
         }
 
-        /* handle preferences */
-        if (viewPointPreferenceChangeListener != null) {
-            InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).addPreferenceChangeListener(viewPointPreferenceChangeListener);
-        }
-
         /* add a listener to selection */
         getSite().getPage().addSelectionListener(this);
     }
@@ -702,10 +685,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         if (getSession() != null) {
             getSession().removeListener(this);
         }
-        if (viewPointPreferenceChangeListener != null) {
-            InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).removePreferenceChangeListener(viewPointPreferenceChangeListener);
-        }
-        viewPointPreferenceChangeListener = null;
 
         if (getGraphicalViewer() != null) {
             getGraphicalViewer().removeDropTargetListener(transferDropTargetListener);

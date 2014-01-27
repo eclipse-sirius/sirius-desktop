@@ -418,15 +418,6 @@ public interface IDiagramCommandFactory extends ICommandFactory {
     Command buildRevealElementsCommand(Set<DDiagramElement> elementsToReveal);
 
     /**
-     * Activate or de-activate the automatic refresh a designer view.
-     * 
-     * @param autoRefreshDView
-     *            <code>true</code> if the analysis should be automatically
-     *            refreshed.
-     */
-    void setAutoRefreshDView(boolean autoRefreshDView);
-
-    /**
      * Create a command that is able to create a diagram.
      * 
      * @param description
