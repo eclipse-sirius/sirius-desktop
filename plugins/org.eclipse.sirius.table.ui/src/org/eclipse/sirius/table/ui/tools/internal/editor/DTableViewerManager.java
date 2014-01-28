@@ -71,7 +71,7 @@ import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableColumnViewerEditorActivationStrategy;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableTreeFocusListener;
-import org.eclipse.sirius.ui.tools.internal.views.sessionview.ModelDragTargetAdapter;
+import org.eclipse.sirius.ui.tools.internal.views.common.navigator.adapters.ModelDragTargetAdapter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.ByteArrayTransfer;
 import org.eclipse.swt.dnd.DND;
@@ -331,8 +331,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         // Set after the setInput to avoid layout call it several time for nothing at opening
         headerTreeColumn.getColumn().addControlListener(tableViewerListener);
     }
-    
-    
+
     /**
      * Initializes Drag support for the current DTable.
      */

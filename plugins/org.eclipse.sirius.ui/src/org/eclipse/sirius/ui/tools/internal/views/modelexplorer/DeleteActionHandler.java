@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.tools.internal.views.sessionview;
+package org.eclipse.sirius.ui.tools.internal.views.modelexplorer;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -19,7 +19,7 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.sirius.ui.tools.internal.views.common.action.RenameRepresentationAction;
+import org.eclipse.sirius.ui.tools.internal.views.common.action.DeleteRepresentationAction;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItemImpl;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 
@@ -27,12 +27,12 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
 /**
- * An handler which redirect to the appropriate rename action depending on the
+ * An handler which redirect to the appropriate delete action depending on the
  * selection.
  * 
- * @author lredor
+ * @author mchauvin
  */
-public class RenameActionHandler extends Action {
+public class DeleteActionHandler extends Action {
 
     private ISelectionProvider selectionProvider;
 
@@ -42,7 +42,7 @@ public class RenameActionHandler extends Action {
      * @param selectionProvider
      *            the selection provider
      */
-    public RenameActionHandler(ISelectionProvider selectionProvider) {
+    public DeleteActionHandler(ISelectionProvider selectionProvider) {
         this.selectionProvider = selectionProvider;
         this.selectionProvider.addSelectionChangedListener(new ISelectionChangedListener() {
 
@@ -76,8 +76,8 @@ public class RenameActionHandler extends Action {
      */
     @Override
     public void run() {
-        Action renameAction = new RenameRepresentationAction(getRepresentations());
-        renameAction.run();
+        Action deleteAction = new DeleteRepresentationAction(getRepresentations());
+        deleteAction.run();
     }
 
 }

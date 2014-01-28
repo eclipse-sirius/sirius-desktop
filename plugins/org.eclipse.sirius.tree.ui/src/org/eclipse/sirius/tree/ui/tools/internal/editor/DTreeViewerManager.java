@@ -65,7 +65,7 @@ import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableColumnViewerEditorActivationStrategy;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableTreeFocusListener;
-import org.eclipse.sirius.ui.tools.internal.views.sessionview.ModelDragTargetAdapter;
+import org.eclipse.sirius.ui.tools.internal.views.common.navigator.adapters.ModelDragTargetAdapter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.ByteArrayTransfer;
 import org.eclipse.swt.dnd.DND;
@@ -215,6 +215,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
                     }
                 }
             }
+
             public void keyReleased(final KeyEvent e) {
             };
         });

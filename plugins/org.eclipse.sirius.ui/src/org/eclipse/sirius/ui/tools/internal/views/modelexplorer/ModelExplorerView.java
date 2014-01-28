@@ -34,8 +34,6 @@ import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.tab.Co
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.tab.ModelExplorerTabDescriptor;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.tab.ModelExplorerTabRegistry;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.tab.ModelExplorerTabRegistryListener;
-import org.eclipse.sirius.ui.tools.internal.views.sessionview.DeleteActionHandler;
-import org.eclipse.sirius.ui.tools.internal.views.sessionview.RenameActionHandler;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
