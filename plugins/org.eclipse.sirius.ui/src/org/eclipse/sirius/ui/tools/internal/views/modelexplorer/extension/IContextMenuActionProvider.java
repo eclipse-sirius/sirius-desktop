@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.tools.internal.views.sessionview.extension;
+package org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;

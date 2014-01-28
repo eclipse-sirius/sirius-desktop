@@ -79,7 +79,7 @@ import org.eclipse.sirius.ui.tools.internal.views.common.action.RenameRepresenta
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ControlledRoot;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider;
-import org.eclipse.sirius.ui.tools.internal.views.sessionview.extension.IContextMenuActionProvider;
+import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.IContextMenuActionProvider;
 import org.eclipse.sirius.ui.tools.internal.wizards.ExtractRepresentationsWizard;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;

@@ -24,8 +24,8 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIManager;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionWrapperContentProvider;
-import org.eclipse.sirius.ui.tools.internal.views.sessionview.extension.IContextMenuActionProvider;
-import org.eclipse.sirius.ui.tools.internal.views.sessionview.extension.ISessionViewExtension;
+import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.IContextMenuActionProvider;
+import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.ISessionViewExtension;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
