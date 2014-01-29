@@ -36,7 +36,7 @@ public class DiagramRepresentationsFileMigrationParticipant extends AbstractRepr
     /**
      * The latest VP version for this participant.
      */
-    private static final Version MIGRATION_VERSION = DiagramRepresentationsFileMigrationParticipantV690.MIGRATION_VERSION;
+    private static final Version MIGRATION_VERSION = DiagramRepresentationsFileMigrationParticipantV700.MIGRATION_VERSION;
 
     private static final Version ALREADY_MIGRATED_VERSION = new Version("6.5.3");
 
