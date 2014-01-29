@@ -36,7 +36,7 @@ public class DiagramRepresentationsFileMigrationParticipant extends AbstractRepr
     /**
      * The latest VP version for this participant.
      */
-    private static final Version MIGRATION_VERSION = DiagramRepresentationsFileMigrationParticipantV700.MIGRATION_VERSION;
+    private static final Version MIGRATION_VERSION = DiagramRepresentationsFileMigrationParticipantV801.MIGRATION_VERSION;
 
     private static final Version ALREADY_MIGRATED_VERSION = new Version("6.5.3");
 
@@ -83,6 +83,17 @@ public class DiagramRepresentationsFileMigrationParticipant extends AbstractRepr
             DiagramRepresentationsFileMigrationParticipantV690 diagramRepresentationsFileMigrationParticipantV690 = new DiagramRepresentationsFileMigrationParticipantV690();
             diagramRepresentationsFileMigrationParticipantV690.migrateEdgeRoutingStyle(getGMFDiagrams(dAnalysis));
             diagramRepresentationsFileMigrationParticipantV690.migrateVisibilityInconsistenciesBetweenGMFNodeAndDDiagramElement(diagrams);
+        }
+
+        // This migration has been introduced in Sirius 1.0.0M6 and in several
+        // maintenance versions anterior to Sirius. For a complexity reason and
+        // the fact that migration can be re-apply safely, we do not verify each
+        // version for which this migration has already been applied.
+        if (loadedVersion.compareTo(DiagramRepresentationsFileMigrationParticipantV801.MIGRATION_VERSION) < 0) {
+            List<Diagram> diagrams = getGMFDiagrams(dAnalysis);
+            if (!diagrams.isEmpty()) {
+                new DiagramRepresentationsFileMigrationParticipantV801().migrateLabelVisibilityInconsistency(diagrams);
+            }
         }
     }
 
