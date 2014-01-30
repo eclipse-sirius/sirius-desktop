@@ -86,12 +86,6 @@
     <extension
           point="org.eclipse.ui.perspectives">
        <perspective
-             class="org.eclipse.sirius.ui.tools.internal.perspectives.DesignerDesignPerspective"
-             icon="icons/full/obj16/Sirius.gif"
-             id="org.eclipse.sirius.ui.tools.perspective.design"
-             name="Sirius">
-       </perspective>
-       <perspective
              class="org.eclipse.sirius.ui.tools.internal.perspectives.DesignerModelingPerspective"
              icon="icons/full/others/ModelingPerspective.gif"
              id="org.eclipse.sirius.ui.tools.perspective.modeling"

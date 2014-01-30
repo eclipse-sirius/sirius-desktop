@@ -12,6 +12,10 @@ h4. Changes in @org.eclipse.sirius@
 
 * The @org.eclipse.sirius.tools.api.command.IDiagramCommandFactory.setAutoRefreshDView()@ method was removed. It had no effect, any code which called it can simply be removed.
 
+h4. Changes in @org.eclipse.sirius.ui@
+
+* The @org.eclipse.sirius.ui.tools.api.perspectives.DesignPerspective@ interface has been moved to @org.eclipse.sirius.editor.tools.api.perspectives@ package in @org.eclipse.sirius.editor@ plugin. This perspective is now provided through the @org.eclipse.sirius.editor@ plugin. The perspective ID is kept unchanged for a compatibility reason.
+
 h2(#sirius1.0M5). Changes in Sirius 1.0.0M5 (from Sirius 1.0M4)
 
 h3. User-Visible Changes

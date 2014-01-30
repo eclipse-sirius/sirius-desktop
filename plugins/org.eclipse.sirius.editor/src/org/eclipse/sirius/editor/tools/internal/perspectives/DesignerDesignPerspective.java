@@ -8,9 +8,9 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.tools.internal.perspectives;
+package org.eclipse.sirius.editor.tools.internal.perspectives;
 
-import org.eclipse.sirius.ui.tools.api.perspectives.DesignPerspective;
+import org.eclipse.sirius.editor.tools.api.perspectives.DesignPerspective;
 import org.eclipse.sirius.ui.tools.api.views.interpreterview.InterpreterView;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.sirius.ui.tools.internal.wizards.ModelingProjectWizard;

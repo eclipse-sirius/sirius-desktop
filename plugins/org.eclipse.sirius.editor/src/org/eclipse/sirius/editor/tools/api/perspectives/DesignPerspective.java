@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.ui.tools.api.perspectives;
+package org.eclipse.sirius.editor.tools.api.perspectives;
 
 /**
  * This interface is usefull to get perspective id from others plug-ins.
