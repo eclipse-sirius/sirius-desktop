@@ -684,8 +684,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             for (Resource res : collectAllReferencedResources(newResource)) {
                 doAddSemanticResource(res, set);
             }
-        } else {
-            doAddSemanticResource(newResource, set);
         }
     }
 
