@@ -303,10 +303,9 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider imple
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, ToolFactory.eINSTANCE.createDiagramNavigationDescription()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createToolDescription()));
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, ToolFactory.eINSTANCE.createContainerDropDescription()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS,
-                org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createContainerDropDescription()));
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createToolDescription()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_SECTION__OWNED_TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createPasteDescription()));
 

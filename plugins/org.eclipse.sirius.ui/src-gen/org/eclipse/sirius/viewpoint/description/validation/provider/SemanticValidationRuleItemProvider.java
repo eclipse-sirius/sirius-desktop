@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation.provider;
+package org.eclipse.sirius.viewpoint.description.validation.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -23,18 +23,20 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
-import org.eclipse.sirius.diagram.description.validation.ViewValidationRule;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
+import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.description.validation.ViewValidationRule}
+ * {@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
-public class ViewValidationRuleItemProvider extends ValidationRuleItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
+public class SemanticValidationRuleItemProvider extends ValidationRuleItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
         IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
@@ -42,7 +44,7 @@ public class ViewValidationRuleItemProvider extends ValidationRuleItemProvider i
      * 
      * @generated
      */
-    public ViewValidationRuleItemProvider(AdapterFactory adapterFactory) {
+    public SemanticValidationRuleItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -57,32 +59,33 @@ public class ViewValidationRuleItemProvider extends ValidationRuleItemProvider i
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addTargetsPropertyDescriptor(object);
+            addTargetClassPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This adds a property descriptor for the Targets feature. <!--
+     * This adds a property descriptor for the Target Class feature. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    protected void addTargetsPropertyDescriptor(Object object) {
+    protected void addTargetClassPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_ViewValidationRule_targets_feature"), getString("_UI_PropertyDescriptor_description", "_UI_ViewValidationRule_targets_feature", "_UI_ViewValidationRule_type"),
-                ValidationPackage.Literals.VIEW_VALIDATION_RULE__TARGETS, true, false, true, null, getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_SemanticValidationRule_targetClass_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_SemanticValidationRule_targetClass_feature", "_UI_SemanticValidationRule_type"),
+                ValidationPackage.Literals.SEMANTIC_VALIDATION_RULE__TARGET_CLASS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
-     * This returns ViewValidationRule.gif. <!-- begin-user-doc --> <!--
+     * This returns SemanticValidationRule.gif. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ViewValidationRule"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/SemanticValidationRule"));
     }
 
     /**
@@ -93,9 +96,9 @@ public class ViewValidationRuleItemProvider extends ValidationRuleItemProvider i
      */
     @Override
     public String getText(Object object) {
-        ERROR_LEVEL labelValue = ((ViewValidationRule) object).getLevel();
+        ERROR_LEVEL labelValue = ((SemanticValidationRule) object).getLevel();
         String label = labelValue == null ? null : labelValue.toString();
-        return label == null || label.length() == 0 ? getString("_UI_ViewValidationRule_type") : getString("_UI_ViewValidationRule_type") + " " + label;
+        return label == null || label.length() == 0 ? getString("_UI_SemanticValidationRule_type") : getString("_UI_SemanticValidationRule_type") + " " + label;
     }
 
     /**
@@ -109,6 +112,12 @@ public class ViewValidationRuleItemProvider extends ValidationRuleItemProvider i
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+
+        switch (notification.getFeatureID(SemanticValidationRule.class)) {
+        case ValidationPackage.SEMANTIC_VALIDATION_RULE__TARGET_CLASS:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        }
         super.notifyChanged(notification);
     }
 

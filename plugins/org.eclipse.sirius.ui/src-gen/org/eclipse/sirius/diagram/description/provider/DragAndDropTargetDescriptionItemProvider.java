@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.viewpoint.description.provider;
+package org.eclipse.sirius.diagram.description.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,12 +25,12 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription}
+ * {@link org.eclipse.sirius.diagram.description.DragAndDropTargetDescription}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated

@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation.provider;
+package org.eclipse.sirius.viewpoint.description.validation.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -27,15 +27,15 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.diagram.description.validation.ValidationFactory;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
-import org.eclipse.sirius.diagram.description.validation.ValidationSet;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.diagram.description.validation.ValidationSet}
+ * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet}
  * object. <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated

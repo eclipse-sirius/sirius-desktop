@@ -161,8 +161,6 @@ public class EnvironmentItemProvider extends ItemProviderAdapter implements IEdi
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createToolDescription()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createContainerDropDescription()));
-
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createPasteDescription()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createSelectionWizardDescription()));
@@ -210,6 +208,9 @@ public class EnvironmentItemProvider extends ItemProviderAdapter implements IEdi
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS,
                 org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createDiagramNavigationDescription()));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS,
+                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createContainerDropDescription()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__LABEL_BORDER_STYLES, StyleFactory.eINSTANCE.createLabelBorderStyles()));
     }

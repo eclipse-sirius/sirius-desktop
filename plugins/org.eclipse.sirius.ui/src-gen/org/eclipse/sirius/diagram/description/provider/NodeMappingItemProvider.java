@@ -30,11 +30,11 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
  * This is the item provider adapter for a
@@ -97,8 +97,8 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider imp
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE);
-            childrenFeatures.add(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__CONDITIONNAL_STYLES);
+            childrenFeatures.add(DescriptionPackage.Literals.NODE_MAPPING__STYLE);
+            childrenFeatures.add(DescriptionPackage.Literals.NODE_MAPPING__CONDITIONNAL_STYLES);
         }
         return childrenFeatures;
     }
@@ -170,8 +170,8 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider imp
         updateChildren(notification);
 
         switch (notification.getFeatureID(NodeMapping.class)) {
-        case org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__STYLE:
-        case org.eclipse.sirius.diagram.description.DescriptionPackage.NODE_MAPPING__CONDITIONNAL_STYLES:
+        case DescriptionPackage.NODE_MAPPING__STYLE:
+        case DescriptionPackage.NODE_MAPPING__CONDITIONNAL_STYLES:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -232,27 +232,25 @@ public class NodeMappingItemProvider extends AbstractNodeMappingItemProvider imp
     protected void collectNewChildDescriptorsGen(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createCustomStyleDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createCustomStyleDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createSquareDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createSquareDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createLozengeNodeDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createLozengeNodeDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createEllipseNodeDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createEllipseNodeDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createBundledImageDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createBundledImageDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createNoteDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createNoteDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createDotDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createDotDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE,
-                StyleFactory.eINSTANCE.createGaugeCompositeStyleDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createGaugeCompositeStyleDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createWorkspaceImageDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__STYLE, StyleFactory.eINSTANCE.createWorkspaceImageDescription()));
 
-        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.NODE_MAPPING__CONDITIONNAL_STYLES,
-                DescriptionFactory.eINSTANCE.createConditionalNodeStyleDescription()));
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.NODE_MAPPING__CONDITIONNAL_STYLES, DescriptionFactory.eINSTANCE.createConditionalNodeStyleDescription()));
     }
 
 }

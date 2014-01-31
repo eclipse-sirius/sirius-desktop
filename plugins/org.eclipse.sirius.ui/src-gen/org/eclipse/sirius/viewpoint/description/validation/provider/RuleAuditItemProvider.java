@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.viewpoint.provider;
+package org.eclipse.sirius.viewpoint.description.validation.provider;
 
 import java.util.Collection;
 import java.util.List;
@@ -17,30 +17,35 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
- * {@link org.eclipse.sirius.viewpoint.DragAndDropTarget} object. <!--
- * begin-user-doc --> <!-- end-user-doc -->
+ * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit} object.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * 
  * @generated
  */
-public class DragAndDropTargetItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+public class RuleAuditItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    public DragAndDropTargetItemProvider(AdapterFactory adapterFactory) {
+    public RuleAuditItemProvider(AdapterFactory adapterFactory) {
         super(adapterFactory);
     }
 
@@ -55,19 +60,31 @@ public class DragAndDropTargetItemProvider extends ItemProviderAdapter implement
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
+            addAuditExpressionPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
 
     /**
-     * This returns DragAndDropTarget.gif. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * This adds a property descriptor for the Audit Expression feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addAuditExpressionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_RuleAudit_auditExpression_feature"), getString("_UI_RuleAudit_auditExpression_description"), ValidationPackage.Literals.RULE_AUDIT__AUDIT_EXPRESSION, true, false,
+                false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
+    }
+
+    /**
+     * This returns RuleAudit.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/DragAndDropTarget"));
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/RuleAudit"));
     }
 
     /**
@@ -78,7 +95,8 @@ public class DragAndDropTargetItemProvider extends ItemProviderAdapter implement
      */
     @Override
     public String getText(Object object) {
-        return getString("_UI_DragAndDropTarget_type");
+        String label = ((RuleAudit) object).getAuditExpression();
+        return label == null || label.length() == 0 ? getString("_UI_RuleAudit_type") : getString("_UI_RuleAudit_type") + " " + label;
     }
 
     /**
@@ -92,6 +110,12 @@ public class DragAndDropTargetItemProvider extends ItemProviderAdapter implement
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+
+        switch (notification.getFeatureID(RuleAudit.class)) {
+        case ValidationPackage.RULE_AUDIT__AUDIT_EXPRESSION:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        }
         super.notifyChanged(notification);
     }
 

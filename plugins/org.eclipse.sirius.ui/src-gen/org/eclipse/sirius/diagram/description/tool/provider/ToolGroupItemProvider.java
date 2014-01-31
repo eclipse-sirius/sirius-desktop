@@ -246,9 +246,9 @@ public class ToolGroupItemProvider extends DocumentedElementItemProvider impleme
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP__TOOLS, ToolFactory.eINSTANCE.createDiagramNavigationDescription()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createToolDescription()));
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP__TOOLS, ToolFactory.eINSTANCE.createContainerDropDescription()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createContainerDropDescription()));
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createToolDescription()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.TOOL_GROUP__TOOLS, org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createPasteDescription()));
 

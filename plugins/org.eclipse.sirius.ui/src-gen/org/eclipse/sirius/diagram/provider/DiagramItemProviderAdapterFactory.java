@@ -1095,6 +1095,31 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
     }
 
     /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.diagram.DragAndDropTarget} instances. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected DragAndDropTargetItemProvider dragAndDropTargetItemProvider;
+
+    /**
+     * This creates an adapter for a
+     * {@link org.eclipse.sirius.diagram.DragAndDropTarget}. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    @Override
+    public Adapter createDragAndDropTargetAdapter() {
+        if (dragAndDropTargetItemProvider == null) {
+            dragAndDropTargetItemProvider = new DragAndDropTargetItemProvider(this);
+        }
+
+        return dragAndDropTargetItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1274,6 +1299,8 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
             viewVariable2ContainerVariableItemProvider.dispose();
         if (containerVariable2StyleDescriptionItemProvider != null)
             containerVariable2StyleDescriptionItemProvider.dispose();
+        if (dragAndDropTargetItemProvider != null)
+            dragAndDropTargetItemProvider.dispose();
     }
 
 }

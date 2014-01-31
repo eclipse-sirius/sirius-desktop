@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation.provider;
+package org.eclipse.sirius.viewpoint.description.validation.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,7 +28,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.sirius.diagram.description.validation.util.ValidationAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.validation.util.ValidationAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support
@@ -83,7 +83,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationSet}
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -92,8 +92,8 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationSet}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet}
+     * . <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -108,7 +108,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.diagram.description.validation.SemanticValidationRule}
+     * {@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -117,7 +117,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.description.validation.SemanticValidationRule}
+     * {@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -133,7 +133,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.diagram.description.validation.ViewValidationRule}
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -142,7 +142,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.description.validation.ViewValidationRule}
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule}
      * . <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -158,7 +158,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.diagram.description.validation.RuleAudit}
+     * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -167,8 +167,8 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.description.validation.RuleAudit}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit}.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
@@ -183,7 +183,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationFix}
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
@@ -192,8 +192,8 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
 
     /**
      * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationFix}.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix}
+     * . <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */

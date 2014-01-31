@@ -307,31 +307,6 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.DragAndDropTarget} instances. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DragAndDropTargetItemProvider dragAndDropTargetItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.DragAndDropTarget}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDragAndDropTargetAdapter() {
-        if (dragAndDropTargetItemProvider == null) {
-            dragAndDropTargetItemProvider = new DragAndDropTargetItemProvider(this);
-        }
-
-        return dragAndDropTargetItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.RGBValues} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -669,8 +644,6 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
             dAnalysisCustomDataItemProvider.dispose();
         if (labelStyleItemProvider != null)
             labelStyleItemProvider.dispose();
-        if (dragAndDropTargetItemProvider != null)
-            dragAndDropTargetItemProvider.dispose();
         if (rgbValuesItemProvider != null)
             rgbValuesItemProvider.dispose();
         if (dAnalysisSessionEObjectItemProvider != null)

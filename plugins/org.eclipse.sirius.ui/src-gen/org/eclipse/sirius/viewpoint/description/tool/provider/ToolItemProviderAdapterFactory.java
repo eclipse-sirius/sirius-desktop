@@ -108,31 +108,6 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription}
-     * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected ContainerDropDescriptionItemProvider containerDropDescriptionItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription}
-     * . <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createContainerDropDescriptionAdapter() {
-        if (containerDropDescriptionItemProvider == null) {
-            containerDropDescriptionItemProvider = new ContainerDropDescriptionItemProvider(this);
-        }
-
-        return containerDropDescriptionItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.description.tool.PasteDescription}
      * instances. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1231,8 +1206,6 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
     public void dispose() {
         if (toolDescriptionItemProvider != null)
             toolDescriptionItemProvider.dispose();
-        if (containerDropDescriptionItemProvider != null)
-            containerDropDescriptionItemProvider.dispose();
         if (pasteDescriptionItemProvider != null)
             pasteDescriptionItemProvider.dispose();
         if (selectionWizardDescriptionItemProvider != null)

@@ -35,9 +35,9 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.concern.ConcernFactory;
 import org.eclipse.sirius.diagram.description.filter.FilterFactory;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
-import org.eclipse.sirius.diagram.description.validation.ValidationFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
@@ -198,7 +198,8 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
     protected void addDropDescriptionsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_DragAndDropTargetDescription_dropDescriptions_feature"), getString("_UI_DragAndDropTargetDescription_dropDescriptions_description"),
-                DescriptionPackage.Literals.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS, true, false, true, null, getString("_UI_BehaviorPropertyCategory"), null));
+                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS, true, false, true, null,
+                getString("_UI_BehaviorPropertyCategory"), null));
     }
 
     /**
@@ -661,7 +662,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
         }
         return createChildText;
     }
-    
+
     /**
      * @not-generated
      */
