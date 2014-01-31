@@ -27,7 +27,6 @@ public interface SessionListener {
      * recommended. Please be specific and use any other notification code if
      * you can.
      */
-    @Deprecated
     int OTHER = 1;
 
     /**

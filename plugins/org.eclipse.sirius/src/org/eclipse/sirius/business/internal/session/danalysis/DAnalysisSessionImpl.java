@@ -578,7 +578,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * 
      * @return a collection of selected viewpoints for this session.
      */
-    @Deprecated
     public Collection<Viewpoint> getSelectedViewpointsSpecificToGeneric() {
         // Sort the selected viewpoints by alphabetic order
         final SortedSet<Viewpoint> viewpoints = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());

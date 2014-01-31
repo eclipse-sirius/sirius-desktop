@@ -1379,7 +1379,6 @@ public class DDiagramSynchronizer {
      * @param mapping
      *            The mapping to deal with
      */
-    @Deprecated
     private void handleSubMappings(final IEdgeMapping mapping) {
         if (mapping instanceof EdgeMappingImport) {
             final IEdgeMapping importedEdgeMaping = ((EdgeMappingImport) mapping).getImportedMapping();
@@ -1395,7 +1394,6 @@ public class DDiagramSynchronizer {
      * @param mapping
      *            The mapping to deal with
      */
-    @Deprecated
     private void handleSuperMappings(final IEdgeMapping mapping) {
 
         for (final Iterator<EObjectCouple> iterator = this.ignoredDuringRefreshProcess.iterator(); iterator.hasNext(); /**/) {
@@ -1545,10 +1543,8 @@ public class DDiagramSynchronizer {
              * First step : we might need to move elements' position in their
              * list. To avoid un-necessary iterations on this list while
              * iterating on the candidate, we start by computing a map of
-             * Elements->positions
-             * 
-             * In the meantime we try to locate the position of the very first
-             * element being of this mapping.
+             * Elements->positions In the meantime we try to locate the position
+             * of the very first element being of this mapping.
              */
             int position = 0;
             for (DDiagramElement diagElement : Iterables.filter(ownedDDiagramElements, DDiagramElement.class)) {

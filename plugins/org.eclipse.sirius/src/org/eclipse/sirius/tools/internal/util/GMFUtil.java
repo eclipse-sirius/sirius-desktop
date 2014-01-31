@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * 
  * @author mchauvin
  */
-@Deprecated
 public final class GMFUtil {
 
     /**
