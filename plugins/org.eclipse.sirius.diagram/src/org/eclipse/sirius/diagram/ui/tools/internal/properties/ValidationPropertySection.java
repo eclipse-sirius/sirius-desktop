@@ -13,9 +13,9 @@ package org.eclipse.sirius.diagram.ui.tools.internal.properties;
 import java.util.Collection;
 import java.util.HashSet;
 
-import org.eclipse.sirius.diagram.description.validation.ValidationRule;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ActivateRulesCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.DeactivateRulesCommand;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;

@@ -44,12 +44,12 @@ import org.eclipse.sirius.diagram.business.internal.image.ImageSelectorDescripto
 import org.eclipse.sirius.diagram.business.internal.image.refresh.WorkspaceImageFigureRefresher;
 import org.eclipse.sirius.diagram.description.concern.provider.ConcernItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
-import org.eclipse.sirius.diagram.description.validation.provider.ValidationItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.tools.internal.resource.CustomSiriusDocumentProvider;
 import org.eclipse.sirius.diagram.tools.internal.resource.ResourceMissingDocumentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension.LayoutDataManagerRegistryListener;
 import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.graphics.Image;

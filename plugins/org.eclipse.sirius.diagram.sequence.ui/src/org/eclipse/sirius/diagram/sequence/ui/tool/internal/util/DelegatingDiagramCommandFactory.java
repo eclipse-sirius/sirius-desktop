@@ -33,7 +33,6 @@ import org.eclipse.sirius.diagram.description.tool.DoubleClickDescription;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
-import org.eclipse.sirius.diagram.description.validation.ValidationFix;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
@@ -49,6 +48,7 @@ import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
 
 import com.google.common.base.Preconditions;
 

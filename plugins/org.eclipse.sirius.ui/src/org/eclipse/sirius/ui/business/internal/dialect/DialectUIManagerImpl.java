@@ -41,6 +41,7 @@ import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProvider
 import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.style.provider.StyleItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.ui.IEditorPart;
 
@@ -158,6 +159,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
         composed.addAdapterFactory(new ViewpointItemProviderAdapterFactory());
         composed.addAdapterFactory(new StyleItemProviderAdapterFactory());
         composed.addAdapterFactory(new ToolItemProviderAdapterFactory());
+        composed.addAdapterFactory(new ValidationItemProviderAdapterFactory());
         composed.addAdapterFactory(new AuditItemProviderAdapterFactory());
 
         for (final DialectUI dialect : dialects.values()) {

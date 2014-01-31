@@ -78,7 +78,6 @@ import org.eclipse.sirius.diagram.description.provider.DescriptionItemProviderAd
 import org.eclipse.sirius.diagram.description.style.provider.StyleItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory;
-import org.eclipse.sirius.diagram.description.validation.provider.ValidationItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
@@ -359,7 +358,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
         factory.addAdapterFactory(new StyleItemProviderAdapterFactory());
         factory.addAdapterFactory(new ToolItemProviderAdapterFactory());
         factory.addAdapterFactory(new FilterItemProviderAdapterFactory());
-        factory.addAdapterFactory(new ValidationItemProviderAdapterFactory());
         factory.addAdapterFactory(new ConcernItemProviderAdapterFactory());
         return factory;
     }
