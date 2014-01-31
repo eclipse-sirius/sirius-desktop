@@ -77,8 +77,6 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
 
     private Set<ViewpointRegistryFilter> filters;
 
-    private Set<ViewpointRegistryListener> listeners;
-
     private Set<ViewointRegistryListener2> newListeners;
 
     private ECrossReferenceAdapter crossReferencer;
@@ -256,42 +254,11 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * @return <code>true</code> if the listener was added, <code>false</code>
      *         otherwise.
      */
-    @Deprecated
-    public boolean addListener(final ViewpointRegistryListener listener) {
-        if (listeners == null) {
-            listeners = new HashSet<ViewpointRegistryListener>(4);
-        }
-        return listeners.add(listener);
-    }
-
-    /**
-     * Add a listener on the registry.
-     * 
-     * @param listener
-     *            the listener to add;
-     * @return <code>true</code> if the listener was added, <code>false</code>
-     *         otherwise.
-     */
     public boolean addListener(final ViewointRegistryListener2 listener) {
         if (newListeners == null) {
             newListeners = new HashSet<ViewointRegistryListener2>(4);
         }
         return newListeners.add(listener);
-    }
-
-    /**
-     * Remove a listener from the registry.
-     * 
-     * @param listener
-     *            the listener to remove
-     * @return <code>true</code> if removed, <code>false</code> otherwise.
-     */
-    @Deprecated
-    public boolean removeListener(final ViewpointRegistryListener listener) {
-        if (listeners != null) {
-            return listeners.remove(listener);
-        }
-        return false;
     }
 
     /**
@@ -702,21 +669,17 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
                     break;
                 case IResourceDelta.REMOVED:
                     this.fileRemoved(file);
-                    shouldInvalidateCache = true;
                     break;
                 case IResourceDelta.REPLACED:
-                    this.fileReplaced(file);
-                    shouldInvalidateCache = true;
+                    this.invalidateCacheAndReloadFile(file);
                     break;
                 case IResourceDelta.CHANGED:
                     if (!onlyMarkerChanged(resourceDelta)) {
-                        this.fileDeltaChanged(file);
-                        shouldInvalidateCache = true;
+                        this.invalidateCacheAndReloadFile(file);
                     }
                     break;
                 case IResourceDelta.CONTENT:
-                    this.fileDeltaChanged(file);
-                    shouldInvalidateCache = true;
+                    this.invalidateCacheAndReloadFile(file);
                     break;
                 default:
                     // do nothing.
@@ -768,30 +731,9 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * @param file
      *            the file which changed.
      */
-    private void fileDeltaChanged(final IFile file) {
+    private void invalidateCacheAndReloadFile(final IFile file) {
         shouldInvalidateCache = true;
         reloadFile(file);
-        if (listeners != null) {
-            for (final ViewpointRegistryListener listener : listeners) {
-                listener.modelerDesciptionFileReloaded(file);
-            }
-        }
-    }
-
-    /**
-     * Invoked when a resource is replaced (AFTER STATE).
-     * 
-     * @param resource
-     *            the replaced resource (AFTER STATE).
-     */
-    private void fileReplaced(final IFile file) {
-        shouldInvalidateCache = true;
-        reloadFile(file);
-        if (listeners != null) {
-            for (final ViewpointRegistryListener listener : listeners) {
-                listener.modelerDesciptionFileReloaded(file);
-            }
-        }
     }
 
     /**
