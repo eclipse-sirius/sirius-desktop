@@ -27,7 +27,7 @@ public class EditToolsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
         super();
         addValidType(org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE.getDirectEditLabel());
         addValidType(org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE.getReconnectEdgeDescription());
-        addValidType(ToolPackage.eINSTANCE.getContainerDropDescription());
+        addValidType(org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE.getContainerDropDescription());
         addValidType(org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE.getDeleteElementDescription());
         addValidType(ToolPackage.eINSTANCE.getPasteDescription());
         addValidType(ToolPackage.eINSTANCE.getSelectionWizardDescription());

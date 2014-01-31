@@ -12,8 +12,8 @@ package org.eclipse.sirius.editor.properties.sections.tool.toolsection;
 // Start of user code imports
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
+import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 

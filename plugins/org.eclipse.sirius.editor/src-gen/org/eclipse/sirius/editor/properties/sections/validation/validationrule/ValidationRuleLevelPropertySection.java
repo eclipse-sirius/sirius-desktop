@@ -14,10 +14,10 @@ package org.eclipse.sirius.editor.properties.sections.validation.validationrule;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
+import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 

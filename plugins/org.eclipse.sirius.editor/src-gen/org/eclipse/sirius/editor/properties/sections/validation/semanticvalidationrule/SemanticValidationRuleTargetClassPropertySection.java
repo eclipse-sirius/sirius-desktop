@@ -12,10 +12,10 @@ package org.eclipse.sirius.editor.properties.sections.validation.semanticvalidat
 // Start of user code imports
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 

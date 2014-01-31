@@ -12,8 +12,8 @@ package org.eclipse.sirius.editor.properties.filters.tool.nodecreationdescriptio
 // Start of user code specific imports
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
+import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
 
 // End of user code specific imports
 

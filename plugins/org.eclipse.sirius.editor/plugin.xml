@@ -93,7 +93,7 @@
                id="tool.section.containerDropDescription.Containers"
                afterSection="tool.section.containerDropDescription.DragSource"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription"/>
+        <input type="org.eclipse.sirius.diagram.description.tool.ContainerDropDescription"/>
       </propertySection>
        <propertySection
                class="org.eclipse.sirius.editor.properties.sections.tool.pastedescription.PasteDescriptionContainersPropertySection"
@@ -254,28 +254,28 @@
                filter="org.eclipse.sirius.editor.properties.filters.validation.validationfix.ValidationFixNameFilter"
                id="validation.section.validationFix.Name"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.description.validation.ValidationFix"/>        
+        <input type="org.eclipse.sirius.viewpoint.description.validation.ValidationFix"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.validation.ruleaudit.RuleAuditAuditExpressionPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.validation.ruleaudit.RuleAuditAuditExpressionFilter"
                id="validation.section.ruleAudit.AuditExpression"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.description.validation.RuleAudit"/>        
+        <input type="org.eclipse.sirius.viewpoint.description.validation.RuleAudit"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.validation.viewvalidationrule.ViewValidationRuleTargetsPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.validation.viewvalidationrule.ViewValidationRuleTargetsFilter"
                id="validation.section.viewValidationRule.Targets"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.description.validation.ViewValidationRule"/>        
+        <input type="org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.validation.semanticvalidationrule.SemanticValidationRuleTargetClassPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.validation.semanticvalidationrule.SemanticValidationRuleTargetClassFilter"
                id="validation.section.semanticValidationRule.TargetClass"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.description.validation.SemanticValidationRule"/>        
+        <input type="org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.validation.validationrule.ValidationRuleMessagePropertySection"
@@ -283,14 +283,14 @@
                id="validation.section.validationRule.Message"
                afterSection="validation.section.validationRule.Level"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.description.validation.ValidationRule"/>        
+        <input type="org.eclipse.sirius.viewpoint.description.validation.ValidationRule"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.validation.validationrule.ValidationRuleLevelPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.validation.validationrule.ValidationRuleLevelFilter"
                id="validation.section.validationRule.Level"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.description.validation.ValidationRule"/>        
+        <input type="org.eclipse.sirius.viewpoint.description.validation.ValidationRule"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.validation.validationset.ValidationSetReusedRulesPropertySection"
@@ -298,14 +298,14 @@
                id="validation.section.validationSet.ReusedRules"
                afterSection="validation.section.validationSet.Name"
                 tab="viewpoint.tab.import">
-        <input type="org.eclipse.sirius.diagram.description.validation.ValidationSet"/>        
+        <input type="org.eclipse.sirius.viewpoint.description.validation.ValidationSet"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.validation.validationset.ValidationSetNamePropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.validation.validationset.ValidationSetNameFilter"
                id="validation.section.validationSet.Name"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.description.validation.ValidationSet"/>        
+        <input type="org.eclipse.sirius.viewpoint.description.validation.ValidationSet"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.filter.filtervariable.FilterVariableNamePropertySection"
@@ -843,7 +843,7 @@
                id="tool.section.containerDropDescription.Mappings"
                afterSection="tool.section.containerDropDescription.MoveEdges"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription"/>        
+        <input type="org.eclipse.sirius.diagram.description.tool.ContainerDropDescription"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.tool.containerdropdescription.ContainerDropDescriptionMoveEdgesPropertySection"
@@ -851,14 +851,14 @@
                id="tool.section.containerDropDescription.MoveEdges"
                afterSection="tool.section.containerDropDescription.DragSource"
                 tab="viewpoint.tab.advanced">
-        <input type="org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription"/>        
+        <input type="org.eclipse.sirius.diagram.description.tool.ContainerDropDescription"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.tool.containerdropdescription.ContainerDropDescriptionDragSourcePropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.tool.containerdropdescription.ContainerDropDescriptionDragSourceFilter"
                id="tool.section.containerDropDescription.DragSource"
                 tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription"/>        
+        <input type="org.eclipse.sirius.diagram.description.tool.ContainerDropDescription"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.tool.containercreationdescription.ContainerCreationDescriptionExtraMappingsPropertySection"
@@ -2109,7 +2109,7 @@
                filter="org.eclipse.sirius.editor.properties.filters.description.draganddroptargetdescription.DragAndDropTargetDescriptionDropDescriptionsFilter"
                id="description.section.dragAndDropTargetDescription.DropDescriptions"
                 tab="viewpoint.tab.behavior">
-        <input type="org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription"/>        
+        <input type="org.eclipse.sirius.diagram.description.DragAndDropTargetDescription"/>        
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.representationextensiondescription.RepresentationExtensionDescriptionMetamodelPropertySectionSpec"

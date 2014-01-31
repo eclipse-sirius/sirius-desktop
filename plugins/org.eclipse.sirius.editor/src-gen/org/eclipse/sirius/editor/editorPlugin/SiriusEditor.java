@@ -95,7 +95,6 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.diagram.description.concern.provider.ConcernItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
-import org.eclipse.sirius.diagram.description.validation.provider.ValidationItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.sirius.editor.utils.SelectionTreeTextEditor;
@@ -106,6 +105,7 @@ import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProvider
 import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.style.provider.StyleItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
+import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
@@ -615,13 +615,13 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
         factories.add(new DescriptionItemProviderAdapterFactory());
         factories.add(new StyleItemProviderAdapterFactory());
         factories.add(new ToolItemProviderAdapterFactory());
+        factories.add(new ValidationItemProviderAdapterFactory());
         factories.add(new AuditItemProviderAdapterFactory());
         factories.add(new DiagramItemProviderAdapterFactory());
         factories.add(new DescriptionItemProviderAdapterFactory());
         factories.add(new StyleItemProviderAdapterFactory());
         factories.add(new ToolItemProviderAdapterFactory());
         factories.add(new FilterItemProviderAdapterFactory());
-        factories.add(new ValidationItemProviderAdapterFactory());
         factories.add(new ConcernItemProviderAdapterFactory());
         factories.add(new ReflectiveItemProviderAdapterFactory());
 
