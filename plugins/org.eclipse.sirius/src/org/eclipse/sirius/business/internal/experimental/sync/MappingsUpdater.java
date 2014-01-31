@@ -24,9 +24,9 @@ import org.eclipse.sirius.business.internal.metamodel.helper.MappingsListVisitor
 import org.eclipse.sirius.business.internal.sync.visitor.DiagramElementsHierarchyVisitor;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;

@@ -46,8 +46,6 @@ import org.eclipse.sirius.diagram.description.style.SquareDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
-import org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl;
 import org.eclipse.sirius.diagram.impl.DiagramPackageImpl;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -282,6 +280,9 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
                 .getEPackage(org.eclipse.sirius.viewpoint.description.style.StylePackage.eNS_URI) : org.eclipse.sirius.viewpoint.description.style.StylePackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
+        org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl theValidationPackage = (org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl) (EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eNS_URI) instanceof org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eNS_URI) : org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eINSTANCE);
         AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
         DiagramPackageImpl theDiagramPackage = (DiagramPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) instanceof DiagramPackageImpl ? EPackage.Registry.INSTANCE
@@ -294,8 +295,6 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
                 .getEPackage(org.eclipse.sirius.diagram.description.tool.ToolPackage.eNS_URI) : org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE);
         FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
-        ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
         ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) instanceof ConcernPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ConcernPackage.eNS_URI) : ConcernPackage.eINSTANCE);
 
@@ -305,12 +304,12 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         theDescriptionPackage.createPackageContents();
         theStylePackage_1.createPackageContents();
         theToolPackage.createPackageContents();
+        theValidationPackage.createPackageContents();
         theAuditPackage.createPackageContents();
         theDiagramPackage.createPackageContents();
         theDescriptionPackage_1.createPackageContents();
         theToolPackage_1.createPackageContents();
         theFilterPackage.createPackageContents();
-        theValidationPackage.createPackageContents();
         theConcernPackage.createPackageContents();
 
         // Initialize created meta-data
@@ -319,12 +318,12 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         theDescriptionPackage.initializePackageContents();
         theStylePackage_1.initializePackageContents();
         theToolPackage.initializePackageContents();
+        theValidationPackage.initializePackageContents();
         theAuditPackage.initializePackageContents();
         theDiagramPackage.initializePackageContents();
         theDescriptionPackage_1.initializePackageContents();
         theToolPackage_1.initializePackageContents();
         theFilterPackage.initializePackageContents();
-        theValidationPackage.initializePackageContents();
         theConcernPackage.initializePackageContents();
 
         // Mark meta-data to indicate it can't be changed

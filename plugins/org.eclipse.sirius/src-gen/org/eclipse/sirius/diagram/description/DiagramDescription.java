@@ -17,13 +17,12 @@ import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.concern.ConcernSet;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
-import org.eclipse.sirius.diagram.description.validation.ValidationSet;
-import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

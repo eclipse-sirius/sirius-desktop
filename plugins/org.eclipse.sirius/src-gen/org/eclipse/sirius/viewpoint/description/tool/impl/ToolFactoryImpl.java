@@ -20,10 +20,11 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.ContainerDropDescriptionSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.PasteDescriptionSpec;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
+import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
+import org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
 import org.eclipse.sirius.viewpoint.description.tool.Case;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.Default;
@@ -111,8 +112,6 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
         switch (eClass.getClassifierID()) {
         case ToolPackage.TOOL_DESCRIPTION:
             return createToolDescription();
-        case ToolPackage.CONTAINER_DROP_DESCRIPTION:
-            return createContainerDropDescription();
         case ToolPackage.PASTE_DESCRIPTION:
             return createPasteDescription();
         case ToolPackage.SELECTION_WIZARD_DESCRIPTION:

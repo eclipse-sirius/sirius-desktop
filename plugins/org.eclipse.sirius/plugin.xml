@@ -62,6 +62,14 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated viewpoint -->
       <package
+            uri="http://www.eclipse.org/sirius/description/validation/1.1.0"
+            class="org.eclipse.sirius.viewpoint.description.validation.ValidationPackage"
+            genModel="model/viewpoint.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated viewpoint -->
+      <package
             uri="http://www.eclipse.org/sirius/description/audit/1.1.0"
             class="org.eclipse.sirius.viewpoint.description.audit.AuditPackage"
             genModel="model/viewpoint.genmodel"/>
@@ -88,14 +96,6 @@
       <package
             uri="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0"
             class="org.eclipse.sirius.diagram.description.filter.FilterPackage"
-            genModel="model/viewpoint.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated viewpoint -->
-      <package
-            uri="http://www.eclipse.org/sirius/diagram/description/validation/1.1.0"
-            class="org.eclipse.sirius.diagram.description.validation.ValidationPackage"
             genModel="model/viewpoint.genmodel"/>
    </extension>
 

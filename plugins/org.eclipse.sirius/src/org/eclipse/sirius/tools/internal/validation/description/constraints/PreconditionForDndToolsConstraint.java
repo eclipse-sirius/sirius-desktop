@@ -17,7 +17,7 @@ import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
+import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
 
 /**

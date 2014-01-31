@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation.impl;
+package org.eclipse.sirius.viewpoint.description.validation.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -24,14 +24,6 @@ import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
 import org.eclipse.sirius.diagram.description.concern.impl.ConcernPackageImpl;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl;
-import org.eclipse.sirius.diagram.description.validation.RuleAudit;
-import org.eclipse.sirius.diagram.description.validation.SemanticValidationRule;
-import org.eclipse.sirius.diagram.description.validation.ValidationFactory;
-import org.eclipse.sirius.diagram.description.validation.ValidationFix;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
-import org.eclipse.sirius.diagram.description.validation.ValidationRule;
-import org.eclipse.sirius.diagram.description.validation.ValidationSet;
-import org.eclipse.sirius.diagram.description.validation.ViewValidationRule;
 import org.eclipse.sirius.diagram.impl.DiagramPackageImpl;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -42,6 +34,14 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.sirius.viewpoint.description.style.impl.StylePackageImpl;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl;
+import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
+import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
+import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
 import org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl;
 
 /**
@@ -111,7 +111,7 @@ public class ValidationPackageImpl extends EPackageImpl implements ValidationPac
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see org.eclipse.emf.ecore.EPackage.Registry
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage#eNS_URI
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#eNS_URI
      * @see #init()
      * @generated
      */
@@ -231,8 +231,8 @@ public class ValidationPackageImpl extends EPackageImpl implements ValidationPac
      * 
      * @generated
      */
-    public EReference getValidationSet_OwnedRules() {
-        return (EReference) validationSetEClass.getEStructuralFeatures().get(0);
+    public EAttribute getValidationSet_Name() {
+        return (EAttribute) validationSetEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -240,8 +240,8 @@ public class ValidationPackageImpl extends EPackageImpl implements ValidationPac
      * 
      * @generated
      */
-    public EAttribute getValidationSet_Name() {
-        return (EAttribute) validationSetEClass.getEStructuralFeatures().get(1);
+    public EReference getValidationSet_OwnedRules() {
+        return (EReference) validationSetEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -427,8 +427,8 @@ public class ValidationPackageImpl extends EPackageImpl implements ValidationPac
 
         // Create classes and their features
         validationSetEClass = createEClass(VALIDATION_SET);
-        createEReference(validationSetEClass, VALIDATION_SET__OWNED_RULES);
         createEAttribute(validationSetEClass, VALIDATION_SET__NAME);
+        createEReference(validationSetEClass, VALIDATION_SET__OWNED_RULES);
         createEReference(validationSetEClass, VALIDATION_SET__REUSED_RULES);
         createEReference(validationSetEClass, VALIDATION_SET__ALL_RULES);
 
@@ -482,8 +482,6 @@ public class ValidationPackageImpl extends EPackageImpl implements ValidationPac
         // Obtain other dependent packages
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
-        org.eclipse.sirius.diagram.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.diagram.description.DescriptionPackage) EPackage.Registry.INSTANCE
-                .getEPackage(org.eclipse.sirius.diagram.description.DescriptionPackage.eNS_URI);
         ToolPackage theToolPackage = (ToolPackage) EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI);
 
         // Create type parameters
@@ -497,10 +495,10 @@ public class ValidationPackageImpl extends EPackageImpl implements ValidationPac
 
         // Initialize classes and features; add operations and parameters
         initEClass(validationSetEClass, ValidationSet.class, "ValidationSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getValidationSet_OwnedRules(), this.getValidationRule(), null, "ownedRules", null, 0, -1, ValidationSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getValidationSet_Name(), ecorePackage.getEString(), "name", "", 0, 1, ValidationSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
+        initEReference(getValidationSet_OwnedRules(), this.getValidationRule(), null, "ownedRules", null, 0, -1, ValidationSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getValidationSet_ReusedRules(), this.getValidationRule(), null, "reusedRules", null, 0, -1, ValidationSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getValidationSet_AllRules(), this.getValidationRule(), null, "allRules", null, 0, -1, ValidationSet.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE,
@@ -527,7 +525,7 @@ public class ValidationPackageImpl extends EPackageImpl implements ValidationPac
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(viewValidationRuleEClass, ViewValidationRule.class, "ViewValidationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getViewValidationRule_Targets(), theDescriptionPackage_1.getDiagramElementMapping(), null, "targets", null, 0, -1, ViewValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE,
+        initEReference(getViewValidationRule_Targets(), theDescriptionPackage.getRepresentationElementMapping(), null, "targets", null, 0, -1, ViewValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(ruleAuditEClass, RuleAudit.class, "RuleAudit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -541,10 +539,10 @@ public class ValidationPackageImpl extends EPackageImpl implements ValidationPac
                 IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Initialize enums and add enum literals
-        initEEnum(erroR_LEVELEEnum, org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL.class, "ERROR_LEVEL");
-        addEEnumLiteral(erroR_LEVELEEnum, org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL.INFO_LITERAL);
-        addEEnumLiteral(erroR_LEVELEEnum, org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL.WARNING_LITERAL);
-        addEEnumLiteral(erroR_LEVELEEnum, org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL.ERROR_LITERAL);
+        initEEnum(erroR_LEVELEEnum, org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL.class, "ERROR_LEVEL");
+        addEEnumLiteral(erroR_LEVELEEnum, org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL.INFO_LITERAL);
+        addEEnumLiteral(erroR_LEVELEEnum, org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL.WARNING_LITERAL);
+        addEEnumLiteral(erroR_LEVELEEnum, org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL.ERROR_LITERAL);
 
         // Create annotations
         // http://www.eclipse.org/sirius/interpreted/expression/returnType

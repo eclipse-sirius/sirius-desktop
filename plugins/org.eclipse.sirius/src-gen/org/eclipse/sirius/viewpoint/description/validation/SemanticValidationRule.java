@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation;
+package org.eclipse.sirius.viewpoint.description.validation;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -22,12 +22,12 @@ package org.eclipse.sirius.diagram.description.validation;
  * The following features are supported:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.SemanticValidationRule#getTargetClass
+ * {@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule#getTargetClass
  * <em>Target Class</em>}</li>
  * </ul>
  * </p>
  * 
- * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage#getSemanticValidationRule()
+ * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getSemanticValidationRule()
  * @model
  * @generated
  */
@@ -39,7 +39,7 @@ public interface SemanticValidationRule extends ValidationRule {
      * 
      * @return the value of the '<em>Target Class</em>' attribute.
      * @see #setTargetClass(String)
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage#getSemanticValidationRule_TargetClass()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getSemanticValidationRule_TargetClass()
      * @model dataType="org.eclipse.sirius.viewpoint.description.TypeName"
      *        required="true"
      * @generated
@@ -48,7 +48,7 @@ public interface SemanticValidationRule extends ValidationRule {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.validation.SemanticValidationRule#getTargetClass
+     * {@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule#getTargetClass
      * <em>Target Class</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 

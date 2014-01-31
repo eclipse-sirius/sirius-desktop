@@ -15,9 +15,9 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.query.AbstractNodeMappingQuery;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 
 import com.google.common.collect.Lists;
 

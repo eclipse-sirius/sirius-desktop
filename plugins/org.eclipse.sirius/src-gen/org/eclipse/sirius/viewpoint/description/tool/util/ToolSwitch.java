@@ -23,7 +23,6 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
 import org.eclipse.sirius.viewpoint.description.tool.Case;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
@@ -201,23 +200,6 @@ public class ToolSwitch<T> {
                 result = caseDocumentedElement(toolDescription);
             if (result == null)
                 result = caseIdentifiedElement(toolDescription);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ToolPackage.CONTAINER_DROP_DESCRIPTION: {
-            ContainerDropDescription containerDropDescription = (ContainerDropDescription) theEObject;
-            T result = caseContainerDropDescription(containerDropDescription);
-            if (result == null)
-                result = caseMappingBasedToolDescription(containerDropDescription);
-            if (result == null)
-                result = caseAbstractToolDescription(containerDropDescription);
-            if (result == null)
-                result = caseToolEntry(containerDropDescription);
-            if (result == null)
-                result = caseDocumentedElement(containerDropDescription);
-            if (result == null)
-                result = caseIdentifiedElement(containerDropDescription);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -853,23 +835,6 @@ public class ToolSwitch<T> {
      * @generated
      */
     public T caseToolDescription(ToolDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Container Drop Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Container Drop Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseContainerDropDescription(ContainerDropDescription object) {
         return null;
     }
 

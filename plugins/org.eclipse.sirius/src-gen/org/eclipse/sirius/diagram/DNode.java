@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.description.NodeMapping;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**

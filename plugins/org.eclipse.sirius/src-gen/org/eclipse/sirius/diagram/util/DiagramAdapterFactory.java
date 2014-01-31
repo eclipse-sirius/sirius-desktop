@@ -42,6 +42,7 @@ import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.Dot;
+import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.Ellipse;
@@ -77,7 +78,6 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.DValidable;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
@@ -380,6 +380,11 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
+        public Adapter caseDragAndDropTarget(DragAndDropTarget object) {
+            return createDragAndDropTargetAdapter();
+        }
+
+        @Override
         public Adapter caseDocumentedElement(DocumentedElement object) {
             return createDocumentedElementAdapter();
         }
@@ -397,11 +402,6 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDRepresentation(DRepresentation object) {
             return createDRepresentationAdapter();
-        }
-
-        @Override
-        public Adapter caseDragAndDropTarget(DragAndDropTarget object) {
-            return createDragAndDropTargetAdapter();
         }
 
         @Override
@@ -1297,14 +1297,14 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DragAndDropTarget
+     * {@link org.eclipse.sirius.diagram.DragAndDropTarget
      * <em>Drag And Drop Target</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.DragAndDropTarget
+     * @see org.eclipse.sirius.diagram.DragAndDropTarget
      * @generated
      */
     public Adapter createDragAndDropTargetAdapter() {

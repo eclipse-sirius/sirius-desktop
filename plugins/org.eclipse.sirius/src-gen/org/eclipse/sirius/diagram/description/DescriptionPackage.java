@@ -64,6 +64,37 @@ public interface DescriptionPackage extends EPackage {
 
     /**
      * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.description.impl.DragAndDropTargetDescriptionImpl
+     * <em>Drag And Drop Target Description</em>}' class. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.description.impl.DragAndDropTargetDescriptionImpl
+     * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getDragAndDropTargetDescription()
+     * @generated
+     */
+    int DRAG_AND_DROP_TARGET_DESCRIPTION = 21;
+
+    /**
+     * The feature id for the '<em><b>Drop Descriptions</b></em>' reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS = 0;
+
+    /**
+     * The number of structural features of the '
+     * <em>Drag And Drop Target Description</em>' class. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT = 1;
+
+    /**
+     * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl
      * <em>Diagram Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -81,7 +112,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__DROP_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS;
+    int DIAGRAM_DESCRIPTION__DROP_DESCRIPTIONS = DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -90,7 +121,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 0;
+    int DIAGRAM_DESCRIPTION__DOCUMENTATION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>End User Documentation</b></em>'
@@ -99,7 +130,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__END_USER_DOCUMENTATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 1;
+    int DIAGRAM_DESCRIPTION__END_USER_DOCUMENTATION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -108,7 +139,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__NAME = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 2;
+    int DIAGRAM_DESCRIPTION__NAME = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Label</b></em>' attribute. <!--
@@ -117,7 +148,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__LABEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 3;
+    int DIAGRAM_DESCRIPTION__LABEL = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Title Expression</b></em>' attribute. <!--
@@ -126,7 +157,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__TITLE_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 4;
+    int DIAGRAM_DESCRIPTION__TITLE_EXPRESSION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Initialisation</b></em>' attribute. <!--
@@ -135,7 +166,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__INITIALISATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 5;
+    int DIAGRAM_DESCRIPTION__INITIALISATION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Metamodel</b></em>' reference list. <!--
@@ -144,7 +175,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__METAMODEL = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 6;
+    int DIAGRAM_DESCRIPTION__METAMODEL = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Show On Startup</b></em>' attribute. <!--
@@ -153,7 +184,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__SHOW_ON_STARTUP = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 7;
+    int DIAGRAM_DESCRIPTION__SHOW_ON_STARTUP = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Paste Descriptions</b></em>' reference
@@ -162,7 +193,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__PASTE_DESCRIPTIONS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 8;
+    int DIAGRAM_DESCRIPTION__PASTE_DESCRIPTIONS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Filters</b></em>' containment reference
@@ -171,7 +202,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 9;
+    int DIAGRAM_DESCRIPTION__FILTERS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>All Edge Mappings</b></em>' reference
@@ -180,7 +211,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 10;
+    int DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>All Node Mappings</b></em>' reference
@@ -189,7 +220,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 11;
+    int DIAGRAM_DESCRIPTION__ALL_NODE_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>All Container Mappings</b></em>' reference
@@ -198,7 +229,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 12;
+    int DIAGRAM_DESCRIPTION__ALL_CONTAINER_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 12;
 
     /**
      * The feature id for the '<em><b>Validation Set</b></em>' containment
@@ -207,7 +238,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__VALIDATION_SET = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 13;
+    int DIAGRAM_DESCRIPTION__VALIDATION_SET = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 13;
 
     /**
      * The feature id for the '<em><b>Concerns</b></em>' containment reference.
@@ -216,7 +247,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__CONCERNS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 14;
+    int DIAGRAM_DESCRIPTION__CONCERNS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 14;
 
     /**
      * The feature id for the '<em><b>All Tools</b></em>' reference list. <!--
@@ -225,7 +256,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_TOOLS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 15;
+    int DIAGRAM_DESCRIPTION__ALL_TOOLS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 15;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -234,7 +265,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__DOMAIN_CLASS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 16;
+    int DIAGRAM_DESCRIPTION__DOMAIN_CLASS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 16;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>'
@@ -243,7 +274,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 17;
+    int DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 17;
 
     /**
      * The feature id for the '<em><b>Default Concern</b></em>' reference. <!--
@@ -252,7 +283,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__DEFAULT_CONCERN = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 18;
+    int DIAGRAM_DESCRIPTION__DEFAULT_CONCERN = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 18;
 
     /**
      * The feature id for the '<em><b>Root Expression</b></em>' attribute. <!--
@@ -261,7 +292,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ROOT_EXPRESSION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 19;
+    int DIAGRAM_DESCRIPTION__ROOT_EXPRESSION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 19;
 
     /**
      * The feature id for the '<em><b>Init</b></em>' reference. <!--
@@ -270,7 +301,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__INIT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 20;
+    int DIAGRAM_DESCRIPTION__INIT = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 20;
 
     /**
      * The feature id for the '<em><b>Layout</b></em>' containment reference.
@@ -279,7 +310,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__LAYOUT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 21;
+    int DIAGRAM_DESCRIPTION__LAYOUT = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 21;
 
     /**
      * The feature id for the '<em><b>Diagram Initialisation</b></em>'
@@ -288,7 +319,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 22;
+    int DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 22;
 
     /**
      * The feature id for the '<em><b>Default Layer</b></em>' containment
@@ -297,7 +328,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__DEFAULT_LAYER = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 23;
+    int DIAGRAM_DESCRIPTION__DEFAULT_LAYER = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 23;
 
     /**
      * The feature id for the '<em><b>Additional Layers</b></em>' containment
@@ -306,7 +337,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 24;
+    int DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 24;
 
     /**
      * The feature id for the '<em><b>All Layers</b></em>' reference list. <!--
@@ -315,7 +346,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_LAYERS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 25;
+    int DIAGRAM_DESCRIPTION__ALL_LAYERS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 25;
 
     /**
      * The feature id for the '<em><b>All Activated Tools</b></em>' reference
@@ -324,7 +355,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 26;
+    int DIAGRAM_DESCRIPTION__ALL_ACTIVATED_TOOLS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 26;
 
     /**
      * The feature id for the '<em><b>Node Mappings</b></em>' containment
@@ -333,7 +364,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__NODE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 27;
+    int DIAGRAM_DESCRIPTION__NODE_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 27;
 
     /**
      * The feature id for the '<em><b>Edge Mappings</b></em>' containment
@@ -342,7 +373,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__EDGE_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 28;
+    int DIAGRAM_DESCRIPTION__EDGE_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 28;
 
     /**
      * The feature id for the '<em><b>Edge Mapping Imports</b></em>' containment
@@ -351,7 +382,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 29;
+    int DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 29;
 
     /**
      * The feature id for the '<em><b>Container Mappings</b></em>' containment
@@ -360,7 +391,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 30;
+    int DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 30;
 
     /**
      * The feature id for the '<em><b>Reused Mappings</b></em>' reference list.
@@ -369,7 +400,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__REUSED_MAPPINGS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 31;
+    int DIAGRAM_DESCRIPTION__REUSED_MAPPINGS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 31;
 
     /**
      * The feature id for the '<em><b>Tool Section</b></em>' containment
@@ -378,7 +409,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__TOOL_SECTION = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 32;
+    int DIAGRAM_DESCRIPTION__TOOL_SECTION = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 32;
 
     /**
      * The feature id for the '<em><b>Reused Tools</b></em>' reference list.
@@ -387,7 +418,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__REUSED_TOOLS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 33;
+    int DIAGRAM_DESCRIPTION__REUSED_TOOLS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 33;
 
     /**
      * The feature id for the '<em><b>Enable Popup Bars</b></em>' attribute.
@@ -396,7 +427,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 34;
+    int DIAGRAM_DESCRIPTION__ENABLE_POPUP_BARS = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 34;
 
     /**
      * The number of structural features of the '<em>Diagram Description</em>'
@@ -405,7 +436,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DIAGRAM_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 35;
+    int DIAGRAM_DESCRIPTION_FEATURE_COUNT = DRAG_AND_DROP_TARGET_DESCRIPTION_FEATURE_COUNT + 35;
 
     /**
      * The meta object id for the '
@@ -3165,7 +3196,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getFoldingStyle()
      * @generated
      */
-    int FOLDING_STYLE = 21;
+    int FOLDING_STYLE = 22;
 
     /**
      * The meta object id for the '
@@ -3177,7 +3208,7 @@ public interface DescriptionPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getLayoutDirection()
      * @generated
      */
-    int LAYOUT_DIRECTION = 22;
+    int LAYOUT_DIRECTION = 23;
 
     /**
      * Returns the meta object for class '
@@ -4620,6 +4651,33 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getAdditionalLayer_Optional();
 
     /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.diagram.description.DragAndDropTargetDescription
+     * <em>Drag And Drop Target Description</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for class '
+     *         <em>Drag And Drop Target Description</em>'.
+     * @see org.eclipse.sirius.diagram.description.DragAndDropTargetDescription
+     * @generated
+     */
+    EClass getDragAndDropTargetDescription();
+
+    /**
+     * Returns the meta object for the reference list '
+     * {@link org.eclipse.sirius.diagram.description.DragAndDropTargetDescription#getDropDescriptions
+     * <em>Drop Descriptions</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @return the meta object for the reference list '
+     *         <em>Drop Descriptions</em>'.
+     * @see org.eclipse.sirius.diagram.description.DragAndDropTargetDescription#getDropDescriptions()
+     * @see #getDragAndDropTargetDescription()
+     * @generated
+     */
+    EReference getDragAndDropTargetDescription_DropDescriptions();
+
+    /**
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.diagram.description.FoldingStyle
      * <em>Folding Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -5681,6 +5739,26 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EAttribute ADDITIONAL_LAYER__OPTIONAL = eINSTANCE.getAdditionalLayer_Optional();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.diagram.description.impl.DragAndDropTargetDescriptionImpl
+         * <em>Drag And Drop Target Description</em>}' class. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.diagram.description.impl.DragAndDropTargetDescriptionImpl
+         * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getDragAndDropTargetDescription()
+         * @generated
+         */
+        EClass DRAG_AND_DROP_TARGET_DESCRIPTION = eINSTANCE.getDragAndDropTargetDescription();
+
+        /**
+         * The meta object literal for the '<em><b>Drop Descriptions</b></em>'
+         * reference list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS = eINSTANCE.getDragAndDropTargetDescription_DropDescriptions();
 
         /**
          * The meta object literal for the '

@@ -922,7 +922,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getCustomizable()
      * @generated
      */
-    int CUSTOMIZABLE = 33;
+    int CUSTOMIZABLE = 32;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -952,7 +952,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getBasicLabelStyle()
      * @generated
      */
-    int BASIC_LABEL_STYLE = 32;
+    int BASIC_LABEL_STYLE = 31;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -1141,27 +1141,6 @@ public interface ViewpointPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.impl.DragAndDropTargetImpl
-     * <em>Drag And Drop Target</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DragAndDropTargetImpl
-     * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDragAndDropTarget()
-     * @generated
-     */
-    int DRAG_AND_DROP_TARGET = 22;
-
-    /**
-     * The number of structural features of the '<em>Drag And Drop Target</em>'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DRAG_AND_DROP_TARGET_FEATURE_COUNT = 0;
-
-    /**
-     * The meta object id for the '
      * {@link org.eclipse.sirius.viewpoint.impl.RGBValuesImpl
      * <em>RGB Values</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
@@ -1170,7 +1149,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getRGBValues()
      * @generated
      */
-    int RGB_VALUES = 23;
+    int RGB_VALUES = 22;
 
     /**
      * The feature id for the '<em><b>Red</b></em>' attribute. <!--
@@ -1218,7 +1197,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDAnalysisSessionEObject()
      * @generated
      */
-    int DANALYSIS_SESSION_EOBJECT = 24;
+    int DANALYSIS_SESSION_EOBJECT = 23;
 
     /**
      * The feature id for the '<em><b>Open</b></em>' attribute. <!--
@@ -1303,7 +1282,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getSessionManagerEObject()
      * @generated
      */
-    int SESSION_MANAGER_EOBJECT = 25;
+    int SESSION_MANAGER_EOBJECT = 24;
 
     /**
      * The feature id for the '<em><b>Owned Sessions</b></em>' containment
@@ -1333,7 +1312,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDResource()
      * @generated
      */
-    int DRESOURCE = 26;
+    int DRESOURCE = 25;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1371,7 +1350,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDFile()
      * @generated
      */
-    int DFILE = 27;
+    int DFILE = 26;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1410,7 +1389,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDResourceContainer()
      * @generated
      */
-    int DRESOURCE_CONTAINER = 28;
+    int DRESOURCE_CONTAINER = 27;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1457,7 +1436,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDProject()
      * @generated
      */
-    int DPROJECT = 29;
+    int DPROJECT = 28;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1504,7 +1483,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDFolder()
      * @generated
      */
-    int DFOLDER = 30;
+    int DFOLDER = 29;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1551,7 +1530,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDModel()
      * @generated
      */
-    int DMODEL = 31;
+    int DMODEL = 30;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1589,7 +1568,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getFontFormat()
      * @generated
      */
-    int FONT_FORMAT = 34;
+    int FONT_FORMAT = 33;
 
     /**
      * The meta object id for the '
@@ -1601,7 +1580,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getLabelAlignment()
      * @generated
      */
-    int LABEL_ALIGNMENT = 35;
+    int LABEL_ALIGNMENT = 34;
 
     /**
      * The meta object id for the '
@@ -1612,7 +1591,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getSyncStatus()
      * @generated
      */
-    int SYNC_STATUS = 36;
+    int SYNC_STATUS = 35;
 
     /**
      * The meta object id for the '<em>Extended Package</em>' data type. <!--
@@ -1622,7 +1601,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getExtendedPackage()
      * @generated
      */
-    int EXTENDED_PACKAGE = 37;
+    int EXTENDED_PACKAGE = 36;
 
     /**
      * Returns the meta object for class '
@@ -2331,18 +2310,6 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      */
     EReference getStyle_Description();
-
-    /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.viewpoint.DragAndDropTarget
-     * <em>Drag And Drop Target</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for class '<em>Drag And Drop Target</em>'.
-     * @see org.eclipse.sirius.viewpoint.DragAndDropTarget
-     * @generated
-     */
-    EClass getDragAndDropTarget();
 
     /**
      * Returns the meta object for class '
@@ -3345,18 +3312,6 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EReference STYLE__DESCRIPTION = eINSTANCE.getStyle_Description();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.viewpoint.impl.DragAndDropTargetImpl
-         * <em>Drag And Drop Target</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.viewpoint.impl.DragAndDropTargetImpl
-         * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDragAndDropTarget()
-         * @generated
-         */
-        EClass DRAG_AND_DROP_TARGET = eINSTANCE.getDragAndDropTarget();
 
         /**
          * The meta object literal for the '

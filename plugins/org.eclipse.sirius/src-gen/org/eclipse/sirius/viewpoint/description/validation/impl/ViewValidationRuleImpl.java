@@ -9,50 +9,48 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.viewpoint.description.impl;
+package org.eclipse.sirius.viewpoint.description.validation.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
+import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>Drag And Drop Target Description</b></em>'. <!-- end-user-doc -->
+ * <em><b>View Validation Rule</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.impl.DragAndDropTargetDescriptionImpl#getDropDescriptions
- * <em>Drop Descriptions</em>}</li>
+ * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ViewValidationRuleImpl#getTargets
+ * <em>Targets</em>}</li>
  * </ul>
  * </p>
  * 
  * @generated
  */
-public abstract class DragAndDropTargetDescriptionImpl extends EObjectImpl implements DragAndDropTargetDescription {
+public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewValidationRule {
     /**
-     * The cached value of the '{@link #getDropDescriptions()
-     * <em>Drop Descriptions</em>}' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The cached value of the '{@link #getTargets() <em>Targets</em>}'
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @see #getDropDescriptions()
+     * @see #getTargets()
      * @generated
      * @ordered
      */
-    protected EList<ContainerDropDescription> dropDescriptions;
+    protected EList<RepresentationElementMapping> targets;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    protected DragAndDropTargetDescriptionImpl() {
+    protected ViewValidationRuleImpl() {
         super();
     }
 
@@ -63,7 +61,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends EObjectImpl imple
      */
     @Override
     protected EClass eStaticClass() {
-        return DescriptionPackage.Literals.DRAG_AND_DROP_TARGET_DESCRIPTION;
+        return ValidationPackage.Literals.VIEW_VALIDATION_RULE;
     }
 
     /**
@@ -71,11 +69,11 @@ public abstract class DragAndDropTargetDescriptionImpl extends EObjectImpl imple
      * 
      * @generated
      */
-    public EList<ContainerDropDescription> getDropDescriptions() {
-        if (dropDescriptions == null) {
-            dropDescriptions = new EObjectResolvingEList<ContainerDropDescription>(ContainerDropDescription.class, this, DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS);
+    public EList<RepresentationElementMapping> getTargets() {
+        if (targets == null) {
+            targets = new EObjectResolvingEList<RepresentationElementMapping>(RepresentationElementMapping.class, this, ValidationPackage.VIEW_VALIDATION_RULE__TARGETS);
         }
-        return dropDescriptions;
+        return targets;
     }
 
     /**
@@ -86,8 +84,8 @@ public abstract class DragAndDropTargetDescriptionImpl extends EObjectImpl imple
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS:
-            return getDropDescriptions();
+        case ValidationPackage.VIEW_VALIDATION_RULE__TARGETS:
+            return getTargets();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -101,9 +99,9 @@ public abstract class DragAndDropTargetDescriptionImpl extends EObjectImpl imple
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS:
-            getDropDescriptions().clear();
-            getDropDescriptions().addAll((Collection<? extends ContainerDropDescription>) newValue);
+        case ValidationPackage.VIEW_VALIDATION_RULE__TARGETS:
+            getTargets().clear();
+            getTargets().addAll((Collection<? extends RepresentationElementMapping>) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -117,8 +115,8 @@ public abstract class DragAndDropTargetDescriptionImpl extends EObjectImpl imple
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS:
-            getDropDescriptions().clear();
+        case ValidationPackage.VIEW_VALIDATION_RULE__TARGETS:
+            getTargets().clear();
             return;
         }
         super.eUnset(featureID);
@@ -132,10 +130,10 @@ public abstract class DragAndDropTargetDescriptionImpl extends EObjectImpl imple
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS:
-            return dropDescriptions != null && !dropDescriptions.isEmpty();
+        case ValidationPackage.VIEW_VALIDATION_RULE__TARGETS:
+            return targets != null && !targets.isEmpty();
         }
         return super.eIsSet(featureID);
     }
 
-} // DragAndDropTargetDescriptionImpl
+} // ViewValidationRuleImpl

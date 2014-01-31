@@ -9,48 +9,50 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation.impl;
+package org.eclipse.sirius.diagram.description.impl;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
-import org.eclipse.sirius.diagram.description.validation.ViewValidationRule;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
+import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
- * <em><b>View Validation Rule</b></em>'. <!-- end-user-doc -->
+ * <em><b>Drag And Drop Target Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.impl.ViewValidationRuleImpl#getTargets
- * <em>Targets</em>}</li>
+ * {@link org.eclipse.sirius.diagram.description.impl.DragAndDropTargetDescriptionImpl#getDropDescriptions
+ * <em>Drop Descriptions</em>}</li>
  * </ul>
  * </p>
  * 
  * @generated
  */
-public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewValidationRule {
+public abstract class DragAndDropTargetDescriptionImpl extends EObjectImpl implements DragAndDropTargetDescription {
     /**
-     * The cached value of the '{@link #getTargets() <em>Targets</em>}'
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getDropDescriptions()
+     * <em>Drop Descriptions</em>}' reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
-     * @see #getTargets()
+     * @see #getDropDescriptions()
      * @generated
      * @ordered
      */
-    protected EList<DiagramElementMapping> targets;
+    protected EList<ContainerDropDescription> dropDescriptions;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    protected ViewValidationRuleImpl() {
+    protected DragAndDropTargetDescriptionImpl() {
         super();
     }
 
@@ -61,7 +63,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
      */
     @Override
     protected EClass eStaticClass() {
-        return ValidationPackage.Literals.VIEW_VALIDATION_RULE;
+        return DescriptionPackage.Literals.DRAG_AND_DROP_TARGET_DESCRIPTION;
     }
 
     /**
@@ -69,11 +71,11 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
      * 
      * @generated
      */
-    public EList<DiagramElementMapping> getTargets() {
-        if (targets == null) {
-            targets = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, ValidationPackage.VIEW_VALIDATION_RULE__TARGETS);
+    public EList<ContainerDropDescription> getDropDescriptions() {
+        if (dropDescriptions == null) {
+            dropDescriptions = new EObjectResolvingEList<ContainerDropDescription>(ContainerDropDescription.class, this, DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS);
         }
-        return targets;
+        return dropDescriptions;
     }
 
     /**
@@ -84,8 +86,8 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case ValidationPackage.VIEW_VALIDATION_RULE__TARGETS:
-            return getTargets();
+        case DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS:
+            return getDropDescriptions();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -99,9 +101,9 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case ValidationPackage.VIEW_VALIDATION_RULE__TARGETS:
-            getTargets().clear();
-            getTargets().addAll((Collection<? extends DiagramElementMapping>) newValue);
+        case DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS:
+            getDropDescriptions().clear();
+            getDropDescriptions().addAll((Collection<? extends ContainerDropDescription>) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -115,8 +117,8 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case ValidationPackage.VIEW_VALIDATION_RULE__TARGETS:
-            getTargets().clear();
+        case DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS:
+            getDropDescriptions().clear();
             return;
         }
         super.eUnset(featureID);
@@ -130,10 +132,10 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case ValidationPackage.VIEW_VALIDATION_RULE__TARGETS:
-            return targets != null && !targets.isEmpty();
+        case DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS:
+            return dropDescriptions != null && !dropDescriptions.isEmpty();
         }
         return super.eIsSet(featureID);
     }
 
-} // ViewValidationRuleImpl
+} // DragAndDropTargetDescriptionImpl

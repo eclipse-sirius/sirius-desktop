@@ -34,7 +34,6 @@ import org.eclipse.sirius.viewpoint.DResourceContainer;
 import org.eclipse.sirius.viewpoint.DSourceFileLink;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Decoration;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.LabelStyle;
@@ -106,8 +105,6 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
             return createDAnalysisCustomData();
         case ViewpointPackage.LABEL_STYLE:
             return createLabelStyle();
-        case ViewpointPackage.DRAG_AND_DROP_TARGET:
-            return createDragAndDropTarget();
         case ViewpointPackage.RGB_VALUES:
             return createRGBValues();
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT:
@@ -261,16 +258,6 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     public LabelStyle createLabelStyle() {
         LabelStyleImpl labelStyle = new LabelStyleImpl();
         return labelStyle;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public DragAndDropTarget createDragAndDropTarget() {
-        DragAndDropTargetImpl dragAndDropTarget = new DragAndDropTargetImpl();
-        return dragAndDropTarget;
     }
 
     /**

@@ -9,27 +9,27 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation.util;
+package org.eclipse.sirius.viewpoint.description.validation.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.description.validation.RuleAudit;
-import org.eclipse.sirius.diagram.description.validation.SemanticValidationRule;
-import org.eclipse.sirius.diagram.description.validation.ValidationFix;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
-import org.eclipse.sirius.diagram.description.validation.ValidationRule;
-import org.eclipse.sirius.diagram.description.validation.ValidationSet;
-import org.eclipse.sirius.diagram.description.validation.ViewValidationRule;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
+import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
+import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
+import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
 
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides
  * an adapter <code>createXXX</code> method for each class of the model. <!--
  * end-user-doc -->
  * 
- * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage
+ * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage
  * @generated
  */
 public class ValidationAdapterFactory extends AdapterFactoryImpl {
@@ -136,14 +136,14 @@ public class ValidationAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationSet
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet
      * <em>Set</em>}'. <!-- begin-user-doc --> This default implementation
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationSet
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationSet
      * @generated
      */
     public Adapter createValidationSetAdapter() {
@@ -152,14 +152,14 @@ public class ValidationAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationRule
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule
      * <em>Rule</em>}'. <!-- begin-user-doc --> This default implementation
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationRule
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationRule
      * @generated
      */
     public Adapter createValidationRuleAdapter() {
@@ -168,14 +168,14 @@ public class ValidationAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.description.validation.SemanticValidationRule
+     * {@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule
      * <em>Semantic Validation Rule</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.diagram.description.validation.SemanticValidationRule
+     * @see org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule
      * @generated
      */
     public Adapter createSemanticValidationRuleAdapter() {
@@ -184,14 +184,14 @@ public class ValidationAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.description.validation.ViewValidationRule
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule
      * <em>View Validation Rule</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.diagram.description.validation.ViewValidationRule
+     * @see org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule
      * @generated
      */
     public Adapter createViewValidationRuleAdapter() {
@@ -200,14 +200,14 @@ public class ValidationAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.description.validation.RuleAudit
+     * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit
      * <em>Rule Audit</em>}'. <!-- begin-user-doc --> This default
      * implementation returns null so that we can easily ignore cases; it's
      * useful to ignore a case when inheritance will catch all the cases anyway.
      * <!-- end-user-doc -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.diagram.description.validation.RuleAudit
+     * @see org.eclipse.sirius.viewpoint.description.validation.RuleAudit
      * @generated
      */
     public Adapter createRuleAuditAdapter() {
@@ -216,14 +216,14 @@ public class ValidationAdapterFactory extends AdapterFactoryImpl {
 
     /**
      * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationFix
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix
      * <em>Fix</em>}'. <!-- begin-user-doc --> This default implementation
      * returns null so that we can easily ignore cases; it's useful to ignore a
      * case when inheritance will catch all the cases anyway. <!-- end-user-doc
      * -->
      * 
      * @return the new adapter.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationFix
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationFix
      * @generated
      */
     public Adapter createValidationFixAdapter() {

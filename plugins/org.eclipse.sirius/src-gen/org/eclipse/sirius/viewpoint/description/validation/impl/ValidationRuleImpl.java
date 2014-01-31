@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation.impl;
+package org.eclipse.sirius.viewpoint.description.validation.impl;
 
 import java.util.Collection;
 
@@ -23,11 +23,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL;
-import org.eclipse.sirius.diagram.description.validation.RuleAudit;
-import org.eclipse.sirius.diagram.description.validation.ValidationFix;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
-import org.eclipse.sirius.diagram.description.validation.ValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
+import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -36,16 +36,16 @@ import org.eclipse.sirius.diagram.description.validation.ValidationRule;
  * The following features are implemented:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.impl.ValidationRuleImpl#getLevel
+ * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl#getLevel
  * <em>Level</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.impl.ValidationRuleImpl#getMessage
+ * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl#getMessage
  * <em>Message</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.impl.ValidationRuleImpl#getAudits
+ * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl#getAudits
  * <em>Audits</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.impl.ValidationRuleImpl#getFixes
+ * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl#getFixes
  * <em>Fixes</em>}</li>
  * </ul>
  * </p>

@@ -15,9 +15,9 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreEList;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
-import org.eclipse.sirius.diagram.description.validation.ValidationRule;
-import org.eclipse.sirius.diagram.description.validation.impl.ValidationSetImpl;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl;
 
 /**
  * Implementation of

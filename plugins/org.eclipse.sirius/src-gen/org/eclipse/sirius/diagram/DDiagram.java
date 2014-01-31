@@ -22,12 +22,11 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
-import org.eclipse.sirius.diagram.description.validation.ValidationRule;
 import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DValidable;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

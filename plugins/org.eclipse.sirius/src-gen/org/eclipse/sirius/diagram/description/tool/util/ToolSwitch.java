@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.diagram.description.tool.CreateEdgeView;
 import org.eclipse.sirius.diagram.description.tool.CreateView;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
@@ -455,6 +456,23 @@ public class ToolSwitch<T> {
                 result = defaultCase(theEObject);
             return result;
         }
+        case ToolPackage.CONTAINER_DROP_DESCRIPTION: {
+            ContainerDropDescription containerDropDescription = (ContainerDropDescription) theEObject;
+            T result = caseContainerDropDescription(containerDropDescription);
+            if (result == null)
+                result = caseMappingBasedToolDescription(containerDropDescription);
+            if (result == null)
+                result = caseAbstractToolDescription(containerDropDescription);
+            if (result == null)
+                result = caseToolEntry(containerDropDescription);
+            if (result == null)
+                result = caseDocumentedElement(containerDropDescription);
+            if (result == null)
+                result = caseIdentifiedElement(containerDropDescription);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
         default:
             return defaultCase(theEObject);
         }
@@ -882,6 +900,23 @@ public class ToolSwitch<T> {
      * @generated
      */
     public T caseDiagramNavigationDescription(DiagramNavigationDescription object) {
+        return null;
+    }
+
+    /**
+     * Returns the result of interpreting the object as an instance of '
+     * <em>Container Drop Description</em>'. <!-- begin-user-doc --> This
+     * implementation returns null; returning a non-null result will terminate
+     * the switch. <!-- end-user-doc -->
+     * 
+     * @param object
+     *            the target of the switch.
+     * @return the result of interpreting the object as an instance of '
+     *         <em>Container Drop Description</em>'.
+     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+     * @generated
+     */
+    public T caseContainerDropDescription(ContainerDropDescription object) {
         return null;
     }
 

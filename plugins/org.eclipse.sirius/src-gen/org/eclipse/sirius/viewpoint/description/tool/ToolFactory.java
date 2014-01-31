@@ -39,15 +39,6 @@ public interface ToolFactory extends EFactory {
     ToolDescription createToolDescription();
 
     /**
-     * Returns a new object of class '<em>Container Drop Description</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>Container Drop Description</em>'.
-     * @generated
-     */
-    ContainerDropDescription createContainerDropDescription();
-
-    /**
      * Returns a new object of class '<em>Paste Description</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 

@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation;
+package org.eclipse.sirius.viewpoint.description.validation;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -23,12 +23,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.RuleAudit#getAuditExpression
+ * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit#getAuditExpression
  * <em>Audit Expression</em>}</li>
  * </ul>
  * </p>
  * 
- * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage#getRuleAudit()
+ * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getRuleAudit()
  * @model
  * @generated
  */
@@ -41,7 +41,7 @@ public interface RuleAudit extends EObject {
      * 
      * @return the value of the '<em>Audit Expression</em>' attribute.
      * @see #setAuditExpression(String)
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage#getRuleAudit_AuditExpression()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getRuleAudit_AuditExpression()
      * @model dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true" annotation=
@@ -52,7 +52,7 @@ public interface RuleAudit extends EObject {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.validation.RuleAudit#getAuditExpression
+     * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit#getAuditExpression
      * <em>Audit Expression</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 

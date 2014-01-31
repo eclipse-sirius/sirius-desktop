@@ -375,154 +375,6 @@ public interface ToolPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ContainerDropDescriptionImpl
-     * <em>Container Drop Description</em>}' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.tool.impl.ContainerDropDescriptionImpl
-     * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getContainerDropDescription()
-     * @generated
-     */
-    int CONTAINER_DROP_DESCRIPTION = 4;
-
-    /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_DROP_DESCRIPTION__DOCUMENTATION = MAPPING_BASED_TOOL_DESCRIPTION__DOCUMENTATION;
-
-    /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_DROP_DESCRIPTION__NAME = MAPPING_BASED_TOOL_DESCRIPTION__NAME;
-
-    /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_DROP_DESCRIPTION__LABEL = MAPPING_BASED_TOOL_DESCRIPTION__LABEL;
-
-    /**
-     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_DROP_DESCRIPTION__PRECONDITION = MAPPING_BASED_TOOL_DESCRIPTION__PRECONDITION;
-
-    /**
-     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_DROP_DESCRIPTION__FORCE_REFRESH = MAPPING_BASED_TOOL_DESCRIPTION__FORCE_REFRESH;
-
-    /**
-     * The feature id for the '<em><b>Filters</b></em>' containment reference
-     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_DROP_DESCRIPTION__FILTERS = MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
-
-    /**
-     * The feature id for the '<em><b>Mappings</b></em>' reference list. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_DROP_DESCRIPTION__MAPPINGS = MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
-
-    /**
-     * The feature id for the '<em><b>Old Container</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER = MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 1;
-
-    /**
-     * The feature id for the '<em><b>New Container</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER = MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 2;
-
-    /**
-     * The feature id for the '<em><b>Element</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_DROP_DESCRIPTION__ELEMENT = MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 3;
-
-    /**
-     * The feature id for the '<em><b>New View Container</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER = MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 4;
-
-    /**
-     * The feature id for the '<em><b>Initial Operation</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION = MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 5;
-
-    /**
-     * The feature id for the '<em><b>Drag Source</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE = MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 6;
-
-    /**
-     * The feature id for the '<em><b>Move Edges</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_DROP_DESCRIPTION__MOVE_EDGES = MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 7;
-
-    /**
-     * The number of structural features of the '
-     * <em>Container Drop Description</em>' class. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_DROP_DESCRIPTION_FEATURE_COUNT = MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 8;
-
-    /**
-     * The meta object id for the '
      * {@link org.eclipse.sirius.viewpoint.description.tool.impl.PasteDescriptionImpl
      * <em>Paste Description</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -531,7 +383,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getPasteDescription()
      * @generated
      */
-    int PASTE_DESCRIPTION = 5;
+    int PASTE_DESCRIPTION = 4;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -651,7 +503,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getSelectionWizardDescription()
      * @generated
      */
-    int SELECTION_WIZARD_DESCRIPTION = 6;
+    int SELECTION_WIZARD_DESCRIPTION = 5;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -844,7 +696,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getPaneBasedSelectionWizardDescription()
      * @generated
      */
-    int PANE_BASED_SELECTION_WIZARD_DESCRIPTION = 7;
+    int PANE_BASED_SELECTION_WIZARD_DESCRIPTION = 6;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -1056,7 +908,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getRepresentationCreationDescription()
      * @generated
      */
-    int REPRESENTATION_CREATION_DESCRIPTION = 8;
+    int REPRESENTATION_CREATION_DESCRIPTION = 7;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -1186,7 +1038,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getRepresentationNavigationDescription()
      * @generated
      */
-    int REPRESENTATION_NAVIGATION_DESCRIPTION = 9;
+    int REPRESENTATION_NAVIGATION_DESCRIPTION = 8;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -1316,7 +1168,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getMenuItemOrRef()
      * @generated
      */
-    int MENU_ITEM_OR_REF = 10;
+    int MENU_ITEM_OR_REF = 9;
 
     /**
      * The number of structural features of the '<em>Menu Item Or Ref</em>'
@@ -1337,7 +1189,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getMenuItemDescription()
      * @generated
      */
-    int MENU_ITEM_DESCRIPTION = 11;
+    int MENU_ITEM_DESCRIPTION = 10;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -1421,7 +1273,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getMenuItemDescriptionReference()
      * @generated
      */
-    int MENU_ITEM_DESCRIPTION_REFERENCE = 12;
+    int MENU_ITEM_DESCRIPTION_REFERENCE = 11;
 
     /**
      * The feature id for the '<em><b>Item</b></em>' reference. <!--
@@ -1452,7 +1304,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getOperationAction()
      * @generated
      */
-    int OPERATION_ACTION = 13;
+    int OPERATION_ACTION = 12;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -1554,7 +1406,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getExternalJavaAction()
      * @generated
      */
-    int EXTERNAL_JAVA_ACTION = 14;
+    int EXTERNAL_JAVA_ACTION = 13;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -1665,7 +1517,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getExternalJavaActionCall()
      * @generated
      */
-    int EXTERNAL_JAVA_ACTION_CALL = 15;
+    int EXTERNAL_JAVA_ACTION_CALL = 14;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -1768,7 +1620,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getPopupMenu()
      * @generated
      */
-    int POPUP_MENU = 16;
+    int POPUP_MENU = 15;
 
     /**
      * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
@@ -1852,7 +1704,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getAbstractVariable()
      * @generated
      */
-    int ABSTRACT_VARIABLE = 17;
+    int ABSTRACT_VARIABLE = 16;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1882,7 +1734,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getVariableContainer()
      * @generated
      */
-    int VARIABLE_CONTAINER = 18;
+    int VARIABLE_CONTAINER = 17;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -1912,7 +1764,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getAcceleoVariable()
      * @generated
      */
-    int ACCELEO_VARIABLE = 19;
+    int ACCELEO_VARIABLE = 18;
 
     /**
      * The feature id for the '<em><b>Sub Variables</b></em>' containment
@@ -1960,7 +1812,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getSubVariable()
      * @generated
      */
-    int SUB_VARIABLE = 20;
+    int SUB_VARIABLE = 19;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1990,7 +1842,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getDialogVariable()
      * @generated
      */
-    int DIALOG_VARIABLE = 21;
+    int DIALOG_VARIABLE = 20;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2029,7 +1881,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getElementDropVariable()
      * @generated
      */
-    int ELEMENT_DROP_VARIABLE = 22;
+    int ELEMENT_DROP_VARIABLE = 21;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2068,7 +1920,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getElementSelectVariable()
      * @generated
      */
-    int ELEMENT_SELECT_VARIABLE = 23;
+    int ELEMENT_SELECT_VARIABLE = 22;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2099,7 +1951,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getElementVariable()
      * @generated
      */
-    int ELEMENT_VARIABLE = 24;
+    int ELEMENT_VARIABLE = 23;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2138,7 +1990,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getElementViewVariable()
      * @generated
      */
-    int ELEMENT_VIEW_VARIABLE = 25;
+    int ELEMENT_VIEW_VARIABLE = 24;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2177,7 +2029,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getElementDeleteVariable()
      * @generated
      */
-    int ELEMENT_DELETE_VARIABLE = 26;
+    int ELEMENT_DELETE_VARIABLE = 25;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2217,7 +2069,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getDropContainerVariable()
      * @generated
      */
-    int DROP_CONTAINER_VARIABLE = 27;
+    int DROP_CONTAINER_VARIABLE = 26;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2257,7 +2109,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getSelectContainerVariable()
      * @generated
      */
-    int SELECT_CONTAINER_VARIABLE = 28;
+    int SELECT_CONTAINER_VARIABLE = 27;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2297,7 +2149,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getContainerViewVariable()
      * @generated
      */
-    int CONTAINER_VIEW_VARIABLE = 29;
+    int CONTAINER_VIEW_VARIABLE = 28;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2337,7 +2189,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getSelectModelElementVariable()
      * @generated
      */
-    int SELECT_MODEL_ELEMENT_VARIABLE = 30;
+    int SELECT_MODEL_ELEMENT_VARIABLE = 29;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -2422,7 +2274,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getEditMaskVariables()
      * @generated
      */
-    int EDIT_MASK_VARIABLES = 31;
+    int EDIT_MASK_VARIABLES = 30;
 
     /**
      * The feature id for the '<em><b>Mask</b></em>' attribute. <!--
@@ -2452,7 +2304,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getModelOperation()
      * @generated
      */
-    int MODEL_OPERATION = 33;
+    int MODEL_OPERATION = 32;
 
     /**
      * The number of structural features of the '<em>Model Operation</em>'
@@ -2473,7 +2325,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getContainerModelOperation()
      * @generated
      */
-    int CONTAINER_MODEL_OPERATION = 32;
+    int CONTAINER_MODEL_OPERATION = 31;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -2504,7 +2356,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getInitialNodeCreationOperation()
      * @generated
      */
-    int INITIAL_NODE_CREATION_OPERATION = 34;
+    int INITIAL_NODE_CREATION_OPERATION = 33;
 
     /**
      * The feature id for the '<em><b>First Model Operations</b></em>'
@@ -2535,7 +2387,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getInitialOperation()
      * @generated
      */
-    int INITIAL_OPERATION = 35;
+    int INITIAL_OPERATION = 34;
 
     /**
      * The feature id for the '<em><b>First Model Operations</b></em>'
@@ -2565,7 +2417,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getInitEdgeCreationOperation()
      * @generated
      */
-    int INIT_EDGE_CREATION_OPERATION = 36;
+    int INIT_EDGE_CREATION_OPERATION = 35;
 
     /**
      * The feature id for the '<em><b>First Model Operations</b></em>'
@@ -2596,7 +2448,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getInitialContainerDropOperation()
      * @generated
      */
-    int INITIAL_CONTAINER_DROP_OPERATION = 37;
+    int INITIAL_CONTAINER_DROP_OPERATION = 36;
 
     /**
      * The feature id for the '<em><b>First Model Operations</b></em>'
@@ -2627,7 +2479,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getCreateInstance()
      * @generated
      */
-    int CREATE_INSTANCE = 38;
+    int CREATE_INSTANCE = 37;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -2684,7 +2536,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getChangeContext()
      * @generated
      */
-    int CHANGE_CONTEXT = 39;
+    int CHANGE_CONTEXT = 38;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -2722,7 +2574,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getSetValue()
      * @generated
      */
-    int SET_VALUE = 40;
+    int SET_VALUE = 39;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -2770,7 +2622,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getSetObject()
      * @generated
      */
-    int SET_OBJECT = 41;
+    int SET_OBJECT = 40;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -2817,7 +2669,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getUnset()
      * @generated
      */
-    int UNSET = 42;
+    int UNSET = 41;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -2865,7 +2717,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getMoveElement()
      * @generated
      */
-    int MOVE_ELEMENT = 43;
+    int MOVE_ELEMENT = 42;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -2913,7 +2765,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getRemoveElement()
      * @generated
      */
-    int REMOVE_ELEMENT = 44;
+    int REMOVE_ELEMENT = 43;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -2942,7 +2794,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getFor()
      * @generated
      */
-    int FOR = 45;
+    int FOR = 44;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -2989,7 +2841,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getIf()
      * @generated
      */
-    int IF = 46;
+    int IF = 45;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -3028,7 +2880,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getDeleteView()
      * @generated
      */
-    int DELETE_VIEW = 47;
+    int DELETE_VIEW = 46;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -3058,7 +2910,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getNameVariable()
      * @generated
      */
-    int NAME_VARIABLE = 48;
+    int NAME_VARIABLE = 47;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -3088,7 +2940,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getExternalJavaActionParameter()
      * @generated
      */
-    int EXTERNAL_JAVA_ACTION_PARAMETER = 49;
+    int EXTERNAL_JAVA_ACTION_PARAMETER = 48;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -3128,7 +2980,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getToolFilterDescription()
      * @generated
      */
-    int TOOL_FILTER_DESCRIPTION = 50;
+    int TOOL_FILTER_DESCRIPTION = 49;
 
     /**
      * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
@@ -3176,7 +3028,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getFeatureChangeListener()
      * @generated
      */
-    int FEATURE_CHANGE_LISTENER = 51;
+    int FEATURE_CHANGE_LISTENER = 50;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!--
@@ -3216,7 +3068,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getSwitchChild()
      * @generated
      */
-    int SWITCH_CHILD = 53;
+    int SWITCH_CHILD = 52;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -3245,7 +3097,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getCase()
      * @generated
      */
-    int CASE = 52;
+    int CASE = 51;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -3283,7 +3135,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getDefault()
      * @generated
      */
-    int DEFAULT = 54;
+    int DEFAULT = 53;
 
     /**
      * The feature id for the '<em><b>Sub Model Operations</b></em>' containment
@@ -3312,7 +3164,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getSwitch()
      * @generated
      */
-    int SWITCH = 55;
+    int SWITCH = 54;
 
     /**
      * The feature id for the '<em><b>Cases</b></em>' containment reference
@@ -3351,7 +3203,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getDragSource()
      * @generated
      */
-    int DRAG_SOURCE = 56;
+    int DRAG_SOURCE = 55;
 
     /**
      * Returns the meta object for class '
@@ -3487,120 +3339,6 @@ public interface ToolPackage extends EPackage {
      * @generated
      */
     EReference getToolDescription_InitialOperation();
-
-    /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription
-     * <em>Container Drop Description</em>}'. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @return the meta object for class '<em>Container Drop Description</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription
-     * @generated
-     */
-    EClass getContainerDropDescription();
-
-    /**
-     * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getMappings
-     * <em>Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the reference list '<em>Mappings</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getMappings()
-     * @see #getContainerDropDescription()
-     * @generated
-     */
-    EReference getContainerDropDescription_Mappings();
-
-    /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getOldContainer
-     * <em>Old Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the containment reference '
-     *         <em>Old Container</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getOldContainer()
-     * @see #getContainerDropDescription()
-     * @generated
-     */
-    EReference getContainerDropDescription_OldContainer();
-
-    /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getNewContainer
-     * <em>New Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the containment reference '
-     *         <em>New Container</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getNewContainer()
-     * @see #getContainerDropDescription()
-     * @generated
-     */
-    EReference getContainerDropDescription_NewContainer();
-
-    /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getElement
-     * <em>Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the containment reference '<em>Element</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getElement()
-     * @see #getContainerDropDescription()
-     * @generated
-     */
-    EReference getContainerDropDescription_Element();
-
-    /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getNewViewContainer
-     * <em>New View Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     * 
-     * @return the meta object for the containment reference '
-     *         <em>New View Container</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getNewViewContainer()
-     * @see #getContainerDropDescription()
-     * @generated
-     */
-    EReference getContainerDropDescription_NewViewContainer();
-
-    /**
-     * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getInitialOperation
-     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     * 
-     * @return the meta object for the containment reference '
-     *         <em>Initial Operation</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getInitialOperation()
-     * @see #getContainerDropDescription()
-     * @generated
-     */
-    EReference getContainerDropDescription_InitialOperation();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getDragSource
-     * <em>Drag Source</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Drag Source</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getDragSource()
-     * @see #getContainerDropDescription()
-     * @generated
-     */
-    EAttribute getContainerDropDescription_DragSource();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#isMoveEdges
-     * <em>Move Edges</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Move Edges</em>'.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#isMoveEdges()
-     * @see #getContainerDropDescription()
-     * @generated
-     */
-    EAttribute getContainerDropDescription_MoveEdges();
 
     /**
      * Returns the meta object for class '
@@ -5417,86 +5155,6 @@ public interface ToolPackage extends EPackage {
          * @generated
          */
         EReference TOOL_DESCRIPTION__INITIAL_OPERATION = eINSTANCE.getToolDescription_InitialOperation();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ContainerDropDescriptionImpl
-         * <em>Container Drop Description</em>}' class. <!-- begin-user-doc -->
-         * <!-- end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.viewpoint.description.tool.impl.ContainerDropDescriptionImpl
-         * @see org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl#getContainerDropDescription()
-         * @generated
-         */
-        EClass CONTAINER_DROP_DESCRIPTION = eINSTANCE.getContainerDropDescription();
-
-        /**
-         * The meta object literal for the '<em><b>Mappings</b></em>' reference
-         * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference CONTAINER_DROP_DESCRIPTION__MAPPINGS = eINSTANCE.getContainerDropDescription_Mappings();
-
-        /**
-         * The meta object literal for the '<em><b>Old Container</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER = eINSTANCE.getContainerDropDescription_OldContainer();
-
-        /**
-         * The meta object literal for the '<em><b>New Container</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER = eINSTANCE.getContainerDropDescription_NewContainer();
-
-        /**
-         * The meta object literal for the '<em><b>Element</b></em>' containment
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference CONTAINER_DROP_DESCRIPTION__ELEMENT = eINSTANCE.getContainerDropDescription_Element();
-
-        /**
-         * The meta object literal for the '<em><b>New View Container</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER = eINSTANCE.getContainerDropDescription_NewViewContainer();
-
-        /**
-         * The meta object literal for the '<em><b>Initial Operation</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION = eINSTANCE.getContainerDropDescription_InitialOperation();
-
-        /**
-         * The meta object literal for the '<em><b>Drag Source</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE = eINSTANCE.getContainerDropDescription_DragSource();
-
-        /**
-         * The meta object literal for the '<em><b>Move Edges</b></em>'
-         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute CONTAINER_DROP_DESCRIPTION__MOVE_EDGES = eINSTANCE.getContainerDropDescription_MoveEdges();
 
         /**
          * The meta object literal for the '

@@ -9,13 +9,19 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.viewpoint.description.tool;
+package org.eclipse.sirius.diagram.description.tool;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
-import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
+import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
+import org.eclipse.sirius.viewpoint.description.tool.DragSource;
+import org.eclipse.sirius.viewpoint.description.tool.DropContainerVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable;
+import org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation;
+import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -28,33 +34,33 @@ import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
  * The following features are supported:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getMappings
+ * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getMappings
  * <em>Mappings</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getOldContainer
+ * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getOldContainer
  * <em>Old Container</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getNewContainer
+ * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getNewContainer
  * <em>New Container</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getElement
+ * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getElement
  * <em>Element</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getNewViewContainer
+ * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getNewViewContainer
  * <em>New View Container</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getInitialOperation
+ * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getDragSource
+ * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getDragSource
  * <em>Drag Source</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#isMoveEdges
+ * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#isMoveEdges
  * <em>Move Edges</em>}</li>
  * </ul>
  * </p>
  * 
- * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerDropDescription()
+ * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerDropDescription()
  * @model
  * @generated
  */
@@ -67,7 +73,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * All mapping that can create the target view. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Mappings</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerDropDescription_Mappings()
+     * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerDropDescription_Mappings()
      * @model
      * @generated
      */
@@ -81,7 +87,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * 
      * @return the value of the '<em>Old Container</em>' containment reference.
      * @see #setOldContainer(DropContainerVariable)
-     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerDropDescription_OldContainer()
+     * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerDropDescription_OldContainer()
      * @model containment="true" resolveProxies="true" required="true"
      *        annotation=
      *        "http://www.eclipse.org/emf/2002/GenModel documentedName='oldSemanticElement'"
@@ -91,7 +97,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getOldContainer
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getOldContainer
      * <em>Old Container</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
@@ -111,7 +117,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * 
      * @return the value of the '<em>New Container</em>' containment reference.
      * @see #setNewContainer(DropContainerVariable)
-     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerDropDescription_NewContainer()
+     * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerDropDescription_NewContainer()
      * @model containment="true" resolveProxies="true" required="true"
      *        annotation=
      *        "http://www.eclipse.org/emf/2002/GenModel documentedName='newSemanticContainer'"
@@ -121,7 +127,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getNewContainer
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getNewContainer
      * <em>New Container</em>}' containment reference. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
@@ -140,7 +146,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * 
      * @return the value of the '<em>Element</em>' containment reference.
      * @see #setElement(ElementDropVariable)
-     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerDropDescription_Element()
+     * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerDropDescription_Element()
      * @model containment="true" resolveProxies="true" required="true"
      * @generated
      */
@@ -148,7 +154,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getElement
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getElement
      * <em>Element</em>}' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
@@ -168,7 +174,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * @return the value of the '<em>New View Container</em>' containment
      *         reference.
      * @see #setNewViewContainer(ContainerViewVariable)
-     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerDropDescription_NewViewContainer()
+     * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerDropDescription_NewViewContainer()
      * @model containment="true" resolveProxies="true" required="true"
      *        annotation=
      *        "http://www.eclipse.org/emf/2002/GenModel documentedName='newContainerView'"
@@ -178,7 +184,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getNewViewContainer
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getNewViewContainer
      * <em>New View Container</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
@@ -198,7 +204,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * @return the value of the '<em>Initial Operation</em>' containment
      *         reference.
      * @see #setInitialOperation(InitialContainerDropOperation)
-     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerDropDescription_InitialOperation()
+     * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerDropDescription_InitialOperation()
      * @model containment="true" resolveProxies="true" required="true"
      * @generated
      */
@@ -206,7 +212,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getInitialOperation
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getInitialOperation
      * <em>Initial Operation</em>}' containment reference. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
@@ -228,7 +234,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * @return the value of the '<em>Drag Source</em>' attribute.
      * @see org.eclipse.sirius.viewpoint.description.tool.DragSource
      * @see #setDragSource(DragSource)
-     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerDropDescription_DragSource()
+     * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerDropDescription_DragSource()
      * @model required="true"
      * @generated
      */
@@ -236,7 +242,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#getDragSource
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getDragSource
      * <em>Drag Source</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
@@ -256,7 +262,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
      * 
      * @return the value of the '<em>Move Edges</em>' attribute.
      * @see #setMoveEdges(boolean)
-     * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getContainerDropDescription_MoveEdges()
+     * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerDropDescription_MoveEdges()
      * @model required="true"
      * @generated
      */
@@ -264,7 +270,7 @@ public interface ContainerDropDescription extends MappingBasedToolDescription {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription#isMoveEdges
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#isMoveEdges
      * <em>Move Edges</em>}' attribute. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 

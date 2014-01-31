@@ -26,6 +26,7 @@ import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.Reco
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.ToolSectionSpec;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.diagram.description.tool.CreateEdgeView;
 import org.eclipse.sirius.diagram.description.tool.CreateView;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
@@ -154,6 +155,8 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
             return createDiagramCreationDescription();
         case ToolPackage.DIAGRAM_NAVIGATION_DESCRIPTION:
             return createDiagramNavigationDescription();
+        case ToolPackage.CONTAINER_DROP_DESCRIPTION:
+            return createContainerDropDescription();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -536,6 +539,16 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
         diagramNameVariable.setName("diagramName");
         diagramNavigationDescription.setRepresentationNameVariable(diagramNameVariable);
         return diagramNavigationDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public ContainerDropDescription createContainerDropDescription() {
+        ContainerDropDescriptionImpl containerDropDescription = new ContainerDropDescriptionImpl();
+        return containerDropDescription;
     }
 
     /**

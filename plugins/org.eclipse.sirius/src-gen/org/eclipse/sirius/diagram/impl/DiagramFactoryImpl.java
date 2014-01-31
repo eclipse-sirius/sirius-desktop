@@ -67,6 +67,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.Dot;
+import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeArrows;
 import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
@@ -218,6 +219,8 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
             return (EObject) createViewVariable2ContainerVariable();
         case DiagramPackage.CONTAINER_VARIABLE2_STYLE_DESCRIPTION:
             return (EObject) createContainerVariable2StyleDescription();
+        case DiagramPackage.DRAG_AND_DROP_TARGET:
+            return createDragAndDropTarget();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
         }
@@ -701,6 +704,16 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     public Map.Entry<EObject, StyleDescription> createContainerVariable2StyleDescription() {
         ContainerVariable2StyleDescriptionImpl containerVariable2StyleDescription = new ContainerVariable2StyleDescriptionImpl();
         return containerVariable2StyleDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public DragAndDropTarget createDragAndDropTarget() {
+        DragAndDropTargetImpl dragAndDropTarget = new DragAndDropTargetImpl();
+        return dragAndDropTarget;
     }
 
     /**

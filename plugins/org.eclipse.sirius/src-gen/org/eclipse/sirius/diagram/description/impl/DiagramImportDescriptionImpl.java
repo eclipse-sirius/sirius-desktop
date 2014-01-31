@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DiagramImportDescription;
+import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.Layer;
@@ -38,18 +39,17 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.concern.ConcernSet;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
-import org.eclipse.sirius.diagram.description.validation.ValidationSet;
-import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -2085,7 +2085,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
         if (baseClass == DragAndDropTargetDescription.class) {
             switch (derivedFeatureID) {
             case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__DROP_DESCRIPTIONS:
-                return org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS;
+                return DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS;
             default:
                 return -1;
             }
@@ -2186,7 +2186,7 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
         }
         if (baseClass == DragAndDropTargetDescription.class) {
             switch (baseFeatureID) {
-            case org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS:
+            case DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS:
                 return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__DROP_DESCRIPTIONS;
             default:
                 return -1;

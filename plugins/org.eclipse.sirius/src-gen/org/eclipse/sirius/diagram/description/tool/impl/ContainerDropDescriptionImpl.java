@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.viewpoint.description.tool.impl;
+package org.eclipse.sirius.diagram.description.tool.impl;
 
 import java.util.Collection;
 
@@ -21,16 +21,17 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
-import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
+import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
+import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
+import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
 import org.eclipse.sirius.viewpoint.description.tool.DropContainerVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable;
 import org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescriptionImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -39,28 +40,28 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * The following features are implemented:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ContainerDropDescriptionImpl#getMappings
+ * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getMappings
  * <em>Mappings</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ContainerDropDescriptionImpl#getOldContainer
+ * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getOldContainer
  * <em>Old Container</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ContainerDropDescriptionImpl#getNewContainer
+ * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getNewContainer
  * <em>New Container</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ContainerDropDescriptionImpl#getElement
+ * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getElement
  * <em>Element</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ContainerDropDescriptionImpl#getNewViewContainer
+ * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getNewViewContainer
  * <em>New View Container</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ContainerDropDescriptionImpl#getInitialOperation
+ * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ContainerDropDescriptionImpl#getDragSource
+ * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#getDragSource
  * <em>Drag Source</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.tool.impl.ContainerDropDescriptionImpl#isMoveEdges
+ * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl#isMoveEdges
  * <em>Move Edges</em>}</li>
  * </ul>
  * </p>

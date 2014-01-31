@@ -9,10 +9,10 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.viewpoint;
+package org.eclipse.sirius.diagram;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
+import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -22,7 +22,7 @@ import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
  * drop requests. <!-- end-model-doc -->
  * 
  * 
- * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDragAndDropTarget()
+ * @see org.eclipse.sirius.diagram.DiagramPackage#getDragAndDropTarget()
  * @model
  * @generated
  */

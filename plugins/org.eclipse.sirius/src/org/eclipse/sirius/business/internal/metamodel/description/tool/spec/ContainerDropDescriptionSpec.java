@@ -34,18 +34,18 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.viewpoint.description.tool.impl.ContainerDropDescriptionImpl;
 
 /**
  * Implementation of ContainerDropDescription.
@@ -73,7 +73,8 @@ public class ContainerDropDescriptionSpec extends ContainerDropDescriptionImpl {
                 session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) diagram).getTarget());
             }
 
-            final Collection<DiagramElementMapping> allMappings = new LinkedList<DiagramElementMapping>(new DiagramComponentizationManager().getAllContainerMappings(session.getSelectedViewpoints(false), desc));
+            final Collection<DiagramElementMapping> allMappings = new LinkedList<DiagramElementMapping>(new DiagramComponentizationManager().getAllContainerMappings(
+                    session.getSelectedViewpoints(false), desc));
             allMappings.addAll(getAllMappingsWithSuperMappings(session, desc));
             allMappings.addAll(new DiagramComponentizationManager().getAllEdgeMappings(session.getSelectedViewpoints(false), desc));
             iterCandidates = allMappings.iterator();
@@ -101,7 +102,7 @@ public class ContainerDropDescriptionSpec extends ContainerDropDescriptionImpl {
             return null;
         }
         Session session = SessionManager.INSTANCE.getSession(droppedElement);
-        
+
         final ModelAccessor extendedPackage = session.getModelAccessor();
         while (iterCandidates.hasNext()) {
             final DiagramElementMapping currentMapping = iterCandidates.next();

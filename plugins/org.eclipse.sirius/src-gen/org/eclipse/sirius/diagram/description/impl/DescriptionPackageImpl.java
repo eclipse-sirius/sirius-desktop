@@ -34,6 +34,7 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.DiagramImportDescription;
+import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.FoldingStyle;
@@ -49,8 +50,6 @@ import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
 import org.eclipse.sirius.diagram.description.concern.impl.ConcernPackageImpl;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
-import org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl;
 import org.eclipse.sirius.diagram.impl.DiagramPackageImpl;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.audit.AuditPackage;
@@ -220,6 +219,13 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    private EClass dragAndDropTargetDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     private EEnum foldingStyleEEnum = null;
 
     /**
@@ -293,6 +299,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 .getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
+        org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl theValidationPackage = (org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl) (EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eNS_URI) instanceof org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eNS_URI) : org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eINSTANCE);
         AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
         DiagramPackageImpl theDiagramPackage = (DiagramPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) instanceof DiagramPackageImpl ? EPackage.Registry.INSTANCE
@@ -305,8 +314,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 .getEPackage(org.eclipse.sirius.diagram.description.tool.ToolPackage.eNS_URI) : org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE);
         FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
-        ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
         ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) instanceof ConcernPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ConcernPackage.eNS_URI) : ConcernPackage.eINSTANCE);
 
@@ -316,12 +323,12 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         theDescriptionPackage_1.createPackageContents();
         theStylePackage.createPackageContents();
         theToolPackage.createPackageContents();
+        theValidationPackage.createPackageContents();
         theAuditPackage.createPackageContents();
         theDiagramPackage.createPackageContents();
         theStylePackage_1.createPackageContents();
         theToolPackage_1.createPackageContents();
         theFilterPackage.createPackageContents();
-        theValidationPackage.createPackageContents();
         theConcernPackage.createPackageContents();
 
         // Initialize created meta-data
@@ -330,12 +337,12 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         theDescriptionPackage_1.initializePackageContents();
         theStylePackage.initializePackageContents();
         theToolPackage.initializePackageContents();
+        theValidationPackage.initializePackageContents();
         theAuditPackage.initializePackageContents();
         theDiagramPackage.initializePackageContents();
         theStylePackage_1.initializePackageContents();
         theToolPackage_1.initializePackageContents();
         theFilterPackage.initializePackageContents();
-        theValidationPackage.initializePackageContents();
         theConcernPackage.initializePackageContents();
 
         // Mark meta-data to indicate it can't be changed
@@ -1359,6 +1366,24 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    public EClass getDragAndDropTargetDescription() {
+        return dragAndDropTargetDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getDragAndDropTargetDescription_DropDescriptions() {
+        return (EReference) dragAndDropTargetDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public EEnum getFoldingStyle() {
         return foldingStyleEEnum;
     }
@@ -1534,6 +1559,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         createEAttribute(additionalLayerEClass, ADDITIONAL_LAYER__ACTIVE_BY_DEFAULT);
         createEAttribute(additionalLayerEClass, ADDITIONAL_LAYER__OPTIONAL);
 
+        dragAndDropTargetDescriptionEClass = createEClass(DRAG_AND_DROP_TARGET_DESCRIPTION);
+        createEReference(dragAndDropTargetDescriptionEClass, DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS);
+
         // Create enums
         foldingStyleEEnum = createEEnum(FOLDING_STYLE);
         layoutDirectionEEnum = createEEnum(LAYOUT_DIRECTION);
@@ -1569,10 +1597,11 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         org.eclipse.sirius.diagram.description.tool.ToolPackage theToolPackage_1 = (org.eclipse.sirius.diagram.description.tool.ToolPackage) EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.diagram.description.tool.ToolPackage.eNS_URI);
         FilterPackage theFilterPackage = (FilterPackage) EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI);
-        ValidationPackage theValidationPackage = (ValidationPackage) EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI);
         ConcernPackage theConcernPackage = (ConcernPackage) EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI);
         org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eNS_URI);
+        org.eclipse.sirius.viewpoint.description.validation.ValidationPackage theValidationPackage = (org.eclipse.sirius.viewpoint.description.validation.ValidationPackage) EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eNS_URI);
         ToolPackage theToolPackage = (ToolPackage) EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI);
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
         DiagramPackage theDiagramPackage = (DiagramPackage) EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI);
@@ -1582,7 +1611,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         getESubpackages().add(theStylePackage_1);
         getESubpackages().add(theToolPackage_1);
         getESubpackages().add(theFilterPackage);
-        getESubpackages().add(theValidationPackage);
         getESubpackages().add(theConcernPackage);
 
         // Create type parameters
@@ -1590,7 +1618,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         // Set bounds for type parameters
 
         // Add supertypes to classes
-        diagramDescriptionEClass.getESuperTypes().add(theDescriptionPackage_1.getDragAndDropTargetDescription());
+        diagramDescriptionEClass.getESuperTypes().add(this.getDragAndDropTargetDescription());
         diagramDescriptionEClass.getESuperTypes().add(theDescriptionPackage_1.getRepresentationDescription());
         diagramDescriptionEClass.getESuperTypes().add(theDescriptionPackage_1.getPasteTargetDescription());
         diagramImportDescriptionEClass.getESuperTypes().add(theDescriptionPackage_1.getRepresentationImportDescription());
@@ -1601,9 +1629,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         abstractNodeMappingEClass.getESuperTypes().add(this.getDiagramElementMapping());
         abstractNodeMappingEClass.getESuperTypes().add(theDescriptionPackage_1.getDocumentedElement());
         nodeMappingEClass.getESuperTypes().add(this.getAbstractNodeMapping());
-        nodeMappingEClass.getESuperTypes().add(theDescriptionPackage_1.getDragAndDropTargetDescription());
+        nodeMappingEClass.getESuperTypes().add(this.getDragAndDropTargetDescription());
         containerMappingEClass.getESuperTypes().add(this.getAbstractNodeMapping());
-        containerMappingEClass.getESuperTypes().add(theDescriptionPackage_1.getDragAndDropTargetDescription());
+        containerMappingEClass.getESuperTypes().add(this.getDragAndDropTargetDescription());
         nodeMappingImportEClass.getESuperTypes().add(this.getNodeMapping());
         nodeMappingImportEClass.getESuperTypes().add(theDescriptionPackage_1.getAbstractMappingImport());
         containerMappingImportEClass.getESuperTypes().add(this.getContainerMapping());
@@ -1979,6 +2007,10 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getAdditionalLayer_Optional(), ecorePackage.getEBoolean(), "optional", "true", 0, 1, AdditionalLayer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
                 IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(dragAndDropTargetDescriptionEClass, DragAndDropTargetDescription.class, "DragAndDropTargetDescription", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getDragAndDropTargetDescription_DropDescriptions(), theToolPackage_1.getContainerDropDescription(), null, "dropDescriptions", null, 0, -1, DragAndDropTargetDescription.class,
+                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Initialize enums and add enum literals
         initEEnum(foldingStyleEEnum, FoldingStyle.class, "FoldingStyle");

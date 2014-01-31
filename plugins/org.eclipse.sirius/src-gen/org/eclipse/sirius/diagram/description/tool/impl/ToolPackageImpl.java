@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.diagram.description.tool.CreateEdgeView;
 import org.eclipse.sirius.diagram.description.tool.CreateView;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
@@ -52,8 +53,6 @@ import org.eclipse.sirius.diagram.description.tool.ToolGroup;
 import org.eclipse.sirius.diagram.description.tool.ToolGroupExtension;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
-import org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl;
 import org.eclipse.sirius.diagram.impl.DiagramPackageImpl;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -251,6 +250,13 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    private EClass containerDropDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     private EEnum reconnectionKindEEnum = null;
 
     /**
@@ -316,6 +322,9 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl theToolPackage_1 = (org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl) (EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eNS_URI) instanceof org.eclipse.sirius.viewpoint.description.tool.impl.ToolPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eNS_URI) : org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eINSTANCE);
+        org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl theValidationPackage = (org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl) (EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eNS_URI) instanceof org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eNS_URI) : org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eINSTANCE);
         AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
         DiagramPackageImpl theDiagramPackage = (DiagramPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DiagramPackage.eNS_URI) instanceof DiagramPackageImpl ? EPackage.Registry.INSTANCE
@@ -328,8 +337,6 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
                 .getEPackage(org.eclipse.sirius.diagram.description.style.StylePackage.eNS_URI) : org.eclipse.sirius.diagram.description.style.StylePackage.eINSTANCE);
         FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
-        ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
         ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) instanceof ConcernPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ConcernPackage.eNS_URI) : ConcernPackage.eINSTANCE);
 
@@ -339,12 +346,12 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         theDescriptionPackage.createPackageContents();
         theStylePackage.createPackageContents();
         theToolPackage_1.createPackageContents();
+        theValidationPackage.createPackageContents();
         theAuditPackage.createPackageContents();
         theDiagramPackage.createPackageContents();
         theDescriptionPackage_1.createPackageContents();
         theStylePackage_1.createPackageContents();
         theFilterPackage.createPackageContents();
-        theValidationPackage.createPackageContents();
         theConcernPackage.createPackageContents();
 
         // Initialize created meta-data
@@ -353,12 +360,12 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         theDescriptionPackage.initializePackageContents();
         theStylePackage.initializePackageContents();
         theToolPackage_1.initializePackageContents();
+        theValidationPackage.initializePackageContents();
         theAuditPackage.initializePackageContents();
         theDiagramPackage.initializePackageContents();
         theDescriptionPackage_1.initializePackageContents();
         theStylePackage_1.initializePackageContents();
         theFilterPackage.initializePackageContents();
-        theValidationPackage.initializePackageContents();
         theConcernPackage.initializePackageContents();
 
         // Mark meta-data to indicate it can't be changed
@@ -1202,6 +1209,87 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
      * 
      * @generated
      */
+    public EClass getContainerDropDescription() {
+        return containerDropDescriptionEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getContainerDropDescription_Mappings() {
+        return (EReference) containerDropDescriptionEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getContainerDropDescription_OldContainer() {
+        return (EReference) containerDropDescriptionEClass.getEStructuralFeatures().get(1);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getContainerDropDescription_NewContainer() {
+        return (EReference) containerDropDescriptionEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getContainerDropDescription_Element() {
+        return (EReference) containerDropDescriptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getContainerDropDescription_NewViewContainer() {
+        return (EReference) containerDropDescriptionEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getContainerDropDescription_InitialOperation() {
+        return (EReference) containerDropDescriptionEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getContainerDropDescription_DragSource() {
+        return (EAttribute) containerDropDescriptionEClass.getEStructuralFeatures().get(6);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getContainerDropDescription_MoveEdges() {
+        return (EAttribute) containerDropDescriptionEClass.getEStructuralFeatures().get(7);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public EEnum getReconnectionKind() {
         return reconnectionKindEEnum;
     }
@@ -1352,6 +1440,16 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         diagramNavigationDescriptionEClass = createEClass(DIAGRAM_NAVIGATION_DESCRIPTION);
         createEReference(diagramNavigationDescriptionEClass, DIAGRAM_NAVIGATION_DESCRIPTION__DIAGRAM_DESCRIPTION);
 
+        containerDropDescriptionEClass = createEClass(CONTAINER_DROP_DESCRIPTION);
+        createEReference(containerDropDescriptionEClass, CONTAINER_DROP_DESCRIPTION__MAPPINGS);
+        createEReference(containerDropDescriptionEClass, CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER);
+        createEReference(containerDropDescriptionEClass, CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER);
+        createEReference(containerDropDescriptionEClass, CONTAINER_DROP_DESCRIPTION__ELEMENT);
+        createEReference(containerDropDescriptionEClass, CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER);
+        createEReference(containerDropDescriptionEClass, CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION);
+        createEAttribute(containerDropDescriptionEClass, CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE);
+        createEAttribute(containerDropDescriptionEClass, CONTAINER_DROP_DESCRIPTION__MOVE_EDGES);
+
         // Create enums
         reconnectionKindEEnum = createEEnum(RECONNECTION_KIND);
     }
@@ -1423,6 +1521,7 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         navigationEClass.getESuperTypes().add(theToolPackage_1.getContainerModelOperation());
         diagramCreationDescriptionEClass.getESuperTypes().add(theToolPackage_1.getRepresentationCreationDescription());
         diagramNavigationDescriptionEClass.getESuperTypes().add(theToolPackage_1.getRepresentationNavigationDescription());
+        containerDropDescriptionEClass.getESuperTypes().add(theToolPackage_1.getMappingBasedToolDescription());
 
         // Initialize classes and features; add operations and parameters
         initEClass(toolSectionEClass, ToolSection.class, "ToolSection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1621,6 +1720,30 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         initEClass(diagramNavigationDescriptionEClass, DiagramNavigationDescription.class, "DiagramNavigationDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getDiagramNavigationDescription_DiagramDescription(), theDescriptionPackage_1.getDiagramDescription(), null, "diagramDescription", null, 1, 1,
                 DiagramNavigationDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        initEClass(containerDropDescriptionEClass, ContainerDropDescription.class, "ContainerDropDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+        initEReference(getContainerDropDescription_Mappings(), theDescriptionPackage_1.getDiagramElementMapping(), null, "mappings", null, 0, -1, ContainerDropDescription.class, !IS_TRANSIENT,
+                !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getContainerDropDescription_OldContainer(), theToolPackage_1.getDropContainerVariable(), null, "oldContainer", null, 1, 1, ContainerDropDescription.class, !IS_TRANSIENT,
+                !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getContainerDropDescription_NewContainer(), theToolPackage_1.getDropContainerVariable(), null, "newContainer", null, 1, 1, ContainerDropDescription.class, !IS_TRANSIENT,
+                !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getContainerDropDescription_Element(), theToolPackage_1.getElementDropVariable(), null, "element", null, 1, 1, ContainerDropDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getContainerDropDescription_NewViewContainer(), theToolPackage_1.getContainerViewVariable(), null, "newViewContainer", null, 1, 1, ContainerDropDescription.class,
+                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getContainerDropDescription_InitialOperation(), theToolPackage_1.getInitialContainerDropOperation(), null, "initialOperation", null, 1, 1, ContainerDropDescription.class,
+                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getContainerDropDescription_DragSource(), theToolPackage_1.getDragSource(), "dragSource", null, 1, 1, ContainerDropDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getContainerDropDescription_MoveEdges(), ecorePackage.getEBoolean(), "moveEdges", null, 1, 1, ContainerDropDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+        op = addEOperation(containerDropDescriptionEClass, null, "getBestMapping", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, theDiagramPackage.getDragAndDropTarget(), "targetContainer", 0, 1, IS_UNIQUE, IS_ORDERED);
+        addEParameter(op, theEcorePackage.getEObject(), "droppedElement", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+        addEOperation(containerDropDescriptionEClass, theDescriptionPackage_1.getDragAndDropTargetDescription(), "getContainers", 1, -1, IS_UNIQUE, IS_ORDERED);
 
         // Initialize enums and add enum literals
         initEEnum(reconnectionKindEEnum, ReconnectionKind.class, "ReconnectionKind");

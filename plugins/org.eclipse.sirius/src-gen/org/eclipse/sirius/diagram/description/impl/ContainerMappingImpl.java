@@ -30,10 +30,10 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
-import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
+import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -622,7 +622,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
         if (baseClass == DragAndDropTargetDescription.class) {
             switch (derivedFeatureID) {
             case DescriptionPackage.CONTAINER_MAPPING__DROP_DESCRIPTIONS:
-                return org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS;
+                return DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS;
             default:
                 return -1;
             }
@@ -639,7 +639,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
     public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
         if (baseClass == DragAndDropTargetDescription.class) {
             switch (baseFeatureID) {
-            case org.eclipse.sirius.viewpoint.description.DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS:
+            case DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS:
                 return DescriptionPackage.CONTAINER_MAPPING__DROP_DESCRIPTIONS;
             default:
                 return -1;

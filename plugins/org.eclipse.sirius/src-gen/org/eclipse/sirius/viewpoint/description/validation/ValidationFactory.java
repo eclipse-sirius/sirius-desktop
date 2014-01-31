@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation;
+package org.eclipse.sirius.viewpoint.description.validation;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EFactory;
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
  * create method for each non-abstract class of the model. <!-- end-user-doc -->
  * 
- * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage
+ * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage
  * @generated
  */
 public interface ValidationFactory extends EFactory {
@@ -27,7 +27,7 @@ public interface ValidationFactory extends EFactory {
      * 
      * @generated
      */
-    ValidationFactory eINSTANCE = org.eclipse.sirius.diagram.description.validation.impl.ValidationFactoryImpl.init();
+    ValidationFactory eINSTANCE = org.eclipse.sirius.viewpoint.description.validation.impl.ValidationFactoryImpl.init();
 
     /**
      * Returns a new object of class '<em>Set</em>'. <!-- begin-user-doc -->

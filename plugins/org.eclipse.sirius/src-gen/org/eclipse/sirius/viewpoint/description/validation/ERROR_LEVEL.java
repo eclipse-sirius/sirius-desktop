@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation;
+package org.eclipse.sirius.viewpoint.description.validation;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * end-user-doc --> <!-- begin-model-doc --> All levels of error for a
  * validation rule. <!-- end-model-doc -->
  * 
- * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage#getERROR_LEVEL()
+ * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getERROR_LEVEL()
  * @model
  * @generated
  */

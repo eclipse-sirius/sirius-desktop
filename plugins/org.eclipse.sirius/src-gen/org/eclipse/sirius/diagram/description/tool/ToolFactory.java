@@ -259,6 +259,15 @@ public interface ToolFactory extends EFactory {
     DiagramNavigationDescription createDiagramNavigationDescription();
 
     /**
+     * Returns a new object of class '<em>Container Drop Description</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Container Drop Description</em>'.
+     * @generated
+     */
+    ContainerDropDescription createContainerDropDescription();
+
+    /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 

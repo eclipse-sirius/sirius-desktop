@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.internal.validation.constraints;
 
-import org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL;
-import org.eclipse.sirius.diagram.description.validation.ValidationRule;
 import org.eclipse.sirius.tools.api.validation.constraint.AbstractDDiagramConstraint;
+import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
  * Constraint for DDiagramElement bridging EMF validation framework and our

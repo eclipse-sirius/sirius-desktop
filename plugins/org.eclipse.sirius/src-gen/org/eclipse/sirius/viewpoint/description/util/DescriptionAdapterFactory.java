@@ -30,7 +30,6 @@ import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 import org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
-import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
 import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
 import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
@@ -194,11 +193,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseConditionalStyleDescription(ConditionalStyleDescription object) {
             return createConditionalStyleDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseDragAndDropTargetDescription(DragAndDropTargetDescription object) {
-            return createDragAndDropTargetDescriptionAdapter();
         }
 
         @Override
@@ -608,22 +602,6 @@ public class DescriptionAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createConditionalStyleDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription
-     * <em>Drag And Drop Target Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription
-     * @generated
-     */
-    public Adapter createDragAndDropTargetDescriptionAdapter() {
         return null;
     }
 

@@ -9,13 +9,13 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.viewpoint.impl;
+package org.eclipse.sirius.diagram.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.DragAndDropTarget;
+import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -42,7 +42,7 @@ public class DragAndDropTargetImpl extends EObjectImpl implements DragAndDropTar
      */
     @Override
     protected EClass eStaticClass() {
-        return ViewpointPackage.Literals.DRAG_AND_DROP_TARGET;
+        return DiagramPackage.Literals.DRAG_AND_DROP_TARGET;
     }
 
     /**

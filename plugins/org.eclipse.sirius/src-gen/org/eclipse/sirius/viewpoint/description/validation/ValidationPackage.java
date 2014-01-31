@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation;
+package org.eclipse.sirius.viewpoint.description.validation;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * </ul>
  * <!-- end-user-doc -->
  * 
- * @see org.eclipse.sirius.diagram.description.validation.ValidationFactory
+ * @see org.eclipse.sirius.viewpoint.description.validation.ValidationFactory
  * @model kind="package"
  * @generated
  */
@@ -46,7 +46,7 @@ public interface ValidationPackage extends EPackage {
      * 
      * @generated
      */
-    String eNS_URI = "http://www.eclipse.org/sirius/diagram/description/validation/1.1.0";
+    String eNS_URI = "http://www.eclipse.org/sirius/description/validation/1.1.0";
 
     /**
      * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -61,15 +61,15 @@ public interface ValidationPackage extends EPackage {
      * 
      * @generated
      */
-    ValidationPackage eINSTANCE = org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl.init();
+    ValidationPackage eINSTANCE = org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl.init();
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.validation.impl.ValidationSetImpl
+     * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl
      * <em>Set</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationSetImpl
-     * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl#getValidationSet()
+     * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl
+     * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl#getValidationSet()
      * @generated
      */
     int VALIDATION_SET = 0;
@@ -84,22 +84,22 @@ public interface ValidationPackage extends EPackage {
     int VALIDATION_SET__DOCUMENTATION = DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
 
     /**
-     * The feature id for the '<em><b>Owned Rules</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int VALIDATION_SET__OWNED_RULES = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
-
-    /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int VALIDATION_SET__NAME = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
+    int VALIDATION_SET__NAME = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Owned Rules</b></em>' containment
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int VALIDATION_SET__OWNED_RULES = DescriptionPackage.DOCUMENTED_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Reused Rules</b></em>' reference list.
@@ -130,11 +130,11 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.validation.impl.ValidationRuleImpl
+     * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl
      * <em>Rule</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationRuleImpl
-     * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl#getValidationRule()
+     * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl
+     * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl#getValidationRule()
      * @generated
      */
     int VALIDATION_RULE = 1;
@@ -186,12 +186,12 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.validation.impl.SemanticValidationRuleImpl
+     * {@link org.eclipse.sirius.viewpoint.description.validation.impl.SemanticValidationRuleImpl
      * <em>Semantic Validation Rule</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
-     * @see org.eclipse.sirius.diagram.description.validation.impl.SemanticValidationRuleImpl
-     * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl#getSemanticValidationRule()
+     * @see org.eclipse.sirius.viewpoint.description.validation.impl.SemanticValidationRuleImpl
+     * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl#getSemanticValidationRule()
      * @generated
      */
     int SEMANTIC_VALIDATION_RULE = 2;
@@ -253,12 +253,12 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.validation.impl.ViewValidationRuleImpl
+     * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ViewValidationRuleImpl
      * <em>View Validation Rule</em>}' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
-     * @see org.eclipse.sirius.diagram.description.validation.impl.ViewValidationRuleImpl
-     * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl#getViewValidationRule()
+     * @see org.eclipse.sirius.viewpoint.description.validation.impl.ViewValidationRuleImpl
+     * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl#getViewValidationRule()
      * @generated
      */
     int VIEW_VALIDATION_RULE = 3;
@@ -319,12 +319,12 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.validation.impl.RuleAuditImpl
+     * {@link org.eclipse.sirius.viewpoint.description.validation.impl.RuleAuditImpl
      * <em>Rule Audit</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      * 
-     * @see org.eclipse.sirius.diagram.description.validation.impl.RuleAuditImpl
-     * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl#getRuleAudit()
+     * @see org.eclipse.sirius.viewpoint.description.validation.impl.RuleAuditImpl
+     * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl#getRuleAudit()
      * @generated
      */
     int RULE_AUDIT = 4;
@@ -349,11 +349,11 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.validation.impl.ValidationFixImpl
+     * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationFixImpl
      * <em>Fix</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationFixImpl
-     * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl#getValidationFix()
+     * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationFixImpl
+     * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl#getValidationFix()
      * @generated
      */
     int VALIDATION_FIX = 5;
@@ -387,59 +387,59 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL
      * <em>ERROR LEVEL</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      * 
-     * @see org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL
-     * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl#getERROR_LEVEL()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL
+     * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl#getERROR_LEVEL()
      * @generated
      */
     int ERROR_LEVEL = 6;
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationSet
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet
      * <em>Set</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Set</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationSet
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationSet
      * @generated
      */
     EClass getValidationSet();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationSet#getOwnedRules
-     * <em>Owned Rules</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the containment reference list '
-     *         <em>Owned Rules</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationSet#getOwnedRules()
-     * @see #getValidationSet()
-     * @generated
-     */
-    EReference getValidationSet_OwnedRules();
-
-    /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationSet#getName
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getName
      * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Name</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationSet#getName()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getName()
      * @see #getValidationSet()
      * @generated
      */
     EAttribute getValidationSet_Name();
 
     /**
+     * Returns the meta object for the containment reference list '
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getOwnedRules
+     * <em>Owned Rules</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference list '
+     *         <em>Owned Rules</em>'.
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getOwnedRules()
+     * @see #getValidationSet()
+     * @generated
+     */
+    EReference getValidationSet_OwnedRules();
+
+    /**
      * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationSet#getReusedRules
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getReusedRules
      * <em>Reused Rules</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Reused Rules</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationSet#getReusedRules()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getReusedRules()
      * @see #getValidationSet()
      * @generated
      */
@@ -447,11 +447,11 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationSet#getAllRules
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getAllRules
      * <em>All Rules</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>All Rules</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationSet#getAllRules()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getAllRules()
      * @see #getValidationSet()
      * @generated
      */
@@ -459,22 +459,22 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationRule
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule
      * <em>Rule</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Rule</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationRule
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationRule
      * @generated
      */
     EClass getValidationRule();
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationRule#getLevel
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getLevel
      * <em>Level</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Level</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationRule#getLevel()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getLevel()
      * @see #getValidationRule()
      * @generated
      */
@@ -482,11 +482,11 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationRule#getMessage
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getMessage
      * <em>Message</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Message</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationRule#getMessage()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getMessage()
      * @see #getValidationRule()
      * @generated
      */
@@ -494,12 +494,12 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationRule#getAudits
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getAudits
      * <em>Audits</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '
      *         <em>Audits</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationRule#getAudits()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getAudits()
      * @see #getValidationRule()
      * @generated
      */
@@ -507,12 +507,12 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationRule#getFixes
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getFixes
      * <em>Fixes</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the containment reference list '
      *         <em>Fixes</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationRule#getFixes()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getFixes()
      * @see #getValidationRule()
      * @generated
      */
@@ -520,23 +520,23 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.validation.SemanticValidationRule
+     * {@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule
      * <em>Semantic Validation Rule</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @return the meta object for class '<em>Semantic Validation Rule</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.SemanticValidationRule
+     * @see org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule
      * @generated
      */
     EClass getSemanticValidationRule();
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.validation.SemanticValidationRule#getTargetClass
+     * {@link org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule#getTargetClass
      * <em>Target Class</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Target Class</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.SemanticValidationRule#getTargetClass()
+     * @see org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule#getTargetClass()
      * @see #getSemanticValidationRule()
      * @generated
      */
@@ -544,23 +544,23 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.validation.ViewValidationRule
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule
      * <em>View Validation Rule</em>}'. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * 
      * @return the meta object for class '<em>View Validation Rule</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.ViewValidationRule
+     * @see org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule
      * @generated
      */
     EClass getViewValidationRule();
 
     /**
      * Returns the meta object for the reference list '
-     * {@link org.eclipse.sirius.diagram.description.validation.ViewValidationRule#getTargets
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule#getTargets
      * <em>Targets</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the reference list '<em>Targets</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.ViewValidationRule#getTargets()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule#getTargets()
      * @see #getViewValidationRule()
      * @generated
      */
@@ -568,23 +568,23 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.validation.RuleAudit
+     * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit
      * <em>Rule Audit</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Rule Audit</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.RuleAudit
+     * @see org.eclipse.sirius.viewpoint.description.validation.RuleAudit
      * @generated
      */
     EClass getRuleAudit();
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.validation.RuleAudit#getAuditExpression
+     * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit#getAuditExpression
      * <em>Audit Expression</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      * 
      * @return the meta object for the attribute '<em>Audit Expression</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.RuleAudit#getAuditExpression()
+     * @see org.eclipse.sirius.viewpoint.description.validation.RuleAudit#getAuditExpression()
      * @see #getRuleAudit()
      * @generated
      */
@@ -592,22 +592,22 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationFix
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix
      * <em>Fix</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for class '<em>Fix</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationFix
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationFix
      * @generated
      */
     EClass getValidationFix();
 
     /**
      * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationFix#getName
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getName
      * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for the attribute '<em>Name</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationFix#getName()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getName()
      * @see #getValidationFix()
      * @generated
      */
@@ -615,13 +615,13 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * Returns the meta object for the containment reference '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationFix#getInitialOperation
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getInitialOperation
      * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      * 
      * @return the meta object for the containment reference '
      *         <em>Initial Operation</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationFix#getInitialOperation()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationFix#getInitialOperation()
      * @see #getValidationFix()
      * @generated
      */
@@ -629,11 +629,11 @@ public interface ValidationPackage extends EPackage {
 
     /**
      * Returns the meta object for enum '
-     * {@link org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL
      * <em>ERROR LEVEL</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @return the meta object for enum '<em>ERROR LEVEL</em>'.
-     * @see org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL
+     * @see org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL
      * @generated
      */
     EEnum getERROR_LEVEL();
@@ -663,14 +663,22 @@ public interface ValidationPackage extends EPackage {
     interface Literals {
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.validation.impl.ValidationSetImpl
+         * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl
          * <em>Set</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
-         * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationSetImpl
-         * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl#getValidationSet()
+         * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl
+         * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl#getValidationSet()
          * @generated
          */
         EClass VALIDATION_SET = eINSTANCE.getValidationSet();
+
+        /**
+         * The meta object literal for the '<em><b>Name</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute VALIDATION_SET__NAME = eINSTANCE.getValidationSet_Name();
 
         /**
          * The meta object literal for the '<em><b>Owned Rules</b></em>'
@@ -680,14 +688,6 @@ public interface ValidationPackage extends EPackage {
          * @generated
          */
         EReference VALIDATION_SET__OWNED_RULES = eINSTANCE.getValidationSet_OwnedRules();
-
-        /**
-         * The meta object literal for the '<em><b>Name</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute VALIDATION_SET__NAME = eINSTANCE.getValidationSet_Name();
 
         /**
          * The meta object literal for the '<em><b>Reused Rules</b></em>'
@@ -707,11 +707,11 @@ public interface ValidationPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.validation.impl.ValidationRuleImpl
+         * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl
          * <em>Rule</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
-         * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationRuleImpl
-         * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl#getValidationRule()
+         * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationRuleImpl
+         * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl#getValidationRule()
          * @generated
          */
         EClass VALIDATION_RULE = eINSTANCE.getValidationRule();
@@ -750,12 +750,12 @@ public interface ValidationPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.validation.impl.SemanticValidationRuleImpl
+         * {@link org.eclipse.sirius.viewpoint.description.validation.impl.SemanticValidationRuleImpl
          * <em>Semantic Validation Rule</em>}' class. <!-- begin-user-doc -->
          * <!-- end-user-doc -->
          * 
-         * @see org.eclipse.sirius.diagram.description.validation.impl.SemanticValidationRuleImpl
-         * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl#getSemanticValidationRule()
+         * @see org.eclipse.sirius.viewpoint.description.validation.impl.SemanticValidationRuleImpl
+         * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl#getSemanticValidationRule()
          * @generated
          */
         EClass SEMANTIC_VALIDATION_RULE = eINSTANCE.getSemanticValidationRule();
@@ -770,12 +770,12 @@ public interface ValidationPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.validation.impl.ViewValidationRuleImpl
+         * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ViewValidationRuleImpl
          * <em>View Validation Rule</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
          * 
-         * @see org.eclipse.sirius.diagram.description.validation.impl.ViewValidationRuleImpl
-         * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl#getViewValidationRule()
+         * @see org.eclipse.sirius.viewpoint.description.validation.impl.ViewValidationRuleImpl
+         * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl#getViewValidationRule()
          * @generated
          */
         EClass VIEW_VALIDATION_RULE = eINSTANCE.getViewValidationRule();
@@ -790,12 +790,12 @@ public interface ValidationPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.validation.impl.RuleAuditImpl
+         * {@link org.eclipse.sirius.viewpoint.description.validation.impl.RuleAuditImpl
          * <em>Rule Audit</em>}' class. <!-- begin-user-doc --> <!--
          * end-user-doc -->
          * 
-         * @see org.eclipse.sirius.diagram.description.validation.impl.RuleAuditImpl
-         * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl#getRuleAudit()
+         * @see org.eclipse.sirius.viewpoint.description.validation.impl.RuleAuditImpl
+         * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl#getRuleAudit()
          * @generated
          */
         EClass RULE_AUDIT = eINSTANCE.getRuleAudit();
@@ -810,11 +810,11 @@ public interface ValidationPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.validation.impl.ValidationFixImpl
+         * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationFixImpl
          * <em>Fix</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
-         * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationFixImpl
-         * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl#getValidationFix()
+         * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationFixImpl
+         * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl#getValidationFix()
          * @generated
          */
         EClass VALIDATION_FIX = eINSTANCE.getValidationFix();
@@ -838,12 +838,12 @@ public interface ValidationPackage extends EPackage {
 
         /**
          * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL
+         * {@link org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL
          * <em>ERROR LEVEL</em>}' enum. <!-- begin-user-doc --> <!--
          * end-user-doc -->
          * 
-         * @see org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL
-         * @see org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl#getERROR_LEVEL()
+         * @see org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL
+         * @see org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl#getERROR_LEVEL()
          * @generated
          */
         EEnum ERROR_LEVEL = eINSTANCE.getERROR_LEVEL();

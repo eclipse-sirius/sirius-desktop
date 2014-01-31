@@ -30,14 +30,14 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL;
-import org.eclipse.sirius.diagram.description.validation.SemanticValidationRule;
-import org.eclipse.sirius.diagram.description.validation.ValidationRule;
-import org.eclipse.sirius.diagram.description.validation.ValidationSet;
-import org.eclipse.sirius.diagram.description.validation.ViewValidationRule;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
+import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
+import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
 
 /**
  * Common class for all the DDiagram constraints. This class wrapp the base

@@ -11,7 +11,7 @@
 package org.eclipse.sirius.business.internal.sync.visitor;
 
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
+import org.eclipse.sirius.diagram.DragAndDropTarget;
 
 /**
  * A visitor to retrieve diagram element children.

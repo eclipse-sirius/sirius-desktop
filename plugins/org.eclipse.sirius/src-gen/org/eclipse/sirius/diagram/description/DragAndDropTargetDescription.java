@@ -9,11 +9,11 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.viewpoint.description;
+package org.eclipse.sirius.diagram.description;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
+import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -26,12 +26,12 @@ import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
  * The following features are supported:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription#getDropDescriptions
+ * {@link org.eclipse.sirius.diagram.description.DragAndDropTargetDescription#getDropDescriptions
  * <em>Drop Descriptions</em>}</li>
  * </ul>
  * </p>
  * 
- * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDragAndDropTargetDescription()
+ * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDragAndDropTargetDescription()
  * @model abstract="true"
  * @generated
  */
@@ -39,7 +39,7 @@ public interface DragAndDropTargetDescription extends EObject {
     /**
      * Returns the value of the '<em><b>Drop Descriptions</b></em>' reference
      * list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription}
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription}
      * . <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Drop Descriptions</em>' reference list isn't
@@ -48,7 +48,7 @@ public interface DragAndDropTargetDescription extends EObject {
      * <!-- end-user-doc -->
      * 
      * @return the value of the '<em>Drop Descriptions</em>' reference list.
-     * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getDragAndDropTargetDescription_DropDescriptions()
+     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDragAndDropTargetDescription_DropDescriptions()
      * @model
      * @generated
      */

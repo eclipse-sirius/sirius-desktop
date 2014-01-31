@@ -23,7 +23,6 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
 import org.eclipse.sirius.viewpoint.description.tool.Case;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
-import org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
@@ -149,11 +148,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseToolDescription(ToolDescription object) {
             return createToolDescriptionAdapter();
-        }
-
-        @Override
-        public Adapter caseContainerDropDescription(ContainerDropDescription object) {
-            return createContainerDropDescriptionAdapter();
         }
 
         @Override
@@ -507,22 +501,6 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createToolDescriptionAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription
-     * <em>Container Drop Description</em>}'. <!-- begin-user-doc --> This
-     * default implementation returns null so that we can easily ignore cases;
-     * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.tool.ContainerDropDescription
-     * @generated
-     */
-    public Adapter createContainerDropDescriptionAdapter() {
         return null;
     }
 

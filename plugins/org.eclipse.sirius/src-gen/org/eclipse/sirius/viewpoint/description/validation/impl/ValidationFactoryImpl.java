@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation.impl;
+package org.eclipse.sirius.viewpoint.description.validation.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -20,14 +20,14 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.business.internal.metamodel.description.validation.ValidationSetSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.validation.spec.SemanticValidationRuleSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.validation.spec.ViewValidationRuleSpec;
-import org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL;
-import org.eclipse.sirius.diagram.description.validation.RuleAudit;
-import org.eclipse.sirius.diagram.description.validation.SemanticValidationRule;
-import org.eclipse.sirius.diagram.description.validation.ValidationFactory;
-import org.eclipse.sirius.diagram.description.validation.ValidationFix;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
-import org.eclipse.sirius.diagram.description.validation.ValidationSet;
-import org.eclipse.sirius.diagram.description.validation.ViewValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
+import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
+import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
+import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--

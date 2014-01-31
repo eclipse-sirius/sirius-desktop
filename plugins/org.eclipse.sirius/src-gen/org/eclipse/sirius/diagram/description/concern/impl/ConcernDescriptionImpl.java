@@ -22,10 +22,10 @@ import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
-import org.eclipse.sirius.diagram.description.validation.ValidationRule;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '

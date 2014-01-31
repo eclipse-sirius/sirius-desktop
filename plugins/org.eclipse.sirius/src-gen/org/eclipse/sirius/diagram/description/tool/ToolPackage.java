@@ -2122,6 +2122,154 @@ public interface ToolPackage extends EPackage {
 
     /**
      * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl
+     * <em>Container Drop Description</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl
+     * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getContainerDropDescription()
+     * @generated
+     */
+    int CONTAINER_DROP_DESCRIPTION = 25;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION__DOCUMENTATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__DOCUMENTATION;
+
+    /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION__NAME = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__NAME;
+
+    /**
+     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION__LABEL = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__LABEL;
+
+    /**
+     * The feature id for the '<em><b>Precondition</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION__PRECONDITION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__PRECONDITION;
+
+    /**
+     * The feature id for the '<em><b>Force Refresh</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION__FORCE_REFRESH = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FORCE_REFRESH;
+
+    /**
+     * The feature id for the '<em><b>Filters</b></em>' containment reference
+     * list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION__FILTERS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__FILTERS;
+
+    /**
+     * The feature id for the '<em><b>Mappings</b></em>' reference list. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION__MAPPINGS = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Old Container</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 1;
+
+    /**
+     * The feature id for the '<em><b>New Container</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 2;
+
+    /**
+     * The feature id for the '<em><b>Element</b></em>' containment reference.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION__ELEMENT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 3;
+
+    /**
+     * The feature id for the '<em><b>New View Container</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 4;
+
+    /**
+     * The feature id for the '<em><b>Initial Operation</b></em>' containment
+     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 5;
+
+    /**
+     * The feature id for the '<em><b>Drag Source</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 6;
+
+    /**
+     * The feature id for the '<em><b>Move Edges</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION__MOVE_EDGES = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 7;
+
+    /**
+     * The number of structural features of the '
+     * <em>Container Drop Description</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_DROP_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION_FEATURE_COUNT + 8;
+
+    /**
+     * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectionKind
      * <em>Reconnection Kind</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -2130,7 +2278,7 @@ public interface ToolPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getReconnectionKind()
      * @generated
      */
-    int RECONNECTION_KIND = 25;
+    int RECONNECTION_KIND = 26;
 
     /**
      * Returns the meta object for class '
@@ -3297,6 +3445,120 @@ public interface ToolPackage extends EPackage {
     EReference getDiagramNavigationDescription_DiagramDescription();
 
     /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription
+     * <em>Container Drop Description</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Container Drop Description</em>'.
+     * @see org.eclipse.sirius.diagram.description.tool.ContainerDropDescription
+     * @generated
+     */
+    EClass getContainerDropDescription();
+
+    /**
+     * Returns the meta object for the reference list '
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getMappings
+     * <em>Mappings</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the reference list '<em>Mappings</em>'.
+     * @see org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getMappings()
+     * @see #getContainerDropDescription()
+     * @generated
+     */
+    EReference getContainerDropDescription_Mappings();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getOldContainer
+     * <em>Old Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '
+     *         <em>Old Container</em>'.
+     * @see org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getOldContainer()
+     * @see #getContainerDropDescription()
+     * @generated
+     */
+    EReference getContainerDropDescription_OldContainer();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getNewContainer
+     * <em>New Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '
+     *         <em>New Container</em>'.
+     * @see org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getNewContainer()
+     * @see #getContainerDropDescription()
+     * @generated
+     */
+    EReference getContainerDropDescription_NewContainer();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getElement
+     * <em>Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the containment reference '<em>Element</em>'.
+     * @see org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getElement()
+     * @see #getContainerDropDescription()
+     * @generated
+     */
+    EReference getContainerDropDescription_Element();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link ContainerDropDescription#getNewViewContainer
+     * <em>New View Container</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @return the meta object for the containment reference '
+     *         <em>New View Container</em>'.
+     * @see ContainerDropDescription#getNewViewContainer()
+     * @see #getContainerDropDescription()
+     * @generated
+     */
+    EReference getContainerDropDescription_NewViewContainer();
+
+    /**
+     * Returns the meta object for the containment reference '
+     * {@link ContainerDropDescription#getInitialOperation
+     * <em>Initial Operation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @return the meta object for the containment reference '
+     *         <em>Initial Operation</em>'.
+     * @see ContainerDropDescription#getInitialOperation()
+     * @see #getContainerDropDescription()
+     * @generated
+     */
+    EReference getContainerDropDescription_InitialOperation();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getDragSource
+     * <em>Drag Source</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Drag Source</em>'.
+     * @see org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#getDragSource()
+     * @see #getContainerDropDescription()
+     * @generated
+     */
+    EAttribute getContainerDropDescription_DragSource();
+
+    /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#isMoveEdges
+     * <em>Move Edges</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Move Edges</em>'.
+     * @see org.eclipse.sirius.diagram.description.tool.ContainerDropDescription#isMoveEdges()
+     * @see #getContainerDropDescription()
+     * @generated
+     */
+    EAttribute getContainerDropDescription_MoveEdges();
+
+    /**
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.diagram.description.tool.ReconnectionKind
      * <em>Reconnection Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
@@ -4197,6 +4459,86 @@ public interface ToolPackage extends EPackage {
          * @generated
          */
         EReference DIAGRAM_NAVIGATION_DESCRIPTION__DIAGRAM_DESCRIPTION = eINSTANCE.getDiagramNavigationDescription_DiagramDescription();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl
+         * <em>Container Drop Description</em>}' class. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl
+         * @see org.eclipse.sirius.diagram.description.tool.impl.ToolPackageImpl#getContainerDropDescription()
+         * @generated
+         */
+        EClass CONTAINER_DROP_DESCRIPTION = eINSTANCE.getContainerDropDescription();
+
+        /**
+         * The meta object literal for the '<em><b>Mappings</b></em>' reference
+         * list feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference CONTAINER_DROP_DESCRIPTION__MAPPINGS = eINSTANCE.getContainerDropDescription_Mappings();
+
+        /**
+         * The meta object literal for the '<em><b>Old Container</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference CONTAINER_DROP_DESCRIPTION__OLD_CONTAINER = eINSTANCE.getContainerDropDescription_OldContainer();
+
+        /**
+         * The meta object literal for the '<em><b>New Container</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference CONTAINER_DROP_DESCRIPTION__NEW_CONTAINER = eINSTANCE.getContainerDropDescription_NewContainer();
+
+        /**
+         * The meta object literal for the '<em><b>Element</b></em>' containment
+         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference CONTAINER_DROP_DESCRIPTION__ELEMENT = eINSTANCE.getContainerDropDescription_Element();
+
+        /**
+         * The meta object literal for the '<em><b>New View Container</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference CONTAINER_DROP_DESCRIPTION__NEW_VIEW_CONTAINER = eINSTANCE.getContainerDropDescription_NewViewContainer();
+
+        /**
+         * The meta object literal for the '<em><b>Initial Operation</b></em>'
+         * containment reference feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference CONTAINER_DROP_DESCRIPTION__INITIAL_OPERATION = eINSTANCE.getContainerDropDescription_InitialOperation();
+
+        /**
+         * The meta object literal for the '<em><b>Drag Source</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute CONTAINER_DROP_DESCRIPTION__DRAG_SOURCE = eINSTANCE.getContainerDropDescription_DragSource();
+
+        /**
+         * The meta object literal for the '<em><b>Move Edges</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute CONTAINER_DROP_DESCRIPTION__MOVE_EDGES = eINSTANCE.getContainerDropDescription_MoveEdges();
 
         /**
          * The meta object literal for the '

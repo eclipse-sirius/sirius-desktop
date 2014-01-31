@@ -18,14 +18,15 @@ import org.eclipse.emf.ecore.EObject;
  * <em><b>Tooltip Style Description</b></em>'.
  * 
  * @since 0.9.0<!-- end-user-doc -->
- * <p>
- * The following features are supported:
- * <ul>
- * <li>
- * {@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription#getTooltipExpression
- * <em>Tooltip Expression</em>}</li>
- * </ul>
- * </p>
+ * 
+ *        <p>
+ *        The following features are supported:
+ *        <ul>
+ *        <li>
+ *        {@link org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription#getTooltipExpression
+ *        <em>Tooltip Expression</em>}</li>
+ *        </ul>
+ *        </p>
  * 
  * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getTooltipStyleDescription()
  * @model

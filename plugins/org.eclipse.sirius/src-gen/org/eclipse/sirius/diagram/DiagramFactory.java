@@ -365,6 +365,15 @@ public interface DiagramFactory extends EFactory {
     ComputedStyleDescriptionRegistry createComputedStyleDescriptionRegistry();
 
     /**
+     * Returns a new object of class '<em>Drag And Drop Target</em>'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return a new object of class '<em>Drag And Drop Target</em>'.
+     * @generated
+     */
+    DragAndDropTarget createDragAndDropTarget();
+
+    /**
      * Returns the package supported by this factory. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 

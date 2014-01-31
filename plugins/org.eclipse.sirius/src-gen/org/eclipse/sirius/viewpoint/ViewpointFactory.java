@@ -111,15 +111,6 @@ public interface ViewpointFactory extends EFactory {
     LabelStyle createLabelStyle();
 
     /**
-     * Returns a new object of class '<em>Drag And Drop Target</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>Drag And Drop Target</em>'.
-     * @generated
-     */
-    DragAndDropTarget createDragAndDropTarget();
-
-    /**
      * Returns a new object of class '<em>RGB Values</em>'. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 

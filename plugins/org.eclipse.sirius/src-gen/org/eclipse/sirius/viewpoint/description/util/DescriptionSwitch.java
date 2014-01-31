@@ -30,7 +30,6 @@ import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 import org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
-import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
 import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
 import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
@@ -270,13 +269,6 @@ public class DescriptionSwitch<T> {
         case DescriptionPackage.CONDITIONAL_STYLE_DESCRIPTION: {
             ConditionalStyleDescription conditionalStyleDescription = (ConditionalStyleDescription) theEObject;
             T result = caseConditionalStyleDescription(conditionalStyleDescription);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION: {
-            DragAndDropTargetDescription dragAndDropTargetDescription = (DragAndDropTargetDescription) theEObject;
-            T result = caseDragAndDropTargetDescription(dragAndDropTargetDescription);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -774,23 +766,6 @@ public class DescriptionSwitch<T> {
      * @generated
      */
     public T caseConditionalStyleDescription(ConditionalStyleDescription object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Drag And Drop Target Description</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Drag And Drop Target Description</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDragAndDropTargetDescription(DragAndDropTargetDescription object) {
         return null;
     }
 

@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation.impl;
+package org.eclipse.sirius.viewpoint.description.validation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -17,9 +17,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.sirius.diagram.description.validation.ValidationFix;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -28,10 +28,10 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * The following features are implemented:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.impl.ValidationFixImpl#getName
+ * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationFixImpl#getName
  * <em>Name</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.impl.ValidationFixImpl#getInitialOperation
+ * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationFixImpl#getInitialOperation
  * <em>Initial Operation</em>}</li>
  * </ul>
  * </p>

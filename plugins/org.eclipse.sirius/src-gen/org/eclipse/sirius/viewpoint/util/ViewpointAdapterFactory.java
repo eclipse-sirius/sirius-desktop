@@ -43,7 +43,6 @@ import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.DValidable;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Decoration;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.MetaModelExtension;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -216,11 +215,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseStyle(Style object) {
             return createStyleAdapter();
-        }
-
-        @Override
-        public Adapter caseDragAndDropTarget(DragAndDropTarget object) {
-            return createDragAndDropTargetAdapter();
         }
 
         @Override
@@ -645,22 +639,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createStyleAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DragAndDropTarget
-     * <em>Drag And Drop Target</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.DragAndDropTarget
-     * @generated
-     */
-    public Adapter createDragAndDropTargetAdapter() {
         return null;
     }
 

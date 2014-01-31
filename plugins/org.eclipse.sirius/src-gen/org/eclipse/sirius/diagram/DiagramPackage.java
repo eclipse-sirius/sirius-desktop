@@ -5432,6 +5432,27 @@ public interface DiagramPackage extends EPackage {
 
     /**
      * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.impl.DragAndDropTargetImpl
+     * <em>Drag And Drop Target</em>}' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.impl.DragAndDropTargetImpl
+     * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDragAndDropTarget()
+     * @generated
+     */
+    int DRAG_AND_DROP_TARGET = 48;
+
+    /**
+     * The number of structural features of the '<em>Drag And Drop Target</em>'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DRAG_AND_DROP_TARGET_FEATURE_COUNT = 0;
+
+    /**
+     * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.ContainerLayout
      * <em>Container Layout</em>}' enum. <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -5440,7 +5461,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerLayout()
      * @generated
      */
-    int CONTAINER_LAYOUT = 48;
+    int CONTAINER_LAYOUT = 49;
 
     /**
      * The meta object id for the '
@@ -5451,7 +5472,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getLabelPosition()
      * @generated
      */
-    int LABEL_POSITION = 49;
+    int LABEL_POSITION = 50;
 
     /**
      * The meta object id for the '
@@ -5463,7 +5484,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerShape()
      * @generated
      */
-    int CONTAINER_SHAPE = 50;
+    int CONTAINER_SHAPE = 51;
 
     /**
      * The meta object id for the '
@@ -5475,7 +5496,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBackgroundStyle()
      * @generated
      */
-    int BACKGROUND_STYLE = 51;
+    int BACKGROUND_STYLE = 52;
 
     /**
      * The meta object id for the '
@@ -5487,7 +5508,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBundledImageShape()
      * @generated
      */
-    int BUNDLED_IMAGE_SHAPE = 52;
+    int BUNDLED_IMAGE_SHAPE = 53;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.LineStyle
@@ -5497,7 +5518,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getLineStyle()
      * @generated
      */
-    int LINE_STYLE = 53;
+    int LINE_STYLE = 54;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.EdgeArrows
@@ -5508,7 +5529,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeArrows()
      * @generated
      */
-    int EDGE_ARROWS = 54;
+    int EDGE_ARROWS = 55;
 
     /**
      * The meta object id for the '
@@ -5519,7 +5540,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeRouting()
      * @generated
      */
-    int EDGE_ROUTING = 55;
+    int EDGE_ROUTING = 56;
 
     /**
      * The meta object id for the '
@@ -5530,7 +5551,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getAlignmentKind()
      * @generated
      */
-    int ALIGNMENT_KIND = 56;
+    int ALIGNMENT_KIND = 57;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.ResizeKind
@@ -5541,7 +5562,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getResizeKind()
      * @generated
      */
-    int RESIZE_KIND = 57;
+    int RESIZE_KIND = 58;
 
     /**
      * The meta object id for the '
@@ -5553,7 +5574,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getArrangeConstraint()
      * @generated
      */
-    int ARRANGE_CONSTRAINT = 58;
+    int ARRANGE_CONSTRAINT = 59;
 
     /**
      * Returns the meta object for class '
@@ -7826,6 +7847,18 @@ public interface DiagramPackage extends EPackage {
     EReference getContainerVariable2StyleDescription_Value();
 
     /**
+     * Returns the meta object for class '
+     * {@link org.eclipse.sirius.diagram.DragAndDropTarget
+     * <em>Drag And Drop Target</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for class '<em>Drag And Drop Target</em>'.
+     * @see org.eclipse.sirius.diagram.DragAndDropTarget
+     * @generated
+     */
+    EClass getDragAndDropTarget();
+
+    /**
      * Returns the meta object for enum '
      * {@link org.eclipse.sirius.diagram.ContainerLayout
      * <em>Container Layout</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
@@ -9663,6 +9696,18 @@ public interface DiagramPackage extends EPackage {
          * @generated
          */
         EReference CONTAINER_VARIABLE2_STYLE_DESCRIPTION__VALUE = eINSTANCE.getContainerVariable2StyleDescription_Value();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.diagram.impl.DragAndDropTargetImpl
+         * <em>Drag And Drop Target</em>}' class. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.diagram.impl.DragAndDropTargetImpl
+         * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDragAndDropTarget()
+         * @generated
+         */
+        EClass DRAG_AND_DROP_TARGET = eINSTANCE.getDragAndDropTarget();
 
         /**
          * The meta object literal for the '

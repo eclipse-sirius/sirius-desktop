@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation.impl;
+package org.eclipse.sirius.viewpoint.description.validation.impl;
 
 import java.util.Collection;
 
@@ -22,10 +22,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
-import org.eclipse.sirius.diagram.description.validation.ValidationRule;
-import org.eclipse.sirius.diagram.description.validation.ValidationSet;
 import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -34,16 +34,16 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
  * The following features are implemented:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.impl.ValidationSetImpl#getOwnedRules
- * <em>Owned Rules</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.impl.ValidationSetImpl#getName
+ * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl#getName
  * <em>Name</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.impl.ValidationSetImpl#getReusedRules
+ * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl#getOwnedRules
+ * <em>Owned Rules</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl#getReusedRules
  * <em>Reused Rules</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.impl.ValidationSetImpl#getAllRules
+ * {@link org.eclipse.sirius.viewpoint.description.validation.impl.ValidationSetImpl#getAllRules
  * <em>All Rules</em>}</li>
  * </ul>
  * </p>
@@ -51,16 +51,6 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
  * @generated
  */
 public class ValidationSetImpl extends DocumentedElementImpl implements ValidationSet {
-    /**
-     * The cached value of the '{@link #getOwnedRules() <em>Owned Rules</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getOwnedRules()
-     * @generated
-     * @ordered
-     */
-    protected EList<ValidationRule> ownedRules;
-
     /**
      * The default value of the '{@link #getName() <em>Name</em>}' attribute.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -80,6 +70,16 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
      * @ordered
      */
     protected String name = NAME_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getOwnedRules() <em>Owned Rules</em>}'
+     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getOwnedRules()
+     * @generated
+     * @ordered
+     */
+    protected EList<ValidationRule> ownedRules;
 
     /**
      * The cached value of the '{@link #getReusedRules() <em>Reused Rules</em>}'
@@ -115,18 +115,6 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
      * 
      * @generated
      */
-    public EList<ValidationRule> getOwnedRules() {
-        if (ownedRules == null) {
-            ownedRules = new EObjectContainmentEList.Resolving<ValidationRule>(ValidationRule.class, this, ValidationPackage.VALIDATION_SET__OWNED_RULES);
-        }
-        return ownedRules;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public String getName() {
         return name;
     }
@@ -141,6 +129,18 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
         name = newName;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, ValidationPackage.VALIDATION_SET__NAME, oldName, name));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EList<ValidationRule> getOwnedRules() {
+        if (ownedRules == null) {
+            ownedRules = new EObjectContainmentEList.Resolving<ValidationRule>(ValidationRule.class, this, ValidationPackage.VALIDATION_SET__OWNED_RULES);
+        }
+        return ownedRules;
     }
 
     /**
@@ -193,10 +193,10 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case ValidationPackage.VALIDATION_SET__OWNED_RULES:
-            return getOwnedRules();
         case ValidationPackage.VALIDATION_SET__NAME:
             return getName();
+        case ValidationPackage.VALIDATION_SET__OWNED_RULES:
+            return getOwnedRules();
         case ValidationPackage.VALIDATION_SET__REUSED_RULES:
             return getReusedRules();
         case ValidationPackage.VALIDATION_SET__ALL_RULES:
@@ -214,12 +214,12 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
+        case ValidationPackage.VALIDATION_SET__NAME:
+            setName((String) newValue);
+            return;
         case ValidationPackage.VALIDATION_SET__OWNED_RULES:
             getOwnedRules().clear();
             getOwnedRules().addAll((Collection<? extends ValidationRule>) newValue);
-            return;
-        case ValidationPackage.VALIDATION_SET__NAME:
-            setName((String) newValue);
             return;
         case ValidationPackage.VALIDATION_SET__REUSED_RULES:
             getReusedRules().clear();
@@ -237,11 +237,11 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case ValidationPackage.VALIDATION_SET__OWNED_RULES:
-            getOwnedRules().clear();
-            return;
         case ValidationPackage.VALIDATION_SET__NAME:
             setName(NAME_EDEFAULT);
+            return;
+        case ValidationPackage.VALIDATION_SET__OWNED_RULES:
+            getOwnedRules().clear();
             return;
         case ValidationPackage.VALIDATION_SET__REUSED_RULES:
             getReusedRules().clear();
@@ -258,10 +258,10 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case ValidationPackage.VALIDATION_SET__OWNED_RULES:
-            return ownedRules != null && !ownedRules.isEmpty();
         case ValidationPackage.VALIDATION_SET__NAME:
             return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+        case ValidationPackage.VALIDATION_SET__OWNED_RULES:
+            return ownedRules != null && !ownedRules.isEmpty();
         case ValidationPackage.VALIDATION_SET__REUSED_RULES:
             return reusedRules != null && !reusedRules.isEmpty();
         case ValidationPackage.VALIDATION_SET__ALL_RULES:

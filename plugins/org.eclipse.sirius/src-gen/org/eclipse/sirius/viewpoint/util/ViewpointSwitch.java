@@ -43,7 +43,6 @@ import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.DValidable;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Decoration;
-import org.eclipse.sirius.viewpoint.DragAndDropTarget;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.MetaModelExtension;
 import org.eclipse.sirius.viewpoint.RGBValues;
@@ -310,13 +309,6 @@ public class ViewpointSwitch<T> {
                 result = caseDRefreshable(style);
             if (result == null)
                 result = caseCustomizable(style);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ViewpointPackage.DRAG_AND_DROP_TARGET: {
-            DragAndDropTarget dragAndDropTarget = (DragAndDropTarget) theEObject;
-            T result = caseDragAndDropTarget(dragAndDropTarget);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -792,23 +784,6 @@ public class ViewpointSwitch<T> {
      * @generated
      */
     public T caseStyle(Style object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>Drag And Drop Target</em>'. <!-- begin-user-doc --> This
-     * implementation returns null; returning a non-null result will terminate
-     * the switch. <!-- end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>Drag And Drop Target</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDragAndDropTarget(DragAndDropTarget object) {
         return null;
     }
 

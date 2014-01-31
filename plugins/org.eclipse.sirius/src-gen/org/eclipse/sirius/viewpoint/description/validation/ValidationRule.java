@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation;
+package org.eclipse.sirius.viewpoint.description.validation;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -24,21 +24,21 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.ValidationRule#getLevel
+ * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getLevel
  * <em>Level</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.ValidationRule#getMessage
+ * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getMessage
  * <em>Message</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.ValidationRule#getAudits
+ * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getAudits
  * <em>Audits</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.ValidationRule#getFixes
+ * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getFixes
  * <em>Fixes</em>}</li>
  * </ul>
  * </p>
  * 
- * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage#getValidationRule()
+ * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationRule()
  * @model abstract="true"
  * @generated
  */
@@ -46,7 +46,7 @@ public interface ValidationRule extends EObject {
     /**
      * Returns the value of the '<em><b>Level</b></em>' attribute. The default
      * value is <code>"INFO"</code>. The literals are from the enumeration
-     * {@link org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL}.
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL}.
      * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Level</em>' attribute isn't clear, there
@@ -55,9 +55,9 @@ public interface ValidationRule extends EObject {
      * <!-- end-user-doc -->
      * 
      * @return the value of the '<em>Level</em>' attribute.
-     * @see org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL
+     * @see org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL
      * @see #setLevel(ERROR_LEVEL)
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage#getValidationRule_Level()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationRule_Level()
      * @model default="INFO" required="true"
      * @generated
      */
@@ -65,12 +65,12 @@ public interface ValidationRule extends EObject {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationRule#getLevel
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getLevel
      * <em>Level</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
      *            the new value of the '<em>Level</em>' attribute.
-     * @see org.eclipse.sirius.diagram.description.validation.ERROR_LEVEL
+     * @see org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL
      * @see #getLevel()
      * @generated
      */
@@ -88,7 +88,7 @@ public interface ValidationRule extends EObject {
      * 
      * @return the value of the '<em>Message</em>' attribute.
      * @see #setMessage(String)
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage#getValidationRule_Message()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationRule_Message()
      * @model default="The <%name%> element has..." dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
@@ -99,7 +99,7 @@ public interface ValidationRule extends EObject {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationRule#getMessage
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule#getMessage
      * <em>Message</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      * 
@@ -113,8 +113,8 @@ public interface ValidationRule extends EObject {
     /**
      * Returns the value of the '<em><b>Audits</b></em>' containment reference
      * list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.validation.RuleAudit}. <!--
-     * begin-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.description.validation.RuleAudit}.
+     * <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Audits</em>' containment reference list isn't
      * clear, there really should be more of a description here...
@@ -122,7 +122,7 @@ public interface ValidationRule extends EObject {
      * <!-- end-user-doc -->
      * 
      * @return the value of the '<em>Audits</em>' containment reference list.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage#getValidationRule_Audits()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationRule_Audits()
      * @model containment="true" resolveProxies="true"
      * @generated
      */
@@ -131,8 +131,8 @@ public interface ValidationRule extends EObject {
     /**
      * Returns the value of the '<em><b>Fixes</b></em>' containment reference
      * list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationFix}.
-     * <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationFix}
+     * . <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Fixes</em>' containment reference list isn't
      * clear, there really should be more of a description here...
@@ -140,7 +140,7 @@ public interface ValidationRule extends EObject {
      * <!-- end-user-doc -->
      * 
      * @return the value of the '<em>Fixes</em>' containment reference list.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage#getValidationRule_Fixes()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationRule_Fixes()
      * @model containment="true" resolveProxies="true"
      * @generated
      */

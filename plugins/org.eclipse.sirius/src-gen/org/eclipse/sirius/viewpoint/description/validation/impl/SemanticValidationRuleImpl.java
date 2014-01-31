@@ -9,13 +9,13 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation.impl;
+package org.eclipse.sirius.viewpoint.description.validation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.sirius.diagram.description.validation.SemanticValidationRule;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
+import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
  * The following features are implemented:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.impl.SemanticValidationRuleImpl#getTargetClass
+ * {@link org.eclipse.sirius.viewpoint.description.validation.impl.SemanticValidationRuleImpl#getTargetClass
  * <em>Target Class</em>}</li>
  * </ul>
  * </p>

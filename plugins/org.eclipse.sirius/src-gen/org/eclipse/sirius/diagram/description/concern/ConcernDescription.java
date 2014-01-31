@@ -14,9 +14,9 @@ package org.eclipse.sirius.diagram.description.concern;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
-import org.eclipse.sirius.diagram.description.validation.ValidationRule;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

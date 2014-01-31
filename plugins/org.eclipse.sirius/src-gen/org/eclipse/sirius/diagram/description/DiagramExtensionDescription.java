@@ -13,8 +13,8 @@ package org.eclipse.sirius.diagram.description;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.description.concern.ConcernSet;
-import org.eclipse.sirius.diagram.description.validation.ValidationSet;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

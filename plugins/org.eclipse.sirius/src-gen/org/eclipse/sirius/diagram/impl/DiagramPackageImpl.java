@@ -53,6 +53,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.Dot;
+import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeArrows;
 import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
@@ -83,8 +84,6 @@ import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
 import org.eclipse.sirius.diagram.description.concern.impl.ConcernPackageImpl;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.diagram.description.filter.impl.FilterPackageImpl;
-import org.eclipse.sirius.diagram.description.validation.ValidationPackage;
-import org.eclipse.sirius.diagram.description.validation.impl.ValidationPackageImpl;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.audit.AuditPackage;
@@ -444,6 +443,13 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
+    private EClass dragAndDropTargetEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     private EEnum containerLayoutEEnum = null;
 
     /**
@@ -579,6 +585,9 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 .getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
+        org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl theValidationPackage = (org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl) (EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eNS_URI) instanceof org.eclipse.sirius.viewpoint.description.validation.impl.ValidationPackageImpl ? EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eNS_URI) : org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eINSTANCE);
         AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
         org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl theDescriptionPackage_1 = (org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl) (EPackage.Registry.INSTANCE
@@ -592,8 +601,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 .getEPackage(org.eclipse.sirius.diagram.description.tool.ToolPackage.eNS_URI) : org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE);
         FilterPackageImpl theFilterPackage = (FilterPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI) instanceof FilterPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(FilterPackage.eNS_URI) : FilterPackage.eINSTANCE);
-        ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl ? EPackage.Registry.INSTANCE
-                .getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
         ConcernPackageImpl theConcernPackage = (ConcernPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI) instanceof ConcernPackageImpl ? EPackage.Registry.INSTANCE
                 .getEPackage(ConcernPackage.eNS_URI) : ConcernPackage.eINSTANCE);
 
@@ -603,12 +610,12 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         theDescriptionPackage.createPackageContents();
         theStylePackage.createPackageContents();
         theToolPackage.createPackageContents();
+        theValidationPackage.createPackageContents();
         theAuditPackage.createPackageContents();
         theDescriptionPackage_1.createPackageContents();
         theStylePackage_1.createPackageContents();
         theToolPackage_1.createPackageContents();
         theFilterPackage.createPackageContents();
-        theValidationPackage.createPackageContents();
         theConcernPackage.createPackageContents();
 
         // Initialize created meta-data
@@ -617,12 +624,12 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         theDescriptionPackage.initializePackageContents();
         theStylePackage.initializePackageContents();
         theToolPackage.initializePackageContents();
+        theValidationPackage.initializePackageContents();
         theAuditPackage.initializePackageContents();
         theDescriptionPackage_1.initializePackageContents();
         theStylePackage_1.initializePackageContents();
         theToolPackage_1.initializePackageContents();
         theFilterPackage.initializePackageContents();
-        theValidationPackage.initializePackageContents();
         theConcernPackage.initializePackageContents();
 
         // Mark meta-data to indicate it can't be changed
@@ -2294,6 +2301,15 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
+    public EClass getDragAndDropTarget() {
+        return dragAndDropTargetEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public EEnum getContainerLayout() {
         return containerLayoutEEnum;
     }
@@ -2649,6 +2665,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         createEReference(containerVariable2StyleDescriptionEClass, CONTAINER_VARIABLE2_STYLE_DESCRIPTION__KEY);
         createEReference(containerVariable2StyleDescriptionEClass, CONTAINER_VARIABLE2_STYLE_DESCRIPTION__VALUE);
 
+        dragAndDropTargetEClass = createEClass(DRAG_AND_DROP_TARGET);
+
         // Create enums
         containerLayoutEEnum = createEEnum(CONTAINER_LAYOUT);
         labelPositionEEnum = createEEnum(LABEL_POSITION);
@@ -2694,7 +2712,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
         ConcernPackage theConcernPackage = (ConcernPackage) EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI);
         FilterPackage theFilterPackage = (FilterPackage) EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI);
-        ValidationPackage theValidationPackage = (ValidationPackage) EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI);
+        org.eclipse.sirius.viewpoint.description.validation.ValidationPackage theValidationPackage = (org.eclipse.sirius.viewpoint.description.validation.ValidationPackage) EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.validation.ValidationPackage.eNS_URI);
         org.eclipse.sirius.diagram.description.tool.ToolPackage theToolPackage_1 = (org.eclipse.sirius.diagram.description.tool.ToolPackage) EPackage.Registry.INSTANCE
                 .getEPackage(org.eclipse.sirius.diagram.description.tool.ToolPackage.eNS_URI);
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
@@ -2710,7 +2729,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         // Add supertypes to classes
         dDiagramEClass.getESuperTypes().add(theViewpointPackage.getDRepresentation());
         dDiagramEClass.getESuperTypes().add(theDescriptionPackage.getDocumentedElement());
-        dDiagramEClass.getESuperTypes().add(theViewpointPackage.getDragAndDropTarget());
+        dDiagramEClass.getESuperTypes().add(this.getDragAndDropTarget());
         dDiagramEClass.getESuperTypes().add(theViewpointPackage.getDValidable());
         dDiagramEClass.getESuperTypes().add(theViewpointPackage.getDContainer());
         dSemanticDiagramEClass.getESuperTypes().add(this.getDDiagram());
@@ -2728,10 +2747,10 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         abstractDNodeEClass.getESuperTypes().add(this.getDDiagramElement());
         dNodeEClass.getESuperTypes().add(this.getAbstractDNode());
         dNodeEClass.getESuperTypes().add(this.getEdgeTarget());
-        dNodeEClass.getESuperTypes().add(theViewpointPackage.getDragAndDropTarget());
+        dNodeEClass.getESuperTypes().add(this.getDragAndDropTarget());
         dDiagramElementContainerEClass.getESuperTypes().add(this.getAbstractDNode());
         dDiagramElementContainerEClass.getESuperTypes().add(this.getEdgeTarget());
-        dDiagramElementContainerEClass.getESuperTypes().add(theViewpointPackage.getDragAndDropTarget());
+        dDiagramElementContainerEClass.getESuperTypes().add(this.getDragAndDropTarget());
         dDiagramElementContainerEClass.getESuperTypes().add(theViewpointPackage.getDContainer());
         dNodeContainerEClass.getESuperTypes().add(this.getDDiagramElementContainer());
         dNodeListEClass.getESuperTypes().add(this.getDDiagramElementContainer());
@@ -3185,6 +3204,10 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         initEReference(getContainerVariable2StyleDescription_Value(), theStylePackage.getStyleDescription(), null, "value", null, 0, 1, Map.Entry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+        initEClass(dragAndDropTargetEClass, DragAndDropTarget.class, "DragAndDropTarget", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+        addEOperation(dragAndDropTargetEClass, theDescriptionPackage_1.getDragAndDropTargetDescription(), "getDragAndDropDescription", 0, 1, IS_UNIQUE, IS_ORDERED);
+
         // Initialize enums and add enum literals
         initEEnum(containerLayoutEEnum, ContainerLayout.class, "ContainerLayout");
         addEEnumLiteral(containerLayoutEEnum, ContainerLayout.FREE_FORM);
@@ -3250,6 +3273,9 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         addEEnumLiteral(arrangeConstraintEEnum, ArrangeConstraint.KEEP_LOCATION);
         addEEnumLiteral(arrangeConstraintEEnum, ArrangeConstraint.KEEP_SIZE);
         addEEnumLiteral(arrangeConstraintEEnum, ArrangeConstraint.KEEP_RATIO);
+
+        // Create resource
+        createResource(eNS_URI);
 
         // Create annotations
         // http://www.eclipse.org/sirius/interpreted/expression/returnType

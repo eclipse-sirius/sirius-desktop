@@ -28,6 +28,7 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.DiagramImportDescription;
+import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
@@ -41,7 +42,6 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
-import org.eclipse.sirius.viewpoint.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
@@ -426,6 +426,13 @@ public class DescriptionSwitch<T> {
                 result = caseEndUserDocumentedElement(additionalLayer);
             if (result == null)
                 result = caseIdentifiedElement(additionalLayer);
+            if (result == null)
+                result = defaultCase(theEObject);
+            return result;
+        }
+        case DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION: {
+            DragAndDropTargetDescription dragAndDropTargetDescription = (DragAndDropTargetDescription) theEObject;
+            T result = caseDragAndDropTargetDescription(dragAndDropTargetDescription);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;

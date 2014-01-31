@@ -654,7 +654,7 @@ public class StyleAdapterFactory extends AdapterFactoryImpl {
      * <em>Tooltip Style Description</em>}'. <!-- begin-user-doc --> This
      * default implementation returns null so that we can easily ignore cases;
      * it's useful to ignore a case when inheritance will catch all the cases
-     * anyway. 
+     * anyway.
      * 
      * @since 0.9.0 <!-- end-user-doc -->
      * @return the new adapter.

@@ -9,7 +9,7 @@
  *    Obeo - initial API and implementation
  * 
  */
-package org.eclipse.sirius.diagram.description.validation;
+package org.eclipse.sirius.viewpoint.description.validation;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
@@ -24,40 +24,25 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * The following features are supported:
  * <ul>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.ValidationSet#getOwnedRules
- * <em>Owned Rules</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.ValidationSet#getName
+ * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getName
  * <em>Name</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.ValidationSet#getReusedRules
+ * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getOwnedRules
+ * <em>Owned Rules</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getReusedRules
  * <em>Reused Rules</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.diagram.description.validation.ValidationSet#getAllRules
+ * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getAllRules
  * <em>All Rules</em>}</li>
  * </ul>
  * </p>
  * 
- * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage#getValidationSet()
+ * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationSet()
  * @model
  * @generated
  */
 public interface ValidationSet extends DocumentedElement {
-    /**
-     * Returns the value of the '<em><b>Owned Rules</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationRule}.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * The validation rules owned by this set. <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>Owned Rules</em>' containment reference
-     *         list.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage#getValidationSet_OwnedRules()
-     * @model containment="true" resolveProxies="true"
-     * @generated
-     */
-    EList<ValidationRule> getOwnedRules();
-
     /**
      * Returns the value of the '<em><b>Name</b></em>' attribute. The default
      * value is <code>""</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -65,7 +50,7 @@ public interface ValidationSet extends DocumentedElement {
      * 
      * @return the value of the '<em>Name</em>' attribute.
      * @see #setName(String)
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage#getValidationSet_Name()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationSet_Name()
      * @model default=""
      * @generated
      */
@@ -73,7 +58,7 @@ public interface ValidationSet extends DocumentedElement {
 
     /**
      * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationSet#getName
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationSet#getName
      * <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @param value
@@ -84,14 +69,29 @@ public interface ValidationSet extends DocumentedElement {
     void setName(String value);
 
     /**
+     * Returns the value of the '<em><b>Owned Rules</b></em>' containment
+     * reference list. The list contents are of type
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule}
+     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The validation rules owned by this set. <!-- end-model-doc -->
+     * 
+     * @return the value of the '<em>Owned Rules</em>' containment reference
+     *         list.
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationSet_OwnedRules()
+     * @model containment="true" resolveProxies="true"
+     * @generated
+     */
+    EList<ValidationRule> getOwnedRules();
+
+    /**
      * Returns the value of the '<em><b>Reused Rules</b></em>' reference list.
      * The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationRule}.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule}
+     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * The validations rules that are reused by this set. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Reused Rules</em>' reference list.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage#getValidationSet_ReusedRules()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationSet_ReusedRules()
      * @model
      * @generated
      */
@@ -100,12 +100,12 @@ public interface ValidationSet extends DocumentedElement {
     /**
      * Returns the value of the '<em><b>All Rules</b></em>' reference list. The
      * list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.validation.ValidationRule}.
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * {@link org.eclipse.sirius.viewpoint.description.validation.ValidationRule}
+     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * All rules of the set. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>All Rules</em>' reference list.
-     * @see org.eclipse.sirius.diagram.description.validation.ValidationPackage#getValidationSet_AllRules()
+     * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationSet_AllRules()
      * @model transient="true" changeable="false" volatile="true" derived="true"
      * @generated
      */
