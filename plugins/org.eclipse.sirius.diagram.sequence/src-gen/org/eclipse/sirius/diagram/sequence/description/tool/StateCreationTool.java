@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description.tool;
 
+import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>State Creation Tool</b></em>'. <!-- end-user-doc -->
@@ -19,5 +21,5 @@ package org.eclipse.sirius.diagram.sequence.description.tool;
  * @model
  * @generated
  */
-public interface StateCreationTool extends org.eclipse.sirius.diagram.description.tool.NodeCreationDescription, SequenceDiagramToolDescription, OrderedElementCreationTool {
+public interface StateCreationTool extends NodeCreationDescription, SequenceDiagramToolDescription, OrderedElementCreationTool {
 } // StateCreationTool

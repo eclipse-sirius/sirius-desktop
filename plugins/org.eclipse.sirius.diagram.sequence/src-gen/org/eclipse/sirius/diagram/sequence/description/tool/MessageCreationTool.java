@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description.tool;
 
+import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Message Creation Tool</b></em>'. <!-- end-user-doc -->
@@ -19,6 +21,6 @@ package org.eclipse.sirius.diagram.sequence.description.tool;
  * @model
  * @generated
  */
-public interface MessageCreationTool extends SequenceDiagramToolDescription, org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription, OrderedElementCreationTool {
+public interface MessageCreationTool extends SequenceDiagramToolDescription, EdgeCreationDescription, OrderedElementCreationTool {
 
 } // MessageCreationTool

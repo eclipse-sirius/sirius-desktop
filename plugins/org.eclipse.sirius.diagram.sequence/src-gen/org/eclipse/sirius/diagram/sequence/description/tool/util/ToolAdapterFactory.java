@@ -14,6 +14,9 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.CoveringElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
@@ -186,17 +189,17 @@ public class ToolAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseNodeCreationDescription(org.eclipse.sirius.diagram.description.tool.NodeCreationDescription object) {
+        public Adapter caseNodeCreationDescription(NodeCreationDescription object) {
             return createNodeCreationDescriptionAdapter();
         }
 
         @Override
-        public Adapter caseContainerCreationDescription(org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription object) {
+        public Adapter caseContainerCreationDescription(ContainerCreationDescription object) {
             return createContainerCreationDescriptionAdapter();
         }
 
         @Override
-        public Adapter caseEdgeCreationDescription(org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription object) {
+        public Adapter caseEdgeCreationDescription(EdgeCreationDescription object) {
             return createEdgeCreationDescriptionAdapter();
         }
 

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description.tool;
 
+import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Operand Creation Tool</b></em>'. <!-- end-user-doc -->
@@ -19,6 +21,6 @@ package org.eclipse.sirius.diagram.sequence.description.tool;
  * @model
  * @generated
  */
-public interface OperandCreationTool extends org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription, SequenceDiagramToolDescription, OrderedElementCreationTool {
+public interface OperandCreationTool extends ContainerCreationDescription, SequenceDiagramToolDescription, OrderedElementCreationTool {
 
 } // OperandCreationTool

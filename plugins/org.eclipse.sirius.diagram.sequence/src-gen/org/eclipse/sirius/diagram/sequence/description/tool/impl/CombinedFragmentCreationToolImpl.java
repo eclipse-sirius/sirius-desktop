@@ -15,6 +15,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl;
 import org.eclipse.sirius.diagram.sequence.description.CoveredLifelinesVariable;
 import org.eclipse.sirius.diagram.sequence.description.MessageEndVariable;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
@@ -43,7 +44,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  * 
  * @generated
  */
-public class CombinedFragmentCreationToolImpl extends org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl implements CombinedFragmentCreationTool {
+public class CombinedFragmentCreationToolImpl extends ContainerCreationDescriptionImpl implements CombinedFragmentCreationTool {
     /**
      * The cached value of the '{@link #getStartingEndPredecessor()
      * <em>Starting End Predecessor</em>}' containment reference. <!--

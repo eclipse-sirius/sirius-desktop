@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.sequence.description.tool.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl;
 import org.eclipse.sirius.diagram.sequence.description.tool.LifelineCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
 
@@ -22,7 +23,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  * 
  * @generated
  */
-public class LifelineCreationToolImpl extends org.eclipse.sirius.diagram.description.tool.impl.ContainerCreationDescriptionImpl implements LifelineCreationTool {
+public class LifelineCreationToolImpl extends ContainerCreationDescriptionImpl implements LifelineCreationTool {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

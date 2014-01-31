@@ -14,6 +14,9 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.CoveringElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
@@ -711,7 +714,7 @@ public class ToolSwitch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseNodeCreationDescription(org.eclipse.sirius.diagram.description.tool.NodeCreationDescription object) {
+    public T caseNodeCreationDescription(NodeCreationDescription object) {
         return null;
     }
 
@@ -728,7 +731,7 @@ public class ToolSwitch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseContainerCreationDescription(org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription object) {
+    public T caseContainerCreationDescription(ContainerCreationDescription object) {
         return null;
     }
 
@@ -745,7 +748,7 @@ public class ToolSwitch<T> {
      * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
      * @generated
      */
-    public T caseEdgeCreationDescription(org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription object) {
+    public T caseEdgeCreationDescription(EdgeCreationDescription object) {
         return null;
     }
 

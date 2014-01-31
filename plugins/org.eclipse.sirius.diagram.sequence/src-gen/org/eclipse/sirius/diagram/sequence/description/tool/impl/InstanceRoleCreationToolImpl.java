@@ -15,6 +15,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.ElementVariable;
@@ -33,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ElementVariable;
  * 
  * @generated
  */
-public class InstanceRoleCreationToolImpl extends org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl implements InstanceRoleCreationTool {
+public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl implements InstanceRoleCreationTool {
     /**
      * The cached value of the '{@link #getPredecessor() <em>Predecessor</em>}'
      * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description.tool;
 
+import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Combined Fragment Creation Tool</b></em>'. <!-- end-user-doc -->
@@ -19,7 +21,6 @@ package org.eclipse.sirius.diagram.sequence.description.tool;
  * @model
  * @generated
  */
-public interface CombinedFragmentCreationTool extends org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription, SequenceDiagramToolDescription, OrderedElementCreationTool,
-        CoveringElementCreationTool {
+public interface CombinedFragmentCreationTool extends ContainerCreationDescription, SequenceDiagramToolDescription, OrderedElementCreationTool, CoveringElementCreationTool {
 
 } // CombinedFragmentCreationTool

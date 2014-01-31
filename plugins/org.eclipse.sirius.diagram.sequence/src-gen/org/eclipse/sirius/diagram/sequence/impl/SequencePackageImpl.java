@@ -95,6 +95,7 @@ public class SequencePackageImpl extends EPackageImpl implements SequencePackage
 
         // Initialize simple dependencies
         ViewpointPackage.eINSTANCE.eClass();
+        DiagramPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl ? EPackage.Registry.INSTANCE

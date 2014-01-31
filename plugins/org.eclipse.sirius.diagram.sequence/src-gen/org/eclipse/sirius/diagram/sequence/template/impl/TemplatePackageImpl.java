@@ -234,6 +234,7 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
 
         // Initialize simple dependencies
         ViewpointPackage.eINSTANCE.eClass();
+        DiagramPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
         SequencePackageImpl theSequencePackage = (SequencePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(SequencePackage.eNS_URI) instanceof SequencePackageImpl ? EPackage.Registry.INSTANCE

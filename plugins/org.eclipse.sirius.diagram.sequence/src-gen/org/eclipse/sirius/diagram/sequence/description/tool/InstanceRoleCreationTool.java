@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.description.tool;
 
+import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ElementVariable;
 
 /**
@@ -29,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ElementVariable;
  * @model
  * @generated
  */
-public interface InstanceRoleCreationTool extends org.eclipse.sirius.diagram.description.tool.NodeCreationDescription, SequenceDiagramToolDescription {
+public interface InstanceRoleCreationTool extends NodeCreationDescription, SequenceDiagramToolDescription {
     /**
      * Returns the value of the '<em><b>Predecessor</b></em>' containment
      * reference. <!-- begin-user-doc -->
