@@ -12,7 +12,6 @@ package org.eclipse.sirius.business.internal.helper.display;
 
 import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.business.api.helper.display.DisplayService;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 
@@ -92,14 +91,6 @@ public final class DisplayAllDisplayServiceImpl implements DisplayService {
      */
     public void refreshAllElementsVisibility(final DDiagram diagram) {
         // do nothing
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Deprecated
-    public boolean computeVisibility(Session session, DDiagram diagram, DDiagramElement element) {
-        return true;
     }
 
 }
