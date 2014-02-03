@@ -1207,7 +1207,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      *         <code>null</code> if no view is found.
      */
     private DView findViewForRepresentation(final DRepresentation representation, final DAnalysis analysis) {
-        final Viewpoint vp = getViewpont(representation);
+        final Viewpoint vp = getViewpoint(representation);
         for (final DView view : analysis.getOwnedViews()) {
             if (view.getViewpoint() != null && EqualityHelper.areEquals(view.getViewpoint(), vp)) {
                 return view;
@@ -1223,7 +1223,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      *            the representation.
      * @return the viewpoint of the given representation.
      */
-    private Viewpoint getViewpont(final DRepresentation representation) {
+    private Viewpoint getViewpoint(final DRepresentation representation) {
         return ((DView) representation.eContainer()).getViewpoint();
     }
 
@@ -1267,7 +1267,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (receiver == null) {
             final IPermissionAuthority analysisAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(newContainer);
             if (analysisAuthority.canCreateIn(newContainer)) {
-                createView(getViewpont(representation), Lists.newArrayList(semantic), false, pm);
+                createView(getViewpoint(representation), Lists.newArrayList(semantic), false, pm);
                 receiver = findViewForRepresentation(representation, newContainer);
             } else {
                 throw new LockedInstanceException(newContainer);
