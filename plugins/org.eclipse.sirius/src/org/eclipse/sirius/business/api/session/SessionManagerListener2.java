@@ -42,16 +42,6 @@ public interface SessionManagerListener2 {
     void notifyRemoveSession(Session removedSession);
 
     /**
-     * A session handled with the manager has been updated.
-     * 
-     * @param updated
-     *            the session that changed.
-     * @see SessionManagerListener2#notify(Session, int)
-     */
-    @Deprecated
-    void notifyUpdatedSession(Session updated);
-
-    /**
      * Invoked when a viewpoint is selected.
      * 
      * @param selectedSirius
@@ -106,14 +96,6 @@ public interface SessionManagerListener2 {
          * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notifyRemoveSession(org.eclipse.sirius.business.api.session.Session)
          */
         public void notifyRemoveSession(final Session removedSession) {
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notifyUpdatedSession(org.eclipse.sirius.business.api.session.Session)
-         */
-        public void notifyUpdatedSession(final Session updated) {
         }
 
         /**

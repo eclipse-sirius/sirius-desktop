@@ -117,13 +117,9 @@ public final class SessionUIManagerImpl extends SessionManagerListener2.Stub imp
         cleanUISessions();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notifyUpdatedSession(org.eclipse.sirius.business.api.session.Session)
-     */
     @Override
-    public void notifyUpdatedSession(final Session updated) {
+    public void notify(Session updated, int notification) {
+        super.notify(updated, notification);
         cleanUISessions();
     }
 

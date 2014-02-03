@@ -836,10 +836,6 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
             refreshViewer(removedSession);
         }
 
-        public void notifyUpdatedSession(Session updated) {
-            /* do nothing as this method is deprecated */
-        }
-
         public void viewpointSelected(Viewpoint selectedSirius) {
             /* does nothing. */
         }
