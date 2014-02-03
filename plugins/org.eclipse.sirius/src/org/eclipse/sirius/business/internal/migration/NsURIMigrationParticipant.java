@@ -43,11 +43,16 @@ public class NsURIMigrationParticipant extends AbstractMigrationParticipant {
      * The version 7.0.0 corresponds to the file format of Sirius 0.9 (more
      * recent than the 6.9.0 file format released under the name "Viewpoint").
      */
-    private static final Version ALREADY_MIGRATED_VERSION = new Version("7.0.0");
+    private static final Version SIRIUS_0_9_VERSION = new Version("7.0.0");
 
-    private static final Version MIGRATION_VERSION = new Version("8.0.0");
+    /**
+     * The version 8.0.0 corresponds to the file format of Sirius 1.0.0 M5.
+     */
+    private static final Version SIRIUS_1_0_0_M5_VERSION = new Version("8.0.0");
 
-    private static final Map<String, String> VIEWPOINT_TO_SIRUS_0_9_NS_URI_MAPPINGS = ImmutableMap.<String, String> builder()
+    private static final Version SIRIUS_1_0_0_M6_VERSION = new Version("8.1.0");
+
+    private static final Map<String, String> FROM_VIEWPOINT_NS_URI_MAPPINGS = ImmutableMap.<String, String> builder()
             .put("http://www.obeo.fr/dsl/viewpoint/description/contribution/1.0.0", "http://www.eclipse.org/sirius/description/contribution/1.0.0")
             .put("http://www.obeo.fr/dsl/viewpoint/1.1.0", "http://www.eclipse.org/sirius/1.1.0")
             .put("http://www.obeo.fr/dsl/viewpoint/description/1.1.0", "http://www.eclipse.org/sirius/description/1.1.0")
@@ -66,15 +71,16 @@ public class NsURIMigrationParticipant extends AbstractMigrationParticipant {
             .put("http://www.obeo.fr/dsl/viewpoint/tree/description/1.0.0", "http://www.eclipse.org/sirius/tree/description/1.0.0")
             .put("http://www.obeo.fr/dsl/viewpoint/description/concern/1.1.0", SIRIUS_DIAGRAM_DESCRIPTION_CONCERN_1_1_0)
             .put("http://www.obeo.fr/dsl/viewpoint/description/filter/1.1.0", SIRIUS_DIAGRAM_DESCRIPTION_FILTER_1_1_0)
-            .put("http://www.obeo.fr/dsl/viewpoint/description/validation/1.1.0", SIRIUS_DIAGRAM_DESCRIPTION_VALIDATION_1_1_0).build();
-    
-    private static final Map<String, String> SIRUS_0_9_TO_SIRUS_1_0_NS_URI_MAPPINGS = ImmutableMap.<String, String> builder()
-            .put(SIRIUS_DESCRIPTION_CONCERN_1_1_0, SIRIUS_DIAGRAM_DESCRIPTION_CONCERN_1_1_0)
-            .put(SIRIUS_DESCRIPTION_FILTER_1_1_0, SIRIUS_DIAGRAM_DESCRIPTION_FILTER_1_1_0)
-            .put(SIRIUS_DESCRIPTION_VALIDATION_1_1_0, SIRIUS_DIAGRAM_DESCRIPTION_VALIDATION_1_1_0).build();
+            .put("http://www.obeo.fr/dsl/viewpoint/description/validation/1.1.0", SIRIUS_DESCRIPTION_VALIDATION_1_1_0).build();
+
+    private static final Map<String, String> FROM_SIRIUS_0_9_NS_URI_MAPPINGS = ImmutableMap.<String, String> builder()
+            .put(SIRIUS_DESCRIPTION_CONCERN_1_1_0, SIRIUS_DIAGRAM_DESCRIPTION_CONCERN_1_1_0).put(SIRIUS_DESCRIPTION_FILTER_1_1_0, SIRIUS_DIAGRAM_DESCRIPTION_FILTER_1_1_0).build();
+
+    private static final Map<String, String> FROM_SIRIUS_1_0_0_M5_NS_URI_MAPPINGS = ImmutableMap.<String, String> builder()
+            .put(SIRIUS_DIAGRAM_DESCRIPTION_VALIDATION_1_1_0, SIRIUS_DESCRIPTION_VALIDATION_1_1_0).build();
 
     public Version getMigrationVersion() {
-        return MIGRATION_VERSION;
+        return SIRIUS_1_0_0_M6_VERSION;
     }
 
     /**
@@ -84,10 +90,12 @@ public class NsURIMigrationParticipant extends AbstractMigrationParticipant {
     public EPackage getPackage(String namespace, String loadedVersion) {
         if (namespace != null) {
             String mapTo = null;
-            if (Version.parseVersion(loadedVersion).compareTo(ALREADY_MIGRATED_VERSION) < 0) {
-                mapTo = VIEWPOINT_TO_SIRUS_0_9_NS_URI_MAPPINGS.get(namespace);
-            } else if (Version.parseVersion(loadedVersion).compareTo(MIGRATION_VERSION) < 0) {
-                mapTo = SIRUS_0_9_TO_SIRUS_1_0_NS_URI_MAPPINGS.get(namespace);
+            if (Version.parseVersion(loadedVersion).compareTo(SIRIUS_0_9_VERSION) < 0) {
+                mapTo = FROM_VIEWPOINT_NS_URI_MAPPINGS.get(namespace);
+            } else if (Version.parseVersion(loadedVersion).compareTo(SIRIUS_1_0_0_M5_VERSION) < 0) {
+                mapTo = FROM_SIRIUS_0_9_NS_URI_MAPPINGS.get(namespace);
+            } else if (Version.parseVersion(loadedVersion).compareTo(SIRIUS_1_0_0_M6_VERSION) < 0) {
+                mapTo = FROM_SIRIUS_1_0_0_M5_NS_URI_MAPPINGS.get(namespace);
             }
 
             if (mapTo != null) {
