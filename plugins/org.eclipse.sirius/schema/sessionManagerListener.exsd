@@ -61,24 +61,15 @@
          <attribute name="class" type="string" use="required">
             <annotation>
                <documentation>
-                  The listener. This class has to implement the &lt;code&gt;org.eclipse.sirius.business.api.session.SessionManagerListener&lt;/code&gt; contract.
+                  The listener. This class has to implement the &lt;code&gt;org.eclipse.sirius.business.api.session.SessionManagerListener2&lt;/code&gt; contract.
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.business.api.session.SessionManagerListener"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.business.api.session.SessionManagerListener2"/>
                </appInfo>
             </annotation>
          </attribute>
       </complexType>
    </element>
-
-   <annotation>
-      <appInfo>
-         <meta.section type="apiInfo"/>
-      </appInfo>
-      <documentation>
-         Session Manager listeners registered using this extension point are aware of all session modificatuions and viewpoint selection/deselection. A Session Manager listener registered with this extension point does not need to be registered at runtime using &lt;code&gt;SessionManager.INSTANCE.addSessionsListener&lt;/code&gt;.
-      </documentation>
-   </annotation>
 
 
    <annotation>
@@ -97,19 +88,27 @@
       </documentation>
    </annotation>
 
+   <annotation>
+      <appInfo>
+         <meta.section type="apiInfo"/>
+      </appInfo>
+      <documentation>
+         Session Manager listeners registered using this extension point are aware of all session modificatuions and viewpoint selection/deselection. A Session Manager listener registered with this extension point does not need to be registered at runtime using &lt;code&gt;SessionManager.INSTANCE.addSessionsListener&lt;/code&gt;.
+      </documentation>
+   </annotation>
+
 
    <annotation>
       <appInfo>
          <meta.section type="copyright"/>
       </appInfo>
-            <documentation>
+      <documentation>
          Copyright (c) 2008 THALES GLOBAL SERVICES&lt;br&gt;
 All rights reserved. This program and the accompanying materials
 are made available under the terms of the Eclipse Public License v1.0
 which accompanies this distribution, and is available at
 &lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
       </documentation>
-
    </annotation>
 
 </schema>

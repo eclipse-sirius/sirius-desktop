@@ -17,7 +17,55 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * 
  * @author cbrun
  */
-public interface SessionManagerListener2 extends SessionManagerListener {
+public interface SessionManagerListener2 {
+
+    /** The extension point ID. */
+    String ID = "org.eclipse.sirius.sessionManagerListener";
+
+    /** The class attribute. */
+    String CLASS_ATTRIBUTE = "class";
+
+    /**
+     * Called when a new session has been added in the manager.
+     * 
+     * @param newSession
+     *            the new session.
+     */
+    void notifyAddSession(Session newSession);
+
+    /**
+     * Called when a session has been removed from the manager.
+     * 
+     * @param removedSession
+     *            the old session.
+     */
+    void notifyRemoveSession(Session removedSession);
+
+    /**
+     * A session handled with the manager has been updated.
+     * 
+     * @param updated
+     *            the session that changed.
+     * @see SessionManagerListener2#notify(Session, int)
+     */
+    @Deprecated
+    void notifyUpdatedSession(Session updated);
+
+    /**
+     * Invoked when a viewpoint is selected.
+     * 
+     * @param selectedSirius
+     *            the selected viewpoint.
+     */
+    void viewpointSelected(Viewpoint selectedSirius);
+
+    /**
+     * Invoked when a viewpoint is deselected.
+     * 
+     * @param deselectedSirius
+     *            the deselected viewpoint.
+     */
+    void viewpointDeselected(Viewpoint deselectedSirius);
 
     /**
      * A session handled with the manager notify its clients about a change.

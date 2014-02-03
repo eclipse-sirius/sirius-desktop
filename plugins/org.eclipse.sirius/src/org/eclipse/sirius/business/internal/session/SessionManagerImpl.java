@@ -35,7 +35,6 @@ import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.business.api.session.SessionManagerListener2;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
@@ -61,15 +60,15 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
 
     /**
      * Listeners provide by the extension point
-     * org.eclipse.sirius.sessionManagerListener.
+     * org.eclipse.sirius.SessionManagerListener2.
      */
-    private Set<SessionManagerListener> extensionPointListeners;
+    private Set<SessionManagerListener2> extensionPointListeners;
 
     /**
      * Listeners added programmatically using
      * SessionManager.addSessionsListener.
      */
-    private Set<SessionManagerListener> programmaticListeners = Sets.newLinkedHashSet();
+    private Set<SessionManagerListener2> programmaticListeners = Sets.newLinkedHashSet();
 
     private Set<Viewpoint> selectedViewpoints = new HashSet<Viewpoint>();
 
@@ -87,9 +86,9 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.session.SessionManager#addSessionsListener(org.eclipse.sirius.business.api.session.SessionManagerListener)
+     * @see org.eclipse.sirius.business.api.session.SessionManager#addSessionsListener(org.eclipse.sirius.business.api.session.SessionManagerListener2)
      */
-    public void addSessionsListener(final SessionManagerListener listener) {
+    public void addSessionsListener(final SessionManagerListener2 listener) {
         programmaticListeners.add(listener);
     }
 
@@ -109,9 +108,9 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.session.SessionManager#removeSessionsListener(org.eclipse.sirius.business.api.session.SessionManagerListener)
+     * @see org.eclipse.sirius.business.api.session.SessionManager#removeSessionsListener(org.eclipse.sirius.business.api.session.SessionManagerListener2)
      */
-    public void removeSessionsListener(final SessionManagerListener listener) {
+    public void removeSessionsListener(final SessionManagerListener2 listener) {
         programmaticListeners.remove(listener);
         getExtensionPointListeners().remove(listener);
     }
@@ -144,8 +143,8 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
              * Concurrent modification safe iterator => useful if a listener
              * want to remove from listeners list
              */
-            final Set<SessionManagerListener> listenersToIterate = Sets.newLinkedHashSet(getAllListeners());
-            for (final SessionManagerListener listener : listenersToIterate) {
+            final Set<SessionManagerListener2> listenersToIterate = Sets.newLinkedHashSet(getAllListeners());
+            for (final SessionManagerListener2 listener : listenersToIterate) {
                 listener.notifyAddSession(newSession);
             }
             this.fireVPSelectionDeselectionEvents(newSession);
@@ -177,8 +176,8 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
             // Use a copy to avoid ConcurrentModificationException if some
             // listeners remove it from this list during the call of
             // notifyRemoveSession.
-            final Set<SessionManagerListener> listenersToIterate = Sets.newLinkedHashSet(getAllListeners());
-            for (final SessionManagerListener listener : listenersToIterate) {
+            final Set<SessionManagerListener2> listenersToIterate = Sets.newLinkedHashSet(getAllListeners());
+            for (final SessionManagerListener2 listener : listenersToIterate) {
                 listener.notifyRemoveSession(removedSession);
             }
 
@@ -395,37 +394,37 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
     }
 
     private void fireSelectedSiriusEvent(final Viewpoint viewpoint) {
-        for (final SessionManagerListener listener : getAllListeners()) {
+        for (final SessionManagerListener2 listener : getAllListeners()) {
             listener.viewpointSelected(viewpoint);
         }
     }
 
     private void fireDeselectedSiriusEvent(final Viewpoint viewpoint) {
-        for (final SessionManagerListener listener : getAllListeners()) {
+        for (final SessionManagerListener2 listener : getAllListeners()) {
             listener.viewpointDeselected(viewpoint);
         }
     }
 
     /**
      * @return an iterable over the listeners provide by the extension point
-     *         org.eclipse.sirius.sessionManagerListener and the listeners added
-     *         programmatically.
+     *         org.eclipse.sirius.SessionManagerListener2 and the listeners
+     *         added programmatically.
      */
-    private synchronized Iterable<SessionManagerListener> getAllListeners() {
+    private synchronized Iterable<SessionManagerListener2> getAllListeners() {
         return Iterables.concat(getExtensionPointListeners(), programmaticListeners);
     }
 
     /**
      * Get the list of listeners provide by the extension point
-     * org.eclipse.sirius.sessionManagerListener.
+     * org.eclipse.sirius.SessionManagerListener2.
      * 
      * @return the listeners provide by the extension point
-     *         org.eclipse.sirius.sessionManagerListener
+     *         org.eclipse.sirius.SessionManagerListener2
      */
-    private synchronized Set<SessionManagerListener> getExtensionPointListeners() {
+    private synchronized Set<SessionManagerListener2> getExtensionPointListeners() {
         if (extensionPointListeners == null) {
             extensionPointListeners = Sets.newLinkedHashSet();
-            extensionPointListeners.addAll(EclipseUtil.getExtensionPlugins(SessionManagerListener.class, SessionManagerListener.ID, SessionManagerListener.CLASS_ATTRIBUTE));
+            extensionPointListeners.addAll(EclipseUtil.getExtensionPlugins(SessionManagerListener2.class, SessionManagerListener2.ID, SessionManagerListener2.CLASS_ATTRIBUTE));
         }
         return extensionPointListeners;
     }
