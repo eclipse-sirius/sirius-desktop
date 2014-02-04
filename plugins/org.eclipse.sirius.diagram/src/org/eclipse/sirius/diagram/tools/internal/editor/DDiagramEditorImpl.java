@@ -93,7 +93,7 @@ import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.api.session.SessionManagerListener2;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.ui.tools.api.util.IObjectActionDelegateWrapper;
@@ -262,7 +262,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     private IAuthorityListener dRepresentationLockStatusListener;
 
-    private final SessionManagerListener2 sessionManagerListener = new SessionManagerListener2.Stub() {
+    private final SessionManagerListener sessionManagerListener = new SessionManagerListener.Stub() {
 
         @Override
         public void notifyAddSession(final Session newSession) {

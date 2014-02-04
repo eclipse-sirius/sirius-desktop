@@ -61,7 +61,7 @@ public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implem
             /**
              * {@inheritDoc}
              * 
-             * @see org.eclipse.sirius.business.api.session.SessionManagerListener2.Stub#notify(org.eclipse.sirius.business.api.session.Session,
+             * @see org.eclipse.sirius.business.api.session.SessionManagerListener.Stub#notify(org.eclipse.sirius.business.api.session.Session,
              *      int)
              */
             @Override

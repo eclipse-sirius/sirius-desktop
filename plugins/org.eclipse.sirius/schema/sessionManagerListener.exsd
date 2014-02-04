@@ -61,10 +61,10 @@
          <attribute name="class" type="string" use="required">
             <annotation>
                <documentation>
-                  The listener. This class has to implement the &lt;code&gt;org.eclipse.sirius.business.api.session.SessionManagerListener2&lt;/code&gt; contract.
+                  The listener. This class has to implement the &lt;code&gt;org.eclipse.sirius.business.api.session.SessionManagerListener&lt;/code&gt; contract.
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.business.api.session.SessionManagerListener2"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.business.api.session.SessionManagerListener"/>
                </appInfo>
             </annotation>
          </attribute>
@@ -93,7 +93,7 @@
          <meta.section type="apiInfo"/>
       </appInfo>
       <documentation>
-         Session Manager listeners registered using this extension point are aware of all session modificatuions and viewpoint selection/deselection. A Session Manager listener registered with this extension point does not need to be registered at runtime using &lt;code&gt;SessionManager.INSTANCE.addSessionsListener&lt;/code&gt;.
+         Session Manager listeners registered using this extension point are aware of all session modifications and viewpoint selection/deselection. A Session Manager listener registered with this extension point does not need to be registered at runtime using &lt;code&gt;SessionManager.INSTANCE.addSessionsListener&lt;/code&gt;.
       </documentation>
    </annotation>
 

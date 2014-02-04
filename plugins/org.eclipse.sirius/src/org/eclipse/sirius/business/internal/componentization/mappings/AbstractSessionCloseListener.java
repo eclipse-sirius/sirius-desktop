@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.componentization.mappings;
 
-import org.eclipse.sirius.business.api.session.SessionManagerListener2;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 
 /**
  * A base listener to extend to listen only when a session is removed.
  * 
  * @author mchauvin
  */
-public abstract class AbstractSessionCloseListener extends SessionManagerListener2.Stub {
+public abstract class AbstractSessionCloseListener extends SessionManagerListener.Stub {
 
 }

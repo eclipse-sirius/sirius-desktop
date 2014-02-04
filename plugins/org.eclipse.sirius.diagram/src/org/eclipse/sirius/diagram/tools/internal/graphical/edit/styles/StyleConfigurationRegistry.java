@@ -25,7 +25,7 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.business.api.session.SessionManagerListener2;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
@@ -49,7 +49,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * 
  * @author ymortier
  */
-public final class StyleConfigurationRegistry extends SessionManagerListener2.Stub implements IStyleConfigurationRegistry {
+public final class StyleConfigurationRegistry extends SessionManagerListener.Stub implements IStyleConfigurationRegistry {
 
     private static final ProfilerTask GET_CONFIG = new ProfilerTask("Sirius", "get style configuration");
 

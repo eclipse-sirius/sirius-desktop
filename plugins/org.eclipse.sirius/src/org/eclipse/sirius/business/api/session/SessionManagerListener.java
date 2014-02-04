@@ -17,7 +17,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * 
  * @author cbrun
  */
-public interface SessionManagerListener2 {
+public interface SessionManagerListener {
 
     /** The extension point ID. */
     String ID = "org.eclipse.sirius.sessionManagerListener";
@@ -69,14 +69,14 @@ public interface SessionManagerListener2 {
     void notify(Session updated, int notification);
 
     /**
-     * An empty implementation of SessionManagerListener2 for convenience.
+     * An empty implementation of SessionManagerListener for convenience.
      */
-    public class Stub implements SessionManagerListener2 {
+    public class Stub implements SessionManagerListener {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.business.api.session.SessionManagerListener2#notify(org.eclipse.sirius.business.api.session.Session,
+         * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notify(org.eclipse.sirius.business.api.session.Session,
          *      int)
          */
         public void notify(final Session updated, final int notification) {

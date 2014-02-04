@@ -40,7 +40,7 @@ import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperat
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.api.session.SessionManagerListener2;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.business.internal.modelingproject.manager.InitializeModelingProjectJob;
 import org.eclipse.sirius.business.internal.modelingproject.marker.ModelingMarker;
 import org.eclipse.sirius.business.internal.query.ModelingProjectQuery;
@@ -67,11 +67,11 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
     /** The old Viewpoint nature id. */
     private static final String VIEWPOINT_MODELING_PROJECT_NATURE_ID = "fr.obeo.dsl.viewpoint.nature.modelingproject";
 
-    private final SessionManagerListener2 sessionManagerListener = new SessionManagerListener2.Stub() {
+    private final SessionManagerListener sessionManagerListener = new SessionManagerListener.Stub() {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.business.api.session.SessionManagerListener2#notify(org.eclipse.sirius.business.api.session.Session,
+         * @see org.eclipse.sirius.business.api.session.SessionManagerListener#notify(org.eclipse.sirius.business.api.session.Session,
          *      int)
          */
         public void notify(Session updated, int notification) {

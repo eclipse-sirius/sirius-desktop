@@ -35,7 +35,7 @@ public interface SessionManager {
      * @param listener
      *            new listener to add.
      */
-    void addSessionsListener(SessionManagerListener2 listener);
+    void addSessionsListener(SessionManagerListener listener);
 
     /**
      * Remove the given listener.
@@ -43,7 +43,7 @@ public interface SessionManager {
      * @param listener
      *            listener to remove.
      */
-    void removeSessionsListener(SessionManagerListener2 listener);
+    void removeSessionsListener(SessionManagerListener listener);
 
     /**
      * return the sessions currently active.

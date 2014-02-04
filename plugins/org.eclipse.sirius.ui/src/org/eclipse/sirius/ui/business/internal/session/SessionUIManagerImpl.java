@@ -24,7 +24,7 @@ import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.api.session.SessionManagerListener2;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.business.api.session.factory.UISessionFactory;
@@ -40,7 +40,7 @@ import org.eclipse.ui.part.FileEditorInput;
  * @author cbrun
  * 
  */
-public final class SessionUIManagerImpl extends SessionManagerListener2.Stub implements SessionUIManager {
+public final class SessionUIManagerImpl extends SessionManagerListener.Stub implements SessionUIManager {
 
     private final Map<Session, IEditingSession> sessionToUISession = new HashMap<Session, IEditingSession>();
 
