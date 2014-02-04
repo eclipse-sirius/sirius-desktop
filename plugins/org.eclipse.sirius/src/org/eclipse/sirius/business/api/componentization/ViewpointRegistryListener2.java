@@ -16,7 +16,7 @@ package org.eclipse.sirius.business.api.componentization;
  * @author mchauvin
  * @since 0.9.0
  */
-public interface ViewointRegistryListener2 {
+public interface ViewpointRegistryListener2 {
 
     /**
      * Called when one or several modeler description files have been loaded or

@@ -47,7 +47,7 @@ import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.api.session.SessionManagerListener2;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
@@ -95,7 +95,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
 
     private UIJob updateJob;
 
-    private SessionManagerListener2 sessionManagerListener;
+    private SessionManagerListener sessionManagerListener;
 
     private IDoubleClickListener doubleClickListener;
 
@@ -826,7 +826,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
     /**
      * Session Manager Listener.
      */
-    private class CommonSessionManagerListener implements SessionManagerListener2 {
+    private class CommonSessionManagerListener implements SessionManagerListener {
         public void notifyAddSession(Session newSession) {
             /* does nothing. */
         }
@@ -834,10 +834,6 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         public void notifyRemoveSession(Session removedSession) {
             removeRefreshViewerTriggers(removedSession);
             refreshViewer(removedSession);
-        }
-
-        public void notifyUpdatedSession(Session updated) {
-            /* do nothing as this method is deprecated */
         }
 
         public void viewpointSelected(Viewpoint selectedSirius) {

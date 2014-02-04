@@ -224,7 +224,7 @@ public class ViewpointRegistry implements IResourceChangeListener {
      * @return <code>true</code> if the listener was added, <code>false</code>
      *         otherwise.
      */
-    public boolean addListener(ViewointRegistryListener2 listener) {
+    public boolean addListener(ViewpointRegistryListener2 listener) {
         throw new UnsupportedOperationException();
     }
 
@@ -235,7 +235,7 @@ public class ViewpointRegistry implements IResourceChangeListener {
      *            the listener to remove
      * @return <code>true</code> if removed, <code>false</code> otherwise.
      */
-    public boolean removeListener(ViewointRegistryListener2 listener) {
+    public boolean removeListener(ViewpointRegistryListener2 listener) {
         throw new UnsupportedOperationException();
     }
 

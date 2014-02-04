@@ -35,7 +35,7 @@ import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.api.session.SessionManagerListener2;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -141,13 +141,13 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
     protected ICommandFactory emfCommandFactory;
 
     /**
-     * SessionManagerListener2.
+     * SessionManagerListener.
      */
-    protected final SessionManagerListener2 sessionManagerListener = new SessionManagerListener2.Stub() {
+    protected final SessionManagerListener sessionManagerListener = new SessionManagerListener.Stub() {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.business.api.session.SessionManagerListener2.Stub#notifyAddSession(org.eclipse.sirius.business.api.session.Session)
+         * @see org.eclipse.sirius.business.api.session.SessionManagerListener.Stub#notifyAddSession(org.eclipse.sirius.business.api.session.Session)
          */
         @Override
         public void notifyAddSession(final Session newSession) {
