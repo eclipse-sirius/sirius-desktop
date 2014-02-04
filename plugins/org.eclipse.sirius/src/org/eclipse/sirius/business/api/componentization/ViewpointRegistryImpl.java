@@ -77,7 +77,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
 
     private Set<ViewpointRegistryFilter> filters;
 
-    private Set<ViewointRegistryListener2> newListeners;
+    private Set<ViewpointRegistryListener2> newListeners;
 
     private ECrossReferenceAdapter crossReferencer;
 
@@ -254,9 +254,9 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * @return <code>true</code> if the listener was added, <code>false</code>
      *         otherwise.
      */
-    public boolean addListener(final ViewointRegistryListener2 listener) {
+    public boolean addListener(final ViewpointRegistryListener2 listener) {
         if (newListeners == null) {
-            newListeners = new HashSet<ViewointRegistryListener2>(4);
+            newListeners = new HashSet<ViewpointRegistryListener2>(4);
         }
         return newListeners.add(listener);
     }
@@ -268,7 +268,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      *            the listener to remove
      * @return <code>true</code> if removed, <code>false</code> otherwise.
      */
-    public boolean removeListener(final ViewointRegistryListener2 listener) {
+    public boolean removeListener(final ViewpointRegistryListener2 listener) {
         if (newListeners != null) {
             return newListeners.remove(listener);
         }
@@ -641,7 +641,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         if (shouldInvalidateCache) {
             invalidateCache();
             if (newListeners != null) {
-                for (final ViewointRegistryListener2 listener : newListeners) {
+                for (final ViewpointRegistryListener2 listener : newListeners) {
                     listener.modelerDesciptionFilesLoaded();
                 }
             }
