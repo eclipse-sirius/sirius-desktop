@@ -153,7 +153,7 @@ icons/full/obj16/InitialNodeCreationOperation.gif - org.eclipse.ui.cheatsheets -
 icons/full/obj16/InitialOperation.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/elcl16/start_task.gif
 icons/full/obj16/InterpolatedColor.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/QualifierValue.gif
 icons/full/obj16/JavaExtension.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/obj16/jline_obj.gif
-icons/full/obj16/LabelBorderStyleDesription.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
+icons/full/obj16/LabelBorderStyleDescription.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
 icons/full/obj16/LabelBorderStyles.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
 icons/full/obj16/LabelStyle.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
 icons/full/obj16/LabelStyleDescription.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif

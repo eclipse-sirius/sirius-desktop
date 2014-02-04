@@ -1670,14 +1670,14 @@ public final class StyleHelper {
         try {
             computedSize = interpreter.evaluateInteger(target, nodeStyle.getSizeComputationExpression());
         } catch (final EvaluationException e) {
-            RuntimeLoggerManager.INSTANCE.error(nodeStyle, StylePackage.eINSTANCE.getEdgeStyleDescription_SizeComputationExpression(), e);
+            RuntimeLoggerManager.INSTANCE.error(nodeStyle, StylePackage.eINSTANCE.getNodeStyleDescription_SizeComputationExpression(), e);
         }
         if (computedSize == null) {
             try {
                 computedSize = Integer.parseInt(StylePackage.eINSTANCE.getNodeStyleDescription_SizeComputationExpression().getDefaultValueLiteral());
             } catch (NumberFormatException e) {
                 // Nothing, default magic number will be used.
-                RuntimeLoggerManager.INSTANCE.error(nodeStyle, StylePackage.eINSTANCE.getEdgeStyleDescription_SizeComputationExpression(), e);
+                RuntimeLoggerManager.INSTANCE.error(nodeStyle, StylePackage.eINSTANCE.getNodeStyleDescription_SizeComputationExpression(), e);
             }
         }
         if (computedSize == null) {

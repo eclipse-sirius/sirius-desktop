@@ -176,7 +176,6 @@ public abstract class AbstractCommandFactory implements ICommandFactory {
      * @param any
      *            any semantic decorator.
      */
-    @Deprecated
     protected void addRemoveDanglingReferencesTask(final DCommand result, final EObject tool, final DSemanticDecorator any) {
         boolean containsRemove = false;
         final Iterator<EObject> iterContent = tool.eAllContents();

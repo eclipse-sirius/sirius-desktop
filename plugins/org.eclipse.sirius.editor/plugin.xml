@@ -2432,6 +2432,15 @@
      <customizer
            class="org.eclipse.sirius.editor.tools.internal.editor.SiriusEditorCustomization"></customizer>
   </extension>
+      <extension
+          point="org.eclipse.ui.perspectives">
+       <perspective
+             class="org.eclipse.sirius.editor.tools.internal.perspectives.DesignerDesignPerspective"
+             icon="icons/full/obj16/Sirius.gif"
+             id="org.eclipse.sirius.ui.tools.perspective.design"
+             name="Sirius">
+       </perspective>
+    </extension>
 
  <!-- End of user code plugin.xml end specifics  -->
 </plugin>

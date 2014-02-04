@@ -123,7 +123,6 @@ public class TaskHelper {
      *            .
      * @return <code>true</code> if the predicate is <code>true</code>.
      */
-    @Deprecated
     public boolean checkPrecondition(final EObject container, final AbstractToolDescription toolDescription) {
         boolean result = true;
         if (toolDescription.getPrecondition() != null && !StringUtil.isEmpty(toolDescription.getPrecondition().trim())) {

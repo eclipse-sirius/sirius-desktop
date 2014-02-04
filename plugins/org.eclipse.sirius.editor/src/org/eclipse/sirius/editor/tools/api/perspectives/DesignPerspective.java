@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,25 +8,18 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.componentization;
-
-import org.eclipse.core.resources.IFile;
+package org.eclipse.sirius.editor.tools.api.perspectives;
 
 /**
- * A listener interface to listen events in the ViewpointRegistry.
+ * This interface is usefull to get perspective id from others plug-ins.
  * 
  * @author mchauvin
- * @since 0.9.0
  */
-@Deprecated
-public interface ViewpointRegistryListener {
+public interface DesignPerspective {
 
     /**
-     * Called when a modeler description file is reloaded.
-     * 
-     * @param file
-     *            the reloaded file
+     * Perspective ID.
      */
-    void modelerDesciptionFileReloaded(final IFile file);
+    String ID = "org.eclipse.sirius.ui.tools.perspective.design";
 
 }
