@@ -55,7 +55,7 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.emf.workspace.ResourceUndoContext;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
-import org.eclipse.sirius.business.api.componentization.ViewointRegistryListener2;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorManager;
@@ -144,7 +144,7 @@ import com.google.common.collect.Sets.SetView;
  * 
  * @author cbrun
  */
-public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements Session, DAnalysisSession, ResourceSyncClient, ViewpointRegistryListener, ViewointRegistryListener2 {
+public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements Session, DAnalysisSession, ResourceSyncClient, ViewpointRegistryListener, ViewpointRegistryListener2 {
 
     /** The {@link TransactionalEditingDomain} associated to this Session. */
     protected final TransactionalEditingDomain transactionalEditingDomain;

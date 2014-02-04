@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsRegistry;
-import org.eclipse.sirius.business.api.componentization.ViewointRegistryListener2;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistryFilter;
 import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
@@ -144,7 +144,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * The listeners which are notified of changes in the registry entries.
      */
-    private final CopyOnWriteArrayList<ViewointRegistryListener2> legacyListeners = new CopyOnWriteArrayList<ViewointRegistryListener2>();
+    private final CopyOnWriteArrayList<ViewpointRegistryListener2> legacyListeners = new CopyOnWriteArrayList<ViewpointRegistryListener2>();
 
     /**
      * A transient object used to store changes in the entries so that they are
@@ -260,7 +260,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
             listener.registryChanged(this, removed, added, changed);
         }
 
-        for (ViewointRegistryListener2 legacyListener : legacyListeners) {
+        for (ViewpointRegistryListener2 legacyListener : legacyListeners) {
             legacyListener.modelerDesciptionFilesLoaded();
         }
     }
@@ -679,14 +679,14 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     /**
      * {@inheritDoc}
      */
-    public boolean addListener(ViewointRegistryListener2 listener) {
+    public boolean addListener(ViewpointRegistryListener2 listener) {
         return legacyListeners.addIfAbsent(listener);
     }
 
     /**
      * {@inheritDoc}
      */
-    public boolean removeListener(ViewointRegistryListener2 listener) {
+    public boolean removeListener(ViewpointRegistryListener2 listener) {
         return legacyListeners.remove(listener);
     }
 

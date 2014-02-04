@@ -549,7 +549,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     /**
-     * @see org.eclipse.sirius.business.api.componentization.ViewointRegistryListener2#modelerDesciptionFilesLoaded()
+     * @see org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2#modelerDesciptionFilesLoaded()
      */
     private void modelerDescriptionFilesLoaded() {
         if (isAutoRefresh()) {

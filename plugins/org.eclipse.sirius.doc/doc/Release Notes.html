@@ -37,6 +37,19 @@
 			<li>The 
 				<code>org.eclipse.sirius.tools.api.command.IDiagramCommandFactory.setAutoRefreshDView()</code> method was removed. It had no effect, any code which called it can simply be removed.
 			</li>
+			<li>The deprecated interface 
+				<code>org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener</code> has been removed. Use  
+				<code>org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2</code> instead.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.business.api.session.SessionManagerListener2</code> and 
+				<code>org.eclipse.sirius.business.api.session.SessionManagerListener</code> have been merged into 
+				<code>org.eclipse.sirius.business.api.session.SessionManagerListener</code> which is not deprecated any more.
+			</li>
+			<li>The deprecated method 
+				<code>org.eclipse.sirius.business.api.session.SessionManagerListener.notifyUpdatedSession(Session)</code> has been removed. Use 
+				<code>org.eclipse.sirius.business.api.session.SessionManagerListener.notify(Session, int)</code> instead.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>
@@ -47,6 +60,10 @@
 				<code>org.eclipse.sirius.editor.tools.api.perspectives</code> package in 
 				<code>org.eclipse.sirius.editor</code> plugin. This perspective is now provided through the 
 				<code>org.eclipse.sirius.editor</code> plugin. The perspective ID is kept unchanged for a compatibility reason.
+			</li>
+			<li>The deprecated class 
+				<code>org.eclipse.sirius.ui.tools.api.dialogs.ExportRepresentationsAsImagesDialog</code> has been removed. Use 
+				<code>org.eclipse.sirius.ui.tools.api.dialogs.ExportSeveralRepresentationsAsImagesDialog</code> instead.
 			</li>
 		</ul>
 		<h2 id="sirius1.0M5">Changes in Sirius 1.0.0M5 (from Sirius 1.0M4)</h2>
