@@ -36,7 +36,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
-import org.eclipse.sirius.business.api.session.SessionManagerListener2;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.common.tools.api.util.MarkerUtil;
@@ -61,7 +60,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
 
     /**
      * Listeners provide by the extension point
-     * org.eclipse.sirius.sessionManagerListener.
+     * org.eclipse.sirius.SessionManagerListener.
      */
     private Set<SessionManagerListener> extensionPointListeners;
 
@@ -131,7 +130,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
 
                 public void notify(final int changeKind) {
                     if (changeKind == SELECTED_VIEWS_CHANGE_KIND) {
-                        fireVPSelectionDeselectionEvents(newSession);
+                        fireVPSelectionDeselectionEvents();
                     }
                     notifyUpdatedSession(newSession, changeKind);
                 }
@@ -148,13 +147,13 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
             for (final SessionManagerListener listener : listenersToIterate) {
                 listener.notifyAddSession(newSession);
             }
-            this.fireVPSelectionDeselectionEvents(newSession);
+            this.fireVPSelectionDeselectionEvents();
         }
 
     }
 
     private void notifyUpdatedSession(final Session newSession, final int changeKind) {
-        for (SessionManagerListener2 listener : Iterables.filter(Lists.newArrayList(getAllListeners()), SessionManagerListener2.class)) {
+        for (SessionManagerListener listener : Iterables.filter(Lists.newArrayList(getAllListeners()), SessionManagerListener.class)) {
             listener.notify(newSession, changeKind);
         }
 
@@ -182,7 +181,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
                 listener.notifyRemoveSession(removedSession);
             }
 
-            this.fireVPSelectionDeselectionEvents(removedSession);
+            this.fireVPSelectionDeselectionEvents();
 
             /*
              * no more session, we should dispose all the model accessor
@@ -356,9 +355,8 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
     /**
      * Fires viewpoints selection deselection events.
      * 
-     * @param session
      */
-    private void fireVPSelectionDeselectionEvents(Session session) {
+    private void fireVPSelectionDeselectionEvents() {
         final Set<Viewpoint> newSelectedViewpoints = this.collectSelectedViewpoints();
 
         //
@@ -408,7 +406,7 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
 
     /**
      * @return an iterable over the listeners provide by the extension point
-     *         org.eclipse.sirius.sessionManagerListener and the listeners added
+     *         org.eclipse.sirius.SessionManagerListener and the listeners added
      *         programmatically.
      */
     private synchronized Iterable<SessionManagerListener> getAllListeners() {
@@ -417,10 +415,10 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
 
     /**
      * Get the list of listeners provide by the extension point
-     * org.eclipse.sirius.sessionManagerListener.
+     * org.eclipse.sirius.SessionManagerListener2.
      * 
      * @return the listeners provide by the extension point
-     *         org.eclipse.sirius.sessionManagerListener
+     *         org.eclipse.sirius.SessionManagerListener2
      */
     private synchronized Set<SessionManagerListener> getExtensionPointListeners() {
         if (extensionPointListeners == null) {

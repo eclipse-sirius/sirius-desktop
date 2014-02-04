@@ -134,15 +134,6 @@ public final class DisplayServiceImpl implements DisplayService {
 
     /**
      * {@inheritDoc}
-     */
-    public boolean computeVisibility(Session session, final DDiagram diagram, final DDiagramElement element) {
-        DiagramMappingsManager manager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, diagram);
-        final boolean result = doIsVisible(manager, diagram, element);
-        return result;
-    }
-
-    /**
-     * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeVisibility(DiagramMappingsManager,
      *      DDiagram, DDiagramElement)
