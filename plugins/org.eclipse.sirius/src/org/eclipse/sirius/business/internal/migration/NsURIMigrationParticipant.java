@@ -50,6 +50,9 @@ public class NsURIMigrationParticipant extends AbstractMigrationParticipant {
      */
     private static final Version SIRIUS_1_0_0_M5_VERSION = new Version("8.0.0");
 
+    /**
+     * The version 8.1.0 corresponds to the file format of Sirius 1.0.0 M6.
+     */
     private static final Version SIRIUS_1_0_0_M6_VERSION = new Version("8.1.0");
 
     private static final Map<String, String> FROM_VIEWPOINT_NS_URI_MAPPINGS = ImmutableMap.<String, String> builder()
@@ -73,8 +76,8 @@ public class NsURIMigrationParticipant extends AbstractMigrationParticipant {
             .put("http://www.obeo.fr/dsl/viewpoint/description/filter/1.1.0", SIRIUS_DIAGRAM_DESCRIPTION_FILTER_1_1_0)
             .put("http://www.obeo.fr/dsl/viewpoint/description/validation/1.1.0", SIRIUS_DESCRIPTION_VALIDATION_1_1_0).build();
 
-    private static final Map<String, String> FROM_SIRIUS_0_9_NS_URI_MAPPINGS = ImmutableMap.<String, String> builder()
-            .put(SIRIUS_DESCRIPTION_CONCERN_1_1_0, SIRIUS_DIAGRAM_DESCRIPTION_CONCERN_1_1_0).put(SIRIUS_DESCRIPTION_FILTER_1_1_0, SIRIUS_DIAGRAM_DESCRIPTION_FILTER_1_1_0).build();
+    private static final Map<String, String> FROM_SIRIUS_0_9_NS_URI_MAPPINGS = ImmutableMap.<String, String> builder().put(SIRIUS_DESCRIPTION_CONCERN_1_1_0, SIRIUS_DIAGRAM_DESCRIPTION_CONCERN_1_1_0)
+            .put(SIRIUS_DESCRIPTION_FILTER_1_1_0, SIRIUS_DIAGRAM_DESCRIPTION_FILTER_1_1_0).build();
 
     private static final Map<String, String> FROM_SIRIUS_1_0_0_M5_NS_URI_MAPPINGS = ImmutableMap.<String, String> builder()
             .put(SIRIUS_DIAGRAM_DESCRIPTION_VALIDATION_1_1_0, SIRIUS_DESCRIPTION_VALIDATION_1_1_0).build();
