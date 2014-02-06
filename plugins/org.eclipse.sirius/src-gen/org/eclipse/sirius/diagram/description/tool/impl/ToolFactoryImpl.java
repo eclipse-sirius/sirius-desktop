@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.ContainerDropDescriptionSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.DeleteElementDescriptionSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.DiagramCreationDescriptionSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.DiagramNavigationDescriptionSpec;
@@ -54,10 +55,13 @@ import org.eclipse.sirius.diagram.description.tool.ToolGroupExtension;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
 import org.eclipse.sirius.viewpoint.description.tool.ContainerViewVariable;
+import org.eclipse.sirius.viewpoint.description.tool.DropContainerVariable;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 import org.eclipse.sirius.viewpoint.description.tool.ElementDeleteVariable;
+import org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ElementSelectVariable;
 import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;
+import org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation;
 import org.eclipse.sirius.viewpoint.description.tool.InitialNodeCreationOperation;
 import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 import org.eclipse.sirius.viewpoint.description.tool.NameVariable;
@@ -544,10 +548,27 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     public ContainerDropDescription createContainerDropDescription() {
-        ContainerDropDescriptionImpl containerDropDescription = new ContainerDropDescriptionImpl();
+        ContainerDropDescriptionImpl containerDropDescription = new ContainerDropDescriptionSpec();
+        DropContainerVariable oldContainerVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createDropContainerVariable();
+        oldContainerVariable.setName("oldSemanticContainer");
+        DropContainerVariable newContainerVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createDropContainerVariable();
+        newContainerVariable.setName("newSemanticContainer");
+        ElementDropVariable elementDropVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createElementDropVariable();
+        elementDropVariable.setName("element");
+        ContainerViewVariable containerViewVariable = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createContainerViewVariable();
+        containerViewVariable.setName("newContainerView");
+
+        containerDropDescription.setElement(elementDropVariable);
+        containerDropDescription.setNewContainer(newContainerVariable);
+        containerDropDescription.setNewViewContainer(containerViewVariable);
+        containerDropDescription.setOldContainer(oldContainerVariable);
+
+        InitialContainerDropOperation init = org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialContainerDropOperation();
+        containerDropDescription.setInitialOperation(init);
+
         return containerDropDescription;
     }
 

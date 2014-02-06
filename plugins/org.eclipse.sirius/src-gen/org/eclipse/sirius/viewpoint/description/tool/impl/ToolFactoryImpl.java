@@ -17,11 +17,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.ContainerDropDescriptionSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.tool.spec.PasteDescriptionSpec;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.diagram.description.tool.impl.ContainerDropDescriptionImpl;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
 import org.eclipse.sirius.viewpoint.description.tool.Case;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
@@ -242,33 +239,6 @@ public class ToolFactoryImpl extends EFactoryImpl implements ToolFactory {
         toolDescription.setElementView(elementViewVar);
         toolDescription.setInitialOperation(this.createInitialOperation());
         return toolDescription;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @not-generated
-     */
-    public ContainerDropDescription createContainerDropDescription() {
-        ContainerDropDescriptionImpl containerDropDescription = new ContainerDropDescriptionSpec();
-        DropContainerVariable oldContainerVariable = createDropContainerVariable();
-        oldContainerVariable.setName("oldSemanticContainer");
-        DropContainerVariable newContainerVariable = createDropContainerVariable();
-        newContainerVariable.setName("newSemanticContainer");
-        ElementDropVariable elementDropVariable = createElementDropVariable();
-        elementDropVariable.setName("element");
-        ContainerViewVariable containerViewVariable = createContainerViewVariable();
-        containerViewVariable.setName("newContainerView");
-
-        containerDropDescription.setElement(elementDropVariable);
-        containerDropDescription.setNewContainer(newContainerVariable);
-        containerDropDescription.setNewViewContainer(containerViewVariable);
-        containerDropDescription.setOldContainer(oldContainerVariable);
-
-        InitialContainerDropOperation init = createInitialContainerDropOperation();
-        containerDropDescription.setInitialOperation(init);
-
-        return containerDropDescription;
     }
 
     /**
