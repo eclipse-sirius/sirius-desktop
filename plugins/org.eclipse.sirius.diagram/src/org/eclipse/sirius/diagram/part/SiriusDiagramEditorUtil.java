@@ -66,6 +66,7 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -316,7 +317,9 @@ public class SiriusDiagramEditorUtil {
         }
 
         final EPackage rootPackage = (EPackage) EcoreUtil.getRootContainer(targetElement.eClass());
-        if (rootPackage == null || (!rootPackage.getNsURI().equals(NotationPackage.eINSTANCE.getNsURI()) && !rootPackage.getNsURI().equals(ViewpointPackage.eINSTANCE.getNsURI()))) {
+        if (rootPackage == null
+                || (!rootPackage.getNsURI().equals(NotationPackage.eINSTANCE.getNsURI()) && !(rootPackage.getNsURI().equals(ViewpointPackage.eINSTANCE.getNsURI()) || rootPackage.getNsURI().equals(
+                        DiagramPackage.eINSTANCE.getNsURI())))) {
             ECrossReferenceAdapter eCrossReferenceAdapter = null;
             if (targetElement instanceof DSemanticDecorator) {
                 EObject semanticTarget = ((DSemanticDecorator) targetElement).getTarget();

@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
@@ -44,7 +45,8 @@ public class ExistingDomainClassConstraint extends AbstractConstraint {
 
         // In the case of batch mode.
         if (eventType == EMFEventType.NULL) {
-            if (eObj.eClass().getEPackage().getNsURI().startsWith(ViewpointPackage.eINSTANCE.getNsURI()) && elementContainedInMetamodelAwareSirius(eObj)) {
+            if ((eObj.eClass().getEPackage().getNsURI().startsWith(ViewpointPackage.eINSTANCE.getNsURI()) || eObj.eClass().getEPackage().getNsURI().startsWith(DiagramPackage.eINSTANCE.getNsURI()))
+                    && elementContainedInMetamodelAwareSirius(eObj)) {
                 final EStructuralFeature domainClassFeature = eObj.eClass().getEStructuralFeature(DOMAIN_CLASS_FEATURE);
                 if (domainClassFeature != null) {
                     final Object[] result = checkError(domainClassFeature, eObj);

@@ -21,6 +21,7 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.NoteAttachmentEditP
 import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.CreateEditPoliciesOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvider;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.collect.Lists;
@@ -74,8 +75,10 @@ public class AirNoteAttachmentEditPolicyProvider implements IEditPolicyProvider 
             final Object model = editPart.getModel();
             if (model instanceof View) {
                 final View view = (View) model;
-                if (view.getDiagram() != null && view.getDiagram().getElement() != null
-                        && view.getDiagram().getElement().eClass().getEPackage().getNsURI().equals(ViewpointPackage.eINSTANCE.getNsURI())) {
+                if (view.getDiagram() != null
+                        && view.getDiagram().getElement() != null
+                        && (view.getDiagram().getElement().eClass().getEPackage().getNsURI().equals(ViewpointPackage.eINSTANCE.getNsURI()) || view.getDiagram().getElement().eClass().getEPackage()
+                                .getNsURI().equals(DiagramPackage.eINSTANCE.getNsURI()))) {
                     if ("NoteAttachment".equals(view.getType())) {
                         return true;
                     }
