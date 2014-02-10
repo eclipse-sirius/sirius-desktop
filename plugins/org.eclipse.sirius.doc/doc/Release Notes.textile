@@ -8,6 +8,31 @@ h2(#sirius1.0M6). Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)
 
 h3. API Changes
 
+h4(#separationOfDiagramSpecificConcept-step2). Move diagram-specific EPackages into their own diagram.ecore model
+
+This milestone (Sirius 1.0M6) includes the second step towards a full separation of the diagram-specific stuff out of the core of Sirius (see "Step1":#separationOfDiagramSpecificConcept-step1 for more details).
+
+This step is less impactful on your code than the first step. Nevertheless, some missed classes during first step have moved during this step:
+* Remove @DDiagramSet@ and its corresponding reference from @DRepresentationContainer@: No longer needed
+* @DragAndDropTarget@, @DragAndDropTargetDescription@ and @ContainerDropDescription@ have been moved to diagram EPackage.
+* @viewpoint/diagram/description/validation@ EPackage has been moved to @viewpoint/description/validation@: revert what was done in step 1 by mistake.
+
+The existing VSM (@*.odesign@) and representations file (@*.aird@) are automatically migrated.
+
+Warning: If you have some code based on the root EPackage of an EClass, it may be necessary to adapt it. Example:
+
+pre. 
+EPackage rootPackage = (EPackage) EcoreUtil.getRootContainer(element.eClass());
+if (rootPackage != null && rootPackage.getNsURI().equals(ViewpointPackage.eINSTANCE.getNsURI())) {
+ 
+should be adapted in
+
+pre. 
+EPackage rootPackage = (EPackage) EcoreUtil.getRootContainer(element.eClass());
+if (rootPackage != null && rootPackage.getNsURI().equals(DiagramPackage.eINSTANCE.getNsURI())) {
+ 
+if @element@ is a Diagram concept.
+
 h4. Changes in @org.eclipse.sirius@
 
 * The @org.eclipse.sirius.tools.api.command.IDiagramCommandFactory.setAutoRefreshDView()@ method was removed. It had no effect, any code which called it can simply be removed.
@@ -35,7 +60,7 @@ This milestone (Sirius 1.0M5) introduces several new plug-ins, collectively call
 # Add the necessary @Import-Package@ (recommended) or @Require-Bundle@ to depend on the library extension(s) where the code they use now lives;
 # Perform a simple "Organize Imports" operation, which should find the classes and interfaces in their new locations.
 
-h4. Move diagram-specific EClasses into a separate EPackage
+h4(#separationOfDiagramSpecificConcept-step1). Move diagram-specific EClasses into a separate EPackage
 
 For historical reasons, the core Sirius metamodels defined in viewpoint.ecore contain both generic (dialect-independant like Viewpoint, RepresentationDescription, DAnalysis...) concepts and diagram-specific ones (e.g. DNode, EdgeStyle, ContainerCreationDescription...). The table and tree metamodels are more cleanly separated.
 This milestone (Sirius 1.0M5) includes the first step towards a full separation of the diagram-specific stuff out of the core of Sirius. So many EClasses have been moved. 
