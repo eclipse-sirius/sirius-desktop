@@ -12,13 +12,12 @@ package org.eclipse.sirius.business.internal.helper.task.operations;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.LinkedList;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.IModificationTask;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.tools.api.command.CommandContext;
@@ -39,7 +38,7 @@ public class SetValueTask extends AbstractOperationTask implements IModification
     /** The operation object. */
     private SetObject opObject;
 
-    private RuntimeLoggerInterpreter safeInterpreter;
+    private final RuntimeLoggerInterpreter safeInterpreter;
 
     /**
      * The object affected by this SetValue Task.
@@ -55,11 +54,11 @@ public class SetValueTask extends AbstractOperationTask implements IModification
      *            the extended package.
      * @param op
      *            the 'set/add' operation.
-     * @param session
-     *            the {@link Session} to be used
+     * @param interpreter
+     *            the interpreter to use.
      */
-    public SetValueTask(final CommandContext context, final ModelAccessor exPackage, final SetValue op, final Session session) {
-        super(context, exPackage, session.getInterpreter());
+    public SetValueTask(CommandContext context, ModelAccessor exPackage, SetValue op, IInterpreter interpreter) {
+        super(context, exPackage, interpreter);
         this.op = op;
         this.safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
     }
@@ -73,35 +72,26 @@ public class SetValueTask extends AbstractOperationTask implements IModification
      *            the context.
      * @param op
      *            the 'set/add' operation.
-     * @param session
-     *            the {@link Session} to be used
+     * @param interpreter
+     *            the interpreter to use.
      */
-    public SetValueTask(final CommandContext context, final ModelAccessor exPackage, final SetObject op, final Session session) {
-        super(context, exPackage, session.getInterpreter());
+    public SetValueTask(CommandContext context, ModelAccessor exPackage, SetObject op, IInterpreter interpreter) {
+        super(context, exPackage, interpreter);
         this.opObject = op;
         this.safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
-     */
+    @Override
     public String getLabel() {
         return "Set a value";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
-     */
+    @Override
     public void execute() {
-
-        Object value = null;
         final String featureExp = op == null ? opObject.getFeatureName() : op.getFeatureName();
         final String featureName = getFeatureName(context.getCurrentTarget(), op, featureExp);
 
+        final Object value;
         if (op != null) {
             value = safeInterpreter.evaluate(context.getCurrentTarget(), op, ToolPackage.eINSTANCE.getSetValue_ValueExpression());
         } else {
@@ -116,28 +106,17 @@ public class SetValueTask extends AbstractOperationTask implements IModification
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.internal.helper.task.IModificationTask#getAffectedElements()
-     */
+    @Override
     public Collection<EObject> getAffectedElements() {
-        final Collection<EObject> result = new LinkedList<EObject>();
-        /* affectedObject could be null if the execute operation failed */
         if (affectedObject != null) {
-            result.add(affectedObject);
+            return Collections.singletonList(affectedObject);
+        } else {
+            return Collections.emptyList();
         }
-        return result;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.internal.helper.task.IModificationTask#getCreatedReferences()
-     */
+    @Override
     public Collection<EObject> getCreatedReferences() {
         return Collections.emptySet();
     }
-
 }

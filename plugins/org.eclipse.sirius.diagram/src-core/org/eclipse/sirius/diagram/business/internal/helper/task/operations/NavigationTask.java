@@ -18,6 +18,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.helper.task.operations.AbstractOperationTask;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -30,41 +31,37 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * A task which navigate to diagrams.
- * 
+ *
  * @author smonnier
- * 
+ *
  */
 public class NavigationTask extends AbstractOperationTask {
 
-    private Navigation operation;
+    private final Navigation operation;
 
-    private UICallBack uiCallback;
+    private final UICallBack uiCallback;
 
     /**
      * Default constructor.
-     * 
+     *
      * @param context
      *            the current context.
      * @param extPackage
      *            the extended package.
      * @param operation
      *            the {@link DoubleClickNavigation} operation
-     * @param session
-     *            the {@link Session} to be used by this task
+     * @param interpreter
+     *            the interpreter to use.
      * @param uiCallback
      *            the {@link UICallBack}
      */
-    public NavigationTask(final CommandContext context, final ModelAccessor extPackage, final Navigation operation, final Session session, final UICallBack uiCallback) {
-        super(context, extPackage, session.getInterpreter());
+    public NavigationTask(CommandContext context, ModelAccessor extPackage, Navigation operation, IInterpreter interpreter, UICallBack uiCallback) {
+        super(context, extPackage, interpreter);
         this.operation = operation;
         this.uiCallback = uiCallback;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
-     */
+    @Override
     public void execute() {
         if (operation != null) {
             EObject element = getElement();
@@ -83,7 +80,7 @@ public class NavigationTask extends AbstractOperationTask {
 
     /**
      * Try to open the representation associated with the diagram element.
-     * 
+     *
      * @param semanticEObject
      * @return <code>true</code> if the representation was opened,
      *         <code>false</code> otherwise
@@ -120,7 +117,7 @@ public class NavigationTask extends AbstractOperationTask {
     /**
      * Find a {@link DRepresentation} among otherRepresentations that has the
      * {@link DiagramDescription} diagramDescriptionToOpen
-     * 
+     *
      * @param otherRepresentations
      *            the Collection of {@link DRepresentation} to investigate
      * @param diagramDescriptionToOpen
@@ -141,18 +138,14 @@ public class NavigationTask extends AbstractOperationTask {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
-     */
+    @Override
     public String getLabel() {
         return null;
     }
 
     /**
      * Return the element to move.
-     * 
+     *
      * @return the element to move.
      */
     private EObject getElement() {

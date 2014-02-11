@@ -12,7 +12,6 @@ package org.eclipse.sirius.business.internal.helper.task.operations;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.CommandContext;
@@ -28,7 +27,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 public class IfTask extends AbstractOperationTask {
 
     /** The if operation. */
-    private If ifOperation;
+    private final If ifOperation;
 
     /**
      * Create a new If task with the specified context and model accessor.
@@ -39,36 +38,26 @@ public class IfTask extends AbstractOperationTask {
      *            the model accessor.
      * @param ifOperation
      *            the if operation.
-     * @param session
-     *            the {@link Session} to be used by this task
+     * @param interpreter
+     *            the interpreter to use.
      */
-    public IfTask(final CommandContext context, final ModelAccessor extPackage, final If ifOperation, final Session session) {
-        super(context, extPackage, session.getInterpreter());
+    public IfTask(CommandContext context, ModelAccessor extPackage, If ifOperation, IInterpreter interpreter) {
+        super(context, extPackage, interpreter);
         this.ifOperation = ifOperation;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
-     */
+    @Override
     public void execute() {
         final EObject context = this.getContext().getCurrentTarget();
         final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(this.getContext().getCurrentTarget());
         final boolean conditionAccepted = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateBoolean(context, ifOperation, ToolPackage.eINSTANCE.getIf_ConditionExpression(), true);
-
         if (!conditionAccepted) {
             this.getChildrenTasks().clear();
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
-     */
+    @Override
     public String getLabel() {
         return "Evaluate : " + ifOperation.getConditionExpression();
     }
-
 }

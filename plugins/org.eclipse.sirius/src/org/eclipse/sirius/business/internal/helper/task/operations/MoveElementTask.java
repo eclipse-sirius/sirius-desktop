@@ -16,8 +16,8 @@ import java.util.Collections;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.IModificationTask;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.tools.api.command.CommandContext;
@@ -33,9 +33,9 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 public class MoveElementTask extends AbstractOperationTask implements IModificationTask {
 
     /** The operation. */
-    private MoveElement op;
+    private final MoveElement op;
 
-    private RuntimeLoggerInterpreter safeInterpreter;
+    private final RuntimeLoggerInterpreter safeInterpreter;
 
     /** The container of the ERef. */
     private EObject container;
@@ -52,20 +52,16 @@ public class MoveElementTask extends AbstractOperationTask implements IModificat
      *            the extended package.
      * @param op
      *            the operation.
-     * @param session
-     *            the {@link Session} to be used
+     * @param interpreter
+     *            the interpreter to use.
      */
-    public MoveElementTask(final CommandContext context, final ModelAccessor extPackage, final MoveElement op, final Session session) {
-        super(context, extPackage, session.getInterpreter());
+    public MoveElementTask(final CommandContext context, final ModelAccessor extPackage, final MoveElement op, IInterpreter interpreter) {
+        super(context, extPackage, interpreter);
         this.op = op;
         this.safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
-     */
+    @Override
     public void execute() {
         element = getElement();
         container = getContainer();
@@ -86,6 +82,7 @@ public class MoveElementTask extends AbstractOperationTask implements IModificat
         }
     }
 
+    @Override
     public String getLabel() {
         return "Move an element";
     }
@@ -109,22 +106,12 @@ public class MoveElementTask extends AbstractOperationTask implements IModificat
 
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.internal.helper.task.IModificationTask#getAffectedElements()
-     */
+    @Override
     public Collection<EObject> getAffectedElements() {
         return Collections.singleton(container);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.internal.helper.task.IModificationTask#getCreatedReferences()
-     */
+    @Override
     public Collection<EObject> getCreatedReferences() {
         return Collections.emptySet();
     }

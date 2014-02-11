@@ -481,7 +481,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
             task = Options.newSome(new CreateViewTask(context, extPackage, createView, session.getInterpreter()));
         } else if (op instanceof Navigation) {
             final Navigation doubleClickNavigation = (Navigation) op;
-            task = Options.newSome(new NavigationTask(context, extPackage, doubleClickNavigation, session, uiCallback));
+            task = Options.newSome(new NavigationTask(context, extPackage, doubleClickNavigation, session.getInterpreter(), uiCallback));
         }
         return task;
     }

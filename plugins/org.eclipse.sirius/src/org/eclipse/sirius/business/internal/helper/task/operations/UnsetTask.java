@@ -18,8 +18,8 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.Unset;
 public class UnsetTask extends AbstractOperationTask {
 
     /** The operation. */
-    private Unset unsetOp;
+    private final Unset unsetOp;
 
     /**
      * Create a new {@link UnsetTask}.
@@ -46,31 +46,23 @@ public class UnsetTask extends AbstractOperationTask {
      *            the extended package.
      * @param unsetOp
      *            the operation.
-     * @param session
-     *            the {@link Session} to be used by this task
+     * @param interpreter
+     *            the interpreter to use.
      */
-    public UnsetTask(final CommandContext context, final ModelAccessor extPackage, final Unset unsetOp, final Session session) {
-        super(context, extPackage, session.getInterpreter());
+    public UnsetTask(CommandContext context, ModelAccessor extPackage, Unset unsetOp, IInterpreter interpreter) {
+        super(context, extPackage, interpreter);
         if (unsetOp == null) {
             throw new IllegalArgumentException("unsetOp is null");
         }
         this.unsetOp = unsetOp;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
-     */
+    @Override
     public String getLabel() {
         return "unset the value";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
-     */
+    @Override
     public void execute() {
         final String element = unsetOp.getElementExpression();
         String featureName = unsetOp.getFeatureName();

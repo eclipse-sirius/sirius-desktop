@@ -58,17 +58,17 @@ import com.google.common.collect.Sets;
  */
 public class ExternalJavaActionTask extends AbstractOperationTask {
 
-    private ExternalJavaAction externalJavaAction;
+    private final ExternalJavaAction externalJavaAction;
 
-    private IExternalJavaAction javaAction;
+    private final IExternalJavaAction javaAction;
 
-    private Collection<EObject> selections = new ArrayList<EObject>();
+    private final Collection<EObject> selections = new ArrayList<EObject>();
 
-    private ModelAccessor accessor;
+    private final ModelAccessor accessor;
 
-    private TaskHelper taskHelper;
+    private final TaskHelper taskHelper;
 
-    private Session session;
+    private final Session session;
 
     /**
      * Default constructor.
@@ -101,10 +101,11 @@ public class ExternalJavaActionTask extends AbstractOperationTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
      */
+    @Override
     public void execute() {
         final Map<String, Object> parameters = new HashMap<String, Object>();
 
-        final RuntimeLoggerInterpreter safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(session.getInterpreter());
+        final RuntimeLoggerInterpreter safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
 
         if (taskHelper.checkPrecondition(context.getCurrentTarget(), externalJavaAction)) {
             // Evaluate the parameters
@@ -154,27 +155,27 @@ public class ExternalJavaActionTask extends AbstractOperationTask {
         listener.deactivate();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
-     */
+    @Override
     public String getLabel() {
         return "Execute external java action \"" + externalJavaAction.getName() + "\"";
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.AbstractCommandTask#canExecute()
-     */
     @Override
     public boolean canExecute() {
         return javaAction != null && javaAction.canExecute(selections);
+
     }
 
+    /**
+     * This is run at the end of the execution of an {@link IExternalJavaAction}
+     * unless it was an {@link IExternalJavaAction2} which explicitly declared
+     * it never deletes model elements. It is used to remove diagram elements
+     * and diagrams themselves which target semantic elements that were deleted
+     * by the external action.
+     */
     private class DeleteDiagramElementsTriggerOperation implements TriggerOperation {
 
+        @Override
         public void run(Collection<Object> createdElements, Collection<Object> modifiedElements, Collection<Object> deletedElements) {
             if (!deletedElements.isEmpty()) {
                 Set<EObject> allDeletedElements = elementsAndChildren(deletedElements);
@@ -187,9 +188,6 @@ public class ExternalJavaActionTask extends AbstractOperationTask {
                  */
                 decoratorsToDelete.addAll(getOrphanedDecorators());
                 getCommand(decoratorsToDelete);
-            }
-            if (!createdElements.isEmpty() || !modifiedElements.isEmpty()) {
-                /* do nothing right now */
             }
         }
 
@@ -234,7 +232,7 @@ public class ExternalJavaActionTask extends AbstractOperationTask {
              * DFeatureColumn should not be a DSemanticDecorator, until the
              * change filter instance of that class
              */
-            return eObject instanceof DSemanticDecorator && ((DSemanticDecorator) eObject).getTarget() == null && (!"DFeatureColumn".equals(eObject.eClass().getName()));
+            return eObject instanceof DSemanticDecorator && ((DSemanticDecorator) eObject).getTarget() == null && !"DFeatureColumn".equals(eObject.eClass().getName());
         }
 
         private void getCommand(final Collection<DSemanticDecorator> dElements) {

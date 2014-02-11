@@ -25,6 +25,7 @@ import org.eclipse.sirius.business.internal.helper.task.operations.RemoveElement
 import org.eclipse.sirius.business.internal.helper.task.operations.SetValueTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.SwitchTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.UnsetTask;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.CommandContext;
@@ -50,33 +51,39 @@ import com.google.common.collect.Collections2;
 
 /**
  * Transform operation object to task.
- * 
+ *
  * @author jdupont
- * 
+ *
  */
 public class ModelOperationToTask implements Function<ModelOperation, ICommandTask> {
 
     /**
      * Ext package.
      */
-    private ModelAccessor extPackage;
+    private final ModelAccessor extPackage;
 
     /**
      * UI call back.
      */
-    private UICallBack uiCallback;
+    private final UICallBack uiCallback;
 
     /** The Session on which this task will be executed. */
-    private Session session;
+    private final Session session;
+
+    /**
+     * The interpreter to use for tasks that need to evaluate expressions.
+     */
+    private final IInterpreter interpreter;
 
     /**
      * The context.
      */
-    private CommandContext context;
+    private final CommandContext context;
+
 
     /**
      * Transform model operations to tasks instances.
-     * 
+     *
      * @param extPackage
      *            access to semantic model.
      * @param uiCallback
@@ -87,56 +94,55 @@ public class ModelOperationToTask implements Function<ModelOperation, ICommandTa
      *            current context.
      */
     public ModelOperationToTask(ModelAccessor extPackage, UICallBack uiCallback, Session session, CommandContext context) {
-        super();
         this.extPackage = extPackage;
         this.uiCallback = uiCallback;
         this.session = session;
+        this.interpreter = session.getInterpreter();
         this.context = context;
     }
 
     /**
      * Create a new task.
-     * 
+     *
      * @param op
      *            the operation
      * @return the created task
      */
     public AbstractOperationTask createTask(final ModelOperation op) {
-
         AbstractOperationTask task = null;
         Option<? extends AbstractCommandTask> optionalDialectTask = DialectManager.INSTANCE.createTask(context, extPackage, op, session, uiCallback);
         if (optionalDialectTask.some() && optionalDialectTask.get() instanceof AbstractOperationTask) {
             task = (AbstractOperationTask) optionalDialectTask.get();
         } else if (op instanceof CreateInstance) {
             final CreateInstance createOp = (CreateInstance) op;
-            task = new CreateInstanceTask(context, extPackage, createOp, session.getInterpreter());
+            task = new CreateInstanceTask(context, extPackage, createOp, interpreter);
         } else if (op instanceof SetValue) {
             final SetValue setOp = (SetValue) op;
-            task = new SetValueTask(context, extPackage, setOp, session);
+            task = new SetValueTask(context, extPackage, setOp, interpreter);
         } else if (op instanceof SetObject) {
             final SetObject setOp = (SetObject) op;
-            task = new SetValueTask(context, extPackage, setOp, session);
+            task = new SetValueTask(context, extPackage, setOp, interpreter);
         } else if (op instanceof ChangeContext) {
             final ChangeContext changeOp = (ChangeContext) op;
-            task = new ChangeContextTask(context, extPackage, changeOp, session.getInterpreter());
+            task = new ChangeContextTask(context, extPackage, changeOp, interpreter);
         } else if (op instanceof MoveElement) {
             final MoveElement moveOp = (MoveElement) op;
-            task = new MoveElementTask(context, extPackage, moveOp, session);
+            task = new MoveElementTask(context, extPackage, moveOp, interpreter);
         } else if (op instanceof RemoveElement) {
             final RemoveElement removeOp = (RemoveElement) op;
-            task = new RemoveElementTask(context, extPackage, removeOp, session);
+            task = new RemoveElementTask(context, extPackage, removeOp, interpreter);
         } else if (op instanceof For) {
             final For forOp = (For) op;
-            task = new ForTask(context, extPackage, forOp, session, uiCallback);
+            task = new ForTask(context, extPackage, forOp, interpreter, uiCallback);
         } else if (op instanceof Unset) {
             final Unset unset = (Unset) op;
-            task = new UnsetTask(context, extPackage, unset, session);
+            task = new UnsetTask(context, extPackage, unset, interpreter);
         } else if (op instanceof If) {
             final If ifOp = (If) op;
-            task = new IfTask(context, extPackage, ifOp, session);
+            task = new IfTask(context, extPackage, ifOp, interpreter);
         } else if (op instanceof DeleteView) {
             final DeleteView deleteView = (DeleteView) op;
-            task = new RemoveElementTask(extPackage, context, deleteView, session);
+            task = new RemoveElementTask(extPackage, context, deleteView, interpreter);
         } else if (op instanceof ExternalJavaAction) {
             final ExternalJavaAction externalJavaAction = (ExternalJavaAction) op;
             task = new ExternalJavaActionTask(context, extPackage, externalJavaAction, session, uiCallback);
@@ -150,9 +156,7 @@ public class ModelOperationToTask implements Function<ModelOperation, ICommandTa
         return task;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public ICommandTask apply(ModelOperation from) {
         ICommandTask result = createTask(from);
         if (from instanceof ContainerModelOperation) {

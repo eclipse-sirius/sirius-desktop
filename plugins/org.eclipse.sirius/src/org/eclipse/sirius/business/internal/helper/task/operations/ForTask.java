@@ -19,10 +19,10 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.ICreationTask;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.ExecuteToolOperationTask;
 import org.eclipse.sirius.business.internal.helper.task.IDeletionTask;
 import org.eclipse.sirius.business.internal.helper.task.IModificationTask;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
@@ -40,11 +40,9 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 public class ForTask extends AbstractOperationTask implements ICreationTask, IDeletionTask {
 
     /** the user interface callback. */
-    private UICallBack uiCallback;
+    private final UICallBack uiCallback;
 
-    private Session session;
-
-    private For forOp;
+    private final For forOp;
 
     /**
      * Defualt constructor.
@@ -55,23 +53,18 @@ public class ForTask extends AbstractOperationTask implements ICreationTask, IDe
      *            the command context
      * @param forOp
      *            the operation
-     * @param session
-     *            the {@link Session} to be used to this task
+     * @param interpreter
+     *            the interpreter to use.
      * @param uiCallback
      *            the {@link UICallBack}
      */
-    public ForTask(final CommandContext context, final ModelAccessor extPackage, final For forOp, final Session session, final UICallBack uiCallback) {
-        super(context, extPackage, session.getInterpreter());
+    public ForTask(CommandContext context, ModelAccessor extPackage, For forOp, IInterpreter interpreter, UICallBack uiCallback) {
+        super(context, extPackage, interpreter);
         this.forOp = forOp;
-        this.session = session;
         this.uiCallback = uiCallback;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
-     */
+    @Override
     public void execute() throws MetaClassNotFoundException, FeatureNotFoundException {
 
         // create at the runtime the children tasks.
@@ -87,7 +80,7 @@ public class ForTask extends AbstractOperationTask implements ICreationTask, IDe
                 childOperationsContext = (EObject) currentTarget;
             }
 
-            childTask = new InterpretedExpressionVariableTask(context, extPackage, InterpretedExpressionVariableTask.KIND_SET, iteratorName, currentTarget, session.getInterpreter());
+            childTask = new InterpretedExpressionVariableTask(context, extPackage, InterpretedExpressionVariableTask.KIND_SET, iteratorName, currentTarget, interpreter);
             this.getChildrenTasks().add(childTask);
             final Iterator<ModelOperation> iterModelOperations = forOp.getSubModelOperations().iterator();
             while (iterModelOperations.hasNext()) {
@@ -96,7 +89,7 @@ public class ForTask extends AbstractOperationTask implements ICreationTask, IDe
                 childTask = new ExecuteToolOperationTask(extPackage, childOperationsContext, context.getRepresentation(), currentOperation, uiCallback);
                 this.getChildrenTasks().add(childTask);
             }
-            childTask = new InterpretedExpressionVariableTask(context, extPackage, InterpretedExpressionVariableTask.KIND_UNSET, iteratorName, currentTarget, session.getInterpreter());
+            childTask = new InterpretedExpressionVariableTask(context, extPackage, InterpretedExpressionVariableTask.KIND_UNSET, iteratorName, currentTarget, interpreter);
             this.getChildrenTasks().add(childTask);
         }
 
@@ -108,31 +101,17 @@ public class ForTask extends AbstractOperationTask implements ICreationTask, IDe
         }
     }
 
-    /**
-     * This task execute itself the children tacks. {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.AbstractCommandTask#executeMyselfChildrenTasks()
-     */
     @Override
     public boolean executeMyselfChildrenTasks() {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
-     */
+    @Override
     public String getLabel() {
         return "a for task";
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.internal.helper.task.IModificationTask#getCreatedReferences()
-     */
+    @Override
     public Collection<EObject> getCreatedReferences() {
         final Collection<EObject> result = new HashSet<EObject>();
         final Iterator<ICommandTask> it = this.getChildrenTasks().iterator();
@@ -145,12 +124,7 @@ public class ForTask extends AbstractOperationTask implements ICreationTask, IDe
         return result;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.internal.helper.task.IModificationTask#getAffectedElements()
-     */
+    @Override
     public Collection<EObject> getAffectedElements() {
         final Collection<EObject> result = new HashSet<EObject>();
         final Iterator<ICommandTask> it = this.getChildrenTasks().iterator();
@@ -163,12 +137,7 @@ public class ForTask extends AbstractOperationTask implements ICreationTask, IDe
         return result;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICreationTask#getCreatedElements()
-     */
+    @Override
     public Collection<EObject> getCreatedElements() {
         final Collection<EObject> result = new HashSet<EObject>();
         final Iterator<ICommandTask> it = this.getChildrenTasks().iterator();
@@ -181,12 +150,7 @@ public class ForTask extends AbstractOperationTask implements ICreationTask, IDe
         return result;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.internal.helper.task.IDeletionTask#getDeletedElements()
-     */
+    @Override
     public Collection<EObject> getDeletedElements() {
         final Collection<EObject> result = new HashSet<EObject>();
         final Iterator<ICommandTask> it = this.getChildrenTasks().iterator();
@@ -199,11 +163,7 @@ public class ForTask extends AbstractOperationTask implements ICreationTask, IDe
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.ICreationTask#getCreatedRepresentationElements()
-     */
+    @Override
     public Collection<DRepresentationElement> getCreatedRepresentationElements() {
         return Collections.emptySet();
     }

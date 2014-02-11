@@ -55,17 +55,17 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.ElementSelectVariableI
  */
 public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
 
-    private ReconnectEdgeDescription tool;
+    private final ReconnectEdgeDescription tool;
 
-    private DEdge edge;
+    private final DEdge edge;
 
-    private EdgeTarget reconnectionSource;
+    private final EdgeTarget reconnectionSource;
 
-    private EdgeTarget reconnectionTarget;
+    private final EdgeTarget reconnectionTarget;
 
-    private EdgeTarget oldTarget;
+    private final EdgeTarget oldTarget;
 
-    private EdgeTarget oldSource;
+    private final EdgeTarget oldSource;
 
     /**
      * Construct a new Reconnection command builder.
@@ -93,6 +93,7 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
      * 
      * @see org.eclipse.sirius.tools.internal.command.builders.CommandBuilder#buildCommand()
      */
+    @Override
     public Command buildCommand() {
 
         Command result = UnexecutableCommand.INSTANCE;
@@ -131,7 +132,7 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
 
             Option<DRepresentation> representation = new EObjectQuery(edge).getRepresentation();
             final CommandContext edgeContext = new CommandContext(edge, representation.get());
-            cmd.getTasks().add(new SetValueTask(edgeContext, this.modelAccessor, setObject, new EObjectQuery(edge).getSession()));
+            cmd.getTasks().add(new SetValueTask(edgeContext, this.modelAccessor, setObject, new EObjectQuery(edge).getSession().getInterpreter()));
 
             final EdgeMapping newEdgeMapping = getEdgeMappingReconnector();
             addRefreshTask(edge, cmd, tool);
@@ -216,10 +217,12 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
         final Object otherEndValue = getOtherEndValue();
 
         return new AbstractCommandTask() {
+            @Override
             public String getLabel() {
                 return "Initializing Variables";
             }
 
+            @Override
             public void execute() throws MetaClassNotFoundException, FeatureNotFoundException {
                 // We declare the OtherEndVariable as a subVariable of
                 // SourceView
@@ -278,6 +281,7 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
     /**
      * {@inheritDoc}
      */
+    @Override
     protected String getEnclosingCommandLabel() {
         return new IdentifiedElementQuery(tool).getLabel();
     }
