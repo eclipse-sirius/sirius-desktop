@@ -138,15 +138,29 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
                     cmd = new InvalidPermissionCommand(domain, element.eContainer());
                 } else {
                     final SiriusCommand result = new SiriusCommand(domain);
-                    if (getDeleteTool(element) != null) {
-                        addDeleteTreeElementFromTool(result, element, getDeleteTool(element));
-                        addRefreshTask(TreeHelper.getTree(element), result, getDeleteTool(element));
+                    TreeItemDeletionTool deleteTool = getDeleteTool(element);
+                    DTree parentTree = TreeHelper.getTree(element);
+                    if (deleteTool != null) {
+                        addDeleteTreeElementFromTool(result, element, deleteTool);
+                        addRefreshTask(parentTree, result, deleteTool);
                         cmd = new NoNullResourceCommand(result, element);
                     } else {
                         final Set<EObject> allSemanticElements = new HashSet<EObject>();
                         // Get the corresponding semanticElement (and its
                         // children)
                         addSemanticElementsToDestroy(element, allSemanticElements);
+
+                        /*
+                         * Now delete all the treen elements corresponding to
+                         * the semantic elements to delete
+                         */
+                        if (parentTree != null) {
+                            final Set<DSemanticDecorator> tableElements = commandTaskHelper.getDElementToClearFromSemanticElements(parentTree, allSemanticElements);
+                            for (final DSemanticDecorator decorator : tableElements) {
+                                result.getTasks().add(new DeleteTreeElementTask(decorator, modelAccessor));
+                            }
+                        }
+
                         /*
                          * Now delete all the semantic elements
                          */
@@ -155,7 +169,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
                             final EObject eObj = it.next();
                             result.getTasks().add(new DeleteTreeElementTask(eObj, modelAccessor));
                         }
-                        addRefreshTask(TreeHelper.getTree(element), result, getDeleteTool(element));
+                        addRefreshTask(parentTree, result, deleteTool);
                         cmd = new NoNullResourceCommand(result, element);
                     }
                 }
@@ -450,9 +464,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
         if (dropTool.getFirstModelOperation() != null) {
             result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(droppedTree, interpreterContext, dropTool.getFirstModelOperation()));
         }
-        // Step 3 : adding task to refresh and remove dangling
-        // references
-
+        // Step 3 : adding task to refresh
         if (droppedTree != null) {
             addRefreshTask(droppedTree, result, dropTool);
         }
@@ -496,8 +508,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
         DTree targetTree = TreeHelper.getTree(selectedItem);
         result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(targetTree, interpreterContext, operationAction.getInitialOperation().getFirstModelOperations()));
 
-        // Step 3 : adding task to refresh and remove dangling
-        // references
+        // Step 3 : adding task to refresh
         addRefreshTask(targetTree, result, null);
 
         return result.chain(new RecordingCommand(domain) {

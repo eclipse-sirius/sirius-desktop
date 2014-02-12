@@ -126,15 +126,29 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                 } else {
 
                     final SiriusCommand result = new SiriusCommand(domain);
-                    if (getDeleteTool(element) != null) {
-                        addDeleteTableElementFromTool(result, element, getDeleteTool(element));
-                        addRefreshTask(TableHelper.getTable(element), result, getDeleteTool(element));
+                    DeleteTool deleteTool = getDeleteTool(element);
+                    DTable parentTable = TableHelper.getTable(element);
+                    if (deleteTool != null) {
+                        addDeleteTableElementFromTool(result, element, deleteTool);
+                        addRefreshTask(parentTable, result, deleteTool);
                         cmd = new NoNullResourceCommand(result, element);
                     } else {
                         final Set<EObject> allSemanticElements = new HashSet<EObject>();
                         // Get the corresponding semanticElement (and its
                         // children)
                         addSemanticElementsToDestroy(element, allSemanticElements);
+
+                        /*
+                         * Now delete all the table corresponding to the
+                         * semantic elements to delete
+                         */
+                        if (parentTable != null) {
+                            final Set<DSemanticDecorator> tableElements = commandTaskHelper.getDElementToClearFromSemanticElements(parentTable, allSemanticElements);
+                            for (final DSemanticDecorator decorator : tableElements) {
+                                result.getTasks().add(new DeleteTableElementTask(decorator, modelAccessor));
+                            }
+                        }
+
                         /*
                          * Now delete all the semantic elements
                          */
@@ -143,7 +157,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                             final EObject eObj = it.next();
                             result.getTasks().add(new DeleteTableElementTask(eObj, modelAccessor));
                         }
-                        addRefreshTask(TableHelper.getTable(element), result, getDeleteTool(element));
+                        addRefreshTask(parentTable, result, deleteTool);
                         cmd = new NoNullResourceCommand(result, element);
                     }
                 }

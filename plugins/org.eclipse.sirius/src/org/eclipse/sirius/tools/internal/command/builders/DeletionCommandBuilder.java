@@ -19,7 +19,6 @@ import java.util.Set;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
@@ -44,7 +43,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.NoNullResourceCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -199,14 +197,13 @@ public class DeletionCommandBuilder extends AbstractCommandBuilder {
             // the command
             if (semanticElementCanBeDeleted) {
                 final DCommand result = createEnclosingCommand();
-                final DDiagram foundDiagram = SiriusUtil.findDiagram(diagramElement);
                 setTool();
                 if (tool != null) {
                     addDeleteDiagramElementFromTool(result);
                     addRefreshTask(diagramElement, result, tool);
                     cmd = new NoNullResourceCommand(result, diagramElement);
                 } else {
-                    cmd = buildDeleteDiagramElementCommandWithoutTool(result, foundDiagram);
+                    cmd = buildDeleteDiagramElementCommandWithoutTool(result);
                 }
             }
         }
@@ -281,7 +278,7 @@ public class DeletionCommandBuilder extends AbstractCommandBuilder {
         return result;
     }
 
-    private Command buildDeleteDiagramElementCommandWithoutTool(final DCommand result, final DDiagram foundDiagram) {
+    private Command buildDeleteDiagramElementCommandWithoutTool(final DCommand result) {
         Command cmd;
 
         final Set<EObject> allSemanticElements = getSemanticElementsToDestroy(diagramElement);
@@ -296,19 +293,21 @@ public class DeletionCommandBuilder extends AbstractCommandBuilder {
              * Now delete all the diagram and diagram elements corresponding to
              * the semantic elements to delete
              */
-            EObjectQuery eObjectQuery = new EObjectQuery(diagramElement);
-            DRepresentation dRepresentation = eObjectQuery.getRepresentation().get();
-            final Set<DSemanticDecorator> diagramElements = taskHelper.getDElementToClearFromSemanticElements(dRepresentation, allSemanticElements);
-            for (final DSemanticDecorator decorator : diagramElements) {
-                result.getTasks().add(new DeleteDDiagramElementTask(decorator, modelAccessor));
-                // If the semantic decorator is related to edges, these edges
-                // should also be deleted
-                if (decorator instanceof EdgeTarget) {
-                    for (DEdge incommingEdge : ((EdgeTarget) decorator).getIncomingEdges()) {
-                        result.getTasks().add(new DeleteDDiagramElementTask(incommingEdge, modelAccessor));
-                    }
-                    for (DEdge outgoingEdge : ((EdgeTarget) decorator).getOutgoingEdges()) {
-                        result.getTasks().add(new DeleteDDiagramElementTask(outgoingEdge, modelAccessor));
+            final DDiagram parentDiagram = diagramElement.getParentDiagram();
+            if (parentDiagram != null) {
+                final Set<DSemanticDecorator> diagramElements = taskHelper.getDElementToClearFromSemanticElements(parentDiagram, allSemanticElements);
+                for (final DSemanticDecorator decorator : diagramElements) {
+                    result.getTasks().add(new DeleteDDiagramElementTask(decorator, modelAccessor));
+                    // If the semantic decorator is related to edges, these
+                    // edges
+                    // should also be deleted
+                    if (decorator instanceof EdgeTarget) {
+                        for (DEdge incommingEdge : ((EdgeTarget) decorator).getIncomingEdges()) {
+                            result.getTasks().add(new DeleteDDiagramElementTask(incommingEdge, modelAccessor));
+                        }
+                        for (DEdge outgoingEdge : ((EdgeTarget) decorator).getOutgoingEdges()) {
+                            result.getTasks().add(new DeleteDDiagramElementTask(outgoingEdge, modelAccessor));
+                        }
                     }
                 }
             }
@@ -322,7 +321,7 @@ public class DeletionCommandBuilder extends AbstractCommandBuilder {
             }
 
             // Add a refresh task if the autoRefresh is on.
-            addRefreshTask(diagramElement, result, tool);
+            addRefreshTask(parentDiagram, result, tool);
             /* Avoid notifications of the outline on each change */
             cmd = new NoNullResourceCommand(result, diagramElement);
         }
