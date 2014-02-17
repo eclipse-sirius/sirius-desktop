@@ -20,8 +20,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
-import org.eclipse.sirius.diagram.graphical.edit.policies.ContainerCreationEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.refresh.RefreshLayoutCommand;
@@ -36,12 +34,14 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.Seque
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceContainerCreationPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceZOrderingRefresher;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.api.properties.PropertiesService;
+import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
+import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ContainerCreationEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.properties.PropertiesService;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
-import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider;
 
 import com.google.common.base.Predicate;
@@ -98,7 +98,7 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
         ExecutionOperations.replaceEditPolicy(this, EditPolicy.CONTAINER_ROLE, new SequenceContainerCreationPolicy(), ContainerCreationEditPolicy.class);
 
         // Handle $endBefore for launch tools.
-        installEditPolicy(org.eclipse.sirius.diagram.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
+        installEditPolicy(org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
     }
 
     /**
@@ -182,7 +182,7 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
             /**
              * {@inheritDoc}
              * 
-             * @see org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider#getCommandFactory(org.eclipse.emf.transaction.TransactionalEditingDomain)
+             * @see org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider#getCommandFactory(org.eclipse.emf.transaction.TransactionalEditingDomain)
              */
             public IDiagramCommandFactory getCommandFactory(final TransactionalEditingDomain editingDomain) {
                 if (commandFactory == null) {

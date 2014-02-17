@@ -29,9 +29,9 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionE
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.sirius.diagram.tools.internal.command.UndoRedoCapableEMFCommandFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.tools.internal.command.UndoRedoCapableEMFCommandFactory;
 
 /**
  * A custom EMF Command Factory to specialize the delete behavior for sequence

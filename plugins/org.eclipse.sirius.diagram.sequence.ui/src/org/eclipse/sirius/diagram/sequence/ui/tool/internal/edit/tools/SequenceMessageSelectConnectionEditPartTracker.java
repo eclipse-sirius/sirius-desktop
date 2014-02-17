@@ -22,7 +22,7 @@ import org.eclipse.gmf.runtime.gef.ui.internal.tools.SelectConnectionEditPartTra
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.sequence.util.Range;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
  * Specific connection selection tracker to handle move of messageToSelf

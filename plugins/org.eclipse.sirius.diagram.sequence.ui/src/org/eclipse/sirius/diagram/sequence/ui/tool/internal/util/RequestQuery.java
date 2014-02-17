@@ -45,7 +45,7 @@ import com.google.common.collect.Sets;
  * 
  * @author pcdavid
  */
-public class RequestQuery extends org.eclipse.sirius.diagram.business.internal.query.RequestQuery {
+public class RequestQuery extends org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery {
 
     /**
      * Constaint to check if request if from another indirect request.

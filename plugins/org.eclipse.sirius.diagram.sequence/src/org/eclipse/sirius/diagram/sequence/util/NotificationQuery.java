@@ -17,7 +17,7 @@ import org.eclipse.emf.common.notify.Notification;
  * 
  * @author pcdavid
  */
-public class NotificationQuery extends org.eclipse.sirius.diagram.tools.internal.util.NotificationQuery {
+public class NotificationQuery extends org.eclipse.sirius.diagram.ui.tools.internal.util.NotificationQuery {
     /**
      * Constructor.
      * 

@@ -11,8 +11,7 @@
 package org.eclipse.sirius.sample.ecore.design.editor;
 
 import org.eclipse.emf.common.util.URI;
-
-import org.eclipse.sirius.diagram.tools.api.editor.AbstractSpecificDDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.AbstractSpecificDDiagramEditor;
 
 /**
  * Example specific editor.

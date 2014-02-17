@@ -21,9 +21,9 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool;
+import org.eclipse.sirius.diagram.tools.internal.command.builders.NodeCreationCommandBuilder;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.tools.internal.command.builders.NodeCreationCommandBuilder;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 
 /**

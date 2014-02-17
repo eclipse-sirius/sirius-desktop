@@ -18,9 +18,9 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ShapeCompartmentFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.CombinedFragmentInvisibleResizableCompartmentFigure;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 
 /**
  * A specific DNodeContainerViewNodeContainerCompartmentEditPart to remove the
@@ -67,7 +67,7 @@ public class CombinedFragmentCompartmentEditPart extends DNodeContainerViewNodeC
         super.createDefaultEditPolicies();
 
         // Handle $endBefore for launch tools.
-        installEditPolicy(org.eclipse.sirius.diagram.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
+        installEditPolicy(org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
     }
 
     /**
@@ -96,7 +96,7 @@ public class CombinedFragmentCompartmentEditPart extends DNodeContainerViewNodeC
      */
     protected void refreshVisuals() {
         super.refreshVisuals();
-        
+
         // TODO: Remove this when Sequence will be based on generic region
         // support.
         if (getFigure() instanceof ResizableCompartmentFigure) {

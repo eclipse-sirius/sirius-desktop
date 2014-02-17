@@ -28,7 +28,6 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
@@ -36,7 +35,8 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.EndOfLifeE
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.LifelineNodeFigure;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
  * A specific router for the messages on a sequence diagram.

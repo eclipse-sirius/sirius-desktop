@@ -23,7 +23,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.Abstr
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.HorizontalGuide;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.RangeGuide;
 import org.eclipse.sirius.diagram.sequence.util.Range;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.swt.graphics.Color;
 
 import com.google.common.base.Predicates;

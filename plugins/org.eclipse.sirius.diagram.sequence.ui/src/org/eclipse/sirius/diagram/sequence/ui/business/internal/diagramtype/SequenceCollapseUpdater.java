@@ -17,11 +17,11 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.CollapseUpdater;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ObservationPoint;
+import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CollapseUpdater;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ICollapseMode;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -32,7 +32,7 @@ import com.google.common.collect.Iterables;
 
 /**
  * A specific @link
- * {@link org.eclipse.sirius.business.api.diagramtype.ICollapseUpdater} to
+ * {@link org.eclipse.sirius.diagram.business.api.diagramtype.ICollapseUpdater} to
  * manage correctly the
  * {@link org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution}
  * .

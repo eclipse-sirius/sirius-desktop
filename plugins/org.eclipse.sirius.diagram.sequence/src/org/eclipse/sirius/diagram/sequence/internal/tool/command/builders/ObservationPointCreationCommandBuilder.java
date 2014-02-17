@@ -22,9 +22,9 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.description.tool.ObservationPointCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
+import org.eclipse.sirius.diagram.tools.internal.command.builders.NodeCreationCommandBuilder;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.tools.internal.command.builders.NodeCreationCommandBuilder;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 
 import com.google.common.base.Predicates;

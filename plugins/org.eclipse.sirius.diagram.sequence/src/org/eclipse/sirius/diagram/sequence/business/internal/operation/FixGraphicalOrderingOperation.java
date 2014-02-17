@@ -12,10 +12,10 @@ package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import java.util.List;
 
-import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
+import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 
 import com.google.common.collect.Lists;
 

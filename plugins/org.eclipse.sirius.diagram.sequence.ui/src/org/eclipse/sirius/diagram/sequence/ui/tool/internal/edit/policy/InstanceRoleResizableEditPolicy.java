@@ -32,8 +32,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
-import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
-import org.eclipse.sirius.diagram.graphical.edit.policies.AirResizableEditPolicy;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
@@ -47,7 +45,9 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRo
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.InstanceRoleMoveValidator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.InstanceRoleResizeValidator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
-import org.eclipse.sirius.diagram.tools.api.command.DoNothingCommand;
+import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirResizableEditPolicy;
+import org.eclipse.sirius.diagram.ui.tools.api.command.DoNothingCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.ext.base.Option;
 

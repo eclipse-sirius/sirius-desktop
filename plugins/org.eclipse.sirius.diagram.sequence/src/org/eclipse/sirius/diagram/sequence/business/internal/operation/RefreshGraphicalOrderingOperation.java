@@ -14,7 +14,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.VerticalPositionFunction;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
@@ -22,6 +21,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.ordering.RefreshOrd
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
+import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 
 import com.google.common.base.Functions;
 import com.google.common.base.Predicate;

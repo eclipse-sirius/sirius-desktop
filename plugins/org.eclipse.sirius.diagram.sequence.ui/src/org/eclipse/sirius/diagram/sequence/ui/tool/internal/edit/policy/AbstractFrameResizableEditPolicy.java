@@ -27,7 +27,6 @@ import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.requests.AlignmentRequest;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.sirius.diagram.graphical.edit.policies.AirResizableEditPolicy;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
@@ -37,8 +36,9 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.HorizontalGui
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.RangeGuide;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
-import org.eclipse.sirius.diagram.tools.api.draw2d.ui.figures.FigureUtilities;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirResizableEditPolicy;
+import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.swt.graphics.Color;
 
 import com.google.common.collect.Lists;

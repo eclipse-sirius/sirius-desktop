@@ -21,7 +21,6 @@ import org.eclipse.sirius.diagram.BracketEdgeStyle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
@@ -50,6 +49,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDi
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageNameEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.StateEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
 /**
  * Provides specific edit parts for Sirius Sequence Diagrams.

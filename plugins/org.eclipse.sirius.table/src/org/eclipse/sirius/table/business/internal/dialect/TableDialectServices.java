@@ -21,16 +21,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-
-import com.google.common.base.Function;
-import com.google.common.base.Supplier;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.description.contribution.ContributionPoint;
 import org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
@@ -44,6 +34,12 @@ import org.eclipse.sirius.business.internal.contribution.ModelContributorAdapter
 import org.eclipse.sirius.business.internal.contribution.RepresentationExtensionsFinder;
 import org.eclipse.sirius.business.internal.contribution.SiriusReferenceResolver;
 import org.eclipse.sirius.business.internal.movida.Movida;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.description.contribution.ContributionPoint;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.table.business.api.refresh.DTableSynchronizer;
 import org.eclipse.sirius.table.business.internal.dialect.description.TableInterpretedExpressionQuery;
 import org.eclipse.sirius.table.business.internal.refresh.DTableSynchronizerImpl;
@@ -59,9 +55,13 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ext.emf.AllContents;
+
+import com.google.common.base.Function;
+import com.google.common.base.Supplier;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 /**
  * Services for the table dialect.
@@ -177,22 +177,22 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
         Session session = SessionManager.INSTANCE.getSession(table.getTarget());
         IncrementalModelContributor imc = getModelContributor(session, table);
         EObject result = imc.apply(table.getDescription(), new RepresentationExtensionsFinder(table.getDescription()).findAllRelevantViewpoints(session));
-//        if (table.getEffectiveDescription() == null) {
-//            table.setEffectiveDescription((TableDescription) result);
-//        }
-        
+        // if (table.getEffectiveDescription() == null) {
+        // table.setEffectiveDescription((TableDescription) result);
+        // }
+
         Supplier<EObject> efSupplier = new Supplier<EObject>() {
             public EObject get() {
-                //return table.getEffectiveDescription();
+                // return table.getEffectiveDescription();
                 return null;
             }
         };
         Supplier<EList<ContributionPoint>> cpSupplier = new Supplier<EList<ContributionPoint>>() {
             public EList<ContributionPoint> get() {
-                //return table.getContributionPoints();
+                // return table.getContributionPoints();
                 return null;
             }
-        }; 
+        };
         updateContributionPoints(table, efSupplier, cpSupplier, imc);
     }
 
@@ -207,16 +207,16 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
     private IncrementalModelContributor createModelContributor(Session session, final DTable table) {
         Supplier<EObject> efSupplier = new Supplier<EObject>() {
             public EObject get() {
-                //return table.getEffectiveDescription();
+                // return table.getEffectiveDescription();
                 return null;
             }
         };
         Supplier<Iterable<ContributionPoint>> cpSupplier = new Supplier<Iterable<ContributionPoint>>() {
             public Iterable<ContributionPoint> get() {
-                //return table.getContributionPoints();
+                // return table.getContributionPoints();
                 return null;
             }
-        }; 
+        };
         SiriusReferenceResolver resolver = new SiriusReferenceResolver(session.getInterpreter());
         Function<EObject, Object> idFunction = new ContributionTrakingIdentifier(efSupplier, cpSupplier, new IntrinsicPathIdentifier());
         IncrementalModelContributor imc = new TableModelContributor(new TableContributionsFinder(table.getDescription()), resolver, idFunction);
@@ -252,10 +252,10 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
             DTable table = (DTable) representation;
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(table.getTarget());
             ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
-            
+
             Supplier<EObject> efSupplier = new Supplier<EObject>() {
                 public EObject get() {
-                    //return table.getEffectiveDescription();
+                    // return table.getEffectiveDescription();
                     return null;
                 }
             };
@@ -357,5 +357,12 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
      */
     public boolean handles(RepresentationDescription representationDescription) {
         return representationDescription instanceof TableDescription;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public boolean handles(RepresentationExtensionDescription representationExtensionDescription) {
+        return false;
     }
 }

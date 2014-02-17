@@ -31,10 +31,10 @@ import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
 import org.eclipse.sirius.diagram.sequence.util.Range;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IBorderItemOffsets;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;

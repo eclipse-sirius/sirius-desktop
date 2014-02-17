@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 
 /**
  * Common interface for all the elements of a sequence diagram which represent

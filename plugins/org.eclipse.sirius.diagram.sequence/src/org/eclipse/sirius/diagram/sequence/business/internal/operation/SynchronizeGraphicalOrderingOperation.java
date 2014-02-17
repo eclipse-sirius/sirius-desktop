@@ -11,10 +11,10 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.SequenceLayout;
+import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Preconditions;

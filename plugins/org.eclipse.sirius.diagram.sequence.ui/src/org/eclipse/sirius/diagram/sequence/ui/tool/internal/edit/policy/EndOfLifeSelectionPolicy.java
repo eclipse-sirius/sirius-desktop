@@ -25,8 +25,6 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeQuery;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
@@ -46,9 +44,11 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceGraph
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.SequenceDiagramEPQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 import com.google.common.base.Preconditions;
 

@@ -22,7 +22,6 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
@@ -32,6 +31,7 @@ import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescriptio
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
 import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
+import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 
 import com.google.common.base.Function;

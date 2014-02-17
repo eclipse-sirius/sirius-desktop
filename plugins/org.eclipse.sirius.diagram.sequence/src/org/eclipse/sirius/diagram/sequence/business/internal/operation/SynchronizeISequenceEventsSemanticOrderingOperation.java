@@ -17,12 +17,11 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.componentization.DiagramComponentizationManager;
-import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
+import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
@@ -38,6 +37,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool;
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
+import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 

@@ -19,8 +19,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramContainerEditPartOperation;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
@@ -29,6 +27,8 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.Seque
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.OperandResizableEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.OperandFigure;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.viewpoint.DStylizable;
 
 import com.google.common.base.Preconditions;
@@ -90,7 +90,7 @@ public class OperandEditPart extends DNodeContainer2EditPart implements ISequenc
         super.createDefaultEditPolicies();
 
         // Handle $endBefore for launch tools.
-        installEditPolicy(org.eclipse.sirius.diagram.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
+        installEditPolicy(org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
     }
 
     /**

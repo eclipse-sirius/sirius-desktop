@@ -28,7 +28,6 @@ import org.eclipse.gmf.runtime.diagram.ui.util.EditPartUtil;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
@@ -37,6 +36,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.Sequence
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.tools.SequenceMessageSelectConnectionEditPartTracker;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.SequenceMessageLabelLocator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceMessagesRouter;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 
 /**
  * The edit part for sequence diagrams messages.
@@ -100,7 +100,7 @@ public class SequenceMessageEditPart extends DEdgeEditPart implements ISequenceE
         super.createDefaultEditPolicies();
 
         // Handle $endBefore for launch tools.
-        installEditPolicy(org.eclipse.sirius.diagram.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
+        installEditPolicy(org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
     }
 
     /**

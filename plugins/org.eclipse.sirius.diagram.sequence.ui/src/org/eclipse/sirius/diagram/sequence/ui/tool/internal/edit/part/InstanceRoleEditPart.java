@@ -17,7 +17,6 @@ import org.eclipse.gef.Request;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
@@ -29,6 +28,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.Sequence
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.SouthCenteredBorderItemLocator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.LayoutEditPartConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 
 /**
  * The edit part for lifeline instance roles.
@@ -129,7 +129,7 @@ public class InstanceRoleEditPart extends DNodeEditPart {
         installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new InstanceRoleSiriusGraphicalNodeEditPolicy());
 
         // Handle $endBefore for launch tools.
-        installEditPolicy(org.eclipse.sirius.diagram.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
+        installEditPolicy(org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants.REQ_LAUNCH_TOOL, new SequenceLaunchToolEditPolicy());
     }
 
     public InstanceRole getInstanceRole() {

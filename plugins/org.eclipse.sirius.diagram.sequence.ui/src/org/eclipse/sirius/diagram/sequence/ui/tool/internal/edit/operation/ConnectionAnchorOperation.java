@@ -24,13 +24,13 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.NoteAttachmentEditP
 import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.internal.view.factories.ViewLocationHint;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.SequenceSlidableAnchor;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
+import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
 
 /**
  * Helper class to business code between different kinds of edit parts when

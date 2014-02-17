@@ -22,7 +22,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.EndOfLifeE
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.sequence.util.Range;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
  * Helper class to factor common code for EndOfLife management.

@@ -24,11 +24,11 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
-import org.eclipse.sirius.diagram.tools.internal.commands.emf.EMFCommandFactoryUI;
+import org.eclipse.sirius.diagram.tools.internal.command.builders.EdgeCreationCommandBuilder;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.EMFCommandFactoryUI;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.tools.internal.command.builders.EdgeCreationCommandBuilder;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 

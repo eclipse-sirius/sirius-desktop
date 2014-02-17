@@ -12,7 +12,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
-import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
+import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 
 import com.google.common.base.Preconditions;
 

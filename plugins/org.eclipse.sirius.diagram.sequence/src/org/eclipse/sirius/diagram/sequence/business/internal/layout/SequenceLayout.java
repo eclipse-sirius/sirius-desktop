@@ -15,7 +15,6 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
@@ -23,6 +22,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.flag.Sequenc
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.horizontal.SequenceHorizontalLayout;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.observation.SequenceObservationLayout;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.vertical.SequenceVerticalLayout;
+import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.collect.Iterables;

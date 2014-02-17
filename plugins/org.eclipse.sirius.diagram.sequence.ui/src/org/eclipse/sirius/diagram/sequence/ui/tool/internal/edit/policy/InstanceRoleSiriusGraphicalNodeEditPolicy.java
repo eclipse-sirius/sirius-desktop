@@ -26,11 +26,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode2EditPart;
-import org.eclipse.sirius.diagram.internal.view.factories.ViewLocationHint;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
@@ -50,18 +46,22 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEd
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.CreateMessageCreationValidator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLayoutData;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
- * {@link SiriusGraphicalNodeEditPolicy} specific to sequence to manage
- * creation of message targeting InstanceRole (create & destroy messages).
+ * {@link SiriusGraphicalNodeEditPolicy} specific to sequence to manage creation
+ * of message targeting InstanceRole (create & destroy messages).
  * 
  * @author edugueperoux
  */
@@ -286,10 +286,11 @@ public class InstanceRoleSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNo
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.graphical.edit.policies.SiriusGraphicalNodeEditPolicy#buildCreateEdgeCommand(org.eclipse.gef.requests.CreateConnectionRequest,
-     *      org.eclipse.sirius.diagram.EdgeTarget, org.eclipse.sirius.diagram.EdgeTarget,
+     * @see org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy#buildCreateEdgeCommand(org.eclipse.gef.requests.CreateConnectionRequest,
+     *      org.eclipse.sirius.diagram.EdgeTarget,
+     *      org.eclipse.sirius.diagram.EdgeTarget,
      *      org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription,
-     *      org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider,
+     *      org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider,
      *      org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData)
      */
     @Override

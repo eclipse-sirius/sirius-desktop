@@ -27,7 +27,6 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalC
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
-import org.eclipse.sirius.diagram.internal.view.factories.ViewLocationHint;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
@@ -43,11 +42,12 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceE
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceGraphicalHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
 import org.eclipse.sirius.diagram.sequence.util.Range;
-import org.eclipse.sirius.diagram.tools.api.command.GMFCommandWrapper;
+import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
+import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
-import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
  * Helper class to share code between different kinds of edit parts when

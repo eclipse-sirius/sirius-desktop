@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.query;
 
-import org.eclipse.sirius.business.api.diagramtype.HeaderData;
+import org.eclipse.sirius.diagram.business.api.diagramtype.HeaderData;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.RGBValues;

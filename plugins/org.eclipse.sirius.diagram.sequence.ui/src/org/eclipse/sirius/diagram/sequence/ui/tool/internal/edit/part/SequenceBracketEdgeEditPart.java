@@ -13,9 +13,9 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 import java.util.List;
 
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.business.internal.bracket.BracketRelativeBendpoint;
-import org.eclipse.sirius.diagram.business.internal.bracket.Direction;
-import org.eclipse.sirius.diagram.graphical.edit.part.specific.BracketEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.BracketRelativeBendpoint;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.Direction;
+import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
 
 import com.google.common.collect.Lists;
 

@@ -20,9 +20,9 @@ import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.requests.AlignmentRequest;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.diagram.ui.internal.requests.ChangeBoundsDeferredRequest;
-import org.eclipse.sirius.diagram.graphical.edit.policies.AirResizableEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LostMessageEndEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirResizableEditPolicy;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;

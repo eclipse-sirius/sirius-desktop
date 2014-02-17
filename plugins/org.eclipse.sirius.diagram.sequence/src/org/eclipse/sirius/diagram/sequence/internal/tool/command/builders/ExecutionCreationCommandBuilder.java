@@ -23,9 +23,9 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
 import org.eclipse.sirius.diagram.sequence.description.tool.ExecutionCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
+import org.eclipse.sirius.diagram.tools.internal.command.builders.NodeCreationCommandBuilder;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.tools.internal.command.builders.NodeCreationCommandBuilder;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 
 /**

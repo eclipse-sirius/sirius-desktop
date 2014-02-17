@@ -75,10 +75,10 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.Posit
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.HorizontalGuide;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
 import org.eclipse.sirius.diagram.sequence.util.Range;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.swt.graphics.Color;
 
 import com.google.common.base.Function;

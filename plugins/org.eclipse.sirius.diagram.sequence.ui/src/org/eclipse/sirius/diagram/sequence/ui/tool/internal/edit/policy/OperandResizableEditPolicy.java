@@ -33,7 +33,6 @@ import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.graphical.edit.policies.AirResizableEditPolicy;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
@@ -41,6 +40,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEdi
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.OperandResizeValidator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirResizableEditPolicy;
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.collect.Iterables;

@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.sequence.description.tool.impl.MessageCreationToolImpl;
-import org.eclipse.sirius.tools.api.refresh.BestMappingGetter;
+import org.eclipse.sirius.diagram.tools.api.refresh.BestMappingGetter;
 
 /**
  * Implementation of <code>MessageCreationTool</code>. Uses the same code as the

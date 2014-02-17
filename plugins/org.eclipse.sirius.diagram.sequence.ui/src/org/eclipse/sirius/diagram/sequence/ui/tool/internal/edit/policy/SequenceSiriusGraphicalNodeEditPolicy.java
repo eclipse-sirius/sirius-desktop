@@ -25,13 +25,11 @@ import org.eclipse.gef.editpolicies.FeedbackHelper;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.ReconnectRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewRequest;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.parts.NoteEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -49,9 +47,11 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceGraph
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceMessagesRouter;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLayoutData;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
  * This edit policy is overridden to use our own connection router. This way
@@ -204,10 +204,11 @@ public class SequenceSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNodeEd
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.graphical.edit.policies.SiriusGraphicalNodeEditPolicy#buildCreateEdgeCommand(org.eclipse.gef.requests.CreateConnectionRequest,
-     *      org.eclipse.sirius.diagram.EdgeTarget, org.eclipse.sirius.diagram.EdgeTarget,
+     * @see org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy#buildCreateEdgeCommand(org.eclipse.gef.requests.CreateConnectionRequest,
+     *      org.eclipse.sirius.diagram.EdgeTarget,
+     *      org.eclipse.sirius.diagram.EdgeTarget,
      *      org.eclipse.sirius.viewpoint.description.tool.EdgeCreationDescription,
-     *      org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider,
+     *      org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider,
      *      org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData)
      */
     @Override

@@ -25,15 +25,14 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.sirius.business.api.diagramtype.HeaderData;
-import org.eclipse.sirius.business.api.diagramtype.ICollapseUpdater;
-import org.eclipse.sirius.business.api.diagramtype.IDiagramDescriptionProvider;
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.business.api.query.DDiagramGraphicalQuery;
+import org.eclipse.sirius.diagram.business.api.diagramtype.HeaderData;
+import org.eclipse.sirius.diagram.business.api.diagramtype.ICollapseUpdater;
+import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider;
+import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
@@ -64,6 +63,7 @@ import org.eclipse.sirius.diagram.sequence.provider.SequenceItemProviderAdapterF
 import org.eclipse.sirius.diagram.sequence.template.provider.TemplateItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype.SequenceCollapseUpdater;
 import org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype.SequenceToolInterpretedExpressionSwitch;
+import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -178,7 +178,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.diagramtype.IDiagramDescriptionProvider#handles(org.eclipse.emf.ecore.EPackage)
+     * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider#handles(org.eclipse.emf.ecore.EPackage)
      */
     public boolean handles(EPackage ePackage) {
         return DescriptionPackage.eINSTANCE.getNsURI().equals(ePackage.getNsURI()) || org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage.eINSTANCE.getNsURI().equals(ePackage.getNsURI());
@@ -188,7 +188,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.diagramtype.IDiagramDescriptionProvider#createInterpretedExpressionSwitch(org.eclipse.emf.ecore.EObject,
+     * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider#createInterpretedExpressionSwitch(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EStructuralFeature)
      */
     public IInterpretedExpressionTargetSwitch createInterpretedExpressionSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch parentSwitch) {
@@ -199,7 +199,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.diagramtype.IDiagramDescriptionProvider#allowsLayoutingModeActivation()
+     * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider#allowsLayoutingModeActivation()
      */
     public boolean allowsLayoutingModeActivation() {
         return false;
@@ -209,7 +209,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.diagramtype.IDiagramDescriptionProvider#allowsPinUnpin()
+     * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider#allowsPinUnpin()
      */
     public Predicate<DDiagramElement> allowsPinUnpin() {
         return Predicates.not(isSequenceDDiagramElement);
@@ -219,7 +219,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.diagramtype.IDiagramDescriptionProvider#allowsHideReveal()
+     * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider#allowsHideReveal()
      */
     public Predicate<DDiagramElement> allowsHideReveal() {
         return Predicates.not(isSequenceDDiagramElement);
@@ -229,7 +229,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.diagramtype.IDiagramDescriptionProvider#allowsCopyPasteLayout()
+     * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider#allowsCopyPasteLayout()
      */
     public Predicate<DSemanticDecorator> allowsCopyPasteLayout() {
         return Predicates.not(isSequenceSemanticDecorator);
@@ -315,7 +315,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.diagramtype.IDiagramDescriptionProvider#supportHeader()
+     * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider#supportHeader()
      */
     public boolean supportHeader() {
         return true;
@@ -324,7 +324,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.diagramtype.IDiagramDescriptionProvider#getHeaderData()
+     * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider#getHeaderData()
      */
     public LinkedList<HeaderData> getHeaderData(DDiagram diagram) {
         LinkedList<HeaderData> result = Lists.newLinkedList();
@@ -430,7 +430,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.diagramtype.IDiagramDescriptionProvider
+     * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider
      *      #getCollapseUpdater(DDiagram)
      */
     public Option<? extends ICollapseUpdater> getCollapseUpdater(DDiagram diagram) {

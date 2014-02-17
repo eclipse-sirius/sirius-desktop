@@ -31,8 +31,6 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
-import org.eclipse.sirius.diagram.graphical.edit.policies.CreationUtil;
-import org.eclipse.sirius.diagram.graphical.edit.policies.NodeCreationEditPolicy;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.VerticalPositionFunction;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
@@ -53,13 +51,15 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.StateEditP
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.FrameCreationValidator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceGraphicalHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
+import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.CreationUtil;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
-import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 import com.google.common.collect.Iterables;
