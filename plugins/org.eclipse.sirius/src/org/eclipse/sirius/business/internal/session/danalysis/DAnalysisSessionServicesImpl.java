@@ -331,7 +331,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
 
     private void addRepresentationToContainer(final DRepresentation representation, final Resource res) {
         final EObject semanticRoot = res.getContents().iterator().next();
-        final Viewpoint viewpoint = new RepresentationDescriptionQuery(DialectManager.INSTANCE.getDescription(representation)).getParentSirius();
+        final Viewpoint viewpoint = new RepresentationDescriptionQuery(DialectManager.INSTANCE.getDescription(representation)).getParentViewpoint();
         DRepresentationContainer existingContainer = DAnalysisSessionHelper.findContainerForAddedRepresentation(semanticRoot, viewpoint, getAnalysisAndReferenced(), analysisSelector, representation);
 
         if (existingContainer == null) {

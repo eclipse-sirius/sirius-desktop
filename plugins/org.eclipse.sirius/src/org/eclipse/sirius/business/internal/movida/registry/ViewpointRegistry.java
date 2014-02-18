@@ -31,8 +31,8 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsRegistry;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistryFilter;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2;
 import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
@@ -474,8 +474,8 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     }
 
     /**
-     * Removes from the registry all entries for Sirius defined in the
-     * specified resource.
+     * Removes from the registry all entries for Sirius defined in the specified
+     * resource.
      * 
      * @return the old entries removed from the registry.
      */
@@ -662,7 +662,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
      * {@inheritDoc}
      */
     public Viewpoint getViewpoint(RepresentationDescription description) {
-        return new RepresentationDescriptionQuery(description).getParentSirius();
+        return new RepresentationDescriptionQuery(description).getParentViewpoint();
     }
 
     /**

@@ -114,8 +114,8 @@ public final class SessionHelper {
         if (!checkedDescriptions.containsKey(description)) {
             boolean candidate = false;
             if (description.isShowOnStartup()) {
-                Viewpoint parentSirius = new RepresentationDescriptionQuery(description).getParentSirius();
-                candidate = parentSirius == null ? false : selectedVps.contains(parentSirius);
+                Viewpoint parentViewpoint = new RepresentationDescriptionQuery(description).getParentViewpoint();
+                candidate = parentViewpoint == null ? false : selectedVps.contains(parentViewpoint);
             }
             checkedDescriptions.put(description, candidate);
         }
