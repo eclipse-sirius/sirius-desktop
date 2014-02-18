@@ -8,9 +8,8 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.migration.resource.session.diagram.data;
+package org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data;
 
-import org.eclipse.sirius.business.api.helper.SiriusHelper;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -19,6 +18,7 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
@@ -57,7 +57,7 @@ public class LostNodeData extends LostElementDataWithMapping implements ILostEle
     protected LostElementDataState doRecreateNonExistingLostElement(final DSemanticDiagram designerDiagram) {
         LostElementDataState created = super.doRecreateNonExistingLostElement(designerDiagram);
 
-        final DDiagramElement createdElement = SiriusHelper.createElement(getMapping(), designerDiagram, getTarget());
+        final DDiagramElement createdElement = SiriusDiagramHelper.createElement(getMapping(), designerDiagram, getTarget());
         if (createdElement != null) {
             if (parentData == null) {
                 if (designerDiagram.getOwnedDiagramElements().add(createdElement)) {

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.repair.resource;
+package org.eclipse.sirius.diagram.business.internal.repair.resource;
 
 import java.util.Iterator;
 import java.util.List;
@@ -27,14 +27,14 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.migration.resource.session.commands.MigrationCommandExecutor;
-import org.eclipse.sirius.business.internal.migration.resource.session.diagram.data.LostEdgeData;
-import org.eclipse.sirius.business.internal.migration.resource.session.diagram.data.LostElementDataState;
-import org.eclipse.sirius.business.internal.migration.resource.session.diagram.data.LostElementDataWithMapping;
-import org.eclipse.sirius.business.internal.migration.resource.session.diagram.data.LostNodeData;
-import org.eclipse.sirius.business.internal.repair.commands.RefreshAllElementsVisibilityCommand;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.business.internal.repair.commands.RefreshAllElementsVisibilityCommand;
+import org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data.LostEdgeData;
+import org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data.LostElementDataState;
+import org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data.LostElementDataWithMapping;
+import org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data.LostNodeData;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -162,7 +162,7 @@ public class RepairRepresentationRefresher {
     public void refreshAllElementsVisibility(final DView view, TransactionalEditingDomain transactionalEditingDomain, MigrationCommandExecutor migrationCommandExecutor) {
         for (final DRepresentation representation : view.getAllRepresentations()) {
             if (representation instanceof DDiagram) {
-                Command refreshAllElementsVisibilityCommand = new RefreshAllElementsVisibilityCommand(representation);
+                Command refreshAllElementsVisibilityCommand = new RefreshAllElementsVisibilityCommand((DDiagram) representation);
                 migrationCommandExecutor.execute(transactionalEditingDomain, refreshAllElementsVisibilityCommand);
             }
         }

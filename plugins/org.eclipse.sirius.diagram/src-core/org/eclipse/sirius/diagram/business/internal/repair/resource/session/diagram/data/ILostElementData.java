@@ -8,27 +8,14 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.migration.resource.session.diagram.data;
+package org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data;
 
 /**
- * Enum.
+ * Description of an element data.
+ * 
  * 
  * @author dlecan
  */
-public enum LostElementDataState {
+public interface ILostElementData {
 
-    /**
-     * .
-     */
-    CREATED,
-
-    /**
-     * .
-     */
-    EXISTING,
-
-    /**
-     * .
-     */
-    NOT_CREATED;
 }

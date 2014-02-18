@@ -10,10 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.repair;
 
+import java.util.List;
+
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 
 /**
@@ -94,4 +99,39 @@ public interface IRepairParticipant {
      */
     void startRepairOnView(Session session, DView view);
 
+    /**
+     * Remove elements from {@link DView} that will be recreated by the refresh
+     * (call later).
+     * 
+     * @param view
+     *            The view model which elements are to be removed.
+     * @param domain
+     *            the transactional editing domain
+     * @param monitor
+     *            the progress monitor
+     */
+    void removeElements(DView view, TransactionalEditingDomain domain, IProgressMonitor monitor);
+
+    /**
+     * Clean representations (specific representation states like filters) and
+     * eventually return some of them if they need to be removed.
+     * 
+     * @param representations
+     *            List of representations to clean.
+     * @return The list of representation to removed
+     */
+    List<DRepresentation> cleanRepresentations(EList<DRepresentation> representations);
+
+    /**
+     * This method has been created during the split of diagram-specific
+     * EClasses into their own plug-in. It manages core and diagram stuffs. But
+     * to simplify work, all method has been moved to diagram participant. This
+     * method should be clean up once the split is OK.
+     * 
+     * @param dAnalysis
+     *            The current dAnalysis
+     * @param view
+     *            The current view
+     */
+    void refreshRepresentations(DAnalysis dAnalysis, DView view);
 }

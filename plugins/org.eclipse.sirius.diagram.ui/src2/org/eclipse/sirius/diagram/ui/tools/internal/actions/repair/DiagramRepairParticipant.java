@@ -12,14 +12,18 @@ package org.eclipse.sirius.diagram.ui.tools.internal.actions.repair;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -29,20 +33,38 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.repair.IRepairParticipant;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.migration.resource.session.commands.MigrationCommandExecutor;
+import org.eclipse.sirius.business.internal.repair.commands.RemoveDiagramElementsCommand;
+import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.FilterVariableValue;
 import org.eclipse.sirius.diagram.business.api.helper.concern.ConcernService;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
+import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
+import org.eclipse.sirius.diagram.business.internal.repair.resource.DiagramKey;
+import org.eclipse.sirius.diagram.business.internal.repair.resource.RepairRepresentationRefresher;
+import org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data.LostEdgeData;
+import org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data.LostElementFactory;
+import org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data.LostNodeData;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
 import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.GMFDiagramUpdater;
 import org.eclipse.sirius.diagram.ui.tools.api.migration.DiagramCrossReferencer;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.repair.commands.RemoveInvalidViewsCommand;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
+import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Iterators;
+import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.UnmodifiableIterator;
@@ -64,11 +86,17 @@ public class DiagramRepairParticipant implements IRepairParticipant {
 
     private TransactionalEditingDomain editingDomain;
 
+    private ListMultimap<DiagramKey, LostNodeData> lostNodesByDelete;
+
+    private ListMultimap<DiagramKey, LostEdgeData> lostEdgesByDelete;
+
     /**
      * {@inheritDoc}
      */
     public void repairStarted() {
         diagramElementStateFactory = DiagramElementStateFactory.newInstance();
+        lostNodesByDelete = ArrayListMultimap.create();
+        lostEdgesByDelete = ArrayListMultimap.create();
     }
 
     /**
@@ -81,7 +109,8 @@ public class DiagramRepairParticipant implements IRepairParticipant {
             diagramElementState.dispose();
         }
         diagramElementStateFactory.dispose();
-
+        lostEdgesByDelete.clear();
+        lostNodesByDelete.clear();
         elementStatesMap.clear();
     }
 
@@ -277,4 +306,160 @@ public class DiagramRepairParticipant implements IRepairParticipant {
 
     }
 
+    @Override
+    public void removeElements(DView view, TransactionalEditingDomain domain, IProgressMonitor monitor) {
+        final List<EObject> toBeRemoved = computeElementsToDeleteOrDeletedElements(view);
+        removeDiagramElements(monitor, domain, toBeRemoved);
+    }
+
+    /**
+     * Remove elements with isCreatedElement sets to true. Store data about the
+     * other.
+     * 
+     * @param view
+     * @return the list of elements that can be safety removed.
+     */
+    private List<EObject> computeElementsToDeleteOrDeletedElements(final DView view) {
+        final List<EObject> toBeRemoved = Lists.newArrayList();
+
+        lostNodesByDelete.clear();
+        lostEdgesByDelete.clear();
+
+        // If an element has its mapping configured with isCreatedElements sets
+        // to true, it will be removed and then recreated by diagram refresh.
+        // But an element with isCreated sets to false won't be recreated by
+        // refresh. Another process will recreate them after.
+
+        final Iterator<DDiagramElement> viewIterator = Iterators.filter(view.eAllContents(), DDiagramElement.class);
+        while (viewIterator.hasNext()) {
+            final DDiagramElement diagElement = viewIterator.next();
+            if (new DiagramElementMappingQuery(diagElement.getDiagramElementMapping()).isSynchronizedAndCreateElement(diagElement)) {
+                toBeRemoved.add(diagElement);
+            } else {
+
+                if (LostElementFactory.isCompleteDiagramElement(diagElement)) {
+                    final DiagramKey diagramKey = DiagramKey.createDiagramKey(diagElement.getParentDiagram());
+                    if (diagElement instanceof AbstractDNode) {
+                        createLostNodeData(diagramKey, diagElement);
+
+                    } else if (diagElement instanceof DEdge) {
+                        createLostEdgeData(diagramKey, diagElement);
+                    }
+                }
+            }
+        }
+        return toBeRemoved;
+    }
+
+    private void createLostEdgeData(final DiagramKey diagramKey, final DDiagramElement diagElement) {
+        final LostEdgeData data = LostElementFactory.createLostEdgeData(diagElement);
+        lostEdgesByDelete.put(diagramKey, data);
+    }
+
+    private void createLostNodeData(final DiagramKey diagramKey, final DDiagramElement diagElement) {
+        final LostNodeData data = LostElementFactory.createLostNodeData(diagElement);
+        lostNodesByDelete.put(diagramKey, data);
+    }
+
+    private void removeDiagramElements(final IProgressMonitor monitor, TransactionalEditingDomain transactionalEditingDomain, final List<EObject> toBeRemoved) {
+        monitor.beginTask("remove Diagram Elements", 1);
+        Command removeDiagramElementsCommand = new RemoveDiagramElementsCommand(new NullProgressMonitor(), toBeRemoved);
+
+        new MigrationCommandExecutor().execute(transactionalEditingDomain, removeDiagramElementsCommand);
+        monitor.done();
+    }
+
+    @Override
+    public List<DRepresentation> cleanRepresentations(EList<DRepresentation> representations) {
+        final List<DRepresentation> representationsToRemove = new LinkedList<DRepresentation>();
+        for (final DRepresentation representation : representations) {
+            if (representation instanceof DDiagram) {
+                final DDiagram next = (DDiagram) representation;
+                // migration code, useless here.
+                // handleNeedVisibilityMigration(localNeedVisibilityMigration,
+                // next);
+
+                // Clean filters variables, activated filters,
+                // activated behaviors, activated rules
+                cleanReferences(next);
+
+                // Even if Description has cardinality [0:1] in
+                // DDiagram, diagrams without description should not
+                // be allowed
+                if (representation instanceof DSemanticDiagram && ((DSemanticDiagram) representation).getDescription() == null) {
+                    representationsToRemove.add(representation);
+                }
+
+            }
+            if (representation instanceof DSemanticDecorator && (((DSemanticDecorator) representation).getTarget() == null || ((DSemanticDecorator) representation).getTarget().eResource() == null)) {
+                representationsToRemove.add(representation);
+            }
+        }
+        return representationsToRemove;
+    }
+
+    /**
+     * Clean the references which could be problematic for the migration ((proxy
+     * not resolved or element not in a eResource):
+     * <UL>
+     * <LI>Remove the filter variables cache if the element points by this
+     * variable is no longer exists</LI>
+     * <LI>Disables the behaviors that were activated but no longer exists,</LI>
+     * <LI>Disables the filters that were activated but no longer exists,</LI>
+     * <LI>Disables the rules that were activated but no longer exists.</LI>
+     * </UL>
+     * 
+     * @param diagram
+     *            The diagram to clean.
+     */
+    private void cleanReferences(final DDiagram diagram) {
+        // remove the variable caches..
+        if (diagram.getFilterVariableHistory() != null && diagram.getFilterVariableHistory().getOwnedValues() != null) {
+            // diagram.getFilterVariableHistory().getOwnedValues().clear();
+            final Iterator<FilterVariableValue> filterVariablesIterator = diagram.getFilterVariableHistory().getOwnedValues().iterator();
+            while (filterVariablesIterator.hasNext()) {
+                final FilterVariableValue filterVariable = filterVariablesIterator.next();
+                if (filterVariable.eIsProxy() || filterVariable.eResource() == null) {
+                    filterVariablesIterator.remove();
+                }
+            }
+        }
+        // de-activate filters and behaviors (if needed)
+        if (diagram.getActivateBehaviors() != null) {
+            // next.getActivateBehaviors().clear();
+            final Iterator<BehaviorTool> activatedBehaviorsIterator = diagram.getActivateBehaviors().iterator();
+            while (activatedBehaviorsIterator.hasNext()) {
+                final BehaviorTool activatedBehaviors = activatedBehaviorsIterator.next();
+                if (activatedBehaviors.eIsProxy() || activatedBehaviors.eResource() == null) {
+                    activatedBehaviorsIterator.remove();
+                }
+            }
+        }
+        if (diagram.getActivatedFilters() != null) {
+            // next.getActivatedFilters().clear();
+            final Iterator<FilterDescription> activatedFiltersIterator = diagram.getActivatedFilters().iterator();
+            while (activatedFiltersIterator.hasNext()) {
+                final FilterDescription filterDescription = activatedFiltersIterator.next();
+                if (filterDescription.eIsProxy() || filterDescription.eResource() == null) {
+                    activatedFiltersIterator.remove();
+                }
+            }
+        }
+        if (diagram.getActivatedRules() != null) {
+            // next.getActivatedRules().clear();
+            final Iterator<ValidationRule> activatedRulesIterator = diagram.getActivatedRules().iterator();
+            while (activatedRulesIterator.hasNext()) {
+                final ValidationRule activatedRule = activatedRulesIterator.next();
+                if (activatedRule.eIsProxy() || activatedRule.eResource() == null) {
+                    activatedRulesIterator.remove();
+                }
+            }
+        }
+    }
+
+    @Override
+    public void refreshRepresentations(DAnalysis dAnalysis, DView view) {
+        RepairRepresentationRefresher refresher = new RepairRepresentationRefresher(lostNodesByDelete, lostEdgesByDelete);
+        refresher.refreshRepresentations(dAnalysis, view);
+    }
 }

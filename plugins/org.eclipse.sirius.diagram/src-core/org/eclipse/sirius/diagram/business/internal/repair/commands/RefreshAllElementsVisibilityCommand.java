@@ -8,12 +8,11 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.repair.commands;
+package org.eclipse.sirius.diagram.business.internal.repair.commands;
 
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * RefreshAllElementsVisibilityRecordingCommand.
@@ -22,15 +21,15 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
  */
 public class RefreshAllElementsVisibilityCommand extends IdentityCommand {
 
-    private DRepresentation representation;
+    private DDiagram representation;
 
     /**
      * Default constructor.
      * 
      * @param representation
-     *            {@link DRepresentation}
+     *            {@link DDiagram}
      */
-    public RefreshAllElementsVisibilityCommand(DRepresentation representation) {
+    public RefreshAllElementsVisibilityCommand(DDiagram representation) {
         super();
         this.representation = representation;
     }
@@ -40,7 +39,7 @@ public class RefreshAllElementsVisibilityCommand extends IdentityCommand {
      */
     @Override
     public void execute() {
-        DisplayServiceManager.INSTANCE.getDisplayService().refreshAllElementsVisibility((DDiagram) representation);
+        DisplayServiceManager.INSTANCE.getDisplayService().refreshAllElementsVisibility(representation);
         representation = null;
     }
 

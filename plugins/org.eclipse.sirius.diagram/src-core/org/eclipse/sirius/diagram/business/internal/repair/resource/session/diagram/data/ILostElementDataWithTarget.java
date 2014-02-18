@@ -8,14 +8,30 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.migration.resource.session.diagram.data;
+package org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data;
+
+import org.eclipse.emf.ecore.EObject;
 
 /**
- * Description of an element data.
- * 
+ * Lost element data with target.
  * 
  * @author dlecan
  */
-public interface ILostElementData {
+public interface ILostElementDataWithTarget extends ILostElementData {
+
+    /**
+     * Set the target.
+     * 
+     * @param target
+     *            the target.
+     */
+    void setTarget(final EObject target);
+
+    /**
+     * Get the target.
+     * 
+     * @return The target.
+     */
+    EObject getTarget();
 
 }

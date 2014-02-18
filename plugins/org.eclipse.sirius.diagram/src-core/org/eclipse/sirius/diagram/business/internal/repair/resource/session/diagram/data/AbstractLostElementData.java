@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.migration.resource.session.diagram.data;
+package org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data;
 
 /**
  * Basic implementation of {@link ILostElementData}.

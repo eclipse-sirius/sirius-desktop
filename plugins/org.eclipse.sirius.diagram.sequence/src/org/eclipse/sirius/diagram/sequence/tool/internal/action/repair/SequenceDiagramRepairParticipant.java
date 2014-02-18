@@ -10,10 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.tool.internal.action.repair;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -26,15 +30,16 @@ import org.eclipse.sirius.business.api.repair.IRepairParticipant;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.migration.resource.session.commands.MigrationCommandExecutor;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.business.api.view.SiriusGMFHelper;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.flag.SequenceDiagramAbsoluteBoundsFlagger;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
+import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DView;
 
@@ -235,6 +240,23 @@ public class SequenceDiagramRepairParticipant implements IRepairParticipant {
                 new SequenceDiagramAbsoluteBoundsFlagger(diagram).flag();
             }
         }
+    }
+
+    @Override
+    public void removeElements(DView view, TransactionalEditingDomain domain, IProgressMonitor monitor) {
+        // nothing
+
+    }
+
+    @Override
+    public List<DRepresentation> cleanRepresentations(EList<DRepresentation> representations) {
+        // nothing
+        return new LinkedList<DRepresentation>();
+    }
+
+    @Override
+    public void refreshRepresentations(DAnalysis dAnalysis, DView view) {
+        // nothing
     }
 
 }

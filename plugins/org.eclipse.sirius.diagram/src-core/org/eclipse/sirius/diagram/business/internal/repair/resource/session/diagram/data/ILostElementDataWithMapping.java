@@ -8,30 +8,30 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.migration.resource.session.diagram.data;
+package org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
- * Lost element data with target.
+ * Lost element data with mapping.
  * 
  * @author dlecan
  */
-public interface ILostElementDataWithTarget extends ILostElementData {
+public interface ILostElementDataWithMapping extends ILostElementDataWithTarget {
 
     /**
-     * Set the target.
+     * Sets the value of mapping to mapping.
      * 
-     * @param target
-     *            the target.
+     * @param mapping
+     *            The mapping to set.
      */
-    void setTarget(final EObject target);
+    void setMapping(final RepresentationElementMapping mapping);
 
     /**
-     * Get the target.
+     * Returns the mapping.
      * 
-     * @return The target.
+     * @return The mapping.
      */
-    EObject getTarget();
+    RepresentationElementMapping getMapping();
 
 }

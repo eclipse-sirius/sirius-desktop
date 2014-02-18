@@ -15,7 +15,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +36,6 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -50,27 +48,12 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.business.internal.migration.resource.session.commands.MigrationCommandExecutor;
-import org.eclipse.sirius.business.internal.migration.resource.session.diagram.data.LostEdgeData;
-import org.eclipse.sirius.business.internal.migration.resource.session.diagram.data.LostElementFactory;
-import org.eclipse.sirius.business.internal.migration.resource.session.diagram.data.LostNodeData;
 import org.eclipse.sirius.business.internal.repair.commands.MoveAllRepresentationsFromHiddenToOwnedCommand;
-import org.eclipse.sirius.business.internal.repair.commands.RemoveDiagramElementsCommand;
 import org.eclipse.sirius.business.internal.repair.commands.RestoreModelElementStateCommand;
 import org.eclipse.sirius.business.internal.repair.commands.SaveModelElementStateCommand;
-import org.eclipse.sirius.business.internal.repair.resource.DiagramKey;
-import org.eclipse.sirius.business.internal.repair.resource.RepairRepresentationRefresher;
 import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.util.ResourceUtil;
-import org.eclipse.sirius.diagram.AbstractDNode;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.FilterVariableValue;
-import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
-import org.eclipse.sirius.diagram.description.filter.FilterDescription;
-import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -80,13 +63,10 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 import com.google.common.base.Predicate;
-import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Lists;
 
 /**
@@ -108,10 +88,6 @@ public class SiriusRepairProcess {
      */
     private static final String QUOTE = "\"";
 
-    private ListMultimap<DiagramKey, LostNodeData> lostNodesByDelete;
-
-    private ListMultimap<DiagramKey, LostEdgeData> lostEdgesByDelete;
-
     private List<IRepairParticipant> repairParticipants;
 
     private IFile file;
@@ -129,8 +105,6 @@ public class SiriusRepairProcess {
     public SiriusRepairProcess(IFile file, boolean backup) {
         repairParticipants = getRepairParticipants();
         this.file = file;
-        lostNodesByDelete = ArrayListMultimap.create();
-        lostEdgesByDelete = ArrayListMultimap.create();
         this.backup = backup;
     }
 
@@ -362,20 +336,18 @@ public class SiriusRepairProcess {
 
                 // monitor.subTask("Migrating elements");
 
-                // Remove diagram elements (this method call a recording
-                // command)
-                monitor.subTask("--> Removing diagram elements");
-                final List<EObject> toBeRemoved = computeElementsToDeleteOrDeletedElements(view);
-                removeDiagramElements(new SubProgressMonitor(monitor, 1), transactionalEditingDomain, toBeRemoved);
+                // Remove elements (this method calls a recording command)
+                monitor.subTask("--> Removing elements");
+                removeElements(view, new SubProgressMonitor(monitor, 1));
 
                 if (monitor.isCanceled()) {
                     throw new InterruptedException();
                 }
 
-                // refreshes diagrams (this method called a recording command)
+                // Refresh representation (this method calls a recording
+                // command)
                 monitor.subTask("--> Refreshing representations");
-                RepairRepresentationRefresher refresher = new RepairRepresentationRefresher(lostNodesByDelete, lostEdgesByDelete);
-                refresher.refreshRepresentations(dAnalysis, view);
+                refreshRepresentations(dAnalysis, view);
                 monitor.worked(1);
 
                 if (monitor.isCanceled()) {
@@ -431,63 +403,6 @@ public class SiriusRepairProcess {
     }
 
     /**
-     * Remove elements with isCreatedElement sets to true. Store data about the
-     * other.
-     * 
-     * @param view
-     * @return the list of elements that can be safety removed.
-     */
-    private List<EObject> computeElementsToDeleteOrDeletedElements(final DView view) {
-        final List<EObject> toBeRemoved = Lists.newArrayList();
-
-        lostNodesByDelete.clear();
-        lostEdgesByDelete.clear();
-
-        // If an element has its mapping configured with isCreatedElements sets
-        // to true, it will be removed and then recreated by diagram refresh.
-        // But an element with isCreated sets to false won't be recreated by
-        // refresh. Another process will recreate them after.
-
-        final Iterator<DDiagramElement> viewIterator = Iterators.filter(view.eAllContents(), DDiagramElement.class);
-        while (viewIterator.hasNext()) {
-            final DDiagramElement diagElement = viewIterator.next();
-            if (new DiagramElementMappingQuery(diagElement.getDiagramElementMapping()).isSynchronizedAndCreateElement(diagElement)) {
-                toBeRemoved.add(diagElement);
-            } else {
-
-                if (LostElementFactory.isCompleteDiagramElement(diagElement)) {
-                    final DiagramKey diagramKey = DiagramKey.createDiagramKey(diagElement.getParentDiagram());
-                    if (diagElement instanceof AbstractDNode) {
-                        createLostNodeData(diagramKey, diagElement);
-
-                    } else if (diagElement instanceof DEdge) {
-                        createLostEdgeData(diagramKey, diagElement);
-                    }
-                }
-            }
-        }
-        return toBeRemoved;
-    }
-
-    private void createLostEdgeData(final DiagramKey diagramKey, final DDiagramElement diagElement) {
-        final LostEdgeData data = LostElementFactory.createLostEdgeData(diagElement);
-        lostEdgesByDelete.put(diagramKey, data);
-    }
-
-    private void createLostNodeData(final DiagramKey diagramKey, final DDiagramElement diagElement) {
-        final LostNodeData data = LostElementFactory.createLostNodeData(diagElement);
-        lostNodesByDelete.put(diagramKey, data);
-    }
-
-    private void removeDiagramElements(final IProgressMonitor monitor, TransactionalEditingDomain transactionalEditingDomain, final List<EObject> toBeRemoved) {
-        monitor.beginTask("remove Diagram Elements", 1);
-        Command removeDiagramElementsCommand = new RemoveDiagramElementsCommand(new NullProgressMonitor(), toBeRemoved);
-
-        new MigrationCommandExecutor().execute(transactionalEditingDomain, removeDiagramElementsCommand);
-        monitor.done();
-    }
-
-    /**
      * Do some post refresh operations.
      * 
      * @param resource
@@ -537,7 +452,7 @@ public class SiriusRepairProcess {
      * @param view
      *            the view to inform
      */
-    private void informSirius(final DView view) {
+    private void informViewpoint(final DView view) {
         if (view.getAllRepresentations() != null && !view.getAllRepresentations().isEmpty()) {
             final DRepresentation representation = view.getAllRepresentations().get(0);
             final RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
@@ -567,6 +482,23 @@ public class SiriusRepairProcess {
             monitor.worked(1);
         }
         monitor.done();
+    }
+
+    private void removeElements(DView view, SubProgressMonitor monitor) {
+        monitor.beginTask("Remove elements", this.repairParticipants.size());
+        TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(view);
+        for (final IRepairParticipant participant : this.repairParticipants) {
+            participant.removeElements(view, transactionalEditingDomain, monitor);
+            monitor.worked(1);
+        }
+        monitor.done();
+
+    }
+
+    private void refreshRepresentations(DAnalysis dAnalysis, DView view) {
+        for (final IRepairParticipant participant : this.repairParticipants) {
+            participant.refreshRepresentations(dAnalysis, view);
+        }
     }
 
     private List<Resource> getFragmentedResources(final Resource modelResource) {
@@ -643,98 +575,17 @@ public class SiriusRepairProcess {
      *            {@link DView}
      */
     private void handleView(final DView view) {
-        informSirius(view);
-        // Compute the models references before cleaning the diagram.
+        informViewpoint(view);
+        // Compute the models references before cleaning the representation.
         if (view instanceof DRepresentationContainer) {
             informModel((DRepresentationContainer) view);
         }
 
         final List<DRepresentation> representationsToRemove = new LinkedList<DRepresentation>();
-
-        for (final DRepresentation representation : view.getAllRepresentations()) {
-            if (representation instanceof DDiagram) {
-                final DDiagram next = (DDiagram) representation;
-                // migration code, useless here.
-                // handleNeedVisibilityMigration(localNeedVisibilityMigration,
-                // next);
-
-                // Clean filters variables, activated filters,
-                // activated behaviors, activated rules
-                cleanReferences(next);
-
-                // Even if Description has cardinality [0:1] in
-                // DDiagram, diagrams without description should not
-                // be allowed
-                if (representation instanceof DSemanticDiagram && ((DSemanticDiagram) representation).getDescription() == null) {
-                    representationsToRemove.add(representation);
-                }
-
-            }
-            if (representation instanceof DSemanticDecorator && (((DSemanticDecorator) representation).getTarget() == null || ((DSemanticDecorator) representation).getTarget().eResource() == null)) {
-                representationsToRemove.add(representation);
-            }
+        for (final IRepairParticipant participant : this.repairParticipants) {
+            representationsToRemove.addAll(participant.cleanRepresentations(view.getAllRepresentations()));
         }
-
         removeRepresentations(representationsToRemove);
-    }
-
-    /**
-     * Clean the references which could be problematic for the migration ((proxy
-     * not resolved or element not in a eResource):
-     * <UL>
-     * <LI>Remove the filter variables cache if the element points by this
-     * variable is no longer exists</LI>
-     * <LI>Disables the behaviors that were activated but no longer exists,</LI>
-     * <LI>Disables the filters that were activated but no longer exists,</LI>
-     * <LI>Disables the rules that were activated but no longer exists.</LI>
-     * </UL>
-     * 
-     * @param diagram
-     *            The diagram to clean.
-     */
-    private void cleanReferences(final DDiagram diagram) {
-        // remove the variable caches..
-        if (diagram.getFilterVariableHistory() != null && diagram.getFilterVariableHistory().getOwnedValues() != null) {
-            // diagram.getFilterVariableHistory().getOwnedValues().clear();
-            final Iterator<FilterVariableValue> filterVariablesIterator = diagram.getFilterVariableHistory().getOwnedValues().iterator();
-            while (filterVariablesIterator.hasNext()) {
-                final FilterVariableValue filterVariable = filterVariablesIterator.next();
-                if (filterVariable.eIsProxy() || filterVariable.eResource() == null) {
-                    filterVariablesIterator.remove();
-                }
-            }
-        }
-        // de-activate filters and behaviors (if needed)
-        if (diagram.getActivateBehaviors() != null) {
-            // next.getActivateBehaviors().clear();
-            final Iterator<BehaviorTool> activatedBehaviorsIterator = diagram.getActivateBehaviors().iterator();
-            while (activatedBehaviorsIterator.hasNext()) {
-                final BehaviorTool activatedBehaviors = activatedBehaviorsIterator.next();
-                if (activatedBehaviors.eIsProxy() || activatedBehaviors.eResource() == null) {
-                    activatedBehaviorsIterator.remove();
-                }
-            }
-        }
-        if (diagram.getActivatedFilters() != null) {
-            // next.getActivatedFilters().clear();
-            final Iterator<FilterDescription> activatedFiltersIterator = diagram.getActivatedFilters().iterator();
-            while (activatedFiltersIterator.hasNext()) {
-                final FilterDescription filterDescription = activatedFiltersIterator.next();
-                if (filterDescription.eIsProxy() || filterDescription.eResource() == null) {
-                    activatedFiltersIterator.remove();
-                }
-            }
-        }
-        if (diagram.getActivatedRules() != null) {
-            // next.getActivatedRules().clear();
-            final Iterator<ValidationRule> activatedRulesIterator = diagram.getActivatedRules().iterator();
-            while (activatedRulesIterator.hasNext()) {
-                final ValidationRule activatedRule = activatedRulesIterator.next();
-                if (activatedRule.eIsProxy() || activatedRule.eResource() == null) {
-                    activatedRulesIterator.remove();
-                }
-            }
-        }
     }
 
     private void removeRepresentations(final List<DRepresentation> representationsToRemove) {
@@ -749,8 +600,6 @@ public class SiriusRepairProcess {
      */
     public void dispose() {
         file = null;
-        lostEdgesByDelete.clear();
-        lostNodesByDelete.clear();
         repairParticipants.clear();
 
     }
