@@ -1,0 +1,65 @@
+/**
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *      Obeo - Initial API and implementation
+ */
+package org.eclipse.sirius.tests.swtbot.support.api.condition;
+
+import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
+
+/**
+ * Inner class to check if the label of this edge edit part is hidden.
+ * 
+ * @author smonnier
+ */
+public class CheckEdgeLabelVisibility extends DefaultCondition {
+
+    private final String label;
+
+    private final SWTBotDesignerEditor editor;
+
+    private final boolean isVisible;
+
+    /**
+     * Constructor.
+     * 
+     * @param editor
+     *            the current editor
+     * @param label
+     *            name of the edit part to wait for its hiding.
+     * @param isVisible
+     *            check is the label should be visible or hidden
+     */
+    public CheckEdgeLabelVisibility(SWTBotDesignerEditor editor, String label, boolean isVisible) {
+        this.label = label;
+        this.editor = editor;
+        this.isVisible = isVisible;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean test() throws Exception {
+        return ((AbstractGraphicalEditPart) editor.getEditPart(label).part()).getFigure().isVisible() == isVisible;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getFailureMessage() {
+        if (isVisible) {
+            return "The label is still hidden.";
+        } else {
+            return "The label is still visible.";
+        }
+    }
+}

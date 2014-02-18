@@ -1,0 +1,52 @@
+/**
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *      Obeo - Initial API and implementation
+ */
+package org.eclipse.sirius.tests.swtbot.support.api.test;
+
+import java.util.Collections;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
+
+/**
+ * Class to handle things on ecore model just before closing welcome page.
+ * 
+ * @author cbrun
+ */
+public abstract class AbstractScenarioTestCase extends AbstractSiriusSwtBotGefTestCase {
+
+    /**
+     * Models folder.
+     */
+    protected static final String MODELS_DIR = "Models";
+
+    private static final String SEPARATOR = "/";
+
+    /**
+     * Setup.
+     * 
+     * @throws Exception
+     *             the error.
+     */
+    @Override
+    protected void onSetUpBeforeClosingWelcomePage() throws Exception {
+
+        final Resource ecoreRes = new ResourceSetImpl().createResource(URI.createPlatformResourceURI(AbstractScenarioTestCase.SEPARATOR + getProjectName() + AbstractScenarioTestCase.SEPARATOR
+                + AbstractScenarioTestCase.MODELS_DIR + AbstractScenarioTestCase.SEPARATOR + "Ecore.ecore", true));
+        EPackage packageRoot = EcoreFactory.eINSTANCE.createEPackage();
+        packageRoot.setName("ecore");
+        ecoreRes.getContents().add(packageRoot);
+        ecoreRes.save(Collections.EMPTY_MAP);
+    }
+}
