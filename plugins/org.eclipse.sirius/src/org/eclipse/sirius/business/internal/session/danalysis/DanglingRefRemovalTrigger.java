@@ -46,6 +46,11 @@ import com.google.common.collect.Sets;
 public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
 
     /**
+     * Priority of this {@link ModelChangeTrigger}.
+     */
+    public static final int DANGLING_REFERENCE_REMOVAL_PRIORITY = 0;
+
+    /**
      * Filter {@link Notification}s which are not a detachment. A detachment is
      * : an EObject being removed from the reference it is contained in.
      */
@@ -254,7 +259,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
      * {@inheritDoc}
      */
     public int priority() {
-        return 0;
+        return DANGLING_REFERENCE_REMOVAL_PRIORITY;
     }
 
     /**

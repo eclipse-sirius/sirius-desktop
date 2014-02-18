@@ -436,12 +436,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             } else {
                 ViewpointRegistry.getInstance().addListener(this);
             }
-            initLocalTriggers();
             super.setOpen(true);
             notifyListeners(SessionListener.OPENED);
             monitor.worked(1);
             updateSelectedViewpointsData(new SubProgressMonitor(monitor, 10));
-            addRefreshEditorsListener();
+            initLocalTriggers();
         } catch (OperationCanceledException e) {
             close(new SubProgressMonitor(monitor, 10));
             throw e;
@@ -460,6 +459,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         Predicate<Notification> danglingRemovalPredicate = Predicates.or(DanglingRefRemovalTrigger.IS_DETACHMENT, DanglingRefRemovalTrigger.IS_ATTACHMENT);
         DanglingRefRemovalTrigger danglingRemovalTrigger = new DanglingRefRemovalTrigger(this.getTransactionalEditingDomain(), this.getModelAccessor(), this.getSemanticCrossReferencer());
         getEventBroker().addLocalTrigger(danglingRemovalPredicate, danglingRemovalTrigger);
+
+        addRefreshEditorsListener();
     }
 
     /**
@@ -1687,17 +1688,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     protected void addRefreshEditorsListener() {
         if (refreshEditorsListeners == null) {
             refreshEditorsListeners = new RefreshEditorsPrecommitListener(transactionalEditingDomain);
-            transactionalEditingDomain.addResourceSetListener(refreshEditorsListeners);
+            getEventBroker().addLocalTrigger(RefreshEditorsPrecommitListener.IS_IMPACTING, refreshEditorsListeners);
             this.addListener(refreshEditorsListeners);
-        }
-    }
-
-    /**
-     * Remove the refresh editors preCommit listener of the editingDomain.
-     */
-    protected void removeRefreshEditorsListener() {
-        if (refreshEditorsListeners != null) {
-            transactionalEditingDomain.removeResourceSetListener(refreshEditorsListeners);
         }
     }
 
@@ -1724,7 +1716,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (getSemanticCrossReferencer() instanceof LazyCrossReferencer) {
             ((LazyCrossReferencer) getSemanticCrossReferencer()).disableResolve();
         }
-        removeRefreshEditorsListener();
         if (controlledResourcesDetector != null) {
             controlledResourcesDetector.dispose();
         }
