@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?><target name="sirius_juno" sequenceNumber="0">
 <locations>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="com.ibm.icu" version="4.4.2.v20110823"/>
 <unit id="org.eclipse.jdt" version="3.8.1.v201302041200"/>
 <unit id="org.eclipse.pde" version="3.8.0.v201302041200"/>
@@ -24,11 +24,11 @@
 <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.6.2.201302122140"/>
 <repository location="http://download.eclipse.org/releases/juno"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.compare.feature.group" version="2.1.2.201310031412"/>
 <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.acceleo.feature.group" version="3.4.1.201309031307"/>
 <unit id="org.eclipse.acceleo.doc.feature.group" version="3.4.1.201309031307"/>
 <unit id="org.eclipse.acceleo.examples.feature.group" version="3.4.1.201309031307"/>
@@ -37,11 +37,11 @@
 <unit id="org.eclipse.acceleo.ui.capabilities.feature.group" version="3.4.1.201309031307"/>
 <repository location="http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.eef.runtime" version="1.2.0.201301031409"/>
 <repository location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="com.google.guava" version="11.0.2.v201303041551"/>
 <unit id="org.junit" version="4.11.0.v201303080030"/>
 <unit id="org.hamcrest.core" version="1.3.0.v201303031735"/>
@@ -50,24 +50,15 @@
 <unit id="org.easymock" version="2.4.0.v20090202-0900"/>
 <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.nebula.widgets.paperclips.feature.feature.group" version="2.0.0.201309241436"/>
 <repository location="http://download.eclipse.org/sirius/targetplatform/0.9.0/all/nebula/N201309241436"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.xtext.sdk.feature.group" version="2.3.1.v201208210947"/>
 <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases"/>
 </location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="com.google.guava" version="11.0.2.v201303041551"/>
-<unit id="org.junit" version="4.11.0.v201303080030"/>
-<unit id="org.hamcrest.core" version="1.3.0.v201303031735"/>
-<unit id="org.hamcrest.library" version="1.3.0.v201305281000"/>
-<unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
-<unit id="org.easymock" version="2.4.0.v20090202-0900"/>
-<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.swtbot.forms.feature.group" version="2.1.1.201307101628"/>
 <unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.1.1.201307101628"/>
 <unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="2.1.1.201307101628"/>

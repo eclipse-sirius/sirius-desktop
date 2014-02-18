@@ -73,7 +73,7 @@ location "http://download.eclipse.org/modeling/tmf/xtext/updates/composite/relea
 
 // SWTBot
 location "http://download.eclipse.org/technology/swtbot/releases/2.1.1/" {
-	with source
+	with source, requirements
 	org.eclipse.swtbot.forms.feature.group;version="[2.1.0,2.2.0)"
 	org.eclipse.swtbot.eclipse.feature.group;version="[2.1.0,2.2.0)"
 	org.eclipse.swtbot.eclipse.gef.feature.group;version="[2.1.0,2.2.0)"
