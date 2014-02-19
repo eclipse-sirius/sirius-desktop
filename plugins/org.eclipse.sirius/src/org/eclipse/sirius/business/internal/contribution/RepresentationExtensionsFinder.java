@@ -108,7 +108,7 @@ public class RepresentationExtensionsFinder {
     public LinkedHashSet<Viewpoint> findAllRelevantViewpoints(Session session) {
         RepresentationDescription mainRepresentationDescription = extensionTarget;
         LinkedHashSet<Viewpoint> result = Sets.newLinkedHashSet();
-        Viewpoint mainVP = new RepresentationDescriptionQuery(mainRepresentationDescription).getParentSirius();
+        Viewpoint mainVP = new RepresentationDescriptionQuery(mainRepresentationDescription).getParentViewpoint();
         if (mainVP != null) {
             BiMap<URI, Viewpoint> candidates = HashBiMap.create();
             for (Viewpoint vp : session.getSelectedViewpoints(false)) {

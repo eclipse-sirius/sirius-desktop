@@ -542,7 +542,7 @@ public class SiriusRepairProcess {
             final DRepresentation representation = view.getAllRepresentations().get(0);
             final RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
             if (description != null) {
-                Viewpoint vp = new RepresentationDescriptionQuery(description).getParentSirius();
+                Viewpoint vp = new RepresentationDescriptionQuery(description).getParentViewpoint();
                 if (vp != null) {
                     view.setViewpoint(vp);
                 }

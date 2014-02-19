@@ -452,7 +452,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * @since 0.9.0
      */
     public Viewpoint getViewpoint(final RepresentationDescription description) {
-        return new RepresentationDescriptionQuery(description).getParentSirius();
+        return new RepresentationDescriptionQuery(description).getParentViewpoint();
     }
 
     /**
