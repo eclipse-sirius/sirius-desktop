@@ -61,6 +61,7 @@ import org.eclipse.sirius.tree.ui.tools.internal.editor.provider.DTreeContentPro
 import org.eclipse.sirius.tree.ui.tools.internal.editor.provider.DTreeDecoratingLabelProvider;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.provider.DTreeItemDropListener;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.provider.DTreeItemEditingSupport;
+import org.eclipse.sirius.tree.ui.tools.internal.editor.provider.TreeUIUpdater;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableColumnViewerEditorActivationStrategy;
@@ -106,6 +107,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
     private ITreeViewerListener treeViewerListener;
 
     private final ITreeCommandFactory treeCommandFactory;
+
+    private TreeUIUpdater treeUIUpdater;
 
     private DTreeContentProvider dTreeContentProvider;
 
@@ -172,7 +175,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         // tableViewer.setSorter(new
         // ExampleTaskSorter(ExampleTaskSorter.DESCRIPTION));
 
-        dTreeContentProvider = new DTreeContentProvider(getSession(), this);
+        treeUIUpdater = new TreeUIUpdater(this);
+        dTreeContentProvider = new DTreeContentProvider();
         treeViewer.setContentProvider(dTreeContentProvider);
 
         // Wrap the LabelProvider in a DecoratingLabelProvider
@@ -484,6 +488,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
     public void dispose() {
         treeViewer.removeTreeListener(treeViewerListener);
         treeViewerListener = null;
+        treeUIUpdater.dispose();
+        treeUIUpdater = null;
         dTreeContentProvider.dispose();
         dTreeContentProvider = null;
         super.dispose();

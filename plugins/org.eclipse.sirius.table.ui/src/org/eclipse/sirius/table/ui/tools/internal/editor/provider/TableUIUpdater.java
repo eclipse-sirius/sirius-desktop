@@ -46,12 +46,11 @@ import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * This class is an EMF Adapter which listen change in the model to update a
- * {@link DTableTreeViewer}.
+ * A class responsible to update the UI part of a {@link DTable}.
  * 
  * @author lredor
  */
-public class DTableContentAdapter extends ResourceSetListenerImpl {
+public class TableUIUpdater extends ResourceSetListenerImpl {
 
     private DTableViewerManager dTableViewerManager;
 
@@ -66,9 +65,10 @@ public class DTableContentAdapter extends ResourceSetListenerImpl {
      *            {@link DTableTreeViewer} to update according to {@link DTable}
      *            model changes.
      */
-    public DTableContentAdapter(DTableViewerManager dTableViewerManager) {
+    public TableUIUpdater(DTableViewerManager dTableViewerManager) {
         this.dTableViewerManager = dTableViewerManager;
         this.dTableTreeViewer = (DTableTreeViewer) dTableViewerManager.getTreeViewer();
+        dTableViewerManager.getEditingDomain().addResourceSetListener(this);
     }
 
     /**
@@ -561,6 +561,15 @@ public class DTableContentAdapter extends ResourceSetListenerImpl {
             if (!isCustom(notif)) {
                 notifyChanged(notif);
             }
+        }
+    }
+
+    /**
+     * Dispose this {@link TableUIUpdater}.
+     */
+    public void dispose() {
+        if (getTarget() != null) {
+            getTarget().removeResourceSetListener(this);
         }
     }
 

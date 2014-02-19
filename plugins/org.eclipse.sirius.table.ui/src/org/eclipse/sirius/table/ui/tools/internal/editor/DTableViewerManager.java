@@ -67,6 +67,7 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableContentP
 import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableDecoratingLabelProvider;
 import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableLineLabelProvider;
 import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTargetColumnEditingSupport;
+import org.eclipse.sirius.table.ui.tools.internal.editor.provider.TableUIUpdater;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableColumnViewerEditorActivationStrategy;
@@ -179,6 +180,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
 
     private EditorCreateTargetColumnMenuAction createTargetColumnMenu = new EditorCreateTargetColumnMenuAction();
 
+    private TableUIUpdater tableUIUpdater;
+
     private DTableContentProvider dTableContentProvider;
 
     private DTableMenuListener actualMenuListener;
@@ -290,13 +293,13 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
 
         // Next columns
         int index = 1;
-
         for (final DColumn column : ((DTable) dRepresentation).getColumns()) {
             addNewColumn(column, index++);
         }
         treeViewer.setUseHashlookup(true);
 
-        dTableContentProvider = new DTableContentProvider(getSession(), this);
+        tableUIUpdater = new TableUIUpdater(this);
+        dTableContentProvider = new DTableContentProvider();
         treeViewer.setContentProvider(dTableContentProvider);
         // The input for the table viewer is the instance of DTable
         treeViewer.setInput(dRepresentation);
@@ -327,8 +330,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         // Create a TreeViewerEditor with focusable cell
         TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer), ColumnViewerEditor.TABBING_HORIZONTAL
                 | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
-
-        // Set after the setInput to avoid layout call it several time for nothing at opening
+        // Set after the setInput to avoid layout call it several time for
+        // nothing at opening
         headerTreeColumn.getColumn().addControlListener(tableViewerListener);
     }
 
@@ -816,6 +819,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     public void dispose() {
         treeViewer.removeTreeListener(tableViewerListener);
         tableViewerListener = null;
+        tableUIUpdater.dispose();
+        tableUIUpdater = null;
         dTableContentProvider.dispose();
         dTableContentProvider = null;
         super.dispose();
