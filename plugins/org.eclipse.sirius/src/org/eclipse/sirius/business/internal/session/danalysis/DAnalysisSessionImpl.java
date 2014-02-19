@@ -1,6 +1,6 @@
 //CHECKSTYLE:OFF
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,8 +55,8 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.emf.workspace.ResourceUndoContext;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorManager;
 import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
@@ -83,7 +83,6 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
-import org.eclipse.sirius.business.internal.helper.display.VisibilityPropagatorAdapter;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.business.internal.migration.resource.ResourceFileExtensionPredicate;
 import org.eclipse.sirius.business.internal.movida.Movida;
@@ -207,8 +206,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /** The listener suitable for refresh the opened viewpoint editors. */
     protected RefreshEditorsPrecommitListener refreshEditorsListeners;
 
-    private VisibilityPropagatorAdapter visibilityPropagator;
-
     private final RepresentationsChangeAdapter representationsChangeAdapter;
 
     private final ResourceSetListener representationNameListener;
@@ -226,7 +223,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         this.mainDAnalysis = mainDAnalysis;
         this.sessionResource = mainDAnalysis.eResource();
         this.interpreter = new ODesignGenericInterpreter();
-        this.visibilityPropagator = new VisibilityPropagatorAdapter(this);
         this.representationsChangeAdapter = new RepresentationsChangeAdapter(this);
         this.representationNameListener = new RepresentationNameListener();
         this.controlledResourcesDetector = new ControlledResourcesDetector(this);
@@ -1229,9 +1225,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public void addAdaptersOnAnalysis(final DAnalysis analysis) {
-        if (this.visibilityPropagator != null) {
-            analysis.eAdapters().add(this.visibilityPropagator);
-        }
         if (this.representationsChangeAdapter != null) {
             this.representationsChangeAdapter.registerAnalysis(analysis);
         }
@@ -1242,9 +1235,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public void removeAdaptersOnAnalysis(final DAnalysis analysis) {
-        if (this.visibilityPropagator != null) {
-            analysis.eAdapters().remove(this.visibilityPropagator);
-        }
         if (this.representationsChangeAdapter != null) {
             this.representationsChangeAdapter.unregisterAnalysis(analysis);
         }
@@ -1757,7 +1747,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
         interpreter = null;
         crossReferencer = null;
-        visibilityPropagator = null;
         transactionalEditingDomain.removeResourceSetListener(representationNameListener);
         // TODO deinitialize model accessor, authority..
         // dispose the SessionEventBroker
@@ -1929,7 +1918,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
         notifyListeners(SessionListener.VSM_UPDATED);
     }
-    
+
     @Override
     public void registryChanged(final org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry, Set<URI> removed, Set<URI> added, Set<URI> changed) {
         movidaSupport.registryChanged(registry, removed, added, changed);

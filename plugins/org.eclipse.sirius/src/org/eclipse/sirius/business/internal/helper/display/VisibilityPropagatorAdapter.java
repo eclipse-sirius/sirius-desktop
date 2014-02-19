@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,6 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.viewpoint.DView;
 
 import com.google.common.collect.Iterables;
 
@@ -48,14 +47,20 @@ public class VisibilityPropagatorAdapter extends EContentAdapter implements Noti
 
     private Session session;
 
+    private DDiagram diagram;
+
     /**
      * Create a new adapter.
      * 
      * @param session
      *            the current session.
+     * @param diagram
+     *            the current diagram.
      */
-    public VisibilityPropagatorAdapter(Session session) {
+    public VisibilityPropagatorAdapter(Session session, DDiagram diagram) {
         this.session = session;
+        this.diagram = diagram;
+        this.diagram.eAdapters().add(this);
     }
 
     /**
@@ -153,7 +158,7 @@ public class VisibilityPropagatorAdapter extends EContentAdapter implements Noti
 
     @Override
     protected void addAdapter(Notifier notifier) {
-        if (notifier instanceof DView || notifier instanceof DSemanticDiagram || notifier instanceof DDiagramElement) {
+        if (notifier instanceof DSemanticDiagram || notifier instanceof DDiagramElement) {
             super.addAdapter(notifier);
         }
     }
@@ -193,4 +198,14 @@ public class VisibilityPropagatorAdapter extends EContentAdapter implements Noti
         return DisplayServiceManager.INSTANCE.getDisplayService().computeVisibility(mappingManager, parentDiagram, element);
     }
 
+    /**
+     * Dispose the current content adapter: remove it from the diagram.
+     */
+    public void dispose() {
+        if (diagram != null) {
+            diagram.eAdapters().remove(this);
+        }
+        diagram = null;
+        session = null;
+    }
 }

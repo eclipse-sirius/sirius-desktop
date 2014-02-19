@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.internal.refresh.listeners;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
+import org.eclipse.sirius.business.internal.helper.display.VisibilityPropagatorAdapter;
 import org.eclipse.sirius.diagram.DDiagram;
 
 /**
@@ -37,8 +38,10 @@ public class GMFDiagramUpdater {
     private ComputedStyleDescriptionCacheCleaner computedStyleDescriptionCacheCleaner;
 
     private EdgeStyleUpdater edgeStyleUpdater;
-    
+
     private SessionEventBroker eventBroker;
+
+    private VisibilityPropagatorAdapter visibilityPropagator;
 
     /**
      * Default constructor.
@@ -60,6 +63,7 @@ public class GMFDiagramUpdater {
         gmfBoundsUpdater = new GMFBoundsUpdater(domain, dDiagram);
         visibilityUpdater = new VisibilityUpdater(domain, dDiagram);
         dDiagramHiddenElementsUpdater = new DDiagramHiddenElementsUpdater(domain, dDiagram);
+        visibilityPropagator = new VisibilityPropagatorAdapter(session, dDiagram);
 
         computedStyleDescriptionCacheCleaner = new ComputedStyleDescriptionCacheCleaner(domain, dDiagram);
         edgeStyleUpdater = new EdgeStyleUpdater(domain, session.getSemanticCrossReferencer());
@@ -69,6 +73,7 @@ public class GMFDiagramUpdater {
      * Dispose the gmf diagram updaters.
      */
     public void dispose() {
+        visibilityPropagator.dispose();
         notationVisibilityUpdater.dispose();
         viewFontChangesRefactorer.dispose();
         gmfBoundsUpdater.dispose();
