@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,6 +36,8 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.Version;
+
+import com.google.common.collect.Ranges;
 
 /**
  * A beautiful tab bar.
@@ -113,17 +115,31 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
     }
 
     private void fillForDiagram() {
-        Bundle uiWorkbenchBundle = Platform.getBundle("org.eclipse.ui.workbench"); //$NON-NLS-1$
-        Version junoStart = Version.parseVersion("3.103");
-        //Version keplerStart = Version.parseVersion("3.105");
-
-        if (uiWorkbenchBundle != null && uiWorkbenchBundle.getVersion().compareTo(junoStart) >= 0) {
-            diagramFiller = new TabbarFillerWithoutContributions(manager, page);
-        } else {
+        if (canBeDynamic()) {
             diagramFiller = new TabbarFillerWithContributions(manager, page);
+        } else {
+            diagramFiller = new TabbarFillerWithoutContributions(manager, page);
         }
         diagramFiller.setPart(part);
         diagramFiller.fill();
+    }
+
+    /**
+     * Indicates if the tabbar can be dynamic (if the workbench version supports it).
+     * Issues exist with visibleWhen and contributions in Juno and Kepler.
+     * 
+     * @return true if the tabbar can be dynamic.
+     */
+    public static boolean canBeDynamic() {
+        Bundle uiWorkbenchBundle = Platform.getBundle("org.eclipse.ui.workbench"); //$NON-NLS-1$
+        Version junoStart = Version.parseVersion("3.103");
+        Version lunaStart = Version.parseVersion("3.106");
+
+        // The check is done on org.eclipse.ui.workbench and not on
+        // org.eclipse.core.runtime to be able to differentiate juno3 and juno
+        // (both have 3.8 as version on the org.eclipse.core.runtime plugin).
+        // Range must not be in [3.103..3.106)
+        return uiWorkbenchBundle != null && !Ranges.closedOpen(junoStart, lunaStart).contains(uiWorkbenchBundle.getVersion());
     }
 
     /**
