@@ -390,9 +390,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * Request an explicit refresh of the current diagram.
      */
     protected void manualRefresh() {
-        // TODO delete the specific case of Eclipse 4.x platform once tabbar
-        // issues will be fixed
-        if (!TestsUtil.isEclipse4xPlatform()) {
+        if (TestsUtil.isDynamicTabbar()) {
             bot.toolbarButtonWithTooltip(DiagramDialectUIServices.REFRESH_DIAGRAM).click();
         } else {
             // Use context menu instead of tabbar
@@ -677,9 +675,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         editor.getCanvas().pressShortcut(SWT.CTRL | SWT.SHIFT, 'd');
         SWTBotPreferences.KEYBOARD_LAYOUT = savedKeyboardLayout;
         SWTBotUtils.waitAllUiEvents();
-
-        // bot.waitUntil(condition);
-        // bot.toolbarButtonWithTooltip(DiagramUIActionsMessages.DeleteFromDiagram_ActionToolTipText).click();
     }
 
     /**
@@ -738,12 +733,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     protected void pressZoomInButton(SWTBotDesignerEditor swtBotDesignerEditor, int pressCount) {
         for (int i = 1; i <= pressCount; i++) {
-            // TODO remove this work-around once tabbar will contain zoom in
-            // button
-            if (TestsUtil.isEclipse4xPlatform()) {
-                double currentZoom = GraphicalHelper.getZoom((IGraphicalEditPart) ((DiagramRootEditPart) swtBotDesignerEditor.rootEditPart().part()).getContents());
-                swtBotDesignerEditor.zoom(ZoomLevel.createNextZoomInLevel(currentZoom));
-            } else {
+            if (TestsUtil.isDynamicTabbar()) {
                 // 2 possible values for this tooltip according to the target
                 // platform
                 // No common constant was found, so we try with both possible
@@ -753,6 +743,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 } catch (WidgetNotFoundException e) {
                     swtBotDesignerEditor.bot().toolbarButtonWithTooltip("Zoom In (Ctrl+=)").click();
                 }
+            } else {
+                double currentZoom = GraphicalHelper.getZoom((IGraphicalEditPart) ((DiagramRootEditPart) swtBotDesignerEditor.rootEditPart().part()).getContents());
+                swtBotDesignerEditor.zoom(ZoomLevel.createNextZoomInLevel(currentZoom));
             }
         }
     }
@@ -777,13 +770,11 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     protected void pressZoomOutButton(SWTBotDesignerEditor swtBotDesignerEditor, int pressCount) {
         for (int i = 1; i <= pressCount; i++) {
-            // TODO remove this work-around once tabbar will contain zoom out
-            // button
-            if (TestsUtil.isEclipse4xPlatform()) {
+            if (TestsUtil.isDynamicTabbar()) {
+                swtBotDesignerEditor.bot().toolbarButtonWithTooltip("Zoom Out (Ctrl+-)").click();
+            } else {
                 double currentZoom = GraphicalHelper.getZoom((IGraphicalEditPart) ((DiagramRootEditPart) swtBotDesignerEditor.rootEditPart().part()).getContents());
                 swtBotDesignerEditor.zoom(ZoomLevel.createNextZoomOutLevel(currentZoom));
-            } else {
-                swtBotDesignerEditor.bot().toolbarButtonWithTooltip("Zoom Out (Ctrl+-)").click();
             }
         }
     }
@@ -1089,9 +1080,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                     if (!"org.eclipse.ui.views.properties.tabbed".equals(status.getPlugin())
                             && status.getMessage() != null
                             && !status
-                                    .getMessage()
-                                    .startsWith(
-                                            "Contributor org.eclipse.ui.navigator.ProjectExplorer cannot be created., exception: org.eclipse.core.runtime.CoreException: Plug-in \"org.eclipse.ui.navigator.resources\" was unable to instantiate class \"org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider\".")) {
+                            .getMessage()
+                            .startsWith(
+                                    "Contributor org.eclipse.ui.navigator.ProjectExplorer cannot be created., exception: org.eclipse.core.runtime.CoreException: Plug-in \"org.eclipse.ui.navigator.resources\" was unable to instantiate class \"org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider\".")) {
                         errorOccurs(status, plugin);
                     }
                 }

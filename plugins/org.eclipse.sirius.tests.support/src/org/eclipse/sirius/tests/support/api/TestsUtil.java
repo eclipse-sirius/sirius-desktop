@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.support.api;
 
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.Tabbar;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Assert;
 import org.osgi.framework.Bundle;
@@ -24,6 +25,12 @@ import org.osgi.framework.Version;
  * @author mchauvin
  */
 public final class TestsUtil {
+
+    private static final String UI_WORKBENCH_JUNO_START = "3.103";
+
+    private static final String UI_WORKBENCH_KEPLER_START = "3.105";
+
+    private static final String UI_WORKBENCH_LUNA_START = "3.106";
 
     /**
      * Constructor.
@@ -127,29 +134,66 @@ public final class TestsUtil {
         if (platformVersion.startsWith("3.8")) {
             isJuno3Platform = true;
         }
-        return isJuno3Platform;
+        return isJuno3Platform && !isJuno4Platform();
     }
 
     /**
-     * Tells if the current platform corresponds to Juno, Kepler, .. (i.e.
+     * Tells if the current platform corresponds to Juno, Kepler, Luna, .. (i.e.
      * Eclipse 4.x).
      * 
      * @return true if the current platform corresponds to eclipse 4.x, false
      *         otherwise.
      */
     public static boolean isEclipse4xPlatform() {
+        Version junoStart = Version.parseVersion(UI_WORKBENCH_JUNO_START);
+        return checkUiWorkbenchVersion(junoStart, null);
+    }
+
+    /**
+     * Tells if the current platform corresponds to Juno (i.e. Eclipse 4.x).
+     * 
+     * @return true if the current platform corresponds to Juno 4.x, false
+     *         otherwise.
+     */
+    public static boolean isJuno4Platform() {
+        Version junoStart = Version.parseVersion(UI_WORKBENCH_JUNO_START);
+        Version keplerStart = Version.parseVersion(UI_WORKBENCH_KEPLER_START);
+        return checkUiWorkbenchVersion(junoStart, keplerStart);
+    }
+
+    private static boolean checkUiWorkbenchVersion(Version versiontStart, Version versionEnd) {
         /*
          * Juno/Kepler Core Runtime plugins version are 3.8/3.9 and not 4.x. So
          * the "org.eclipse.ui.workbench" is used instead.
          */
-
-        boolean isEclipse4Platform = false;
-        Version junoStart = Version.parseVersion("3.103");
         Bundle uiWorkbenchBundle = Platform.getBundle("org.eclipse.ui.workbench");
-        if (uiWorkbenchBundle != null && uiWorkbenchBundle.getVersion().compareTo(junoStart) >= 0) {
-            isEclipse4Platform = true;
+        if (uiWorkbenchBundle != null) {
+            return uiWorkbenchBundle.getVersion().compareTo(versiontStart) >= 0 && (versionEnd == null || uiWorkbenchBundle.getVersion().compareTo(versionEnd) < 0);
         }
-        return isEclipse4Platform;
+        return false;
+    }
+
+    /**
+     * Tells if the current platform corresponds to Kepler.
+     * 
+     * @return true if the current platform corresponds to Kepler, false
+     *         otherwise.
+     */
+    public static boolean isKeplerPlatform() {
+        Version keplerStart = Version.parseVersion(UI_WORKBENCH_KEPLER_START);
+        Version lunaStart = Version.parseVersion(UI_WORKBENCH_LUNA_START);
+        return checkUiWorkbenchVersion(keplerStart, lunaStart);
+    }
+
+    /**
+     * Tells if the current platform corresponds to Luna.
+     * 
+     * @return true if the current platform corresponds to Luna, false
+     *         otherwise.
+     */
+    public static boolean isLunaPlatform() {
+        Version keplerStart = Version.parseVersion(UI_WORKBENCH_LUNA_START);
+        return checkUiWorkbenchVersion(keplerStart, null);
     }
 
     /**
@@ -230,5 +274,16 @@ public final class TestsUtil {
      */
     public static void waitUntil(ICondition condition) {
         TestsUtil.waitUntil(condition, 5000, 500);
+    }
+
+    /**
+     * Indicates if the tabbar can be dynamic (ie: is contextual and can receive
+     * contributions). Some issues were detected on Juno and Kepler.
+     * 
+     * @See {@link Tabbar#canBeDynamic()}
+     * @return true if the tabbar is dynamic.
+     */
+    public static boolean isDynamicTabbar() {
+        return Tabbar.canBeDynamic();
     }
 }

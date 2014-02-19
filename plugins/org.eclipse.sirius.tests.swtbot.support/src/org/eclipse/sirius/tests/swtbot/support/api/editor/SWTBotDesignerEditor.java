@@ -847,10 +847,10 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
      *             if an exception occurs
      */
     public void refresh() throws WidgetNotFoundException {
-        if (TestsUtil.isEclipse4xPlatform()) {
-            clickContextMenu("Refresh");
-        } else {
+        if (TestsUtil.isDynamicTabbar()) {
             bot.toolbarButtonWithTooltip(DiagramDialectUIServices.REFRESH_DIAGRAM).click();
+        } else {
+            clickContextMenu("Refresh");
         }
     }
 
