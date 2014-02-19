@@ -60,10 +60,10 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
          * {@inheritDoc}
          */
         public boolean apply(Notification input) {
-            if (input.getEventType() == Notification.REMOVE || input.getEventType() == Notification.REMOVE_MANY || input.getEventType() == Notification.UNSET) {
-                if (input.getFeature() instanceof EReference && ((EReference) input.getFeature()).isContainment()) {
-                    return true;
-                }
+            boolean potentialExplicitDetachment = input.getEventType() == Notification.REMOVE || input.getEventType() == Notification.REMOVE_MANY || input.getEventType() == Notification.UNSET;
+            boolean potentialImplicitDetachment = input.getEventType() == Notification.SET && input.getNewValue() == null;
+            if (potentialExplicitDetachment || potentialImplicitDetachment) {
+                return input.getFeature() instanceof EReference && ((EReference) input.getFeature()).isContainment();
             }
             return false;
         }
@@ -81,9 +81,9 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
          */
         public boolean apply(Notification input) {
             if (input.getEventType() == Notification.ADD || input.getEventType() == Notification.ADD_MANY || input.getEventType() == Notification.SET) {
-                if (input.getFeature() instanceof EReference && ((EReference) input.getFeature()).isContainment()) {
-                    return true;
-                }
+                // The input.getNewValue() check required to make IS_ATTACHMENT
+                // and IS_DETACHMENT mutually exclusive.
+                return input.getFeature() instanceof EReference && ((EReference) input.getFeature()).isContainment() && input.getNewValue() != null;
             }
             return false;
         }
@@ -220,9 +220,9 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
      */
     protected Set<EObject> getChangedEObjectsAndChildren(Iterable<Notification> notifications, Predicate<EObject> notifierToIgnore) {
         final Set<EObject> changedEObjects = Sets.newLinkedHashSet();
-        for (Notification notifcation : notifications) {
-            if (notifierToIgnore == null || notifcation.getNotifier() instanceof EObject && !notifierToIgnore.apply((EObject) notifcation.getNotifier())) {
-                for (EObject root : getNotificationValues(notifcation)) {
+        for (Notification notification : notifications) {
+            if (notifierToIgnore == null || notification.getNotifier() instanceof EObject && !notifierToIgnore.apply((EObject) notification.getNotifier())) {
+                for (EObject root : getNotificationValues(notification)) {
                     changedEObjects.add(root);
                     Iterators.addAll(changedEObjects, root.eAllContents());
                 }
@@ -244,7 +244,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
         final Set<EObject> values = Sets.newLinkedHashSet();
         Object value = notification.getOldValue();
         if (IS_ATTACHMENT.apply(notification)) {
-            // IS_DETACHMENT is the default case : notification.getOldValue
+            // IS_DETACHMENT is the default case : notification.getOldValue and the two predicates are mutually exclusive: see the SET case.
             value = notification.getNewValue();
         }
         if (value instanceof Collection) {
