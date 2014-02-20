@@ -460,4 +460,11 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
         return shouldInitializeRepresentation;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void invalidateMappingCache() {
+        // No cache to invalidate by default
+    }
 }

@@ -275,4 +275,11 @@ public interface DialectServices {
      * @since 1.0.0 M6
      */
     boolean handles(RepresentationExtensionDescription representationExtensionDescription);
+
+    /**
+     * Each dialect can have its proper mapping cache. This method can be called
+     * when this cache should be clean and computed again (for example when the
+     * selected viewpoints list is changed).
+     */
+    void invalidateMappingCache();
 }

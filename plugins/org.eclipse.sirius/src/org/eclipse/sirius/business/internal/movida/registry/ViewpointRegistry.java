@@ -30,9 +30,10 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistryFilter;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2;
 import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.query.ViewpointURIQuery;
@@ -45,7 +46,6 @@ import org.eclipse.sirius.business.internal.movida.registry.monitoring.PluginMon
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.ViewpointResourceListener;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.ViewpointResourceMonitor;
 import org.eclipse.sirius.business.internal.movida.registry.monitoring.WorkspaceMonitor;
-import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.base.relations.Relation;
@@ -157,8 +157,6 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     private LegacyPluginMonitor legacyMonitor;
 
     private CopyOnWriteArrayList<ViewpointRegistryFilter> filters = new CopyOnWriteArrayList<ViewpointRegistryFilter>();
-
-    private final DiagramDescriptionMappingsRegistry mappinsRegistry = DiagramDescriptionMappingsRegistry.INSTANCE;
 
     /**
      * Constructor.
@@ -295,7 +293,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
             fireRegistryChange(this.currentChange);
             // Don't hang on the values which are not needed anymore.
             this.currentChange = null;
-            this.mappinsRegistry.computeMappings();
+            DialectManager.INSTANCE.invalidateMappingCache();
         }
     }
 
@@ -474,8 +472,8 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
     }
 
     /**
-     * Removes from the registry all entries for Sirius defined in the
-     * specified resource.
+     * Removes from the registry all entries for Sirius defined in the specified
+     * resource.
      * 
      * @return the old entries removed from the registry.
      */
@@ -629,13 +627,6 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
         } else {
             return false;
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public DiagramDescriptionMappingsRegistry getDiagramDescriptionMappingsRegistry() {
-        return mappinsRegistry;
     }
 
     /**

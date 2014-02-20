@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.resource.impl.URIMappingRegistryImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -46,7 +47,6 @@ import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -85,8 +85,6 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     private boolean shouldInvalidateCache;
 
     private Map<EObject, EObject> foundCache = prepareFoundCache();
-
-    private final DiagramDescriptionMappingsRegistry mappingsRegistry = DiagramDescriptionMappingsRegistry.INSTANCE;
 
     private Map<String, ViewpointFileCollector> collectors;
 
@@ -169,18 +167,8 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         return ViewpointProtocolParser.getViewpoint(viewpointUri);
     }
 
-    /**
-     * Get the mappings registry to retrieve mappings.
-     * 
-     * @return the mappings registry
-     * @since 0.9.0
-     */
-    public DiagramDescriptionMappingsRegistry getDiagramDescriptionMappingsRegistry() {
-        return this.mappingsRegistry;
-    }
-
     private void invalidateCache() {
-        mappingsRegistry.computeMappings();
+        DialectManager.INSTANCE.invalidateMappingCache();
         prepareFoundCache();
     }
 

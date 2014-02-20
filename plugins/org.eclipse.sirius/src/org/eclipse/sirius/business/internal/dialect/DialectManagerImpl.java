@@ -500,4 +500,16 @@ public class DialectManagerImpl implements DialectManager {
         }
         return false;
     }
+
+    /**
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.business.api.dialect.DialectServices#invalidateMappingCache()
+     */
+    public void invalidateMappingCache() {
+        for (Dialect dialect : dialects.values()) {
+            dialect.getServices().invalidateMappingCache();
+        }
+    }
 }

@@ -18,7 +18,6 @@ import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
@@ -97,7 +96,7 @@ public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implem
             return diagramMappingsManagers.get(diagram);
         } else {
             final DiagramDescription desc = diagram.getDescription();
-            final DiagramDescriptionMappingsRegistry mappingsRegistry = ViewpointRegistry.getInstance().getDiagramDescriptionMappingsRegistry();
+            final DiagramDescriptionMappingsRegistry mappingsRegistry = DiagramDescriptionMappingsRegistry.INSTANCE;
             final DiagramDescriptionMappingsManager descManager = mappingsRegistry.getDiagramDescriptionMappingsManager(session, desc);
 
             final DiagramMappingsManager newManager = new DiagramMappingsManagerImpl(diagram, descManager);
