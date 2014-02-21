@@ -28,14 +28,6 @@ public interface CreatedOutput {
 
     EObject getCreatedElement();
 
-    /**
-     * Tells if we must synchronize the direct children of this created element.
-     * 
-     * @return true if we must synchronize the direct children of this created
-     *         element
-     */
-    boolean synchronizeChildren();
-
     Maybe<? extends ChildCreationSupport> getChildSupport();
 
     void updateMapping();
