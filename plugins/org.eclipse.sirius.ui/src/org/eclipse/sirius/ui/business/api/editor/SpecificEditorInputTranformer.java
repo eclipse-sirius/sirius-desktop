@@ -38,7 +38,6 @@ import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionCreationOperation;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
@@ -47,6 +46,7 @@ import org.eclipse.sirius.ui.business.api.session.SessionSpecificEditorInput;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.ui.business.internal.commands.ChangeViewpointSelectionCommand;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -232,8 +232,8 @@ public class SpecificEditorInputTranformer {
         if (session != null && representationDescriptionUsed != null && semanticElement != null) {
             for (final DView view : session.getOwnedViews()) {
                 for (final DRepresentation repr : view.getAllRepresentations()) {
-                    if (repr instanceof DSemanticDiagram && ((DSemanticDiagram) repr).getDescription().equals(representationDescriptionUsed)
-                            && ((DSemanticDiagram) repr).getTarget().equals(semanticElement)) {
+                    RepresentationDescription reprDesc = DialectManager.INSTANCE.getDescription(repr);
+                    if (repr instanceof DSemanticDecorator && representationDescriptionUsed.equals(reprDesc) && semanticElement.equals(((DSemanticDecorator) repr).getTarget())) {
                         return Options.newSome(repr);
                     }
                 }
