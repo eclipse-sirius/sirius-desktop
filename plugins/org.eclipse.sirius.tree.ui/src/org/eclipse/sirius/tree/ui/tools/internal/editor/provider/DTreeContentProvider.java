@@ -12,8 +12,10 @@ package org.eclipse.sirius.tree.ui.tools.internal.editor.provider;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.sirius.synchronizer.HasChildrenNotYetSynchronizedMarker;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
@@ -100,8 +102,12 @@ public class DTreeContentProvider implements ITreeContentProvider {
      * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
      */
     public boolean hasChildren(final Object element) {
-        final Object[] children = getChildren(element);
-        return children != null && children.length > 0;
+        boolean hasChildren = false;
+        if (element instanceof DTreeItemContainer) {
+            DTreeItemContainer dTreeItemContainer = (DTreeItemContainer) element;
+            hasChildren = !dTreeItemContainer.getOwnedTreeItems().isEmpty() || EcoreUtil.getAdapter(dTreeItemContainer.eAdapters(), HasChildrenNotYetSynchronizedMarker.class) != null;
+        }
+        return hasChildren;
     }
 
     /**

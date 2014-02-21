@@ -11,9 +11,11 @@
 package org.eclipse.sirius.tree.business.internal.dialect.common.tree;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.ECollections;
@@ -37,6 +39,15 @@ import org.eclipse.sirius.synchronizer.SemanticPartitions;
 import org.eclipse.sirius.synchronizer.Signature;
 import org.eclipse.sirius.synchronizer.SignatureProvider;
 import org.eclipse.sirius.synchronizer.StringSignature;
+import org.eclipse.sirius.tree.DTree;
+import org.eclipse.sirius.tree.DTreeItem;
+import org.eclipse.sirius.tree.DTreeItemContainer;
+import org.eclipse.sirius.tree.TreeFactory;
+import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
+import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.MappingBasedPartition;
+import org.eclipse.sirius.tree.business.internal.refresh.DTreeElementSynchronizerSpec;
+import org.eclipse.sirius.tree.description.TreeDescription;
+import org.eclipse.sirius.tree.description.TreeItemMapping;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -49,16 +60,6 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multiset;
 import com.google.common.collect.Ordering;
-
-import org.eclipse.sirius.tree.DTree;
-import org.eclipse.sirius.tree.DTreeItem;
-import org.eclipse.sirius.tree.DTreeItemContainer;
-import org.eclipse.sirius.tree.TreeFactory;
-import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
-import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.MappingBasedPartition;
-import org.eclipse.sirius.tree.business.internal.refresh.DTreeElementSynchronizerSpec;
-import org.eclipse.sirius.tree.description.TreeDescription;
-import org.eclipse.sirius.tree.description.TreeItemMapping;
 
 /**
  * Update the {@link DTree} model according to the semantic model and the
@@ -333,6 +334,14 @@ class CreatedTreeItem extends AbstractCreatedDTreeItemContainer {
 
     }
 
+    /**
+     * Synchronize direct children only if the current {@link DTreeItem} is
+     * expanded.
+     */
+    public boolean synchronizeChildren() {
+        return tItem.isExpanded();
+    }
+
     public Maybe<? extends ChildCreationSupport> getChildSupport() {
         return MaybeFactory.newSome(new TreeItemContainerChildSupport(getGlobalContext(), tItem));
     }
@@ -365,47 +374,56 @@ class TreeItemContainerChildSupport implements ChildCreationSupport {
 
     public void reorderChilds(Iterable<CreatedOutput> outDesc) {
         final Multiset<TreeItemMapping> subMappings = LinkedHashMultiset.create();
+        Set<TreeItemMapping> mappings = new HashSet<TreeItemMapping>();
         final Map<EObject, CreatedOutput> outputToItem = Maps.newHashMap();
         for (CreatedOutput createdOutput : outDesc) {
             EObject createdElement = createdOutput.getCreatedElement();
             outputToItem.put(createdElement, createdOutput);
             if (createdElement instanceof DTreeItem) {
-                subMappings.add(((DTreeItem) createdElement).getActualMapping());
+                DTreeItem createdDTreeItem = (DTreeItem) createdElement;
+                TreeItemMapping actualMapping = createdDTreeItem.getActualMapping();
+                subMappings.add(actualMapping);
+                mappings.add(actualMapping);
             }
         }
 
-        // Counts subMappings to correctly sort tree items regarding mapping
-        // order (items have been created regarding the semantic candidates
-        // order)
-        int startIndex = 0;
-        final Map<TreeItemMapping, Integer> startIndexes = Maps.newHashMap();
-        for (TreeItemMapping itemMapping : subMappings) {
-            startIndexes.put(itemMapping, startIndex);
-            startIndex += subMappings.count(itemMapping);
-        }
+        // Does not need to sort DTreeItem according to their mapping if there
+        // is only one mapping
+        if (mappings.size() > 1) {
 
-        Function<DTreeItem, Integer> getNewIndex = new Function<DTreeItem, Integer>() {
-
-            public Integer apply(DTreeItem from) {
-                // init with element count : elements with unknown mapping will
-                // be placed at
-                // the end.
-                int index = outputToItem.size();
-                TreeItemMapping itemMapping = from.getActualMapping();
-                if (itemMapping != null && startIndexes.containsKey(itemMapping)) {
-                    index = startIndexes.get(itemMapping);
-                }
-
-                CreatedOutput createdOutput = outputToItem.get(from);
-                if (createdOutput != null) {
-                    return index + createdOutput.getNewIndex();
-                }
-                return -1;
+            // Counts subMappings to correctly sort tree items regarding mapping
+            // order (items have been created regarding the semantic candidates
+            // order)
+            int startIndex = 0;
+            final Map<TreeItemMapping, Integer> startIndexes = Maps.newHashMap();
+            for (TreeItemMapping itemMapping : subMappings) {
+                startIndexes.put(itemMapping, startIndex);
+                startIndex += subMappings.count(itemMapping);
             }
-        };
 
-        ECollections.sort(container.getOwnedTreeItems(), Ordering.natural().onResultOf(getNewIndex));
+            Function<DTreeItem, Integer> getNewIndex = new Function<DTreeItem, Integer>() {
 
+                public Integer apply(DTreeItem from) {
+                    // init with element count : elements with unknown mapping
+                    // will
+                    // be placed at
+                    // the end.
+                    int index = outputToItem.size();
+                    TreeItemMapping itemMapping = from.getActualMapping();
+                    if (itemMapping != null && startIndexes.containsKey(itemMapping)) {
+                        index = startIndexes.get(itemMapping);
+                    }
+
+                    CreatedOutput createdOutput = outputToItem.get(from);
+                    if (createdOutput != null) {
+                        return index + createdOutput.getNewIndex();
+                    }
+                    return -1;
+                }
+            };
+
+            ECollections.sort(container.getOwnedTreeItems(), Ordering.natural().onResultOf(getNewIndex));
+        }
     }
 
     public void deleteChild(CreatedOutput outDesc) {
@@ -480,6 +498,15 @@ class CreatedDTree extends AbstractCreatedDTreeItemContainer {
     public void setNewMapping(Mapping map) {
         throw new IllegalArgumentException(ILLEGAL_ARGUMENT_MESSAGE);
     }
+
+    /**
+     * Always synchronize direct children of a {@link DTree} as it has not the
+     * capability of collapse as {@link fr.obeo.dsl.viewpoint.tree.DTreeItem}.
+     */
+    public boolean synchronizeChildren() {
+        return true;
+    }
+
 
     public Maybe<? extends ChildCreationSupport> getChildSupport() {
         return MaybeFactory.newSome(new TreeItemContainerChildSupport(getGlobalContext(), dnode));
