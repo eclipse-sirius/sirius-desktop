@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -59,19 +58,17 @@ public class DRepresentationContainerSpec extends DRepresentationContainerImpl {
         while (it.hasNext()) {
             final DRepresentation representation = it.next();
             /*
-             * detect dangling diagram.
+             * detect dangling representations.
              */
-            if (representation instanceof DSemanticDiagram) {
-                if (((DSemanticDiagram) representation).getTarget() == null || ((DSemanticDiagram) representation).getRootContent() == null) {
-                    representationsToDelete.add(representation);
-                }
+            if (representation instanceof DSemanticDecorator && ((DSemanticDecorator) representation).getTarget() == null) {
+                representationsToDelete.add(representation);
             }
             if (!representationsToDelete.contains(representation)) {
                 representation.refresh();
             }
         }
         /*
-         * delete dangling viewpoints
+         * delete dangling representations
          */
         it = representationsToDelete.iterator();
         while (it.hasNext()) {
