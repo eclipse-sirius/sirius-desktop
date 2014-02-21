@@ -38,7 +38,6 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -475,8 +474,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
             if (type == IPropertySheetPage.class) {
                 currentPropertySheetpage = new DTablePropertySheetpage(this);
                 result = currentPropertySheetpage;
-            } else if (type == IDiagramCommandFactoryProvider.class) {
-                result = emfCommandFactory;
             } else if (type == EditingDomain.class) {
                 result = getEditingDomain();
             }
