@@ -32,6 +32,9 @@ h4. Changes in @org.eclipse.sirius@
 * The @org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask@ class has been renamed into @DeleteEObjectTask@.
 * The interface @org.eclipse.sirius.tools.api.command.listener.IChangeListener@ and all classes related to this mechanism (@ChangeListenerFactory@, @TriggerOperation@) have been removed as this mechanism proves to be inefficient. It can be replaced by a pre/post commit listener or a @org.eclipse.sirius.business.api.session.ModelChangeTrigger@
 * The @org.eclipse.sirius.tools.api.ui.IExternalAction2@ interface has been removed. It was created to disable some @IChangeListener@ when the action indicates it will not delete elements.
+* @org.eclipse.sirius.business.api.dialect.DialectServices.refresh(DRepresentation, boolean, IProgressMonitor@ has been added to specify if we want partial refresh or not. By default partial refresh is done. full refresh is only implements for tree dialect.
+* @org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices.refresh(DRepresentation, IProgressMonitor)@ has been added to call by default @DialectServices.refresh(DRepresentation, false, IProgressMonitor)@ to do a partial refresh.
+* @org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand.RefreshRepresentationsCommand(TransactionalEditingDomain, boolean, IProgressMonitor, DRepresentation...)@ and @RefreshRepresentationsCommand(TransactionalEditingDomain, boolean, IProgressMonitor, Collection<DRepresentation>)@ constructors has been added to specify a partial refresh or a full refresh.
 
 h4. Changes in @org.eclipse.sirius.ui@
 
@@ -57,6 +60,15 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * @org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery@ now provides two new methods @isEdgeWithRectilinearRoutingStyle()@ and @isEdgeWithObliqueRoutingStyle()@ that respectively checks if an edge has a rectilinear routing style or an oblique routing style.
 * @org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery@ now provides two new methods @getAbsoluteBendpointsConstraint()@ and @getRelativeBendpointsConstraint()@ that returns an option of list of @Bendpoint@ of a connection whether they are respectively @AbsoluteBendpoint@ or @RelatveBendpoint@.
 * @org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery@ also provides two new methods @isEdgeWithRectilinearRoutingStyle()@ and @isEdgeWithObliqueRoutingStyle()@ that respectively checks if an edge has a rectilinear routing style or an oblique routing style.
+
+h4. Changes in @org.eclipse.sirius.tree@
+
+* @org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.refreshContent(boolean, IProgressMonitor)@ has been added to specify if we want partial refresh or not.
+
+h4. Changes in @org.eclipse.sirius.synchronizer@
+
+* @org.eclipse.sirius.synchronizer.CreatedOutput.synchronizeChildren()@ has been added to allow doing a partial refresh of tree, i.e. to not refresh children of collapsed tree item.
+* @org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean)@ has been added to specify if we want partial refresh or not.
 
 h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
 

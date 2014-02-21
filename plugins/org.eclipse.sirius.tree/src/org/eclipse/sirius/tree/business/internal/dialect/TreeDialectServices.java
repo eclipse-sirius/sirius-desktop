@@ -183,11 +183,11 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
     /**
      * {@inheritDoc}
      */
-    public void refresh(DRepresentation representation, IProgressMonitor monitor) {
+    public void refresh(DRepresentation representation, boolean fullRefresh, IProgressMonitor monitor) {
         try {
             monitor.beginTask("Tree refresh", 1);
             if (canRefresh(representation)) {
-                refreshTree((DTree) representation, monitor);
+                refreshTree((DTree) representation, fullRefresh, monitor);
             }
         } finally {
             monitor.done();
@@ -205,14 +205,14 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
         }
     }
 
-    private void refreshTree(DTree tree, IProgressMonitor monitor) {
+    private void refreshTree(DTree tree, boolean fullRefresh, IProgressMonitor monitor) {
         Session session = SessionManager.INSTANCE.getSession(tree.getTarget());
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(tree.getTarget());
         InterpreterRegistry.prepareImportsFromSession(interpreter, session);
         ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(tree.getTarget());
 
         DTreeUserInteraction interaction = new DTreeUserInteraction(tree, new GlobalContext(accessor, session));
-        interaction.refreshContent(new SubProgressMonitor(monitor, 1));
+        interaction.refreshContent(fullRefresh, new SubProgressMonitor(monitor, 1));
 
     }
 

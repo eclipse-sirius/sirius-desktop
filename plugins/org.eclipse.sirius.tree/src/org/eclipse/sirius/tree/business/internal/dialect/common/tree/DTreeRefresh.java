@@ -11,9 +11,11 @@
 package org.eclipse.sirius.tree.business.internal.dialect.common.tree;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.ECollections;
@@ -95,12 +97,27 @@ public class DTreeRefresh {
     }
 
     /**
-     * Refreshes the tree.
+     * Refreshes the tree lazily, i.e. does not refresh sub tree of collapsed
+     * {@link DTreeItemContainer}.
      * 
      * @param monitor
      *            a {@link IProgressMonitor} to use
      */
     public void refresh(IProgressMonitor monitor) {
+        refresh(false, monitor);
+    }
+
+    /**
+     * Refreshes the tree.
+     * 
+     * @param fullRefresh
+     *            true to do a full refresh of {@link DTreeItemContainer} even
+     *            sub tree of collapsed {@link DTreeItemContainer}
+     * 
+     * @param monitor
+     *            a {@link IProgressMonitor} to use
+     */
+    public void refresh(boolean fullRefresh, IProgressMonitor monitor) {
         try {
             monitor.beginTask("Refresh tree", 4);
             if (ctx.getModelAccessor().getPermissionAuthority().canEditInstance(container)) {
@@ -126,7 +143,7 @@ public class DTreeRefresh {
                 CreatedOutput cDiag = buildOutput(provider);
                 monitor.worked(1);
 
-                refresher.update(cDiag);
+                refresher.update(cDiag, fullRefresh);
                 monitor.worked(1);
             }
         } finally {
@@ -336,16 +353,15 @@ class CreatedTreeItem extends AbstractCreatedDTreeItemContainer {
         return Options.newSome(new TreeItemContainerChildSupport(getGlobalContext(), tItem));
     }
 
+    /**
+     * Synchronize direct children only if the current {@link DTreeItem} is
+     * expanded.
+     */
+    public boolean synchronizeChildren() {
+        return tItem.isExpanded();
+    }
+
     public List<Mapping> getChildMappings() {
-        EObject papa = tItem.eContainer();
-        if (papa instanceof DTreeItem) {
-            EObject grandpa = papa.eContainer();
-            if (grandpa instanceof DTreeItem) {
-                if (!((DTreeItem) grandpa).isExpanded()) {
-                    return Lists.newArrayList();
-                }
-            }
-        }
         return getDescriptor().getMapping().getChildMappings();
     }
 }
@@ -364,47 +380,56 @@ class TreeItemContainerChildSupport implements ChildCreationSupport {
 
     public void reorderChilds(Iterable<CreatedOutput> outDesc) {
         final Multiset<TreeItemMapping> subMappings = LinkedHashMultiset.create();
+        Set<TreeItemMapping> mappings = new HashSet<TreeItemMapping>();
         final Map<EObject, CreatedOutput> outputToItem = Maps.newHashMap();
         for (CreatedOutput createdOutput : outDesc) {
             EObject createdElement = createdOutput.getCreatedElement();
             outputToItem.put(createdElement, createdOutput);
             if (createdElement instanceof DTreeItem) {
-                subMappings.add(((DTreeItem) createdElement).getActualMapping());
+                DTreeItem createdDTreeItem = (DTreeItem) createdElement;
+                TreeItemMapping actualMapping = createdDTreeItem.getActualMapping();
+                subMappings.add(actualMapping);
+                mappings.add(actualMapping);
             }
         }
 
-        // Counts subMappings to correctly sort tree items regarding mapping
-        // order (items have been created regarding the semantic candidates
-        // order)
-        int startIndex = 0;
-        final Map<TreeItemMapping, Integer> startIndexes = Maps.newHashMap();
-        for (TreeItemMapping itemMapping : subMappings) {
-            startIndexes.put(itemMapping, startIndex);
-            startIndex += subMappings.count(itemMapping);
-        }
+        // Does not need to sort DTreeItem according to their mapping if there
+        // is only one mapping
+        if (mappings.size() > 1) {
 
-        Function<DTreeItem, Integer> getNewIndex = new Function<DTreeItem, Integer>() {
-
-            public Integer apply(DTreeItem from) {
-                // init with element count : elements with unknown mapping will
-                // be placed at
-                // the end.
-                int index = outputToItem.size();
-                TreeItemMapping itemMapping = from.getActualMapping();
-                if (itemMapping != null && startIndexes.containsKey(itemMapping)) {
-                    index = startIndexes.get(itemMapping);
-                }
-
-                CreatedOutput createdOutput = outputToItem.get(from);
-                if (createdOutput != null) {
-                    return index + createdOutput.getNewIndex();
-                }
-                return -1;
+            // Counts subMappings to correctly sort tree items regarding mapping
+            // order (items have been created regarding the semantic candidates
+            // order)
+            int startIndex = 0;
+            final Map<TreeItemMapping, Integer> startIndexes = Maps.newHashMap();
+            for (TreeItemMapping itemMapping : subMappings) {
+                startIndexes.put(itemMapping, startIndex);
+                startIndex += subMappings.count(itemMapping);
             }
-        };
 
-        ECollections.sort(container.getOwnedTreeItems(), Ordering.natural().onResultOf(getNewIndex));
+            Function<DTreeItem, Integer> getNewIndex = new Function<DTreeItem, Integer>() {
 
+                public Integer apply(DTreeItem from) {
+                    // init with element count : elements with unknown mapping
+                    // will
+                    // be placed at
+                    // the end.
+                    int index = outputToItem.size();
+                    TreeItemMapping itemMapping = from.getActualMapping();
+                    if (itemMapping != null && startIndexes.containsKey(itemMapping)) {
+                        index = startIndexes.get(itemMapping);
+                    }
+
+                    CreatedOutput createdOutput = outputToItem.get(from);
+                    if (createdOutput != null) {
+                        return index + createdOutput.getNewIndex();
+                    }
+                    return -1;
+                }
+            };
+
+            ECollections.sort(container.getOwnedTreeItems(), Ordering.natural().onResultOf(getNewIndex));
+        }
     }
 
     public void deleteChild(CreatedOutput outDesc) {
@@ -482,6 +507,14 @@ class CreatedDTree extends AbstractCreatedDTreeItemContainer {
 
     public Option<? extends ChildCreationSupport> getChildSupport() {
         return Options.newSome(new TreeItemContainerChildSupport(getGlobalContext(), dnode));
+    }
+
+    /**
+     * Always synchronize direct children of a {@link DTree} as it has not the
+     * capability of collapse as {@link fr.obeo.dsl.viewpoint.tree.DTreeItem}.
+     */
+    public boolean synchronizeChildren() {
+        return true;
     }
 
     public List<Mapping> getChildMappings() {

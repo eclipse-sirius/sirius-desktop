@@ -58,15 +58,31 @@ public class DTreeUserInteraction {
      * @param monitor
      *            a {@link IProgressMonitor} to use
      * 
-     * @return this user interaction
+     * @return this user interaction for convenience
      */
     public DTreeUserInteraction refreshContent(IProgressMonitor monitor) {
+        return refreshContent(false, monitor);
+    }
+
+    /**
+     * Refreshes the content of the {@link DTree}.
+     * 
+     * @param fullRefresh
+     *            true to do a full refresh of {@link DTree} even sub tree of
+     *            collapsed {@link org.eclipse.sirius.tree.DTreeItemContainer}
+     * 
+     * @param monitor
+     *            a {@link IProgressMonitor} to use
+     * 
+     * @return this user interaction for convenience
+     */
+    public DTreeUserInteraction refreshContent(boolean fullRefresh, IProgressMonitor monitor) {
         try {
             monitor.beginTask("Refresh tree", 1);
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_TREE_KEY);
             SemanticPartitionInvalidator invalidator = new SemanticPartitionInvalidator();
             DTreeRefresh refresher = new DTreeRefresh(tree, new TreeDescriptionQuery(tree.getDescription()).getAllDescendantMappings(), invalidator, ctx);
-            refresher.refresh(new SubProgressMonitor(monitor, 1));
+            refresher.refresh(fullRefresh, new SubProgressMonitor(monitor, 1));
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REFRESH_TREE_KEY);
         } finally {
             monitor.done();

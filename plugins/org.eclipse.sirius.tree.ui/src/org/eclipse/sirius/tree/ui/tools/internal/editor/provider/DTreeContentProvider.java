@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.ui.tools.internal.editor.provider;
 
-import java.util.List;
-
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.tree.DTree;
@@ -36,8 +34,8 @@ public class DTreeContentProvider implements ITreeContentProvider {
      */
     public Object[] getElements(final Object inputElement) {
         if (inputElement instanceof DTree) {
-            final List<DTreeItem> visibleLines = getVisibleLines((DTree) inputElement);
-            return visibleLines.toArray();
+            DTree dTree = (DTree) inputElement;
+            return dTree.getOwnedTreeItems().toArray();
         }
         return null;
     }
@@ -58,27 +56,11 @@ public class DTreeContentProvider implements ITreeContentProvider {
      */
     public Object[] getChildren(final Object parentElement) {
         Object[] result = null;
-        if (parentElement instanceof DTree) {
-            final List<DTreeItem> visibleLines = getVisibleLines((DTree) parentElement);
-            result = visibleLines.toArray();
-        } else if (parentElement instanceof DTreeItem) {
-            final List<DTreeItem> visibleLines = getVisibleLines((DTreeItem) parentElement);
-            result = visibleLines.toArray();
+        if (parentElement instanceof DTreeItemContainer) {
+            DTreeItemContainer dTreeItemContainer = (DTreeItemContainer) parentElement;
+            result = dTreeItemContainer.getOwnedTreeItems().toArray();
         }
         return result;
-    }
-
-    /**
-     * Returns the visible items of the given <@link DTreeItemContainer
-     * lineContainer>.
-     * <p>
-     * 
-     * @param treeItemContainer
-     *            the line container
-     * @return a list of visible lines
-     */
-    private List<DTreeItem> getVisibleLines(final DTreeItemContainer treeItemContainer) {
-        return treeItemContainer.getOwnedTreeItems();
     }
 
     /**
@@ -100,8 +82,12 @@ public class DTreeContentProvider implements ITreeContentProvider {
      * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
      */
     public boolean hasChildren(final Object element) {
-        final Object[] children = getChildren(element);
-        return children != null && children.length > 0;
+        boolean hasChildren = false;
+        if (element instanceof DTreeItemContainer) {
+            DTreeItemContainer dTreeItemContainer = (DTreeItemContainer) element;
+            hasChildren = !dTreeItemContainer.getOwnedTreeItems().isEmpty();
+        }
+        return hasChildren;
     }
 
     /**

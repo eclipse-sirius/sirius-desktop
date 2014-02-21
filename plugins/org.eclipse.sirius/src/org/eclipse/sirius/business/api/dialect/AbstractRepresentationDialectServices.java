@@ -112,6 +112,11 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
         // descriptions.
     }
 
+    @Override
+    public void refresh(DRepresentation representation, IProgressMonitor monitor) {
+        refresh(representation, false, monitor);
+    }
+
     /**
      * {@inheritDoc}
      */

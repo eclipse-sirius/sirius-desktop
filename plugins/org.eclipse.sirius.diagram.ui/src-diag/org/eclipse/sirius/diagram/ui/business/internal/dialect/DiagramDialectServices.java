@@ -231,9 +231,11 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     }
 
     /**
+     * The <code>fullRefresh</code> is not taken into account for diagram dialect.
+     * 
      * {@inheritDoc}
      */
-    public void refresh(final DRepresentation representation, final IProgressMonitor monitor) {
+    public void refresh(final DRepresentation representation, final boolean fullRefresh, final IProgressMonitor monitor) {
         try {
             monitor.beginTask("Refresh diagram", 10);
             final DSemanticDiagram diagram = (DSemanticDiagram) representation;

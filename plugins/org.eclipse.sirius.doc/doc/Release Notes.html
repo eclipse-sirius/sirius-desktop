@@ -104,6 +104,17 @@
 				<code>org.eclipse.sirius.tools.api.ui.IExternalAction2</code> interface has been removed. It was created to disable some 
 				<code>IChangeListener</code> when the action indicates it will not delete elements.
 			</li>
+			<li>
+				<code>org.eclipse.sirius.business.api.dialect.DialectServices.refresh(DRepresentation, boolean, IProgressMonitor</code> has been added to specify if we want partial refresh or not. By default partial refresh is done. full refresh is only implements for tree dialect.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices.refresh(DRepresentation, IProgressMonitor)</code> has been added to call by default 
+				<code>DialectServices.refresh(DRepresentation, false, IProgressMonitor)</code> to do a partial refresh.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand.RefreshRepresentationsCommand(TransactionalEditingDomain, boolean, IProgressMonitor, DRepresentation...)</code> and 
+				<code>RefreshRepresentationsCommand(TransactionalEditingDomain, boolean, IProgressMonitor, Collection&lt;DRepresentation&gt;)</code> constructors has been added to specify a partial refresh or a full refresh.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>
@@ -184,6 +195,25 @@
 				<code>org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery</code> also provides two new methods 
 				<code>isEdgeWithRectilinearRoutingStyle()</code> and 
 				<code>isEdgeWithObliqueRoutingStyle()</code> that respectively checks if an edge has a rectilinear routing style or an oblique routing style.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tree">Changes in 
+			<code>org.eclipse.sirius.tree</code>
+		</h4>
+		<ul>
+			<li>
+				<code>org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.refreshContent(boolean, IProgressMonitor)</code> has been added to specify if we want partial refresh or not.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.synchronizer">Changes in 
+			<code>org.eclipse.sirius.synchronizer</code>
+		</h4>
+		<ul>
+			<li>
+				<code>org.eclipse.sirius.synchronizer.CreatedOutput.synchronizeChildren()</code> has been added to allow doing a partial refresh of tree, i.e. to not refresh children of collapsed tree item.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean)</code> has been added to specify if we want partial refresh or not.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime">Changes in 
@@ -832,7 +862,7 @@
 				<code>com.google.common.base.Function</code>, but keeps the same API otherwise.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.synchronizer">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.synchronizer2">Changes in 
 			<code>org.eclipse.sirius.synchronizer</code>
 		</h4>
 		<ul>
@@ -1030,7 +1060,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>org.eclipse.sirius.table.tools.api.command.ITableCommandFactory.setAutoRefreshDTable()</code> method was removed. It had no effect, any code which called it can simply be removed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tree">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tree2">Changes in 
 			<code>org.eclipse.sirius.tree</code>
 		</h4>
 		<ul>
@@ -1466,7 +1496,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>TableHelper.getCell(DLine, String)</code> has been removed. Use the variant which take a DLine and a DColumn as parameters.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tree2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tree3">Changes in 
 			<code>org.eclipse.sirius.tree</code>
 		</h4>
 		<ul>

@@ -10,19 +10,21 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.ui.tools.internal.editor.listeners;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ITreeViewerListener;
 import org.eclipse.jface.viewers.TreeExpansionEvent;
-
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
 import org.eclipse.sirius.tree.business.internal.helper.RefreshTreeElementTask;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A {@link ITreeViewerListener} to update the DTree model when a SWT TreeItem
@@ -57,9 +59,11 @@ public class DTreeViewerListener implements ITreeViewerListener {
                 CommandStack commandStack = domain.getCommandStack();
                 CompoundCommand expandDTreeItemCmd = new CompoundCommand("Expand " + dTreeItem.getName() + " tree item");
                 expandDTreeItemCmd.append(new TreeFoldingRecordingCommand(session, event, true));
-                final SiriusCommand result = new SiriusCommand(domain);
-                result.getTasks().add(new RefreshTreeElementTask((DTreeItem) event.getElement(), domain));
-                expandDTreeItemCmd.append(result);
+                if (!Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null)) {
+                    SiriusCommand result = new SiriusCommand(domain);
+                    result.getTasks().add(new RefreshTreeElementTask((DTreeItem) event.getElement(), domain));
+                    expandDTreeItemCmd.append(result);
+                }
                 commandStack.execute(expandDTreeItemCmd);
             }
         }

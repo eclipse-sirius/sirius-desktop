@@ -127,7 +127,11 @@ public interface DialectServices {
     void refreshEffectiveRepresentationDescription(DRepresentation representation, IProgressMonitor monitor);
 
     /**
-     * Refresh a representation.
+     * Refresh a representation. By default a lazy refresh is done, i.e. only
+     * view model elements for which UI parts will be visible will be created by
+     * the refresh. To do a full refresh use
+     * {@link DialectServices#refresh(DRepresentation, boolean, IProgressMonitor)}
+     * with true as second parameter.
      * 
      * @param representation
      *            representation to refresh.
@@ -135,6 +139,24 @@ public interface DialectServices {
      *            to monitor the refresh operation.
      */
     void refresh(DRepresentation representation, IProgressMonitor monitor);
+
+    /**
+     * Refresh a representation.
+     * 
+     * @param representation
+     *            representation to refresh.
+     * @param fullRefresh
+     *            if true, all the representation elements are refreshed (or
+     *            created/removed as needed), including elements which may not
+     *            be visible to the user. If false, the implementation is
+     *            allowed (but not required) not to refresh some representation
+     *            elements if it can determine that the user can not see them
+     *            and interact with them. Note that a full refresh could not
+     *            finish in some case like recursive import mapping.
+     * @param monitor
+     *            to monitor the refresh operation.
+     */
+    void refresh(DRepresentation representation, boolean fullRefresh, IProgressMonitor monitor);
 
     /**
      * Tell whether the dialect is able to refresh the given representation.

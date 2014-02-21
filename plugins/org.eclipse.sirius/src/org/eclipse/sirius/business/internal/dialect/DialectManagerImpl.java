@@ -99,15 +99,22 @@ public class DialectManagerImpl implements DialectManager {
     }
 
     /**
-     * 
      * {@inheritDoc}
      */
     public void refresh(final DRepresentation representation, final IProgressMonitor monitor) {
+        refresh(representation, false, monitor);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void refresh(DRepresentation representation, boolean doFullRefresh, IProgressMonitor monitor) {
         try {
             monitor.beginTask("Refresh representation", 1);
             for (final Dialect dialect : dialects.values()) {
                 if (dialect.getServices().canRefresh(representation)) {
-                    dialect.getServices().refresh(representation, new SubProgressMonitor(monitor, 1));
+                    dialect.getServices().refresh(representation, doFullRefresh, new SubProgressMonitor(monitor, 1));
                 }
             }
         } finally {

@@ -12,6 +12,9 @@ package org.eclipse.sirius.synchronizer;
 
 import java.util.Collection;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.ext.base.Option;
+
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -40,41 +43,58 @@ public class ModelToModelSynchronizer {
         this.signatureProvider = signProvider;
     }
 
-    public void update(CreatedOutput container) {
+    public void update(CreatedOutput container, boolean fullRefresh) {
         RefreshPlan plan = new RefreshPlanner(this.table, this.evaluator, this.pre, this.signatureProvider).computePlan(container);
 
-        if (container.getChildSupport().some()) {
+        Collection<CreatedOutput> descriptorsToDelete = plan.getDescriptorsToDelete();
+        Collection<OutputDescriptor> descriptorsToCreate = plan.getDescriptorsToCreate();
+        Collection<CreatedOutput> descriptorsToRefresh = plan.getDescriptorsToRefresh();
+        // Refresh children only if needed
+        Option<? extends ChildCreationSupport> childSupport = container.getChildSupport();
+        if (container.synchronizeChildren() || fullRefresh) {
+            if (childSupport.some()) {
 
-            ChildCreationSupport containerChildSupport = container.getChildSupport().get();
-            for (CreatedOutput outDesc : plan.getDescriptorsToDelete()) {
-                containerChildSupport.deleteChild(outDesc);
+                ChildCreationSupport containerChildSupport = childSupport.get();
+                for (CreatedOutput outDesc : descriptorsToDelete) {
+                    containerChildSupport.deleteChild(outDesc);
+                }
+
+                Collection<CreatedOutput> newlyCreated = Lists.newArrayList();
+                for (OutputDescriptor outDesc : descriptorsToCreate) {
+                    CreatedOutput newOne = containerChildSupport.createChild(outDesc);
+                    newOne.refresh();
+                    // update(newOne);
+                    newlyCreated.add(newOne);
+                }
+
+                Iterable<CreatedOutput> createdOrRefreshed = Iterables.concat(descriptorsToRefresh, newlyCreated);
+                containerChildSupport.reorderChilds(createdOrRefreshed);
+
+                for (CreatedOutput createdOutput : createdOrRefreshed) {
+                    update(createdOutput, fullRefresh);
+                }
             }
 
-            Collection<CreatedOutput> newlyCreated = Lists.newArrayList();
-            for (OutputDescriptor outDesc : plan.getDescriptorsToCreate()) {
-                CreatedOutput newOne = containerChildSupport.createChild(outDesc);
-                newOne.refresh();
-               // update(newOne);
-                newlyCreated.add(newOne);
+            for (CreatedOutput outDesc : plan.getDescriptorToUpdateMapping()) {
+                outDesc.updateMapping();
+                outDesc.refresh();
             }
 
-            Iterable<CreatedOutput> createdOrRefreshed = Iterables.concat(plan.getDescriptorsToRefresh(), newlyCreated);
-            containerChildSupport.reorderChilds(createdOrRefreshed);
-
-            for (CreatedOutput createdOutput : createdOrRefreshed) {
-                update(createdOutput);
+            for (CreatedOutput outDesc : descriptorsToRefresh) {
+                outDesc.refresh();
+            }
+        } else {
+            if (childSupport.some()) {
+                EObject createdElement = container.getCreatedElement();
+                if (createdElement != null && descriptorsToRefresh.isEmpty() && !descriptorsToCreate.isEmpty()) {
+                    // Create only one children not refreshed to have
+                    // ITreeContentProvider.hasChildren() returning true
+                    ChildCreationSupport containerChildSupport = childSupport.get();
+                    OutputDescriptor outDesc = descriptorsToCreate.iterator().next();
+                    containerChildSupport.createChild(outDesc);
+                }
             }
         }
-
-        for (CreatedOutput outDesc : plan.getDescriptorToUpdateMapping()) {
-            outDesc.updateMapping();
-            outDesc.refresh();
-        }
-
-        for (CreatedOutput outDesc : plan.getDescriptorsToRefresh()) {
-            outDesc.refresh();
-        }
-
     }
 
 }

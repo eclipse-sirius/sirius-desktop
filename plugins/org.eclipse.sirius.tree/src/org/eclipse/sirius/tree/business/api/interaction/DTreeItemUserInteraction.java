@@ -71,7 +71,7 @@ public class DTreeItemUserInteraction {
         Option<DTree> parentTree = new DTreeItemQuery(item).getParentTree();
         if (parentTree.some()) {
             DTreeRefresh refresher = new DTreeRefresh(item, new TreeDescriptionQuery(parentTree.get().getDescription()).getAllDescendantMappings(), invalidator, ctx);
-            refresher.refresh(new NullProgressMonitor());
+            refresher.refresh(false, new NullProgressMonitor());
         }
     }
 

@@ -244,9 +244,11 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
     }
 
     /**
+     * The <code>fullRefresh</code> is not taken into account for table dialect.
+     * 
      * {@inheritDoc}
      */
-    public void refresh(final DRepresentation representation, final IProgressMonitor monitor) {
+    public void refresh(final DRepresentation representation, final boolean fullRefresh, final IProgressMonitor monitor) {
         try {
             monitor.beginTask("Refresh table", 1);
             DTable table = (DTable) representation;
