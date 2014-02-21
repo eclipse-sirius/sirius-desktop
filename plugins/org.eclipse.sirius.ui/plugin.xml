@@ -749,5 +749,22 @@
           <test property="org.eclipse.core.resources.projectNature" value="org.eclipse.sirius.nature.modelingproject" />
       </enablement>
    </extension>
+
+  <extension
+        point="org.eclipse.ui.popupMenus">
+     <objectContribution
+           id="org.eclipse.sirius.ui.action.exportRepresentationsAsImages"
+           nameFilter="*.aird"
+           objectClass="org.eclipse.core.resources.IFile">
+        <action
+              class="org.eclipse.sirius.ui.tools.internal.actions.export.ExportRepresentationsFromFileAction"
+              enablesFor="1"
+              icon="icons/full/others/image.gif"
+              id="org.eclipse.sirius.diagram.ui.action.exportRepresentationsAsImages"
+              label="%exportDiagramsAsImagesActionLabel"
+              menubarPath="group.port">
+        </action>
+     </objectContribution>
+  </extension>
    
 </plugin>

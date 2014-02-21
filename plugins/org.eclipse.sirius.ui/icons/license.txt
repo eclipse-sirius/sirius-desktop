@@ -135,6 +135,7 @@ icons/full/others/export.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool1
 icons/full/others/forward.gif - org.eclipse.ui.browser - org.eclipse.ui.browser/icons/ecl16/nav_forward.gif
 icons/full/others/grayed/backward.gif - org.eclipse.ui.browser - org.eclipse.ui.browser/icons/dlcl16/nav_backward.gif
 icons/full/others/grayed/forward.gif - org.eclipse.ui.browser - org.eclipse.ui.browser/icons/dlcl16/nav_forward.gif
+icons/full/others/image.gif - org.eclipse.ui.intro.universal - org.eclipse.ui.intro.universal/icons/full/obj16/image_obj.gif
 icons/full/others/information.gif- org.eclipse.ui.cheatsheets- org.eclipse.ui.cheatsheets/icons/obj16/information.gif
 icons/full/others/plugin.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/obj16/plugin_obj.gif
 icons/full/others/prefshelp.gif - org.eclipse.m2m.atl.adt.editor - org.eclipse.m2m.atl.adt.editor/icons/condition.gif

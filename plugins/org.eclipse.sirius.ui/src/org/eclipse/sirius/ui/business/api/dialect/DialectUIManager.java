@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ui.business.api.dialect;
 
 import org.eclipse.sirius.ui.business.internal.dialect.DialectUIManagerImpl;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * Instance managing the dialects.
@@ -49,4 +50,18 @@ public interface DialectUIManager extends DialectUIServices {
      *            dialect to disable.
      */
     void disableDialectUI(DialectUI dialect);
+
+    /**
+     * Return true if at least one dialect is able to export this
+     * <code>representation</code> to this <code>format<code>, false otherwise.
+     * 
+     * @param representation
+     *            The representation to export.
+     * @param format
+     *            The desired format.
+     * @return true if at least one dialect is able to export this
+     *         <code>representation </code> to this
+     *         <code>format<code>, false otherwise
+     */
+    boolean canExport(DRepresentation representation, ExportFormat format);
 }

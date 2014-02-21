@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.tools.internal.actions.export;
+package org.eclipse.sirius.ui.tools.internal.actions.export;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
@@ -29,7 +29,6 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.tools.api.actions.export.ExportAction;
 import org.eclipse.sirius.ui.tools.api.dialogs.AbstractExportRepresentationsAsImagesDialog;
@@ -72,60 +71,60 @@ public abstract class AbstractExportRepresentationsAction extends Action {
      */
     @Override
     public final void run() {
-        Collection<DDiagram> collectedDiagrams = getDDiagramsToExport();
-        Iterable<DDiagram> dDiagramsToExport = Iterables.filter(collectedDiagrams, Predicates.notNull());
-        if (!Iterables.isEmpty(dDiagramsToExport)) {
-            DDiagram firstDDiagramToExport = dDiagramsToExport.iterator().next();
-            Session session = getSession(firstDDiagramToExport);
+        Collection<DRepresentation> collectedRepresentations = getDRepresentationToExport();
+        Iterable<DRepresentation> dRepresentationsToExport = Iterables.filter(collectedRepresentations, Predicates.notNull());
+        if (!Iterables.isEmpty(dRepresentationsToExport)) {
+            DRepresentation firstDRepresentationToExport = dRepresentationsToExport.iterator().next();
+            Session session = getSession(firstDRepresentationToExport);
             if (session != null) {
-                IPath exportPath = getExportPath(firstDDiagramToExport, session);
+                IPath exportPath = getExportPath(firstDRepresentationToExport, session);
 
                 if (exportPath != null) {
-                    exportDiagram(exportPath, dDiagramsToExport, session);
+                    exportRepresentation(exportPath, dRepresentationsToExport, session);
                 }
             }
         }
     }
 
     /**
-     * Collect the diagrams to export.
+     * Collect the representations to export.
      * 
-     * @return the diagrams to export.
+     * @return the representations to export.
      */
-    protected abstract Collection<DDiagram> getDDiagramsToExport();
+    protected abstract Collection<DRepresentation> getDRepresentationToExport();
 
     /**
      * Get the corresponding session.
      * 
-     * @param diagram
-     *            a seleted diagram.
+     * @param representation
+     *            a selected representation.
      * @return the session.
      */
-    protected abstract Session getSession(DDiagram diagram);
+    protected abstract Session getSession(DRepresentation representation);
 
     /**
      * Display the export path and file format dialog and then export the
-     * diagrams.
+     * representations.
      * 
      * @param exportPath
      *            the default export path.
-     * @param dDiagramsToExport
-     *            the diagrams to export.
+     * @param dRepresentationToExport
+     *            the representation to export.
      * @param session
      *            the corresponding session.
      */
-    protected void exportDiagram(IPath exportPath, Iterable<DDiagram> dDiagramsToExport, Session session) {
+    protected void exportRepresentation(IPath exportPath, Iterable<DRepresentation> dRepresentationToExport, Session session) {
         final Shell shell = Display.getCurrent().getActiveShell();
 
         final AbstractExportRepresentationsAsImagesDialog dialog;
-        if (Iterables.size(dDiagramsToExport) > 1) {
+        if (Iterables.size(dRepresentationToExport) > 1) {
             dialog = new ExportSeveralRepresentationsAsImagesDialog(shell, exportPath);
         } else {
-            dialog = new ExportOneRepresentationAsImageDialog(shell, exportPath, dDiagramsToExport.iterator().next().getName());
+            dialog = new ExportOneRepresentationAsImageDialog(shell, exportPath, dRepresentationToExport.iterator().next().getName());
         }
 
         if (dialog.open() == Window.OK) {
-            List<DRepresentation> toExport = Lists.<DRepresentation> newArrayList(dDiagramsToExport);
+            List<DRepresentation> toExport = Lists.<DRepresentation> newArrayList(dRepresentationToExport);
             final ExportAction exportAction = new ExportAction(session, toExport, dialog.getOutputPath(), dialog.getImageFormat(), dialog.isExportToHtml());
             final ProgressMonitorDialog pmd = new ProgressMonitorDialog(shell);
             try {
@@ -145,14 +144,14 @@ public abstract class AbstractExportRepresentationsAction extends Action {
     /**
      * Compute the default export path.
      * 
-     * @param diagram
-     *            the first selected diagram.
+     * @param representation
+     *            the first selected representation.
      * @param session
      *            the corresponding session.
      * @return the export path.
      */
-    protected IPath getExportPath(DDiagram diagram, Session session) {
-        URI representationResourceURI = diagram.eResource().getURI();
+    protected IPath getExportPath(DRepresentation representation, Session session) {
+        URI representationResourceURI = representation.eResource().getURI();
         URIQuery uriQuery = new URIQuery(representationResourceURI);
         Option<IResource> iResourceOption = uriQuery.getCorrespondingResource();
         if (iResourceOption.some()) {

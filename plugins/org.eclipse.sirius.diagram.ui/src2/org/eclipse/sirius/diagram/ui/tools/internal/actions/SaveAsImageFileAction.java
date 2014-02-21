@@ -23,8 +23,9 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.export.AbstractExportRepresentationsAction;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ui.tools.internal.actions.export.AbstractExportRepresentationsAction;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -45,8 +46,8 @@ public class SaveAsImageFileAction extends AbstractExportRepresentationsAction {
     }
 
     @Override
-    protected Collection<DDiagram> getDDiagramsToExport() {
-        DDiagram dDDiagramToExport = null;
+    protected Collection<DRepresentation> getDRepresentationToExport() {
+        DRepresentation dRepresentationToExport = null;
         ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getSelection();
         if (selection instanceof IStructuredSelection) {
             IStructuredSelection structuredSelection = (IStructuredSelection) selection;
@@ -55,15 +56,15 @@ public class SaveAsImageFileAction extends AbstractExportRepresentationsAction {
                     IDDiagramEditPart dDiagramEditPart = (IDDiagramEditPart) selectedObject;
                     Option<DDiagram> dDiagramOption = dDiagramEditPart.resolveDDiagram();
                     if (dDiagramOption.some()) {
-                        dDDiagramToExport = dDiagramOption.get();
+                        dRepresentationToExport = dDiagramOption.get();
                         break;
                     }
                 } else if (selectedObject instanceof IDiagramElementEditPart) {
                     IDiagramElementEditPart ddePart = (IDiagramElementEditPart) selectedObject;
                     DDiagramElement dde = ddePart.resolveDiagramElement();
                     if (dde != null) {
-                        dDDiagramToExport = dde.getParentDiagram();
-                        if (dDDiagramToExport != null) {
+                        dRepresentationToExport = dde.getParentDiagram();
+                        if (dRepresentationToExport != null) {
                             break;
                         }
                     }
@@ -71,14 +72,14 @@ public class SaveAsImageFileAction extends AbstractExportRepresentationsAction {
                 }
             }
         }
-        return dDDiagramToExport == null ? Collections.<DDiagram> emptyList() : Collections.singleton(dDDiagramToExport);
+        return dRepresentationToExport == null ? Collections.<DRepresentation> emptyList() : Collections.singleton(dRepresentationToExport);
     }
 
     @Override
-    protected Session getSession(DDiagram diagram) {
+    protected Session getSession(DRepresentation representation) {
         Session session = null;
-        if (diagram != null) {
-            EObjectQuery eObjectQuery = new EObjectQuery(diagram);
+        if (representation != null) {
+            EObjectQuery eObjectQuery = new EObjectQuery(representation);
             session = eObjectQuery.getSession();
         }
         return session;

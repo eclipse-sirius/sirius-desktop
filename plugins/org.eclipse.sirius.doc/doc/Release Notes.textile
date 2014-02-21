@@ -13,6 +13,7 @@ h4(#separationOfDiagramSpecificConcept-step3). Move diagram.ecore in its own plu
 This milestone (Sirius 1.0M7) includes the third, and final, step towards a full separation of the diagram-specific stuff out of the core of Sirius (see "Step1":#separationOfDiagramSpecificConcept-step1 and "Step2":#separationOfDiagramSpecificConcept-step2 for more details).
 
 * To break the dependencies from Core to Diagram, a service has been added to the @DialectServices@. It has a default implementation in @AbstractRepresentationDialectServices@: @createTask(CommandContext, ModelAccessor, ModelOperation, Session, UICallBack)@: Create a new task corresponding to the ModelOperation. Only needed for ModelOperation specific to one dialect.
+* @org.eclipse.sirius.ui.business.api.dialect.DialectUIManager.canExport(DRepresentation, ExportFormat)@: New method returning true if at least one dialect is able to export this representation to this format, false otherwise.
 
 h2(#sirius1.0M6). Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)
 

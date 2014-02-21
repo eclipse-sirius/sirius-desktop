@@ -335,4 +335,17 @@ public class DialectUIManagerImpl implements DialectUIManager {
         }
         return result;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean canExport(DRepresentation representation, ExportFormat format) {
+        for (final DialectUI dialect : dialects.values()) {
+            if (dialect.getServices().canHandle(representation) && dialect.getServices().canExport(format)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

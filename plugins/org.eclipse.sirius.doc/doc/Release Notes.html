@@ -44,6 +44,9 @@
 				<code>AbstractRepresentationDialectServices</code>: 
 				<code>createTask(CommandContext, ModelAccessor, ModelOperation, Session, UICallBack)</code>: Create a new task corresponding to the ModelOperation. Only needed for ModelOperation specific to one dialect.
 			</li>
+			<li>
+				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIManager.canExport(DRepresentation, ExportFormat)</code>: New method returning true if at least one dialect is able to export this representation to this format, false otherwise.
+			</li>
 		</ul>
 		<h2 id="sirius1.0M6">Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)</h2>
 		<h3 id="APIChanges2">API Changes</h3>

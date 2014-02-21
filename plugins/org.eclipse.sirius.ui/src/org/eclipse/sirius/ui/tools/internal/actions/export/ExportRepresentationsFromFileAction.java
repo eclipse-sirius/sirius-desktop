@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.tools.internal.actions.export;
+package org.eclipse.sirius.ui.tools.internal.actions.export;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;

@@ -8,16 +8,19 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.tools.internal.actions.export;
+package org.eclipse.sirius.ui.tools.internal.actions.export;
 
 import java.util.Collection;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
+import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -27,6 +30,13 @@ import com.google.common.collect.Lists;
  * @author cbrun
  */
 public class ExportRepresentationsAction extends AbstractExportRepresentationsAction {
+
+    private static Predicate<DRepresentation> exportableRepresentation = new Predicate<DRepresentation>() {
+        @Override
+        public boolean apply(DRepresentation input) {
+            return DialectUIManager.INSTANCE.canExport(input, new ExportFormat(ExportDocumentFormat.NONE, null));
+        }
+    };
 
     private final Session session;
 
@@ -47,18 +57,17 @@ public class ExportRepresentationsAction extends AbstractExportRepresentationsAc
     }
 
     @Override
-    protected Collection<DDiagram> getDDiagramsToExport() {
-        Collection<DDiagram> dDiagramsToExport = Lists.newArrayList(Iterables.filter(selectedRepresentations, DDiagram.class));
-        return dDiagramsToExport;
+    protected Collection<DRepresentation> getDRepresentationToExport() {
+        return Lists.newArrayList(Iterables.filter(selectedRepresentations, exportableRepresentation));
     }
 
     @Override
     public boolean isEnabled() {
-        return super.isEnabled() && !Iterables.isEmpty(Iterables.filter(selectedRepresentations, DDiagram.class));
+        return super.isEnabled() && !Iterables.isEmpty(Iterables.filter(selectedRepresentations, exportableRepresentation));
     }
 
     @Override
-    protected Session getSession(DDiagram diagram) {
+    protected Session getSession(DRepresentation representation) {
         return session;
     }
 }
