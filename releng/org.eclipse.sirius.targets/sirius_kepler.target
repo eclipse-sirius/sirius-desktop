@@ -35,7 +35,7 @@
 <unit id="org.eclipse.acceleo.runtime.feature.group" version="3.4.1.201309031307"/>
 <unit id="org.eclipse.acceleo.sdk.feature.group" version="3.4.1.201309031307"/>
 <unit id="org.eclipse.acceleo.ui.capabilities.feature.group" version="3.4.1.201309031307"/>
-<repository location="http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/"/>
+<repository location="http://download.eclipse.org/acceleo/updates/releases/3.4/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.eef.runtime" version="1.2.0.201301031409"/>
