@@ -135,9 +135,8 @@ Export-Package: org.eclipse.sirius.diagram.editor.properties.filters.concern.con
  org.eclipse.sirius.diagram.editor.properties.sections.tool.requestdescription;version="1.0.0",
  org.eclipse.sirius.diagram.editor.properties.sections.tool.toolgroupextension;version="1.0.0",
  org.eclipse.sirius.diagram.editor.properties.sections.tool.toolsection;version="1.0.0",
- org.eclipse.sirius.diagram.editor.tools.internal.editor;version="1.0.0";x-internal:=true,
- org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring;version="1.0.0";x-internal:=true,
- org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring.border;version="1.0.0";x-internal:=true,
- org.eclipse.sirius.diagram.editor.tools.internal.property.section;version="1.0.0";x-internal:=true
+ org.eclipse.sirius.diagram.editor.tools.internal.editor;x-internal:=true;version="1.0.0",
+ org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring;x-internal:=true;version="1.0.0",
+ org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring.border;x-internal:=true;version="1.0.0"
 Import-Package: org.eclipse.sirius.ext.base;version="1.0.0",
  org.eclipse.sirius.ext.swt;version="1.0.0"
