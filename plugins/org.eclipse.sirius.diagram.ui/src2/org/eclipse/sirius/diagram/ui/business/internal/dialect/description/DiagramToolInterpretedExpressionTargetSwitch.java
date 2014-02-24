@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.diagram.business.api.query.MappingBasedToolDescriptionQuery;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
 import org.eclipse.sirius.diagram.description.tool.DeleteHookParameter;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
@@ -30,6 +31,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
+import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
@@ -214,5 +216,33 @@ public class DiagramToolInterpretedExpressionTargetSwitch extends ToolSwitch<Opt
         // context
         // changing parent Model operation or the containing Tool
         return globalSwitch.doSwitch(getFirstContextChangingContainer(object), false);
+    }
+
+    /**
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.diagram.description.tool.util.ToolSwitch#caseMappingBasedToolDescription(org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription)
+     * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseMappingBasedToolDescription(org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription)
+     */
+    @Override
+    public Option<Collection<String>> caseMappingBasedToolDescription(MappingBasedToolDescription tool) {
+        Option<Collection<String>> result = null;
+        switch (getFeatureId(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eINSTANCE.getMappingBasedToolDescription())) {
+        case org.eclipse.sirius.viewpoint.description.tool.ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__PRECONDITION:
+        case DO_NOT_CONSIDER_FEATURE:
+            Collection<String> targets = Sets.newLinkedHashSet();
+            for (RepresentationElementMapping correspondingMapping : new MappingBasedToolDescriptionQuery(tool).getMappings()) {
+                Option<Collection<String>> targetsFromMapping = globalSwitch.doSwitch(correspondingMapping, false);
+                if (targetsFromMapping.some()) {
+                    targets.addAll(targetsFromMapping.get());
+                }
+            }
+            result = Options.newSome(targets);
+            break;
+        default:
+            break;
+        }
+        return result;
     }
 }

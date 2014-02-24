@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.diagram.business.api.query.MappingBasedToolDescriptionQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
@@ -175,14 +174,9 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         switch (getFeatureId(ToolPackage.eINSTANCE.getMappingBasedToolDescription())) {
         case ToolPackage.MAPPING_BASED_TOOL_DESCRIPTION__PRECONDITION:
         case DO_NOT_CONSIDER_FEATURE:
-            Collection<String> targets = Sets.newLinkedHashSet();
-            for (RepresentationElementMapping correspondingMapping : new MappingBasedToolDescriptionQuery(tool).getMappings()) {
-                Option<Collection<String>> targetsFromMapping = globalSwitch.doSwitch(correspondingMapping, false);
-                if (targetsFromMapping.some()) {
-                    targets.addAll(targetsFromMapping.get());
-                }
-            }
-            result = Options.newSome(targets);
+            // Default case for MappingBasedToolDescription, if subclasses or
+            // dialects did not return a specific result.
+            result = Options.newNone();
             break;
         default:
             break;
