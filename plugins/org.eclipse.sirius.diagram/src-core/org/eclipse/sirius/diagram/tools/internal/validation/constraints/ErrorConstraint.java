@@ -8,9 +8,9 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tools.internal.validation.constraints;
+package org.eclipse.sirius.diagram.tools.internal.validation.constraints;
 
-import org.eclipse.sirius.tools.api.validation.constraint.AbstractDDiagramConstraint;
+import org.eclipse.sirius.diagram.tools.api.validation.constraint.AbstractDDiagramConstraint;
 import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 

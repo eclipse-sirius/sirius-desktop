@@ -8,10 +8,10 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.metamodel.spec;
+package org.eclipse.sirius.diagram.business.internal.metamodel.spec;
 
-import org.eclipse.sirius.business.internal.metamodel.operations.BorderedStyleSpecOperation;
-import org.eclipse.sirius.business.internal.metamodel.operations.StyleSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.BorderedStyleSpecOperation;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.StyleSpecOperations;
 import org.eclipse.sirius.diagram.impl.NoteImpl;
 
 /**

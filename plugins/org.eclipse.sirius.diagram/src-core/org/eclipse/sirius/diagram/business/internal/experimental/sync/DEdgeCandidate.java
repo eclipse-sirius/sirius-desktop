@@ -8,14 +8,14 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.experimental.sync;
+package org.eclipse.sirius.diagram.business.internal.experimental.sync;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
-import org.eclipse.sirius.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
@@ -91,7 +91,7 @@ public class DEdgeCandidate {
      * @return <code>true</code> if it is invalid. <code>false</code> otherwise.
      */
     public boolean isInvalid() {
-        return SiriusUtil.findDiagram(sourceView) == null || SiriusUtil.findDiagram(targetView) == null;
+        return SiriusDiagramUtil.findDiagram(sourceView) == null || SiriusDiagramUtil.findDiagram(targetView) == null;
     }
 
     /**

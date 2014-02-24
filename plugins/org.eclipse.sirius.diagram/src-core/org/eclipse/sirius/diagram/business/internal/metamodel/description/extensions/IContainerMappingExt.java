@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.metamodel.description.extensions;
+package org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions;
 
 import java.util.Collection;
 import java.util.Map;

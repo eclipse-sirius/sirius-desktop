@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tools.internal.command.builders;
+package org.eclipse.sirius.diagram.tools.internal.command.builders;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
  * 
  * @author mporhel
  */
-public class GenericToolCommandBuilder extends AbstractCommandBuilder {
+public class GenericToolCommandBuilder extends AbstractDiagramCommandBuilder {
 
     /**
      * Current tool description from which this CommandBuilder build a Command.
@@ -156,7 +156,7 @@ public class GenericToolCommandBuilder extends AbstractCommandBuilder {
         }
         return checked;
     }
-    
+
     /**
      * {@inheritDoc}
      */

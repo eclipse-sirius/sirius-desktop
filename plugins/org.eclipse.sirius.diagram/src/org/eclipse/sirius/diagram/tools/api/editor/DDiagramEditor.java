@@ -14,9 +14,9 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
-import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 
 /**

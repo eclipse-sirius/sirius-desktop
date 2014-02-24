@@ -8,6 +8,7 @@
     <file-match-pattern match-pattern="." include-pattern="true"/>
   </fileset>
   <filter name="FilesFromPackage" enabled="true">
+    <filter-data value="src-gen"/>
     <filter-data value="src/org/eclipse/sirius/diagram/internal"/>
     <filter-data value="src/org/eclipse/sirius/diagram/part"/>
   </filter>

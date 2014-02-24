@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
-import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
+import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComponentizationHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -167,7 +167,7 @@ public class DiagramInterpretedExpressionTargetSwitch extends DescriptionSwitch<
      */
     @Override
     public Option<Collection<String>> caseDiagramExtensionDescription(DiagramExtensionDescription object) {
-        DiagramDescription diagramDescription = ComponentizationHelper.getDiagramDescription(object, ViewpointRegistry.getInstance().getViewpoints());
+        DiagramDescription diagramDescription = DiagramComponentizationHelper.getDiagramDescription(object, ViewpointRegistry.getInstance().getViewpoints());
         if (diagramDescription != null) {
             return doSwitch(diagramDescription);
         }

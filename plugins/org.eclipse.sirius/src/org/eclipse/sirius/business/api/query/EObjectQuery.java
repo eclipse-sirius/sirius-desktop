@@ -13,6 +13,7 @@ package org.eclipse.sirius.business.api.query;
 import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,22 +27,25 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.emf.EClassQuery;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.Group;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+
 /**
  * A class aggregating all the queries (read-only!) having a {@link EObject} as
  * a starting point.
@@ -51,7 +55,8 @@ import com.google.common.collect.Sets;
  */
 public class EObjectQuery {
 
-    private EObject eObject;
+    /** The concerned {@link EObject}. */
+    protected EObject eObject;
 
     /**
      * Create a new query.
@@ -76,20 +81,6 @@ public class EObjectQuery {
                 return Options.newSome((DRepresentation) current);
             }
             current = current.eContainer();
-        }
-        return Options.newNone();
-    }
-
-    /**
-     * Browse the model upward (from the leaf to the root) and return the first
-     * diagram found.
-     * 
-     * @return the diagram if found, null otherwise.
-     */
-    public Option<DDiagram> getParentDiagram() {
-        Option<DRepresentation> parentRepresentation = getRepresentation();
-        if (parentRepresentation.some() && parentRepresentation.get() instanceof DDiagram) {
-            return Options.newSome((DDiagram) parentRepresentation.get());
         }
         return Options.newNone();
     }
@@ -376,5 +367,27 @@ public class EObjectQuery {
             current = current.eContainer();
         }
         return false;
+    }
+
+    /**
+     * Get all the available viewpoints contained in the resource set of the
+     * object to query.
+     * 
+     * @return all the available viewpoints
+     */
+    public Collection<Viewpoint> getAvailableViewpointsInResourceSet() {
+        final Resource eResource = eObject.eResource();
+        if (eResource != null) {
+            final ResourceSet resourceSet = eResource.getResourceSet();
+            final Collection<Viewpoint> viewpoints = new HashSet<Viewpoint>();
+            for (final Resource resource : resourceSet.getResources()) {
+                if (!resource.getContents().isEmpty() && resource.getContents().get(0) instanceof Group) {
+                    final Group group = (Group) resource.getContents().get(0);
+                    viewpoints.addAll(group.getOwnedViewpoints());
+                }
+            }
+            return viewpoints;
+        }
+        return Collections.emptySet();
     }
 }

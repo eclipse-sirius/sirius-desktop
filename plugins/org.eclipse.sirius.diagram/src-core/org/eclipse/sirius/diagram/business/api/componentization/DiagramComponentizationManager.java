@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.componentization;
+package org.eclipse.sirius.diagram.business.api.componentization;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,9 +21,10 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
-import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComponentizationHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -78,7 +79,7 @@ public class DiagramComponentizationManager {
             if (!DiagramComponentizationManager.isInSelectedViewpoints(enabledViewpoints, diagramDescription)) {
                 return wrapGetAllLayers(diagramDescription, Collections.<Layer> emptySet());
             }
-            layers.addAll(ComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints));
+            layers.addAll(DiagramComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints));
         }
         return wrapGetAllLayers(diagramDescription, layers);
     }
@@ -95,7 +96,7 @@ public class DiagramComponentizationManager {
     public EList<EdgeMapping> getAllEdgeMappings(final Collection<Viewpoint> enabledViewpoints, final DiagramDescription diagramDescription) {
         final Collection<EdgeMapping> edgeMappings = new ArrayList<EdgeMapping>(diagramDescription.getAllEdgeMappings());
         if (enabledViewpoints != null) {
-            for (final Layer layer : ComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
+            for (final Layer layer : DiagramComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
                 edgeMappings.addAll(layer.getAllEdgeMappings());
             }
         }
@@ -115,7 +116,7 @@ public class DiagramComponentizationManager {
     public EList<NodeMapping> getAllNodeMappings(final Collection<Viewpoint> enabledViewpoints, final DiagramDescription diagramDescription) {
         final Collection<NodeMapping> nodeMappings = new ArrayList<NodeMapping>(diagramDescription.getAllNodeMappings());
         if (enabledViewpoints != null) {
-            for (final Layer layer : ComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
+            for (final Layer layer : DiagramComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
                 nodeMappings.addAll(layer.getNodeMappings());
             }
         }
@@ -136,7 +137,7 @@ public class DiagramComponentizationManager {
     public EList<ContainerMapping> getAllContainerMappings(final Collection<Viewpoint> enabledViewpoints, final DiagramDescription diagramDescription) {
         final Collection<ContainerMapping> containerMappings = new ArrayList<ContainerMapping>(diagramDescription.getAllContainerMappings());
         if (enabledViewpoints != null) {
-            for (final Layer layer : ComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
+            for (final Layer layer : DiagramComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
                 containerMappings.addAll(layer.getContainerMappings());
             }
         }
@@ -178,7 +179,7 @@ public class DiagramComponentizationManager {
     public EList<AbstractToolDescription> getAllTools(final Collection<Viewpoint> enabledViewpoints, final DiagramDescription diagramDescription) {
         final Collection<AbstractToolDescription> tools = new ArrayList<AbstractToolDescription>(diagramDescription.getAllTools());
         if (enabledViewpoints != null) {
-            for (final Layer layer : ComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
+            for (final Layer layer : DiagramComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
                 tools.addAll(layer.getAllTools());
             }
         }
@@ -257,7 +258,7 @@ public class DiagramComponentizationManager {
         if (layerContainer instanceof DiagramDescription) {
             diagramDescription = (DiagramDescription) layerContainer;
         } else if (layerContainer instanceof DiagramExtensionDescription) {
-            diagramDescription = ComponentizationHelper.getDiagramDescription((DiagramExtensionDescription) layerContainer, enabledViewpoints);
+            diagramDescription = DiagramComponentizationHelper.getDiagramDescription((DiagramExtensionDescription) layerContainer, enabledViewpoints);
         }
         return diagramDescription;
     }
@@ -306,7 +307,7 @@ public class DiagramComponentizationManager {
         DiagramDescription diagramDescription;
 
         if (eObject instanceof DiagramExtensionDescription) {
-            diagramDescription = ComponentizationHelper.getDiagramDescription((DiagramExtensionDescription) eObject, ViewpointRegistry.getInstance().getViewpoints());
+            diagramDescription = DiagramComponentizationHelper.getDiagramDescription((DiagramExtensionDescription) eObject, ViewpointRegistry.getInstance().getViewpoints());
         } else {
             diagramDescription = (DiagramDescription) eObject;
         }

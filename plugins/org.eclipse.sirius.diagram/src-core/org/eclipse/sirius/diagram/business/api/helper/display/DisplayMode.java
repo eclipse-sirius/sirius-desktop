@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.helper.display;
+package org.eclipse.sirius.diagram.business.api.helper.display;
 
 /**
  * Display mode to use with {@link DisplayServiceManager}.

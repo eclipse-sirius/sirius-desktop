@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tools.api.command;
+package org.eclipse.sirius.diagram.tools.api.command;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 

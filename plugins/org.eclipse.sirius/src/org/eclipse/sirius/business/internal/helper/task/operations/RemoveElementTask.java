@@ -17,16 +17,16 @@ import java.util.Iterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.IDeletionTask;
-import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.CommandContext;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.DeleteView;
 import org.eclipse.sirius.viewpoint.description.tool.RemoveElement;
 
 /**
  * This task remove an element and unset all the references an element may have
- * on this one.
+ * DRepresentationElement on this one.
  * 
  * @author Cedric Brun (cbrun)
  * 
@@ -78,7 +78,7 @@ public class RemoveElementTask extends AbstractOperationTask implements IDeletio
     public void execute() {
         this.toBeRemoved = context.getCurrentTarget();
         if (deleteView) {
-            if (!(toBeRemoved instanceof DDiagramElement)) {
+            if (!(toBeRemoved instanceof DRepresentationElement)) {
                 SiriusPlugin.getDefault().warning("The element is not a view ! Do not delete !", new IllegalArgumentException());
                 return;
             }

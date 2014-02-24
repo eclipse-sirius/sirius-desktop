@@ -31,8 +31,6 @@ import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementI
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
-import org.eclipse.sirius.diagram.description.DescriptionFactory;
-import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -463,25 +461,43 @@ public class DialectManagerImpl implements DialectManager {
             container = container.eContainer();
         }
 
-        // TODO create a new API handles(RepresentationExtensionDescription) in
-        // DialectManager
-        // handles(RepresentationExtensionDescription) in DialectManager
-        if (container instanceof DiagramExtensionDescription) {
-            container = DescriptionFactory.eINSTANCE.createDiagramDescription();
-        }
-
         if (container != null) {
             // Step 2 : returning the first Dialect that is
-            // compatible with this representation description
+            // compatible with this representation description or this
+            // representation extension description
 
-            for (Dialect candidateDialect : dialects.values()) {
-                if (candidateDialect.getServices().handles((RepresentationDescription) container)) {
-                    foundDialect = candidateDialect;
-                    break;
+            if (container instanceof RepresentationDescription) {
+                for (Dialect candidateDialect : dialects.values()) {
+                    if (candidateDialect.getServices().handles((RepresentationDescription) container)) {
+                        foundDialect = candidateDialect;
+                        break;
+                    }
+                }
+            } else if (container instanceof RepresentationExtensionDescription) {
+                for (Dialect candidateDialect : dialects.values()) {
+                    if (candidateDialect.getServices().handles((RepresentationExtensionDescription) container)) {
+                        foundDialect = candidateDialect;
+                        break;
+                    }
                 }
             }
+
         }
         return foundDialect;
     }
 
+    /**
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
+     */
+    public boolean handles(RepresentationExtensionDescription representationExtensionDescription) {
+        for (Dialect dialect : dialects.values()) {
+            if (dialect.getServices().handles(representationExtensionDescription)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

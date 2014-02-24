@@ -8,14 +8,14 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.query;
+package org.eclipse.sirius.diagram.business.api.query;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager;
-import org.eclipse.sirius.business.internal.componentization.mappings.visitor.MappingsHierarchyVisitor;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager;
+import org.eclipse.sirius.diagram.business.internal.componentization.mappings.visitor.MappingsHierarchyVisitor;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 
 /**

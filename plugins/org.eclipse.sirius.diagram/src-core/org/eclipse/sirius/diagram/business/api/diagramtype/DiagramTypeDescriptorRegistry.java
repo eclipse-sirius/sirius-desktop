@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.diagramtype;
+package org.eclipse.sirius.diagram.business.api.diagramtype;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 public final class DiagramTypeDescriptorRegistry {
 
     /** Diagram type extension point ID. */
-    private static final String DIAGRAM_TYPE_EP_ID = "org.eclipse.sirius.diagramTypeProvider";
+    private static final String DIAGRAM_TYPE_EP_ID = "org.eclipse.sirius.diagram.diagramTypeProvider";
 
     /** The diagram description provider attribute. */
     private static final String DIAGRAM_DESCRIPTION_PROVIDER_ATTR = "descriptionProvider";
@@ -172,7 +172,7 @@ public final class DiagramTypeDescriptorRegistry {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.business.api.diagramtype.IDiagramTypeDescriptor#getDiagramDescriptionProvider()
+         * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor#getDiagramDescriptionProvider()
          */
         public IDiagramDescriptionProvider getDiagramDescriptionProvider() {
             return this.diagramDescriptionProvider;
@@ -181,7 +181,7 @@ public final class DiagramTypeDescriptorRegistry {
         /**
          * {@inheritDoc}
          * 
-         * @see org.eclipse.sirius.business.api.diagramtype.IDiagramTypeDescriptor#getLabel()
+         * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor#getLabel()
          */
         public String getLabel() {
             return label;

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tools.internal.command.builders;
+package org.eclipse.sirius.diagram.tools.internal.command.builders;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,11 +16,11 @@ import java.util.Map;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
-import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.tool.DoubleClickDescription;
 import org.eclipse.sirius.diagram.description.tool.Navigation;
 import org.eclipse.sirius.ext.base.Option;
@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
  * @author smonnier
  * 
  */
-public class DoubleClickCommandBuilder extends AbstractCommandBuilder {
+public class DoubleClickCommandBuilder extends AbstractDiagramCommandBuilder {
 
     private DoubleClickDescription tool;
 

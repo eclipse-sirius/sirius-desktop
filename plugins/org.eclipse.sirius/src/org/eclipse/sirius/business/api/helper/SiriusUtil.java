@@ -19,18 +19,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
@@ -126,24 +119,6 @@ public final class SiriusUtil {
     }
 
     /**
-     * Find the functional analysis that owns the specified viewpoint.
-     * 
-     * @param diagram
-     *            the viewpoint.
-     * @return the found analysis or <code>null</code> if no analysis is found.
-     */
-    public static DRepresentationContainer findRepresentationContainer(final DDiagram diagram) {
-        EObject current = diagram;
-        while (current != null) {
-            if (current instanceof DRepresentationContainer) {
-                return (DRepresentationContainer) current;
-            }
-            current = current.eContainer();
-        }
-        return null;
-    }
-
-    /**
      * Find the designer view that owns the specified representation element.
      * 
      * @param element
@@ -179,50 +154,6 @@ public final class SiriusUtil {
             current = current.eContainer();
         }
         return null;
-    }
-
-    /**
-     * Find parent {@link DDiagram} from a {@link EObject}.
-     * 
-     * @param element
-     *            the {@link EObject} instance
-     * @return the first parent of element which is an instance of
-     *         {@link DDiagram} or null if not found
-     */
-    public static DDiagram findDiagram(final EObject element) {
-        EObject current = element;
-        while (current != null) {
-            if (current instanceof DDiagram) {
-                return (DDiagram) current;
-            }
-            current = current.eContainer();
-        }
-        return null;
-    }
-
-    /**
-     * Find parent {@link DiagramDescription} from a
-     * {@link DiagramElementMapping}.
-     * 
-     * @param mapping
-     *            the {@link DiagramElementMapping} instance the current session
-     * @return the first parent of mapping which is an instance of
-     *         {@link DiagramDescription}
-     */
-    public static DiagramDescription findDiagramDescription(final DiagramElementMapping mapping) {
-        EObject parent = mapping.eContainer();
-        DiagramDescription diagramDescription = null;
-        while (parent != null) {
-            if (parent instanceof DiagramDescription) {
-                diagramDescription = (DiagramDescription) parent;
-                break;
-            } else if (parent instanceof DiagramExtensionDescription) {
-                diagramDescription = ComponentizationHelper.getDiagramDescription((DiagramExtensionDescription) parent, ViewpointRegistry.getInstance().getViewpoints());
-                break;
-            }
-            parent = parent.eContainer();
-        }
-        return diagramDescription;
     }
 
     /**

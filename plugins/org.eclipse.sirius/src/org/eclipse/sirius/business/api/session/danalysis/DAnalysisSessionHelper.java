@@ -215,7 +215,8 @@ public final class DAnalysisSessionHelper {
             }
         }
 
-        // we also add the DAnalyses located on a CDO Repository that are children of the candidates
+        // we also add the DAnalyses located on a CDO Repository that are
+        // children of the candidates
         candidates.addAll(getRemoteDAnalyses(candidates));
         final DAnalysis analysis = DAnalysisSessionHelper.selectAnalysis(viewpoint, candidates, analysisSelector, representation);
 
@@ -228,7 +229,8 @@ public final class DAnalysisSessionHelper {
             }
         }
 
-        // if the DRepresentationContainer of the selected DAnalysis does not exist yet, and if it is located on a CDORepository
+        // if the DRepresentationContainer of the selected DAnalysis does not
+        // exist yet, and if it is located on a CDORepository
         if (freeContainer == null && URIQuery.CDO_URI_SCHEME.equals(analysis.eResource().getURI().scheme())) {
             // We create this representation container
             DRepresentationContainer newContainer = ViewpointFactory.eINSTANCE.createDRepresentationContainer();

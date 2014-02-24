@@ -30,7 +30,7 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDDiagramElementTask;
-import org.eclipse.sirius.business.internal.helper.task.DeleteDDiagramTask;
+import org.eclipse.sirius.diagram.business.internal.helper.task.DeleteDDiagramTask;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.listener.ChangeListenerFactory;

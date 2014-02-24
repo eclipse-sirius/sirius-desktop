@@ -8,12 +8,12 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.helper.display;
+package org.eclipse.sirius.diagram.business.internal.helper.display;
 
-import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
-import org.eclipse.sirius.business.api.helper.display.DisplayService;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
+import org.eclipse.sirius.diagram.business.api.helper.display.DisplayService;
 
 /**
  * An implementation of {@link DisplayService} which return always true.
@@ -41,7 +41,7 @@ public final class DisplayAllDisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#activateCache()
+     * @see org.eclipse.sirius.diagram.business.api.helper.display.DisplayService#activateCache()
      */
     public void activateCache() {
         /* do nothing */
@@ -50,7 +50,7 @@ public final class DisplayAllDisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#deactivateCache()
+     * @see org.eclipse.sirius.diagram.business.api.helper.display.DisplayService#deactivateCache()
      */
     public void deactivateCache() {
         /* do nothing */
@@ -59,7 +59,7 @@ public final class DisplayAllDisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#isDisplayed(DDiagram,
+     * @see org.eclipse.sirius.diagram.business.api.helper.display.DisplayService#isDisplayed(DDiagram,
      *      DDiagramElement)
      */
     public boolean isDisplayed(final DDiagram diagram, final DDiagramElement element) {
@@ -69,7 +69,7 @@ public final class DisplayAllDisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeVisibility(DiagramMappingsManager,
+     * @see org.eclipse.sirius.diagram.business.api.helper.display.DisplayService#computeVisibility(DiagramMappingsManager,
      *      DDiagram, DDiagramElement)
      */
     public boolean computeVisibility(DiagramMappingsManager session, final DDiagram diagram, final DDiagramElement element) {
@@ -79,7 +79,7 @@ public final class DisplayAllDisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayService#computeLabelVisibility(DDiagram,
+     * @see org.eclipse.sirius.diagram.business.api.helper.display.DisplayService#computeLabelVisibility(DDiagram,
      *      DDiagramElement)
      */
     public boolean computeLabelVisibility(DDiagram diagram, DDiagramElement element) {

@@ -8,11 +8,11 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.query;
+package org.eclipse.sirius.diagram.business.api.query;
 
-import org.eclipse.sirius.business.internal.experimental.sync.AbstractDNodeCandidate;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.AbstractDNodeCandidate;
 
 /**
  * A class aggregating all the queries (read-only!) having a

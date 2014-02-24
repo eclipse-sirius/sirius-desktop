@@ -19,8 +19,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
-import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 
@@ -30,6 +28,37 @@ import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescripti
  * @author ymortier
  */
 public abstract class AbstractConstraint extends AbstractModelConstraint {
+
+    /**
+     * Return <code>true</code> if the specified object is contained in a
+     * Viewpoint that knows the MM to use.
+     * 
+     * @param instance
+     *            the instance.
+     * @return <code>true</code> if the specified object is contained in a
+     *         Viewpoint that knows the MM to use.
+     */
+    protected boolean isElementContainedInAKnownMetamodel(final EObject instance) {
+        boolean aware = false;
+        final EObject desc = getParentDescription(instance);
+        if (desc instanceof RepresentationDescription) {
+            aware = ((RepresentationDescription) desc).getMetamodel() != null;
+        } else if (desc instanceof RepresentationExtensionDescription) {
+            aware = ((RepresentationExtensionDescription) desc).getMetamodel() != null;
+        }
+        return aware;
+    }
+
+    /**
+     * Return the parent description of different dialects if known.
+     * 
+     * @param instance
+     *            the instance.
+     * @return the parent description (or null if not known)
+     */
+    protected EObject getParentDescription(EObject instance) {
+        return null;
+    }
 
     /**
      * <p>
@@ -79,36 +108,5 @@ public abstract class AbstractConstraint extends AbstractModelConstraint {
             }
         }
         return result;
-    }
-
-    /**
-     * Return <code>true</code> if the specified object is contained in a
-     * viewpoint that knows the MM to use.
-     * 
-     * @param instance
-     *            the instance.
-     * @return <code>true</code> if the specified object is contained in a
-     *         viewpoint that knows the MM to use.
-     */
-    protected boolean elementContainedInMetamodelAwareSirius(final EObject instance) {
-        boolean aware = false;
-        final EObject desc = getParentDescription(instance);
-        if (desc instanceof RepresentationDescription) {
-            aware = ((RepresentationDescription) desc).getMetamodel() != null;
-        } else if (desc instanceof RepresentationExtensionDescription) {
-            aware = ((RepresentationExtensionDescription) desc).getMetamodel() != null;
-        }
-        return aware;
-    }
-
-    private EObject getParentDescription(final EObject instance) {
-        EObject container = instance.eContainer();
-        while (container != null) {
-            if (container instanceof DiagramDescription || container instanceof DiagramExtensionDescription) {
-                return container;
-            }
-            container = container.eContainer();
-        }
-        return null;
     }
 }

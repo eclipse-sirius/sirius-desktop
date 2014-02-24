@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.sync.visitor;
+package org.eclipse.sirius.diagram.business.internal.sync.visitor;
 
 import java.util.Collections;
 
@@ -43,7 +43,7 @@ public final class DefaultDiagramElementsHierarchyVisitor implements DiagramElem
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.internal.sync.visitor.DiagramElementsHierarchyVisitor#getChildren(org.eclipse.emf.ecore.EObject)
+     * @see org.eclipse.sirius.diagram.business.internal.sync.visitor.DiagramElementsHierarchyVisitor#getChildren(org.eclipse.emf.ecore.EObject)
      */
     public Iterable<? extends DDiagramElement> getChildren(final DragAndDropTarget element) {
 

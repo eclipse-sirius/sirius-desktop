@@ -18,6 +18,8 @@
    <extension-point id="layoutProvider" name="org.eclipse.sirius.diagram.layoutProvider" schema="schema/layoutProvider.exsd"/>
    <extension-point id="layoutDataManager" name="org.eclipse.sirius.diagram.layoutDataManager" schema="schema/layoutDataManager.exsd"/>
    <extension-point id="imageSelector" name="org.eclipse.sirius.diagram.imageSelector" schema="schema/imageSelector.exsd"/>
+   <extension-point id="diagramTypeProvider" name="org.eclipse.sirius.diagram.diagramTypeProvider" schema="schema/diagramTypeProvider.exsd"/>
+   
 
    <extension point="org.eclipse.ui.elementFactories">
      <factory
@@ -1026,7 +1028,7 @@
       <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
          <metamodelType
                id="org.eclipse.sirius.diagram.BracketEdge_4002"
-               name="%metatype.name.DimensionEdge_4002"
+               name="%metatype.name.BracketEdge_4002"
                kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
                eclass="DEdge">
             <param name="semanticHint" value="4002"/>
@@ -2018,5 +2020,295 @@
             class="org.eclipse.sirius.diagram.business.internal.migration.SetGMFViewsToNillMigrationParticipant"
             kind="RepresentationsFile">
       </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.business.internal.migration.description.ListContainerAttributeMigrationParticipant"
+            kind="VSM">
+      </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.business.internal.migration.description.OptionalLayersVSMMigrationParticipant"
+            kind="VSM">
+      </participant>
+            <participant
+            class="org.eclipse.sirius.diagram.business.internal.migration.DiagramSplitMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
+      <participant
+             class="org.eclipse.sirius.diagram.business.internal.migration.DiagramSplitMigrationParticipant"
+             kind="VSM">
+       </participant>
+   </extension>
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated diagram -->
+      <package
+            uri="http://www.eclipse.org/sirius/diagram/1.1.0"
+            class="org.eclipse.sirius.diagram.DiagramPackage"
+            genModel="model/diagram.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated diagram -->
+      <package
+            uri="http://www.eclipse.org/sirius/diagram/description/1.1.0"
+            class="org.eclipse.sirius.diagram.description.DescriptionPackage"
+            genModel="model/diagram.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated diagram -->
+      <package
+            uri="http://www.eclipse.org/sirius/diagram/description/style/1.1.0"
+            class="org.eclipse.sirius.diagram.description.style.StylePackage"
+            genModel="model/diagram.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated diagram -->
+      <package
+            uri="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0"
+            class="org.eclipse.sirius.diagram.description.tool.ToolPackage"
+            genModel="model/diagram.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated diagram -->
+      <package
+            uri="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0"
+            class="org.eclipse.sirius.diagram.description.filter.FilterPackage"
+            genModel="model/diagram.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated diagram -->
+      <package
+            uri="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0"
+            class="org.eclipse.sirius.diagram.description.concern.ConcernPackage"
+            genModel="model/diagram.genmodel"/>
+   </extension>
+   
+  <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <category
+		id="org.eclipse.sirius.diagram.category"
+		mandatory="false"
+		name="Sirius Diagram Validation Rules">   
+			<![CDATA[Sirius]]>
+      </category>	
+      <constraintProvider
+            cache="false"            
+            mode="Batch">
+         <package namespaceUri="http://www.eclipse.org/sirius/1.1.0"/>
+         <constraints categories="org.eclipse.sirius.diagram.category">
+            <constraint
+                  lang="Java"
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.constraints.ErrorConstraint"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Sirius Error"
+                  id="org.eclipse.sirius.diagram.category.validation.error"
+                  statusCode="1">
+               <description><![CDATA[Validation Error]]>
+               </description>
+               <message>
+                  <![CDATA[{0}]]>
+               </message>               
+               <target class="DDiagramElement"/>                                   
+            </constraint>
+            <constraint
+                  lang="Java"
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.constraints.WarningConstraint"
+                  severity="WARNING"
+                  mode="Batch"
+                  name="Sirius Warning"
+                  id="org.eclipse.sirius.diagram.category.validation.warning"
+                  statusCode="1">
+               <description><![CDATA[Validation warning]]>
+               </description>
+               <message>
+                  <![CDATA[{0}]]>
+               </message>               
+               <target class="DDiagramElement"/>                                   
+            </constraint>
+            <constraint
+                  lang="Java"
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.constraints.InfoConstraint"
+                  severity="INFO"
+                  mode="Batch"
+                  name="Sirius Info"
+                  id="org.eclipse.sirius.diagram.category.validation.info"
+                  statusCode="1">
+               <description><![CDATA[Validation info]]>
+               </description>
+               <message>
+                  <![CDATA[{0}]]>
+               </message>               
+               <target class="DDiagramElement"/>                                   
+            </constraint>
+         </constraints>
+      </constraintProvider>      
+  </extension>   
+  <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <category
+            name="Sirius Diagram Constraints"
+            id="org.eclipse.sirius.diagram.constraints"/>
+      <constraintProvider
+            cache="true"
+            mode="Batch">
+         <package namespaceUri="http://www.eclipse.org/sirius/1.1.0"/>
+         <package namespaceUri="http://www.eclipse.org/sirius/description/1.1.0"/>
+         <package namespaceUri="http://www.eclipse.org/sirius/description/style/1.1.0"/>
+         <package namespaceUri="http://www.eclipse.org/sirius/diagram/1.1.0"/>
+         <package namespaceUri="http://www.eclipse.org/sirius/diagram/description/1.1.0"/>
+         <package namespaceUri="http://www.eclipse.org/sirius/diagram/description/style/1.1.0"/>
+         <constraints categories="org.eclipse.sirius.diagram.constraints">
+               <constraint
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.DiagramMandatoryDomainClassConstraint"
+                  id="org.eclipse.sirius.diagram.constraints.MandatoryDomainClass"
+                  lang="Java"
+                  mode="Batch"
+                  name="Diagram Mandatory Domain Class"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The Domain Class is mandatory for this element
+               </message>
+               <description>
+                  Validates DomainClass features.
+               </description>
+            </constraint>
+            <constraint
+                  lang="Java"
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ExistingDomainClassConstraint"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Valid Domain Classes"
+                  id="org.eclipse.sirius.diagram.constraints.ValidDomainClass"
+                  statusCode="1">
+               <description>
+                  Invalid Class
+               </description>
+               <message>
+                  The Class {0} doesn&apos;t exist.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.BlankCandidatesExpressionWithRecursiveMappingConstraint"
+                  id="org.eclipse.sirius.diagram.constraints.BlankCandidatesExpressionWithRecursiveMapping"
+                  lang="Java"
+                  mode="Batch"
+                  name="Blank Candidates Expression With Recursive Mapping"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The SemanticCandidatesExpression field of {0} doesn''t accept a blank value because it's recursively imported by another ContainerMapping ({1}). This can cause infinite loop, StackOverflowError (except in case of not synchronized mapping).
+               </message>
+               <description>
+                  Validates that there is no blank SemanticCandidatesExpression for a recursive ContainerMapping
+               </description>
+            </constraint>
+            <constraint
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.RequiredEdgeStyleDescriptionSizeExpressionConstraint"
+                  id="org.eclipse.sirius.diagram.constraints.MissingRequiredEdgeSizeExpressionConstraint"
+                  lang="Java"
+                  mode="Batch"
+                  name="Missing Required Size Expression On Edge Style Description"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  The SizeComputationExpression field of {0} doesn&apos;&apos;t accept a blank value.
+               </message>
+               <description>
+                  Validates that the size computation expression of an EdgeStyleDecription is set
+               </description>
+            </constraint>
+            <constraint
+                  lang="Java"
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.EdgeMappingCycleConstraint"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Check that EdgeMappings with an EdgeMapping as source or target does not cause cycles."
+                  id="org.eclipse.sirius.diagram.constraints.EdgeMappingCycle"
+                  statusCode="1">
+               <description>
+                  Check that EdgeMappings with an EdgeMapping as source or target does not cause cycles.
+               </description>
+               <message>
+                  EdgeMappings {0} causes a cycle. You should modify the source or target mapping with an EdgeMapping that causes this cycle.
+               </message>
+            </constraint>
+            <constraint
+                  lang="Java"
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.DiagramExistingExpressionVariablesConstraint"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="Valid Variables"
+                  id="org.eclipse.sirius.constraints.ValidAcceleoVariable"
+                  statusCode="1">
+               <description>
+                  Invalid variable
+               </description>
+               <message>
+                  The expression {0} of {1} doesn&apos;t accept the {2} variable.
+               </message>
+            </constraint>
+            <constraint
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.RepresentationExtensionDescriptionRegexConstraint"
+                  id="org.eclipse.sirius.tools.internal.validation.description.constraints.RepresentationExtensionDescriptionRepresentationNameConstraint"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="Representation extension description representation name validation"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+            </constraint>
+            <constraint
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.ValidStyleConstraint"
+                  id="org.eclipse.sirius.constraints.ValidStyleConstraint"
+                  lang="Java"
+                  mode="Batch"
+                  name="Valid Style"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  A style is missing for {0}
+               </message>
+               <description>
+                  Validates that the style is set
+               </description>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <category
+            name="Sirius Diagram Constraints"
+            id="org.eclipse.sirius.diagram.constraints"/>
+      <constraintProvider
+            cache="true"
+            mode="Batch">
+         <package namespaceUri="http://www.eclipse.org/sirius/description/tool/1.1.0"/>
+         <package namespaceUri="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0"/>
+         <constraints categories="org.eclipse.sirius.diagram.constraints">
+            <constraint
+                  lang="Java"
+                  class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.PreconditionForDndToolsConstraint"
+                  severity="WARNING"
+                  mode="Batch"
+                  name="Check that drag and drop tools which accept the model as source have an explicit precondition."
+                  id="org.eclipse.sirius.diagram.constraints.PreconditionForDndTools"
+                  statusCode="1">
+               <description>
+                  Drag and drop tools which accept Model or Both as source should have an explicit precondition.
+               </description>
+               <message>
+                  The Drop tool {0} accepts arbitrary elements from the Model Content view as drag source. You should specify a precondition to validate the nature of the dragged element.
+               </message>
+            </constraint>            
+         </constraints>
+      </constraintProvider>
    </extension>
 </plugin>

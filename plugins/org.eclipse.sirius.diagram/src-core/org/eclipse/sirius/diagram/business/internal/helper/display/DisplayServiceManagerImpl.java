@@ -8,11 +8,11 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.helper.display;
+package org.eclipse.sirius.diagram.business.internal.helper.display;
 
-import org.eclipse.sirius.business.api.helper.display.DisplayMode;
-import org.eclipse.sirius.business.api.helper.display.DisplayService;
-import org.eclipse.sirius.business.api.helper.display.DisplayServiceManager;
+import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
+import org.eclipse.sirius.diagram.business.api.helper.display.DisplayService;
+import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 
 /**
  * Default implementation of {@link DisplayServiceManager}.
@@ -50,7 +50,7 @@ public final class DisplayServiceManagerImpl implements DisplayServiceManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayServiceManager#getDisplayService()
+     * @see org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager#getDisplayService()
      */
     public DisplayService getDisplayService() {
         return service;
@@ -59,7 +59,7 @@ public final class DisplayServiceManagerImpl implements DisplayServiceManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayServiceManager#activateMode(org.eclipse.sirius.business.api.helper.display.DisplayMode)
+     * @see org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager#activateMode(org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode)
      */
     public void activateMode(final DisplayMode modeToActivate) {
         this.mode = modeToActivate;
@@ -81,7 +81,7 @@ public final class DisplayServiceManagerImpl implements DisplayServiceManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.helper.display.DisplayServiceManager#getMode()
+     * @see org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager#getMode()
      */
     public DisplayMode getMode() {
         return mode;

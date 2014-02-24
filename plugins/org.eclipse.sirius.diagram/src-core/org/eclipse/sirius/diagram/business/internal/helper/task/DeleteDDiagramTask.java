@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.helper.task;
+package org.eclipse.sirius.diagram.business.internal.helper.task;
 
 import java.util.HashMap;
 import java.util.Iterator;

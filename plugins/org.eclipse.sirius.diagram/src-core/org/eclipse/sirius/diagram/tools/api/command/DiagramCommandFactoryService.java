@@ -8,9 +8,9 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tools.api.command;
+package org.eclipse.sirius.diagram.tools.api.command;
 
-import org.eclipse.sirius.tools.internal.command.EMFCommandFactoryProvider;
+import org.eclipse.sirius.diagram.tools.internal.command.EMFCommandFactoryProvider;
 
 /**
  * The Diagram Command Factory service. For the moment the class has only one

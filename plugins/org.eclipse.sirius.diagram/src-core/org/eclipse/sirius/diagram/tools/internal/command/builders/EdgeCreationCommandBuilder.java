@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tools.internal.command.builders;
+package org.eclipse.sirius.diagram.tools.internal.command.builders;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -17,18 +17,18 @@ import java.util.Map;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
-import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.business.internal.helper.task.CreateDEdgeTask;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.business.internal.helper.task.CreateDEdgeTask;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
@@ -46,7 +46,7 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
  * 
  * @author mchauvin
  */
-public class EdgeCreationCommandBuilder extends AbstractCommandBuilder {
+public class EdgeCreationCommandBuilder extends AbstractDiagramCommandBuilder {
 
     /**
      * Current tool description from which this CommandBuilder build a Command.
@@ -118,10 +118,10 @@ public class EdgeCreationCommandBuilder extends AbstractCommandBuilder {
             EObject sourceTarget = ((DSemanticDecorator) source).getTarget();
             EObject targetTarget = ((DSemanticDecorator) target).getTarget();
 
-            DDiagram diagram = SiriusUtil.findDiagram(source);
+            DDiagram diagram = SiriusDiagramUtil.findDiagram(source);
 
             if (diagram == null) {
-                diagram = SiriusUtil.findDiagram(target);
+                diagram = SiriusDiagramUtil.findDiagram(target);
             }
 
             EObject container = null;
@@ -165,7 +165,7 @@ public class EdgeCreationCommandBuilder extends AbstractCommandBuilder {
         if (tool.getConnectionStartPrecondition() != null && !StringUtil.isEmpty(tool.getConnectionStartPrecondition().trim())) {
             EObject sourceTarget = ((DSemanticDecorator) source).getTarget();
 
-            DDiagram diagram = SiriusUtil.findDiagram(source);
+            DDiagram diagram = SiriusDiagramUtil.findDiagram(source);
 
             EObject container = null;
 
@@ -248,7 +248,7 @@ public class EdgeCreationCommandBuilder extends AbstractCommandBuilder {
         final ICommandTask result = new CreateDEdgeTask(tool, createdObjects, modelAccessor, source, target);
         return result;
     }
-    
+
     /**
      * {@inheritDoc}
      */

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tools.internal.command.builders;
+package org.eclipse.sirius.diagram.tools.internal.command.builders;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -18,12 +18,12 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
-import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.EObjectCollectionWrapper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDes
  * 
  * @author mporhel
  */
-public class PaneBasedSelectionWizardCommandBuilder extends AbstractCommandBuilder {
+public class PaneBasedSelectionWizardCommandBuilder extends AbstractDiagramCommandBuilder {
 
     /**
      * Current tool description from which this CommandBuilder build a Command.
@@ -156,7 +156,7 @@ public class PaneBasedSelectionWizardCommandBuilder extends AbstractCommandBuild
         }
         return checked;
     }
-    
+
     /**
      * {@inheritDoc}
      */

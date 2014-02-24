@@ -11,8 +11,8 @@
 package org.eclipse.sirius.business.internal.repair.commands;
 
 import org.eclipse.emf.common.command.IdentityCommand;
-import org.eclipse.sirius.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**

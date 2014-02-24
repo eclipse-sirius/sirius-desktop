@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.helper.delete;
+package org.eclipse.sirius.diagram.business.api.helper.delete;
 
 import java.util.ArrayList;
 import java.util.Collection;

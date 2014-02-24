@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.query;
+package org.eclipse.sirius.diagram.business.api.query;
 
 import org.eclipse.sirius.diagram.BeginLabelStyle;
 import org.eclipse.sirius.diagram.CenterLabelStyle;
@@ -188,7 +188,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
     /**
      * Check if the edgeStyle or one of its label style is custom.
      * 
-     * @see org.eclipse.sirius.business.api.query.DDiagramElementQuery#isCustomized
+     * @see org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery#isCustomized
      *      ()
      * @return true if the edgeStyle or one of its label style is custom, false
      *         otherwise.

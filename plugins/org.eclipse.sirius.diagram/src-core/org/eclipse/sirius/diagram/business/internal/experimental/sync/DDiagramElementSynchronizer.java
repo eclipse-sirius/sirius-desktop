@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.experimental.sync;
+package org.eclipse.sirius.diagram.business.internal.experimental.sync;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,22 +23,7 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager;
-import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
-import org.eclipse.sirius.business.api.helper.SiriusHelper;
-import org.eclipse.sirius.business.api.helper.display.DisplayMode;
-import org.eclipse.sirius.business.api.helper.display.DisplayService;
-import org.eclipse.sirius.business.api.helper.display.DisplayServiceManager;
-import org.eclipse.sirius.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.query.ContainerMappingQuery;
-import org.eclipse.sirius.business.api.query.DiagramDescriptionMappingManagerQuery;
-import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.business.internal.componentization.mappings.DiagramDescriptionMappingsManagerImpl;
-import org.eclipse.sirius.business.internal.metamodel.helper.DiagramElementMappingHelper;
-import org.eclipse.sirius.business.internal.metamodel.helper.LayerHelper;
-import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
-import org.eclipse.sirius.business.internal.metamodel.helper.StyleHelper;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -61,6 +46,21 @@ import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
+import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramHelper;
+import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
+import org.eclipse.sirius.diagram.business.api.helper.display.DisplayService;
+import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
+import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
+import org.eclipse.sirius.diagram.business.api.query.ContainerMappingQuery;
+import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionMappingManagerQuery;
+import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
+import org.eclipse.sirius.diagram.business.internal.componentization.mappings.DiagramDescriptionMappingsManagerImpl;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramElementMappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.StyleHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -169,9 +169,9 @@ public class DDiagramElementSynchronizer {
         final DragAndDropTarget container = candidate.getViewContainer();
         final AbstractDNode newNode = createAbstractNode(container, candidate, isBorder);
         if (insertionIndex > 0) {
-            SiriusHelper.addNodeInContainer(container, isBorder, newNode, insertionIndex);
+            SiriusDiagramHelper.addNodeInContainer(container, isBorder, newNode, insertionIndex);
         } else {
-            SiriusHelper.addNodeInContainer(container, isBorder, newNode);
+            SiriusDiagramHelper.addNodeInContainer(container, isBorder, newNode);
         }
         refresh(newNode);
         refreshSemanticElements(newNode, candidate.getMapping());
@@ -774,7 +774,7 @@ public class DDiagramElementSynchronizer {
         this.interpreter.setVariable(IInterpreterSiriusVariables.VIEWPOINT, this.diagram);
         this.interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, this.diagram);
         this.interpreter.setVariable(IInterpreterSiriusVariables.VIEW, node);
-        
+
         this.mappingHelper.affectAndRefreshStyle(mapping, node, node.getTarget(), containerVariable, diagram);
 
         if (node.eContainer() != null) {

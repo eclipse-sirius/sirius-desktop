@@ -12,7 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.dialogs;
 
 import org.eclipse.gmf.runtime.common.core.util.StringMatcher;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
 
 import com.google.common.base.Predicate;
 

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tools.api.preferences;
+package org.eclipse.sirius.diagram.tools.api.preferences;
 
 import org.eclipse.sirius.diagram.EdgeRouting;
 

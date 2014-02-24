@@ -8,11 +8,12 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.helper.refresh;
+package org.eclipse.sirius.diagram.business.internal.helper.refresh;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.sirius.business.api.refresh.IRefreshExtensionProvider;
+import org.eclipse.sirius.business.internal.helper.refresh.AbstractProviderDescriptor;
+import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtensionProvider;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**

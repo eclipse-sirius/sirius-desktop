@@ -8,11 +8,11 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.componentization;
+package org.eclipse.sirius.diagram.business.api.componentization;
 
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.internal.componentization.mappings.DiagramMappingsManagerRegistryImpl;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.internal.componentization.mappings.DiagramMappingsManagerRegistryImpl;
 
 /**
  * This class will move in diagram plug-in when refresh refactoring will occurs.

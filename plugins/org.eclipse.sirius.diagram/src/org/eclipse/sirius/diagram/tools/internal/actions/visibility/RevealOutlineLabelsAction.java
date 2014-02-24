@@ -20,12 +20,12 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
+import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.tools.internal.editor.DiagramOutlinePage;
+import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
-import org.eclipse.sirius.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
 
 /**
  * Action to reveal labels in outline.

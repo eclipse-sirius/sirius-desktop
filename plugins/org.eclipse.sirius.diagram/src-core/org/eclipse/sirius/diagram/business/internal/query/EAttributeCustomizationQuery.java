@@ -8,15 +8,13 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.query;
+package org.eclipse.sirius.diagram.business.internal.query;
 
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.internal.metamodel.helper.BestStyleDescriptionKey;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.BestStyleDescriptionKey;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
 
@@ -25,9 +23,7 @@ import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
-public class EAttributeCustomizationQuery {
-
-    private EAttributeCustomization eAttributeCustomization;
+public class EAttributeCustomizationQuery extends org.eclipse.sirius.business.internal.query.EAttributeCustomizationQuery {
 
     /**
      * Default constructor.
@@ -36,7 +32,7 @@ public class EAttributeCustomizationQuery {
      *            the {@link EAttributeCustomization} to query
      */
     public EAttributeCustomizationQuery(EAttributeCustomization eAttributeCustomization) {
-        this.eAttributeCustomization = eAttributeCustomization;
+        super(eAttributeCustomization);
     }
 
     /**
@@ -63,25 +59,5 @@ public class EAttributeCustomizationQuery {
             interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER);
         }
         return newAttributeValue;
-    }
-
-    /**
-     * Tells if the current {@link EAttributeCustomization} is conforms to the
-     * specified style description element.
-     * 
-     * @param eObject
-     *            the specified style description element
-     * @return true if the current {@link EAttributeCustomization} is conforms,
-     *         false else
-     */
-    public boolean isStyleDescriptionEltConformToEAttributeCustomization(EObject eObject) {
-        boolean isStyleDescriptionEltConformToEAttributeCustomization = false;
-        String attributeName = eAttributeCustomization.getAttributeName();
-        if (attributeName != null && attributeName.length() > 0) {
-            isStyleDescriptionEltConformToEAttributeCustomization = eObject.eClass().getEStructuralFeature(attributeName) instanceof EAttribute;
-        } else {
-            isStyleDescriptionEltConformToEAttributeCustomization = true;
-        }
-        return isStyleDescriptionEltConformToEAttributeCustomization;
     }
 }

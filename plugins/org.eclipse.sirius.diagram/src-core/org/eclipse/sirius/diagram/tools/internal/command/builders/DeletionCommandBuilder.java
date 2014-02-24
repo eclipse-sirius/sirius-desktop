@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tools.internal.command.builders;
+package org.eclipse.sirius.diagram.tools.internal.command.builders;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,7 +21,6 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.RemoveDanglingReferencesTask;
@@ -29,12 +28,8 @@ import org.eclipse.sirius.business.api.helper.task.RemoveSemanticDanglingReferen
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
-import org.eclipse.sirius.business.api.query.EObjectQuery;
-import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDDiagramElementTask;
-import org.eclipse.sirius.business.internal.helper.task.DeleteDDiagramTask;
-import org.eclipse.sirius.business.internal.helper.task.DeleteSeveralDDiagramElementsTask;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
@@ -43,6 +38,11 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
+import org.eclipse.sirius.diagram.business.internal.helper.task.DeleteDDiagramTask;
+import org.eclipse.sirius.diagram.business.internal.helper.task.DeleteSeveralDDiagramElementsTask;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
@@ -66,7 +66,7 @@ import com.google.common.collect.Sets;
  * 
  * @author mchauvin
  */
-public class DeletionCommandBuilder extends AbstractCommandBuilder {
+public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
 
     /** The default label for the enclosing command. */
     protected static final String DELETE = "Delete";
@@ -218,7 +218,7 @@ public class DeletionCommandBuilder extends AbstractCommandBuilder {
             // the command
             if (semanticElementCanBeDeleted) {
                 final DCommand result = createEnclosingCommand();
-                final DDiagram foundDiagram = SiriusUtil.findDiagram(diagramElement);
+                final DDiagram foundDiagram = SiriusDiagramUtil.findDiagram(diagramElement);
                 setTool();
                 if (tool != null) {
                     addDeleteDiagramElementFromTool(result);

@@ -13,7 +13,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.layout.ordering;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -42,7 +42,7 @@ public class OrderedTreeViewOrderingProvider implements ViewOrderingProvider {
 
         if (mapping instanceof AbstractNodeMapping) {
             final AbstractNodeMapping nodeMapping = (AbstractNodeMapping) mapping;
-            final DiagramDescription desc = SiriusUtil.findDiagramDescription(nodeMapping);
+            final DiagramDescription desc = SiriusDiagramUtil.findDiagramDescription(nodeMapping);
             final Layout layout = desc.getLayout();
             if (layout instanceof OrderedTreeLayout) {
                 if (((OrderedTreeLayout) layout).getNodeMapping().contains(mapping)) {
@@ -66,7 +66,7 @@ public class OrderedTreeViewOrderingProvider implements ViewOrderingProvider {
         if (mapping instanceof AbstractNodeMapping) {
 
             final AbstractNodeMapping nodeMapping = (AbstractNodeMapping) mapping;
-            final DiagramDescription desc = SiriusUtil.findDiagramDescription(nodeMapping);
+            final DiagramDescription desc = SiriusDiagramUtil.findDiagramDescription(nodeMapping);
             final Layout layout = desc.getLayout();
             if (layout instanceof OrderedTreeLayout) {
                 if (((OrderedTreeLayout) layout).getNodeMapping().contains(mapping)) {

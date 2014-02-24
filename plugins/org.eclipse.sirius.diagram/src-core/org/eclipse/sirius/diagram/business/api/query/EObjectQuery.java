@@ -1,0 +1,51 @@
+/*******************************************************************************
+ * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.diagram.business.api.query;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+
+/**
+ * A class aggregating all the queries (read-only!) having a {@link EObject} as
+ * a starting point.
+ * 
+ * @author mporhel
+ * 
+ */
+public class EObjectQuery extends org.eclipse.sirius.business.api.query.EObjectQuery {
+
+    /**
+     * Create a new query.
+     * 
+     * @param eObject
+     *            the element to query.
+     */
+    public EObjectQuery(EObject eObject) {
+        super(eObject);
+    }
+
+    /**
+     * Browse the model upward (from the leaf to the root) and return the first
+     * diagram found.
+     * 
+     * @return the diagram if found, null otherwise.
+     */
+    public Option<DDiagram> getParentDiagram() {
+        Option<DRepresentation> parentRepresentation = getRepresentation();
+        if (parentRepresentation.some() && parentRepresentation.get() instanceof DDiagram) {
+            return Options.newSome((DDiagram) parentRepresentation.get());
+        }
+        return Options.newNone();
+    }
+}

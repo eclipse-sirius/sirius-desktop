@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.metamodel.description.style.spec;
+package org.eclipse.sirius.diagram.business.internal.metamodel.description.style.spec;
 
 import org.eclipse.sirius.diagram.description.style.impl.EndLabelStyleDescriptionImpl;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;

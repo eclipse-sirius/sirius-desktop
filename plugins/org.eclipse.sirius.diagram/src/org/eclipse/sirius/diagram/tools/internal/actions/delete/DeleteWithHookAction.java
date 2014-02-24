@@ -20,7 +20,7 @@ import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.actions.PromptingDeleteAction;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.business.api.helper.delete.DeleteHookHelper;
+import org.eclipse.sirius.diagram.business.api.helper.delete.DeleteHookHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IWorkbenchPart;
 

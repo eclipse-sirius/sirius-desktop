@@ -13,8 +13,8 @@ package org.eclipse.sirius.diagram.tools.internal.testers;
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 
 /**
  * A tester to check if the selection has a label that can be hidden.

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.helper.filter;
+package org.eclipse.sirius.diagram.business.api.helper.filter;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,12 +17,12 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.sirius.business.api.helper.display.DisplayMode;
-import org.eclipse.sirius.business.api.helper.display.DisplayServiceManager;
-import org.eclipse.sirius.business.api.query.CompositeFilterDescriptionQuery;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
+import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
+import org.eclipse.sirius.diagram.business.api.query.CompositeFilterDescriptionQuery;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.diagram.description.filter.Filter;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;

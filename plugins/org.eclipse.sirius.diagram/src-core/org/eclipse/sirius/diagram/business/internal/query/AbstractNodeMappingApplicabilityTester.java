@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.query;
+package org.eclipse.sirius.diagram.business.internal.query;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,13 +16,13 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.query.DiagramDescriptionQuery;
-import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
-import org.eclipse.sirius.business.api.query.DiagramExtensionDescriptionQuery;
-import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionQuery;
+import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
+import org.eclipse.sirius.diagram.business.api.query.DiagramExtensionDescriptionQuery;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComponentizationHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -124,7 +124,7 @@ public class AbstractNodeMappingApplicabilityTester {
                 DiagramExtensionDescription diagramExtensionDescription = (DiagramExtensionDescription) eContainerValue;
                 Collection<Viewpoint> viewpoints = new ArrayList<Viewpoint>();
                 viewpoints.add((Viewpoint) selfOrSuper.eContainer());
-                DiagramDescription diagramDescription = ComponentizationHelper.getDiagramDescription(diagramExtensionDescription, viewpoints);
+                DiagramDescription diagramDescription = DiagramComponentizationHelper.getDiagramDescription(diagramExtensionDescription, viewpoints);
                 if (selfOrSuper.equals(diagramDescription)) {
                     if (checkValidSubMappingsAreSubtypeOf(diagramExtensionDescription, mappingsToCreate)) {
                         canCreateIn = true;

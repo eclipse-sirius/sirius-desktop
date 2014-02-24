@@ -22,10 +22,10 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 /**
  * A wrapper because the original class should be here.
  * 
- * @see org.eclipse.sirius.business.internal.experimental.sync.DDiagramSynchronizer
+ * @see org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer
  * @author mchauvin
  */
-public class DDiagramSynchronizer extends org.eclipse.sirius.business.internal.experimental.sync.DDiagramSynchronizer {
+public class DDiagramSynchronizer extends org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer {
 
     /**
      * Create a new synchronizer.

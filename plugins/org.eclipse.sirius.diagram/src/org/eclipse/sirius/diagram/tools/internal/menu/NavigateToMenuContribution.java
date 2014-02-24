@@ -51,6 +51,7 @@ import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ImagesPath;
+import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
 import org.eclipse.sirius.diagram.tools.internal.commands.NavigateToCommand;
 import org.eclipse.sirius.diagram.tools.internal.commands.emf.EMFCommandFactoryUI;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -157,7 +158,7 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
         navigate.add(createGroup);
         for (RepresentationNavigationDescription navDesc : element.getMapping().getNavigationDescriptions()) {
             final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(element.getTarget());
-            interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, SiriusUtil.findDiagram(element));
+            interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, SiriusDiagramUtil.findDiagram(element));
 
             final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
             variables.put(navDesc.getContainerVariable(), element.getTarget());

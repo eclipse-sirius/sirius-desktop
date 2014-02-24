@@ -85,7 +85,8 @@ public class ResourceQuery {
      * <UL>
      * <LI>resource with aird extension, or</LI>
      * <LI>resource of kind {@link AirdResource}, or</LI>
-     * <LI>resource with {@link org.eclipse.sirius.viewpoint.DAnalysis} as content.</LI>
+     * <LI>resource with {@link org.eclipse.sirius.viewpoint.DAnalysis} as
+     * content.</LI>
      * </UL>
      * 
      * @return true if this resource is a representations resource, false

@@ -8,10 +8,10 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.metamodel.helper;
+package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
+import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.ContainerMappingImport;
 import org.eclipse.sirius.diagram.description.EdgeMapping;

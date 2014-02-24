@@ -27,12 +27,9 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
-import org.eclipse.sirius.business.api.helper.display.DisplayMode;
-import org.eclipse.sirius.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -41,6 +38,8 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
+import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionQuery;
 import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizerFactory;
@@ -50,17 +49,18 @@ import org.eclipse.sirius.diagram.business.internal.dialect.identifier.EdgeIdent
 import org.eclipse.sirius.diagram.business.internal.dialect.identifier.NodeContainerIdentifier;
 import org.eclipse.sirius.diagram.business.internal.dialect.identifier.NodeIdentifier;
 import org.eclipse.sirius.diagram.business.internal.dialect.identifier.NodeStyleIdentifier;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComponentizationHelper;
 import org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.DiagramImportDescription;
 import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.tools.internal.graphical.edit.DiagramCreationUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ChangeLayerActivationCommand;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.DCommand;
-import org.eclipse.sirius.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
@@ -379,7 +379,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
             for (final DRepresentation representation : view.getAllRepresentations()) {
                 if (representation instanceof DSemanticDiagram) {
                     for (final RepresentationExtensionDescription ext : extensions) {
-                        if (ComponentizationHelper.extensionAppliesTo(ext, representation) && ext instanceof DiagramExtensionDescription) {
+                        if (DiagramComponentizationHelper.extensionAppliesTo(ext, representation) && ext instanceof DiagramExtensionDescription) {
                             updateDiagram((DSemanticDiagram) representation, (DiagramExtensionDescription) ext, activated, session);
                         }
                     }
@@ -437,5 +437,10 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
      */
     public boolean handles(RepresentationDescription representationDescription) {
         return (representationDescription instanceof DiagramDescription) || (representationDescription instanceof DiagramImportDescription);
+    }
+
+    @Override
+    public boolean handles(RepresentationExtensionDescription representationExtensionDescription) {
+        return representationExtensionDescription instanceof DiagramExtensionDescription;
     }
 }

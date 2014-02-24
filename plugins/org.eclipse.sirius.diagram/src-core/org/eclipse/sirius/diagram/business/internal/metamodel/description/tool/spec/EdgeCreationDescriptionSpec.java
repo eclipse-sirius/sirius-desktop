@@ -8,14 +8,14 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.metamodel.description.tool.spec;
+package org.eclipse.sirius.diagram.business.internal.metamodel.description.tool.spec;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.impl.EdgeCreationDescriptionImpl;
-import org.eclipse.sirius.tools.api.refresh.BestMappingGetter;
+import org.eclipse.sirius.diagram.tools.api.refresh.BestMappingGetter;
 
 /**
  * Implementation of EdgeCreationDescriptionImpl.java.

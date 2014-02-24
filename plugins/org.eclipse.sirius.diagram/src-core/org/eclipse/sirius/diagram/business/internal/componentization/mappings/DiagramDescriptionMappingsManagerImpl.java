@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.componentization.mappings;
+package org.eclipse.sirius.diagram.business.internal.componentization.mappings;
 
 
 import java.util.ArrayList;
@@ -17,10 +17,10 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.sirius.business.api.componentization.DiagramComponentizationManager;
-import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager;
-import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManagerListener;
-import org.eclipse.sirius.business.api.helper.layers.LayerService;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManagerListener;
+import org.eclipse.sirius.diagram.business.api.helper.layers.LayerService;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -72,7 +72,7 @@ public class DiagramDescriptionMappingsManagerImpl implements DiagramDescription
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager#getNodeMappings()
+     * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager#getNodeMappings()
      */
     public List<NodeMapping> getNodeMappings() {
         return nodeMappings;
@@ -81,7 +81,7 @@ public class DiagramDescriptionMappingsManagerImpl implements DiagramDescription
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager#getContainerMappings()
+     * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager#getContainerMappings()
      */
     public List<ContainerMapping> getContainerMappings() {
         return containerMappings;
@@ -90,7 +90,7 @@ public class DiagramDescriptionMappingsManagerImpl implements DiagramDescription
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager#getEdgeMappings()
+     * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager#getEdgeMappings()
      */
     public List<EdgeMapping> getEdgeMappings() {
         return edgeMappings;
@@ -99,7 +99,7 @@ public class DiagramDescriptionMappingsManagerImpl implements DiagramDescription
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager#getContainerMappings(org.eclipse.sirius.viewpoint.description.ContainerMapping)
+     * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager#getContainerMappings(org.eclipse.sirius.viewpoint.description.ContainerMapping)
      */
     public List<ContainerMapping> getContainerMappings(final ContainerMapping containerMapping) {
         List<ContainerMapping> result = Collections.emptyList();
@@ -112,7 +112,7 @@ public class DiagramDescriptionMappingsManagerImpl implements DiagramDescription
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager#getNodeMappings(org.eclipse.sirius.viewpoint.description.ContainerMapping)
+     * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager#getNodeMappings(org.eclipse.sirius.viewpoint.description.ContainerMapping)
      */
     public List<NodeMapping> getNodeMappings(final ContainerMapping containerMapping) {
         List<NodeMapping> result = Collections.emptyList();
@@ -125,7 +125,7 @@ public class DiagramDescriptionMappingsManagerImpl implements DiagramDescription
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager#getBorderedNodeMappings(org.eclipse.sirius.viewpoint.description.AbstractNodeMapping)
+     * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager#getBorderedNodeMappings(org.eclipse.sirius.viewpoint.description.AbstractNodeMapping)
      */
     public List<NodeMapping> getBorderedNodeMappings(final AbstractNodeMapping mapping) {
         List<NodeMapping> result = Collections.emptyList();
@@ -139,7 +139,7 @@ public class DiagramDescriptionMappingsManagerImpl implements DiagramDescription
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager#addListener(org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManagerListener)
+     * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager#addListener(org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManagerListener)
      */
     public void addListener(final DiagramDescriptionMappingsManagerListener listener) {
         this.listeners.add(listener);
@@ -149,7 +149,7 @@ public class DiagramDescriptionMappingsManagerImpl implements DiagramDescription
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager#removeListener(org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManagerListener)
+     * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager#removeListener(org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManagerListener)
      */
     public void removeListener(final DiagramDescriptionMappingsManagerListener listener) {
         this.listeners.remove(listener);
@@ -158,7 +158,7 @@ public class DiagramDescriptionMappingsManagerImpl implements DiagramDescription
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager#isLayerMode()
+     * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager#isLayerMode()
      */
     public boolean isLayerMode() {
         return !LayerService.withoutLayersMode(description);
@@ -167,7 +167,7 @@ public class DiagramDescriptionMappingsManagerImpl implements DiagramDescription
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager#dispose()
+     * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager#dispose()
      */
     public void dispose() {
         for (final DiagramDescriptionMappingsManagerListener listener : listeners) {

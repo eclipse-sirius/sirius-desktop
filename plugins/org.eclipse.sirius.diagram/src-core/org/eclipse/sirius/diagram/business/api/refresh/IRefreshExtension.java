@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.refresh;
+package org.eclipse.sirius.diagram.business.api.refresh;
 
 import org.eclipse.sirius.diagram.DDiagram;
 

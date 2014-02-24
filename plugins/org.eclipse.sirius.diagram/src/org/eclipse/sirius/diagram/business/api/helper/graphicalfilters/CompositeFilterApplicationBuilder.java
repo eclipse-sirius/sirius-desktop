@@ -13,15 +13,15 @@ package org.eclipse.sirius.diagram.business.api.helper.graphicalfilters;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.sirius.business.api.diagramtype.ICollapseUpdater;
-import org.eclipse.sirius.business.api.helper.filter.FilterService;
-import org.eclipse.sirius.business.api.query.CompositeFilterDescriptionQuery;
-import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.AppliedCompositeFilters;
 import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.business.api.diagramtype.ICollapseUpdater;
+import org.eclipse.sirius.diagram.business.api.helper.filter.FilterService;
+import org.eclipse.sirius.diagram.business.api.query.CompositeFilterDescriptionQuery;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.ext.base.Option;
 

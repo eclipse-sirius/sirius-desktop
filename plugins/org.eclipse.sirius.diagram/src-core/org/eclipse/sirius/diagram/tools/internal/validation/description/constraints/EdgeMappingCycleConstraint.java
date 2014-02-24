@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tools.internal.validation.description.constraints;
+package org.eclipse.sirius.diagram.tools.internal.validation.description.constraints;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

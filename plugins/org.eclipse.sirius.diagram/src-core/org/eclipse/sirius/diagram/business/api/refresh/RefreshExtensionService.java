@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.refresh;
+package org.eclipse.sirius.diagram.business.api.refresh;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -20,8 +20,8 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.sirius.business.internal.helper.refresh.AbstractProviderDescriptor;
-import org.eclipse.sirius.business.internal.helper.refresh.RefreshExtensionProviderDescriptor;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.internal.helper.refresh.RefreshExtensionProviderDescriptor;
 
 /**
  * This class provides services to enable the extension of the refresh
@@ -109,7 +109,7 @@ public final class RefreshExtensionService implements IRefreshExtension {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#beforeRefresh(DDiagram)
+     * @see org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension#beforeRefresh(DDiagram)
      */
     public void beforeRefresh(final DDiagram viewPoint) {
         final ListIterator<RefreshExtensionProviderDescriptor> iterProviders = this.getProviders().listIterator();
@@ -128,7 +128,7 @@ public final class RefreshExtensionService implements IRefreshExtension {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.refresh.IRefreshExtension#postRefresh(DDiagram)
+     * @see org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtension#postRefresh(DDiagram)
      */
     public void postRefresh(final DDiagram viewPoint) {
         final ListIterator<RefreshExtensionProviderDescriptor> iterProviders = this.getProviders().listIterator();

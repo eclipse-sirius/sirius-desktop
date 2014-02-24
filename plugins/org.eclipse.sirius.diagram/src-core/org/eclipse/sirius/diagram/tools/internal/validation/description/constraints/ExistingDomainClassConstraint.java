@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tools.internal.validation.description.constraints;
+package org.eclipse.sirius.diagram.tools.internal.validation.description.constraints;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
@@ -17,6 +17,8 @@ import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
@@ -46,7 +48,7 @@ public class ExistingDomainClassConstraint extends AbstractConstraint {
         // In the case of batch mode.
         if (eventType == EMFEventType.NULL) {
             if ((eObj.eClass().getEPackage().getNsURI().startsWith(ViewpointPackage.eINSTANCE.getNsURI()) || eObj.eClass().getEPackage().getNsURI().startsWith(DiagramPackage.eINSTANCE.getNsURI()))
-                    && elementContainedInMetamodelAwareSirius(eObj)) {
+                    && isElementContainedInAKnownMetamodel(eObj)) {
                 final EStructuralFeature domainClassFeature = eObj.eClass().getEStructuralFeature(DOMAIN_CLASS_FEATURE);
                 if (domainClassFeature != null) {
                     final Object[] result = checkError(domainClassFeature, eObj);
@@ -88,5 +90,19 @@ public class ExistingDomainClassConstraint extends AbstractConstraint {
             }
         }
         return result;
+    }
+
+    @Override
+    protected EObject getParentDescription(final EObject instance) {
+        if (instance.eClass().getEPackage().getNsURI().startsWith(ViewpointPackage.eINSTANCE.getNsURI()) || instance.eClass().getEPackage().getNsURI().startsWith(DiagramPackage.eINSTANCE.getNsURI())) {
+            EObject container = instance.eContainer();
+            while (container != null) {
+                if (container instanceof DiagramDescription || container instanceof DiagramExtensionDescription) {
+                    return container;
+                }
+                container = container.eContainer();
+            }
+        }
+        return null;
     }
 }

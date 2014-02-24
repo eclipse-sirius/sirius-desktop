@@ -17,8 +17,8 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.gef.Request;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
-import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
 
 /**
  * Edit policy to reveal only user selected elements.

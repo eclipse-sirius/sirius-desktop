@@ -8,9 +8,9 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.helper.display;
+package org.eclipse.sirius.diagram.business.api.helper.display;
 
-import org.eclipse.sirius.business.internal.helper.display.DisplayServiceManagerImpl;
+import org.eclipse.sirius.diagram.business.internal.helper.display.DisplayServiceManagerImpl;
 
 /**
  * The display service manager handles display services.

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tools.internal.command.builders;
+package org.eclipse.sirius.diagram.tools.internal.command.builders;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,13 +18,13 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
-import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.business.internal.helper.task.CreateContainerTask;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.business.internal.helper.task.CreateContainerTask;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
  * 
  * @author mchauvin
  */
-public class ContainerCreationCommandBuilder extends AbstractCommandBuilder {
+public class ContainerCreationCommandBuilder extends AbstractDiagramCommandBuilder {
 
     /**
      * Current tool description from which this CommandBuilder build a Command.
@@ -146,7 +146,8 @@ public class ContainerCreationCommandBuilder extends AbstractCommandBuilder {
      *            the semantic container.
      * @param container
      *            the container
-     * @return a command able to create the {@link org.eclipse.sirius.viewpoint.DNode}.
+     * @return a command able to create the
+     *         {@link org.eclipse.sirius.viewpoint.DNode}.
      */
     protected DCommand buildCreateNodeCommandFromTool(final EObject semanticContainer, final EObject container) {
         final DCommand result = createEnclosingCommand();

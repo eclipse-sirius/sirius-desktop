@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.componentization.mappings;
+package org.eclipse.sirius.diagram.business.internal.componentization.mappings;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -16,11 +16,12 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsManager;
-import org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.componentization.mappings.AbstractSessionCloseListener;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
@@ -89,7 +90,7 @@ public final class DiagramDescriptionMappingsRegistryImpl implements DiagramDesc
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsRegistry#getDiagramDescriptionMappingsManager(org.eclipse.sirius.business.api.session.Session,
+     * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry#getDiagramDescriptionMappingsManager(org.eclipse.sirius.business.api.session.Session,
      *      org.eclipse.sirius.viewpoint.description.DiagramDescription)
      */
     public DiagramDescriptionMappingsManager getDiagramDescriptionMappingsManager(final Session session, final DiagramDescription description) {
@@ -111,7 +112,7 @@ public final class DiagramDescriptionMappingsRegistryImpl implements DiagramDesc
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramDescriptionMappingsRegistry#computeMappings()
+     * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry#computeMappings()
      */
     public void computeMappings() {
 

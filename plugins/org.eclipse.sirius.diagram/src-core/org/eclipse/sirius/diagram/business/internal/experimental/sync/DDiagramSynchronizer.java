@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.experimental.sync;
+package org.eclipse.sirius.diagram.business.internal.experimental.sync;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,26 +29,10 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.business.api.componentization.DiagramMappingsManager;
-import org.eclipse.sirius.business.api.componentization.DiagramMappingsManagerRegistry;
-import org.eclipse.sirius.business.api.helper.SiriusHelper;
-import org.eclipse.sirius.business.api.helper.concern.ConcernService;
-import org.eclipse.sirius.business.api.helper.display.DisplayServiceManager;
-import org.eclipse.sirius.business.api.helper.layers.LayerService;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.query.ContainerMappingQuery;
-import org.eclipse.sirius.business.api.query.DiagramElementMappingQuery;
-import org.eclipse.sirius.business.api.query.EObjectQuery;
-import org.eclipse.sirius.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.business.api.refresh.RefreshExtensionService;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
-import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
-import org.eclipse.sirius.business.internal.metamodel.helper.EdgeMappingHelper;
-import org.eclipse.sirius.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.business.internal.sync.visitor.DiagramElementsHierarchyVisitor;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.listener.Notification;
@@ -69,6 +53,22 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
+import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramHelper;
+import org.eclipse.sirius.diagram.business.api.helper.concern.ConcernService;
+import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
+import org.eclipse.sirius.diagram.business.api.helper.layers.LayerService;
+import org.eclipse.sirius.diagram.business.api.query.ContainerMappingQuery;
+import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
+import org.eclipse.sirius.diagram.business.api.refresh.RefreshExtensionService;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComponentizationHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.sync.visitor.DiagramElementsHierarchyVisitor;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
@@ -284,7 +284,7 @@ public class DDiagramSynchronizer {
             result.add(mandatoryLayer);
         }
         result.addAll(Collections2.filter(this.description.getAdditionalLayers(), isActiveByDefault));
-        result.addAll(Collections2.filter(ComponentizationHelper.getContributedLayers(this.description, this.session.getSelectedViewpoints(false)), isActiveByDefault));
+        result.addAll(Collections2.filter(DiagramComponentizationHelper.getContributedLayers(this.description, this.session.getSelectedViewpoints(false)), isActiveByDefault));
         return result;
     }
 
@@ -325,7 +325,7 @@ public class DDiagramSynchronizer {
             result.add(mandatoryLayer);
         }
         result.addAll(Collections2.filter(this.description.getAdditionalLayers(), isMandatory));
-        result.addAll(Collections2.filter(ComponentizationHelper.getContributedLayers(this.description, this.session.getSelectedViewpoints(false)), isMandatory));
+        result.addAll(Collections2.filter(DiagramComponentizationHelper.getContributedLayers(this.description, this.session.getSelectedViewpoints(false)), isMandatory));
         return result;
     }
 
@@ -682,7 +682,7 @@ public class DDiagramSynchronizer {
             newCandidates.add(newCandidate);
             final AbstractDNode newNode = createNewContent(newCandidates, viewContainer, containerMapping, false, monitor).get(0);
 
-            SiriusHelper.removeNodeFromContainer(viewContainer, false, node);
+            SiriusDiagramHelper.removeNodeFromContainer(viewContainer, false, node);
 
             final Collection<Setting> settings = session.getSemanticCrossReferencer().getInverseReferences(node);
             for (final Setting setting : settings) {
@@ -733,7 +733,7 @@ public class DDiagramSynchronizer {
 
             final AbstractDNode newNode = createNewContent(newCandidates, diagramElementContainer, nodeMapping, false, monitor).get(0);
 
-            SiriusHelper.removeNodeFromContainer(diagramElementContainer, false, node);
+            SiriusDiagramHelper.removeNodeFromContainer(diagramElementContainer, false, node);
             return newNode;
         }
         return node;

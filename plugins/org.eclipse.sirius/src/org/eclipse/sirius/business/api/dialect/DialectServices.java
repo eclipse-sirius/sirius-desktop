@@ -21,6 +21,7 @@ import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementI
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
@@ -262,4 +263,16 @@ public interface DialectServices {
      * @since 0.9.0
      */
     boolean handles(RepresentationDescription representationDescription);
+
+    /**
+     * Indicates if the current dialect handles the given
+     * {@link RepresentationExtensionDescription}.
+     * 
+     * @param representationExtensionDescription
+     *            the representationExtensionDescription to test
+     * @return true if the current dialect handles the given
+     *         {@link RepresentationExtensionDescription}
+     * @since 1.0.0 M6
+     */
+    boolean handles(RepresentationExtensionDescription representationExtensionDescription);
 }

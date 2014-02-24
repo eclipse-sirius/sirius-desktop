@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.api.componentization;
+package org.eclipse.sirius.diagram.business.api.componentization;
 
 import java.util.Collection;
 import java.util.List;

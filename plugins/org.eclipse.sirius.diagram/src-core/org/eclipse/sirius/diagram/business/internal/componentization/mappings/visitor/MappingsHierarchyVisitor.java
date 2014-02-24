@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.componentization.mappings.visitor;
+package org.eclipse.sirius.diagram.business.internal.componentization.mappings.visitor;
 
 import java.util.ArrayList;
 import java.util.Collection;

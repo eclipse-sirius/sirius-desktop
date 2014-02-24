@@ -8,19 +8,19 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.metamodel.description.spec;
+package org.eclipse.sirius.diagram.business.internal.metamodel.description.spec;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.sirius.business.api.query.EObjectQuery;
-import org.eclipse.sirius.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
-import org.eclipse.sirius.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
@@ -99,7 +99,7 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.internal.metamodel.description.spec.NodeMappingSpec#isFrom(org.eclipse.sirius.viewpoint.DMappingBased)
+     * @see org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingSpec#isFrom(org.eclipse.sirius.viewpoint.DMappingBased)
      */
     @Override
     public boolean isFrom(final DMappingBased element) {
@@ -109,7 +109,7 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.internal.metamodel.description.spec.NodeMappingSpec#addDoneNode(org.eclipse.sirius.viewpoint.DSemanticDecorator)
+     * @see org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingSpec#addDoneNode(org.eclipse.sirius.viewpoint.DSemanticDecorator)
      */
     @Override
     public void addDoneNode(final DSemanticDecorator node) {
@@ -122,7 +122,7 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.internal.metamodel.description.spec.NodeMappingSpec#getBestStyle(org.eclipse.emf.ecore.EObject,
+     * @see org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingSpec#getBestStyle(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
      */
     @Override
