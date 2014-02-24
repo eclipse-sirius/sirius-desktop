@@ -12,12 +12,6 @@
 -->
 
 <plugin>
-   <extension-point id="styleConfigurationProvider" name="org.eclipse.sirius.diagram.styleConfigurationProvider" schema="schema/styleConfigurationProvider.exsd"/>
-   <extension-point id="viewOrderingProvider" name="org.eclipse.sirius.diagram.viewOrderingProvider" schema="schema/viewOrderingProvider.exsd"/>
-   <extension-point id="diagramIdentifierProvider" name="org.eclipse.sirius.diagram.diagramIdentifierProvider" schema="schema/diagramIdentifierProvider.exsd"/>
-   <extension-point id="layoutProvider" name="org.eclipse.sirius.diagram.layoutProvider" schema="schema/layoutProvider.exsd"/>
-   <extension-point id="layoutDataManager" name="org.eclipse.sirius.diagram.layoutDataManager" schema="schema/layoutDataManager.exsd"/>
-   <extension-point id="imageSelector" name="org.eclipse.sirius.diagram.imageSelector" schema="schema/imageSelector.exsd"/>
    <extension-point id="diagramTypeProvider" name="org.eclipse.sirius.diagram.diagramTypeProvider" schema="schema/diagramTypeProvider.exsd"/>
    
 

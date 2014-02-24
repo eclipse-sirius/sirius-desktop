@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.eclipse.sirius.diagram" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.eclipse.sirius.diagram.ui" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appInfo>
-         <meta.schema plugin="org.eclipse.sirius.diagram" id="diagramIdentifierProvider" name="org.eclipse.sirius.diagram.migration.diagramIdentifierProvider"/>
+         <meta.schema plugin="org.eclipse.sirius.diagram.ui" id="diagramIdentifierProvider" name="org.eclipse.sirius.diagram.ui.migration.diagramIdentifierProvider"/>
       </appInfo>
       <documentation>
          [Enter description of this extension point.]
@@ -55,7 +55,7 @@
                   
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.diagram.tools.internal.actions.migration.IDiagramIdentifierProvider"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.diagram.ui.tools.internal.actions.migration.IDiagramIdentifierProvider"/>
                </appInfo>
             </annotation>
          </attribute>

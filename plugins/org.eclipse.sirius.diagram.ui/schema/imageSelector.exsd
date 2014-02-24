@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.eclipse.sirius.diagram" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.eclipse.sirius.diagram.ui" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appInfo>
-         <meta.schema plugin="org.eclipse.sirius.diagram" id="imageSelector" name="Image Selector"/>
+         <meta.schema plugin="org.eclipse.sirius.diagram.ui" id="imageSelector" name="Image Selector"/>
       </appInfo>
       <documentation>
          A extension point to contribute ImageSelector.
@@ -55,7 +55,7 @@
                   
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.diagram.business.api.image.ImageSelector"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.diagram.ui.business.api.image.ImageSelector"/>
                </appInfo>
             </annotation>
          </attribute>
@@ -85,14 +85,13 @@
       <appInfo>
          <meta.section type="copyright"/>
       </appInfo>
-            <documentation>
+      <documentation>
          Copyright (c) 2007, 2011 THALES GLOBAL SERVICES&lt;br&gt;
 All rights reserved. This program and the accompanying materials
 are made available under the terms of the Eclipse Public License v1.0
 which accompanies this distribution, and is available at
 &lt;a href=&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&gt;http://www.eclipse.org/legal/epl-v10.html&lt;/a&gt;
       </documentation>
-
    </annotation>
 
 </schema>

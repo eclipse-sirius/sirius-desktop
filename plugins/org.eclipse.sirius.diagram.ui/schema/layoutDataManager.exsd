@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.eclipse.sirius.diagram" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.eclipse.sirius.diagram.ui" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appInfo>
-         <meta.schema plugin="org.eclipse.sirius.diagram" id="layoutProvider" name="org.eclipse.sirius.diagram.layoutProvider"/>
+         <meta.schema plugin="org.eclipse.sirius.diagram.ui" id="layoutDataManager" name="org.eclipse.sirius.diagram.ui.layoutDataManager"/>
       </appInfo>
       <documentation>
-         Extension to add new layout providers.
+         Extension point to provide new layout data managers for &quot;Copy Layout&quot; and &quot;Paste Layout&quot; actions.
       </documentation>
    </annotation>
 
@@ -17,8 +17,8 @@
          </appInfo>
       </annotation>
       <complexType>
-         <sequence minOccurs="1" maxOccurs="unbounded">
-            <element ref="layoutProvider"/>
+         <sequence>
+            <element ref="layoutDataManagerProvider" minOccurs="1" maxOccurs="unbounded"/>
          </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -47,55 +47,34 @@
       </complexType>
    </element>
 
-   <element name="layoutProvider">
+   <element name="layoutDataManagerProvider">
       <complexType>
-         <attribute name="providerClass" type="string" use="required">
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
             <annotation>
                <documentation>
                   
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.diagram.ui.business.api.layout.LayoutProvider"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.diagram.ui.tools.api.layout.ILayoutDataManagerProvider"/>
                </appInfo>
             </annotation>
-         </attribute>
-         <attribute name="priority">
-            <annotation>
-               <documentation>
-                  
-               </documentation>
-            </annotation>
-            <simpleType>
-               <restriction base="string">
-                  <enumeration value="lowest">
-                  </enumeration>
-                  <enumeration value="low">
-                  </enumeration>
-                  <enumeration value="high">
-                  </enumeration>
-                  <enumeration value="highest">
-                  </enumeration>
-               </restriction>
-            </simpleType>
          </attribute>
       </complexType>
    </element>
 
    <annotation>
       <appInfo>
-         <meta.section type="apiInfo"/>
-      </appInfo>
-      <documentation>
-         [Enter API information here.]
-      </documentation>
-   </annotation>
-
-   <annotation>
-      <appInfo>
          <meta.section type="since"/>
       </appInfo>
       <documentation>
-         [Enter the first release in which this extension point appears.]
+         4.1
       </documentation>
    </annotation>
 
@@ -104,18 +83,22 @@
          <meta.section type="examples"/>
       </appInfo>
       <documentation>
-         [Enter extension point usage example here.]
+         The following is an example of a specific layout data manager extension: 
+&lt;p&gt;
+&lt;pre&gt;
+   &lt;extension
+         point=&quot;org.eclipse.sirius.diagram.ui.layoutDataManager&quot;&gt;
+      &lt;layoutDataManagerProvider
+            class=&quot;com.example.xyz.LayoutDataManagerXYZ&quot;
+            id=&quot;com.example.xyz.layoutDataManagerXYZ&quot;&gt;
+      &lt;/layoutDataManagerProvider&gt;
+   &lt;/extension&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
       </documentation>
    </annotation>
 
-   <annotation>
-      <appInfo>
-         <meta.section type="implementation"/>
-      </appInfo>
-      <documentation>
-         [Enter information about supplied implementation of this extension point.]
-      </documentation>
-   </annotation>
+
 
    <annotation>
       <appInfo>
