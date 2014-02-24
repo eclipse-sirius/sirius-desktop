@@ -43,7 +43,7 @@ location "http://download.eclipse.org/acceleo/updates/releases/3.4/" {
 }
 
 // EEF 2
-location "http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/" {
+location "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.2" {
 	with source, requirements
 	org.eclipse.emf.eef.runtime;version="[1.0.0,2.0.0)"
 }

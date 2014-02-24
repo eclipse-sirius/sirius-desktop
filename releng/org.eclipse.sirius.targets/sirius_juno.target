@@ -38,8 +38,8 @@
 <repository location="http://download.eclipse.org/acceleo/updates/releases/3.4/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.eef.runtime" version="1.2.0.201301031409"/>
-<repository location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/"/>
+<unit id="org.eclipse.emf.eef.runtime" version="1.2.2.201309121245"/>
+<repository location="http://download.eclipse.org/modeling/emft/eef/updates/releases/1.2"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="com.google.guava" version="11.0.2.v201303041551"/>
