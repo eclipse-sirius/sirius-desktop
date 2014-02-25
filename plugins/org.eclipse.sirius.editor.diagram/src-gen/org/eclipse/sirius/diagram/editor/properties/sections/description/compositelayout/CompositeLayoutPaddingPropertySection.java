@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.description.compositelayout;
+package org.eclipse.sirius.diagram.editor.properties.sections.description.compositelayout;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -21,14 +21,14 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  */
 public class CompositeLayoutPaddingPropertySection extends AbstractSpinnerPropertySection {
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractSpinnerPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractSpinnerPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "Padding"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractSpinnerPropertySection#getLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractSpinnerPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -40,14 +40,14 @@ public class CompositeLayoutPaddingPropertySection extends AbstractSpinnerProper
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractSpinnerPropertySection#getFeature()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractSpinnerPropertySection#getFeature()
      */
     protected EAttribute getFeature() {
         return DescriptionPackage.eINSTANCE.getCompositeLayout_Padding();
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractSpinnerPropertySection#getFeatureAsInteger()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractSpinnerPropertySection#getFeatureAsInteger()
      */
     protected String getFeatureAsText() {
         String value = new String();
@@ -57,7 +57,7 @@ public class CompositeLayoutPaddingPropertySection extends AbstractSpinnerProper
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractSpinnerPropertySection#isEqual(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractSpinnerPropertySection#isEqual(int)
      */
     protected boolean isEqual(String newText) {
         boolean equal = true;
@@ -69,7 +69,7 @@ public class CompositeLayoutPaddingPropertySection extends AbstractSpinnerProper
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractSpinnerPropertySection#getFeatureValue(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractSpinnerPropertySection#getFeatureValue(int)
      */
     protected Object getFeatureValue(String newText) {
         return toInteger(newText);

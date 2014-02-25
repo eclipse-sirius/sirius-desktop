@@ -15,9 +15,10 @@ import java.util.Set;
 
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring.EdgeMappingRefactoringAction;
+import org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring.border.BorderRefactoringAction;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractEObjectRefactoringAction;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
-import org.eclipse.sirius.editor.tools.internal.menu.refactoring.border.BorderRefactoringAction;
 import org.eclipse.sirius.editor.tools.internal.menu.refactoring.border.MaterializeTemplateRefactoring;
 import org.eclipse.ui.IEditorPart;
 

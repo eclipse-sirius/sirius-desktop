@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.filters.style.flatcontainerstyledescription;
+package org.eclipse.sirius.diagram.editor.properties.filters.style.flatcontainerstyledescription;
 
 // Start of user code specific imports
 

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.style.nodestyledescription;
+package org.eclipse.sirius.diagram.editor.properties.sections.style.nodestyledescription;
 
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;

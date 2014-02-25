@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.tool.containerdropdescription;
+package org.eclipse.sirius.diagram.editor.properties.sections.tool.containerdropdescription;
 
 // Start of user code imports
 

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.description.additionallayer;
+package org.eclipse.sirius.diagram.editor.properties.sections.description.additionallayer;
 
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 

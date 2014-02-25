@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.style.basiclabelstyle;
+package org.eclipse.sirius.editor.properties.sections.style.basiclabelstyledescription;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -44,7 +44,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  * @author <a href="mailto:julien.dupont@obeo.fr">Julien DUPONT</a>
  * 
  */
-public class BasicLabelStyleDescriptionLabelFormatPropertySection extends AbstractCheckBoxGroupPropertySection {
+public class BasicLabelStyleDescriptionLabelFormatPropertySectionSpec extends AbstractCheckBoxGroupPropertySection {
 
     private static final String BOLD = "Bold";
 
@@ -52,7 +52,7 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySection extends Abstra
 
     private static final String TOOL_TIP = "The font formatting style to use for the label";
 
-    public BasicLabelStyleDescriptionLabelFormatPropertySection() {
+    public BasicLabelStyleDescriptionLabelFormatPropertySectionSpec() {
         buttonGroup = false;
     }
 
@@ -64,7 +64,7 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySection extends Abstra
     @Override
     protected boolean isEqual(List<?> newList) {
 
-        List<String> value = BasicLabelStyleDescriptionLabelFormatPropertySection.convertPropertiesToUI(((BasicLabelStyleDescription) eObject).getLabelFormat());
+        List<String> value = BasicLabelStyleDescriptionLabelFormatPropertySectionSpec.convertPropertiesToUI(((BasicLabelStyleDescription) eObject).getLabelFormat());
 
         return value.equals(newList);
     }
@@ -155,7 +155,7 @@ public class BasicLabelStyleDescriptionLabelFormatPropertySection extends Abstra
     protected String getDefaultFeatureAsText() {
         String returnStr = "";
         if (eObject instanceof BasicLabelStyleDescription) {
-            for (String str : BasicLabelStyleDescriptionLabelFormatPropertySection.convertPropertiesToUI(((BasicLabelStyleDescription) eObject).getLabelFormat())) {
+            for (String str : BasicLabelStyleDescriptionLabelFormatPropertySectionSpec.convertPropertiesToUI(((BasicLabelStyleDescription) eObject).getLabelFormat())) {
                 if (returnStr.length() > 0) {
                     returnStr = returnStr + (", ") + str;
                 } else {

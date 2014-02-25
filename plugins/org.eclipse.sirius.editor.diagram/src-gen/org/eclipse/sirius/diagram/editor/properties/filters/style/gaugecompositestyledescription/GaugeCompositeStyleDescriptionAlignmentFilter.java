@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.filters.style.gaugecompositestyledescription;
+package org.eclipse.sirius.diagram.editor.properties.filters.style.gaugecompositestyledescription;
 
 // Start of user code specific imports
 

@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.tool.createview;
+package org.eclipse.sirius.diagram.editor.properties.sections.tool.createview;
 
 // Start of user code imports
 
@@ -45,14 +45,14 @@ import com.google.common.collect.Lists;
  */
 public class CreateViewMappingPropertySection extends AbstractComboPropertySection {
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "Mapping"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -64,21 +64,21 @@ public class CreateViewMappingPropertySection extends AbstractComboPropertySecti
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getFeature()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getFeature()
      */
     protected EReference getFeature() {
         return ToolPackage.eINSTANCE.getCreateView_Mapping();
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getFeatureValue(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getFeatureValue(int)
      */
     protected Object getFeatureValue(int index) {
         return getFeatureValueAt(index);
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#isEqual(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#isEqual(int)
      */
     protected boolean isEqual(int index) {
         boolean isEqual = false;

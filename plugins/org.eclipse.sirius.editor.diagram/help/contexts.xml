@@ -1,0 +1,2093 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   <context id="DDiagram">
+     <description>
+       ViewPoint is the type of all diagrams in AIR.
+       A viewpoint is composed of nodes, containers and connections. It is owned by an anlysis or by a parent viewpoint. In this last case the viewpoint should be called detailed viewpoint.
+
+       
+         
+   <!-- Start of user code DDiagram description -->
+   
+   <!-- End of user code DDiagram description -->
+   
+      </description>
+   </context>
+   <context id="DSemanticDiagram">
+     <description>
+       A semantic viewpoint is a viewpoint that is rattached to a semantic element.
+
+       
+         
+   <!-- Start of user code DSemanticDiagram description -->
+   
+   <!-- End of user code DSemanticDiagram description -->
+   
+      </description>
+   </context>
+   <context id="DDiagramElement">
+     <description>
+       
+       
+         
+   <!-- Start of user code DDiagramElement description -->
+   
+   <!-- End of user code DDiagramElement description -->
+   
+      </description>
+   </context>
+   <context id="GraphicalFilter">
+     <description>
+       A filter that allow to graphically filter the owner DDiagramElement.
+
+       
+         
+   <!-- Start of user code GraphicalFilter description -->
+   
+   <!-- End of user code GraphicalFilter description -->
+   
+      </description>
+   </context>
+   <context id="HideFilter">
+     <description>
+       Graphical filter specifying that the owner element has to be hidden.
+
+       
+         
+   <!-- Start of user code HideFilter description -->
+   
+   <!-- End of user code HideFilter description -->
+   
+      </description>
+   </context>
+   <context id="HideLabelFilter">
+     <description>
+       
+       
+         
+   <!-- Start of user code HideLabelFilter description -->
+   Graphical filter specifying that the label of the owner element has to be hidden.
+   <!-- End of user code HideLabelFilter description -->
+   
+      </description>
+   </context>
+   <context id="FoldingPointFilter">
+     <description>
+       Graphical filter specifying that the owner element has been folded explictly. It should itself be visible, but other elements accesible from it through folded edges should not be.
+
+       
+         
+   <!-- Start of user code FoldingPointFilter description -->
+   
+   <!-- End of user code FoldingPointFilter description -->
+   
+      </description>
+   </context>
+   <context id="FoldingFilter">
+     <description>
+       Graphical filter specifying that the owner element has been folded indirectly because it is accessible from a folded folding point through folable edges.
+
+       
+         
+   <!-- Start of user code FoldingFilter description -->
+   
+   <!-- End of user code FoldingFilter description -->
+   
+      </description>
+   </context>
+   <context id="AppliedCompositeFilters">
+     <description>
+       Graphical filter listing the active filters applied on a diagram element.
+
+       
+         
+   <!-- Start of user code AppliedCompositeFilters description -->
+   
+   <!-- End of user code AppliedCompositeFilters description -->
+   
+      </description>
+   </context>
+   <context id="AbsoluteBoundsFilter">
+     <description>
+       Graphical filter to store absolute bounds.
+
+       
+         
+   <!-- Start of user code AbsoluteBoundsFilter description -->
+   
+   <!-- End of user code AbsoluteBoundsFilter description -->
+   
+      </description>
+   </context>
+   <context id="DDiagramLink">
+     <description>
+       A link that references a ViewPoint.
+
+       
+         
+   <!-- Start of user code DDiagramLink description -->
+   
+   <!-- End of user code DDiagramLink description -->
+   
+      </description>
+   </context>
+   <context id="AbstractDNode">
+     <description>
+       
+       
+         
+   <!-- Start of user code AbstractDNode description -->
+   
+   <!-- End of user code AbstractDNode description -->
+   
+      </description>
+   </context>
+   <context id="DNode">
+     <description>
+       A node.
+
+       
+         
+   <!-- Start of user code DNode description -->
+   
+   <!-- End of user code DNode description -->
+   
+      </description>
+   </context>
+   <context id="DDiagramElementContainer">
+     <description>
+       The referenced ViewPoint.
+
+       
+         
+   <!-- Start of user code DDiagramElementContainer description -->
+   
+   <!-- End of user code DDiagramElementContainer description -->
+   
+      </description>
+   </context>
+   <context id="DNodeContainer">
+     <description>
+       A classic container.
+
+       
+         
+   <!-- Start of user code DNodeContainer description -->
+   
+   <!-- End of user code DNodeContainer description -->
+   
+      </description>
+   </context>
+   <context id="DNodeList">
+     <description>
+       A container that shows its contents as a list.
+
+       
+         
+   <!-- Start of user code DNodeList description -->
+   
+   <!-- End of user code DNodeList description -->
+   
+      </description>
+   </context>
+   <context id="DNodeListElement">
+     <description>
+       An element of a list.
+
+       
+         
+   <!-- Start of user code DNodeListElement description -->
+   
+   <!-- End of user code DNodeListElement description -->
+   
+      </description>
+   </context>
+   <context id="DEdge">
+     <description>
+       A view edge. It is a connection between two EdgeTarget.
+
+       
+         
+   <!-- Start of user code DEdge description -->
+   
+   <!-- End of user code DEdge description -->
+   
+      </description>
+   </context>
+   <context id="NodeStyle">
+     <description>
+       Style of a node.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code NodeStyle description -->
+   
+   <!-- End of user code NodeStyle description -->
+   
+      </description>
+   </context>
+   <context id="Dot">
+     <description>
+       The dot style.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+          - strokeSizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code Dot description -->
+   
+   <!-- End of user code Dot description -->
+   
+      </description>
+   </context>
+   <context id="GaugeSection">
+     <description>
+       The gauge section represents one gauge of a GaugeCompositeStyle.
+
+       
+         
+   <!-- Start of user code GaugeSection description -->
+   
+   <!-- End of user code GaugeSection description -->
+   
+      </description>
+   </context>
+   <context id="ContainerStyle">
+     <description>
+       The style of a container.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code ContainerStyle description -->
+   
+   <!-- End of user code ContainerStyle description -->
+   
+      </description>
+   </context>
+   <context id="FlatContainerStyle">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code FlatContainerStyle description -->
+   
+   <!-- End of user code FlatContainerStyle description -->
+   
+      </description>
+   </context>
+   <context id="ShapeContainerStyle">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code ShapeContainerStyle description -->
+   
+   <!-- End of user code ShapeContainerStyle description -->
+   
+      </description>
+   </context>
+   <context id="Square">
+     <description>
+       The square style to display a node as a square.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code Square description -->
+   
+   <!-- End of user code Square description -->
+   
+      </description>
+   </context>
+   <context id="Ellipse">
+     <description>
+       The ellipse style to display a node as an ellipse.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code Ellipse description -->
+   
+   <!-- End of user code Ellipse description -->
+   
+      </description>
+   </context>
+   <context id="Lozenge">
+     <description>
+       The lozenge style to display a node as a lozenge.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code Lozenge description -->
+   
+   <!-- End of user code Lozenge description -->
+   
+      </description>
+   </context>
+   <context id="BundledImage">
+     <description>
+       The bundled image style allows to use the default images provide by the ViewPoint editor.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code BundledImage description -->
+   
+   <!-- End of user code BundledImage description -->
+   
+      </description>
+   </context>
+   <context id="WorkspaceImage">
+     <description>
+       A custom image that is present in the user workspace.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code WorkspaceImage description -->
+   
+   <!-- End of user code WorkspaceImage description -->
+   
+      </description>
+   </context>
+   <context id="CustomStyle">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code CustomStyle description -->
+   
+   <!-- End of user code CustomStyle description -->
+   
+      </description>
+   </context>
+   <context id="EdgeTarget">
+     <description>
+       The target of a ViewEdge.
+
+       
+         
+   <!-- Start of user code EdgeTarget description -->
+   
+   <!-- End of user code EdgeTarget description -->
+   
+      </description>
+   </context>
+   <context id="EdgeStyle">
+     <description>
+       The style of an edge.
+
+       
+         
+   <!-- Start of user code EdgeStyle description -->
+   
+   <!-- End of user code EdgeStyle description -->
+   
+      </description>
+   </context>
+   <context id="GaugeCompositeStyle">
+     <description>
+       This style groups many GaugeSection.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code GaugeCompositeStyle description -->
+   
+   <!-- End of user code GaugeCompositeStyle description -->
+   
+      </description>
+   </context>
+   <context id="BorderedStyle">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code BorderedStyle description -->
+   
+   <!-- End of user code BorderedStyle description -->
+   
+      </description>
+   </context>
+   <context id="Note">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code Note description -->
+   
+   <!-- End of user code Note description -->
+   
+      </description>
+   </context>
+   <context id="FilterVariableHistory">
+     <description>
+       
+       
+         
+   <!-- Start of user code FilterVariableHistory description -->
+   
+   <!-- End of user code FilterVariableHistory description -->
+   
+      </description>
+   </context>
+   <context id="FilterVariableValue">
+     <description>
+       
+       
+         
+   <!-- Start of user code FilterVariableValue description -->
+   
+   <!-- End of user code FilterVariableValue description -->
+   
+      </description>
+   </context>
+   <context id="CollapseFilter">
+     <description>
+       Graphical filter specifying that the owner element has to be collapsed.
+
+       
+         
+   <!-- Start of user code CollapseFilter description -->
+   
+   <!-- End of user code CollapseFilter description -->
+   
+      </description>
+   </context>
+   <context id="IndirectlyCollapseFilter">
+     <description>
+       
+       
+         
+   <!-- Start of user code IndirectlyCollapseFilter description -->
+   
+   <!-- End of user code IndirectlyCollapseFilter description -->
+   
+      </description>
+   </context>
+   <context id="BeginLabelStyle">
+     <description>
+       The style of a label.
+
+       
+         
+   <!-- Start of user code BeginLabelStyle description -->
+   
+   <!-- End of user code BeginLabelStyle description -->
+   
+      </description>
+   </context>
+   <context id="CenterLabelStyle">
+     <description>
+       The style of a label.
+
+       
+         
+   <!-- Start of user code CenterLabelStyle description -->
+   
+   <!-- End of user code CenterLabelStyle description -->
+   
+      </description>
+   </context>
+   <context id="EndLabelStyle">
+     <description>
+       The style of a label.
+
+       
+         
+   <!-- Start of user code EndLabelStyle description -->
+   
+   <!-- End of user code EndLabelStyle description -->
+   
+      </description>
+   </context>
+   <context id="BracketEdgeStyle">
+     <description>
+       
+       
+         
+   <!-- Start of user code BracketEdgeStyle description -->
+   
+   <!-- End of user code BracketEdgeStyle description -->
+   
+      </description>
+   </context>
+   <context id="ComputedStyleDescriptionRegistry">
+     <description>
+       
+       
+         
+   <!-- Start of user code ComputedStyleDescriptionRegistry description -->
+   
+   <!-- End of user code ComputedStyleDescriptionRegistry description -->
+   
+      </description>
+   </context>
+   <context id="DiagramElementMapping2ModelElement">
+     <description>
+       
+       
+         
+   <!-- Start of user code DiagramElementMapping2ModelElement description -->
+   
+   <!-- End of user code DiagramElementMapping2ModelElement description -->
+   
+      </description>
+   </context>
+   <context id="ModelElement2ViewVariable">
+     <description>
+       
+       
+         
+   <!-- Start of user code ModelElement2ViewVariable description -->
+   
+   <!-- End of user code ModelElement2ViewVariable description -->
+   
+      </description>
+   </context>
+   <context id="ViewVariable2ContainerVariable">
+     <description>
+       
+       
+         
+   <!-- Start of user code ViewVariable2ContainerVariable description -->
+   
+   <!-- End of user code ViewVariable2ContainerVariable description -->
+   
+      </description>
+   </context>
+   <context id="ContainerVariable2StyleDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code ContainerVariable2StyleDescription description -->
+   
+   <!-- End of user code ContainerVariable2StyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="DragAndDropTarget">
+     <description>
+       A DragAndDropTarget is an element that can managed drop requests.
+
+       
+         
+   <!-- Start of user code DragAndDropTarget description -->
+   
+   <!-- End of user code DragAndDropTarget description -->
+   
+      </description>
+   </context>
+   <context id="DiagramDescription">
+     <description>
+       The description of a diagram.
+
+       Interpreted expressions, requested return type and available variables:
+          - titleExpression: a string.
+
+          - preconditionExpression: a boolean.
+
+          - rootExpression: an EObject.
+                . diagram: the current DDiagram.
+                . viewpoint: (deprecated) the current DDiagram.
+
+
+         
+   <!-- Start of user code DiagramDescription description -->
+   
+   <!-- End of user code DiagramDescription description -->
+   
+      </description>
+   </context>
+   <context id="DiagramImportDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - titleExpression: a string.
+
+          - preconditionExpression: a boolean.
+
+          - rootExpression: an EObject.
+                . diagram: the current DDiagram.
+                . viewpoint: (deprecated) the current DDiagram.
+
+
+         
+   <!-- Start of user code DiagramImportDescription description -->
+   
+   <!-- End of user code DiagramImportDescription description -->
+   
+      </description>
+   </context>
+   <context id="DiagramExtensionDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code DiagramExtensionDescription description -->
+   
+   <!-- End of user code DiagramExtensionDescription description -->
+   
+      </description>
+   </context>
+   <context id="DiagramElementMapping">
+     <description>
+       Represent the mapping of a ViewPointElement.
+
+       Interpreted expressions, requested return type and available variables:
+          - preconditionExpression: a boolean.
+                . containerView: the view that sould contain the potential views of the checked elements.
+                . container: the semantic element of containerView.
+                . viewpoint: (deprecated) the current DSemanticDiagram.
+                . diagram: the current DSemanticDiagram.
+                . sourceView: (edge only) the source view of the current potential edge.
+                . source: (edge only) the semantic element of sourceView.
+                . targetView: (edge only) the target view of the current potential edge.
+                . target: (edge only) the semantic element of targetView.
+
+          - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
+                . containerView: the parent view of potential candidates.
+                . diagram: the current DDiagram.
+                . viewpoint: (deprecated) the current DDiagram.
+                . viewPoint: (deprecated) the current DDiagram.
+
+          - semanticElements: a Collection&lt;EObject> or an EObject.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view created from the current mapping.
+                . viewpoint: (deprecated) the current DSemanticDiagram.
+
+
+         
+   <!-- Start of user code DiagramElementMapping description -->
+   
+   <!-- End of user code DiagramElementMapping description -->
+   
+      </description>
+   </context>
+   <context id="AbstractNodeMapping">
+     <description>
+       An abstract mapping.
+
+       Interpreted expressions, requested return type and available variables:
+          - preconditionExpression: a boolean.
+                . containerView: the view that sould contain the potential views of the checked elements.
+                . container: the semantic element of containerView.
+                . viewpoint: (deprecated) the current DSemanticDiagram.
+                . diagram: the current DSemanticDiagram.
+                . sourceView: (edge only) the source view of the current potential edge.
+                . source: (edge only) the semantic element of sourceView.
+                . targetView: (edge only) the target view of the current potential edge.
+                . target: (edge only) the semantic element of targetView.
+
+          - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
+                . containerView: the parent view of potential candidates.
+                . diagram: the current DDiagram.
+                . viewpoint: (deprecated) the current DDiagram.
+                . viewPoint: (deprecated) the current DDiagram.
+
+          - semanticElements: a Collection&lt;EObject> or an EObject.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view created from the current mapping.
+                . viewpoint: (deprecated) the current DSemanticDiagram.
+
+
+         
+   <!-- Start of user code AbstractNodeMapping description -->
+   
+   <!-- End of user code AbstractNodeMapping description -->
+   
+      </description>
+   </context>
+   <context id="NodeMapping">
+     <description>
+       Represents a node mapping. A node mapping allows to create nodes (ViewNode).
+
+       Interpreted expressions, requested return type and available variables:
+          - preconditionExpression: a boolean.
+                . containerView: the view that sould contain the potential views of the checked elements.
+                . container: the semantic element of containerView.
+                . viewpoint: (deprecated) the current DSemanticDiagram.
+                . diagram: the current DSemanticDiagram.
+                . sourceView: (edge only) the source view of the current potential edge.
+                . source: (edge only) the semantic element of sourceView.
+                . targetView: (edge only) the target view of the current potential edge.
+                . target: (edge only) the semantic element of targetView.
+
+          - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
+                . containerView: the parent view of potential candidates.
+                . diagram: the current DDiagram.
+                . viewpoint: (deprecated) the current DDiagram.
+                . viewPoint: (deprecated) the current DDiagram.
+
+          - semanticElements: a Collection&lt;EObject> or an EObject.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view created from the current mapping.
+                . viewpoint: (deprecated) the current DSemanticDiagram.
+
+
+         
+   <!-- Start of user code NodeMapping description -->
+   
+   <!-- End of user code NodeMapping description -->
+   
+      </description>
+   </context>
+   <context id="ContainerMapping">
+     <description>
+       A container mapping allows to create containers (ViewNodeContainer or ViewNodeList).
+
+       Interpreted expressions, requested return type and available variables:
+          - preconditionExpression: a boolean.
+                . containerView: the view that sould contain the potential views of the checked elements.
+                . container: the semantic element of containerView.
+                . viewpoint: (deprecated) the current DSemanticDiagram.
+                . diagram: the current DSemanticDiagram.
+                . sourceView: (edge only) the source view of the current potential edge.
+                . source: (edge only) the semantic element of sourceView.
+                . targetView: (edge only) the target view of the current potential edge.
+                . target: (edge only) the semantic element of targetView.
+
+          - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
+                . containerView: the parent view of potential candidates.
+                . diagram: the current DDiagram.
+                . viewpoint: (deprecated) the current DDiagram.
+                . viewPoint: (deprecated) the current DDiagram.
+
+          - semanticElements: a Collection&lt;EObject> or an EObject.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view created from the current mapping.
+                . viewpoint: (deprecated) the current DSemanticDiagram.
+
+
+         
+   <!-- Start of user code ContainerMapping description -->
+   
+   <!-- End of user code ContainerMapping description -->
+   
+      </description>
+   </context>
+   <context id="NodeMappingImport">
+     <description>
+       Ease the reuse of existing mappings. If the feature is not defined in this instance it will re-use the feature value of the imported one.
+
+       Interpreted expressions, requested return type and available variables:
+          - preconditionExpression: a boolean.
+                . containerView: the view that sould contain the potential views of the checked elements.
+                . container: the semantic element of containerView.
+                . viewpoint: (deprecated) the current DSemanticDiagram.
+                . diagram: the current DSemanticDiagram.
+                . sourceView: (edge only) the source view of the current potential edge.
+                . source: (edge only) the semantic element of sourceView.
+                . targetView: (edge only) the target view of the current potential edge.
+                . target: (edge only) the semantic element of targetView.
+
+          - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
+                . containerView: the parent view of potential candidates.
+                . diagram: the current DDiagram.
+                . viewpoint: (deprecated) the current DDiagram.
+                . viewPoint: (deprecated) the current DDiagram.
+
+          - semanticElements: a Collection&lt;EObject> or an EObject.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view created from the current mapping.
+                . viewpoint: (deprecated) the current DSemanticDiagram.
+
+
+         
+   <!-- Start of user code NodeMappingImport description -->
+   
+   <!-- End of user code NodeMappingImport description -->
+   
+      </description>
+   </context>
+   <context id="ContainerMappingImport">
+     <description>
+       Ease the reuse of existing mappings. If the feature is not defined in this instance it will re-use the feature value of the imported one.
+
+       Interpreted expressions, requested return type and available variables:
+          - preconditionExpression: a boolean.
+                . containerView: the view that sould contain the potential views of the checked elements.
+                . container: the semantic element of containerView.
+                . viewpoint: (deprecated) the current DSemanticDiagram.
+                . diagram: the current DSemanticDiagram.
+                . sourceView: (edge only) the source view of the current potential edge.
+                . source: (edge only) the semantic element of sourceView.
+                . targetView: (edge only) the target view of the current potential edge.
+                . target: (edge only) the semantic element of targetView.
+
+          - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
+                . containerView: the parent view of potential candidates.
+                . diagram: the current DDiagram.
+                . viewpoint: (deprecated) the current DDiagram.
+                . viewPoint: (deprecated) the current DDiagram.
+
+          - semanticElements: a Collection&lt;EObject> or an EObject.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view created from the current mapping.
+                . viewpoint: (deprecated) the current DSemanticDiagram.
+
+
+         
+   <!-- Start of user code ContainerMappingImport description -->
+   
+   <!-- End of user code ContainerMappingImport description -->
+   
+      </description>
+   </context>
+   <context id="EdgeMapping">
+     <description>
+       An edge mapping allows to create ViewEdge.
+
+       Interpreted expressions, requested return type and available variables:
+          - preconditionExpression: a boolean.
+                . containerView: the view that sould contain the potential views of the checked elements.
+                . container: the semantic element of containerView.
+                . viewpoint: (deprecated) the current DSemanticDiagram.
+                . diagram: the current DSemanticDiagram.
+                . sourceView: (edge only) the source view of the current potential edge.
+                . source: (edge only) the semantic element of sourceView.
+                . targetView: (edge only) the target view of the current potential edge.
+                . target: (edge only) the semantic element of targetView.
+
+          - semanticCandidatesExpression: a Collection&lt;EObject> or an EObject.
+                . containerView: the parent view of potential candidates.
+                . diagram: the current DDiagram.
+                . viewpoint: (deprecated) the current DDiagram.
+                . viewPoint: (deprecated) the current DDiagram.
+
+          - semanticElements: a Collection&lt;EObject> or an EObject.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view created from the current mapping.
+                . viewpoint: (deprecated) the current DSemanticDiagram.
+
+          - targetFinderExpression: a Collection&lt;EObject> or an EObject.
+                . diagram: the current DDiagram.
+                . viewpoint: (deprecated) the current DDiagram.
+                . viewPoint: (deprecated) the current DDiagram.
+
+          - sourceFinderExpression: a Collection&lt;EObject> or an EObject.
+                . diagram: the current DDiagram.
+                . viewpoint: (deprecated) the current DDiagram.
+                . viewPoint: (deprecated) the current DDiagram.
+
+          - targetExpression: an EObject.
+                . diagram: the current DDiagram.
+                . viewpoint: (deprecated) the current DDiagram.
+                . viewPoint: (deprecated) the current DDiagram.
+
+          - pathExpression: a Collection&lt;EObject> or an EObject.
+                . diagram: the current DDiagram.
+                . viewpoint: (deprecated) the current DDiagram.
+                . element: the semantic element  of the current edge.
+                . source: the semantic target of the current source node.
+                . target: the semantic element of the current target node.
+
+
+         
+   <!-- Start of user code EdgeMapping description -->
+   
+   <!-- End of user code EdgeMapping description -->
+   
+      </description>
+   </context>
+   <context id="IEdgeMapping">
+     <description>
+       
+       
+         
+   <!-- Start of user code IEdgeMapping description -->
+   
+   <!-- End of user code IEdgeMapping description -->
+   
+      </description>
+   </context>
+   <context id="EdgeMappingImport">
+     <description>
+       
+       
+         
+   <!-- Start of user code EdgeMappingImport description -->
+   
+   <!-- End of user code EdgeMappingImport description -->
+   
+      </description>
+   </context>
+   <context id="ConditionalNodeStyleDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - predicateExpression: a boolean.
+                . view: the current view.
+                . container: the semantic container.
+
+
+         
+   <!-- Start of user code ConditionalNodeStyleDescription description -->
+   
+   <!-- End of user code ConditionalNodeStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="ConditionalEdgeStyleDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - predicateExpression: a boolean.
+                . view: the current view.
+                . container: the semantic container.
+
+
+         
+   <!-- Start of user code ConditionalEdgeStyleDescription description -->
+   
+   <!-- End of user code ConditionalEdgeStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="ConditionalContainerStyleDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - predicateExpression: a boolean.
+                . view: the current view.
+                . container: the semantic container.
+
+
+         
+   <!-- Start of user code ConditionalContainerStyleDescription description -->
+   
+   <!-- End of user code ConditionalContainerStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="Layout">
+     <description>
+       The layout entry allow you to choose a predefined existing layout for the arrange all feature
+
+       
+         
+   <!-- Start of user code Layout description -->
+   
+   <!-- End of user code Layout description -->
+   
+      </description>
+   </context>
+   <context id="OrderedTreeLayout">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - childrenExpression: a Collection&lt;EObject> or an EObject.
+
+
+         
+   <!-- Start of user code OrderedTreeLayout description -->
+   
+   <!-- End of user code OrderedTreeLayout description -->
+   
+      </description>
+   </context>
+   <context id="CompositeLayout">
+     <description>
+       
+       
+         
+   <!-- Start of user code CompositeLayout description -->
+   
+   <!-- End of user code CompositeLayout description -->
+   
+      </description>
+   </context>
+   <context id="MappingBasedDecoration">
+     <description>
+       A MappingBasedDecoration applies decorations on views that are issued from one or more mappings.
+
+       Interpreted expressions, requested return type and available variables:
+          - preconditionExpression: a boolean.
+                . containerView: the view that would contain the potential views of the checked elements.
+                . container: the semantic element of the container view.
+                . viewpoint: (deprecated) the current diagram.
+                . diagram: the current diagram.
+
+
+         
+   <!-- Start of user code MappingBasedDecoration description -->
+   
+   <!-- End of user code MappingBasedDecoration description -->
+   
+      </description>
+   </context>
+   <context id="Layer">
+     <description>
+       
+       
+         
+   <!-- Start of user code Layer description -->
+   
+   <!-- End of user code Layer description -->
+   
+      </description>
+   </context>
+   <context id="AdditionalLayer">
+     <description>
+       
+       
+         
+   <!-- Start of user code AdditionalLayer description -->
+   
+   <!-- End of user code AdditionalLayer description -->
+   
+      </description>
+   </context>
+   <context id="DragAndDropTargetDescription">
+     <description>
+       A DragAndDropTargetDescription is a Description or Mapping that can have many DropTools
+
+       
+         
+   <!-- Start of user code DragAndDropTargetDescription description -->
+   
+   <!-- End of user code DragAndDropTargetDescription description -->
+   
+      </description>
+   </context>
+   <context id="BorderedStyleDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code BorderedStyleDescription description -->
+   
+   <!-- End of user code BorderedStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="NodeStyleDescription">
+     <description>
+       Style of a node.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+          - tooltipExpression: a string.
+                . view: the current view.
+
+          - sizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code NodeStyleDescription description -->
+   
+   <!-- End of user code NodeStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="CustomStyleDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+          - tooltipExpression: a string.
+                . view: the current view.
+
+          - sizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code CustomStyleDescription description -->
+   
+   <!-- End of user code CustomStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="SquareDescription">
+     <description>
+       The square style to display a node as a square.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+          - tooltipExpression: a string.
+                . view: the current view.
+
+          - sizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code SquareDescription description -->
+   
+   <!-- End of user code SquareDescription description -->
+   
+      </description>
+   </context>
+   <context id="LozengeNodeDescription">
+     <description>
+       The lozenge style to display a node as a lozenge.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+          - tooltipExpression: a string.
+                . view: the current view.
+
+          - sizeComputationExpression: an integer.
+
+          - widthComputationExpression: an integer.
+
+          - heightComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code LozengeNodeDescription description -->
+   
+   <!-- End of user code LozengeNodeDescription description -->
+   
+      </description>
+   </context>
+   <context id="EllipseNodeDescription">
+     <description>
+       The ellipse style to display a node as an ellipse.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+          - tooltipExpression: a string.
+                . view: the current view.
+
+          - sizeComputationExpression: an integer.
+
+          - horizontalDiameterComputationExpression: an integer.
+
+          - verticalDiameterComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code EllipseNodeDescription description -->
+   
+   <!-- End of user code EllipseNodeDescription description -->
+   
+      </description>
+   </context>
+   <context id="BundledImageDescription">
+     <description>
+       The bundled image style allows to use the default images provide by the Viewpoint editor.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+          - tooltipExpression: a string.
+                . view: the current view.
+
+          - sizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code BundledImageDescription description -->
+   
+   <!-- End of user code BundledImageDescription description -->
+   
+      </description>
+   </context>
+   <context id="NoteDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+          - tooltipExpression: a string.
+                . view: the current view.
+
+          - sizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code NoteDescription description -->
+   
+   <!-- End of user code NoteDescription description -->
+   
+      </description>
+   </context>
+   <context id="DotDescription">
+     <description>
+       The dot style.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+          - tooltipExpression: a string.
+                . view: the current view.
+
+          - sizeComputationExpression: an integer.
+
+          - strokeSizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code DotDescription description -->
+   
+   <!-- End of user code DotDescription description -->
+   
+      </description>
+   </context>
+   <context id="GaugeCompositeStyleDescription">
+     <description>
+       This style groups many GaugeSection.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+          - tooltipExpression: a string.
+                . view: the current view.
+
+          - sizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code GaugeCompositeStyleDescription description -->
+   
+   <!-- End of user code GaugeCompositeStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="GaugeSectionDescription">
+     <description>
+       The gauge section represents one gauge of a GaugeCompositeStyle.
+
+       Interpreted expressions, requested return type and available variables:
+          - minValueExpression: an integer.
+
+          - maxValueExpression: an integer.
+
+          - valueExpression: an integer.
+
+
+         
+   <!-- Start of user code GaugeSectionDescription description -->
+   
+   <!-- End of user code GaugeSectionDescription description -->
+   
+      </description>
+   </context>
+   <context id="SizeComputationContainerStyleDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - widthComputationExpression: an integer.
+
+          - heightComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code SizeComputationContainerStyleDescription description -->
+   
+   <!-- End of user code SizeComputationContainerStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="RoundedCornerStyleDescription">
+     <description>
+       
+       
+         
+   <!-- Start of user code RoundedCornerStyleDescription description -->
+   
+   <!-- End of user code RoundedCornerStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="ContainerStyleDescription">
+     <description>
+       The style of a container.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+          - tooltipExpression: a string.
+                . view: the current view.
+
+
+         
+   <!-- Start of user code ContainerStyleDescription description -->
+   
+   <!-- End of user code ContainerStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="FlatContainerStyleDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+          - tooltipExpression: a string.
+                . view: the current view.
+
+          - widthComputationExpression: an integer.
+
+          - heightComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code FlatContainerStyleDescription description -->
+   
+   <!-- End of user code FlatContainerStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="ShapeContainerStyleDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+          - tooltipExpression: a string.
+                . view: the current view.
+
+          - widthComputationExpression: an integer.
+
+          - heightComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code ShapeContainerStyleDescription description -->
+   
+   <!-- End of user code ShapeContainerStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="WorkspaceImageDescription">
+     <description>
+       A custom image that is present in the user workspace.
+
+       Interpreted expressions, requested return type and available variables:
+          - borderSizeComputationExpression: an integer.
+
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+          - tooltipExpression: a string.
+                . view: the current view.
+
+          - sizeComputationExpression: an integer.
+
+
+         
+   <!-- Start of user code WorkspaceImageDescription description -->
+   
+   <!-- End of user code WorkspaceImageDescription description -->
+   
+      </description>
+   </context>
+   <context id="EdgeStyleDescription">
+     <description>
+       The style of an edge.
+
+       Interpreted expressions, requested return type and available variables:
+          - sizeComputationExpression: an integer.
+                . diagram: the current DSemanticDiagram.
+                . view: the current edge view for which the size is calculated.
+                . sourceView: the source view of the current edge.
+                . targetView: the target view of the current edge.
+
+
+         
+   <!-- Start of user code EdgeStyleDescription description -->
+   
+   <!-- End of user code EdgeStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="BeginLabelStyleDescription">
+     <description>
+       The style of a begin label.
+
+       Interpreted expressions, requested return type and available variables:
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+
+         
+   <!-- Start of user code BeginLabelStyleDescription description -->
+   
+   <!-- End of user code BeginLabelStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="CenterLabelStyleDescription">
+     <description>
+       The style of a center label.
+
+       Interpreted expressions, requested return type and available variables:
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+
+         
+   <!-- Start of user code CenterLabelStyleDescription description -->
+   
+   <!-- End of user code CenterLabelStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="EndLabelStyleDescription">
+     <description>
+       The style of a end label.
+
+       Interpreted expressions, requested return type and available variables:
+          - labelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+
+         
+   <!-- Start of user code EndLabelStyleDescription description -->
+   
+   <!-- End of user code EndLabelStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="BracketEdgeStyleDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - sizeComputationExpression: an integer.
+                . diagram: the current DSemanticDiagram.
+                . view: the current edge view for which the size is calculated.
+                . sourceView: the source view of the current edge.
+                . targetView: the target view of the current edge.
+
+
+         
+   <!-- Start of user code BracketEdgeStyleDescription description -->
+   
+   <!-- End of user code BracketEdgeStyleDescription description -->
+   
+      </description>
+   </context>
+   <context id="ToolSection">
+     <description>
+       A tool section enclosed some tools.
+
+       
+         
+   <!-- Start of user code ToolSection description -->
+   
+   <!-- End of user code ToolSection description -->
+   
+      </description>
+   </context>
+   <context id="ToolGroup">
+     <description>
+       
+       
+         
+   <!-- Start of user code ToolGroup description -->
+   
+   <!-- End of user code ToolGroup description -->
+   
+      </description>
+   </context>
+   <context id="ToolGroupExtension">
+     <description>
+       
+       
+         
+   <!-- Start of user code ToolGroupExtension description -->
+   
+   <!-- End of user code ToolGroupExtension description -->
+   
+      </description>
+   </context>
+   <context id="NodeCreationDescription">
+     <description>
+       Tool to create a ViewNode. It appears in the palette.
+
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+       List of the available variables for tool operations:
+            - container: The variable container that represents the semantic element of the clicked view.
+            - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
+  
+   <!-- Start of user code NodeCreationDescription description -->
+   
+   <!-- End of user code NodeCreationDescription description -->
+   
+      </description>
+   </context>
+   <context id="EdgeCreationDescription">
+     <description>
+       Tools to create a ViewEdge it appears in the palette.
+
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+          - connectionStartPrecondition: a boolean.
+                . container: the semantic element of diagram.
+                . preSourceView: (edge only) the source view of the current potential edge.
+                . preSource: (edge only) the semantic element of $preSourceView.
+                . diagram: the diagram of the current potential edge
+
+
+       List of the available variables for tool operations:
+            - source: The semantic element of the source view.
+            - target: The semantic element of the target view.
+            - sourceView: The source view (instance of EdgeTarget)
+            - targetView: The target view (instance of EdgeTarget)
+  
+   <!-- Start of user code EdgeCreationDescription description -->
+   
+   <!-- End of user code EdgeCreationDescription description -->
+   
+      </description>
+   </context>
+   <context id="ContainerCreationDescription">
+     <description>
+       Tool to create a Container (ViewNodeContainer or ViewNodeList).
+
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+       List of the available variables for tool operations:
+            - container: The semantic element of the cicked view.
+            - containerView: The clicked view (instance of ViewPoint or ViewNodeContainer).
+  
+   <!-- Start of user code ContainerCreationDescription description -->
+   
+   <!-- End of user code ContainerCreationDescription description -->
+   
+      </description>
+   </context>
+   <context id="DeleteElementDescription">
+     <description>
+       Tool that describes how to delete a ViewPointElement.
+
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+       List of the available variables for tool operations:
+            - element: The semantic element of the ViewPointElement to delete.
+            - elementView: 
+            - containerView: The view that contains the ViewPointElement to delete.
+  
+   <!-- Start of user code DeleteElementDescription description -->
+   
+   <!-- End of user code DeleteElementDescription description -->
+   
+      </description>
+   </context>
+   <context id="DoubleClickDescription">
+     <description>
+       Tool that describes double click behaviour.
+
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+       List of the available variables for tool operations:
+            - element: The semantic element of the ViewPointElement to delete.
+            - elementView: 
+  
+   <!-- Start of user code DoubleClickDescription description -->
+   
+   <!-- End of user code DoubleClickDescription description -->
+   
+      </description>
+   </context>
+   <context id="DeleteHook">
+     <description>
+       
+       
+         
+   <!-- Start of user code DeleteHook description -->
+   
+   <!-- End of user code DeleteHook description -->
+   
+      </description>
+   </context>
+   <context id="DeleteHookParameter">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - value: a Collection&lt;EObject> or an EObject.
+
+
+         
+   <!-- Start of user code DeleteHookParameter description -->
+   
+   <!-- End of user code DeleteHookParameter description -->
+   
+      </description>
+   </context>
+   <context id="ReconnectEdgeDescription">
+     <description>
+       A tool that describes how to reconnect a ViewEdge.
+
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+       List of the available variables for tool operations:
+            - source: The semantic element of the source view of the reconnection operation.
+            - target: The semantic element of the target view of the reconnection operation.
+            - sourceView: The source view of the reconnection operation.
+            - targetView: The target view of the reconnection operation.
+            - element: The semantic element of the ViewEdge.
+            - edgeView: 
+  
+   <!-- Start of user code ReconnectEdgeDescription description -->
+   
+   <!-- End of user code ReconnectEdgeDescription description -->
+   
+      </description>
+   </context>
+   <context id="RequestDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+         
+   <!-- Start of user code RequestDescription description -->
+   
+   <!-- End of user code RequestDescription description -->
+   
+      </description>
+   </context>
+   <context id="DirectEditLabel">
+     <description>
+       A tool that allows to edit the label of a ViewPointElement.
+
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+          - inputLabelExpression: a string.
+                . diagram: the current DSemanticDiagram.
+                . view: the current view for which the label is calculated.
+
+
+         
+   <!-- Start of user code DirectEditLabel description -->
+   
+   <!-- End of user code DirectEditLabel description -->
+   
+      </description>
+   </context>
+   <context id="BehaviorTool">
+     <description>
+       A tool that can be launched by the user.
+
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+         
+   <!-- Start of user code BehaviorTool description -->
+   
+   <!-- End of user code BehaviorTool description -->
+   
+      </description>
+   </context>
+   <context id="SourceEdgeCreationVariable">
+     <description>
+       
+       
+         
+   <!-- Start of user code SourceEdgeCreationVariable description -->
+   
+   <!-- End of user code SourceEdgeCreationVariable description -->
+   
+      </description>
+   </context>
+   <context id="SourceEdgeViewCreationVariable">
+     <description>
+       
+       
+         
+   <!-- Start of user code SourceEdgeViewCreationVariable description -->
+   
+   <!-- End of user code SourceEdgeViewCreationVariable description -->
+   
+      </description>
+   </context>
+   <context id="TargetEdgeCreationVariable">
+     <description>
+       
+       
+         
+   <!-- Start of user code TargetEdgeCreationVariable description -->
+   
+   <!-- End of user code TargetEdgeCreationVariable description -->
+   
+      </description>
+   </context>
+   <context id="TargetEdgeViewCreationVariable">
+     <description>
+       
+       
+         
+   <!-- Start of user code TargetEdgeViewCreationVariable description -->
+   
+   <!-- End of user code TargetEdgeViewCreationVariable description -->
+   
+      </description>
+   </context>
+   <context id="ElementDoubleClickVariable">
+     <description>
+       
+       
+         
+   <!-- Start of user code ElementDoubleClickVariable description -->
+   
+   <!-- End of user code ElementDoubleClickVariable description -->
+   
+      </description>
+   </context>
+   <context id="NodeCreationVariable">
+     <description>
+       
+       
+         
+   <!-- Start of user code NodeCreationVariable description -->
+   
+   <!-- End of user code NodeCreationVariable description -->
+   
+      </description>
+   </context>
+   <context id="CreateView">
+     <description>
+       This operation allows to create a view.
+
+       Interpreted expressions, requested return type and available variables:
+          - containerViewExpression: a view (DNode, DEdge, DDiagram -> any DSemanticDecorator).
+
+
+         
+   <!-- Start of user code CreateView description -->
+   
+   <!-- End of user code CreateView description -->
+   
+      </description>
+   </context>
+   <context id="CreateEdgeView">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - containerViewExpression: a view (DNode, DEdge, DDiagram -> any DSemanticDecorator).
+
+          - sourceExpression: an EObject.
+
+          - targetExpression: an EObject.
+
+
+         
+   <!-- Start of user code CreateEdgeView description -->
+   
+   <!-- End of user code CreateEdgeView description -->
+   
+      </description>
+   </context>
+   <context id="Navigation">
+     <description>
+       Open or create a representation for the element.
+
+       
+         
+   <!-- Start of user code Navigation description -->
+   
+   <!-- End of user code Navigation description -->
+   
+      </description>
+   </context>
+   <context id="DiagramCreationDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+          - titleExpression: a string.
+
+          - browseExpression: an EObject.
+
+
+       List of the available variables for tool operations:
+            - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
+            - representationName: The variable representationName that represents the name of the created representation.
+  
+   <!-- Start of user code DiagramCreationDescription description -->
+   
+   <!-- End of user code DiagramCreationDescription description -->
+   
+      </description>
+   </context>
+   <context id="DiagramNavigationDescription">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+          - browseExpression: an EObject.
+
+          - navigationNameExpression: a string.
+                . name: name of the targeted Representation.
+
+
+       List of the available variables for tool operations:
+            - containerView: The variable containerView that represents the clickedView (instance of ViewPoint or ViewPointElement).
+            - container: The variable container that represents the semantic element of the clicked view.
+            - representationName: The variable representationName that represents the name of the representation to open.
+  
+   <!-- Start of user code DiagramNavigationDescription description -->
+   
+   <!-- End of user code DiagramNavigationDescription description -->
+   
+      </description>
+   </context>
+   <context id="ContainerDropDescription">
+     <description>
+       Tool that describes a Drag -and- Drop operation.
+
+       Interpreted expressions, requested return type and available variables:
+          - precondition: a boolean.
+                . container: the container.
+
+
+       List of the available variables for tool operations:
+            - oldSemanticElement: The semantic element of the old container view.
+            - newSemanticContainer: The semantic element of the new container view.
+            - element: The semantic element that is dragged and dropped.
+            - newContainerView: The new view container (instance of ViewPoint or ViewPointElement).
+  
+   <!-- Start of user code ContainerDropDescription description -->
+   
+   <!-- End of user code ContainerDropDescription description -->
+   
+      </description>
+   </context>
+   <context id="FilterDescription">
+     <description>
+       Describe a filter. A filter allows to hide some elements.
+
+       
+         
+   <!-- Start of user code FilterDescription description -->
+   
+   <!-- End of user code FilterDescription description -->
+   
+      </description>
+   </context>
+   <context id="Filter">
+     <description>
+       A filter.
+
+       
+         
+   <!-- Start of user code Filter description -->
+   
+   <!-- End of user code Filter description -->
+   
+      </description>
+   </context>
+   <context id="MappingFilter">
+     <description>
+       A filter that filters mappings.
+
+       Interpreted expressions, requested return type and available variables:
+          - semanticConditionExpression: a boolean.
+
+          - viewConditionExpression: a boolean.
+
+
+         
+   <!-- Start of user code MappingFilter description -->
+   
+   <!-- End of user code MappingFilter description -->
+   
+      </description>
+   </context>
+   <context id="CompositeFilterDescription">
+     <description>
+       A composite filter description.
+
+       
+         
+   <!-- Start of user code CompositeFilterDescription description -->
+   
+   <!-- End of user code CompositeFilterDescription description -->
+   
+      </description>
+   </context>
+   <context id="VariableFilter">
+     <description>
+       A filter that filters viewpoint elements considering an expression and some variables defined by the user.
+
+       Interpreted expressions, requested return type and available variables:
+          - semanticConditionExpression: a boolean.
+
+
+         
+   <!-- Start of user code VariableFilter description -->
+   
+   <!-- End of user code VariableFilter description -->
+   
+      </description>
+   </context>
+   <context id="FilterVariable">
+     <description>
+       
+       Interpreted expressions, requested return type and available variables:
+          - candidatesExpression: a Collection&lt;EObject> or an EObject.
+                . diagram: the current DDiagram.
+                . containerView: the view of the container.
+                . container: the semantic element of the container.
+
+          - rootExpression: a Collection&lt;EObject> or an EObject.
+                . diagram: the current DDiagram.
+                . containerView: the view of the container.
+                . container: the semantic element of the container.
+
+          - childrenExpression: a Collection&lt;EObject> or an EObject.
+                . diagram: the current DDiagram.
+                . containerView: the view of the container.
+                . container: the semantic element of the container.
+
+
+         
+   <!-- Start of user code FilterVariable description -->
+   
+   <!-- End of user code FilterVariable description -->
+   
+      </description>
+   </context>
+   <context id="ConcernSet">
+     <description>
+       A set of many concerns.
+
+       
+         
+   <!-- Start of user code ConcernSet description -->
+   
+   <!-- End of user code ConcernSet description -->
+   
+      </description>
+   </context>
+   <context id="ConcernDescription">
+     <description>
+       Describe a concern. A concern could be seen as an aspect. It allows to enable some filters, validation rules or behaviors in one click.
+
+       
+         
+   <!-- Start of user code ConcernDescription description -->
+   
+   <!-- End of user code ConcernDescription description -->
+   
+      </description>
+   </context>
+</contexts>

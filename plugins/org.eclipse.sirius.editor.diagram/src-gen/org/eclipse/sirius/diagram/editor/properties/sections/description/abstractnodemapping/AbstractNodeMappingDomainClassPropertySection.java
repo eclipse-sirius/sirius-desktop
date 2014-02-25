@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.description.abstractnodemapping;
+package org.eclipse.sirius.diagram.editor.properties.sections.description.abstractnodemapping;
 
 // Start of user code imports
 
@@ -46,14 +46,14 @@ public class AbstractNodeMappingDomainClassPropertySection extends AbstractTextP
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "DomainClass"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -65,21 +65,21 @@ public class AbstractNodeMappingDomainClassPropertySection extends AbstractTextP
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getFeature()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getFeature()
      */
     public EAttribute getFeature() {
         return DescriptionPackage.eINSTANCE.getAbstractNodeMapping_DomainClass();
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#getFeatureValue(String)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#getFeatureValue(String)
      */
     protected Object getFeatureValue(String newText) {
         return newText;
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTextPropertySection#isEqual(String)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTextPropertySection#isEqual(String)
      */
     protected boolean isEqual(String newText) {
         return getFeatureAsText().equals(newText);

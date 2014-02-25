@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.filters.description.edgemappingimport;
+package org.eclipse.sirius.diagram.editor.properties.filters.description.edgemappingimport;
 
 // Start of user code specific imports
 

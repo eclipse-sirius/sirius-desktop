@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.filters.tool.deleteelementdescription;
+package org.eclipse.sirius.diagram.editor.properties.filters.tool.deleteelementdescription;
 
 // Start of user code specific imports
 

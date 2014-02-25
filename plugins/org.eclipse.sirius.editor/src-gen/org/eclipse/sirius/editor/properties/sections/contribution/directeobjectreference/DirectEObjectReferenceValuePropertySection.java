@@ -30,6 +30,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.componentization.ViewpointResourceHandler;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.tools.api.selection.EObjectSelectionWizard;
@@ -38,7 +39,6 @@ import org.eclipse.sirius.description.contribution.DirectEObjectReference;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
 import org.eclipse.sirius.ext.emf.AllContents;
-import org.eclipse.sirius.ui.tools.api.properties.AbstractMappingImportSelectionWizardBuilder;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
@@ -190,7 +190,7 @@ public class DirectEObjectReferenceValuePropertySection extends AbstractComboPro
             public void widgetSelected(SelectionEvent e) {
                 if (eObject instanceof DirectEObjectReference) {
                     List<EObject> roots = Lists.newArrayList();
-                    roots.addAll(AbstractMappingImportSelectionWizardBuilder.getAvailableViewpointsInResourceSet(eObject));
+                    roots.addAll(new EObjectQuery(eObject).getAvailableViewpointsInResourceSet());
                     AdapterFactory af = SiriusEditPlugin.getPlugin().getItemProvidersAdapterFactory();
                     TreeItemWrapper wrapper = buildWrapper(roots);
                     EObjectSelectionWizard wizard = new EObjectSelectionWizard("Selection", "Please select an object to reference", null, wrapper, af);

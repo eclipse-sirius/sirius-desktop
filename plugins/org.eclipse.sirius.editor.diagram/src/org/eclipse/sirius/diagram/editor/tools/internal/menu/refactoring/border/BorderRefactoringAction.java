@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.tools.internal.menu.refactoring.border;
+package org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring.border;
 
 import java.util.Collection;
 
@@ -21,6 +21,7 @@ import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring.EdgeMappingRefactoringAction;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractEObjectRefactoringAction;
 import org.eclipse.ui.IEditorPart;
 
@@ -89,6 +90,6 @@ public class BorderRefactoringAction extends AbstractEObjectRefactoringAction {
         String name = elementToMove.getName();
         elementToMove.setName("_refactoring");
         elementToMove.setName(name);
-        AbstractEObjectRefactoringAction.refreshSelection(elementToMove);
+        EdgeMappingRefactoringAction.refreshSelection(elementToMove);
     }
 }

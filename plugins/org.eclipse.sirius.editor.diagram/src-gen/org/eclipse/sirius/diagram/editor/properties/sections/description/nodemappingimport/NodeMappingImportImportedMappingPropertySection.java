@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.description.nodemappingimport;
+package org.eclipse.sirius.diagram.editor.properties.sections.description.nodemappingimport;
 
 // Start of user code imports
 
@@ -27,12 +27,12 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.tools.api.selection.EObjectSelectionWizard;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.ui.tools.api.properties.NodeMappingImportSelectionWizardItemsBuilder;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
-import org.eclipse.sirius.ui.tools.api.properties.AbstractMappingImportSelectionWizardBuilder;
-import org.eclipse.sirius.ui.tools.api.properties.NodeMappingImportSelectionWizardItemsBuilder;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -53,14 +53,14 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  */
 public class NodeMappingImportImportedMappingPropertySection extends AbstractComboPropertySection {
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "ImportedMapping"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -72,21 +72,21 @@ public class NodeMappingImportImportedMappingPropertySection extends AbstractCom
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getFeature()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getFeature()
      */
     protected EReference getFeature() {
         return DescriptionPackage.eINSTANCE.getNodeMappingImport_ImportedMapping();
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getFeatureValue(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getFeatureValue(int)
      */
     protected Object getFeatureValue(int index) {
         return getFeatureValueAt(index);
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#isEqual(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#isEqual(int)
      */
     protected boolean isEqual(int index) {
         boolean isEqual = false;
@@ -174,8 +174,8 @@ public class NodeMappingImportImportedMappingPropertySection extends AbstractCom
             @Override
             public void widgetSelected(final SelectionEvent e) {
 
-                final NodeMappingImportSelectionWizardItemsBuilder builder = new NodeMappingImportSelectionWizardItemsBuilder((NodeMapping) eObject, AbstractMappingImportSelectionWizardBuilder
-                        .getAvailableViewpointsInResourceSet(eObject));
+                final NodeMappingImportSelectionWizardItemsBuilder builder = new NodeMappingImportSelectionWizardItemsBuilder((NodeMapping) eObject, new EObjectQuery(eObject)
+                        .getAvailableViewpointsInResourceSet());
                 final TreeItemWrapper input = builder.buildMappingInput();
 
                 final Shell shell = PlatformUI.getWorkbench().getDisplay().getActiveShell();

@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.tool.edgecreationdescription;
+package org.eclipse.sirius.diagram.editor.properties.sections.tool.edgecreationdescription;
 
 // Start of user code imports
 
@@ -33,14 +33,14 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  */
 public class EdgeCreationDescriptionEdgeMappingsPropertySection extends AbstractEditorDialogPropertySection {
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractEditorDialogPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "EdgeMappings"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractEditorDialogPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -52,14 +52,14 @@ public class EdgeCreationDescriptionEdgeMappingsPropertySection extends Abstract
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getFeature()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractEditorDialogPropertySection#getFeature()
      */
     protected EReference getFeature() {
         return ToolPackage.eINSTANCE.getEdgeCreationDescription_EdgeMappings();
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#getFeatureAsText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractEditorDialogPropertySection#getFeatureAsText()
      */
     protected String getFeatureAsText() {
         String string = new String();
@@ -78,7 +78,7 @@ public class EdgeCreationDescriptionEdgeMappingsPropertySection extends Abstract
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractEditorDialogPropertySection#isEqual(java.util.List)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractEditorDialogPropertySection#isEqual(java.util.List)
      */
     protected boolean isEqual(List<?> newList) {
         return newList.equals(eObject.eGet(getFeature()));

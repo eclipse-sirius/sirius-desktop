@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.filter.filter;
+package org.eclipse.sirius.diagram.editor.properties.sections.filter.filter;
 
 // Start of user code imports
 
@@ -32,14 +32,14 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  */
 public class FilterFilterKindPropertySection extends AbstractRadioButtonPropertySection {
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "FilterKind"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#getLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -51,28 +51,28 @@ public class FilterFilterKindPropertySection extends AbstractRadioButtonProperty
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#getFeature()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getFeature()
      */
     protected EAttribute getFeature() {
         return FilterPackage.eINSTANCE.getFilter_FilterKind();
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#getFeatureValue(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getFeatureValue(int)
      */
     protected Object getFeatureValue(int index) {
         return getChoiceOfValues().get(index);
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#isEqual(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#isEqual(int)
      */
     protected boolean isEqual(int index) {
         return getChoiceOfValues().get(index).equals(eObject.eGet(getFeature()));
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#getEnumerationFeatureValues()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getEnumerationFeatureValues()
      */
     protected List<?> getChoiceOfValues() {
         return FilterKind.VALUES;

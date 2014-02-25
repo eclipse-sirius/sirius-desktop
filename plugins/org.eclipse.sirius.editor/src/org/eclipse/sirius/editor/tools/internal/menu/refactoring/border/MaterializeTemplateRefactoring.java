@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractEObjectRefactoringAction;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractUndoRecordingCommand;
 import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
@@ -77,18 +76,5 @@ public class MaterializeTemplateRefactoring extends AbstractEObjectRefactoringAc
             }
         }
         return result;
-    }
-
-    /**
-     * Force a notification on a node mapping to be refresh (label and image).
-     * 
-     * @param elementToMove
-     *            the node mapping to be notified.
-     */
-    public static void forceNotification(NodeMapping elementToMove) {
-        String name = elementToMove.getName();
-        elementToMove.setName("_refactoring");
-        elementToMove.setName(name);
-        AbstractEObjectRefactoringAction.refreshSelection(elementToMove);
     }
 }

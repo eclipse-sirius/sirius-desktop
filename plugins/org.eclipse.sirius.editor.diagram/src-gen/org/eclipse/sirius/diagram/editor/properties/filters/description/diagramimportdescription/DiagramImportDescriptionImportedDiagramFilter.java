@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.filters.description.diagramimportdescription;
+package org.eclipse.sirius.diagram.editor.properties.filters.description.diagramimportdescription;
 
 // Start of user code specific imports
 

@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.style.edgestyledescription;
+package org.eclipse.sirius.diagram.editor.properties.sections.style.edgestyledescription;
 
 // Start of user code imports
 
@@ -29,14 +29,14 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  */
 public class EdgeStyleDescriptionTargetArrowPropertySection extends AbstractTablePropertySection {
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTablePropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTablePropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "TargetArrow"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTablePropertySection#getLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTablePropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -48,28 +48,28 @@ public class EdgeStyleDescriptionTargetArrowPropertySection extends AbstractTabl
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTablePropertySection#getFeature()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTablePropertySection#getFeature()
      */
     protected EAttribute getFeature() {
         return StylePackage.eINSTANCE.getEdgeStyleDescription_TargetArrow();
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTablePropertySection#getFeatureValue(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTablePropertySection#getFeatureValue(int)
      */
     protected Object getFeatureValue(int index) {
         return ((ImageItem) getChoiceOfValues().get(index)).getEnum();
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTablePropertySection#isEqual(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTablePropertySection#isEqual(int)
      */
     protected boolean isEqual(int index) {
         return ((ImageItem) getChoiceOfValues().get(index)).getEnum().equals(eObject.eGet(getFeature()));
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractTablePropertySection#getEnumerationFeatureValues()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractTablePropertySection#getEnumerationFeatureValues()
      */
     protected List<?> getChoiceOfValues() {
         List<ImageItem> result = new ArrayList<ImageItem>();

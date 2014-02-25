@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.filters.concern.concerndescription;
+package org.eclipse.sirius.diagram.editor.properties.filters.concern.concerndescription;
 
 // Start of user code specific imports
 

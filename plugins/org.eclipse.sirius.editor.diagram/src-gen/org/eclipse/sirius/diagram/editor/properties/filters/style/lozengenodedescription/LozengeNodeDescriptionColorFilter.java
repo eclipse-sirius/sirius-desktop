@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.filters.style.lozengenodedescription;
+package org.eclipse.sirius.diagram.editor.properties.filters.style.lozengenodedescription;
 
 // Start of user code specific imports
 

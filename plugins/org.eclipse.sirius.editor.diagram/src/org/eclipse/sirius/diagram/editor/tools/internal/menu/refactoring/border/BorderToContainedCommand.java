@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.tools.internal.menu.refactoring.border;
+package org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring.border;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;

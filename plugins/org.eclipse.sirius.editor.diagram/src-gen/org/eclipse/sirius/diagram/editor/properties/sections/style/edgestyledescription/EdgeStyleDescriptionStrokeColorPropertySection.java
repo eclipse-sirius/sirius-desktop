@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.style.edgestyledescription;
+package org.eclipse.sirius.diagram.editor.properties.sections.style.edgestyledescription;
 
 // Start of user code imports
 
@@ -32,14 +32,14 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  */
 public class EdgeStyleDescriptionStrokeColorPropertySection extends AbstractComboPropertySection {
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "StrokeColor"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -51,21 +51,21 @@ public class EdgeStyleDescriptionStrokeColorPropertySection extends AbstractComb
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getFeature()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getFeature()
      */
     protected EReference getFeature() {
         return StylePackage.eINSTANCE.getEdgeStyleDescription_StrokeColor();
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getFeatureValue(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getFeatureValue(int)
      */
     protected Object getFeatureValue(int index) {
         return getFeatureValueAt(index);
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#isEqual(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#isEqual(int)
      */
     protected boolean isEqual(int index) {
         boolean isEqual = false;

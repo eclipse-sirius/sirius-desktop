@@ -25,12 +25,10 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.diagram.description.DiagramImportDescription;
 import org.eclipse.sirius.editor.editorPlugin.IAdapterFactoryProvider;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
-import org.eclipse.sirius.editor.tools.internal.property.section.SiriusPropertySectionHelper;
 import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
@@ -45,7 +43,7 @@ import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
  */
 public abstract class AbstractViewpointPropertySection extends AbstractPropertySection {
     /** The label width that will be used for section names. */
-    public final static int LABEL_WIDTH = 292;
+    public final static int LABEL_WIDTH = 232;
 
     /** The property sheet page for this section. */
     protected ViewpointPropertySheetPage propertySheetPage;

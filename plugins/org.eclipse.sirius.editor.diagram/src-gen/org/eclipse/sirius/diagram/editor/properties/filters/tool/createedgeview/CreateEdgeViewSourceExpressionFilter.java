@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.filters.tool.createedgeview;
+package org.eclipse.sirius.diagram.editor.properties.filters.tool.createedgeview;
 
 // Start of user code specific imports
 

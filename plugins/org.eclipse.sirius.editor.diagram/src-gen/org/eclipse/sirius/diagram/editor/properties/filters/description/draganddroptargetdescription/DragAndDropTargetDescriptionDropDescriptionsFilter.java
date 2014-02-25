@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.filters.description.draganddroptargetdescription;
+package org.eclipse.sirius.diagram.editor.properties.filters.description.draganddroptargetdescription;
 
 // Start of user code specific imports
 

@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.style.bundledimagedescription;
+package org.eclipse.sirius.diagram.editor.properties.sections.style.bundledimagedescription;
 
 // Start of user code imports
 
@@ -28,14 +28,14 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  */
 public class BundledImageDescriptionShapePropertySection extends AbstractComboPropertySection {
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "Shape"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -47,28 +47,28 @@ public class BundledImageDescriptionShapePropertySection extends AbstractComboPr
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getFeature()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getFeature()
      */
     protected EAttribute getFeature() {
         return StylePackage.eINSTANCE.getBundledImageDescription_Shape();
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getFeatureValue(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getFeatureValue(int)
      */
     protected Object getFeatureValue(int index) {
         return getChoiceOfValues().get(index);
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#isEqual(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#isEqual(int)
      */
     protected boolean isEqual(int index) {
         return getChoiceOfValues().get(index).equals(eObject.eGet(getFeature()));
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractComboPropertySection#getEnumerationFeatureValues()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractComboPropertySection#getEnumerationFeatureValues()
      */
     protected List<?> getChoiceOfValues() {
         return BundledImageShape.VALUES;

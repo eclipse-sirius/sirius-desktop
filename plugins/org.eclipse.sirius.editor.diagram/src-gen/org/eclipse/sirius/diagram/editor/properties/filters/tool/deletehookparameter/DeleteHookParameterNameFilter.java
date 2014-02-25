@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.filters.tool.deletehookparameter;
+package org.eclipse.sirius.diagram.editor.properties.filters.tool.deletehookparameter;
 
 // Start of user code specific imports
 

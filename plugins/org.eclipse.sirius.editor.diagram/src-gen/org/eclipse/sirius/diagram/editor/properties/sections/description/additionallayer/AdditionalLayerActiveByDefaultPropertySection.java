@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.description.additionallayer;
+package org.eclipse.sirius.diagram.editor.properties.sections.description.additionallayer;
 
 // Start of user code imports
 
@@ -29,14 +29,14 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  */
 public class AdditionalLayerActiveByDefaultPropertySection extends AbstractCheckBoxPropertySection {
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractCheckBoxPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractCheckBoxPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "ActiveByDefault"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractCheckBoxPropertySection#getLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractCheckBoxPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -48,14 +48,14 @@ public class AdditionalLayerActiveByDefaultPropertySection extends AbstractCheck
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractCheckBoxPropertySection#getFeature()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractCheckBoxPropertySection#getFeature()
      */
     protected EAttribute getFeature() {
         return DescriptionPackage.eINSTANCE.getAdditionalLayer_ActiveByDefault();
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractCheckBoxPropertySection#getFeatureAsInteger()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractCheckBoxPropertySection#getFeatureAsInteger()
      */
     protected String getDefaultFeatureAsText() {
         String value = new String();
@@ -65,14 +65,14 @@ public class AdditionalLayerActiveByDefaultPropertySection extends AbstractCheck
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractCheckBoxPropertySection#getFeatureValue(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractCheckBoxPropertySection#getFeatureValue(int)
      */
     protected Object getFeatureValue(String newText) {
         return toBoolean(newText);
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractCheckBoxPropertySection#isEqual(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractCheckBoxPropertySection#isEqual(int)
      */
     protected boolean isEqual(String newText) {
         boolean equal = true;

@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.sirius.business.internal.query.EAttributeCustomizationQuery;
 import org.eclipse.sirius.business.internal.query.EReferenceCustomizationQuery;
-import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractEditorDialogPropertySection;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -119,7 +118,9 @@ public class VSMElementCustomizationReuseAppliedOnPropertySection extends Abstra
     // Start of user code user operations
     /**
      * Overridden to limit the choice to {@link StyleDescription}s and its
-     * content, owned or referenced by the current {@link DiagramDescription}.
+     * content, owned or referenced by the current
+     * {@link org.eclipse.sirius.viewpoint.description.RepresentationDescription}
+     * .
      * 
      * {@inheritDoc}
      */

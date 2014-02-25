@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.filters.description.compositelayout;
+package org.eclipse.sirius.diagram.editor.properties.filters.description.compositelayout;
 
 // Start of user code specific imports
 

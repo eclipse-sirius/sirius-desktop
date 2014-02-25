@@ -93,9 +93,6 @@ import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.sirius.diagram.description.concern.provider.ConcernItemProviderAdapterFactory;
-import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
-import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.sirius.editor.utils.SelectionTreeTextEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -606,9 +603,6 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
         factories.add(DialectUIManager.INSTANCE.createAdapterFactory());
         factories.add(FeatureExtensionsUIManager.INSTANCE.createAdapterFactory());
         factories.add(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
-        factories.add(new org.eclipse.sirius.diagram.description.provider.DescriptionItemProviderAdapterFactory());
-        factories.add(new org.eclipse.sirius.diagram.description.style.provider.StyleItemProviderAdapterFactory());
-        factories.add(new org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory());
         // End of user code put your specific adapter factories
         factories.add(new ResourceItemProviderAdapterFactory());
         factories.add(new ViewpointItemProviderAdapterFactory());
@@ -617,12 +611,6 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
         factories.add(new ToolItemProviderAdapterFactory());
         factories.add(new ValidationItemProviderAdapterFactory());
         factories.add(new AuditItemProviderAdapterFactory());
-        factories.add(new DiagramItemProviderAdapterFactory());
-        factories.add(new DescriptionItemProviderAdapterFactory());
-        factories.add(new StyleItemProviderAdapterFactory());
-        factories.add(new ToolItemProviderAdapterFactory());
-        factories.add(new FilterItemProviderAdapterFactory());
-        factories.add(new ConcernItemProviderAdapterFactory());
         factories.add(new ReflectiveItemProviderAdapterFactory());
 
         adapterFactory = new ComposedAdapterFactory(factories);

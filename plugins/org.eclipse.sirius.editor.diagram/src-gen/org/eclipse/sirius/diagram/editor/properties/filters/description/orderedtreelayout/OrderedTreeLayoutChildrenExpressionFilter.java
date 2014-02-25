@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.filters.description.orderedtreelayout;
+package org.eclipse.sirius.diagram.editor.properties.filters.description.orderedtreelayout;
 
 // Start of user code specific imports
 

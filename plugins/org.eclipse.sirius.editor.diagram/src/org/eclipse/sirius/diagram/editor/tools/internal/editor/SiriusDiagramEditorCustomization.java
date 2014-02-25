@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.tools.internal.editor;
+package org.eclipse.sirius.diagram.editor.tools.internal.editor;
 
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -21,7 +21,7 @@ import org.eclipse.sirius.editor.tools.api.editor.EditorCustomization;
  * @author fbarbin
  * 
  */
-public class SiriusEditorCustomization implements EditorCustomization {
+public class SiriusDiagramEditorCustomization implements EditorCustomization {
     /**
      * {@inheritDoc}
      */

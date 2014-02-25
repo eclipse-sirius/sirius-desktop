@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.tool.reconnectedgedescription;
+package org.eclipse.sirius.diagram.editor.properties.sections.tool.reconnectedgedescription;
 
 // Start of user code imports
 
@@ -29,14 +29,14 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  */
 public class ReconnectEdgeDescriptionReconnectionKindPropertySection extends AbstractRadioButtonPropertySection {
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "ReconnectionKind"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#getLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -48,28 +48,28 @@ public class ReconnectEdgeDescriptionReconnectionKindPropertySection extends Abs
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#getFeature()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getFeature()
      */
     protected EAttribute getFeature() {
         return ToolPackage.eINSTANCE.getReconnectEdgeDescription_ReconnectionKind();
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#getFeatureValue(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getFeatureValue(int)
      */
     protected Object getFeatureValue(int index) {
         return getChoiceOfValues().get(index);
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#isEqual(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#isEqual(int)
      */
     protected boolean isEqual(int index) {
         return getChoiceOfValues().get(index).equals(eObject.eGet(getFeature()));
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#getEnumerationFeatureValues()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractRadioButtonPropertySection#getEnumerationFeatureValues()
      */
     protected List<?> getChoiceOfValues() {
         return ReconnectionKind.VALUES;

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.section.description.diagramelementmapping;
+package org.eclipse.sirius.diagram.editor.properties.section.description.diagramelementmapping;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,7 +47,7 @@ public class DiagramElementMappingSynchronizationPropertySection extends Abstrac
             + "\nIf unsynchronizable, the synchronization of the mapping depends on the synchronization mode defined by the user (createElements=true and no synchro lock).";
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractRadioButtonPropertySection#getDefaultLabelText()
      */
     @Override
     protected String getDefaultLabelText() {
@@ -55,7 +55,7 @@ public class DiagramElementMappingSynchronizationPropertySection extends Abstrac
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#getLabelText()
+     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractRadioButtonPropertySection#getLabelText()
      */
     @Override
     protected String getLabelText() {
@@ -63,7 +63,7 @@ public class DiagramElementMappingSynchronizationPropertySection extends Abstrac
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#getFeature()
+     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractRadioButtonPropertySection#getFeature()
      */
     @Override
     protected EAttribute getFeature() {
@@ -71,7 +71,7 @@ public class DiagramElementMappingSynchronizationPropertySection extends Abstrac
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#getFeatureValue(int)
+     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractRadioButtonPropertySection#getFeatureValue(int)
      */
     @Override
     protected Object getFeatureValue(int index) {
@@ -79,7 +79,7 @@ public class DiagramElementMappingSynchronizationPropertySection extends Abstrac
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#isEqual(int)
+     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractRadioButtonPropertySection#isEqual(int)
      */
     @Override
     protected boolean isEqual(int index) {
@@ -90,7 +90,7 @@ public class DiagramElementMappingSynchronizationPropertySection extends Abstrac
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractRadioButtonPropertySection#getEnumerationFeatureValues()
+     * @see org.eclipse.sirius.editor.properties.sections.common.AbstractRadioButtonPropertySection#getChoiceOfValues()
      */
     @Override
     protected List getChoiceOfValues() {

@@ -8,13 +8,13 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.section.description.containermapping;
+package org.eclipse.sirius.diagram.editor.properties.section.description.containermapping;
 
 import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.sirius.diagram.ContainerLayout;
-import org.eclipse.sirius.editor.properties.sections.description.containermapping.ContainerMappingChildrenPresentationPropertySection;
+import org.eclipse.sirius.diagram.editor.properties.sections.description.containermapping.ContainerMappingChildrenPresentationPropertySection;
 
 import com.google.common.collect.Lists;
 

@@ -23,8 +23,6 @@ import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.sirius.diagram.description.concern.provider.ConcernItemProviderAdapterFactory;
-import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.featureExtensions.FeatureExtensionsUIManager;
@@ -75,15 +73,10 @@ public class AllPropertySection extends AbstractViewpointPropertySection impleme
         factories.add(new ResourceItemProviderAdapterFactory());
         factories.add(new ViewpointItemProviderAdapterFactory());
         factories.add(new DescriptionItemProviderAdapterFactory());
-        factories.add(new org.eclipse.sirius.diagram.description.provider.DescriptionItemProviderAdapterFactory());
         factories.add(new StyleItemProviderAdapterFactory());
-        factories.add(new org.eclipse.sirius.diagram.description.style.provider.StyleItemProviderAdapterFactory());
         factories.add(new ToolItemProviderAdapterFactory());
-        factories.add(new org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory());
-        factories.add(new FilterItemProviderAdapterFactory());
         factories.add(new ValidationItemProviderAdapterFactory());
         factories.add(new AuditItemProviderAdapterFactory());
-        factories.add(new ConcernItemProviderAdapterFactory());
         factories.add(new ReflectiveItemProviderAdapterFactory());
 
         adapterFactory = new ComposedAdapterFactory(factories);

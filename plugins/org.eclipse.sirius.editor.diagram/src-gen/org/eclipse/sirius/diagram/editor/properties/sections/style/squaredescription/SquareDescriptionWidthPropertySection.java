@@ -7,7 +7,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.properties.sections.style.squaredescription;
+package org.eclipse.sirius.diagram.editor.properties.sections.style.squaredescription;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
@@ -20,14 +20,14 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  */
 public class SquareDescriptionWidthPropertySection extends AbstractSpinnerPropertySection {
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractSpinnerPropertySection#getDefaultLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractSpinnerPropertySection#getDefaultLabelText()
      */
     protected String getDefaultLabelText() {
         return "Width"; //$NON-NLS-1$
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractSpinnerPropertySection#getLabelText()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractSpinnerPropertySection#getLabelText()
      */
     protected String getLabelText() {
         String labelText;
@@ -39,14 +39,14 @@ public class SquareDescriptionWidthPropertySection extends AbstractSpinnerProper
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractSpinnerPropertySection#getFeature()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractSpinnerPropertySection#getFeature()
      */
     protected EAttribute getFeature() {
         return StylePackage.eINSTANCE.getSquareDescription_Width();
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractSpinnerPropertySection#getFeatureAsInteger()
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractSpinnerPropertySection#getFeatureAsInteger()
      */
     protected String getFeatureAsText() {
         String value = new String();
@@ -56,7 +56,7 @@ public class SquareDescriptionWidthPropertySection extends AbstractSpinnerProper
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractSpinnerPropertySection#isEqual(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractSpinnerPropertySection#isEqual(int)
      */
     protected boolean isEqual(String newText) {
         boolean equal = true;
@@ -68,7 +68,7 @@ public class SquareDescriptionWidthPropertySection extends AbstractSpinnerProper
     }
 
     /**
-     * @see org.eclipse.sirius.editor.properties.sections.AbstractSpinnerPropertySection#getFeatureValue(int)
+     * @see org.eclipse.sirius.diagram.editor.properties.sections.AbstractSpinnerPropertySection#getFeatureValue(int)
      */
     protected Object getFeatureValue(String newText) {
         return toInteger(newText);
